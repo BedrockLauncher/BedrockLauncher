@@ -316,6 +316,14 @@ namespace MCLauncher {
         private void RewritePrefs() {
             File.WriteAllText(PREFS_PATH, JsonConvert.SerializeObject(UserPrefs));
         }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
     }
 
     namespace WPFDataTypes {

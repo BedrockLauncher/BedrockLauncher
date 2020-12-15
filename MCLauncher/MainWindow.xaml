@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MCLauncher.WPFDataTypes"
         mc:Ignorable="d"
-        Title="Minecraft Version Manager" Height="450" Width="800">
+        Title="BedrockLauncher" Height="450" Width="800" Background="{x:Null}" Foreground="{x:Null}" MouseDown="Window_MouseDown" WindowStyle="None" AllowsTransparency="True">
     <Window.Resources>
         <DataTemplate x:Key="templateVersionNotInstalled" DataType="{x:Type local:Version}">
             <Grid>
@@ -17,9 +17,9 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding DisplayName}" FontWeight="Bold" />
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding DisplayInstallStatus}" />
                 <Button x:Name="DownloadButton" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Padding="20,0" Content="Download" Command="{Binding DownloadCommand}" CommandParameter="{Binding}" />
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding DisplayName}" FontWeight="Bold" Foreground="White" />
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding DisplayInstallStatus}" Foreground="White" />
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="templateVersionInstalled" DataType="{x:Type local:Version}">
@@ -55,16 +55,28 @@
                 <Canvas Name="progressSizeHack" Grid.Row="2" Grid.Column="0" Height="12">
                     <ProgressBar Width="{Binding Path=ActualWidth, ElementName=progressSizeHack, Mode=OneWay}" Height="{Binding Path=ActualHeight, ElementName=progressSizeHack, Mode=OneWay}" Minimum="0" Maximum="{Binding StateChangeInfo.TotalSize}" Value="{Binding StateChangeInfo.DownloadedBytes}" IsIndeterminate="{Binding StateChangeInfo.IsProgressIndeterminate}" />
                 </Canvas>
-                <Button Grid.Row="2" Grid.Column="1" Content="X" Width="20" Margin="10 0 0 0" Command="{Binding StateChangeInfo.CancelCommand}" />
+                <Button Content="X" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Padding="20,0" Command="{Binding StateChangeInfo.CancelCommand}" />
             </Grid>
         </DataTemplate>
     </Window.Resources>
     <Grid Margin="10">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="1.101,1.113" StartPoint="-0.142,-0.116">
+                <GradientStop Color="#FF1E1E1E" Offset="0"/>
+                <GradientStop Color="#FF212121" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
+            <RowDefinition />
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ListBox Name="VersionList" d:DataContext="{d:DesignData /SampleData/Versions.xaml}" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" Grid.Row="0" Margin="0,0,0,10">
+        <ListBox Name="VersionList" ScrollViewer.VerticalScrollBarVisibility="Disabled" d:DataContext="{d:DesignData /SampleData/Versions.xaml}" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" Grid.Row="0" Margin="10,379,396,10" BorderBrush="#FCFFFFFF" Foreground="White">
+            <ListBox.Background>
+                <LinearGradientBrush EndPoint="1.101,1.113" StartPoint="-0.142,-0.116">
+                    <GradientStop Color="#FF1E1E1E" Offset="0"/>
+                    <GradientStop Color="#FF212121" Offset="1"/>
+                </LinearGradientBrush>
+            </ListBox.Background>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <ContentControl x:Name="control" Content="{Binding}" ContentTemplate="{StaticResource templateVersionNotInstalled}"/>
@@ -81,14 +93,14 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Grid Grid.Row="1" VerticalAlignment="Center" Margin="0,5,0,5">
+        <Grid VerticalAlignment="Center" Margin="10,22.451,-10,392.451" Height="15.098">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <CheckBox Grid.Row="0" Grid.Column="0" Name="ShowBetasCheckbox" Content="Show beta versions" Checked="ShowBetaVersionsCheck_Changed" Unchecked="ShowBetaVersionsCheck_Changed" IsChecked="{Binding UserPrefs.ShowBetas }" />
-            <CheckBox Grid.Row="0" Grid.Column="1" Margin="15,0,0,0" Name="ShowInstalledVersionsOnlyCheckbox" Content="Show installed versions only" Checked="ShowInstalledOnlyCheck_Changed" Unchecked="ShowInstalledOnlyCheck_Changed" IsChecked="{Binding UserPrefs.ShowInstalledOnly }" />
+            <CheckBox Grid.Row="0" Grid.Column="0" Name="ShowBetasCheckbox" Content="Show beta versions" Checked="ShowBetaVersionsCheck_Changed" Unchecked="ShowBetaVersionsCheck_Changed" IsChecked="{Binding UserPrefs.ShowBetas }" Visibility="Hidden" />
+            <CheckBox Grid.Row="0" Grid.Column="1" Margin="15,0,0,0" Name="ShowInstalledVersionsOnlyCheckbox" Content="Show installed versions only" Checked="ShowInstalledOnlyCheck_Changed" Unchecked="ShowInstalledOnlyCheck_Changed" IsChecked="{Binding UserPrefs.ShowInstalledOnly }" Visibility="Hidden" />
         </Grid>
-
+        <Button Content="Button" HorizontalAlignment="Left" Height="90" Margin="464,330,0,0" VerticalAlignment="Top" Width="283.5" Command="{Binding ICommonVersionCommands}" CommandParameter="{Binding}"/>
     </Grid>
 </Window>
