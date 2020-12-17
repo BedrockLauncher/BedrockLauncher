@@ -1,0 +1,4 @@
+﻿<local:Versions xmlns:local="clr-namespace:MCLauncher.WPFDataTypes">
+    <local:Version Name="1.9.0.15" IsBeta="False" />
+    <local:Version Name="1.10.0.4" IsBeta="True" />
+</local:Versions>
