@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MCLauncher.WPFDataTypes"
         xmlns:local1="clr-namespace:MCLauncher" xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="MCLauncher.MainWindow"
         mc:Ignorable="d"
-        Title="BedrockLauncher" Height="450" Width="800" Background="{x:Null}" Foreground="{x:Null}" MouseDown="Window_MouseDown" WindowStyle="None" AllowsTransparency="True">
+        Title="Minecraft Bedrock Launcher" Height="640" Width="1015" Background="White" Foreground="{x:Null}" MouseDown="Window_MouseDown" Icon="icon.ico" MinWidth="1015" MinHeight="640">
     <Window.Resources>
         <DataTemplate x:Key="templateVersionNotInstalled" DataType="{x:Type local:Version}">
             <Grid>
@@ -36,8 +36,8 @@
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding DisplayName}" FontWeight="Bold" />
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding DisplayInstallStatus}" />
-                <Button x:Name="RemoveButton" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Padding="20,0" Content="Remove" Command="{Binding RemoveCommand}" CommandParameter="{Binding}" />
-                <Button x:Name="DownloadButton" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Padding="20,0" Margin="2,0,0,0" Content="Launch" Command="{Binding LaunchCommand}" CommandParameter="{Binding}" />
+                <Button x:Name="RemoveButton" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Padding="20,0" Content="Remove" Command="{Binding RemoveCommand}" CommandParameter="{Binding}" Visibility="Hidden" />
+                <Button x:Name="DownloadButton" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Padding="20,0" Margin="2,0,0,0" Content="Launch" Command="{Binding LaunchCommand}" CommandParameter="{Binding}" Visibility="Hidden"/>
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="templateVersionDownloading" DataType="{x:Type local:Version}">
@@ -53,8 +53,8 @@
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding DisplayName}" FontWeight="Bold" FontFamily="Segoe UI Light" />
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding StateChangeInfo.DisplayStatus}" FontFamily="Segoe UI Light" />
-                <Canvas x:Name="progressSizeHack" Grid.Row="2" Grid.Column="0" Height="12">
-                    <ProgressBar Width="{Binding ActualWidth, ElementName=progressSizeHack, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=progressSizeHack, Mode=OneWay}" Minimum="0" Maximum="{Binding StateChangeInfo.TotalSize}" Value="{Binding StateChangeInfo.DownloadedBytes}" IsIndeterminate="{Binding StateChangeInfo.IsProgressIndeterminate}" />
+                <Canvas x:Name="progressSizeHack" Grid.Row="2" Grid.Column="0" Height="12" Background="{x:Null}">
+                    <ProgressBar Width="{Binding ActualWidth, ElementName=progressSizeHack, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=progressSizeHack, Mode=OneWay}" Minimum="0" Maximum="{Binding StateChangeInfo.TotalSize}" Value="{Binding StateChangeInfo.DownloadedBytes}" IsIndeterminate="{Binding StateChangeInfo.IsProgressIndeterminate}" BorderBrush="White" Background="{x:Null}" />
                 </Canvas>
                 <Button Content="X" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Padding="20,0" Command="{Binding StateChangeInfo.CancelCommand}" />
             </Grid>
@@ -112,6 +112,7 @@
         <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Button.Border" Color="Transparent"/>
         <SolidColorBrush x:Key="ComboBox.Static.Glyph" Color="#FF606060"/>
         <Style x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
+            <Setter Property="Background" Value="Red"/>
             <Setter Property="OverridesDefaultStyle" Value="true"/>
             <Setter Property="IsTabStop" Value="false"/>
             <Setter Property="Focusable" Value="false"/>
@@ -119,7 +120,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ToggleButton}">
-                        <Border x:Name="templateRoot" SnapsToDevicePixels="true" Background="{StaticResource ComboBox.Static.Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{StaticResource ComboBox.Static.Border}">
+                        <Border x:Name="templateRoot" SnapsToDevicePixels="true" Background="#FF1E1E1E" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="White">
                             <Border x:Name="splitBorder" Width="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" SnapsToDevicePixels="true" Margin="0" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="Transparent">
                                 <Path x:Name="arrow" VerticalAlignment="Center" Margin="0" HorizontalAlignment="Center" Fill="{StaticResource ComboBox.Static.Glyph}" Data="F1 M 0,0 L 2.667,2.66665 L 5.3334,0 L 5.3334,-1.78168 L 2.6667,0.88501 L0,-1.78168 L0,0 Z"/>
                             </Border>
@@ -128,7 +129,6 @@
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
                                     <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="true"/>
-                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="false"/>
                                     <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="false"/>
                                     <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="true"/>
                                 </MultiDataTrigger.Conditions>
@@ -138,19 +138,10 @@
                                 <Setter Property="BorderBrush" TargetName="splitBorder" Value="{StaticResource ComboBox.Static.Editable.Button.Border}"/>
                             </MultiDataTrigger>
                             <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Fill" TargetName="arrow" Value="{StaticResource ComboBox.MouseOver.Glyph}"/>
+                                <Setter Property="Fill" TargetName="arrow" Value="red"/>
                             </Trigger>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true"/>
-                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="false"/>
-                                </MultiDataTrigger.Conditions>
-                                <Setter Property="Background" TargetName="templateRoot" Value="{StaticResource ComboBox.MouseOver.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="templateRoot" Value="{StaticResource ComboBox.MouseOver.Border}"/>
-                            </MultiDataTrigger>
-                            <MultiDataTrigger>
-                                <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true"/>
                                     <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="true"/>
                                 </MultiDataTrigger.Conditions>
                                 <Setter Property="Background" TargetName="templateRoot" Value="{StaticResource ComboBox.MouseOver.Editable.Background}"/>
@@ -231,7 +222,7 @@
             <ControlTemplate.Triggers>
                 <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="true">
                     <Setter Property="Margin" TargetName="shadow" Value="0,0,5,5"/>
-                    <Setter Property="Color" TargetName="shadow" Value="#71000000"/>
+                    <Setter Property="Color" TargetName="shadow" Value="transparent"/>
                 </Trigger>
                 <Trigger Property="HasItems" Value="false">
                     <Setter Property="Height" TargetName="dropDownBorder" Value="95"/>
@@ -300,7 +291,7 @@
                 </Trigger>
                 <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="true">
                     <Setter Property="Margin" TargetName="shadow" Value="0,0,5,5"/>
-                    <Setter Property="Color" TargetName="shadow" Value="#71000000"/>
+                    <Setter Property="Color" TargetName="shadow" Value="yellow"/>
                 </Trigger>
                 <Trigger Property="HasItems" Value="false">
                     <Setter Property="Height" TargetName="dropDownBorder" Value="95"/>
@@ -320,8 +311,8 @@
         </ControlTemplate>
         <Style x:Key="ComboBoxStyle1" TargetType="{x:Type ComboBox}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-            <Setter Property="Background" Value="{StaticResource ComboBox.Static.Background}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource ComboBox.Static.Border}"/>
+            <Setter Property="Background" Value="yellow"/>
+            <Setter Property="BorderBrush" Value="yellow"/>
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
@@ -339,25 +330,33 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Style x:Key="ComboBoxItemStyle1" TargetType="{x:Type ComboBoxItem}">
+            <Setter Property="Background" Value="#FF1E1E1E"/>
+            <Setter Property="BorderBrush" Value="#FF1E1E1E"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
     </Window.Resources>
-    <Grid Margin="10">
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="1.101,1.113" StartPoint="-0.142,-0.116">
-                <GradientStop Color="#FF1E1E1E" Offset="0"/>
-                <GradientStop Color="#FF212121" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <ComboBox x:Name="VersionList" ScrollViewer.VerticalScrollBarVisibility="Disabled" d:DataContext="{d:DesignData /SampleData/Versions.xaml}" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" Grid.Row="0" Margin="10,379,396,10" Style="{DynamicResource ComboBoxStyle1}">
-            <ComboBox.ItemContainerStyle>
-                <Style TargetType="{x:Type ComboBoxItem}">
-                    <Setter Property="Background" Value="#FF1E1E1E"/>
-                    <Setter Property="BorderBrush" Value="#FF1E1E1E"/>
-                </Style>
-            </ComboBox.ItemContainerStyle>
+    <Grid Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF282828">
+        <Border MinWidth="180" MinHeight="609" MaxWidth="180" Background="#FF1E1E1E" HorizontalAlignment="Left" Width="173.5"/>
+        <Border Background="#FF282828" MinHeight="83" MaxHeight="83" MinWidth="100" Margin="180,0,0,0" VerticalAlignment="Top">
+            <TextBlock HorizontalAlignment="Left" Height="27" TextWrapping="Wrap" Text="MINECRAFT: JAVA EDITION" VerticalAlignment="Top" Width="204.833" FontFamily="Impact" Foreground="White" FontSize="20" Margin="10,0,0,0"/>
+        </Border>
+        <Border Background="#FF262626" MinHeight="56" MaxHeight="56"  Margin="180,0,0,0" VerticalAlignment="Bottom"/>
+        <Border Margin="180,83,0,57.501" VerticalAlignment="Stretch" Padding="180,0,0,0">
+            <Border.Background>
+                <ImageBrush ImageSource="main_photo.png" TileMode="Tile" Stretch="UniformToFill">
+                    <ImageBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ImageBrush.RelativeTransform>
+                </ImageBrush>
+            </Border.Background>
+        </Border>
+        <ComboBox x:Name="VersionList" ScrollViewer.VerticalScrollBarVisibility="Disabled" d:DataContext="{d:DesignData /SampleData/Versions.xaml}" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" Margin="314.666,556.5,373.334,30.5" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}" Grid.Row="1" Visibility="Hidden">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <ContentControl x:Name="control" Content="{Binding}" ContentTemplate="{StaticResource templateVersionNotInstalled}"/>
@@ -370,25 +369,10 @@
                             <Setter TargetName="control" Property="ContentTemplate" Value="{StaticResource templateVersionDownloading}"/>
                         </DataTrigger>
                     </DataTemplate.Triggers>
-
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <Grid VerticalAlignment="Center" Margin="10,10,-10,404.902" Height="15.098">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <CheckBox Grid.Row="0" Grid.Column="0" x:Name="ShowBetasCheckbox" Content="Show beta versions" Checked="ShowBetaVersionsCheck_Changed" Unchecked="ShowBetaVersionsCheck_Changed" IsChecked="{Binding UserPrefs.ShowBetas}" Foreground="White" FontFamily="Segoe UI Light" />
-            <CheckBox Grid.Row="0" Grid.Column="1" Margin="15,0,0,0" x:Name="ShowInstalledVersionsOnlyCheckbox" Content="Show installed versions only" Checked="ShowInstalledOnlyCheck_Changed" Unchecked="ShowInstalledOnlyCheck_Changed" IsChecked="{Binding UserPrefs.ShowInstalledOnly}" Foreground="White" />
-        </Grid>
-        <Button x:Name="LaunchButton" Content="Launch" HorizontalAlignment="Left" Height="51" Margin="592.5,369,0,0" VerticalAlignment="Top" Width="177.5" FontFamily="Segoe UI Light" FontSize="22" Click="LaunchButton_Click" >
-            <Button.DataContext>
-                <local:Version/>
-            </Button.DataContext>
-        </Button>
-        <Button Content="Settings" HorizontalAlignment="Left" Height="51" Margin="407,369,0,0" VerticalAlignment="Top" Width="177.5" Command="{Binding ICommonVersionCommands}" CommandParameter="{Binding}" FontFamily="Segoe UI Light" FontSize="22"/>
-        <Button x:Name="CloseButton" Click="CloseButton_Click" Content="X" HorizontalAlignment="Left" Margin="740,10,0,0" VerticalAlignment="Top" Width="30" Height="30" BorderBrush="{x:Null}" FontFamily="Segoe UI Black"/>
-        <Button x:Name="MinimizeButton" Click="MinimizeButton_Click" Content="_" HorizontalAlignment="Left" Margin="705,10,0,0" VerticalAlignment="Top" Width="30" Height="30" BorderBrush="{x:Null}" FontFamily="Segoe UI Black"/>
+        <CheckBox x:Name="ShowBetasCheckbox" Content="CheckBox" HorizontalAlignment="Left" Margin="314.666,516.302,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Visibility="Hidden"/>
+        <CheckBox x:Name="ShowInstalledVersionsOnlyCheckbox" Content="CheckBox" HorizontalAlignment="Left" Margin="314.666,536.401,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Visibility="Hidden"/>
     </Grid>
 </Window>
