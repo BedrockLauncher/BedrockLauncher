@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,19 +10,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MCLauncher;
 
 namespace BedrockLauncher
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для MainPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainPage : Page
     {
-        public MainWindow()
+        public MainPage()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ResourceDictionary dict = new ResourceDictionary();
+            dict.Source = new Uri("..\\Resources\\lang.ru-RU.xaml", UriKind.Relative);
+            this.Resources.MergedDictionaries.Add(dict);
         }
     }
 }

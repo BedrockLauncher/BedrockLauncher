@@ -6,7 +6,7 @@ using System.Xml.XPath;
 
 namespace MCLauncher {
     class WUProtocol {
-        private static readonly string DEFAULT_URL = "https://fe3.delivery.mp.microsoft.com/ClientWebService/client.asmx";
+        //private static readonly string DEFAULT_URL = "https://fe3.delivery.mp.microsoft.com/ClientWebService/client.asmx";
         private static readonly string SECURED_URL = "https://fe3.delivery.mp.microsoft.com/ClientWebService/client.asmx/secured";
 
         private static XNamespace soap = "http://www.w3.org/2003/05/soap-envelope";
