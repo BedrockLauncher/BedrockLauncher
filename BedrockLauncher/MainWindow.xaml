@@ -6,9 +6,109 @@
         xmlns:local="clr-namespace:BedrockLauncher"
         mc:Ignorable="d"
         Title="{DynamicResource ResourceKey=Title}" Height="639" Width="1016" Foreground="{x:Null}" MinWidth="1016" MinHeight="639" Background="White" Icon="icon.ico">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FF353535"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF353535"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FF292929"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF292929"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style TargetType="{x:Type ToggleButton}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Button.IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid Margin="0,0,0,0" Background="WhiteSmoke">
-        <Border Width="180" Background="#FF1E1E1E" HorizontalAlignment="Left"/>
-        <Frame Margin="180,0,0,0" VerticalAlignment="Stretch" Background="Black" Source="/BedrockLauncher;component/MainPage.xaml" NavigationUIVisibility="Hidden"/>
-        <Border x:Name="PlayScreenBorder" x:FieldModifier="public" Height="55" Margin="180,0,0,0" VerticalAlignment="Bottom" Background="#FF262626"/>
+        <StackPanel Width="180" Background="#FF1E1E1E" HorizontalAlignment="Left">
+            <Grid Height="57" Margin="1,0,0,0" VerticalAlignment="Top">
+                <ToggleButton x:Name="NewsButton" Click="NewsButton_Click" VerticalAlignment="Top" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False">
+                    <TextBlock Text="{DynamicResource MainWindow_NewsButton}" LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,3"/>
+                    <ToggleButton.ToolTip>
+                        <ToolTip Content="{DynamicResource MainWindow_NewsButton}"/>
+                    </ToggleButton.ToolTip>
+                </ToggleButton>
+                <Image IsHitTestVisible="False" SnapsToDevicePixels="True" Source="news_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
+            </Grid>
+            <Grid Height="57" Margin="1,0,0,0" VerticalAlignment="Top">
+                <ToggleButton x:Name="BedrockEditionButton" Click="BedrockEditionButton_Click" VerticalAlignment="Top" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False" IsChecked="True">
+                    <ToggleButton.ToolTip>
+                        <ToolTip Content="{DynamicResource MainWindow_MinecraftEdition}"/>
+                    </ToggleButton.ToolTip>
+                    <TextBlock LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,5"><Run FontSize="11" Text="MINECRAFT:"/><LineBreak/><Run FontSize="14" Text="Bedrock Edition"/></TextBlock>
+                </ToggleButton>
+                <Image IsHitTestVisible="False" SnapsToDevicePixels="True" Source="bedrock_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
+            </Grid>
+        </StackPanel>
+        <Frame x:Name="MainWindowFrame" Margin="180,0,0,0" VerticalAlignment="Stretch" Background="Black" Source="/BedrockLauncher;component/MainPage.xaml" NavigationUIVisibility="Hidden"/>
+        <Grid x:Name="PlayScreenBorder" x:FieldModifier="public" Height="55" Margin="180,0,0,0" VerticalAlignment="Bottom" Background="#FF262626">
+            <TextBlock Foreground="white" FontFamily="/BedrockLauncher;component/#Noto Sans" FontSize="11" FontWeight="Bold" Text="NOT APPROVED BY OR ASSOCIATED WITH MOJANG" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0"/>
+            <Button SnapsToDevicePixels="True" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" FontSize="24" Content="{DynamicResource MainPage_PlayButton}" HorizontalAlignment="Center" Margin="286,-8,286,0" VerticalAlignment="Top" Width="250" BorderBrush="{x:Null}" Height="56" Padding="0">
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="0" Direction="270" Opacity="0.2" ShadowDepth="4"/>
+                </Button.Effect>
+                <Button.Background>
+                    <ImageBrush ImageSource="MainPagePlayButton.png"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+        <Grid Height="57" Margin="1,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <ToggleButton x:Name="SettingsButton" Click="SettingsButton_Click" VerticalAlignment="Bottom" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" FontSize="14" Padding="55,1,1,1" Width="179" HorizontalContentAlignment="Left" Focusable="False" HorizontalAlignment="Left">
+                <ToggleButton.ToolTip>
+                    <ToolTip Content="{DynamicResource ResourceKey=MainWindow_SettingsButton}"/>
+                </ToggleButton.ToolTip>
+                <TextBlock Text="{DynamicResource ResourceKey=MainWindow_SettingsButton}" LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,3"/>
+            </ToggleButton>
+            <Image IsHitTestVisible="False" SnapsToDevicePixels="True" Source="settings_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
+        </Grid>
     </Grid>
 </Window>

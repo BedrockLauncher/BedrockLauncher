@@ -111,6 +111,9 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NoContentPage.xaml.cs">
+      <DependentUpon>NoContentPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PlayScreenPage.xaml.cs">
       <DependentUpon>PlayScreenPage.xaml</DependentUpon>
     </Compile>
@@ -144,15 +147,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="NoContentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PlayScreenPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\lang.en-US.xaml">
+    <Page Include="Resources\lang.en_US.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\lang.ru-RU.xaml">
+    <Page Include="Resources\lang.ru_RU.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -227,6 +234,18 @@
   <ItemGroup>
     <Resource Include="title.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="grass_icon.png" />
+    <Resource Include="settings_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="news_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bedrock_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MainPagePlayButton.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

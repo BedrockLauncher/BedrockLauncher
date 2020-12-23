@@ -2,9 +2,34 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:v="clr-namespace:System;assembly=mscorlib"
                     xmlns:local="clr-namespace:MCLauncher">
+    <!-- MainWindow -->
     <v:String x:Key="Title">Minecraft Bedrock Launcher</v:String>
+    <v:String x:Key="MainWindow_NewsButton">News</v:String>
+    <v:String x:Key="MainWindow_MinecraftEdition">Bedrock Edition</v:String>
+    <v:String x:Key="MainWindow_Minecraft">Minecraft</v:String>
+    <v:String x:Key="MainWindow_SettingsButton">Settings</v:String>
+    <!-- MainPagePlayScreen -->
     <v:String x:Key="MainPage_PlayButton">Play</v:String>
     <v:String x:Key="MainPage_InstallationsButton">Installations</v:String>
     <v:String x:Key="MainPage_SkinsButton">Skins</v:String>
     <v:String x:Key="MainPage_PatchNotesButton">Patch notes</v:String>
+    <!-- MainWindowSettingsScreen -->
+    <v:String x:Key="MainWindowSettingsScreen_Title">Settings</v:String>
+    <v:String x:Key="MainWindowSettingsScreen_GeneralButton">General</v:String>
+    <v:String x:Key="MainWindowSettingsScreen_AccountsButton">Accounts</v:String>
+    <v:String x:Key="MainWindowSettingsScreen_AboutButton">About</v:String>
+    <!-- MainWindowSettingsScreen Subtitles -->
+    <v:String x:Key="MainWindowSettingsScreen_LanguageSubtitle">LANGUAGE</v:String>
+
+    <v:String x:Key="MainWindowSettingsScreen_en_US">English - United States</v:String>
+    <v:String x:Key="MainWindowSettingsScreen_ru_RU">Русский - Россия</v:String>
+
+    <v:String x:Key="MainWindowSettingsScreen_LauncherSettingsSubtitle">LAUNCHER SETTINGS</v:String>
+    <v:String x:Key="MainWindowSettingsScreen_UseBetaLauncher">Use beta version of the launcher</v:String>
+    <v:String x:Key="MainWindowSettingsScreen_KeepLauncherOpen">Keep the launcher open</v:String>
+
+    <v:String x:Key="MainWindowSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDITION SETTINGS</v:String>
+    <v:String x:Key="MainWindowSettingsScreen_SupportCreatorSubtitle">SUPPORT CREATOR</v:String>
+
+    <v:String x:Key="MainWindowSettingsScreen_SupportCreatorButton">Support creator</v:String>
 </ResourceDictionary>

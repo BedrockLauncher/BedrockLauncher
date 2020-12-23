@@ -7,4 +7,8 @@
     <v:String x:Key="MainPage_InstallationsButton">Installations</v:String>
     <v:String x:Key="MainPage_SkinsButton">Skins</v:String>
     <v:String x:Key="MainPage_PatchNotesButton">Patch notes</v:String>
+    <v:String x:Key="MainWindow_NewsButton">News</v:String>
+    <v:String x:Key="MainWindow_MinecraftEdition">Bedrock Edition</v:String>
+    <v:String x:Key="MainWindow_Minecraft">Minecraft</v:String>
+    <v:String x:Key="MainWindow_SettingsButton">Settings</v:String>
 </ResourceDictionary>
