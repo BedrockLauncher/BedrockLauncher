@@ -197,6 +197,7 @@
     <Resource Include="NotoSans-Bold.ttf" />
     <Resource Include="NotoSans-BoldItalic.ttf" />
     <Resource Include="NotoSans-Italic.ttf" />
+    <Resource Include="MinecraftTen.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -246,6 +247,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="MainPagePlayButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MainPagePlayButtonOver.png" />
+    <Resource Include="MainPagePlayButtonPressed.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
