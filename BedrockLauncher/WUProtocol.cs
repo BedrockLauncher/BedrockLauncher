@@ -4,7 +4,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 
-namespace MCLauncher {
+namespace BedrockLauncher {
     class WUProtocol {
         //private static readonly string DEFAULT_URL = "https://fe3.delivery.mp.microsoft.com/ClientWebService/client.asmx";
         private static readonly string SECURED_URL = "https://fe3.delivery.mp.microsoft.com/ClientWebService/client.asmx/secured";

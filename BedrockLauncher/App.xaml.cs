@@ -5,7 +5,7 @@ using System.Windows;
 using System.Linq;
 using System;
 
-namespace MCLauncher
+namespace BedrockLauncher
 {
     /// <summary>
     /// Interaction logic for App.xaml

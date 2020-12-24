@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace MCLauncher {
+namespace BedrockLauncher {
     class VersionDownloader {
 
         private HttpClient client = new HttpClient();

@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MCLauncher {
+namespace BedrockLauncher {
     class WUTokenHelper {
 
         public static string GetWUToken() {

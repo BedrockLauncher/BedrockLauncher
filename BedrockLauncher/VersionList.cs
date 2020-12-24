@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 
-namespace MCLauncher {
+namespace BedrockLauncher {
     class VersionList : ObservableCollection<WPFDataTypes.Version> {
 
         private readonly string _cacheFile;

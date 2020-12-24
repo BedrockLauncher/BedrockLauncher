@@ -14,7 +14,7 @@
     <v:String x:Key="MainPage_SkinsButton">Skins</v:String>
     <v:String x:Key="MainPage_PatchNotesButton">Patch notes</v:String>
     <!-- MainWindowSettingsScreen -->
-    <v:String x:Key="MainWindowSettingsScreen_Title">Settings</v:String>
+    <v:String x:Key="MainWindowSettingsScreen_Title">SETTINGS</v:String>
     <v:String x:Key="MainWindowSettingsScreen_GeneralButton">General</v:String>
     <v:String x:Key="MainWindowSettingsScreen_AccountsButton">Accounts</v:String>
     <v:String x:Key="MainWindowSettingsScreen_AboutButton">About</v:String>
