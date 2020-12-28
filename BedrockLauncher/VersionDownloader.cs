@@ -66,7 +66,7 @@ namespace BedrockLauncher {
             string link = await GetDownloadUrl(updateIdentity, revisionNumber);
             if (link == null)
                 throw new ArgumentException("Bad updateIdentity");
-            Debug.WriteLine("Resolved download link: " + link);
+            Console.WriteLine("Resolved download link: " + link);
             await DownloadFile(link, destination, progress, cancellationToken);
         }
 

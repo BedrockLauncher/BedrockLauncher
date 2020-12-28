@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:v="clr-namespace:System;assembly=mscorlib"
-                    xmlns:local="clr-namespace:MCLauncher">
+                    xmlns:local="clr-namespace:BedrockLauncher">
     <!-- MainWindow -->
     <v:String x:Key="Title">Minecraft Bedrock Launcher</v:String>
     <v:String x:Key="MainWindow_NewsButton">News</v:String>

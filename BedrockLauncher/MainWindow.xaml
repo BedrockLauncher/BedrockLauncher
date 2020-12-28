@@ -3,11 +3,66 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BedrockLauncher"
-        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="BedrockLauncher.MainWindow"
+        xmlns:local="clr-namespace:BedrockLauncher.WPFDataTypes"
+        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" d:DataContext="{d:DesignInstance Type=local:Version}" x:Class="BedrockLauncher.MainWindow"
         mc:Ignorable="d"
         Title="{DynamicResource ResourceKey=Title}" Height="639" Width="1016" Foreground="{x:Null}" MinWidth="1016" MinHeight="639" Background="White" Icon="icon.ico">
     <Window.Resources>
+        <DataTemplate x:Key="templateVersionNotInstalled" DataType="{x:Type local:Version}">
+            <Grid>
+                <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="Minecraft"/>
+                <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="SemiBold" Padding="45,21,0,0" Text="{Binding DisplayName}"/>
+                <Image Source="icon.ico" HorizontalAlignment="Left" Width="32" Height="32" Margin="5,1,0,0">
+                    <Image.OpacityMask>
+                        <ImageBrush ImageSource="icon.ico"/>
+                    </Image.OpacityMask>
+                </Image>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="templateVersionInstalled" DataType="{x:Type local:Version}">
+            <Grid>
+                <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="Minecraft"/>
+                <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="SemiBold" Padding="45,21,0,0" Text="{Binding DisplayName}"/>
+                <Image Source="icon.ico" HorizontalAlignment="Left" Width="32" Height="32" Margin="5,1,0,0">
+                    <Image.OpacityMask>
+                        <ImageBrush ImageSource="icon.ico"/>
+                    </Image.OpacityMask>
+                </Image>
+            </Grid>
+            <!--Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding DisplayName}" FontWeight="Bold" />
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding DisplayInstallStatus}" />
+                <Button x:Name="RemoveButton" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Padding="20,0" Content="Remove" Command="{Binding RemoveCommand}" CommandParameter="{Binding}" />
+                <Button x:Name="DownloadButton" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Padding="20,0" Margin="2,0,0,0" Content="Launch" Command="{Binding LaunchCommand}" CommandParameter="{Binding}" />
+            </-->
+        </DataTemplate>
+        <DataTemplate x:Key="templateVersionDownloading" DataType="{x:Type local:Version}">
+            <Grid>
+                <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="Minecraft"/>
+                <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="SemiBold" Padding="45,21,0,0" Text="{Binding DisplayName}"/>
+                <Image Source="icon.ico" HorizontalAlignment="Left" Width="32" Height="32" Margin="5,1,0,0">
+                    <Image.OpacityMask>
+                        <ImageBrush ImageSource="icon.ico"/>
+                    </Image.OpacityMask>
+                </Image>
+                <Grid x:Name="progressSizeHack" Margin="0,-62,0,55" Background="#FF262626">
+                    <ProgressBar Height="32" Width="828" Margin="10,8,10,22" Foreground="#FF008542" Background="Black" BorderBrush="Black" Minimum="0" Maximum="{Binding StateChangeInfo.TotalSize}" Value="{Binding StateChangeInfo.DownloadedBytes}"/>
+                </Grid>
+
+
+
+                <!--Button Grid.Row="2" Grid.Column="1" Content="X" Width="20" Margin="10 0 0 0" Command="{Binding StateChangeInfo.CancelCommand}" /-->
+            </Grid>
+        </DataTemplate>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -255,8 +310,9 @@
                     <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0"/>
                 </Grid.ColumnDefinitions>
                 <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Top">
-                    <Themes:SystemDropShadowChrome x:Name="shadow" Color="Transparent" MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding ActualWidth, ElementName=templateRoot}">
-                        <Border Padding="0,3,0,4" CornerRadius="5,5,5,5" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Width="212" x:Name="dropDownBorder" BorderBrush="#FF131313" BorderThickness="1" Background="#FF131313"> <!--Выдвигающийся элемент-->
+                    <Themes:SystemDropShadowChrome x:Name="shadow" Color="Transparent" MaxHeight="295" MinWidth="{Binding ActualWidth, ElementName=templateRoot}">
+                        <Border Padding="0,3,0,4" CornerRadius="5,5,5,5" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Width="212" x:Name="dropDownBorder" BorderBrush="#FF131313" BorderThickness="1" Background="#FF131313">
+                            <!--Выдвигающийся элемент-->
                             <ScrollViewer x:Name="DropDownScrollViewer">
                                 <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
                                     <Canvas x:Name="canvas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="0">
@@ -315,7 +371,8 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}" Width="0"/>
                 </Grid.ColumnDefinitions>
-                <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Top"> <!-- Сторона открывания комбобокса-->
+                <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Top">
+                    <!-- Сторона открывания комбобокса-->
                     <Themes:SystemDropShadowChrome x:Name="shadow" Color="Transparent" MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding ActualWidth, ElementName=templateRoot}">
                         <Border x:Name="dropDownBorder" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
                             <ScrollViewer x:Name="DropDownScrollViewer">
@@ -365,14 +422,17 @@
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
             <Setter Property="Background" Value="{StaticResource ComboBox.Static.Background}"/>
             <Setter Property="BorderBrush" Value="{StaticResource ComboBox.Static.Border}"/>
-            <Setter Property="Foreground" Value="White"/> <!--Цвет текста-->
+            <Setter Property="Foreground" Value="White"/>
+            <!--Цвет текста-->
             <Setter Property="FontFamily" Value="BedrockLauncher;component/#Noto Sans"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/> <!-- Скроллбары -->
-            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+            <!-- Скроллбары -->
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden"/>
             <Setter Property="Padding" Value="6,3,5,3"/>
+            <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="True"/>
             <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
             <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
             <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
@@ -397,11 +457,13 @@
         <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHoverFocus.Background" Color="#5426A0DA"/>
         <SolidColorBrush x:Key="ComboBoxItem.ItemsviewHoverFocus.Border" Color="#FF26A0DA"/>
         <Style x:Key="ComboBoxItemStyle1" TargetType="{x:Type ComboBoxItem}">
+            <EventSetter Event="RequestBringIntoView" Handler="ComboBoxItem_RequestBringIntoView"/>
             <!-- Размер предметов в комбобоксе -->
             <Setter Property="Height" Value="51" />
             <Setter Property="Width" Value="212" />
             <Setter Property="SnapsToDevicePixels" Value="True"/>
-            <Setter Property="Padding" Value="0,6,0,0"/> <!-- Позиция текста в предмете комбобокса -->
+            <Setter Property="Padding" Value="0,6,0,0"/>
+            <!-- Позиция текста в предмете комбобокса -->
             <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
             <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
             <Setter Property="Background" Value="Transparent"/>
@@ -501,8 +563,9 @@
         </StackPanel>
         <Frame x:Name="MainWindowFrame" Margin="180,0,0,0" VerticalAlignment="Stretch" Background="Black" Source="/BedrockLauncher;component/MainPage.xaml" NavigationUIVisibility="Hidden"/>
         <Grid x:Name="PlayScreenBorder" x:FieldModifier="public" Height="55" Margin="180,0,0,0" VerticalAlignment="Bottom" Background="#FF262626">
+            
             <TextBlock Foreground="white" FontFamily="/BedrockLauncher;component/#Noto Sans" FontSize="11" FontWeight="Bold" Text="NOT APPROVED BY OR ASSOCIATED WITH MOJANG" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0"/>
-            <Button UseLayoutRounding="True" SnapsToDevicePixels="True" Foreground="White" FontSize="26" HorizontalAlignment="Center" Margin="286,-8,286,0" VerticalAlignment="Top" Width="250" Height="56" Padding="0" FontFamily="/BedrockLauncher;component/#Minecraft Ten" Style="{DynamicResource ButtonStyle1}" BorderBrush="{x:Null}">
+            <Button x:Name="MainPlayButton" Click="MainPlayButton_Click" UseLayoutRounding="True" SnapsToDevicePixels="True" Foreground="White" FontSize="26" HorizontalAlignment="Center" Margin="286,-8,286,0" VerticalAlignment="Top" Width="250" Height="56" Padding="0" FontFamily="/BedrockLauncher;component/#Minecraft Ten" Style="{DynamicResource ButtonStyle1}" BorderBrush="{x:Null}">
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="0" Direction="270" Opacity="0.2" ShadowDepth="4"/>
                 </Button.Effect>
@@ -515,7 +578,21 @@
                     </TextBlock.Effect>
                 </TextBlock>
             </Button>
-            <ComboBox d:DataContext="{d:DesignData /SampleData/Versions.xaml}" ItemsSource="{Binding}"  Name="VersionList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="200" Height="47" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}" Foreground="White" Padding="-1,7,5,3">
+            <ComboBox d:DataContext="{d:DesignData /SampleData/Versions.xaml}" ItemsSource="{Binding}" x:Name="VersionList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="200" Height="47" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}" Foreground="White" Padding="-1,7,5,3">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <ContentControl x:Name="control" Content="{Binding}" ContentTemplate="{StaticResource templateVersionNotInstalled}"/>
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding IsInstalled}" Value="True">
+                                <Setter TargetName="control" Property="ContentTemplate" Value="{StaticResource templateVersionInstalled}"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsStateChanging}" Value="True">
+                                <Setter TargetName="control" Property="ContentTemplate" Value="{StaticResource templateVersionDownloading}"/>
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
                 <!--ComboBoxItem>
                     <Grid>
                         <TextBlock Padding="45,0,0,0" Text="Latest release"/>
@@ -527,6 +604,12 @@
                     </Grid>
                 <!-->
             </ComboBox>
+
+            <!-- x:Name="progressSizeHack" Width="828" Height="62" Margin="-3,-62,0,62" VerticalAlignment="Bottom">
+                <ProgressBar Width="828" Height="68" Margin="0,0,0,0" Maximum="{Binding StateChangeInfo.TotalSize}" Value="{Binding StateChangeInfo.DownloadedBytes}" IsIndeterminate="{Binding StateChangeInfo.IsProgressIndeterminate}" Foreground="#FF008542" BorderBrush="{x:Null}" Background="#FF262626" VerticalAlignment="Bottom" />
+                <TextBlock Text="{Binding DisplayName}" FontWeight="Bold" />
+                <TextBlock Text="{Binding StateChangeInfo.DisplayStatus}" />
+            </-->
         </Grid>
         <Grid Height="57" Margin="1,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left">
             <ToggleButton x:Name="SettingsButton" Click="SettingsButton_Click" VerticalAlignment="Bottom" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" FontSize="14" Padding="55,1,1,1" Width="179" HorizontalContentAlignment="Left" Focusable="False" HorizontalAlignment="Left">

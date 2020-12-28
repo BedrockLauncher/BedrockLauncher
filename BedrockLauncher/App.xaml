@@ -1,7 +1,7 @@
-﻿<Application x:Class="MCLauncher.App"
+﻿<Application x:Class="BedrockLauncher.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:MCLauncher"
+             xmlns:local="clr-namespace:BedrockLauncher"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>

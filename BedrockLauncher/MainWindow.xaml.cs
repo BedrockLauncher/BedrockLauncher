@@ -13,7 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
-using MCLauncher;
+//using MCLauncher;
+using BedrockLauncher;
 
 namespace BedrockLauncher
 {
@@ -53,6 +54,8 @@ namespace BedrockLauncher
         public MainWindow()
         {
             InitializeComponent();
+
+
             ShowBetasCheckbox.DataContext = this;
             ShowInstalledVersionsOnlyCheckbox.DataContext = this;
 
@@ -325,7 +328,9 @@ namespace BedrockLauncher
                         v.StateChangeInfo.DownloadedBytes = current;
                     }, cancelSource.Token);
                     Console.WriteLine("Download complete");
-                }
+                    //await System.Windows.Threading.Dispatcher.CurrentDispatcher.InvokeAsync((Action)(() => { ((MainWindow)Application.Current.MainWindow).pr; }));
+
+        }
                 catch (Exception e)
                 {
                     Console.WriteLine("Download failed:\n" + e.ToString());
@@ -432,6 +437,9 @@ namespace BedrockLauncher
                     break;
                 case false:
                     BedrockEditionButton.IsChecked = true; // Не снимает свойства IsChecked при повторном нажатии на кнопку
+                    MainWindowFrame.Navigate(mainPage); // Переключение фрейма MainWindow на окно MainPage.xaml
+                    mainPage.MainPageFrame.Navigate(playScreenPage); // Переключение фрейма MainPage на окно PlayScreenPage.xaml
+                    PlayScreenBorder.Visibility = Visibility.Visible; // Показывает нижнюю панель в MainWindow
 
                     // Оставляет нажатой только кнопку PlayButton в окне MainPage.xaml
                     mainPage.PlayButton.IsChecked = true;
@@ -457,6 +465,32 @@ namespace BedrockLauncher
                 case false:
                     SettingsButton.IsChecked = true; // Не снимает свойства IsChecked при повторном нажатии на кнопку
                     break;
+            }
+            
+        }
+
+        private void ComboBoxItem_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
+        {
+            // To prevent scrolling when mouseover
+            e.Handled = true;
+        }
+
+        private void MainPlayButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (VersionList.SelectedIndex != -1)
+            {
+                var v = VersionList.SelectedItem as Version;
+                switch (v.DisplayInstallStatus.ToString())
+                {
+                    case "Not installed":
+                        InvokeDownload(VersionList.SelectedItem as Version);
+                        //progressbargrid.Visibility = Visibility.Visible;
+                        //MainPlayButton.IsEnabled = false;
+                        break;
+                    case "Installed":
+                        InvokeLaunch(VersionList.SelectedItem as Version);
+                        break;
+                }
             }
             
         }
@@ -488,15 +522,11 @@ namespace BedrockLauncher
             ICommand RemoveCommand { get; }
 
         }
-
         public class Versions : List<Object>
         {
         }
-
-        public class Version : NotifyPropertyChangedBase
+            public class Version : NotifyPropertyChangedBase
         {
-
-            public Version() { }
             public Version(string uuid, string name, bool isBeta, ICommonVersionCommands commands)
             {
                 this.UUID = uuid;
@@ -557,7 +587,7 @@ namespace BedrockLauncher
             private bool _isExtracting;
             private bool _isUninstalling;
             private bool _isLaunching;
-            private long _downloadedBytes;
+            public long _downloadedBytes;
             private long _totalSize;
 
             public bool IsInitializing
@@ -587,7 +617,7 @@ namespace BedrockLauncher
             public bool IsProgressIndeterminate
             {
                 get { return IsInitializing || IsExtracting || IsUninstalling || IsLaunching; }
-            }
+                }
 
             public long DownloadedBytes
             {
@@ -621,5 +651,15 @@ namespace BedrockLauncher
 
         }
 
+    }
+    namespace GetLastRelease
+    {
+        public class LastRelease
+        {
+            public void gay(string da)
+            {
+                Console.WriteLine(da);
+            }
+        }
     }
 }

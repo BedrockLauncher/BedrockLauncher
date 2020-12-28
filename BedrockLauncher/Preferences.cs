@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MCLauncher {
+namespace BedrockLauncher {
     public class Preferences {
         public bool ShowBetas { get; set; } = true;
 

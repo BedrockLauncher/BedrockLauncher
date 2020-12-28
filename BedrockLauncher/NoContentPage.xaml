@@ -7,10 +7,4 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="NoContentPage" Foreground="{x:Null}" Background="#FF323232">
-    <Grid>
-        <ComboBox x:Name="VersionList" ScrollViewer.VerticalScrollBarVisibility="Disabled" d:DataContext="{d:DesignData /SampleData/Versions.xaml}" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch" Margin="146.659,41.589,217.437,368.053" Visibility="Visible">
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding DisplayName}" FontWeight="Bold" Foreground="White" />
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding DisplayInstallStatus}" Foreground="White" />
-        </ComboBox>
-    </Grid>
 </Page>
