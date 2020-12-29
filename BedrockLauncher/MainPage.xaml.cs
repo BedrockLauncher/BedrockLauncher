@@ -28,16 +28,6 @@ namespace BedrockLauncher
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            // Смена языка во всех окнах
-            ResourceDictionary dict = new ResourceDictionary
-            {
-                Source = new Uri("..\\Resources\\lang.ru_RU.xaml", UriKind.Relative)
-            };
-            Application.Current.Resources.MergedDictionaries.Add(dict);
-        }
-
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
             switch (PlayButton.IsChecked)

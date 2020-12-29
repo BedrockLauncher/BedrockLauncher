@@ -13,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
-//using MCLauncher;
 using BedrockLauncher;
 
 namespace BedrockLauncher
@@ -33,6 +32,7 @@ namespace BedrockLauncher
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
+    /// 
     public partial class MainWindow : Window, ICommonVersionCommands
     {
         private static readonly string MINECRAFT_PACKAGE_FAMILY = "Microsoft.MinecraftUWP_8wekyb3d8bbwe";
@@ -54,7 +54,19 @@ namespace BedrockLauncher
         public MainWindow()
         {
             InitializeComponent();
+            //startup changes
 
+            // lang change to system language
+            CultureInfo ci = CultureInfo.InstalledUICulture;
+            switch (ci.Name)
+            {
+                default:
+                    Console.WriteLine("default language");
+                    break;
+                case "ru-RU":
+                    LanguageChange(ci.Name);
+                    break;
+            }
 
             ShowBetasCheckbox.DataContext = this;
             ShowInstalledVersionsOnlyCheckbox.DataContext = this;
@@ -95,6 +107,17 @@ namespace BedrockLauncher
                 }
             });
         }
+
+
+        private void LanguageChange(string language)
+        {
+            ResourceDictionary dict = new ResourceDictionary
+            {
+                Source = new Uri($"..\\Resources\\lang.{language}.xaml", UriKind.Relative)
+            };
+            Application.Current.Resources.MergedDictionaries.Add(dict);
+        }
+
         public ICommand LaunchCommand => new RelayCommand((v) => InvokeLaunch((Version)v));
 
         public ICommand RemoveCommand => new RelayCommand((v) => InvokeRemove((Version)v));
@@ -328,9 +351,14 @@ namespace BedrockLauncher
                         v.StateChangeInfo.DownloadedBytes = current;
                     }, cancelSource.Token);
                     Console.WriteLine("Download complete");
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        ((MainWindow)Application.Current.MainWindow).ProgressBarGrid.Visibility = Visibility.Hidden;
+                        //InvokeLaunch(VersionList.SelectedItem as Version);
+                    });
                     //await System.Windows.Threading.Dispatcher.CurrentDispatcher.InvokeAsync((Action)(() => { ((MainWindow)Application.Current.MainWindow).pr; }));
 
-        }
+                }
                 catch (Exception e)
                 {
                     Console.WriteLine("Download failed:\n" + e.ToString());
@@ -391,6 +419,7 @@ namespace BedrockLauncher
         private bool VersionListFilter(object obj)
         {
             Version v = obj as Version;
+            VersionList.SelectedIndex = 0; // show last version in combobox
             return (!v.IsBeta || UserPrefs.ShowBetas) && (v.IsInstalled || !UserPrefs.ShowInstalledOnly);
         }
 
@@ -477,14 +506,13 @@ namespace BedrockLauncher
 
         private void MainPlayButton_Click(object sender, RoutedEventArgs e)
         {
-            if (VersionList.SelectedIndex != -1)
             {
                 var v = VersionList.SelectedItem as Version;
                 switch (v.DisplayInstallStatus.ToString())
                 {
                     case "Not installed":
                         InvokeDownload(VersionList.SelectedItem as Version);
-                        //progressbargrid.Visibility = Visibility.Visible;
+                        ProgressBarGrid.Visibility = Visibility.Visible;
                         //MainPlayButton.IsEnabled = false;
                         break;
                     case "Installed":
@@ -498,7 +526,6 @@ namespace BedrockLauncher
 
     namespace WPFDataTypes
     {
-
         public class NotifyPropertyChangedBase : INotifyPropertyChanged
         {
 
@@ -508,6 +535,17 @@ namespace BedrockLauncher
             {
                 if (PropertyChanged != null)
                     PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+            public void ProgressBarUpdate(double downloadedBytes, double totalSize)
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    ((MainWindow)Application.Current.MainWindow).progressSizeHack.Value = downloadedBytes;
+                    ((MainWindow)Application.Current.MainWindow).progressSizeHack.Maximum = totalSize;
+                    int.Parse(downloadedBytes.ToString());
+                    Console.WriteLine();
+                    ((MainWindow)Application.Current.MainWindow).ProgressBarText.Text = (Math.Round(downloadedBytes / 1024 / 1024, 2)).ToString() + " MB / " + (Math.Round(totalSize / 1024 / 1024, 2)).ToString() + " MB";
+                });
             }
 
         }
@@ -622,7 +660,7 @@ namespace BedrockLauncher
             public long DownloadedBytes
             {
                 get { return _downloadedBytes; }
-                set { _downloadedBytes = value; OnPropertyChanged("DownloadedBytes"); OnPropertyChanged("DisplayStatus"); }
+                set { _downloadedBytes = value; ProgressBarUpdate(_downloadedBytes, _totalSize); OnPropertyChanged("DownloadedBytes"); OnPropertyChanged("DisplayStatus"); }
             }
 
             public long TotalSize
@@ -643,7 +681,7 @@ namespace BedrockLauncher
                         return "Uninstalling...";
                     if (IsLaunching)
                         return "Launching...";
-                    return "Downloading... " + (DownloadedBytes / 1024 / 1024) + "MiB/" + (TotalSize / 1024 / 1024) + "MiB";
+                    return (DownloadedBytes / 1024 / 1024) + "MiB/" + (TotalSize / 1024 / 1024) + "MiB";
                 }
             }
 
@@ -651,15 +689,5 @@ namespace BedrockLauncher
 
         }
 
-    }
-    namespace GetLastRelease
-    {
-        public class LastRelease
-        {
-            public void gay(string da)
-            {
-                Console.WriteLine(da);
-            }
-        }
     }
 }

@@ -21,6 +21,7 @@ namespace BedrockLauncher {
                     data.Save(xmlWriter);
                 }
                 request.Content = new StringContent(stringWriter.ToString(), Encoding.UTF8, "application/soap+xml");
+                
             }
             using (var resp = await client.SendAsync(request)) {
                 string str = await resp.Content.ReadAsStringAsync();
