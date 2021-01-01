@@ -557,8 +557,6 @@
                 </ToggleButton>
                 <Image IsHitTestVisible="False" SnapsToDevicePixels="True" Source="Resources/images/bedrock_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
             </Grid>
-            <CheckBox x:Name="ShowBetasCheckbox"  Content="CheckBox" Visibility="Hidden"/>
-            <CheckBox x:Name="ShowInstalledVersionsOnlyCheckbox" Content="CheckBox" Visibility="Hidden"/>
         </StackPanel>
         <Frame x:Name="MainWindowFrame" Margin="180,0,0,0" VerticalAlignment="Stretch" Background="Black" Source="/BedrockLauncher;component/MainPage.xaml" NavigationUIVisibility="Hidden"/>
         <Grid x:Name="PlayScreenBorder" x:FieldModifier="public" Height="55" Margin="180,0,0,0" VerticalAlignment="Bottom" Background="#FF262626">
@@ -609,5 +607,6 @@
             </ToggleButton>
             <Image IsHitTestVisible="False" SnapsToDevicePixels="True" Source="Resources/images/settings_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
         </Grid>
+        <Button Click="Button_Click" Content="Button" HorizontalAlignment="Left" Margin="232,135,0,0" VerticalAlignment="Top" Width="179" Height="57"/>
     </Grid>
 </Window>

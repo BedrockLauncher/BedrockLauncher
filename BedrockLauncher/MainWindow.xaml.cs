@@ -36,10 +36,8 @@ namespace BedrockLauncher
     public partial class MainWindow : Window, ICommonVersionCommands
     {
         private static readonly string MINECRAFT_PACKAGE_FAMILY = "Microsoft.MinecraftUWP_8wekyb3d8bbwe";
-        private static readonly string PREFS_PATH = @"preferences.json";
 
         private VersionList _versions;
-        public Preferences UserPrefs { get; }
         private readonly VersionDownloader _anonVersionDownloader = new VersionDownloader();
         private readonly VersionDownloader _userVersionDownloader = new VersionDownloader();
         private readonly Task _userVersionDownloaderLoginTask;
@@ -56,29 +54,42 @@ namespace BedrockLauncher
             InitializeComponent();
             //startup changes
 
-            // lang change to system language
-            CultureInfo ci = CultureInfo.InstalledUICulture;
-            switch (ci.Name)
+
+            // Language setting on startup
+            switch (Properties.Settings.Default.Language)
             {
-                default:
-                    Console.WriteLine("default language");
+                case "none":
+                    CultureInfo ci = CultureInfo.InstalledUICulture; // get system locale
+                    switch (ci.Name)
+                    {
+                        default:
+                            Console.WriteLine("default language");
+                            Properties.Settings.Default.Language = "default";
+                            Properties.Settings.Default.Save();
+                            break;
+                        case "ru-RU":
+                            LanguageChange(ci.Name);
+                            Properties.Settings.Default.Language = "ru-RU";
+                            Properties.Settings.Default.Save();
+                            break;
+                        case "en-US":
+                            LanguageChange(ci.Name);
+                            Properties.Settings.Default.Language = "en-US";
+                            Properties.Settings.Default.Save();
+                            break;
+                    }
                     break;
                 case "ru-RU":
-                    LanguageChange(ci.Name);
+                    LanguageChange("ru-RU");
                     break;
-            }
 
-            ShowBetasCheckbox.DataContext = this;
-            ShowInstalledVersionsOnlyCheckbox.DataContext = this;
+                case "en-US":
+                    LanguageChange("en-US");
+                    break;
 
-            if (File.Exists(PREFS_PATH))
-            {
-                UserPrefs = JsonConvert.DeserializeObject<Preferences>(File.ReadAllText(PREFS_PATH));
-            }
-            else
-            {
-                UserPrefs = new Preferences();
-                RewritePrefs();
+                default:
+                    break;
+
             }
 
             _versions = new VersionList("versions.json", this);
@@ -402,30 +413,11 @@ namespace BedrockLauncher
             });
         }
 
-        private void ShowBetaVersionsCheck_Changed(object sender, RoutedEventArgs e)
-        {
-            UserPrefs.ShowBetas = ShowBetasCheckbox.IsChecked ?? false;
-            CollectionViewSource.GetDefaultView(VersionList.ItemsSource).Refresh();
-            RewritePrefs();
-        }
-
-        private void ShowInstalledOnlyCheck_Changed(object sender, RoutedEventArgs e)
-        {
-            UserPrefs.ShowInstalledOnly = ShowInstalledVersionsOnlyCheckbox.IsChecked ?? false;
-            CollectionViewSource.GetDefaultView(VersionList.ItemsSource).Refresh();
-            RewritePrefs();
-        }
-
         private bool VersionListFilter(object obj)
         {
             Version v = obj as Version;
             VersionList.SelectedIndex = 0; // show last version in combobox
-            return (!v.IsBeta || UserPrefs.ShowBetas) && (v.IsInstalled || !UserPrefs.ShowInstalledOnly);
-        }
-
-        private void RewritePrefs()
-        {
-            File.WriteAllText(PREFS_PATH, JsonConvert.SerializeObject(UserPrefs));
+            return (!v.IsBeta || Properties.Settings.Default.ShowBetas) && (v.IsInstalled || !Properties.Settings.Default.ShowInstalledOnly);
         }
 
         private void NewsButton_Click(object sender, RoutedEventArgs e)
@@ -521,6 +513,13 @@ namespace BedrockLauncher
                 }
             }
             
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            LanguageChange("en-US");
+            Properties.Settings.Default.Language = "en-US";
+            Properties.Settings.Default.Save();
         }
     }
 
