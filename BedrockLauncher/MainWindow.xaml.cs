@@ -113,7 +113,7 @@ namespace BedrockLauncher
         {
             ResourceDictionary dict = new ResourceDictionary
             {
-                Source = new Uri($"..\\Resources\\lang.{language}.xaml", UriKind.Relative)
+                Source = new Uri($"..\\Resources\\i18n\\lang.{language}.xaml", UriKind.Relative)
             };
             Application.Current.Resources.MergedDictionaries.Add(dict);
         }

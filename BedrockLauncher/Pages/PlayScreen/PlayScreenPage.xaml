@@ -10,11 +10,11 @@
 
     <Grid MinWidth="828" MinHeight="525">
         <Grid.Background>
-            <ImageBrush Stretch="UniformToFill" ImageSource="main_photo.png"/>
+            <ImageBrush Stretch="UniformToFill" ImageSource="/BedrockLauncher;component/Resources/images/main_photo.png"/>
         </Grid.Background>
         <Border BorderThickness="1" Height="88" Margin="0,38,0,0" VerticalAlignment="Top">
             <Border.Background>
-                <ImageBrush ImageSource="title.png" Stretch="Uniform">
+                <ImageBrush ImageSource="/BedrockLauncher;component/Resources/images/title.png" Stretch="Uniform">
                     <ImageBrush.RelativeTransform>
                         <TransformGroup>
                             <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="0.69" ScaleY="0.69"/>

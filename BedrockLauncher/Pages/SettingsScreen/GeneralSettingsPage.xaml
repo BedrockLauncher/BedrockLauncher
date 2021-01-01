@@ -388,10 +388,10 @@
         <TextBlock Margin="42,42,0,0" FontWeight="Bold" FontSize="11" Text="{DynamicResource MainWindowSettingsScreen_LanguageSubtitle}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <ComboBox Width="330" Height="32" x:Name="VersionList" HorizontalAlignment="Left" Margin="42,62,0,0" VerticalAlignment="Top" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}" Foreground="White" Padding="-1,7,5,3" Style="{DynamicResource ComboBoxStyle1}">
             <ComboBoxItem>
-                <TextBlock Text="{DynamicResource MainWindowSettingsScreen_en_US}"/>
+                <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" Text="{DynamicResource MainWindowSettingsScreen_en_US}" FontWeight="Normal"/>
             </ComboBoxItem>
             <ComboBoxItem>
-                <TextBlock Text="{DynamicResource MainWindowSettingsScreen_ru_RU}"/>
+                <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"  Text="{DynamicResource MainWindowSettingsScreen_ru_RU}" FontWeight="Normal"/>
             </ComboBoxItem>
         </ComboBox>
     </Grid>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BedrockLauncher.WPFDataTypes"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" d:DataContext="{d:DesignInstance Type=local:Version}" x:Class="BedrockLauncher.MainWindow"
         mc:Ignorable="d"
-        Title="{DynamicResource ResourceKey=Title}" Height="639" Width="1016" Foreground="{x:Null}" MinWidth="1016" MinHeight="639" Background="White" Icon="icon.ico">
+        Title="{DynamicResource ResourceKey=Title}" Height="639" Width="1016" Foreground="{x:Null}" MinWidth="1016" MinHeight="639" Background="White" Icon="Resources/images/icon.ico">
     <Window.Resources>
         <TextBlock x:Key="TitleText" Text="{Binding DisplayStatus}">
             <TextBlock.DataContext>
@@ -17,9 +17,9 @@
             <Grid>
                 <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="Minecraft"/>
                 <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="SemiBold" Padding="45,21,0,0" Text="{Binding DisplayName}"/>
-                <Image Source="icon.ico" HorizontalAlignment="Left" Width="32" Height="32" Margin="5,1,0,0">
+                <Image Source="Resources/images/icon.ico" HorizontalAlignment="Left" Width="32" Height="32" Margin="5,1,0,0">
                     <Image.OpacityMask>
-                        <ImageBrush ImageSource="icon.ico"/>
+                        <ImageBrush ImageSource="Resources/images/icon.ico"/>
                     </Image.OpacityMask>
                 </Image>
             </Grid>
@@ -28,9 +28,9 @@
             <Grid>
                 <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="Minecraft"/>
                 <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="SemiBold" Padding="45,21,0,0" Text="{Binding DisplayName}"/>
-                <Image Source="icon.ico" HorizontalAlignment="Left" Width="32" Height="32" Margin="5,1,0,0">
+                <Image Source="Resources/images/icon.ico" HorizontalAlignment="Left" Width="32" Height="32" Margin="5,1,0,0">
                     <Image.OpacityMask>
-                        <ImageBrush ImageSource="icon.ico"/>
+                        <ImageBrush ImageSource="Resources/images/icon.ico"/>
                     </Image.OpacityMask>
                 </Image>
             </Grid>
@@ -54,9 +54,9 @@
             <Grid>
                 <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="Minecraft"/>
                 <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="SemiBold" Padding="45,21,0,0" Text="{Binding DisplayName}"/>
-                <Image Source="icon.ico" HorizontalAlignment="Left" Width="32" Height="32" Margin="5,1,0,0">
+                <Image Source="Resources/images/icon.ico" HorizontalAlignment="Left" Width="32" Height="32" Margin="5,1,0,0">
                     <Image.OpacityMask>
-                        <ImageBrush ImageSource="icon.ico"/>
+                        <ImageBrush ImageSource="Resources/images/icon.ico"/>
                     </Image.OpacityMask>
                 </Image>
                 <!--TextBlock Text="{Binding DisplayName}" FontWeight="Bold" /-->
@@ -149,7 +149,7 @@
                                 <Setter Property="Cursor" Value="Hand"/>
                                 <Setter Property="Background" TargetName="border">
                                     <Setter.Value>
-                                        <ImageBrush ImageSource="MainPagePlayButtonOver.png" Stretch="Uniform"/>
+                                        <ImageBrush ImageSource="Resources/images/MainPagePlayButtonOver.png" Stretch="Uniform"/>
                                     </Setter.Value>
                                 </Setter>
                             </Trigger>
@@ -157,7 +157,7 @@
                                 <Setter Property="Cursor" Value="Hand"/>
                                 <Setter Property="Background" TargetName="border">
                                     <Setter.Value>
-                                        <ImageBrush ImageSource="MainPagePlayButtonPressed.png" Stretch="Uniform"/>
+                                        <ImageBrush ImageSource="Resources/images/MainPagePlayButtonPressed.png" Stretch="Uniform"/>
                                     </Setter.Value>
                                 </Setter>
                             </Trigger>
@@ -540,22 +540,22 @@
     <Grid Margin="0,0,0,0" Background="WhiteSmoke">
         <StackPanel Width="180" Background="#FF1E1E1E" HorizontalAlignment="Left">
             <Grid Height="57" Margin="1,0,0,0" VerticalAlignment="Top">
-                <ToggleButton x:Name="NewsButton" Click="NewsButton_Click" VerticalAlignment="Top" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False">
+                <ToggleButton x:Name="NewsButton" Click="NewsButton_Click" VerticalAlignment="Top" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False">
                     <ToggleButton.ToolTip>
                         <ToolTip Content="{DynamicResource MainWindow_NewsButton}"/>
                     </ToggleButton.ToolTip>
                     <TextBlock Text="{DynamicResource MainWindow_NewsButton}" LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,3"/>
                 </ToggleButton>
-                <Image IsHitTestVisible="False" SnapsToDevicePixels="True" Source="news_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
+                <Image IsHitTestVisible="False" SnapsToDevicePixels="True" Source="Resources/images/news_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
             </Grid>
             <Grid Height="57" Margin="1,0,0,0" VerticalAlignment="Top">
-                <ToggleButton x:Name="BedrockEditionButton" Click="BedrockEditionButton_Click" VerticalAlignment="Top" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False" IsChecked="True">
+                <ToggleButton x:Name="BedrockEditionButton" Click="BedrockEditionButton_Click" VerticalAlignment="Top" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False" IsChecked="True">
                     <ToggleButton.ToolTip>
                         <ToolTip Content="{DynamicResource MainWindow_MinecraftEdition}"/>
                     </ToggleButton.ToolTip>
                     <TextBlock LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,5"><Run FontSize="11" Text="MINECRAFT:"/><LineBreak/><Run FontSize="14" Text="Bedrock Edition"/></TextBlock>
                 </ToggleButton>
-                <Image IsHitTestVisible="False" SnapsToDevicePixels="True" Source="bedrock_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
+                <Image IsHitTestVisible="False" SnapsToDevicePixels="True" Source="Resources/images/bedrock_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
             </Grid>
             <CheckBox x:Name="ShowBetasCheckbox"  Content="CheckBox" Visibility="Hidden"/>
             <CheckBox x:Name="ShowInstalledVersionsOnlyCheckbox" Content="CheckBox" Visibility="Hidden"/>
@@ -565,19 +565,19 @@
             <Grid x:Name="ProgressBarGrid" Margin="0,-62,0,55" Background="#FF262626" Visibility="Hidden">
                 <ProgressBar x:Name="progressSizeHack" Height="32" Margin="10,8,10,22" Foreground="#FF008542" Background="Black" BorderBrush="Black" Minimum="0" Maximum="{Binding StateChangeInfo.TotalSize}" Value="{Binding StateChangeInfo.DownloadedBytes}"/>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock SnapsToDevicePixels="True" Margin="26,-15,0,0" FontSize="12" Text="{DynamicResource MainPage_ProgressBarDownload}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans"/>
-                    <TextBlock SnapsToDevicePixels="True" Margin="+3,-15,0,0" FontSize="12" x:Name="ProgressBarText" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans"/>
+                    <TextBlock SnapsToDevicePixels="True" Margin="26,-15,0,0" FontSize="12" Text="{DynamicResource MainPage_ProgressBarDownload}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
+                    <TextBlock SnapsToDevicePixels="True" Margin="+3,-15,0,0" FontSize="12" x:Name="ProgressBarText" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
                 </StackPanel>
             </Grid>
-            <TextBlock Foreground="white" FontFamily="/BedrockLauncher;component/#Noto Sans" FontSize="11" FontWeight="Bold" Text="NOT APPROVED BY OR ASSOCIATED WITH MOJANG" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0"/>
-            <Button x:Name="MainPlayButton" Click="MainPlayButton_Click" UseLayoutRounding="True" SnapsToDevicePixels="True" Foreground="White" FontSize="26" HorizontalAlignment="Center" Margin="286,-8,286,0" VerticalAlignment="Top" Width="250" Height="56" Padding="0" FontFamily="/BedrockLauncher;component/#Minecraft Ten" Style="{DynamicResource ButtonStyle1}" BorderBrush="{x:Null}">
+            <TextBlock Foreground="white" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="11" FontWeight="Bold" Text="NOT APPROVED BY OR ASSOCIATED WITH MOJANG" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0"/>
+            <Button x:Name="MainPlayButton" Click="MainPlayButton_Click" UseLayoutRounding="True" SnapsToDevicePixels="True" Foreground="White" FontSize="26" HorizontalAlignment="Center" Margin="286,-8,286,0" VerticalAlignment="Top" Width="250" Height="56" Padding="0" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" Style="{DynamicResource ButtonStyle1}" BorderBrush="{x:Null}">
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="0" Direction="270" Opacity="0.2" ShadowDepth="4"/>
                 </Button.Effect>
                 <Button.Background>
-                    <ImageBrush ImageSource="MainPagePlayButton.png"/>
+                    <ImageBrush ImageSource="Resources/images/MainPagePlayButton.png"/>
                 </Button.Background>
-                <TextBlock UseLayoutRounding="True" SnapsToDevicePixels="True" Text="{DynamicResource MainPage_PlayButton}" Margin="0,-4,0,0" FontSize="24" TextOptions.TextHintingMode="Fixed" TextTrimming="WordEllipsis">
+                <TextBlock UseLayoutRounding="True" SnapsToDevicePixels="True" Text="{DynamicResource MainPage_PlayButton}" Margin="0,-4,0,0" FontSize="24" TextOptions.TextHintingMode="Fixed" TextTrimming="WordEllipsis" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten">
                     <TextBlock.Effect>
                         <DropShadowEffect BlurRadius="0" Direction="270" ShadowDepth="2" RenderingBias="Quality" Opacity="0.43"/>
                     </TextBlock.Effect>
@@ -601,13 +601,13 @@
             </ComboBox>
         </Grid>
         <Grid Height="57" Margin="1,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left">
-            <ToggleButton x:Name="SettingsButton" Click="SettingsButton_Click" VerticalAlignment="Bottom" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" FontSize="14" Padding="55,1,1,1" Width="179" HorizontalContentAlignment="Left" Focusable="False" HorizontalAlignment="Left">
+            <ToggleButton x:Name="SettingsButton" Click="SettingsButton_Click" VerticalAlignment="Bottom" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" Width="179" HorizontalContentAlignment="Left" Focusable="False" HorizontalAlignment="Left">
                 <ToggleButton.ToolTip>
                     <ToolTip Content="{DynamicResource ResourceKey=MainWindow_SettingsButton}"/>
                 </ToggleButton.ToolTip>
                 <TextBlock Text="{DynamicResource ResourceKey=MainWindow_SettingsButton}" LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,3"/>
             </ToggleButton>
-            <Image IsHitTestVisible="False" SnapsToDevicePixels="True" Source="settings_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
+            <Image IsHitTestVisible="False" SnapsToDevicePixels="True" Source="Resources/images/settings_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
         </Grid>
     </Grid>
 </Window>

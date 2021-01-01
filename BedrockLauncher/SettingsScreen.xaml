@@ -68,26 +68,26 @@
     </Page.Resources>
     <Grid Margin="0,0,0,0" Background="#FF303030">
         <Grid Background="#FF282828" VerticalAlignment="Top" Height="83">
-            <Label Foreground="White" Content="{DynamicResource MainWindowSettingsScreen_Title}" Margin="15,27,600,0" FontWeight="Bold" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+            <Label Foreground="White" Content="{DynamicResource MainWindowSettingsScreen_Title}" Margin="15,27,600,0" FontWeight="Bold" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
             <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="828" Orientation="Horizontal" Margin="0,49,0,0">
-                <ToggleButton x:Name="PlayButton" Content="{DynamicResource MainWindowSettingsScreen_GeneralButton}" Background="Transparent" BorderBrush="{x:Null}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/#Noto Sans" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Height="27" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="6,0,0,0" IsChecked="True">
+                <ToggleButton x:Name="PlayButton" Content="{DynamicResource MainWindowSettingsScreen_GeneralButton}" Background="Transparent" BorderBrush="{x:Null}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Height="27" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="6,0,0,0" IsChecked="True">
                     <ToggleButton.ToolTip>
                         <ToolTip Content="{DynamicResource MainWindowSettingsScreen_GeneralButton}"/>
                     </ToggleButton.ToolTip>
                 </ToggleButton>
-                <ToggleButton x:Name="InstallationsButton" Content="{DynamicResource MainWindowSettingsScreen_AccountsButton}" Background="Transparent" BorderBrush="{x:Null}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/#Noto Sans" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Height="27" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="3,0,0,0">
+                <ToggleButton x:Name="InstallationsButton" Content="{DynamicResource MainWindowSettingsScreen_AccountsButton}" Background="Transparent" BorderBrush="{x:Null}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Height="27" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="3,0,0,0">
                     <ToggleButton.ToolTip>
                         <ToolTip Content="{DynamicResource MainWindowSettingsScreen_AccountsButton}"/>
                     </ToggleButton.ToolTip>
                 </ToggleButton>
-                <ToggleButton x:Name="SkinsButton" Content="{DynamicResource MainWindowSettingsScreen_AboutButton}" Background="Transparent" BorderBrush="{x:Null}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/#Noto Sans" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Height="27" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="3,0,0,0">
+                <ToggleButton x:Name="SkinsButton" Content="{DynamicResource MainWindowSettingsScreen_AboutButton}" Background="Transparent" BorderBrush="{x:Null}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Height="27" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="3,0,0,0">
                     <ToggleButton.ToolTip>
                         <ToolTip Content="{DynamicResource MainWindowSettingsScreen_AboutButton}"/>
                     </ToggleButton.ToolTip>
                 </ToggleButton>
             </StackPanel>
         </Grid>
-        <Frame x:Name="MainPageFrame" Margin="0,83,0,0" NavigationUIVisibility="Hidden" Source="/BedrockLauncher;component/GeneralSettingsPage.xaml"/>
+        <Frame x:Name="MainPageFrame" Margin="0,83,0,0" NavigationUIVisibility="Hidden" Source="/BedrockLauncher;component/Pages/SettingsScreen/GeneralSettingsPage.xaml"/>
     </Grid>
 
 </Page>

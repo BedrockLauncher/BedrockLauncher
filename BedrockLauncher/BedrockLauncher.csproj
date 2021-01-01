@@ -79,7 +79,7 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\images\icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -130,7 +130,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="GeneralSettingsPage.xaml.cs">
+    <Compile Include="Pages\SettingsScreen\GeneralSettingsPage.xaml.cs">
       <DependentUpon>GeneralSettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
@@ -142,7 +142,7 @@
     <Compile Include="NoContentPage.xaml.cs">
       <DependentUpon>NoContentPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PlayScreenPage.xaml.cs">
+    <Compile Include="Pages\PlayScreen\PlayScreenPage.xaml.cs">
       <DependentUpon>PlayScreenPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Preferences.cs" />
@@ -162,7 +162,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </DesignData>
-    <Page Include="GeneralSettingsPage.xaml">
+    <Page Include="Pages\SettingsScreen\GeneralSettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -178,19 +178,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PlayScreenPage.xaml">
+    <Page Include="Pages\PlayScreen\PlayScreenPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\lang.en-US.xaml">
+    <Page Include="Resources\i18n\lang.en-US.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\lang.ru-RU.xaml">
+    <Page Include="Resources\i18n\lang.ru-RU.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\lang.xaml">
+    <Page Include="Resources\i18n\lang.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -224,11 +224,9 @@
     <None Include="app.manifest">
       <SubType>Designer</SubType>
     </None>
-    <Resource Include="NotoSans-Regular.ttf" />
-    <Resource Include="NotoSans-Bold.ttf" />
-    <Resource Include="NotoSans-BoldItalic.ttf" />
-    <Resource Include="NotoSans-Italic.ttf" />
-    <Resource Include="MinecraftTen.ttf" />
+    <Resource Include="Resources\fonts\MinecraftTen.ttf" />
+    <Resource Include="Resources\fonts\NotoSans-Bold.ttf" />
+    <Resource Include="Resources\fonts\NotoSans-Regular.ttf" />
     <None Include="BedrockLauncher.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -259,33 +257,34 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icon.ico" />
+    <Resource Include="Resources\images\icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="main_photo.png" />
+    <Resource Include="Resources\images\main_photo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="title.png" />
+    <Resource Include="Resources\images\title.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="grass_icon.png" />
-    <Resource Include="settings_icon.png" />
+    <Resource Include="Resources\images\grass_icon.png" />
+    <Resource Include="Resources\images\settings_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="news_icon.png" />
+    <Resource Include="Resources\images\news_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="bedrock_icon.png" />
+    <Resource Include="Resources\images\bedrock_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="MainPagePlayButton.png" />
+    <Resource Include="Resources\images\MainPagePlayButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="MainPagePlayButtonOver.png" />
-    <Resource Include="MainPagePlayButtonPressed.png" />
+    <Resource Include="Resources\images\MainPagePlayButtonOver.png" />
+    <Resource Include="Resources\images\MainPagePlayButtonPressed.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icon.png" />
+    <Resource Include="Resources\images\icon.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
