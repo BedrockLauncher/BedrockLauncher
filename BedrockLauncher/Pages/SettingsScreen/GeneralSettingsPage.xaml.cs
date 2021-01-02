@@ -23,11 +23,42 @@ namespace BedrockLauncher
         public GeneralSettingsPage()
         {
             InitializeComponent();
+
+            // Set chosen language in language combobox
+            switch (Properties.Settings.Default.Language)
+            {
+                case "en-US":
+                    LanguageCombobox.Text = "English - United States";
+                    break;
+                case "ru-RU":
+                    LanguageCombobox.Text = "Русский - Россия";
+                    break;
+                default:
+                    LanguageCombobox.Text = "English - United States";
+                    break;
+            }
         }
 
         private void ComboBoxItem_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void LanguageCombobox_DropDownClosed(object sender, EventArgs e)
+        {
+            switch (LanguageCombobox.Text)
+            {
+                case "Русский - Россия":
+                    ((MainWindow)Application.Current.MainWindow).LanguageChange("ru-RU");
+                    Properties.Settings.Default.Language = "ru-RU";
+                    Properties.Settings.Default.Save();
+                    break;
+                case "English - United States":
+                    ((MainWindow)Application.Current.MainWindow).LanguageChange("en-US");
+                    Properties.Settings.Default.Language = "en-US";
+                    Properties.Settings.Default.Save();
+                    break;
+            }
         }
     }
 }

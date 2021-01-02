@@ -45,6 +45,7 @@ namespace BedrockLauncher
         private volatile bool _hasLaunchTask = false;
 
         public MainPage mainPage = new MainPage();
+        public GeneralSettingsPage generalSettingsPage = new GeneralSettingsPage();
         public SettingsScreen settingsScreenPage = new SettingsScreen();
         public NoContentPage noContentPage = new NoContentPage();
         public PlayScreenPage playScreenPage = new PlayScreenPage();
@@ -120,7 +121,7 @@ namespace BedrockLauncher
         }
 
 
-        private void LanguageChange(string language)
+        public void LanguageChange(string language)
         {
             ResourceDictionary dict = new ResourceDictionary
             {
@@ -478,13 +479,24 @@ namespace BedrockLauncher
                 case true:
                     MainWindowFrame.Navigate(settingsScreenPage); // Переключение фрейма MainWindow на нужное окно
                     PlayScreenBorder.Visibility = Visibility.Hidden; // Скрывает нижнюю панель в MainWindow
+                    settingsScreenPage.SettingsScreenFrame.Navigate(generalSettingsPage);
 
                     // Выключение других кнопок
                     BedrockEditionButton.IsChecked = false;
                     NewsButton.IsChecked = false;
+
+                    settingsScreenPage.GeneralButton.IsChecked = true;
+                    settingsScreenPage.AccountsButton.IsChecked = false;
+                    settingsScreenPage.AboutButton.IsChecked = false;
+
+                    //main
                     break;
                 case false:
+                    settingsScreenPage.SettingsScreenFrame.Navigate(generalSettingsPage);
                     SettingsButton.IsChecked = true; // Не снимает свойства IsChecked при повторном нажатии на кнопку
+                    settingsScreenPage.GeneralButton.IsChecked = true;
+                    settingsScreenPage.AccountsButton.IsChecked = false;
+                    settingsScreenPage.AboutButton.IsChecked = false;
                     break;
             }
             
@@ -518,8 +530,13 @@ namespace BedrockLauncher
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             LanguageChange("en-US");
-            Properties.Settings.Default.Language = "en-US";
+            Properties.Settings.Default.Language = "ru-RU";
             Properties.Settings.Default.Save();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Keyboard.ClearFocus();
         }
     }
 

@@ -20,9 +20,43 @@ namespace BedrockLauncher
     /// </summary>
     public partial class SettingsScreen : Page
     {
+        public GeneralSettingsPage generalSettingsPage = new GeneralSettingsPage();
+        public NoContentPage noContentPage = new NoContentPage();
         public SettingsScreen()
         {
             InitializeComponent();
+        }
+
+        private void GeneralButton_Click(object sender, RoutedEventArgs e)
+        {
+            switch (GeneralButton.IsChecked)
+            {
+                case true:
+                    SettingsScreenFrame.Navigate(generalSettingsPage);
+
+                    // Выключение других кнопок
+                    AboutButton.IsChecked = false;
+                    break;
+                case false:
+                    GeneralButton.IsChecked = true; // Не снимает свойства IsChecked при повторном нажатии на кнопку
+                    break;
+            }
+        }
+
+        private void AboutButton_Click(object sender, RoutedEventArgs e)
+        {
+            switch (AboutButton.IsChecked)
+            {
+                case true:
+                    SettingsScreenFrame.Navigate(noContentPage);
+
+                    // Выключение других кнопок
+                    GeneralButton.IsChecked = false;
+                    break;
+                case false:
+                    AboutButton.IsChecked = true; // Не снимает свойства IsChecked при повторном нажатии на кнопку
+                    break;
+            }
         }
     }
 }
