@@ -20,6 +20,7 @@ namespace BedrockLauncher
     /// </summary>
     public partial class MainPage : Page
     {
+        public InstallationsScreen installationsScreen = new InstallationsScreen();
         public PlayScreenPage playScreenPage = new PlayScreenPage();
         public NoContentPage noContentPage = new NoContentPage();
 
@@ -52,7 +53,7 @@ namespace BedrockLauncher
             switch (InstallationsButton.IsChecked)
             {
                 case true:
-                    MainPageFrame.Navigate(noContentPage); // Переключение фрейма в MainPage на нужное окно
+                    MainPageFrame.Navigate(installationsScreen); // Переключение фрейма в MainPage на нужное окно
                     ((MainWindow)Application.Current.MainWindow).PlayScreenBorder.Visibility = Visibility.Hidden; // Скрывает нижнюю панель в MainWindow
 
                     // Выключение других кнопок

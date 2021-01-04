@@ -130,6 +130,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\InstallationsScreen\InstallationsScreen.xaml.cs">
+      <DependentUpon>InstallationsScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\SettingsScreen\GeneralSettingsPage.xaml.cs">
       <DependentUpon>GeneralSettingsPage.xaml</DependentUpon>
     </Compile>
@@ -161,6 +164,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </DesignData>
+    <Page Include="Pages\InstallationsScreen\InstallationsScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\SettingsScreen\GeneralSettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -279,9 +286,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\InstallationsScreen\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\optionmark.png" />

@@ -560,7 +560,7 @@
                     <TextBlock SnapsToDevicePixels="True" Margin="+3,-15,0,0" FontSize="12" x:Name="ProgressBarText" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
                 </StackPanel>
             </Grid>
-            <TextBlock Foreground="white" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="11" FontWeight="Bold" Text="NOT APPROVED BY OR ASSOCIATED WITH MOJANG" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0"/>
+            <TextBlock Foreground="white" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="11" FontWeight="Bold" Text="NOT APPROVED BY OR ASSOCIATED WITH MOJANG" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,2,2"/>
             <Button x:Name="MainPlayButton" Click="MainPlayButton_Click" UseLayoutRounding="True" SnapsToDevicePixels="True" Foreground="White" FontSize="26" HorizontalAlignment="Center" Margin="286,-8,286,0" VerticalAlignment="Top" Width="250" Height="56" Padding="0" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" Style="{DynamicResource ButtonStyle1}" BorderBrush="{x:Null}">
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="0" Direction="270" Opacity="0.2" ShadowDepth="4"/>
