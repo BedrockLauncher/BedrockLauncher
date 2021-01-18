@@ -44,6 +44,8 @@ namespace BedrockLauncher
         private volatile int _userVersionDownloaderLoginTaskStarted;
         private volatile bool _hasLaunchTask = false;
 
+        public BetterBedrockMain betterBedrockMain = new BetterBedrockMain();
+
         public MainPage mainPage = new MainPage();
         public GeneralSettingsPage generalSettingsPage = new GeneralSettingsPage();
         public SettingsScreen settingsScreenPage = new SettingsScreen();
@@ -64,7 +66,7 @@ namespace BedrockLauncher
                     switch (ci.Name)
                     {
                         default:
-                            Console.WriteLine("default language");
+                            Debug.WriteLine("default language");
                             Properties.Settings.Default.Language = "default";
                             Properties.Settings.Default.Save();
                             break;
@@ -107,7 +109,7 @@ namespace BedrockLauncher
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("List cache load failed:\n" + e.ToString());
+                    Debug.WriteLine("List cache load failed:\n" + e.ToString());
                 }
                 try
                 {
@@ -115,7 +117,7 @@ namespace BedrockLauncher
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("List download failed:\n" + e.ToString());
+                    Debug.WriteLine("List download failed:\n" + e.ToString());
                 }
             });
         }
@@ -151,25 +153,29 @@ namespace BedrockLauncher
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("App re-register failed:\n" + e.ToString());
+                    Debug.WriteLine("App re-register failed:\n" + e.ToString());
                     MessageBox.Show("App re-register failed:\n" + e.ToString());
                     _hasLaunchTask = false;
                     v.StateChangeInfo = null;
                     return;
                 }
-
                 try
                 {
                     var pkg = await AppDiagnosticInfo.RequestInfoForPackageAsync(MINECRAFT_PACKAGE_FAMILY);
                     if (pkg.Count > 0)
                         await pkg[0].LaunchAsync();
-                    Console.WriteLine("App launch finished!");
+                    Debug.WriteLine("App launch finished!");
                     _hasLaunchTask = false;
                     v.StateChangeInfo = null;
+                    await Application.Current.Dispatcher.InvokeAsync(() =>
+                    {
+                        Application.Current.MainWindow.Close();
+                    });
+
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("App launch failed:\n" + e.ToString());
+                    Debug.WriteLine("App launch failed:\n" + e.ToString());
                     MessageBox.Show("App launch failed:\n" + e.ToString());
                     _hasLaunchTask = false;
                     v.StateChangeInfo = null;
@@ -182,17 +188,17 @@ namespace BedrockLauncher
         {
             TaskCompletionSource<int> src = new TaskCompletionSource<int>();
             t.Progress += (v, p) => {
-                Console.WriteLine("Deployment progress: " + p.state + " " + p.percentage + "%");
+                Debug.WriteLine("Deployment progress: " + p.state + " " + p.percentage + "%");
             };
             t.Completed += (v, p) => {
                 if (p == AsyncStatus.Error)
                 {
-                    Console.WriteLine("Deployment failed: " + v.GetResults().ErrorText);
+                    Debug.WriteLine("Deployment failed: " + v.GetResults().ErrorText);
                     src.SetException(new Exception("Deployment failed: " + v.GetResults().ErrorText));
                 }
                 else
                 {
-                    Console.WriteLine("Deployment done: " + p);
+                    Debug.WriteLine("Deployment done: " + p);
                     src.SetResult(1);
                 }
             };
@@ -212,12 +218,12 @@ namespace BedrockLauncher
             string tmpDir = GetBackupMinecraftDataDir();
             if (Directory.Exists(tmpDir))
             {
-                Console.WriteLine("BackupMinecraftDataForRemoval error: " + tmpDir + " already exists");
+                Debug.WriteLine("BackupMinecraftDataForRemoval error: " + tmpDir + " already exists");
                 Process.Start("explorer.exe", tmpDir);
                 MessageBox.Show("The temporary directory for backing up MC data already exists. This probably means that we failed last time backing up the data. Please back the directory up manually.");
                 throw new Exception("Temporary dir exists");
             }
-            Console.WriteLine("Moving Minecraft data to: " + tmpDir);
+            Debug.WriteLine("Moving Minecraft data to: " + tmpDir);
             Directory.Move(data.LocalFolder.Path, tmpDir);
         }
 
@@ -253,14 +259,14 @@ namespace BedrockLauncher
             if (!Directory.Exists(tmpDir))
                 return;
             var data = ApplicationDataManager.CreateForPackageFamily(MINECRAFT_PACKAGE_FAMILY);
-            Console.WriteLine("Moving backup Minecraft data to: " + data.LocalFolder.Path);
+            Debug.WriteLine("Moving backup Minecraft data to: " + data.LocalFolder.Path);
             RestoreMove(tmpDir, data.LocalFolder.Path);
             Directory.Delete(tmpDir, true);
         }
 
         private async Task RemovePackage(Package pkg)
         {
-            Console.WriteLine("Removing package: " + pkg.Id.FullName);
+            Debug.WriteLine("Removing package: " + pkg.Id.FullName);
             if (!pkg.IsDevelopmentMode)
             {
                 BackupMinecraftDataForRemoval();
@@ -268,10 +274,10 @@ namespace BedrockLauncher
             }
             else
             {
-                Console.WriteLine("Package is in development mode");
+                Debug.WriteLine("Package is in development mode");
                 await DeploymentProgressWrapper(new PackageManager().RemovePackageAsync(pkg.Id.FullName, RemovalOptions.PreserveApplicationData));
             }
-            Console.WriteLine("Removal of package done: " + pkg.Id.FullName);
+            Debug.WriteLine("Removal of package done: " + pkg.Id.FullName);
         }
 
         private string GetPackagePath(Package pkg)
@@ -305,27 +311,31 @@ namespace BedrockLauncher
                 string location = GetPackagePath(pkg);
                 if (location == gameDir)
                 {
-                    Console.WriteLine("Skipping package removal - same path: " + pkg.Id.FullName + " " + location);
+                    Debug.WriteLine("Skipping package removal - same path: " + pkg.Id.FullName + " " + location);
                     return;
                 }
                 await RemovePackage(pkg);
             }
-            Console.WriteLine("Registering package");
+            Debug.WriteLine("Registering package");
+
             string manifestPath = Path.Combine(gameDir, "AppxManifest.xml");
             await DeploymentProgressWrapper(new PackageManager().RegisterPackageAsync(new Uri(manifestPath), null, DeploymentOptions.DevelopmentMode));
-            Console.WriteLine("App re-register done!");
+            Debug.WriteLine("App re-register done!");
             RestoreMinecraftDataFromReinstall();
         }
 
         private void InvokeDownload(Version v)
         {
+            
+
+
             CancellationTokenSource cancelSource = new CancellationTokenSource();
             v.StateChangeInfo = new VersionStateChangeInfo();
             v.StateChangeInfo.IsInitializing = true;
             v.StateChangeInfo.CancelCommand = new RelayCommand((o) => cancelSource.Cancel());
 
-            Console.WriteLine(v);
-            Console.WriteLine("Download start");
+            Debug.WriteLine(v);
+            Debug.WriteLine("Download start");
             Task.Run(async () => {
                 string dlPath = "Minecraft-" + v.Name + ".Appx";
                 VersionDownloader downloader = _anonVersionDownloader;
@@ -336,16 +346,16 @@ namespace BedrockLauncher
                     {
                         _userVersionDownloaderLoginTask.Start();
                     }
-                    Console.WriteLine("Waiting for authentication");
+                    Debug.WriteLine("Waiting for authentication");
                     try
                     {
                         await _userVersionDownloaderLoginTask;
-                        Console.WriteLine("Authentication complete");
+                        Debug.WriteLine("Authentication complete");
                     }
                     catch (Exception e)
                     {
                         v.StateChangeInfo = null;
-                        Console.WriteLine("Authentication failed:\n" + e.ToString());
+                        Debug.WriteLine("Authentication failed:\n" + e.ToString());
                         MessageBox.Show("Failed to authenticate. Please make sure your account is subscribed to the beta programme.\n\n" + e.ToString(), "Authentication failed");
                         return;
                     }
@@ -355,25 +365,21 @@ namespace BedrockLauncher
                     await downloader.Download(v.UUID, "1", dlPath, (current, total) => {
                         if (v.StateChangeInfo.IsInitializing)
                         {
-                            Console.WriteLine("Actual download started");
+                            Debug.WriteLine("Actual download started");
                             v.StateChangeInfo.IsInitializing = false;
                             if (total.HasValue)
                                 v.StateChangeInfo.TotalSize = total.Value;
                         }
                         v.StateChangeInfo.DownloadedBytes = current;
                     }, cancelSource.Token);
-                    Console.WriteLine("Download complete");
-                    Application.Current.Dispatcher.Invoke(() =>
-                    {
-                        ((MainWindow)Application.Current.MainWindow).ProgressBarGrid.Visibility = Visibility.Hidden;
-                        //InvokeLaunch(VersionList.SelectedItem as Version);
-                    });
+                    Debug.WriteLine("Download complete");
+                    
                     //await System.Windows.Threading.Dispatcher.CurrentDispatcher.InvokeAsync((Action)(() => { ((MainWindow)Application.Current.MainWindow).pr; }));
 
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Download failed:\n" + e.ToString());
+                    Debug.WriteLine("Download failed:\n" + e.ToString());
                     if (!(e is TaskCanceledException))
                         MessageBox.Show("Download failed:\n" + e.ToString());
                     v.StateChangeInfo = null;
@@ -381,6 +387,14 @@ namespace BedrockLauncher
                 }
                 try
                 {
+                    // Better Bedrock
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        //button1.Background = (Brush)this.TryFindResource("buttonGradientBrush");
+                        ((MainWindow)Application.Current.MainWindow).progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarInstalling");
+                        ((MainWindow)Application.Current.MainWindow).ProgressBarText.Text = "";
+                        //InvokeLaunch(VersionList.SelectedItem as Version);
+                    });
                     v.StateChangeInfo.IsExtracting = true;
                     string dirPath = v.GameDirectory;
                     if (Directory.Exists(dirPath))
@@ -389,16 +403,27 @@ namespace BedrockLauncher
                     v.StateChangeInfo = null;
                     File.Delete(Path.Combine(dirPath, "AppxSignature.p7x"));
                     File.Delete(dlPath);
+
+                    betterBedrockMain.BetterBedrock(v.DisplayName, v.GameDirectory);
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        ((MainWindow)Application.Current.MainWindow).ProgressBarGrid.Visibility = Visibility.Hidden;
+                        //InvokeLaunch(VersionList.SelectedItem as Version);
+                    });
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Extraction failed:\n" + e.ToString());
+                    Debug.WriteLine("Extraction failed:\n" + e.ToString());
                     MessageBox.Show("Extraction failed:\n" + e.ToString());
                     v.StateChangeInfo = null;
                     return;
                 }
                 v.StateChangeInfo = null;
                 v.UpdateInstallStatus();
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    InvokeLaunch(VersionList.SelectedItem as Version);
+                });
             });
         }
 
@@ -417,7 +442,7 @@ namespace BedrockLauncher
         private bool VersionListFilter(object obj)
         {
             Version v = obj as Version;
-            VersionList.SelectedIndex = 0; // show last version in combobox
+            VersionList.SelectedIndex = Properties.Settings.Default.LastSelectedVersion; // show last version in combobox
             return (!v.IsBeta || Properties.Settings.Default.ShowBetas) && (v.IsInstalled || !Properties.Settings.Default.ShowInstalledOnly);
         }
 
@@ -510,6 +535,8 @@ namespace BedrockLauncher
 
         private void MainPlayButton_Click(object sender, RoutedEventArgs e)
         {
+            Properties.Settings.Default.LastSelectedVersion = VersionList.SelectedIndex;
+            Properties.Settings.Default.Save();
             {
                 var v = VersionList.SelectedItem as Version;
                 switch (v.DisplayInstallStatus.ToString())
@@ -552,6 +579,13 @@ namespace BedrockLauncher
                 if (PropertyChanged != null)
                     PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
+            public void ProgressBarIsIndeterminate(bool isIndeterminate)
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    ((MainWindow)Application.Current.MainWindow).progressSizeHack.IsIndeterminate = isIndeterminate;
+                });
+            }
             public void ProgressBarUpdate(double downloadedBytes, double totalSize)
             {
                 Application.Current.Dispatcher.Invoke(() =>
@@ -559,7 +593,6 @@ namespace BedrockLauncher
                     ((MainWindow)Application.Current.MainWindow).progressSizeHack.Value = downloadedBytes;
                     ((MainWindow)Application.Current.MainWindow).progressSizeHack.Maximum = totalSize;
                     int.Parse(downloadedBytes.ToString());
-                    Console.WriteLine();
                     ((MainWindow)Application.Current.MainWindow).ProgressBarText.Text = (Math.Round(downloadedBytes / 1024 / 1024, 2)).ToString() + " MB / " + (Math.Round(totalSize / 1024 / 1024, 2)).ToString() + " MB";
                 });
             }
@@ -647,31 +680,31 @@ namespace BedrockLauncher
             public bool IsInitializing
             {
                 get { return _isInitializing; }
-                set { _isInitializing = value; OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
+                set { _isInitializing = value; ProgressBarIsIndeterminate(_isInitializing); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
             }
 
             public bool IsExtracting
             {
                 get { return _isExtracting; }
-                set { _isExtracting = value; OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
+                set { _isExtracting = value; ProgressBarIsIndeterminate(_isExtracting); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
             }
 
             public bool IsUninstalling
             {
                 get { return _isUninstalling; }
-                set { _isUninstalling = value; OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
+                set { _isUninstalling = value; ProgressBarIsIndeterminate(_isUninstalling); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
             }
 
             public bool IsLaunching
             {
                 get { return _isLaunching; }
-                set { _isLaunching = value; OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
+                set { _isLaunching = value; ProgressBarIsIndeterminate(_isLaunching); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
             }
 
             public bool IsProgressIndeterminate
             {
                 get { return IsInitializing || IsExtracting || IsUninstalling || IsLaunching; }
-                }
+            }
 
             public long DownloadedBytes
             {

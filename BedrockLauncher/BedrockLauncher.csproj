@@ -88,7 +88,7 @@
     <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>C12BAB0D8397D937265B99E7577F9696AFDF57C2</ManifestCertificateThumbprint>
@@ -110,6 +110,7 @@
     <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -130,6 +131,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BetterBedrock\BetterBedrockMain.cs" />
     <Compile Include="Pages\InstallationsScreen\InstallationsScreen.xaml.cs">
       <DependentUpon>InstallationsScreen.xaml</DependentUpon>
     </Compile>
@@ -147,6 +149,11 @@
     </Compile>
     <Compile Include="Pages\PlayScreen\PlayScreenPage.xaml.cs">
       <DependentUpon>PlayScreenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RelayCommand.cs" />
     <Compile Include="SettingsScreen.xaml.cs">
@@ -209,11 +216,6 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -229,7 +231,7 @@
     <Resource Include="Resources\fonts\MinecraftTen.ttf" />
     <Resource Include="Resources\fonts\NotoSans-Bold.ttf" />
     <Resource Include="Resources\fonts\NotoSans-Regular.ttf" />
-    <None Include="BedrockLauncher.pfx" />
+    <None Include="BetterBedrock\files\BottomChat.zip" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -289,6 +291,26 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\optionmark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BetterBedrock\files\glyph_04.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BetterBedrock\files\destroy_stage_0.png" />
+    <Resource Include="BetterBedrock\files\destroy_stage_1.png" />
+    <Resource Include="BetterBedrock\files\destroy_stage_2.png" />
+    <Resource Include="BetterBedrock\files\destroy_stage_3.png" />
+    <Resource Include="BetterBedrock\files\destroy_stage_4.png" />
+    <Resource Include="BetterBedrock\files\destroy_stage_5.png" />
+    <Resource Include="BetterBedrock\files\destroy_stage_6.png" />
+    <Resource Include="BetterBedrock\files\destroy_stage_7.png" />
+    <Resource Include="BetterBedrock\files\destroy_stage_8.png" />
+    <Resource Include="BetterBedrock\files\destroy_stage_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BetterBedrock\files\default8.png" />
+    <Resource Include="BetterBedrock\files\glyph_00.png" />
+    <Resource Include="BetterBedrock\files\glyph_E0.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

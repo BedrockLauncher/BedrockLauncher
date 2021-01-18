@@ -67,5 +67,29 @@ namespace BedrockLauncher.Properties {
                 this["ShowInstalledOnly"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int LastSelectedVersion {
+            get {
+                return ((int)(this["LastSelectedVersion"]));
+            }
+            set {
+                this["LastSelectedVersion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool StupidThing {
+            get {
+                return ((bool)(this["StupidThing"]));
+            }
+            set {
+                this["StupidThing"] = value;
+            }
+        }
     }
 }

@@ -1,0 +1,46 @@
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\bin\Release\Benhancer.exe.config
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\bin\Release\Benhancer.exe
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\bin\Release\Benhancer.pdb
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\bin\Release\Gma.System.MouseKeyHook.dll
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\bin\Release\Memory.dll
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\bin\Release\MouseKeyboardActivityMonitor.dll
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\bin\Release\System.Security.Principal.Windows.dll
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\bin\Release\Memory.xml
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\bin\Release\MouseKeyboardActivityMonitor.xml
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\bin\Release\System.Security.Principal.Windows.xml
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\obj\Release\Benhancer.csprojAssemblyReference.cache
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\obj\Release\MainWindow.g.cs
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\obj\Release\App.g.cs
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\obj\Release\Benhancer_MarkupCompile.cache
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\obj\Release\Benhancer_MarkupCompile.lref
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\obj\Release\MainWindow.baml
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\obj\Release\Benhancer.g.resources
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\obj\Release\Benhancer.Properties.Resources.resources
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\obj\Release\Benhancer.csproj.GenerateResource.cache
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\obj\Release\Benhancer.csproj.CoreCompileInputs.cache
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\obj\Release\Benhancer.csproj.CopyComplete
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\obj\Release\Benhancer.exe
+C:\Users\Lynx\Desktop\BedrockLauncher\Benhancer\obj\Release\Benhancer.pdb
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\bin\Release\Benhancer.exe.config
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\bin\Release\Benhancer.exe
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\bin\Release\Benhancer.pdb
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\bin\Release\Gma.System.MouseKeyHook.dll
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\bin\Release\Memory.dll
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\bin\Release\MouseKeyboardActivityMonitor.dll
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\bin\Release\System.Security.Principal.Windows.dll
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\bin\Release\Memory.xml
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\bin\Release\MouseKeyboardActivityMonitor.xml
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\bin\Release\System.Security.Principal.Windows.xml
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Release\Benhancer.csprojAssemblyReference.cache
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Release\MainWindow.g.cs
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Release\App.g.cs
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Release\Benhancer_MarkupCompile.cache
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Release\Benhancer_MarkupCompile.lref
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Release\MainWindow.baml
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Release\Benhancer.g.resources
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Release\Benhancer.Properties.Resources.resources
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Release\Benhancer.csproj.GenerateResource.cache
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Release\Benhancer.csproj.CoreCompileInputs.cache
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Release\Benhancer.csproj.CopyComplete
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Release\Benhancer.exe
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Release\Benhancer.pdb

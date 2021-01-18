@@ -556,7 +556,7 @@
             <Grid x:Name="ProgressBarGrid" Margin="0,-62,0,55" Background="#FF262626" Visibility="Hidden">
                 <ProgressBar x:Name="progressSizeHack" Height="32" Margin="10,8,10,22" Foreground="#FF008542" Background="Black" BorderBrush="Black" Minimum="0" Maximum="{Binding StateChangeInfo.TotalSize}" Value="{Binding StateChangeInfo.DownloadedBytes}"/>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock SnapsToDevicePixels="True" Margin="26,-15,0,0" FontSize="12" Text="{DynamicResource MainPage_ProgressBarDownload}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
+                    <TextBlock x:Name="progressbarcontent" SnapsToDevicePixels="True" Margin="26,-15,0,0" FontSize="12" Text="{DynamicResource MainPage_ProgressBarDownload}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
                     <TextBlock SnapsToDevicePixels="True" Margin="+3,-15,0,0" FontSize="12" x:Name="ProgressBarText" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
                 </StackPanel>
             </Grid>

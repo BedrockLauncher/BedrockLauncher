@@ -14,6 +14,7 @@
     <v:String x:Key="MainPage_SkinsButton">Skins</v:String>
     <v:String x:Key="MainPage_PatchNotesButton">Patch notes</v:String>
     <v:String x:Key="MainPage_ProgressBarDownload">Downloading</v:String>
+    <v:String x:Key="MainPage_ProgressBarInstalling">Installing</v:String>
     <!-- MainWindowSettingsScreen -->
     <v:String x:Key="MainWindowSettingsScreen_Title">SETTINGS</v:String>
     <v:String x:Key="MainWindowSettingsScreen_GeneralButton">General</v:String>

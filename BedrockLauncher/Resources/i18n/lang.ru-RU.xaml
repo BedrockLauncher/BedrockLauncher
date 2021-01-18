@@ -14,6 +14,7 @@
     <v:String x:Key="MainPage_SkinsButton">Скины</v:String>
     <v:String x:Key="MainPage_PatchNotesButton">Список изменений</v:String>
     <v:String x:Key="MainPage_ProgressBarDownload">Загрузка</v:String>
+    <v:String x:Key="MainPage_ProgressBarInstalling">Установка</v:String>
     <!-- MainWindowSettingsScreen -->
     <v:String x:Key="MainWindowSettingsScreen_Title">НАСТРОЙКИ</v:String>
     <v:String x:Key="MainWindowSettingsScreen_GeneralButton">Основное</v:String>
