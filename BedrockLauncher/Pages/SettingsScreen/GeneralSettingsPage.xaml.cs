@@ -23,24 +23,11 @@ namespace BedrockLauncher
         public GeneralSettingsPage()
         {
             InitializeComponent();
-
-            // Set chosen language in language combobox
-            switch (Properties.Settings.Default.Language)
-            {
-                case "en-US":
-                    LanguageCombobox.Text = "English - United States";
-                    break;
-                case "ru-RU":
-                    LanguageCombobox.Text = "Русский - Россия";
-                    break;
-                default:
-                    LanguageCombobox.Text = "English - United States";
-                    break;
-            }
         }
 
         private void ComboBoxItem_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
         {
+            // To not move combobox list on mouse hover
             e.Handled = true;
         }
 
@@ -56,6 +43,42 @@ namespace BedrockLauncher
                 case "English - United States":
                     ((MainWindow)Application.Current.MainWindow).LanguageChange("en-US");
                     Properties.Settings.Default.Language = "en-US";
+                    Properties.Settings.Default.Save();
+                    break;
+            }
+        }
+
+        private void Page_Initialized(object sender, EventArgs e)
+        {
+            // Set chosen language in language combobox
+            switch (Properties.Settings.Default.Language)
+            {
+                case "en-US":
+                    LanguageCombobox.Text = "English - United States";
+                    break;
+                case "ru-RU":
+                    LanguageCombobox.Text = "Русский - Россия";
+                    break;
+                default:
+                    LanguageCombobox.Text = "English - United States";
+                    break;
+            }
+
+            // Set checkboxes
+            keepLauncherOpenCheckBox.IsChecked = Properties.Settings.Default.KeepLauncherOpenCheckBox;
+        }
+
+        private void keepLauncherOpenCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            // get and save value of checkbox
+            switch (keepLauncherOpenCheckBox.IsChecked)
+            {
+                case true:
+                    Properties.Settings.Default.KeepLauncherOpenCheckBox = true;
+                    Properties.Settings.Default.Save();
+                    break;
+                case false:
+                    Properties.Settings.Default.KeepLauncherOpenCheckBox = false;
                     Properties.Settings.Default.Save();
                     break;
             }

@@ -91,5 +91,29 @@ namespace BedrockLauncher.Properties {
                 this["StupidThing"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsFirstLaunch {
+            get {
+                return ((bool)(this["IsFirstLaunch"]));
+            }
+            set {
+                this["IsFirstLaunch"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool KeepLauncherOpenCheckBox {
+            get {
+                return ((bool)(this["KeepLauncherOpenCheckBox"]));
+            }
+            set {
+                this["KeepLauncherOpenCheckBox"] = value;
+            }
+        }
     }
 }

@@ -55,45 +55,6 @@ namespace BedrockLauncher
         public MainWindow()
         {
             InitializeComponent();
-            //startup changes
-
-
-            // Language setting on startup
-            switch (Properties.Settings.Default.Language)
-            {
-                case "none":
-                    CultureInfo ci = CultureInfo.InstalledUICulture; // get system locale
-                    switch (ci.Name)
-                    {
-                        default:
-                            Debug.WriteLine("default language");
-                            Properties.Settings.Default.Language = "default";
-                            Properties.Settings.Default.Save();
-                            break;
-                        case "ru-RU":
-                            LanguageChange(ci.Name);
-                            Properties.Settings.Default.Language = "ru-RU";
-                            Properties.Settings.Default.Save();
-                            break;
-                        case "en-US":
-                            LanguageChange(ci.Name);
-                            Properties.Settings.Default.Language = "en-US";
-                            Properties.Settings.Default.Save();
-                            break;
-                    }
-                    break;
-                case "ru-RU":
-                    LanguageChange("ru-RU");
-                    break;
-
-                case "en-US":
-                    LanguageChange("en-US");
-                    break;
-
-                default:
-                    break;
-
-            }
 
             _versions = new VersionList("versions.json", this);
             VersionList.ItemsSource = _versions;
@@ -167,10 +128,14 @@ namespace BedrockLauncher
                     Debug.WriteLine("App launch finished!");
                     _hasLaunchTask = false;
                     v.StateChangeInfo = null;
-                    await Application.Current.Dispatcher.InvokeAsync(() =>
+                    // close launcher if needed
+                    if (Properties.Settings.Default.KeepLauncherOpenCheckBox == false)
                     {
-                        Application.Current.MainWindow.Close();
-                    });
+                        await Application.Current.Dispatcher.InvokeAsync(() =>
+                        {
+                            Application.Current.MainWindow.Close();
+                        });
+                    }
 
                 }
                 catch (Exception e)
@@ -497,6 +462,42 @@ namespace BedrockLauncher
             }
         }
 
+        private void JavaEditionButton_Click(object sender, RoutedEventArgs e)
+        {
+            switch (JavaEditionButton.IsChecked)
+            {
+                case true:
+                    MainWindowFrame.Navigate(mainPage); // Переключение фрейма MainWindow на окно MainPage.xaml
+                    mainPage.MainPageFrame.Navigate(playScreenPage); // Переключение фрейма MainPage на окно PlayScreenPage.xaml
+                    PlayScreenBorder.Visibility = Visibility.Visible; // Показывает нижнюю панель в MainWindow
+                    // Оставляет нажатой только кнопку PlayButton в окне MainPage.xaml
+                    mainPage.PlayButton.IsChecked = true;
+                    mainPage.InstallationsButton.IsChecked = false;
+                    mainPage.SkinsButton.IsChecked = false;
+                    mainPage.PatchNotesButton.IsChecked = false;
+
+                    // Выключение других кнопок
+                    NewsButton.IsChecked = false;
+                    SettingsButton.IsChecked = false;
+                    BedrockEditionButton.IsChecked = false;
+                    break;
+                case false:
+                    JavaEditionButton.IsChecked = true; // Не снимает свойства IsChecked при повторном нажатии на кнопку
+                    MainWindowFrame.Navigate(mainPage); // Переключение фрейма MainWindow на окно MainPage.xaml
+                    mainPage.MainPageFrame.Navigate(playScreenPage); // Переключение фрейма MainPage на окно PlayScreenPage.xaml
+                    PlayScreenBorder.Visibility = Visibility.Visible; // Показывает нижнюю панель в MainWindow
+
+                    // Оставляет нажатой только кнопку PlayButton в окне MainPage.xaml
+                    mainPage.PlayButton.IsChecked = true;
+                    mainPage.InstallationsButton.IsChecked = false;
+                    mainPage.SkinsButton.IsChecked = false;
+                    mainPage.PatchNotesButton.IsChecked = false;
+                    break;
+            }
+            // Trying to find and open java launcher shortcut
+            try { Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu) + @"\Programs\Minecraft Launcher\Minecraft Launcher"); Application.Current.MainWindow.Close(); } catch { MessageBox.Show("Cant find java launcher :/"); }
+        }
+
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             switch (SettingsButton.IsChecked)
@@ -564,6 +565,46 @@ namespace BedrockLauncher
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Keyboard.ClearFocus();
+        }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            // Language setting on startup
+            switch (Properties.Settings.Default.Language)
+            {
+                case "none":
+                    CultureInfo ci = CultureInfo.InstalledUICulture; // get system locale
+                    switch (ci.Name)
+                    {
+                        default:
+                            Debug.WriteLine("default language");
+                            Properties.Settings.Default.Language = "default";
+                            Properties.Settings.Default.Save();
+                            break;
+                        case "ru-RU":
+                            LanguageChange(ci.Name);
+                            Properties.Settings.Default.Language = "ru-RU";
+                            Properties.Settings.Default.Save();
+                            break;
+                        case "en-US":
+                            LanguageChange(ci.Name);
+                            Properties.Settings.Default.Language = "en-US";
+                            Properties.Settings.Default.Save();
+                            break;
+                    }
+                    break;
+                case "ru-RU":
+                    LanguageChange("ru-RU");
+                    break;
+
+                case "en-US":
+                    LanguageChange("en-US");
+                    break;
+
+                default:
+                    break;
+
+            }
         }
     }
 

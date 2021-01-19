@@ -7,7 +7,7 @@
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" d:DataContext="{d:DesignInstance Type=local:Version}" x:Class="BedrockLauncher.MainWindow"
         mc:Ignorable="d"
         MouseDown="Window_MouseDown"
-        Title="{DynamicResource ResourceKey=Title}" Height="639" Width="1016" Foreground="{x:Null}" MinWidth="1016" MinHeight="639" Background="White" Icon="Resources/images/icon.ico">
+        Title="{DynamicResource ResourceKey=Title}" Initialized="Window_Initialized" Height="639" Width="1016" Foreground="{x:Null}" MinWidth="1016" MinHeight="639" Background="White" Icon="Resources/images/icon.ico">
     <Window.Resources>
         <TextBlock x:Key="TitleText" Text="{Binding DisplayStatus}">
             <TextBlock.DataContext>
@@ -549,6 +549,15 @@
                     <TextBlock LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,5"><Run FontSize="11" Text="MINECRAFT:"/><LineBreak/><Run FontSize="14" Text="Bedrock Edition"/></TextBlock>
                 </ToggleButton>
                 <Image IsHitTestVisible="False" SnapsToDevicePixels="True" Source="Resources/images/bedrock_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
+            </Grid>
+            <Grid Height="57" Margin="1,0,0,0" VerticalAlignment="Top">
+                <ToggleButton x:Name="JavaEditionButton" Click="JavaEditionButton_Click" VerticalAlignment="Top" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False" IsChecked="False">
+                    <ToggleButton.ToolTip>
+                        <ToolTip Content="{DynamicResource MainWindow_MinecraftJavaLauncher}"/>
+                    </ToggleButton.ToolTip>
+                    <TextBlock LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,5"><Run FontSize="11" Text="{DynamicResource MainWindow_SwitchEdition}"/><LineBreak/><Run FontSize="14" Text="{DynamicResource MainWindow_MinecraftJavaLauncher}"/></TextBlock>
+                </ToggleButton>
+                <Image IsHitTestVisible="False" SnapsToDevicePixels="True" Source="Resources/images/grass_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
             </Grid>
         </StackPanel>
         <Frame x:Name="MainWindowFrame" Margin="180,0,0,0" VerticalAlignment="Stretch" Background="Black" Source="/BedrockLauncher;component/MainPage.xaml" NavigationUIVisibility="Hidden"/>

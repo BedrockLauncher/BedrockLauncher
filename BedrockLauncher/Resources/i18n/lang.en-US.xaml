@@ -6,6 +6,9 @@
     <v:String x:Key="Title">Minecraft Bedrock Launcher</v:String>
     <v:String x:Key="MainWindow_NewsButton">News</v:String>
     <v:String x:Key="MainWindow_MinecraftEdition">Bedrock Edition</v:String>
+    <v:String x:Key="MainWindow_MinecraftJavaEdition">Java Edition</v:String>
+    <v:String x:Key="MainWindow_MinecraftJavaLauncher">Java Launcher</v:String>
+    <v:String x:Key="MainWindow_SwitchEdition">Switch to</v:String>
     <v:String x:Key="MainWindow_Minecraft">Minecraft</v:String>
     <v:String x:Key="MainWindow_SettingsButton">Settings</v:String>
     <!-- MainPagePlayScreen -->

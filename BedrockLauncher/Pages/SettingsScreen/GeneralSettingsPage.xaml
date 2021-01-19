@@ -7,7 +7,7 @@
       xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="BedrockLauncher.GeneralSettingsPage"
       mc:Ignorable="d" 
       d:DesignHeight="828" d:DesignWidth="525"
-      Title="GeneralSettingsPage" MinWidth="828" MinHeight="525">
+      Title="GeneralSettingsPage" Initialized="Page_Initialized" MinWidth="828" MinHeight="525">
     <Page.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -543,6 +543,6 @@
             </ComboBoxItem>
         </ComboBox>
         <TextBlock Margin="42,128,0,0" FontWeight="Bold" FontSize="11" Text="{DynamicResource MainWindowSettingsScreen_LauncherSettingsSubtitle}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <CheckBox x:Name="test" Foreground="White" Content="Использовать бета-версию лаунчера" HorizontalAlignment="Left" Margin="42,156,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
+        <CheckBox x:Name="keepLauncherOpenCheckBox" Click="keepLauncherOpenCheckBox_Checked" Foreground="White" Content="{DynamicResource MainWindowSettingsScreen_KeepLauncherOpen}" HorizontalAlignment="Left" Margin="42,156,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
     </Grid>
 </Page>
