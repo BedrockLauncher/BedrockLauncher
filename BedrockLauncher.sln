@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrockLauncher", "BedrockL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benhancer", "Benhancer\Benhancer.csproj", "{1CC094F4-F755-44DA-A444-C1FAE8D6C430}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enhancer", "Enhancer\Enhancer.csproj", "{0650A52E-92B9-40D1-9E8E-E818B2C36DA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		All|Any CPU = All|Any CPU
@@ -56,6 +58,24 @@ Global
 		{1CC094F4-F755-44DA-A444-C1FAE8D6C430}.Release|x64.Build.0 = Release|Any CPU
 		{1CC094F4-F755-44DA-A444-C1FAE8D6C430}.Release|x86.ActiveCfg = Release|Any CPU
 		{1CC094F4-F755-44DA-A444-C1FAE8D6C430}.Release|x86.Build.0 = Release|Any CPU
+		{0650A52E-92B9-40D1-9E8E-E818B2C36DA8}.All|Any CPU.ActiveCfg = Debug|Any CPU
+		{0650A52E-92B9-40D1-9E8E-E818B2C36DA8}.All|Any CPU.Build.0 = Debug|Any CPU
+		{0650A52E-92B9-40D1-9E8E-E818B2C36DA8}.All|x64.ActiveCfg = Debug|Any CPU
+		{0650A52E-92B9-40D1-9E8E-E818B2C36DA8}.All|x64.Build.0 = Debug|Any CPU
+		{0650A52E-92B9-40D1-9E8E-E818B2C36DA8}.All|x86.ActiveCfg = Debug|Any CPU
+		{0650A52E-92B9-40D1-9E8E-E818B2C36DA8}.All|x86.Build.0 = Debug|Any CPU
+		{0650A52E-92B9-40D1-9E8E-E818B2C36DA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0650A52E-92B9-40D1-9E8E-E818B2C36DA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0650A52E-92B9-40D1-9E8E-E818B2C36DA8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0650A52E-92B9-40D1-9E8E-E818B2C36DA8}.Debug|x64.Build.0 = Debug|Any CPU
+		{0650A52E-92B9-40D1-9E8E-E818B2C36DA8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0650A52E-92B9-40D1-9E8E-E818B2C36DA8}.Debug|x86.Build.0 = Debug|Any CPU
+		{0650A52E-92B9-40D1-9E8E-E818B2C36DA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0650A52E-92B9-40D1-9E8E-E818B2C36DA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0650A52E-92B9-40D1-9E8E-E818B2C36DA8}.Release|x64.ActiveCfg = Release|Any CPU
+		{0650A52E-92B9-40D1-9E8E-E818B2C36DA8}.Release|x64.Build.0 = Release|Any CPU
+		{0650A52E-92B9-40D1-9E8E-E818B2C36DA8}.Release|x86.ActiveCfg = Release|Any CPU
+		{0650A52E-92B9-40D1-9E8E-E818B2C36DA8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -159,6 +159,7 @@
     <Compile Include="SettingsScreen.xaml.cs">
       <DependentUpon>SettingsScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Updater\Updater.cs" />
     <Compile Include="VersionDownloader.cs" />
     <Compile Include="VersionList.cs" />
     <Compile Include="WUProtocol.cs" />

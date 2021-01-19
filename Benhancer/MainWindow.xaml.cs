@@ -26,6 +26,7 @@ namespace Benhancer
         public bool IsZoomEnabled = false;
         public MainWindow()
         {
+            this.Show();
             while (MinecraftInject() == false)
             {
                 MinecraftInject();
