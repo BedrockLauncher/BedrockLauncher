@@ -13,5 +13,5 @@ This tool will **not** help you to pirate the game, it requires that you have a 
 - Xbox Insider Hub subscription if you want to be able download beta versions
 
 ## Compiling the launcher yourself
-Be sure you have installed default of .NET desktop development, you can find it in visual studio installer
+Be sure you have installed default of .NET desktop development, you can find it in visual studio installer <br />
 Open .sln project file in visual studio and press build button
