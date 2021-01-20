@@ -132,6 +132,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BetterBedrock\BetterBedrockMain.cs" />
+    <Compile Include="Pages\ErrorScreen\ErrorScreen.xaml.cs">
+      <DependentUpon>ErrorScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\InstallationsScreen\InstallationsScreen.xaml.cs">
       <DependentUpon>InstallationsScreen.xaml</DependentUpon>
     </Compile>
@@ -172,6 +175,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </DesignData>
+    <Page Include="Pages\ErrorScreen\ErrorScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\InstallationsScreen\InstallationsScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

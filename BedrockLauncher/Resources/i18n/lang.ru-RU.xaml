@@ -37,4 +37,10 @@
     <v:String x:Key="MainWindowSettingsScreen_SupportCreatorSubtitle">ПОДДЕРЖАТЬ АВТОРА</v:String>
 
     <v:String x:Key="MainWindowSettingsScreen_SupportCreatorButton">Поддержать автора</v:String>
+    <!-- ErrorScreen -->
+    <v:String x:Key="ErrorScreen_Title">ОШИБКА</v:String>
+    <v:String x:Key="ErrorScreen_SubTitle">Сбой лаунчера</v:String>
+    <v:String x:Key="ErrorScreen_DefaultErrorMessage">Произошел сбой лаунчера из-за непредвиденной ошибки. Приносим свои извинения за неудобства.</v:String>
+    <v:String x:Key="ErrorScreen_CloseButton">Закрыть</v:String>
+    <v:String x:Key="ErrorScreen_ViewCrash">Просмотреть отчёт об ошибке</v:String>
 </ResourceDictionary>

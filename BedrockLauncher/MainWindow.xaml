@@ -506,7 +506,7 @@
                                 <Setter Property="Background" TargetName="Bd" Value="#FF008542"/>
                                 <Setter Property="BorderBrush" TargetName="Bd" Value="#FF008542"/>
                             </MultiTrigger>
-                            
+
                             <MultiTrigger>
                                 <MultiTrigger.Conditions>
                                     <Condition Property="IsSelected" Value="False"/>
@@ -609,5 +609,6 @@
             </ToggleButton>
             <Image IsHitTestVisible="False" SnapsToDevicePixels="True" Source="Resources/images/settings_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
         </Grid>
+        <Frame x:Name="MainWindowOverlayFrame" Margin="0" NavigationUIVisibility="Hidden" Source="/BedrockLauncher;component/Pages/ErrorScreen/ErrorScreen.xaml"/>
     </Grid>
 </Window>
