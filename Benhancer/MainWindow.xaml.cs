@@ -2,6 +2,10 @@
 using System.Windows;
 using Gma.System.MouseKeyHook;
 using System.Threading;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.Windows.Threading;
+
 
 namespace Benhancer
 {
@@ -48,7 +52,7 @@ namespace Benhancer
                 Console.WriteLine("Process PID: " + mem.GetProcIdFromName("Minecraft.Windows"));
                 return true;
             }
-            else { Console.WriteLine("Not Injected...Trying to inject after 5 sec") ; Thread.Sleep(5000); return false; }
+            else { Console.WriteLine("Not Injected...Trying to inject after 5 sec"); Thread.Sleep(5000); return false; }
         }
         public void Zoom(bool Enable)
         {
@@ -80,6 +84,14 @@ namespace Benhancer
                     {
                         Zoom(true);
                         IsZoomEnabled = true;
+                    }
+                    else if (e.KeyCode.ToString() == "Escape")
+                    {
+                        Console.WriteLine("kkk");
+                        int pid = mem.GetProcIdFromName("Minecraft.Windows");
+                        var process = System.Diagnostics.Process.GetProcessById(pid);
+                        //process.;
+
                     }
                     break;
             }

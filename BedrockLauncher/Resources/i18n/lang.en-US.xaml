@@ -43,4 +43,8 @@
     <v:String x:Key="ErrorScreen_DefaultErrorMessage">An unexpected issue occurred and the launcher has crashed. We're sorry for the inconvenience.</v:String>
     <v:String x:Key="ErrorScreen_CloseButton">Close</v:String>
     <v:String x:Key="ErrorScreen_ViewCrash">View crash report</v:String>
+
+    <!-- Errors -->
+    <v:String x:Key="AuthenticationFailed_Title">Authentication failed</v:String>
+    <v:String x:Key="AuthenticationFailed">Failed to authenticate. Please make sure your account is subscribed to the beta programme.</v:String>
 </ResourceDictionary>

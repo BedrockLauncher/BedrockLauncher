@@ -43,4 +43,8 @@
     <v:String x:Key="ErrorScreen_DefaultErrorMessage">Произошел сбой лаунчера из-за непредвиденной ошибки. Приносим свои извинения за неудобства.</v:String>
     <v:String x:Key="ErrorScreen_CloseButton">Закрыть</v:String>
     <v:String x:Key="ErrorScreen_ViewCrash">Просмотреть отчёт об ошибке</v:String>
+
+    <!-- Errors -->
+    <v:String x:Key="AuthenticationFailed_Title">Ошибка аутентификации</v:String>
+    <v:String x:Key="AuthenticationFailed">Не удалось аутентифицироваться. Убедитесь, что ваш аккаунт подписан к бета-программе.</v:String>
 </ResourceDictionary>

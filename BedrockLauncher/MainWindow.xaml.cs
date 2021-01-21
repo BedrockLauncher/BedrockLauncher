@@ -321,7 +321,10 @@ namespace BedrockLauncher
                     {
                         v.StateChangeInfo = null;
                         Debug.WriteLine("Authentication failed:\n" + e.ToString());
-                        MessageBox.Show("Failed to authenticate. Please make sure your account is subscribed to the beta programme.\n\n" + e.ToString(), "Authentication failed");
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            ErrorScreenShow.errormsg("autherror");
+                        });
                         return;
                     }
                 }
@@ -495,7 +498,7 @@ namespace BedrockLauncher
                     break;
             }
             // Trying to find and open java launcher shortcut
-            try { Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu) + @"\Programs\Minecraft Launcher\Minecraft Launcher"); Application.Current.MainWindow.Close(); } catch { MessageBox.Show("Cant find java launcher :/"); }
+            try { Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu) + @"\Programs\Minecraft Launcher\Minecraft Launcher"); Application.Current.MainWindow.Close(); } catch { ErrorScreenShow.errormsg(); }
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)

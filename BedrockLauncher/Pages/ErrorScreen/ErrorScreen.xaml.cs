@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BedrockLauncher
 {
@@ -24,15 +13,35 @@ namespace BedrockLauncher
         {
             InitializeComponent();
         }
-
         private void ErrorScreenCloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Application.Current.MainWindow).MainWindowOverlayFrame.Navigate(null);
+            // As i understand it not only hide error screen overlay, but also clear it from memory
+            ((MainWindow)Application.Current.MainWindow).MainWindowOverlayFrame.Content = null;
         }
 
         private void ErrorScreenViewCrashButton_Click(object sender, RoutedEventArgs e)
         {
-
+            System.Diagnostics.Process.Start("notepad.exe", $@"{Environment.CurrentDirectory}\Log.txt");
+        }
+    }
+    public static class ErrorScreenShow
+    {
+        public static void errormsg(string error = null)
+        {
+            // Show default error message
+            if (error == null)
+            {
+                ((MainWindow)Application.Current.MainWindow).MainWindowOverlayFrame.Navigate(new ErrorScreen());
+            }
+            switch (error)
+            {
+                case "autherror":
+                    ErrorScreen errorScreen = new ErrorScreen();
+                    errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "AuthenticationFailed_Title");
+                    errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "AuthenticationFailed");
+                    ((MainWindow)Application.Current.MainWindow).MainWindowOverlayFrame.Navigate(errorScreen);
+                    break;
+            }
         }
     }
 }

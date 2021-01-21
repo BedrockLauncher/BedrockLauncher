@@ -320,5 +320,8 @@
     <Resource Include="BetterBedrock\files\glyph_00.png" />
     <Resource Include="BetterBedrock\files\glyph_E0.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="WUTokenHelper.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

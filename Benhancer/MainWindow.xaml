@@ -5,4 +5,4 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Benhancer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Visibility="Visible" Opacity="0.5" WindowStyle="None" ShowInTaskbar="False" Foreground="{x:Null}" MinWidth="800" MinHeight="450" AllowsTransparency="True"/>
+        Title="MainWindow" Height="450" Width="800" Visibility="Visible" Opacity="0.5" WindowStyle="None" ShowInTaskbar="False" Foreground="{x:Null}" MinWidth="800" MinHeight="450"/>
