@@ -129,10 +129,10 @@ namespace BedrockLauncher
                 switch (version)
                 {
                     case "1.16.40.2":
-                        MakeMagic(appDirectory);
+                        //MakeMagic(appDirectory);
                         break;
                     default:
-                        MakeMagic(appDirectory);
+                        //MakeMagic(appDirectory);
                         break;
                 }
         }

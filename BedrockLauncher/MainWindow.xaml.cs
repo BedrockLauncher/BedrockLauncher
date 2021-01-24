@@ -115,7 +115,10 @@ namespace BedrockLauncher
                 catch (Exception e)
                 {
                     Debug.WriteLine("App re-register failed:\n" + e.ToString());
-                    MessageBox.Show("App re-register failed:\n" + e.ToString());
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        ErrorScreenShow.errormsg("appregistererror");
+                    });
                     _hasLaunchTask = false;
                     v.StateChangeInfo = null;
                     return;
@@ -128,7 +131,8 @@ namespace BedrockLauncher
                     Debug.WriteLine("App launch finished!");
                     _hasLaunchTask = false;
                     v.StateChangeInfo = null;
-                    // close launcher if needed
+                    // close launcher if needed and hide progressbar
+                    Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).ProgressBarGrid.Visibility = Visibility.Hidden; });
                     if (Properties.Settings.Default.KeepLauncherOpenCheckBox == false)
                     {
                         await Application.Current.Dispatcher.InvokeAsync(() =>
@@ -141,7 +145,11 @@ namespace BedrockLauncher
                 catch (Exception e)
                 {
                     Debug.WriteLine("App launch failed:\n" + e.ToString());
-                    MessageBox.Show("App launch failed:\n" + e.ToString());
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        ((MainWindow)Application.Current.MainWindow).ProgressBarGrid.Visibility = Visibility.Hidden;
+                        ErrorScreenShow.errormsg("applauncherror");
+                    });
                     _hasLaunchTask = false;
                     v.StateChangeInfo = null;
                     return;
@@ -323,6 +331,7 @@ namespace BedrockLauncher
                         Debug.WriteLine("Authentication failed:\n" + e.ToString());
                         Application.Current.Dispatcher.Invoke(() =>
                         {
+                            ((MainWindow)Application.Current.MainWindow).ProgressBarGrid.Visibility = Visibility.Hidden;
                             ErrorScreenShow.errormsg("autherror");
                         });
                         return;
@@ -341,28 +350,22 @@ namespace BedrockLauncher
                         v.StateChangeInfo.DownloadedBytes = current;
                     }, cancelSource.Token);
                     Debug.WriteLine("Download complete");
-                    
-                    //await System.Windows.Threading.Dispatcher.CurrentDispatcher.InvokeAsync((Action)(() => { ((MainWindow)Application.Current.MainWindow).pr; }));
 
                 }
                 catch (Exception e)
                 {
                     Debug.WriteLine("Download failed:\n" + e.ToString());
                     if (!(e is TaskCanceledException))
-                        MessageBox.Show("Download failed:\n" + e.ToString());
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            ((MainWindow)Application.Current.MainWindow).ProgressBarGrid.Visibility = Visibility.Hidden;
+                            ErrorScreenShow.errormsg("downloadfailederror");
+                        });
                     v.StateChangeInfo = null;
                     return;
                 }
                 try
                 {
-                    // Better Bedrock
-                    Application.Current.Dispatcher.Invoke(() =>
-                    {
-                        //button1.Background = (Brush)this.TryFindResource("buttonGradientBrush");
-                        ((MainWindow)Application.Current.MainWindow).progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarInstalling");
-                        ((MainWindow)Application.Current.MainWindow).ProgressBarText.Text = "";
-                        //InvokeLaunch(VersionList.SelectedItem as Version);
-                    });
                     v.StateChangeInfo.IsExtracting = true;
                     string dirPath = v.GameDirectory;
                     if (Directory.Exists(dirPath))
@@ -382,7 +385,11 @@ namespace BedrockLauncher
                 catch (Exception e)
                 {
                     Debug.WriteLine("Extraction failed:\n" + e.ToString());
-                    MessageBox.Show("Extraction failed:\n" + e.ToString());
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        ((MainWindow)Application.Current.MainWindow).ProgressBarGrid.Visibility = Visibility.Hidden;
+                        ErrorScreenShow.errormsg("extractionerror");
+                    });
                     v.StateChangeInfo = null;
                     return;
                 }
@@ -498,7 +505,7 @@ namespace BedrockLauncher
                     break;
             }
             // Trying to find and open java launcher shortcut
-            try { Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu) + @"\Programs\Minecraft Launcher\Minecraft Launcher"); Application.Current.MainWindow.Close(); } catch { ErrorScreenShow.errormsg(); }
+            try { Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu) + @"\Programs\Minecraft Launcher\Minecraft Launcher"); Application.Current.MainWindow.Close(); } catch { ErrorScreenShow.errormsg("CantFindJavaLauncher"); }
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
@@ -724,25 +731,25 @@ namespace BedrockLauncher
             public bool IsInitializing
             {
                 get { return _isInitializing; }
-                set { _isInitializing = value; ProgressBarIsIndeterminate(_isInitializing); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
+                set { _isInitializing = value; Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarDownloading"); }); ProgressBarIsIndeterminate(_isInitializing); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
             }
 
             public bool IsExtracting
             {
                 get { return _isExtracting; }
-                set { _isExtracting = value; ProgressBarIsIndeterminate(_isExtracting); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
+                set { _isExtracting = value; Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarExtracting"); }); Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).ProgressBarText.Text = ""; }); ProgressBarIsIndeterminate(_isExtracting); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
             }
 
             public bool IsUninstalling
             {
                 get { return _isUninstalling; }
-                set { _isUninstalling = value; ProgressBarIsIndeterminate(_isUninstalling); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
+                set { _isUninstalling = value; Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarUninstalling"); }); Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).ProgressBarGrid.Visibility = Visibility.Visible; }); ProgressBarIsIndeterminate(_isUninstalling); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
             }
 
             public bool IsLaunching
             {
                 get { return _isLaunching; }
-                set { _isLaunching = value; ProgressBarIsIndeterminate(_isLaunching); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
+                set { _isLaunching = value; Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarLaunching"); }); Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).ProgressBarGrid.Visibility = Visibility.Visible; }); ProgressBarIsIndeterminate(_isLaunching); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
             }
 
             public bool IsProgressIndeterminate

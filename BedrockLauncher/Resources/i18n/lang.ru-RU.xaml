@@ -16,8 +16,10 @@
     <v:String x:Key="MainPage_InstallationsButton">Установки</v:String>
     <v:String x:Key="MainPage_SkinsButton">Скины</v:String>
     <v:String x:Key="MainPage_PatchNotesButton">Список изменений</v:String>
-    <v:String x:Key="MainPage_ProgressBarDownload">Загрузка</v:String>
+    <v:String x:Key="MainPage_ProgressBarDownloading">Загрузка</v:String>
     <v:String x:Key="MainPage_ProgressBarInstalling">Установка</v:String>
+    <v:String x:Key="MainPage_ProgressBarLaunching">Запуск</v:String>
+    <v:String x:Key="MainPage_ProgressBarExtracting">Распаковка</v:String>
     <!-- MainWindowSettingsScreen -->
     <v:String x:Key="MainWindowSettingsScreen_Title">НАСТРОЙКИ</v:String>
     <v:String x:Key="MainWindowSettingsScreen_GeneralButton">Основное</v:String>
@@ -47,4 +49,19 @@
     <!-- Errors -->
     <v:String x:Key="AuthenticationFailed_Title">Ошибка аутентификации</v:String>
     <v:String x:Key="AuthenticationFailed">Не удалось аутентифицироваться. Убедитесь, что ваш аккаунт подписан к бета-программе.</v:String>
+
+    <v:String x:Key="CantFindJavaLauncher_Title">Не удалось сменить лаунчер</v:String>
+    <v:String x:Key="CantFindJavaLauncher">Не удалось найти лаунчер. Убедитесь, что у вас установлен оригинальный Minecraft лаунчер с Minecraft.net .</v:String>
+
+    <v:String x:Key="AppReregisterFailed_Title">Ошибка установки</v:String>
+    <v:String x:Key="AppReregisterFailed">Пожалуйста, попробуйте снова :(</v:String>
+
+    <v:String x:Key="AppLaunchFailed_Title">Ошибк запуска</v:String>
+    <v:String x:Key="AppLaunchFailed">Пожалуйста, попробуйте снова :(</v:String>
+
+    <v:String x:Key="AppDownloadFailed_Title">Ошибка загрузки</v:String>
+    <v:String x:Key="AppDownloadFailed">Пожалуйста, попробуйте снова :(</v:String>
+
+    <v:String x:Key="AppExtractionFailed_Title">Ошибка распаковки</v:String>
+    <v:String x:Key="AppExtractionFailed">Пожалуйста, попробуйте снова :(</v:String>
 </ResourceDictionary>

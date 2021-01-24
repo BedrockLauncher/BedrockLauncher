@@ -16,8 +16,10 @@
     <v:String x:Key="MainPage_InstallationsButton">Installations</v:String>
     <v:String x:Key="MainPage_SkinsButton">Skins</v:String>
     <v:String x:Key="MainPage_PatchNotesButton">Patch notes</v:String>
-    <v:String x:Key="MainPage_ProgressBarDownload">Downloading</v:String>
+    <v:String x:Key="MainPage_ProgressBarDownloading">Downloading</v:String>
     <v:String x:Key="MainPage_ProgressBarInstalling">Installing</v:String>
+    <v:String x:Key="MainPage_ProgressBarLaunching">Launching</v:String>
+    <v:String x:Key="MainPage_ProgressBarExtracting">Extracting</v:String>
     <!-- MainWindowSettingsScreen -->
     <v:String x:Key="MainWindowSettingsScreen_Title">SETTINGS</v:String>
     <v:String x:Key="MainWindowSettingsScreen_GeneralButton">General</v:String>
@@ -47,4 +49,19 @@
     <!-- Errors -->
     <v:String x:Key="AuthenticationFailed_Title">Authentication failed</v:String>
     <v:String x:Key="AuthenticationFailed">Failed to authenticate. Please make sure your account is subscribed to the beta programme.</v:String>
+
+    <v:String x:Key="CantFindJavaLauncher_Title">Could not switch launcher</v:String>
+    <v:String x:Key="CantFindJavaLauncher">Could not find launcher. Be sure you have installed original Minecraft launcher from Minecraft.net .</v:String>
+
+    <v:String x:Key="AppReregisterFailed_Title">App re-register failed</v:String>
+    <v:String x:Key="AppReregisterFailed">Please try again :(</v:String>
+
+    <v:String x:Key="AppLaunchFailed_Title">Launch failed</v:String>
+    <v:String x:Key="AppLaunchFailed">Please try again :(</v:String>
+
+    <v:String x:Key="AppDownloadFailed_Title">Download failed</v:String>
+    <v:String x:Key="AppDownloadFailed">Please try again :(</v:String>
+
+    <v:String x:Key="AppExtractionFailed_Title">Extraction failed</v:String>
+    <v:String x:Key="AppExtractionFailed">Please try again :(</v:String>
 </ResourceDictionary>
