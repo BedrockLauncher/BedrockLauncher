@@ -21,7 +21,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="IsFirstLaunch" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="KeepLauncherOpenCheckBox" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

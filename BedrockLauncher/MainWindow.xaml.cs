@@ -55,7 +55,15 @@ namespace BedrockLauncher
         public MainWindow()
         {
             InitializeComponent();
-
+            // show first launch window
+            if (Properties.Settings.Default.IsFirstLaunch != true)
+            {
+                MainWindowOverlayFrame.Navigate(new WelcomePage());
+                Properties.Settings.Default.IsFirstLaunch = false;
+                Properties.Settings.Default.Save();
+            }
+            
+            
             _versions = new VersionList("versions.json", this);
             VersionList.ItemsSource = _versions;
             var view = CollectionViewSource.GetDefaultView(VersionList.ItemsSource) as CollectionView;
