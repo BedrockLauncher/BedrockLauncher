@@ -15,3 +15,7 @@ This tool will **not** help you to pirate the game, it requires that you have a 
 ## Compiling the launcher yourself
 Be sure you have installed default of .NET desktop development, you can find it in visual studio installer <br />
 Open .sln project file in visual studio and press build button
+
+## Known issues
+Launcher may not work until you download Minecraft from store at least once <br />
+Beta versions can't be installed from launcher
