@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Globalization;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Linq;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Windows.Forms.Design;
 using Newtonsoft.Json;
 using BedrockLauncher;
 
@@ -44,13 +41,16 @@ namespace BedrockLauncher
         private volatile int _userVersionDownloaderLoginTaskStarted;
         private volatile bool _hasLaunchTask = false;
 
+        // wil be removed and rewritten
         public BetterBedrockMain betterBedrockMain = new BetterBedrockMain();
 
+        // load pages to not create new in memory after
         public MainPage mainPage = new MainPage();
         public GeneralSettingsPage generalSettingsPage = new GeneralSettingsPage();
         public SettingsScreen settingsScreenPage = new SettingsScreen();
         public NoContentPage noContentPage = new NoContentPage();
         public PlayScreenPage playScreenPage = new PlayScreenPage();
+        public InstallationsScreen installationsScreen = new InstallationsScreen();
 
         public MainWindow()
         {
@@ -58,7 +58,7 @@ namespace BedrockLauncher
             // show first launch window
             if (Properties.Settings.Default.IsFirstLaunch != true)
             {
-                MainWindowOverlayFrame.Navigate(new WelcomePage());
+                //MainWindowOverlayFrame.Navigate(new WelcomePage());
                 Properties.Settings.Default.IsFirstLaunch = false;
                 Properties.Settings.Default.Save();
             }
@@ -90,9 +90,7 @@ namespace BedrockLauncher
                 }
             });
         }
-
-
-        public void LanguageChange(string language)
+    public void LanguageChange(string language)
         {
             ResourceDictionary dict = new ResourceDictionary
             {
@@ -100,7 +98,6 @@ namespace BedrockLauncher
             };
             Application.Current.Resources.MergedDictionaries.Add(dict);
         }
-
         public ICommand LaunchCommand => new RelayCommand((v) => InvokeLaunch((Version)v));
 
         public ICommand RemoveCommand => new RelayCommand((v) => InvokeRemove((Version)v));
@@ -429,123 +426,6 @@ namespace BedrockLauncher
             return (!v.IsBeta || Properties.Settings.Default.ShowBetas) && (v.IsInstalled || !Properties.Settings.Default.ShowInstalledOnly);
         }
 
-        private void NewsButton_Click(object sender, RoutedEventArgs e)
-        {
-            switch (NewsButton.IsChecked)
-            {
-                case true:
-                    MainWindowFrame.Navigate(noContentPage); // Переключение фрейма MainWindow на нужное окно
-                    PlayScreenBorder.Visibility = Visibility.Hidden; // Скрывает нижнюю панель в MainWindow
-
-                    // Выключение других кнопок
-                    BedrockEditionButton.IsChecked = false;
-                    SettingsButton.IsChecked = false;
-                    break;
-                case false:
-                    NewsButton.IsChecked = true; // Не снимает свойства IsChecked при повторном нажатии на кнопку
-                    break;
-            }
-        }
-
-        private void BedrockEditionButton_Click(object sender, RoutedEventArgs e)
-        {
-            switch (BedrockEditionButton.IsChecked)
-            {
-                case true:
-                    MainWindowFrame.Navigate(mainPage); // Переключение фрейма MainWindow на окно MainPage.xaml
-                    mainPage.MainPageFrame.Navigate(playScreenPage); // Переключение фрейма MainPage на окно PlayScreenPage.xaml
-                    PlayScreenBorder.Visibility = Visibility.Visible; // Показывает нижнюю панель в MainWindow
-                    // Оставляет нажатой только кнопку PlayButton в окне MainPage.xaml
-                    mainPage.PlayButton.IsChecked = true;
-                    mainPage.InstallationsButton.IsChecked = false;
-                    mainPage.SkinsButton.IsChecked = false;
-                    mainPage.PatchNotesButton.IsChecked = false;
-
-                    // Выключение других кнопок
-                    NewsButton.IsChecked = false;
-                    SettingsButton.IsChecked = false;
-                    break;
-                case false:
-                    BedrockEditionButton.IsChecked = true; // Не снимает свойства IsChecked при повторном нажатии на кнопку
-                    MainWindowFrame.Navigate(mainPage); // Переключение фрейма MainWindow на окно MainPage.xaml
-                    mainPage.MainPageFrame.Navigate(playScreenPage); // Переключение фрейма MainPage на окно PlayScreenPage.xaml
-                    PlayScreenBorder.Visibility = Visibility.Visible; // Показывает нижнюю панель в MainWindow
-
-                    // Оставляет нажатой только кнопку PlayButton в окне MainPage.xaml
-                    mainPage.PlayButton.IsChecked = true;
-                    mainPage.InstallationsButton.IsChecked = false;
-                    mainPage.SkinsButton.IsChecked = false;
-                    mainPage.PatchNotesButton.IsChecked = false;
-                    break;
-            }
-        }
-
-        private void JavaEditionButton_Click(object sender, RoutedEventArgs e)
-        {
-            switch (JavaEditionButton.IsChecked)
-            {
-                case true:
-                    MainWindowFrame.Navigate(mainPage); // Переключение фрейма MainWindow на окно MainPage.xaml
-                    mainPage.MainPageFrame.Navigate(playScreenPage); // Переключение фрейма MainPage на окно PlayScreenPage.xaml
-                    PlayScreenBorder.Visibility = Visibility.Visible; // Показывает нижнюю панель в MainWindow
-                    // Оставляет нажатой только кнопку PlayButton в окне MainPage.xaml
-                    mainPage.PlayButton.IsChecked = true;
-                    mainPage.InstallationsButton.IsChecked = false;
-                    mainPage.SkinsButton.IsChecked = false;
-                    mainPage.PatchNotesButton.IsChecked = false;
-
-                    // Выключение других кнопок
-                    NewsButton.IsChecked = false;
-                    SettingsButton.IsChecked = false;
-                    BedrockEditionButton.IsChecked = false;
-                    break;
-                case false:
-                    JavaEditionButton.IsChecked = true; // Не снимает свойства IsChecked при повторном нажатии на кнопку
-                    MainWindowFrame.Navigate(mainPage); // Переключение фрейма MainWindow на окно MainPage.xaml
-                    mainPage.MainPageFrame.Navigate(playScreenPage); // Переключение фрейма MainPage на окно PlayScreenPage.xaml
-                    PlayScreenBorder.Visibility = Visibility.Visible; // Показывает нижнюю панель в MainWindow
-
-                    // Оставляет нажатой только кнопку PlayButton в окне MainPage.xaml
-                    mainPage.PlayButton.IsChecked = true;
-                    mainPage.InstallationsButton.IsChecked = false;
-                    mainPage.SkinsButton.IsChecked = false;
-                    mainPage.PatchNotesButton.IsChecked = false;
-                    break;
-            }
-            // Trying to find and open java launcher shortcut
-            try { Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu) + @"\Programs\Minecraft Launcher\Minecraft Launcher"); Application.Current.MainWindow.Close(); } catch { ErrorScreenShow.errormsg("CantFindJavaLauncher"); }
-        }
-
-        private void SettingsButton_Click(object sender, RoutedEventArgs e)
-        {
-            switch (SettingsButton.IsChecked)
-            {
-                case true:
-                    MainWindowFrame.Navigate(settingsScreenPage); // Переключение фрейма MainWindow на нужное окно
-                    PlayScreenBorder.Visibility = Visibility.Hidden; // Скрывает нижнюю панель в MainWindow
-                    settingsScreenPage.SettingsScreenFrame.Navigate(generalSettingsPage);
-
-                    // Выключение других кнопок
-                    BedrockEditionButton.IsChecked = false;
-                    NewsButton.IsChecked = false;
-
-                    settingsScreenPage.GeneralButton.IsChecked = true;
-                    settingsScreenPage.AccountsButton.IsChecked = false;
-                    settingsScreenPage.AboutButton.IsChecked = false;
-
-                    //main
-                    break;
-                case false:
-                    settingsScreenPage.SettingsScreenFrame.Navigate(generalSettingsPage);
-                    SettingsButton.IsChecked = true; // Не снимает свойства IsChecked при повторном нажатии на кнопку
-                    settingsScreenPage.GeneralButton.IsChecked = true;
-                    settingsScreenPage.AccountsButton.IsChecked = false;
-                    settingsScreenPage.AboutButton.IsChecked = false;
-                    break;
-            }
-            
-        }
-
         private void ComboBoxItem_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
         {
             // To prevent scrolling when mouseover
@@ -623,6 +503,72 @@ namespace BedrockLauncher
                     break;
 
             }
+        }
+        public void ButtonManager(object sender, RoutedEventArgs e)
+        {
+            var toggleButton = sender as ToggleButton;
+            // just all buttons list
+            List<ToggleButton> toggleButtons = new List<ToggleButton>() { NewsButton, BedrockEditionButton, JavaEditionButton,
+            SettingsButton, mainPage.PlayButton, mainPage.InstallationsButton, mainPage.SkinsButton, mainPage.PatchNotesButton,
+                settingsScreenPage.GeneralButton, settingsScreenPage.AboutButton};
+
+            foreach (ToggleButton button in toggleButtons) { button.IsChecked = false; }
+            toggleButton.IsChecked = true;
+            PlayScreenBorder.Visibility = Visibility.Hidden;
+            if (toggleButton.Name == BedrockEditionButton.Name)
+            {
+                mainPage.PlayButton.IsChecked = true;
+                MainWindowFrame.Navigate(mainPage);
+                mainPage.MainPageFrame.Navigate(playScreenPage);
+                PlayScreenBorder.Visibility = Visibility.Visible;
+            }
+            else if (toggleButton.Name == NewsButton.Name)
+            {
+                MainWindowFrame.Navigate(noContentPage);
+            }
+            else if (toggleButton.Name == JavaEditionButton.Name)
+            {
+                // Trying to find and open java launcher shortcut
+                try { Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu) + @"\Programs\Minecraft Launcher\Minecraft Launcher"); Application.Current.MainWindow.Close(); } catch { ErrorScreenShow.errormsg("CantFindJavaLauncher"); }
+            }
+            else if (toggleButton.Name == SettingsButton.Name)
+            {
+                settingsScreenPage.GeneralButton.IsChecked = true;
+                MainWindowFrame.Navigate(settingsScreenPage);
+                settingsScreenPage.SettingsScreenFrame.Navigate(generalSettingsPage);
+            }
+            // MainPageButtons
+            else if (toggleButton.Name == mainPage.PlayButton.Name)
+            {
+                MainWindowFrame.Navigate(mainPage);
+                mainPage.PlayButton.IsChecked = true;
+                BedrockEditionButton.IsChecked = true;
+                PlayScreenBorder.Visibility = Visibility.Visible;
+                mainPage.MainPageFrame.Navigate(playScreenPage);
+            }
+            else if (toggleButton.Name == mainPage.InstallationsButton.Name)
+            {
+                MainWindowFrame.Navigate(mainPage);
+                mainPage.InstallationsButton.IsChecked = true;
+                BedrockEditionButton.IsChecked = true;
+                mainPage.MainPageFrame.Navigate(installationsScreen);
+            }
+            else if (toggleButton.Name == mainPage.SkinsButton.Name)
+            {
+                MainWindowFrame.Navigate(mainPage);
+                mainPage.SkinsButton.IsChecked = true;
+                BedrockEditionButton.IsChecked = true;
+                mainPage.MainPageFrame.Navigate(noContentPage);
+            }
+            else if (toggleButton.Name == mainPage.PatchNotesButton.Name)
+            {
+                MainWindowFrame.Navigate(mainPage);
+                mainPage.PatchNotesButton.IsChecked = true;
+                BedrockEditionButton.IsChecked = true;
+                mainPage.MainPageFrame.Navigate(noContentPage);
+            }
+            else { }
+
         }
     }
 

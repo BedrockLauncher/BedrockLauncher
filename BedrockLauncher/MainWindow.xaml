@@ -531,9 +531,9 @@
         </Style>
     </Window.Resources>
     <Grid Margin="0,0,0,0" Background="WhiteSmoke">
-        <StackPanel Width="180" Background="#FF1E1E1E" HorizontalAlignment="Left">
+        <StackPanel x:Name="buttonStackPanel" Width="180" Background="#FF1E1E1E" HorizontalAlignment="Left">
             <Grid Height="57" Margin="1,0,0,0" VerticalAlignment="Top">
-                <ToggleButton x:Name="NewsButton" Click="NewsButton_Click" VerticalAlignment="Top" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False">
+                <ToggleButton x:Name="NewsButton" Click="ButtonManager" VerticalAlignment="Top" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False">
                     <ToggleButton.ToolTip>
                         <ToolTip Content="{DynamicResource MainWindow_NewsButton}"/>
                     </ToggleButton.ToolTip>
@@ -542,7 +542,7 @@
                 <Image IsHitTestVisible="False" SnapsToDevicePixels="True" Source="Resources/images/news_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
             </Grid>
             <Grid Height="57" Margin="1,0,0,0" VerticalAlignment="Top">
-                <ToggleButton x:Name="BedrockEditionButton" Click="BedrockEditionButton_Click" VerticalAlignment="Top" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False" IsChecked="True">
+                <ToggleButton x:Name="BedrockEditionButton" Click="ButtonManager" VerticalAlignment="Top" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False" IsChecked="True">
                     <ToggleButton.ToolTip>
                         <ToolTip Content="{DynamicResource MainWindow_MinecraftEdition}"/>
                     </ToggleButton.ToolTip>
@@ -551,7 +551,7 @@
                 <Image IsHitTestVisible="False" SnapsToDevicePixels="True" Source="Resources/images/bedrock_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
             </Grid>
             <Grid Height="57" Margin="1,0,0,0" VerticalAlignment="Top">
-                <ToggleButton x:Name="JavaEditionButton" Click="JavaEditionButton_Click" VerticalAlignment="Top" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False" IsChecked="False">
+                <ToggleButton x:Name="JavaEditionButton" Click="ButtonManager" VerticalAlignment="Top" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False" IsChecked="False">
                     <ToggleButton.ToolTip>
                         <ToolTip Content="{DynamicResource MainWindow_MinecraftJavaLauncher}"/>
                     </ToggleButton.ToolTip>
@@ -601,7 +601,7 @@
             </ComboBox>
         </Grid>
         <Grid Height="57" Margin="1,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left">
-            <ToggleButton x:Name="SettingsButton" Click="SettingsButton_Click" VerticalAlignment="Bottom" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" Width="179" HorizontalContentAlignment="Left" Focusable="False" HorizontalAlignment="Left">
+            <ToggleButton x:Name="SettingsButton" Click="ButtonManager" VerticalAlignment="Bottom" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" Width="179" HorizontalContentAlignment="Left" Focusable="False" HorizontalAlignment="Left">
                 <ToggleButton.ToolTip>
                     <ToolTip Content="{DynamicResource ResourceKey=MainWindow_SettingsButton}"/>
                 </ToggleButton.ToolTip>
