@@ -115,5 +115,14 @@ namespace BedrockLauncher.Properties {
                 this["KeepLauncherOpenCheckBox"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/XlynxX/BedrockLauncher")]
+        public string GithubPage {
+            get {
+                return ((string)(this["GithubPage"]));
+            }
+        }
     }
 }

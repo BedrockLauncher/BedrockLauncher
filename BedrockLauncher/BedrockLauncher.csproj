@@ -139,6 +139,12 @@
     <Compile Include="Pages\FirstLaunch\WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\FirstLaunch\WelcomePageTwo.xaml.cs">
+      <DependentUpon>WelcomePageTwo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FirstLaunch\WelcomePageOne.xaml.cs">
+      <DependentUpon>WelcomePageOne.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\InstallationsScreen\InstallationsScreen.xaml.cs">
       <DependentUpon>InstallationsScreen.xaml</DependentUpon>
     </Compile>
@@ -184,6 +190,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\FirstLaunch\WelcomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FirstLaunch\WelcomePageTwo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\FirstLaunch\WelcomePageOne.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

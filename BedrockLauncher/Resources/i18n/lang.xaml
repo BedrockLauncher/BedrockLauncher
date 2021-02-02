@@ -11,6 +11,14 @@
     <v:String x:Key="MainWindow_SwitchEdition">Switch to</v:String>
     <v:String x:Key="MainWindow_Minecraft">Minecraft</v:String>
     <v:String x:Key="MainWindow_SettingsButton">Settings</v:String>
+    <!-- FirstLaunch -->
+    <v:String x:Key="FirstLaunch_WelcomeTitle">Welcome!</v:String>
+    <v:String x:Key="FirstLaunch_WelcomeSubTitle">Welcome to Minecraft Bedrock Launcher!</v:String>
+    <v:String x:Key="FirstLaunch_BeforeStartingToUse">Before using, please make sure you have downloaded the release from the official github or website.</v:String>
+    <v:String x:Key="FirstLaunch_CloseButton">Close</v:String>
+    <v:String x:Key="FirstLaunch_BackButton">Back</v:String>
+    <v:String x:Key="FirstLaunch_NextButton">Next</v:String>
+    <v:String x:Key="FirstLaunch_DownloadButton">Download</v:String>
     <!-- MainPagePlayScreen -->
     <v:String x:Key="MainPage_PlayButton">Play</v:String>
     <v:String x:Key="MainPage_InstallationsButton">Installations</v:String>
