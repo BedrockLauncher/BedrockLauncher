@@ -4,9 +4,11 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 
-namespace BedrockLauncher {
-    class WUProtocol {
-        //private static readonly string DEFAULT_URL = "https://fe3.delivery.mp.microsoft.com/ClientWebService/client.asmx";
+namespace MCLauncher
+{
+    class WUProtocol
+    {
+        private static readonly string DEFAULT_URL = "https://fe3.delivery.mp.microsoft.com/ClientWebService/client.asmx";
         private static readonly string SECURED_URL = "https://fe3.delivery.mp.microsoft.com/ClientWebService/client.asmx/secured";
 
         private static XNamespace soap = "http://www.w3.org/2003/05/soap-envelope";
@@ -18,16 +20,19 @@ namespace BedrockLauncher {
 
         private string _msaUserToken;
 
-        public void SetMSAUserToken(string token) {
+        public void SetMSAUserToken(string token)
+        {
             _msaUserToken = token;
         }
 
-        private XElement BuildWUTickets() {
+        private XElement BuildWUTickets()
+        {
             XElement tickets = new XElement(wuws + "WindowsUpdateTicketsToken",
                         new XAttribute(secutil + "id", "ClientMSA"),
                         new XAttribute(XNamespace.Xmlns + "wsu", secutil),
                         new XAttribute(XNamespace.Xmlns + "wuws", wuws));
-            if (_msaUserToken != null) {
+            if (_msaUserToken != null)
+            {
                 tickets.Add(new XElement("TicketType",
                     new XAttribute("Name", "MSA"),
                     new XAttribute("Version", "1.0"),
@@ -41,7 +46,8 @@ namespace BedrockLauncher {
             return tickets;
         }
 
-        private XElement BuildHeader(string url, string methodName) {
+        private XElement BuildHeader(string url, string methodName)
+        {
             DateTime now = DateTime.UtcNow;
             XElement header = new XElement(soap + "Header",
                 new XElement(addressing + "Action", "http://www.microsoft.com/SoftwareDistribution/Server/ClientWebService/" + methodName,
@@ -59,11 +65,13 @@ namespace BedrockLauncher {
             return header;
         }
 
-        public string GetDownloadUrl() {
+        public string GetDownloadUrl()
+        {
             return SECURED_URL;
         }
 
-        public XDocument BuildDownloadRequest(string updateIdentity, string revisionNumber) {
+        public XDocument BuildDownloadRequest(string updateIdentity, string revisionNumber)
+        {
             XElement envelope = new XElement(soap + "Envelope");
             envelope.Add(new XAttribute(XNamespace.Xmlns + "a", addressing));
             envelope.Add(new XAttribute(XNamespace.Xmlns + "s", soap));
@@ -80,7 +88,8 @@ namespace BedrockLauncher {
             return new XDocument(envelope);
         }
 
-        public string[] ExtractDownloadResponseUrls(XDocument doc) {
+        public string[] ExtractDownloadResponseUrls(XDocument doc)
+        {
             XmlNamespaceManager nsmgr = new XmlNamespaceManager(new NameTable());
             nsmgr.AddNamespace("s", "http://www.w3.org/2003/05/soap-envelope");
             nsmgr.AddNamespace("wu", "http://www.microsoft.com/SoftwareDistribution/Server/ClientWebService");

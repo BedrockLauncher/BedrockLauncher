@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Forms.Design;
 using Newtonsoft.Json;
 using BedrockLauncher;
+using MCLauncher;
 
 namespace BedrockLauncher
 {
@@ -62,8 +63,8 @@ namespace BedrockLauncher
                 Properties.Settings.Default.IsFirstLaunch = false;
                 Properties.Settings.Default.Save();
             }
-            
-            
+
+
             _versions = new VersionList("versions.json", this);
             VersionList.ItemsSource = _versions;
             var view = CollectionViewSource.GetDefaultView(VersionList.ItemsSource) as CollectionView;
@@ -304,15 +305,11 @@ namespace BedrockLauncher
 
         private void InvokeDownload(Version v)
         {
-            
-
-
             CancellationTokenSource cancelSource = new CancellationTokenSource();
             v.StateChangeInfo = new VersionStateChangeInfo();
             v.StateChangeInfo.IsInitializing = true;
             v.StateChangeInfo.CancelCommand = new RelayCommand((o) => cancelSource.Cancel());
 
-            Debug.WriteLine(v);
             Debug.WriteLine("Download start");
             Task.Run(async () => {
                 string dlPath = "Minecraft-" + v.Name + ".Appx";
@@ -334,11 +331,7 @@ namespace BedrockLauncher
                     {
                         v.StateChangeInfo = null;
                         Debug.WriteLine("Authentication failed:\n" + e.ToString());
-                        Application.Current.Dispatcher.Invoke(() =>
-                        {
-                            ((MainWindow)Application.Current.MainWindow).ProgressBarGrid.Visibility = Visibility.Hidden;
-                            ErrorScreenShow.errormsg("autherror");
-                        });
+                        MessageBox.Show("Failed to authenticate. Please make sure your account is subscribed to the beta programme.\n\n" + e.ToString(), "Authentication failed");
                         return;
                     }
                 }
@@ -355,17 +348,12 @@ namespace BedrockLauncher
                         v.StateChangeInfo.DownloadedBytes = current;
                     }, cancelSource.Token);
                     Debug.WriteLine("Download complete");
-
                 }
                 catch (Exception e)
                 {
                     Debug.WriteLine("Download failed:\n" + e.ToString());
                     if (!(e is TaskCanceledException))
-                        Application.Current.Dispatcher.Invoke(() =>
-                        {
-                            ((MainWindow)Application.Current.MainWindow).ProgressBarGrid.Visibility = Visibility.Hidden;
-                            ErrorScreenShow.errormsg("downloadfailederror");
-                        });
+                        MessageBox.Show("Download failed:\n" + e.ToString());
                     v.StateChangeInfo = null;
                     return;
                 }
@@ -379,31 +367,16 @@ namespace BedrockLauncher
                     v.StateChangeInfo = null;
                     File.Delete(Path.Combine(dirPath, "AppxSignature.p7x"));
                     File.Delete(dlPath);
-
-                    betterBedrockMain.BetterBedrock(v.DisplayName, v.GameDirectory);
-                    Application.Current.Dispatcher.Invoke(() =>
-                    {
-                        ((MainWindow)Application.Current.MainWindow).ProgressBarGrid.Visibility = Visibility.Hidden;
-                        //InvokeLaunch(VersionList.SelectedItem as Version);
-                    });
                 }
                 catch (Exception e)
                 {
                     Debug.WriteLine("Extraction failed:\n" + e.ToString());
-                    Application.Current.Dispatcher.Invoke(() =>
-                    {
-                        ((MainWindow)Application.Current.MainWindow).ProgressBarGrid.Visibility = Visibility.Hidden;
-                        ErrorScreenShow.errormsg("extractionerror");
-                    });
+                    MessageBox.Show("Extraction failed:\n" + e.ToString());
                     v.StateChangeInfo = null;
                     return;
                 }
                 v.StateChangeInfo = null;
                 v.UpdateInstallStatus();
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    InvokeLaunch(VersionList.SelectedItem as Version);
-                });
             });
         }
 
