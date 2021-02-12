@@ -18,27 +18,17 @@ namespace BedrockLauncher
     /// <summary>
     /// Логика взаимодействия для WelcomePageOne.xaml
     /// </summary>
-    public partial class WelcomePageTwo : Page
+    public partial class WelcomePageThree : Page
     {
         public WelcomePagesSwitcher pageSwitcher = new WelcomePagesSwitcher();
-        public WelcomePageTwo()
+        public WelcomePageThree()
         {
             InitializeComponent();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            pageSwitcher.MoveToPage(1);
-        }
-
-        private void NextButton_Click(object sender, RoutedEventArgs e)
-        {
-            pageSwitcher.MoveToPage(3);
-        }
-
-        private void DownloadButton_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Process.Start(Properties.Settings.Default.GithubPage);
+            pageSwitcher.MoveToPage(2);
         }
     }
 }

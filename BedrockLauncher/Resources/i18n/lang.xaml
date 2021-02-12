@@ -14,9 +14,13 @@
     <!-- FirstLaunch -->
     <v:String x:Key="FirstLaunch_WelcomeTitle">Welcome!</v:String>
     <v:String x:Key="FirstLaunch_WelcomeSubTitle">Welcome to Minecraft Bedrock Launcher!</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Create your first profile!</v:String>
     <v:String x:Key="FirstLaunch_BeforeStartingToUse">Before using, please make sure you have downloaded the release from the official github or website.</v:String>
     <v:String x:Key="FirstLaunch_CloseButton">Close</v:String>
     <v:String x:Key="FirstLaunch_BackButton">Back</v:String>
+    <v:String x:Key="FirstLaunch_GoBackButton">❮ GO BACK</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileText">PROFILE</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileButton">Create</v:String>
     <v:String x:Key="FirstLaunch_NextButton">Next</v:String>
     <v:String x:Key="FirstLaunch_DownloadButton">Download</v:String>
     <!-- MainPagePlayScreen -->

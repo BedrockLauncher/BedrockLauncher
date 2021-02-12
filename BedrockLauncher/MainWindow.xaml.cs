@@ -471,10 +471,14 @@ namespace BedrockLauncher
                 case "en-US":
                     LanguageChange("en-US");
                     break;
-
                 default:
                     break;
 
+            }
+            // Show welcome screen if its first launch
+            if (Properties.Settings.Default.IsFirstLaunch)
+            {
+                MainWindowOverlayFrame.Navigate(new WelcomePage());
             }
         }
         public void ButtonManager(object sender, RoutedEventArgs e)

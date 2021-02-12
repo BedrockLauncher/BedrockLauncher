@@ -11,6 +11,18 @@
     <v:String x:Key="MainWindow_SwitchEdition">Сменить на</v:String>
     <v:String x:Key="MainWindow_Minecraft">Minecraft</v:String>
     <v:String x:Key="MainWindow_SettingsButton">Настройки</v:String>
+    <!-- FirstLaunch -->
+    <v:String x:Key="FirstLaunch_WelcomeTitle">Добро пожаловать!</v:String>
+    <v:String x:Key="FirstLaunch_WelcomeSubTitle">Добро пожаловать в Minecraft Bedrock Launcher!</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Создайте свой первый профиль!</v:String>
+    <v:String x:Key="FirstLaunch_BeforeStartingToUse">Перед началом пользования, пожалуйста, убедитесь, что вы скачали релиз с оффициальной страницы на Github или сайта.</v:String>
+    <v:String x:Key="FirstLaunch_CloseButton">Закрыть</v:String>
+    <v:String x:Key="FirstLaunch_BackButton">Назад</v:String>
+    <v:String x:Key="FirstLaunch_GoBackButton">❮ ВЕРНУТЬСЯ</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileText">ПРОФИЛЬ</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileButton">Создать</v:String>
+    <v:String x:Key="FirstLaunch_NextButton">Далее</v:String>
+    <v:String x:Key="FirstLaunch_DownloadButton">Скачать</v:String>
     <!-- MainPagePlayScreen -->
     <v:String x:Key="MainPage_PlayButton">Играть</v:String>
     <v:String x:Key="MainPage_InstallationsButton">Установки</v:String>

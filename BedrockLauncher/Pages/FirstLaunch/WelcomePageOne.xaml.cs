@@ -20,6 +20,7 @@ namespace BedrockLauncher
     /// </summary>
     public partial class WelcomePageOne : Page
     {
+        public WelcomePagesSwitcher pageSwitcher = new WelcomePagesSwitcher();
         public WelcomePageOne()
         {
             InitializeComponent();
@@ -32,9 +33,7 @@ namespace BedrockLauncher
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            WelcomePage welcomePage = new WelcomePage();
-            welcomePage.WelcomePageFrame.Navigate(new WelcomePageTwo());
-            ((MainWindow)Application.Current.MainWindow).MainWindowOverlayFrame.Navigate(welcomePage);
+            pageSwitcher.MoveToPage(2);
         }
     }
 }

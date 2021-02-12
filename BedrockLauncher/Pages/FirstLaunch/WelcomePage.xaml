@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:BedrockLauncher"
       mc:Ignorable="d" 
       d:DesignHeight="639" d:DesignWidth="1016"
-      Title="WelcomePage" MinWidth="1016" MinHeight="639" Foreground="{x:Null}">
+      Title="WelcomePage" MinWidth="1016" MinHeight="639" Foreground="{x:Null}" Initialized="Page_Initialized">
     <Page.Background>
         <ImageBrush ImageSource="/BedrockLauncher;component/Resources/images/firstlaunchbackground.jpg" Stretch="UniformToFill"/>
     </Page.Background>
