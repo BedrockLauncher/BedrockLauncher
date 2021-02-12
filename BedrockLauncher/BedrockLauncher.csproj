@@ -133,6 +133,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BetterBedrock\BetterBedrockMain.cs" />
+    <Compile Include="ConfigManager.cs" />
     <Compile Include="Pages\ErrorScreen\ErrorScreen.xaml.cs">
       <DependentUpon>ErrorScreen.xaml</DependentUpon>
     </Compile>

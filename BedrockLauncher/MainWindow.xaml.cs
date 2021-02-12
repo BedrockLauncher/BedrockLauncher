@@ -610,7 +610,7 @@ namespace BedrockLauncher
             public string Name { get; set; }
             public bool IsBeta { get; set; }
 
-            public string GameDirectory => "Minecraft-" + Name;
+            public string GameDirectory => "versions/Minecraft-" + Name;
 
             public bool IsInstalled => Directory.Exists(GameDirectory);
 
@@ -618,7 +618,7 @@ namespace BedrockLauncher
             {
                 get
                 {
-                    return Name + (IsBeta ? " (beta)" : "");
+                    return (IsBeta ? "Snapshot " : "") + Name;
                 }
             }
             public string DisplayInstallStatus

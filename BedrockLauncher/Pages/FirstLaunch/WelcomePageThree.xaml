@@ -164,7 +164,7 @@
     <Grid Margin="0" Background="{x:Null}">
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Text="{DynamicResource FirstLaunch_CreateProfileSubTitle}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="24" Margin="0,40,0,0" FontWeight="Bold"/>
         <TextBlock Text="{DynamicResource FirstLaunch_CreateProfileText}" Margin="133,0,0,18" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" Height="16" FontWeight="Bold" FontSize="11" Width="auto"/>
-        <Button x:Name="MainPlayButton" UseLayoutRounding="True" SnapsToDevicePixels="True" Foreground="White" FontSize="26" HorizontalAlignment="Center" Margin="0,0,0,7" VerticalAlignment="Bottom" Width="250" Height="56" Padding="0" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" Style="{DynamicResource ButtonStyle1}" BorderBrush="{x:Null}">
+        <Button x:Name="CreateProfileButton" Click="CreateProfileButton_Click" UseLayoutRounding="True" SnapsToDevicePixels="True" Foreground="White" FontSize="26" HorizontalAlignment="Center" Margin="0,0,0,7" VerticalAlignment="Bottom" Width="250" Height="56" Padding="0" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" Style="{DynamicResource ButtonStyle1}" BorderBrush="{x:Null}">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="0" Direction="270" Opacity="0.2" ShadowDepth="4"/>
             </Button.Effect>
@@ -180,6 +180,6 @@
         <StackPanel Margin="0,185,8,8" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" ScrollViewer.VerticalScrollBarVisibility="Disabled">
             <Button x:Name="BackButton" Click="BackButton_Click"  SnapsToDevicePixels="True" Foreground="White" Content="{DynamicResource FirstLaunch_GoBackButton}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="20" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontWeight="Thin" FontSize="11"/>
         </StackPanel>
-        <TextBox Background="#FF131313" Margin="0,35,0,0" Foreground="White" FontSize="14" AcceptsReturn="True" SpellCheck.IsEnabled="True" Language="en-US" HorizontalAlignment="Center" TextAlignment="Center" Height="32" VerticalAlignment="Center" Width="334" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" MaxLines="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF131313" SelectionBrush="#FF035511" Style="{DynamicResource TextBoxStyle1}"/>
+        <TextBox x:Name="ProfileNameTextbox" Background="#FF131313" MaxLength="35" KeyDown="TextBox_KeyDown" Margin="0,35,0,0" Foreground="White" FontSize="14" AcceptsReturn="False" SpellCheck.IsEnabled="True" Language="en-US" HorizontalAlignment="Center" TextAlignment="Center" Height="32" VerticalAlignment="Center" Width="334" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" MaxLines="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="#FF131313" SelectionBrush="#FF035511" Style="{DynamicResource TextBoxStyle1}"/>
     </Grid>
 </Page>
