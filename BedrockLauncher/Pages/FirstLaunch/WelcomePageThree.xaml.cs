@@ -46,7 +46,8 @@ namespace BedrockLauncher
         public void CreateProfile()
         {
             ConfigManager config = new ConfigManager();
-            config.CreateProfile(ProfileNameTextbox.Text);
+            //config.CreateProfile(ProfileNameTextbox.Text);
+            config.ReadProfile();
             ((MainWindow)Application.Current.MainWindow).MainWindowOverlayFrame.Content = null;
         }
     }
