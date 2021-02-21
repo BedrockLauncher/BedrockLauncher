@@ -124,5 +124,17 @@ namespace BedrockLauncher.Properties {
                 return ((string)(this["GithubPage"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CurrentProfile {
+            get {
+                return ((string)(this["CurrentProfile"]));
+            }
+            set {
+                this["CurrentProfile"] = value;
+            }
+        }
     }
 }

@@ -583,7 +583,7 @@
                     </TextBlock.Effect>
                 </TextBlock>
             </Button>
-            <ComboBox d:DataContext="{d:DesignData /SampleData/Versions.xaml}" SelectedItem="1" ItemsSource="{Binding}" x:Name="VersionList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="200" Height="47" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}" Foreground="White" Padding="-1,7,5,3">
+            <ComboBox SelectedItem="1" ItemsSource="{Binding}" x:Name="VersionList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="200" Height="47" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}" Foreground="White" Padding="-1,7,5,3">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <ContentControl x:Name="control" Content="{Binding}" ContentTemplate="{StaticResource templateVersionNotInstalled}"/>

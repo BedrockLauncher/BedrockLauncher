@@ -17,13 +17,27 @@ namespace BedrockLauncher
     {
         public string Name { get; set; }
         public string SkinPath { get; set; }
+        public string ProfilePath { get; set; }
+        
     }
     public class ConfigManager 
     {
         // creates empty profile
         public void CreateProfile(string profile) 
         {
-            ProfileList profileList = new ProfileList();
+            string json;
+            ProfileList profileList;
+            if (File.Exists("user_profile.json"))
+            {
+                json = File.ReadAllText("user_profile.json");
+                profileList = JsonConvert.DeserializeObject<ProfileList>(json);
+            }
+            else
+            {
+                profileList = new ProfileList();
+            }
+
+            //ProfileList profileList = new ProfileList();
             profileList.profiles = new Dictionary<string, List<ProfileSettings>>();
 
             List<ProfileSettings> ProfileSettingsList = new List<ProfileSettings>();
@@ -32,14 +46,15 @@ namespace BedrockLauncher
             // default settings
             profileSettings.Name = profile;
             profileSettings.SkinPath = null;
+            profileSettings.ProfilePath = profile;
             ProfileSettingsList.Add(profileSettings);
 
             profileList.profiles.Add(profile, ProfileSettingsList);
 
-            //names.name = new Dictionary<string, string>();
-            //names.name.Add(profile, "value1");
-            //product.profiles.Add(names);
-            string json = JsonConvert.SerializeObject(profileList, Formatting.Indented);
+            Properties.Settings.Default.CurrentProfile = profile;
+            Properties.Settings.Default.Save();
+
+            json = JsonConvert.SerializeObject(profileList, Formatting.Indented);
             File.WriteAllText("user_profile.json", json);
             //Console.WriteLine(json);
         }
@@ -47,23 +62,19 @@ namespace BedrockLauncher
         {
             string json = File.ReadAllText("user_profile.json");
             ProfileList profileList = JsonConvert.DeserializeObject<ProfileList>(json);
-            ProfileSettings profileSettings = JsonConvert.DeserializeObject<ProfileSettings>(json);
+            //ProfileSettings profileSettings = JsonConvert.DeserializeObject<ProfileSettings>(json);
 
             Console.WriteLine("Profile count: " + profileList.profiles.Count);
-            //foreach (string key in profileList.profiles.Keys)
-            //{
-            //    Console.WriteLine("Profile found: " + key);
-            //}
             foreach (List<ProfileSettings> settings in profileList.profiles.Values)
             {
                 foreach (ProfileSettings setting in settings)
                 {
                     Console.WriteLine("\nProfile found!: ");
-                    Console.WriteLine("Profile name: " + setting.Name);
-                    Console.WriteLine("Profile skin: " + setting.SkinPath);
+                    Console.WriteLine("Name: " + setting.Name);
+                    Console.WriteLine("Path: " + setting.ProfilePath);
+                    Console.WriteLine("Skin: " + setting.SkinPath);
                 }
             }
-            //Console.WriteLine("Profile found: " + myDeserializedClass.profiles[0].Name);
 
 
         }

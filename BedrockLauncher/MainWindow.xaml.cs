@@ -57,12 +57,12 @@ namespace BedrockLauncher
         {
             InitializeComponent();
             // show first launch window
-            if (Properties.Settings.Default.IsFirstLaunch != true)
-            {
-                //MainWindowOverlayFrame.Navigate(new WelcomePage());
-                Properties.Settings.Default.IsFirstLaunch = false;
-                Properties.Settings.Default.Save();
-            }
+            //if (Properties.Settings.Default.IsFirstLaunch != true)
+            //{
+            //    //MainWindowOverlayFrame.Navigate(new WelcomePage());
+            //    Properties.Settings.Default.IsFirstLaunch = false;
+            //    Properties.Settings.Default.Save();
+            //}
 
 
             _versions = new VersionList("versions.json", this);
@@ -359,6 +359,7 @@ namespace BedrockLauncher
                 }
                 try
                 {
+                    Debug.WriteLine("Extraction started");
                     v.StateChangeInfo.IsExtracting = true;
                     string dirPath = v.GameDirectory;
                     if (Directory.Exists(dirPath))
@@ -367,6 +368,8 @@ namespace BedrockLauncher
                     v.StateChangeInfo = null;
                     File.Delete(Path.Combine(dirPath, "AppxSignature.p7x"));
                     File.Delete(dlPath);
+                    Debug.WriteLine("Extracted successfully");
+                    InvokeLaunch(v);
                 }
                 catch (Exception e)
                 {
@@ -440,6 +443,26 @@ namespace BedrockLauncher
 
         private void Window_Initialized(object sender, EventArgs e)
         {
+            string[] ConsoleArgs = Environment.GetCommandLineArgs();
+            foreach (string argument in ConsoleArgs)
+            {
+                if (argument.StartsWith("--"))
+                {
+                    Debug.WriteLine("Recieved argument: " + argument);
+                    if (argument == "--nowindow") { Application.Current.MainWindow.Hide(); }
+                    if (argument == "--launchlast") 
+                    {
+                        
+                        List<Object> versions = new Versions();
+                        Console.WriteLine(String.Join(", ", versions));
+                        Console.WriteLine(versions);
+                        foreach (object version in versions)
+                        {
+                            Console.WriteLine(version);
+                        }
+                    }
+                }
+            }
             // Language setting on startup
             switch (Properties.Settings.Default.Language)
             {
@@ -476,10 +499,10 @@ namespace BedrockLauncher
 
             }
             // Show welcome screen if its first launch
-            if (Properties.Settings.Default.IsFirstLaunch)
-            {
-                MainWindowOverlayFrame.Navigate(new WelcomePage());
-            }
+            //if (Properties.Settings.Default.IsFirstLaunch)
+            //{
+            //    MainWindowOverlayFrame.Navigate(new WelcomePage());
+            //}
         }
         public void ButtonManager(object sender, RoutedEventArgs e)
         {
