@@ -10,6 +10,8 @@
     <v:String x:Key="MainWindow_MinecraftJavaLauncher">Java Launcher</v:String>
     <v:String x:Key="MainWindow_SwitchEdition">Сменить на</v:String>
     <v:String x:Key="MainWindow_Minecraft">Minecraft</v:String>
+    <v:String x:Key="MainWindow_ServersButton">Сервера</v:String>
+    <v:String x:Key="MainWindow_ProfileType">Профиль</v:String>
     <v:String x:Key="MainWindow_SettingsButton">Настройки</v:String>
     <!-- FirstLaunch -->
     <v:String x:Key="FirstLaunch_WelcomeTitle">Добро пожаловать!</v:String>

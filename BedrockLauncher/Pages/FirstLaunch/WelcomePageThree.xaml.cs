@@ -35,16 +35,19 @@ namespace BedrockLauncher
         {
             if (e.Key == Key.Enter) 
             {
-                if (ProfileNameTextbox.Text.Length >= 1) { CreateProfile(); };
+                if (ProfileNameTextbox.Text.Length >= 1) { CreateProfile(ProfileNameTextbox.Text); };
             }
         }
 
         private void CreateProfileButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ProfileNameTextbox.Text.Length >= 1) { CreateProfile(); };
+            if (ProfileNameTextbox.Text.Length >= 1) { CreateProfile(ProfileNameTextbox.Text); };
         }
-        public void CreateProfile()
+        public void CreateProfile(string profileName)
         {
+            ((MainWindow)Application.Current.MainWindow).ProfileName.Text = profileName;
+            Properties.Settings.Default.CurrentProfile = profileName;
+            Properties.Settings.Default.Save();
             ConfigManager config = new ConfigManager();
             config.CreateProfile(ProfileNameTextbox.Text);
             config.ReadProfile();

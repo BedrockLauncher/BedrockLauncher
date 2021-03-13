@@ -56,14 +56,12 @@ namespace BedrockLauncher
         public MainWindow()
         {
             InitializeComponent();
-            // show first launch window
-            //if (Properties.Settings.Default.IsFirstLaunch != true)
-            //{
-            //    //MainWindowOverlayFrame.Navigate(new WelcomePage());
-            //    Properties.Settings.Default.IsFirstLaunch = false;
-            //    Properties.Settings.Default.Save();
-            //}
-
+            // show first launch window if no profile
+            if (Properties.Settings.Default.CurrentProfile == "")
+            {
+                MainWindowOverlayFrame.Navigate(new WelcomePage());
+            }
+            ProfileName.Text = Properties.Settings.Default.CurrentProfile;
 
             _versions = new VersionList("versions.json", this);
             VersionList.ItemsSource = _versions;
@@ -449,18 +447,8 @@ namespace BedrockLauncher
                 if (argument.StartsWith("--"))
                 {
                     Debug.WriteLine("Recieved argument: " + argument);
+                    // hide window
                     if (argument == "--nowindow") { Application.Current.MainWindow.Hide(); }
-                    if (argument == "--launchlast") 
-                    {
-                        
-                        List<Object> versions = new Versions();
-                        Console.WriteLine(String.Join(", ", versions));
-                        Console.WriteLine(versions);
-                        foreach (object version in versions)
-                        {
-                            Console.WriteLine(version);
-                        }
-                    }
                 }
             }
             // Language setting on startup
@@ -508,7 +496,7 @@ namespace BedrockLauncher
         {
             var toggleButton = sender as ToggleButton;
             // just all buttons list
-            List<ToggleButton> toggleButtons = new List<ToggleButton>() { NewsButton, BedrockEditionButton, JavaEditionButton,
+            List<ToggleButton> toggleButtons = new List<ToggleButton>() { ServersButton, NewsButton, BedrockEditionButton, JavaEditionButton,
             SettingsButton, mainPage.PlayButton, mainPage.InstallationsButton, mainPage.SkinsButton, mainPage.PatchNotesButton,
                 settingsScreenPage.GeneralButton, settingsScreenPage.AboutButton};
 
@@ -543,6 +531,13 @@ namespace BedrockLauncher
                 MainWindowFrame.Navigate(mainPage);
                 mainPage.PlayButton.IsChecked = true;
                 BedrockEditionButton.IsChecked = true;
+                PlayScreenBorder.Visibility = Visibility.Visible;
+                mainPage.MainPageFrame.Navigate(playScreenPage);
+            }
+            else if (toggleButton.Name == ServersButton.Name)
+            {
+                MainWindowFrame.Navigate(mainPage);
+                ServersButton.IsChecked = true;
                 PlayScreenBorder.Visibility = Visibility.Visible;
                 mainPage.MainPageFrame.Navigate(playScreenPage);
             }
