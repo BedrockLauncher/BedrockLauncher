@@ -1,0 +1,22 @@
+﻿<Page x:Class="Installer.LicenseAgreementPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Installer"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="794"
+      Title="WelcomePage" Height="371">
+
+    <Grid Margin="0" Background="#FF1B1B1B">
+        <!--TextBlock LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap" Text="Welcome to the Minecraft Bedrock Launcher Setup Wizard" Margin="200,5,0,0" Foreground="White" FontSize="26" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Calibri" FontWeight="Bold"></-->
+        <TextBlock LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap" Margin="5,5,0,0" Foreground="White" FontSize="17" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Calibri">
+            <Run FontSize="26" FontWeight="Bold" Text="License Agreement"/>
+            <LineBreak/>
+            <Run Text="Please read the following License Agreement. You must accept the terms of this"/>
+            <LineBreak/>
+            <Run Text="agreement before continuing with the installation."/>
+        </TextBlock>
+        <ScrollViewer x:Name="LicenseText" Margin="10,100,10,10" BorderBrush="#FFFF3131" Background="#FFC3C3C3"/>
+    </Grid>
+</Page>

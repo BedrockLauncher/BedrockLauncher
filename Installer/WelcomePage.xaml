@@ -1,0 +1,26 @@
+﻿<Page x:Class="Installer.WelcomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Installer"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="794"
+      Title="WelcomePage" Height="371">
+
+    <Grid Margin="0" Background="#FF1B1B1B">
+        <Border Background="#FF171717" Margin="0,0,600,0">
+        </Border>
+        <!--TextBlock LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap" Text="Welcome to the Minecraft Bedrock Launcher Setup Wizard" Margin="200,5,0,0" Foreground="White" FontSize="26" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Calibri" FontWeight="Bold"></-->
+        <TextBlock LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap" Margin="200,5,0,0" Foreground="White" FontSize="17" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Calibri">
+            <Run FontSize="26" FontWeight="Bold" Text="Welcome to the Minecraft Bedrock Launcher Setup Wizard"/>
+            <LineBreak/>
+            <Run Text="This will install Minecraft Bedrock Launcher on your computer."/>
+            <LineBreak/>
+            <Run Text="It is recommended that you dose all other applications before continuing."/>
+            <LineBreak/>
+            <LineBreak/>
+            <Run Text="Click Next to continue, or Cancel to exit Setup."/>
+        </TextBlock>
+    </Grid>
+</Page>
