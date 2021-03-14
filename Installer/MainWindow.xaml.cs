@@ -23,7 +23,8 @@ namespace Installer
     {
         private WelcomePage welcomePage = new WelcomePage();
         private LicenseAgreementPage licenseAgreementPage = new LicenseAgreementPage();
-        private InstallLocationPage InstallLocationPage = new InstallLocationPage();
+        private InstallLocationPage installLocationPage = new InstallLocationPage();
+        private InstallationProgressPage installationProgressPage = new InstallationProgressPage();
         public MainWindow()
         {
             InitializeComponent();
@@ -42,48 +43,35 @@ namespace Installer
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
-            // this is an example of bad code, if u know how to make it better, contact me
-            if (MainFrame.Content.GetType().Name.ToString() == "WelcomePage") 
+            // if u know how to make it better, contact me
+            switch (MainFrame.Content.GetType().Name.ToString())
             {
-                MainFrame.Navigate(licenseAgreementPage);
-                BackBtn.IsEnabled = true;
-                if (licenseAgreementPage.acceptRadioBtn.IsChecked == false) { NextBtn.IsEnabled = false; }
-            }
-            if (MainFrame.Content.GetType().Name.ToString() == "LicenseAgreementPage")
-            {
-                MainFrame.Navigate(InstallLocationPage);
-                NextBtn.Content = "Install";
-            }
-            if (MainFrame.Content.GetType().Name.ToString() == "InstallLocationPage")
-            {
-                if (!Directory.Exists(InstallLocationPage.installPathTextBox.Text)) 
-                {
-                    try
-                    {
-                        Directory.CreateDirectory(InstallLocationPage.installPathTextBox.Text);
-                    }
-                    catch (Exception err)
-                    {
-                        MessageBox.Show(err.ToString());
-                    }
-                }
-                MainFrame.Navigate(InstallLocationPage);
-                NextBtn.Content = "Finish";
+                case "WelcomePage":
+                    MainFrame.Navigate(licenseAgreementPage);
+                    break;
+                case "LicenseAgreementPage":
+                    MainFrame.Navigate(installLocationPage);
+                    break;
+                case "InstallLocationPage":
+                    LauncherInstaller launcherInstaller = new LauncherInstaller(installLocationPage.installPathTextBox.Text, installationProgressPage);
+                    break;
+                default:
+                    break;
             }
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (MainFrame.Content.GetType().Name.ToString() == "LicenseAgreementPage")
+            switch (MainFrame.Content.GetType().Name.ToString())
             {
-                MainFrame.Navigate(welcomePage);
-                BackBtn.IsEnabled = false;
-                NextBtn.IsEnabled = true;
-            }
-            if (MainFrame.Content.GetType().Name.ToString() == "InstallLocationPage")
-            {
-                MainFrame.Navigate(licenseAgreementPage);
-                NextBtn.Content = "Next";
+                case "LicenseAgreementPage":
+                    MainFrame.Navigate(welcomePage);
+                    break;
+                case "InstallLocationPage":
+                    MainFrame.Navigate(licenseAgreementPage);
+                    break;
+                default:
+                    break;
             }
         }
     }

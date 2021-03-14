@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Installer"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="794"
-      Title="WelcomePage" Height="371">
+      Title="WelcomePage" Height="371" Loaded="Page_Loaded">
 
     <Grid Margin="0" Background="#FF1B1B1B">
         <Border Background="#FF171717" Margin="0,0,600,0">

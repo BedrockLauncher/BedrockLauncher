@@ -44,5 +44,10 @@ namespace Installer
                 }
             }
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow) Application.Current.MainWindow).NextBtn.Content = "Install";
+        }
     }
 }

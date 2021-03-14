@@ -25,5 +25,15 @@ namespace Installer
         {
             ((MainWindow)Application.Current.MainWindow).NextBtn.IsEnabled = false;
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow) Application.Current.MainWindow).NextBtn.Content = "Next";
+            ((MainWindow) Application.Current.MainWindow).BackBtn.IsEnabled = true;
+            if (acceptRadioBtn.IsChecked == false) 
+            {
+                ((MainWindow) Application.Current.MainWindow).NextBtn.IsEnabled = false; 
+            }
+        }
     }
 }

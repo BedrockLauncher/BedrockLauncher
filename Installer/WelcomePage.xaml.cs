@@ -24,5 +24,11 @@ namespace Installer
         {
             InitializeComponent();
         }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow) Application.Current.MainWindow).BackBtn.IsEnabled = false;
+            ((MainWindow) Application.Current.MainWindow).NextBtn.IsEnabled = true;
+        }
     }
 }
