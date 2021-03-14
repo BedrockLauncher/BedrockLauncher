@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace Installer
 {
@@ -22,6 +23,7 @@ namespace Installer
     {
         private WelcomePage welcomePage = new WelcomePage();
         private LicenseAgreementPage licenseAgreementPage = new LicenseAgreementPage();
+        private InstallLocationPage InstallLocationPage = new InstallLocationPage();
         public MainWindow()
         {
             InitializeComponent();
@@ -40,10 +42,33 @@ namespace Installer
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
+            // this is an example of bad code, if u know how to make it better, contact me
             if (MainFrame.Content.GetType().Name.ToString() == "WelcomePage") 
             {
                 MainFrame.Navigate(licenseAgreementPage);
                 BackBtn.IsEnabled = true;
+                if (licenseAgreementPage.acceptRadioBtn.IsChecked == false) { NextBtn.IsEnabled = false; }
+            }
+            if (MainFrame.Content.GetType().Name.ToString() == "LicenseAgreementPage")
+            {
+                MainFrame.Navigate(InstallLocationPage);
+                NextBtn.Content = "Install";
+            }
+            if (MainFrame.Content.GetType().Name.ToString() == "InstallLocationPage")
+            {
+                if (!Directory.Exists(InstallLocationPage.installPathTextBox.Text)) 
+                {
+                    try
+                    {
+                        Directory.CreateDirectory(InstallLocationPage.installPathTextBox.Text);
+                    }
+                    catch (Exception err)
+                    {
+                        MessageBox.Show(err.ToString());
+                    }
+                }
+                MainFrame.Navigate(InstallLocationPage);
+                NextBtn.Content = "Finish";
             }
         }
 
@@ -53,6 +78,12 @@ namespace Installer
             {
                 MainFrame.Navigate(welcomePage);
                 BackBtn.IsEnabled = false;
+                NextBtn.IsEnabled = true;
+            }
+            if (MainFrame.Content.GetType().Name.ToString() == "InstallLocationPage")
+            {
+                MainFrame.Navigate(licenseAgreementPage);
+                NextBtn.Content = "Next";
             }
         }
     }

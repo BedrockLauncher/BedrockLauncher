@@ -91,7 +91,7 @@ namespace BedrockLauncher
             {
                 EvaluatePath(resourcepackspath);
                 Console.WriteLine("created folder");
-                File.WriteAllBytes(resourcepackspath + "bottomchat.zip", (byte[])Properties.Resources.bottomchat);
+                File.WriteAllBytes(resourcepackspath + "bottomchat.zip", (byte[]) Properties.Resources.bottomchat);
                 Console.WriteLine("writed bottomchat");
                 System.IO.Compression.ZipFile.ExtractToDirectory(resourcepackspath + "bottomchat.zip", resourcepackspath);
                 File.Delete(resourcepackspath + @"bottomchat.zip");

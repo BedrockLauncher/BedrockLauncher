@@ -1,7 +1,7 @@
 ﻿Installer
 
 
-winexe
+exe
 C#
 .cs
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\
@@ -10,11 +10,11 @@ none
 false
 TRACE
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\App.xaml
-31501790269
+4-1168505899
 
-8-236099349
-13-1505183044
-MainWindow.xaml;LicenseAgreementPage.xaml;WelcomePage.xaml;
+9176347521
+14-1290796308
+InstallLocationPage.xaml;MainWindow.xaml;LicenseAgreementPage.xaml;WelcomePage.xaml;
 
 True
 
