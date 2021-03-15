@@ -6,6 +6,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.Win32;
 using IWshRuntimeLibrary;
+using System.Xml;
 
 namespace Installer
 {
@@ -13,6 +14,7 @@ namespace Installer
     {
         private const string LATEST_BUILD_LINK = "https://github.com/XlynxX/BedrockLauncher/releases/latest/download/build_v0.1.1.zip";
         private string path;
+        private string build_version;
         private InstallationProgressPage InstallationProgressPage;
 
         public LauncherInstaller(string installationPath, InstallationProgressPage installationProgressPage)
@@ -96,11 +98,12 @@ namespace Installer
             System.IO.File.Delete(Path.Combine(this.path, "build.zip"));
 
             // async add to registry
-            RunAsyncRegister();
+            RunAsyncTasks();
         }
 
-        private async void RunAsyncRegister()
+        private async void RunAsyncTasks()
         {
+            await Task.Run(getBuildVersion);
             if (await Task.Run(RegisterApp))
             {
                 CreateShortcut();
@@ -108,6 +111,23 @@ namespace Installer
                 ((MainWindow)Application.Current.MainWindow).FinishBtn.Click += FinishInstall;
                 ((MainWindow)Application.Current.MainWindow).CancelBtn.Visibility = Visibility.Hidden;
             }
+        }
+        bool getBuildVersion()
+        {
+            foreach (string file in Directory.GetFiles(path)) { Console.WriteLine(file); }
+            XmlDocument xmldoc = new XmlDocument();
+            xmldoc.Load(Path.Combine(path, "BedrockLauncher.exe.config"));
+            XmlNodeList nodeList = xmldoc.GetElementsByTagName("setting");
+            Console.WriteLine("build version: " + nodeList);
+            foreach (XmlNode node in nodeList)
+            {
+                if (node.OuterXml.Contains("<setting name=\"Version\" serializeAs=\"String\">"))
+                {
+                    Console.WriteLine("build version: " + node.InnerText);
+                    this.build_version = node.InnerText;
+                }
+            }
+            return true;
         }
         bool RegisterApp()
         {
@@ -128,7 +148,7 @@ namespace Installer
                 // Строка удаления
                 progKey.SetValue("UninstallString", Path.Combine(path, "Uninstaller.exe"), RegistryValueKind.ExpandString);
                 // Отображаемая версия
-                progKey.SetValue("DisplayVersion", "0.1.1", RegistryValueKind.String);
+                progKey.SetValue("DisplayVersion", build_version, RegistryValueKind.String);
                 // Издатель
                 progKey.SetValue("Publisher", "BedrockLauncher", RegistryValueKind.String);
                 Console.WriteLine("Successfully added to control panel!");

@@ -359,6 +359,10 @@
     <Content Include="WUTokenHelper.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Installer\Installer.csproj">
+      <Project>{295729f7-172f-4bcd-a619-e495db5a4e2f}</Project>
+      <Name>Installer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Uninstaller\Uninstaller.csproj">
       <Project>{3232778b-1a3b-4d31-88a1-7a43b8b66723}</Project>
       <Name>Uninstaller</Name>

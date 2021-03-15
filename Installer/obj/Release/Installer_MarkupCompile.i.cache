@@ -1,7 +1,7 @@
 ﻿Installer
 
 
-exe
+winexe
 C#
 .cs
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\
@@ -16,5 +16,5 @@ C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Inst
 17-1674507778
 InstallationProgressPage.xaml;InstallLocationPage.xaml;MainWindow.xaml;LicenseAgreementPage.xaml;WelcomePage.xaml;
 
-False
+True
 
