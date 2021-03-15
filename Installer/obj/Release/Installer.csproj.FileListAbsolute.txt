@@ -1,6 +1,4 @@
-C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\bin\Release\Installer.exe.config
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\bin\Release\Installer.exe
-C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\bin\Release\Installer.pdb
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\MainWindow.g.cs
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\App.g.cs
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\Installer_MarkupCompile.cache
@@ -11,7 +9,6 @@ C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Inst
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\Installer.csproj.GenerateResource.cache
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\Installer.csproj.CoreCompileInputs.cache
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\Installer.exe
-C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\Installer.pdb
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\WelcomePage.g.cs
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\WelcomePage.baml
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\LicenseAgreementPage.g.cs
@@ -20,6 +17,6 @@ C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Inst
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\InstallLocationPage.baml
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\InstallationProgressPage.g.cs
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\InstallationProgressPage.baml
-C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\Installer.csprojAssemblyReference.cache
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\Interop.IWshRuntimeLibrary.dll
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\Installer.csproj.ResolveComReference.cache
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\Installer.csprojAssemblyReference.cache

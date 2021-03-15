@@ -43,15 +43,19 @@ namespace BedrockLauncher
         private volatile bool _hasLaunchTask = false;
 
         // wil be removed and rewritten
-        public BetterBedrockMain betterBedrockMain = new BetterBedrockMain();
+        private BetterBedrockMain betterBedrockMain = new BetterBedrockMain();
+
+        // load updater to check for updates
+        private Updater updater = new Updater();
 
         // load pages to not create new in memory after
-        public MainPage mainPage = new MainPage();
-        public GeneralSettingsPage generalSettingsPage = new GeneralSettingsPage();
-        public SettingsScreen settingsScreenPage = new SettingsScreen();
-        public NoContentPage noContentPage = new NoContentPage();
-        public PlayScreenPage playScreenPage = new PlayScreenPage();
-        public InstallationsScreen installationsScreen = new InstallationsScreen();
+        private MainPage mainPage = new MainPage();
+        private GeneralSettingsPage generalSettingsPage = new GeneralSettingsPage();
+        private SettingsScreen settingsScreenPage = new SettingsScreen();
+        private NewsScreenPage newsScreenPage = new NewsScreenPage();
+        private NoContentPage noContentPage = new NoContentPage();
+        private PlayScreenPage playScreenPage = new PlayScreenPage();
+        private InstallationsScreen installationsScreen = new InstallationsScreen();
 
         public MainWindow()
         {
@@ -512,7 +516,7 @@ namespace BedrockLauncher
             }
             else if (toggleButton.Name == NewsButton.Name)
             {
-                MainWindowFrame.Navigate(noContentPage);
+                MainWindowFrame.Navigate(newsScreenPage);
             }
             else if (toggleButton.Name == JavaEditionButton.Name)
             {

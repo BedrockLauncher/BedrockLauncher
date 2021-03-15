@@ -42,26 +42,17 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Uninstaller.exe" size="5120">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Uninstaller.exe" size="4608">
       <assemblyIdentity name="Uninstaller" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>pziqE4WQV9N8pZVSzHavN6NiNJ1m4QTaBdZqg3wKhfA=</dsig:DigestValue>
+        <dsig:DigestValue>1F5PFm1dLtxPyh3PdEZ9GqEo2DLubaZyAmI+o68dlUg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Uninstaller.exe.config" size="189">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>R+Wg8QGvQVHX8T0ta/qbhH1bXkqY0fRnS3wBV3J0bN8=</dsig:DigestValue>
-    </hash>
-  </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
     <application>
       <!-- Список версий Windows, на которых это приложение было протестировано

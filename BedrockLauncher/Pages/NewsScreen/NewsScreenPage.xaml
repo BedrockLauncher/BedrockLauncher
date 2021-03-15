@@ -1,0 +1,21 @@
+﻿<Page x:Class="BedrockLauncher.NewsScreenPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BedrockLauncher"
+      mc:Ignorable="d" 
+      d:DesignHeight="525" d:DesignWidth="828"
+      Title="PlayScreenPage">
+
+    <Grid Margin="0" Background="#FF333333">
+        <TextBlock LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap" Margin="5,5,0,0" Foreground="White" FontSize="17" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans">
+            <Run FontSize="26" FontWeight="Bold" Text="Latest build changes"/>
+            <Run Foreground="Gray" FontSize="13" Text="build"/>
+            <Run x:Name="buildVersion" Foreground="Gray" FontSize="13" Text="v.0.1.2"/>
+            <LineBreak/>
+            <LineBreak/>
+            <Run x:Name="buildChanges" Text="Added gay"/>
+        </TextBlock>
+    </Grid>
+</Page>

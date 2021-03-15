@@ -44,11 +44,25 @@ namespace Installer
         // this will delete old version if exists
         private void cleanCurrent(string path)
         {
+            // delete old installer if exists
+            if (System.IO.File.Exists(Path.Combine(path, "Installer.exe.old")))
+            {
+                System.IO.File.Delete(Path.Combine(path, "Installer.exe.old"));
+            }
+
             foreach (string file in Directory.GetFiles(path)) 
             {
-                System.IO.File.Delete(file);
+                // renaming currently running installer to replace with new later
+                if (file.EndsWith("Installer.exe"))
+                {
+                    System.IO.File.Move(file, Path.Combine(path, "Installer.exe.old"));
+                }
+                else
+                {
+                    // delete other files
+                    System.IO.File.Delete(file);
+                }
             }
-            Directory.CreateDirectory(path);
         }
         // will download latest build and start installation upon downloaded
         private void download()
@@ -114,11 +128,9 @@ namespace Installer
         }
         bool getBuildVersion()
         {
-            foreach (string file in Directory.GetFiles(path)) { Console.WriteLine(file); }
             XmlDocument xmldoc = new XmlDocument();
             xmldoc.Load(Path.Combine(path, "BedrockLauncher.exe.config"));
             XmlNodeList nodeList = xmldoc.GetElementsByTagName("setting");
-            Console.WriteLine("build version: " + nodeList);
             foreach (XmlNode node in nodeList)
             {
                 if (node.OuterXml.Contains("<setting name=\"Version\" serializeAs=\"String\">"))
