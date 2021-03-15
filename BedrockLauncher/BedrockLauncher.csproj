@@ -358,5 +358,11 @@
     <Resource Include="Resources\images\profile_icon.png" />
     <Content Include="WUTokenHelper.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Uninstaller\Uninstaller.csproj">
+      <Project>{3232778b-1a3b-4d31-88a1-7a43b8b66723}</Project>
+      <Name>Uninstaller</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

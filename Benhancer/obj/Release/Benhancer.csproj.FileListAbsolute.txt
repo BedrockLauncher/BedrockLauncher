@@ -31,7 +31,6 @@ C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benh
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\bin\Release\Memory.xml
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\bin\Release\MouseKeyboardActivityMonitor.xml
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\bin\Release\System.Security.Principal.Windows.xml
-C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Release\Benhancer.csprojAssemblyReference.cache
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Release\MainWindow.g.cs
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Release\App.g.cs
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Release\Benhancer_MarkupCompile.cache
@@ -44,3 +43,4 @@ C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benh
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Release\Benhancer.csproj.CopyComplete
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Release\Benhancer.exe
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Release\Benhancer.pdb
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Release\Benhancer.csprojAssemblyReference.cache

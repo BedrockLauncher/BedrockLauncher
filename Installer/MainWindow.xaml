@@ -73,5 +73,6 @@
         <Button x:Name="CancelBtn" Foreground="White" FontFamily="Arial" FontSize="13" FontWeight="Bold" Click="CancelBtn_Click" Content="Cancel" Margin="0,0,10,10" Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
         <Button x:Name="NextBtn" Foreground="White" FontFamily="Arial" FontSize="13" FontWeight="Bold" Click="NextBtn_Click" Content="Next" Margin="0,0,130,10" Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
         <Button x:Name="BackBtn" Foreground="White" FontFamily="Arial" FontSize="13" FontWeight="Bold" Click="BackBtn_Click" IsEnabled="False" Content="Back" Margin="0,0,240,10" Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <Button x:Name="FinishBtn" Visibility="Hidden" Foreground="White" FontFamily="Arial" FontSize="13" FontWeight="Bold" Content="Finish" Margin="0,0,10,10" Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
     </Grid>
 </Window>

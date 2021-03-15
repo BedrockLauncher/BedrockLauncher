@@ -1,0 +1,11 @@
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Uninstaller\bin\Release\Uninstaller.exe.config
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Uninstaller\bin\Release\Uninstaller.exe
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Uninstaller\bin\Release\Uninstaller.pdb
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Uninstaller\obj\Release\Uninstaller.csproj.CoreCompileInputs.cache
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Uninstaller\obj\Release\Uninstaller.exe
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Uninstaller\obj\Release\Uninstaller.pdb
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Uninstaller\bin\Release\Uninstaller.exe.manifest
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Uninstaller\bin\Release\Uninstaller.application
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Uninstaller\obj\Release\Uninstaller.TrustInfo.xml
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Uninstaller\obj\Release\Uninstaller.exe.manifest
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Uninstaller\obj\Release\Uninstaller.application
