@@ -167,8 +167,9 @@ namespace Installer
             string shortcutPath = Path.Combine(path, "Minecraft Bedrock Launcher.lnk");
 
             WshShell wshShell = new WshShell(); //создаем объект wsh shell
-            IWshShortcut Shortcut = (IWshShortcut)wshShell.CreateShortcut(shortcutPath);
+            IWshShortcut Shortcut = (IWshShortcut) wshShell.CreateShortcut(shortcutPath);
             Shortcut.TargetPath = Path.Combine(path, "BedrockLauncher.exe"); //путь к целевому файлу
+            Shortcut.WorkingDirectory = path;
             Shortcut.Save();
             Console.WriteLine("shortcut created");
         }
