@@ -252,7 +252,8 @@ namespace BedrockLauncher
             Debug.WriteLine("Removing package: " + pkg.Id.FullName);
             if (!pkg.IsDevelopmentMode)
             {
-                BackupMinecraftDataForRemoval();
+                // somehow this cause errors for some people, idk why, disabled
+                //BackupMinecraftDataForRemoval();
                 await DeploymentProgressWrapper(new PackageManager().RemovePackageAsync(pkg.Id.FullName, 0));
             }
             else
