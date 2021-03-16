@@ -45,14 +45,14 @@ namespace BedrockLauncher
         // wil be removed and rewritten
         private BetterBedrockMain betterBedrockMain = new BetterBedrockMain();
 
-        // load updater to check for updates
-        private Updater updater = new Updater();
+        // updater to check for updates (loaded in mainwindow init)
+        private static Updater updater = new Updater();
 
         // load pages to not create new in memory after
         private MainPage mainPage = new MainPage();
         private GeneralSettingsPage generalSettingsPage = new GeneralSettingsPage();
         private SettingsScreen settingsScreenPage = new SettingsScreen();
-        private NewsScreenPage newsScreenPage = new NewsScreenPage();
+        private NewsScreenPage newsScreenPage = new NewsScreenPage(updater);
         private NoContentPage noContentPage = new NoContentPage();
         private PlayScreenPage playScreenPage = new PlayScreenPage();
         private InstallationsScreen installationsScreen = new InstallationsScreen();
@@ -60,6 +60,7 @@ namespace BedrockLauncher
         public MainWindow()
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             // show first launch window if no profile
             if (Properties.Settings.Default.CurrentProfile == "")
             {
@@ -93,7 +94,8 @@ namespace BedrockLauncher
                 }
             });
         }
-    public void LanguageChange(string language)
+
+        public void LanguageChange(string language)
         {
             ResourceDictionary dict = new ResourceDictionary
             {
@@ -496,6 +498,7 @@ namespace BedrockLauncher
             //    MainWindowOverlayFrame.Navigate(new WelcomePage());
             //}
         }
+
         public void ButtonManager(object sender, RoutedEventArgs e)
         {
             var toggleButton = sender as ToggleButton;
@@ -640,7 +643,7 @@ namespace BedrockLauncher
             {
                 get
                 {
-                    return (IsBeta ? "Snapshot " : "") + Name;
+                    return (IsBeta ? "(Beta) " : "") + Name;
                 }
             }
             public string DisplayInstallStatus

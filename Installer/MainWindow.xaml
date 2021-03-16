@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Installer"
         mc:Ignorable="d"
-        Title="Minecraft Bedrock Launcher Setup Wizard" Height="450" Width="800" WindowStyle="ThreeDBorderWindow" Foreground="White" Background="#FF212121" ResizeMode="CanMinimize" MouseDown="Window_MouseDown" Icon="icon.ico">
+        Title="Minecraft Bedrock Launcher Setup Wizard" Height="450" Width="800" WindowStyle="ThreeDBorderWindow" Foreground="White" Background="#FF212121" ResizeMode="CanMinimize" MouseDown="Window_MouseDown" Icon="icon.ico" Initialized="Window_Initialized">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">

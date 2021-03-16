@@ -13,6 +13,8 @@
     <v:String x:Key="MainWindow_ServersButton">Servers</v:String>
     <v:String x:Key="MainWindow_ProfileType">Profile</v:String>
     <v:String x:Key="MainWindow_SettingsButton">Settings</v:String>
+    <v:String x:Key="UpdateButton_NewUpdate">New Release!</v:String>
+    <v:String x:Key="UpdateButton_Download">Download!</v:String>
     <!-- FirstLaunch -->
     <v:String x:Key="FirstLaunch_WelcomeTitle">Welcome!</v:String>
     <v:String x:Key="FirstLaunch_WelcomeSubTitle">Welcome to Minecraft Bedrock Launcher!</v:String>
@@ -78,4 +80,8 @@
 
     <v:String x:Key="AppExtractionFailed_Title">Extraction failed</v:String>
     <v:String x:Key="AppExtractionFailed">Please try again :(</v:String>
+    <!-- NewsScreen -->
+    <v:String x:Key="NewsScreen_Title">Latest build changes</v:String>
+    <v:String x:Key="NewsScreen_build">build </v:String>
+    <v:String x:Key="NewsScreen_Changes">Changes:</v:String>
 </ResourceDictionary>

@@ -13,6 +13,8 @@
     <v:String x:Key="MainWindow_ServersButton">Сервера</v:String>
     <v:String x:Key="MainWindow_ProfileType">Профиль</v:String>
     <v:String x:Key="MainWindow_SettingsButton">Настройки</v:String>
+    <v:String x:Key="UpdateButton_NewUpdate">Новый релиз!</v:String>
+    <v:String x:Key="UpdateButton_Download">Скачать!</v:String>
     <!-- FirstLaunch -->
     <v:String x:Key="FirstLaunch_WelcomeTitle">Добро пожаловать!</v:String>
     <v:String x:Key="FirstLaunch_WelcomeSubTitle">Добро пожаловать в Minecraft Bedrock Launcher!</v:String>
@@ -78,4 +80,8 @@
 
     <v:String x:Key="AppExtractionFailed_Title">Ошибка распаковки</v:String>
     <v:String x:Key="AppExtractionFailed">Пожалуйста, попробуйте снова :(</v:String>
+    <!-- NewsScreen -->
+    <v:String x:Key="NewsScreen_Title">Список последних изменений</v:String>
+    <v:String x:Key="NewsScreen_build">билд</v:String>
+    <v:String x:Key="NewsScreen_Changes">Изменения:</v:String>
 </ResourceDictionary>

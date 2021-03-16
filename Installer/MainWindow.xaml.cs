@@ -74,5 +74,23 @@ namespace Installer
                     break;
             }
         }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            string[] ConsoleArgs = Environment.GetCommandLineArgs();
+            foreach (string argument in ConsoleArgs)
+            {
+                if (argument.StartsWith("--"))
+                {
+                    Console.WriteLine("Recieved argument: " + argument);
+                    // hide window and launch update process
+                    if (argument == "--silent") 
+                    {
+                        Application.Current.MainWindow.Hide();
+                        LauncherInstaller launcherInstaller = new LauncherInstaller(Directory.GetCurrentDirectory(), installationProgressPage, true); 
+                    }
+                }
+            }
+        }
     }
 }

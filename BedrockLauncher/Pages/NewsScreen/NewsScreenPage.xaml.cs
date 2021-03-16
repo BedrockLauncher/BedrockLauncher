@@ -20,9 +20,17 @@ namespace BedrockLauncher
     /// </summary>
     public partial class NewsScreenPage : Page
     {
-        public NewsScreenPage()
+        private Updater updater;
+        public NewsScreenPage(Updater updater)
         {
             InitializeComponent();
+            this.updater = updater;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            buildVersion.Text = "v" + updater.getLatestTag();
+            buildChanges.Text = updater.getLatestTagDescription();
         }
     }
 }

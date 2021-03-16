@@ -7,18 +7,21 @@ using System.Threading.Tasks;
 using Microsoft.Win32;
 using IWshRuntimeLibrary;
 using System.Xml;
+using System.Diagnostics;
 
 namespace Installer
 {
     class LauncherInstaller
     {
-        private const string LATEST_BUILD_LINK = "https://github.com/XlynxX/BedrockLauncher/releases/latest/download/build_v0.1.1.zip";
+        private const string LATEST_BUILD_LINK = "https://github.com/XlynxX/BedrockLauncher/releases/latest/download/build.zip";
         private string path;
         private string build_version;
+        private bool silent;
         private InstallationProgressPage InstallationProgressPage;
 
-        public LauncherInstaller(string installationPath, InstallationProgressPage installationProgressPage)
+        public LauncherInstaller(string installationPath, InstallationProgressPage installationProgressPage, bool silent = false)
         {
+            this.silent = silent;
             this.InstallationProgressPage = installationProgressPage;
             this.path = installationPath;
 
@@ -44,6 +47,16 @@ namespace Installer
         // this will delete old version if exists
         private void cleanCurrent(string path)
         {
+            // kill launcher
+            Process[] prs = Process.GetProcesses();
+            foreach (Process pr in prs)
+            {
+                if (pr.ProcessName == "BedrockLauncher")
+                {
+                    pr.Kill();
+                }
+
+            }
             // delete old installer if exists
             if (System.IO.File.Exists(Path.Combine(path, "Installer.exe.old")))
             {
@@ -60,7 +73,14 @@ namespace Installer
                 else
                 {
                     // delete other files
-                    System.IO.File.Delete(file);
+                    try
+                    {
+                        System.IO.File.Delete(file);
+                    }
+                    catch (Exception err)
+                    {
+                        Console.WriteLine("error file: " + file + "error: " + err.Message);
+                    }
                 }
             }
         }
@@ -121,6 +141,11 @@ namespace Installer
             if (await Task.Run(RegisterApp))
             {
                 CreateShortcut();
+                if (this.silent)
+                {
+                    Process.Start(new ProcessStartInfo(Path.Combine(path, "BedrockLauncher.exe")));
+                    Application.Current.Shutdown();
+                }
                 ((MainWindow)Application.Current.MainWindow).FinishBtn.Visibility = Visibility.Visible;
                 ((MainWindow)Application.Current.MainWindow).FinishBtn.Click += FinishInstall;
                 ((MainWindow)Application.Current.MainWindow).CancelBtn.Visibility = Visibility.Hidden;

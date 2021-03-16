@@ -6,16 +6,18 @@
       xmlns:local="clr-namespace:BedrockLauncher"
       mc:Ignorable="d" 
       d:DesignHeight="525" d:DesignWidth="828"
-      Title="PlayScreenPage">
+      Title="PlayScreenPage" Loaded="Page_Loaded">
 
     <Grid Margin="0" Background="#FF333333">
         <TextBlock LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap" Margin="5,5,0,0" Foreground="White" FontSize="17" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans">
-            <Run FontSize="26" FontWeight="Bold" Text="Latest build changes"/>
-            <Run Foreground="Gray" FontSize="13" Text="build"/>
-            <Run x:Name="buildVersion" Foreground="Gray" FontSize="13" Text="v.0.1.2"/>
+            <Run FontSize="26" FontWeight="Bold" Text="{DynamicResource NewsScreen_Title}"/>
+            <Run Foreground="Gray" FontSize="13" Text="{DynamicResource NewsScreen_build}"/>
+            <Run x:Name="buildVersion" Foreground="Gray" FontSize="13"/>
             <LineBreak/>
             <LineBreak/>
-            <Run x:Name="buildChanges" Text="Added gay"/>
+            <Run FontSize="20" FontWeight="Bold" Text="{DynamicResource NewsScreen_Changes}"/>
+            <LineBreak/>
+            <Run x:Name="buildChanges" FontSize="13"/>
         </TextBlock>
     </Grid>
 </Page>
