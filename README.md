@@ -16,7 +16,7 @@ Be sure you have installed default of .NET desktop development, you can find it 
 Open .sln project file in visual studio and press build button
 
 ## Download and install
-To install latest build download and launch [Installer.exe]: https://github.com/XlynxX/BedrockLauncher/releases/latest/download/Installer.exe from releases.
+To install latest build download and launch [Installer.exe](https://github.com/XlynxX/BedrockLauncher/releases/latest/download/Installer.exe) from releases.
 
 ## Known issues
 Launcher may not work until you download Minecraft from store at least once <br />
