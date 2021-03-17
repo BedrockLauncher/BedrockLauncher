@@ -10,7 +10,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Forms.Design;
 using Newtonsoft.Json;
-using BedrockLauncher;
 using MCLauncher;
 
 namespace BedrockLauncher
@@ -27,6 +26,7 @@ namespace BedrockLauncher
     using Windows.Management.Deployment;
     using Windows.System;
     using WPFDataTypes;
+    using ServerTab;
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
@@ -48,6 +48,9 @@ namespace BedrockLauncher
         // updater to check for updates (loaded in mainwindow init)
         private static Updater updater = new Updater();
 
+        // servers dll stuff
+        private ServersTab serversTab = new ServersTab();
+
         // load pages to not create new in memory after
         private MainPage mainPage = new MainPage();
         private GeneralSettingsPage generalSettingsPage = new GeneralSettingsPage();
@@ -56,10 +59,12 @@ namespace BedrockLauncher
         private NoContentPage noContentPage = new NoContentPage();
         private PlayScreenPage playScreenPage = new PlayScreenPage();
         private InstallationsScreen installationsScreen = new InstallationsScreen();
+        private ServersScreenPage serversScreenPage = new ServersScreenPage();
 
         public MainWindow()
         {
             InitializeComponent();
+            //serversTab.readServers();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             // show first launch window if no profile
             if (Properties.Settings.Default.CurrentProfile == "")

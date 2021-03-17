@@ -111,6 +111,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationFramework.Aero2" />
+    <Reference Include="ServerTab">
+      <HintPath>..\..\ServerTab\ServerTab\bin\Debug\ServerTab.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />

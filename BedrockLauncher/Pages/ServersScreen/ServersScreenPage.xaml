@@ -1,0 +1,19 @@
+﻿<Page x:Class="BedrockLauncher.ServersScreenPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BedrockLauncher"
+      mc:Ignorable="d" 
+      d:DesignHeight="525" d:DesignWidth="828"
+      Title="PlayScreenPage" Loaded="Page_Loaded">
+
+    <Grid Margin="0" Background="#FF333333">
+        <StackPanel x:Name="sp" Background="Black" Margin="0,0,0,0">
+            
+        </StackPanel>
+        <TextBlock LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap" Margin="5,5,0,0" Foreground="White" FontSize="17" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans">
+            <Run FontSize="26" FontWeight="Bold" Text="Servers"/>
+        </TextBlock>
+    </Grid>
+</Page>
