@@ -6,3 +6,4 @@ C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Unin
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Uninstaller\obj\Release\Uninstaller.TrustInfo.xml
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Uninstaller\obj\Release\Uninstaller.exe.manifest
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Uninstaller\obj\Release\Uninstaller.application
+C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Uninstaller\obj\Release\Uninstaller.csprojAssemblyReference.cache
