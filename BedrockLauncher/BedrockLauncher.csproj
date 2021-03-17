@@ -161,6 +161,9 @@
     <Compile Include="Pages\NewsScreen\NewsScreenPage.xaml.cs">
       <DependentUpon>NewsScreenPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ServersScreen\ServersScreenPage.xaml.cs">
+      <DependentUpon>ServersScreenPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\SettingsScreen\GeneralSettingsPage.xaml.cs">
       <DependentUpon>GeneralSettingsPage.xaml</DependentUpon>
     </Compile>
@@ -223,6 +226,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\NewsScreen\NewsScreenPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\ServersScreen\ServersScreenPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

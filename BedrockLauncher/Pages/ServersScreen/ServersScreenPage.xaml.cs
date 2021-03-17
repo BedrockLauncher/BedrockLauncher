@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ServerTab;
 
 namespace BedrockLauncher
 {
@@ -20,21 +21,24 @@ namespace BedrockLauncher
     /// </summary>
     public partial class ServersScreenPage : Page
     {
-        public ServersScreenPage()
+        private ServersTab serverTab;
+        public ServersScreenPage(ServersTab serverTab)
         {
             InitializeComponent();
+            this.serverTab = serverTab;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < 5; i++)
+            foreach (List<Server> servers in serverTab.getServerList().Servers.Values)
             {
-                System.Windows.Controls.Button newBtn = new Button();
-
-                newBtn.Content = i.ToString();
-                newBtn.Name = "Button" + i.ToString();
-
-                sp.Children.Add(newBtn);
+                foreach (Server server in servers)
+                {
+                    System.Windows.Controls.Button newBtn = new Button();
+                    newBtn.Content = server.Name;
+                    newBtn.Name = "Button" + server.Name;
+                    sp.Children.Add(newBtn);
+                }
             }
             //buildVersion.Text = "v" + updater.getLatestTag();
             //buildChanges.Text = updater.getLatestTagDescription();

@@ -49,7 +49,7 @@ namespace BedrockLauncher
         private static Updater updater = new Updater();
 
         // servers dll stuff
-        private ServersTab serversTab = new ServersTab();
+        private static ServersTab serversTab = new ServersTab();
 
         // load pages to not create new in memory after
         private MainPage mainPage = new MainPage();
@@ -59,7 +59,7 @@ namespace BedrockLauncher
         private NoContentPage noContentPage = new NoContentPage();
         private PlayScreenPage playScreenPage = new PlayScreenPage();
         private InstallationsScreen installationsScreen = new InstallationsScreen();
-        private ServersScreenPage serversScreenPage = new ServersScreenPage();
+        private ServersScreenPage serversScreenPage = new ServersScreenPage(serversTab);
 
         public MainWindow()
         {
@@ -549,7 +549,7 @@ namespace BedrockLauncher
             }
             else if (toggleButton.Name == ServersButton.Name)
             {
-                MainWindowFrame.Navigate(mainPage);
+                MainWindowFrame.Navigate(serversScreenPage);
                 ServersButton.IsChecked = true;
                 PlayScreenBorder.Visibility = Visibility.Visible;
                 mainPage.MainPageFrame.Navigate(playScreenPage);
