@@ -530,10 +530,10 @@ namespace BedrockLauncher
                 settingsScreenPage.AboutButton, 
                 
                 // play page
-                playScreenPage.PlayButton,
-                playScreenPage.InstallationsButton,
-                playScreenPage.SkinsButton,
-                playScreenPage.PatchNotesButton,
+                //playScreenPage.PlayButton,
+                //playScreenPage.InstallationsButton,
+                //playScreenPage.SkinsButton,
+                //playScreenPage.PatchNotesButton,
 
                 // installations page
                 installationsScreen.PlayButton, 
@@ -548,7 +548,7 @@ namespace BedrockLauncher
             if (toggleButton.Name == BedrockEditionButton.Name)
             {
                 mainPage.PlayButton.IsChecked = true;
-                playScreenPage.PlayButton.IsChecked = true;
+                //playScreenPage.PlayButton.IsChecked = true;
                 MainWindowFrame.Navigate(playScreenPage);
                 PlayScreenBorder.Visibility = Visibility.Visible;
             }
@@ -571,7 +571,7 @@ namespace BedrockLauncher
             else if (toggleButton.Name == mainPage.PlayButton.Name)
             {
                 MainWindowFrame.Navigate(playScreenPage);
-                playScreenPage.PlayButton.IsChecked = true;
+                //playScreenPage.PlayButton.IsChecked = true;
                 BedrockEditionButton.IsChecked = true;
                 PlayScreenBorder.Visibility = Visibility.Visible;
             }
