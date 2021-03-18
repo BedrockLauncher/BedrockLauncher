@@ -509,18 +509,47 @@ namespace BedrockLauncher
         {
             var toggleButton = sender as ToggleButton;
             // just all buttons list
-            List<ToggleButton> toggleButtons = new List<ToggleButton>() { ServersButton, NewsButton, BedrockEditionButton, JavaEditionButton,
-            SettingsButton, mainPage.PlayButton, mainPage.InstallationsButton, mainPage.SkinsButton, mainPage.PatchNotesButton,
-                settingsScreenPage.GeneralButton, settingsScreenPage.AboutButton};
+            // ya i know this is really bad, i need to learn mvvm instead of doing this shit
+            // but this works fine, at least
+            List<ToggleButton> toggleButtons = new List<ToggleButton>() { 
+                // mainwindow
+                ServersButton, 
+                NewsButton, 
+                BedrockEditionButton, 
+                JavaEditionButton, 
+                SettingsButton, 
+                
+                // mainpage (gonna be deleted)
+                mainPage.PlayButton, 
+                mainPage.InstallationsButton, 
+                mainPage.SkinsButton, 
+                mainPage.PatchNotesButton,
+                
+                // settings screen lol
+                settingsScreenPage.GeneralButton, 
+                settingsScreenPage.AboutButton, 
+                
+                // play page
+                playScreenPage.PlayButton,
+                playScreenPage.InstallationsButton,
+                playScreenPage.SkinsButton,
+                playScreenPage.PatchNotesButton,
+
+                // installations page
+                installationsScreen.PlayButton, 
+                installationsScreen.InstallationsButton, 
+                installationsScreen.SkinsButton, 
+                installationsScreen.PatchNotesButton};
 
             foreach (ToggleButton button in toggleButtons) { button.IsChecked = false; }
             toggleButton.IsChecked = true;
             PlayScreenBorder.Visibility = Visibility.Hidden;
+            
             if (toggleButton.Name == BedrockEditionButton.Name)
             {
                 mainPage.PlayButton.IsChecked = true;
-                MainWindowFrame.Navigate(mainPage);
-                mainPage.MainPageFrame.Navigate(playScreenPage);
+                playScreenPage.PlayButton.IsChecked = true;
+                MainWindowFrame.Navigate(playScreenPage);
                 PlayScreenBorder.Visibility = Visibility.Visible;
             }
             else if (toggleButton.Name == NewsButton.Name)
@@ -541,11 +570,10 @@ namespace BedrockLauncher
             // MainPageButtons
             else if (toggleButton.Name == mainPage.PlayButton.Name)
             {
-                MainWindowFrame.Navigate(mainPage);
-                mainPage.PlayButton.IsChecked = true;
+                MainWindowFrame.Navigate(playScreenPage);
+                playScreenPage.PlayButton.IsChecked = true;
                 BedrockEditionButton.IsChecked = true;
                 PlayScreenBorder.Visibility = Visibility.Visible;
-                mainPage.MainPageFrame.Navigate(playScreenPage);
             }
             else if (toggleButton.Name == ServersButton.Name)
             {
@@ -556,10 +584,9 @@ namespace BedrockLauncher
             }
             else if (toggleButton.Name == mainPage.InstallationsButton.Name)
             {
-                MainWindowFrame.Navigate(mainPage);
+                MainWindowFrame.Navigate(installationsScreen);
                 mainPage.InstallationsButton.IsChecked = true;
                 BedrockEditionButton.IsChecked = true;
-                mainPage.MainPageFrame.Navigate(installationsScreen);
             }
             else if (toggleButton.Name == mainPage.SkinsButton.Name)
             {

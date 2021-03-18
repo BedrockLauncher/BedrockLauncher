@@ -661,7 +661,7 @@
                 <Image IsHitTestVisible="False" RenderOptions.BitmapScalingMode="NearestNeighbor" SnapsToDevicePixels="True" Source="Resources/images/servers_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
             </Grid>
         </StackPanel>
-        <Frame x:Name="MainWindowFrame" Margin="180,0,0,0" VerticalAlignment="Stretch" Background="Black" Source="/BedrockLauncher;component/MainPage.xaml" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="MainWindowFrame" Margin="180,0,0,0" VerticalAlignment="Stretch" Background="Black" NavigationUIVisibility="Hidden" Source="/BedrockLauncher;component/Pages/PlayScreen/PlayScreenPage.xaml"/>
         <Button RenderOptions.BitmapScalingMode="NearestNeighbor" x:Name="updateButton" Margin="0,-75,5,0" HorizontalAlignment="Right" Height="60" Width="260" VerticalAlignment="Top" BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyle2}">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/images/advancement_icon.png"/>
