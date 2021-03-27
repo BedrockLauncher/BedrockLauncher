@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ServerTab;
 
-namespace BedrockLauncher
+namespace BedrockLauncher.Pages.ServersScreen
 {
     /// <summary>
     /// Логика взаимодействия для PlayScreenPage.xaml
@@ -27,6 +27,7 @@ namespace BedrockLauncher
             InitializeComponent();
             this.serverTab = serverTab;
         }
+        
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -40,8 +41,10 @@ namespace BedrockLauncher
                     sp.Children.Add(newBtn);
                 }
             }
+
             //buildVersion.Text = "v" + updater.getLatestTag();
             //buildChanges.Text = updater.getLatestTagDescription();
         }
+
     }
 }

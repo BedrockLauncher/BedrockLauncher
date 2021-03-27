@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{9FEBCF6C-14EF-49E9-B57D-FCBC3BA4BC77}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>BedrockLauncher</RootNamespace>
     <AssemblyName>BedrockLauncher</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -44,7 +44,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -82,7 +82,7 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\images\icon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\images\bedrock_block_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -138,8 +138,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BetterBedrock\BetterBedrockMain.cs" />
-    <Compile Include="ConfigManager.cs" />
+    <Compile Include="Addons\BetterBedrock\BetterBedrockMain.cs" />
+    <Compile Include="Methods\ConfigManager.cs" />
+    <Compile Include="Classes\ProfileSettings.cs" />
+    <Compile Include="Classes\ProfileList.cs" />
+    <Compile Include="Classes\NotifyPropertyChangedBase.cs" />
+    <Compile Include="Classes\Version.cs" />
+    <Compile Include="Classes\VersionStateChangeInfo.cs" />
+    <Compile Include="Interfaces\ICommonVersionCommands.cs" />
     <Compile Include="Pages\ErrorScreen\ErrorScreen.xaml.cs">
       <DependentUpon>ErrorScreen.xaml</DependentUpon>
     </Compile>
@@ -167,13 +173,13 @@
     <Compile Include="Pages\SettingsScreen\GeneralSettingsPage.xaml.cs">
       <DependentUpon>GeneralSettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
+    <Compile Include="Pages\MainScreen\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NoContentPage.xaml.cs">
+    <Compile Include="Pages\NoContentScreen\NoContentPage.xaml.cs">
       <DependentUpon>NoContentPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PlayScreen\PlayScreenPage.xaml.cs">
@@ -184,20 +190,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RelayCommand.cs" />
-    <Compile Include="SettingsScreen.xaml.cs">
+    <Compile Include="Classes\RelayCommand.cs" />
+    <Compile Include="Pages\SettingsScreen\SettingsScreen.xaml.cs">
       <DependentUpon>SettingsScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Updater\Updater.cs" />
-    <Compile Include="VersionDownloader.cs" />
-    <Compile Include="VersionList.cs" />
-    <Compile Include="WUProtocol.cs" />
-    <Compile Include="WUTokenHelper.cs" />
+    <Compile Include="Methods\Updater.cs" />
+    <Compile Include="Methods\VersionDownloader.cs" />
+    <Compile Include="Classes\VersionList.cs" />
+    <Compile Include="Methods\WUProtocol.cs" />
+    <Compile Include="Methods\WUTokenHelper.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <DesignData Include="SampleData\Versions.xaml">
+    <DesignData Include="Data\Versions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </DesignData>
@@ -230,14 +236,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\ServersScreen\ServersScreenPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="Pages\SettingsScreen\GeneralSettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainPage.xaml">
+    <Page Include="Pages\MainScreen\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -245,7 +251,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NoContentPage.xaml">
+    <Page Include="Pages\NoContentScreen\NoContentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -253,19 +259,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\i18n\lang.en-US.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\i18n\lang.ru-RU.xaml">
+    <Page Include="Resources\styles\style.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\i18n\lang.xaml">
+    <Page Include="Resources\text\lang.en-US.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\text\lang.ru-RU.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SettingsScreen.xaml">
+    <Page Include="Resources\text\lang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SettingsScreen\SettingsScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -282,6 +292,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="app.manifest">
       <SubType>Designer</SubType>
@@ -290,7 +301,7 @@
     <Resource Include="Resources\fonts\MinecraftTen.ttf" />
     <Resource Include="Resources\fonts\NotoSans-Bold.ttf" />
     <Resource Include="Resources\fonts\NotoSans-Regular.ttf" />
-    <None Include="BetterBedrock\files\BottomChat.zip" />
+    <None Include="Addons\BetterBedrock\files\BottomChat.zip" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -355,30 +366,36 @@
     <Resource Include="Resources\images\optionmark.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="BetterBedrock\files\glyph_04.png" />
+    <Resource Include="Addons\BetterBedrock\files\glyph_04.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="BetterBedrock\files\destroy_stage_0.png" />
-    <Resource Include="BetterBedrock\files\destroy_stage_1.png" />
-    <Resource Include="BetterBedrock\files\destroy_stage_2.png" />
-    <Resource Include="BetterBedrock\files\destroy_stage_3.png" />
-    <Resource Include="BetterBedrock\files\destroy_stage_4.png" />
-    <Resource Include="BetterBedrock\files\destroy_stage_5.png" />
-    <Resource Include="BetterBedrock\files\destroy_stage_6.png" />
-    <Resource Include="BetterBedrock\files\destroy_stage_7.png" />
-    <Resource Include="BetterBedrock\files\destroy_stage_8.png" />
-    <Resource Include="BetterBedrock\files\destroy_stage_9.png" />
+    <Resource Include="Addons\BetterBedrock\files\destroy_stage_0.png" />
+    <Resource Include="Addons\BetterBedrock\files\destroy_stage_1.png" />
+    <Resource Include="Addons\BetterBedrock\files\destroy_stage_2.png" />
+    <Resource Include="Addons\BetterBedrock\files\destroy_stage_3.png" />
+    <Resource Include="Addons\BetterBedrock\files\destroy_stage_4.png" />
+    <Resource Include="Addons\BetterBedrock\files\destroy_stage_5.png" />
+    <Resource Include="Addons\BetterBedrock\files\destroy_stage_6.png" />
+    <Resource Include="Addons\BetterBedrock\files\destroy_stage_7.png" />
+    <Resource Include="Addons\BetterBedrock\files\destroy_stage_8.png" />
+    <Resource Include="Addons\BetterBedrock\files\destroy_stage_9.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="BetterBedrock\files\default8.png" />
-    <Resource Include="BetterBedrock\files\glyph_00.png" />
-    <Resource Include="BetterBedrock\files\glyph_E0.png" />
+    <Resource Include="Addons\BetterBedrock\files\default8.png" />
+    <Resource Include="Addons\BetterBedrock\files\glyph_00.png" />
+    <Resource Include="Addons\BetterBedrock\files\glyph_E0.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\firstlaunchbackground.jpg" />
     <Resource Include="Resources\images\servers_icon.png" />
     <Resource Include="Resources\images\profile_icon.png" />
     <Resource Include="Resources\images\advancement_icon.png" />
+    <Resource Include="Resources\images\bedrock_block_icon.ico" />
+    <Resource Include="Resources\images\grass_block_icon.ico" />
+    <Resource Include="Resources\images\crafting_table_block_icon.ico" />
+    <Content Include="ServerTab.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="WUTokenHelper.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -393,5 +410,6 @@
       <Name>Uninstaller</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

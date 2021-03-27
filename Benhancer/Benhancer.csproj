@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1CC094F4-F755-44DA-A444-C1FAE8D6C430}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>Benhancer</RootNamespace>
     <AssemblyName>Benhancer</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>

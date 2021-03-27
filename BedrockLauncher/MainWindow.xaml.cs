@@ -10,29 +10,42 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Forms.Design;
 using Newtonsoft.Json;
-using MCLauncher;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
+using System.IO.Compression;
+using System.Threading;
+using System.Windows.Data;
+using Windows.ApplicationModel;
+using Windows.Foundation;
+using Windows.Management.Core;
+using Windows.Management.Deployment;
+using Windows.System;
+using BedrockLauncher.Interfaces;
+using BedrockLauncher.Methods;
+using BedrockLauncher.Classes;
+using BedrockLauncher.Pages.MainScreen;
+using BedrockLauncher.Pages.NoContentScreen;
+using BedrockLauncher.Pages.PlayScreen;
+using BedrockLauncher.Pages.ServersScreen;
+using BedrockLauncher.Pages.SettingsScreen;
+using BedrockLauncher.Pages.FirstLaunch;
+using BedrockLauncher.Pages.ErrorScreen;
+using BedrockLauncher.Pages.InstallationsScreen;
+using BedrockLauncher.Pages.NewsScreen;
+using ServerTab;
+
+using Version = BedrockLauncher.Classes.Version;
 
 namespace BedrockLauncher
 {
-    using System.ComponentModel;
-    using System.Diagnostics;
-    using System.IO;
-    using System.IO.Compression;
-    using System.Threading;
-    using System.Windows.Data;
-    using Windows.ApplicationModel;
-    using Windows.Foundation;
-    using Windows.Management.Core;
-    using Windows.Management.Deployment;
-    using Windows.System;
-    using WPFDataTypes;
-    using ServerTab;
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     /// 
     public partial class MainWindow : Window, ICommonVersionCommands
     {
+        #region Definitions
         private static readonly string MINECRAFT_PACKAGE_FAMILY = "Microsoft.MinecraftUWP_8wekyb3d8bbwe";
 
         private VersionList _versions;
@@ -60,10 +73,13 @@ namespace BedrockLauncher
         private PlayScreenPage playScreenPage = new PlayScreenPage();
         private InstallationsScreen installationsScreen = new InstallationsScreen();
         private ServersScreenPage serversScreenPage = new ServersScreenPage(serversTab);
+        #endregion
 
+        #region Init
         public MainWindow()
         {
             InitializeComponent();
+            Panel.SetZIndex(MainWindowOverlayFrame, 0);
             //serversTab.readServers();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             // show first launch window if no profile
@@ -74,13 +90,30 @@ namespace BedrockLauncher
             ProfileName.Text = Properties.Settings.Default.CurrentProfile;
 
             _versions = new VersionList("versions.json", this);
-            VersionList.ItemsSource = _versions;
-            var view = CollectionViewSource.GetDefaultView(VersionList.ItemsSource) as CollectionView;
-            view.Filter = VersionListFilter;
-            _userVersionDownloaderLoginTask = new Task(() => {
+
+            _userVersionDownloaderLoginTask = new Task(() =>
+            {
                 _userVersionDownloader.EnableUserAuthorization();
             });
-            Dispatcher.Invoke(async () => {
+
+            UpdateVersionsList();
+        }
+
+        #endregion
+
+        #region Version Management
+
+        public void UpdateVersionsList()
+        {
+            VersionList.ItemsSource = _versions;
+            installationsScreen.InstallationsList.ItemsSource = _versions;
+            var view = CollectionViewSource.GetDefaultView(VersionList.ItemsSource) as CollectionView;
+            var view2 = CollectionViewSource.GetDefaultView(installationsScreen.InstallationsList.ItemsSource) as CollectionView;
+            view.Filter = VersionListFilter;
+            view2.Filter = VersionListFilter;
+
+            Dispatcher.Invoke(async () =>
+            {
                 try
                 {
                     await _versions.LoadFromCache();
@@ -98,13 +131,31 @@ namespace BedrockLauncher
                     Debug.WriteLine("List download failed:\n" + e.ToString());
                 }
             });
+
         }
+
+        private bool VersionListFilter(object obj)
+        {
+            Version v = obj as Version;
+            VersionList.SelectedIndex = Properties.Settings.Default.LastSelectedVersion; // show last version in combobox
+
+            if (!Properties.Settings.Default.ShowBetas && v.IsBeta) return false;
+            else if (!Properties.Settings.Default.ShowReleases && !v.IsBeta) return false;
+            else if (!Properties.Settings.Default.ShowNonInstalled && !v.IsInstalled) return false;
+            else return true;
+
+        }
+
+        #endregion
+
+        #region Unsorted
+
 
         public void LanguageChange(string language)
         {
             ResourceDictionary dict = new ResourceDictionary
             {
-                Source = new Uri($"..\\Resources\\i18n\\lang.{language}.xaml", UriKind.Relative)
+                Source = new Uri($"..\\Resources\\text\\lang.{language}.xaml", UriKind.Relative)
             };
             Application.Current.Resources.MergedDictionaries.Add(dict);
         }
@@ -119,7 +170,8 @@ namespace BedrockLauncher
             if (_hasLaunchTask)
                 return;
             _hasLaunchTask = true;
-            Task.Run(async () => {
+            Task.Run(async () =>
+            {
                 v.StateChangeInfo = new VersionStateChangeInfo();
                 v.StateChangeInfo.IsLaunching = true;
                 string gameDir = Path.GetFullPath(v.GameDirectory);
@@ -175,10 +227,12 @@ namespace BedrockLauncher
         private async Task DeploymentProgressWrapper(IAsyncOperationWithProgress<DeploymentResult, DeploymentProgress> t)
         {
             TaskCompletionSource<int> src = new TaskCompletionSource<int>();
-            t.Progress += (v, p) => {
+            t.Progress += (v, p) =>
+            {
                 Debug.WriteLine("Deployment progress: " + p.state + " " + p.percentage + "%");
             };
-            t.Completed += (v, p) => {
+            t.Completed += (v, p) =>
+            {
                 if (p == AsyncStatus.Error)
                 {
                     Debug.WriteLine("Deployment failed: " + v.GetResults().ErrorText);
@@ -321,7 +375,8 @@ namespace BedrockLauncher
             v.StateChangeInfo.CancelCommand = new RelayCommand((o) => cancelSource.Cancel());
 
             Debug.WriteLine("Download start");
-            Task.Run(async () => {
+            Task.Run(async () =>
+            {
                 string dlPath = "Minecraft-" + v.Name + ".Appx";
                 VersionDownloader downloader = _anonVersionDownloader;
                 if (v.IsBeta)
@@ -347,7 +402,8 @@ namespace BedrockLauncher
                 }
                 try
                 {
-                    await downloader.Download(v.UUID, "1", dlPath, (current, total) => {
+                    await downloader.Download(v.UUID, "1", dlPath, (current, total) =>
+                    {
                         if (v.StateChangeInfo.IsInitializing)
                         {
                             Debug.WriteLine("Actual download started");
@@ -395,7 +451,8 @@ namespace BedrockLauncher
 
         private void InvokeRemove(Version v)
         {
-            Task.Run(async () => {
+            Task.Run(async () =>
+            {
                 v.StateChangeInfo = new VersionStateChangeInfo();
                 v.StateChangeInfo.IsUninstalling = true;
                 await UnregisterPackage(Path.GetFullPath(v.GameDirectory));
@@ -403,13 +460,6 @@ namespace BedrockLauncher
                 v.StateChangeInfo = null;
                 v.UpdateInstallStatus();
             });
-        }
-
-        private bool VersionListFilter(object obj)
-        {
-            Version v = obj as Version;
-            VersionList.SelectedIndex = Properties.Settings.Default.LastSelectedVersion; // show last version in combobox
-            return (!v.IsBeta || Properties.Settings.Default.ShowBetas) && (v.IsInstalled || !Properties.Settings.Default.ShowInstalledOnly);
         }
 
         private void ComboBoxItem_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
@@ -436,7 +486,7 @@ namespace BedrockLauncher
                         break;
                 }
             }
-            
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -504,279 +554,141 @@ namespace BedrockLauncher
             //    MainWindowOverlayFrame.Navigate(new WelcomePage());
             //}
         }
+        #endregion
 
-        public void ButtonManager(object sender, RoutedEventArgs e)
+        #region Navigation
+
+        public void ResetButtonManager(ToggleButton toggleButton)
         {
-            var toggleButton = sender as ToggleButton;
             // just all buttons list
             // ya i know this is really bad, i need to learn mvvm instead of doing this shit
             // but this works fine, at least
             List<ToggleButton> toggleButtons = new List<ToggleButton>() { 
                 // mainwindow
-                ServersButton, 
-                NewsButton, 
-                BedrockEditionButton, 
-                JavaEditionButton, 
+                ServersButton,
+                NewsButton,
+                BedrockEditionButton,
+                JavaEditionButton,
                 SettingsButton, 
                 
                 // mainpage (gonna be deleted)
-                mainPage.PlayButton, 
-                mainPage.InstallationsButton, 
-                mainPage.SkinsButton, 
+                mainPage.PlayButton,
+                mainPage.InstallationsButton,
+                mainPage.SkinsButton,
                 mainPage.PatchNotesButton,
                 
                 // settings screen lol
-                settingsScreenPage.GeneralButton, 
-                settingsScreenPage.AboutButton, 
-                
-                // play page
-                //playScreenPage.PlayButton,
-                //playScreenPage.InstallationsButton,
-                //playScreenPage.SkinsButton,
-                //playScreenPage.PatchNotesButton,
-
-                // installations page
-                installationsScreen.PlayButton, 
-                installationsScreen.InstallationsButton, 
-                installationsScreen.SkinsButton, 
-                installationsScreen.PatchNotesButton};
+                settingsScreenPage.GeneralButton,
+                settingsScreenPage.AboutButton
+            };
 
             foreach (ToggleButton button in toggleButtons) { button.IsChecked = false; }
-            toggleButton.IsChecked = true;
+
             PlayScreenBorder.Visibility = Visibility.Hidden;
-            
-            if (toggleButton.Name == BedrockEditionButton.Name)
+
+            toggleButton.IsChecked = true;
+        }
+        public void ButtonManager(object sender, RoutedEventArgs e)
+        {
+            var toggleButton = sender as ToggleButton;
+            ResetButtonManager(toggleButton);
+
+            if (toggleButton.Name == BedrockEditionButton.Name) NavigateToMainPage();
+            else if (toggleButton.Name == NewsButton.Name) NavigateToNewsPage();
+            else if (toggleButton.Name == JavaEditionButton.Name) NavigateToJavaLauncher();
+            else if (toggleButton.Name == ServersButton.Name) NavigateToServersScreen();
+            else if (toggleButton.Name == SettingsButton.Name) NavigateToSettings();
+
+            // MainPageButtons
+            else if (toggleButton.Name == mainPage.PlayButton.Name) NavigateToPlayScreen();
+            else if (toggleButton.Name == mainPage.InstallationsButton.Name) NavigateToInstallationsPage();
+            else if (toggleButton.Name == mainPage.SkinsButton.Name) NavigateToSkinsPage();
+            else if (toggleButton.Name == mainPage.PatchNotesButton.Name) NavigateToPatchNotes();
+            else NavigateToPlayScreen();
+
+        }
+        public void NavigateToMainPage(bool rooted = false)
+        {
+            BedrockEditionButton.IsChecked = true;
+            MainWindowFrame.Navigate(mainPage);
+            PlayScreenBorder.Visibility = Visibility.Visible;
+
+            if (!rooted)
             {
-                mainPage.PlayButton.IsChecked = true;
-                //playScreenPage.PlayButton.IsChecked = true;
-                MainWindowFrame.Navigate(playScreenPage);
-                PlayScreenBorder.Visibility = Visibility.Visible;
+                if (mainPage.LastButtonName == mainPage.PlayButton.Name) NavigateToPlayScreen();
+                else if (mainPage.LastButtonName == mainPage.InstallationsButton.Name) NavigateToInstallationsPage();
+                else if (mainPage.LastButtonName == mainPage.SkinsButton.Name) NavigateToSkinsPage();
+                else if (mainPage.LastButtonName == mainPage.PatchNotesButton.Name) NavigateToPatchNotes();
             }
-            else if (toggleButton.Name == NewsButton.Name)
-            {
-                MainWindowFrame.Navigate(newsScreenPage);
-            }
-            else if (toggleButton.Name == JavaEditionButton.Name)
+        }
+        public void NavigateToNewsPage()
+        {
+            MainWindowFrame.Navigate(newsScreenPage);
+        }
+        public void NavigateToJavaLauncher()
+        {
+            try 
             {
                 // Trying to find and open java launcher shortcut
-                try { Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu) + @"\Programs\Minecraft Launcher\Minecraft Launcher"); Application.Current.MainWindow.Close(); } catch { ErrorScreenShow.errormsg("CantFindJavaLauncher"); }
-            }
-            else if (toggleButton.Name == SettingsButton.Name)
+                string JavaPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu) + @"\Programs\Minecraft Launcher\Minecraft Launcher";
+                Process.Start(JavaPath);
+                Application.Current.MainWindow.Close(); 
+            } 
+            catch 
             {
-                settingsScreenPage.GeneralButton.IsChecked = true;
-                MainWindowFrame.Navigate(settingsScreenPage);
-                settingsScreenPage.SettingsScreenFrame.Navigate(generalSettingsPage);
+                NavigateToPlayScreen();
+                ErrorScreenShow.errormsg("CantFindJavaLauncher"); 
             }
-            // MainPageButtons
-            else if (toggleButton.Name == mainPage.PlayButton.Name)
-            {
-                MainWindowFrame.Navigate(playScreenPage);
-                //playScreenPage.PlayButton.IsChecked = true;
-                BedrockEditionButton.IsChecked = true;
-                PlayScreenBorder.Visibility = Visibility.Visible;
-            }
-            else if (toggleButton.Name == ServersButton.Name)
+        }
+        public void NavigateToServersScreen()
+        {
+            string file = System.IO.Path.Combine(System.Reflection.Assembly.GetEntryAssembly().Location, "servers_paid.json");
+            if (File.Exists(file))
             {
                 MainWindowFrame.Navigate(serversScreenPage);
                 ServersButton.IsChecked = true;
-                PlayScreenBorder.Visibility = Visibility.Visible;
-                mainPage.MainPageFrame.Navigate(playScreenPage);
             }
-            else if (toggleButton.Name == mainPage.InstallationsButton.Name)
+            else
             {
-                MainWindowFrame.Navigate(installationsScreen);
-                mainPage.InstallationsButton.IsChecked = true;
-                BedrockEditionButton.IsChecked = true;
+                NavigateToPlayScreen();
+                ErrorScreenShow.errormsg("CantFindPaidServerList");
             }
-            else if (toggleButton.Name == mainPage.SkinsButton.Name)
-            {
-                MainWindowFrame.Navigate(mainPage);
-                mainPage.SkinsButton.IsChecked = true;
-                BedrockEditionButton.IsChecked = true;
-                mainPage.MainPageFrame.Navigate(noContentPage);
-            }
-            else if (toggleButton.Name == mainPage.PatchNotesButton.Name)
-            {
-                MainWindowFrame.Navigate(mainPage);
-                mainPage.PatchNotesButton.IsChecked = true;
-                BedrockEditionButton.IsChecked = true;
-                mainPage.MainPageFrame.Navigate(noContentPage);
-            }
-            else { }
-
         }
-    }
-
-    namespace WPFDataTypes
-    {
-        public class NotifyPropertyChangedBase : INotifyPropertyChanged
+        public void NavigateToSettings()
         {
-
-            public event PropertyChangedEventHandler PropertyChanged;
-
-            protected void OnPropertyChanged(string name)
-            {
-                if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
-            public void ProgressBarIsIndeterminate(bool isIndeterminate)
-            {
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    ((MainWindow)Application.Current.MainWindow).progressSizeHack.IsIndeterminate = isIndeterminate;
-                });
-            }
-            public void ProgressBarUpdate(double downloadedBytes, double totalSize)
-            {
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    ((MainWindow)Application.Current.MainWindow).progressSizeHack.Value = downloadedBytes;
-                    ((MainWindow)Application.Current.MainWindow).progressSizeHack.Maximum = totalSize;
-                    int.Parse(downloadedBytes.ToString());
-                    ((MainWindow)Application.Current.MainWindow).ProgressBarText.Text = (Math.Round(downloadedBytes / 1024 / 1024, 2)).ToString() + " MB / " + (Math.Round(totalSize / 1024 / 1024, 2)).ToString() + " MB";
-                });
-            }
-
+            settingsScreenPage.GeneralButton.IsChecked = true;
+            MainWindowFrame.Navigate(settingsScreenPage);
+            settingsScreenPage.SettingsScreenFrame.Navigate(generalSettingsPage);
         }
-
-        public interface ICommonVersionCommands
+        public void NavigateToPlayScreen()
         {
-
-            ICommand LaunchCommand { get; }
-
-            ICommand DownloadCommand { get; }
-
-            ICommand RemoveCommand { get; }
-
+            NavigateToMainPage(true);
+            mainPage.PlayButton.IsChecked = true;
+            mainPage.MainPageFrame.Navigate(playScreenPage);
+            mainPage.LastButtonName = mainPage.PlayButton.Name;
         }
-        public class Versions : List<Object>
+        public void NavigateToInstallationsPage()
         {
+            NavigateToMainPage(true);
+            mainPage.InstallationsButton.IsChecked = true;
+            mainPage.MainPageFrame.Navigate(installationsScreen);
+            mainPage.LastButtonName = mainPage.InstallationsButton.Name;
         }
-            public class Version : NotifyPropertyChangedBase
+        public void NavigateToSkinsPage()
         {
-            public Version(string uuid, string name, bool isBeta, ICommonVersionCommands commands)
-            {
-                this.UUID = uuid;
-                this.Name = name;
-                this.IsBeta = isBeta;
-                this.DownloadCommand = commands.DownloadCommand;
-                this.LaunchCommand = commands.LaunchCommand;
-                this.RemoveCommand = commands.RemoveCommand;
-            }
-
-            public string UUID { get; set; }
-            public string Name { get; set; }
-            public bool IsBeta { get; set; }
-
-            public string GameDirectory => "versions/Minecraft-" + Name;
-
-            public bool IsInstalled => Directory.Exists(GameDirectory);
-
-            public string DisplayName
-            {
-                get
-                {
-                    return (IsBeta ? "(Beta) " : "") + Name;
-                }
-            }
-            public string DisplayInstallStatus
-            {
-                get
-                {
-                    return IsInstalled ? "Installed" : "Not installed";
-                }
-            }
-
-            public ICommand LaunchCommand { get; set; }
-            public ICommand DownloadCommand { get; set; }
-            public ICommand RemoveCommand { get; set; }
-
-            private VersionStateChangeInfo _stateChangeInfo;
-            public VersionStateChangeInfo StateChangeInfo
-            {
-                get { return _stateChangeInfo; }
-                set { _stateChangeInfo = value; OnPropertyChanged("StateChangeInfo"); OnPropertyChanged("IsStateChanging"); }
-            }
-
-            public bool IsStateChanging => StateChangeInfo != null;
-
-            public void UpdateInstallStatus()
-            {
-                OnPropertyChanged("IsInstalled");
-            }
-
+            NavigateToMainPage(true);
+            mainPage.SkinsButton.IsChecked = true;
+            mainPage.MainPageFrame.Navigate(noContentPage);
+            mainPage.LastButtonName = mainPage.SkinsButton.Name;
         }
-
-        public class VersionStateChangeInfo : NotifyPropertyChangedBase
+        public void NavigateToPatchNotes()
         {
-
-            private bool _isInitializing;
-            private bool _isExtracting;
-            private bool _isUninstalling;
-            private bool _isLaunching;
-            public long _downloadedBytes;
-            private long _totalSize;
-
-            public bool IsInitializing
-            {
-                get { return _isInitializing; }
-                set { _isInitializing = value; Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarDownloading"); }); ProgressBarIsIndeterminate(_isInitializing); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
-            }
-
-            public bool IsExtracting
-            {
-                get { return _isExtracting; }
-                set { _isExtracting = value; Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarExtracting"); }); Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).ProgressBarText.Text = ""; }); ProgressBarIsIndeterminate(_isExtracting); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
-            }
-
-            public bool IsUninstalling
-            {
-                get { return _isUninstalling; }
-                set { _isUninstalling = value; Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarUninstalling"); }); Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).ProgressBarGrid.Visibility = Visibility.Visible; }); ProgressBarIsIndeterminate(_isUninstalling); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
-            }
-
-            public bool IsLaunching
-            {
-                get { return _isLaunching; }
-                set { _isLaunching = value; Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarLaunching"); }); Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).ProgressBarGrid.Visibility = Visibility.Visible; }); ProgressBarIsIndeterminate(_isLaunching); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
-            }
-
-            public bool IsProgressIndeterminate
-            {
-                get { return IsInitializing || IsExtracting || IsUninstalling || IsLaunching; }
-            }
-
-            public long DownloadedBytes
-            {
-                get { return _downloadedBytes; }
-                set { _downloadedBytes = value; ProgressBarUpdate(_downloadedBytes, _totalSize); OnPropertyChanged("DownloadedBytes"); OnPropertyChanged("DisplayStatus"); }
-            }
-
-            public long TotalSize
-            {
-                get { return _totalSize; }
-                set { _totalSize = value; OnPropertyChanged("TotalSize"); OnPropertyChanged("DisplayStatus"); }
-            }
-
-            public string DisplayStatus
-            {
-                get
-                {
-                    if (IsInitializing)
-                        return "Downloading...";
-                    if (IsExtracting)
-                        return "Extracting...";
-                    if (IsUninstalling)
-                        return "Uninstalling...";
-                    if (IsLaunching)
-                        return "Launching...";
-                    return (DownloadedBytes / 1024 / 1024) + "MiB/" + (TotalSize / 1024 / 1024) + "MiB";
-                }
-            }
-
-            public ICommand CancelCommand { get; set; }
-
+            NavigateToMainPage(true);
+            mainPage.PatchNotesButton.IsChecked = true;
+            mainPage.MainPageFrame.Navigate(noContentPage);
+            mainPage.LastButtonName = mainPage.PatchNotesButton.Name;
         }
 
+        #endregion
     }
 }

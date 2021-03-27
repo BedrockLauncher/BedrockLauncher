@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BedrockLauncher
+namespace BedrockLauncher.Pages.SettingsScreen
 {
     /// <summary>
     /// Логика взаимодействия для GeneralSettingsPage.xaml

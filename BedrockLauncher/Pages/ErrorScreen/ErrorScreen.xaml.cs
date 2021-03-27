@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Web.UI.WebControls;
 using System.Windows.Documents;
 
-namespace BedrockLauncher
+namespace BedrockLauncher.Pages.ErrorScreen
 {
     /// <summary>
     /// Логика взаимодействия для ErrorScreen.xaml
@@ -56,31 +56,31 @@ namespace BedrockLauncher
                 case "CantFindJavaLauncher":
                     errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "CantFindJavaLauncher_Title");
                     errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "CantFindJavaLauncher");
-
                     ((MainWindow)Application.Current.MainWindow).MainWindowOverlayFrame.Navigate(errorScreen);
                     break;
                 case "appregistererror":
                     errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "AppReregisterFailed_Title");
                     errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "AppReregisterFailed");
-
                     ((MainWindow)Application.Current.MainWindow).MainWindowOverlayFrame.Navigate(errorScreen);
                     break;
                 case "applauncherror":
                     errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "AppLaunchFailed_Title");
                     errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "AppLaunchFailed");
-
                     ((MainWindow)Application.Current.MainWindow).MainWindowOverlayFrame.Navigate(errorScreen);
                     break;
                 case "downloadfailederror":
                     errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "AppDownloadFailed_Title");
                     errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "AppDownloadFailed");
-
                     ((MainWindow)Application.Current.MainWindow).MainWindowOverlayFrame.Navigate(errorScreen);
                     break;
                 case "extractionfailed":
                     errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "AppExtractionFailed_Title");
                     errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "AppExtractionFailed");
-
+                    ((MainWindow)Application.Current.MainWindow).MainWindowOverlayFrame.Navigate(errorScreen);
+                    break;
+                case "CantFindPaidServerList":
+                    errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "CantFindPaidServerList_Title");
+                    errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "CantFindPaidServerList");
                     ((MainWindow)Application.Current.MainWindow).MainWindowOverlayFrame.Navigate(errorScreen);
                     break;
             }

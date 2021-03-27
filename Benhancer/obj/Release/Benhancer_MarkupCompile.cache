@@ -1,20 +1,20 @@
 ﻿Benhancer
 
 
-exe
+winexe
 C#
 .cs
-C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Release\
+D:\Source\mc_repos\BedrockLauncher\Benhancer\obj\Release\
 Benhancer
 none
 false
 TRACE
-C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\App.xaml
+D:\Source\mc_repos\BedrockLauncher\Benhancer\App.xaml
 11151548125
 
-5-2017746502
-191941788255
+61199641962
+19-2057699099
 MainWindow.xaml;
 
-False
+True
 

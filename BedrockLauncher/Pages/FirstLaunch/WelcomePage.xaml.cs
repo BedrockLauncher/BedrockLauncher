@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace BedrockLauncher
+namespace BedrockLauncher.Pages.FirstLaunch
 {
     /// <summary>
     /// Логика взаимодействия для WelcomePage.xaml

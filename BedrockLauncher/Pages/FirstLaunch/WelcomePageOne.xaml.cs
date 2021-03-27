@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BedrockLauncher
+namespace BedrockLauncher.Pages.FirstLaunch
 {
     /// <summary>
     /// Логика взаимодействия для WelcomePageOne.xaml

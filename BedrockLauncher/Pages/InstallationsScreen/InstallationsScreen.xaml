@@ -1,8 +1,9 @@
-﻿<Page x:Class="BedrockLauncher.InstallationsScreen"
+﻿<Page x:Class="BedrockLauncher.Pages.InstallationsScreen.InstallationsScreen"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:p="clr-namespace:BedrockLauncher.Properties"
       xmlns:local="clr-namespace:BedrockLauncher"
       mc:Ignorable="d" 
       d:DesignHeight="608" d:DesignWidth="828"
@@ -68,31 +69,43 @@
         </Style>
     </Page.Resources>
     <Grid Margin="0,0,0,0" Background="#FF303030">
-        <ScrollViewer/>
-        <Grid Background="#FF282828" VerticalAlignment="Top" Height="83">
-            <Label Foreground="White" Content="MINECRAFT: BEDROCK EDITION" Margin="15,27,600,0" FontWeight="Bold" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
-            <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="828" Orientation="Horizontal" Margin="0,49,0,0">
-                <ToggleButton x:Name="PlayButton" Click="PlayButton_Click" Content="{DynamicResource ResourceKey=MainPage_PlayButton}" Background="Transparent" BorderBrush="{x:Null}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Height="27" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="6,0,0,0" IsChecked="True">
-                    <ToggleButton.ToolTip>
-                        <ToolTip Content="{DynamicResource MainPage_PlayButton}"/>
-                    </ToggleButton.ToolTip>
-                </ToggleButton>
-                <ToggleButton x:Name="InstallationsButton" Click="InstallationsButton_Click" Content="{DynamicResource ResourceKey=MainPage_InstallationsButton}" Background="Transparent" BorderBrush="{x:Null}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Height="27" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="3,0,0,0">
-                    <ToggleButton.ToolTip>
-                        <ToolTip Content="{DynamicResource MainPage_InstallationsButton}"/>
-                    </ToggleButton.ToolTip>
-                </ToggleButton>
-                <ToggleButton x:Name="SkinsButton" Click="SkinsButton_Click" Content="{DynamicResource ResourceKey=MainPage_SkinsButton}" Background="Transparent" BorderBrush="{x:Null}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Height="27" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="3,0,0,0">
-                    <ToggleButton.ToolTip>
-                        <ToolTip Content="{DynamicResource MainPage_SkinsButton}"/>
-                    </ToggleButton.ToolTip>
-                </ToggleButton>
-                <ToggleButton x:Name="PatchNotesButton" Click="PatchNotesButton_Click" Content="{DynamicResource ResourceKey=MainPage_PatchNotesButton}" Background="Transparent" BorderBrush="{x:Null}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Height="27" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="3,0,0,0">
-                    <ToggleButton.ToolTip>
-                        <ToolTip Content="{DynamicResource MainPage_PatchNotesButton}"/>
-                    </ToggleButton.ToolTip>
-                </ToggleButton>
-            </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="83"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Background="#FF282828">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="300"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Separator Grid.Column="2" Foreground="#FFCCCCCC" Width="1" Margin="0,10,0,10" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"></Separator>
+            <Grid Grid.Column="32" Margin="10,0">
+                <Label Foreground="White" Content="VERSIONS" Margin="0,27,0,0" FontWeight="Bold" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+                <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="828" Orientation="Horizontal" Margin="0,43,0,0">
+                    <CheckBox Click="RefreshInstallationsList" IsChecked="{Binding ShowReleases, Mode=TwoWay, Source={x:Static p:Settings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=InstallationsPage_Releases}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
+                    <CheckBox Click="RefreshInstallationsList" IsChecked="{Binding ShowBetas, Mode=TwoWay, Source={x:Static p:Settings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=InstallationsPage_Betas}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
+                    <CheckBox Click="RefreshInstallationsList" IsChecked="{Binding ShowNonInstalled, Mode=TwoWay, Source={x:Static p:Settings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=InstallationsPage_NotInstalled}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
+
+                </StackPanel>
+            </Grid>
         </Grid>
+        <ListView x:Name="InstallationsList" Background="#FF323232" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ContentControl x:Name="control" Content="{Binding}" ContentTemplate="{StaticResource templateVersionNotInstalled}"/>
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding IsInstalled}" Value="True">
+                            <Setter TargetName="control" Property="ContentTemplate" Value="{StaticResource templateVersionInstalled}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsStateChanging}" Value="True">
+                            <Setter TargetName="control" Property="ContentTemplate" Value="{StaticResource templateVersionDownloading}"/>
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

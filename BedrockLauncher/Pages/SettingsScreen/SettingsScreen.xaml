@@ -1,0 +1,93 @@
+﻿<Page x:Class="BedrockLauncher.Pages.SettingsScreen.SettingsScreen"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BedrockLauncher"
+      mc:Ignorable="d"
+      Title="{DynamicResource Title}" Foreground="{x:Null}" MinWidth="828" MinHeight="608" Background="#FF303030">
+    <Page.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style TargetType="{x:Type ToggleButton}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="13.865,2.967,13.865,0" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Button.IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="White"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="TextElement.FontWeight" TargetName="contentPresenter" Value="Bold"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="White"/>
+                                <Setter Property="TextElement.FontWeight" TargetName="contentPresenter" Value="Bold"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <Grid Margin="0,0,0,0" Background="#FF303030">
+        <Grid Background="#FF282828" VerticalAlignment="Top" Height="83">
+            <Label Foreground="White" Content="{DynamicResource MainWindowSettingsScreen_Title}" Margin="15,27,600,0" FontWeight="Bold" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+            <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="828" Orientation="Horizontal" Margin="0,49,0,0">
+                <ToggleButton x:Name="GeneralButton" Click="GeneralButton_Click" Content="{DynamicResource MainWindowSettingsScreen_GeneralButton}" Background="Transparent" BorderBrush="{x:Null}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Height="27" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="6,0,0,0" IsChecked="True">
+                    <ToggleButton.ToolTip>
+                        <ToolTip Content="{DynamicResource MainWindowSettingsScreen_GeneralButton}"/>
+                    </ToggleButton.ToolTip>
+                </ToggleButton>
+                <ToggleButton x:Name="AboutButton" Click="AboutButton_Click" Content="{DynamicResource MainWindowSettingsScreen_AboutButton}" Background="Transparent" BorderBrush="{x:Null}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Height="27" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="3,0,0,0">
+                    <ToggleButton.ToolTip>
+                        <ToolTip Content="{DynamicResource MainWindowSettingsScreen_AboutButton}"/>
+                    </ToggleButton.ToolTip>
+                </ToggleButton>
+                <ToggleButton Visibility="Hidden" x:Name="AccountsButton" Content="{DynamicResource MainWindowSettingsScreen_AccountsButton}" Background="Transparent" BorderBrush="{x:Null}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Height="27" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="3,0,0,0">
+                    <ToggleButton.ToolTip>
+                        <ToolTip Content="{DynamicResource MainWindowSettingsScreen_AccountsButton}"/>
+                    </ToggleButton.ToolTip>
+                </ToggleButton>
+            </StackPanel>
+        </Grid>
+        <Frame x:Name="SettingsScreenFrame" Margin="0,83,0,0" NavigationUIVisibility="Hidden" Source="/BedrockLauncher;component/Pages/SettingsScreen/GeneralSettingsPage.xaml"/>
+    </Grid>
+
+</Page>

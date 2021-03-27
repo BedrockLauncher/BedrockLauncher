@@ -11,8 +11,8 @@
     <Setting Name="ShowBetas" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="ShowInstalledOnly" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+    <Setting Name="ShowNonInstalled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="LastSelectedVersion" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
@@ -31,6 +31,9 @@
     </Setting>
     <Setting Name="CurrentProfile" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ShowReleases" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

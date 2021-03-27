@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\
 Installer
 none
 false
 TRACE
-C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\App.xaml
+D:\Source\mc_repos\BedrockLauncher\Installer\App.xaml
 51349145156
 
-10101419910
+11-976158922
 17-1674507778
 InstallationProgressPage.xaml;InstallLocationPage.xaml;MainWindow.xaml;LicenseAgreementPage.xaml;WelcomePage.xaml;
 
-False
+True
 
