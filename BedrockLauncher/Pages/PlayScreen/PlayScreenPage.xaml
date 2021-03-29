@@ -29,11 +29,11 @@
                     <BeginStoryboard>
                         <Storyboard>
                             <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" BeginTime="00:00:00">
-                                <SplineThicknessKeyFrame KeyTime="00:00:0" Value="0,-58,5,0" />
-                                <SplineThicknessKeyFrame KeyTime="00:00:0.15" Value="0,131,0,0" />
-                                <SplineThicknessKeyFrame KeyTime="00:00:0.25" Value="0,121,0,0" />
-                                <SplineThicknessKeyFrame KeyTime="00:00:0.30" Value="0,127,0,0" />
-                                <SplineThicknessKeyFrame KeyTime="00:00:0.35" Value="0,121,0,0" />
+                                <SplineThicknessKeyFrame KeyTime="00:00:0" Value="0,-25,5,0" />
+                                <SplineThicknessKeyFrame KeyTime="00:00:0.15" Value="0,48,0,0" />
+                                <SplineThicknessKeyFrame KeyTime="00:00:0.25" Value="0,38,0,0" />
+                                <SplineThicknessKeyFrame KeyTime="00:00:0.30" Value="0,44,0,0" />
+                                <SplineThicknessKeyFrame KeyTime="00:00:0.35" Value="0,38,0,0" />
                             </ThicknessAnimationUsingKeyFrames>
                         </Storyboard>
                     </BeginStoryboard>
