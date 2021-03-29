@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BedrockLauncher"
         xmlns:classes="clr-namespace:BedrockLauncher.Classes"
+        xmlns:controls="clr-namespace:BedrockLauncher.Controls"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
         d:DataContext="{d:DesignInstance Type=classes:Version}" 
         x:Class="BedrockLauncher.MainWindow"
@@ -88,18 +89,7 @@
     </Window.Resources>
     <Grid Margin="0,0,0,0" Background="WhiteSmoke">
         <StackPanel x:Name="buttonStackPanel" Width="180" Background="#FF1E1E1E" HorizontalAlignment="Left">
-            <Grid Height="57" Margin="1,0,0,0" VerticalAlignment="Top">
-                <ToggleButton x:Name="ProfileButton" Click="ButtonManager" VerticalAlignment="Top" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False" IsChecked="True">
-                    <ToggleButton.ToolTip>
-                        <ToolTip Content="Default Profile"/>
-                    </ToggleButton.ToolTip>
-                    <Grid Margin="5,0,0,0">
-                        <TextBlock x:Name="ProfileName" Text="Default Profile" FontWeight="Normal" LineStackingStrategy="BlockLineHeight" LineHeight="14" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,3"/>
-                        <TextBlock Margin="0,14,0,0" Foreground="#FF929292" Text="{DynamicResource MainWindow_ProfileType}" FontWeight="Normal" FontSize="12"></TextBlock>
-                    </Grid>
-                </ToggleButton>
-                <Image IsHitTestVisible="False" SnapsToDevicePixels="True" Source="Resources/images/profile_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,15,0,0"/>
-            </Grid>
+            <controls:ProfileButton x:Name="ProfileButton"></controls:ProfileButton>
             <Grid Height="57" Margin="1,0,0,0" VerticalAlignment="Top">
                 <ToggleButton x:Name="NewsButton" Click="ButtonManager" VerticalAlignment="Top" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False">
                     <ToggleButton.ToolTip>
@@ -167,13 +157,13 @@
                 <Button.Background>
                     <ImageBrush ImageSource="Resources/images/MainPagePlayButton.png"/>
                 </Button.Background>
-                <TextBlock UseLayoutRounding="True" SnapsToDevicePixels="True" Text="{DynamicResource MainPage_PlayButton}" Margin="0,-4,0,0" FontSize="24" TextOptions.TextHintingMode="Fixed" TextTrimming="WordEllipsis" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten">
+                <TextBlock UseLayoutRounding="True" x:Name="PlayButtonText" SnapsToDevicePixels="True" Text="" Margin="0,-4,0,0" FontSize="24" TextOptions.TextHintingMode="Fixed" TextTrimming="WordEllipsis" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten">
                     <TextBlock.Effect>
                         <DropShadowEffect BlurRadius="0" Direction="270" ShadowDepth="2" RenderingBias="Quality" Opacity="0.43"/>
                     </TextBlock.Effect>
                 </TextBlock>
             </Button>
-            <ComboBox SelectedItem="1" ItemsSource="{Binding}" x:Name="VersionList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="200" Height="47" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}" Foreground="White" Padding="-1,7,5,3">
+            <ComboBox SelectedItem="1" SelectionChanged="VersionList_SelectionChanged" DropDownClosed="VersionList_DropDownClosed" ItemsSource="{Binding}" x:Name="VersionList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="200" Height="47" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}" Foreground="White" Padding="-1,7,5,3">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <ContentControl x:Name="control" Content="{Binding}" ContentTemplate="{StaticResource templateVersionNotInstalled}"/>

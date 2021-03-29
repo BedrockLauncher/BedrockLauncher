@@ -48,6 +48,8 @@ namespace BedrockLauncher
         #region Definitions
         private static readonly string MINECRAFT_PACKAGE_FAMILY = "Microsoft.MinecraftUWP_8wekyb3d8bbwe";
 
+        private bool IsDownloading = false;
+
         private VersionList _versions;
         private readonly VersionDownloader _anonVersionDownloader = new VersionDownloader();
         private readonly VersionDownloader _userVersionDownloader = new VersionDownloader();
@@ -87,7 +89,7 @@ namespace BedrockLauncher
             {
                 MainWindowOverlayFrame.Navigate(new WelcomePage());
             }
-            ProfileName.Text = Properties.Settings.Default.CurrentProfile;
+            ProfileButton.ProfileName.Text = Properties.Settings.Default.CurrentProfile;
 
             _versions = new VersionList("versions.json", this);
 
@@ -144,6 +146,54 @@ namespace BedrockLauncher
             else if (!Properties.Settings.Default.ShowNonInstalled && !v.IsInstalled) return false;
             else return true;
 
+        }
+
+        private void VersionList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdatePlayButton();
+        }
+
+        private void VersionList_DropDownClosed(object sender, EventArgs e)
+        {
+            UpdatePlayButton();
+        }
+
+        #endregion
+
+        #region UI
+
+        private void UpdatePlayButton()
+        {
+            Task.Run(async () =>
+            {
+                   await Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(() =>
+                   {
+                       var selected = VersionList.SelectedItem as Version;
+                       if (selected == null)
+                       {
+                           PlayButtonText.SetResourceReference(TextBlock.TextProperty, "MainPage_PlayButton");
+                           MainPlayButton.IsEnabled = false;
+                           return;
+                       }
+
+                       if (IsDownloading)
+                       {
+                           ProgressBarGrid.Visibility = Visibility.Visible;
+                           MainPlayButton.IsEnabled = false;
+                           VersionList.IsEnabled = false;
+                       }
+                       else
+                       {
+                           ProgressBarGrid.Visibility = Visibility.Collapsed;
+                           MainPlayButton.IsEnabled = true;
+                           VersionList.IsEnabled = true;
+                       }
+
+
+                       if (selected.IsInstalled) PlayButtonText.SetResourceReference(TextBlock.TextProperty, "MainPage_PlayButton");
+                       else PlayButtonText.SetResourceReference(TextBlock.TextProperty, "MainPage_PlayButton_InstallNeeded");
+                   }));
+            });
         }
 
         #endregion
@@ -406,6 +456,8 @@ namespace BedrockLauncher
                     {
                         if (v.StateChangeInfo.IsInitializing)
                         {
+                            IsDownloading = true;
+                            UpdatePlayButton();
                             Debug.WriteLine("Actual download started");
                             v.StateChangeInfo.IsInitializing = false;
                             if (total.HasValue)
@@ -421,6 +473,7 @@ namespace BedrockLauncher
                     if (!(e is TaskCanceledException))
                         MessageBox.Show("Download failed:\n" + e.ToString());
                     v.StateChangeInfo = null;
+                    IsDownloading = false;
                     return;
                 }
                 try
@@ -442,10 +495,12 @@ namespace BedrockLauncher
                     Debug.WriteLine("Extraction failed:\n" + e.ToString());
                     MessageBox.Show("Extraction failed:\n" + e.ToString());
                     v.StateChangeInfo = null;
+                    IsDownloading = false;
                     return;
                 }
                 v.StateChangeInfo = null;
                 v.UpdateInstallStatus();
+                UpdatePlayButton();
             });
         }
 
@@ -478,8 +533,6 @@ namespace BedrockLauncher
                 {
                     case "Not installed":
                         InvokeDownload(VersionList.SelectedItem as Version);
-                        ProgressBarGrid.Visibility = Visibility.Visible;
-                        //MainPlayButton.IsEnabled = false;
                         break;
                     case "Installed":
                         InvokeLaunch(VersionList.SelectedItem as Version);
@@ -579,6 +632,7 @@ namespace BedrockLauncher
                 
                 // settings screen lol
                 settingsScreenPage.GeneralButton,
+                settingsScreenPage.AccountsButton,
                 settingsScreenPage.AboutButton
             };
 
@@ -660,6 +714,7 @@ namespace BedrockLauncher
             MainWindowFrame.Navigate(settingsScreenPage);
             settingsScreenPage.SettingsScreenFrame.Navigate(generalSettingsPage);
         }
+
         public void NavigateToPlayScreen()
         {
             NavigateToMainPage(true);
@@ -690,5 +745,7 @@ namespace BedrockLauncher
         }
 
         #endregion
+
+
     }
 }

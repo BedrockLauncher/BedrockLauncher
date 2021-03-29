@@ -38,7 +38,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\AnyCPU\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -47,7 +47,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>bin\AnyCPU\Release\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -109,11 +109,16 @@
   <PropertyGroup>
     <DelaySign>false</DelaySign>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationFramework.Aero2" />
-    <Reference Include="ServerTab">
-      <HintPath>..\..\ServerTab\ServerTab\bin\Debug\ServerTab.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -139,6 +144,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Addons\BetterBedrock\BetterBedrockMain.cs" />
+    <Compile Include="Controls\AccountDropdown.xaml.cs">
+      <DependentUpon>AccountDropdown.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProfileButton.xaml.cs">
+      <DependentUpon>ProfileButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Methods\ConfigManager.cs" />
     <Compile Include="Classes\ProfileSettings.cs" />
     <Compile Include="Classes\ProfileList.cs" />
@@ -169,6 +180,9 @@
     </Compile>
     <Compile Include="Pages\ServersScreen\ServersScreenPage.xaml.cs">
       <DependentUpon>ServersScreenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SettingsScreen\AccountsSettingsPage.xaml.cs">
+      <DependentUpon>AccountsSettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SettingsScreen\GeneralSettingsPage.xaml.cs">
       <DependentUpon>GeneralSettingsPage.xaml</DependentUpon>
@@ -207,6 +221,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </DesignData>
+    <Page Include="Controls\AccountDropdown.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ProfileButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ErrorScreen\ErrorScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -238,6 +260,10 @@
     <Page Include="Pages\ServersScreen\ServersScreenPage.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Pages\SettingsScreen\AccountsSettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\SettingsScreen\GeneralSettingsPage.xaml">
       <SubType>Designer</SubType>
@@ -326,6 +352,9 @@
     <PackageReference Include="HtmlAgilityPack">
       <Version>1.11.31</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Windows.CppWinRT">
+      <Version>2.0.210326.8</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Windows.SDK.Contracts">
       <Version>10.0.19041.1</Version>
     </PackageReference>
@@ -386,24 +415,29 @@
     <Resource Include="Addons\BetterBedrock\files\glyph_E0.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\images\ms-icon.png" />
+    <Resource Include="Resources\images\mojang-icon.png" />
+    <Content Include="WUTokenHelper.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="WUTokenHelper.pdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Resources\images\firstlaunchbackground.jpg" />
     <Resource Include="Resources\images\servers_icon.png" />
-    <Resource Include="Resources\images\profile_icon.png" />
     <Resource Include="Resources\images\advancement_icon.png" />
     <Resource Include="Resources\images\bedrock_block_icon.ico" />
     <Resource Include="Resources\images\grass_block_icon.ico" />
     <Resource Include="Resources\images\crafting_table_block_icon.ico" />
-    <Content Include="ServerTab.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="WUTokenHelper.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Installer\Installer.csproj">
       <Project>{295729f7-172f-4bcd-a619-e495db5a4e2f}</Project>
       <Name>Installer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServerTab\ServerTab.csproj">
+      <Project>{a2e9faa8-1fab-4199-bf3a-f4e189055a60}</Project>
+      <Name>ServerTab</Name>
     </ProjectReference>
     <ProjectReference Include="..\Uninstaller\Uninstaller.csproj">
       <Project>{3232778b-1a3b-4d31-88a1-7a43b8b66723}</Project>
@@ -412,4 +446,7 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>"$(DevEnvDir)devenv" "$(SolutionPath)" /Build $(configuration) /project "$(SolutionDir)WUTokenHelper\WUTokenHelper.vcxproj"</PreBuildEvent>
+  </PropertyGroup>
 </Project>

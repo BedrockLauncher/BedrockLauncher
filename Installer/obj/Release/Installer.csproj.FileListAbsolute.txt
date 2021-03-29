@@ -20,3 +20,25 @@ C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Inst
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\Interop.IWshRuntimeLibrary.dll
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\Installer.csproj.ResolveComReference.cache
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\Installer.csprojAssemblyReference.cache
+D:\Source\mc_repos\BedrockLauncher\Installer\bin\Release\Installer.exe
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Interop.IWshRuntimeLibrary.dll
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Installer.csproj.ResolveComReference.cache
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\InstallationProgressPage.g.cs
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\InstallLocationPage.g.cs
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\MainWindow.g.cs
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\LicenseAgreementPage.g.cs
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\WelcomePage.g.cs
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\App.g.cs
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Installer_MarkupCompile.cache
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Installer_MarkupCompile.lref
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\InstallationProgressPage.baml
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\InstallLocationPage.baml
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\MainWindow.baml
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\LicenseAgreementPage.baml
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\WelcomePage.baml
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Installer.g.resources
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Installer.Properties.Resources.resources
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Installer.csproj.GenerateResource.cache
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Installer.csproj.CoreCompileInputs.cache
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Installer.exe
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Installer.csprojAssemblyReference.cache

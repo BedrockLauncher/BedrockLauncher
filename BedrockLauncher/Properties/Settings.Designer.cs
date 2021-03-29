@@ -148,5 +148,17 @@ namespace BedrockLauncher.Properties {
                 this["ShowReleases"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int CurrentMSAccount {
+            get {
+                return ((int)(this["CurrentMSAccount"]));
+            }
+            set {
+                this["CurrentMSAccount"] = value;
+            }
+        }
     }
 }

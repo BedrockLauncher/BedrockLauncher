@@ -5,32 +5,73 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
+using Windows.Security.Credentials;
+using Windows.Foundation;
+using Windows.Security.Authentication.Web.Core;
+using System.Security.Authentication;
+
 namespace BedrockLauncher.Methods
 {
     class WUTokenHelper
     {
-
-        public static string GetWUToken()
-        {
-            string token;
-            int status = GetWUToken(out token);
-            if (status >= WU_ERRORS_START && status <= WU_ERRORS_END)
-            {
-                throw new WUTokenException(status);
-            }
-            else if (status != 0)
-            {
-                Marshal.ThrowExceptionForHR(status);
-            }
-            return token;
-        }
-
         private const int WU_ERRORS_START = 0x7ffc0200;
         private const int WU_NO_ACCOUNT = 0x7ffc0200;
         private const int WU_ERRORS_END = 0x7ffc0200;
 
-        [DllImport("WUTokenHelper.dll", CallingConvention = CallingConvention.StdCall)]
-        private static extern int GetWUToken([MarshalAs(UnmanagedType.LPWStr)] out string token);
+        private static int SelectedUserIndex
+        {
+            get
+            {
+                return Properties.Settings.Default.CurrentMSAccount;
+            }
+        }
+
+        public struct WUAccount
+        {
+            public string UserName { get; set; }
+            public string AccountType { get; set; }
+        }
+
+        public static List<WUAccount> CurrentAccounts { get; set; } = new List<WUAccount>();
+
+        [DllImport("WUTokenHelper.dll", CallingConvention = CallingConvention.StdCall)] private static extern int GetWUToken(int userIndex, [MarshalAs(UnmanagedType.LPWStr)] out string token);
+        [DllImport("WUTokenHelper.dll", CallingConvention = CallingConvention.StdCall)] private static extern int GetTotalWUAccounts();
+        [DllImport("WUTokenHelper.dll", CallingConvention = CallingConvention.Cdecl)] [return: MarshalAs(UnmanagedType.BStr)] private static extern string GetWUAccountUserName(int userIndex);
+        [DllImport("WUTokenHelper.dll", CallingConvention = CallingConvention.Cdecl)] [return: MarshalAs(UnmanagedType.BStr)] private static extern string GetWUAccountID(int userIndex);
+
+        public static void GetWUUsers()
+        {
+            CurrentAccounts.Clear();
+            List<WUAccount> results = new List<WUAccount>();
+            int count = GetTotalWUAccounts();
+            if (count == 0)
+            {
+                WUAccount account = new WUAccount();
+                account.UserName = "Default Account";
+                account.AccountType = "Microsoft";
+                results.Add(account);
+            }
+            else
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    WUAccount account = new WUAccount();
+                    account.UserName = GetWUAccountUserName(i);
+                    account.AccountType = "Microsoft";
+                    results.Add(account);
+                }
+            }
+            CurrentAccounts = results;
+        }
+
+        public static string GetWUToken()
+        {
+            string token;
+            int status = GetWUToken(SelectedUserIndex, out token);
+            if (status >= WU_ERRORS_START && status <= WU_ERRORS_END) throw new WUTokenException(status);
+            else if (status != 0) Marshal.ThrowExceptionForHR(status);
+            return token;
+        }
 
         public class WUTokenException : Exception
         {

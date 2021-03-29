@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -22,42 +23,55 @@ namespace BedrockLauncher.Pages.SettingsScreen
     public partial class SettingsScreen : Page
     {
         public GeneralSettingsPage generalSettingsPage = new GeneralSettingsPage();
+        public AccountsSettingsPage accountsSettingsPage = new AccountsSettingsPage();
         public NoContentPage noContentPage = new NoContentPage();
         public SettingsScreen()
         {
             InitializeComponent();
         }
 
-        private void GeneralButton_Click(object sender, RoutedEventArgs e)
-        {
-            switch (GeneralButton.IsChecked)
-            {
-                case true:
-                    SettingsScreenFrame.Navigate(generalSettingsPage);
+        #region Navigation
 
-                    // Выключение других кнопок
-                    AboutButton.IsChecked = false;
-                    break;
-                case false:
-                    GeneralButton.IsChecked = true; // Не снимает свойства IsChecked при повторном нажатии на кнопку
-                    break;
-            }
+        public void ResetButtonManager(ToggleButton toggleButton)
+        {
+            // just all buttons list
+            // ya i know this is really bad, i need to learn mvvm instead of doing this shit
+            // but this works fine, at least
+            List<ToggleButton> toggleButtons = new List<ToggleButton>() {
+                GeneralButton,
+                AccountsButton,
+                AboutButton
+            };
+
+            foreach (ToggleButton button in toggleButtons) { button.IsChecked = false; }
+            toggleButton.IsChecked = true;
         }
 
-        private void AboutButton_Click(object sender, RoutedEventArgs e)
+        public void ButtonManager(object sender, RoutedEventArgs e)
         {
-            switch (AboutButton.IsChecked)
-            {
-                case true:
-                    SettingsScreenFrame.Navigate(noContentPage);
+            var toggleButton = sender as ToggleButton;
+            ResetButtonManager(toggleButton);
 
-                    // Выключение других кнопок
-                    GeneralButton.IsChecked = false;
-                    break;
-                case false:
-                    AboutButton.IsChecked = true; // Не снимает свойства IsChecked при повторном нажатии на кнопку
-                    break;
-            }
+            if (toggleButton.Name == GeneralButton.Name) NavigateToGeneralPage();
+            else if (toggleButton.Name == AccountsButton.Name) NavigateToAccountsPage();
+            else if (toggleButton.Name == AboutButton.Name) NavigateToAboutPage();
         }
+
+        public void NavigateToGeneralPage()
+        {
+            SettingsScreenFrame.Navigate(generalSettingsPage);
+        }
+
+        public void NavigateToAccountsPage()
+        {
+            SettingsScreenFrame.Navigate(accountsSettingsPage);
+        }
+
+        public void NavigateToAboutPage()
+        {
+            SettingsScreenFrame.Navigate(noContentPage);
+        }
+
+        #endregion
     }
 }
