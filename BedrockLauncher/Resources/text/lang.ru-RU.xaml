@@ -69,9 +69,6 @@
     <v:String x:Key="CantFindJavaLauncher_Title">Не удалось сменить лаунчер</v:String>
     <v:String x:Key="CantFindJavaLauncher">Не удалось найти лаунчер. Убедитесь, что у вас установлен оригинальный Minecraft лаунчер с Minecraft.net .</v:String>
 
-    <v:String x:Key="CantFindPaidServerList_Title">Could not open servers tab</v:String>
-    <v:String x:Key="CantFindPaidServerList">Paid Servers List not found.</v:String>
-
     <v:String x:Key="AppReregisterFailed_Title">Ошибка установки</v:String>
     <v:String x:Key="AppReregisterFailed">Пожалуйста, попробуйте снова :(</v:String>
 
@@ -87,4 +84,13 @@
     <v:String x:Key="NewsScreen_Title">Список последних изменений</v:String>
     <v:String x:Key="NewsScreen_build">билд</v:String>
     <v:String x:Key="NewsScreen_Changes">Изменения:</v:String>
+
+    <!-- New Strings -->
+    <v:String x:Key="InstallationsPage_Releases">Releases</v:String>
+    <v:String x:Key="InstallationsPage_Betas">Betas</v:String>
+    <v:String x:Key="InstallationsPage_NotInstalled">Not Installed</v:String>
+    <v:String x:Key="MainPage_PlayButton_InstallNeeded">Install</v:String>
+    <v:String x:Key="AcountsSettingsScreen_AccountDropdownSubtitle">INSIDER ACCOUNT</v:String>
+    <v:String x:Key="CantFindPaidServerList_Title">Could not open servers tab</v:String>
+    <v:String x:Key="CantFindPaidServerList">Paid Servers List not found.</v:String>
 </ResourceDictionary>
