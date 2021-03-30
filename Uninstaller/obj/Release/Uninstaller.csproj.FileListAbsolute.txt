@@ -14,4 +14,3 @@ D:\Source\mc_repos\BedrockLauncher\Uninstaller\obj\Release\Uninstaller.TrustInfo
 D:\Source\mc_repos\BedrockLauncher\Uninstaller\obj\Release\Uninstaller.exe.manifest
 D:\Source\mc_repos\BedrockLauncher\Uninstaller\obj\Release\Uninstaller.application
 D:\Source\mc_repos\BedrockLauncher\Uninstaller\obj\Release\Uninstaller.exe
-D:\Source\mc_repos\BedrockLauncher\Uninstaller\obj\Release\Uninstaller.csprojAssemblyReference.cache

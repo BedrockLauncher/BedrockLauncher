@@ -1,0 +1,21 @@
+﻿<Grid x:Class="BedrockLauncher.Controls.ProfileSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:classes="clr-namespace:BedrockLauncher.Classes"
+             xmlns:controls="clr-namespace:BedrockLauncher.Controls"
+             xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
+             xmlns:local="clr-namespace:BedrockLauncher.Controls"
+             mc:Ignorable="d" 
+             Height="59" Margin="1,0,0,0" VerticalAlignment="Top" MouseUp="Grid_MouseUp">
+    <ToggleButton Click="SourceButton_Click" x:Name="SourceButton" Height="Auto" VerticalAlignment="Stretch" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False" IsChecked="True" Style="{DynamicResource ProfileSelectorStyle}">
+        <ToggleButton.Content>
+            <Grid Margin="5,0,0,0">
+                <TextBlock x:Name="ProfileName" Text="Default Profile" FontWeight="Bold" LineStackingStrategy="BlockLineHeight" LineHeight="14" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="0,0,0,3"/>
+                <TextBlock Margin="0,14,0,0" Foreground="#FF929292" Text="{DynamicResource MainWindow_ProfileType}" FontWeight="Normal" FontSize="12"/>
+            </Grid>
+        </ToggleButton.Content>
+    </ToggleButton>
+    <Image IsHitTestVisible="False" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True" Source="../Resources/images/mojang-icon.png" MinWidth="30" MinHeight="30" HorizontalAlignment="Left" VerticalAlignment="Center" Width="30" Height="30" Margin="14,0,0,3"/>
+</Grid>

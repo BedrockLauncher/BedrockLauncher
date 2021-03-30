@@ -33,6 +33,7 @@ using BedrockLauncher.Pages.FirstLaunch;
 using BedrockLauncher.Pages.ErrorScreen;
 using BedrockLauncher.Pages.InstallationsScreen;
 using BedrockLauncher.Pages.NewsScreen;
+using BedrockLauncher.Pages.ProfileManagementScreen;
 using ServerTab;
 
 using Version = BedrockLauncher.Classes.Version;
@@ -176,9 +177,10 @@ namespace BedrockLauncher
                            return;
                        }
 
-                       if (IsDownloading)
+                       if (IsDownloading || _hasLaunchTask)
                        {
-                           ProgressBarGrid.Visibility = Visibility.Visible;
+                           if (IsDownloading) ProgressBarGrid.Visibility = Visibility.Visible;
+
                            MainPlayButton.IsEnabled = false;
                            VersionList.IsEnabled = false;
                        }
@@ -196,11 +198,6 @@ namespace BedrockLauncher
             });
         }
 
-        #endregion
-
-        #region Unsorted
-
-
         public void LanguageChange(string language)
         {
             ResourceDictionary dict = new ResourceDictionary
@@ -209,6 +206,10 @@ namespace BedrockLauncher
             };
             Application.Current.Resources.MergedDictionaries.Add(dict);
         }
+
+        #endregion
+
+        #region Installation
         public ICommand LaunchCommand => new RelayCommand((v) => InvokeLaunch((Version)v));
 
         public ICommand RemoveCommand => new RelayCommand((v) => InvokeRemove((Version)v));
@@ -218,8 +219,16 @@ namespace BedrockLauncher
         private void InvokeLaunch(Version v)
         {
             if (_hasLaunchTask)
+            {
+                UpdatePlayButton();
                 return;
-            _hasLaunchTask = true;
+            }
+            else
+            {
+                _hasLaunchTask = true;
+                UpdatePlayButton();
+            }
+
             Task.Run(async () =>
             {
                 v.StateChangeInfo = new VersionStateChangeInfo();
@@ -237,6 +246,7 @@ namespace BedrockLauncher
                         ErrorScreenShow.errormsg("appregistererror");
                     });
                     _hasLaunchTask = false;
+                    UpdatePlayButton();
                     v.StateChangeInfo = null;
                     return;
                 }
@@ -247,6 +257,7 @@ namespace BedrockLauncher
                         await pkg[0].LaunchAsync();
                     Debug.WriteLine("App launch finished!");
                     _hasLaunchTask = false;
+                    UpdatePlayButton();
                     v.StateChangeInfo = null;
                     // close launcher if needed and hide progressbar
                     Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).ProgressBarGrid.Visibility = Visibility.Hidden; });
@@ -268,6 +279,7 @@ namespace BedrockLauncher
                         ErrorScreenShow.errormsg("applauncherror");
                     });
                     _hasLaunchTask = false;
+                    UpdatePlayButton();
                     v.StateChangeInfo = null;
                     return;
                 }
@@ -517,6 +529,10 @@ namespace BedrockLauncher
             });
         }
 
+        #endregion
+
+        #region Misc
+
         private void ComboBoxItem_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
         {
             // To prevent scrolling when mouseover
@@ -540,13 +556,6 @@ namespace BedrockLauncher
                 }
             }
 
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            LanguageChange("en-US");
-            Properties.Settings.Default.Language = "ru-RU";
-            Properties.Settings.Default.Save();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -601,11 +610,6 @@ namespace BedrockLauncher
                     break;
 
             }
-            // Show welcome screen if its first launch
-            //if (Properties.Settings.Default.IsFirstLaunch)
-            //{
-            //    MainWindowOverlayFrame.Navigate(new WelcomePage());
-            //}
         }
         #endregion
 
@@ -742,6 +746,11 @@ namespace BedrockLauncher
             mainPage.PatchNotesButton.IsChecked = true;
             mainPage.MainPageFrame.Navigate(noContentPage);
             mainPage.LastButtonName = mainPage.PatchNotesButton.Name;
+        }
+
+        public void NavigateToNewProfilePage()
+        {
+            MainWindowOverlayFrame.Navigate(new AddProfilePage());
         }
 
         #endregion

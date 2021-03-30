@@ -14,27 +14,26 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 
-namespace BedrockLauncher.Pages.FirstLaunch
+namespace BedrockLauncher.Pages.ProfileManagementScreen
 {
     /// <summary>
     /// Логика взаимодействия для WelcomePageOne.xaml
     /// </summary>
-    public partial class WelcomePageThree : Page
+    public partial class AddProfilePage : Page
     {
-        public WelcomePagesSwitcher pageSwitcher = new WelcomePagesSwitcher();
-        public WelcomePageThree()
+        public AddProfilePage()
         {
             InitializeComponent();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            pageSwitcher.MoveToPage(2);
+            ((MainWindow)Application.Current.MainWindow).MainWindowOverlayFrame.Content = null;
         }
 
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter) 
+            if (e.Key == Key.Enter)
             {
                 if (ProfileNameTextbox.Text.Length >= 1) { CreateProfile(ProfileNameTextbox.Text); };
             }
@@ -54,6 +53,11 @@ namespace BedrockLauncher.Pages.FirstLaunch
                 Properties.Settings.Default.CurrentProfile = profileName;
                 Properties.Settings.Default.Save();
                 ((MainWindow)Application.Current.MainWindow).MainWindowOverlayFrame.Content = null;
+            }
+            else
+            {
+                CreateProfileText.SetResourceReference(TextBlock.TextProperty, "NewProfile_CreateProfileText_Error");
+                CreateProfileText.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red);
             }
         }
     }

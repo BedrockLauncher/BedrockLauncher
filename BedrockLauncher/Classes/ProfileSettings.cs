@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace BedrockLauncher.Classes
 {
-    class ProfileSettings
+    public class ProfileSettings
     {
         public string Name { get; set; }
         public string SkinPath { get; set; }
         public string ProfilePath { get; set; }
+        public List<Installation> Installations { get; set; }
 
     }
 }
