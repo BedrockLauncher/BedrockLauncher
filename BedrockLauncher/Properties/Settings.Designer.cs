@@ -160,5 +160,17 @@ namespace BedrockLauncher.Properties {
                 this["CurrentMSAccount"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FixedInstallFolder {
+            get {
+                return ((bool)(this["FixedInstallFolder"]));
+            }
+            set {
+                this["FixedInstallFolder"] = value;
+            }
+        }
     }
 }

@@ -66,6 +66,7 @@ namespace BedrockLauncher.Pages.SettingsScreen
 
             // Set checkboxes
             keepLauncherOpenCheckBox.IsChecked = Properties.Settings.Default.KeepLauncherOpenCheckBox;
+            usedFixedInstallLocation.IsChecked = Properties.Settings.Default.FixedInstallFolder;
         }
 
         private void keepLauncherOpenCheckBox_Checked(object sender, RoutedEventArgs e)
@@ -79,6 +80,22 @@ namespace BedrockLauncher.Pages.SettingsScreen
                     break;
                 case false:
                     Properties.Settings.Default.KeepLauncherOpenCheckBox = false;
+                    Properties.Settings.Default.Save();
+                    break;
+            }
+        }
+
+        private void usedFixedInstallLocation_Click(object sender, RoutedEventArgs e)
+        {
+            // get and save value of checkbox
+            switch (usedFixedInstallLocation.IsChecked)
+            {
+                case true:
+                    Properties.Settings.Default.FixedInstallFolder = true;
+                    Properties.Settings.Default.Save();
+                    break;
+                case false:
+                    Properties.Settings.Default.FixedInstallFolder = false;
                     Properties.Settings.Default.Save();
                     break;
             }

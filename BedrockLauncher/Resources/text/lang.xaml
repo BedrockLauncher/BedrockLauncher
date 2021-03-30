@@ -102,4 +102,5 @@
     <v:String x:Key="NewProfile_CreateProfileSubTitle">Enter the name of your new profile!</v:String>
     <v:String x:Key="NewProfile_CreateProfileButton">Create</v:String>
     <v:String x:Key="MainWindow_RemoveProfile">Remove Profile</v:String>
+    <v:String x:Key="MainWindowSettingsScreen_FixedGameInstalls">Use fixed location for game downloads</v:String>
 </ResourceDictionary>

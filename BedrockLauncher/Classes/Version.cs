@@ -43,7 +43,22 @@ namespace BedrockLauncher.Classes
         public string Name { get; set; }
         public bool IsBeta { get; set; }
 
-        public string GameDirectory => "versions/Minecraft-" + Name;
+        public string GameDirectory
+        {
+            get
+            {
+                if (Properties.Settings.Default.FixedInstallFolder)
+                {
+                    string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData); 
+                    string restOfPath = "/.minecraft_bedrock/versions/Minecraft-" + Name;
+                    return appData + restOfPath;
+                }
+                else
+                {
+                    return "versions/Minecraft-" + Name;
+                }
+            }
+        }
 
         public bool IsInstalled => Directory.Exists(GameDirectory);
 

@@ -95,16 +95,20 @@
         </Style>
     </Page.Resources>
     <Grid Margin="0,0,0,0">
-        <TextBlock Margin="42,42,0,0" FontWeight="Bold" FontSize="11" Text="{DynamicResource MainWindowSettingsScreen_LanguageSubtitle}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <ComboBox Name="LanguageCombobox" DropDownClosed="LanguageCombobox_DropDownClosed" Width="330" Height="32" HorizontalAlignment="Left" Margin="42,62,0,0" VerticalAlignment="Top" ItemContainerStyle="{DynamicResource ComboBoxItemStyle2}" Foreground="White" Padding="10,7,5,3" Style="{DynamicResource ComboBoxStyle2}" SelectedIndex="1" FontSize="14">
-            <ComboBoxItem>
-                <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" Text="{DynamicResource MainWindowSettingsScreen_en_US}" FontWeight="Normal"/>
-            </ComboBoxItem>
-            <ComboBoxItem>
-                <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"  Text="{DynamicResource MainWindowSettingsScreen_ru_RU}" FontWeight="Normal"/>
-            </ComboBoxItem>
-        </ComboBox>
-        <TextBlock Margin="42,128,0,0" FontWeight="Bold" FontSize="11" Text="{DynamicResource MainWindowSettingsScreen_LauncherSettingsSubtitle}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <CheckBox x:Name="keepLauncherOpenCheckBox" Click="keepLauncherOpenCheckBox_Checked" Foreground="White" Content="{DynamicResource MainWindowSettingsScreen_KeepLauncherOpen}" HorizontalAlignment="Left" Margin="42,156,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
+        <StackPanel>
+            <TextBlock Margin="42,42,0,0" FontWeight="Bold" FontSize="11" Text="{DynamicResource MainWindowSettingsScreen_LanguageSubtitle}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <ComboBox Name="LanguageCombobox" DropDownClosed="LanguageCombobox_DropDownClosed" Width="330" Height="32" HorizontalAlignment="Left" Margin="42,20,0,0" VerticalAlignment="Top" ItemContainerStyle="{DynamicResource ComboBoxItemStyle2}" Foreground="White" Padding="10,7,5,3" Style="{DynamicResource ComboBoxStyle2}" SelectedIndex="1" FontSize="14">
+                <ComboBoxItem>
+                    <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" Text="{DynamicResource MainWindowSettingsScreen_en_US}" FontWeight="Normal"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"  Text="{DynamicResource MainWindowSettingsScreen_ru_RU}" FontWeight="Normal"/>
+                </ComboBoxItem>
+            </ComboBox>
+            <TextBlock Margin="42,28,0,0" FontWeight="Bold" FontSize="11" Text="{DynamicResource MainWindowSettingsScreen_LauncherSettingsSubtitle}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <CheckBox x:Name="keepLauncherOpenCheckBox" Click="keepLauncherOpenCheckBox_Checked" Foreground="White" Content="{DynamicResource MainWindowSettingsScreen_KeepLauncherOpen}" HorizontalAlignment="Left" Margin="42,20,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
+            <CheckBox x:Name="usedFixedInstallLocation" Click="usedFixedInstallLocation_Click" Foreground="White" Content="{DynamicResource MainWindowSettingsScreen_FixedGameInstalls}" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
+        </StackPanel>
+        
     </Grid>
 </Page>
