@@ -6,6 +6,7 @@ using System.Linq;
 using System;
 using Microsoft.Win32;
 using System.IO;
+using BedrockLauncher.Methods;
 
 namespace BedrockLauncher
 {
@@ -16,16 +17,15 @@ namespace BedrockLauncher
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            if (e != null)
-            {
-                //Console.WriteLine(e.Args);
-
-                //base.MainWindow.Hide();
-            }
             //base.OnStartup(e);
             if (File.Exists("Log.txt")) { File.Delete("Log.txt"); }
             Debug.Listeners.Add(new TextWriterTraceListener("Log.txt"));
             Debug.AutoFlush = true;
+
+            if (e.Args != null) 
+            {
+                new ConsoleArgumentParser(e.Args);
+            }
 
             //changing registry to enable developer mode
             switch (System.Environment.Is64BitOperatingSystem)

@@ -7,14 +7,14 @@
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Uninstaller.exe.manifest" size="4568">
+    <dependentAssembly dependencyType="install" codebase="Uninstaller.exe.manifest" size="4581">
       <assemblyIdentity name="Uninstaller.exe" version="1.0.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>v0IAV1Q+5FAoyXiEbq7mLBhjOcE9yxwHphx1MziZBE0=</dsig:DigestValue>
+        <dsig:DigestValue>TwfKs2VTylOfDpnK0XAZTtOXkmTylnzuzAZo7gr9DxA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

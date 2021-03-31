@@ -51,7 +51,7 @@ namespace BedrockLauncher.Controls
 
         private void OpenContextMenu()
         {
-            ProfileContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Left;
+            ProfileContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Right;
             ProfileContextMenu.PlacementRectangle = new Rect(0, SourceButton.ActualHeight, 0, 0);
             ProfileContextMenu.PlacementTarget = SourceButton;
             ProfileContextMenu.IsOpen = true;

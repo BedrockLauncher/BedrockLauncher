@@ -26,5 +26,4 @@
             </DataTemplate>
         </ComboBox.ItemTemplate>
     </ComboBox>
-
 </Grid>

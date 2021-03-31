@@ -35,6 +35,7 @@ using BedrockLauncher.Pages.InstallationsScreen;
 using BedrockLauncher.Pages.VersionsScreen;
 using BedrockLauncher.Pages.NewsScreen;
 using BedrockLauncher.Pages.ProfileManagementScreen;
+using System.Windows.Media.Animation;
 using ServerTab;
 
 using Version = BedrockLauncher.Classes.Version;
@@ -227,7 +228,7 @@ namespace BedrockLauncher
 
                        if (IsDownloading || _hasLaunchTask)
                        {
-                           if (IsDownloading) ProgressBarGrid.Visibility = Visibility.Visible;
+                           if (IsDownloading) ProgressBarShowAnim();
 
                            MainPlayButton.IsEnabled = false;
                            VersionList.IsEnabled = false;
@@ -241,9 +242,40 @@ namespace BedrockLauncher
 
 
                        if (selected.IsInstalled) PlayButtonText.SetResourceReference(TextBlock.TextProperty, "MainPage_PlayButton");
-                       else PlayButtonText.SetResourceReference(TextBlock.TextProperty, "MainPage_PlayButton_InstallNeeded");
+                       else PlayButtonText.SetResourceReference(TextBlock.TextProperty, "MainPage_PlayButton");
                    }));
             });
+        }
+        private void ProgressBarShowAnim()
+        {
+            ProgressBarGrid.Visibility = Visibility.Visible;
+            ProgressBarText.Visibility = Visibility.Hidden;
+            progressbarcontent.Visibility = Visibility.Hidden;
+            ProgressBarText.Visibility = Visibility.Hidden;
+            
+            Storyboard storyboard = new Storyboard();
+            ThicknessAnimation animation = new ThicknessAnimation
+            {
+                From = new Thickness(0, 70, 0, 55),
+                To = new Thickness(0,-62,0,55),
+                Duration = new Duration(TimeSpan.FromMilliseconds(350))
+            };
+            storyboard.Children.Add(animation);
+            Storyboard.SetTargetProperty(animation, new PropertyPath(ProgressBar.MarginProperty));
+            Storyboard.SetTarget(animation, ProgressBarGrid);
+            storyboard.Completed += new EventHandler(showProgressBarContent);
+            storyboard.Begin();
+        }
+        private void showProgressBarContent(object sender, EventArgs e)
+        {
+            ProgressBarText.Visibility = Visibility.Visible;
+            progressbarcontent.Visibility = Visibility.Visible;
+            ProgressBarText.Visibility = Visibility.Visible;
+        }
+
+        private void ProgressBarHideAnim()
+        {
+
         }
 
         public void LanguageChange(string language)
@@ -607,16 +639,6 @@ namespace BedrockLauncher
 
         private void Window_Initialized(object sender, EventArgs e)
         {
-            string[] ConsoleArgs = Environment.GetCommandLineArgs();
-            foreach (string argument in ConsoleArgs)
-            {
-                if (argument.StartsWith("--"))
-                {
-                    Debug.WriteLine("Recieved argument: " + argument);
-                    // hide window
-                    if (argument == "--nowindow") { Application.Current.MainWindow.Hide(); }
-                }
-            }
             // Language setting on startup
             switch (Properties.Settings.Default.Language)
             {

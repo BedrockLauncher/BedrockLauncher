@@ -165,8 +165,33 @@
         <Grid.Effect>
             <DropShadowEffect BlurRadius="6" Direction="0" ShadowDepth="0" Color="#F2000000"/>
         </Grid.Effect>
-        <Border CornerRadius="2" Background="#FF262626" Width="600" Height="258" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <Border CornerRadius="2" Background="#FF262626" Width="600" Height="258" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Border.Triggers>
+                <EventTrigger RoutedEvent="Border.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" BeginTime="00:00:00">
+                                <SplineThicknessKeyFrame KeyTime="00:00:0" Value="0,600,0,0" />
+                                <SplineThicknessKeyFrame KeyTime="00:00:0.35" Value="0,0,0,0" />
+                            </ThicknessAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Border.Triggers>
+        </Border>
+        <Border CornerRadius="2" Background="#FF262626" Width="600" Height="258" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Border.Triggers>
+                <EventTrigger RoutedEvent="Border.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" BeginTime="00:00:00">
+                                <SplineThicknessKeyFrame KeyTime="00:00:0" Value="0,600,0,0" />
+                                <SplineThicknessKeyFrame KeyTime="00:00:0.35" Value="0,0,0,0" />
+                            </ThicknessAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Border.Triggers>
             <Grid Margin="0" Background="{x:Null}">
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Text="{DynamicResource NewProfile_CreateProfileSubTitle}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="24" Margin="0,40,0,0" FontWeight="Bold"/>
                 <TextBlock x:Name="CreateProfileText" Text="{DynamicResource NewProfile_CreateProfileText}" Margin="133,0,0,18" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" Height="16" FontWeight="Bold" FontSize="11" Width="auto"/>

@@ -120,7 +120,7 @@ namespace BedrockLauncher.Methods
                 Console.WriteLine("Name: " + setting.Name);
                 Console.WriteLine("Path: " + setting.ProfilePath);
                 Console.WriteLine("Skin: " + setting.SkinPath);
-                Console.WriteLine("Installations: " + setting.Installations.Count);
+                //Console.WriteLine("Installations: " + setting.Installations.Count);
             }
 
             return profileList;

@@ -9,3 +9,14 @@ D:\Source\mc_repos\BedrockLauncher\Uninstaller\obj\Debug\Uninstaller.exe.manifes
 D:\Source\mc_repos\BedrockLauncher\Uninstaller\obj\Debug\Uninstaller.application
 D:\Source\mc_repos\BedrockLauncher\Uninstaller\obj\Debug\Uninstaller.exe
 D:\Source\mc_repos\BedrockLauncher\Uninstaller\obj\Debug\Uninstaller.pdb
+C:\Users\Lynx\Desktop\BedrockLauncher\Uninstaller\bin\Debug\Uninstaller.exe.manifest
+C:\Users\Lynx\Desktop\BedrockLauncher\Uninstaller\bin\Debug\Uninstaller.application
+C:\Users\Lynx\Desktop\BedrockLauncher\Uninstaller\bin\Debug\Uninstaller.exe
+C:\Users\Lynx\Desktop\BedrockLauncher\Uninstaller\bin\Debug\Uninstaller.pdb
+C:\Users\Lynx\Desktop\BedrockLauncher\Uninstaller\obj\Debug\Uninstaller.csprojAssemblyReference.cache
+C:\Users\Lynx\Desktop\BedrockLauncher\Uninstaller\obj\Debug\Uninstaller.csproj.CoreCompileInputs.cache
+C:\Users\Lynx\Desktop\BedrockLauncher\Uninstaller\obj\Debug\Uninstaller.TrustInfo.xml
+C:\Users\Lynx\Desktop\BedrockLauncher\Uninstaller\obj\Debug\Uninstaller.exe.manifest
+C:\Users\Lynx\Desktop\BedrockLauncher\Uninstaller\obj\Debug\Uninstaller.application
+C:\Users\Lynx\Desktop\BedrockLauncher\Uninstaller\obj\Debug\Uninstaller.exe
+C:\Users\Lynx\Desktop\BedrockLauncher\Uninstaller\obj\Debug\Uninstaller.pdb
