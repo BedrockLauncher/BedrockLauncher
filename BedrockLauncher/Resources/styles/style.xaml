@@ -11,6 +11,8 @@
             <classes:VersionStateChangeInfo/>
         </TextBlock.DataContext>
     </TextBlock>
+
+
     <DataTemplate x:Key="templateVersionNotInstalled" DataType="{x:Type classes:Version}">
         <Grid>
             <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="Minecraft"/>

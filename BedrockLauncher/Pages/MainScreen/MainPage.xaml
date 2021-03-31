@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BedrockLauncher"
       mc:Ignorable="d"
-      Title="{DynamicResource Title}" Foreground="{x:Null}" MinWidth="828" MinHeight="608" Background="#FF303030">
+      Title="{DynamicResource Title}" Foreground="{x:Null}" Background="#FF303030">
     <Page.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -69,7 +69,7 @@
     <Grid Margin="0,0,0,0" Background="#FF303030">
         <Grid Background="#FF282828" VerticalAlignment="Top" Height="83">
             <Label Foreground="White" Content="MINECRAFT: BEDROCK EDITION" Margin="15,27,600,0" FontWeight="Bold" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
-            <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="828" Orientation="Horizontal" Margin="0,49,0,0">
+            <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Orientation="Horizontal" Margin="0,49,0,0">
                 <ToggleButton x:Name="PlayButton" Click="PlayButton_Click" Content="{DynamicResource ResourceKey=MainPage_PlayButton}" Background="Transparent" BorderBrush="{x:Null}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Height="27" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="6,0,0,0" IsChecked="True">
                     <ToggleButton.ToolTip>
                         <ToolTip Content="{DynamicResource MainPage_PlayButton}"/>
@@ -78,6 +78,11 @@
                 <ToggleButton x:Name="InstallationsButton" Click="InstallationsButton_Click" Content="{DynamicResource ResourceKey=MainPage_InstallationsButton}" Background="Transparent" BorderBrush="{x:Null}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Height="27" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="3,0,0,0">
                     <ToggleButton.ToolTip>
                         <ToolTip Content="{DynamicResource MainPage_InstallationsButton}"/>
+                    </ToggleButton.ToolTip>
+                </ToggleButton>
+                <ToggleButton x:Name="VersionsButton" Click="VersionsButton_Click" Content="{DynamicResource ResourceKey=MainPage_VersionsButton}" Background="Transparent" BorderBrush="{x:Null}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Height="27" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="3,0,0,0">
+                    <ToggleButton.ToolTip>
+                        <ToolTip Content="{DynamicResource MainPage_VersionsButton}"/>
                     </ToggleButton.ToolTip>
                 </ToggleButton>
                 <ToggleButton x:Name="SkinsButton" Click="SkinsButton_Click" Content="{DynamicResource ResourceKey=MainPage_SkinsButton}" Background="Transparent" BorderBrush="{x:Null}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Height="27" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="3,0,0,0">

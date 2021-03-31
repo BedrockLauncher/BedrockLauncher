@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrockLauncher", "BedrockLauncher\BedrockLauncher.csproj", "{9FEBCF6C-14EF-49E9-B57D-FCBC3BA4BC77}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B7336BA7-1E83-43D8-BD0E-3D44C6E3D4E7} = {B7336BA7-1E83-43D8-BD0E-3D44C6E3D4E7}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Benhancer", "Benhancer\Benhancer.csproj", "{1CC094F4-F755-44DA-A444-C1FAE8D6C430}"
 EndProject

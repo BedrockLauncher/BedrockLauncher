@@ -25,12 +25,6 @@ namespace BedrockLauncher.Pages.SettingsScreen
             InitializeComponent();
         }
 
-        private void ComboBoxItem_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
-        {
-            // To not move combobox list on mouse hover
-            e.Handled = true;
-        }
-
         private void Page_Initialized(object sender, EventArgs e)
         {
             AccountPicker.RefreshProfileContextMenuItems();

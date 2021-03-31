@@ -28,7 +28,7 @@ namespace BedrockLauncher.Controls
             InitializeComponent();
         }
 
-        public ProfileSelector(KeyValuePair<string, List<ProfileSettings>> profile)
+        public ProfileSelector(KeyValuePair<string, ProfileSettings> profile)
         {
             InitializeComponent();
             this.Tag = profile.Value;
@@ -41,6 +41,7 @@ namespace BedrockLauncher.Controls
             ConfigManager configManager = new ConfigManager();
             configManager.SwitchProfile(_ProfileName);
             ((MainWindow)Application.Current.MainWindow).ProfileButton.ProfileContextMenu.IsOpen = false;
+            ((MainWindow)Application.Current.MainWindow).UpdateInstallationsList();
         }
 
         private void SourceButton_Click(object sender, RoutedEventArgs e)

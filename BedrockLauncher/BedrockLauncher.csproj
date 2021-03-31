@@ -176,6 +176,12 @@
     <Compile Include="Pages\FirstLaunch\WelcomePageOne.xaml.cs">
       <DependentUpon>WelcomePageOne.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\InstallationsScreen\AddInstallationScreen.xaml.cs">
+      <DependentUpon>AddInstallationScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\VersionsScreen\VersionsScreen.xaml.cs">
+      <DependentUpon>VersionsScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\InstallationsScreen\InstallationsScreen.xaml.cs">
       <DependentUpon>InstallationsScreen.xaml</DependentUpon>
     </Compile>
@@ -260,6 +266,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\InstallationsScreen\AddInstallationScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\VersionsScreen\VersionsScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\InstallationsScreen\InstallationsScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -312,6 +326,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\styles\combobox3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\styles\combobox2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -320,11 +338,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\styles\listview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\styles\menuitems.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\styles\style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\styles\textblock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\styles\textbox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -486,6 +516,6 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>"$(DevEnvDir)devenv" "$(SolutionPath)" /Build $(configuration) /project "$(SolutionDir)WUTokenHelper\WUTokenHelper.vcxproj"</PreBuildEvent>
+    <PreBuildEvent>:: "$(DevEnvDir)devenv" "$(SolutionPath)" /Build $(configuration) /project "$(SolutionDir)WUTokenHelper\WUTokenHelper.vcxproj"</PreBuildEvent>
   </PropertyGroup>
 </Project>

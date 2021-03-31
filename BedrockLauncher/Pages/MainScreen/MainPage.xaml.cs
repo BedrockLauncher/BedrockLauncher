@@ -36,5 +36,10 @@ namespace BedrockLauncher.Pages.MainScreen
         {
             ((MainWindow)Application.Current.MainWindow).ButtonManager(sender, e);
         }
+
+        private void VersionsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).ButtonManager(sender, e);
+        }
     }
 }

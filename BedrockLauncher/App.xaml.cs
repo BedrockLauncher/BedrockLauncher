@@ -83,5 +83,11 @@ namespace BedrockLauncher
             }    
         }
 
+        private void ComboBoxItem_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
+        {
+            // To prevent scrolling when mouseover
+            e.Handled = true;
+        }
+
     }
 }

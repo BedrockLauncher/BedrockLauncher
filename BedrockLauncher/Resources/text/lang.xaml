@@ -103,4 +103,5 @@
     <v:String x:Key="NewProfile_CreateProfileButton">Create</v:String>
     <v:String x:Key="MainWindow_RemoveProfile">Remove Profile</v:String>
     <v:String x:Key="MainWindowSettingsScreen_FixedGameInstalls">Use fixed location for game downloads</v:String>
+    <v:String x:Key="MainPage_VersionsButton">Versions</v:String>
 </ResourceDictionary>

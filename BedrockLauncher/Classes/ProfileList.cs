@@ -8,6 +8,6 @@ namespace BedrockLauncher.Classes
 {
     public class ProfileList
     {
-        public Dictionary<string, List<ProfileSettings>> profiles { get; set; }
+        public Dictionary<string, ProfileSettings> profiles { get; set; }
     }
 }

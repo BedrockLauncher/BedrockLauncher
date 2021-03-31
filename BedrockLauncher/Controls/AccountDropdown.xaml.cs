@@ -50,12 +50,6 @@ namespace BedrockLauncher.Controls
             });
         }
 
-        private void ComboBoxItem_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
-        {
-            // To not move combobox list on mouse hover
-            e.Handled = true;
-        }
-
         private void AccountsList_DropDownClosed(object sender, EventArgs e)
         {
             if (AccountsList.SelectedIndex == -1) AccountsList.SelectedIndex = 0;

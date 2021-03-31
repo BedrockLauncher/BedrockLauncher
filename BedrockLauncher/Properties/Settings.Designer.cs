@@ -172,5 +172,29 @@ namespace BedrockLauncher.Properties {
                 this["FixedInstallFolder"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowInstallationBetas {
+            get {
+                return ((bool)(this["ShowInstallationBetas"]));
+            }
+            set {
+                this["ShowInstallationBetas"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowInstallationReleases {
+            get {
+                return ((bool)(this["ShowInstallationReleases"]));
+            }
+            set {
+                this["ShowInstallationReleases"] = value;
+            }
+        }
     }
 }

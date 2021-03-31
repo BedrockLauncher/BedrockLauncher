@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BedrockLauncher.Methods;
 
 namespace BedrockLauncher.Pages.InstallationsScreen
 {
@@ -25,9 +26,58 @@ namespace BedrockLauncher.Pages.InstallationsScreen
             InitializeComponent();
         }
 
+        public void RefreshInstallationsList()
+        {
+            ((MainWindow)Application.Current.MainWindow).UpdateInstallationsList();
+
+        }
+
         public void RefreshInstallationsList(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Application.Current.MainWindow).UpdateVersionsList();
+            RefreshInstallationsList();
+        }
+
+        private void Folder_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Play_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NewInstallationButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).MainWindowOverlayFrame.Content = new AddInstallationScreen();
+        }
+
+        private void DeleteInstallationButton_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem button = sender as MenuItem;
+            var installation = button.DataContext as Classes.Installation;
+            ConfigManager configManager = new ConfigManager();
+            configManager.DeleteInstallation(installation);
+            RefreshInstallationsList();
+        }
+
+        private void More_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            var installation = button.DataContext as Classes.Installation;
+            InstallationsList.SelectedItem = installation;
+            button.ContextMenu.DataContext = installation;
+            button.ContextMenu.IsOpen = true;
+        }
+
+        private void Page_Initialized(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ContextMenu_Closed(object sender, RoutedEventArgs e)
+        {
+            InstallationsList.SelectedItem = null;
         }
     }
 }

@@ -32,6 +32,7 @@ using BedrockLauncher.Pages.SettingsScreen;
 using BedrockLauncher.Pages.FirstLaunch;
 using BedrockLauncher.Pages.ErrorScreen;
 using BedrockLauncher.Pages.InstallationsScreen;
+using BedrockLauncher.Pages.VersionsScreen;
 using BedrockLauncher.Pages.NewsScreen;
 using BedrockLauncher.Pages.ProfileManagementScreen;
 using ServerTab;
@@ -51,6 +52,9 @@ namespace BedrockLauncher
 
         private bool IsDownloading = false;
 
+
+
+        private List<Installation> _installations;
         private VersionList _versions;
         private readonly VersionDownloader _anonVersionDownloader = new VersionDownloader();
         private readonly VersionDownloader _userVersionDownloader = new VersionDownloader();
@@ -75,7 +79,28 @@ namespace BedrockLauncher
         private NoContentPage noContentPage = new NoContentPage();
         private PlayScreenPage playScreenPage = new PlayScreenPage();
         private InstallationsScreen installationsScreen = new InstallationsScreen();
+        private VersionsScreen versionsScreen = new VersionsScreen();
         private ServersScreenPage serversScreenPage = new ServersScreenPage(serversTab);
+        #endregion
+
+        #region Accessors
+
+        public static VersionList AvaliableVersions
+        {
+            get
+            {
+                return ((MainWindow)Application.Current.MainWindow)._versions;
+            }
+        }
+
+        public static Version SelectedVersion
+        {
+            get
+            {
+                return ((MainWindow)Application.Current.MainWindow).VersionList.SelectedItem as Version;
+            }
+        }
+
         #endregion
 
         #region Init
@@ -100,6 +125,7 @@ namespace BedrockLauncher
             });
 
             UpdateVersionsList();
+            UpdateInstallationsList();
         }
 
         #endregion
@@ -109,12 +135,11 @@ namespace BedrockLauncher
         public void UpdateVersionsList()
         {
             VersionList.ItemsSource = _versions;
-            installationsScreen.InstallationsList.ItemsSource = _versions;
+            versionsScreen.InstallationsList.ItemsSource = _versions;
             var view = CollectionViewSource.GetDefaultView(VersionList.ItemsSource) as CollectionView;
-            var view2 = CollectionViewSource.GetDefaultView(installationsScreen.InstallationsList.ItemsSource) as CollectionView;
+            var view2 = CollectionViewSource.GetDefaultView(versionsScreen.InstallationsList.ItemsSource) as CollectionView;
             view.Filter = VersionListFilter;
             view2.Filter = VersionListFilter;
-
             Dispatcher.Invoke(async () =>
             {
                 try
@@ -157,6 +182,29 @@ namespace BedrockLauncher
         private void VersionList_DropDownClosed(object sender, EventArgs e)
         {
             UpdatePlayButton();
+        }
+
+        #endregion
+
+        #region Installations Management
+
+        public void UpdateInstallationsList()
+        {
+            ConfigManager configManager = new ConfigManager();
+            _installations = configManager.GetInstallations();
+
+            installationsScreen.InstallationsList.ItemsSource = _installations;
+            var view = CollectionViewSource.GetDefaultView(installationsScreen.InstallationsList.ItemsSource) as CollectionView;
+            view.Filter = InstallationListFilter;
+        }
+
+        private bool InstallationListFilter(object obj)
+        {
+            Installation v = obj as Installation;
+            if (!Properties.Settings.Default.ShowInstallationBetas && v.IsBeta) return false;
+            else if (!Properties.Settings.Default.ShowInstallationReleases && !v.IsBeta) return false;
+            else return true;
+
         }
 
         #endregion
@@ -533,12 +581,6 @@ namespace BedrockLauncher
 
         #region Misc
 
-        private void ComboBoxItem_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
-        {
-            // To prevent scrolling when mouseover
-            e.Handled = true;
-        }
-
         private void MainPlayButton_Click(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.LastSelectedVersion = VersionList.SelectedIndex;
@@ -633,6 +675,7 @@ namespace BedrockLauncher
                 mainPage.InstallationsButton,
                 mainPage.SkinsButton,
                 mainPage.PatchNotesButton,
+                mainPage.VersionsButton,
                 
                 // settings screen lol
                 settingsScreenPage.GeneralButton,
@@ -660,6 +703,7 @@ namespace BedrockLauncher
             // MainPageButtons
             else if (toggleButton.Name == mainPage.PlayButton.Name) NavigateToPlayScreen();
             else if (toggleButton.Name == mainPage.InstallationsButton.Name) NavigateToInstallationsPage();
+            else if (toggleButton.Name == mainPage.VersionsButton.Name) NavigateToVersionsPage();
             else if (toggleButton.Name == mainPage.SkinsButton.Name) NavigateToSkinsPage();
             else if (toggleButton.Name == mainPage.PatchNotesButton.Name) NavigateToPatchNotes();
             else NavigateToPlayScreen();
@@ -732,6 +776,13 @@ namespace BedrockLauncher
             mainPage.InstallationsButton.IsChecked = true;
             mainPage.MainPageFrame.Navigate(installationsScreen);
             mainPage.LastButtonName = mainPage.InstallationsButton.Name;
+        }
+        public void NavigateToVersionsPage()
+        {
+            NavigateToMainPage(true);
+            mainPage.VersionsButton.IsChecked = true;
+            mainPage.MainPageFrame.Navigate(versionsScreen);
+            mainPage.LastButtonName = mainPage.VersionsButton.Name;
         }
         public void NavigateToSkinsPage()
         {

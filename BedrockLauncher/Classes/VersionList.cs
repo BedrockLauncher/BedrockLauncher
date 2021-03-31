@@ -12,7 +12,7 @@ using BedrockLauncher.Classes;
 
 namespace BedrockLauncher.Classes
 {
-    class VersionList : ObservableCollection<Version>
+    public class VersionList : ObservableCollection<Version>
     {
 
         private readonly string _cacheFile;

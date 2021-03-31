@@ -12,8 +12,17 @@
                 <ResourceDictionary Source="Resources/styles/checkbox.xaml"/>
                 <ResourceDictionary Source="Resources/styles/combobox.xaml"/>
                 <ResourceDictionary Source="Resources/styles/combobox2.xaml"/>
+                <ResourceDictionary Source="Resources/styles/combobox3.xaml"/>
                 <ResourceDictionary Source="Resources/styles/contextmenu.xaml"/>
                 <ResourceDictionary Source="Resources/styles/menuitems.xaml"/>
+                <ResourceDictionary Source="Resources/styles/listview.xaml"/>
+                <ResourceDictionary Source="Resources/styles/textbox.xaml"/>
+                <ResourceDictionary Source="Resources/styles/textblock.xaml"/>
+                <ResourceDictionary>
+                    <Style TargetType="{x:Type ComboBoxItem}">
+                        <EventSetter Event="RequestBringIntoView" Handler="ComboBoxItem_RequestBringIntoView"/>
+                    </Style>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

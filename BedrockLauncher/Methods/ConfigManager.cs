@@ -8,37 +8,38 @@ using System.Windows;
 using Newtonsoft.Json;
 using System.IO;
 using BedrockLauncher.Classes;
+using Version = BedrockLauncher.Classes.Version;
 
 namespace BedrockLauncher.Methods
 {
-    
-    public class ConfigManager 
+
+    public class ConfigManager
     {
 
-        private ProfileList GetProfileList()
+        private JsonSerializerSettings JsonSerializerSettings
         {
-            string json;
-            ProfileList profileList;
-            if (File.Exists("user_profile.json"))
+            get
             {
-                json = File.ReadAllText("user_profile.json");
-                profileList = JsonConvert.DeserializeObject<ProfileList>(json);
+                var settings = new JsonSerializerSettings();
+                settings.NullValueHandling = NullValueHandling.Ignore;
+                settings.MissingMemberHandling = MissingMemberHandling.Ignore;
+                return settings;
             }
-            else
-            {
-                profileList = new ProfileList();
-            }
-
-            if (profileList.profiles == null) profileList.profiles = new Dictionary<string, List<ProfileSettings>>();
-            return profileList;
         }
 
-        // creates empty profile
-        public bool CreateProfile(string profile) 
+        public void SaveConfig(ProfileList profileList)
         {
-            ProfileList profileList = GetProfileList();
+            string json = JsonConvert.SerializeObject(profileList, Formatting.Indented);
+            File.WriteAllText("user_profile.json", json);
+        }
 
-            List<ProfileSettings> ProfileSettingsList = new List<ProfileSettings>();
+        #region Profiles
+
+        // creates empty profile
+        public bool CreateProfile(string profile)
+        {
+            ProfileList profileList = ReadProfile();
+
             ProfileSettings profileSettings = new ProfileSettings();
 
             if (profileList.profiles.ContainsKey(profile)) return false;
@@ -48,28 +49,25 @@ namespace BedrockLauncher.Methods
                 profileSettings.Name = profile;
                 profileSettings.SkinPath = null;
                 profileSettings.ProfilePath = profile;
-                ProfileSettingsList.Add(profileSettings);
 
-                profileList.profiles.Add(profile, ProfileSettingsList);
+                profileList.profiles.Add(profile, profileSettings);
 
                 Properties.Settings.Default.CurrentProfile = profile;
                 Properties.Settings.Default.Save();
 
-                string json = JsonConvert.SerializeObject(profileList, Formatting.Indented);
-                File.WriteAllText("user_profile.json", json);
+                SaveConfig(profileList);
                 return true;
-            }           
+            }
         }
 
         public void RemoveProfile(string profile)
         {
-            ProfileList profileList = GetProfileList();
+            ProfileList profileList = ReadProfile();
 
             if (profileList.profiles.ContainsKey(profile) && profileList.profiles.Count > 1)
             {
                 profileList.profiles.Remove(profile);
-                string json = JsonConvert.SerializeObject(profileList, Formatting.Indented);
-                File.WriteAllText("user_profile.json", json);
+                SaveConfig(profileList);
 
                 var first_profile = profileList.profiles.FirstOrDefault();
 
@@ -80,7 +78,7 @@ namespace BedrockLauncher.Methods
 
         public void SwitchProfile(string profile)
         {
-            ProfileList profileList = GetProfileList();
+            ProfileList profileList = ReadProfile();
 
             if (profileList.profiles.ContainsKey(profile))
             {
@@ -91,24 +89,94 @@ namespace BedrockLauncher.Methods
 
         }
 
-        public ProfileList ReadProfile() 
+        public ProfileList ReadProfile()
         {
-            string json = File.ReadAllText("user_profile.json");
-            ProfileList profileList = JsonConvert.DeserializeObject<ProfileList>(json);
+            string json;
+            ProfileList profileList;
+            if (File.Exists("user_profile.json"))
+            {
+                json = File.ReadAllText("user_profile.json");
+                try
+                {
+                    profileList = JsonConvert.DeserializeObject<ProfileList>(json, JsonSerializerSettings);
+                }
+                catch
+                {
+                    profileList = new ProfileList();
+                }
+
+            }
+            else
+            {
+                profileList = new ProfileList();
+            }
+
+            if (profileList.profiles == null) profileList.profiles = new Dictionary<string, ProfileSettings>();
 
             Console.WriteLine("Profile count: " + profileList.profiles.Count);
-            foreach (List<ProfileSettings> settings in profileList.profiles.Values)
+            foreach (ProfileSettings setting in profileList.profiles.Values)
             {
-                foreach (ProfileSettings setting in settings)
-                {
-                    Console.WriteLine("\nProfile found!: ");
-                    Console.WriteLine("Name: " + setting.Name);
-                    Console.WriteLine("Path: " + setting.ProfilePath);
-                    Console.WriteLine("Skin: " + setting.SkinPath);
-                }
+                Console.WriteLine("\nProfile found!: ");
+                Console.WriteLine("Name: " + setting.Name);
+                Console.WriteLine("Path: " + setting.ProfilePath);
+                Console.WriteLine("Skin: " + setting.SkinPath);
+                Console.WriteLine("Installations: " + setting.Installations.Count);
             }
 
             return profileList;
         }
+
+        #endregion
+
+        #region Installations
+
+        public List<Installation> GetInstallations()
+        {
+            string currentProfile = Properties.Settings.Default.CurrentProfile;
+
+            ProfileList profileList = ReadProfile();
+            if (profileList.profiles.ContainsKey(currentProfile))
+            {
+                if (profileList.profiles[currentProfile].Installations == null) profileList.profiles[currentProfile].Installations = new List<Installation>();
+                return profileList.profiles[currentProfile].Installations;
+            }
+            else return new List<Installation>();
+        }
+
+        public void CreateInstallation(string name, Version version)
+        {
+            string currentProfile = Properties.Settings.Default.CurrentProfile;
+
+            ProfileList profileList = ReadProfile();
+            if (profileList.profiles.ContainsKey(currentProfile))
+            {
+                Installation installation = new Installation();
+                installation.DisplayName = name;
+                installation.VersionUUID = version.UUID;
+                //TODO: Make Customizable
+                installation.IconPath = @"/BedrockLauncher;component/Resources/images/grass_block_icon.ico";
+
+                if (profileList.profiles[currentProfile].Installations == null) profileList.profiles[currentProfile].Installations = new List<Installation>();
+
+                profileList.profiles[currentProfile].Installations.Add(installation);
+                SaveConfig(profileList);
+            }
+        }
+
+        public void DeleteInstallation(Installation installation)
+        {
+            string currentProfile = Properties.Settings.Default.CurrentProfile;
+
+            ProfileList profileList = ReadProfile();
+            if (profileList.profiles.ContainsKey(currentProfile))
+            {
+                if (profileList.profiles[currentProfile].Installations == null) return;
+
+                profileList.profiles[currentProfile].Installations.RemoveAll(x => x.DisplayName == installation.DisplayName);
+                SaveConfig(profileList);
+            }
+        }
+
+        #endregion
     }
 }
