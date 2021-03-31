@@ -6,62 +6,13 @@
         xmlns:local="clr-namespace:BedrockLauncher"
         xmlns:classes="clr-namespace:BedrockLauncher.Classes"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" >
+    
     <TextBlock x:Key="TitleText" Text="{Binding DisplayStatus}">
         <TextBlock.DataContext>
             <classes:VersionStateChangeInfo/>
         </TextBlock.DataContext>
     </TextBlock>
 
-
-    <DataTemplate x:Key="templateVersionNotInstalled" DataType="{x:Type classes:Version}">
-        <Grid>
-            <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="Minecraft"/>
-            <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="SemiBold" Padding="45,21,0,0" Text="{Binding DisplayName}"/>
-            <Image Source="{Binding IconPath}" HorizontalAlignment="Left" Width="32" Height="32" Margin="5,1,0,0">
-                <Image.OpacityMask>
-                    <ImageBrush ImageSource="{Binding IconPath}"/>
-                </Image.OpacityMask>
-            </Image>
-        </Grid>
-    </DataTemplate>
-    <DataTemplate x:Key="templateVersionInstalled" DataType="{x:Type classes:Version}">
-        <Grid>
-            <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="Minecraft"/>
-            <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="SemiBold" Padding="45,21,0,0" Text="{Binding DisplayName}"/>
-            <Image Source="{Binding IconPath}" HorizontalAlignment="Left" Width="32" Height="32" Margin="5,1,0,0">
-                <Image.OpacityMask>
-                    <ImageBrush ImageSource="{Binding IconPath}"/>
-                </Image.OpacityMask>
-            </Image>
-        </Grid>
-        <!--Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding DisplayName}" FontWeight="Bold" />
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding DisplayInstallStatus}" />
-                <Button x:Name="RemoveButton" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Padding="20,0" Content="Remove" Command="{Binding RemoveCommand}" CommandParameter="{Binding}" />
-                <Button x:Name="DownloadButton" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Padding="20,0" Margin="2,0,0,0" Content="Launch" Command="{Binding LaunchCommand}" CommandParameter="{Binding}" />
-            </-->
-    </DataTemplate>
-    <DataTemplate x:Key="templateVersionDownloading" DataType="{x:Type classes:Version}">
-        <Grid>
-            <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="Minecraft"/>
-            <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="SemiBold" Padding="45,21,0,0" Text="{Binding DisplayName}"/>
-            <Image Source="{Binding IconPath}" HorizontalAlignment="Left" Width="32" Height="32" Margin="5,1,0,0">
-                <Image.OpacityMask>
-                    <ImageBrush ImageSource="{Binding IconPath}"/>
-                </Image.OpacityMask>
-            </Image>
-            <!--TextBlock Text="{Binding DisplayName}" FontWeight="Bold" /-->
-        </Grid>
-    </DataTemplate>
     <Style x:Key="FocusVisual">
         <Setter Property="Control.Template">
             <Setter.Value>
@@ -85,4 +36,17 @@
             </Grid>
         </Grid>
     </DataTemplate>
+
+    <DataTemplate x:Key="templateInstallation" DataType="{x:Type classes:Installation}">
+        <Grid>
+            <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="{Binding DisplayName}"/>
+            <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="SemiBold" Padding="45,21,0,0" Text="{Binding VersionName}"/>
+            <Image Source="{Binding IconPath}" HorizontalAlignment="Left" Width="32" Height="32" Margin="5,1,0,0">
+                <Image.OpacityMask>
+                    <ImageBrush ImageSource="{Binding IconPath}"/>
+                </Image.OpacityMask>
+            </Image>
+        </Grid>
+    </DataTemplate>
+    
 </ResourceDictionary>

@@ -26,6 +26,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="75"></RowDefinition>
         </Grid.RowDefinitions>
+        <TextBlock Text="{DynamicResource AddInstallationScreen_Header}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="20"></TextBlock>
         <Separator Grid.Row="1"></Separator>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -34,9 +35,9 @@
                 <ColumnDefinition Width="0.5*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Width="330" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch">
-                <TextBlock Margin="0,28,0,5" Text="NAME" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+                <TextBlock Margin="0,28,0,5" Text="{DynamicResource AddInstallationScreen_NameSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                 <TextBox Width="330" x:Name="InstallationNameField" AcceptsReturn="False" SpellCheck.IsEnabled="False"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left"></TextBox>
-                <TextBlock Margin="0,28,0,5" Text="VERSION" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+                <TextBlock Margin="0,28,0,5" Text="{DynamicResource AddInstallationScreen_VersionSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                 <ComboBox x:Name="InstallationVersionSelect" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" ItemContainerStyle="{DynamicResource ComboBoxItemStyle2}" Foreground="White" Padding="10,7,5,3" Style="{DynamicResource ComboBoxStyle2}" SelectedIndex="1" FontSize="14">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
@@ -48,8 +49,8 @@
         </Grid>
         <Separator Grid.Row="3"></Separator>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="4" Height="45" Margin="15,0">
-            <Button x:Name="CancelButton" Click="CancelButton_Click" Content="Cancel" Style="{DynamicResource ButtonStyle3}"></Button>
-            <Button x:Name="CreateButton" Click="CreateButton_Click" Content="Create" Style="{DynamicResource ButtonStyle4}"></Button>
+            <Button x:Name="CancelButton" Click="CancelButton_Click" Content="{DynamicResource AddInstallationScreen_CancelButton}" Style="{DynamicResource ButtonStyle3}"></Button>
+            <Button x:Name="CreateButton" Click="CreateButton_Click" Content="{DynamicResource AddInstallationScreen_CreateButton}" Style="{DynamicResource ButtonStyle4}"></Button>
         </StackPanel>
     </Grid>
 </Page>

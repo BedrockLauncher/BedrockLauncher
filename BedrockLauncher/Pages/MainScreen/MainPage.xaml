@@ -80,11 +80,6 @@
                         <ToolTip Content="{DynamicResource MainPage_InstallationsButton}"/>
                     </ToggleButton.ToolTip>
                 </ToggleButton>
-                <ToggleButton x:Name="VersionsButton" Click="VersionsButton_Click" Content="{DynamicResource ResourceKey=MainPage_VersionsButton}" Background="Transparent" BorderBrush="{x:Null}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Height="27" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="3,0,0,0">
-                    <ToggleButton.ToolTip>
-                        <ToolTip Content="{DynamicResource MainPage_VersionsButton}"/>
-                    </ToggleButton.ToolTip>
-                </ToggleButton>
                 <ToggleButton x:Name="SkinsButton" Click="SkinsButton_Click" Content="{DynamicResource ResourceKey=MainPage_SkinsButton}" Background="Transparent" BorderBrush="{x:Null}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Height="27" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="3,0,0,0">
                     <ToggleButton.ToolTip>
                         <ToolTip Content="{DynamicResource MainPage_SkinsButton}"/>

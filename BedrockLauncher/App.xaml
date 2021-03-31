@@ -22,6 +22,9 @@
                     <Style TargetType="{x:Type ComboBoxItem}">
                         <EventSetter Event="RequestBringIntoView" Handler="ComboBoxItem_RequestBringIntoView"/>
                     </Style>
+                    <Style TargetType="{x:Type Window}">
+                        <Setter Property="FontFamily" Value="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
+                    </Style>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

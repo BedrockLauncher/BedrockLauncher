@@ -32,7 +32,6 @@ using BedrockLauncher.Pages.SettingsScreen;
 using BedrockLauncher.Pages.FirstLaunch;
 using BedrockLauncher.Pages.ErrorScreen;
 using BedrockLauncher.Pages.InstallationsScreen;
-using BedrockLauncher.Pages.VersionsScreen;
 using BedrockLauncher.Pages.NewsScreen;
 using BedrockLauncher.Pages.ProfileManagementScreen;
 using System.Windows.Media.Animation;
@@ -80,7 +79,6 @@ namespace BedrockLauncher
         private NoContentPage noContentPage = new NoContentPage();
         private PlayScreenPage playScreenPage = new PlayScreenPage();
         private InstallationsScreen installationsScreen = new InstallationsScreen();
-        private VersionsScreen versionsScreen = new VersionsScreen();
         private ServersScreenPage serversScreenPage = new ServersScreenPage(serversTab);
         #endregion
 
@@ -91,14 +89,6 @@ namespace BedrockLauncher
             get
             {
                 return ((MainWindow)Application.Current.MainWindow)._versions;
-            }
-        }
-
-        public static Version SelectedVersion
-        {
-            get
-            {
-                return ((MainWindow)Application.Current.MainWindow).VersionList.SelectedItem as Version;
             }
         }
 
@@ -135,12 +125,6 @@ namespace BedrockLauncher
 
         public void UpdateVersionsList()
         {
-            VersionList.ItemsSource = _versions;
-            versionsScreen.InstallationsList.ItemsSource = _versions;
-            var view = CollectionViewSource.GetDefaultView(VersionList.ItemsSource) as CollectionView;
-            var view2 = CollectionViewSource.GetDefaultView(versionsScreen.InstallationsList.ItemsSource) as CollectionView;
-            view.Filter = VersionListFilter;
-            view2.Filter = VersionListFilter;
             Dispatcher.Invoke(async () =>
             {
                 try
@@ -163,28 +147,6 @@ namespace BedrockLauncher
 
         }
 
-        private bool VersionListFilter(object obj)
-        {
-            Version v = obj as Version;
-            VersionList.SelectedIndex = Properties.Settings.Default.LastSelectedVersion; // show last version in combobox
-
-            if (!Properties.Settings.Default.ShowBetas && v.IsBeta) return false;
-            else if (!Properties.Settings.Default.ShowReleases && !v.IsBeta) return false;
-            else if (!Properties.Settings.Default.ShowNonInstalled && !v.IsInstalled) return false;
-            else return true;
-
-        }
-
-        private void VersionList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            UpdatePlayButton();
-        }
-
-        private void VersionList_DropDownClosed(object sender, EventArgs e)
-        {
-            UpdatePlayButton();
-        }
-
         #endregion
 
         #region Installations Management
@@ -194,9 +156,15 @@ namespace BedrockLauncher
             ConfigManager configManager = new ConfigManager();
             _installations = configManager.GetInstallations();
 
+            _installations = configManager.GetEnforcedInstallations(_installations);
+
             installationsScreen.InstallationsList.ItemsSource = _installations;
             var view = CollectionViewSource.GetDefaultView(installationsScreen.InstallationsList.ItemsSource) as CollectionView;
             view.Filter = InstallationListFilter;
+
+            InstallationsList.ItemsSource = _installations;
+            InstallationsList.SelectedIndex = Properties.Settings.Default.LastSelectedVersion;
+            if (InstallationsList.SelectedItem == null) InstallationsList.SelectedItem = _installations.First();
         }
 
         private bool InstallationListFilter(object obj)
@@ -205,7 +173,16 @@ namespace BedrockLauncher
             if (!Properties.Settings.Default.ShowInstallationBetas && v.IsBeta) return false;
             else if (!Properties.Settings.Default.ShowInstallationReleases && !v.IsBeta) return false;
             else return true;
+        }
 
+        private void InstallationsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdatePlayButton();
+        }
+
+        private void InstallationsList_DropDownClosed(object sender, EventArgs e)
+        {
+            UpdatePlayButton();
         }
 
         #endregion
@@ -218,7 +195,7 @@ namespace BedrockLauncher
             {
                    await Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(() =>
                    {
-                       var selected = VersionList.SelectedItem as Version;
+                       var selected = InstallationsList.SelectedItem as Installation;
                        if (selected == null)
                        {
                            PlayButtonText.SetResourceReference(TextBlock.TextProperty, "MainPage_PlayButton");
@@ -231,17 +208,17 @@ namespace BedrockLauncher
                            if (IsDownloading) ProgressBarShowAnim();
 
                            MainPlayButton.IsEnabled = false;
-                           VersionList.IsEnabled = false;
+                           InstallationsList.IsEnabled = false;
                        }
                        else
                        {
                            ProgressBarGrid.Visibility = Visibility.Collapsed;
                            MainPlayButton.IsEnabled = true;
-                           VersionList.IsEnabled = true;
+                           InstallationsList.IsEnabled = true;
                        }
 
 
-                       if (selected.IsInstalled) PlayButtonText.SetResourceReference(TextBlock.TextProperty, "MainPage_PlayButton");
+                       if (selected.Version.IsInstalled) PlayButtonText.SetResourceReference(TextBlock.TextProperty, "MainPage_PlayButton");
                        else PlayButtonText.SetResourceReference(TextBlock.TextProperty, "MainPage_PlayButton");
                    }));
             });
@@ -272,12 +249,6 @@ namespace BedrockLauncher
             progressbarcontent.Visibility = Visibility.Visible;
             ProgressBarText.Visibility = Visibility.Visible;
         }
-
-        private void ProgressBarHideAnim()
-        {
-
-        }
-
         public void LanguageChange(string language)
         {
             ResourceDictionary dict = new ResourceDictionary
@@ -285,6 +256,33 @@ namespace BedrockLauncher
                 Source = new Uri($"..\\Resources\\text\\lang.{language}.xaml", UriKind.Relative)
             };
             Application.Current.Resources.MergedDictionaries.Add(dict);
+        }
+        private void MainPlayButton_Click(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.LastSelectedVersion = InstallationsList.SelectedIndex;
+            Properties.Settings.Default.Save();
+            var i = InstallationsList.SelectedItem as Installation;
+            Play(i);
+        }
+
+        #endregion
+
+        #region Global Actions
+
+        public void Play(Installation i)
+        {
+            {
+                var v = i.Version;
+                switch (v.DisplayInstallStatus.ToString())
+                {
+                    case "Not installed":
+                        InvokeDownload(v);
+                        break;
+                    case "Installed":
+                        InvokeLaunch(v);
+                        break;
+                }
+            }
         }
 
         #endregion
@@ -613,25 +611,6 @@ namespace BedrockLauncher
 
         #region Misc
 
-        private void MainPlayButton_Click(object sender, RoutedEventArgs e)
-        {
-            Properties.Settings.Default.LastSelectedVersion = VersionList.SelectedIndex;
-            Properties.Settings.Default.Save();
-            {
-                var v = VersionList.SelectedItem as Version;
-                switch (v.DisplayInstallStatus.ToString())
-                {
-                    case "Not installed":
-                        InvokeDownload(VersionList.SelectedItem as Version);
-                        break;
-                    case "Installed":
-                        InvokeLaunch(VersionList.SelectedItem as Version);
-                        break;
-                }
-            }
-
-        }
-
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Keyboard.ClearFocus();
@@ -697,7 +676,6 @@ namespace BedrockLauncher
                 mainPage.InstallationsButton,
                 mainPage.SkinsButton,
                 mainPage.PatchNotesButton,
-                mainPage.VersionsButton,
                 
                 // settings screen lol
                 settingsScreenPage.GeneralButton,
@@ -707,7 +685,7 @@ namespace BedrockLauncher
 
             foreach (ToggleButton button in toggleButtons) { button.IsChecked = false; }
 
-            PlayScreenBorder.Visibility = Visibility.Hidden;
+            PlayScreenBorder.Visibility = Visibility.Collapsed;
 
             toggleButton.IsChecked = true;
         }
@@ -725,7 +703,6 @@ namespace BedrockLauncher
             // MainPageButtons
             else if (toggleButton.Name == mainPage.PlayButton.Name) NavigateToPlayScreen();
             else if (toggleButton.Name == mainPage.InstallationsButton.Name) NavigateToInstallationsPage();
-            else if (toggleButton.Name == mainPage.VersionsButton.Name) NavigateToVersionsPage();
             else if (toggleButton.Name == mainPage.SkinsButton.Name) NavigateToSkinsPage();
             else if (toggleButton.Name == mainPage.PatchNotesButton.Name) NavigateToPatchNotes();
             else NavigateToPlayScreen();
@@ -798,13 +775,6 @@ namespace BedrockLauncher
             mainPage.InstallationsButton.IsChecked = true;
             mainPage.MainPageFrame.Navigate(installationsScreen);
             mainPage.LastButtonName = mainPage.InstallationsButton.Name;
-        }
-        public void NavigateToVersionsPage()
-        {
-            NavigateToMainPage(true);
-            mainPage.VersionsButton.IsChecked = true;
-            mainPage.MainPageFrame.Navigate(versionsScreen);
-            mainPage.LastButtonName = mainPage.VersionsButton.Name;
         }
         public void NavigateToSkinsPage()
         {

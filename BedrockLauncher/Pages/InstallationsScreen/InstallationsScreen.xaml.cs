@@ -44,7 +44,9 @@ namespace BedrockLauncher.Pages.InstallationsScreen
 
         private void Play_Click(object sender, RoutedEventArgs e)
         {
-
+            Button button = sender as Button;
+            var installation = button.DataContext as Classes.Installation;
+            ((MainWindow)Application.Current.MainWindow).Play(installation);
         }
 
         private void NewInstallationButton_Click(object sender, RoutedEventArgs e)
@@ -66,6 +68,8 @@ namespace BedrockLauncher.Pages.InstallationsScreen
             Button button = sender as Button;
             var installation = button.DataContext as Classes.Installation;
             InstallationsList.SelectedItem = installation;
+            button.ContextMenu.PlacementTarget = button;
+            button.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
             button.ContextMenu.DataContext = installation;
             button.ContextMenu.IsOpen = true;
         }

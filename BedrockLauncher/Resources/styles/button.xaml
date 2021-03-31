@@ -279,17 +279,17 @@
         </Style>
 
     <SolidColorBrush x:Key="Button4.Static.Foreground" Color="White"/>
-    <SolidColorBrush x:Key="Button4.Static.Background" Color="Green"/>
-    <SolidColorBrush x:Key="Button4.Static.Border" Color="Green"/>
+    <SolidColorBrush x:Key="Button4.Static.Background" Color="#FF008542"/>
+    <SolidColorBrush x:Key="Button4.Static.Border" Color="#FF008542"/>
 
-    <SolidColorBrush x:Key="Button4.MouseOver.Background" Color="Lime"/>
-    <SolidColorBrush x:Key="Button4.MouseOver.Border" Color="Lime"/>
+    <SolidColorBrush x:Key="Button4.MouseOver.Background" Color="#FF0DD166"/>
+    <SolidColorBrush x:Key="Button4.MouseOver.Border" Color="#FF0DD166"/>
 
-    <SolidColorBrush x:Key="Button4.Pressed.Background" Color="DarkGreen"/>
+    <SolidColorBrush x:Key="Button4.Pressed.Background" Color="#FF006431"/>
     <SolidColorBrush x:Key="Button4.Pressed.Border" Color="White"/>
 
-    <SolidColorBrush x:Key="Button4.Disabled.Background" Color="DarkGreen"/>
-    <SolidColorBrush x:Key="Button4.Disabled.Border" Color="DarkGreen"/>
+    <SolidColorBrush x:Key="Button4.Disabled.Background" Color="#FF006431"/>
+    <SolidColorBrush x:Key="Button4.Disabled.Border" Color="#FF006431"/>
     <SolidColorBrush x:Key="Button4.Disabled.Foreground" Color="#FF848484"/>
 
     <Style x:Key="ButtonStyle4" TargetType="{x:Type Button}">
@@ -355,11 +355,11 @@
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Padding" Value="5,0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
                         <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="+18,0,+18,0" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Border>
                     <ControlTemplate.Triggers>

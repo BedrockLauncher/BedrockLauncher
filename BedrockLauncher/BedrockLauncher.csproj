@@ -178,9 +178,6 @@
     <Compile Include="Pages\InstallationsScreen\AddInstallationScreen.xaml.cs">
       <DependentUpon>AddInstallationScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\VersionsScreen\VersionsScreen.xaml.cs">
-      <DependentUpon>VersionsScreen.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\InstallationsScreen\InstallationsScreen.xaml.cs">
       <DependentUpon>InstallationsScreen.xaml</DependentUpon>
     </Compile>
@@ -268,10 +265,6 @@
     <Page Include="Pages\InstallationsScreen\AddInstallationScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\VersionsScreen\VersionsScreen.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\InstallationsScreen\InstallationsScreen.xaml">
       <SubType>Designer</SubType>
@@ -512,6 +505,6 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>:: "$(DevEnvDir)devenv" "$(SolutionPath)" /Build $(configuration) /project "$(SolutionDir)WUTokenHelper\WUTokenHelper.vcxproj"</PreBuildEvent>
+    <PreBuildEvent>"$(DevEnvDir)devenv" "$(SolutionPath)" /Build $(configuration) /project "$(SolutionDir)WUTokenHelper\WUTokenHelper.vcxproj"</PreBuildEvent>
   </PropertyGroup>
 </Project>

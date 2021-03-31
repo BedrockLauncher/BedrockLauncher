@@ -30,6 +30,13 @@ namespace BedrockLauncher.Pages.InstallationsScreen
             UpdateVersionsComboBox();
         }
 
+        private void GetManualComboBoxEntries()
+        {
+            Classes.Version latest_release = new Classes.Version("latest_release", Application.Current.Resources["AddInstallationScreen_LatestRelease"].ToString(), false, ((MainWindow)Application.Current.MainWindow));
+            Classes.Version latest_beta = new Classes.Version("latest_beta", Application.Current.Resources["AddInstallationScreen_LatestSnapshot"].ToString(), false, ((MainWindow)Application.Current.MainWindow));
+            Versions.InsertRange(0, new List<Classes.Version>() { latest_release, latest_beta });
+        }
+
         private void UpdateVersionsComboBox()
         {
             Versions.Clear();
@@ -38,6 +45,7 @@ namespace BedrockLauncher.Pages.InstallationsScreen
             {
                 Versions.Add(entry);
             }
+            GetManualComboBoxEntries();
             InstallationVersionSelect.ItemsSource = Versions;
             InstallationVersionSelect.SelectedIndex = 0;
         }

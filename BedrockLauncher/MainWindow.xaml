@@ -13,7 +13,11 @@
         MouseDown="Window_MouseDown"
         Title="{DynamicResource ResourceKey=Title}" Initialized="Window_Initialized" Height="639" Width="1016" Foreground="{x:Null}" MinWidth="1016" MinHeight="639" Background="White" Icon="Resources/images/icon.ico">
     <Grid Margin="0,0,0,0" Background="WhiteSmoke">
-        <StackPanel x:Name="buttonStackPanel" Width="180" Background="#FF1E1E1E" HorizontalAlignment="Left">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel x:Name="buttonStackPanel" Grid.Column="0" Background="#FF1E1E1E" HorizontalAlignment="Left">
             <controls:ProfileButton x:Name="ProfileButton"></controls:ProfileButton>
             <Grid Height="57" Margin="1,0,0,0" VerticalAlignment="Top">
                 <ToggleButton x:Name="NewsButton" Click="ButtonManager" VerticalAlignment="Top" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False">
@@ -52,60 +56,7 @@
                 <Image IsHitTestVisible="False" RenderOptions.BitmapScalingMode="NearestNeighbor" SnapsToDevicePixels="True" Source="Resources/images/servers_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
             </Grid>
         </StackPanel>
-        <Frame x:Name="MainWindowFrame" Margin="180,0,0,0" VerticalAlignment="Stretch" Background="Black" NavigationUIVisibility="Hidden" Source="/BedrockLauncher;component/Pages/MainScreen/MainPage.xaml"/>
-        <Button RenderOptions.BitmapScalingMode="NearestNeighbor" x:Name="updateButton" Margin="0,-75,5,0" HorizontalAlignment="Right" Height="60" Width="260" VerticalAlignment="Top" BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyle2}">
-            <Button.Background>
-                <ImageBrush ImageSource="Resources/images/advancement_icon.png"/>
-            </Button.Background>
-            <Grid Margin="-8,0,0,0" HorizontalAlignment="Left">
-                <TextBlock LineHeight="20" RenderOptions.BitmapScalingMode="NearestNeighbor" FontSize="16" TextOptions.TextRenderingMode="Aliased" TextOptions.TextFormattingMode="Display" Margin="52,6,0,0" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Rus">
-                    <Run Text="{DynamicResource UpdateButton_NewUpdate}" Foreground="Yellow"/>
-                    <LineBreak/>
-                    <Run Text="{DynamicResource UpdateButton_Download}" Foreground="White"/>
-                </TextBlock>
-                <Image Source="Resources/images/icon.ico" Margin="3" HorizontalAlignment="Left" Height="42" Width="42"/>
-            </Grid>
-        </Button>
-        <Grid x:Name="PlayScreenBorder" x:FieldModifier="public" Height="55" Margin="180,0,0,0" VerticalAlignment="Bottom" Background="#FF262626">
-            <Grid x:Name="ProgressBarGrid" Margin="0,-62,0,55" Background="#FF262626" Visibility="Visible">
-                <ProgressBar x:Name="progressSizeHack" Height="32" Margin="10,8,10,22" Foreground="#FF008542" Background="Black" BorderBrush="Black" Minimum="0" Maximum="{Binding StateChangeInfo.TotalSize}" Value="{Binding StateChangeInfo.DownloadedBytes}"/>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock x:Name="progressbarcontent" SnapsToDevicePixels="True" Margin="26,-15,0,0" FontSize="12" Text="{DynamicResource MainPage_ProgressBarDownloading}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
-                    <TextBlock SnapsToDevicePixels="True" Margin="+3,-15,0,0" FontSize="12" x:Name="ProgressBarText" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
-                </StackPanel>
-            </Grid>
-            <TextBlock Foreground="white" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="11" FontWeight="Bold" Text="NOT APPROVED BY OR ASSOCIATED WITH MOJANG" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,2,2"/>
-            <Button x:Name="MainPlayButton" Click="MainPlayButton_Click" UseLayoutRounding="True" SnapsToDevicePixels="True" Foreground="White" FontSize="26" HorizontalAlignment="Center" Margin="286,-8,286,0" VerticalAlignment="Top" Width="250" Height="56" Padding="0" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" Style="{DynamicResource ButtonStyle1}" BorderBrush="{x:Null}">
-                <Button.Effect>
-                    <DropShadowEffect BlurRadius="0" Direction="270" Opacity="0.2" ShadowDepth="4"/>
-                </Button.Effect>
-                <Button.Background>
-                    <ImageBrush ImageSource="Resources/images/MainPagePlayButton.png"/>
-                </Button.Background>
-                <TextBlock UseLayoutRounding="True" x:Name="PlayButtonText" SnapsToDevicePixels="True" Text="" Margin="0,-4,0,0" FontSize="24" TextOptions.TextHintingMode="Fixed" TextTrimming="WordEllipsis" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten">
-                    <TextBlock.Effect>
-                        <DropShadowEffect BlurRadius="0" Direction="270" ShadowDepth="2" RenderingBias="Quality" Opacity="0.43"/>
-                    </TextBlock.Effect>
-                </TextBlock>
-            </Button>
-            <ComboBox SelectedItem="1" SelectionChanged="VersionList_SelectionChanged" DropDownClosed="VersionList_DropDownClosed" ItemsSource="{Binding}" x:Name="VersionList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="200" Height="47" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}" Foreground="White" Padding="-1,7,5,3">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <ContentControl x:Name="control" Content="{Binding}" ContentTemplate="{StaticResource templateVersionNotInstalled}"/>
-                        <DataTemplate.Triggers>
-                            <DataTrigger Binding="{Binding IsInstalled}" Value="True">
-                                <Setter TargetName="control" Property="ContentTemplate" Value="{StaticResource templateVersionInstalled}"/>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding IsStateChanging}" Value="True">
-                                <Setter TargetName="control" Property="ContentTemplate" Value="{StaticResource templateVersionDownloading}"/>
-                            </DataTrigger>
-                        </DataTemplate.Triggers>
-
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
-        </Grid>
-        <Grid Height="57" Margin="1,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+        <Grid Grid.Column="0"  Height="57" Margin="1,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left">
             <ToggleButton x:Name="SettingsButton" Click="ButtonManager" VerticalAlignment="Bottom" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" Width="179" HorizontalContentAlignment="Left" Focusable="False" HorizontalAlignment="Left">
                 <ToggleButton.ToolTip>
                     <ToolTip Content="{DynamicResource ResourceKey=MainWindow_SettingsButton}"/>
@@ -114,6 +65,57 @@
             </ToggleButton>
             <Image IsHitTestVisible="False" SnapsToDevicePixels="True" Source="Resources/images/settings_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
         </Grid>
-        <Frame x:Name="MainWindowOverlayFrame" Margin="0" NavigationUIVisibility="Hidden" Panel.ZIndex="-1"/>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Frame x:Name="MainWindowFrame" VerticalAlignment="Stretch" Background="Black" NavigationUIVisibility="Hidden" Source="/BedrockLauncher;component/Pages/MainScreen/MainPage.xaml"/>
+            <Button RenderOptions.BitmapScalingMode="NearestNeighbor" x:Name="updateButton" Margin="0,-75,5,0" HorizontalAlignment="Right" Height="60" Width="260" VerticalAlignment="Top" BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyle2}">
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources/images/advancement_icon.png"/>
+                </Button.Background>
+                <Grid Margin="-8,0,0,0" HorizontalAlignment="Left">
+                    <TextBlock LineHeight="20" RenderOptions.BitmapScalingMode="NearestNeighbor" FontSize="16" TextOptions.TextRenderingMode="Aliased" TextOptions.TextFormattingMode="Display" Margin="52,6,0,0" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Rus">
+                    <Run Text="{DynamicResource UpdateButton_NewUpdate}" Foreground="Yellow"/>
+                    <LineBreak/>
+                    <Run Text="{DynamicResource UpdateButton_Download}" Foreground="White"/>
+                    </TextBlock>
+                    <Image Source="Resources/images/icon.ico" Margin="3" HorizontalAlignment="Left" Height="42" Width="42"/>
+                </Grid>
+            </Button>
+            <Grid Grid.Row="1" x:Name="ProgressBarGrid" Background="#FF262626" Visibility="Visible">
+                <ProgressBar x:Name="progressSizeHack" Height="32" Margin="10,8,10,22" Foreground="#FF008542" Background="Black" BorderBrush="Black" Minimum="0" Maximum="{Binding StateChangeInfo.TotalSize}" Value="{Binding StateChangeInfo.DownloadedBytes}"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="progressbarcontent" SnapsToDevicePixels="True" Margin="26,-15,0,0" FontSize="12" Text="{DynamicResource MainPage_ProgressBarDownloading}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
+                    <TextBlock SnapsToDevicePixels="True" Margin="+3,-15,0,0" FontSize="12" x:Name="ProgressBarText" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
+                </StackPanel>
+            </Grid>
+            <Grid x:Name="PlayScreenBorder" Grid.Row="2" x:FieldModifier="public" VerticalAlignment="Bottom" Background="#FF262626">
+                <TextBlock Foreground="white" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="11" FontWeight="Bold" Text="NOT APPROVED BY OR ASSOCIATED WITH MOJANG" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,2,2"/>
+                <Button x:Name="MainPlayButton" Click="MainPlayButton_Click" UseLayoutRounding="True" SnapsToDevicePixels="True" Foreground="White" FontSize="26" HorizontalAlignment="Center" Margin="286,-8,286,0" VerticalAlignment="Top" Width="250" Height="56" Padding="0" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" Style="{DynamicResource ButtonStyle1}" BorderBrush="{x:Null}">
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="0" Direction="270" Opacity="0.2" ShadowDepth="4"/>
+                    </Button.Effect>
+                    <Button.Background>
+                        <ImageBrush ImageSource="Resources/images/MainPagePlayButton.png"/>
+                    </Button.Background>
+                    <TextBlock UseLayoutRounding="True" x:Name="PlayButtonText" SnapsToDevicePixels="True" Text="" Margin="0,-4,0,0" FontSize="24" TextOptions.TextHintingMode="Fixed" TextTrimming="WordEllipsis" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten">
+                        <TextBlock.Effect>
+                            <DropShadowEffect BlurRadius="0" Direction="270" ShadowDepth="2" RenderingBias="Quality" Opacity="0.43"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                </Button>
+                <ComboBox SelectedItem="1" SelectionChanged="InstallationsList_SelectionChanged" DropDownClosed="InstallationsList_DropDownClosed" ItemsSource="{Binding}" x:Name="InstallationsList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="200" Height="47" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}" Foreground="White" Padding="-1,7,5,3">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <ContentControl x:Name="control" Content="{Binding}" ContentTemplate="{StaticResource templateInstallation}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </Grid>
+        </Grid>
+        <Frame x:Name="MainWindowOverlayFrame" Margin="0" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" Panel.ZIndex="-1"/>
     </Grid>
 </Window>

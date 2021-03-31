@@ -130,6 +130,31 @@ namespace BedrockLauncher.Methods
 
         #region Installations
 
+        public List<Installation> GetEnforcedInstallations(List<Installation> installations)
+        {
+            if (!installations.Exists(x => x.UseLatestVersion && !x.UseLatestBeta))
+            {
+                Installation latest_release = new Installation();
+                latest_release.DisplayName = "Latest Release";
+                latest_release.UseLatestVersion = true;
+                latest_release.IconPath = @"/BedrockLauncher;component/Resources/images/grass_block_icon.ico";
+                installations.Add(latest_release);
+            }
+
+            if (!installations.Exists(x => x.UseLatestVersion && x.UseLatestBeta))
+            {
+                Installation latest_beta = new Installation();
+                latest_beta.DisplayName = "Latest Beta";
+                latest_beta.UseLatestVersion = true;
+                latest_beta.UseLatestBeta = true;
+                latest_beta.IconPath = @"/BedrockLauncher;component/Resources/images/crafting_table_block_icon.ico";
+                installations.Add(latest_beta);
+            }
+
+            return installations;
+
+        }
+
         public List<Installation> GetInstallations()
         {
             string currentProfile = Properties.Settings.Default.CurrentProfile;
@@ -143,7 +168,7 @@ namespace BedrockLauncher.Methods
             else return new List<Installation>();
         }
 
-        public void CreateInstallation(string name, Version version)
+        public void CreateInstallation(string name, Version version, string iconPath = @"/BedrockLauncher;component/Resources/images/grass_block_icon.ico")
         {
             string currentProfile = Properties.Settings.Default.CurrentProfile;
 
@@ -152,12 +177,24 @@ namespace BedrockLauncher.Methods
             {
                 Installation installation = new Installation();
                 installation.DisplayName = name;
-                installation.VersionUUID = version.UUID;
-                //TODO: Make Customizable
-                installation.IconPath = @"/BedrockLauncher;component/Resources/images/grass_block_icon.ico";
+                installation.IconPath = iconPath;
+
+                if (version.UUID == "latest_release")
+                {
+                    installation.UseLatestVersion = true;
+                }
+                else if (version.UUID == "latest_beta")
+                {
+                    installation.UseLatestVersion = true;
+                    installation.UseLatestBeta = true;
+                }
+                else
+                {
+                    installation.VersionUUID = version.UUID;
+                }
+
 
                 if (profileList.profiles[currentProfile].Installations == null) profileList.profiles[currentProfile].Installations = new List<Installation>();
-
                 profileList.profiles[currentProfile].Installations.Add(installation);
                 SaveConfig(profileList);
             }
