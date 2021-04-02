@@ -167,6 +167,8 @@ namespace BedrockLauncher.Core
         {
             ProfileSettings profileSettings = new ProfileSettings();
 
+            if (ProfileList == null) ProfileList = new ProfileList();
+
             if (ProfileList.profiles.ContainsKey(profile)) return false;
             else
             {
@@ -174,6 +176,7 @@ namespace BedrockLauncher.Core
                 profileSettings.Name = profile;
                 profileSettings.SkinPath = null;
                 profileSettings.ProfilePath = ValidatePathName(profile);
+                profileSettings.Installations = new List<Installation>();
 
                 ProfileList.profiles.Add(profile, profileSettings);
 
