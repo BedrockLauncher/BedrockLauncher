@@ -41,3 +41,4 @@ D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Installer.Properties.Re
 D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Installer.csproj.GenerateResource.cache
 D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Installer.csproj.CoreCompileInputs.cache
 D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Installer.exe
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Installer.csprojAssemblyReference.cache

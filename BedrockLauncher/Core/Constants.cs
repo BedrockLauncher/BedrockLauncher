@@ -27,23 +27,19 @@ namespace BedrockLauncher.Core
         }
         public static string GetProfilesFilePath()
         {
-            if (Properties.Settings.Default.PortableProfiles) return UserDataFileName;
+            if (Properties.Settings.Default.PortableMode) return UserDataFileName;
             else return Path.Combine(AppDataFolder, UserDataFileName);
         }
         public static string GetInstallationsFolderPath(string profileName, string installationName)
         {
             var profile = ConfigManager.ProfileList.profiles[profileName];
-            string installationPath = Path.Combine(ValidateFilePath(profile.ProfilePath), ValidateFilePath(installationName));
+            string installationPath = Path.Combine(profile.ProfilePath, installationName);
 
-            if (Properties.Settings.Default.PortableProfiles) return Path.Combine(installationPath, "packageData");
+            if (Properties.Settings.Default.PortableMode) return Path.Combine(installationPath, "packageData");
             else return Path.Combine(InstallationsPath, installationPath, "packageData");
 
 
-            string ValidateFilePath(string profilePath)
-            {
-                char[] invalidFileNameChars = Path.GetInvalidFileNameChars();
-                return new string(profilePath.Where(ch => !invalidFileNameChars.Contains(ch)).ToArray());
-            }
+
         }
     }
 }

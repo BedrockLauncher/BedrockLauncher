@@ -4,19 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BedrockLauncher.Controls"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+             VerticalContentAlignment="Center"
              d:DesignHeight="330" d:DesignWidth="32"
              Width="330" Height="32" 
              DropDownClosed="LanguageCombobox_DropDownClosed"  
              Initialized="LanguageCombobox_Initialized"
-             ItemContainerStyle="{DynamicResource ComboBoxItemStyle2}" 
              Foreground="White"
              Style="{DynamicResource ComboBoxStyle2}" 
              SelectedIndex="1">
         <ComboBoxItem>
-            <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" Text="{DynamicResource MainWindowSettingsScreen_en_US}" FontWeight="Normal"/>
+            <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" Text="{DynamicResource MainWindowSettingsScreen_en_US}" FontWeight="Normal" VerticalAlignment="Center"/>
         </ComboBoxItem>
         <ComboBoxItem>
-            <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"  Text="{DynamicResource MainWindowSettingsScreen_ru_RU}" FontWeight="Normal"/>
+            <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"  Text="{DynamicResource MainWindowSettingsScreen_ru_RU}" FontWeight="Normal" VerticalAlignment="Center"/>
         </ComboBoxItem>
 </ComboBox>

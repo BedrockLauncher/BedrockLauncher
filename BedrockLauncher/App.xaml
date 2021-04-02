@@ -11,8 +11,8 @@
                 <ResourceDictionary Source="Resources/styles/button.xaml"/>
                 <ResourceDictionary Source="Resources/styles/checkbox.xaml"/>
                 <ResourceDictionary Source="Resources/styles/combobox.xaml"/>
-                <ResourceDictionary Source="Resources/styles/combobox2.xaml"/>
-                <ResourceDictionary Source="Resources/styles/combobox3.xaml"/>
+                <ResourceDictionary Source="Resources/styles/insiders_combobox.xaml"/>
+                <ResourceDictionary Source="Resources/styles/installations_combobox.xaml"/>
                 <ResourceDictionary Source="Resources/styles/contextmenu.xaml"/>
                 <ResourceDictionary Source="Resources/styles/menuitems.xaml"/>
                 <ResourceDictionary Source="Resources/styles/listview.xaml"/>

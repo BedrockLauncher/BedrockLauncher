@@ -14,6 +14,28 @@
     <Style TargetType="{x:Type TextBox}" BasedOn="{DynamicResource fontStyling}" />
     <Style TargetType="{x:Type ListView}" BasedOn="{DynamicResource fontStyling}" />
 
+    <DrawingImage x:Key="PlusIcon">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V512 H512 V0 H0 Z">
+                <DrawingGroup Opacity="1">
+                    <DrawingGroup Opacity="1">
+                        <GeometryDrawing Brush="White" Geometry="F1 M512,512z M0,0z M256,0C114.84,0 0,114.84 0,256 0,397.16 114.84,512 256,512 397.16,512 512,397.16 512,256 512,114.84 397.16,0 256,0z M256,475.429C135.003,475.429 36.571,376.997 36.571,256 36.571,135.003 135.003,36.571 256,36.571 376.997,36.571 475.429,135.003 475.429,256 475.429,376.997 376.997,475.429 256,475.429z" />
+                    </DrawingGroup>
+                </DrawingGroup>
+                <DrawingGroup Opacity="1">
+                    <DrawingGroup Opacity="1">
+                        <GeometryDrawing Brush="White" Geometry="F1 M512,512z M0,0z M256,134.095C245.9,134.095,237.714,142.281,237.714,152.381L237.714,359.619C237.714,369.719 245.9,377.905 256,377.905 266.1,377.905 274.286,369.719 274.286,359.619L274.286,152.381C274.286,142.281,266.1,134.095,256,134.095z" />
+                    </DrawingGroup>
+                </DrawingGroup>
+                <DrawingGroup Opacity="1">
+                    <DrawingGroup Opacity="1">
+                        <GeometryDrawing Brush="White" Geometry="F1 M512,512z M0,0z M359.619,237.714L152.381,237.714C142.281,237.714 134.095,245.9 134.095,256 134.095,266.1 142.281,274.286 152.381,274.286L359.619,274.286C369.719,274.286 377.905,266.1 377.905,256 377.905,245.9 369.719,237.714 359.619,237.714z" />
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
 
     <TextBlock x:Key="TitleText" Text="{Binding DisplayStatus}">
         <TextBlock.DataContext>

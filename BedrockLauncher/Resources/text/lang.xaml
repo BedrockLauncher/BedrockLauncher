@@ -96,11 +96,11 @@
     <v:String x:Key="MainWindow_AddProfile">Add Profile</v:String>
     <v:String x:Key="MainWindow_RemoveProfile">Remove Profile</v:String>
     <v:String x:Key="MainWindow_ChooseAccount">CHOOSE PROFILE</v:String>
-    
-    <v:String x:Key="MainWindowSettingsScreen_FixedGameInstalls">Use fixed location for game downloads</v:String>
-    <v:String x:Key="MainWindowSettingsScreen_FixedGameSaves">Use fixed location for game saves</v:String>
+
+    <v:String x:Key="MainWindowSettingsScreen_PortableMode">Enable Portable Mode</v:String>
     <v:String x:Key="MainWindowSettingsScreen_ExperimentalSaveRedirection">Enable experiemental save redirection</v:String>
     <v:String x:Key="AcountsSettingsScreen_AccountDropdownSubtitle">INSIDER ACCOUNT</v:String>
+    <v:String x:Key="MainWindowSettingsScreen_BackupButton">Backup save data to new installation</v:String>
 
     <v:String x:Key="NewProfile_GoBackButton">❮ GO BACK</v:String>
     <v:String x:Key="NewProfile_CreateProfileText">PROFILE</v:String>
@@ -109,12 +109,15 @@
     <v:String x:Key="NewProfile_CreateProfileButton">Create</v:String>
 
     <v:String x:Key="AddInstallationScreen_Header">Create new installation</v:String>
+    <v:String x:Key="EditingInstallationScreen_Header">Edit installation</v:String>
     <v:String x:Key="AddInstallationScreen_NameSubtitle">NAME</v:String>
     <v:String x:Key="AddInstallationScreen_VersionSubtitle">VERSION</v:String>
     <v:String x:Key="AddInstallationScreen_CreateButton">Create</v:String>
+    <v:String x:Key="EditingInstallationScreen_SaveButton">Save</v:String>
     <v:String x:Key="AddInstallationScreen_CancelButton">Cancel</v:String>
     <v:String x:Key="AddInstallationScreen_LatestSnapshot">Latest Beta</v:String>
     <v:String x:Key="AddInstallationScreen_LatestRelease">Latest Release</v:String>
+    <v:String x:Key="AddInstallationScreen_NameHintText">unamed installation</v:String>
     
     <v:String x:Key="InstallationsPage_Releases">Releases</v:String>
     <v:String x:Key="InstallationsPage_Betas">Betas</v:String>
@@ -122,5 +125,6 @@
     <v:String x:Key="InstallationsPage_AddButton">New...</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">Play</v:String>
     <v:String x:Key="InstallationsPage_DeleteInstallationButton">Delete</v:String>
+    <v:String x:Key="InstallationsPage_EditInstallationButton">Edit</v:String>
 
 </ResourceDictionary>

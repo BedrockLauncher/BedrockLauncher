@@ -44,3 +44,26 @@ C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benh
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Debug\Benhancer.exe
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Debug\Benhancer.pdb
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Benhancer\obj\Debug\Benhancer.csprojAssemblyReference.cache
+D:\Source\mc_repos\BedrockLauncher\Benhancer\bin\Debug\Benhancer.exe.config
+D:\Source\mc_repos\BedrockLauncher\Benhancer\bin\Debug\Benhancer.exe
+D:\Source\mc_repos\BedrockLauncher\Benhancer\bin\Debug\Benhancer.pdb
+D:\Source\mc_repos\BedrockLauncher\Benhancer\bin\Debug\Gma.System.MouseKeyHook.dll
+D:\Source\mc_repos\BedrockLauncher\Benhancer\bin\Debug\Memory.dll
+D:\Source\mc_repos\BedrockLauncher\Benhancer\bin\Debug\MouseKeyboardActivityMonitor.dll
+D:\Source\mc_repos\BedrockLauncher\Benhancer\bin\Debug\System.Security.Principal.Windows.dll
+D:\Source\mc_repos\BedrockLauncher\Benhancer\bin\Debug\Memory.xml
+D:\Source\mc_repos\BedrockLauncher\Benhancer\bin\Debug\MouseKeyboardActivityMonitor.xml
+D:\Source\mc_repos\BedrockLauncher\Benhancer\bin\Debug\System.Security.Principal.Windows.xml
+D:\Source\mc_repos\BedrockLauncher\Benhancer\obj\Debug\Benhancer.csprojAssemblyReference.cache
+D:\Source\mc_repos\BedrockLauncher\Benhancer\obj\Debug\MainWindow.g.cs
+D:\Source\mc_repos\BedrockLauncher\Benhancer\obj\Debug\App.g.cs
+D:\Source\mc_repos\BedrockLauncher\Benhancer\obj\Debug\Benhancer_MarkupCompile.cache
+D:\Source\mc_repos\BedrockLauncher\Benhancer\obj\Debug\Benhancer_MarkupCompile.lref
+D:\Source\mc_repos\BedrockLauncher\Benhancer\obj\Debug\MainWindow.baml
+D:\Source\mc_repos\BedrockLauncher\Benhancer\obj\Debug\Benhancer.g.resources
+D:\Source\mc_repos\BedrockLauncher\Benhancer\obj\Debug\Benhancer.Properties.Resources.resources
+D:\Source\mc_repos\BedrockLauncher\Benhancer\obj\Debug\Benhancer.csproj.GenerateResource.cache
+D:\Source\mc_repos\BedrockLauncher\Benhancer\obj\Debug\Benhancer.csproj.CoreCompileInputs.cache
+D:\Source\mc_repos\BedrockLauncher\Benhancer\obj\Debug\Benhancer.csproj.CopyComplete
+D:\Source\mc_repos\BedrockLauncher\Benhancer\obj\Debug\Benhancer.exe
+D:\Source\mc_repos\BedrockLauncher\Benhancer\obj\Debug\Benhancer.pdb

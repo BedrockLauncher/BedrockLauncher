@@ -5,11 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:p="clr-namespace:BedrockLauncher.Properties"
       xmlns:classes="clr-namespace:BedrockLauncher.Classes"
+      xmlns:converters="clr-namespace:BedrockLauncher.Converters"
       xmlns:local="clr-namespace:BedrockLauncher"
       mc:Ignorable="d" 
       d:DesignHeight="608" d:DesignWidth="828"
       Title="InstallationsScreen" Initialized="Page_Initialized">
     <Page.Resources>
+        <converters:InvertableBooleanToVisibilityConverter x:Key="VisibleIfTrueConverter" />
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -93,31 +95,7 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
-                        <Image Height="30" Margin="0,0,6,0">
-                            <Image.Source>
-                                <DrawingImage>
-                                    <DrawingImage.Drawing>
-                                        <DrawingGroup ClipGeometry="M0,0 V512 H512 V0 H0 Z">
-                                            <DrawingGroup Opacity="1">
-                                                <DrawingGroup Opacity="1">
-                                                    <GeometryDrawing Brush="White" Geometry="F1 M512,512z M0,0z M256,0C114.84,0 0,114.84 0,256 0,397.16 114.84,512 256,512 397.16,512 512,397.16 512,256 512,114.84 397.16,0 256,0z M256,475.429C135.003,475.429 36.571,376.997 36.571,256 36.571,135.003 135.003,36.571 256,36.571 376.997,36.571 475.429,135.003 475.429,256 475.429,376.997 376.997,475.429 256,475.429z" />
-                                                </DrawingGroup>
-                                            </DrawingGroup>
-                                            <DrawingGroup Opacity="1">
-                                                <DrawingGroup Opacity="1">
-                                                        <GeometryDrawing Brush="White" Geometry="F1 M512,512z M0,0z M256,134.095C245.9,134.095,237.714,142.281,237.714,152.381L237.714,359.619C237.714,369.719 245.9,377.905 256,377.905 266.1,377.905 274.286,369.719 274.286,359.619L274.286,152.381C274.286,142.281,266.1,134.095,256,134.095z" />
-                                                </DrawingGroup>
-                                            </DrawingGroup>
-                                            <DrawingGroup Opacity="1">
-                                                <DrawingGroup Opacity="1">
-                                                        <GeometryDrawing Brush="White" Geometry="F1 M512,512z M0,0z M359.619,237.714L152.381,237.714C142.281,237.714 134.095,245.9 134.095,256 134.095,266.1 142.281,274.286 152.381,274.286L359.619,274.286C369.719,274.286 377.905,266.1 377.905,256 377.905,245.9 369.719,237.714 359.619,237.714z" />
-                                                </DrawingGroup>
-                                            </DrawingGroup>
-                                        </DrawingGroup>
-                                    </DrawingImage.Drawing>
-                                </DrawingImage>
-                            </Image.Source>
-                        </Image>
+                            <Image Height="30" Margin="0,0,6,0" Source="{DynamicResource PlusIcon}"></Image>
                         <TextBlock Grid.Column="1" Text="{DynamicResource InstallationsPage_AddButton}" VerticalAlignment="Center" Margin="0,0,0,0"></TextBlock>
                         </Grid>
                     </Button.Content>
@@ -125,7 +103,7 @@
             </Grid>
             <Separator Grid.Column="1" Foreground="#FFCCCCCC" Width="1" Margin="0,10,0,10" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"></Separator>
             <Grid Grid.Column="2"></Grid>
-            <Separator Grid.Column="3" Foreground="#FFCCCCCC" Width="1" Margin="0,10,0,10" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"></Separator>
+            <Separator Visibility="Collapsed" Grid.Column="3" Foreground="#FFCCCCCC" Width="1" Margin="0,10,0,10" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"></Separator>
             <Grid Grid.Column="4"></Grid>
             <Separator Grid.Column="5" Foreground="#FFCCCCCC" Width="1" Margin="0,10,0,10" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"></Separator>
             <Grid Grid.Column="6" Margin="10,0">
@@ -159,9 +137,10 @@
                         <StackPanel Orientation="Horizontal" Grid.Column="2" x:Name="ButtonPanel" Visibility="Hidden">
                             <Button x:Name="Play" Click="Play_Click" Content="{DynamicResource InstallationsPage_PlayButton}" Style="{DynamicResource DialogButton_Green}"></Button>
                             <Button x:Name="Folder" Click="Folder_Click" Content="📁" FontWeight="Bold" Style="{DynamicResource DialogButton}"></Button>
-                            <Button x:Name="More" Content="..." FontWeight="Bold" Style="{DynamicResource DialogButton}" Click="More_Click">
+                            <Button x:Name="More" Content="..." FontWeight="Bold" Style="{DynamicResource DialogButton}" Click="More_Click" Visibility="{Binding ReadOnly, Converter={StaticResource VisibleIfTrueConverter}, ConverterParameter=Inverted}">
                                 <Button.ContextMenu>
                                     <ContextMenu Closed="ContextMenu_Closed" Style="{DynamicResource NoCheckboxContextMenu}">
+                                        <MenuItem Header="{DynamicResource InstallationsPage_EditInstallationButton}" Name="EditInstallationButton" Click="EditInstallationButton_Click"></MenuItem>
                                         <MenuItem Header="{DynamicResource InstallationsPage_DeleteInstallationButton}" Name="DeleteInstallationButton" Click="DeleteInstallationButton_Click"></MenuItem>
                                     </ContextMenu>
                                 </Button.ContextMenu>

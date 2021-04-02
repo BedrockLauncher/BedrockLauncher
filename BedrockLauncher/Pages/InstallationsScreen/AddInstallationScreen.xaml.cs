@@ -25,11 +25,35 @@ namespace BedrockLauncher.Pages.InstallationsScreen
     {
         private List<Classes.Version> Versions { get; set; } = new List<Classes.Version>();
 
+        private bool IsEditMode = false;
+
+        private int EditingIndex = -1;
+
         public AddInstallationScreen()
         {
             InitializeComponent();
             UpdateVersionsComboBox();
         }
+
+        public AddInstallationScreen(int index, Installation i)
+        {
+            InitializeComponent();
+            UpdateVersionsComboBox();
+            UpdateEditingFields(index, i);
+        }
+
+        private void UpdateEditingFields(int index, Installation i)
+        {
+            IsEditMode = true;
+            InstallationVersionSelect.SelectedItem = Versions.Where(x => x.UUID == i.VersionUUID).FirstOrDefault();
+            InstallationNameField.Text = i.DisplayName;
+            InstallationIconSelect.SelectedIconPath = i.IconPath;
+            EditingIndex = index;
+
+            Header.SetResourceReference(TextBlock.TextProperty, "EditingInstallationScreen_Header");
+            CreateButton.SetResourceReference(Button.ContentProperty, "EditingInstallationScreen_SaveButton");
+        }
+
 
         private void GetManualComboBoxEntries()
         {
@@ -42,7 +66,7 @@ namespace BedrockLauncher.Pages.InstallationsScreen
         {
             Versions.Clear();
             InstallationVersionSelect.ItemsSource = null;
-            foreach (var entry in ConfigManager.AvaliableVersions)
+            foreach (var entry in ConfigManager.Versions)
             {
                 Versions.Add(entry);
             }
@@ -58,7 +82,21 @@ namespace BedrockLauncher.Pages.InstallationsScreen
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.CreateInstallation(InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex]);
+            if (IsEditMode) UpdateInstallation();
+            else CreateInstallation();
+
+        }
+
+        private void UpdateInstallation()
+        {
+            ConfigManager.EditInstallation(EditingIndex, InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationIconSelect.SelectedIconPath);
+            ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
+            ConfigManager.OnConfigStateChanged(this, ConfigManager.ConfigStateArgs.Empty);
+        }
+
+        private void CreateInstallation()
+        {
+            ConfigManager.CreateInstallation(InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationIconSelect.SelectedIconPath);
             ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
             ConfigManager.OnConfigStateChanged(this, ConfigManager.ConfigStateArgs.Empty);
         }

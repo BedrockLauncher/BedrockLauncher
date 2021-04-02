@@ -143,6 +143,9 @@
     </ApplicationDefinition>
     <Compile Include="Addons\BetterBedrock\BetterBedrockMain.cs" />
     <Compile Include="Classes\Installation.cs" />
+    <Compile Include="Controls\BlockPicker.xaml.cs">
+      <DependentUpon>BlockPicker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\InsiderSelector.xaml.cs">
       <DependentUpon>InsiderSelector.xaml</DependentUpon>
     </Compile>
@@ -155,6 +158,7 @@
     <Compile Include="Controls\ProfileSelector.xaml.cs">
       <DependentUpon>ProfileSelector.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\InvertableBooleanToVisibilityConverter.cs" />
     <Compile Include="Core\ConfigManager.cs" />
     <Compile Include="Classes\ProfileSettings.cs" />
     <Compile Include="Classes\ProfileList.cs" />
@@ -237,6 +241,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </DesignData>
+    <Page Include="Controls\BlockPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\InsiderSelector.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -325,15 +333,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\styles\installations_combobox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\styles\insiders_combobox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\styles\combobox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\styles\combobox3.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\styles\combobox2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -442,6 +450,42 @@
     <Resource Include="Resources\images\icon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Acacia_Log.png" />
+    <Resource Include="Resources\images\installation_icons\Acacia_Planks.png" />
+    <Resource Include="Resources\images\installation_icons\Andesite.png" />
+    <Resource Include="Resources\images\installation_icons\Bedrock.png" />
+    <Resource Include="Resources\images\installation_icons\Birch_Log.png" />
+    <Resource Include="Resources\images\installation_icons\Block_of_Coal.png" />
+    <Resource Include="Resources\images\installation_icons\Block_of_Diamond.png" />
+    <Resource Include="Resources\images\installation_icons\Block_of_Emerald.png" />
+    <Resource Include="Resources\images\installation_icons\Bookshelf.png" />
+    <Resource Include="Resources\images\installation_icons\Bricks.png" />
+    <Resource Include="Resources\images\installation_icons\Cake.png" />
+    <Resource Include="Resources\images\installation_icons\Chest.png" />
+    <Resource Include="Resources\images\installation_icons\Clay.png" />
+    <Resource Include="Resources\images\installation_icons\Coal_Ore.png" />
+    <Resource Include="Resources\images\installation_icons\Cobblestone.png" />
+    <Resource Include="Resources\images\installation_icons\Crafting_Table.png" />
+    <Resource Include="Resources\images\installation_icons\Creeper_Head.png" />
+    <Resource Include="Resources\images\installation_icons\Dark_Oak_Log.png" />
+    <Resource Include="Resources\images\installation_icons\Diamond_Ore.png" />
+    <Resource Include="Resources\images\installation_icons\Dirt.png" />
+    <Resource Include="Resources\images\installation_icons\Furnace.png" />
+    <Resource Include="Resources\images\installation_icons\Jungle_Log.png" />
+    <Resource Include="Resources\images\installation_icons\Lit_Furnace.png" />
+    <Resource Include="Resources\images\installation_icons\Oak_Log.png" />
+    <Resource Include="Resources\images\installation_icons\Podzol.png" />
+    <Resource Include="Resources\images\installation_icons\Pumpkin.png" />
+    <Resource Include="Resources\images\installation_icons\Sand.png" />
+    <Resource Include="Resources\images\installation_icons\Sandstone.png" />
+    <Resource Include="Resources\images\installation_icons\Skeleton_Skull.png" />
+    <Resource Include="Resources\images\installation_icons\Snowy_Grass_Block.png" />
+    <Resource Include="Resources\images\installation_icons\Spruce_Log.png" />
+    <Resource Include="Resources\images\installation_icons\Terracotta.png" />
+    <Resource Include="Resources\images\installation_icons\TNT.png" />
+    <Resource Include="Resources\images\installation_icons\Water.png" />
+    <Resource Include="Resources\images\installation_icons\White_Glazed_Terracotta.png" />
+    <Resource Include="Resources\images\installation_icons\White_Wool.png" />
     <Resource Include="Resources\images\main_photo.png" />
   </ItemGroup>
   <ItemGroup>
@@ -493,6 +537,46 @@
   <ItemGroup>
     <Resource Include="Resources\images\ms-icon.png" />
     <Resource Include="Resources\images\mojang-icon.png" />
+    <Resource Include="Resources\images\installation_icons\Birch_Leaves.png" />
+    <Resource Include="Resources\images\installation_icons\Birch_Planks.png" />
+    <Resource Include="Resources\images\installation_icons\Block_of_Gold.png" />
+    <Resource Include="Resources\images\installation_icons\Block_of_Iron.png" />
+    <Resource Include="Resources\images\installation_icons\Block_of_Redstone.png" />
+    <Resource Include="Resources\images\installation_icons\Dark_Oak_Planks.png" />
+    <Resource Include="Resources\images\installation_icons\Diorite.png" />
+    <Resource Include="Resources\images\installation_icons\Emerald_Ore.png" />
+    <Resource Include="Resources\images\installation_icons\Enchanting_Table.png" />
+    <Resource Include="Resources\images\installation_icons\End_Stone.png" />
+    <Resource Include="Resources\images\installation_icons\Farmland.png" />
+    <Resource Include="Resources\images\installation_icons\Glass.png" />
+    <Resource Include="Resources\images\installation_icons\Glowstone.png" />
+    <Resource Include="Resources\images\installation_icons\Gold_Ore.png" />
+    <Resource Include="Resources\images\installation_icons\Granite.png" />
+    <Resource Include="Resources\images\installation_icons\Grass_Block.png" />
+    <Resource Include="Resources\images\installation_icons\Gravel.png" />
+    <Resource Include="Resources\images\installation_icons\Ice.png" />
+    <Resource Include="Resources\images\installation_icons\Iron_Ore.png" />
+    <Resource Include="Resources\images\installation_icons\Jungle_Leaves.png" />
+    <Resource Include="Resources\images\installation_icons\Jungle_Planks.png" />
+    <Resource Include="Resources\images\installation_icons\Lapis_Lazuli_Ore.png" />
+    <Resource Include="Resources\images\installation_icons\Lectern_Book.png" />
+    <Resource Include="Resources\images\installation_icons\Light_Blue_Glazed_Terracotta.png" />
+    <Resource Include="Resources\images\installation_icons\Mycelium.png" />
+    <Resource Include="Resources\images\installation_icons\Netherrack.png" />
+    <Resource Include="Resources\images\installation_icons\Nether_Bricks.png" />
+    <Resource Include="Resources\images\installation_icons\Nether_Quartz_Ore.png" />
+    <Resource Include="Resources\images\installation_icons\Oak_Leaves.png" />
+    <Resource Include="Resources\images\installation_icons\Oak_Planks.png" />
+    <Resource Include="Resources\images\installation_icons\Obsidian.png" />
+    <Resource Include="Resources\images\installation_icons\Orange_Glazed_Terracotta.png" />
+    <Resource Include="Resources\images\installation_icons\Redstone_Ore.png" />
+    <Resource Include="Resources\images\installation_icons\Red_Sand.png" />
+    <Resource Include="Resources\images\installation_icons\Red_Sandstone.png" />
+    <Resource Include="Resources\images\installation_icons\Snow_Block.png" />
+    <Resource Include="Resources\images\installation_icons\Soul_Sand.png" />
+    <Resource Include="Resources\images\installation_icons\Spruce_Leaves.png" />
+    <Resource Include="Resources\images\installation_icons\Spruce_Planks.png" />
+    <Resource Include="Resources\images\installation_icons\Stone.png" />
     <Content Include="WUTokenHelper.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

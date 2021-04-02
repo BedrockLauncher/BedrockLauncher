@@ -27,10 +27,9 @@
             <controls:LanguageCombobox HorizontalAlignment="Left" Margin="42,20,0,0" VerticalAlignment="Top" Padding="10,7,5,3" x:Name="LanguageCombobox"></controls:LanguageCombobox>
             <TextBlock Margin="42,28,0,0" Text="{DynamicResource MainWindowSettingsScreen_LauncherSettingsSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
             <CheckBox x:Name="keepLauncherOpenCheckBox" Click="keepLauncherOpenCheckBox_Checked" Foreground="White" Content="{DynamicResource MainWindowSettingsScreen_KeepLauncherOpen}" HorizontalAlignment="Left" Margin="42,20,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
-            <CheckBox x:Name="useFixedInstallLocation" Click="useFixedInstallLocation_Click" Foreground="White" Content="{DynamicResource MainWindowSettingsScreen_FixedGameInstalls}" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
-            <CheckBox x:Name="useFixedProfileLocation" Click="useFixedProfileLocation_Click" Foreground="White" Content="{DynamicResource MainWindowSettingsScreen_FixedGameSaves}" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
+            <CheckBox x:Name="portableModeCheckBox" Click="useFixedInstallLocation_Click" Foreground="White" Content="{DynamicResource MainWindowSettingsScreen_PortableMode}" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
             <CheckBox x:Name="experiementalDataSaveRedirection" Click="experiementalDataSaveRedirection_Click" Foreground="White" Content="{DynamicResource MainWindowSettingsScreen_ExperimentalSaveRedirection}" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
-
+            <Button Margin="42,10,0,0" Style="{DynamicResource DialogButton}" x:Name="BackupButton" Content="{DynamicResource MainWindowSettingsScreen_BackupButton}" Height="30" HorizontalAlignment="Left" Click="BackupButton_Click"/>
         </StackPanel>
         
     </Grid>

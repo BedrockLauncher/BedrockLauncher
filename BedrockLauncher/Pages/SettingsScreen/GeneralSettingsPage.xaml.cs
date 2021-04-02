@@ -30,8 +30,7 @@ namespace BedrockLauncher.Pages.SettingsScreen
         {
             // Set checkboxes
             keepLauncherOpenCheckBox.IsChecked = Properties.Settings.Default.KeepLauncherOpen;
-            useFixedInstallLocation.IsChecked = !Properties.Settings.Default.PortableInstalls;
-            useFixedProfileLocation.IsChecked = !Properties.Settings.Default.PortableProfiles;
+            portableModeCheckBox.IsChecked = Properties.Settings.Default.PortableMode;
             experiementalDataSaveRedirection.IsChecked = Properties.Settings.Default.EnableExperiementalSaveRedirection;
         }
 
@@ -54,37 +53,19 @@ namespace BedrockLauncher.Pages.SettingsScreen
         private void useFixedInstallLocation_Click(object sender, RoutedEventArgs e)
         {
             // get and save value of checkbox
-            switch (useFixedInstallLocation.IsChecked)
+            switch (portableModeCheckBox.IsChecked)
             {
                 case true:
-                    Properties.Settings.Default.PortableInstalls = false;
+                    Properties.Settings.Default.PortableMode = true;
                     Properties.Settings.Default.Save();
                     break;
                 case false:
-                    Properties.Settings.Default.PortableInstalls = true;
+                    Properties.Settings.Default.PortableMode = false;
                     Properties.Settings.Default.Save();
                     break;
             }
 
-            ConfigManager.ReloadVersions();
-        }
-
-        private void useFixedProfileLocation_Click(object sender, RoutedEventArgs e)
-        {
-            // get and save value of checkbox
-            switch (useFixedProfileLocation.IsChecked)
-            {
-                case true:
-                    Properties.Settings.Default.PortableProfiles = false;
-                    Properties.Settings.Default.Save();
-                    break;
-                case false:
-                    Properties.Settings.Default.PortableProfiles = true;
-                    Properties.Settings.Default.Save();
-                    break;
-            }
-
-            ConfigManager.ReloadProfiles();
+            ConfigManager.Init();
         }
 
         private void experiementalDataSaveRedirection_Click(object sender, RoutedEventArgs e)
@@ -100,6 +81,11 @@ namespace BedrockLauncher.Pages.SettingsScreen
                     Properties.Settings.Default.Save();
                     break;
             }
+        }
+
+        private void BackupButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConfigManager.GameManager.ConvertToInstallation();
         }
     }
 }

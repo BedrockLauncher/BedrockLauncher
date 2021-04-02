@@ -39,7 +39,9 @@ namespace BedrockLauncher.Pages.InstallationsScreen
 
         private void Folder_Click(object sender, RoutedEventArgs e)
         {
-
+            Button button = sender as Button;
+            var installation = button.DataContext as Classes.Installation;
+            ConfigManager.GameManager.OpenFolder(installation);
         }
 
         private void Play_Click(object sender, RoutedEventArgs e)
@@ -81,6 +83,14 @@ namespace BedrockLauncher.Pages.InstallationsScreen
         private void ContextMenu_Closed(object sender, RoutedEventArgs e)
         {
             InstallationsList.SelectedItem = null;
+        }
+
+        private void EditInstallationButton_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem button = sender as MenuItem;
+            var installation = button.DataContext as Classes.Installation;
+            int index = ConfigManager.CurrentInstallations.IndexOf(installation);
+            ConfigManager.MainThread.MainWindowOverlayFrame.Content = new AddInstallationScreen(index, installation);
         }
     }
 }

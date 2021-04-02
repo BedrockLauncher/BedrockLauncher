@@ -47,7 +47,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                if (Properties.Settings.Default.PortableInstalls)
+                if (Properties.Settings.Default.PortableMode)
                 {
                     return "versions/Minecraft-" + Name;
                 }

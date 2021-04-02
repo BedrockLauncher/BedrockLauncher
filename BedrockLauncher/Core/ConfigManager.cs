@@ -18,22 +18,21 @@ namespace BedrockLauncher.Core
 
     public static class ConfigManager
     {
-        #region Public Storage
+        #region Helpers
 
-        public static ProfileList ProfileList { get => Profiles; }
         public static string CurrentProfile { get => Properties.Settings.Default.CurrentProfile; }
-        public static VersionList AvaliableVersions { get => Versions; }
-        public static List<Installation> CurrentInstallations { get => Installations; }
-        public static GameManager GameManager { get; private set; } = new GameManager();
         public static Installation CurrentInstallation { get => ConfigManager.CurrentInstallations[Properties.Settings.Default.CurrentInstallation]; }
 
         #endregion
 
-        #region Private Storage
+        #region Storage Holders
 
-        private static ProfileList Profiles { get; set; }
-        private static List<Installation> Installations { get; set; }
-        private static VersionList Versions { get; set; }
+
+        public static ProfileList ProfileList { get; private set; }
+        public static VersionList Versions { get; private set; }
+        public static GameManager GameManager { get; private set; } = new GameManager();
+        public static List<Installation> CurrentInstallations { get; private set; }
+
 
         #endregion
 
@@ -57,9 +56,9 @@ namespace BedrockLauncher.Core
 
         #region Init
 
-        public static void Init()
+        public static void Init(bool SkipVersions = false)
         {
-            LoadVersions();
+            if (!SkipVersions) LoadVersions();
             LoadProfiles();
             LoadInstallations();
         }
@@ -92,11 +91,11 @@ namespace BedrockLauncher.Core
         }
         public static void ReloadVersions()
         {
-            MainThread.Dispatcher.Invoke(async () =>
+            MainThread.Dispatcher.Invoke((Func<Task>)(async () =>
             {
                 try
                 {
-                    await Versions.LoadFromCache();
+                    await ConfigManager.Versions.LoadFromCache();
                 }
                 catch (Exception e)
                 {
@@ -104,13 +103,13 @@ namespace BedrockLauncher.Core
                 }
                 try
                 {
-                    await Versions.DownloadList();
+                    await ConfigManager.Versions.DownloadList();
                 }
                 catch (Exception e)
                 {
                     Debug.WriteLine("List download failed:\n" + e.ToString());
                 }
-            });
+            }));
 
         }
 
@@ -144,18 +143,25 @@ namespace BedrockLauncher.Core
                 Console.WriteLine("Installations: " + setting.Installations.Count);
             }
 
-            Profiles = profileList;
+            ProfileList = profileList;
 
             if (ProfileList.profiles.Count() == 0) MainThread.MainWindowOverlayFrame.Navigate(new Pages.FirstLaunch.WelcomePage());
         }
-        public static void ReloadProfiles()
+        public static ProfileList CleanProfiles()
         {
-            LoadProfiles();
+            ProfileList cleaned_list = ProfileList;
+            foreach (var profile in cleaned_list.profiles)
+            {
+                profile.Value.Installations.RemoveAll(x => x.ReadOnly);
+            }
+            return cleaned_list;
+
         }
-        public static void SaveProfiles(ProfileList profileList)
+        public static void SaveProfiles()
         {
-            string json = JsonConvert.SerializeObject(profileList, Formatting.Indented);
+            string json = JsonConvert.SerializeObject(CleanProfiles(), Formatting.Indented);
             File.WriteAllText(Constants.GetProfilesFilePath(), json);
+            Init(true);
         }
         public static bool CreateProfile(string profile)
         {
@@ -167,15 +173,21 @@ namespace BedrockLauncher.Core
                 // default settings
                 profileSettings.Name = profile;
                 profileSettings.SkinPath = null;
-                profileSettings.ProfilePath = profile;
+                profileSettings.ProfilePath = ValidatePathName(profile);
 
                 ProfileList.profiles.Add(profile, profileSettings);
 
                 Properties.Settings.Default.CurrentProfile = profile;
                 Properties.Settings.Default.Save();
 
-                SaveProfiles(ProfileList);
+                SaveProfiles();
                 return true;
+            }
+
+            string ValidatePathName(string pathName)
+            {
+                char[] invalidFileNameChars = Path.GetInvalidFileNameChars();
+                return new string(pathName.Where(ch => !invalidFileNameChars.Contains(ch)).ToArray());
             }
         }
         public static void RemoveProfile(string profile)
@@ -183,7 +195,7 @@ namespace BedrockLauncher.Core
             if (ProfileList.profiles.ContainsKey(profile) && ProfileList.profiles.Count > 1)
             {
                 ProfileList.profiles.Remove(profile);
-                SaveProfiles(ProfileList);
+                SaveProfiles();
 
                 var first_profile = ProfileList.profiles.FirstOrDefault();
 
@@ -207,32 +219,27 @@ namespace BedrockLauncher.Core
         #region Installations
         public static void LoadInstallations()
         {
-            Installations = ConfigManager.GetInstallations();
-            Installations = ConfigManager.GetEnforcedInstallations(Installations);
-        }
-        public static List<Installation> GetEnforcedInstallations(List<Installation> installations)
-        {
-            if (!installations.Exists(x => x.UseLatestVersion && !x.UseLatestBeta))
-            {
-                Installation latest_release = new Installation();
-                latest_release.DisplayName = "Latest Release";
-                latest_release.UseLatestVersion = true;
-                latest_release.IconPath = @"/BedrockLauncher;component/Resources/images/grass_block_icon.ico";
-                installations.Add(latest_release);
-            }
+            CurrentInstallations = ConfigManager.GetInstallations();
 
-            if (!installations.Exists(x => x.UseLatestVersion && x.UseLatestBeta))
-            {
-                Installation latest_beta = new Installation();
-                latest_beta.DisplayName = "Latest Beta";
-                latest_beta.UseLatestVersion = true;
-                latest_beta.UseLatestBeta = true;
-                latest_beta.IconPath = @"/BedrockLauncher;component/Resources/images/crafting_table_block_icon.ico";
-                installations.Add(latest_beta);
-            }
+            Installation latest_release = new Installation();
+            latest_release.DisplayName = "Latest Release";
+            latest_release.DirectoryName = "Latest Release";
+            latest_release.VersionUUID = "latest_release";
+            latest_release.UseLatestVersion = true;
+            latest_release.UseLatestBeta = false;
+            latest_release.IconPath = @"/BedrockLauncher;component/Resources/images/installation_icons/Grass_Block.png";
+            latest_release.ReadOnly = true;
+            CurrentInstallations.Add(latest_release);
 
-            return installations;
-
+            Installation latest_beta = new Installation();
+            latest_beta.DisplayName = "Latest Beta";
+            latest_beta.DirectoryName = "Latest Beta";
+            latest_beta.VersionUUID = "latest_beta";
+            latest_beta.UseLatestVersion = true;
+            latest_beta.UseLatestBeta = true;
+            latest_beta.IconPath = @"/BedrockLauncher;component/Resources/images/installation_icons/Crafting_Table.png";
+            latest_beta.ReadOnly = true;
+            CurrentInstallations.Add(latest_beta);
         }
         public static List<Installation> GetInstallations()
         {
@@ -243,22 +250,65 @@ namespace BedrockLauncher.Core
             }
             else return new List<Installation>();
         }
-        public static void CreateInstallation(string name, Version version, string iconPath = @"/BedrockLauncher;component/Resources/images/grass_block_icon.ico")
+        public static void EditInstallation(int index, string name, Version version, string iconPath = @"/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png")
+        {
+            if (ProfileList.profiles.ContainsKey(CurrentProfile) && ProfileList.profiles[CurrentProfile].Installations.Count > index)
+            {
+                Installation installation = new Installation();
+                installation.DisplayName = name;
+                installation.IconPath = iconPath;
+                installation.DirectoryName = ValidatePathName(name);
+
+
+                if (version == null || version.UUID == "latest_release")
+                {
+                    installation.UseLatestVersion = true;
+                    installation.VersionUUID = "latest_release";
+                }
+                else if (version.UUID == "latest_beta")
+                {
+                    installation.UseLatestVersion = true;
+                    installation.UseLatestBeta = true;
+                    installation.VersionUUID = "latest_beta";
+                }
+                else
+                {
+                    installation.VersionUUID = version.UUID;
+                }
+
+
+                if (ProfileList.profiles[CurrentProfile].Installations == null) ProfileList.profiles[CurrentProfile].Installations = new List<Installation>();
+                ProfileList.profiles[CurrentProfile].Installations[index] = installation;
+                SaveProfiles();
+            }
+
+            string ValidatePathName(string pathName)
+            {
+                char[] invalidFileNameChars = Path.GetInvalidFileNameChars();
+                return new string(pathName.Where(ch => !invalidFileNameChars.Contains(ch)).ToArray());
+            }
+        }
+
+        public static void CreateInstallation(string name, Version version, string iconPath = @"/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png")
         {
             if (ProfileList.profiles.ContainsKey(CurrentProfile))
             {
                 Installation installation = new Installation();
                 installation.DisplayName = name;
                 installation.IconPath = iconPath;
+                installation.DirectoryName = ValidatePathName(name);
 
-                if (version.UUID == "latest_release")
+
+                if (version == null || version.UUID == "latest_release")
                 {
                     installation.UseLatestVersion = true;
+                    installation.VersionUUID = "latest_release";
                 }
                 else if (version.UUID == "latest_beta")
                 {
                     installation.UseLatestVersion = true;
                     installation.UseLatestBeta = true;
+                    installation.VersionUUID = "latest_beta";
                 }
                 else
                 {
@@ -268,7 +318,13 @@ namespace BedrockLauncher.Core
 
                 if (ProfileList.profiles[CurrentProfile].Installations == null) ProfileList.profiles[CurrentProfile].Installations = new List<Installation>();
                 ProfileList.profiles[CurrentProfile].Installations.Add(installation);
-                SaveProfiles(ProfileList);
+                SaveProfiles();
+            }
+
+            string ValidatePathName(string pathName)
+            {
+                char[] invalidFileNameChars = Path.GetInvalidFileNameChars();
+                return new string(pathName.Where(ch => !invalidFileNameChars.Contains(ch)).ToArray());
             }
         }
         public static void DeleteInstallation(Installation installation)
@@ -277,8 +333,8 @@ namespace BedrockLauncher.Core
             {
                 if (ProfileList.profiles[CurrentProfile].Installations == null) return;
 
-                ProfileList.profiles[CurrentProfile].Installations.RemoveAll(x => x.DisplayName == installation.DisplayName);
-                SaveProfiles(ProfileList);
+                ProfileList.profiles[CurrentProfile].Installations.RemoveAll(x => x.DisplayName == installation.DisplayName && !x.ReadOnly);
+                SaveProfiles();
             }
         }
 

@@ -139,25 +139,13 @@ namespace BedrockLauncher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool PortableInstalls {
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool PortableMode {
             get {
-                return ((bool)(this["PortableInstalls"]));
+                return ((bool)(this["PortableMode"]));
             }
             set {
-                this["PortableInstalls"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool PortableProfiles {
-            get {
-                return ((bool)(this["PortableProfiles"]));
-            }
-            set {
-                this["PortableProfiles"] = value;
+                this["PortableMode"] = value;
             }
         }
         

@@ -4,9 +4,10 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BedrockLauncher"
+      xmlns:controls="clr-namespace:BedrockLauncher.Controls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddInstallationScreen" Width="Auto" Height="Auto" Foreground="{x:Null}" Background="#FF262626" SnapsToDevicePixels="True">
+      Title="AddInstallationScreen" Width="Auto" Height="Auto" Foreground="{x:Null}" Background="#303030" SnapsToDevicePixels="True">
     <Page.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -26,26 +27,27 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="75"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Text="{DynamicResource AddInstallationScreen_Header}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="20"></TextBlock>
+        <TextBlock Text="{DynamicResource AddInstallationScreen_Header}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="20" x:Name="Header"></TextBlock>
         <Separator Grid.Row="1"></Separator>
         <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.5*"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="0.5*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <StackPanel Width="330" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch">
-                <TextBlock Margin="0,28,0,5" Text="{DynamicResource AddInstallationScreen_NameSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-                <TextBox Width="330" x:Name="InstallationNameField" AcceptsReturn="False" SpellCheck.IsEnabled="False"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left"></TextBox>
-                <TextBlock Margin="0,28,0,5" Text="{DynamicResource AddInstallationScreen_VersionSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-                <ComboBox x:Name="InstallationVersionSelect" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" ItemContainerStyle="{DynamicResource ComboBoxItemStyle2}" Foreground="White" Padding="10,7,5,3" Style="{DynamicResource ComboBoxStyle2}" SelectedIndex="1" FontSize="14">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Style="{DynamicResource CommonTextblock}" Text="{Binding DisplayName}"></TextBlock> 
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-            </StackPanel>
+            <ScrollViewer Grid.Column="1" HorizontalAlignment="Stretch">
+                <StackPanel>
+                    <controls:BlockPicker x:Name="InstallationIconSelect" VerticalAlignment="Center" HorizontalAlignment="Center"></controls:BlockPicker>
+                    <StackPanel Width="330" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                        <TextBlock Margin="0,28,0,5" Text="{DynamicResource AddInstallationScreen_NameSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+                        <TextBox Style="{DynamicResource InstallationNameTextbox}" Width="330" x:Name="InstallationNameField" AcceptsReturn="False" SpellCheck.IsEnabled="False"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Text=""></TextBox>
+                        <TextBlock Margin="0,28,0,5" Text="{DynamicResource AddInstallationScreen_VersionSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+                        <ComboBox x:Name="InstallationVersionSelect" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" ItemContainerStyle="{DynamicResource ComboBoxItemStyle2}" Foreground="White" Padding="13,0,0,0" Style="{DynamicResource ComboBoxStyle2}" SelectedIndex="1" FontSize="14">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Style="{DynamicResource CommonTextblock}" Text="{Binding DisplayName}"></TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                </StackPanel>
+
+            </ScrollViewer>
         </Grid>
         <Separator Grid.Row="3"></Separator>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="4" Height="45" Margin="15,0">

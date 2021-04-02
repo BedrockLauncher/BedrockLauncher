@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using BedrockLauncher.Core;
+using Newtonsoft.Json;
 
 namespace BedrockLauncher.Classes
 {
@@ -12,10 +13,14 @@ namespace BedrockLauncher.Classes
     {
         public string DisplayName { get; set; }
         public string VersionUUID { get; set; }
+        public string IconPath { get; set; }
+        public string DirectoryName { get; set; }
+        public bool ReadOnly { get; set; }
+
         public bool UseLatestVersion { get; set; }
         public bool UseLatestBeta { get; set; }
-        public string IconPath { get; set; }
 
+        [JsonIgnore]
         public Version Version
         {
             get
@@ -23,19 +28,21 @@ namespace BedrockLauncher.Classes
 
                 if (UseLatestVersion)
                 {
-                    var latest_beta = ConfigManager.AvaliableVersions.ToList().FirstOrDefault(x => x.IsBeta == true);
-                    var latest_release = ConfigManager.AvaliableVersions.ToList().FirstOrDefault(x => x.IsBeta == false);
+                    var latest_beta = ConfigManager.Versions.ToList().FirstOrDefault(x => x.IsBeta == true);
+                    var latest_release = ConfigManager.Versions.ToList().FirstOrDefault(x => x.IsBeta == false);
 
                     if (UseLatestBeta && latest_beta != null) return latest_beta;
                     else if (latest_release != null) return latest_release;
                 }
-                else if (ConfigManager.AvaliableVersions.ToList().Exists(x => x.UUID == VersionUUID))
+                else if (ConfigManager.Versions.ToList().Exists(x => x.UUID == VersionUUID))
                 {
-                    return ConfigManager.AvaliableVersions.ToList().Where(x => x.UUID == VersionUUID).FirstOrDefault();
+                    return ConfigManager.Versions.ToList().Where(x => x.UUID == VersionUUID).FirstOrDefault();
                 }
                 return null;
             }
         }
+
+        [JsonIgnore]
         public bool IsBeta
         {
             get
@@ -44,6 +51,9 @@ namespace BedrockLauncher.Classes
                 else return Version?.IsBeta ?? false;
             }
         }
+
+        [JsonIgnore]
         public string VersionName => Version?.Name ?? string.Empty;
+
     }
 }
