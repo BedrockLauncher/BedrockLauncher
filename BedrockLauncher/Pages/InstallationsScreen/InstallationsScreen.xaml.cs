@@ -53,7 +53,7 @@ namespace BedrockLauncher.Pages.InstallationsScreen
 
         private void NewInstallationButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.MainThread.MainWindowOverlayFrame.Content = new AddInstallationScreen();
+            ConfigManager.MainThread.MainWindowOverlayFrame.Content = new ManageInstallationScreen();
         }
 
         private void DeleteInstallationButton_Click(object sender, RoutedEventArgs e)
@@ -90,7 +90,7 @@ namespace BedrockLauncher.Pages.InstallationsScreen
             MenuItem button = sender as MenuItem;
             var installation = button.DataContext as Classes.Installation;
             int index = ConfigManager.CurrentInstallations.IndexOf(installation);
-            ConfigManager.MainThread.MainWindowOverlayFrame.Content = new AddInstallationScreen(index, installation);
+            ConfigManager.MainThread.MainWindowOverlayFrame.Content = new ManageInstallationScreen(index, installation);
         }
     }
 }

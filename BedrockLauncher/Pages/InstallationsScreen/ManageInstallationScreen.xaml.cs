@@ -21,7 +21,7 @@ namespace BedrockLauncher.Pages.InstallationsScreen
     /// <summary>
     /// Interaction logic for AddInstallationScreen.xaml
     /// </summary>
-    public partial class AddInstallationScreen : Page
+    public partial class ManageInstallationScreen : Page
     {
         private List<Classes.Version> Versions { get; set; } = new List<Classes.Version>();
 
@@ -29,13 +29,13 @@ namespace BedrockLauncher.Pages.InstallationsScreen
 
         private int EditingIndex = -1;
 
-        public AddInstallationScreen()
+        public ManageInstallationScreen()
         {
             InitializeComponent();
             UpdateVersionsComboBox();
         }
 
-        public AddInstallationScreen(int index, Installation i)
+        public ManageInstallationScreen(int index, Installation i)
         {
             InitializeComponent();
             UpdateVersionsComboBox();

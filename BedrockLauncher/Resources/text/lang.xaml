@@ -127,4 +127,7 @@
     <v:String x:Key="InstallationsPage_DeleteInstallationButton">Delete</v:String>
     <v:String x:Key="InstallationsPage_EditInstallationButton">Edit</v:String>
 
+    <v:String x:Key="About_Title">ABOUT MINECRAFT: BEDROCK EDITION LAUNCHER</v:String>
+    <v:String x:Key="About_DevelopedBy">DEVELOPED BY</v:String>
+    
 </ResourceDictionary>

@@ -24,7 +24,7 @@ namespace BedrockLauncher.Pages.SettingsScreen
     {
         public GeneralSettingsPage generalSettingsPage = new GeneralSettingsPage();
         public AccountsSettingsPage accountsSettingsPage = new AccountsSettingsPage();
-        public NoContentPage noContentPage = new NoContentPage();
+        public AboutPage aboutPage = new AboutPage();
         public SettingsScreen()
         {
             InitializeComponent();
@@ -69,7 +69,7 @@ namespace BedrockLauncher.Pages.SettingsScreen
 
         public void NavigateToAboutPage()
         {
-            SettingsScreenFrame.Navigate(noContentPage);
+            SettingsScreenFrame.Navigate(aboutPage);
         }
 
         #endregion

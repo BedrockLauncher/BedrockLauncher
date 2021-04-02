@@ -186,8 +186,8 @@
     <Compile Include="Pages\FirstLaunch\WelcomePageOne.xaml.cs">
       <DependentUpon>WelcomePageOne.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\InstallationsScreen\AddInstallationScreen.xaml.cs">
-      <DependentUpon>AddInstallationScreen.xaml</DependentUpon>
+    <Compile Include="Pages\InstallationsScreen\ManageInstallationScreen.xaml.cs">
+      <DependentUpon>ManageInstallationScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\InstallationsScreen\InstallationsScreen.xaml.cs">
       <DependentUpon>InstallationsScreen.xaml</DependentUpon>
@@ -200,6 +200,9 @@
     </Compile>
     <Compile Include="Pages\ServersScreen\ServersScreenPage.xaml.cs">
       <DependentUpon>ServersScreenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SettingsScreen\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SettingsScreen\AccountsSettingsPage.xaml.cs">
       <DependentUpon>AccountsSettingsPage.xaml</DependentUpon>
@@ -281,7 +284,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\InstallationsScreen\AddInstallationScreen.xaml">
+    <Page Include="Pages\InstallationsScreen\ManageInstallationScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -300,6 +303,10 @@
     <Page Include="Pages\ServersScreen\ServersScreenPage.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Pages\SettingsScreen\AboutPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\SettingsScreen\AccountsSettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -486,7 +493,6 @@
     <Resource Include="Resources\images\installation_icons\Water.png" />
     <Resource Include="Resources\images\installation_icons\White_Glazed_Terracotta.png" />
     <Resource Include="Resources\images\installation_icons\White_Wool.png" />
-    <Resource Include="Resources\images\main_photo.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\title.png" />
@@ -577,6 +583,9 @@
     <Resource Include="Resources\images\installation_icons\Spruce_Leaves.png" />
     <Resource Include="Resources\images\installation_icons\Spruce_Planks.png" />
     <Resource Include="Resources\images\installation_icons\Stone.png" />
+    <Resource Include="Resources\images\credits\carjem_logo.png" />
+    <Resource Include="Resources\images\credits\xlynxx.jpg" />
+    <Resource Include="Resources\images\main_photo.jpg" />
     <Content Include="WUTokenHelper.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
