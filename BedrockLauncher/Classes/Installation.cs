@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using BedrockLauncher.Core;
 
 namespace BedrockLauncher.Classes
 {
@@ -22,15 +23,15 @@ namespace BedrockLauncher.Classes
 
                 if (UseLatestVersion)
                 {
-                    var latest_beta = MainWindow.AvaliableVersions.ToList().First(x => x.IsBeta == true);
-                    var latest_release = MainWindow.AvaliableVersions.ToList().First(x => x.IsBeta == false);
+                    var latest_beta = ConfigManager.AvaliableVersions.ToList().FirstOrDefault(x => x.IsBeta == true);
+                    var latest_release = ConfigManager.AvaliableVersions.ToList().FirstOrDefault(x => x.IsBeta == false);
 
                     if (UseLatestBeta && latest_beta != null) return latest_beta;
                     else if (latest_release != null) return latest_release;
                 }
-                else if (MainWindow.AvaliableVersions.ToList().Exists(x => x.UUID == VersionUUID))
+                else if (ConfigManager.AvaliableVersions.ToList().Exists(x => x.UUID == VersionUUID))
                 {
-                    return MainWindow.AvaliableVersions.ToList().Where(x => x.UUID == VersionUUID).FirstOrDefault();
+                    return ConfigManager.AvaliableVersions.ToList().Where(x => x.UUID == VersionUUID).FirstOrDefault();
                 }
                 return null;
             }

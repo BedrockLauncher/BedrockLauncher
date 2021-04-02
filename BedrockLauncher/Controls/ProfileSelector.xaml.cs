@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Classes;
+using BedrockLauncher.Core;
 
 namespace BedrockLauncher.Controls
 {
@@ -23,25 +24,27 @@ namespace BedrockLauncher.Controls
     public partial class ProfileSelector : Grid
     {
         private string _ProfileName { get; set; }
+        private ProfileButton SelectorParent { get; set; }
         public ProfileSelector()
         {
             InitializeComponent();
         }
 
-        public ProfileSelector(KeyValuePair<string, ProfileSettings> profile)
+        public ProfileSelector(KeyValuePair<string, ProfileSettings> profile, ProfileButton _selectorParent)
         {
             InitializeComponent();
+            this.SelectorParent = _selectorParent;
             this.Tag = profile.Value;
             this.ProfileName.Text = profile.Key;
             _ProfileName = profile.Key;
+            if (Properties.Settings.Default.CurrentProfile == profile.Key) SelectedMark.Visibility = Visibility.Visible;
         }
 
         private void SwitchProfile()
         {
-            ConfigManager configManager = new ConfigManager();
-            configManager.SwitchProfile(_ProfileName);
-            ((MainWindow)Application.Current.MainWindow).ProfileButton.ProfileContextMenu.IsOpen = false;
-            ((MainWindow)Application.Current.MainWindow).UpdateInstallationsList();
+            ConfigManager.SwitchProfile(_ProfileName);
+            SelectorParent.ProfileContextMenu.IsOpen = false;
+            ConfigManager.OnConfigStateChanged(this, ConfigManager.ConfigStateArgs.Empty);
         }
 
         private void SourceButton_Click(object sender, RoutedEventArgs e)

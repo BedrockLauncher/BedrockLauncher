@@ -23,7 +23,7 @@ using Windows.Management.Core;
 using Windows.Management.Deployment;
 using Windows.System;
 
-using MainWindow = BedrockLauncher.MainWindow;
+using BedrockLauncher.Core;
 
 namespace BedrockLauncher.Classes
 {
@@ -41,17 +41,17 @@ namespace BedrockLauncher.Classes
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                ((MainWindow)Application.Current.MainWindow).progressSizeHack.IsIndeterminate = isIndeterminate;
+                ConfigManager.MainThread.progressSizeHack.IsIndeterminate = isIndeterminate;
             });
         }
         public void ProgressBarUpdate(double downloadedBytes, double totalSize)
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                ((MainWindow)Application.Current.MainWindow).progressSizeHack.Value = downloadedBytes;
-                ((MainWindow)Application.Current.MainWindow).progressSizeHack.Maximum = totalSize;
+                ConfigManager.MainThread.progressSizeHack.Value = downloadedBytes;
+                ConfigManager.MainThread.progressSizeHack.Maximum = totalSize;
                 int.Parse(downloadedBytes.ToString());
-                ((MainWindow)Application.Current.MainWindow).ProgressBarText.Text = (Math.Round(downloadedBytes / 1024 / 1024, 2)).ToString() + " MB / " + (Math.Round(totalSize / 1024 / 1024, 2)).ToString() + " MB";
+                ConfigManager.MainThread.ProgressBarText.Text = (Math.Round(downloadedBytes / 1024 / 1024, 2)).ToString() + " MB / " + (Math.Round(totalSize / 1024 / 1024, 2)).ToString() + " MB";
             });
         }
 

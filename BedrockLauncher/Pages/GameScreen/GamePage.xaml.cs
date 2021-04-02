@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using BedrockLauncher.Core;
 
-namespace BedrockLauncher.Pages.MainScreen
+namespace BedrockLauncher.Pages.GameScreen
 {
     /// <summary>
     /// Логика взаимодействия для MainPage.xaml
     /// </summary>
-    public partial class MainPage : Page
+    public partial class GamePage : Page
     {
         public string LastButtonName { get; set; } = string.Empty;
 
-        public MainPage()
+        public GamePage()
         {
             InitializeComponent();
             LastButtonName = PlayButton.Name;
@@ -19,27 +20,27 @@ namespace BedrockLauncher.Pages.MainScreen
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Application.Current.MainWindow).ButtonManager(sender, e);
+            ConfigManager.MainThread.ButtonManager(sender, e);
         }
 
         private void InstallationsButton_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Application.Current.MainWindow).ButtonManager(sender, e);
+            ConfigManager.MainThread.ButtonManager(sender, e);
         }
 
         private void SkinsButton_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Application.Current.MainWindow).ButtonManager(sender, e);
+            ConfigManager.MainThread.ButtonManager(sender, e);
         }
 
         private void PatchNotesButton_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Application.Current.MainWindow).ButtonManager(sender, e);
+            ConfigManager.MainThread.ButtonManager(sender, e);
         }
 
         private void VersionsButton_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Application.Current.MainWindow).ButtonManager(sender, e);
+            ConfigManager.MainThread.ButtonManager(sender, e);
         }
     }
 }

@@ -22,8 +22,7 @@ using Windows.Foundation;
 using Windows.Management.Core;
 using Windows.Management.Deployment;
 using Windows.System;
-
-using MainWindow = BedrockLauncher.MainWindow;
+using BedrockLauncher.Core;
 
 namespace BedrockLauncher.Classes
 {
@@ -40,25 +39,25 @@ namespace BedrockLauncher.Classes
         public bool IsInitializing
         {
             get { return _isInitializing; }
-            set { _isInitializing = value; Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarDownloading"); }); ProgressBarIsIndeterminate(_isInitializing); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
+            set { _isInitializing = value; Application.Current.Dispatcher.Invoke(() => { ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarDownloading"); }); ProgressBarIsIndeterminate(_isInitializing); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
         }
 
         public bool IsExtracting
         {
             get { return _isExtracting; }
-            set { _isExtracting = value; Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarExtracting"); }); Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).ProgressBarText.Text = ""; }); ProgressBarIsIndeterminate(_isExtracting); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
+            set { _isExtracting = value; Application.Current.Dispatcher.Invoke(() => { ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarExtracting"); }); Application.Current.Dispatcher.Invoke(() => { ConfigManager.MainThread.ProgressBarText.Text = ""; }); ProgressBarIsIndeterminate(_isExtracting); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
         }
 
         public bool IsUninstalling
         {
             get { return _isUninstalling; }
-            set { _isUninstalling = value; Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarUninstalling"); }); Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).ProgressBarGrid.Visibility = Visibility.Visible; }); ProgressBarIsIndeterminate(_isUninstalling); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
+            set { _isUninstalling = value; Application.Current.Dispatcher.Invoke(() => { ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarUninstalling"); }); Application.Current.Dispatcher.Invoke(() => { ConfigManager.MainThread.ProgressBarGrid.Visibility = Visibility.Visible; }); ProgressBarIsIndeterminate(_isUninstalling); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
         }
 
         public bool IsLaunching
         {
             get { return _isLaunching; }
-            set { _isLaunching = value; Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarLaunching"); }); Application.Current.Dispatcher.Invoke(() => { ((MainWindow)Application.Current.MainWindow).ProgressBarGrid.Visibility = Visibility.Visible; }); ProgressBarIsIndeterminate(_isLaunching); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
+            set { _isLaunching = value; Application.Current.Dispatcher.Invoke(() => { ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarLaunching"); }); Application.Current.Dispatcher.Invoke(() => { ConfigManager.MainThread.ProgressBarGrid.Visibility = Visibility.Visible; }); ProgressBarIsIndeterminate(_isLaunching); OnPropertyChanged("IsProgressIndeterminate"); OnPropertyChanged("DisplayStatus"); }
         }
 
         public bool IsProgressIndeterminate

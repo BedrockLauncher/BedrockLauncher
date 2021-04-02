@@ -21,8 +21,8 @@ namespace BedrockLauncher.Pages.NewsScreen
     /// </summary>
     public partial class NewsScreenPage : Page
     {
-        private Updater updater;
-        public NewsScreenPage(Updater updater)
+        private LauncherUpdater updater;
+        public NewsScreenPage(LauncherUpdater updater)
         {
             InitializeComponent();
             this.updater = updater;

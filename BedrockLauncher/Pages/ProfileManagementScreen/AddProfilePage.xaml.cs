@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
+using BedrockLauncher.Core;
 
 namespace BedrockLauncher.Pages.ProfileManagementScreen
 {
@@ -28,7 +29,7 @@ namespace BedrockLauncher.Pages.ProfileManagementScreen
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Application.Current.MainWindow).MainWindowOverlayFrame.Content = null;
+            ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
         }
 
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
@@ -45,14 +46,11 @@ namespace BedrockLauncher.Pages.ProfileManagementScreen
         }
         public void CreateProfile(string profileName)
         {
-            ConfigManager config = new ConfigManager();
-            if (config.CreateProfile(ProfileNameTextbox.Text))
+            if (ConfigManager.CreateProfile(profileName))
             {
-                config.ReadProfile();
-                ((MainWindow)Application.Current.MainWindow).ProfileButton.ProfileName.Text = profileName;
                 Properties.Settings.Default.CurrentProfile = profileName;
                 Properties.Settings.Default.Save();
-                ((MainWindow)Application.Current.MainWindow).MainWindowOverlayFrame.Content = null;
+                ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
             }
             else
             {

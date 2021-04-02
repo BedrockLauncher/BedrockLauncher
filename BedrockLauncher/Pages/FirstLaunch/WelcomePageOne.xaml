@@ -7,74 +7,12 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="WelcomePageOne" Width="596" Height="254">
-    <Page.Resources>
-        <Style x:Key="FocusVisual">
-            <Setter Property="Control.Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <SolidColorBrush x:Key="Button.Static.Background" Color="#FF262626"/>
-        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF686868"/>
-        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FF515151"/>
-        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF868686"/>
-        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FF515151"/>
-        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FFFF"/>
-        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
-        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
-        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Padding" Value="1"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
-                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="+18,0,+18,0" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsDefaulted" Value="true">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
-                                <Setter Property="Cursor" Value="Hand"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
-                                <Setter Property="Cursor" Value="Hand"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
-                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
-                            </Trigger>
-                            <Trigger Property="IsKeyboardFocused" Value="True">
-                                <Setter Property="BorderBrush" TargetName="border" Value="White"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Page.Resources>
     <Grid Margin="0" Background="{x:Null}">
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Text="{DynamicResource FirstLaunch_WelcomeTitle}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="24" Margin="0,40,0,0" FontWeight="Bold"/>
             <TextBlock HorizontalAlignment="Center" TextAlignment="Center" Text="{DynamicResource FirstLaunch_WelcomeSubTitle}" VerticalAlignment="Top" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Margin="28.5,87,28.5,0" TextWrapping="Wrap"/>
         <StackPanel Margin="0,185,8,0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-            <Button x:Name="CloseButton" Click="CloseButton_Click" SnapsToDevicePixels="True" Foreground="White" Content="{DynamicResource FirstLaunch_CloseButton}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" FontFamily="Arial" FontSize="13" FontWeight="Bold"/>
-            <Button x:Name="NextButton" Click="NextButton_Click" Margin="8,0,0,0" SnapsToDevicePixels="True" Foreground="White" Content="{DynamicResource FirstLaunch_NextButton}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="auto" Height="32" FontFamily="Arial" FontSize="13" FontWeight="Bold"/>
+            <Button x:Name="CloseButton" Click="CloseButton_Click" SnapsToDevicePixels="True" Foreground="White" Style="{DynamicResource DialogButton}" Content="{DynamicResource FirstLaunch_CloseButton}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32"/>
+            <Button x:Name="NextButton" Click="NextButton_Click" SnapsToDevicePixels="True" Style="{DynamicResource DialogButton}" Foreground="White" Content="{DynamicResource FirstLaunch_NextButton}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="auto" Height="32"/>
         </StackPanel>
     </Grid>
 </Page>

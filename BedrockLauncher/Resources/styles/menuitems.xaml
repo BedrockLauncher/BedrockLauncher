@@ -3,15 +3,15 @@
                     xmlns:local="clr-namespace:BedrockLauncher.Resources.styles">
 
     <SolidColorBrush x:Key="Menu.Static.Foreground" Color="White" />
-    <SolidColorBrush x:Key="Menu.Static.Background" Color="Black" />
-    <SolidColorBrush x:Key="Menu.Static.Border" Color="Black" />
+    <SolidColorBrush x:Key="Menu.Static.Background" Color="#131313" />
+    <SolidColorBrush x:Key="Menu.Static.Border" Color="#131313" />
 
-    <SolidColorBrush x:Key="MenuItem.Context.Selected.Border" Color="Black"/>
+    <SolidColorBrush x:Key="MenuItem.Context.Selected.Border" Color="#131313"/>
     <SolidColorBrush x:Key="MenuItem.Context.Selected.Background" Color="#FF008542"/>
 
-    <SolidColorBrush x:Key="ContextMenuBackground" Color="Black"/>
-    <SolidColorBrush x:Key="ContextMenuBackground2" Color="Black"/>
-    <SolidColorBrush x:Key="ContextMenuBorder" Color="Black"/>
+    <SolidColorBrush x:Key="ContextMenuBackground" Color="#131313"/>
+    <SolidColorBrush x:Key="ContextMenuBackground2" Color="#131313"/>
+    <SolidColorBrush x:Key="ContextMenuBorder" Color="#131313"/>
     <SolidColorBrush x:Key="ContextMenuSelectedColor" Color="#FF008542"/>
     <SolidColorBrush x:Key="ContextMenuSelectedColorBack" Color="#FF008542"/>
     <SolidColorBrush x:Key="ContextMenuCheckboxColor" Color="White"/>
@@ -23,6 +23,7 @@
         <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Padding" Value="0,6"/>
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
@@ -259,6 +260,7 @@
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+        <Setter Property="Padding" Value="0,6"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="Template" >
             <Setter.Value>
@@ -269,9 +271,9 @@
                                 <ColumnDefinition MinWidth="22" SharedSizeGroup="MenuItemIconColumnGroup" Width="Auto"/>
                                 <ColumnDefinition Width="13"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="0"/>
                                 <ColumnDefinition SharedSizeGroup="MenuItemIGTColumnGroup" Width="Auto"/>
-                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="10"/>
                             </Grid.ColumnDefinitions>
                             <ContentPresenter x:Name="Icon" Content="{TemplateBinding Icon}" ContentSource="Icon" HorizontalAlignment="Center" Height="16" Margin="3" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" Width="16"/>
                             <Border x:Name="GlyphPanel" BorderBrush="{StaticResource MenuItem.Context.Selected.Border}" BorderThickness="1" Background="{StaticResource MenuItem.Context.Selected.Background}" ClipToBounds="False" HorizontalAlignment="Center" Height="22" Margin="-1,0,0,0" Visibility="Hidden" VerticalAlignment="Center" Width="22">

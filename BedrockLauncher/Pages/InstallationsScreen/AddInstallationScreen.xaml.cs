@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Classes;
+using BedrockLauncher.Core;
 
 namespace BedrockLauncher.Pages.InstallationsScreen
 {
@@ -32,8 +33,8 @@ namespace BedrockLauncher.Pages.InstallationsScreen
 
         private void GetManualComboBoxEntries()
         {
-            Classes.Version latest_release = new Classes.Version("latest_release", Application.Current.Resources["AddInstallationScreen_LatestRelease"].ToString(), false, ((MainWindow)Application.Current.MainWindow));
-            Classes.Version latest_beta = new Classes.Version("latest_beta", Application.Current.Resources["AddInstallationScreen_LatestSnapshot"].ToString(), false, ((MainWindow)Application.Current.MainWindow));
+            Classes.Version latest_release = new Classes.Version("latest_release", Application.Current.Resources["AddInstallationScreen_LatestRelease"].ToString(), false, ConfigManager.GameManager);
+            Classes.Version latest_beta = new Classes.Version("latest_beta", Application.Current.Resources["AddInstallationScreen_LatestSnapshot"].ToString(), false, ConfigManager.GameManager);
             Versions.InsertRange(0, new List<Classes.Version>() { latest_release, latest_beta });
         }
 
@@ -41,7 +42,7 @@ namespace BedrockLauncher.Pages.InstallationsScreen
         {
             Versions.Clear();
             InstallationVersionSelect.ItemsSource = null;
-            foreach (var entry in MainWindow.AvaliableVersions)
+            foreach (var entry in ConfigManager.AvaliableVersions)
             {
                 Versions.Add(entry);
             }
@@ -52,15 +53,14 @@ namespace BedrockLauncher.Pages.InstallationsScreen
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Application.Current.MainWindow).MainWindowOverlayFrame.Content = null;
+            ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager configManager = new ConfigManager();
-            configManager.CreateInstallation(InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex]);
-            ((MainWindow)Application.Current.MainWindow).UpdateInstallationsList();
-            ((MainWindow)Application.Current.MainWindow).MainWindowOverlayFrame.Content = null;
+            ConfigManager.CreateInstallation(InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex]);
+            ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
+            ConfigManager.OnConfigStateChanged(this, ConfigManager.ConfigStateArgs.Empty);
         }
     }
 }

@@ -49,8 +49,8 @@
         </Grid>
         <Separator Grid.Row="3"></Separator>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="4" Height="45" Margin="15,0">
-            <Button x:Name="CancelButton" Click="CancelButton_Click" Content="{DynamicResource AddInstallationScreen_CancelButton}" Style="{DynamicResource ButtonStyle3}"></Button>
-            <Button x:Name="CreateButton" Click="CreateButton_Click" Content="{DynamicResource AddInstallationScreen_CreateButton}" Style="{DynamicResource ButtonStyle4}"></Button>
+            <Button x:Name="CancelButton" Click="CancelButton_Click" Content="{DynamicResource AddInstallationScreen_CancelButton}" Style="{DynamicResource DialogButton}"></Button>
+            <Button x:Name="CreateButton" Click="CreateButton_Click" Content="{DynamicResource AddInstallationScreen_CreateButton}" Style="{DynamicResource DialogButton_Green}"></Button>
         </StackPanel>
     </Grid>
 </Page>

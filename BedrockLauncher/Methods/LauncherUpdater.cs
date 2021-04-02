@@ -8,15 +8,16 @@ using System.Diagnostics;
 using System.Windows.Media.Animation;
 using System.Windows.Controls;
 using System.Collections.Generic;
+using BedrockLauncher.Core;
 
 namespace BedrockLauncher.Methods
 {
-    public class Updater
+    public class LauncherUpdater
     {
         private const string LATEST_BUILD_LINK = "https://github.com/XlynxX/BedrockLauncher/releases/latest";
         private string latestTag;
         private string latestTagDescription;
-        public Updater()
+        public LauncherUpdater()
         {
             Debug.WriteLine("Checking for updates");
             try
@@ -90,7 +91,7 @@ namespace BedrockLauncher.Methods
         }
         async private void ShowUpdateButton(int time) 
         {
-            ((MainWindow)Application.Current.MainWindow).updateButton.Click += UpdateButton_Click;
+            ConfigManager.MainThread.updateButton.Click += UpdateButton_Click;
             showAdvancementButton();
             await Task.Delay(time);
             hideAdvancementButton();
@@ -107,7 +108,7 @@ namespace BedrockLauncher.Methods
             };
             storyboard2.Children.Add(animation2);
             Storyboard.SetTargetProperty(animation2, new PropertyPath(Border.MarginProperty));
-            Storyboard.SetTarget(animation2, ((MainWindow)Application.Current.MainWindow).updateButton);
+            Storyboard.SetTarget(animation2, ConfigManager.MainThread.updateButton);
             storyboard2.Begin();
         }
 
@@ -124,7 +125,7 @@ namespace BedrockLauncher.Methods
             };
             storyboard.Children.Add(animation);
             Storyboard.SetTargetProperty(animation, new PropertyPath(Border.MarginProperty));
-            Storyboard.SetTarget(animation, ((MainWindow)Application.Current.MainWindow).updateButton);
+            Storyboard.SetTarget(animation, ConfigManager.MainThread.updateButton);
             storyboard.Begin();
         }
         private void UpdateButton_Click(object sender, RoutedEventArgs e)

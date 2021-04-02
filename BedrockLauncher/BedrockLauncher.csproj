@@ -143,8 +143,11 @@
     </ApplicationDefinition>
     <Compile Include="Addons\BetterBedrock\BetterBedrockMain.cs" />
     <Compile Include="Classes\Installation.cs" />
-    <Compile Include="Controls\AccountDropdown.xaml.cs">
-      <DependentUpon>AccountDropdown.xaml</DependentUpon>
+    <Compile Include="Controls\InsiderSelector.xaml.cs">
+      <DependentUpon>InsiderSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LanguageCombobox.xaml.cs">
+      <DependentUpon>LanguageCombobox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ProfileButton.xaml.cs">
       <DependentUpon>ProfileButton.xaml</DependentUpon>
@@ -152,12 +155,14 @@
     <Compile Include="Controls\ProfileSelector.xaml.cs">
       <DependentUpon>ProfileSelector.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Methods\ConfigManager.cs" />
+    <Compile Include="Core\ConfigManager.cs" />
     <Compile Include="Classes\ProfileSettings.cs" />
     <Compile Include="Classes\ProfileList.cs" />
     <Compile Include="Classes\NotifyPropertyChangedBase.cs" />
     <Compile Include="Classes\Version.cs" />
     <Compile Include="Classes\VersionStateChangeInfo.cs" />
+    <Compile Include="Methods\GameManager.cs" />
+    <Compile Include="Core\LanguageManager.cs" />
     <Compile Include="Interfaces\ICommonVersionCommands.cs" />
     <Compile Include="Methods\ConsoleArgumentParser.cs" />
     <Compile Include="Pages\ErrorScreen\ErrorScreen.xaml.cs">
@@ -196,8 +201,8 @@
     <Compile Include="Pages\SettingsScreen\GeneralSettingsPage.xaml.cs">
       <DependentUpon>GeneralSettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MainScreen\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="Pages\GameScreen\GamePage.xaml.cs">
+      <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -217,7 +222,7 @@
     <Compile Include="Pages\SettingsScreen\SettingsScreen.xaml.cs">
       <DependentUpon>SettingsScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Methods\Updater.cs" />
+    <Compile Include="Methods\LauncherUpdater.cs" />
     <Compile Include="Methods\VersionDownloader.cs" />
     <Compile Include="Classes\VersionList.cs" />
     <Compile Include="Methods\WUProtocol.cs" />
@@ -230,9 +235,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </DesignData>
-    <Page Include="Controls\AccountDropdown.xaml">
+    <Page Include="Controls\InsiderSelector.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\LanguageCombobox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ProfileButton.xaml">
       <SubType>Designer</SubType>
@@ -290,7 +299,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\MainScreen\MainPage.xaml">
+    <Page Include="Pages\GameScreen\GamePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -327,6 +336,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\styles\contextmenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\styles\frame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -502,9 +515,16 @@
       <Name>Uninstaller</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WUTokenHelper\WUTokenHelper.vcxproj">
+      <Project>{B7336BA7-1E83-43D8-BD0E-3D44C6E3D4E7}</Project>
+      <Name>WUTokenHelper</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>"$(DevEnvDir)devenv" "$(SolutionPath)" /Build $(configuration) /project "$(SolutionDir)WUTokenHelper\WUTokenHelper.vcxproj"</PreBuildEvent>
+    <PreBuildEvent>:: "$(DevEnvDir)devenv" "$(SolutionPath)" /Build $(configuration) /project "$(SolutionDir)WUTokenHelper\WUTokenHelper.vcxproj"</PreBuildEvent>
   </PropertyGroup>
 </Project>

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
+using BedrockLauncher.Core;
 
 namespace BedrockLauncher.Pages.FirstLaunch
 {
@@ -46,14 +47,11 @@ namespace BedrockLauncher.Pages.FirstLaunch
         }
         public void CreateProfile(string profileName)
         {
-            ConfigManager config = new ConfigManager();
-            if (config.CreateProfile(ProfileNameTextbox.Text))
+            if (ConfigManager.CreateProfile(ProfileNameTextbox.Text))
             {
-                config.ReadProfile();
-                ((MainWindow)Application.Current.MainWindow).ProfileButton.ProfileName.Text = profileName;
                 Properties.Settings.Default.CurrentProfile = profileName;
                 Properties.Settings.Default.Save();
-                ((MainWindow)Application.Current.MainWindow).MainWindowOverlayFrame.Content = null;
+                ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
             }
         }
     }

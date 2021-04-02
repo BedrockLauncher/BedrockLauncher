@@ -2,6 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:BedrockLauncher.Resources.styles">
 
+    <Style TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="/BedrockLauncher;component/Resources/fonts/#Noto Sans" />
+    </Style>
 
     <Style x:Key="HeaderTextblock" TargetType="{x:Type TextBlock}">
         <Setter Property="FontWeight" Value="Bold"/>
@@ -13,5 +16,20 @@
     <Style x:Key="CommonTextblock" TargetType="{x:Type TextBlock}">
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontFamily" Value="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
+    </Style>
+
+    <Style x:Key="BigGreenButton_Text" TargetType="{x:Type TextBlock}">
+        <Setter Property="UseLayoutRounding" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Margin" Value="0,-4,0,0"/>
+        <Setter Property="TextOptions.TextHintingMode" Value="Fixed"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontFamily" Value="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten"/>
+        <Setter Property="TextTrimming" Value="WordEllipsis"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="0" Direction="270" ShadowDepth="2" RenderingBias="Quality" Opacity="0.43"/>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>

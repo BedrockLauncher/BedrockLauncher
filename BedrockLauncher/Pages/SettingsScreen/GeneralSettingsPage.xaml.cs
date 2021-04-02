@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BedrockLauncher.Core;
 
 namespace BedrockLauncher.Pages.SettingsScreen
 {
@@ -25,39 +26,8 @@ namespace BedrockLauncher.Pages.SettingsScreen
             InitializeComponent();
         }
 
-        private void LanguageCombobox_DropDownClosed(object sender, EventArgs e)
-        {
-            switch (LanguageCombobox.Text)
-            {
-                case "Русский - Россия":
-                    ((MainWindow)Application.Current.MainWindow).LanguageChange("ru-RU");
-                    Properties.Settings.Default.Language = "ru-RU";
-                    Properties.Settings.Default.Save();
-                    break;
-                case "English - United States":
-                    ((MainWindow)Application.Current.MainWindow).LanguageChange("en-US");
-                    Properties.Settings.Default.Language = "en-US";
-                    Properties.Settings.Default.Save();
-                    break;
-            }
-        }
-
         private void Page_Initialized(object sender, EventArgs e)
         {
-            // Set chosen language in language combobox
-            switch (Properties.Settings.Default.Language)
-            {
-                case "en-US":
-                    LanguageCombobox.Text = "English - United States";
-                    break;
-                case "ru-RU":
-                    LanguageCombobox.Text = "Русский - Россия";
-                    break;
-                default:
-                    LanguageCombobox.Text = "English - United States";
-                    break;
-            }
-
             // Set checkboxes
             keepLauncherOpenCheckBox.IsChecked = Properties.Settings.Default.KeepLauncherOpenCheckBox;
             usedFixedInstallLocation.IsChecked = Properties.Settings.Default.FixedInstallFolder;

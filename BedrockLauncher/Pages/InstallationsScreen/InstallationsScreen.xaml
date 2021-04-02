@@ -85,7 +85,7 @@
                 <ColumnDefinition Width="200"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <Button x:Name="NewInstallationButton" Height="40" Width="100" Click="NewInstallationButton_Click" Foreground="White" Style="{DynamicResource ButtonStyle5}">
+                <Button x:Name="NewInstallationButton" Height="40" Width="100" Click="NewInstallationButton_Click" Foreground="White" Style="{DynamicResource PanelButton}">
                     <Button.Content>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -157,9 +157,9 @@
                             </Image>
                         </Grid>
                         <StackPanel Orientation="Horizontal" Grid.Column="2" x:Name="ButtonPanel" Visibility="Hidden">
-                            <Button x:Name="Play" Click="Play_Click" Content="{DynamicResource InstallationsPage_PlayButton}" Style="{DynamicResource ButtonStyle4}"></Button>
-                            <Button x:Name="Folder" Click="Folder_Click" Content="📁" FontWeight="Bold" Style="{DynamicResource ButtonStyle3}"></Button>
-                            <Button x:Name="More" Content="..." FontWeight="Bold" Style="{DynamicResource ButtonStyle3}" Click="More_Click">
+                            <Button x:Name="Play" Click="Play_Click" Content="{DynamicResource InstallationsPage_PlayButton}" Style="{DynamicResource DialogButton_Green}"></Button>
+                            <Button x:Name="Folder" Click="Folder_Click" Content="📁" FontWeight="Bold" Style="{DynamicResource DialogButton}"></Button>
+                            <Button x:Name="More" Content="..." FontWeight="Bold" Style="{DynamicResource DialogButton}" Click="More_Click">
                                 <Button.ContextMenu>
                                     <ContextMenu Closed="ContextMenu_Closed" Style="{DynamicResource NoCheckboxContextMenu}">
                                         <MenuItem Header="{DynamicResource InstallationsPage_DeleteInstallationButton}" Name="DeleteInstallationButton" Click="DeleteInstallationButton_Click"></MenuItem>

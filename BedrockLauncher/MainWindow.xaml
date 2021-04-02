@@ -11,7 +11,13 @@
         x:Class="BedrockLauncher.MainWindow"
         mc:Ignorable="d"
         MouseDown="Window_MouseDown"
-        Title="{DynamicResource ResourceKey=Title}" Initialized="Window_Initialized" Height="639" Width="1016" Foreground="{x:Null}" MinWidth="1016" MinHeight="639" Background="White" Icon="Resources/images/icon.ico">
+        Title="{DynamicResource ResourceKey=Title}" 
+        Initialized="Window_Initialized" 
+        Height="639" Width="1016" 
+        Foreground="{x:Null}" 
+        MinWidth="1016" MinHeight="639" 
+        Background="White"
+        WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,0,0" Background="WhiteSmoke">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="180"></ColumnDefinition>
@@ -71,11 +77,8 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <Frame x:Name="MainWindowFrame" VerticalAlignment="Stretch" Background="Black" NavigationUIVisibility="Hidden" Source="/BedrockLauncher;component/Pages/MainScreen/MainPage.xaml"/>
-            <Button RenderOptions.BitmapScalingMode="NearestNeighbor" x:Name="updateButton" Margin="0,-75,5,0" HorizontalAlignment="Right" Height="60" Width="260" VerticalAlignment="Top" BorderBrush="{x:Null}" Style="{DynamicResource ButtonStyle2}">
-                <Button.Background>
-                    <ImageBrush ImageSource="Resources/images/advancement_icon.png"/>
-                </Button.Background>
+            <Frame x:Name="MainWindowFrame" VerticalAlignment="Stretch" Background="Black" NavigationUIVisibility="Hidden" Source="../Pages/GameScreen/GamePage.xaml"/>
+            <Button RenderOptions.BitmapScalingMode="NearestNeighbor" x:Name="updateButton" Margin="0,-75,5,0" HorizontalAlignment="Right" Height="60" Width="260" VerticalAlignment="Top" BorderBrush="{x:Null}" Style="{DynamicResource AdvancementButton}">
                 <Grid Margin="-8,0,0,0" HorizontalAlignment="Left">
                     <TextBlock LineHeight="20" RenderOptions.BitmapScalingMode="NearestNeighbor" FontSize="16" TextOptions.TextRenderingMode="Aliased" TextOptions.TextFormattingMode="Display" Margin="52,6,0,0" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Rus">
                     <Run Text="{DynamicResource UpdateButton_NewUpdate}" Foreground="Yellow"/>
@@ -93,21 +96,19 @@
                 </StackPanel>
             </Grid>
             <Grid x:Name="PlayScreenBorder" Grid.Row="2" x:FieldModifier="public" VerticalAlignment="Bottom" Background="#FF262626">
-                <TextBlock Foreground="white" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="11" FontWeight="Bold" Text="NOT APPROVED BY OR ASSOCIATED WITH MOJANG" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,2,2"/>
-                <Button x:Name="MainPlayButton" Click="MainPlayButton_Click" UseLayoutRounding="True" SnapsToDevicePixels="True" Foreground="White" FontSize="26" HorizontalAlignment="Center" Margin="286,-8,286,0" VerticalAlignment="Top" Width="250" Height="56" Padding="0" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" Style="{DynamicResource ButtonStyle1}" BorderBrush="{x:Null}">
-                    <Button.Effect>
-                        <DropShadowEffect BlurRadius="0" Direction="270" Opacity="0.2" ShadowDepth="4"/>
-                    </Button.Effect>
-                    <Button.Background>
-                        <ImageBrush ImageSource="Resources/images/MainPagePlayButton.png"/>
-                    </Button.Background>
-                    <TextBlock UseLayoutRounding="True" x:Name="PlayButtonText" SnapsToDevicePixels="True" Text="" Margin="0,-4,0,0" FontSize="24" TextOptions.TextHintingMode="Fixed" TextTrimming="WordEllipsis" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten">
-                        <TextBlock.Effect>
-                            <DropShadowEffect BlurRadius="0" Direction="270" ShadowDepth="2" RenderingBias="Quality" Opacity="0.43"/>
-                        </TextBlock.Effect>
-                    </TextBlock>
+                <TextBlock Style="{DynamicResource HeaderTextblock}" Text="NOT APPROVED BY OR ASSOCIATED WITH MOJANG" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="0,0,5,0" Margin="0,0,2,0"/>
+                <Button 
+                    x:Name="MainPlayButton" 
+                    Click="MainPlayButton_Click" 
+                    HorizontalAlignment="Center" 
+                    Margin="286,-8,286,0"
+                    VerticalAlignment="Top" 
+                    Width="250" Height="56" 
+                    Padding="0" 
+                    Style="{DynamicResource BigGreenButton}">
+                    <TextBlock x:Name="PlayButtonText" Style="{DynamicResource BigGreenButton_Text}"/>
                 </Button>
-                <ComboBox SelectedItem="1" SelectionChanged="InstallationsList_SelectionChanged" DropDownClosed="InstallationsList_DropDownClosed" ItemsSource="{Binding}" x:Name="InstallationsList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="200" Height="47" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}" Foreground="White" Padding="-1,7,5,3">
+                <ComboBox SelectedItem="1" SelectionChanged="GameStateChanged" DropDownClosed="GameStateChanged" ItemsSource="{Binding}" x:Name="InstallationsList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="200" Height="47" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}" Foreground="White" Padding="-1,7,5,3">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <ContentControl x:Name="control" Content="{Binding}" ContentTemplate="{StaticResource templateInstallation}"/>

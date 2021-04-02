@@ -1,0 +1,22 @@
+﻿<ComboBox    x:Class="BedrockLauncher.Controls.LanguageCombobox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BedrockLauncher.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="330" d:DesignWidth="32"
+             Width="330" Height="32" 
+             DropDownClosed="LanguageCombobox_DropDownClosed"  
+             Initialized="LanguageCombobox_Initialized"
+             ItemContainerStyle="{DynamicResource ComboBoxItemStyle2}" 
+             Foreground="White"
+             Style="{DynamicResource ComboBoxStyle2}" 
+             SelectedIndex="1">
+        <ComboBoxItem>
+            <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" Text="{DynamicResource MainWindowSettingsScreen_en_US}" FontWeight="Normal"/>
+        </ComboBoxItem>
+        <ComboBoxItem>
+            <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"  Text="{DynamicResource MainWindowSettingsScreen_ru_RU}" FontWeight="Normal"/>
+        </ComboBoxItem>
+</ComboBox>

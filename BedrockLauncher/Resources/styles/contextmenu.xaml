@@ -2,13 +2,13 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:BedrockLauncher.Resources.styles">
 
-    <SolidColorBrush x:Key="ContextMenuBackground">Black</SolidColorBrush>
+    <SolidColorBrush x:Key="ContextMenuBackground">#131313</SolidColorBrush>
     <SolidColorBrush x:Key="NormalText">White</SolidColorBrush>
-    <SolidColorBrush x:Key="ContextMenuBorder">Black</SolidColorBrush>
-    <SolidColorBrush x:Key="ContextMenuBorder2">Black</SolidColorBrush>
+    <SolidColorBrush x:Key="ContextMenuBorder">#131313</SolidColorBrush>
+    <SolidColorBrush x:Key="ContextMenuBorder2">#131313</SolidColorBrush>
 
     <ItemsPanelTemplate x:Key="MenuTPL">
-        <StackPanel Margin="-30,0,-2,0" Background="Black"/>
+        <StackPanel Margin="-30,0,-2,0" Background="#131313"/>
     </ItemsPanelTemplate>
 
     <Style x:Key="NoCheckboxContextMenu" TargetType="{x:Type ContextMenu}">

@@ -17,11 +17,11 @@ using BedrockLauncher.Methods;
 namespace BedrockLauncher.Controls
 {
     /// <summary>
-    /// Interaction logic for AccountDropdown.xaml
+    /// Interaction logic for InsiderSelector.xaml
     /// </summary>
-    public partial class AccountDropdown : Grid
+    public partial class InsiderSelector : Grid
     {
-        public AccountDropdown()
+        public InsiderSelector()
         {
             InitializeComponent();
         }

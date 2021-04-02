@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
+using BedrockLauncher.Core;
 
 namespace BedrockLauncher.Pages.InstallationsScreen
 {
@@ -28,8 +29,7 @@ namespace BedrockLauncher.Pages.InstallationsScreen
 
         public void RefreshInstallationsList()
         {
-            ((MainWindow)Application.Current.MainWindow).UpdateInstallationsList();
-
+            ConfigManager.OnConfigStateChanged(this, ConfigManager.ConfigStateArgs.Empty);
         }
 
         public void RefreshInstallationsList(object sender, RoutedEventArgs e)
@@ -46,20 +46,19 @@ namespace BedrockLauncher.Pages.InstallationsScreen
         {
             Button button = sender as Button;
             var installation = button.DataContext as Classes.Installation;
-            ((MainWindow)Application.Current.MainWindow).Play(installation);
+            ConfigManager.GameManager.Play(installation);
         }
 
         private void NewInstallationButton_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Application.Current.MainWindow).MainWindowOverlayFrame.Content = new AddInstallationScreen();
+            ConfigManager.MainThread.MainWindowOverlayFrame.Content = new AddInstallationScreen();
         }
 
         private void DeleteInstallationButton_Click(object sender, RoutedEventArgs e)
         {
             MenuItem button = sender as MenuItem;
             var installation = button.DataContext as Classes.Installation;
-            ConfigManager configManager = new ConfigManager();
-            configManager.DeleteInstallation(installation);
+            ConfigManager.DeleteInstallation(installation);
             RefreshInstallationsList();
         }
 

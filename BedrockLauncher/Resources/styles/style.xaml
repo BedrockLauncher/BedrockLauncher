@@ -6,7 +6,15 @@
         xmlns:local="clr-namespace:BedrockLauncher"
         xmlns:classes="clr-namespace:BedrockLauncher.Classes"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" >
-    
+
+
+    <Style TargetType="{x:Type Control}" x:Key="fontStyling">
+        <Setter Property="FontFamily" Value="/BedrockLauncher;component/Resources/fonts/#Noto Sans" />
+    </Style>
+    <Style TargetType="{x:Type TextBox}" BasedOn="{DynamicResource fontStyling}" />
+    <Style TargetType="{x:Type ListView}" BasedOn="{DynamicResource fontStyling}" />
+
+
     <TextBlock x:Key="TitleText" Text="{Binding DisplayStatus}">
         <TextBlock.DataContext>
             <classes:VersionStateChangeInfo/>
@@ -48,5 +56,6 @@
             </Image>
         </Grid>
     </DataTemplate>
-    
+
+
 </ResourceDictionary>

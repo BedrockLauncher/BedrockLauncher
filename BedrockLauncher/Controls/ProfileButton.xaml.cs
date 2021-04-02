@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 using System.Windows.Controls.Primitives;
 using BedrockLauncher.Classes;
+using BedrockLauncher.Core;
 
 namespace BedrockLauncher.Controls
 {
@@ -38,12 +39,9 @@ namespace BedrockLauncher.Controls
             }
             OtherAccountControls.Clear();
 
-            ConfigManager configManager = new ConfigManager();
-            var profiles = configManager.ReadProfile();
-
-            foreach (var entry in profiles.profiles)
+            foreach (var entry in ConfigManager.ProfileList.profiles)
             {
-                ProfileSelector profile = new ProfileSelector(entry);
+                ProfileSelector profile = new ProfileSelector(entry, this);
                 OtherAccountControls.Add(profile);
                 ProfileContextMenu.Items.Add(profile);
             }
@@ -75,13 +73,12 @@ namespace BedrockLauncher.Controls
 
         private void AddProfileButton_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Application.Current.MainWindow).NavigateToNewProfilePage();
+            ConfigManager.MainThread.NavigateToNewProfilePage();
         }
 
         private void RemoveProfileButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager config = new ConfigManager();
-            config.RemoveProfile(Properties.Settings.Default.CurrentProfile);
+            ConfigManager.RemoveProfile(Properties.Settings.Default.CurrentProfile);
         }
     }
 }
