@@ -22,7 +22,7 @@ namespace BedrockLauncher.Methods
         {
             get
             {
-                return Properties.Settings.Default.CurrentMSAccount;
+                return Properties.Settings.Default.CurrentInsiderAccount;
             }
         }
 

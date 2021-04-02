@@ -98,6 +98,8 @@
     <v:String x:Key="MainWindow_ChooseAccount">CHOOSE PROFILE</v:String>
     
     <v:String x:Key="MainWindowSettingsScreen_FixedGameInstalls">Use fixed location for game downloads</v:String>
+    <v:String x:Key="MainWindowSettingsScreen_FixedGameSaves">Use fixed location for game saves</v:String>
+    <v:String x:Key="MainWindowSettingsScreen_ExperimentalSaveRedirection">Enable experiemental save redirection</v:String>
     <v:String x:Key="AcountsSettingsScreen_AccountDropdownSubtitle">INSIDER ACCOUNT</v:String>
 
     <v:String x:Key="NewProfile_GoBackButton">❮ GO BACK</v:String>

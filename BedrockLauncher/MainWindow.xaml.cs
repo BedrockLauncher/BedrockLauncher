@@ -97,7 +97,7 @@ namespace BedrockLauncher
             view.Filter = ConfigManager.Filter_InstallationList;
 
             InstallationsList.ItemsSource = ConfigManager.CurrentInstallations;
-            InstallationsList.SelectedIndex = Properties.Settings.Default.LastSelectedVersion;
+            InstallationsList.SelectedIndex = Properties.Settings.Default.CurrentInstallation;
             if (InstallationsList.SelectedItem == null) InstallationsList.SelectedItem = ConfigManager.CurrentInstallations.First();
         }
         private void UpdatePlayButton()
@@ -129,7 +129,7 @@ namespace BedrockLauncher
                        }
 
 
-                       if (selected.Version.IsInstalled) PlayButtonText.SetResourceReference(TextBlock.TextProperty, "MainPage_PlayButton");
+                       if (selected.Version?.IsInstalled ?? false) PlayButtonText.SetResourceReference(TextBlock.TextProperty, "MainPage_PlayButton");
                        else PlayButtonText.SetResourceReference(TextBlock.TextProperty, "MainPage_PlayButton");
                    }));
             });
@@ -162,7 +162,7 @@ namespace BedrockLauncher
         }
         private void MainPlayButton_Click(object sender, RoutedEventArgs e)
         {
-            Properties.Settings.Default.LastSelectedVersion = InstallationsList.SelectedIndex;
+            Properties.Settings.Default.CurrentInstallation = InstallationsList.SelectedIndex;
             Properties.Settings.Default.Save();
             var i = InstallationsList.SelectedItem as Installation;
             ConfigManager.GameManager.Play(i);

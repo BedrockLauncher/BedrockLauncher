@@ -88,7 +88,7 @@
                     <Image Source="Resources/images/icon.ico" Margin="3" HorizontalAlignment="Left" Height="42" Width="42"/>
                 </Grid>
             </Button>
-            <Grid Grid.Row="1" x:Name="ProgressBarGrid" Background="#FF262626" Visibility="Visible">
+            <Grid Grid.Row="1" x:Name="ProgressBarGrid" Background="#FF262626" Visibility="Collapsed">
                 <ProgressBar x:Name="progressSizeHack" Height="32" Margin="10,8,10,22" Foreground="#FF008542" Background="Black" BorderBrush="Black" Minimum="0" Maximum="{Binding StateChangeInfo.TotalSize}" Value="{Binding StateChangeInfo.DownloadedBytes}"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock x:Name="progressbarcontent" SnapsToDevicePixels="True" Margin="26,-15,0,0" FontSize="12" Text="{DynamicResource MainPage_ProgressBarDownloading}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>

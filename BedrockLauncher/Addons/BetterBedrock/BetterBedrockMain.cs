@@ -114,7 +114,7 @@ namespace BedrockLauncher
 
 
 
-            Properties.Settings.Default.StupidThing = true;
+            //Properties.Settings.Default.StupidThing = true;
             Properties.Settings.Default.Save();
             Console.WriteLine("Magic Done");
         }

@@ -37,6 +37,12 @@ using BedrockLauncher.Pages.ProfileManagementScreen;
 using System.Windows.Media.Animation;
 using ServerTab;
 using BedrockLauncher.Core;
+using System.Security.AccessControl;
+using System.Security;
+using System.Security.Principal;
+using System.Security.Policy;
+using System.Security.RightsManagement;
+using System.Security.Permissions;
 
 using Version = BedrockLauncher.Classes.Version;
 
@@ -77,7 +83,7 @@ namespace BedrockLauncher.Methods
 
         public class GameStateArgs : EventArgs
         {
-            public static GameStateArgs Empty => new GameStateArgs();
+            public static new GameStateArgs Empty => new GameStateArgs();
 
         }
 
@@ -142,6 +148,7 @@ namespace BedrockLauncher.Methods
 
             Task.Run(async () =>
             {
+                SetInstallationDataPath();
                 v.StateChangeInfo = new VersionStateChangeInfo();
                 v.StateChangeInfo.IsLaunching = true;
                 string gameDir = Path.GetFullPath(v.GameDirectory);
@@ -172,7 +179,7 @@ namespace BedrockLauncher.Methods
                     v.StateChangeInfo = null;
                     // close launcher if needed and hide progressbar
                     Application.Current.Dispatcher.Invoke(() => { ConfigManager.MainThread.ProgressBarGrid.Visibility = Visibility.Hidden; });
-                    if (Properties.Settings.Default.KeepLauncherOpenCheckBox == false)
+                    if (Properties.Settings.Default.KeepLauncherOpen == false)
                     {
                         await Application.Current.Dispatcher.InvokeAsync(() =>
                         {
@@ -422,10 +429,54 @@ namespace BedrockLauncher.Methods
             string tmpDir = GetBackupMinecraftDataDir();
             if (!Directory.Exists(tmpDir))
                 return;
-            var data = ApplicationDataManager.CreateForPackageFamily(MINECRAFT_PACKAGE_FAMILY);
-            Debug.WriteLine("Moving backup Minecraft data to: " + data.LocalFolder.Path);
-            RestoreMove(tmpDir, data.LocalFolder.Path);
+            string recoveryPath = "/.minecraft_bedrock/installations/recovery_data/packageData";
+            Debug.WriteLine("Moving backup Minecraft data to: " + recoveryPath);
+            RestoreMove(tmpDir, recoveryPath);
             Directory.Delete(tmpDir, true);
+        }
+        private void SetFolderPermisions(string ProfileFolder)
+        {
+            DirectoryInfo dInfo = Directory.CreateDirectory(ProfileFolder);
+            DirectorySecurity dSecurity = dInfo.GetAccessControl();
+            SecurityIdentifier authenticated_users_identity = new SecurityIdentifier("S-1-5-11");
+            dSecurity.SetOwner(WindowsIdentity.GetCurrent().User);
+            dSecurity.AddAccessRule(new FileSystemAccessRule(authenticated_users_identity, FileSystemRights.FullControl, InheritanceFlags.ObjectInherit | InheritanceFlags.ContainerInherit, PropagationFlags.None, AccessControlType.Allow));
+            dInfo.SetAccessControl(dSecurity);
+        }
+        private void SetLinkPermisions(string PackageFolder)
+        {
+            DirectoryInfo dInfo = new DirectoryInfo(PackageFolder);
+            DirectorySecurity dSecurity = dInfo.GetAccessControl();
+            SecurityIdentifier authenticated_users_identity = new SecurityIdentifier("S-1-5-11");
+            dSecurity.AddAccessRule(new FileSystemAccessRule(authenticated_users_identity, FileSystemRights.FullControl, InheritanceFlags.ObjectInherit | InheritanceFlags.ContainerInherit, PropagationFlags.None, AccessControlType.Allow));
+            dInfo.SetAccessControl(dSecurity);
+        }
+        private void SetInstallationDataPath()
+        {
+            if (Properties.Settings.Default.EnableExperiementalSaveRedirection)
+            {
+                string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY);
+                string ProfileFolder = Path.GetFullPath(Constants.GetInstallationsFolderPath(ConfigManager.CurrentProfile, ConfigManager.CurrentInstallation.DisplayName));
+
+                if (Directory.Exists(PackageFolder))
+                {
+                    DirectoryInfo PackageDirectory = new DirectoryInfo(PackageFolder);
+                    if (PackageDirectory.Attributes.HasFlag(FileAttributes.ReparsePoint))
+                    {
+                        System.IO.Directory.Delete(PackageFolder, true);
+                    }
+                    else
+                    {
+                        BackupMinecraftDataForRemoval();
+                        RestoreMinecraftDataFromReinstall();
+                        System.IO.Directory.Delete(PackageFolder, true);
+                    }
+                }
+
+                SetFolderPermisions(ProfileFolder);
+                Methods.SymLinkHelper.CreateSymbolicLink(PackageFolder, ProfileFolder, SymLinkHelper.SymbolicLinkType.Directory);
+                SetLinkPermisions(PackageFolder);
+            }     
         }
         private string GetPackagePath(Package pkg)
         {

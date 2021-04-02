@@ -41,11 +41,11 @@ namespace BedrockLauncher.Controls
                     AccountsList.ItemsSource = null;
                     AccountsList.ItemsSource = WUTokenHelper.CurrentAccounts;
 
-                    if (WUTokenHelper.CurrentAccounts.Count < Properties.Settings.Default.CurrentMSAccount)
+                    if (WUTokenHelper.CurrentAccounts.Count < Properties.Settings.Default.CurrentInsiderAccount)
                     {
                         AccountsList.SelectedIndex = 0;
                     }
-                    else AccountsList.SelectedIndex = Properties.Settings.Default.CurrentMSAccount;
+                    else AccountsList.SelectedIndex = Properties.Settings.Default.CurrentInsiderAccount;
                 }));
             });
         }
@@ -54,7 +54,7 @@ namespace BedrockLauncher.Controls
         {
             if (AccountsList.SelectedIndex == -1) AccountsList.SelectedIndex = 0;
             else if (WUTokenHelper.CurrentAccounts.Count < AccountsList.SelectedIndex) AccountsList.SelectedIndex = 0;
-            Properties.Settings.Default.CurrentMSAccount = AccountsList.SelectedIndex;
+            Properties.Settings.Default.CurrentInsiderAccount = AccountsList.SelectedIndex;
             Properties.Settings.Default.Save();
             RefreshProfileContextMenuItems();
         }

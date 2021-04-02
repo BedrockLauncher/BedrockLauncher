@@ -29,8 +29,10 @@ namespace BedrockLauncher.Pages.SettingsScreen
         private void Page_Initialized(object sender, EventArgs e)
         {
             // Set checkboxes
-            keepLauncherOpenCheckBox.IsChecked = Properties.Settings.Default.KeepLauncherOpenCheckBox;
-            usedFixedInstallLocation.IsChecked = Properties.Settings.Default.FixedInstallFolder;
+            keepLauncherOpenCheckBox.IsChecked = Properties.Settings.Default.KeepLauncherOpen;
+            useFixedInstallLocation.IsChecked = !Properties.Settings.Default.PortableInstalls;
+            useFixedProfileLocation.IsChecked = !Properties.Settings.Default.PortableProfiles;
+            experiementalDataSaveRedirection.IsChecked = Properties.Settings.Default.EnableExperiementalSaveRedirection;
         }
 
         private void keepLauncherOpenCheckBox_Checked(object sender, RoutedEventArgs e)
@@ -39,27 +41,62 @@ namespace BedrockLauncher.Pages.SettingsScreen
             switch (keepLauncherOpenCheckBox.IsChecked)
             {
                 case true:
-                    Properties.Settings.Default.KeepLauncherOpenCheckBox = true;
+                    Properties.Settings.Default.KeepLauncherOpen = true;
                     Properties.Settings.Default.Save();
                     break;
                 case false:
-                    Properties.Settings.Default.KeepLauncherOpenCheckBox = false;
+                    Properties.Settings.Default.KeepLauncherOpen = false;
                     Properties.Settings.Default.Save();
                     break;
             }
         }
 
-        private void usedFixedInstallLocation_Click(object sender, RoutedEventArgs e)
+        private void useFixedInstallLocation_Click(object sender, RoutedEventArgs e)
         {
             // get and save value of checkbox
-            switch (usedFixedInstallLocation.IsChecked)
+            switch (useFixedInstallLocation.IsChecked)
             {
                 case true:
-                    Properties.Settings.Default.FixedInstallFolder = true;
+                    Properties.Settings.Default.PortableInstalls = false;
                     Properties.Settings.Default.Save();
                     break;
                 case false:
-                    Properties.Settings.Default.FixedInstallFolder = false;
+                    Properties.Settings.Default.PortableInstalls = true;
+                    Properties.Settings.Default.Save();
+                    break;
+            }
+
+            ConfigManager.ReloadVersions();
+        }
+
+        private void useFixedProfileLocation_Click(object sender, RoutedEventArgs e)
+        {
+            // get and save value of checkbox
+            switch (useFixedProfileLocation.IsChecked)
+            {
+                case true:
+                    Properties.Settings.Default.PortableProfiles = false;
+                    Properties.Settings.Default.Save();
+                    break;
+                case false:
+                    Properties.Settings.Default.PortableProfiles = true;
+                    Properties.Settings.Default.Save();
+                    break;
+            }
+
+            ConfigManager.ReloadProfiles();
+        }
+
+        private void experiementalDataSaveRedirection_Click(object sender, RoutedEventArgs e)
+        {
+            switch (experiementalDataSaveRedirection.IsChecked)
+            {
+                case true:
+                    Properties.Settings.Default.EnableExperiementalSaveRedirection = true;
+                    Properties.Settings.Default.Save();
+                    break;
+                case false:
+                    Properties.Settings.Default.EnableExperiementalSaveRedirection = false;
                     Properties.Settings.Default.Save();
                     break;
             }

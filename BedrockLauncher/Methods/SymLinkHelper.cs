@@ -6,7 +6,7 @@ namespace BedrockLauncher.Methods
     public class SymLinkHelper
     {
         [DllImport("kernel32.dll")]
-        static extern bool CreateSymbolicLink(
+        public static extern bool CreateSymbolicLink(
         string lpSymlinkFileName, string lpTargetFileName, SymbolicLinkType dwFlags);
 
         public enum SymbolicLinkType

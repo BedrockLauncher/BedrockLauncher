@@ -11,19 +11,13 @@
     <Setting Name="ShowBetas" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="ShowNonInstalled" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="LastSelectedVersion" Type="System.Int32" Scope="User">
+    <Setting Name="CurrentInstallation" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="StupidThing" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="IsFirstLaunch" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="KeepLauncherOpenCheckBox" Type="System.Boolean" Scope="User">
+    <Setting Name="KeepLauncherOpen" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="GithubPage" Type="System.String" Scope="Application">
@@ -35,17 +29,17 @@
     <Setting Name="ShowReleases" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="CurrentMSAccount" Type="System.Int32" Scope="User">
+    <Setting Name="CurrentInsiderAccount" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="FixedInstallFolder" Type="System.Boolean" Scope="User">
+    <Setting Name="PortableInstalls" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="ShowInstallationBetas" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+    <Setting Name="PortableProfiles" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="ShowInstallationReleases" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+    <Setting Name="EnableExperiementalSaveRedirection" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

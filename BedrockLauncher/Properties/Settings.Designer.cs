@@ -58,37 +58,13 @@ namespace BedrockLauncher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ShowNonInstalled {
-            get {
-                return ((bool)(this["ShowNonInstalled"]));
-            }
-            set {
-                this["ShowNonInstalled"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int LastSelectedVersion {
+        public int CurrentInstallation {
             get {
-                return ((int)(this["LastSelectedVersion"]));
+                return ((int)(this["CurrentInstallation"]));
             }
             set {
-                this["LastSelectedVersion"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool StupidThing {
-            get {
-                return ((bool)(this["StupidThing"]));
-            }
-            set {
-                this["StupidThing"] = value;
+                this["CurrentInstallation"] = value;
             }
         }
         
@@ -107,12 +83,12 @@ namespace BedrockLauncher.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool KeepLauncherOpenCheckBox {
+        public bool KeepLauncherOpen {
             get {
-                return ((bool)(this["KeepLauncherOpenCheckBox"]));
+                return ((bool)(this["KeepLauncherOpen"]));
             }
             set {
-                this["KeepLauncherOpenCheckBox"] = value;
+                this["KeepLauncherOpen"] = value;
             }
         }
         
@@ -152,48 +128,48 @@ namespace BedrockLauncher.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int CurrentMSAccount {
+        public int CurrentInsiderAccount {
             get {
-                return ((int)(this["CurrentMSAccount"]));
+                return ((int)(this["CurrentInsiderAccount"]));
             }
             set {
-                this["CurrentMSAccount"] = value;
+                this["CurrentInsiderAccount"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool FixedInstallFolder {
+        public bool PortableInstalls {
             get {
-                return ((bool)(this["FixedInstallFolder"]));
+                return ((bool)(this["PortableInstalls"]));
             }
             set {
-                this["FixedInstallFolder"] = value;
+                this["PortableInstalls"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ShowInstallationBetas {
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool PortableProfiles {
             get {
-                return ((bool)(this["ShowInstallationBetas"]));
+                return ((bool)(this["PortableProfiles"]));
             }
             set {
-                this["ShowInstallationBetas"] = value;
+                this["PortableProfiles"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ShowInstallationReleases {
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool EnableExperiementalSaveRedirection {
             get {
-                return ((bool)(this["ShowInstallationReleases"]));
+                return ((bool)(this["EnableExperiementalSaveRedirection"]));
             }
             set {
-                this["ShowInstallationReleases"] = value;
+                this["EnableExperiementalSaveRedirection"] = value;
             }
         }
     }

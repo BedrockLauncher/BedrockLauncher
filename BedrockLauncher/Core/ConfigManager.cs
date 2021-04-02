@@ -25,6 +25,7 @@ namespace BedrockLauncher.Core
         public static VersionList AvaliableVersions { get => Versions; }
         public static List<Installation> CurrentInstallations { get => Installations; }
         public static GameManager GameManager { get; private set; } = new GameManager();
+        public static Installation CurrentInstallation { get => ConfigManager.CurrentInstallations[Properties.Settings.Default.CurrentInstallation]; }
 
         #endregion
 
@@ -41,7 +42,7 @@ namespace BedrockLauncher.Core
         public static event EventHandler ConfigStateChanged;
         public class ConfigStateArgs : EventArgs
         {
-            public static ConfigStateArgs Empty => new ConfigStateArgs();
+            public static new ConfigStateArgs Empty => new ConfigStateArgs();
         }
         public static void OnConfigStateChanged(object sender, ConfigStateArgs e)
         {
@@ -82,14 +83,14 @@ namespace BedrockLauncher.Core
 
         #endregion
 
-        #region Version Management
+        #region Versions
 
         public static void LoadVersions()
         {
-            Versions = new VersionList("versions.json", GameManager);
-            RefreshVersionsCache();
+            Versions = new VersionList(Constants.GetVersionsFilePath(), GameManager);
+            ReloadVersions();
         }
-        public static void RefreshVersionsCache()
+        public static void ReloadVersions()
         {
             MainThread.Dispatcher.Invoke(async () =>
             {
@@ -117,18 +118,13 @@ namespace BedrockLauncher.Core
 
         #region Profiles
 
-        public static void SaveProfiles(ProfileList profileList)
-        {
-            string json = JsonConvert.SerializeObject(profileList, Formatting.Indented);
-            File.WriteAllText("user_profile.json", json);
-        }
         public static void LoadProfiles()
         {
             string json;
             ProfileList profileList;
-            if (File.Exists("user_profile.json"))
+            if (File.Exists(Constants.GetProfilesFilePath()))
             {
-                json = File.ReadAllText("user_profile.json");
+                json = File.ReadAllText(Constants.GetProfilesFilePath());
                 try { profileList = JsonConvert.DeserializeObject<ProfileList>(json, JsonSerializerSettings); }
                 catch { profileList = new ProfileList(); }
             }
@@ -144,11 +140,22 @@ namespace BedrockLauncher.Core
                 Console.WriteLine("Path: " + setting.ProfilePath);
                 Console.WriteLine("Skin: " + setting.SkinPath);
 
-                if (setting.Installations == null) setting.Installations = new List<Installation>(); 
+                if (setting.Installations == null) setting.Installations = new List<Installation>();
                 Console.WriteLine("Installations: " + setting.Installations.Count);
             }
 
             Profiles = profileList;
+
+            if (ProfileList.profiles.Count() == 0) MainThread.MainWindowOverlayFrame.Navigate(new Pages.FirstLaunch.WelcomePage());
+        }
+        public static void ReloadProfiles()
+        {
+            LoadProfiles();
+        }
+        public static void SaveProfiles(ProfileList profileList)
+        {
+            string json = JsonConvert.SerializeObject(profileList, Formatting.Indented);
+            File.WriteAllText(Constants.GetProfilesFilePath(), json);
         }
         public static bool CreateProfile(string profile)
         {
@@ -193,6 +200,7 @@ namespace BedrockLauncher.Core
             }
 
         }
+
 
         #endregion
 
@@ -281,8 +289,8 @@ namespace BedrockLauncher.Core
         public static bool Filter_InstallationList(object obj)
         {
             Installation v = obj as Installation;
-            if (!Properties.Settings.Default.ShowInstallationBetas && v.IsBeta) return false;
-            else if (!Properties.Settings.Default.ShowInstallationReleases && !v.IsBeta) return false;
+            if (!Properties.Settings.Default.ShowBetas && v.IsBeta) return false;
+            else if (!Properties.Settings.Default.ShowReleases && !v.IsBeta) return false;
             else return true;
         }
 

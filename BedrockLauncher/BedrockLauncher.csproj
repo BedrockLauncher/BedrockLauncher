@@ -161,10 +161,12 @@
     <Compile Include="Classes\NotifyPropertyChangedBase.cs" />
     <Compile Include="Classes\Version.cs" />
     <Compile Include="Classes\VersionStateChangeInfo.cs" />
+    <Compile Include="Core\Constants.cs" />
     <Compile Include="Methods\GameManager.cs" />
     <Compile Include="Core\LanguageManager.cs" />
     <Compile Include="Interfaces\ICommonVersionCommands.cs" />
     <Compile Include="Methods\ConsoleArgumentParser.cs" />
+    <Compile Include="Methods\SymLinkHelper.cs" />
     <Compile Include="Pages\ErrorScreen\ErrorScreen.xaml.cs">
       <DependentUpon>ErrorScreen.xaml</DependentUpon>
     </Compile>

@@ -47,15 +47,15 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                if (Properties.Settings.Default.FixedInstallFolder)
+                if (Properties.Settings.Default.PortableInstalls)
                 {
-                    string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData); 
-                    string restOfPath = "/.minecraft_bedrock/versions/Minecraft-" + Name;
-                    return appData + restOfPath;
+                    return "versions/Minecraft-" + Name;
                 }
                 else
                 {
-                    return "versions/Minecraft-" + Name;
+                    string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                    string restOfPath = "/.minecraft_bedrock/versions/Minecraft-" + Name;
+                    return appData + restOfPath;
                 }
             }
         }
