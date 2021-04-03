@@ -12,7 +12,8 @@
              Initialized="LanguageCombobox_Initialized"
              Foreground="White"
              Style="{DynamicResource ComboBoxStyle2}" 
-             SelectedIndex="1">
+             SelectedIndex="1"
+             FontSize="14">
         <ComboBoxItem>
             <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" Text="{DynamicResource MainWindowSettingsScreen_en_US}" FontWeight="Normal" VerticalAlignment="Center"/>
         </ComboBoxItem>

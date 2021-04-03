@@ -24,7 +24,7 @@
     <Grid Margin="0,0,0,0">
         <StackPanel>
             <TextBlock Margin="42,42,0,0" Text="{DynamicResource MainWindowSettingsScreen_LanguageSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-            <controls:LanguageCombobox HorizontalAlignment="Left" Margin="42,20,0,0" VerticalAlignment="Top" Padding="10,7,5,3" x:Name="LanguageCombobox"></controls:LanguageCombobox>
+            <controls:LanguageCombobox HorizontalAlignment="Left" Margin="42,20,0,0" FontSize="14" VerticalAlignment="Top" Padding="10,4,5,3" x:Name="LanguageCombobox"></controls:LanguageCombobox>
             <TextBlock Margin="42,28,0,0" Text="{DynamicResource MainWindowSettingsScreen_LauncherSettingsSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
             <CheckBox x:Name="keepLauncherOpenCheckBox" Click="keepLauncherOpenCheckBox_Checked" Foreground="White" Content="{DynamicResource MainWindowSettingsScreen_KeepLauncherOpen}" HorizontalAlignment="Left" Margin="42,20,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
             <CheckBox x:Name="portableModeCheckBox" Click="useFixedInstallLocation_Click" Foreground="White" Content="{DynamicResource MainWindowSettingsScreen_PortableMode}" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>

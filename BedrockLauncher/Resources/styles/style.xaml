@@ -70,7 +70,7 @@
     <DataTemplate x:Key="templateInstallation" DataType="{x:Type classes:Installation}">
         <Grid>
             <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="{Binding DisplayName}"/>
-            <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="SemiBold" Padding="45,21,0,0" Text="{Binding VersionName}"/>
+            <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="Normal" Padding="45,21,0,0" Text="{Binding VersionName}"/>
             <Image Source="{Binding IconPath}" HorizontalAlignment="Left" Width="32" Height="32" Margin="5,1,0,0">
                 <Image.OpacityMask>
                     <ImageBrush ImageSource="{Binding IconPath}"/>

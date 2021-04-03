@@ -155,7 +155,7 @@
             </Grid.ColumnDefinitions>
             <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Top">
                 <Themes:SystemDropShadowChrome x:Name="shadow" Color="Transparent" MaxHeight="295" MinWidth="{Binding ActualWidth, ElementName=templateRoot}">
-                    <Border Padding="0,3,0,4" CornerRadius="5,5,5,5" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Width="212" x:Name="dropDownBorder" BorderBrush="#FF131313" BorderThickness="1" Background="#FF131313">
+                    <Border Margin="0,0,0,3" Padding="0,3,0,4" CornerRadius="3" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Width="272" x:Name="dropDownBorder" BorderBrush="#FF131313" BorderThickness="1" Background="#FF131313">
                         <!--Выдвигающийся элемент-->
                         <ScrollViewer x:Name="DropDownScrollViewer">
                             <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
@@ -278,7 +278,7 @@
     <Style x:Key="ComboBoxItemStyle1" TargetType="{x:Type ComboBoxItem}">
         <!-- Размер предметов в комбобоксе -->
         <Setter Property="Height" Value="51" />
-        <Setter Property="Width" Value="212" />
+        <Setter Property="Width" Value="274" />
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Padding" Value="0,6,0,0"/>
         <!-- Позиция текста в предмете комбобокса -->

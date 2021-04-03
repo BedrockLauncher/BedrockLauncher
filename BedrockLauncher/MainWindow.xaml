@@ -96,8 +96,8 @@
                 </StackPanel>
             </Grid>
             <Grid x:Name="PlayScreenBorder" Grid.Row="2" x:FieldModifier="public" VerticalAlignment="Bottom" Background="#FF262626">
-                <TextBlock Style="{DynamicResource HeaderTextblock}" Text="NOT APPROVED BY OR ASSOCIATED WITH MOJANG" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="0,0,5,0" Margin="0,0,2,0"/>
-                <Button 
+                <TextBlock Style="{DynamicResource HeaderTextblock}" Text="NOT APPROVED BY OR ASSOCIATED WITH MOJANG" HorizontalAlignment="Right" VerticalAlignment="Bottom" Padding="0,0,5,0" Margin="0,0,0,0"/>
+                <Button
                     x:Name="MainPlayButton" 
                     Click="MainPlayButton_Click" 
                     HorizontalAlignment="Center" 
