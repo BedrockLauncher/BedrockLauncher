@@ -20,7 +20,7 @@
                         <ToolTip Content="{DynamicResource MainPage_InstallationsButton}"/>
                     </ToggleButton.ToolTip>
                 </ToggleButton>
-                <ToggleButton x:Name="SkinsButton" Visibility="Collapsed" Click="SkinsButton_Click" Content="{DynamicResource ResourceKey=MainPage_SkinsButton}"  Style="{DynamicResource ToolbarButton}"  VerticalAlignment="Top" HorizontalAlignment="Left" Height="27" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="3,0,0,0">
+                <ToggleButton x:Name="SkinsButton" Click="SkinsButton_Click" Content="{DynamicResource ResourceKey=MainPage_SkinsButton}"  Style="{DynamicResource ToolbarButton}"  VerticalAlignment="Top" HorizontalAlignment="Left" Height="27" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="3,0,0,0">
                     <ToggleButton.ToolTip>
                         <ToolTip Content="{DynamicResource MainPage_SkinsButton}"/>
                     </ToggleButton.ToolTip>

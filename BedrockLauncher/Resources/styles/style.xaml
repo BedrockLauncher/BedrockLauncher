@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BedrockLauncher"
         xmlns:classes="clr-namespace:BedrockLauncher.Classes"
+        xmlns:controls="clr-namespace:BedrockLauncher.Controls"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" >
 
 
@@ -66,6 +67,13 @@
             </Grid>
         </Grid>
     </DataTemplate>
+
+    <DataTemplate x:Key="templateSkinPreview" DataType="{x:Type classes:MCSkin}">
+        <Grid Margin="5" MinHeight="64" MaxHeight="64" Height="64">
+            <Image RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="Uniform" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source="{Binding rendered_preview}"></Image>
+        </Grid>
+    </DataTemplate>
+
 
     <DataTemplate x:Key="templateInstallation" DataType="{x:Type classes:Installation}">
         <Grid>

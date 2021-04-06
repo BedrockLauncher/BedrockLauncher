@@ -44,9 +44,9 @@
     <SolidColorBrush x:Key="Item.MouseOver.Background" Color="#33FFFFFF"/>
     <SolidColorBrush x:Key="Item.MouseOver.Border" Color="#33FFFFFF"/>
     <SolidColorBrush x:Key="Item.SelectedInactive.Background" Color="Transparent"/>
-    <SolidColorBrush x:Key="Item.SelectedInactive.Border" Color="Transparent"/>
-    <SolidColorBrush x:Key="Item.SelectedActive.Background" Color="#11FFFFFF"/>
-    <SolidColorBrush x:Key="Item.SelectedActive.Border" Color="#11FFFFFF"/>
+    <SolidColorBrush x:Key="Item.SelectedInactive.Border" Color="White"/>
+    <SolidColorBrush x:Key="Item.SelectedActive.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="Item.SelectedActive.Border" Color="White"/>
     <Style TargetType="{x:Type ListViewItem}">
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Padding" Value="4,1"/>

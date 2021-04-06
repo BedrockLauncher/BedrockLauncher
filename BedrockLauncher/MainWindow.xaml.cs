@@ -37,6 +37,7 @@ using BedrockLauncher.Pages.ProfileManagementScreen;
 using System.Windows.Media.Animation;
 using ServerTab;
 using BedrockLauncher.Core;
+using BedrockLauncher.Pages.SkinsScreen;
 
 using Version = BedrockLauncher.Classes.Version;
 
@@ -60,10 +61,12 @@ namespace BedrockLauncher
         private GeneralSettingsPage generalSettingsPage = new GeneralSettingsPage();
         private SettingsScreen settingsScreenPage = new SettingsScreen();
         private NewsScreenPage newsScreenPage = new NewsScreenPage(Updater);
-        private NoContentPage noContentPage = new NoContentPage();
         private PlayScreenPage playScreenPage = new PlayScreenPage();
         private InstallationsScreen installationsScreen = new InstallationsScreen();
         private ServersScreenPage serversScreenPage = new ServersScreenPage(serversTab);
+        private SkinsPage skinsPage = new SkinsPage();
+
+        private NoContentPage noContentPage = new NoContentPage();
         #endregion
 
         #region Init
@@ -319,7 +322,7 @@ namespace BedrockLauncher
         {
             NavigateToMainPage(true);
             mainPage.SkinsButton.IsChecked = true;
-            mainPage.MainPageFrame.Navigate(noContentPage);
+            mainPage.MainPageFrame.Navigate(skinsPage);
             mainPage.LastButtonName = mainPage.SkinsButton.Name;
         }
         public void NavigateToPatchNotes()

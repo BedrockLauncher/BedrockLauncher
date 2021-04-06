@@ -68,7 +68,7 @@ namespace BedrockLauncher.Methods
 
         #region Constants
 
-        private static readonly string MINECRAFT_PACKAGE_FAMILY = "Microsoft.MinecraftUWP_8wekyb3d8bbwe";
+        public static readonly string MINECRAFT_PACKAGE_FAMILY = "Microsoft.MinecraftUWP_8wekyb3d8bbwe";
 
         #endregion
 
@@ -131,7 +131,12 @@ namespace BedrockLauncher.Methods
 
         public void OpenFolder(Installation i)
         {
-            Process.Start("explorer.exe", Constants.GetInstallationsFolderPath(ConfigManager.CurrentProfile, i.DirectoryName));
+            Process.Start("explorer.exe", Filepaths.GetInstallationsFolderPath(ConfigManager.CurrentProfile, i.DirectoryName));
+        }
+
+        public void OpenFolder(MCSkinPack i)
+        {
+            Process.Start("explorer.exe", i.Directory);
         }
 
         public void ConvertToInstallation()
@@ -330,7 +335,7 @@ namespace BedrockLauncher.Methods
                         Directory.Move(data.LocalFolder.Path, tmpDir);
                     }
 
-                    string recoveryPath = Constants.GetInstallationsFolderPath(ConfigManager.CurrentProfile, "Recovery_Data");
+                    string recoveryPath = Filepaths.GetInstallationsFolderPath(ConfigManager.CurrentProfile, "Recovery_Data");
 
                     if (!Directory.Exists(recoveryPath)) Directory.CreateDirectory(recoveryPath);
 
@@ -483,7 +488,7 @@ namespace BedrockLauncher.Methods
             if (Properties.Settings.Default.EnableExperiementalSaveRedirection)
             {
                 string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY);
-                string ProfileFolder = Path.GetFullPath(Constants.GetInstallationsFolderPath(ConfigManager.CurrentProfile, ConfigManager.CurrentInstallation.DirectoryName));
+                string ProfileFolder = Path.GetFullPath(Filepaths.GetInstallationsFolderPath(ConfigManager.CurrentProfile, ConfigManager.CurrentInstallation.DirectoryName));
 
                 if (Directory.Exists(PackageFolder))
                 {

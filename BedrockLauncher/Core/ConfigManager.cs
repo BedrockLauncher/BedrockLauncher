@@ -21,7 +21,14 @@ namespace BedrockLauncher.Core
         #region Helpers
 
         public static string CurrentProfile { get => Properties.Settings.Default.CurrentProfile; }
-        public static Installation CurrentInstallation { get => ConfigManager.CurrentInstallations[Properties.Settings.Default.CurrentInstallation]; }
+        public static Installation CurrentInstallation 
+        { 
+            get
+            {
+                if (ConfigManager.CurrentInstallations == null) return null;
+                return ConfigManager.CurrentInstallations[Properties.Settings.Default.CurrentInstallation];
+            }
+        }
 
         #endregion
 
@@ -86,7 +93,7 @@ namespace BedrockLauncher.Core
 
         public static void LoadVersions()
         {
-            Versions = new VersionList(Constants.GetVersionsFilePath(), GameManager);
+            Versions = new VersionList(Filepaths.GetVersionsFilePath(), GameManager);
             ReloadVersions();
         }
         public static void ReloadVersions()
@@ -121,9 +128,9 @@ namespace BedrockLauncher.Core
         {
             string json;
             ProfileList profileList;
-            if (File.Exists(Constants.GetProfilesFilePath()))
+            if (File.Exists(Filepaths.GetProfilesFilePath()))
             {
-                json = File.ReadAllText(Constants.GetProfilesFilePath());
+                json = File.ReadAllText(Filepaths.GetProfilesFilePath());
                 try { profileList = JsonConvert.DeserializeObject<ProfileList>(json, JsonSerializerSettings); }
                 catch { profileList = new ProfileList(); }
             }
@@ -160,7 +167,7 @@ namespace BedrockLauncher.Core
         public static void SaveProfiles()
         {
             string json = JsonConvert.SerializeObject(CleanProfiles(), Formatting.Indented);
-            File.WriteAllText(Constants.GetProfilesFilePath(), json);
+            File.WriteAllText(Filepaths.GetProfilesFilePath(), json);
             Init(true);
         }
         public static bool CreateProfile(string profile)

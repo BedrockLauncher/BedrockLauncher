@@ -2,7 +2,6 @@ D:\Source\mc_repos\BedrockLauncher\Uninstaller\bin\Debug\Uninstaller.exe.manifes
 D:\Source\mc_repos\BedrockLauncher\Uninstaller\bin\Debug\Uninstaller.application
 D:\Source\mc_repos\BedrockLauncher\Uninstaller\bin\Debug\Uninstaller.exe
 D:\Source\mc_repos\BedrockLauncher\Uninstaller\bin\Debug\Uninstaller.pdb
-D:\Source\mc_repos\BedrockLauncher\Uninstaller\obj\Debug\Uninstaller.csprojAssemblyReference.cache
 D:\Source\mc_repos\BedrockLauncher\Uninstaller\obj\Debug\Uninstaller.csproj.CoreCompileInputs.cache
 D:\Source\mc_repos\BedrockLauncher\Uninstaller\obj\Debug\Uninstaller.TrustInfo.xml
 D:\Source\mc_repos\BedrockLauncher\Uninstaller\obj\Debug\Uninstaller.exe.manifest
