@@ -24,20 +24,11 @@ using Windows.System;
 using BedrockLauncher.Interfaces;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Classes;
-using BedrockLauncher.Pages.GameScreen;
-using BedrockLauncher.Pages.NoContentScreen;
-using BedrockLauncher.Pages.PlayScreen;
-using BedrockLauncher.Pages.ServersScreen;
-using BedrockLauncher.Pages.SettingsScreen;
-using BedrockLauncher.Pages.FirstLaunch;
-using BedrockLauncher.Pages.ErrorScreen;
-using BedrockLauncher.Pages.InstallationsScreen;
-using BedrockLauncher.Pages.NewsScreen;
-using BedrockLauncher.Pages.ProfileManagementScreen;
 using System.Windows.Media.Animation;
 using ServerTab;
 using BedrockLauncher.Core;
-using BedrockLauncher.Pages.SkinsScreen;
+using BedrockLauncher.Pages;
+using BedrockLauncher.Pages.FirstLaunch;
 
 using Version = BedrockLauncher.Classes.Version;
 
@@ -57,13 +48,13 @@ namespace BedrockLauncher
         private static ServersTab serversTab = new ServersTab();
 
         // load pages to not create new in memory after
-        private GamePage mainPage = new GamePage();
+        private GameTabs mainPage = new GameTabs();
         private GeneralSettingsPage generalSettingsPage = new GeneralSettingsPage();
-        private SettingsScreen settingsScreenPage = new SettingsScreen();
+        private SettingsTabs settingsScreenPage = new SettingsTabs();
         private NewsScreenPage newsScreenPage = new NewsScreenPage(Updater);
         private PlayScreenPage playScreenPage = new PlayScreenPage();
         private InstallationsScreen installationsScreen = new InstallationsScreen();
-        private ServersScreenPage serversScreenPage = new ServersScreenPage(serversTab);
+        private ServersPage serversScreenPage = new ServersPage(serversTab);
         private SkinsPage skinsPage = new SkinsPage();
 
         private NoContentPage noContentPage = new NoContentPage();
@@ -74,15 +65,18 @@ namespace BedrockLauncher
         public MainWindow()
         {
             InitializeComponent();
+            Init();
+        }
+
+        private void Init()
+        {
             Panel.SetZIndex(MainWindowOverlayFrame, 0);
-            //serversTab.readServers();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             // show first launch window if no profile
             if (Properties.Settings.Default.CurrentProfile == "") MainWindowOverlayFrame.Navigate(new WelcomePage());
-            Init();
-        }
-        private void Init()
-        {
+            NavigateToPlayScreen();
+
+
             ConfigManager.Init();
             ConfigManager.GameManager.GameStateChanged += GameManager_GameStateChanged;
             ConfigManager.ConfigStateChanged += ConfigManager_ConfigStateChanged;
@@ -93,6 +87,12 @@ namespace BedrockLauncher
 
         #region UI
 
+        public void RefreshVersionControls()
+        {
+            settingsScreenPage.versionsSettingsPage.VersionsList.ItemsSource = ConfigManager.Versions;
+            var view = CollectionViewSource.GetDefaultView(settingsScreenPage.versionsSettingsPage.VersionsList.ItemsSource) as CollectionView;
+            view.Filter = ConfigManager.Filter_VersionList;
+        }
         public void RefreshInstallationControls()
         {
             installationsScreen.InstallationsList.ItemsSource = ConfigManager.CurrentInstallations;
@@ -142,7 +142,6 @@ namespace BedrockLauncher
             ProgressBarGrid.Visibility = Visibility.Visible;
             ProgressBarText.Visibility = Visibility.Hidden;
             progressbarcontent.Visibility = Visibility.Hidden;
-            ProgressBarText.Visibility = Visibility.Hidden;
             
             Storyboard storyboard = new Storyboard();
             ThicknessAnimation animation = new ThicknessAnimation
@@ -161,7 +160,6 @@ namespace BedrockLauncher
         {
             ProgressBarText.Visibility = Visibility.Visible;
             progressbarcontent.Visibility = Visibility.Visible;
-            ProgressBarText.Visibility = Visibility.Visible;
         }
         private void MainPlayButton_Click(object sender, RoutedEventArgs e)
         {
@@ -181,10 +179,12 @@ namespace BedrockLauncher
         private void ConfigManager_ConfigStateChanged(object sender, EventArgs e)
         {
             RefreshInstallationControls();
+            RefreshVersionControls();
         }
         private void GameManager_GameStateChanged(object sender, EventArgs e)
         {
             UpdatePlayButton();
+            RefreshVersionControls();
         }
         private void GameStateChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -199,28 +199,29 @@ namespace BedrockLauncher
 
         #region Navigation
 
-        public void ResetButtonManager(ToggleButton toggleButton)
+        public void ResetButtonManager(string buttonName)
         {
             // just all buttons list
             // ya i know this is really bad, i need to learn mvvm instead of doing this shit
             // but this works fine, at least
             List<ToggleButton> toggleButtons = new List<ToggleButton>() { 
-                // mainwindow
-                ServersButton,
-                NewsButton,
-                BedrockEditionButton,
-                JavaEditionButton,
-                SettingsButton, 
-                
-                // mainpage (gonna be deleted)
+                // main window
+                ServersButton.Button,
+                NewsButton.Button,
+                BedrockEditionButton.Button,
+                JavaEditionButton.Button,
+                SettingsButton.Button,
+
+                // play tab
                 mainPage.PlayButton,
                 mainPage.InstallationsButton,
                 mainPage.SkinsButton,
                 mainPage.PatchNotesButton,
                 
-                // settings screen lol
+                // settings screen
                 settingsScreenPage.GeneralButton,
                 settingsScreenPage.AccountsButton,
+                settingsScreenPage.VersionsButton,
                 settingsScreenPage.AboutButton
             };
 
@@ -228,31 +229,40 @@ namespace BedrockLauncher
 
             PlayScreenBorder.Visibility = Visibility.Collapsed;
 
-            toggleButton.IsChecked = true;
+            if (toggleButtons.Exists(x => x.Name == buttonName))
+            {
+                toggleButtons.Where(x => x.Name == buttonName).FirstOrDefault().IsChecked = true;
+            }
         }
+
         public void ButtonManager(object sender, RoutedEventArgs e)
         {
             var toggleButton = sender as ToggleButton;
-            ResetButtonManager(toggleButton);
+            ButtonManager_Base(toggleButton.Name);
+        }
 
-            if (toggleButton.Name == BedrockEditionButton.Name) NavigateToMainPage();
-            else if (toggleButton.Name == NewsButton.Name) NavigateToNewsPage();
-            else if (toggleButton.Name == JavaEditionButton.Name) NavigateToJavaLauncher();
-            else if (toggleButton.Name == ServersButton.Name) NavigateToServersScreen();
-            else if (toggleButton.Name == SettingsButton.Name) NavigateToSettings();
+        public void ButtonManager_Base(string senderName)
+        {
+            ResetButtonManager(senderName);
+
+            if (senderName == BedrockEditionButton.Name) NavigateToMainPage();
+            else if (senderName == NewsButton.Name) NavigateToNewsPage();
+            else if (senderName == JavaEditionButton.Name) NavigateToJavaLauncher();
+            else if (senderName == ServersButton.Name) NavigateToServersScreen();
+            else if (senderName == SettingsButton.Name) NavigateToSettings();
 
             // MainPageButtons
-            else if (toggleButton.Name == mainPage.PlayButton.Name) NavigateToPlayScreen();
-            else if (toggleButton.Name == mainPage.InstallationsButton.Name) NavigateToInstallationsPage();
-            else if (toggleButton.Name == mainPage.SkinsButton.Name) NavigateToSkinsPage();
-            else if (toggleButton.Name == mainPage.PatchNotesButton.Name) NavigateToPatchNotes();
+            else if (senderName == mainPage.PlayButton.Name) NavigateToPlayScreen();
+            else if (senderName == mainPage.InstallationsButton.Name) NavigateToInstallationsPage();
+            else if (senderName == mainPage.SkinsButton.Name) NavigateToSkinsPage();
+            else if (senderName == mainPage.PatchNotesButton.Name) NavigateToPatchNotes();
             else NavigateToPlayScreen();
 
         }
 
         public void NavigateToMainPage(bool rooted = false)
         {
-            BedrockEditionButton.IsChecked = true;
+            BedrockEditionButton.Button.IsChecked = true;
             MainWindowFrame.Navigate(mainPage);
             PlayScreenBorder.Visibility = Visibility.Visible;
 
@@ -267,6 +277,7 @@ namespace BedrockLauncher
         public void NavigateToNewsPage()
         {
             MainWindowFrame.Navigate(newsScreenPage);
+            NewsButton.Button.IsChecked = true;
         }
         public void NavigateToJavaLauncher()
         {
@@ -289,7 +300,7 @@ namespace BedrockLauncher
             if (File.Exists(file))
             {
                 MainWindowFrame.Navigate(serversScreenPage);
-                ServersButton.IsChecked = true;
+                ServersButton.Button.IsChecked = true;
             }
             else
             {
@@ -300,6 +311,7 @@ namespace BedrockLauncher
         public void NavigateToSettings()
         {
             settingsScreenPage.GeneralButton.IsChecked = true;
+            SettingsButton.Button.IsChecked = true;
             MainWindowFrame.Navigate(settingsScreenPage);
             settingsScreenPage.SettingsScreenFrame.Navigate(generalSettingsPage);
         }

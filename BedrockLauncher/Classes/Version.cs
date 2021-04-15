@@ -49,12 +49,12 @@ namespace BedrockLauncher.Classes
             {
                 if (Properties.Settings.Default.PortableMode)
                 {
-                    return "versions/Minecraft-" + Name;
+                    return Methods.Filepaths.PortableLocation + "\\versions\\Minecraft-" + Name;
                 }
                 else
                 {
                     string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                    string restOfPath = "/.minecraft_bedrock/versions/Minecraft-" + Name;
+                    string restOfPath = "\\.minecraft_bedrock\\versions\\Minecraft-" + Name;
                     return appData + restOfPath;
                 }
             }
@@ -66,8 +66,56 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                return (IsBeta ? "(Beta) " : "") + Name;
+                return Name + (IsBeta ? " (Beta) " : "");
             }
+        }
+
+       public string InstallationSize
+        {
+            get
+            {
+                GetInstallSize();
+                return _StoredInstallationSize;
+            }
+        }
+
+        private string _StoredInstallationSize = "N/A";
+        private bool RequireSizeRecalculation = true;
+
+        private async void GetInstallSize()
+        {
+            if (!RequireSizeRecalculation)
+            {
+                RequireSizeRecalculation = true;
+                return;
+            }
+
+            if (Directory.Exists(Path.GetFullPath(GameDirectory)))
+            {
+                DirectoryInfo dirInfo = new DirectoryInfo(Path.GetFullPath(GameDirectory));
+                long dirSize = await Task.Run(() => dirInfo.EnumerateFiles("*", SearchOption.AllDirectories).Sum(file => file.Length));
+
+                string[] sizes = { "B", "KB", "MB", "GB", "TB" };
+                int order = 0;
+                double len = dirSize;
+                while (len >= 1024 && order < sizes.Length - 1)
+                {
+                    order++;
+                    len = len / 1024;
+                }
+
+                // Adjust the format string to your preferences. For example "{0:0.#}{1}" would
+                // show a single decimal place, and no space.
+                _StoredInstallationSize = String.Format("{0:0.##} {1}", len, sizes[order]);
+                RequireSizeRecalculation = false;
+            }
+            else
+            {
+                _StoredInstallationSize = "N/A";
+                RequireSizeRecalculation = false;
+            }
+            OnPropertyChanged("InstallationSize");
+
         }
 
         public string IconPath

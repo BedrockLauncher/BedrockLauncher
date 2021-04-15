@@ -29,12 +29,12 @@ namespace BedrockLauncher.Controls
 
         #region Constants
 
-        public const string LegacyPreview = "resources://Controls/SkinPreview/ItemPreview_Legacy.html";
-        public const string LegacyPreview_Slim = "resources://Controls/SkinPreview/ItemPreview_SlimLegacy.html";
-        public const string NormalPreview = "resources://Controls/SkinPreview/ItemPreview_Normal.html";
-        public const string NormalPreview_Slim = "resources://Controls/SkinPreview/ItemPreview_Slim.html";
+        public const string LegacyPreview = "resources://Controls/SkinPreview/Html/ItemPreview_Legacy.html";
+        public const string LegacyPreview_Slim = "resources://Controls/SkinPreview/Html/ItemPreview_SlimLegacy.html";
+        public const string NormalPreview = "resources://Controls/SkinPreview/Html/ItemPreview_Normal.html";
+        public const string NormalPreview_Slim = "resources://Controls/SkinPreview/Html/ItemPreview_Slim.html";
 
-        public const string NoSkin = "resources://Controls/SkinPreview/NoSkin.png";
+        public const string NoSkin = "resources://Controls/SkinPreview/Html/NoSkin.png";
 
         #endregion
 

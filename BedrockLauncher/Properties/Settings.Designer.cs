@@ -139,7 +139,7 @@ namespace BedrockLauncher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool PortableMode {
             get {
                 return ((bool)(this["PortableMode"]));
@@ -151,13 +151,13 @@ namespace BedrockLauncher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool EnableExperiementalSaveRedirection {
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SaveRedirection {
             get {
-                return ((bool)(this["EnableExperiementalSaveRedirection"]));
+                return ((bool)(this["SaveRedirection"]));
             }
             set {
-                this["EnableExperiementalSaveRedirection"] = value;
+                this["SaveRedirection"] = value;
             }
         }
     }

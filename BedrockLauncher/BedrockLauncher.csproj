@@ -116,6 +116,9 @@
     <PlatformTarget>x86</PlatformTarget>
     <OutputPath>bin\x86\Release\</OutputPath>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
@@ -144,7 +147,14 @@
     </ApplicationDefinition>
     <Compile Include="Addons\BetterBedrock\BetterBedrockMain.cs" />
     <Compile Include="Classes\Installation.cs" />
+    <Compile Include="Classes\MCNetFeedItem.cs" />
     <Compile Include="Classes\MCSkinPack.cs" />
+    <Compile Include="Controls\ServersButton.xaml.cs">
+      <DependentUpon>ServersButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\JavaEditionButton.xaml.cs">
+      <DependentUpon>JavaEditionButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\BlockPicker.xaml.cs">
       <DependentUpon>BlockPicker.xaml</DependentUpon>
     </Compile>
@@ -153,6 +163,15 @@
     </Compile>
     <Compile Include="Controls\LanguageCombobox.xaml.cs">
       <DependentUpon>LanguageCombobox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BedrockEditionButton.xaml.cs">
+      <DependentUpon>BedrockEditionButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NewsButton.xaml.cs">
+      <DependentUpon>NewsButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingsButton.xaml.cs">
+      <DependentUpon>SettingsButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ProfileButton.xaml.cs">
       <DependentUpon>ProfileButton.xaml</DependentUpon>
@@ -180,7 +199,7 @@
     <Compile Include="Methods\ConsoleArgumentParser.cs" />
     <Compile Include="Methods\SymLinkHelper.cs" />
     <Compile Include="Html\ResourceSchemeHandler.cs" />
-    <Compile Include="Pages\ErrorScreen\ErrorScreen.xaml.cs">
+    <Compile Include="Pages\ErrorScreen.xaml.cs">
       <DependentUpon>ErrorScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\FirstLaunch\WelcomePage.xaml.cs">
@@ -195,43 +214,46 @@
     <Compile Include="Pages\FirstLaunch\WelcomePageOne.xaml.cs">
       <DependentUpon>WelcomePageOne.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\InstallationsScreen\ManageInstallationScreen.xaml.cs">
-      <DependentUpon>ManageInstallationScreen.xaml</DependentUpon>
+    <Compile Include="Pages\EditInstallationScreen.xaml.cs">
+      <DependentUpon>EditInstallationScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\InstallationsScreen\InstallationsScreen.xaml.cs">
+    <Compile Include="Pages\VersionsSettingsPage.xaml.cs">
+      <DependentUpon>VersionsSettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\InstallationsScreen.xaml.cs">
       <DependentUpon>InstallationsScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\NewsScreen\NewsScreenPage.xaml.cs">
+    <Compile Include="Pages\NewsScreenPage.xaml.cs">
       <DependentUpon>NewsScreenPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ProfileManagementScreen\AddProfilePage.xaml.cs">
+    <Compile Include="Pages\AddProfilePage.xaml.cs">
       <DependentUpon>AddProfilePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ServersScreen\ServersScreenPage.xaml.cs">
-      <DependentUpon>ServersScreenPage.xaml</DependentUpon>
+    <Compile Include="Pages\ServersPage.xaml.cs">
+      <DependentUpon>ServersPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SettingsScreen\AboutPage.xaml.cs">
+    <Compile Include="Pages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SettingsScreen\AccountsSettingsPage.xaml.cs">
+    <Compile Include="Pages\AccountsSettingsPage.xaml.cs">
       <DependentUpon>AccountsSettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SettingsScreen\GeneralSettingsPage.xaml.cs">
+    <Compile Include="Pages\GeneralSettingsPage.xaml.cs">
       <DependentUpon>GeneralSettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\GameScreen\GamePage.xaml.cs">
-      <DependentUpon>GamePage.xaml</DependentUpon>
+    <Compile Include="Pages\GameTabs.xaml.cs">
+      <DependentUpon>GameTabs.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\NoContentScreen\NoContentPage.xaml.cs">
+    <Compile Include="Pages\NoContentPage.xaml.cs">
       <DependentUpon>NoContentPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PlayScreen\PlayScreenPage.xaml.cs">
+    <Compile Include="Pages\PlayScreenPage.xaml.cs">
       <DependentUpon>PlayScreenPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SkinsScreen\SkinsPage.xaml.cs">
+    <Compile Include="Pages\SkinsPage.xaml.cs">
       <DependentUpon>SkinsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -240,8 +262,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Classes\RelayCommand.cs" />
-    <Compile Include="Pages\SettingsScreen\SettingsScreen.xaml.cs">
-      <DependentUpon>SettingsScreen.xaml</DependentUpon>
+    <Compile Include="Pages\SettingsTabs.xaml.cs">
+      <DependentUpon>SettingsTabs.xaml</DependentUpon>
     </Compile>
     <Compile Include="Methods\LauncherUpdater.cs" />
     <Compile Include="Methods\VersionDownloader.cs" />
@@ -256,6 +278,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </DesignData>
+    <Page Include="Controls\ServersButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\JavaEditionButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\BlockPicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -267,6 +297,18 @@
     <Page Include="Controls\LanguageCombobox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\BedrockEditionButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\NewsButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SettingsButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\ProfileButton.xaml">
       <SubType>Designer</SubType>
@@ -280,7 +322,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ErrorScreen\ErrorScreen.xaml">
+    <Page Include="Pages\ErrorScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -300,39 +342,43 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\InstallationsScreen\ManageInstallationScreen.xaml">
+    <Page Include="Pages\EditInstallationScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\InstallationsScreen\InstallationsScreen.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\NewsScreen\NewsScreenPage.xaml">
+    <Page Include="Pages\VersionsSettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\ProfileManagementScreen\AddProfilePage.xaml">
+    <Page Include="Pages\InstallationsScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ServersScreen\ServersScreenPage.xaml">
+    <Page Include="Pages\NewsScreenPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\AddProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ServersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
-    <Page Include="Pages\SettingsScreen\AboutPage.xaml">
+    <Page Include="Pages\AboutPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\SettingsScreen\AccountsSettingsPage.xaml">
+    <Page Include="Pages\AccountsSettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\SettingsScreen\GeneralSettingsPage.xaml">
+    <Page Include="Pages\GeneralSettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\GameScreen\GamePage.xaml">
+    <Page Include="Pages\GameTabs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -340,15 +386,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\NoContentScreen\NoContentPage.xaml">
+    <Page Include="Pages\NoContentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\PlayScreen\PlayScreenPage.xaml">
+    <Page Include="Pages\PlayScreenPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\SkinsScreen\SkinsPage.xaml">
+    <Page Include="Pages\SkinsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -396,6 +442,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\styles\tabbar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\styles\textblock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -416,7 +466,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\SettingsScreen\SettingsScreen.xaml">
+    <Page Include="Pages\SettingsTabs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -443,11 +493,11 @@
     <Resource Include="Resources\fonts\NotoSans-Bold.ttf" />
     <Resource Include="Resources\fonts\NotoSans-Regular.ttf" />
     <None Include="Addons\BetterBedrock\files\BottomChat.zip" />
-    <None Include="Controls\SkinPreview\mc-face-viewer.less" />
-    <None Include="Controls\SkinPreview\mc-skin-viewer.less" />
-    <None Include="Controls\SkinPreview\mc-utils.less" />
-    <None Include="Controls\SkinPreview\mc-viewer-effects.less" />
-    <Resource Include="Controls\SkinPreview\minecraft-skinviewer.less" />
+    <None Include="Controls\SkinPreview\Less\mc-face-viewer.less" />
+    <None Include="Controls\SkinPreview\Less\mc-skin-viewer.less" />
+    <None Include="Controls\SkinPreview\Less\mc-utils.less" />
+    <None Include="Controls\SkinPreview\Less\mc-viewer-effects.less" />
+    <Resource Include="Controls\SkinPreview\Less\minecraft-skinviewer.less" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -471,6 +521,9 @@
   <ItemGroup>
     <PackageReference Include="CefSharp.Wpf">
       <Version>88.2.90</Version>
+    </PackageReference>
+    <PackageReference Include="CodeHollow.FeedReader">
+      <Version>1.2.1</Version>
     </PackageReference>
     <PackageReference Include="HtmlAgilityPack">
       <Version>1.11.31</Version>
@@ -618,13 +671,13 @@
     <Resource Include="Resources\images\credits\carjem_logo.png" />
     <Resource Include="Resources\images\credits\xlynxx.jpg" />
     <Resource Include="Resources\images\main_photo.jpg" />
-    <Resource Include="Controls\SkinPreview\ItemPreview_Normal.html" />
-    <Resource Include="Controls\SkinPreview\NoSkin.png" />
-    <Resource Include="Controls\SkinPreview\minecraft-skinviewer.css" />
-    <Resource Include="Controls\SkinPreview\ItemPreview_Slim.html" />
-    <Resource Include="Controls\SkinPreview\ItemPreview_Legacy.html" />
-    <Resource Include="Controls\SkinPreview\ItemPreview_SlimLegacy.html" />
-    <Resource Include="Controls\SkinPreview\minecraft-skinviewer-common.css" />
+    <Resource Include="Controls\SkinPreview\Html\ItemPreview_Normal.html" />
+    <Resource Include="Controls\SkinPreview\Html\NoSkin.png" />
+    <Resource Include="Controls\SkinPreview\Html\minecraft-skinviewer.css" />
+    <Resource Include="Controls\SkinPreview\Html\ItemPreview_Slim.html" />
+    <Resource Include="Controls\SkinPreview\Html\ItemPreview_Legacy.html" />
+    <Resource Include="Controls\SkinPreview\Html\ItemPreview_SlimLegacy.html" />
+    <Resource Include="Controls\SkinPreview\Html\minecraft-skinviewer-common.css" />
     <Content Include="WUTokenHelper.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

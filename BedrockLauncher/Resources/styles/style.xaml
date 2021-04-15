@@ -15,6 +15,19 @@
     <Style TargetType="{x:Type TextBox}" BasedOn="{DynamicResource fontStyling}" />
     <Style TargetType="{x:Type ListView}" BasedOn="{DynamicResource fontStyling}" />
 
+    <Style TargetType="{x:Type Image}" x:Key="SideBarButtonIcon">
+        <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor"/>
+        <Setter Property="IsHitTestVisible" Value="False"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="MinWidth" Value="29"/>
+        <Setter Property="MinHeight" Value="29"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="14,14,0,0"/>
+    </Style>
+
     <DrawingImage x:Key="PlusIcon">
         <DrawingImage.Drawing>
             <DrawingGroup ClipGeometry="M0,0 V512 H512 V0 H0 Z">

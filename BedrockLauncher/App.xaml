@@ -20,6 +20,7 @@
                 <ResourceDictionary Source="Resources/styles/textblock.xaml"/>
                 <ResourceDictionary Source="Resources/styles/frame.xaml"/>
                 <ResourceDictionary Source="Resources/styles/scrollbars.xaml"/>
+                <ResourceDictionary Source="Resources/styles/tabbar.xaml"/>
                 <ResourceDictionary>
                     <Style TargetType="{x:Type ComboBoxItem}">
                         <EventSetter Event="RequestBringIntoView" Handler="ComboBoxItem_RequestBringIntoView"/>

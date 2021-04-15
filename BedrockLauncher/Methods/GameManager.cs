@@ -24,16 +24,7 @@ using Windows.System;
 using BedrockLauncher.Interfaces;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Classes;
-using BedrockLauncher.Pages.GameScreen;
-using BedrockLauncher.Pages.NoContentScreen;
-using BedrockLauncher.Pages.PlayScreen;
-using BedrockLauncher.Pages.ServersScreen;
-using BedrockLauncher.Pages.SettingsScreen;
-using BedrockLauncher.Pages.FirstLaunch;
-using BedrockLauncher.Pages.ErrorScreen;
-using BedrockLauncher.Pages.InstallationsScreen;
-using BedrockLauncher.Pages.NewsScreen;
-using BedrockLauncher.Pages.ProfileManagementScreen;
+using BedrockLauncher.Pages;
 using System.Windows.Media.Animation;
 using ServerTab;
 using BedrockLauncher.Core;
@@ -113,6 +104,11 @@ namespace BedrockLauncher.Methods
 
         #region General Methods
 
+        public void Remove(Version v)
+        {
+            InvokeRemove(v);
+        }
+
         public void Play(Installation i)
         {
             {
@@ -132,6 +128,11 @@ namespace BedrockLauncher.Methods
         public void OpenFolder(Installation i)
         {
             Process.Start("explorer.exe", Filepaths.GetInstallationsFolderPath(ConfigManager.CurrentProfile, i.DirectoryName));
+        }
+
+        public void OpenFolder(Version i)
+        {
+            Process.Start("explorer.exe", Path.GetFullPath(i.GameDirectory));
         }
 
         public void OpenFolder(MCSkinPack i)
@@ -179,7 +180,7 @@ namespace BedrockLauncher.Methods
                         ErrorScreenShow.errormsg("appregistererror");
                     });
                     HasLaunchTask = false;
-                    OnGameStateChanged(GameStateArgs.Empty);
+                    Application.Current.Dispatcher.Invoke(() => { OnGameStateChanged(GameStateArgs.Empty); });
                     v.StateChangeInfo = null;
                     return;
                 }
@@ -190,7 +191,7 @@ namespace BedrockLauncher.Methods
                         await pkg[0].LaunchAsync();
                     Debug.WriteLine("App launch finished!");
                     HasLaunchTask = false;
-                    OnGameStateChanged(GameStateArgs.Empty);
+                    Application.Current.Dispatcher.Invoke(() => { OnGameStateChanged(GameStateArgs.Empty); });
                     v.StateChangeInfo = null;
                     // close launcher if needed and hide progressbar
                     Application.Current.Dispatcher.Invoke(() => { ConfigManager.MainThread.ProgressBarGrid.Visibility = Visibility.Collapsed; });
@@ -212,7 +213,7 @@ namespace BedrockLauncher.Methods
                         ErrorScreenShow.errormsg("applauncherror");
                     });
                     HasLaunchTask = false;
-                    OnGameStateChanged(GameStateArgs.Empty);
+                    Application.Current.Dispatcher.Invoke(() => { OnGameStateChanged(GameStateArgs.Empty); });
                     v.StateChangeInfo = null;
                     return;
                 }
@@ -258,7 +259,7 @@ namespace BedrockLauncher.Methods
                         if (v.StateChangeInfo.IsInitializing)
                         {
                             IsDownloading = true;
-                            OnGameStateChanged(GameStateArgs.Empty);
+                            Application.Current.Dispatcher.Invoke(() => { OnGameStateChanged(GameStateArgs.Empty); });
                             Debug.WriteLine("Actual download started");
                             v.StateChangeInfo.IsInitializing = false;
                             if (total.HasValue)
@@ -301,7 +302,7 @@ namespace BedrockLauncher.Methods
                 }
                 v.StateChangeInfo = null;
                 v.UpdateInstallStatus();
-                OnGameStateChanged(GameStateArgs.Empty);
+                Application.Current.Dispatcher.Invoke(() => { OnGameStateChanged(GameStateArgs.Empty); });
             });
         }
         private void InvokeRemove(Version v)
@@ -310,10 +311,21 @@ namespace BedrockLauncher.Methods
             {
                 v.StateChangeInfo = new VersionStateChangeInfo();
                 v.StateChangeInfo.IsUninstalling = true;
-                await UnregisterPackage(Path.GetFullPath(v.GameDirectory));
-                Directory.Delete(v.GameDirectory, true);
+
+                try
+                {
+                    await UnregisterPackage(Path.GetFullPath(v.GameDirectory));
+                    Directory.Delete(v.GameDirectory, true);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+
+
                 v.StateChangeInfo = null;
                 v.UpdateInstallStatus();
+                Application.Current.Dispatcher.Invoke(() => { OnGameStateChanged(GameStateArgs.Empty); });
             });
         }
         private void InvokeConvert()
@@ -343,7 +355,7 @@ namespace BedrockLauncher.Methods
                     RestoreMove(tmpDir, recoveryPath);
                     Directory.Delete(tmpDir, true);
 
-                    ConfigManager.CreateInstallation("Recovery_Data", null);
+                    ConfigManager.CreateInstallation("Recovery_Data", null, "Recovery_Data");
                 }
                 catch (Exception ex)
                 {
@@ -485,7 +497,7 @@ namespace BedrockLauncher.Methods
         }
         private void SetInstallationDataPath()
         {
-            if (Properties.Settings.Default.EnableExperiementalSaveRedirection)
+            if (Properties.Settings.Default.SaveRedirection)
             {
                 string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY);
                 string ProfileFolder = Path.GetFullPath(Filepaths.GetInstallationsFolderPath(ConfigManager.CurrentProfile, ConfigManager.CurrentInstallation.DirectoryName));

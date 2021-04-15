@@ -10,7 +10,7 @@
              xmlns:local="clr-namespace:BedrockLauncher.Controls"
              mc:Ignorable="d" 
              Height="59" Margin="1,0,0,0" VerticalAlignment="Top">
-    <ToggleButton x:Name="SourceButton" Click="SourceButton_Click" Height="46" FontWeight="Normal" VerticalAlignment="Stretch" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False" IsChecked="False">
+    <ToggleButton x:Name="SourceButton" Click="SourceButton_Click" FontWeight="Normal" VerticalAlignment="Stretch" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False" IsChecked="False">
         <ToggleButton.ContextMenu>
             <ContextMenu x:Name="ProfileContextMenu" Style="{DynamicResource NoCheckboxContextMenu}" IsOpen="False">
                 <MenuItem x:Name="AddProfileButton" Style="{DynamicResource IndentedMenuItem}" Header="{DynamicResource MainWindow_AddProfile}" Click="AddProfileButton_Click"></MenuItem>

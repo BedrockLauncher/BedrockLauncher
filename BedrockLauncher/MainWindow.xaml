@@ -25,62 +25,23 @@
         </Grid.ColumnDefinitions>
         <StackPanel x:Name="buttonStackPanel" Grid.Column="0" Background="#FF1E1E1E" HorizontalAlignment="Left">
             <controls:ProfileButton x:Name="ProfileButton"></controls:ProfileButton>
-            <Grid Height="57" Margin="1,0,0,0" VerticalAlignment="Top">
-                <ToggleButton x:Name="NewsButton" Click="ButtonManager" VerticalAlignment="Top" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False">
-                    <ToggleButton.ToolTip>
-                        <ToolTip Content="{DynamicResource MainWindow_NewsButton}"/>
-                    </ToggleButton.ToolTip>
-                    <TextBlock Text="{DynamicResource MainWindow_NewsButton}" LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,3"/>
-                </ToggleButton>
-                <Image IsHitTestVisible="False" SnapsToDevicePixels="True" Source="Resources/images/news_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
-            </Grid>
-            <Grid Height="57" Margin="1,0,0,0" VerticalAlignment="Top">
-                <ToggleButton x:Name="BedrockEditionButton" Click="ButtonManager" VerticalAlignment="Top" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False" IsChecked="True">
-                    <ToggleButton.ToolTip>
-                        <ToolTip Content="{DynamicResource MainWindow_MinecraftEdition}"/>
-                    </ToggleButton.ToolTip>
-                    <TextBlock LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,5"><Run FontSize="11" Text="MINECRAFT:"/><LineBreak/><Run FontSize="14" Text="Bedrock Edition"/></TextBlock>
-                </ToggleButton>
-                <Image IsHitTestVisible="False" SnapsToDevicePixels="True" Source="Resources/images/bedrock_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
-            </Grid>
-            <Grid Height="57" Margin="1,0,0,0" VerticalAlignment="Top">
-                <ToggleButton x:Name="JavaEditionButton" Click="ButtonManager" VerticalAlignment="Top" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False" IsChecked="False">
-                    <ToggleButton.ToolTip>
-                        <ToolTip Content="{DynamicResource MainWindow_MinecraftJavaLauncher}"/>
-                    </ToggleButton.ToolTip>
-                    <TextBlock LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,5"><Run FontSize="11" Text="{DynamicResource MainWindow_SwitchEdition}"/><LineBreak/><Run FontSize="14" Text="{DynamicResource MainWindow_MinecraftJavaLauncher}"/></TextBlock>
-                </ToggleButton>
-                <Image IsHitTestVisible="False" SnapsToDevicePixels="True" Source="Resources/images/grass_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
-            </Grid>
-            <Grid Height="57" Margin="1,0,0,0" VerticalAlignment="Top">
-                <ToggleButton x:Name="ServersButton" Click="ButtonManager" VerticalAlignment="Top" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="False">
-                    <ToggleButton.ToolTip>
-                        <ToolTip Content="{DynamicResource MainWindow_ServersButton}"/>
-                    </ToggleButton.ToolTip>
-                    <TextBlock Text="{DynamicResource MainWindow_ServersButton}" Foreground="Yellow" LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,3"/>
-                </ToggleButton>
-                <Image IsHitTestVisible="False" RenderOptions.BitmapScalingMode="NearestNeighbor" SnapsToDevicePixels="True" Source="Resources/images/servers_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
-            </Grid>
+            <controls:NewsButton x:Name="NewsButton"></controls:NewsButton>
+            <controls:BedrockEditionButton x:Name="BedrockEditionButton"></controls:BedrockEditionButton>
+            <controls:JavaEditionButton x:Name="JavaEditionButton"></controls:JavaEditionButton>
+            <controls:ServersButton x:Name="ServersButton"></controls:ServersButton>
         </StackPanel>
-        <Grid Grid.Column="0"  Height="57" Margin="1,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left">
-            <ToggleButton x:Name="SettingsButton" Click="ButtonManager" VerticalAlignment="Bottom" Height="59" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" Width="179" HorizontalContentAlignment="Left" Focusable="False" HorizontalAlignment="Left">
-                <ToggleButton.ToolTip>
-                    <ToolTip Content="{DynamicResource ResourceKey=MainWindow_SettingsButton}"/>
-                </ToggleButton.ToolTip>
-                <TextBlock Text="{DynamicResource ResourceKey=MainWindow_SettingsButton}" LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,3"/>
-            </ToggleButton>
-            <Image IsHitTestVisible="False" SnapsToDevicePixels="True" Source="Resources/images/settings_icon.png" MinWidth="29" MinHeight="29" RenderTransformOrigin="0.776,0.983" HorizontalAlignment="Left" VerticalAlignment="Top" Width="29" Height="29" Margin="14,14,0,0"/>
-        </Grid>
+        <controls:SettingsButton x:Name="SettingsButton"></controls:SettingsButton>
+
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="64"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <Frame x:Name="MainWindowFrame" VerticalAlignment="Stretch" Background="Black" NavigationUIVisibility="Hidden" Source="../Pages/GameScreen/GamePage.xaml"/>
+            <Frame x:Name="MainWindowFrame" VerticalAlignment="Stretch" Background="Black" NavigationUIVisibility="Hidden" Source="../Pages/GameTabs.xaml"/>
             <Button RenderOptions.BitmapScalingMode="NearestNeighbor" x:Name="updateButton" Margin="0,-75,5,0" HorizontalAlignment="Right" Height="60" Width="260" VerticalAlignment="Top" BorderBrush="{x:Null}" Style="{DynamicResource AdvancementButton}">
                 <Grid Margin="-8,0,0,0" HorizontalAlignment="Left">
-                    <TextBlock LineHeight="20" RenderOptions.BitmapScalingMode="NearestNeighbor" FontSize="16" TextOptions.TextRenderingMode="Aliased" TextOptions.TextFormattingMode="Display" Margin="52,6,0,0" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Rus">
+                    <TextBlock LineHeight="20" RenderOptions.BitmapScalingMode="NearestNeighbor" FontSize="16" TextOptions.TextRenderingMode="Aliased" TextOptions.TextFormattingMode="Ideal" Margin="52,6,0,0" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Rus">
                     <Run Text="{DynamicResource UpdateButton_NewUpdate}" Foreground="Yellow"/>
                     <LineBreak/>
                     <Run Text="{DynamicResource UpdateButton_Download}" Foreground="White"/>
@@ -96,7 +57,7 @@
                 </StackPanel>
             </Grid>
             <Grid x:Name="PlayScreenBorder" Grid.Row="2" x:FieldModifier="public" VerticalAlignment="Bottom" Background="#FF262626">
-                <TextBlock Style="{DynamicResource HeaderTextblock}" Text="NOT APPROVED BY OR ASSOCIATED WITH MOJANG" HorizontalAlignment="Right" VerticalAlignment="Bottom" Padding="0,0,5,0" Margin="0,0,0,0"/>
+                <TextBlock Style="{DynamicResource HeaderTextblock}" Text="NOT APPROVED BY OR ASSOCIATED WITH MOJANG" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="0,0,5,0" Margin="0,0,0,0"/>
                 <Button
                     x:Name="MainPlayButton" 
                     Click="MainPlayButton_Click" 

@@ -18,6 +18,13 @@
         <Setter Property="FontFamily" Value="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
     </Style>
 
+    <Style x:Key="TabTitle" TargetType="{x:Type Label}">
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="FontFamily" Value="/BedrockLauncher;component/Resources/fonts/#Noto Sans"></Setter>
+        <Setter Property="Background" Value="{x:Null}"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+
     <Style x:Key="BigGreenButton_Text" TargetType="{x:Type TextBlock}">
         <Setter Property="UseLayoutRounding" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>

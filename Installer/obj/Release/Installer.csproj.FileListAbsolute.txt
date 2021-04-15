@@ -21,6 +21,7 @@ C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Inst
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\Installer.csproj.ResolveComReference.cache
 C:\Users\Lynx\Desktop\Minecraft Bedrock Launcher\Minecraft Bedrock Launcher\Installer\obj\Release\Installer.csprojAssemblyReference.cache
 D:\Source\mc_repos\BedrockLauncher\Installer\bin\Release\Installer.exe
+D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Installer.csprojAssemblyReference.cache
 D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Interop.IWshRuntimeLibrary.dll
 D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Installer.csproj.ResolveComReference.cache
 D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\InstallationProgressPage.g.cs
@@ -41,4 +42,3 @@ D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Installer.Properties.Re
 D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Installer.csproj.GenerateResource.cache
 D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Installer.csproj.CoreCompileInputs.cache
 D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Installer.exe
-D:\Source\mc_repos\BedrockLauncher\Installer\obj\Release\Installer.csprojAssemblyReference.cache

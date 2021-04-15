@@ -23,6 +23,7 @@ namespace BedrockLauncher.Methods
 
         #region Common Paths
 
+        public static string PortableLocation { get => System.Reflection.Assembly.GetExecutingAssembly().Location; }
         public static string FixedDataFolder { get => Path.Combine(AppData, AppDataFolderName); }
         public static string InstallationsPath_Fixed { get => Path.Combine(AppData, AppDataFolderName, InstallationsFolderName); }
         private static string AppData { get => Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData); }
@@ -38,13 +39,13 @@ namespace BedrockLauncher.Methods
         }
         public static string GetProfilesFilePath()
         {
-            if (Properties.Settings.Default.PortableMode) return UserDataFileName;
+            if (Properties.Settings.Default.PortableMode) return Methods.Filepaths.PortableLocation + "\\" + UserDataFileName;
             else return Path.Combine(FixedDataFolder, UserDataFileName);
         }
         public static string GetInstallationsFolderPath(string profileName, string installationDirectory)
         {
             var profile = ConfigManager.ProfileList.profiles[profileName];
-            string InstallationsPath_Portable = Path.Combine(profile.ProfilePath, installationDirectory);
+            string InstallationsPath_Portable = Path.Combine(Methods.Filepaths.PortableLocation, profile.ProfilePath, installationDirectory);
 
             if (Properties.Settings.Default.PortableMode) return Path.Combine(InstallationsPath_Portable, PackageDataFolderName);
             else return Path.Combine(InstallationsPath_Fixed, InstallationsPath_Portable, PackageDataFolderName);
@@ -55,7 +56,7 @@ namespace BedrockLauncher.Methods
             string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", GameManager.MINECRAFT_PACKAGE_FAMILY);
 
 
-            if (Properties.Settings.Default.EnableExperiementalSaveRedirection) return Path.Combine(Route.Prepend(InstallationsPath).ToArray());
+            if (Properties.Settings.Default.SaveRedirection) return Path.Combine(Route.Prepend(InstallationsPath).ToArray());
             else return Path.Combine(Route.Prepend(PackageFolder).ToArray());
         }
 
