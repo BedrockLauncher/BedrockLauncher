@@ -33,7 +33,7 @@ namespace BedrockLauncher.Pages
             InitializeComponent();
         }
 
-        private void ReloadSkinPacks()
+        public void ReloadSkinPacks()
         {
             LoadedSkinPacks.Items.Clear();
             SkinPacks.Clear();

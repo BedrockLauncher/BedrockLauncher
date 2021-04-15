@@ -45,9 +45,9 @@ namespace BedrockLauncher.Methods
         public static string GetInstallationsFolderPath(string profileName, string installationDirectory)
         {
             var profile = ConfigManager.ProfileList.profiles[profileName];
-            string InstallationsPath_Portable = Path.Combine(Methods.Filepaths.PortableLocation, profile.ProfilePath, installationDirectory);
+            string InstallationsPath_Portable = Path.Combine(profile.ProfilePath, installationDirectory);
 
-            if (Properties.Settings.Default.PortableMode) return Path.Combine(InstallationsPath_Portable, PackageDataFolderName);
+            if (Properties.Settings.Default.PortableMode) return Path.Combine(Methods.Filepaths.PortableLocation, InstallationsPath_Portable, PackageDataFolderName);
             else return Path.Combine(InstallationsPath_Fixed, InstallationsPath_Portable, PackageDataFolderName);
         }
         public static string GetSkinPacksFolderPath(string InstallationsPath, bool DevFolder = false)

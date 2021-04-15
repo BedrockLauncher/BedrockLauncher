@@ -335,6 +335,7 @@ namespace BedrockLauncher
             NavigateToMainPage(true);
             mainPage.SkinsButton.IsChecked = true;
             mainPage.MainPageFrame.Navigate(skinsPage);
+            skinsPage.ReloadSkinPacks();
             mainPage.LastButtonName = mainPage.SkinsButton.Name;
         }
         public void NavigateToPatchNotes()
