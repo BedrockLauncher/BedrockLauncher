@@ -9,7 +9,6 @@ namespace BedrockLauncher.Classes
     public class ProfileSettings
     {
         public string Name { get; set; }
-        public string SkinPath { get; set; }
         public string ProfilePath { get; set; }
         public List<Installation> Installations { get; set; }
 

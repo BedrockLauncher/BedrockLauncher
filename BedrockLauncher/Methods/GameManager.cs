@@ -24,6 +24,7 @@ using Windows.System;
 using BedrockLauncher.Interfaces;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Classes;
+using BedrockLauncher.Classes.SkinPack;
 using BedrockLauncher.Pages;
 using System.Windows.Media.Animation;
 using ServerTab;
@@ -193,8 +194,6 @@ namespace BedrockLauncher.Methods
                     HasLaunchTask = false;
                     Application.Current.Dispatcher.Invoke(() => { OnGameStateChanged(GameStateArgs.Empty); });
                     v.StateChangeInfo = null;
-                    // close launcher if needed and hide progressbar
-                    Application.Current.Dispatcher.Invoke(() => { ConfigManager.MainThread.ProgressBarGrid.Visibility = Visibility.Collapsed; });
                     if (Properties.Settings.Default.KeepLauncherOpen == false)
                     {
                         await Application.Current.Dispatcher.InvokeAsync(() =>
@@ -209,7 +208,6 @@ namespace BedrockLauncher.Methods
                     Debug.WriteLine("App launch failed:\n" + e.ToString());
                     Application.Current.Dispatcher.Invoke(() =>
                     {
-                        ConfigManager.MainThread.ProgressBarGrid.Visibility = Visibility.Collapsed;
                         ErrorScreenShow.errormsg("applauncherror");
                     });
                     HasLaunchTask = false;
@@ -328,14 +326,11 @@ namespace BedrockLauncher.Methods
                 Application.Current.Dispatcher.Invoke(() => { OnGameStateChanged(GameStateArgs.Empty); });
             });
         }
-        private void InvokeConvert()
+        private async void InvokeConvert()
         {
-            Task.Run(async () =>
+            await Task.Run(() =>
             {
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    ConfigManager.MainThread.ProgressBarGrid.Visibility = Visibility.Visible;
-                });
+                Application.Current.Dispatcher.Invoke(() => { OnGameStateChanged(GameStateArgs.Empty); });
 
                 try
                 {
@@ -362,10 +357,7 @@ namespace BedrockLauncher.Methods
                     MessageBox.Show(ex.ToString());
                 }
 
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    ConfigManager.MainThread.ProgressBarGrid.Visibility = Visibility.Collapsed;
-                });
+                Application.Current.Dispatcher.Invoke(() => { OnGameStateChanged(GameStateArgs.Empty); });
 
             });
         }

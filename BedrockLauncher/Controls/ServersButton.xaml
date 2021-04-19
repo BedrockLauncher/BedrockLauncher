@@ -15,5 +15,5 @@
         </ToggleButton.ToolTip>
         <TextBlock Text="{DynamicResource MainWindow_ServersButton}" Foreground="Yellow" LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,3"/>
     </ToggleButton>
-    <Image Style="{StaticResource SideBarButtonIcon}" Source="../Resources/images/servers_icon.png"/>
+    <Image Style="{StaticResource SideBarButtonIcon}" Source="../Resources/images/ui/icons/servers_icon.png"/>
 </Grid>

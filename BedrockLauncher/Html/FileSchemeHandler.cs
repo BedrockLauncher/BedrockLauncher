@@ -56,6 +56,7 @@ namespace BedrockLauncher.Html
                     catch (Exception ex)
                     {
                         callback.Cancel();
+                        Console.WriteLine(ex);
                     }
 
                 }

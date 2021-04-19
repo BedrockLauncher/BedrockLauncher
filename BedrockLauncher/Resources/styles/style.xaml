@@ -5,9 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BedrockLauncher"
         xmlns:classes="clr-namespace:BedrockLauncher.Classes"
+        xmlns:skinClasses="clr-namespace:BedrockLauncher.Classes.SkinPack"
         xmlns:controls="clr-namespace:BedrockLauncher.Controls"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" >
 
+    <PathGeometry x:Key="CrossIcon">
+        <PathGeometry.Figures>
+            <PathFigure StartPoint="0,0">
+                <LineSegment Point="25,25"/>
+            </PathFigure>
+            <PathFigure StartPoint="0,25">
+                <LineSegment Point="25,0"/>
+            </PathFigure>
+        </PathGeometry.Figures>
+    </PathGeometry>
 
     <Style TargetType="{x:Type Control}" x:Key="fontStyling">
         <Setter Property="FontFamily" Value="/BedrockLauncher;component/Resources/fonts/#Noto Sans" />
@@ -81,7 +92,7 @@
         </Grid>
     </DataTemplate>
 
-    <DataTemplate x:Key="templateSkinPreview" DataType="{x:Type classes:MCSkin}">
+    <DataTemplate x:Key="templateSkinPreview" DataType="{x:Type skinClasses:MCSkin}">
         <Grid Margin="5" MinHeight="64" MaxHeight="64" Height="64">
             <Image RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="Uniform" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source="{Binding rendered_preview}"></Image>
         </Grid>

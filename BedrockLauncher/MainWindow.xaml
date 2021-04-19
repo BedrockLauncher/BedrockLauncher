@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BedrockLauncher"
         xmlns:classes="clr-namespace:BedrockLauncher.Classes"
+        xmlns:properties="clr-namespace:BedrockLauncher.Properties"
         xmlns:controls="clr-namespace:BedrockLauncher.Controls"
+        xmlns:converters="clr-namespace:BedrockLauncher.Converters"
+        xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
         d:DataContext="{d:DesignInstance Type=classes:Version}" 
         x:Class="BedrockLauncher.MainWindow"
@@ -18,6 +21,10 @@
         MinWidth="1016" MinHeight="639" 
         Background="White"
         WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <wincontrols:BooleanToVisibilityConverter x:Key="BoolToVis"></wincontrols:BooleanToVisibilityConverter>
+        <converters:InvertableBooleanToVisibilityConverter x:Key="ReverseBoolToVis"></converters:InvertableBooleanToVisibilityConverter>
+    </Window.Resources>
     <Grid Margin="0,0,0,0" Background="WhiteSmoke">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="180"></ColumnDefinition>
@@ -27,8 +34,8 @@
             <controls:ProfileButton x:Name="ProfileButton"></controls:ProfileButton>
             <controls:NewsButton x:Name="NewsButton"></controls:NewsButton>
             <controls:BedrockEditionButton x:Name="BedrockEditionButton"></controls:BedrockEditionButton>
-            <controls:JavaEditionButton x:Name="JavaEditionButton"></controls:JavaEditionButton>
-            <controls:ServersButton x:Name="ServersButton"></controls:ServersButton>
+            <controls:JavaEditionButton x:Name="JavaEditionButton" Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=HideJavaShortcut, Converter={StaticResource ReverseBoolToVis}, ConverterParameter=Inverted}"></controls:JavaEditionButton>
+            <controls:ServersButton x:Name="ServersButton" Visibility="Collapsed" Focusable="False"></controls:ServersButton>
         </StackPanel>
         <controls:SettingsButton x:Name="SettingsButton"></controls:SettingsButton>
 
@@ -46,11 +53,11 @@
                     <LineBreak/>
                     <Run Text="{DynamicResource UpdateButton_Download}" Foreground="White"/>
                     </TextBlock>
-                    <Image Source="Resources/images/icon.ico" Margin="3" HorizontalAlignment="Left" Height="42" Width="42"/>
+                    <Image Source="Resources/images/icons/bedrock_block_icon.ico" Margin="3" HorizontalAlignment="Left" Height="42" Width="42"/>
                 </Grid>
             </Button>
             <Grid Grid.Row="1" x:Name="ProgressBarGrid" Background="#FF262626" Visibility="Collapsed">
-                <ProgressBar x:Name="progressSizeHack" Height="32" Margin="10,8,10,22" Foreground="#FF008542" Background="Black" BorderBrush="Black" Minimum="0" Maximum="{Binding StateChangeInfo.TotalSize}" Value="{Binding StateChangeInfo.DownloadedBytes}"/>
+                <ProgressBar x:Name="progressSizeHack" Height="32" Margin="10,8,10,22" Foreground="#FF008542" Background="Black" BorderBrush="Black" IsIndeterminate="{Binding StateChangeInfo.IsProgressIndeterminate}" Minimum="0" Maximum="{Binding StateChangeInfo.TotalSize}" Value="{Binding StateChangeInfo.DownloadedBytes}"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock x:Name="progressbarcontent" SnapsToDevicePixels="True" Margin="26,-15,0,0" FontSize="12" Text="{DynamicResource MainPage_ProgressBarDownloading}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
                     <TextBlock SnapsToDevicePixels="True" Margin="+3,-15,0,0" FontSize="12" x:Name="ProgressBarText" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>

@@ -5,65 +5,64 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BedrockLauncher.Pages"
       xmlns:controls="clr-namespace:BedrockLauncher.Controls"
-      xmlns:classes="clr-namespace:BedrockLauncher.Classes"
+      xmlns:classes="clr-namespace:BedrockLauncher.Classes.SkinPack"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SkinsPage" Initialized="Page_Initialized" Loaded="Page_Loaded">
 
+    <Page.Resources>
+        <DataTemplate x:Key="SkinPackTemplate" DataType="{x:Type classes:MCSkinPack}">
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="{Binding DisplayName}"/>
+                    <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="Normal" Padding="45,21,0,0" Text="{Binding VersionName}"/>
+                    <Image Source="{Binding IconPath}" HorizontalAlignment="Left" RenderOptions.BitmapScalingMode="HighQuality" Width="32" Height="32" Margin="5,1,0,0">
+                        <Image.OpacityMask>
+                            <ImageBrush ImageSource="{Binding IconPath}"/>
+                        </Image.OpacityMask>
+                    </Image>
+                </Grid>
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Name="ButtonPanel" Visibility="Hidden">
+                    <Button x:Name="Folder" Click="Folder_Click" Content="📁" FontWeight="Bold" Style="{DynamicResource DialogButton}"></Button>
+                    <Button Style="{DynamicResource DialogButton}" Content="..." Foreground="White" Name="MoreButton" Click="MoreButton_Click">
+                        <Button.ContextMenu>
+                            <ContextMenu Closed="ContextMenu_Closed" Style="{DynamicResource NoCheckboxContextMenu}">
+                                <MenuItem Header="{DynamicResource InstallationsPage_DeleteInstallationButton}" Name="DeleteSkinPackButton" Click="DeleteSkinPackButton_Click"></MenuItem>
+                            </ContextMenu>
+                        </Button.ContextMenu>
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <DataTemplate.Triggers>
+                <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver}" Value="True">
+                    <Setter TargetName="ButtonPanel" Property="Visibility" Value="Visible"></Setter>
+                </DataTrigger>
+                <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}" Value="True">
+                    <Setter TargetName="ButtonPanel" Property="Visibility" Value="Visible"></Setter>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+    </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.7*"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="16"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="110"></RowDefinition>
         </Grid.RowDefinitions>
-        <ListView BorderThickness="0,0,1,0" BorderBrush="Gray" x:Name="LoadedSkinPacks" Grid.RowSpan="2" SelectionChanged="LoadedSkinPacks_SelectionChanged" VerticalContentAlignment="Top" HorizontalContentAlignment="Stretch">
-            <ListView.ItemTemplate>
-                <DataTemplate DataType="{x:Type classes:MCSkinPack}">
-                    <Grid HorizontalAlignment="Stretch">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid>
-                            <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="{Binding DisplayName}"/>
-                            <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="Normal" Padding="45,21,0,0" Text="{Binding VersionName}"/>
-                            <Image Source="{Binding IconPath}" HorizontalAlignment="Left" Width="32" Height="32" Margin="5,1,0,0">
-                                <Image.OpacityMask>
-                                    <ImageBrush ImageSource="{Binding IconPath}"/>
-                                </Image.OpacityMask>
-                            </Image>
-                        </Grid>
-                        <StackPanel Grid.Column="2" Orientation="Horizontal" Name="ButtonPanel" Visibility="Hidden">
-                            <Button x:Name="Folder" Click="Folder_Click" Content="📁" FontWeight="Bold" Style="{DynamicResource DialogButton}"></Button>
-                            <Button Style="{DynamicResource DialogButton}" Content="..." Foreground="White" Name="MoreButton" Click="MoreButton_Click">
-                                <Button.ContextMenu>
-                                    <ContextMenu Closed="ContextMenu_Closed" Style="{DynamicResource NoCheckboxContextMenu}">
-                                        <MenuItem Header="{DynamicResource InstallationsPage_DeleteInstallationButton}" Name="DeleteSkinPackButton" Click="DeleteSkinPackButton_Click"></MenuItem>
-                                    </ContextMenu>
-                                </Button.ContextMenu>
-                            </Button>
-                        </StackPanel>
-                    </Grid>
-                    <DataTemplate.Triggers>
-                        <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver}" Value="True">
-                            <Setter TargetName="ButtonPanel" Property="Visibility" Value="Visible"></Setter>
-                        </DataTrigger>
-                        <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}" Value="True">
-                            <Setter TargetName="ButtonPanel" Property="Visibility" Value="Visible"></Setter>
-                        </DataTrigger>
-                    </DataTemplate.Triggers>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <controls:SkinPreview x:Name="SkinPreviewPanel" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></controls:SkinPreview>
-        <StackPanel Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right">
-        </StackPanel>
-        <Grid Grid.Column="1" Grid.Row="1" Background="#212121"></Grid>
-        <ListView BorderThickness="0,1,0,0" BorderBrush="Gray" Margin="0,0,0,10" SelectionChanged="SkinPreviewList_SelectionChanged" Grid.Column="1" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="Black" x:Name="SkinPreviewList" VerticalContentAlignment="Top" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+        <ListView BorderThickness="0,0,1,0" BorderBrush="Gray" x:Name="LoadedSkinPacks" Grid.RowSpan="3" SelectionChanged="LoadedSkinPacks_SelectionChanged" VerticalContentAlignment="Top" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource SkinPackTemplate}"></ListView>
+            <Grid Grid.Column="1" Grid.Row="1" Background="#212121"></Grid>
+        <controls:SkinPreview x:Name="SkinPreviewPanel" Grid.Column="1" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></controls:SkinPreview>
+        <TextBlock Foreground="White" Name="CurrentSkinNameTextBlock" Grid.Column="1" Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextAlignment="Center" Background="Black"></TextBlock>
+        <ListView BorderThickness="0,1,0,0" BorderBrush="Gray" Margin="0,0,0,10" SelectionChanged="SkinPreviewList_SelectionChanged" Grid.Column="1" Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="Black" x:Name="SkinPreviewList" VerticalContentAlignment="Top" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ContentControl x:Name="control" Content="{Binding}" ContentTemplate="{StaticResource templateSkinPreview}"/>

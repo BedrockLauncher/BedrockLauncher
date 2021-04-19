@@ -26,12 +26,17 @@ namespace BedrockLauncher.Pages
             InitializeComponent();
         }
 
-        private void Page_Initialized(object sender, EventArgs e)
+        private void Update()
         {
             // Set checkboxes
             keepLauncherOpenCheckBox.IsChecked = Properties.Settings.Default.KeepLauncherOpen;
-            portableModeCheckBox.IsChecked = Properties.Settings.Default.PortableMode;
             experiementalDataSaveRedirection.IsChecked = Properties.Settings.Default.SaveRedirection;
+            hideJavaLauncherButtonCheckbox.IsChecked = Properties.Settings.Default.HideJavaShortcut;
+        }
+
+        private void Page_Initialized(object sender, EventArgs e)
+        {
+            Update();
         }
 
         private void keepLauncherOpenCheckBox_Checked(object sender, RoutedEventArgs e)
@@ -48,24 +53,6 @@ namespace BedrockLauncher.Pages
                     Properties.Settings.Default.Save();
                     break;
             }
-        }
-
-        private void useFixedInstallLocation_Click(object sender, RoutedEventArgs e)
-        {
-            // get and save value of checkbox
-            switch (portableModeCheckBox.IsChecked)
-            {
-                case true:
-                    Properties.Settings.Default.PortableMode = true;
-                    Properties.Settings.Default.Save();
-                    break;
-                case false:
-                    Properties.Settings.Default.PortableMode = false;
-                    Properties.Settings.Default.Save();
-                    break;
-            }
-
-            ConfigManager.Init();
         }
 
         private void experiementalDataSaveRedirection_Click(object sender, RoutedEventArgs e)
@@ -86,6 +73,32 @@ namespace BedrockLauncher.Pages
         private void BackupButton_Click(object sender, RoutedEventArgs e)
         {
             ConfigManager.GameManager.ConvertToInstallation();
+        }
+
+        private void AdvancedSettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            AdvancedOptionsWindow advancedOptionsWindow = new AdvancedOptionsWindow();
+            advancedOptionsWindow.ShowDialog();
+        }
+
+        private void hideJavaLauncherButtonCheckbox_Click(object sender, RoutedEventArgs e)
+        {
+            switch (hideJavaLauncherButtonCheckbox.IsChecked)
+            {
+                case true:
+                    Properties.Settings.Default.HideJavaShortcut = true;
+                    Properties.Settings.Default.Save();
+                    break;
+                case false:
+                    Properties.Settings.Default.HideJavaShortcut = false;
+                    Properties.Settings.Default.Save();
+                    break;
+            }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            Update();
         }
     }
 }

@@ -127,7 +127,6 @@
         </Setter>
     </Style>
 
-
     <Style TargetType="{x:Type TextBox}">
         <Setter Property="Height" Value="32"></Setter>
         <Setter Property="Background" Value="{DynamicResource TextBox.Static.Background}"/>

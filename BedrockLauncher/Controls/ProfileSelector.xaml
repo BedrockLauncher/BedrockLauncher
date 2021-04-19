@@ -22,5 +22,5 @@
             </Grid>
         </ToggleButton.Content>
     </ToggleButton>
-    <Image IsHitTestVisible="False" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True" Source="../Resources/images/mojang-icon.png" MinWidth="30" MinHeight="30" HorizontalAlignment="Left" VerticalAlignment="Center" Width="30" Height="30" Margin="5,0,0,0"/>
+    <Image IsHitTestVisible="False" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True" Source="../Resources/images/ui/icons/mojang-icon.png" MinWidth="30" MinHeight="30" HorizontalAlignment="Left" VerticalAlignment="Center" Width="30" Height="30" Margin="5,0,0,0"/>
 </Grid>

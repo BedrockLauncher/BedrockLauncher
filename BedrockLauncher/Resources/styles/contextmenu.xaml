@@ -28,7 +28,6 @@
                                 </Canvas>
                                 <Rectangle Fill="{StaticResource ContextMenuBackground}" HorizontalAlignment="Left" RadiusY="2" RadiusX="2" Width="28"/>
                                 <Rectangle Fill="{StaticResource ContextMenuBackground}" HorizontalAlignment="Left" Width="1"/>
-                                <Rectangle Fill="Gray" HorizontalAlignment="Left" Width="1"/>
                                 <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Cycle" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                             </Grid>
                         </ScrollViewer>
@@ -62,7 +61,6 @@
                                 </Canvas>
                                 <Rectangle Fill="{StaticResource ContextMenuBackground}" HorizontalAlignment="Left" Margin="1,2" RadiusY="2" RadiusX="2" Width="28"/>
                                 <Rectangle Fill="{StaticResource ContextMenuBackground}" HorizontalAlignment="Left" Margin="29,2,0,2" Width="1"/>
-                                <Rectangle Fill="Gray" HorizontalAlignment="Left" Margin="30,2,0,2" Width="1"/>
                                 <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Cycle" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                             </Grid>
                         </ScrollViewer>

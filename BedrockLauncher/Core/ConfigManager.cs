@@ -144,7 +144,6 @@ namespace BedrockLauncher.Core
                 Console.WriteLine("\nProfile found!: ");
                 Console.WriteLine("Name: " + setting.Name);
                 Console.WriteLine("Path: " + setting.ProfilePath);
-                Console.WriteLine("Skin: " + setting.SkinPath);
 
                 if (setting.Installations == null) setting.Installations = new List<Installation>();
                 Console.WriteLine("Installations: " + setting.Installations.Count);
@@ -181,7 +180,6 @@ namespace BedrockLauncher.Core
             {
                 // default settings
                 profileSettings.Name = profile;
-                profileSettings.SkinPath = null;
                 profileSettings.ProfilePath = ValidatePathName(profile);
                 profileSettings.Installations = new List<Installation>();
 

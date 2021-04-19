@@ -14,27 +14,29 @@ namespace BedrockLauncher.Methods
 {
     public class LauncherUpdater
     {
-        private const string LATEST_BUILD_LINK = "https://github.com/XlynxX/BedrockLauncher/releases/latest";
+        private string LATEST_BUILD_LINK { get => Properties.Settings.Default.GithubPage + "/releases/latest"; }
         private string latestTag;
         private string latestTagDescription;
         public LauncherUpdater()
         {
             Debug.WriteLine("Checking for updates");
-            try
-            {
-                CheckUpdates();
-            }
-            catch (Exception err)
-            {
-                Debug.WriteLine("Check for updates failed\nError:" + err.Message);
-            }
+            CheckUpdates();
         }
 
         private async void CheckUpdates()
         {
-            var html = await Task.Run(getHtml);
-            lookForLatestTag(html);
-            lookForDescription(html);
+            try
+            {
+                var html = await Task.Run(getHtml);
+                lookForLatestTag(html);
+                lookForDescription(html);
+            }
+            catch (Exception err)
+            {
+                Debug.WriteLine("Check for updates failed\nError:" + err.Message);
+                latestTag = "";
+                latestTagDescription = "";
+            }
         }
 
         private HtmlAgilityPack.HtmlDocument getHtml()

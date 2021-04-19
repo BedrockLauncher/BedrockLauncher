@@ -13,6 +13,7 @@ using CefSharp.Wpf;
 using System.Runtime.CompilerServices;
 using BedrockLauncher.Html;
 using CefSharp.SchemeHandler;
+using BedrockLauncher.Core;
 
 namespace BedrockLauncher
 {
@@ -117,6 +118,10 @@ namespace BedrockLauncher
                                                    "CefSharp.BrowserSubprocess.exe");
 
             settings.CefCommandLineArgs.Add("--disable-web-security");
+            settings.CefCommandLineArgs.Add("enable-gpu", "1");
+            settings.CefCommandLineArgs.Add("enable-webgl", "1");
+            settings.CefCommandLineArgs.Add("enable-begin-frame-scheduling", "1");
+            settings.CefCommandLineArgs.Add("--off-screen-frame-rate", "60");
 
             settings.RegisterScheme(new CefCustomScheme
             {

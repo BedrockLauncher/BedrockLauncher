@@ -32,7 +32,7 @@
                         <Border Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Row="0" BorderBrush="Black" BorderThickness="0" Width="256">
                             <Image Source="{Binding ImageUrl}" Stretch="UniformToFill"></Image>
                         </Border>
-                        <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" FontSize="25" Grid.ColumnSpan="2" Margin="15,15" TextWrapping="Wrap" Grid.Row="1" Text="{Binding Title}" Foreground="White"></TextBlock>
+                        <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" FontWeight="Normal" FontSize="25" Grid.ColumnSpan="2" Margin="15,15" TextWrapping="Wrap" Grid.Row="1" Text="{Binding Title}" Foreground="White"></TextBlock>
                         <TextBlock Grid.ColumnSpan="2" Margin="15,5" TextWrapping="Wrap" Grid.Row="2" Text="{Binding Description}" Foreground="White"></TextBlock>
                         <TextBlock Grid.Column="1" Margin="15,0,15,15" TextAlignment="Right" VerticalAlignment="Bottom" TextWrapping="Wrap" Grid.Row="3" Text="{Binding PublishingDateString}" Foreground="Gray"></TextBlock>
                         <TextBlock Grid.Column="0" Padding="2,2" Margin="15,0,0,15" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Bottom" TextWrapping="Wrap" Grid.Row="3" Text="{Binding PrimaryTag}" Foreground="White" Background="DimGray"></TextBlock>
@@ -46,21 +46,34 @@
             </Grid>
         </DataTemplate>
     </Page.Resources>
-    <TabControl Background="#FF282828">
-        <TabItem x:Name="OfficalTab" Header="{StaticResource NewsScreen_OfficalTabTitle}">
-            <Grid>
-                <ListView x:Name="OfficalNewsFeed" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ItemTemplate="{StaticResource FeedItemEntry}">
-                    <ListView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel HorizontalAlignment="Center" MaxWidth="{Binding ElementName=OfficalNewsFeed, Path=ActualWidth}"></WrapPanel>
-                        </ItemsPanelTemplate>
-                    </ListView.ItemsPanel>
-                </ListView>
-            </Grid>
-        </TabItem>
-        <TabItem x:Name="LauncherTab" Header="{StaticResource NewsScreen_LauncherTabTitle}">
-            <Grid Margin="0" Background="#FF333333">
-                <TextBlock LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap" Margin="5,5,0,0" Foreground="White" FontSize="17" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid SnapsToDevicePixels="True" RenderOptions.BitmapScalingMode="NearestNeighbor" Focusable="False">
+            <Grid.Background>
+                <ImageBrush TileMode="Tile" Viewport="0,0,16,16" ViewportUnits="Absolute" ImageSource="/BedrockLauncher;component/Resources/images/bg/stone_texture.png">
+                </ImageBrush>
+            </Grid.Background>
+            <Grid Background="Black" Opacity="0.8" Focusable="False"></Grid>
+            <Image Margin="0,10" Source="/BedrockLauncher;component/Resources/images/logo/logo.png"></Image>
+        </Grid>
+        <TabControl Grid.Row="1" Background="#FF282828">
+            <TabItem x:Name="OfficalTab" Header="{StaticResource NewsScreen_OfficalTabTitle}">
+                <Grid>
+                    <ListView x:Name="OfficalNewsFeed" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ItemTemplate="{StaticResource FeedItemEntry}">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel HorizontalAlignment="Center" MaxWidth="{Binding ElementName=OfficalNewsFeed, Path=ActualWidth}"></WrapPanel>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="LauncherTab" Header="{StaticResource NewsScreen_LauncherTabTitle}">
+                <Grid Margin="0" Background="#FF333333">
+                    <TextBlock LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap" Margin="5,5,0,0" Foreground="White" FontSize="17" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans">
             <Run FontSize="26" FontWeight="Bold" Text="{DynamicResource NewsScreen_Title}"/>
             <Run Foreground="Gray" FontSize="13" Text="{DynamicResource NewsScreen_build}"/>
             <Run x:Name="buildVersion" Foreground="Gray" FontSize="13"/>
@@ -69,8 +82,10 @@
             <Run FontSize="20" FontWeight="Bold" Text="{DynamicResource NewsScreen_Changes}"/>
             <LineBreak/>
             <Run x:Name="buildChanges" FontSize="13"/>
-                </TextBlock>
-            </Grid>
-        </TabItem>
-    </TabControl>
+                    </TextBlock>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+
 </Page>

@@ -122,7 +122,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                return IsBeta ? @"/BedrockLauncher;component/Resources/images/crafting_table_block_icon.ico" : @"/BedrockLauncher;component/Resources/images/grass_block_icon.ico";
+                return IsBeta ? @"/BedrockLauncher;component/Resources/images/icons/crafting_table_block_icon.ico" : @"/BedrockLauncher;component/Resources/images/icons/grass_block_icon.ico";
             }
         }
 

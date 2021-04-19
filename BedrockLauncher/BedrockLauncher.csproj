@@ -81,7 +81,7 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\images\bedrock_block_icon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\images\icons\bedrock_block_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -147,8 +147,14 @@
     </ApplicationDefinition>
     <Compile Include="Addons\BetterBedrock\BetterBedrockMain.cs" />
     <Compile Include="Classes\Installation.cs" />
+    <Compile Include="Classes\SkinPack\MCSkinPackContent.cs" />
+    <Compile Include="Classes\SkinPack\MCSkinPackLang.cs" />
     <Compile Include="Classes\MCNetFeedItem.cs" />
-    <Compile Include="Classes\MCSkinPack.cs" />
+    <Compile Include="Classes\SkinPack\MCSkin.cs" />
+    <Compile Include="Classes\SkinPack\MCSkinGeometry.cs" />
+    <Compile Include="Classes\SkinPack\MCSkinPack.cs" />
+    <Compile Include="Classes\SkinPack\MCSkinPackMainfest.cs" />
+    <Compile Include="Controls\FolderSelectDialog.cs" />
     <Compile Include="Controls\ServersButton.xaml.cs">
       <DependentUpon>ServersButton.xaml</DependentUpon>
     </Compile>
@@ -197,8 +203,12 @@
     <Compile Include="Core\LanguageManager.cs" />
     <Compile Include="Interfaces\ICommonVersionCommands.cs" />
     <Compile Include="Methods\ConsoleArgumentParser.cs" />
+    <Compile Include="Methods\MCSkinUtilities.cs" />
     <Compile Include="Methods\SymLinkHelper.cs" />
     <Compile Include="Html\ResourceSchemeHandler.cs" />
+    <Compile Include="Pages\AdvancedOptionsWindow.xaml.cs">
+      <DependentUpon>AdvancedOptionsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ErrorScreen.xaml.cs">
       <DependentUpon>ErrorScreen.xaml</DependentUpon>
     </Compile>
@@ -319,6 +329,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\SkinPreview\SkinPreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AdvancedOptionsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -528,6 +542,9 @@
     <PackageReference Include="HtmlAgilityPack">
       <Version>1.11.31</Version>
     </PackageReference>
+    <PackageReference Include="ini-parser">
+      <Version>2.5.2</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Windows.CppWinRT">
       <Version>2.0.210326.8</Version>
     </PackageReference>
@@ -539,7 +556,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\images\icon.ico" />
+    <Resource Include="Resources\images\icons\icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\installation_icons\Acacia_Log.png" />
@@ -580,30 +597,24 @@
     <Resource Include="Resources\images\installation_icons\White_Wool.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\images\title.png" />
+    <Resource Include="Resources\images\logo\title.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\images\grass_icon.png" />
-    <Resource Include="Resources\images\settings_icon.png" />
+    <Resource Include="Resources\images\ui\icons\grass_icon.png" />
+    <Resource Include="Resources\images\ui\icons\settings_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\images\news_icon.png" />
+    <Resource Include="Resources\images\ui\icons\news_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\images\bedrock_icon.png" />
+    <Resource Include="Resources\images\ui\icons\bedrock_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\images\MainPagePlayButton.png" />
+    <Resource Include="Resources\images\ui\bg\MainPagePlayButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\images\MainPagePlayButtonOver.png" />
-    <Resource Include="Resources\images\MainPagePlayButtonPressed.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\optionmark.png" />
+    <Resource Include="Resources\images\ui\bg\MainPagePlayButtonOver.png" />
+    <Resource Include="Resources\images\ui\bg\MainPagePlayButtonPressed.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Addons\BetterBedrock\files\glyph_04.png" />
@@ -626,8 +637,8 @@
     <Resource Include="Addons\BetterBedrock\files\glyph_E0.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\images\ms-icon.png" />
-    <Resource Include="Resources\images\mojang-icon.png" />
+    <Resource Include="Resources\images\ui\icons\ms-icon.png" />
+    <Resource Include="Resources\images\ui\icons\mojang-icon.png" />
     <Resource Include="Resources\images\installation_icons\Birch_Leaves.png" />
     <Resource Include="Resources\images\installation_icons\Birch_Planks.png" />
     <Resource Include="Resources\images\installation_icons\Block_of_Gold.png" />
@@ -670,7 +681,7 @@
     <Resource Include="Resources\images\installation_icons\Stone.png" />
     <Resource Include="Resources\images\credits\carjem_logo.png" />
     <Resource Include="Resources\images\credits\xlynxx.jpg" />
-    <Resource Include="Resources\images\main_photo.jpg" />
+    <Resource Include="Resources\images\bg\main_photo.jpg" />
     <Resource Include="Controls\SkinPreview\Html\ItemPreview_Normal.html" />
     <Resource Include="Controls\SkinPreview\Html\NoSkin.png" />
     <Resource Include="Controls\SkinPreview\Html\minecraft-skinviewer.css" />
@@ -678,15 +689,19 @@
     <Resource Include="Controls\SkinPreview\Html\ItemPreview_Legacy.html" />
     <Resource Include="Controls\SkinPreview\Html\ItemPreview_SlimLegacy.html" />
     <Resource Include="Controls\SkinPreview\Html\minecraft-skinviewer-common.css" />
+    <Resource Include="Resources\images\bg\stone_texture.png" />
+    <Resource Include="Resources\images\logo\logo.png" />
+    <Resource Include="Resources\images\ui\elements\optionmark.png" />
+    <Resource Include="Resources\images\logo\subtitle.png" />
     <Content Include="WUTokenHelper.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Resources\images\firstlaunchbackground.jpg" />
-    <Resource Include="Resources\images\servers_icon.png" />
-    <Resource Include="Resources\images\advancement_icon.png" />
-    <Resource Include="Resources\images\bedrock_block_icon.ico" />
-    <Resource Include="Resources\images\grass_block_icon.ico" />
-    <Resource Include="Resources\images\crafting_table_block_icon.ico" />
+    <Resource Include="Resources\images\bg\firstlaunchbackground.jpg" />
+    <Resource Include="Resources\images\ui\icons\servers_icon.png" />
+    <Resource Include="Resources\images\ui\bg\advancement_icon.png" />
+    <Resource Include="Resources\images\icons\bedrock_block_icon.ico" />
+    <Resource Include="Resources\images\icons\grass_block_icon.ico" />
+    <Resource Include="Resources\images\icons\crafting_table_block_icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Installer\Installer.csproj">

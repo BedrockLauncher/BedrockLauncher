@@ -15,5 +15,5 @@
         </ToggleButton.ToolTip>
         <TextBlock LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,5"><Run FontSize="11" Text="{DynamicResource MainWindow_SwitchEdition}"/><LineBreak/><Run FontSize="14" Text="{DynamicResource MainWindow_MinecraftJavaLauncher}"/></TextBlock>
     </ToggleButton>
-    <Image Style="{StaticResource SideBarButtonIcon}" Source="../Resources/images/grass_icon.png"/>
+    <Image Style="{StaticResource SideBarButtonIcon}" Source="../Resources/images/ui/icons/grass_icon.png"/>
 </Grid>

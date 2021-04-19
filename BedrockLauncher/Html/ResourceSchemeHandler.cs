@@ -18,9 +18,6 @@ namespace BedrockLauncher.Html
         public override CefReturnValue ProcessRequestAsync(IRequest request, ICallback callback)
         {
             var names = this.GetType().Assembly.GetManifestResourceNames();
-
-            Console.WriteLine(names);
-
             Uri u = new Uri(request.Url);
             string resourceName = string.Format("{0}{1}", u.Authority, u.AbsolutePath).ToLower();
             string resourcePath = @"/BedrockLauncher;component/" + resourceName;
@@ -65,6 +62,7 @@ namespace BedrockLauncher.Html
                         catch (Exception ex)
                         {
                             callback.Cancel();
+                            Console.WriteLine(ex);
                         }
 
                     }

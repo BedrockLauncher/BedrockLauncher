@@ -94,7 +94,7 @@ namespace BedrockLauncher.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/XlynxX/BedrockLauncher")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/CarJem/BedrockLauncher")]
         public string GithubPage {
             get {
                 return ((string)(this["GithubPage"]));
@@ -158,6 +158,30 @@ namespace BedrockLauncher.Properties {
             }
             set {
                 this["SaveRedirection"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string FixedDirectory {
+            get {
+                return ((string)(this["FixedDirectory"]));
+            }
+            set {
+                this["FixedDirectory"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool HideJavaShortcut {
+            get {
+                return ((bool)(this["HideJavaShortcut"]));
+            }
+            set {
+                this["HideJavaShortcut"] = value;
             }
         }
     }

@@ -97,11 +97,13 @@
     <v:String x:Key="MainWindow_RemoveProfile">Remove Profile</v:String>
     <v:String x:Key="MainWindow_ChooseAccount">CHOOSE PROFILE</v:String>
 
-    <v:String x:Key="MainWindowSettingsScreen_PortableMode">Enable Portable Mode</v:String>
     <v:String x:Key="MainWindowSettingsScreen_ExperimentalSaveRedirection">Enable experiemental save redirection</v:String>
-    <v:String x:Key="AcountsSettingsScreen_AccountDropdownSubtitle">INSIDER ACCOUNT</v:String>
-    <v:String x:Key="MainWindowSettingsScreen_BackupButton">Backup save data to new installation</v:String>
+    <v:String x:Key="MainWindowSettingsScreen_HideJavaLauncherShortcut">Hide Java Edition launcher shortcut</v:String>
+    <v:String x:Key="MainWindowSettingsScreen_BackupButton">Backup Save Data</v:String>
+    <v:String x:Key="MainWindowSettingsScreen_AdvancedSettingsButton">Advanced Settings</v:String>
     <v:String x:Key="MainWindowSettingsScreen_VersionsButton">Versions</v:String>
+
+    <v:String x:Key="AcountsSettingsScreen_AccountDropdownSubtitle">INSIDER ACCOUNT</v:String>
 
     <v:String x:Key="NewProfile_GoBackButton">❮ GO BACK</v:String>
     <v:String x:Key="NewProfile_CreateProfileText">PROFILE</v:String>
@@ -138,5 +140,16 @@
 
     <v:String x:Key="NewsScreen_LauncherTabTitle">Launcher</v:String>
     <v:String x:Key="NewsScreen_OfficalTabTitle">Offical</v:String>
+
+    <v:String x:Key="AdvancedSettingsWindow_AdvancedTitle">Advanced Settings</v:String>
+    <v:String x:Key="AdvancedSettingsWindow_LauncherSubtitle">LAUNCHER OPTIONS</v:String>
+    <v:String x:Key="AdvancedSettingsWindow_PathSubtitle">STORAGE DIRECTORY</v:String>
+    <v:String x:Key="AdvancedSettingsWindow_RestartButton">Restart</v:String>
+    <v:String x:Key="AdvancedSettingsWindow_Notice">* All settings will restart the launcher</v:String>
+    <v:String x:Key="AdvancedSettingsWindow_PortableMode">Enable Portable Mode</v:String>
+
+    <v:String x:Key="GeneralText_Browse">BROWSE</v:String>
+    <v:String x:Key="GeneralText_Reset">RESET</v:String>
+
 
 </ResourceDictionary>

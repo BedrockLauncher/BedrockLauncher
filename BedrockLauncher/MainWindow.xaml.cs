@@ -119,17 +119,18 @@ namespace BedrockLauncher
 
                        if (ConfigManager.GameManager.IsDownloading || ConfigManager.GameManager.HasLaunchTask)
                        {
-                           if (ConfigManager.GameManager.IsDownloading) ProgressBarShowAnim();
-
+                           ProgressBarShowAnim();
                            MainPlayButton.IsEnabled = false;
                            InstallationsList.IsEnabled = false;
                        }
                        else
                        {
-                           ProgressBarGrid.Visibility = Visibility.Collapsed;
+                           ProgressBarHideAnim();
                            MainPlayButton.IsEnabled = true;
                            InstallationsList.IsEnabled = true;
                        }
+
+                       
 
 
                        if (selected.Version?.IsInstalled ?? false) PlayButtonText.SetResourceReference(TextBlock.TextProperty, "MainPage_PlayButton");
@@ -137,25 +138,57 @@ namespace BedrockLauncher
                    }));
             });
         }
-        private void ProgressBarShowAnim()
+        private async void ProgressBarShowAnim()
         {
-            ProgressBarGrid.Visibility = Visibility.Visible;
+            if (ProgressBarGrid.Visibility == Visibility.Visible) return;
+            await Application.Current.Dispatcher.InvokeAsync(() =>
+            {
+                ProgressBarGrid.Visibility = Visibility.Visible;
+                ProgressBarText.Visibility = Visibility.Hidden;
+                progressbarcontent.Visibility = Visibility.Hidden;
+
+                Storyboard storyboard = new Storyboard();
+                DoubleAnimation animation = new DoubleAnimation
+                {
+                    From = 0,
+                    To = 62,
+                    Duration = new Duration(TimeSpan.FromMilliseconds(350))
+                };
+                storyboard.Children.Add(animation);
+                Storyboard.SetTargetProperty(animation, new PropertyPath(ProgressBar.HeightProperty));
+                Storyboard.SetTarget(animation, ProgressBarGrid);
+                storyboard.Completed += new EventHandler(ShowProgressBarContent);
+                storyboard.Begin();
+            });
+        }
+
+        private async void ProgressBarHideAnim()
+        {
+            if (ProgressBarGrid.Visibility == Visibility.Collapsed) return;
+            await Application.Current.Dispatcher.InvokeAsync(() =>
+            {
+                Storyboard storyboard = new Storyboard();
+                DoubleAnimation animation = new DoubleAnimation
+                {
+                    From = 62,
+                    To = 0,
+                    Duration = new Duration(TimeSpan.FromMilliseconds(350))
+                };
+                storyboard.Children.Add(animation);
+                Storyboard.SetTargetProperty(animation, new PropertyPath(ProgressBar.HeightProperty));
+                Storyboard.SetTarget(animation, ProgressBarGrid);
+                storyboard.Completed += new EventHandler(HideProgressBarContent);
+                storyboard.Begin();
+            });
+        }
+
+        private void HideProgressBarContent(object sender, EventArgs e)
+        {
+            ProgressBarGrid.Visibility = Visibility.Collapsed;
             ProgressBarText.Visibility = Visibility.Hidden;
             progressbarcontent.Visibility = Visibility.Hidden;
-            
-            Storyboard storyboard = new Storyboard();
-            ThicknessAnimation animation = new ThicknessAnimation
-            {
-                From = new Thickness(0, 70, 0, 55),
-                To = new Thickness(0,-62,0,55),
-                Duration = new Duration(TimeSpan.FromMilliseconds(350))
-            };
-            storyboard.Children.Add(animation);
-            Storyboard.SetTargetProperty(animation, new PropertyPath(ProgressBar.MarginProperty));
-            Storyboard.SetTarget(animation, ProgressBarGrid);
-            storyboard.Completed += new EventHandler(ShowProgressBarContent);
-            storyboard.Begin();
         }
+
         private void ShowProgressBarContent(object sender, EventArgs e)
         {
             ProgressBarText.Visibility = Visibility.Visible;

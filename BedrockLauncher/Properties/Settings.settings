@@ -21,7 +21,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="GithubPage" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://github.com/XlynxX/BedrockLauncher</Value>
+      <Value Profile="(Default)">https://github.com/CarJem/BedrockLauncher</Value>
     </Setting>
     <Setting Name="CurrentProfile" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -37,6 +37,12 @@
     </Setting>
     <Setting Name="SaveRedirection" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="FixedDirectory" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="HideJavaShortcut" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -15,5 +15,5 @@
         </ToggleButton.ToolTip>
         <TextBlock LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,5"><Run FontSize="11" Text="MINECRAFT:"/><LineBreak/><Run FontSize="14" Text="Bedrock Edition"/></TextBlock>
     </ToggleButton>
-    <Image Style="{StaticResource SideBarButtonIcon}" Source="../Resources/images/bedrock_icon.png"/>
+    <Image Style="{StaticResource SideBarButtonIcon}" Source="../Resources/images/ui/icons/bedrock_icon.png"/>
 </Grid>

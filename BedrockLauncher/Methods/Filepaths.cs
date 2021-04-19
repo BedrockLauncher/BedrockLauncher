@@ -24,13 +24,21 @@ namespace BedrockLauncher.Methods
         #region Common Paths
 
         public static string PortableLocation { get => System.Reflection.Assembly.GetExecutingAssembly().Location; }
-        public static string FixedDataFolder { get => Path.Combine(AppData, AppDataFolderName); }
-        public static string InstallationsPath_Fixed { get => Path.Combine(AppData, AppDataFolderName, InstallationsFolderName); }
-        private static string AppData { get => Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData); }
+        public static string DefaultLocation { get => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), AppDataFolderName); }
+        public static string InstallationsPath_Fixed { get => Path.Combine(GetFixedPath(), InstallationsFolderName); }
 
         #endregion
 
         #region Dynamic Paths
+
+        private static string GetFixedPath()
+        {
+            if (Properties.Settings.Default.FixedDirectory == string.Empty)
+            {
+                return DefaultLocation;
+            }
+            else return Properties.Settings.Default.FixedDirectory;
+        }
 
         public static string GetVersionsFilePath()
         {
@@ -40,7 +48,7 @@ namespace BedrockLauncher.Methods
         public static string GetProfilesFilePath()
         {
             if (Properties.Settings.Default.PortableMode) return Methods.Filepaths.PortableLocation + "\\" + UserDataFileName;
-            else return Path.Combine(FixedDataFolder, UserDataFileName);
+            else return Path.Combine(GetFixedPath(), UserDataFileName);
         }
         public static string GetInstallationsFolderPath(string profileName, string installationDirectory)
         {

@@ -119,5 +119,10 @@ namespace BedrockLauncher.Pages
         {
             
         }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
+        }
     }
 }

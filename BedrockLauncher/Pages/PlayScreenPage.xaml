@@ -8,23 +8,29 @@
       d:DesignHeight="608" d:DesignWidth="828"
       Title="PlayScreenPage">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="18"></RowDefinition>
+            <RowDefinition MinHeight="66"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
         <Grid.Background>
-            <ImageBrush Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality" ImageSource="/BedrockLauncher;component/Resources/images/main_photo.jpg"/>
+            <ImageBrush Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality" ImageSource="/BedrockLauncher;component/Resources/images/bg/main_photo.jpg"/>
         </Grid.Background>
-        <Border BorderThickness="1" Height="88" Margin="0,18,0,0" VerticalAlignment="Top">
-            <Border.Background>
-                <ImageBrush ImageSource="/BedrockLauncher;component/Resources/images/title.png" Stretch="Uniform">
-                    <ImageBrush.RelativeTransform>
-                        <TransformGroup>
-                            <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="0.69" ScaleY="0.69"/>
-                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                            <RotateTransform CenterY="0.5" CenterX="0.5"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </ImageBrush.RelativeTransform>
-                </ImageBrush>
-            </Border.Background>
-            <Border.Triggers>
+        <Image VerticalAlignment="Top" MaxHeight="77" HorizontalAlignment="Stretch" Source="/BedrockLauncher;component/Resources/images/logo/title.png" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" Grid.Column="1" Grid.Row="1">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="1" ScaleY="1"/>
+                    <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                    <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+            <Image.Triggers>
                 <EventTrigger RoutedEvent="Border.Loaded">
                     <BeginStoryboard>
                         <Storyboard>
@@ -38,7 +44,7 @@
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
-            </Border.Triggers>
-        </Border>
+            </Image.Triggers>
+        </Image>
     </Grid>
 </Page>

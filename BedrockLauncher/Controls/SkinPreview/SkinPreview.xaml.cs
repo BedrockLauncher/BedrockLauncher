@@ -16,7 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing;
 using System.IO;
-using BedrockLauncher.Classes;
+using BedrockLauncher.Classes.SkinPack;
 
 namespace BedrockLauncher.Controls
 {
@@ -82,7 +82,7 @@ namespace BedrockLauncher.Controls
         {
             get
             {
-                return (Type == Classes.MCSkinGeometry.Custom ? false : true);
+                return (Type == MCSkinGeometry.Custom ? false : true);
             }
         }
 
@@ -99,7 +99,7 @@ namespace BedrockLauncher.Controls
             Init();
             RefreshView();
         }
-        public SkinPreview(Classes.MCSkin Skin)
+        public SkinPreview(MCSkin Skin)
         {
             Init();
             Path = Skin.texture_path;
@@ -120,7 +120,7 @@ namespace BedrockLauncher.Controls
             Type = MCSkinGeometry.Custom;
             RefreshView();
         }
-        public void UpdateSkin(Classes.MCSkin Skin)
+        public void UpdateSkin(MCSkin Skin)
         {
             Path = Skin.texture_path;
             Type = Skin.skin_type;
@@ -128,7 +128,7 @@ namespace BedrockLauncher.Controls
         }
         private void RefreshView()
         {
-            bool SlimArms = (Type == Classes.MCSkinGeometry.Slim ? true : false);
+            bool SlimArms = (Type == MCSkinGeometry.Slim ? true : false);
             bool ModernSkin = DetectSkinType(Path);
 
             string ViewerMode = string.Empty;
@@ -161,7 +161,7 @@ namespace BedrockLauncher.Controls
                 }
                 catch (Exception ex)
                 {
-
+                    Console.WriteLine(ex);
                 }
 
             }

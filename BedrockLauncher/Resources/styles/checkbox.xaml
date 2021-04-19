@@ -38,7 +38,7 @@
                         </Grid.ColumnDefinitions>
                         <Border x:Name="checkBoxBorder" BorderBrush="#FF595959" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                             <Grid x:Name="markGrid" Background="{TemplateBinding Background}" Height="13" Width="13">
-                                <Image x:Name="checkImage" RenderOptions.BitmapScalingMode="NearestNeighbor" Source="/BedrockLauncher;component/Resources/images/optionmark.png" Stretch="Fill" Width="Auto" Height="Auto" >
+                                <Image x:Name="checkImage" RenderOptions.BitmapScalingMode="NearestNeighbor" Source="/BedrockLauncher;component/Resources/images/ui/elements/optionmark.png" Stretch="Fill" Width="Auto" Height="Auto" >
                                     <!--Image.Style>
                                             <Style TargetType="CheckBox">
                                                 <Setter Property="Source" Value="{x:Null}"/>

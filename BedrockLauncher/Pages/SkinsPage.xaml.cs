@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BedrockLauncher.Classes;
+using BedrockLauncher.Classes.SkinPack;
 using BedrockLauncher.Core;
 using BedrockLauncher.Methods;
 using System.IO;
@@ -79,6 +79,25 @@ namespace BedrockLauncher.Pages
                     SkinPreviewList.Items.Add(skin);
                 }
             }
+
+
+        }
+
+        private void UpdateCurrentSkin()
+        {
+            var selected_skin = SkinPreviewList.SelectedItem as MCSkin;
+            var selected_item = LoadedSkinPacks.SelectedItem as MCSkinPack;
+
+            if (selected_skin != null && selected_item != null)
+            {
+                CurrentSkinNameTextBlock.Text = selected_item.GetLocalizedSkinName(selected_skin.localization_name);
+                SkinPreviewPanel.UpdateSkin(selected_skin);
+            }
+            else
+            {
+                CurrentSkinNameTextBlock.Text = "NULL";
+                SkinPreviewPanel.UpdateSkin();
+            }
         }
 
         private void Page_Initialized(object sender, EventArgs e)
@@ -94,19 +113,19 @@ namespace BedrockLauncher.Pages
         private void LoadedSkinPacks_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ReloadSkins();
-            SkinPreviewPanel.UpdateSkin();
+            UpdateCurrentSkin();
         }
+
 
         private void SkinPreviewList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selected_item = SkinPreviewList.SelectedItem as MCSkin;
-            if (selected_item != null) SkinPreviewPanel.UpdateSkin(selected_item);
+            UpdateCurrentSkin();
         }
 
         private void MoreButton_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            var skinPack = button.DataContext as Classes.MCSkinPack;
+            var skinPack = button.DataContext as MCSkinPack;
             LoadedSkinPacks.SelectedItem = skinPack;
             button.ContextMenu.PlacementTarget = button;
             button.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
@@ -127,7 +146,7 @@ namespace BedrockLauncher.Pages
         private void Folder_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            var skinPack = button.DataContext as Classes.MCSkinPack;
+            var skinPack = button.DataContext as MCSkinPack;
             ConfigManager.GameManager.OpenFolder(skinPack);
         }
     }
