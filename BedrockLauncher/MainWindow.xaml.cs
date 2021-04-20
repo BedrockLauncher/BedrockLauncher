@@ -130,9 +130,6 @@ namespace BedrockLauncher
                            InstallationsList.IsEnabled = true;
                        }
 
-                       
-
-
                        if (selected.Version?.IsInstalled ?? false) PlayButtonText.SetResourceReference(TextBlock.TextProperty, "MainPage_PlayButton");
                        else PlayButtonText.SetResourceReference(TextBlock.TextProperty, "MainPage_PlayButton");
                    }));

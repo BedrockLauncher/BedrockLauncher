@@ -18,14 +18,15 @@ namespace BedrockLauncher.Methods
         public static readonly string AppDataFolderName = ".minecraft_bedrock";
         public static readonly string InstallationsFolderName = "installations";
         public static readonly string PackageDataFolderName = "packageData";
+        public static readonly string IconCacheFolderName = "icon_cache";
 
         #endregion
 
         #region Common Paths
 
+        public static string CurrentLocation { get => (Properties.Settings.Default.PortableMode ? PortableLocation : GetFixedPath()); }
         public static string PortableLocation { get => System.Reflection.Assembly.GetExecutingAssembly().Location; }
         public static string DefaultLocation { get => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), AppDataFolderName); }
-        public static string InstallationsPath_Fixed { get => Path.Combine(GetFixedPath(), InstallationsFolderName); }
 
         #endregion
 
@@ -39,7 +40,6 @@ namespace BedrockLauncher.Methods
             }
             else return Properties.Settings.Default.FixedDirectory;
         }
-
         public static string GetVersionsFilePath()
         {
             return VersionCacheFileName;
@@ -47,16 +47,19 @@ namespace BedrockLauncher.Methods
         }
         public static string GetProfilesFilePath()
         {
-            if (Properties.Settings.Default.PortableMode) return Methods.Filepaths.PortableLocation + "\\" + UserDataFileName;
-            else return Path.Combine(GetFixedPath(), UserDataFileName);
+            return Path.Combine(CurrentLocation, UserDataFileName);
+        }
+        public static string GetCacheFolderPath()
+        {
+            string cache_dir = Path.Combine(CurrentLocation, IconCacheFolderName);
+            if (!Directory.Exists(cache_dir)) Directory.CreateDirectory(cache_dir);
+            return cache_dir;
         }
         public static string GetInstallationsFolderPath(string profileName, string installationDirectory)
         {
             var profile = ConfigManager.ProfileList.profiles[profileName];
-            string InstallationsPath_Portable = Path.Combine(profile.ProfilePath, installationDirectory);
-
-            if (Properties.Settings.Default.PortableMode) return Path.Combine(Methods.Filepaths.PortableLocation, InstallationsPath_Portable, PackageDataFolderName);
-            else return Path.Combine(InstallationsPath_Fixed, InstallationsPath_Portable, PackageDataFolderName);
+            string InstallationsPath = Path.Combine(profile.ProfilePath, installationDirectory);
+            return Path.Combine(CurrentLocation, InstallationsFolderName, InstallationsPath, PackageDataFolderName);
         }
         public static string GetSkinPacksFolderPath(string InstallationsPath, bool DevFolder = false)
         {
@@ -69,6 +72,55 @@ namespace BedrockLauncher.Methods
         }
 
 
+
+        #endregion
+
+        #region Image Cache
+
+
+        public static string GenerateIconCacheFileName(string extension)
+        {
+            string cache_dir = GetCacheFolderPath();
+            string destFileName = string.Empty;
+
+            while (destFileName == string.Empty || File.Exists(destFileName))
+            {
+                string cache_filename = Path.GetFileNameWithoutExtension(Path.GetRandomFileName()) + extension;
+                destFileName = Path.Combine(cache_dir, cache_filename);
+            }
+
+            return destFileName;
+        }
+
+        public static bool RemoveImageFromIconCache(string filePath)
+        {
+            try
+            {
+                File.Delete(filePath);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
+        }
+
+        public static string AddImageToIconCache(string sourceFilePath)
+        {
+            string destFileName = GenerateIconCacheFileName(Path.GetExtension(sourceFilePath));
+
+            try
+            {
+                File.Copy(sourceFilePath, destFileName);
+                return destFileName;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return string.Empty;
+            }
+        }
 
         #endregion
     }

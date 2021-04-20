@@ -128,12 +128,16 @@ namespace BedrockLauncher.Methods
 
         public void OpenFolder(Installation i)
         {
-            Process.Start("explorer.exe", Filepaths.GetInstallationsFolderPath(ConfigManager.CurrentProfile, i.DirectoryName));
+            string Directory = Filepaths.GetInstallationsFolderPath(ConfigManager.CurrentProfile, i.DirectoryName);
+            if (!System.IO.Directory.Exists(Directory)) System.IO.Directory.CreateDirectory(Directory);
+            Process.Start("explorer.exe", Directory);
         }
 
         public void OpenFolder(Version i)
         {
-            Process.Start("explorer.exe", Path.GetFullPath(i.GameDirectory));
+            string Directory = Path.GetFullPath(i.GameDirectory);
+            if (!System.IO.Directory.Exists(Directory)) System.IO.Directory.CreateDirectory(Directory);
+            Process.Start("explorer.exe", Directory);
         }
 
         public void OpenFolder(MCSkinPack i)

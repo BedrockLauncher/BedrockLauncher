@@ -258,13 +258,14 @@ namespace BedrockLauncher.Core
             }
             else return new List<Installation>();
         }
-        public static void EditInstallation(int index, string name, string directory, Version version, string iconPath = @"/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png")
+        public static void EditInstallation(int index, string name, string directory, Version version, string iconPath = @"/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png", bool isCustom = false)
         {
             if (ProfileList.profiles.ContainsKey(CurrentProfile) && ProfileList.profiles[CurrentProfile].Installations.Count > index)
             {
                 Installation installation = new Installation();
                 installation.DisplayName = name;
                 installation.IconPath = iconPath;
+                installation.IsCustomIcon = isCustom;
                 installation.DirectoryName = directory;
 
 
@@ -291,13 +292,14 @@ namespace BedrockLauncher.Core
             }
         }
 
-        public static void CreateInstallation(string name, Version version, string directory, string iconPath = @"/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png")
+        public static void CreateInstallation(string name, Version version, string directory, string iconPath = @"/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png", bool isCustom = false)
         {
             if (ProfileList.profiles.ContainsKey(CurrentProfile))
             {
                 Installation installation = new Installation();
                 installation.DisplayName = name;
                 installation.IconPath = iconPath;
+                installation.IsCustomIcon = isCustom;
                 installation.DirectoryName = directory;
 
 

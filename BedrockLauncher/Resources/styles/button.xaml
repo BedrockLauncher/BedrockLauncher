@@ -17,6 +17,70 @@
     <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
     <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
 
+    <SolidColorBrush x:Key="CloseButton.Static.Background" Color="#FF353535"/>
+    <SolidColorBrush x:Key="CloseButton.Static.Border" Color="#FF353535"/>
+    <SolidColorBrush x:Key="CloseButton.Static.Foreground" Color="White"/>
+    <SolidColorBrush x:Key="CloseButton.MouseOver.Background" Color="#FF838383"/>
+    <SolidColorBrush x:Key="CloseButton.MouseOver.Border" Color="White"/>
+    <SolidColorBrush x:Key="CloseButton.Pressed.Background" Color="#FF838383"/>
+    <SolidColorBrush x:Key="CloseButton.Pressed.Border" Color="White"/>
+    <SolidColorBrush x:Key="CloseButton.Disabled.Background" Color="#FF353535"/>
+    <SolidColorBrush x:Key="CloseButton.Disabled.Border" Color="#FF353535"/>
+    <SolidColorBrush x:Key="CloseButton.Disabled.Foreground" Color="#00000088"/>
+
+    <Style x:Key="CloseButton" TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="Background" Value="{StaticResource CloseButton.Static.Background}"/>
+        <Setter Property="Foreground" Value="{StaticResource CloseButton.Static.Foreground}"/>
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" CornerRadius="50"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                        <Grid>
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <Path x:Name="CloseWindow" 
+                                  Focusable="False" 
+                                  HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center" 
+                                  Margin="5"
+                                  Stretch="Fill"
+                                  Stroke="{TemplateBinding Foreground}" 
+                                  Data="M0,0L16,16M16,0L0,16" />
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefaulted" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource CloseButton.MouseOver.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource CloseButton.MouseOver.Border}"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource CloseButton.Pressed.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource CloseButton.Pressed.Border}"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource CloseButton.Disabled.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource CloseButton.Disabled.Border}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource CloseButton.Disabled.Foreground}"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="White"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <SolidColorBrush x:Key="ClosePopupButton.Static.Background" Color="Transparent"/>
     <SolidColorBrush x:Key="ClosePopupButton.Static.Border" Color="Transparent"/>
     <SolidColorBrush x:Key="ClosePopupButton.Static.Foreground" Color="White"/>

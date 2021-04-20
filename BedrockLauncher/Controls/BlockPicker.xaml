@@ -21,7 +21,7 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Image x:Name="SelectedBlockIcon" Source="/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png" Height="42" Width="42"></Image>
+                <Image RenderOptions.BitmapScalingMode="HighQuality" x:Name="SelectedBlockIcon" Source="/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png" Height="42" Width="42"></Image>
                 <Grid Grid.Column="1" Margin="10,0,0,0">
                     <Path x:Name="Arrow" Width="11" VerticalAlignment="Center" Margin="0" HorizontalAlignment="Center" Fill="white" Data="F1 M 0,0 L 2.667,2.66665 L 5.3334,0 L 5.3334,-1.78168 L 2.6667,0.88501 L0,-1.78168 L0,0 Z">
                         <Path.RenderTransform>

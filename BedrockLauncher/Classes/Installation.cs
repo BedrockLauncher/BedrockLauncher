@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using BedrockLauncher.Core;
 using Newtonsoft.Json;
+using System.Windows.Media.Imaging;
 
 namespace BedrockLauncher.Classes
 {
@@ -14,6 +15,7 @@ namespace BedrockLauncher.Classes
         public string DisplayName { get; set; }
         public string VersionUUID { get; set; }
         public string IconPath { get; set; }
+        public bool IsCustomIcon { get; set; }
         public string DirectoryName { get; set; }
         public bool ReadOnly { get; set; }
 

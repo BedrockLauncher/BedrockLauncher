@@ -48,7 +48,7 @@ namespace BedrockLauncher.Pages
             InstallationVersionSelect.SelectedItem = Versions.Where(x => x.UUID == i.VersionUUID).FirstOrDefault();
             InstallationNameField.Text = i.DisplayName;
             InstallationDirectoryField.Text = i.DirectoryName;
-            InstallationIconSelect.SelectedIconPath = i.IconPath;
+            InstallationIconSelect.Init(i.IconPath, i.IsCustomIcon);
             EditingIndex = index;
 
             Header.SetResourceReference(TextBlock.TextProperty, "EditingInstallationScreen_Header");
@@ -89,14 +89,14 @@ namespace BedrockLauncher.Pages
 
         private void UpdateInstallation()
         {
-            ConfigManager.EditInstallation(EditingIndex, InstallationNameField.Text, InstallationDirectoryField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationIconSelect.SelectedIconPath);
+            ConfigManager.EditInstallation(EditingIndex, InstallationNameField.Text, InstallationDirectoryField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
             ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
             ConfigManager.OnConfigStateChanged(this, ConfigManager.ConfigStateArgs.Empty);
         }
 
         private void CreateInstallation()
         {
-            ConfigManager.CreateInstallation(InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationDirectoryField.Text, InstallationIconSelect.SelectedIconPath);
+            ConfigManager.CreateInstallation(InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationDirectoryField.Text, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
             ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
             ConfigManager.OnConfigStateChanged(this, ConfigManager.ConfigStateArgs.Empty);
         }

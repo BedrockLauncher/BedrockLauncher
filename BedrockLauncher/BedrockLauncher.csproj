@@ -145,7 +145,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Addons\BetterBedrock\BetterBedrockMain.cs" />
     <Compile Include="Classes\Installation.cs" />
     <Compile Include="Classes\SkinPack\MCSkinPackContent.cs" />
     <Compile Include="Classes\SkinPack\MCSkinPackLang.cs" />
@@ -154,6 +153,9 @@
     <Compile Include="Classes\SkinPack\MCSkinGeometry.cs" />
     <Compile Include="Classes\SkinPack\MCSkinPack.cs" />
     <Compile Include="Classes\SkinPack\MCSkinPackMainfest.cs" />
+    <Compile Include="Controls\BlockPickerItem.xaml.cs">
+      <DependentUpon>BlockPickerItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\FolderSelectDialog.cs" />
     <Compile Include="Controls\ServersButton.xaml.cs">
       <DependentUpon>ServersButton.xaml</DependentUpon>
@@ -288,6 +290,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </DesignData>
+    <Page Include="Controls\BlockPickerItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\ServersButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -693,6 +699,14 @@
     <Resource Include="Resources\images\logo\logo.png" />
     <Resource Include="Resources\images\ui\elements\optionmark.png" />
     <Resource Include="Resources\images\logo\subtitle.png" />
+    <Resource Include="Resources\images\installation_icons\_BlockOrder.txt" />
+    <Resource Include="Resources\images\installation_icons\_BlockOrder_Offical.txt" />
+    <Resource Include="Resources\images\installation_icons\Crimson_Stem.png" />
+    <Resource Include="Resources\images\installation_icons\Warped_Stem.png" />
+    <Resource Include="Resources\images\installation_icons\Crimson_Planks.png" />
+    <Resource Include="Resources\images\installation_icons\Nether_Wart_Block.png" />
+    <Resource Include="Resources\images\installation_icons\Warped_Planks.png" />
+    <Resource Include="Resources\images\installation_icons\Warped_Wart_Block.png" />
     <Content Include="WUTokenHelper.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

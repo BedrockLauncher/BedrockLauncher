@@ -61,152 +61,40 @@ namespace BedrockLauncher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized string similar to bedrock.png
+        ///bookshelf.png
+        ///bricks.png
+        ///cake.png
+        ///pumpkin.png
+        ///chest.png
+        ///clay.png
+        ///block_of_coal.png
+        ///coal_ore.png
+        ///cobblestone.png
+        ///crafting_table.png
+        ///creeper_head.png
+        ///block_of_diamond.png
+        ///diamond_ore.png
+        ///dirt.png
+        ///podzol.png
+        ///snowy_grass_block.png
+        ///block_of_emerald.png
+        ///emerald_ore.png
+        ///enchanting_table.png
+        ///end_stone.png
+        ///farmland.png
+        ///furnace.png
+        ///lit_furnace.png
+        ///glass.png
+        ///light_blue_glazed_terracotta.png
+        ///orange_glazed_terracotta.png
+        ///white_glazed_terracotta.png
+        ///glowstone.png
+        ///block_of_gold.png [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static byte[] bottomchat {
+        internal static string _BlockOrder {
             get {
-                object obj = ResourceManager.GetObject("bottomchat", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap default8 {
-            get {
-                object obj = ResourceManager.GetObject("default8", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap destroy_stage_0 {
-            get {
-                object obj = ResourceManager.GetObject("destroy_stage_0", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap destroy_stage_1 {
-            get {
-                object obj = ResourceManager.GetObject("destroy_stage_1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap destroy_stage_2 {
-            get {
-                object obj = ResourceManager.GetObject("destroy_stage_2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap destroy_stage_3 {
-            get {
-                object obj = ResourceManager.GetObject("destroy_stage_3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap destroy_stage_4 {
-            get {
-                object obj = ResourceManager.GetObject("destroy_stage_4", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap destroy_stage_5 {
-            get {
-                object obj = ResourceManager.GetObject("destroy_stage_5", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap destroy_stage_6 {
-            get {
-                object obj = ResourceManager.GetObject("destroy_stage_6", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap destroy_stage_7 {
-            get {
-                object obj = ResourceManager.GetObject("destroy_stage_7", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap destroy_stage_8 {
-            get {
-                object obj = ResourceManager.GetObject("destroy_stage_8", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap destroy_stage_9 {
-            get {
-                object obj = ResourceManager.GetObject("destroy_stage_9", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap glyph_00 {
-            get {
-                object obj = ResourceManager.GetObject("glyph_00", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap glyph_04 {
-            get {
-                object obj = ResourceManager.GetObject("glyph_04", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap glyph_E0 {
-            get {
-                object obj = ResourceManager.GetObject("glyph_E0", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("_BlockOrder", resourceCulture);
             }
         }
     }
