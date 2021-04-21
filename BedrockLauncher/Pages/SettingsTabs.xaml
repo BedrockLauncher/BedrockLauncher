@@ -8,34 +8,42 @@
       Title="{DynamicResource Title}" Foreground="{x:Null}" Background="#FF303030">
     <Grid Background="#FF303030">
         <Grid.RowDefinitions>
-            <RowDefinition Height="83"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Background="#FF282828" VerticalAlignment="Top" Height="83">
-            <Label Foreground="White" Content="{DynamicResource MainWindowSettingsScreen_Title}" Margin="14,27,600,0" Style="{DynamicResource TabTitle}"/>
-            <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Orientation="Horizontal" Margin="0,49,0,0">
-                <ToggleButton x:Name="GeneralButton" Width="90" Click="ButtonManager" Content="{DynamicResource MainWindowSettingsScreen_GeneralButton}" Style="{DynamicResource ToolbarButton}" IsChecked="True">
-                    <ToggleButton.ToolTip>
-                        <ToolTip Content="{DynamicResource MainWindowSettingsScreen_GeneralButton}"/>
-                    </ToggleButton.ToolTip>
-                </ToggleButton>
-                <ToggleButton x:Name="VersionsButton" Width="92" Click="ButtonManager" Content="{DynamicResource MainWindowSettingsScreen_VersionsButton}" Style="{DynamicResource ToolbarButton}">
-                    <ToggleButton.ToolTip>
-                        <ToolTip Content="{DynamicResource MainWindowSettingsScreen_VersionsButton}"/>
-                    </ToggleButton.ToolTip>
-                </ToggleButton>
-                <ToggleButton x:Name="AccountsButton" Width="96" Click="ButtonManager" Content="{DynamicResource MainWindowSettingsScreen_AccountsButton}" Style="{DynamicResource ToolbarButton}">
-                    <ToggleButton.ToolTip>
-                        <ToolTip Content="{DynamicResource MainWindowSettingsScreen_AccountsButton}"/>
-                    </ToggleButton.ToolTip>
-                </ToggleButton>
-                <ToggleButton x:Name="AboutButton" Width="76" Click="ButtonManager" Content="{DynamicResource MainWindowSettingsScreen_AboutButton}" Style="{DynamicResource ToolbarButton}">
-                    <ToggleButton.ToolTip>
-                        <ToolTip Content="{DynamicResource MainWindowSettingsScreen_AboutButton}"/>
-                    </ToggleButton.ToolTip>
-                </ToggleButton>
-            </StackPanel>
-        </Grid>
+        <Border VerticalAlignment="Top" Height="84" Panel.ZIndex="1"
+            BorderBrush="Transparent"
+            BorderThickness="0,0,0,0"
+            CornerRadius="0">
+            <Border.Effect>
+                <DropShadowEffect Direction="0" BlurRadius="15" ShadowDepth="1" />
+            </Border.Effect>
+            <Grid Background="#FF282828">
+                <Label Foreground="White" Content="{DynamicResource MainWindowSettingsScreen_Title}" Margin="14,27,600,0" Style="{DynamicResource TabTitle}"/>
+                <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Orientation="Horizontal" Margin="0,49,0,0">
+                    <ToggleButton x:Name="GeneralButton" Width="90" Click="ButtonManager" Content="{DynamicResource MainWindowSettingsScreen_GeneralButton}" Style="{DynamicResource ToolbarButton}" IsChecked="True">
+                        <ToggleButton.ToolTip>
+                            <ToolTip Content="{DynamicResource MainWindowSettingsScreen_GeneralButton}"/>
+                        </ToggleButton.ToolTip>
+                    </ToggleButton>
+                    <ToggleButton x:Name="VersionsButton" Width="92" Click="ButtonManager" Content="{DynamicResource MainWindowSettingsScreen_VersionsButton}" Style="{DynamicResource ToolbarButton}">
+                        <ToggleButton.ToolTip>
+                            <ToolTip Content="{DynamicResource MainWindowSettingsScreen_VersionsButton}"/>
+                        </ToggleButton.ToolTip>
+                    </ToggleButton>
+                    <ToggleButton x:Name="AccountsButton" Width="96" Click="ButtonManager" Content="{DynamicResource MainWindowSettingsScreen_AccountsButton}" Style="{DynamicResource ToolbarButton}">
+                        <ToggleButton.ToolTip>
+                            <ToolTip Content="{DynamicResource MainWindowSettingsScreen_AccountsButton}"/>
+                        </ToggleButton.ToolTip>
+                    </ToggleButton>
+                    <ToggleButton x:Name="AboutButton" Width="76" Click="ButtonManager" Content="{DynamicResource MainWindowSettingsScreen_AboutButton}" Style="{DynamicResource ToolbarButton}">
+                        <ToggleButton.ToolTip>
+                            <ToolTip Content="{DynamicResource MainWindowSettingsScreen_AboutButton}"/>
+                        </ToggleButton.ToolTip>
+                    </ToggleButton>
+                </StackPanel>
+            </Grid>
+        </Border>
         <Frame x:Name="SettingsScreenFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 

@@ -117,7 +117,6 @@
     <v:String x:Key="AddInstallationScreen_VersionSubtitle">VERSION</v:String>
     <v:String x:Key="AddInstallationScreen_CreateButton">Create</v:String>
     <v:String x:Key="EditingInstallationScreen_SaveButton">Save</v:String>
-    <v:String x:Key="AddInstallationScreen_CancelButton">Cancel</v:String>
     <v:String x:Key="AddInstallationScreen_LatestSnapshot">Latest Beta</v:String>
     <v:String x:Key="AddInstallationScreen_LatestRelease">Latest Release</v:String>
     <v:String x:Key="AddInstallationScreen_NameHintText">unamed installation</v:String>
@@ -129,11 +128,42 @@
     <v:String x:Key="InstallationsPage_VersionsSubtitle">VERSIONS</v:String>
     <v:String x:Key="InstallationsPage_AddButton">New...</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">Play</v:String>
-    <v:String x:Key="InstallationsPage_DeleteInstallationButton">Delete</v:String>
-    <v:String x:Key="InstallationsPage_EditInstallationButton">Edit</v:String>
-    <v:String x:Key="InstallationsPage_DuplicateInstallationButton">Duplicate</v:String>
 
-    <v:String x:Key="VersionsPage_RemoveVersion">Delete</v:String>
+    <v:String x:Key="EditSkinScreen_Header">Edit Skin</v:String>
+    <v:String x:Key="EditSkinScreen_AddHeader">Add Skin</v:String>
+    
+    <v:String x:Key="EditSkinScreen_TextureSubtitle">TEXTURE</v:String>
+    <v:String x:Key="EditSkinScreen_GeometrySubtitle">GEOMETRY</v:String>
+    <v:String x:Key="EditSkinScreen_TypeSubtitle">TYPE</v:String>
+    <v:String x:Key="EditSkinScreen_LocalizationSubtitle">LOCALIZATION NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">DESCRIPTION</v:String>
+    <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">GEOMETRY</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">LOCALIZATION NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">SERALIZABLE NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">LANGUAGE DEFINITIONS</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">LANG NAME</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">OTHER DEFINITIONS</v:String>
+    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">CONTENT</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">MODULES</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">FROMAT VERSION</v:String>
+    
+    <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">PACK NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderUUIDSubtitle">UUID</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">VERSION</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">TYPE</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">UUID</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">VERSION</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_Header">Edit Skin Pack</v:String>
+    <v:String x:Key="EditSkinPackScreen_AddHeader">Add Skin Pack</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_Warning">* Please note that modifying language definitions and changing the pack icon are inreversible regardless if you save your changes or not!!!</v:String>
+
 
     <v:String x:Key="About_Title">ABOUT MINECRAFT: BEDROCK EDITION LAUNCHER</v:String>
     <v:String x:Key="About_DevelopedBy">DEVELOPED BY</v:String>
@@ -148,8 +178,18 @@
     <v:String x:Key="AdvancedSettingsWindow_Notice">* All settings will restart the launcher</v:String>
     <v:String x:Key="AdvancedSettingsWindow_PortableMode">Enable Portable Mode</v:String>
 
+    <v:String x:Key="GeneralText_Delete">Delete</v:String>
+    <v:String x:Key="GeneralText_Edit">Edit</v:String>
+    <v:String x:Key="GeneralText_Duplicate">Duplicate</v:String>
+    <v:String x:Key="GeneralText_Remove">Remove</v:String>
+    <v:String x:Key="GeneralText_Cancel">Cancel</v:String>
+    <v:String x:Key="GeneralText_Update">Update</v:String>
+    <v:String x:Key="GeneralText_Add">Add</v:String>
+    <v:String x:Key="GeneralText_Save">Save</v:String>
+
     <v:String x:Key="GeneralText_Browse">BROWSE</v:String>
     <v:String x:Key="GeneralText_Reset">RESET</v:String>
+
 
 
 </ResourceDictionary>

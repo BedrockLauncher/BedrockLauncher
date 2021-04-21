@@ -51,14 +51,23 @@
             <RowDefinition Height="100"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid SnapsToDevicePixels="True" RenderOptions.BitmapScalingMode="NearestNeighbor" Focusable="False">
-            <Grid.Background>
-                <ImageBrush TileMode="Tile" Viewport="0,0,16,16" ViewportUnits="Absolute" ImageSource="/BedrockLauncher;component/Resources/images/bg/stone_texture.png">
-                </ImageBrush>
-            </Grid.Background>
-            <Grid Background="Black" Opacity="0.8" Focusable="False"></Grid>
-            <Image Margin="0,10" Source="/BedrockLauncher;component/Resources/images/logo/logo.png"></Image>
-        </Grid>
+        <Border
+            BorderBrush="Transparent"
+            BorderThickness="0,0,0,0"
+            CornerRadius="0">
+            <Border.Effect>
+                <DropShadowEffect Direction="0" BlurRadius="15" ShadowDepth="1" />
+            </Border.Effect>
+            <Grid SnapsToDevicePixels="True" RenderOptions.BitmapScalingMode="NearestNeighbor" Focusable="False">
+                <Grid.Background>
+                    <ImageBrush TileMode="Tile" Viewport="0,0,16,16" ViewportUnits="Absolute" ImageSource="/BedrockLauncher;component/Resources/images/bg/stone_texture.png">
+                    </ImageBrush>
+                </Grid.Background>
+                <Grid Background="Black" Opacity="0.8" Focusable="False"></Grid>
+                <Image Margin="0,10" Source="/BedrockLauncher;component/Resources/images/logo/logo.png"></Image>
+            </Grid>
+        </Border>
+
         <TabControl Grid.Row="1" Background="#FF282828">
             <TabItem x:Name="OfficalTab" Header="{StaticResource NewsScreen_OfficalTabTitle}">
                 <Grid>

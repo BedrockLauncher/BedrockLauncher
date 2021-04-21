@@ -87,6 +87,11 @@ namespace BedrockLauncher
 
         #region UI
 
+        public void RefreshSkinsPage()
+        {
+            skinsPage.ReloadSkinPacks();
+        }
+
         public void RefreshVersionControls()
         {
             settingsScreenPage.versionsSettingsPage.VersionsList.ItemsSource = ConfigManager.Versions;

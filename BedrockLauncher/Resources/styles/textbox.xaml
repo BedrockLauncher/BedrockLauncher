@@ -8,7 +8,6 @@
     <SolidColorBrush x:Key="TextBox.SelectionBrush" Color="#FF035511"/>
 
     <Style TargetType="TextBox" x:Key="InstallationNameTextbox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-        <Setter Property="Height" Value="32"></Setter>
         <Setter Property="Background" Value="{DynamicResource TextBox.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
         <Setter Property="Foreground" Value="{DynamicResource TextBox.Static.Foreground}"/>
@@ -68,7 +67,6 @@
     </Style>
 
     <Style TargetType="TextBox" x:Key="InstallationDirectoryTextbox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-        <Setter Property="Height" Value="32"></Setter>
         <Setter Property="Background" Value="{DynamicResource TextBox.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
         <Setter Property="Foreground" Value="{DynamicResource TextBox.Static.Foreground}"/>
@@ -128,15 +126,16 @@
     </Style>
 
     <Style TargetType="{x:Type TextBox}">
-        <Setter Property="Height" Value="32"></Setter>
         <Setter Property="Background" Value="{DynamicResource TextBox.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
         <Setter Property="Foreground" Value="{DynamicResource TextBox.Static.Foreground}"/>
         <Setter Property="SelectionBrush" Value="{DynamicResource TextBox.SelectionBrush}"/>
         <Setter Property="FontFamily" Value="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
         <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="9,0"></Setter>
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="AllowDrop" Value="true"/>
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>

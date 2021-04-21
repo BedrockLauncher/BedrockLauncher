@@ -116,7 +116,7 @@
                             </Image>
                         </Grid>
                         <StackPanel Orientation="Horizontal" Grid.Column="2" x:Name="ButtonPanel" Visibility="Hidden">
-                            <Button x:Name="Remove" Click="Delete_Click" Content="{DynamicResource VersionsPage_RemoveVersion}" Style="{DynamicResource DialogButton_Red}"></Button>
+                            <Button x:Name="Remove" Click="Delete_Click" Content="{DynamicResource GeneralText_Remove}" Style="{DynamicResource DialogButton_Red}"></Button>
                             <Button x:Name="Folder" Click="Folder_Click" Content="📁" FontWeight="Bold" Style="{DynamicResource DialogButton}"></Button>
                             <Button x:Name="More" Content="..." FontWeight="Bold" Style="{DynamicResource DialogButton}" Visibility="Collapsed" Click="More_Click">
                             </Button>

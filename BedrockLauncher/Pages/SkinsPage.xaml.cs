@@ -83,6 +83,12 @@ namespace BedrockLauncher.Pages
 
         }
 
+        private void UpdateAddSkinButton()
+        {
+            var selected_item = LoadedSkinPacks.SelectedItem as MCSkinPack;
+            AddSkinButton.IsEnabled = selected_item != null;
+        }
+
         private void UpdateCurrentSkin()
         {
             var selected_skin = SkinPreviewList.SelectedItem as MCSkin;
@@ -108,18 +114,21 @@ namespace BedrockLauncher.Pages
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             ReloadSkinPacks();
+            UpdateAddSkinButton();
         }
 
         private void LoadedSkinPacks_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ReloadSkins();
             UpdateCurrentSkin();
+            UpdateAddSkinButton();
         }
 
 
         private void SkinPreviewList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UpdateCurrentSkin();
+            UpdateAddSkinButton();
         }
 
         private void MoreButton_Click(object sender, RoutedEventArgs e)
@@ -133,11 +142,6 @@ namespace BedrockLauncher.Pages
             button.ContextMenu.IsOpen = true;
         }
 
-        private void DeleteSkinPackButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void ContextMenu_Closed(object sender, RoutedEventArgs e)
         {
             LoadedSkinPacks.SelectedItem = null;
@@ -148,6 +152,60 @@ namespace BedrockLauncher.Pages
             Button button = sender as Button;
             var skinPack = button.DataContext as MCSkinPack;
             ConfigManager.GameManager.OpenFolder(skinPack);
+        }
+
+        private void EditSkinButton_Click(object sender, RoutedEventArgs e)
+        {
+            var skinPack = LoadedSkinPacks.SelectedItem as MCSkinPack;
+            var skin = SkinPreviewList.SelectedItem as MCSkin;
+            int index = SkinPreviewList.SelectedIndex;
+
+            ConfigManager.MainThread.MainWindowOverlayFrame.Content = new EditSkinScreen(skinPack, skin, index);
+        }
+
+        private void DeleteSkinButton_Click(object sender, RoutedEventArgs e)
+        {
+            var skinPack = LoadedSkinPacks.SelectedItem as MCSkinPack;
+            var skin = SkinPreviewList.SelectedItem as MCSkin;
+            int index = SkinPreviewList.SelectedIndex;
+
+            if (skin != null && skinPack != null)
+            {
+                skinPack.RemoveSkin(index);
+                ReloadSkinPacks();
+            }
+        }
+
+        private void EditSkinPackButton_Click(object sender, RoutedEventArgs e)
+        {
+            var skinPack = LoadedSkinPacks.SelectedItem as MCSkinPack;
+            int index = LoadedSkinPacks.SelectedIndex;
+            ConfigManager.MainThread.MainWindowOverlayFrame.Content = new EditSkinPackScreen(skinPack, index);
+        }
+
+        private void DeleteSkinPackButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var skinPack = LoadedSkinPacks.SelectedItem as MCSkinPack;
+                Directory.Delete(skinPack.Directory, true);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            ReloadSkinPacks();
+        }
+
+        private void AddSkinButton_Click(object sender, RoutedEventArgs e)
+        {
+            var skinPack = LoadedSkinPacks.SelectedItem as MCSkinPack;
+            ConfigManager.MainThread.MainWindowOverlayFrame.Content = new EditSkinScreen(skinPack);
+        }
+
+        private void NewSkinPackButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConfigManager.MainThread.MainWindowOverlayFrame.Content = new EditSkinPackScreen();
         }
     }
 }

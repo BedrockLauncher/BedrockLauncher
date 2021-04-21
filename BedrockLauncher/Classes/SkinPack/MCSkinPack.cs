@@ -13,9 +13,43 @@ namespace BedrockLauncher.Classes.SkinPack
 {
     public class MCSkinPack
     {
+        public bool InvalidUsage { get; private set; } = false;
+
         public MCSkinPack()
         {
+            InvalidUsage = true;
+        }
 
+        public MCSkinPack(string _Directory)
+        {
+            Directory = _Directory;
+
+            Metadata = new MCSkinPackMainfest();
+            Metadata.format_version = 2;
+
+            Metadata.header.description = string.Empty;
+            Metadata.header.name = string.Empty;
+            Metadata.header.version = new int[] { 1, 0, 0 };
+            Metadata.header.uuid = Guid.NewGuid().ToString();
+
+            MCSkinPackMainfest.Module module = new MCSkinPackMainfest.Module();
+
+            module.description = string.Empty;
+            module.type = "skin_pack";
+            module.version = new int[] { 1, 0, 0 };
+            module.uuid = Guid.NewGuid().ToString();
+
+            Metadata.modules.Add(module);
+
+            SaveMainifest();
+
+            Content = new MCSkinPackContent();
+
+            SaveSkins();
+
+            Texts = new MCSkinPackLang();
+
+            SaveTexts();
         }
 
         public MCSkinPackMainfest Metadata { get; private set; }
@@ -52,6 +86,8 @@ namespace BedrockLauncher.Classes.SkinPack
                 return string.Join(".", version);
             }
         }
+
+        #region Loading
 
         public MCSkinPack(string _Directory, MCSkinPackMainfest _Metadata, bool _isDev = false) : base()
         {
@@ -102,9 +138,7 @@ namespace BedrockLauncher.Classes.SkinPack
             try
             {
                 string TextDir = Path.Combine(Directory, "texts");
-                string json = File.ReadAllText(Path.Combine(TextDir, "languages.json"));
-                string[] lang_meta = JsonConvert.DeserializeObject<string[]>(json);
-                return MCSkinPackLang.LoadLang(TextDir, lang_meta);
+                return MCSkinPackLang.InitLang(TextDir);
             }
             catch
             {
@@ -133,5 +167,66 @@ namespace BedrockLauncher.Classes.SkinPack
                 return new MCSkinPackContent();
             }
         }
+
+        #endregion
+
+        #region Updating
+
+        public void AddSkin(MCSkin skin)
+        {
+            Content.skins.Add(skin);
+            SaveSkins();
+        }
+
+        public void EditSkin(int index, MCSkin skin)
+        {
+            Content.skins[index] = skin;
+            SaveSkins();
+        }
+
+        public void RemoveSkin(int index)
+        {
+            Content.skins.RemoveAt(index);
+            SaveSkins();
+        }
+
+        #endregion
+
+        #region Saving
+
+        public void Save()
+        {
+            SaveSkins();
+            SaveMainifest();
+            SaveTexts();
+        }
+
+
+        public void SaveDirectory()
+        {
+            string text_folder = Path.Combine(Directory, "texts");
+            if (!System.IO.Directory.Exists(Directory)) System.IO.Directory.CreateDirectory(Directory);
+            if (!System.IO.Directory.Exists(text_folder)) System.IO.Directory.CreateDirectory(text_folder);
+
+        }
+        public void SaveSkins()
+        {
+            SaveDirectory();
+            string json = JsonConvert.SerializeObject(Content, Formatting.Indented);
+            File.WriteAllText(Path.Combine(Directory, "skins.json"), json);
+        }
+        public void SaveMainifest()
+        {
+            SaveDirectory();
+            string json = JsonConvert.SerializeObject(Metadata, Formatting.Indented);
+            File.WriteAllText(Path.Combine(Directory, "manifest.json"), json);
+        }
+        public void SaveTexts()
+        {
+            SaveDirectory();
+            Texts.SaveLang();
+        }
+
+        #endregion
     }
 }

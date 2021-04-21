@@ -32,7 +32,8 @@
                     <Button Style="{DynamicResource DialogButton}" Content="..." Foreground="White" Name="MoreButton" Click="MoreButton_Click">
                         <Button.ContextMenu>
                             <ContextMenu Closed="ContextMenu_Closed" Style="{DynamicResource NoCheckboxContextMenu}">
-                                <MenuItem Header="{DynamicResource InstallationsPage_DeleteInstallationButton}" Name="DeleteSkinPackButton" Click="DeleteSkinPackButton_Click"></MenuItem>
+                                <MenuItem Header="{DynamicResource GeneralText_Edit}" Name="EditSkinPackButton" Click="EditSkinPackButton_Click"></MenuItem>
+                                <MenuItem Header="{DynamicResource GeneralText_Delete}" Name="DeleteSkinPackButton" Click="DeleteSkinPackButton_Click"></MenuItem>
                             </ContextMenu>
                         </Button.ContextMenu>
                     </Button>
@@ -51,21 +52,63 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.7*"></ColumnDefinition>
+            <ColumnDefinition Width="1"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="16"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="110"></RowDefinition>
         </Grid.RowDefinitions>
-        <ListView BorderThickness="0,0,1,0" BorderBrush="Gray" x:Name="LoadedSkinPacks" Grid.RowSpan="3" SelectionChanged="LoadedSkinPacks_SelectionChanged" VerticalContentAlignment="Top" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource SkinPackTemplate}"></ListView>
-            <Grid Grid.Column="1" Grid.Row="1" Background="#212121"></Grid>
-        <controls:SkinPreview x:Name="SkinPreviewPanel" Grid.Column="1" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></controls:SkinPreview>
-        <TextBlock Foreground="White" Name="CurrentSkinNameTextBlock" Grid.Column="1" Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextAlignment="Center" Background="Black"></TextBlock>
-        <ListView BorderThickness="0,1,0,0" BorderBrush="Gray" Margin="0,0,0,10" SelectionChanged="SkinPreviewList_SelectionChanged" Grid.Column="1" Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="Black" x:Name="SkinPreviewList" VerticalContentAlignment="Top" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+        <Grid Background="#FF282828" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="140"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Button x:Name="NewSkinPackButton" Height="40" Width="100" Click="NewSkinPackButton_Click" Foreground="White" Style="{DynamicResource PanelButton}">
+                    <Button.Content>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Height="30" Margin="0,0,6,0" Source="{DynamicResource PlusIcon}"></Image>
+                            <TextBlock Grid.Column="2" Text="{DynamicResource InstallationsPage_AddButton}" VerticalAlignment="Center" Margin="0,0,0,0"></TextBlock>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.RowSpan="2" Grid.Column="1" Grid.Row="1" Background="Gray"></Grid>
+        <ListView Grid.RowSpan="3" BorderThickness="0,0,0,0" Grid.Row="1" BorderBrush="Gray" x:Name="LoadedSkinPacks" SelectionChanged="LoadedSkinPacks_SelectionChanged" VerticalContentAlignment="Top" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource SkinPackTemplate}"></ListView>
+        <Grid Grid.Column="2" Grid.Row="1" Background="#212121"></Grid>
+        <controls:SkinPreview x:Name="SkinPreviewPanel" Grid.Column="2" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></controls:SkinPreview>
+        <Grid Background="#FF282828" Grid.Column="2" Grid.Row="0">
+            <TextBlock Foreground="White" Name="CurrentSkinNameTextBlock"  VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center" ></TextBlock>
+        </Grid>
+        <Grid Margin="0,0,0,10" Grid.Column="2" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+            <ListView BorderThickness="0,1,0,0" BorderBrush="Gray"  SelectionChanged="SkinPreviewList_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="Black" x:Name="SkinPreviewList" VerticalContentAlignment="Top" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ContentControl x:Name="control" Content="{Binding}" ContentTemplate="{StaticResource templateSkinPreview}"/>
+                    <ContentControl x:Name="control" Content="{Binding}" ContentTemplate="{StaticResource templateSkinPreview}">
+                        <ContentControl.ContextMenu>
+                            <ContextMenu x:Name="SkinContextMenu" Style="{DynamicResource NoCheckboxContextMenu}">
+                                <MenuItem Header="{DynamicResource GeneralText_Edit}" Name="EditSkinButton" Click="EditSkinButton_Click"></MenuItem>
+                                <MenuItem Header="{DynamicResource GeneralText_Delete}" Name="DeleteSkinButton" Click="DeleteSkinButton_Click"></MenuItem>
+                            </ContextMenu>
+                        </ContentControl.ContextMenu>
+                    </ContentControl>
                 </DataTemplate>
             </ListView.ItemTemplate>
             <ListBox.ItemsPanel>
@@ -74,5 +117,11 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
         </ListView>
+            <Button Grid.Column="2" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="0" Style="{DynamicResource DialogButton_Green_NoPadding}" Name="AddSkinButton" Click="AddSkinButton_Click">
+                <Button.Content>
+                    <Image Stretch="Uniform" Margin="5" Source="{DynamicResource PlusIcon}"></Image>
+                </Button.Content>
+            </Button>
+        </Grid>
     </Grid>
 </Page>

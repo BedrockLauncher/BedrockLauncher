@@ -4,21 +4,21 @@
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" >
     <SolidColorBrush x:Key="ComboBox2.Static.Background" Color="#FF131313"/>
     <SolidColorBrush x:Key="ComboBox2.Static.Border" Color="#FF131313"/>
-    <SolidColorBrush x:Key="ComboBox2.Static.Editable.Background" Color="#FFFFFFFF"/>
-    <SolidColorBrush x:Key="ComboBox2.Static.Editable.Border" Color="#FFABADB3"/>
-    <SolidColorBrush x:Key="ComboBox2.Static.Editable.Button.Background" Color="Transparent"/>
-    <SolidColorBrush x:Key="ComboBox2.Static.Editable.Button.Border" Color="Transparent"/>
+    <SolidColorBrush x:Key="ComboBox2.Static.Editable.Background" Color="#FF131313"/>
+    <SolidColorBrush x:Key="ComboBox2.Static.Editable.Border" Color="#FF131313"/>
+    <SolidColorBrush x:Key="ComboBox2.Static.Editable.Button.Background" Color="#FF131313"/>
+    <SolidColorBrush x:Key="ComboBox2.Static.Editable.Button.Border" Color="#FF131313"/>
     <SolidColorBrush x:Key="ComboBox2.MouseOver.Glyph" Color="White"/>
     <SolidColorBrush x:Key="ComboBox2.MouseOver.Background" Color="#FF0E0E0E"/>
     <SolidColorBrush x:Key="ComboBox2.MouseOver.Border" Color="#FF0E0E0E"/>
-    <SolidColorBrush x:Key="ComboBox2.MouseOver.Editable.Background" Color="#FFFFFFFF"/>
-    <SolidColorBrush x:Key="ComboBox2.MouseOver.Editable.Border" Color="#FF7EB4EA"/>
-    <SolidColorBrush x:Key="ComboBox2.MouseOver.Editable.Button.Border" Color="#FF7EB4EA"/>
+    <SolidColorBrush x:Key="ComboBox2.MouseOver.Editable.Background" Color="#FF0E0E0E"/>
+    <SolidColorBrush x:Key="ComboBox2.MouseOver.Editable.Border" Color="#FF0E0E0E"/>
+    <SolidColorBrush x:Key="ComboBox2.MouseOver.Editable.Button.Border" Color="#FF0E0E0E"/>
     <SolidColorBrush x:Key="ComboBox2.Pressed.Glyph" Color="White"/>
     <SolidColorBrush x:Key="ComboBox2.Pressed.Border" Color="#FF569DE5"/>
-    <SolidColorBrush x:Key="ComboBox2.Pressed.Editable.Background" Color="#FFFFFFFF"/>
-    <SolidColorBrush x:Key="ComboBox2.Pressed.Editable.Border" Color="#FF569DE5"/>
-    <SolidColorBrush x:Key="ComboBox2.Pressed.Editable.Button.Border" Color="#FF569DE5"/>
+    <SolidColorBrush x:Key="ComboBox2.Pressed.Editable.Background" Color="#FF131313"/>
+    <SolidColorBrush x:Key="ComboBox2.Pressed.Editable.Border" Color="#FF131313"/>
+    <SolidColorBrush x:Key="ComboBox2.Pressed.Editable.Button.Border" Color="#FF131313"/>
     <SolidColorBrush x:Key="ComboBox2.Disabled.Glyph" Color="#FFBFBFBF"/>
     <SolidColorBrush x:Key="ComboBox2.Disabled.Background" Color="#FFF0F0F0"/>
     <SolidColorBrush x:Key="ComboBox2.Disabled.Border" Color="#FFD9D9D9"/>
@@ -41,16 +41,16 @@
     <SolidColorBrush x:Key="ComboBoxItem2.ItemsviewHoverFocus.Border" Color="#FF26A0DA"/>
 
     <LinearGradientBrush x:Key="ComboBox2.MouseOver.Editable.Button.Background" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="#FFEBF4FC" Offset="0.0"/>
-        <GradientStop Color="#FFDCECFC" Offset="1.0"/>
+        <GradientStop Color="#FF131313" Offset="0.0"/>
+        <GradientStop Color="#FF131313" Offset="1.0"/>
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="ComboBox2.Pressed.Background" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="#FFDAECFC" Offset="0.0"/>
-        <GradientStop Color="#FFC4E0FC" Offset="1.0"/>
+        <GradientStop Color="#FF131313" Offset="0.0"/>
+        <GradientStop Color="#FF131313" Offset="1.0"/>
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="ComboBox2.Pressed.Editable.Button.Background" EndPoint="0,1" StartPoint="0,0">
-        <GradientStop Color="#FFDAEBFC" Offset="0.0"/>
-        <GradientStop Color="#FFC4E0FC" Offset="1.0"/>
+        <GradientStop Color="#FF131313" Offset="0.0"/>
+        <GradientStop Color="#FF131313" Offset="1.0"/>
     </LinearGradientBrush>
 
     <Style x:Key="ComboBoxToggleButton2" TargetType="{x:Type ToggleButton}">
@@ -192,22 +192,7 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
-    <Style x:Key="ComboBoxEditableTextBox2" TargetType="{x:Type TextBox}">
-        <Setter Property="OverridesDefaultStyle" Value="true"/>
-        <Setter Property="AllowDrop" Value="true"/>
-        <Setter Property="MinWidth" Value="0"/>
-        <Setter Property="MinHeight" Value="0"/>
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
-        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type TextBox}">
-                    <ScrollViewer x:Name="PART_ContentHost" Background="Transparent" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+
     <ControlTemplate x:Key="ComboBoxEditableTemplate2" TargetType="{x:Type ComboBox}">
         <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
             <Grid.ColumnDefinitions>
@@ -217,8 +202,8 @@
             <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Top">
                 <!-- Сторона открывания комбобокса-->
                 <Themes:SystemDropShadowChrome x:Name="shadow" Color="Transparent" MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding ActualWidth, ElementName=templateRoot}">
-                    <Border x:Name="dropDownBorder" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
-                        <ScrollViewer x:Name="DropDownScrollViewer">
+                    <Border CornerRadius="3" x:Name="dropDownBorder" BorderBrush="Black" BorderThickness="1" Background="Black">
+                        <ScrollViewer Foreground="White" x:Name="DropDownScrollViewer">
                             <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
                                 <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
                                     <Rectangle x:Name="opaqueRect" Fill="{Binding Background, ElementName=dropDownBorder}" Height="{Binding ActualHeight, ElementName=dropDownBorder}" Width="{Binding ActualWidth, ElementName=dropDownBorder}"/>
@@ -229,14 +214,20 @@
                     </Border>
                 </Themes:SystemDropShadowChrome>
             </Popup>
-            <ToggleButton x:Name="toggleButton" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxToggleButton2}"/>
-            <Border x:Name="border" Background="{StaticResource TextBox.Static.Background}" Margin="{TemplateBinding BorderThickness}">
-                <TextBox x:Name="PART_EditableTextBox" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}" Style="{StaticResource ComboBoxEditableTextBox2}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            <Border Grid.ColumnSpan="2" Background="#FF131313" CornerRadius="4">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="25"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ToggleButton x:Name="toggleButton" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.Column="1" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxToggleButton2}"/>
+                    <TextBox x:Name="PART_EditableTextBox" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                </Grid>
             </Border>
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+
             </Trigger>
             <Trigger Property="IsKeyboardFocusWithin" Value="true">
                 <Setter Property="Foreground" Value="Black"/>
@@ -265,7 +256,6 @@
     <Style x:Key="ComboBoxItemStyle2" TargetType="{x:Type ComboBoxItem}">
         <!-- Размер предметов в комбобоксе -->
         <Setter Property="Height" Value="32" />
-        <Setter Property="Width" Value="330" />
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <!--Setter Property="Padding" Value="0,6,0,0"/-->
         <!-- Позиция текста в предмете комбобокса -->
@@ -336,8 +326,6 @@
     </Style>
 
     <Style x:Key="ComboBoxStyle2" TargetType="{x:Type ComboBox}">
-        <Setter Property="Height" Value="32" />
-        <Setter Property="Width" Value="330" />
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource ComboBox2.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ComboBox2.Static.Border}"/>
@@ -359,7 +347,6 @@
         <Style.Triggers>
             <Trigger Property="IsEditable" Value="true">
                 <Setter Property="IsTabStop" Value="false"/>
-                <Setter Property="Padding" Value="2"/>
                 <Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate2}"/>
             </Trigger>
         </Style.Triggers>

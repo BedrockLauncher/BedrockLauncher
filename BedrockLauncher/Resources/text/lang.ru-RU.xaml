@@ -114,7 +114,7 @@
     <v:String x:Key="AddInstallationScreen_VersionSubtitle">VERSION</v:String>
     <v:String x:Key="AddInstallationScreen_CreateButton">Create</v:String>
     <v:String x:Key="EditingInstallationScreen_SaveButton">Save</v:String>
-    <v:String x:Key="AddInstallationScreen_CancelButton">Cancel</v:String>
+    <v:String x:Key="GeneralText_Cancel">Cancel</v:String>
     <v:String x:Key="AddInstallationScreen_LatestSnapshot">Latest Beta</v:String>
     <v:String x:Key="AddInstallationScreen_LatestRelease">Latest Release</v:String>
     <v:String x:Key="AddInstallationScreen_NameHintText">unamed installation</v:String>
@@ -124,8 +124,8 @@
     <v:String x:Key="InstallationsPage_VersionsSubtitle">VERSIONS</v:String>
     <v:String x:Key="InstallationsPage_AddButton">New...</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">Play</v:String>
-    <v:String x:Key="InstallationsPage_DeleteInstallationButton">Delete</v:String>
-    <v:String x:Key="InstallationsPage_EditInstallationButton">Edit</v:String>
+    <v:String x:Key="GeneralText_Delete">Delete</v:String>
+    <v:String x:Key="GeneralText_Edit">Edit</v:String>
 
     <v:String x:Key="About_Title">ABOUT MINECRAFT: BEDROCK EDITION LAUNCHER</v:String>
     <v:String x:Key="About_DevelopedBy">DEVELOPED BY</v:String>

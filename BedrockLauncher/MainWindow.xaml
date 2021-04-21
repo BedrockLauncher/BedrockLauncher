@@ -16,9 +16,9 @@
         MouseDown="Window_MouseDown"
         Title="{DynamicResource ResourceKey=Title}" 
         Initialized="Window_Initialized" 
-        Height="639" Width="1016" 
+        Height="700" Width="1016" 
         Foreground="{x:Null}" 
-        MinWidth="1016" MinHeight="639" 
+        MinWidth="1016" MinHeight="700" 
         Background="White"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>

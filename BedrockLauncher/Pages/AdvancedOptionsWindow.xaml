@@ -20,7 +20,7 @@
             <TextBlock Margin="42,42,0,0" Text="{DynamicResource AdvancedSettingsWindow_LauncherSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
             <CheckBox x:Name="portableModeCheckBox" Click="useFixedInstallLocation_Click" Foreground="White" Content="{DynamicResource AdvancedSettingsWindow_PortableMode}" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
             <TextBlock Margin="42,22,0,0" Text="{DynamicResource AdvancedSettingsWindow_PathSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-            <Border Background="#FF131313" Width="512" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" CornerRadius="4">
+            <Border Height="32" Background="#FF131313" Width="512" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" CornerRadius="4">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>

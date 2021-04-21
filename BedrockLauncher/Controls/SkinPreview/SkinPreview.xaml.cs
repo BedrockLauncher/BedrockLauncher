@@ -96,6 +96,7 @@ namespace BedrockLauncher.Controls
 
         public SkinPreview()
         {
+            if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this)) return;
             Init();
             RefreshView();
         }

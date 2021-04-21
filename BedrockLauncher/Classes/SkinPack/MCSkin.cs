@@ -19,8 +19,14 @@ namespace BedrockLauncher.Classes.SkinPack
         public string type { get; set; }
         public string localization_name { get; set; }
 
-        //Internal Values (Not part of the original format)
+        #region Internal Values (Not part of the original format)
 
+        public MCSkin(string directory)
+        {
+            this.skin_directory = directory;
+        }
+
+        [JsonIgnore]
         public MCSkinGeometry skin_type
         {
             get
@@ -36,15 +42,22 @@ namespace BedrockLauncher.Classes.SkinPack
                 }
             }
         }
+
+
+        [JsonIgnore]
         public string skin_directory { get; set; }
+
+        [JsonIgnore]
         public string texture_path
         {
             get
             {
+                if (skin_directory == null || texture == null) return string.Empty;
                 return Path.Combine(skin_directory, texture);
             }
         }
 
+        [JsonIgnore]
         public BitmapImage rendered_preview
         {
             get
@@ -101,5 +114,7 @@ namespace BedrockLauncher.Classes.SkinPack
                 return bitmapImage;
             }
         }
+
+        #endregion
     }
 }

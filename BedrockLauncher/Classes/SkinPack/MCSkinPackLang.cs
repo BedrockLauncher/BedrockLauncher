@@ -6,28 +6,72 @@ using System.Threading.Tasks;
 using System.IO;
 using IniParser;
 using IniParser.Model;
+using Newtonsoft.Json;
 
 namespace BedrockLauncher.Classes.SkinPack
 {
     public class MCSkinPackLang
     {
-        public string[] LangFiles { get; private set; }
-        public string Directory { get; private set; }
+        public string[] LangFiles { get; private set; } = new string[0];
+        public string Directory { get; private set; } = string.Empty;
         public Dictionary<string, IniData> Values { get; private set; } = new Dictionary<string, IniData>();
 
-        public static MCSkinPackLang LoadLang(string Directory, string[] fileNames)
+        public void AddLang(string lang_name)
         {
-            MCSkinPackLang lang = new MCSkinPackLang();
-            lang.LangFiles = fileNames;
-            lang.Directory = Directory;
+            var list = LangFiles.ToList();
+            if (!list.Contains(lang_name)) list.Add(lang_name);
+            LangFiles = list.ToArray();
+            SaveLang();
+            LoadLang();
+        }
 
-            foreach (var langFile in lang.LangFiles)
+        public void RemoveLang(string lang_name)
+        {
+            var list = LangFiles.ToList();
+            list.RemoveAll(x => x == lang_name);
+            LangFiles = list.ToArray();
+            SaveLang();
+            LoadLang();
+        }
+
+        public void SaveLang()
+        {
+            try
+            {
+                string json = JsonConvert.SerializeObject(LangFiles, Formatting.Indented);
+                File.WriteAllText(Path.Combine(Directory, "languages.json"), json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+        }
+
+        public void LoadLang()
+        {
+            this.LangFiles = new string[] { };
+            this.Values.Clear();
+
+            try
+            {
+                string json = File.ReadAllText(Path.Combine(this.Directory, "languages.json"));
+                string[] fileNames = JsonConvert.DeserializeObject<string[]>(json);
+                this.LangFiles = fileNames;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                this.LangFiles = new string[] { };
+            }
+
+            foreach (var langFile in this.LangFiles)
             {
                 try
                 {
                     var parser = new FileIniDataParser();
-                    IniData data = parser.ReadFile(Path.Combine(Directory, langFile + ".lang"));
-                    lang.Values.Add(langFile, data);
+                    IniData data = parser.ReadFile(Path.Combine(this.Directory, langFile + ".lang"));
+                    this.Values.Add(langFile, data);
                 }
                 catch (Exception ex)
                 {
@@ -35,7 +79,13 @@ namespace BedrockLauncher.Classes.SkinPack
                 }
 
             }
+        }
 
+        public static MCSkinPackLang InitLang(string Directory)
+        {
+            MCSkinPackLang lang = new MCSkinPackLang();
+            lang.Directory = Directory;
+            lang.LoadLang();
             return lang;
         }
     }

@@ -140,9 +140,9 @@
                             <Button x:Name="More" Content="..." FontWeight="Bold" Style="{DynamicResource DialogButton}" Click="More_Click">
                                 <Button.ContextMenu>
                                     <ContextMenu Closed="ContextMenu_Closed" Style="{DynamicResource NoCheckboxContextMenu}">
-                                        <MenuItem Header="{DynamicResource InstallationsPage_EditInstallationButton}" Name="EditInstallationButton" Click="EditInstallationButton_Click"  Visibility="{Binding ReadOnly, Converter={StaticResource VisibleIfTrueConverter}, ConverterParameter=Inverted}"></MenuItem>
-                                        <MenuItem Header="{DynamicResource InstallationsPage_DeleteInstallationButton}" Name="DeleteInstallationButton" Click="DeleteInstallationButton_Click"  Visibility="{Binding ReadOnly, Converter={StaticResource VisibleIfTrueConverter}, ConverterParameter=Inverted}"></MenuItem>
-                                        <MenuItem Header="{DynamicResource InstallationsPage_DuplicateInstallationButton}" Name="DuplicateInstallationButton" Click="DuplicateInstallationButton_Click"></MenuItem>
+                                        <MenuItem Header="{DynamicResource GeneralText_Edit}" Name="EditInstallationButton" Click="EditInstallationButton_Click"  Visibility="{Binding ReadOnly, Converter={StaticResource VisibleIfTrueConverter}, ConverterParameter=Inverted}"></MenuItem>
+                                        <MenuItem Header="{DynamicResource GeneralText_Delete}" Name="DeleteInstallationButton" Click="DeleteInstallationButton_Click"  Visibility="{Binding ReadOnly, Converter={StaticResource VisibleIfTrueConverter}, ConverterParameter=Inverted}"></MenuItem>
+                                        <MenuItem Header="{DynamicResource GeneralText_Duplicate}" Name="DuplicateInstallationButton" Click="DuplicateInstallationButton_Click"></MenuItem>
                                     </ContextMenu>
                                 </Button.ContextMenu>
                             </Button>
