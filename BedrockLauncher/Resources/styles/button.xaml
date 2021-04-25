@@ -578,9 +578,9 @@
     
     <SolidColorBrush x:Key="DialogButton.Pressed.Background" Color="#FF515151"/>
     <SolidColorBrush x:Key="DialogButton.Pressed.Border" Color="#FFFF"/>
-    
-    <SolidColorBrush x:Key="DialogButton.Disabled.Background" Color="#FFF4F4F4"/>
-    <SolidColorBrush x:Key="DialogButton.Disabled.Border" Color="#FFADB2B5"/>
+
+    <SolidColorBrush x:Key="DialogButton.Disabled.Background" Color="#FF262626"/>
+    <SolidColorBrush x:Key="DialogButton.Disabled.Border" Color="#FF515151"/>
     <SolidColorBrush x:Key="DialogButton.Disabled.Foreground" Color="#FF838383"/>
 
     <Style x:Key="DialogButton" TargetType="{x:Type Button}">
@@ -620,6 +620,7 @@
                             <Setter Property="Background" TargetName="border" Value="{StaticResource DialogButton.Disabled.Background}"/>
                             <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource DialogButton.Disabled.Border}"/>
                             <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource DialogButton.Disabled.Foreground}"/>
+                            <Setter Property="Opacity" TargetName="contentPresenter" Value="0.5"></Setter>
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="True">
                             <Setter Property="BorderBrush" TargetName="border" Value="White"/>

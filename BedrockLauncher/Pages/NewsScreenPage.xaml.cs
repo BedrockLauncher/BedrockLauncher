@@ -16,49 +16,79 @@ using BedrockLauncher.Methods;
 using CodeHollow.FeedReader;
 using BedrockLauncher.Classes;
 using System.Diagnostics;
+using System.Windows.Controls.Primitives;
 
 namespace BedrockLauncher.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для PlayScreenPage.xaml
+    /// Логика взаимодействия для News.xaml
     /// </summary>
-    public partial class NewsScreenPage : Page
+    public partial class NewsScreenTabs : Page
     {
-        private LauncherUpdater updater;
-        private const string RSS_Feed = @"https://www.minecraft.net/en-us/feeds/community-content/rss";
-        public NewsScreenPage(LauncherUpdater updater)
+        private CommunityNewsPage communityNewsPage = new CommunityNewsPage();
+        private LauncherNewsPage launcherNewsPage;
+
+        private string LastTabName;
+
+        public NewsScreenTabs(LauncherUpdater updater)
         {
             InitializeComponent();
-            this.updater = updater;
-        }
-
-        private async void UpdateRSSContent()
-        {
-            Dispatcher.Invoke(() => { OfficalNewsFeed.Items.Clear(); });
-
-            var feed = await FeedReader.ReadAsync(RSS_Feed);
-
-            Dispatcher.Invoke(() => {
-                foreach (FeedItem item in feed.Items)
-                {
-                    MCNetFeedItem new_item = new MCNetFeedItem(item);
-                    OfficalNewsFeed.Items.Add(new_item);
-                }
-            });
+            LastTabName = OfficalTab.Name;
+            launcherNewsPage = new LauncherNewsPage(updater);
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            buildVersion.Text = "v" + updater.getLatestTag();
-            buildChanges.Text = updater.getLatestTagDescription();
-            UpdateRSSContent();
+            ButtonManager_Base(LastTabName);
         }
 
-        private void FeedItemButton_Click(object sender, RoutedEventArgs e)
+        #region Navigation
+
+        public void ResetButtonManager(string buttonName)
         {
-            Button button = sender as Button;
-            MCNetFeedItem item = button.DataContext as MCNetFeedItem;
-            Process.Start(new ProcessStartInfo(item.Link));
+            // just all buttons list
+            // ya i know this is really bad, i need to learn mvvm instead of doing this shit
+            // but this works fine, at least
+            List<ToggleButton> toggleButtons = new List<ToggleButton>() { 
+                LauncherTab,
+                OfficalTab
+            };
+
+            foreach (ToggleButton button in toggleButtons) { button.IsChecked = false; }
+
+            if (toggleButtons.Exists(x => x.Name == buttonName))
+            {
+                toggleButtons.Where(x => x.Name == buttonName).FirstOrDefault().IsChecked = true;
+            }
         }
+
+        public void ButtonManager(object sender, RoutedEventArgs e)
+        {
+            var toggleButton = sender as ToggleButton;
+            ButtonManager_Base(toggleButton.Name);
+        }
+
+        public void ButtonManager_Base(string senderName)
+        {
+            ResetButtonManager(senderName);
+
+            if (senderName == LauncherTab.Name) NavigateToLauncherNews();
+            else if (senderName == OfficalTab.Name) NavigateToCommunityNews();
+        }
+
+        public void NavigateToLauncherNews()
+        {
+            ContentFrame.Navigate(launcherNewsPage);
+            LastTabName = LauncherTab.Name;
+        }
+
+        public void NavigateToCommunityNews()
+        {
+            ContentFrame.Navigate(communityNewsPage);
+            LastTabName = OfficalTab.Name;
+        }
+
+
+        #endregion
     }
 }

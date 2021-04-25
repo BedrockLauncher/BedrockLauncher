@@ -23,7 +23,7 @@ namespace BedrockLauncher.Pages
     /// </summary>
     public partial class EditInstallationScreen : Page
     {
-        private List<Classes.Version> Versions { get; set; } = new List<Classes.Version>();
+        private List<Classes.MCVersion> Versions { get; set; } = new List<Classes.MCVersion>();
 
         private bool IsEditMode = false;
 
@@ -35,14 +35,14 @@ namespace BedrockLauncher.Pages
             UpdateVersionsComboBox();
         }
 
-        public EditInstallationScreen(int index, Installation i)
+        public EditInstallationScreen(int index, MCInstallation i)
         {
             InitializeComponent();
             UpdateVersionsComboBox();
             UpdateEditingFields(index, i);
         }
 
-        private void UpdateEditingFields(int index, Installation i)
+        private void UpdateEditingFields(int index, MCInstallation i)
         {
             IsEditMode = true;
             InstallationVersionSelect.SelectedItem = Versions.Where(x => x.UUID == i.VersionUUID).FirstOrDefault();
@@ -58,9 +58,9 @@ namespace BedrockLauncher.Pages
 
         private void GetManualComboBoxEntries()
         {
-            Classes.Version latest_release = new Classes.Version("latest_release", Application.Current.Resources["AddInstallationScreen_LatestRelease"].ToString(), false, ConfigManager.GameManager);
-            Classes.Version latest_beta = new Classes.Version("latest_beta", Application.Current.Resources["AddInstallationScreen_LatestSnapshot"].ToString(), false, ConfigManager.GameManager);
-            Versions.InsertRange(0, new List<Classes.Version>() { latest_release, latest_beta });
+            Classes.MCVersion latest_release = new Classes.MCVersion("latest_release", Application.Current.Resources["AddInstallationScreen_LatestRelease"].ToString(), false, ConfigManager.GameManager);
+            Classes.MCVersion latest_beta = new Classes.MCVersion("latest_beta", Application.Current.Resources["AddInstallationScreen_LatestSnapshot"].ToString(), false, ConfigManager.GameManager);
+            Versions.InsertRange(0, new List<Classes.MCVersion>() { latest_release, latest_beta });
         }
 
         private void UpdateVersionsComboBox()

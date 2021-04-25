@@ -1,100 +1,120 @@
-﻿<Page x:Class="BedrockLauncher.Pages.NewsScreenPage"
+﻿<Page x:Class="BedrockLauncher.Pages.NewsScreenTabs"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BedrockLauncher"
-      xmlns:f="clr-namespace:CodeHollow.FeedReader;assembly=CodeHollow.FeedReader"
-      xmlns:c="clr-namespace:BedrockLauncher.Classes"
       mc:Ignorable="d" 
       d:DesignHeight="525" d:DesignWidth="828"
-      Title="PlayScreenPage" Loaded="Page_Loaded"  Background="#FF282828">
+      Title="NewsScreenTabs" Loaded="Page_Loaded"  Background="#FF282828">
     <Page.Resources>
-        <DataTemplate x:Key="FeedItemEntry" DataType="{x:Type c:MCNetFeedItem}">
-            <Grid>
-                <Border Padding="5" Width="365">
-                    <Grid Background="#131313" MaxWidth="365">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="200"></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Image Grid.ColumnSpan="2" Grid.Row="0" Source="{Binding ImageUrl}" Stretch="UniformToFill">
-                            <Image.Effect>
-                                <BlurEffect Radius="50"></BlurEffect>
-                            </Image.Effect>
-                        </Image>
-                        <Border Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Row="0" BorderBrush="Black" BorderThickness="0" Width="256">
-                            <Image Source="{Binding ImageUrl}" Stretch="UniformToFill"></Image>
-                        </Border>
-                        <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" FontWeight="Normal" FontSize="25" Grid.ColumnSpan="2" Margin="15,15" TextWrapping="Wrap" Grid.Row="1" Text="{Binding Title}" Foreground="White"></TextBlock>
-                        <TextBlock Grid.ColumnSpan="2" Margin="15,5" TextWrapping="Wrap" Grid.Row="2" Text="{Binding Description}" Foreground="White"></TextBlock>
-                        <TextBlock Grid.Column="1" Margin="15,0,15,15" TextAlignment="Right" VerticalAlignment="Bottom" TextWrapping="Wrap" Grid.Row="3" Text="{Binding PublishingDateString}" Foreground="Gray"></TextBlock>
-                        <TextBlock Grid.Column="0" Padding="2,2" Margin="15,0,0,15" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Bottom" TextWrapping="Wrap" Grid.Row="3" Text="{Binding PrimaryTag}" Foreground="White" Background="DimGray"></TextBlock>
-
-                    </Grid>
-                    <Border.Effect>
-                        <DropShadowEffect Color="Black" Opacity="0.6"/>
-                    </Border.Effect>
-                </Border>
-                <Button x:Name="FeedItemButton" Click="FeedItemButton_Click" Style="{DynamicResource EmptyButton}"></Button>
-            </Grid>
-        </DataTemplate>
+        <Style x:Key="TabControlStyle1" TargetType="{x:Type TabControl}">
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="{StaticResource TabItem.Selected.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TabItem.Selected.Border}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabControl}">
+                        <Grid x:Name="templateRoot" ClipToBounds="true" SnapsToDevicePixels="true" KeyboardNavigation.TabNavigation="Local">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition x:Name="ColumnDefinition0"/>
+                                <ColumnDefinition x:Name="ColumnDefinition1" Width="0"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition x:Name="RowDefinition0" Height="Auto"/>
+                                <RowDefinition x:Name="RowDefinition1" Height="*"/>
+                            </Grid.RowDefinitions>
+                            <DockPanel x:Name="headerPanel" Background="Transparent" Grid.Column="0" IsItemsHost="true" Margin="2,2,2,0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1"/>
+                            <Border x:Name="contentPanel" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
+                                <ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="TabStripPlacement" Value="Bottom">
+                                <Setter Property="Grid.Row" TargetName="headerPanel" Value="1"/>
+                                <Setter Property="Grid.Row" TargetName="contentPanel" Value="0"/>
+                                <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
+                                <Setter Property="Height" TargetName="RowDefinition1" Value="Auto"/>
+                                <Setter Property="Margin" TargetName="headerPanel" Value="2,0,2,2"/>
+                            </Trigger>
+                            <Trigger Property="TabStripPlacement" Value="Left">
+                                <Setter Property="Grid.Row" TargetName="headerPanel" Value="0"/>
+                                <Setter Property="Grid.Row" TargetName="contentPanel" Value="0"/>
+                                <Setter Property="Grid.Column" TargetName="headerPanel" Value="0"/>
+                                <Setter Property="Grid.Column" TargetName="contentPanel" Value="1"/>
+                                <Setter Property="Width" TargetName="ColumnDefinition0" Value="Auto"/>
+                                <Setter Property="Width" TargetName="ColumnDefinition1" Value="*"/>
+                                <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
+                                <Setter Property="Height" TargetName="RowDefinition1" Value="0"/>
+                                <Setter Property="Margin" TargetName="headerPanel" Value="2,2,0,2"/>
+                            </Trigger>
+                            <Trigger Property="TabStripPlacement" Value="Right">
+                                <Setter Property="Grid.Row" TargetName="headerPanel" Value="0"/>
+                                <Setter Property="Grid.Row" TargetName="contentPanel" Value="0"/>
+                                <Setter Property="Grid.Column" TargetName="headerPanel" Value="1"/>
+                                <Setter Property="Grid.Column" TargetName="contentPanel" Value="0"/>
+                                <Setter Property="Width" TargetName="ColumnDefinition0" Value="*"/>
+                                <Setter Property="Width" TargetName="ColumnDefinition1" Value="Auto"/>
+                                <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
+                                <Setter Property="Height" TargetName="RowDefinition1" Value="0"/>
+                                <Setter Property="Margin" TargetName="headerPanel" Value="0,2,2,2"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="TextElement.Foreground" TargetName="templateRoot" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Border
+        <Grid>
+            <Border
             BorderBrush="Transparent"
             BorderThickness="0,0,0,0"
-            CornerRadius="0">
-            <Border.Effect>
-                <DropShadowEffect Direction="0" BlurRadius="15" ShadowDepth="1" />
-            </Border.Effect>
-            <Grid SnapsToDevicePixels="True" RenderOptions.BitmapScalingMode="NearestNeighbor" Focusable="False">
-                <Grid.Background>
-                    <ImageBrush TileMode="Tile" Viewport="0,0,16,16" ViewportUnits="Absolute" ImageSource="/BedrockLauncher;component/Resources/images/bg/stone_texture.png">
-                    </ImageBrush>
-                </Grid.Background>
-                <Grid Background="Black" Opacity="0.8" Focusable="False"></Grid>
-                <Image Margin="0,10" Source="/BedrockLauncher;component/Resources/images/logo/logo.png"></Image>
-            </Grid>
-        </Border>
+            CornerRadius="0"
+            VerticalAlignment="Top">
+                <Border.Effect>
+                    <DropShadowEffect Direction="0" BlurRadius="15" ShadowDepth="1" />
+                </Border.Effect>
 
-        <TabControl Grid.Row="1" Background="#FF282828">
-            <TabItem x:Name="OfficalTab" Header="{StaticResource NewsScreen_OfficalTabTitle}">
-                <Grid>
-                    <ListView x:Name="OfficalNewsFeed" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ItemTemplate="{StaticResource FeedItemEntry}">
-                        <ListView.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel HorizontalAlignment="Center" MaxWidth="{Binding ElementName=OfficalNewsFeed, Path=ActualWidth}"></WrapPanel>
-                            </ItemsPanelTemplate>
-                        </ListView.ItemsPanel>
-                    </ListView>
+                <Grid SnapsToDevicePixels="True" RenderOptions.BitmapScalingMode="NearestNeighbor">
+                    <Grid.Background>
+                        <ImageBrush TileMode="Tile" Viewport="0,0,320,320" ViewportUnits="Absolute" ImageSource="/BedrockLauncher;component/Resources/images/bg/stone_texture.png">
+                        </ImageBrush>
+                    </Grid.Background>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="75"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Background="Black" Opacity="0.75" Focusable="False" Grid.RowSpan="2"></Grid>
+                    <StackPanel HorizontalAlignment="Left" Height="35" Grid.Row="1" VerticalAlignment="Top" Orientation="Horizontal">
+                        <ToggleButton x:Name="OfficalTab" Width="90" Click="ButtonManager" Content="{DynamicResource NewsScreen_OfficalTabTitle}" Style="{DynamicResource ToolbarButton}" IsChecked="True">
+                            <ToggleButton.ToolTip>
+                                <ToolTip Content="{DynamicResource NewsScreen_OfficalTabTitle}"/>
+                            </ToggleButton.ToolTip>
+                        </ToggleButton>
+                        <ToggleButton x:Name="LauncherTab" Width="92" Click="ButtonManager" Content="{DynamicResource NewsScreen_LauncherTabTitle}" Style="{DynamicResource ToolbarButton}">
+                            <ToggleButton.ToolTip>
+                                <ToolTip Content="{DynamicResource NewsScreen_LauncherTabTitle}"/>
+                            </ToggleButton.ToolTip>
+                        </ToggleButton>
+                    </StackPanel>
                 </Grid>
-            </TabItem>
-            <TabItem x:Name="LauncherTab" Header="{StaticResource NewsScreen_LauncherTabTitle}">
-                <Grid Margin="0" Background="#FF333333">
-                    <TextBlock LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap" Margin="5,5,0,0" Foreground="White" FontSize="17" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans">
-            <Run FontSize="26" FontWeight="Bold" Text="{DynamicResource NewsScreen_Title}"/>
-            <Run Foreground="Gray" FontSize="13" Text="{DynamicResource NewsScreen_build}"/>
-            <Run x:Name="buildVersion" Foreground="Gray" FontSize="13"/>
-            <LineBreak/>
-            <LineBreak/>
-            <Run FontSize="20" FontWeight="Bold" Text="{DynamicResource NewsScreen_Changes}"/>
-            <LineBreak/>
-            <Run x:Name="buildChanges" FontSize="13"/>
-                    </TextBlock>
-                </Grid>
-            </TabItem>
-        </TabControl>
+            </Border>
+            <Image Margin="0,0" Height="100" VerticalAlignment="Top" Source="/BedrockLauncher;component/Resources/images/logo/logo.png"></Image>
+        </Grid>
+        <Frame x:Name="ContentFrame" VerticalAlignment="Stretch" Background="#22000000" HorizontalAlignment="Stretch" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
+
 
 </Page>

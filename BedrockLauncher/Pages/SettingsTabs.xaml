@@ -15,9 +15,6 @@
             BorderBrush="Transparent"
             BorderThickness="0,0,0,0"
             CornerRadius="0">
-            <Border.Effect>
-                <DropShadowEffect Direction="0" BlurRadius="15" ShadowDepth="1" />
-            </Border.Effect>
             <Grid Background="#FF282828">
                 <Label Foreground="White" Content="{DynamicResource MainWindowSettingsScreen_Title}" Margin="14,27,600,0" Style="{DynamicResource TabTitle}"/>
                 <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Orientation="Horizontal" Margin="0,49,0,0">

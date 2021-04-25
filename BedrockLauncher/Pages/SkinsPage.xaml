@@ -21,9 +21,9 @@
                 <Grid>
                     <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="{Binding DisplayName}"/>
                     <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="Normal" Padding="45,21,0,0" Text="{Binding VersionName}"/>
-                    <Image Source="{Binding IconPath}" HorizontalAlignment="Left" RenderOptions.BitmapScalingMode="HighQuality" Width="32" Height="32" Margin="5,1,0,0">
+                    <Image Source="{Binding CurrentIcon}" HorizontalAlignment="Left" RenderOptions.BitmapScalingMode="HighQuality" Width="32" Height="32" Margin="5,1,0,0">
                         <Image.OpacityMask>
-                            <ImageBrush ImageSource="{Binding IconPath}"/>
+                            <ImageBrush ImageSource="{Binding CurrentIcon}"/>
                         </Image.OpacityMask>
                     </Image>
                 </Grid>
@@ -60,39 +60,43 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="110"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Background="#FF282828" Grid.ColumnSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="140"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="200"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <Button x:Name="NewSkinPackButton" Height="40" Width="100" Click="NewSkinPackButton_Click" Foreground="White" Style="{DynamicResource PanelButton}">
-                    <Button.Content>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
+        <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Grid.ColumnSpan="2">
+            <Grid Background="#FF303030">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="140"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="200"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Button x:Name="NewSkinPackButton" Height="40" Width="100" Click="NewSkinPackButton_Click" Foreground="White" Style="{DynamicResource PanelButton}">
+                        <Button.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
 
-                            <Image Height="30" Margin="0,0,6,0" Source="{DynamicResource PlusIcon}"></Image>
-                            <TextBlock Grid.Column="2" Text="{DynamicResource InstallationsPage_AddButton}" VerticalAlignment="Center" Margin="0,0,0,0"></TextBlock>
-                        </Grid>
-                    </Button.Content>
-                </Button>
+                                <Image Height="30" Margin="0,0,6,0" Source="{DynamicResource PlusIcon}"></Image>
+                                <TextBlock Grid.Column="2" Text="{DynamicResource InstallationsPage_AddButton}" VerticalAlignment="Center" Margin="0,0,0,0"></TextBlock>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                </Grid>
             </Grid>
-        </Grid>
+        </Border>
         <Grid Grid.RowSpan="2" Grid.Column="1" Grid.Row="1" Background="Gray"></Grid>
         <ListView Grid.RowSpan="3" BorderThickness="0,0,0,0" Grid.Row="1" BorderBrush="Gray" x:Name="LoadedSkinPacks" SelectionChanged="LoadedSkinPacks_SelectionChanged" VerticalContentAlignment="Top" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource SkinPackTemplate}"></ListView>
         <Grid Grid.Column="2" Grid.Row="1" Background="#212121"></Grid>
         <controls:SkinPreview x:Name="SkinPreviewPanel" Grid.Column="2" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></controls:SkinPreview>
-        <Grid Background="#FF282828" Grid.Column="2" Grid.Row="0">
-            <TextBlock Foreground="White" Name="CurrentSkinNameTextBlock"  VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center" ></TextBlock>
-        </Grid>
+        <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Grid.Column="2" Grid.Row="0">
+            <Grid Background="#FF303030">
+                <TextBlock Foreground="White" Name="CurrentSkinNameTextBlock"  VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center" ></TextBlock>
+            </Grid>
+        </Border>
         <Grid Margin="0,0,0,10" Grid.Column="2" Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>

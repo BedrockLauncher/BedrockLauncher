@@ -81,8 +81,8 @@
     <v:String x:Key="AppExtractionFailed_Title">Extraction failed</v:String>
     <v:String x:Key="AppExtractionFailed">Please try again :(</v:String>
     <!-- NewsScreen -->
-    <v:String x:Key="NewsScreen_Title">Latest build changes</v:String>
-    <v:String x:Key="NewsScreen_build">build </v:String>
+    <v:String x:Key="NewsScreen_Title">Latest Build Changes</v:String>
+    <v:String x:Key="NewsScreen_build">Build </v:String>
     <v:String x:Key="NewsScreen_Changes">Changes:</v:String>
 
     <!-- New Strings -->
@@ -186,6 +186,7 @@
     <v:String x:Key="GeneralText_Update">Update</v:String>
     <v:String x:Key="GeneralText_Add">Add</v:String>
     <v:String x:Key="GeneralText_Save">Save</v:String>
+    <v:String x:Key="GeneralText_Refresh">Refresh</v:String>
 
     <v:String x:Key="GeneralText_Browse">BROWSE</v:String>
     <v:String x:Key="GeneralText_Reset">RESET</v:String>

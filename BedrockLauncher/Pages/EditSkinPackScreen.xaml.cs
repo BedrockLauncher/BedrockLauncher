@@ -11,6 +11,7 @@ using System.IO;
 using BedrockLauncher.Methods;
 using System.ComponentModel;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
+using System.Net.Cache;
 
 namespace BedrockLauncher.Pages
 {
@@ -289,13 +290,26 @@ namespace BedrockLauncher.Pages
 
         private void UpdateIconImage()
         {
-            BitmapImage bmp = new BitmapImage();
-            bmp.BeginInit();
-            bmp.CacheOption = BitmapCacheOption.OnLoad;
-            bmp.UriSource = new Uri(CurrentSkinPack.IconPath, UriKind.Absolute);
-            bmp.EndInit();
 
-            IconPreview.Source = bmp;
+            var icon = CurrentSkinPack.CurrentIcon;
+
+            if (icon.IsAbsoluteUri)
+            {
+                BitmapImage bmp = new BitmapImage();
+                bmp.BeginInit();
+                bmp.CacheOption = BitmapCacheOption.OnLoad;
+                bmp.UriSource = icon;
+                bmp.EndInit();
+
+                IconPreview.Source = bmp;
+            }
+            else
+            {
+                IconPreview.Source = new BitmapImage(icon);
+            }
+
+
+
         }
 
         private void InitEditFeilds()

@@ -35,14 +35,14 @@ namespace BedrockLauncher.Pages
         private void Folder_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            var version = button.DataContext as Classes.Version;
+            var version = button.DataContext as Classes.MCVersion;
             ConfigManager.GameManager.OpenFolder(version);
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            var version = button.DataContext as Classes.Version;
+            var version = button.DataContext as Classes.MCVersion;
             ConfigManager.GameManager.Remove(version);
             RefreshVersionsList();
         }

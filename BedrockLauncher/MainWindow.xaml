@@ -10,7 +10,7 @@
         xmlns:converters="clr-namespace:BedrockLauncher.Converters"
         xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
-        d:DataContext="{d:DesignInstance Type=classes:Version}" 
+        d:DataContext="{d:DesignInstance Type=classes:MCVersion}" 
         x:Class="BedrockLauncher.MainWindow"
         mc:Ignorable="d"
         MouseDown="Window_MouseDown"

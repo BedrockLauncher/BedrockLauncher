@@ -30,7 +30,7 @@ namespace BedrockLauncher.Controls
             InitializeComponent();
         }
 
-        public ProfileSelector(KeyValuePair<string, ProfileSettings> profile, ProfileButton _selectorParent)
+        public ProfileSelector(KeyValuePair<string, MCProfile> profile, ProfileButton _selectorParent)
         {
             InitializeComponent();
             this.SelectorParent = _selectorParent;

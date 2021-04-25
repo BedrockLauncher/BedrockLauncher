@@ -149,7 +149,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Classes\Installation.cs" />
+    <Compile Include="Classes\MCInstallation.cs" />
+    <Compile Include="Classes\MediaWiki\Continue.cs" />
+    <Compile Include="Classes\MediaWiki\Limits.cs" />
+    <Compile Include="Classes\MediaWiki\Query.cs" />
+    <Compile Include="Classes\MediaWiki\Val.cs" />
+    <Compile Include="Classes\MCPatchNotesItem.cs" />
     <Compile Include="Classes\SkinPack\MCSkinPackContent.cs" />
     <Compile Include="Classes\SkinPack\MCSkinPackLang.cs" />
     <Compile Include="Classes\MCNetFeedItem.cs" />
@@ -157,6 +162,7 @@
     <Compile Include="Classes\SkinPack\MCSkinGeometry.cs" />
     <Compile Include="Classes\SkinPack\MCSkinPack.cs" />
     <Compile Include="Classes\SkinPack\MCSkinPackMainfest.cs" />
+    <Compile Include="Classes\MediaWiki\RootObject.cs" />
     <Compile Include="Controls\BlockPickerItem.xaml.cs">
       <DependentUpon>BlockPickerItem.xaml</DependentUpon>
     </Compile>
@@ -196,10 +202,10 @@
     </Compile>
     <Compile Include="Converters\InvertableBooleanToVisibilityConverter.cs" />
     <Compile Include="Core\ConfigManager.cs" />
-    <Compile Include="Classes\ProfileSettings.cs" />
-    <Compile Include="Classes\ProfileList.cs" />
+    <Compile Include="Classes\MCProfile.cs" />
+    <Compile Include="Classes\MCProfilesList.cs" />
     <Compile Include="Classes\NotifyPropertyChangedBase.cs" />
-    <Compile Include="Classes\Version.cs" />
+    <Compile Include="Classes\MCVersion.cs" />
     <Compile Include="Classes\VersionStateChangeInfo.cs" />
     <Compile Include="CustomDesignAttributes.cs" />
     <Compile Include="Extensions.cs" />
@@ -211,13 +217,23 @@
     <Compile Include="Interfaces\ICommonVersionCommands.cs" />
     <Compile Include="Methods\ConsoleArgumentParser.cs" />
     <Compile Include="Methods\MCSkinUtilities.cs" />
+    <Compile Include="Methods\ChangelogDownloader.cs" />
     <Compile Include="Methods\SymLinkHelper.cs" />
     <Compile Include="Html\ResourceSchemeHandler.cs" />
     <Compile Include="Pages\AdvancedOptionsWindow.xaml.cs">
       <DependentUpon>AdvancedOptionsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\CommunityNewsPage.xaml.cs">
+      <DependentUpon>CommunityNewsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\EditSkinPackScreen.xaml.cs">
       <DependentUpon>EditSkinPackScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LauncherNewsPage.xaml.cs">
+      <DependentUpon>LauncherNewsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ChangelogPreviewScreen.xaml.cs">
+      <DependentUpon>ChangelogPreviewScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\EditSkinScreen.xaml.cs">
       <DependentUpon>EditSkinScreen.xaml</DependentUpon>
@@ -239,6 +255,9 @@
     </Compile>
     <Compile Include="Pages\EditInstallationScreen.xaml.cs">
       <DependentUpon>EditInstallationScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PatchNotesPage.xaml.cs">
+      <DependentUpon>PatchNotesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\VersionsSettingsPage.xaml.cs">
       <DependentUpon>VersionsSettingsPage.xaml</DependentUpon>
@@ -290,7 +309,7 @@
     </Compile>
     <Compile Include="Methods\LauncherUpdater.cs" />
     <Compile Include="Methods\VersionDownloader.cs" />
-    <Compile Include="Classes\VersionList.cs" />
+    <Compile Include="Classes\MCVersionList.cs" />
     <Compile Include="Methods\WUProtocol.cs" />
     <Compile Include="Methods\WUTokenHelper.cs" />
     <Compile Include="App.xaml.cs">
@@ -354,7 +373,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\CommunityNewsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\EditSkinPackScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\LauncherNewsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ChangelogPreviewScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -383,6 +414,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\EditInstallationScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PatchNotesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -541,7 +576,6 @@
     <Resource Include="Resources\fonts\MinecraftTen.ttf" />
     <Resource Include="Resources\fonts\NotoSans-Bold.ttf" />
     <Resource Include="Resources\fonts\NotoSans-Regular.ttf" />
-    <None Include="Addons\BetterBedrock\files\BottomChat.zip" />
     <None Include="Controls\SkinPreview\Less\mc-face-viewer.less" />
     <None Include="Controls\SkinPreview\Less\mc-skin-viewer.less" />
     <None Include="Controls\SkinPreview\Less\mc-utils.less" />
@@ -576,6 +610,9 @@
     </PackageReference>
     <PackageReference Include="HtmlAgilityPack">
       <Version>1.11.31</Version>
+    </PackageReference>
+    <PackageReference Include="HtmlRenderer.WPF">
+      <Version>1.5.0.6</Version>
     </PackageReference>
     <PackageReference Include="ini-parser">
       <Version>2.5.2</Version>
@@ -652,26 +689,6 @@
     <Resource Include="Resources\images\ui\bg\MainPagePlayButtonPressed.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Addons\BetterBedrock\files\glyph_04.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Addons\BetterBedrock\files\destroy_stage_0.png" />
-    <Resource Include="Addons\BetterBedrock\files\destroy_stage_1.png" />
-    <Resource Include="Addons\BetterBedrock\files\destroy_stage_2.png" />
-    <Resource Include="Addons\BetterBedrock\files\destroy_stage_3.png" />
-    <Resource Include="Addons\BetterBedrock\files\destroy_stage_4.png" />
-    <Resource Include="Addons\BetterBedrock\files\destroy_stage_5.png" />
-    <Resource Include="Addons\BetterBedrock\files\destroy_stage_6.png" />
-    <Resource Include="Addons\BetterBedrock\files\destroy_stage_7.png" />
-    <Resource Include="Addons\BetterBedrock\files\destroy_stage_8.png" />
-    <Resource Include="Addons\BetterBedrock\files\destroy_stage_9.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Addons\BetterBedrock\files\default8.png" />
-    <Resource Include="Addons\BetterBedrock\files\glyph_00.png" />
-    <Resource Include="Addons\BetterBedrock\files\glyph_E0.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\images\ui\icons\ms-icon.png" />
     <Resource Include="Resources\images\ui\icons\mojang-icon.png" />
     <Resource Include="Resources\images\installation_icons\Birch_Leaves.png" />
@@ -736,6 +753,11 @@
     <Resource Include="Resources\images\installation_icons\Nether_Wart_Block.png" />
     <Resource Include="Resources\images\installation_icons\Warped_Planks.png" />
     <Resource Include="Resources\images\installation_icons\Warped_Wart_Block.png" />
+    <Resource Include="Resources\images\fallbacks\pack_icon.png" />
+    <Resource Include="Resources\images\fallbacks\pack.png" />
+    <Resource Include="Resources\images\fallbacks\invalid_pack.png" />
+    <Resource Include="Resources\images\fallbacks\invalid_pack_icon.png" />
+    <Resource Include="Resources\images\fallbacks\dev_pack_icon.png" />
     <Content Include="WUTokenHelper.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -746,6 +768,7 @@
     <Resource Include="Resources\images\icons\grass_block_icon.ico" />
     <Resource Include="Resources\images\icons\crafting_table_block_icon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Installer\Installer.csproj">
       <Project>{295729f7-172f-4bcd-a619-e495db5a4e2f}</Project>
@@ -766,9 +789,6 @@
       <Name>WUTokenHelper</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

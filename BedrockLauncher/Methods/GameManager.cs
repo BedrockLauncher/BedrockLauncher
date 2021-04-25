@@ -36,7 +36,7 @@ using System.Security.Policy;
 using System.Security.RightsManagement;
 using System.Security.Permissions;
 
-using Version = BedrockLauncher.Classes.Version;
+using MCVersion = BedrockLauncher.Classes.MCVersion;
 
 namespace BedrockLauncher.Methods
 {
@@ -65,9 +65,9 @@ namespace BedrockLauncher.Methods
         #endregion
 
         #region ICommands
-        public ICommand LaunchCommand => new RelayCommand((v) => InvokeLaunch((Version)v));
-        public ICommand RemoveCommand => new RelayCommand((v) => InvokeRemove((Version)v));
-        public ICommand DownloadCommand => new RelayCommand((v) => InvokeDownload((Version)v));
+        public ICommand LaunchCommand => new RelayCommand((v) => InvokeLaunch((MCVersion)v));
+        public ICommand RemoveCommand => new RelayCommand((v) => InvokeRemove((MCVersion)v));
+        public ICommand DownloadCommand => new RelayCommand((v) => InvokeDownload((MCVersion)v));
 
         #endregion
 
@@ -105,12 +105,12 @@ namespace BedrockLauncher.Methods
 
         #region General Methods
 
-        public void Remove(Version v)
+        public void Remove(MCVersion v)
         {
             InvokeRemove(v);
         }
 
-        public void Play(Installation i)
+        public void Play(MCInstallation i)
         {
             {
                 var v = i.Version;
@@ -126,14 +126,14 @@ namespace BedrockLauncher.Methods
             }
         }
 
-        public void OpenFolder(Installation i)
+        public void OpenFolder(MCInstallation i)
         {
             string Directory = Filepaths.GetInstallationsFolderPath(ConfigManager.CurrentProfile, i.DirectoryName);
             if (!System.IO.Directory.Exists(Directory)) System.IO.Directory.CreateDirectory(Directory);
             Process.Start("explorer.exe", Directory);
         }
 
-        public void OpenFolder(Version i)
+        public void OpenFolder(MCVersion i)
         {
             string Directory = Path.GetFullPath(i.GameDirectory);
             if (!System.IO.Directory.Exists(Directory)) System.IO.Directory.CreateDirectory(Directory);
@@ -154,7 +154,7 @@ namespace BedrockLauncher.Methods
 
         #region Invoke Methods
 
-        private void InvokeLaunch(Version v)
+        private void InvokeLaunch(MCVersion v)
         {
             if (HasLaunchTask)
             {
@@ -221,7 +221,7 @@ namespace BedrockLauncher.Methods
                 }
             });
         }
-        private void InvokeDownload(Version v)
+        private void InvokeDownload(MCVersion v)
         {
             CancellationTokenSource cancelSource = new CancellationTokenSource();
             v.StateChangeInfo = new VersionStateChangeInfo();
@@ -307,7 +307,7 @@ namespace BedrockLauncher.Methods
                 Application.Current.Dispatcher.Invoke(() => { OnGameStateChanged(GameStateArgs.Empty); });
             });
         }
-        private void InvokeRemove(Version v)
+        private void InvokeRemove(MCVersion v)
         {
             Task.Run(async () =>
             {

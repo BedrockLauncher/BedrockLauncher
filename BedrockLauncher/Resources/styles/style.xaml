@@ -78,7 +78,7 @@
         </Setter>
     </Style>
 
-    <DataTemplate x:Key="templateProfile" DataType="{x:Type classes:ProfileSettings}">
+    <DataTemplate x:Key="templateProfile" DataType="{x:Type classes:MCProfile}">
         <Grid Height="45" MinWidth="179">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="40"></ColumnDefinition>
@@ -99,7 +99,7 @@
     </DataTemplate>
 
 
-    <DataTemplate x:Key="templateInstallation" DataType="{x:Type classes:Installation}">
+    <DataTemplate x:Key="templateInstallation" DataType="{x:Type classes:MCInstallation}">
         <Grid>
             <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="{Binding DisplayName}"/>
             <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="Normal" Padding="45,21,0,0" Text="{Binding VersionName}"/>

@@ -30,7 +30,7 @@ using BedrockLauncher.Core;
 using BedrockLauncher.Pages;
 using BedrockLauncher.Pages.FirstLaunch;
 
-using Version = BedrockLauncher.Classes.Version;
+using Version = BedrockLauncher.Classes.MCVersion;
 
 namespace BedrockLauncher
 {
@@ -43,6 +43,7 @@ namespace BedrockLauncher
         #region Definitions
         // updater to check for updates (loaded in mainwindow init)
         private static LauncherUpdater Updater = new LauncherUpdater();
+        private static ChangelogDownloader PatchNotesDownloader = new ChangelogDownloader();
 
         // servers dll stuff
         private static ServersTab serversTab = new ServersTab();
@@ -51,11 +52,12 @@ namespace BedrockLauncher
         private GameTabs mainPage = new GameTabs();
         private GeneralSettingsPage generalSettingsPage = new GeneralSettingsPage();
         private SettingsTabs settingsScreenPage = new SettingsTabs();
-        private NewsScreenPage newsScreenPage = new NewsScreenPage(Updater);
+        private NewsScreenTabs newsScreenPage = new NewsScreenTabs(Updater);
         private PlayScreenPage playScreenPage = new PlayScreenPage();
         private InstallationsScreen installationsScreen = new InstallationsScreen();
         private ServersPage serversScreenPage = new ServersPage(serversTab);
         private SkinsPage skinsPage = new SkinsPage();
+        private PatchNotesPage patchNotesPage = new PatchNotesPage(PatchNotesDownloader);
 
         private NoContentPage noContentPage = new NoContentPage();
         #endregion
@@ -114,7 +116,7 @@ namespace BedrockLauncher
             {
                    await Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(() =>
                    {
-                       var selected = InstallationsList.SelectedItem as Installation;
+                       var selected = InstallationsList.SelectedItem as MCInstallation;
                        if (selected == null)
                        {
                            PlayButtonText.SetResourceReference(TextBlock.TextProperty, "MainPage_PlayButton");
@@ -200,7 +202,7 @@ namespace BedrockLauncher
         {
             Properties.Settings.Default.CurrentInstallation = InstallationsList.SelectedIndex;
             Properties.Settings.Default.Save();
-            var i = InstallationsList.SelectedItem as Installation;
+            var i = InstallationsList.SelectedItem as MCInstallation;
             ConfigManager.GameManager.Play(i);
         }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -377,7 +379,7 @@ namespace BedrockLauncher
         {
             NavigateToMainPage(true);
             mainPage.PatchNotesButton.IsChecked = true;
-            mainPage.MainPageFrame.Navigate(noContentPage);
+            mainPage.MainPageFrame.Navigate(patchNotesPage);
             mainPage.LastButtonName = mainPage.PatchNotesButton.Name;
         }
 
