@@ -41,6 +41,6 @@
                 </StackPanel>
             </Grid>
         </Border>
-        <Frame x:Name="MainPageFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="MainPageFrame" Focusable="False" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>

@@ -7,6 +7,7 @@
         xmlns:classes="clr-namespace:BedrockLauncher.Classes"
         xmlns:properties="clr-namespace:BedrockLauncher.Properties"
         xmlns:controls="clr-namespace:BedrockLauncher.Controls"
+        xmlns:toolbar="clr-namespace:BedrockLauncher.Controls.Toolbar"
         xmlns:converters="clr-namespace:BedrockLauncher.Converters"
         xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
@@ -25,66 +26,71 @@
         <wincontrols:BooleanToVisibilityConverter x:Key="BoolToVis"></wincontrols:BooleanToVisibilityConverter>
         <converters:InvertableBooleanToVisibilityConverter x:Key="ReverseBoolToVis"></converters:InvertableBooleanToVisibilityConverter>
     </Window.Resources>
-    <Grid Margin="0,0,0,0" Background="WhiteSmoke">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="180"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <StackPanel x:Name="buttonStackPanel" Grid.Column="0" Background="#FF1E1E1E" HorizontalAlignment="Left">
-            <controls:ProfileButton x:Name="ProfileButton"></controls:ProfileButton>
-            <controls:NewsButton x:Name="NewsButton"></controls:NewsButton>
-            <controls:BedrockEditionButton x:Name="BedrockEditionButton"></controls:BedrockEditionButton>
-            <controls:JavaEditionButton x:Name="JavaEditionButton" Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=HideJavaShortcut, Converter={StaticResource ReverseBoolToVis}, ConverterParameter=Inverted}"></controls:JavaEditionButton>
-            <controls:ServersButton x:Name="ServersButton" Visibility="Collapsed" Focusable="False"></controls:ServersButton>
-        </StackPanel>
-        <controls:SettingsButton x:Name="SettingsButton"></controls:SettingsButton>
-
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition Height="Auto" MaxHeight="64"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Frame x:Name="MainWindowFrame" VerticalAlignment="Stretch" Background="Black" NavigationUIVisibility="Hidden" Source="../Pages/GameTabs.xaml"/>
-            <Button RenderOptions.BitmapScalingMode="NearestNeighbor" x:Name="updateButton" Margin="0,-75,5,0" HorizontalAlignment="Right" Height="60" Width="260" VerticalAlignment="Top" BorderBrush="{x:Null}" Style="{DynamicResource AdvancementButton}">
-                <Grid Margin="-8,0,0,0" HorizontalAlignment="Left">
-                    <TextBlock LineHeight="20" RenderOptions.BitmapScalingMode="NearestNeighbor" FontSize="16" TextOptions.TextRenderingMode="Aliased" TextOptions.TextFormattingMode="Ideal" Margin="52,6,0,0" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Rus">
-                    <Run Text="{DynamicResource UpdateButton_NewUpdate}" Foreground="Yellow"/>
-                    <LineBreak/>
-                    <Run Text="{DynamicResource UpdateButton_Download}" Foreground="White"/>
-                    </TextBlock>
-                    <Image Source="Resources/images/icons/bedrock_block_icon.ico" Margin="3" HorizontalAlignment="Left" Height="42" Width="42"/>
+    <Grid Margin="0,0,0,0" Background="#FF303030">
+        <ContentPresenter x:Name="MainFrame">
+            <ContentPresenter.Content>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel x:Name="buttonStackPanel" Grid.Column="0" Background="#FF1E1E1E" HorizontalAlignment="Left">
+                        <toolbar:ProfileButton x:Name="ProfileButton"></toolbar:ProfileButton>
+                        <toolbar:NewsButton x:Name="NewsButton"></toolbar:NewsButton>
+                        <toolbar:BedrockEditionButton x:Name="BedrockEditionButton"></toolbar:BedrockEditionButton>
+                        <toolbar:JavaEditionButton x:Name="JavaEditionButton" Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=HideJavaShortcut, Converter={StaticResource ReverseBoolToVis}, ConverterParameter=Inverted}"></toolbar:JavaEditionButton>
+                        <toolbar:ServersButton x:Name="ServersButton" Visibility="Collapsed" Focusable="False"></toolbar:ServersButton>
+                    </StackPanel>
+                    <toolbar:SettingsButton x:Name="SettingsButton"></toolbar:SettingsButton>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="Auto" MaxHeight="64"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Frame x:Name="MainWindowFrame" Focusable="False" VerticalAlignment="Stretch" Background="Black" NavigationUIVisibility="Hidden" Source="../Pages/GameTabs.xaml"/>
+                        <Button RenderOptions.BitmapScalingMode="NearestNeighbor" x:Name="updateButton" Visibility="Collapsed" Margin="0,-75,5,0" HorizontalAlignment="Right" Height="60" Width="260" VerticalAlignment="Top" BorderBrush="{x:Null}" Style="{DynamicResource AdvancementButton}">
+                            <Grid Margin="-8,0,0,0" HorizontalAlignment="Left">
+                                <TextBlock LineHeight="20" RenderOptions.BitmapScalingMode="NearestNeighbor" FontSize="16" TextOptions.TextRenderingMode="Aliased" TextOptions.TextFormattingMode="Ideal" Margin="52,6,0,0" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Rus">
+                        <Run Text="{DynamicResource UpdateButton_NewUpdate}" Foreground="Yellow"/>
+                        <LineBreak/>
+                        <Run Text="{DynamicResource UpdateButton_Download}" Foreground="White"/>
+                                </TextBlock>
+                                <Image Source="Resources/images/icons/bedrock_block_icon.ico" Margin="3" HorizontalAlignment="Left" Height="42" Width="42"/>
+                            </Grid>
+                        </Button>
+                        <Grid Grid.Row="1" x:Name="ProgressBarGrid" Background="#FF262626" Visibility="Collapsed">
+                            <ProgressBar x:Name="progressSizeHack" Height="32" Margin="10,8,10,22" Foreground="#FF008542" Background="Black" BorderBrush="Black" IsIndeterminate="{Binding StateChangeInfo.IsProgressIndeterminate}" Minimum="0" Maximum="{Binding StateChangeInfo.TotalSize}" Value="{Binding StateChangeInfo.DownloadedBytes}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock x:Name="progressbarcontent" SnapsToDevicePixels="True" Margin="26,-15,0,0" FontSize="12" Text="{DynamicResource MainPage_ProgressBarDownloading}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
+                                <TextBlock SnapsToDevicePixels="True" Margin="+3,-15,0,0" FontSize="12" x:Name="ProgressBarText" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
+                            </StackPanel>
+                        </Grid>
+                        <Grid x:Name="PlayScreenBorder" Grid.Row="2" x:FieldModifier="public" VerticalAlignment="Bottom" Background="#FF262626">
+                            <TextBlock Style="{DynamicResource HeaderTextblock}" Text="NOT APPROVED BY OR ASSOCIATED WITH MOJANG" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="0,0,5,0" Margin="0,0,0,0"/>
+                            <Button
+                        x:Name="MainPlayButton" 
+                        Click="MainPlayButton_Click" 
+                        HorizontalAlignment="Center" 
+                        Margin="286,-8,286,0"
+                        VerticalAlignment="Top" 
+                        Width="250" Height="56" 
+                        Padding="0" 
+                        Style="{DynamicResource BigGreenButton}">
+                                <TextBlock x:Name="PlayButtonText" Style="{DynamicResource BigGreenButton_Text}"/>
+                            </Button>
+                            <ComboBox SelectedItem="1" SelectionChanged="GameStateChanged" DropDownClosed="GameStateChanged" ItemsSource="{Binding}" x:Name="InstallationsList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="200" Height="47" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}" Foreground="White" Padding="-1,7,5,3">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <ContentControl Focusable="False" x:Name="control" Content="{Binding}" ContentTemplate="{StaticResource templateInstallation}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </Grid>
+                    </Grid>
                 </Grid>
-            </Button>
-            <Grid Grid.Row="1" x:Name="ProgressBarGrid" Background="#FF262626" Visibility="Collapsed">
-                <ProgressBar x:Name="progressSizeHack" Height="32" Margin="10,8,10,22" Foreground="#FF008542" Background="Black" BorderBrush="Black" IsIndeterminate="{Binding StateChangeInfo.IsProgressIndeterminate}" Minimum="0" Maximum="{Binding StateChangeInfo.TotalSize}" Value="{Binding StateChangeInfo.DownloadedBytes}"/>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock x:Name="progressbarcontent" SnapsToDevicePixels="True" Margin="26,-15,0,0" FontSize="12" Text="{DynamicResource MainPage_ProgressBarDownloading}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
-                    <TextBlock SnapsToDevicePixels="True" Margin="+3,-15,0,0" FontSize="12" x:Name="ProgressBarText" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
-                </StackPanel>
-            </Grid>
-            <Grid x:Name="PlayScreenBorder" Grid.Row="2" x:FieldModifier="public" VerticalAlignment="Bottom" Background="#FF262626">
-                <TextBlock Style="{DynamicResource HeaderTextblock}" Text="NOT APPROVED BY OR ASSOCIATED WITH MOJANG" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="0,0,5,0" Margin="0,0,0,0"/>
-                <Button
-                    x:Name="MainPlayButton" 
-                    Click="MainPlayButton_Click" 
-                    HorizontalAlignment="Center" 
-                    Margin="286,-8,286,0"
-                    VerticalAlignment="Top" 
-                    Width="250" Height="56" 
-                    Padding="0" 
-                    Style="{DynamicResource BigGreenButton}">
-                    <TextBlock x:Name="PlayButtonText" Style="{DynamicResource BigGreenButton_Text}"/>
-                </Button>
-                <ComboBox SelectedItem="1" SelectionChanged="GameStateChanged" DropDownClosed="GameStateChanged" ItemsSource="{Binding}" x:Name="InstallationsList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="200" Height="47" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}" Foreground="White" Padding="-1,7,5,3">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <ContentControl x:Name="control" Content="{Binding}" ContentTemplate="{StaticResource templateInstallation}"/>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-            </Grid>
-        </Grid>
-        <Frame x:Name="MainWindowOverlayFrame" Margin="0" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" Panel.ZIndex="-1"/>
+            </ContentPresenter.Content>
+        </ContentPresenter>
+        <Frame x:Name="OverlayFrame" Focusable="False" Margin="0" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" Panel.ZIndex="-1"/>
     </Grid>
 </Window>

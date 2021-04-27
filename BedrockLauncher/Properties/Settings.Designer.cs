@@ -25,7 +25,7 @@ namespace BedrockLauncher.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.1.2.7")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.0.0.0")]
         public string Version {
             get {
                 return ((string)(this["Version"]));

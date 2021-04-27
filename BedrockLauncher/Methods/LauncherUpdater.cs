@@ -56,12 +56,21 @@ namespace BedrockLauncher.Methods
                 this.latestTag = urlParts[urlParts.Length - 1]; // return latest part, for example 0.1.2 from full link
                 Debug.WriteLine("Current tag: " + Properties.Settings.Default.Version);
                 Debug.WriteLine("Latest tag: " + latestTag);
-                // if current tag < than latest tag
-                if (int.Parse(Properties.Settings.Default.Version.Replace(".", "")) < int.Parse(latestTag.Replace(".", "")))
+
+                try
                 {
-                    Debug.WriteLine("New version available!");
-                    ShowUpdateButton(5000);
+                    // if current tag < than latest tag
+                    if (int.Parse(Properties.Settings.Default.Version.Replace(".", "")) < int.Parse(latestTag.Replace(".", "")))
+                    {
+                        Debug.WriteLine("New version available!");
+                        ShowUpdateButton(5000);
+                    }
                 }
+                catch
+                {
+
+                }
+
             }
         }
         private void lookForDescription(HtmlDocument html)
@@ -93,6 +102,7 @@ namespace BedrockLauncher.Methods
         }
         async private void ShowUpdateButton(int time) 
         {
+            ConfigManager.MainThread.updateButton.Visibility = Visibility.Visible;
             ConfigManager.MainThread.updateButton.Click += UpdateButton_Click;
             showAdvancementButton();
             await Task.Delay(time);

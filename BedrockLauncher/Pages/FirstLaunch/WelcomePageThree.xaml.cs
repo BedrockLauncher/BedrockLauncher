@@ -51,7 +51,7 @@ namespace BedrockLauncher.Pages.FirstLaunch
             {
                 Properties.Settings.Default.CurrentProfile = profileName;
                 Properties.Settings.Default.Save();
-                ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
+                ConfigManager.MainThread.SetOverlayFrame(null);
             }
         }
     }

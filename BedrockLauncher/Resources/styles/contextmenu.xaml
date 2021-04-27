@@ -12,7 +12,7 @@
     </ItemsPanelTemplate>
 
     <Style x:Key="NoCheckboxContextMenu" TargetType="{x:Type ContextMenu}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="FocusVisualStyle" Value="{StaticResource BlankFocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource ContextMenuBackground}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ContextMenuBorder2}"/>
         <Setter Property="Foreground" Value="{StaticResource NormalText}"/>

@@ -78,7 +78,7 @@ namespace BedrockLauncher.Pages
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
+            ConfigManager.MainThread.SetOverlayFrame(null);
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
@@ -90,14 +90,14 @@ namespace BedrockLauncher.Pages
         private void UpdateInstallation()
         {
             ConfigManager.EditInstallation(EditingIndex, InstallationNameField.Text, InstallationDirectoryField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
-            ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
+            ConfigManager.MainThread.SetOverlayFrame(null);
             ConfigManager.OnConfigStateChanged(this, ConfigManager.ConfigStateArgs.Empty);
         }
 
         private void CreateInstallation()
         {
             ConfigManager.CreateInstallation(InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationDirectoryField.Text, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
-            ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
+            ConfigManager.MainThread.SetOverlayFrame(null);
             ConfigManager.OnConfigStateChanged(this, ConfigManager.ConfigStateArgs.Empty);
         }
 
@@ -122,7 +122,7 @@ namespace BedrockLauncher.Pages
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
+            ConfigManager.MainThread.SetOverlayFrame(null);
         }
     }
 }

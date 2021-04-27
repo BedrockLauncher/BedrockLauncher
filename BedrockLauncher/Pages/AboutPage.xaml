@@ -6,11 +6,24 @@
       xmlns:local="clr-namespace:BedrockLauncher"
       xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
       xmlns:controls="clr-namespace:BedrockLauncher.Controls"
+      xmlns:v="clr-namespace:System;assembly=mscorlib"
+      xmlns:sys="clr-namespace:System;assembly=System"
       x:Class="BedrockLauncher.Pages.AboutPage"
       mc:Ignorable="d" 
       d:DesignHeight="828" d:DesignWidth="525"
       Title="AboutPage" Initialized="Page_Initialized" MinWidth="828" MinHeight="525">
     <Page.Resources>
+
+        <sys:Uri x:Key="CJ_GithubURL">https://github.com/CarJem</sys:Uri>
+        <sys:Uri x:Key="CJ_TwitterURL">https://twitter.com/carter5467_99</sys:Uri>
+        <sys:Uri x:Key="XlynxX_GithubURL">https://github.com/XlynxX</sys:Uri>
+        <sys:Uri x:Key="XlynxX_TwitterURL">https://twitter.com/xlynxx0</sys:Uri>
+        <sys:Uri x:Key="McMrArm_GithubURL">https://github.com/MCMrARM</sys:Uri>
+        <sys:Uri x:Key="McMrArm_TwitterURL">https://twitter.com/mcmrarm</sys:Uri>
+        <sys:Uri x:Key="BsCommunity_GithubURL">https://github.com/bs-community</sys:Uri>
+        <sys:Uri x:Key="BsCommunity_RepoURL">https://github.com/bs-community/skinview3d</sys:Uri>
+        <sys:Uri x:Key="Mojang_URL">https://www.minecraft.net/en-us/</sys:Uri>
+
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -20,83 +33,217 @@
                 </Setter.Value>
             </Setter>
         </Style>
-    </Page.Resources>
-    <Grid Margin="0,0,0,0">
-        <StackPanel Margin="21,42,21,0">
-            <TextBlock FontWeight="Bold" Margin="0,0,0,5"  FontSize="20" Text="{DynamicResource About_Title}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-            <Separator Margin="0,10"></Separator>
-            <TextBlock FontWeight="Bold" Margin="0,5,0,5"  FontSize="20" Text="{DynamicResource About_DevelopedBy}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-            <Separator Margin="0,10"></Separator>
-
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition Width="10"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
+        <Border x:Key="CJMention" BorderThickness="2" BorderBrush="Gray">
             <Grid Height="300" Background="DarkRed">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="250"></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <Image Source="/BedrockLauncher;component/resources/images/credits/carjem_logo.png" Grid.Row="0"></Image>
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/BedrockLauncher;component/resources/images/credits/carjem_logo.png" Grid.Row="0"></Image>
                 <Border Grid.Row="1" BorderThickness="0,2,0,0" BorderBrush="Gray">
                     <Grid Background="#FF262626">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
                             <TextBlock Padding="10,0" FontSize="15">           
-                                <Hyperlink NavigateUri="https://twitter.com/carter5467_99" RequestNavigate="Hyperlink_RequestNavigate">
-                                    Twitter
+                                <Hyperlink NavigateUri="{StaticResource CJ_TwitterURL}" RequestNavigate="Hyperlink_RequestNavigate">
+                                    <TextBlock Text="{DynamicResource GeneralText_Twitter}"/>
                                 </Hyperlink>
-                            </TextBlock>
+                        </TextBlock>
                             <TextBlock Padding="10,0"  FontSize="15">           
-                                <Hyperlink NavigateUri="https://github.com/CarJem" RequestNavigate="Hyperlink_RequestNavigate">
-                                    Github
+                                <Hyperlink NavigateUri="{StaticResource CJ_GithubURL}" RequestNavigate="Hyperlink_RequestNavigate">
+                                    <TextBlock Text="{DynamicResource GeneralText_GitHub}"/>
                                 </Hyperlink>
+                        </TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+        <Border x:Key="XlynxXMention" BorderThickness="2" BorderBrush="Gray">
+            <Grid Height="300" Background="Black">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="250"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Height="250" Background="Black">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Right" Source="/BedrockLauncher;component/resources/images/credits/xlynxx.jpg">
+                </Image>
+                <Grid Width="256" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <TextBlock Text="XlynxX" HorizontalAlignment="Left" Padding="20,0,0,0" FontSize="50" Foreground="White"></TextBlock>
+                </Grid>
+
+            </Grid>
+            <Border Grid.Row="1" BorderThickness="0,2,0,0" BorderBrush="Gray">
+                <Grid Background="#FF262626">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Padding="10,0"  FontSize="15">           
+                                <Hyperlink NavigateUri="{StaticResource XlynxX_TwitterURL}" RequestNavigate="Hyperlink_RequestNavigate">
+                                    <TextBlock Text="{DynamicResource GeneralText_Twitter}"/>
+                                </Hyperlink>
+                        </TextBlock>
+                        <TextBlock Padding="10,0"  FontSize="15">           
+                                <Hyperlink NavigateUri="{StaticResource XlynxX_GithubURL}" RequestNavigate="Hyperlink_RequestNavigate">
+                                    <TextBlock Text="{DynamicResource GeneralText_GitHub}"/>
+                                </Hyperlink>
+                        </TextBlock>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            </Grid>
+        </Border>
+
+        <Border x:Key="MCMrARMMention" BorderThickness="2" BorderBrush="Gray">
+            <Grid Height="150">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Height="65" Background="Black">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Left" Source="/BedrockLauncher;component/resources/images/credits/mcmrarm_icon.jfif">
+                    </Image>
+                    <Grid Width="256" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <TextBlock Text="MCMrARM" HorizontalAlignment="Left" Padding="20,0,0,0" FontSize="30" Foreground="White"></TextBlock>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1" Background="#FF161616">
+                    <TextBlock Text="{DynamicResource AboutPage_McMrArm_Text}" Padding="5" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" Foreground="White"></TextBlock>
+                </Grid>
+                <Border Grid.Row="2" BorderThickness="0,2,0,0" BorderBrush="Gray">
+                    <Grid Background="#FF262626">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Padding="10,0"  FontSize="15">           
+                                <Hyperlink NavigateUri="{StaticResource McMrArm_TwitterURL}" RequestNavigate="Hyperlink_RequestNavigate">
+                                    <TextBlock Text="{DynamicResource GeneralText_Twitter}"/>
+                                </Hyperlink>
+                        </TextBlock>
+                            <TextBlock Padding="10,0"  FontSize="15">           
+                                <Hyperlink NavigateUri="{StaticResource McMrArm_GithubURL}" RequestNavigate="Hyperlink_RequestNavigate">
+                                    <TextBlock Text="{DynamicResource GeneralText_GitHub}"/>
+                                </Hyperlink>
+                        </TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+
+        <Border x:Key="BSCommunityMention" BorderThickness="2" BorderBrush="Gray">
+            <Grid Height="150">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Height="65" Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Left" Source="/BedrockLauncher;component/resources/images/credits/bs_community_icon.png">
+                    </Image>
+                    <Grid Width="256" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <TextBlock Text="Blessing Skin" HorizontalAlignment="Left" Padding="20,0,0,0" FontSize="30" Foreground="Black"></TextBlock>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1" Background="#FFDEDEDE">
+                    <TextBlock Text="{DynamicResource AboutPage_BsCommunity_Text}" Padding="5" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" Foreground="Black"></TextBlock>
+                </Grid>
+                <Border Grid.Row="2" BorderThickness="0,2,0,0" BorderBrush="Gray">
+                    <Grid Background="#FF262626">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Padding="10,0"  FontSize="15">           
+                                <Hyperlink NavigateUri="{StaticResource BsCommunity_GithubURL}" RequestNavigate="Hyperlink_RequestNavigate">
+                                    <TextBlock Text="{DynamicResource GeneralText_GitHub}"/>
+                                </Hyperlink>
+                        </TextBlock>
+                            <TextBlock Padding="10,0"  FontSize="15">           
+                                <Hyperlink NavigateUri="{StaticResource BsCommunity_RepoURL}" RequestNavigate="Hyperlink_RequestNavigate">
+                                    <TextBlock Text="{DynamicResource AboutPage_BsRepo_Text}"/>
+                                </Hyperlink>
+                        </TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+        <Border x:Key="MojangMention" BorderThickness="2" BorderBrush="Gray">
+            <Grid Height="150">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Height="65" Background="#EF323D">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Left" Source="/BedrockLauncher;component/resources/images/credits/mojang_icon.png"/>
+                    <Grid Width="256" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Left" Source="/BedrockLauncher;component/resources/images/credits/mojang_logo.jpg"/>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1" Background="#FF85262C">
+                    <TextBlock Padding="5" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" Foreground="White">
+                        <Run Text="{DynamicResource AboutPage_Mojang_Text}"></Run>
+                        <LineBreak></LineBreak>
+                        <Run FontSize="6" Text="{DynamicResource AboutPage_Mojang_NoteText}"></Run>
+                    </TextBlock>
+                </Grid>
+                <Border Grid.Row="2" BorderThickness="0,2,0,0" BorderBrush="Gray">
+                    <Grid Background="#FF262626">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Padding="10,0"  FontSize="15">           
+                                    <Hyperlink NavigateUri="{StaticResource Mojang_URL}" RequestNavigate="Hyperlink_RequestNavigate">
+                                        <TextBlock Text="{DynamicResource GeneralText_Website}"/>
+                                    </Hyperlink>
                             </TextBlock>
                         </StackPanel>
                     </Grid>
                 </Border>
             </Grid>
-            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Grid.Column="1" Width="1" HorizontalAlignment="Center"></Separator>
-            <Grid Height="300" Grid.Column="2" Background="Black">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="250"></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid Height="250" Background="Black">
+        </Border>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <TextBlock FontWeight="Bold" Margin="0,10,0,5"  FontSize="20" Text="{DynamicResource About_Title}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            <Separator Margin="0,10"></Separator>
+        </StackPanel>
+        <ScrollViewer Margin="0,0,0,0" Padding="20" Grid.Row="1"  local:CustomDesignAttributes.VerticalScrollTo="10000">
+            <StackPanel>
+                <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Image Stretch="Uniform" HorizontalAlignment="Right" Source="/BedrockLauncher;component/resources/images/credits/xlynxx.jpg">
-                    </Image>
-                    <Grid Width="256" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
-                        <TextBlock Text="XlynxX" HorizontalAlignment="Left" Padding="20,0,0,0" FontSize="50" Foreground="White"></TextBlock>
-                    </Grid>
+                    <StackPanel Margin="5">
+                        <TextBlock FontWeight="Bold" Margin="0,15,0,15"  FontSize="20" Text="{DynamicResource About_DevelopedBy}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                        <ContentPresenter Content="{StaticResource CJMention}"></ContentPresenter>
+                        <TextBlock FontWeight="Bold" Margin="0,15,0,15"  FontSize="20" Text="{DynamicResource About_OriginallyDevelopedBy}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                        <ContentPresenter Content="{StaticResource XlynxXMention}"></ContentPresenter>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="5">
+                        <TextBlock FontWeight="Bold" Margin="0,15,0,15"  FontSize="20" Text="{DynamicResource About_SpecialThanks}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                        <ContentPresenter Margin="0,0,0,5" Content="{StaticResource MCMrARMMention}"></ContentPresenter>
+                        <ContentPresenter Margin="0,0,0,5" Content="{StaticResource BSCommunityMention}"></ContentPresenter>
+                        <ContentPresenter Margin="0,0,0,5" Content="{StaticResource MojangMention}"></ContentPresenter>
 
+                    </StackPanel>
                 </Grid>
-                <Border Grid.Row="1" BorderThickness="0,2,0,0" BorderBrush="Gray">
-                    <Grid Background="#FF262626">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock Padding="10,0"  FontSize="15">           
-                                <Hyperlink NavigateUri="https://twitter.com/xlynxx0" RequestNavigate="Hyperlink_RequestNavigate">
-                                    Twitter
-                                </Hyperlink>
-                            </TextBlock>
-                            <TextBlock Padding="10,0"  FontSize="15">           
-                                <Hyperlink NavigateUri="https://github.com/XlynxX" RequestNavigate="Hyperlink_RequestNavigate">
-                                    Github
-                                </Hyperlink>
-                            </TextBlock>
-                        </StackPanel>
-                    </Grid>
-                </Border>
-            </Grid>
-            </Grid>
-
-            <Separator Margin="0,10"></Separator>
-
-
-        </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
+
 </Page>

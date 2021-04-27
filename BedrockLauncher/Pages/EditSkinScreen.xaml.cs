@@ -153,7 +153,7 @@ namespace BedrockLauncher.Pages
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
+            ConfigManager.MainThread.SetOverlayFrame(null);
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
@@ -163,13 +163,13 @@ namespace BedrockLauncher.Pages
 
             if (isEditMode) skinPack.EditSkin(skin_index, skin);
             else skinPack.AddSkin(skin);
-            ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
+            ConfigManager.MainThread.SetOverlayFrame(null);
             ConfigManager.MainThread.RefreshSkinsPage();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
+            ConfigManager.MainThread.SetOverlayFrame(null);
         }
 
         #endregion

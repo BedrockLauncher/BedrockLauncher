@@ -152,7 +152,7 @@ namespace BedrockLauncher.Core
 
             ProfileList = profileList;
 
-            if (ProfileList.profiles.Count() == 0) MainThread.MainWindowOverlayFrame.Navigate(new Pages.FirstLaunch.WelcomePage());
+            if (ProfileList.profiles.Count() == 0) MainThread.SetOverlayFrame(new Pages.FirstLaunch.WelcomePage());
         }
         public static MCProfilesList CleanProfiles()
         {

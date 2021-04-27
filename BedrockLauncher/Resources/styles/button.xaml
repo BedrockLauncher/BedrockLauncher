@@ -93,7 +93,19 @@
     <SolidColorBrush x:Key="ClosePopupButton.Disabled.Foreground" Color="#00000088"/>
 
     <Style x:Key="ClosePopupButton" TargetType="{x:Type Button}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="FocusVisualStyle">
+            <Setter.Value>
+                <Style>
+                    <Setter Property="Control.Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Rectangle Margin="0" RadiusX="50" RadiusY="50" SnapsToDevicePixels="true" Stroke="White" StrokeThickness="1"/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Background" Value="{StaticResource ClosePopupButton.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ClosePopupButton.Static.Border}"/>
         <Setter Property="Foreground" Value="{StaticResource ClosePopupButton.Static.Foreground}"/>
@@ -205,7 +217,7 @@
     <Style TargetType="{x:Type ToggleButton}" x:Key="SideBarButtonStyle">
         <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
         <Setter Property="HorizontalAlignment" Value="Left"></Setter>
-        <Setter Property="Focusable" Value="False"></Setter>
+        <Setter Property="Focusable" Value="True"></Setter>
         <Setter Property="Height" Value="59"></Setter>
         <Setter Property="Width" Value="179"></Setter>
         <Setter Property="Background" Value="{StaticResource ButtonSide.Static.Background}"></Setter>
@@ -222,7 +234,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                     <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" >
-                        <Grid>
+                        <Grid x:Name="grid">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
@@ -254,6 +266,9 @@
                             <Setter Property="FontWeight" Value="Bold"/>
                             <Setter TargetName="selection_indicator" Property="Visibility" Value="Visible"/>
                         </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter TargetName="grid" Property="Background" Value="#55FFFFFF"></Setter>
+                        </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Background" TargetName="border" Value="{StaticResource ButtonSide.Disabled.Background}"/>
                             <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource ButtonSide.Disabled.Border}"/>
@@ -275,7 +290,18 @@
     <SolidColorBrush x:Key="ToolbarButton.Disabled.Foreground" Color="#FF838383"/>
     
     <Style x:Key="ToolbarButton" TargetType="{x:Type ToggleButton}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="FocusVisualStyle">
+            <Setter.Value>
+                <Style>
+                    <Setter Property="Control.Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Background" Value="{StaticResource ToolbarButton.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ToolbarButton.Static.Border}"/>
         <Setter Property="Foreground" Value="{StaticResource ToolbarButton.Static.Foreground}"/>
@@ -306,6 +332,9 @@
                             <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource ToolbarButton.MouseOver.Foreground}"/>
                             <Setter Property="Cursor" Value="Hand"/>
                         </Trigger>
+                        <Trigger Property="IsFocused" Value="true">
+                            <Setter Property="TextElement.FontWeight" TargetName="contentPresenter" Value="Bold"/>
+                        </Trigger>
                         <Trigger Property="IsPressed" Value="true">
                             <Setter Property="TextElement.FontWeight" TargetName="contentPresenter" Value="Bold"/>
                         </Trigger>
@@ -325,7 +354,7 @@
     </Style>
 
     <Style TargetType="{x:Type Button}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource BlankFocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
         <Setter Property="Foreground" Value="{DynamicResource Button.Static.Foreground}"/>
@@ -426,7 +455,7 @@
     </Style>
 
     <Style x:Key="BigGreenButton" TargetType="{x:Type Button}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource BlankFocusVisual}"/>
         <Setter Property="FontSize" Value="26"/>
         <Setter Property="UseLayoutRounding" Value="True" />
         <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
@@ -449,6 +478,14 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsDefaulted" Value="true">
                             <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="true">
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Background" TargetName="border">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="/BedrockLauncher;component/Resources/images/ui/bg/MainPagePlayButtonOver.png" Stretch="Uniform"/>
+                                </Setter.Value>
+                            </Setter>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="Cursor" Value="Hand"/>
@@ -812,7 +849,7 @@
     <SolidColorBrush x:Key="PanelButton.Disabled.Foreground" Color="#FF838383"/>
 
     <Style x:Key="PanelButton" TargetType="{x:Type Button}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource BlankFocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource PanelButton.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource PanelButton.Static.Border}"/>
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>

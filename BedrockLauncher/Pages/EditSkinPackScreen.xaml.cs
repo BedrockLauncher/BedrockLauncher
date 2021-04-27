@@ -325,20 +325,20 @@ namespace BedrockLauncher.Pages
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             if (!isEditMode) RemoveUnfinishedPack();
-            ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
+            ConfigManager.MainThread.SetOverlayFrame(null);
             ConfigManager.MainThread.RefreshSkinsPage();
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
             SaveSkinPack();
-            ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
+            ConfigManager.MainThread.SetOverlayFrame(null);
             ConfigManager.MainThread.RefreshSkinsPage();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
+            ConfigManager.MainThread.SetOverlayFrame(null);
             ConfigManager.MainThread.RefreshSkinsPage();
         }
 

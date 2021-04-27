@@ -119,6 +119,9 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationFramework">
       <EmbedInteropTypes>False</EmbedInteropTypes>
@@ -149,6 +152,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Html\SkinViewResourceSchemeHandler.cs" />
     <Compile Include="Classes\MCInstallation.cs" />
     <Compile Include="Classes\MediaWiki\Continue.cs" />
     <Compile Include="Classes\MediaWiki\Limits.cs" />
@@ -163,14 +167,29 @@
     <Compile Include="Classes\SkinPack\MCSkinPack.cs" />
     <Compile Include="Classes\SkinPack\MCSkinPackMainfest.cs" />
     <Compile Include="Classes\MediaWiki\RootObject.cs" />
-    <Compile Include="Controls\BlockPickerItem.xaml.cs">
+    <Compile Include="Controls\Items\BlockPickerItem.xaml.cs">
       <DependentUpon>BlockPickerItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\FolderSelectDialog.cs" />
-    <Compile Include="Controls\ServersButton.xaml.cs">
+    <Compile Include="Controls\Items\InstallationItem.xaml.cs">
+      <DependentUpon>InstallationItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Items\PatchNotesItem.xaml.cs">
+      <DependentUpon>PatchNotesItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Items\CommunityFeedItem.xaml.cs">
+      <DependentUpon>CommunityFeedItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Items\SkinItem.xaml.cs">
+      <DependentUpon>SkinItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Items\SkinPackItem.xaml.cs">
+      <DependentUpon>SkinPackItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Toolbar\ServersButton.xaml.cs">
       <DependentUpon>ServersButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\JavaEditionButton.xaml.cs">
+    <Compile Include="Controls\Toolbar\JavaEditionButton.xaml.cs">
       <DependentUpon>JavaEditionButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\BlockPicker.xaml.cs">
@@ -182,22 +201,22 @@
     <Compile Include="Controls\LanguageCombobox.xaml.cs">
       <DependentUpon>LanguageCombobox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\BedrockEditionButton.xaml.cs">
+    <Compile Include="Controls\Toolbar\BedrockEditionButton.xaml.cs">
       <DependentUpon>BedrockEditionButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\NewsButton.xaml.cs">
+    <Compile Include="Controls\Toolbar\NewsButton.xaml.cs">
       <DependentUpon>NewsButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SettingsButton.xaml.cs">
+    <Compile Include="Controls\Toolbar\SettingsButton.xaml.cs">
       <DependentUpon>SettingsButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ProfileButton.xaml.cs">
+    <Compile Include="Controls\Toolbar\ProfileButton.xaml.cs">
       <DependentUpon>ProfileButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ProfileSelector.xaml.cs">
-      <DependentUpon>ProfileSelector.xaml</DependentUpon>
+    <Compile Include="Controls\Items\ProfileItem.xaml.cs">
+      <DependentUpon>ProfileItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SkinPreview\SkinPreview.xaml.cs">
+    <Compile Include="Controls\SkinPreview.xaml.cs">
       <DependentUpon>SkinPreview.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\InvertableBooleanToVisibilityConverter.cs" />
@@ -209,8 +228,8 @@
     <Compile Include="Classes\VersionStateChangeInfo.cs" />
     <Compile Include="CustomDesignAttributes.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="Html\FileSchemeHandler.cs" />
-    <Compile Include="Html\GlobalSchemeHandlerFactory.cs" />
+    <Compile Include="Classes\Html\FileSchemeHandler.cs" />
+    <Compile Include="Classes\Html\GlobalSchemeHandlerFactory.cs" />
     <Compile Include="Methods\Filepaths.cs" />
     <Compile Include="Methods\GameManager.cs" />
     <Compile Include="Core\LanguageManager.cs" />
@@ -219,7 +238,7 @@
     <Compile Include="Methods\MCSkinUtilities.cs" />
     <Compile Include="Methods\ChangelogDownloader.cs" />
     <Compile Include="Methods\SymLinkHelper.cs" />
-    <Compile Include="Html\ResourceSchemeHandler.cs" />
+    <Compile Include="Classes\Html\ResourceSchemeHandler.cs" />
     <Compile Include="Pages\AdvancedOptionsWindow.xaml.cs">
       <DependentUpon>AdvancedOptionsWindow.xaml</DependentUpon>
     </Compile>
@@ -271,9 +290,6 @@
     <Compile Include="Pages\AddProfilePage.xaml.cs">
       <DependentUpon>AddProfilePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ServersPage.xaml.cs">
-      <DependentUpon>ServersPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
@@ -321,15 +337,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </DesignData>
-    <Page Include="Controls\BlockPickerItem.xaml">
+    <Page Include="Controls\Items\BlockPickerItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\ServersButton.xaml">
+    <Page Include="Controls\Items\InstallationItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Items\PatchNotesItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\JavaEditionButton.xaml">
+    <Page Include="Controls\Items\CommunityFeedItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Items\SkinItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Items\SkinPackItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Toolbar\ServersButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Toolbar\JavaEditionButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -345,27 +381,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\BedrockEditionButton.xaml">
+    <Page Include="Controls\Toolbar\BedrockEditionButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\NewsButton.xaml">
+    <Page Include="Controls\Toolbar\NewsButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\SettingsButton.xaml">
+    <Page Include="Controls\Toolbar\SettingsButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\ProfileButton.xaml">
+    <Page Include="Controls\Toolbar\ProfileButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\ProfileSelector.xaml">
+    <Page Include="Controls\Items\ProfileItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\SkinPreview\SkinPreview.xaml">
+    <Page Include="Controls\SkinPreview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -436,10 +472,6 @@
     <Page Include="Pages\AddProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\ServersPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="Pages\AboutPage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -576,11 +608,6 @@
     <Resource Include="Resources\fonts\MinecraftTen.ttf" />
     <Resource Include="Resources\fonts\NotoSans-Bold.ttf" />
     <Resource Include="Resources\fonts\NotoSans-Regular.ttf" />
-    <None Include="Controls\SkinPreview\Less\mc-face-viewer.less" />
-    <None Include="Controls\SkinPreview\Less\mc-skin-viewer.less" />
-    <None Include="Controls\SkinPreview\Less\mc-utils.less" />
-    <None Include="Controls\SkinPreview\Less\mc-viewer-effects.less" />
-    <Resource Include="Controls\SkinPreview\Less\minecraft-skinviewer.less" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -734,13 +761,6 @@
     <Resource Include="Resources\images\credits\carjem_logo.png" />
     <Resource Include="Resources\images\credits\xlynxx.jpg" />
     <Resource Include="Resources\images\bg\main_photo.jpg" />
-    <Resource Include="Controls\SkinPreview\Html\ItemPreview_Normal.html" />
-    <Resource Include="Controls\SkinPreview\Html\NoSkin.png" />
-    <Resource Include="Controls\SkinPreview\Html\minecraft-skinviewer.css" />
-    <Resource Include="Controls\SkinPreview\Html\ItemPreview_Slim.html" />
-    <Resource Include="Controls\SkinPreview\Html\ItemPreview_Legacy.html" />
-    <Resource Include="Controls\SkinPreview\Html\ItemPreview_SlimLegacy.html" />
-    <Resource Include="Controls\SkinPreview\Html\minecraft-skinviewer-common.css" />
     <Resource Include="Resources\images\bg\stone_texture.png" />
     <Resource Include="Resources\images\logo\logo.png" />
     <Resource Include="Resources\images\ui\elements\optionmark.png" />
@@ -758,9 +778,6 @@
     <Resource Include="Resources\images\fallbacks\invalid_pack.png" />
     <Resource Include="Resources\images\fallbacks\invalid_pack_icon.png" />
     <Resource Include="Resources\images\fallbacks\dev_pack_icon.png" />
-    <Content Include="WUTokenHelper.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Resource Include="Resources\images\bg\firstlaunchbackground.jpg" />
     <Resource Include="Resources\images\ui\icons\servers_icon.png" />
     <Resource Include="Resources\images\ui\bg\advancement_icon.png" />
@@ -768,30 +785,46 @@
     <Resource Include="Resources\images\icons\grass_block_icon.ico" />
     <Resource Include="Resources\images\icons\crafting_table_block_icon.ico" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\Installer\Installer.csproj">
+    <Resource Include="Resources\images\credits\mcmrarm_icon.jfif" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\modules\Installer\Installer.csproj">
       <Project>{295729f7-172f-4bcd-a619-e495db5a4e2f}</Project>
       <Name>Installer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ServerTab\ServerTab.csproj">
-      <Project>{a2e9faa8-1fab-4199-bf3a-f4e189055a60}</Project>
-      <Name>ServerTab</Name>
+    <ProjectReference Include="..\modules\SkinView3D\SkinView3D.csproj">
+      <Project>{ccabef67-f4bf-4087-9291-62ee5e316934}</Project>
+      <Name>SkinView3D</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Uninstaller\Uninstaller.csproj">
+    <ProjectReference Include="..\modules\Uninstaller\Uninstaller.csproj">
       <Project>{3232778b-1a3b-4d31-88a1-7a43b8b66723}</Project>
       <Name>Uninstaller</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WUTokenHelper\WUTokenHelper.vcxproj">
+    <ProjectReference Include="..\modules\WUTokenHelper\WUTokenHelper.vcxproj">
       <Project>{B7336BA7-1E83-43D8-BD0E-3D44C6E3D4E7}</Project>
       <Name>WUTokenHelper</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\credits\bs_community_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\credits\mojang_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\credits\mojang_logo.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>:: "$(DevEnvDir)devenv" "$(SolutionPath)" /Build $(configuration) /project "$(SolutionDir)WUTokenHelper\WUTokenHelper.vcxproj"</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /y /e /c /i "$(SolutionDir)/bin/SkinView3D" "$(ProjectDir)$(OutDir)" 
+xcopy /y /e /c /i "$(SolutionDir)/bin/WUTokenHelper" "$(ProjectDir)$(OutDir)"</PostBuildEvent>
   </PropertyGroup>
 </Project>

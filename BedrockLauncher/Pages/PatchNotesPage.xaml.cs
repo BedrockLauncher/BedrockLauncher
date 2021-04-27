@@ -17,6 +17,7 @@ using CodeHollow.FeedReader;
 using BedrockLauncher.Classes;
 using System.Diagnostics;
 using BedrockLauncher.Core;
+using BedrockLauncher.Controls.Items;
 
 namespace BedrockLauncher.Pages
 {
@@ -52,14 +53,6 @@ namespace BedrockLauncher.Pages
 
         }
 
-        private void FeedItemButton_Click(object sender, RoutedEventArgs e)
-        {
-            Button button = sender as Button;
-            MCPatchNotesItem item = button.DataContext as MCPatchNotesItem;
-            string header_title = string.Format("{0} {1}", (item.isBeta ? "Beta" : "Release"), item.Version);
-            ConfigManager.MainThread.MainWindowOverlayFrame.Content = new ChangelogPreviewPage(item.Content, header_title, item.Url);
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             downloader.UpdateList();
@@ -68,6 +61,18 @@ namespace BedrockLauncher.Pages
         private void RefreshList(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void PatchNotesList_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (PatchNotesList.SelectedItem != null)
+                {
+                    var item = PatchNotesList.SelectedItem as MCPatchNotesItem;
+                    PatchNotesItem.LoadChangelog(item);
+                }
+            }
         }
     }
 }

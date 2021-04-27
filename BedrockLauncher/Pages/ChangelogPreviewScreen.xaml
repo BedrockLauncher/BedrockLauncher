@@ -31,7 +31,7 @@
             </TextBlock>
         </Grid>
         <Separator Grid.Row="1"></Separator>
-        <Grid Grid.Row="2" x:Name="Content">
+        <Grid Grid.Row="2">
             <wpf:HtmlPanel x:Name="Renderer" Margin="20" Background="Transparent"></wpf:HtmlPanel>
         </Grid>
         <!--<Separator Grid.Row="3"></Separator>

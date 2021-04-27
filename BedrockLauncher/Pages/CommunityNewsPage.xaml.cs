@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using CodeHollow.FeedReader;
 using BedrockLauncher.Classes;
 using System.Diagnostics;
+using BedrockLauncher.Controls.Items;
 
 namespace BedrockLauncher.Pages
 {
@@ -46,16 +47,21 @@ namespace BedrockLauncher.Pages
             });
         }
 
-        private void FeedItemButton_Click(object sender, RoutedEventArgs e)
-        {
-            Button button = sender as Button;
-            MCNetFeedItem item = button.DataContext as MCNetFeedItem;
-            Process.Start(new ProcessStartInfo(item.Link));
-        }
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             UpdateRSSContent();
+        }
+
+        private void OfficalNewsFeed_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (OfficalNewsFeed.SelectedItem != null)
+                {
+                    var item = OfficalNewsFeed.SelectedItem as MCNetFeedItem;
+                    CommunityFeedItem.LoadArticle(item);
+                }
+            }
         }
     }
 }

@@ -17,6 +17,7 @@ using System.Collections;
 using System.Reflection;
 using System.Resources;
 using System.IO;
+using BedrockLauncher.Controls.Items;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 
 namespace BedrockLauncher.Controls

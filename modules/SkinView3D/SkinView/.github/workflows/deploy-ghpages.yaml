@@ -1,0 +1,31 @@
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches:
+    - master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: npm install
+    - run: npm run build
+    - run: npm test
+    - name: Prepare files
+      run: |
+        cp -r examples public
+        cp -r bundles public/js
+        build_commit="${{ github.sha }}"
+        build_time=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+        sed -Ez \
+            -e 's#\.\./bundles/skinview3d\.bundle\.js#js/skinview3d.bundle.js#g' \
+            -e 's#\{\{build_commit\}\}#'$build_commit'#g' \
+            -e 's#\{\{build_time\}\}#'$build_time'#g' \
+            -e 's#<!--%%deploy_only%%(.*)-->#\1#g' \
+            -i public/*.html
+    - uses: crazy-max/ghaction-github-pages@v2
+      with:
+        target_branch: gh-pages
+        build_dir: public
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

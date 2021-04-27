@@ -6,49 +6,10 @@
       xmlns:local="clr-namespace:BedrockLauncher.Pages"
       xmlns:controls="clr-namespace:BedrockLauncher.Controls"
       xmlns:classes="clr-namespace:BedrockLauncher.Classes.SkinPack"
+      xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="SkinsPage" Initialized="Page_Initialized" Loaded="Page_Loaded">
-
-    <Page.Resources>
-        <DataTemplate x:Key="SkinPackTemplate" DataType="{x:Type classes:MCSkinPack}">
-            <Grid HorizontalAlignment="Stretch">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid>
-                    <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="{Binding DisplayName}"/>
-                    <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="Normal" Padding="45,21,0,0" Text="{Binding VersionName}"/>
-                    <Image Source="{Binding CurrentIcon}" HorizontalAlignment="Left" RenderOptions.BitmapScalingMode="HighQuality" Width="32" Height="32" Margin="5,1,0,0">
-                        <Image.OpacityMask>
-                            <ImageBrush ImageSource="{Binding CurrentIcon}"/>
-                        </Image.OpacityMask>
-                    </Image>
-                </Grid>
-                <StackPanel Grid.Column="2" Orientation="Horizontal" Name="ButtonPanel" Visibility="Hidden">
-                    <Button x:Name="Folder" Click="Folder_Click" Content="📁" FontWeight="Bold" Style="{DynamicResource DialogButton}"></Button>
-                    <Button Style="{DynamicResource DialogButton}" Content="..." Foreground="White" Name="MoreButton" Click="MoreButton_Click">
-                        <Button.ContextMenu>
-                            <ContextMenu Closed="ContextMenu_Closed" Style="{DynamicResource NoCheckboxContextMenu}">
-                                <MenuItem Header="{DynamicResource GeneralText_Edit}" Name="EditSkinPackButton" Click="EditSkinPackButton_Click"></MenuItem>
-                                <MenuItem Header="{DynamicResource GeneralText_Delete}" Name="DeleteSkinPackButton" Click="DeleteSkinPackButton_Click"></MenuItem>
-                            </ContextMenu>
-                        </Button.ContextMenu>
-                    </Button>
-                </StackPanel>
-            </Grid>
-            <DataTemplate.Triggers>
-                <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver}" Value="True">
-                    <Setter TargetName="ButtonPanel" Property="Visibility" Value="Visible"></Setter>
-                </DataTrigger>
-                <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}" Value="True">
-                    <Setter TargetName="ButtonPanel" Property="Visibility" Value="Visible"></Setter>
-                </DataTrigger>
-            </DataTemplate.Triggers>
-        </DataTemplate>
-    </Page.Resources>
+      Title="SkinsPage" Initialized="Page_Initialized" Loaded="Page_Loaded" x:Name="SkinsPageHost">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.7*"></ColumnDefinition>
@@ -89,7 +50,24 @@
             </Grid>
         </Border>
         <Grid Grid.RowSpan="2" Grid.Column="1" Grid.Row="1" Background="Gray"></Grid>
-        <ListView Grid.RowSpan="3" BorderThickness="0,0,0,0" Grid.Row="1" BorderBrush="Gray" x:Name="LoadedSkinPacks" SelectionChanged="LoadedSkinPacks_SelectionChanged" VerticalContentAlignment="Top" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource SkinPackTemplate}"></ListView>
+        <ListView Grid.RowSpan="3" Keyboard.PreviewKeyUp="LoadedSkinPacks_PreviewKeyUp" BorderThickness="0,0,0,0" Grid.Row="1" BorderBrush="Gray" x:Name="LoadedSkinPacks" SelectionChanged="LoadedSkinPacks_SelectionChanged" VerticalContentAlignment="Top" HorizontalContentAlignment="Stretch">
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="{x:Type classes:MCSkinPack}">
+                    <i:SkinPackItem x:Name="ItemControl" Tag="{Binding ElementName=SkinsPageHost}"  DataContext="{Binding }"/>
+                    <DataTemplate.Triggers>
+                        <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver}" Value="True">
+                            <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
+                        </DataTrigger>
+                        <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsFocused}" Value="True">
+                            <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
+                        </DataTrigger>
+                        <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}" Value="True">
+                            <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <Grid Grid.Column="2" Grid.Row="1" Background="#212121"></Grid>
         <controls:SkinPreview x:Name="SkinPreviewPanel" Grid.Column="2" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></controls:SkinPreview>
         <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Grid.Column="2" Grid.Row="0">
@@ -102,24 +80,17 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="50"/>
             </Grid.ColumnDefinitions>
-            <ListView BorderThickness="0,1,0,0" BorderBrush="Gray"  SelectionChanged="SkinPreviewList_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="Black" x:Name="SkinPreviewList" VerticalContentAlignment="Top" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+            <ListView BorderThickness="0,1,0,0" Keyboard.PreviewKeyUp="SkinPreviewList_PreviewKeyUp" BorderBrush="Gray" SelectionChanged="SkinPreviewList_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="Black" x:Name="SkinPreviewList" VerticalContentAlignment="Top" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ContentControl x:Name="control" Content="{Binding}" ContentTemplate="{StaticResource templateSkinPreview}">
-                        <ContentControl.ContextMenu>
-                            <ContextMenu x:Name="SkinContextMenu" Style="{DynamicResource NoCheckboxContextMenu}">
-                                <MenuItem Header="{DynamicResource GeneralText_Edit}" Name="EditSkinButton" Click="EditSkinButton_Click"></MenuItem>
-                                <MenuItem Header="{DynamicResource GeneralText_Delete}" Name="DeleteSkinButton" Click="DeleteSkinButton_Click"></MenuItem>
-                            </ContextMenu>
-                        </ContentControl.ContextMenu>
-                    </ContentControl>
+                        <i:SkinItem x:Name="ItemControl"  Tag="{Binding ElementName=SkinsPageHost}"  DataContext="{Binding }"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
-            <ListBox.ItemsPanel>
+            <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel Orientation="Horizontal"></VirtualizingStackPanel>
                 </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
+            </ListView.ItemsPanel>
         </ListView>
             <Button Grid.Column="2" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="0" Style="{DynamicResource DialogButton_Green_NoPadding}" Name="AddSkinButton" Click="AddSkinButton_Click">
                 <Button.Content>

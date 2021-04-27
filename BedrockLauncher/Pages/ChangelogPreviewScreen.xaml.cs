@@ -38,17 +38,17 @@ namespace BedrockLauncher.Pages
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
+            ConfigManager.MainThread.SetOverlayFrame(null);
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
+            ConfigManager.MainThread.SetOverlayFrame(null);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
+            ConfigManager.MainThread.SetOverlayFrame(null);
         }
 
 

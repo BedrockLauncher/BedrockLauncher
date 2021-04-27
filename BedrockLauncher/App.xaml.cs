@@ -11,7 +11,7 @@ using System.Reflection;
 using CefSharp;
 using CefSharp.Wpf;
 using System.Runtime.CompilerServices;
-using BedrockLauncher.Html;
+using BedrockLauncher.Classes.Html;
 using CefSharp.SchemeHandler;
 using BedrockLauncher.Core;
 
@@ -133,6 +133,12 @@ namespace BedrockLauncher
             {
                 SchemeName = FileSchemeHandlerFactory.SchemeName,
                 SchemeHandlerFactory = new FileSchemeHandlerFactory()
+            });
+
+            settings.RegisterScheme(new CefCustomScheme
+            {
+                SchemeName = SkinViewResourceSchemeHandlerFactory.SchemeName,
+                SchemeHandlerFactory = new SkinViewResourceSchemeHandlerFactory()
             });
 
             // Make sure you set performDependencyCheck false

@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="BedrockLauncher.Controls.Items.SkinPackItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BedrockLauncher.Controls.Items"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid HorizontalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="{Binding DisplayName}"/>
+            <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="Normal" Padding="45,21,0,0" Text="{Binding VersionName}"/>
+            <Image Source="{Binding CurrentIcon}" HorizontalAlignment="Left" RenderOptions.BitmapScalingMode="HighQuality" Width="32" Height="32" Margin="5,1,0,0">
+                <Image.OpacityMask>
+                    <ImageBrush ImageSource="{Binding CurrentIcon}"/>
+                </Image.OpacityMask>
+            </Image>
+        </Grid>
+        <StackPanel Grid.Column="2" Orientation="Horizontal" Name="ButtonPanel" Visibility="Hidden">
+            <Button x:Name="Folder" Click="Folder_Click" Content="📁" FontWeight="Bold" Style="{DynamicResource DialogButton}"></Button>
+            <Button Style="{DynamicResource DialogButton}" Content="..." Foreground="White" Name="MoreButton" Click="MoreButton_Click">
+                <Button.ContextMenu>
+                    <ContextMenu Closed="ContextMenu_Closed" Style="{DynamicResource NoCheckboxContextMenu}">
+                        <MenuItem Header="{DynamicResource GeneralText_Edit}" Name="EditSkinPackButton" Click="EditSkinPackButton_Click"></MenuItem>
+                        <MenuItem Header="{DynamicResource GeneralText_Delete}" Name="DeleteSkinPackButton" Click="DeleteSkinPackButton_Click"></MenuItem>
+                    </ContextMenu>
+                </Button.ContextMenu>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

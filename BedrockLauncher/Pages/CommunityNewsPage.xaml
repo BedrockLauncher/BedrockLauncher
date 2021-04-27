@@ -6,48 +6,17 @@
       xmlns:local="clr-namespace:BedrockLauncher.Pages"
       xmlns:f="clr-namespace:CodeHollow.FeedReader;assembly=CodeHollow.FeedReader"
       xmlns:c="clr-namespace:BedrockLauncher.Classes"
+      xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CommunityNewsPage" Loaded="Page_Loaded">
-    <Page.Resources>
-        <DataTemplate x:Key="FeedItemEntry" DataType="{x:Type c:MCNetFeedItem}">
-            <Grid>
-                <Border Padding="5" Width="365">
-                    <Grid Background="#131313" MaxWidth="365">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="200"></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Image Grid.ColumnSpan="2" Grid.Row="0" Source="{Binding ImageUrl}" Stretch="UniformToFill">
-                            <Image.Effect>
-                                <BlurEffect Radius="50"></BlurEffect>
-                            </Image.Effect>
-                        </Image>
-                        <Border Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Row="0" BorderBrush="Black" BorderThickness="0" Width="256">
-                            <Image Source="{Binding ImageUrl}" Stretch="UniformToFill"></Image>
-                        </Border>
-                        <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" FontWeight="Normal" FontSize="25" Grid.ColumnSpan="2" Margin="15,15" TextWrapping="Wrap" Grid.Row="1" Text="{Binding Title}" Foreground="White"></TextBlock>
-                        <TextBlock Grid.ColumnSpan="2" Margin="15,5" TextWrapping="Wrap" Grid.Row="2" Text="{Binding Description}" Foreground="White"></TextBlock>
-                        <TextBlock Grid.Column="1" Margin="15,0,15,15" TextAlignment="Right" VerticalAlignment="Bottom" TextWrapping="Wrap" Grid.Row="3" Text="{Binding PublishingDateString}" Foreground="Gray"></TextBlock>
-                        <TextBlock Grid.Column="0" Padding="2,2" Margin="15,0,0,15" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Bottom" TextWrapping="Wrap" Grid.Row="3" Text="{Binding PrimaryTag}" Foreground="White" Background="DimGray"></TextBlock>
-
-                    </Grid>
-                    <Border.Effect>
-                        <DropShadowEffect Color="Black" Opacity="0.6"/>
-                    </Border.Effect>
-                </Border>
-                <Button x:Name="FeedItemButton" Click="FeedItemButton_Click" Style="{DynamicResource EmptyButton}"></Button>
-            </Grid>
-        </DataTemplate>
-    </Page.Resources>
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-        <ListView x:Name="OfficalNewsFeed" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ItemTemplate="{StaticResource FeedItemEntry}">
+        <ListView x:Name="OfficalNewsFeed" Keyboard.PreviewKeyUp="OfficalNewsFeed_KeyUp" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="{x:Type c:MCNetFeedItem}">
+                    <i:CommunityFeedItem DataContext="{Binding}"></i:CommunityFeedItem>
+                </DataTemplate>
+            </ListView.ItemTemplate>
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center" MaxWidth="{Binding ElementName=OfficalNewsFeed, Path=ActualWidth}"></WrapPanel>

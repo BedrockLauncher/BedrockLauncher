@@ -41,7 +41,7 @@
                 </StackPanel>
             </Grid>
         </Border>
-        <Frame x:Name="SettingsScreenFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="SettingsScreenFrame" Focusable="False" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 
 </Page>

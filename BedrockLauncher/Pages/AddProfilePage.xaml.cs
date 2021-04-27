@@ -29,7 +29,7 @@ namespace BedrockLauncher.Pages
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
+            ConfigManager.MainThread.SetOverlayFrame(null);
         }
 
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
@@ -50,7 +50,7 @@ namespace BedrockLauncher.Pages
             {
                 Properties.Settings.Default.CurrentProfile = profileName;
                 Properties.Settings.Default.Save();
-                ConfigManager.MainThread.MainWindowOverlayFrame.Content = null;
+                ConfigManager.MainThread.SetOverlayFrame(null);
             }
             else
             {

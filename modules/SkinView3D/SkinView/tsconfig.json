@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"module": "es2015",
+		"moduleResolution": "node",
+		"target": "es2017",
+		"lib": [
+			"dom"
+		],
+		"strict": true
+	},
+	"include": [
+		"src"
+	]
+}

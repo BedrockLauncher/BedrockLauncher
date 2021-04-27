@@ -12,7 +12,6 @@ using BedrockLauncher.Classes.MediaWiki;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using HtmlAgilityPack;
-using BedrockLauncher.Classes;
 using System.Text.RegularExpressions;
 
 namespace BedrockLauncher.Methods

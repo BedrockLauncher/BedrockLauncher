@@ -17,6 +17,7 @@ using BedrockLauncher.Core;
 using BedrockLauncher.Methods;
 using System.IO;
 using System.Data;
+using BedrockLauncher.Controls.Items;
 
 namespace BedrockLauncher.Pages
 {
@@ -131,81 +132,36 @@ namespace BedrockLauncher.Pages
             UpdateAddSkinButton();
         }
 
-        private void MoreButton_Click(object sender, RoutedEventArgs e)
-        {
-            Button button = sender as Button;
-            var skinPack = button.DataContext as MCSkinPack;
-            LoadedSkinPacks.SelectedItem = skinPack;
-            button.ContextMenu.PlacementTarget = button;
-            button.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
-            button.ContextMenu.DataContext = skinPack;
-            button.ContextMenu.IsOpen = true;
-        }
-
-        private void ContextMenu_Closed(object sender, RoutedEventArgs e)
-        {
-            LoadedSkinPacks.SelectedItem = null;
-        }
-
-        private void Folder_Click(object sender, RoutedEventArgs e)
-        {
-            Button button = sender as Button;
-            var skinPack = button.DataContext as MCSkinPack;
-            ConfigManager.GameManager.OpenFolder(skinPack);
-        }
-
-        private void EditSkinButton_Click(object sender, RoutedEventArgs e)
-        {
-            var skinPack = LoadedSkinPacks.SelectedItem as MCSkinPack;
-            var skin = SkinPreviewList.SelectedItem as MCSkin;
-            int index = SkinPreviewList.SelectedIndex;
-
-            ConfigManager.MainThread.MainWindowOverlayFrame.Content = new EditSkinScreen(skinPack, skin, index);
-        }
-
-        private void DeleteSkinButton_Click(object sender, RoutedEventArgs e)
-        {
-            var skinPack = LoadedSkinPacks.SelectedItem as MCSkinPack;
-            var skin = SkinPreviewList.SelectedItem as MCSkin;
-            int index = SkinPreviewList.SelectedIndex;
-
-            if (skin != null && skinPack != null)
-            {
-                skinPack.RemoveSkin(index);
-                ReloadSkinPacks();
-            }
-        }
-
-        private void EditSkinPackButton_Click(object sender, RoutedEventArgs e)
-        {
-            var skinPack = LoadedSkinPacks.SelectedItem as MCSkinPack;
-            int index = LoadedSkinPacks.SelectedIndex;
-            ConfigManager.MainThread.MainWindowOverlayFrame.Content = new EditSkinPackScreen(skinPack, index);
-        }
-
-        private void DeleteSkinPackButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                var skinPack = LoadedSkinPacks.SelectedItem as MCSkinPack;
-                Directory.Delete(skinPack.Directory, true);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-            ReloadSkinPacks();
-        }
-
         private void AddSkinButton_Click(object sender, RoutedEventArgs e)
         {
             var skinPack = LoadedSkinPacks.SelectedItem as MCSkinPack;
-            ConfigManager.MainThread.MainWindowOverlayFrame.Content = new EditSkinScreen(skinPack);
+            ConfigManager.MainThread.SetOverlayFrame(new EditSkinScreen(skinPack));
         }
 
         private void NewSkinPackButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.MainThread.MainWindowOverlayFrame.Content = new EditSkinPackScreen();
+            ConfigManager.MainThread.SetOverlayFrame(new EditSkinPackScreen());
+        }
+
+        private void SkinPreviewList_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key != Key.Enter) return;
+            var item = LoadedSkinPacks.SelectedItem as SkinItem;
+            if (item != null)
+            {
+                item.OpenContextMenu();
+            }
+        }
+
+        private void LoadedSkinPacks_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key != Key.Enter) return;
+            var item = LoadedSkinPacks.SelectedItem as SkinPackItem;
+            if (item != null)
+            {
+                var skinPack = item.DataContext as MCSkinPack;
+                item.OpenContextMenu(skinPack);
+            }
         }
     }
 }

@@ -27,7 +27,6 @@ using BedrockLauncher.Classes;
 using BedrockLauncher.Classes.SkinPack;
 using BedrockLauncher.Pages;
 using System.Windows.Media.Animation;
-using ServerTab;
 using BedrockLauncher.Core;
 using System.Security.AccessControl;
 using System.Security;

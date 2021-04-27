@@ -167,6 +167,14 @@
 
     <v:String x:Key="About_Title">ABOUT MINECRAFT: BEDROCK EDITION LAUNCHER</v:String>
     <v:String x:Key="About_DevelopedBy">DEVELOPED BY</v:String>
+    <v:String x:Key="About_OriginallyDevelopedBy">FORKED FROM THE WORK OF</v:String>
+    <v:String x:Key="About_SpecialThanks">SPECIAL THANKS TO</v:String>
+
+    <v:String x:Key="AboutPage_McMrArm_Text">For creating the original Minecraft Windows 10 Version Downloader (which this work derives from)</v:String>
+    <v:String x:Key="AboutPage_BsCommunity_Text">For their work on SkinView3D, which is used for the skin viewing functionality in the launcher</v:String>
+    <v:String x:Key="AboutPage_Mojang_Text">For Minecraft!!!</v:String>
+    <v:String x:Key="AboutPage_Mojang_NoteText">*Mojang Studios Styled Icon Made by u/Julian-Wolfskin of Reddit</v:String>
+    <v:String x:Key="AboutPage_BsRepo_Text">SkinView3D Repo</v:String>
 
     <v:String x:Key="NewsScreen_LauncherTabTitle">Launcher</v:String>
     <v:String x:Key="NewsScreen_OfficalTabTitle">Offical</v:String>
@@ -187,6 +195,10 @@
     <v:String x:Key="GeneralText_Add">Add</v:String>
     <v:String x:Key="GeneralText_Save">Save</v:String>
     <v:String x:Key="GeneralText_Refresh">Refresh</v:String>
+
+    <v:String x:Key="GeneralText_Twitter">Twitter</v:String>
+    <v:String x:Key="GeneralText_GitHub">GitHub</v:String>
+    <v:String x:Key="GeneralText_Website">Website</v:String>
 
     <v:String x:Key="GeneralText_Browse">BROWSE</v:String>
     <v:String x:Key="GeneralText_Reset">RESET</v:String>

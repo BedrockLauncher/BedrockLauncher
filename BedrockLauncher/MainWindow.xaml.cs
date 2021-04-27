@@ -25,7 +25,6 @@ using BedrockLauncher.Interfaces;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Classes;
 using System.Windows.Media.Animation;
-using ServerTab;
 using BedrockLauncher.Core;
 using BedrockLauncher.Pages;
 using BedrockLauncher.Pages.FirstLaunch;
@@ -45,9 +44,6 @@ namespace BedrockLauncher
         private static LauncherUpdater Updater = new LauncherUpdater();
         private static ChangelogDownloader PatchNotesDownloader = new ChangelogDownloader();
 
-        // servers dll stuff
-        private static ServersTab serversTab = new ServersTab();
-
         // load pages to not create new in memory after
         private GameTabs mainPage = new GameTabs();
         private GeneralSettingsPage generalSettingsPage = new GeneralSettingsPage();
@@ -55,7 +51,6 @@ namespace BedrockLauncher
         private NewsScreenTabs newsScreenPage = new NewsScreenTabs(Updater);
         private PlayScreenPage playScreenPage = new PlayScreenPage();
         private InstallationsScreen installationsScreen = new InstallationsScreen();
-        private ServersPage serversScreenPage = new ServersPage(serversTab);
         private SkinsPage skinsPage = new SkinsPage();
         private PatchNotesPage patchNotesPage = new PatchNotesPage(PatchNotesDownloader);
 
@@ -72,10 +67,10 @@ namespace BedrockLauncher
 
         private void Init()
         {
-            Panel.SetZIndex(MainWindowOverlayFrame, 0);
+            Panel.SetZIndex(OverlayFrame, 0);
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             // show first launch window if no profile
-            if (Properties.Settings.Default.CurrentProfile == "") MainWindowOverlayFrame.Navigate(new WelcomePage());
+            if (Properties.Settings.Default.CurrentProfile == "") SetOverlayFrame(new WelcomePage());
             NavigateToPlayScreen();
 
 
@@ -100,6 +95,17 @@ namespace BedrockLauncher
             var view = CollectionViewSource.GetDefaultView(settingsScreenPage.versionsSettingsPage.VersionsList.ItemsSource) as CollectionView;
             view.Filter = ConfigManager.Filter_VersionList;
         }
+
+        public void SetInstallationPageSelection(object item)
+        {
+            installationsScreen.InstallationsList.SelectedItem = item;
+        }
+
+        public void RefreshInstallationList()
+        {
+            installationsScreen.RefreshInstallationsList();
+        }
+
         public void RefreshInstallationControls()
         {
             installationsScreen.InstallationsList.ItemsSource = ConfigManager.CurrentInstallations;
@@ -236,6 +242,13 @@ namespace BedrockLauncher
 
         #region Navigation
 
+        public void SetOverlayFrame(object content)
+        {
+            bool isEmpty = content == null;
+            MainFrame.Visibility = (isEmpty ? Visibility.Visible : Visibility.Collapsed);
+            OverlayFrame.Navigate(content);
+        } 
+
         public void ResetButtonManager(string buttonName)
         {
             // just all buttons list
@@ -333,17 +346,7 @@ namespace BedrockLauncher
         }
         public void NavigateToServersScreen()
         {
-            string file = System.IO.Path.Combine(System.Reflection.Assembly.GetEntryAssembly().Location, "servers_paid.json");
-            if (File.Exists(file))
-            {
-                MainWindowFrame.Navigate(serversScreenPage);
-                ServersButton.Button.IsChecked = true;
-            }
-            else
-            {
-                NavigateToPlayScreen();
-                ErrorScreenShow.errormsg("CantFindPaidServerList");
-            }
+
         }
         public void NavigateToSettings()
         {
@@ -385,7 +388,7 @@ namespace BedrockLauncher
 
         public void NavigateToNewProfilePage()
         {
-            MainWindowOverlayFrame.Navigate(new AddProfilePage());
+            SetOverlayFrame(new AddProfilePage());
         }
 
 
