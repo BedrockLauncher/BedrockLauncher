@@ -12,7 +12,7 @@
       Title="SkinsPage" Initialized="Page_Initialized" Loaded="Page_Loaded" x:Name="SkinsPageHost">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.7*"></ColumnDefinition>
+            <ColumnDefinition Width="*" MinWidth="350"></ColumnDefinition>
             <ColumnDefinition Width="1"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
@@ -50,23 +50,13 @@
             </Grid>
         </Border>
         <Grid Grid.RowSpan="2" Grid.Column="1" Grid.Row="1" Background="Gray"></Grid>
-        <ListView Grid.RowSpan="3" Keyboard.PreviewKeyUp="LoadedSkinPacks_PreviewKeyUp" BorderThickness="0,0,0,0" Grid.Row="1" BorderBrush="Gray" x:Name="LoadedSkinPacks" SelectionChanged="LoadedSkinPacks_SelectionChanged" VerticalContentAlignment="Top" HorizontalContentAlignment="Stretch">
-            <ListView.ItemTemplate>
-                <DataTemplate DataType="{x:Type classes:MCSkinPack}">
-                    <i:SkinPackItem x:Name="ItemControl" Tag="{Binding ElementName=SkinsPageHost}"  DataContext="{Binding }"/>
-                    <DataTemplate.Triggers>
-                        <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver}" Value="True">
-                            <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
-                        </DataTrigger>
-                        <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsFocused}" Value="True">
-                            <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
-                        </DataTrigger>
-                        <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}" Value="True">
-                            <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
-                        </DataTrigger>
-                    </DataTemplate.Triggers>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+        <ListView Grid.RowSpan="3" 
+                  Keyboard.PreviewKeyUp="LoadedSkinPacks_PreviewKeyUp" 
+                  BorderThickness="0,0,0,0" 
+                  Grid.Row="1" BorderBrush="Gray" x:Name="LoadedSkinPacks" 
+                  SelectionChanged="LoadedSkinPacks_SelectionChanged" 
+                  HorizontalContentAlignment="Center" 
+                  ItemTemplate="{StaticResource SkinPackItemTemplate}">
         </ListView>
         <Grid Grid.Column="2" Grid.Row="1" Background="#212121"></Grid>
         <controls:SkinPreview x:Name="SkinPreviewPanel" Grid.Column="2" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></controls:SkinPreview>
@@ -80,13 +70,8 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="50"/>
             </Grid.ColumnDefinitions>
-            <ListView BorderThickness="0,1,0,0" Keyboard.PreviewKeyUp="SkinPreviewList_PreviewKeyUp" BorderBrush="Gray" SelectionChanged="SkinPreviewList_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="Black" x:Name="SkinPreviewList" VerticalContentAlignment="Top" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                        <i:SkinItem x:Name="ItemControl"  Tag="{Binding ElementName=SkinsPageHost}"  DataContext="{Binding }"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView.ItemsPanel>
+            <ListView BorderThickness="0,1,0,0" Keyboard.PreviewKeyUp="SkinPreviewList_PreviewKeyUp" BorderBrush="Gray" SelectionChanged="SkinPreviewList_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="Black" x:Name="SkinPreviewList" VerticalContentAlignment="Top" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" ItemTemplate="{StaticResource SkinItemTemplate}">
+                <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel Orientation="Horizontal"></VirtualizingStackPanel>
                 </ItemsPanelTemplate>

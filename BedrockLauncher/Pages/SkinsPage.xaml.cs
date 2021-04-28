@@ -146,8 +146,13 @@ namespace BedrockLauncher.Pages
         private void SkinPreviewList_PreviewKeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key != Key.Enter) return;
-            var item = LoadedSkinPacks.SelectedItem as SkinItem;
-            if (item != null)
+
+            ListViewItem lbi = (SkinPreviewList.ItemContainerGenerator.ContainerFromIndex(SkinPreviewList.SelectedIndex)) as ListViewItem;
+            ContentPresenter cp = WPFExtensions.FindVisualChild<ContentPresenter>(lbi);
+            DataTemplate dt = lbi.ContentTemplate;
+            SkinItem item = (dt.FindName("ItemControl", cp)) as SkinItem;
+
+            if (item != null && SkinPreviewList.IsKeyboardFocusWithin)
             {
                 item.OpenContextMenu();
             }
@@ -155,13 +160,7 @@ namespace BedrockLauncher.Pages
 
         private void LoadedSkinPacks_PreviewKeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key != Key.Enter) return;
-            var item = LoadedSkinPacks.SelectedItem as SkinPackItem;
-            if (item != null)
-            {
-                var skinPack = item.DataContext as MCSkinPack;
-                item.OpenContextMenu(skinPack);
-            }
+
         }
     }
 }

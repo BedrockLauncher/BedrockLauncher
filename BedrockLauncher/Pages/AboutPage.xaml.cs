@@ -33,7 +33,13 @@ namespace BedrockLauncher.Pages
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            Process.Start(new ProcessStartInfo(button.Tag.ToString()));
             e.Handled = true;
         }
     }

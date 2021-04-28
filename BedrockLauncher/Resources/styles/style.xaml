@@ -78,6 +78,7 @@
         </Setter>
     </Style>
 
+
     <Style x:Key="BlankFocusVisual">
         <Setter Property="Control.Template">
             <Setter.Value>
@@ -86,39 +87,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-    <DataTemplate x:Key="templateProfile" DataType="{x:Type classes:MCProfile}">
-        <Grid Height="45" MinWidth="179">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="40"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Image Grid.Column="0" RenderOptions.BitmapScalingMode="HighQuality" IsHitTestVisible="False" SnapsToDevicePixels="True" Source="../Resources/images/mojang-icon.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="29" Height="29" Margin="0,0,0,0"/>
-            <Grid Margin="5,0,0,0" Grid.Column="1" VerticalAlignment="Center">
-                <TextBlock x:Name="ProfileName" Text="{Binding Name}" FontWeight="Bold" LineStackingStrategy="BlockLineHeight" LineHeight="14" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="0,0,0,3"/>
-                <TextBlock Margin="0,14,0,0" Foreground="#FF929292" Text="{Binding AccountType}" FontWeight="Normal" FontSize="12"></TextBlock>
-            </Grid>
-        </Grid>
-    </DataTemplate>
-
-    <DataTemplate x:Key="templateSkinPreview" DataType="{x:Type skinClasses:MCSkin}">
-        <Grid Margin="5" MinHeight="64" MaxHeight="64" Height="64">
-            <Image RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="Uniform" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source="{Binding rendered_preview}"></Image>
-        </Grid>
-    </DataTemplate>
-
-
-    <DataTemplate x:Key="templateInstallation" DataType="{x:Type classes:MCInstallation}">
-        <Grid>
-            <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="{Binding DisplayName}"/>
-            <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="Normal" Padding="45,21,0,0" Text="{Binding VersionName}"/>
-            <Image RenderOptions.BitmapScalingMode="HighQuality" Source="{Binding IconPath}" HorizontalAlignment="Left" Width="32" Height="32" Margin="5,1,0,0">
-                <Image.OpacityMask>
-                    <ImageBrush ImageSource="{Binding IconPath}"/>
-                </Image.OpacityMask>
-            </Image>
-        </Grid>
-    </DataTemplate>
 
 
 </ResourceDictionary>

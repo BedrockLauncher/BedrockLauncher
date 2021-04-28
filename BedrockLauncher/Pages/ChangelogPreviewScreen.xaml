@@ -25,7 +25,7 @@
             </Grid.ColumnDefinitions>
             <Button VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="2"  Style="{StaticResource ClosePopupButton}" Name="CloseButton" Click="CloseButton_Click" Margin="0,0,10,0"></Button>
             <TextBlock Padding="10,0" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Hyperlink Name="SourceHyperlink" RequestNavigate="Hyperlink_RequestNavigate">
+                <Hyperlink Style="{DynamicResource HyperLinkStyle}" Name="SourceHyperlink" RequestNavigate="Hyperlink_RequestNavigate">
                     <TextBlock Text="Source" Focusable="False" Foreground="White" FontWeight="Bold" FontSize="20" x:Name="Header"></TextBlock>
                 </Hyperlink>
             </TextBlock>

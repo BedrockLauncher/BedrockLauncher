@@ -7,9 +7,10 @@
       xmlns:classes="clr-namespace:BedrockLauncher.Classes"
       xmlns:converters="clr-namespace:BedrockLauncher.Converters"
       xmlns:local="clr-namespace:BedrockLauncher"
+      xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       mc:Ignorable="d" 
       d:DesignHeight="608" d:DesignWidth="828"
-      Title="VersionsPage" Initialized="Page_Initialized">
+      Title="VersionsPage" x:Name="PageHost" Initialized="Page_Initialized">
     <Page.Resources>
         <converters:InvertableBooleanToVisibilityConverter x:Key="VisibleIfTrueConverter" />
         <Style x:Key="FocusVisual">
@@ -99,41 +100,6 @@
                 </Grid>
             </Grid>
         </Border>
-        <ListView x:Name="VersionsList" SelectionMode="Single" Grid.Row="1" HorizontalContentAlignment="Stretch">
-            <ListView.ItemTemplate>
-                <DataTemplate DataType="{x:Type classes:MCVersion}">
-                    <Grid x:Name="InstallationEntry">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid>
-                            <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="{Binding DisplayName}"/>
-                            <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="SemiBold" Padding="45,21,0,0" Text="{Binding InstallationSize}"/>
-                            <Image RenderOptions.BitmapScalingMode="HighQuality" Source="{Binding IconPath}" HorizontalAlignment="Left" Width="32" Height="32" Margin="5,1,0,0">
-                                <Image.OpacityMask>
-                                    <ImageBrush ImageSource="{Binding IconPath}"/>
-                                </Image.OpacityMask>
-                            </Image>
-                        </Grid>
-                        <StackPanel Orientation="Horizontal" Grid.Column="2" x:Name="ButtonPanel" Visibility="Hidden">
-                            <Button x:Name="Remove" Click="Delete_Click" Content="{DynamicResource GeneralText_Remove}" Style="{DynamicResource DialogButton_Red}"></Button>
-                            <Button x:Name="Folder" Click="Folder_Click" Content="📁" FontWeight="Bold" Style="{DynamicResource DialogButton}"></Button>
-                            <Button x:Name="More" Content="..." FontWeight="Bold" Style="{DynamicResource DialogButton}" Visibility="Collapsed" Click="More_Click">
-                            </Button>
-                        </StackPanel>
-                    </Grid>
-                    <DataTemplate.Triggers>
-                        <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver}" Value="True">
-                            <Setter TargetName="ButtonPanel" Property="Visibility" Value="Visible"></Setter>
-                        </DataTrigger>
-                        <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}" Value="True">
-                            <Setter TargetName="ButtonPanel" Property="Visibility" Value="Visible"></Setter>
-                        </DataTrigger>
-                    </DataTemplate.Triggers>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <ListView x:Name="VersionsList" SelectionMode="Single" Grid.Row="1" HorizontalContentAlignment="Center" ItemTemplate="{StaticResource VersionItemTemplate}"/>
     </Grid>
 </Page>

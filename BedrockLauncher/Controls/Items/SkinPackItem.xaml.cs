@@ -86,6 +86,8 @@ namespace BedrockLauncher.Controls.Items
             var skinPack = GetParent().LoadedSkinPacks.SelectedItem as MCSkinPack;
             int index = GetParent().LoadedSkinPacks.SelectedIndex;
             ConfigManager.MainThread.SetOverlayFrame(new EditSkinPackScreen(skinPack, index));
+
+            MoreButton.ContextMenu.IsOpen = false;
         }
 
         private void DeleteSkinPackButton_Click(object sender, RoutedEventArgs e)
@@ -100,6 +102,8 @@ namespace BedrockLauncher.Controls.Items
                 Console.WriteLine(ex);
             }
             GetParent().ReloadSkinPacks();
+
+            MoreButton.ContextMenu.IsOpen = false;
         }
     }
 }

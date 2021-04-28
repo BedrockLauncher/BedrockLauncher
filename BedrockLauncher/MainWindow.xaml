@@ -82,7 +82,21 @@
                             <ComboBox SelectedItem="1" SelectionChanged="GameStateChanged" DropDownClosed="GameStateChanged" ItemsSource="{Binding}" x:Name="InstallationsList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="200" Height="47" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}" Foreground="White" Padding="-1,7,5,3">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
-                                        <ContentControl Focusable="False" x:Name="control" Content="{Binding}" ContentTemplate="{StaticResource templateInstallation}"/>
+                                        <ContentControl Focusable="False" x:Name="control" Content="{Binding}">
+                                            <ContentControl.ContentTemplate>
+                                                <DataTemplate DataType="{x:Type classes:MCInstallation}">
+                                                    <Grid>
+                                                        <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="{Binding DisplayName}"/>
+                                                        <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="Normal" Padding="45,21,0,0" Text="{Binding VersionName}"/>
+                                                        <Image RenderOptions.BitmapScalingMode="HighQuality" Source="{Binding IconPath}" HorizontalAlignment="Left" Width="32" Height="32" Margin="5,1,0,0">
+                                                            <Image.OpacityMask>
+                                                                <ImageBrush ImageSource="{Binding IconPath}"/>
+                                                            </Image.OpacityMask>
+                                                        </Image>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ContentControl.ContentTemplate>
+                                        </ContentControl>
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>

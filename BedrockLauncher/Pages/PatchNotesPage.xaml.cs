@@ -74,5 +74,19 @@ namespace BedrockLauncher.Pages
                 }
             }
         }
+
+        private void MorePatchNotes_Click(object sender, RoutedEventArgs e)
+        {
+            string url = "https://aka.ms/MCChangelogs";
+            Process.Start(new ProcessStartInfo(url));
+            e.Handled = true;
+        }
+
+        private void MoreBetaPatchNotes_Click(object sender, RoutedEventArgs e)
+        {
+            string url = "https://feedback.minecraft.net/hc/en-us/sections/360001185332-Beta-Information-and-Changelogs";
+            Process.Start(new ProcessStartInfo(url));
+            e.Handled = true;
+        }
     }
 }

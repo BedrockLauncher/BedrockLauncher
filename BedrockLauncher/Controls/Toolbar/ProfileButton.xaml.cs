@@ -81,5 +81,15 @@ namespace BedrockLauncher.Controls.Toolbar
         {
             ConfigManager.RemoveProfile(Properties.Settings.Default.CurrentProfile);
         }
+
+        private void ProfileContextMenu_ContextMenuClosing(object sender, ContextMenuEventArgs e)
+        {
+
+        }
+
+        private void SourceButton_Checked(object sender, RoutedEventArgs e)
+        {
+            SourceButton.IsChecked = false;
+        }
     }
 }

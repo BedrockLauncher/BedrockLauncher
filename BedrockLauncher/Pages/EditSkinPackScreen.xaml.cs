@@ -32,7 +32,7 @@ namespace BedrockLauncher.Pages
 
         #endregion
 
-        private MCSkinPack CurrentSkinPack;
+        public MCSkinPack CurrentSkinPack;
 
         private int Index = -1;
 
@@ -279,7 +279,7 @@ namespace BedrockLauncher.Pages
             }
         }
 
-        private void UpdateLocalizationList()
+        public void UpdateLocalizationList()
         {
             LocalizationList.Items.Clear();
             foreach (var entry in CurrentSkinPack.Texts.LangFiles)
@@ -359,7 +359,7 @@ namespace BedrockLauncher.Pages
         #endregion
 
 
-        private string ValidateLangFile(string lang_name, bool createFile = true)
+        public string ValidateLangFile(string lang_name, bool createFile = true)
         {
             string filePath = Path.Combine(CurrentSkinPack.Directory, "texts", string.Format("{0}.lang", lang_name));
             if (!File.Exists(filePath) && createFile)
@@ -377,29 +377,7 @@ namespace BedrockLauncher.Pages
             }
             return filePath;
         }
-        private void DeleteLangButton_Click(object sender, RoutedEventArgs e)
-        {
-            MenuItem button = sender as MenuItem;
-            var lang_name = button.DataContext as string;
-            string filePath = ValidateLangFile(lang_name, false);
-            try
-            {
-                if (File.Exists(filePath)) File.Delete(filePath);
-                CurrentSkinPack.Texts.RemoveLang(lang_name);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-            UpdateLocalizationList();
-        }
-        private void EditLangButton_Click(object sender, RoutedEventArgs e)
-        {
-            MenuItem button = sender as MenuItem;
-            var lang_name = button.DataContext as string;
-            string filePath = ValidateLangFile(lang_name);
-            Process.Start("notepad.exe", filePath);
-        }
+
         private void AddLangButton_Click(object sender, RoutedEventArgs e)
         {
             ValidateLangFile(LocalizationAddTextBox.Text, true);
@@ -419,20 +397,7 @@ namespace BedrockLauncher.Pages
                 UpdateIconImage();
             }
         }
-        private void ContextMenu_Closed(object sender, RoutedEventArgs e)
-        {
 
-        }
-        private void More_Click(object sender, RoutedEventArgs e)
-        {
-            Button button = sender as Button;
-            var installation = button.DataContext as string;
-            LocalizationList.SelectedItem = installation;
-            button.ContextMenu.PlacementTarget = button;
-            button.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
-            button.ContextMenu.DataContext = installation;
-            button.ContextMenu.IsOpen = true;
-        }
         private void ModuleUUIDRefreshButton_Click(object sender, RoutedEventArgs e)
         {
             ModuleUUID = Guid.NewGuid().ToString();

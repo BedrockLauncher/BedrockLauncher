@@ -9,8 +9,8 @@
              Focusable="False"
              d:DesignHeight="365" d:DesignWidth="365" Click="FeedItemButton_Click" Style="{DynamicResource EmptyButton}">
     <Grid Focusable="False">
-        <Border Padding="5" Width="365">
-            <Grid Background="#131313" MaxWidth="365">
+        <Border Padding="5" Width="375" Height="375">
+            <Grid Background="#131313">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="200"></RowDefinition>
                     <RowDefinition></RowDefinition>

@@ -174,6 +174,9 @@
     <Compile Include="Controls\Items\InstallationItem.xaml.cs">
       <DependentUpon>InstallationItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Items\LocalizationItem.xaml.cs">
+      <DependentUpon>LocalizationItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Items\PatchNotesItem.xaml.cs">
       <DependentUpon>PatchNotesItem.xaml</DependentUpon>
     </Compile>
@@ -185,6 +188,9 @@
     </Compile>
     <Compile Include="Controls\Items\SkinPackItem.xaml.cs">
       <DependentUpon>SkinPackItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Items\VersionItem.xaml.cs">
+      <DependentUpon>VersionItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Toolbar\ServersButton.xaml.cs">
       <DependentUpon>ServersButton.xaml</DependentUpon>
@@ -345,6 +351,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Items\LocalizationItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Items\PatchNotesItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -360,6 +370,10 @@
     <Page Include="Controls\Items\SkinPackItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Items\VersionItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Toolbar\ServersButton.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -534,6 +548,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\styles\frame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\styles\itemtemplates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -817,6 +835,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\credits\mojang_logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\ui\icons\external.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

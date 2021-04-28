@@ -31,6 +31,8 @@ namespace BedrockLauncher.Controls
 
         public const string Preview = "skinview3d://SkinView/previews/index.html";
 
+        private const string NoSkin = "img/NoSkin.png";
+
         #endregion
 
         #region Accesors
@@ -134,22 +136,20 @@ namespace BedrockLauncher.Controls
         }
         public void UpdateSkin()
         {
-            Path = "img/NoSkin.png";
+            Path = NoSkin;
             Type = MCSkinGeometry.Custom;
-            RefreshView(false);
         }
         public void UpdateSkin(MCSkin Skin)
         {
             Path = Skin.texture_path;
             Type = Skin.skin_type;
-            RefreshView();
         }
         
         private async void RefreshView(bool localFile = true)
         {
             try
             {
-                if (!localFile)
+                if (!localFile || Path == NoSkin)
                 {
                     var result = await Renderer.EvaluateScriptAsync("setSkin", new object[] { Path, ModelType });
                 }

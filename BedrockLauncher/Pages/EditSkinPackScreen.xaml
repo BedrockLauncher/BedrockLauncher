@@ -6,10 +6,12 @@
       xmlns:local="clr-namespace:BedrockLauncher.Pages"
       xmlns:main="clr-namespace:BedrockLauncher"
       xmlns:v="clr-namespace:System;assembly=mscorlib"
+      xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       xmlns:controls="clr-namespace:BedrockLauncher.Controls"
+      x:Name="Page"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800"
-      Title="EditSkinPackScreen" Background="#212121" x:Name="Page">
+      Title="EditSkinPackScreen" Background="#212121">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"></RowDefinition>
@@ -138,38 +140,7 @@
                                 <Button Grid.Column="2" Style="{DynamicResource DialogButton}" Content="{DynamicResource GeneralText_Add}" Height="32" x:Name="LocalizationAddButton" Click="AddLangButton_Click"></Button>
                             </Grid>
                             <Border Background="{Binding ElementName=LocalizationList, Path=Background}" Margin="5" CornerRadius="16" Padding="5">
-                                <ListView x:Name="LocalizationList" HorizontalContentAlignment="Stretch">
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate DataType="{x:Type v:String}">
-                                            <Grid x:Name="InstallationEntry">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition></ColumnDefinition>
-                                                    <ColumnDefinition></ColumnDefinition>
-                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                                </Grid.ColumnDefinitions>
-                                                <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="0,5" Text="{Binding }"/>
-                                                <StackPanel Orientation="Horizontal" Grid.Column="2" x:Name="ButtonPanel" Visibility="Hidden">
-                                                    <Button x:Name="More" Content="..." FontWeight="Bold" Style="{DynamicResource DialogButton}" Click="More_Click">
-                                                        <Button.ContextMenu>
-                                                            <ContextMenu Closed="ContextMenu_Closed" Style="{DynamicResource NoCheckboxContextMenu}">
-                                                                <MenuItem Header="{DynamicResource GeneralText_Edit}" Name="EditLangButton" Click="EditLangButton_Click"></MenuItem>
-                                                                <MenuItem Header="{DynamicResource GeneralText_Delete}" Name="DeleteLangButton" Click="DeleteLangButton_Click"></MenuItem>
-                                                            </ContextMenu>
-                                                        </Button.ContextMenu>
-                                                    </Button>
-                                                </StackPanel>
-                                            </Grid>
-                                            <DataTemplate.Triggers>
-                                                <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver}" Value="True">
-                                                    <Setter TargetName="ButtonPanel" Property="Visibility" Value="Visible"></Setter>
-                                                </DataTrigger>
-                                                <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}" Value="True">
-                                                    <Setter TargetName="ButtonPanel" Property="Visibility" Value="Visible"></Setter>
-                                                </DataTrigger>
-                                            </DataTemplate.Triggers>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
+                                <ListView x:Name="LocalizationList" HorizontalContentAlignment="Stretch" ItemTemplate="{StaticResource LocalizationItemTemplate}"/>
                             </Border>
                         </StackPanel>
                     </Expander>

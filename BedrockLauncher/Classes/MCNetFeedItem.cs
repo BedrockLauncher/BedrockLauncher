@@ -56,7 +56,7 @@ namespace BedrockLauncher.Classes
             this.Id = item.Id;
             this.Link = item.Link;
             this.PublishingDate = item.PublishingDate;
-            this.PublishingDateString = item.PublishingDateString;
+            this.PublishingDateString = item.PublishingDate.ToString();
             this.SpecificItem = item.SpecificItem;
             this.Title = item.Title;
         }

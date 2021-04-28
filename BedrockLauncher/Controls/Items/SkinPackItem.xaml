@@ -6,24 +6,39 @@
              xmlns:local="clr-namespace:BedrockLauncher.Controls.Items"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid HorizontalAlignment="Stretch">
+    <Grid Margin="0,8,0,8" Height="40">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="245"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="145"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Grid>
-            <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="{Binding DisplayName}"/>
-            <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="Normal" Padding="45,21,0,0" Text="{Binding VersionName}"/>
-            <Image Source="{Binding CurrentIcon}" HorizontalAlignment="Left" RenderOptions.BitmapScalingMode="HighQuality" Width="32" Height="32" Margin="5,1,0,0">
+        <Grid HorizontalAlignment="Left">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Source="{Binding CurrentIcon}" Grid.Column="0" HorizontalAlignment="Left" Width="30" Height="30" Margin="0,0,0,0">
                 <Image.OpacityMask>
                     <ImageBrush ImageSource="{Binding CurrentIcon}"/>
                 </Image.OpacityMask>
             </Image>
+            <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0">
+                <TextBlock FontSize="14" Foreground="#FFFFFFF1" FontWeight="DemiBold" Padding="0,0,0,0" Text="{Binding DisplayName}"/>
+                <TextBlock FontSize="9" Foreground="#FFBEBEBE" FontWeight="SemiBold" Padding="0,0,0,0" Text="{Binding VersionName}"/>
+            </StackPanel>
         </Grid>
-        <StackPanel Grid.Column="2" Orientation="Horizontal" Name="ButtonPanel" Visibility="Hidden">
-            <Button x:Name="Folder" Click="Folder_Click" Content="📁" FontWeight="Bold" Style="{DynamicResource DialogButton}"></Button>
-            <Button Style="{DynamicResource DialogButton}" Content="..." Foreground="White" Name="MoreButton" Click="MoreButton_Click">
+        <StackPanel HorizontalAlignment="Right" Grid.Column="2" Orientation="Horizontal" Name="ButtonPanel" Visibility="Hidden">
+            <Button x:Name="Folder" Click="Folder_Click" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" FontWeight="Bold" Style="{DynamicResource DialogButton}">
+                <Button.Content>
+                    <Grid Width="16" Height="16">
+                        <Path Stretch="Uniform" Fill="White" StrokeThickness="0">
+                            <Path.Data>
+                                <PathGeometry Figures="M 1.3997323e-4 2.2488189 H -2.5131058 V 4.9996896e-7 L -2.5133858 -2.2488189 h 0.7939371 0.79387707 l -2.2e-4 0.2645666 v 0.2645676 H 0.79379707 2.5133859 V 0.26456708 2.2488189 Z m 0 -0.2645666 H 2.2488368 V 0.26456708 -1.4551172 H 1.3997323e-4 -2.2484168 l -1.4e-4 1.71968428 V 1.9842523 Z M -1.7194487 -1.7614592 l 0.5289081 -1.439e-4 v -0.2669835 h -0.5289381 -0.5289381 v 0.2671274 z" FillRule="Nonzero"/>
+                            </Path.Data>
+                        </Path>
+                    </Grid>
+                </Button.Content>
+            </Button>            <Button Style="{DynamicResource DialogButton}" Content="..." Foreground="White" Name="MoreButton" Click="MoreButton_Click">
                 <Button.ContextMenu>
                     <ContextMenu Closed="ContextMenu_Closed" Style="{DynamicResource NoCheckboxContextMenu}">
                         <MenuItem Header="{DynamicResource GeneralText_Edit}" Name="EditSkinPackButton" Click="EditSkinPackButton_Click"></MenuItem>

@@ -43,16 +43,8 @@
                 <Border Grid.Row="1" BorderThickness="0,2,0,0" BorderBrush="Gray">
                     <Grid Background="#FF262626">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                            <TextBlock Padding="10,0" FontSize="15">           
-                                <Hyperlink NavigateUri="{StaticResource CJ_TwitterURL}" RequestNavigate="Hyperlink_RequestNavigate">
-                                    <TextBlock Text="{DynamicResource GeneralText_Twitter}"/>
-                                </Hyperlink>
-                        </TextBlock>
-                            <TextBlock Padding="10,0"  FontSize="15">           
-                                <Hyperlink NavigateUri="{StaticResource CJ_GithubURL}" RequestNavigate="Hyperlink_RequestNavigate">
-                                    <TextBlock Text="{DynamicResource GeneralText_GitHub}"/>
-                                </Hyperlink>
-                        </TextBlock>
+                            <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_Twitter}" Tag="{StaticResource CJ_TwitterURL}" Click="Button_Click" Padding="10,0"  FontSize="15"/>
+                            <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_GitHub}" Tag="{StaticResource GeneralText_GitHub}" Click="Button_Click" Padding="10,0"  FontSize="15"/>
                         </StackPanel>
                     </Grid>
                 </Border>
@@ -79,16 +71,8 @@
             <Border Grid.Row="1" BorderThickness="0,2,0,0" BorderBrush="Gray">
                 <Grid Background="#FF262626">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Padding="10,0"  FontSize="15">           
-                                <Hyperlink NavigateUri="{StaticResource XlynxX_TwitterURL}" RequestNavigate="Hyperlink_RequestNavigate">
-                                    <TextBlock Text="{DynamicResource GeneralText_Twitter}"/>
-                                </Hyperlink>
-                        </TextBlock>
-                        <TextBlock Padding="10,0"  FontSize="15">           
-                                <Hyperlink NavigateUri="{StaticResource XlynxX_GithubURL}" RequestNavigate="Hyperlink_RequestNavigate">
-                                    <TextBlock Text="{DynamicResource GeneralText_GitHub}"/>
-                                </Hyperlink>
-                        </TextBlock>
+                        <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_Twitter}" Tag="{StaticResource XlynxX_TwitterURL}" Click="Button_Click" Padding="10,0"  FontSize="15"/>
+                        <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_GitHub}" Tag="{StaticResource XlynxX_GithubURL}" Click="Button_Click" Padding="10,0"  FontSize="15"/>
                     </StackPanel>
                 </Grid>
             </Border>
@@ -119,16 +103,8 @@
                 <Border Grid.Row="2" BorderThickness="0,2,0,0" BorderBrush="Gray">
                     <Grid Background="#FF262626">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock Padding="10,0"  FontSize="15">           
-                                <Hyperlink NavigateUri="{StaticResource McMrArm_TwitterURL}" RequestNavigate="Hyperlink_RequestNavigate">
-                                    <TextBlock Text="{DynamicResource GeneralText_Twitter}"/>
-                                </Hyperlink>
-                        </TextBlock>
-                            <TextBlock Padding="10,0"  FontSize="15">           
-                                <Hyperlink NavigateUri="{StaticResource McMrArm_GithubURL}" RequestNavigate="Hyperlink_RequestNavigate">
-                                    <TextBlock Text="{DynamicResource GeneralText_GitHub}"/>
-                                </Hyperlink>
-                        </TextBlock>
+                            <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_Twitter}" Tag="{StaticResource McMrArm_TwitterURL}" Click="Button_Click" Padding="10,0"  FontSize="15"/>
+                            <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_GitHub}" Tag="{StaticResource McMrArm_GithubURL}"  Click="Button_Click" Padding="10,0"  FontSize="15"/>
                         </StackPanel>
                     </Grid>
                 </Border>
@@ -159,16 +135,8 @@
                 <Border Grid.Row="2" BorderThickness="0,2,0,0" BorderBrush="Gray">
                     <Grid Background="#FF262626">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock Padding="10,0"  FontSize="15">           
-                                <Hyperlink NavigateUri="{StaticResource BsCommunity_GithubURL}" RequestNavigate="Hyperlink_RequestNavigate">
-                                    <TextBlock Text="{DynamicResource GeneralText_GitHub}"/>
-                                </Hyperlink>
-                        </TextBlock>
-                            <TextBlock Padding="10,0"  FontSize="15">           
-                                <Hyperlink NavigateUri="{StaticResource BsCommunity_RepoURL}" RequestNavigate="Hyperlink_RequestNavigate">
-                                    <TextBlock Text="{DynamicResource AboutPage_BsRepo_Text}"/>
-                                </Hyperlink>
-                        </TextBlock>
+                            <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_GitHub}" Tag="{StaticResource BsCommunity_GithubURL}" Click="Button_Click" Padding="10,0"  FontSize="15"/>
+                            <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource AboutPage_BsRepo_Text}" Tag="{StaticResource BsCommunity_RepoURL}" Click="Button_Click" Padding="10,0"  FontSize="15"/>
                         </StackPanel>
                     </Grid>
                 </Border>
@@ -201,11 +169,7 @@
                 <Border Grid.Row="2" BorderThickness="0,2,0,0" BorderBrush="Gray">
                     <Grid Background="#FF262626">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock Padding="10,0"  FontSize="15">           
-                                    <Hyperlink NavigateUri="{StaticResource Mojang_URL}" RequestNavigate="Hyperlink_RequestNavigate">
-                                        <TextBlock Text="{DynamicResource GeneralText_Website}"/>
-                                    </Hyperlink>
-                            </TextBlock>
+                            <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_Website}" Tag="{StaticResource Mojang_URL}" Click="Button_Click" Padding="10,0"  FontSize="15"/>
                         </StackPanel>
                     </Grid>
                 </Border>

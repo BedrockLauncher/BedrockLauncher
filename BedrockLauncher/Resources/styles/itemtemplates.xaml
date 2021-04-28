@@ -1,0 +1,81 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:p="clr-namespace:BedrockLauncher.Properties"
+                    xmlns:classes="clr-namespace:BedrockLauncher.Classes"
+                    xmlns:skinClasses="clr-namespace:BedrockLauncher.Classes.SkinPack"
+                    xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
+                    xmlns:v="clr-namespace:System;assembly=mscorlib"
+                    xmlns:local="clr-namespace:BedrockLauncher">
+
+    <DataTemplate x:Key="InstallationItemTemplate" DataType="{x:Type classes:MCInstallation}">
+        <i:InstallationItem x:Name="ItemControl" DataContext="{Binding }"/>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver}" Value="True">
+                <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsFocused}" Value="True">
+                <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}" Value="True">
+                <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <DataTemplate x:Key="VersionItemTemplate" DataType="{x:Type classes:MCVersion}">
+        <i:VersionItem x:Name="ItemControl" DataContext="{Binding}" Tag="{Binding ElementName=PageHost}"></i:VersionItem>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver}" Value="True">
+                <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsFocused}" Value="True">
+                <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}" Value="True">
+                <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <DataTemplate x:Key="SkinPackItemTemplate" DataType="{x:Type skinClasses:MCSkinPack}">
+        <i:SkinPackItem x:Name="ItemControl" Tag="{Binding ElementName=SkinsPageHost}"  DataContext="{Binding }"/>
+        <DataTemplate.Triggers>
+            <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver}" Value="True">
+                <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
+            </DataTrigger>
+            <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsFocused}" Value="True">
+                <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
+            </DataTrigger>
+            <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}" Value="True">
+                <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <DataTemplate x:Key="SkinItemTemplate" DataType="{x:Type skinClasses:MCSkin}">
+        <i:SkinItem x:Name="ItemControl" Tag="{Binding ElementName=SkinsPageHost}"  DataContext="{Binding }"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="LocalizationItemTemplate" DataType="{x:Type v:String}">
+        <i:LocalizationItem x:Name="ItemControl" Tag="{Binding ElementName=Page}" DataContext="{Binding }"></i:LocalizationItem>
+        <DataTemplate.Triggers>
+            <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver}" Value="True">
+                <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
+            </DataTrigger>
+            <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsFocused}" Value="True">
+                <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
+            </DataTrigger>
+            <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}" Value="True">
+                <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <DataTemplate x:Key="PatchNotesItemTemplate" DataType="{x:Type classes:MCPatchNotesItem}">
+        <i:PatchNotesItem DataContext="{Binding}"></i:PatchNotesItem>
+    </DataTemplate>
+
+    <DataTemplate x:Key="CommunityNewsItemTemplate" DataType="{x:Type classes:MCNetFeedItem}">
+        <i:CommunityFeedItem DataContext="{Binding}"></i:CommunityFeedItem>
+    </DataTemplate>
+</ResourceDictionary>

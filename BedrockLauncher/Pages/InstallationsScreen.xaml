@@ -57,23 +57,6 @@
                 </Grid>
             </Grid>
         </Border>
-        <ListView x:Name="InstallationsList" SelectionMode="Single" Grid.Row="1" HorizontalContentAlignment="Stretch">
-            <ListView.ItemTemplate>
-                <DataTemplate DataType="{x:Type classes:MCInstallation}">
-                    <i:InstallationItem x:Name="ItemControl" DataContext="{Binding }"/>
-                    <DataTemplate.Triggers>
-                        <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver}" Value="True">
-                            <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
-                        </DataTrigger>
-                        <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsFocused}" Value="True">
-                            <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
-                        </DataTrigger>
-                        <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}" Value="True">
-                            <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
-                        </DataTrigger>
-                    </DataTemplate.Triggers>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <ListView x:Name="InstallationsList" SelectionMode="Single" Grid.Row="1" HorizontalContentAlignment="Center" ItemTemplate="{StaticResource InstallationItemTemplate}"></ListView>
     </Grid>
 </Page>

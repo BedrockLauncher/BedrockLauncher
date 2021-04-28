@@ -32,34 +32,6 @@ namespace BedrockLauncher.Pages
             ConfigManager.OnConfigStateChanged(this, ConfigManager.ConfigStateArgs.Empty);
         }
 
-        private void Folder_Click(object sender, RoutedEventArgs e)
-        {
-            Button button = sender as Button;
-            var version = button.DataContext as Classes.MCVersion;
-            ConfigManager.GameManager.OpenFolder(version);
-        }
-
-        private void Delete_Click(object sender, RoutedEventArgs e)
-        {
-            Button button = sender as Button;
-            var version = button.DataContext as Classes.MCVersion;
-            ConfigManager.GameManager.Remove(version);
-            RefreshVersionsList();
-        }
-
-        private void More_Click(object sender, RoutedEventArgs e)
-        {
-            /*
-            Button button = sender as Button;
-            var installation = button.DataContext as Classes.Installation;
-            InstallationsList.SelectedItem = installation;
-            button.ContextMenu.PlacementTarget = button;
-            button.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
-            button.ContextMenu.DataContext = installation;
-            button.ContextMenu.IsOpen = true;
-            */
-        }
-
         private void Page_Initialized(object sender, EventArgs e)
         {
 

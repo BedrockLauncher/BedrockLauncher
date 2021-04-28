@@ -29,6 +29,16 @@ namespace BedrockLauncher.Controls.Items
             InitializeComponent();
         }
 
+        private void ContextMenu_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+
+        }
+
+        private void ContextMenu_ContextMenuClosing(object sender, ContextMenuEventArgs e)
+        {
+            Console.WriteLine("Closed");
+        }
+
         private SkinsPage GetParent()
         {
             return this.Tag as SkinsPage;
@@ -46,6 +56,8 @@ namespace BedrockLauncher.Controls.Items
             var skinPack = GetParent().LoadedSkinPacks.SelectedItem as MCSkinPack;
             var skin = GetParent().SkinPreviewList.SelectedItem as MCSkin;
             int index = GetParent().SkinPreviewList.SelectedIndex;
+
+            Keyboard.ClearFocus();
 
             ConfigManager.MainThread.SetOverlayFrame(new EditSkinScreen(skinPack, skin, index));
         }

@@ -24,15 +24,15 @@
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="140"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="6">
-                    <Button x:Name="UpdateButton" Click="Button_Click" VerticalAlignment="Center" Margin="0,0,10,0" Style="{DynamicResource DialogButton}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{DynamicResource GeneralText_Refresh}" Style="{StaticResource CommonTextblock}" Foreground="{Binding ElementName=UpdateButton, Path=Foreground}" VerticalAlignment="Center" Padding="0,0,10,0"></TextBlock>
-                            <TextBlock FontWeight="Regular" FontFamily="/BedrockLauncher;component/Resources/fonts/#Wingdings 3" Foreground="{Binding ElementName=UpdateButton, Path=Foreground}" FontSize="25" Text="Q" Margin="0" Padding="0"></TextBlock>
-                        </StackPanel>
-                    </Button>
+                    <StackPanel VerticalAlignment="Center" Margin="0,0,10,0">
+                        <Button Margin="0,1" FontSize="14" x:Name="UpdateButton" HorizontalAlignment="Right" Click="Button_Click" Content="{DynamicResource GeneralText_Refresh}" Style="{DynamicResource LinkButton}"></Button>
+                        <Button Margin="0,1" FontSize="14" x:Name="MorePatchNotes" HorizontalAlignment="Right" Click="MorePatchNotes_Click" Content="{DynamicResource PatchNotesPage_MorePatchNotes}" Style="{DynamicResource LinkButton}"></Button>
+                        <Button Margin="0,1" FontSize="14" x:Name="MoreBetaPatchNotes" HorizontalAlignment="Right" Click="MoreBetaPatchNotes_Click" Content="{DynamicResource PatchNotesPage_MorePatchNotesBeta}" Style="{DynamicResource LinkButton}"></Button>
+                    </StackPanel>
+
                 </Grid>
 
                 <Grid Grid.Column="0" Margin="10,0">
@@ -46,12 +46,7 @@
                 </Grid>
             </Grid>
         </Border>
-        <ListView Grid.Row="1" x:Name="PatchNotesList" Keyboard.PreviewKeyUp="PatchNotesList_KeyUp" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
-            <ListView.ItemTemplate>
-                <DataTemplate DataType="{x:Type c:MCPatchNotesItem}">
-                    <i:PatchNotesItem DataContext="{Binding}"></i:PatchNotesItem>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+        <ListView Grid.Row="1" x:Name="PatchNotesList" Keyboard.PreviewKeyUp="PatchNotesList_KeyUp" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ItemTemplate="{StaticResource PatchNotesItemTemplate}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center" MaxWidth="{Binding ElementName=PatchNotesList, Path=ActualWidth}"></WrapPanel>

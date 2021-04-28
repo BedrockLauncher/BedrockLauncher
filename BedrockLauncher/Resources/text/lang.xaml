@@ -176,6 +176,9 @@
     <v:String x:Key="AboutPage_Mojang_NoteText">*Mojang Studios Styled Icon Made by u/Julian-Wolfskin of Reddit</v:String>
     <v:String x:Key="AboutPage_BsRepo_Text">SkinView3D Repo</v:String>
 
+    <v:String x:Key="PatchNotesPage_MorePatchNotes">More patch notes</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">More beta patch notes</v:String>
+
     <v:String x:Key="NewsScreen_LauncherTabTitle">Launcher</v:String>
     <v:String x:Key="NewsScreen_OfficalTabTitle">Offical</v:String>
 
