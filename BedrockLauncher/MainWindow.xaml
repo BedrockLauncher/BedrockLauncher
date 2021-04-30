@@ -27,9 +27,9 @@
         <converters:InvertableBooleanToVisibilityConverter x:Key="ReverseBoolToVis"></converters:InvertableBooleanToVisibilityConverter>
     </Window.Resources>
     <Grid Margin="0,0,0,0" Background="#FF303030">
-        <ContentPresenter x:Name="MainFrame">
+        <ContentPresenter>
             <ContentPresenter.Content>
-                <Grid>
+                <Grid x:Name="MainFrame">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="180"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
@@ -39,7 +39,7 @@
                         <toolbar:NewsButton x:Name="NewsButton"></toolbar:NewsButton>
                         <toolbar:BedrockEditionButton x:Name="BedrockEditionButton"></toolbar:BedrockEditionButton>
                         <toolbar:JavaEditionButton x:Name="JavaEditionButton" Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=HideJavaShortcut, Converter={StaticResource ReverseBoolToVis}, ConverterParameter=Inverted}"></toolbar:JavaEditionButton>
-                        <toolbar:ServersButton x:Name="ServersButton" Visibility="Collapsed" Focusable="False"></toolbar:ServersButton>
+                        <toolbar:ServersButton x:Name="ServersButton" Visibility="Collapsed"></toolbar:ServersButton>
                     </StackPanel>
                     <toolbar:SettingsButton x:Name="SettingsButton"></toolbar:SettingsButton>
                     <Grid Grid.Column="1">
@@ -67,7 +67,7 @@
                             </StackPanel>
                         </Grid>
                         <Grid x:Name="PlayScreenBorder" Grid.Row="2" x:FieldModifier="public" VerticalAlignment="Bottom" Background="#FF262626">
-                            <TextBlock Style="{DynamicResource HeaderTextblock}" Text="NOT APPROVED BY OR ASSOCIATED WITH MOJANG" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="0,0,5,0" Margin="0,0,0,0"/>
+                            <TextBlock Style="{DynamicResource HeaderTextblock}" Text="NOT ASSOCIATED OR APPROVED BY MOJANG" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="0,0,5,0" Margin="0,0,0,0"/>
                             <Button
                         x:Name="MainPlayButton" 
                         Click="MainPlayButton_Click" 
@@ -79,7 +79,7 @@
                         Style="{DynamicResource BigGreenButton}">
                                 <TextBlock x:Name="PlayButtonText" Style="{DynamicResource BigGreenButton_Text}"/>
                             </Button>
-                            <ComboBox SelectedItem="1" SelectionChanged="GameStateChanged" DropDownClosed="GameStateChanged" ItemsSource="{Binding}" x:Name="InstallationsList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="200" Height="47" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}" Foreground="White" Padding="-1,7,5,3">
+                            <ComboBox SelectedItem="1" SelectionChanged="GameStateChanged" DropDownClosed="GameStateChanged" ItemsSource="{Binding}" x:Name="InstallationsList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="200" Height="47" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}" SelectedIndex="{Binding Source={x:Static properties:Settings.Default}, Path=CurrentInstallation}" Foreground="White" Padding="-1,7,5,3">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <ContentControl Focusable="False" x:Name="control" Content="{Binding}">
@@ -106,5 +106,6 @@
             </ContentPresenter.Content>
         </ContentPresenter>
         <Frame x:Name="OverlayFrame" Focusable="False" Margin="0" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" Panel.ZIndex="-1"/>
+        <Frame x:Name="ErrorFrame" Focusable="False" Margin="0" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" Panel.ZIndex="-2"/>
     </Grid>
 </Window>

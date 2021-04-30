@@ -272,6 +272,9 @@
                 <Setter Property="Padding" Value="2"/>
                 <Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate1}"/>
             </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Opacity" Value="0.5"/>
+            </Trigger>
         </Style.Triggers>
     </Style>
 

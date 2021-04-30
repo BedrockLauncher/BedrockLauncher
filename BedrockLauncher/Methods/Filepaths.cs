@@ -34,11 +34,15 @@ namespace BedrockLauncher.Methods
 
         private static string GetFixedPath()
         {
+            string FixedDirectory = string.Empty;
             if (Properties.Settings.Default.FixedDirectory == string.Empty)
             {
-                return DefaultLocation;
+                FixedDirectory = DefaultLocation;
             }
-            else return Properties.Settings.Default.FixedDirectory;
+            else FixedDirectory = Properties.Settings.Default.FixedDirectory;
+
+            if (!Directory.Exists(FixedDirectory)) Directory.CreateDirectory(FixedDirectory);
+            return FixedDirectory;
         }
         public static string GetVersionsFilePath()
         {

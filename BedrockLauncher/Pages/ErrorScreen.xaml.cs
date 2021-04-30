@@ -19,7 +19,7 @@ namespace BedrockLauncher.Pages
         private void ErrorScreenCloseButton_Click(object sender, RoutedEventArgs e)
         {
             // As i understand it not only hide error screen overlay, but also clear it from memory
-            ConfigManager.MainThread.SetOverlayFrame(null);
+            ConfigManager.MainThread.SetDialogFrame(null);
         }
 
         private void ErrorScreenViewCrashButton_Click(object sender, RoutedEventArgs e)
@@ -45,44 +45,44 @@ namespace BedrockLauncher.Pages
             // Show default error message
             if (error == null)
             {
-                ConfigManager.MainThread.SetOverlayFrame(new ErrorScreen());
+                ConfigManager.MainThread.SetDialogFrame(new ErrorScreen());
             }
             switch (error)
             {
                 case "autherror":
                     errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "AuthenticationFailed_Title");
                     errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "AuthenticationFailed");
-                    ConfigManager.MainThread.SetOverlayFrame(errorScreen);
+                    ConfigManager.MainThread.SetDialogFrame(errorScreen);
                     break;
                 case "CantFindJavaLauncher":
                     errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "CantFindJavaLauncher_Title");
                     errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "CantFindJavaLauncher");
-                    ConfigManager.MainThread.SetOverlayFrame(errorScreen);
+                    ConfigManager.MainThread.SetDialogFrame(errorScreen);
                     break;
                 case "appregistererror":
                     errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "AppReregisterFailed_Title");
                     errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "AppReregisterFailed");
-                    ConfigManager.MainThread.SetOverlayFrame(errorScreen);
+                    ConfigManager.MainThread.SetDialogFrame(errorScreen);
                     break;
                 case "applauncherror":
                     errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "AppLaunchFailed_Title");
                     errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "AppLaunchFailed");
-                    ConfigManager.MainThread.SetOverlayFrame(errorScreen);
+                    ConfigManager.MainThread.SetDialogFrame(errorScreen);
                     break;
                 case "downloadfailederror":
                     errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "AppDownloadFailed_Title");
                     errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "AppDownloadFailed");
-                    ConfigManager.MainThread.SetOverlayFrame(errorScreen);
+                    ConfigManager.MainThread.SetDialogFrame(errorScreen);
                     break;
                 case "extractionfailed":
                     errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "AppExtractionFailed_Title");
                     errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "AppExtractionFailed");
-                    ConfigManager.MainThread.SetOverlayFrame(errorScreen);
+                    ConfigManager.MainThread.SetDialogFrame(errorScreen);
                     break;
                 case "CantFindPaidServerList":
                     errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "CantFindPaidServerList_Title");
                     errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "CantFindPaidServerList");
-                    ConfigManager.MainThread.SetOverlayFrame(errorScreen);
+                    ConfigManager.MainThread.SetDialogFrame(errorScreen);
                     break;
             }
         }

@@ -72,7 +72,7 @@
             </Setter>
         </Style>
     </Page.Resources>
-    <Grid Margin="0" Background="#FF303030">
+    <Grid Margin="0" Background="#FF303030" Style="{DynamicResource DisabledStyle}">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"></RowDefinition>
             <RowDefinition></RowDefinition>

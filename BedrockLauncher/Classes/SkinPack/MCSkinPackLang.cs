@@ -55,9 +55,15 @@ namespace BedrockLauncher.Classes.SkinPack
 
             try
             {
-                string json = File.ReadAllText(Path.Combine(this.Directory, "languages.json"));
-                string[] fileNames = JsonConvert.DeserializeObject<string[]>(json);
-                this.LangFiles = fileNames;
+                string filePath = Path.Combine(this.Directory, "languages.json");
+                if (File.Exists(filePath))
+                {
+                    string json = File.ReadAllText(filePath);
+                    string[] fileNames = JsonConvert.DeserializeObject<string[]>(json);
+                    this.LangFiles = fileNames;
+                }
+                else this.LangFiles = new string[] { };
+
             }
             catch (Exception ex)
             {
@@ -70,8 +76,12 @@ namespace BedrockLauncher.Classes.SkinPack
                 try
                 {
                     var parser = new FileIniDataParser();
-                    IniData data = parser.ReadFile(Path.Combine(this.Directory, langFile + ".lang"));
-                    this.Values.Add(langFile, data);
+                    string filePath = Path.Combine(this.Directory, langFile + ".lang");
+                    if (File.Exists(filePath))
+                    {
+                        IniData data = parser.ReadFile(filePath);
+                        this.Values.Add(langFile, data);
+                    }
                 }
                 catch (Exception ex)
                 {

@@ -114,6 +114,11 @@ namespace BedrockLauncher.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            ReloadPage();
+        }
+
+        public void ReloadPage()
+        {
             ReloadSkinPacks();
             UpdateAddSkinButton();
         }

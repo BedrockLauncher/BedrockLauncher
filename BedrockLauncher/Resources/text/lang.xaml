@@ -19,7 +19,9 @@
     <v:String x:Key="FirstLaunch_WelcomeTitle">Welcome!</v:String>
     <v:String x:Key="FirstLaunch_WelcomeSubTitle">Welcome to Minecraft Bedrock Launcher!</v:String>
     <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Create your first profile!</v:String>
-    <v:String x:Key="FirstLaunch_BeforeStartingToUse">Before using, please make sure you have downloaded the release from the official github or website.</v:String>
+
+    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Before using, it is highly recommended that you press backup to create an installation of your existing save data as the launcher does replace the original directory with a symbolic link which allows us to redirect save data.&#10;&#10; (Don't worry, you will not lose your data by doing this, you will only lose data if you press play and haven't backed your stuff up)</v:String>
+    
     <v:String x:Key="FirstLaunch_CloseButton">Close</v:String>
     <v:String x:Key="FirstLaunch_BackButton">Back</v:String>
     <v:String x:Key="FirstLaunch_GoBackButton">❮ GO BACK</v:String>
@@ -36,6 +38,9 @@
     <v:String x:Key="MainPage_ProgressBarInstalling">Installing</v:String>
     <v:String x:Key="MainPage_ProgressBarLaunching">Launching</v:String>
     <v:String x:Key="MainPage_ProgressBarExtracting">Extracting</v:String>
+    <v:String x:Key="MainPage_ProgressBarUninstalling">Uninstalling</v:String>
+    <v:String x:Key="MainPage_ProgressBarRegisteringPackage">Registering Package</v:String>
+    <v:String x:Key="MainPage_ProgressBarRemovingPackage">Unregistering Package</v:String>
     <!-- MainWindowSettingsScreen -->
     <v:String x:Key="MainWindowSettingsScreen_Title">SETTINGS</v:String>
     <v:String x:Key="MainWindowSettingsScreen_GeneralButton">General</v:String>
@@ -189,6 +194,18 @@
     <v:String x:Key="AdvancedSettingsWindow_Notice">* All settings will restart the launcher</v:String>
     <v:String x:Key="AdvancedSettingsWindow_PortableMode">Enable Portable Mode</v:String>
 
+    <v:String x:Key="Dialog_Item_Installation_Text">installation</v:String>
+    <v:String x:Key="Dialog_Item_SkinPack_Text">skin pack</v:String>
+    <v:String x:Key="Dialog_Item_Skin_Text">skin</v:String>
+    <v:String x:Key="Dialog_Item_Version_Text">version</v:String>
+    <v:String x:Key="Dialog_Item_Profile_Text">profile</v:String>
+
+    <v:String x:Key="Dialog_DeleteItem_Title">Delete {0} permenantly</v:String>
+    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Are you sure you want to delete &quot;{1}&quot;?&#10;This {0} will be lost forever! (A long time!)</v:String>
+
+
+
+
     <v:String x:Key="GeneralText_Delete">Delete</v:String>
     <v:String x:Key="GeneralText_Edit">Edit</v:String>
     <v:String x:Key="GeneralText_Duplicate">Duplicate</v:String>
@@ -198,6 +215,10 @@
     <v:String x:Key="GeneralText_Add">Add</v:String>
     <v:String x:Key="GeneralText_Save">Save</v:String>
     <v:String x:Key="GeneralText_Refresh">Refresh</v:String>
+    <v:String x:Key="GeneralText_Backup">Backup</v:String>
+
+    <v:String x:Key="GeneralText_Yes">Yes</v:String>
+    <v:String x:Key="GeneralText_No">No</v:String>
 
     <v:String x:Key="GeneralText_Twitter">Twitter</v:String>
     <v:String x:Key="GeneralText_GitHub">GitHub</v:String>

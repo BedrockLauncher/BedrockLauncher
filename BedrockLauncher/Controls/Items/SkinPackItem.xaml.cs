@@ -90,20 +90,33 @@ namespace BedrockLauncher.Controls.Items
             MoreButton.ContextMenu.IsOpen = false;
         }
 
-        private void DeleteSkinPackButton_Click(object sender, RoutedEventArgs e)
+        private async void DeleteSkinPackButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                var skinPack = GetParent().LoadedSkinPacks.SelectedItem as MCSkinPack;
-                Directory.Delete(skinPack.Directory, true);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-            GetParent().ReloadSkinPacks();
-
             MoreButton.ContextMenu.IsOpen = false;
+            var skinPack = GetParent().LoadedSkinPacks.SelectedItem as MCSkinPack;
+
+            if (skinPack == null) return;
+
+            var title = this.FindResource("Dialog_DeleteItem_Title") as string;
+            var content = this.FindResource("Dialog_DeleteItem_Text") as string;
+            var item = this.FindResource("Dialog_Item_SkinPack_Text") as string;
+
+            var result = await DialogPrompt.ShowDialog_YesNo(title, content, item, skinPack.DisplayName);
+
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                try
+                {
+
+                    Directory.Delete(skinPack.Directory, true);
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+                GetParent().ReloadSkinPacks();
+            }
         }
     }
 }

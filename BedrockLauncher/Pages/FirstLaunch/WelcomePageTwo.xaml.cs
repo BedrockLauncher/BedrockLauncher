@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BedrockLauncher.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,9 +37,10 @@ namespace BedrockLauncher.Pages.FirstLaunch
             pageSwitcher.MoveToPage(3);
         }
 
-        private void DownloadButton_Click(object sender, RoutedEventArgs e)
+        private void BackupButton_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start(Properties.Settings.Default.GithubPage);
+            ConfigManager.GameManager.ConvertToInstallation();
+            pageSwitcher.MoveToPage(3);
         }
     }
 }

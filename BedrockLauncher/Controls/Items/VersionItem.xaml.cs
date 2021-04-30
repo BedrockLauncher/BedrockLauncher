@@ -1,4 +1,5 @@
 ﻿using BedrockLauncher.Core;
+using BedrockLauncher.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,12 +58,22 @@ namespace BedrockLauncher.Controls.Items
             ConfigManager.GameManager.OpenFolder(version);
         }
 
-        private void Delete_Click(object sender, RoutedEventArgs e)
+        private async void Delete_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
             var version = button.DataContext as Classes.MCVersion;
-            ConfigManager.GameManager.Remove(version);
-            GetParent().RefreshVersionsList();
+
+            var title = this.FindResource("Dialog_DeleteItem_Title") as string;
+            var content = this.FindResource("Dialog_DeleteItem_Text") as string;
+            var item = this.FindResource("Dialog_Item_Version_Text") as string;
+
+            var result = await DialogPrompt.ShowDialog_YesNo(title, content, item, version.DisplayName);
+
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                ConfigManager.GameManager.Remove(version);
+                GetParent().RefreshVersionsList();
+            }
         }
 
         private void More_Click(object sender, RoutedEventArgs e)

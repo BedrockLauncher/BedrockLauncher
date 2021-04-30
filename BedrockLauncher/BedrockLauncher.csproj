@@ -131,6 +131,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
@@ -167,6 +168,7 @@
     <Compile Include="Classes\SkinPack\MCSkinPack.cs" />
     <Compile Include="Classes\SkinPack\MCSkinPackMainfest.cs" />
     <Compile Include="Classes\MediaWiki\RootObject.cs" />
+    <Compile Include="Classes\ZipProgress.cs" />
     <Compile Include="Controls\Items\BlockPickerItem.xaml.cs">
       <DependentUpon>BlockPickerItem.xaml</DependentUpon>
     </Compile>
@@ -232,6 +234,11 @@
     <Compile Include="Classes\NotifyPropertyChangedBase.cs" />
     <Compile Include="Classes\MCVersion.cs" />
     <Compile Include="Classes\VersionStateChangeInfo.cs" />
+    <Compile Include="Methods\ZipFileExtensions.cs" />
+    <Compile Include="Pages\DialogPrompt.xaml.cs">
+      <DependentUpon>DialogPrompt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
     <Compile Include="CustomDesignAttributes.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Classes\Html\FileSchemeHandler.cs" />
@@ -428,6 +435,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\EditSkinPackScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\DialogPrompt.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -807,10 +818,6 @@
     <Resource Include="Resources\images\credits\mcmrarm_icon.jfif" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\modules\Installer\Installer.csproj">
-      <Project>{295729f7-172f-4bcd-a619-e495db5a4e2f}</Project>
-      <Name>Installer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\modules\SkinView3D\SkinView3D.csproj">
       <Project>{ccabef67-f4bf-4087-9291-62ee5e316934}</Project>
       <Name>SkinView3D</Name>
@@ -818,13 +825,6 @@
     <ProjectReference Include="..\modules\Uninstaller\Uninstaller.csproj">
       <Project>{3232778b-1a3b-4d31-88a1-7a43b8b66723}</Project>
       <Name>Uninstaller</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\modules\WUTokenHelper\WUTokenHelper.vcxproj">
-      <Project>{B7336BA7-1E83-43D8-BD0E-3D44C6E3D4E7}</Project>
-      <Name>WUTokenHelper</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

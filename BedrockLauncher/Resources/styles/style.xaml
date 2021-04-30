@@ -88,5 +88,14 @@
         </Setter>
     </Style>
 
+    <Style TargetType="{x:Type Grid}" x:Key="DisabledStyle">
+        <Setter Property="Opacity" Value="1.0"></Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.25"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
 
 </ResourceDictionary>

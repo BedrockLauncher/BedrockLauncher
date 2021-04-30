@@ -60,12 +60,22 @@ namespace BedrockLauncher.Controls.Items
             ConfigManager.GameManager.Play(installation);
         }
 
-        private void DeleteInstallationButton_Click(object sender, RoutedEventArgs e)
+        private async void DeleteInstallationButton_Click(object sender, RoutedEventArgs e)
         {
+            var title = this.FindResource("Dialog_DeleteItem_Title") as string;
+            var content = this.FindResource("Dialog_DeleteItem_Text") as string;
+            var item = this.FindResource("Dialog_Item_Installation_Text") as string;
+
             MenuItem button = sender as MenuItem;
             var installation = button.DataContext as Classes.MCInstallation;
-            ConfigManager.DeleteInstallation(installation);
-            ConfigManager.MainThread.RefreshInstallationList();
+            var result = await DialogPrompt.ShowDialog_YesNo(title, content, item, installation.DisplayName);
+
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+
+                ConfigManager.DeleteInstallation(installation);
+                ConfigManager.MainThread.RefreshInstallationList();
+            }
         }
 
         private void More_Click(object sender, RoutedEventArgs e)

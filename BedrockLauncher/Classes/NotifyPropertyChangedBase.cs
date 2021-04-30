@@ -37,23 +37,6 @@ namespace BedrockLauncher.Classes
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
-        public void ProgressBarIsIndeterminate(bool isIndeterminate)
-        {
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                ConfigManager.MainThread.progressSizeHack.IsIndeterminate = isIndeterminate;
-            });
-        }
-        public void ProgressBarUpdate(double downloadedBytes, double totalSize)
-        {
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                ConfigManager.MainThread.progressSizeHack.Value = downloadedBytes;
-                ConfigManager.MainThread.progressSizeHack.Maximum = totalSize;
-                int.Parse(downloadedBytes.ToString());
-                ConfigManager.MainThread.ProgressBarText.Text = (Math.Round(downloadedBytes / 1024 / 1024, 2)).ToString() + " MB / " + (Math.Round(totalSize / 1024 / 1024, 2)).ToString() + " MB";
-            });
-        }
 
     }
 }

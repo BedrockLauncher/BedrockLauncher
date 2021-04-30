@@ -78,6 +78,9 @@ namespace BedrockLauncher.Controls
         {
             InitializeComponent();
             GetBlockList();
+
+            SetPrefabbedIconData(BlockList.Where(x => x.Contains("furnace.png")).FirstOrDefault());
+
             GenerateListItems();
             UpdateDropdownArrow();
         }

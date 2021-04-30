@@ -17,6 +17,7 @@ using System.Windows.Controls.Primitives;
 using BedrockLauncher.Classes;
 using BedrockLauncher.Core;
 using BedrockLauncher.Controls.Items;
+using BedrockLauncher.Pages;
 
 namespace BedrockLauncher.Controls.Toolbar
 {
@@ -77,9 +78,21 @@ namespace BedrockLauncher.Controls.Toolbar
             ConfigManager.MainThread.NavigateToNewProfilePage();
         }
 
-        private void RemoveProfileButton_Click(object sender, RoutedEventArgs e)
+        private async void RemoveProfileButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.RemoveProfile(Properties.Settings.Default.CurrentProfile);
+            var profile = Properties.Settings.Default.CurrentProfile;
+
+            var title = this.FindResource("Dialog_DeleteItem_Title") as string;
+            var content = this.FindResource("Dialog_DeleteItem_Text") as string;
+            var item = this.FindResource("Dialog_Item_Profile_Text") as string;
+
+            var result = await DialogPrompt.ShowDialog_YesNo(title, content, item, profile);
+
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                ConfigManager.RemoveProfile(profile);
+            }
+
         }
 
         private void ProfileContextMenu_ContextMenuClosing(object sender, ContextMenuEventArgs e)

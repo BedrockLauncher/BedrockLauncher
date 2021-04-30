@@ -185,7 +185,7 @@
             <TextBlock FontWeight="Bold" Margin="0,10,0,5"  FontSize="20" Text="{DynamicResource About_Title}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             <Separator Margin="0,10"></Separator>
         </StackPanel>
-        <ScrollViewer Margin="0,0,0,0" Padding="20" Grid.Row="1"  local:CustomDesignAttributes.VerticalScrollTo="10000">
+        <ScrollViewer Margin="0,0,0,0" Padding="20,0" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  local:CustomDesignAttributes.VerticalScrollTo="10000">
             <StackPanel>
                 <Grid>
                     <Grid.ColumnDefinitions>

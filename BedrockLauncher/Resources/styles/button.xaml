@@ -1038,6 +1038,9 @@
             <Trigger Property="IsPressed" Value="true">
                 <Setter Property="Background" Value="#515151" />
             </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.25" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 

@@ -33,6 +33,16 @@ using Version = BedrockLauncher.Classes.MCVersion;
 
 namespace BedrockLauncher
 {
+    //TODO: Duplicate Functionality on the Installation Screen
+    //TODO: Import and Export Functionality on the Skin Pack Screen
+    //TODO: Launch External Launcher Button
+    //TODO: Functional Installer and Updater
+    //TODO: Beta Test and Optimize
+
+    //TODO: (Later On) Better Animations
+    //TODO: (Later On) Community Content / Personal Donations Section
+
+
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
@@ -57,6 +67,12 @@ namespace BedrockLauncher
         private NoContentPage noContentPage = new NoContentPage();
         #endregion
 
+        #region Extra Variables
+
+        private KeyboardNavigationMode MainFrame_KeyboardNavigationMode_Default { get; set; }
+
+        #endregion
+
         #region Init
 
         public MainWindow()
@@ -67,7 +83,11 @@ namespace BedrockLauncher
 
         private void Init()
         {
+
+            MainFrame_KeyboardNavigationMode_Default = KeyboardNavigation.GetTabNavigation(MainFrame);
+
             Panel.SetZIndex(OverlayFrame, 0);
+            Panel.SetZIndex(ErrorFrame, 1);
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             // show first launch window if no profile
             if (Properties.Settings.Default.CurrentProfile == "") SetOverlayFrame(new WelcomePage());
@@ -113,7 +133,6 @@ namespace BedrockLauncher
             view.Filter = ConfigManager.Filter_InstallationList;
 
             InstallationsList.ItemsSource = ConfigManager.CurrentInstallations;
-            InstallationsList.SelectedIndex = Properties.Settings.Default.CurrentInstallation;
             if (InstallationsList.SelectedItem == null) InstallationsList.SelectedItem = ConfigManager.CurrentInstallations.First();
         }
         private void UpdatePlayButton()
@@ -130,17 +149,21 @@ namespace BedrockLauncher
                            return;
                        }
 
-                       if (ConfigManager.GameManager.IsDownloading || ConfigManager.GameManager.HasLaunchTask)
+                       if (ConfigManager.GameManager.IsUninstalling || ConfigManager.GameManager.IsDownloading || ConfigManager.GameManager.HasLaunchTask)
                        {
                            ProgressBarShowAnim();
                            MainPlayButton.IsEnabled = false;
                            InstallationsList.IsEnabled = false;
+                           installationsScreen.IsEnabled = false;
+                           settingsScreenPage.versionsSettingsPage.IsEnabled = false;
                        }
                        else
                        {
                            ProgressBarHideAnim();
                            MainPlayButton.IsEnabled = true;
                            InstallationsList.IsEnabled = true;
+                           installationsScreen.IsEnabled = true;
+                           settingsScreenPage.versionsSettingsPage.IsEnabled = true;
                        }
 
                        if (selected.Version?.IsInstalled ?? false) PlayButtonText.SetResourceReference(TextBlock.TextProperty, "MainPage_PlayButton");
@@ -206,8 +229,6 @@ namespace BedrockLauncher
         }
         private void MainPlayButton_Click(object sender, RoutedEventArgs e)
         {
-            Properties.Settings.Default.CurrentInstallation = InstallationsList.SelectedIndex;
-            Properties.Settings.Default.Save();
             var i = InstallationsList.SelectedItem as MCInstallation;
             ConfigManager.GameManager.Play(i);
         }
@@ -236,16 +257,29 @@ namespace BedrockLauncher
         private void GameStateChanged(object sender, EventArgs e)
         {
             UpdatePlayButton();
+            skinsPage.ReloadPage();
         }
 
         #endregion
 
         #region Navigation
 
+        public void SetDialogFrame(object content)
+        {
+            bool isEmpty = content == null;
+            var focusMode = (isEmpty ? MainFrame_KeyboardNavigationMode_Default : KeyboardNavigationMode.None);
+            KeyboardNavigation.SetTabNavigation(MainFrame, focusMode);
+            KeyboardNavigation.SetTabNavigation(OverlayFrame, focusMode);
+            Keyboard.ClearFocus();
+            ErrorFrame.Navigate(content);
+        }
+
         public void SetOverlayFrame(object content)
         {
             bool isEmpty = content == null;
-            MainFrame.Visibility = (isEmpty ? Visibility.Visible : Visibility.Collapsed);
+            var focusMode = (isEmpty ? MainFrame_KeyboardNavigationMode_Default : KeyboardNavigationMode.None);
+            KeyboardNavigation.SetTabNavigation(MainFrame, focusMode);
+            Keyboard.ClearFocus();
             OverlayFrame.Navigate(content);
         } 
 
@@ -277,7 +311,7 @@ namespace BedrockLauncher
 
             foreach (ToggleButton button in toggleButtons) { button.IsChecked = false; }
 
-            PlayScreenBorder.Visibility = Visibility.Collapsed;
+            PlayScreenBorder.Visibility = Visibility.Visible;
 
             if (toggleButtons.Exists(x => x.Name == buttonName))
             {
@@ -314,7 +348,6 @@ namespace BedrockLauncher
         {
             BedrockEditionButton.Button.IsChecked = true;
             MainWindowFrame.Navigate(mainPage);
-            PlayScreenBorder.Visibility = Visibility.Visible;
 
             if (!rooted)
             {

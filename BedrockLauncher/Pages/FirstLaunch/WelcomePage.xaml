@@ -8,7 +8,7 @@
       d:DesignHeight="639" d:DesignWidth="1016"
       Title="WelcomePage" MinWidth="1016" MinHeight="639" Foreground="{x:Null}" Initialized="Page_Initialized">
     <Page.Background>
-        <ImageBrush ImageSource="/BedrockLauncher;component/Resources/images/firstlaunchbackground.jpg" Stretch="UniformToFill"/>
+        <ImageBrush ImageSource="/BedrockLauncher;component/Resources/images/bg/firstlaunchbackground.jpg" Stretch="UniformToFill"/>
     </Page.Background>
     <Grid Margin="0" Background="#7F000000">
         <TextBlock Foreground="white" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="11" FontWeight="Bold" Text="NOT APPROVED BY OR ASSOCIATED WITH MOJANG" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>

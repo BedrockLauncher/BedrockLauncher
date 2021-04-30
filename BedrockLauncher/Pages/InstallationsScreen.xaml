@@ -10,7 +10,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="608" d:DesignWidth="828"
       Title="InstallationsScreen" Initialized="Page_Initialized">
-    <Grid Margin="0" Background="#FF303030">
+    <Grid Margin="0" Background="#FF303030" Style="{DynamicResource DisabledStyle}">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"></RowDefinition>
             <RowDefinition></RowDefinition>

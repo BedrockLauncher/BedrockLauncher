@@ -36,6 +36,7 @@ using System.Security.RightsManagement;
 using System.Security.Permissions;
 
 using MCVersion = BedrockLauncher.Classes.MCVersion;
+using System.Xml.Linq;
 
 namespace BedrockLauncher.Methods
 {
@@ -44,7 +45,8 @@ namespace BedrockLauncher.Methods
         #region Status
 
         public bool IsDownloading = false;
-        public volatile bool HasLaunchTask = false;
+        public bool HasLaunchTask = false;
+        public bool IsUninstalling = false;
 
         #endregion
 
@@ -111,17 +113,18 @@ namespace BedrockLauncher.Methods
 
         public void Play(MCInstallation i)
         {
+            Properties.Settings.Default.CurrentInstallation = ConfigManager.CurrentInstallations.IndexOf(i);
+            Properties.Settings.Default.Save();
+
+            var v = i.Version;
+            switch (v.DisplayInstallStatus.ToString())
             {
-                var v = i.Version;
-                switch (v.DisplayInstallStatus.ToString())
-                {
-                    case "Not installed":
-                        InvokeDownload(v);
-                        break;
-                    case "Installed":
-                        InvokeLaunch(v);
-                        break;
-                }
+                case "Not installed":
+                    InvokeDownload(v);
+                    break;
+                case "Installed":
+                    InvokeLaunch(v);
+                    break;
             }
         }
 
@@ -157,24 +160,23 @@ namespace BedrockLauncher.Methods
         {
             if (HasLaunchTask)
             {
-                OnGameStateChanged(GameStateArgs.Empty);
+                Application.Current.Dispatcher.Invoke(() => { OnGameStateChanged(GameStateArgs.Empty); });
                 return;
             }
             else
             {
                 HasLaunchTask = true;
-                OnGameStateChanged(GameStateArgs.Empty);
+                Application.Current.Dispatcher.Invoke(() => { OnGameStateChanged(GameStateArgs.Empty); });
             }
 
             Task.Run(async () =>
             {
                 SetInstallationDataPath();
                 v.StateChangeInfo = new VersionStateChangeInfo();
-                v.StateChangeInfo.IsLaunching = true;
                 string gameDir = Path.GetFullPath(v.GameDirectory);
                 try
                 {
-                    await ReRegisterPackage(gameDir);
+                    await ReRegisterPackage(v, gameDir);
                 }
                 catch (Exception e)
                 {
@@ -190,11 +192,13 @@ namespace BedrockLauncher.Methods
                 }
                 try
                 {
+                    v.StateChangeInfo.IsLaunching = true;
                     var pkg = await AppDiagnosticInfo.RequestInfoForPackageAsync(MINECRAFT_PACKAGE_FAMILY);
                     if (pkg.Count > 0)
                         await pkg[0].LaunchAsync();
                     Debug.WriteLine("App launch finished!");
                     HasLaunchTask = false;
+                    v.StateChangeInfo.IsLaunching = false;
                     Application.Current.Dispatcher.Invoke(() => { OnGameStateChanged(GameStateArgs.Empty); });
                     v.StateChangeInfo = null;
                     if (Properties.Settings.Default.KeepLauncherOpen == false)
@@ -204,6 +208,7 @@ namespace BedrockLauncher.Methods
                             Application.Current.MainWindow.Close();
                         });
                     }
+
 
                 }
                 catch (Exception e)
@@ -259,16 +264,19 @@ namespace BedrockLauncher.Methods
                     {
                         if (v.StateChangeInfo.IsInitializing)
                         {
+                            v.StateChangeInfo.IsDownloading = true;
                             IsDownloading = true;
                             Application.Current.Dispatcher.Invoke(() => { OnGameStateChanged(GameStateArgs.Empty); });
                             Debug.WriteLine("Actual download started");
                             v.StateChangeInfo.IsInitializing = false;
                             if (total.HasValue)
-                                v.StateChangeInfo.TotalSize = total.Value;
+                                v.StateChangeInfo.TotalSize_Downloading = total.Value;
                         }
-                        v.StateChangeInfo.DownloadedBytes = current;
+                        v.StateChangeInfo.DownloadedBytes_Downloading = current;
                     }, cancelSource.Token);
                     Debug.WriteLine("Download complete");
+                    v.StateChangeInfo.IsDownloading = false;
+                    IsDownloading = false;
                 }
                 catch (Exception e)
                 {
@@ -276,31 +284,12 @@ namespace BedrockLauncher.Methods
                     if (!(e is TaskCanceledException))
                         MessageBox.Show("Download failed:\n" + e.ToString());
                     v.StateChangeInfo = null;
+                    v.StateChangeInfo.IsDownloading = false;
                     IsDownloading = false;
                     return;
                 }
-                try
-                {
-                    Debug.WriteLine("Extraction started");
-                    v.StateChangeInfo.IsExtracting = true;
-                    string dirPath = v.GameDirectory;
-                    if (Directory.Exists(dirPath))
-                        Directory.Delete(dirPath, true);
-                    ZipFile.ExtractToDirectory(dlPath, dirPath);
-                    v.StateChangeInfo = null;
-                    File.Delete(Path.Combine(dirPath, "AppxSignature.p7x"));
-                    File.Delete(dlPath);
-                    Debug.WriteLine("Extracted successfully");
-                    InvokeLaunch(v);
-                }
-                catch (Exception e)
-                {
-                    Debug.WriteLine("Extraction failed:\n" + e.ToString());
-                    MessageBox.Show("Extraction failed:\n" + e.ToString());
-                    v.StateChangeInfo = null;
-                    IsDownloading = false;
-                    return;
-                }
+                await ExtractPackage(v, dlPath);
+
                 v.StateChangeInfo = null;
                 v.UpdateInstallStatus();
                 Application.Current.Dispatcher.Invoke(() => { OnGameStateChanged(GameStateArgs.Empty); });
@@ -310,12 +299,14 @@ namespace BedrockLauncher.Methods
         {
             Task.Run(async () =>
             {
+                IsUninstalling = true;
+                Application.Current.Dispatcher.Invoke(() => { OnGameStateChanged(GameStateArgs.Empty); });
                 v.StateChangeInfo = new VersionStateChangeInfo();
                 v.StateChangeInfo.IsUninstalling = true;
 
                 try
                 {
-                    await UnregisterPackage(Path.GetFullPath(v.GameDirectory));
+                    await UnregisterPackage(v, Path.GetFullPath(v.GameDirectory));
                     Directory.Delete(v.GameDirectory, true);
                 }
                 catch (Exception ex)
@@ -323,10 +314,12 @@ namespace BedrockLauncher.Methods
                     MessageBox.Show(ex.ToString());
                 }
 
-
-                v.StateChangeInfo = null;
+                v.StateChangeInfo.IsUninstalling = false;
+                IsUninstalling = false;
                 v.UpdateInstallStatus();
                 Application.Current.Dispatcher.Invoke(() => { OnGameStateChanged(GameStateArgs.Empty); });
+                v.StateChangeInfo = null;
+                return;
             });
         }
         private async void InvokeConvert()
@@ -369,34 +362,82 @@ namespace BedrockLauncher.Methods
 
         #region Task Methods
 
-        private async Task RemovePackage(Package pkg)
+        private async Task ExtractPackage(MCVersion v, string dlPath)
+        {
+            Stream zipReadingStream = null;
+            try
+            {
+                Debug.WriteLine("Extraction started");
+                v.StateChangeInfo.IsExtracting = true;
+                string dirPath = v.GameDirectory;
+                if (Directory.Exists(dirPath))
+                    Directory.Delete(dirPath, true);
+
+                zipReadingStream = File.OpenRead(dlPath);
+                ZipArchive zip = new ZipArchive(zipReadingStream);
+                var progress = new Progress<ZipProgress>();
+                progress.ProgressChanged += (s, z) =>
+                {
+                    if (v.StateChangeInfo != null)
+                    {
+                        v.StateChangeInfo.ExtractedBytes_Extracting = z.Processed;
+                        v.StateChangeInfo.TotalBytes_Extracting = z.Total;
+                    }
+                };
+                await Task.Run(() => zip.ExtractToDirectory(dirPath, progress));
+
+                zipReadingStream.Close();
+
+                v.StateChangeInfo = null;
+                File.Delete(Path.Combine(dirPath, "AppxSignature.p7x"));
+                File.Delete(dlPath);
+                Debug.WriteLine("Extracted successfully");
+                InvokeLaunch(v);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Extraction failed:\n" + e.ToString());
+                MessageBox.Show("Extraction failed:\n" + e.ToString());
+                if (zipReadingStream != null) zipReadingStream.Close();
+                v.StateChangeInfo.IsDownloading = false;
+                v.StateChangeInfo = null;
+                IsDownloading = false;
+                return;
+            }
+        }
+
+        private async Task RemovePackage(MCVersion v, Package pkg)
         {
             Debug.WriteLine("Removing package: " + pkg.Id.FullName);
+            v.StateChangeInfo.DeploymentPackageName = pkg.Id.FullName;
+            v.StateChangeInfo.IsRemovingPackage = true;
             if (!pkg.IsDevelopmentMode)
             {
                 // somehow this cause errors for some people, idk why, disabled
                 //BackupMinecraftDataForRemoval();
-                await DeploymentProgressWrapper(new PackageManager().RemovePackageAsync(pkg.Id.FullName, 0));
+                await DeploymentProgressWrapper(v, new PackageManager().RemovePackageAsync(pkg.Id.FullName, 0));
             }
             else
             {
                 Debug.WriteLine("Package is in development mode");
-                await DeploymentProgressWrapper(new PackageManager().RemovePackageAsync(pkg.Id.FullName, RemovalOptions.PreserveApplicationData));
+                await DeploymentProgressWrapper(v, new PackageManager().RemovePackageAsync(pkg.Id.FullName, RemovalOptions.PreserveApplicationData));
             }
             Debug.WriteLine("Removal of package done: " + pkg.Id.FullName);
+            v.StateChangeInfo.DeploymentPackageName = "";
+            v.StateChangeInfo.IsRemovingPackage = false;
         }
-        private async Task UnregisterPackage(string gameDir)
+        private async Task UnregisterPackage(MCVersion v, string gameDir)
         {
             foreach (var pkg in new PackageManager().FindPackages(MINECRAFT_PACKAGE_FAMILY))
             {
                 string location = GetPackagePath(pkg);
                 if (location == "" || location == gameDir)
                 {
-                    await RemovePackage(pkg);
+                    await RemovePackage(v, pkg);
                 }
             }
         }
-        private async Task ReRegisterPackage(string gameDir)
+        private async Task ReRegisterPackage(MCVersion v, string gameDir)
         {
             foreach (var pkg in new PackageManager().FindPackages(MINECRAFT_PACKAGE_FAMILY))
             {
@@ -406,20 +447,46 @@ namespace BedrockLauncher.Methods
                     Debug.WriteLine("Skipping package removal - same path: " + pkg.Id.FullName + " " + location);
                     return;
                 }
-                await RemovePackage(pkg);
+                await RemovePackage(v, pkg);
             }
             Debug.WriteLine("Registering package");
-
             string manifestPath = Path.Combine(gameDir, "AppxManifest.xml");
-            await DeploymentProgressWrapper(new PackageManager().RegisterPackageAsync(new Uri(manifestPath), null, DeploymentOptions.DevelopmentMode));
+            v.StateChangeInfo.DeploymentPackageName = GetPackageNameFromMainifest(manifestPath);
+            v.StateChangeInfo.IsRegisteringPackage = true;
+            await DeploymentProgressWrapper(v, new PackageManager().RegisterPackageAsync(new Uri(manifestPath), null, DeploymentOptions.DevelopmentMode));
             Debug.WriteLine("App re-register done!");
+            v.StateChangeInfo.DeploymentPackageName = "";
+            v.StateChangeInfo.IsRegisteringPackage = false;
+
+            string GetPackageNameFromMainifest(string filePath)
+            {
+                try
+                {
+                    string manifestXml = File.ReadAllText(filePath);
+                    XDocument XMLDoc = XDocument.Parse(manifestXml);
+                    var Descendants = XMLDoc.Descendants();
+                    XElement Identity = Descendants.Where(x => x.Name.LocalName == "Identity").FirstOrDefault();
+                    string Name = Identity.Attribute("Name").Value;
+                    string Version = Identity.Attribute("Version").Value;
+                    string ProcessorArchitecture = Identity.Attribute("ProcessorArchitecture").Value;
+                    return String.Join("_", Name, Version, ProcessorArchitecture);         
+                }
+                catch
+                {
+                    return "???";
+                }
+
+
+            }
         }
-        private async Task DeploymentProgressWrapper(IAsyncOperationWithProgress<DeploymentResult, DeploymentProgress> t)
+
+        private async Task DeploymentProgressWrapper(MCVersion version, IAsyncOperationWithProgress<DeploymentResult, DeploymentProgress> t)
         {
             TaskCompletionSource<int> src = new TaskCompletionSource<int>();
             t.Progress += (v, p) =>
             {
                 Debug.WriteLine("Deployment progress: " + p.state + " " + p.percentage + "%");
+                version.StateChangeInfo.DeploymentProgress = Convert.ToInt64(p.percentage);
             };
             t.Completed += (v, p) =>
             {

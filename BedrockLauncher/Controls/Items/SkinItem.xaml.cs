@@ -62,7 +62,7 @@ namespace BedrockLauncher.Controls.Items
             ConfigManager.MainThread.SetOverlayFrame(new EditSkinScreen(skinPack, skin, index));
         }
 
-        private void DeleteSkinButton_Click(object sender, RoutedEventArgs e)
+        private async void DeleteSkinButton_Click(object sender, RoutedEventArgs e)
         {
             var skinPack = GetParent().LoadedSkinPacks.SelectedItem as MCSkinPack;
             var skin = GetParent().SkinPreviewList.SelectedItem as MCSkin;
@@ -70,8 +70,17 @@ namespace BedrockLauncher.Controls.Items
 
             if (skin != null && skinPack != null)
             {
-                skinPack.RemoveSkin(index);
-                GetParent().ReloadSkinPacks();
+                var title = this.FindResource("Dialog_DeleteItem_Title") as string;
+                var content = this.FindResource("Dialog_DeleteItem_Text") as string;
+                var item = this.FindResource("Dialog_Item_Skin_Text") as string;
+
+                var result = await DialogPrompt.ShowDialog_YesNo(title, content, item, skinPack.GetLocalizedSkinName(skin.localization_name));
+
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    skinPack.RemoveSkin(index);
+                    GetParent().ReloadSkinPacks();
+                }
             }
         }
     }

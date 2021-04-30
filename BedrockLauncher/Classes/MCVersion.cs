@@ -57,7 +57,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                return Name + (IsBeta ? " (Beta) " : "");
+                return Name + (IsBeta ? " (Beta)" : "");
             }
         }
 
@@ -77,7 +77,6 @@ namespace BedrockLauncher.Classes
         {
             if (!RequireSizeRecalculation)
             {
-                RequireSizeRecalculation = true;
                 return;
             }
 
@@ -141,6 +140,7 @@ namespace BedrockLauncher.Classes
         public void UpdateInstallStatus()
         {
             OnPropertyChanged("IsInstalled");
+            RequireSizeRecalculation = true;
         }
 
     }
