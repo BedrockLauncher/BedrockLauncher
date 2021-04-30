@@ -147,7 +147,7 @@ namespace BedrockLauncher.Methods
 
                     if (ListRequestData.@continue != null) cmcontinue = ListRequestData.@continue.cmcontinue;
                 }
-                catch (Exception ex) { Console.WriteLine(ex); }
+                catch (Exception ex) { Program.LogConsoleLine(ex); }
 
                 if (first_request) first_request = false;
             }
@@ -334,7 +334,7 @@ namespace BedrockLauncher.Methods
                             }
                             catch (Exception ex)
                             {
-                                Console.WriteLine(ex);
+                                Program.LogConsoleLine(ex);
                             }
 
 
@@ -430,7 +430,7 @@ namespace BedrockLauncher.Methods
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Program.LogConsoleLine(ex);
                 IsRefreshable = true;
             }
         }

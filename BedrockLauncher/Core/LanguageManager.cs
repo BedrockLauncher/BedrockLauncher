@@ -43,7 +43,7 @@ namespace BedrockLauncher.Core
                     switch (ci.Name)
                     {
                         default:
-                            Debug.WriteLine("default language");
+                            Program.Log("default language");
                             Properties.Settings.Default.Language = "default";
                             Properties.Settings.Default.Save();
                             break;

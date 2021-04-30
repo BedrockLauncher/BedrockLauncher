@@ -144,7 +144,7 @@ namespace BedrockLauncher
                        var selected = InstallationsList.SelectedItem as MCInstallation;
                        if (selected == null)
                        {
-                           PlayButtonText.SetResourceReference(TextBlock.TextProperty, "MainPage_PlayButton");
+                           PlayButtonText.SetResourceReference(TextBlock.TextProperty, "GameTab_PlayButton_Text");
                            MainPlayButton.IsEnabled = false;
                            return;
                        }
@@ -166,8 +166,8 @@ namespace BedrockLauncher
                            settingsScreenPage.versionsSettingsPage.IsEnabled = true;
                        }
 
-                       if (selected.Version?.IsInstalled ?? false) PlayButtonText.SetResourceReference(TextBlock.TextProperty, "MainPage_PlayButton");
-                       else PlayButtonText.SetResourceReference(TextBlock.TextProperty, "MainPage_PlayButton");
+                       if (selected.Version?.IsInstalled ?? false) PlayButtonText.SetResourceReference(TextBlock.TextProperty, "GameTab_PlayButton_Text");
+                       else PlayButtonText.SetResourceReference(TextBlock.TextProperty, "GameTab_PlayButton_Text");
                    }));
             });
         }

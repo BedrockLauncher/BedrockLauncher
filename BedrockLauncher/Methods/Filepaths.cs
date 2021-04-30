@@ -105,7 +105,7 @@ namespace BedrockLauncher.Methods
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Program.LogConsoleLine(ex);
                 return false;
             }
         }
@@ -121,7 +121,7 @@ namespace BedrockLauncher.Methods
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Program.LogConsoleLine(ex);
                 return string.Empty;
             }
         }

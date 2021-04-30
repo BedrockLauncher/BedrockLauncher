@@ -56,12 +56,12 @@ namespace BedrockLauncher.Pages
             isEditMode = _isEditMode;
             if (isEditMode)
             {
-                Header.SetResourceReference(TextBlock.TextProperty, "EditSkinScreen_Header");
+                Header.SetResourceReference(TextBlock.TextProperty, "EditSkinScreen_Title");
                 CreateButton.SetResourceReference(Button.ContentProperty, "GeneralText_Save");
             }
             else
             {
-                Header.SetResourceReference(TextBlock.TextProperty, "EditSkinScreen_AddHeader");
+                Header.SetResourceReference(TextBlock.TextProperty, "EditSkinScreen_AltTitle");
                 CreateButton.SetResourceReference(Button.ContentProperty, "GeneralText_Add");
             }
 

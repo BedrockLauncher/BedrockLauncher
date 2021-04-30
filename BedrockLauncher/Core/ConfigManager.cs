@@ -107,7 +107,7 @@ namespace BedrockLauncher.Core
                 }
                 catch (Exception e)
                 {
-                    Debug.WriteLine("List cache load failed:\n" + e.ToString());
+                    Program.Log("List cache load failed:\n" + e.ToString());
                 }
                 try
                 {
@@ -115,7 +115,7 @@ namespace BedrockLauncher.Core
                 }
                 catch (Exception e)
                 {
-                    Debug.WriteLine("List download failed:\n" + e.ToString());
+                    Program.Log("List download failed:\n" + e.ToString());
                 }
             }));
 
@@ -139,15 +139,15 @@ namespace BedrockLauncher.Core
 
             if (profileList.profiles == null) profileList.profiles = new Dictionary<string, MCProfile>();
 
-            Console.WriteLine("Profile count: " + profileList.profiles.Count);
+            Program.LogConsoleLine("Profile count: " + profileList.profiles.Count);
             foreach (MCProfile setting in profileList.profiles.Values)
             {
-                Console.WriteLine("\nProfile found!: ");
-                Console.WriteLine("Name: " + setting.Name);
-                Console.WriteLine("Path: " + setting.ProfilePath);
+                Program.LogConsoleLine("\nProfile found!: ");
+                Program.LogConsoleLine("Name: " + setting.Name);
+                Program.LogConsoleLine("Path: " + setting.ProfilePath);
 
                 if (setting.Installations == null) setting.Installations = new List<MCInstallation>();
-                Console.WriteLine("Installations: " + setting.Installations.Count);
+                Program.LogConsoleLine("Installations: " + setting.Installations.Count);
             }
 
             ProfileList = profileList;

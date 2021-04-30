@@ -15,7 +15,7 @@
         x:Class="BedrockLauncher.MainWindow"
         mc:Ignorable="d"
         MouseDown="Window_MouseDown"
-        Title="{DynamicResource ResourceKey=Title}" 
+        Title="{DynamicResource ResourceKey=MainWindow_Title}" 
         Initialized="Window_Initialized" 
         Height="700" Width="1016" 
         Foreground="{x:Null}" 
@@ -52,17 +52,17 @@
                         <Button RenderOptions.BitmapScalingMode="NearestNeighbor" x:Name="updateButton" Visibility="Collapsed" Margin="0,-75,5,0" HorizontalAlignment="Right" Height="60" Width="260" VerticalAlignment="Top" BorderBrush="{x:Null}" Style="{DynamicResource AdvancementButton}">
                             <Grid Margin="-8,0,0,0" HorizontalAlignment="Left">
                                 <TextBlock LineHeight="20" RenderOptions.BitmapScalingMode="NearestNeighbor" FontSize="16" TextOptions.TextRenderingMode="Aliased" TextOptions.TextFormattingMode="Ideal" Margin="52,6,0,0" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Rus">
-                        <Run Text="{DynamicResource UpdateButton_NewUpdate}" Foreground="Yellow"/>
+                        <Run Text="{DynamicResource UpdateButton_NewUpdate_Text}" Foreground="Yellow"/>
                         <LineBreak/>
-                        <Run Text="{DynamicResource UpdateButton_Download}" Foreground="White"/>
+                        <Run Text="{DynamicResource UpdateButton_Download_Text}" Foreground="White"/>
                                 </TextBlock>
                                 <Image Source="Resources/images/icons/bedrock_block_icon.ico" Margin="3" HorizontalAlignment="Left" Height="42" Width="42"/>
                             </Grid>
                         </Button>
                         <Grid Grid.Row="1" x:Name="ProgressBarGrid" Background="#FF262626" Visibility="Collapsed">
-                            <ProgressBar x:Name="progressSizeHack" Height="32" Margin="10,8,10,22" Foreground="#FF008542" Background="Black" BorderBrush="Black" IsIndeterminate="{Binding StateChangeInfo.IsProgressIndeterminate}" Minimum="0" Maximum="{Binding StateChangeInfo.TotalSize}" Value="{Binding StateChangeInfo.DownloadedBytes}"/>
+                            <ProgressBar x:Name="progressSizeHack" Height="32" Margin="10,8,10,22" Foreground="#FF008542" Background="Black" BorderBrush="Black" IsIndeterminate="{Binding StateChangeInfo.IsProgressIndeterminate}" Minimum="0"/>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock x:Name="progressbarcontent" SnapsToDevicePixels="True" Margin="26,-15,0,0" FontSize="12" Text="{DynamicResource MainPage_ProgressBarDownloading}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
+                                <TextBlock x:Name="progressbarcontent" SnapsToDevicePixels="True" Margin="26,-15,0,0" FontSize="12" Text="{DynamicResource ProgressBar_Downloading}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
                                 <TextBlock SnapsToDevicePixels="True" Margin="+3,-15,0,0" FontSize="12" x:Name="ProgressBarText" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
                             </StackPanel>
                         </Grid>

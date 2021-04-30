@@ -11,9 +11,9 @@
              mc:Ignorable="d" Height="59" Margin="1,0,0,0" VerticalAlignment="Top">
     <ToggleButton x:Name="Button" Click="SideBarButton_Click" Style="{StaticResource SideBarButtonStyle}">
         <ToggleButton.ToolTip>
-            <ToolTip Content="{DynamicResource MainWindow_MinecraftEdition}"/>
+            <ToolTip Content="{DynamicResource ToolbarButtons_MinecraftEdition_Text}"/>
         </ToggleButton.ToolTip>
-        <TextBlock LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,5"><Run FontSize="11" Text="MINECRAFT:"/><LineBreak/><Run FontSize="14" Text="Bedrock Edition"/></TextBlock>
+        <TextBlock LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,5"><Run FontSize="11" Text="{DynamicResource ToolbarButtons_Minecraft_Text}"/><LineBreak/><Run FontSize="14" Text="{DynamicResource ToolbarButtons_MinecraftEdition_Text}"/></TextBlock>
     </ToggleButton>
     <Image Style="{StaticResource SideBarButtonIcon}" Source="/BedrockLauncher;component/Resources/images/ui/icons/bedrock_icon.png"/>
 </Grid>

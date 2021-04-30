@@ -58,7 +58,7 @@ namespace BedrockLauncher.Classes
             set { 
                 _isInitializing = value; 
                 Application.Current.Dispatcher.Invoke(() => { 
-                    ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarDownloading");
+                    ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_Downloading");
                 });
                 ProgressBarIsIndeterminate(IsProgressIndeterminate);
                 ProgressBarUpdate();
@@ -74,7 +74,7 @@ namespace BedrockLauncher.Classes
             {
                 _isDownloading = value;
                 Application.Current.Dispatcher.Invoke(() => {
-                    ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarDownloading");
+                    ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_Downloading");
                 });
                 ProgressBarIsIndeterminate(IsProgressIndeterminate);
                 ProgressBarUpdate();
@@ -91,7 +91,7 @@ namespace BedrockLauncher.Classes
                 _isExtracting = value;
                 Application.Current.Dispatcher.Invoke(() =>
                 {
-                    ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarExtracting");
+                    ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_Extracting");
                 });
                 ProgressBarIsIndeterminate(IsProgressIndeterminate);
                 ProgressBarUpdate();
@@ -108,7 +108,7 @@ namespace BedrockLauncher.Classes
                 _isRegisteringPackage = value;
                 Application.Current.Dispatcher.Invoke(() =>
                 {
-                    ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarRegisteringPackage");
+                    ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_RegisteringPackage");
                 });
                 ProgressBarIsIndeterminate(IsProgressIndeterminate);
                 ProgressBarUpdate();
@@ -128,7 +128,7 @@ namespace BedrockLauncher.Classes
 
                 Application.Current.Dispatcher.Invoke(() =>
                 {
-                    ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarRemovingPackage");
+                    ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_RemovingPackage");
                 });
                 ProgressBarIsIndeterminate(IsProgressIndeterminate);
                 ProgressBarUpdate();
@@ -146,7 +146,7 @@ namespace BedrockLauncher.Classes
                 _isUninstalling = value; 
                 Application.Current.Dispatcher.Invoke(() => 
                 { 
-                    ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarUninstalling");
+                    ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_Uninstalling");
                 });
                 ProgressBarIsIndeterminate(IsProgressIndeterminate);
                 ProgressBarUpdate();
@@ -161,7 +161,7 @@ namespace BedrockLauncher.Classes
                 _isLaunching = value; 
                 Application.Current.Dispatcher.Invoke(() => 
                 { 
-                    ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "MainPage_ProgressBarLaunching");
+                    ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_Launching");
                 });
                 ProgressBarIsIndeterminate(IsProgressIndeterminate);
                 ProgressBarUpdate();

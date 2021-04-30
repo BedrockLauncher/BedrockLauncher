@@ -11,9 +11,9 @@
              mc:Ignorable="d" Height="59" Margin="1,0,0,0" VerticalAlignment="Bottom">
     <ToggleButton x:Name="Button" Click="SideBarButton_Click" Style="{StaticResource SideBarButtonStyle}">
         <ToggleButton.ToolTip>
-            <ToolTip Content="{DynamicResource ResourceKey=MainWindow_SettingsButton}"/>
+            <ToolTip Content="{DynamicResource ResourceKey=ToolbarButtons_SettingsButton_Text}"/>
         </ToggleButton.ToolTip>
-        <TextBlock Text="{DynamicResource ResourceKey=MainWindow_SettingsButton}" LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,3"/>
+        <TextBlock Text="{DynamicResource ResourceKey=ToolbarButtons_SettingsButton_Text}" LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,3"/>
     </ToggleButton>
     <Image Style="{StaticResource SideBarButtonIcon}" Source="/BedrockLauncher;component/Resources/images/ui/icons/settings_icon.png"/>
 </Grid>

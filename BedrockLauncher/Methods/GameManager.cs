@@ -180,7 +180,7 @@ namespace BedrockLauncher.Methods
                 }
                 catch (Exception e)
                 {
-                    Debug.WriteLine("App re-register failed:\n" + e.ToString());
+                    Program.Log("App re-register failed:\n" + e.ToString());
                     Application.Current.Dispatcher.Invoke(() =>
                     {
                         ErrorScreenShow.errormsg("appregistererror");
@@ -196,7 +196,7 @@ namespace BedrockLauncher.Methods
                     var pkg = await AppDiagnosticInfo.RequestInfoForPackageAsync(MINECRAFT_PACKAGE_FAMILY);
                     if (pkg.Count > 0)
                         await pkg[0].LaunchAsync();
-                    Debug.WriteLine("App launch finished!");
+                    Program.Log("App launch finished!");
                     HasLaunchTask = false;
                     v.StateChangeInfo.IsLaunching = false;
                     Application.Current.Dispatcher.Invoke(() => { OnGameStateChanged(GameStateArgs.Empty); });
@@ -213,7 +213,7 @@ namespace BedrockLauncher.Methods
                 }
                 catch (Exception e)
                 {
-                    Debug.WriteLine("App launch failed:\n" + e.ToString());
+                    Program.Log("App launch failed:\n" + e.ToString());
                     Application.Current.Dispatcher.Invoke(() =>
                     {
                         ErrorScreenShow.errormsg("applauncherror");
@@ -232,7 +232,7 @@ namespace BedrockLauncher.Methods
             v.StateChangeInfo.IsInitializing = true;
             v.StateChangeInfo.CancelCommand = new RelayCommand((o) => cancelSource.Cancel());
 
-            Debug.WriteLine("Download start");
+            Program.Log("Download start");
             Task.Run(async () =>
             {
                 string dlPath = "Minecraft-" + v.Name + ".Appx";
@@ -244,16 +244,16 @@ namespace BedrockLauncher.Methods
                     {
                         _userVersionDownloaderLoginTask.Start();
                     }
-                    Debug.WriteLine("Waiting for authentication");
+                    Program.Log("Waiting for authentication");
                     try
                     {
                         await _userVersionDownloaderLoginTask;
-                        Debug.WriteLine("Authentication complete");
+                        Program.Log("Authentication complete");
                     }
                     catch (Exception e)
                     {
                         v.StateChangeInfo = null;
-                        Debug.WriteLine("Authentication failed:\n" + e.ToString());
+                        Program.Log("Authentication failed:\n" + e.ToString());
                         MessageBox.Show("Failed to authenticate. Please make sure your account is subscribed to the beta programme.\n\n" + e.ToString(), "Authentication failed");
                         return;
                     }
@@ -267,20 +267,20 @@ namespace BedrockLauncher.Methods
                             v.StateChangeInfo.IsDownloading = true;
                             IsDownloading = true;
                             Application.Current.Dispatcher.Invoke(() => { OnGameStateChanged(GameStateArgs.Empty); });
-                            Debug.WriteLine("Actual download started");
+                            Program.Log("Actual download started");
                             v.StateChangeInfo.IsInitializing = false;
                             if (total.HasValue)
                                 v.StateChangeInfo.TotalSize_Downloading = total.Value;
                         }
                         v.StateChangeInfo.DownloadedBytes_Downloading = current;
                     }, cancelSource.Token);
-                    Debug.WriteLine("Download complete");
+                    Program.Log("Download complete");
                     v.StateChangeInfo.IsDownloading = false;
                     IsDownloading = false;
                 }
                 catch (Exception e)
                 {
-                    Debug.WriteLine("Download failed:\n" + e.ToString());
+                    Program.Log("Download failed:\n" + e.ToString());
                     if (!(e is TaskCanceledException))
                         MessageBox.Show("Download failed:\n" + e.ToString());
                     v.StateChangeInfo = null;
@@ -334,7 +334,7 @@ namespace BedrockLauncher.Methods
                     string tmpDir = GetBackupMinecraftDataDir();
                     if (!Directory.Exists(tmpDir))
                     {
-                        Debug.WriteLine("Moving Minecraft data to: " + tmpDir);
+                        Program.Log("Moving Minecraft data to: " + tmpDir);
                         Directory.Move(data.LocalFolder.Path, tmpDir);
                     }
 
@@ -342,7 +342,7 @@ namespace BedrockLauncher.Methods
 
                     if (!Directory.Exists(recoveryPath)) Directory.CreateDirectory(recoveryPath);
 
-                    Debug.WriteLine("Moving backup Minecraft data to: " + recoveryPath);
+                    Program.Log("Moving backup Minecraft data to: " + recoveryPath);
                     RestoreMove(tmpDir, recoveryPath);
                     Directory.Delete(tmpDir, true);
 
@@ -367,7 +367,7 @@ namespace BedrockLauncher.Methods
             Stream zipReadingStream = null;
             try
             {
-                Debug.WriteLine("Extraction started");
+                Program.Log("Extraction started");
                 v.StateChangeInfo.IsExtracting = true;
                 string dirPath = v.GameDirectory;
                 if (Directory.Exists(dirPath))
@@ -391,12 +391,12 @@ namespace BedrockLauncher.Methods
                 v.StateChangeInfo = null;
                 File.Delete(Path.Combine(dirPath, "AppxSignature.p7x"));
                 File.Delete(dlPath);
-                Debug.WriteLine("Extracted successfully");
+                Program.Log("Extracted successfully");
                 InvokeLaunch(v);
             }
             catch (Exception e)
             {
-                Debug.WriteLine("Extraction failed:\n" + e.ToString());
+                Program.Log("Extraction failed:\n" + e.ToString());
                 MessageBox.Show("Extraction failed:\n" + e.ToString());
                 if (zipReadingStream != null) zipReadingStream.Close();
                 v.StateChangeInfo.IsDownloading = false;
@@ -408,7 +408,7 @@ namespace BedrockLauncher.Methods
 
         private async Task RemovePackage(MCVersion v, Package pkg)
         {
-            Debug.WriteLine("Removing package: " + pkg.Id.FullName);
+            Program.Log("Removing package: " + pkg.Id.FullName);
             v.StateChangeInfo.DeploymentPackageName = pkg.Id.FullName;
             v.StateChangeInfo.IsRemovingPackage = true;
             if (!pkg.IsDevelopmentMode)
@@ -419,10 +419,10 @@ namespace BedrockLauncher.Methods
             }
             else
             {
-                Debug.WriteLine("Package is in development mode");
+                Program.Log("Package is in development mode");
                 await DeploymentProgressWrapper(v, new PackageManager().RemovePackageAsync(pkg.Id.FullName, RemovalOptions.PreserveApplicationData));
             }
-            Debug.WriteLine("Removal of package done: " + pkg.Id.FullName);
+            Program.Log("Removal of package done: " + pkg.Id.FullName);
             v.StateChangeInfo.DeploymentPackageName = "";
             v.StateChangeInfo.IsRemovingPackage = false;
         }
@@ -444,17 +444,17 @@ namespace BedrockLauncher.Methods
                 string location = GetPackagePath(pkg);
                 if (location == gameDir)
                 {
-                    Debug.WriteLine("Skipping package removal - same path: " + pkg.Id.FullName + " " + location);
+                    Program.Log("Skipping package removal - same path: " + pkg.Id.FullName + " " + location);
                     return;
                 }
                 await RemovePackage(v, pkg);
             }
-            Debug.WriteLine("Registering package");
+            Program.Log("Registering package");
             string manifestPath = Path.Combine(gameDir, "AppxManifest.xml");
             v.StateChangeInfo.DeploymentPackageName = GetPackageNameFromMainifest(manifestPath);
             v.StateChangeInfo.IsRegisteringPackage = true;
             await DeploymentProgressWrapper(v, new PackageManager().RegisterPackageAsync(new Uri(manifestPath), null, DeploymentOptions.DevelopmentMode));
-            Debug.WriteLine("App re-register done!");
+            Program.Log("App re-register done!");
             v.StateChangeInfo.DeploymentPackageName = "";
             v.StateChangeInfo.IsRegisteringPackage = false;
 
@@ -485,19 +485,19 @@ namespace BedrockLauncher.Methods
             TaskCompletionSource<int> src = new TaskCompletionSource<int>();
             t.Progress += (v, p) =>
             {
-                Debug.WriteLine("Deployment progress: " + p.state + " " + p.percentage + "%");
+                Program.Log("Deployment progress: " + p.state + " " + p.percentage + "%");
                 version.StateChangeInfo.DeploymentProgress = Convert.ToInt64(p.percentage);
             };
             t.Completed += (v, p) =>
             {
                 if (p == AsyncStatus.Error)
                 {
-                    Debug.WriteLine("Deployment failed: " + v.GetResults().ErrorText);
+                    Program.Log("Deployment failed: " + v.GetResults().ErrorText);
                     src.SetException(new Exception("Deployment failed: " + v.GetResults().ErrorText));
                 }
                 else
                 {
-                    Debug.WriteLine("Deployment done: " + p);
+                    Program.Log("Deployment done: " + p);
                     src.SetResult(1);
                 }
             };

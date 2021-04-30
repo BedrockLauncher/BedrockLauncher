@@ -371,7 +371,7 @@ namespace BedrockLauncher.Pages
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex);
+                    Program.LogConsoleLine(ex);
                 }
 
             }

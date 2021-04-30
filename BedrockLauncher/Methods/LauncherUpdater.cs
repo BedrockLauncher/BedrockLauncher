@@ -19,7 +19,7 @@ namespace BedrockLauncher.Methods
         private string latestTagDescription;
         public LauncherUpdater()
         {
-            Debug.WriteLine("Checking for updates");
+            Program.Log("Checking for updates");
             CheckUpdates();
         }
 
@@ -33,7 +33,7 @@ namespace BedrockLauncher.Methods
             }
             catch (Exception err)
             {
-                Debug.WriteLine("Check for updates failed\nError:" + err.Message);
+                Program.Log("Check for updates failed\nError:" + err.Message);
                 latestTag = "";
                 latestTagDescription = "";
             }
@@ -54,15 +54,15 @@ namespace BedrockLauncher.Methods
             {
                 string[] urlParts = node.Attributes["content"].Value.Split('/');
                 this.latestTag = urlParts[urlParts.Length - 1]; // return latest part, for example 0.1.2 from full link
-                Debug.WriteLine("Current tag: " + Properties.Settings.Default.Version);
-                Debug.WriteLine("Latest tag: " + latestTag);
+                Program.Log("Current tag: " + Properties.Settings.Default.Version);
+                Program.Log("Latest tag: " + latestTag);
 
                 try
                 {
                     // if current tag < than latest tag
                     if (int.Parse(Properties.Settings.Default.Version.Replace(".", "")) < int.Parse(latestTag.Replace(".", "")))
                     {
-                        Debug.WriteLine("New version available!");
+                        Program.Log("New version available!");
                         ShowUpdateButton(5000);
                     }
                 }
@@ -97,7 +97,7 @@ namespace BedrockLauncher.Methods
             }
             catch (Exception err)
             {
-                Debug.WriteLine("Installer launch failed\nError: " + err);
+                Program.Log("Installer launch failed\nError: " + err);
             }
         }
         async private void ShowUpdateButton(int time) 
@@ -142,7 +142,7 @@ namespace BedrockLauncher.Methods
         }
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("Trying to update");
+            Program.Log("Trying to update");
             startUpdate();
         }
         public string getLatestTag()

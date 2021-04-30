@@ -36,7 +36,7 @@ namespace BedrockLauncher.Controls.Items
 
         private void ContextMenu_ContextMenuClosing(object sender, ContextMenuEventArgs e)
         {
-            Console.WriteLine("Closed");
+            Program.LogConsoleLine("Closed");
         }
 
         private SkinsPage GetParent()

@@ -13,13 +13,13 @@
     <ToggleButton IsThreeState="False" x:Name="SourceButton" Style="{StaticResource SideBarButtonStyle}" Click="SourceButton_Click" FontWeight="Normal" VerticalAlignment="Stretch" Checked="SourceButton_Checked" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="True" IsChecked="False">
         <ToggleButton.ContextMenu>
             <ContextMenu x:Name="ProfileContextMenu" ContextMenuClosing="ProfileContextMenu_ContextMenuClosing" Style="{DynamicResource NoCheckboxContextMenu}" IsOpen="False">
-                <MenuItem x:Name="AddProfileButton" Style="{DynamicResource IndentedMenuItem}" Header="{DynamicResource MainWindow_AddProfile}" Click="AddProfileButton_Click"></MenuItem>
-                <MenuItem x:Name="RemoveProfileButton" Style="{DynamicResource IndentedMenuItem}" Foreground="Red" Header="{DynamicResource MainWindow_RemoveProfile}" Click="RemoveProfileButton_Click"></MenuItem>
-                <MenuItem x:Name="ManageProfilesButton" Style="{DynamicResource IndentedMenuItem}" Header="{DynamicResource MainWindow_ManageProfiles}" IsEnabled="False" Click="ManageProfilesButton_Click" Visibility="Collapsed"></MenuItem>
-                <MenuItem x:Name="EditProfileButton" Style="{DynamicResource IndentedMenuItem}" Header="{DynamicResource MainWindow_ProfileSettings}" IsEnabled="False" Click="EditProfileButton_Click" Visibility="Collapsed"></MenuItem>
+                <MenuItem x:Name="AddProfileButton" Style="{DynamicResource IndentedMenuItem}" Header="{DynamicResource ProfileButton_AddProfile_Text}" Click="AddProfileButton_Click"></MenuItem>
+                <MenuItem x:Name="RemoveProfileButton" Style="{DynamicResource IndentedMenuItem}" Foreground="Red" Header="{DynamicResource ProfileButton_RemoveProfile_Text}" Click="RemoveProfileButton_Click"></MenuItem>
+                <MenuItem x:Name="ManageProfilesButton" Style="{DynamicResource IndentedMenuItem}" Header="{DynamicResource ProfileButton_ManageProfiles_Text}" IsEnabled="False" Click="ManageProfilesButton_Click" Visibility="Collapsed"></MenuItem>
+                <MenuItem x:Name="EditProfileButton" Style="{DynamicResource IndentedMenuItem}" Header="{DynamicResource ProfileButton_ProfileSettings_Text}" IsEnabled="False" Click="EditProfileButton_Click" Visibility="Collapsed"></MenuItem>
                 <MenuItem Style="{DynamicResource IndentedMenuItem}" IsEnabled="False">
                     <MenuItem.Header>
-                        <TextBlock Margin="0,18,0,0" Foreground="#FF929292" Text="{DynamicResource MainWindow_ChooseAccount}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+                        <TextBlock Margin="0,18,0,0" Foreground="#FF929292" Text="{DynamicResource ProfileButton_ChooseAccount_Text}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                     </MenuItem.Header>
                 </MenuItem>
                 <Separator x:Name="OtherAccountsSeperator" Foreground="#FF929292" Background="#FF929292"></Separator>
@@ -28,7 +28,7 @@
         <ToggleButton.Content>
             <Grid Margin="5,0,0,0">
                 <TextBlock x:Name="ProfileName" Text="{Binding CurrentProfile, Mode=TwoWay, Source={x:Static p:Settings.Default}, UpdateSourceTrigger=PropertyChanged}" FontWeight="Normal" LineStackingStrategy="BlockLineHeight" LineHeight="14" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="0,0,0,3"/>
-                <TextBlock Margin="0,14,0,0" Foreground="#FF929292" Text="{DynamicResource MainWindow_ProfileType}" FontWeight="Normal" FontSize="12"/>
+                <TextBlock Margin="0,14,0,0" Foreground="#FF929292" Text="{DynamicResource ToolbarButtons_ProfileButton_ProfileType_Text}" FontWeight="Normal" FontSize="12"/>
             </Grid>
         </ToggleButton.Content>
     </ToggleButton>

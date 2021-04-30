@@ -66,7 +66,7 @@ namespace BedrockLauncher.Controls
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Program.LogConsoleLine(ex);
             }
         }
 
@@ -179,7 +179,7 @@ namespace BedrockLauncher.Controls
                     if (resource_path.StartsWith(@"resources/images/installation_icons"))
                     {
                         string path = @"/BedrockLauncher;component/" + resource_path;
-                        Console.WriteLine(path);
+                        Program.LogConsoleLine(path);
                         resourcePaths.Add(path);
                     }
                 }

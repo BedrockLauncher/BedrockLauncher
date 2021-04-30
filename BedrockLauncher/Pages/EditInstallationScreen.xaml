@@ -34,7 +34,7 @@
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Button VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="2"  Style="{StaticResource ClosePopupButton}" Name="CloseButton" Click="CloseButton_Click" Margin="0,0,10,0"></Button>
-            <TextBlock Focusable="False" Grid.ColumnSpan="3"  Text="{DynamicResource AddInstallationScreen_Header}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="20" x:Name="Header"></TextBlock>
+            <TextBlock Focusable="False" Grid.ColumnSpan="3"  Text="{DynamicResource EditInstallationScreen_Title}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="20" x:Name="Header"></TextBlock>
         </Grid>
         <Separator Grid.Row="1"></Separator>
         <Grid Grid.Row="2">
@@ -42,9 +42,9 @@
                 <StackPanel>
                     <controls:BlockPicker x:Name="InstallationIconSelect" VerticalAlignment="Center" HorizontalAlignment="Center"></controls:BlockPicker>
                     <StackPanel Width="330" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch">
-                        <TextBlock Margin="0,28,0,5" Text="{DynamicResource AddInstallationScreen_NameSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+                        <TextBlock Margin="0,28,0,5" Text="{DynamicResource EditInstallationScreen_NameSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                         <TextBox Height="32" Style="{DynamicResource InstallationNameTextbox}" Width="330" x:Name="InstallationNameField" AcceptsReturn="False" SpellCheck.IsEnabled="False"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Text=""></TextBox>
-                        <TextBlock Margin="0,28,0,5" Text="{DynamicResource AddInstallationScreen_VersionSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+                        <TextBlock Margin="0,28,0,5" Text="{DynamicResource EditInstallationScreen_VersionSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                         <ComboBox Height="32" x:Name="InstallationVersionSelect" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" ItemContainerStyle="{DynamicResource ComboBoxItemStyle2}" Foreground="White" Padding="13,0,0,0" Style="{DynamicResource ComboBoxStyle2}" SelectedIndex="1" FontSize="14">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
@@ -52,7 +52,7 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                        <TextBlock Margin="0,28,0,5" Text="{DynamicResource AddInstallationScreen_DirectorySubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+                        <TextBlock Margin="0,28,0,5" Text="{DynamicResource EditInstallationScreen_DirectorySubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                         <TextBox Height="32" Style="{DynamicResource InstallationDirectoryTextbox}" Width="330" x:Name="InstallationDirectoryField" TextChanged="InstallationDirectoryField_TextChanged" AcceptsReturn="False" SpellCheck.IsEnabled="False"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Text="" TextInput="InstallationDirectoryField_TextInput"></TextBox>
                     </StackPanel>
                 </StackPanel>
@@ -62,7 +62,7 @@
         <Separator Grid.Row="3"></Separator>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="4" Height="45" Margin="15,0">
             <Button x:Name="CancelButton" Click="CancelButton_Click" Content="{DynamicResource GeneralText_Cancel}" Style="{DynamicResource DialogButton}"></Button>
-            <Button x:Name="CreateButton" Click="CreateButton_Click" Content="{DynamicResource AddInstallationScreen_CreateButton}" Style="{DynamicResource DialogButton_Green}"></Button>
+            <Button x:Name="CreateButton" Click="CreateButton_Click" Content="{DynamicResource EditInstallationScreen_CreateButton}" Style="{DynamicResource DialogButton_Green}"></Button>
         </StackPanel>
     </Grid>
 </Page>

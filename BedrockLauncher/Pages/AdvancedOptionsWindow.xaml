@@ -14,12 +14,12 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="75"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Text="{DynamicResource AdvancedSettingsWindow_AdvancedTitle}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="20" x:Name="Header"></TextBlock>
+        <TextBlock Text="{DynamicResource AdvancedSettings_Title}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="20" x:Name="Header"></TextBlock>
         <Separator Grid.Row="1"></Separator>
         <StackPanel Grid.Row="2">
-            <TextBlock Margin="42,42,0,0" Text="{DynamicResource AdvancedSettingsWindow_LauncherSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-            <CheckBox x:Name="portableModeCheckBox" Click="useFixedInstallLocation_Click" Foreground="White" Content="{DynamicResource AdvancedSettingsWindow_PortableMode}" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
-            <TextBlock Margin="42,22,0,0" Text="{DynamicResource AdvancedSettingsWindow_PathSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+            <TextBlock Margin="42,42,0,0" Text="{DynamicResource AdvancedSettings_LauncherOptions_Text}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+            <CheckBox x:Name="portableModeCheckBox" Click="useFixedInstallLocation_Click" Foreground="White" Content="{DynamicResource AdvancedSettings_PortableMode_Text}" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
+            <TextBlock Margin="42,22,0,0" Text="{DynamicResource AdvancedSettings_PathSubtitle_Text}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
             <Border Height="32" Background="#FF131313" Width="512" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" CornerRadius="4">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -29,18 +29,18 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBox IsReadOnly="True" x:Name="StorageDirectoryTextBox" FontSize="14" Padding="10,4,5,3"></TextBox>
-                    <Button Grid.Column="1" Content="{StaticResource GeneralText_Browse}" x:Name="BrowseDirectoryButton" Click="BrowseDirectoryButton_Click" HorizontalAlignment="Center" Margin="5" Style="{StaticResource TextBoxButton}"></Button>
+                    <Button Grid.Column="1" Content="{StaticResource GeneralSubtitles_Browse}" x:Name="BrowseDirectoryButton" Click="BrowseDirectoryButton_Click" HorizontalAlignment="Center" Margin="5" Style="{StaticResource TextBoxButton}"></Button>
                     <Grid Grid.Column="2" Width="1" Background="Gray" Margin="2,5"></Grid>
-                    <Button Grid.Column="3" Content="{StaticResource GeneralText_Reset}" x:Name="ResetDirectoryButton" Click="ResetDirectoryButton_Click" HorizontalAlignment="Center" Margin="5" Style="{StaticResource TextBoxButton}"></Button>
+                    <Button Grid.Column="3" Content="{StaticResource GeneralSubtitles_Reset}" x:Name="ResetDirectoryButton" Click="ResetDirectoryButton_Click" HorizontalAlignment="Center" Margin="5" Style="{StaticResource TextBoxButton}"></Button>
                 </Grid>
             </Border>
 
 
         </StackPanel>
-        <TextBlock Grid.Row="2" Margin="42,0,0,42" Text="{DynamicResource AdvancedSettingsWindow_Notice}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+        <TextBlock Grid.Row="2" Margin="42,0,0,42" Text="{DynamicResource AdvancedSettings_Notice_Text}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
         <Separator Grid.Row="3"></Separator>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="4" Height="45" Margin="15,0">
-            <Button x:Name="RestartButton" Click="RestartButton_Click" Content="{DynamicResource AdvancedSettingsWindow_RestartButton}" Style="{DynamicResource DialogButton_Red}"></Button>
+            <Button x:Name="RestartButton" Click="RestartButton_Click" Content="{DynamicResource AdvancedSettings_RestartButton_Text}" Style="{DynamicResource DialogButton_Red}"></Button>
         </StackPanel>
     </Grid>
 </Window>

@@ -43,7 +43,7 @@ namespace BedrockLauncher.Classes.SkinPack
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Program.LogConsoleLine(ex);
             }
 
         }
@@ -67,7 +67,7 @@ namespace BedrockLauncher.Classes.SkinPack
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Program.LogConsoleLine(ex);
                 this.LangFiles = new string[] { };
             }
 
@@ -85,7 +85,7 @@ namespace BedrockLauncher.Classes.SkinPack
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex);
+                    Program.LogConsoleLine(ex);
                 }
 
             }

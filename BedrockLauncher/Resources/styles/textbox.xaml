@@ -28,7 +28,7 @@
                     <ControlTemplate.Resources>
                         <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                             <VisualBrush.Visual>
-                                <Label Opacity="0.6" Padding="10,0" Content="{DynamicResource AddInstallationScreen_NameHintText}" Foreground="LightGray" />
+                                <Label Opacity="0.6" Padding="10,0" Content="{DynamicResource EditInstallationScreen_NameHintText}" Foreground="LightGray" />
                             </VisualBrush.Visual>
                         </VisualBrush>
                     </ControlTemplate.Resources>
@@ -87,7 +87,7 @@
                     <ControlTemplate.Resources>
                         <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                             <VisualBrush.Visual>
-                                <Label Opacity="0.6" Padding="10,0" Content="{DynamicResource AddInstallationScreen_DirectoryHintText}" Foreground="LightGray" />
+                                <Label Opacity="0.6" Padding="10,0" Content="{DynamicResource EditInstallationScreen_DirectoryHintText}" Foreground="LightGray" />
                             </VisualBrush.Visual>
                         </VisualBrush>
                     </ControlTemplate.Resources>

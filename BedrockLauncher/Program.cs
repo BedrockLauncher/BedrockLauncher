@@ -19,6 +19,41 @@ namespace BedrockLauncher
 {
     public class Program
     {
+        public enum LogType
+        {
+            DebugLine,
+            Debug,
+            Console,
+            ConsoleLine
+            
+        }
+
+        public static void LogConsoleLine(object o)
+        {
+            Log(o, LogType.ConsoleLine);
+        }
+
+        public static void LogConsoleLine(string o)
+        {
+            Log(o, LogType.ConsoleLine);
+        }
+
+        public static void Log(string o, LogType logType = LogType.DebugLine)
+        {
+            if (logType.HasFlag(LogType.Console)) Console.Write(o);
+            if (logType.HasFlag(LogType.ConsoleLine)) Console.WriteLine(o);
+            if (logType.HasFlag(LogType.Debug)) Debug.Write(o);
+            if (logType.HasFlag(LogType.DebugLine)) Debug.WriteLine(o);
+        }
+
+        public static void Log(object o, LogType logType = LogType.DebugLine)
+        {
+            if (logType.HasFlag(LogType.Console)) Console.Write(o);
+            if (logType.HasFlag(LogType.ConsoleLine)) Console.WriteLine(o);
+            if (logType.HasFlag(LogType.Debug)) Debug.Write(o);
+            if (logType.HasFlag(LogType.DebugLine)) Debug.WriteLine(o);
+        }
+
         public static void StartLogging(StartupEventArgs e)
         {
             if (File.Exists("Log.txt")) { File.Delete("Log.txt"); }
@@ -47,7 +82,7 @@ namespace BedrockLauncher
                             switch (localKey.GetValue("AllowDevelopmentWithoutDevLicense"))
                             {
                                 case 0:
-                                    Debug.WriteLine("Developer mode disabled, trying to turn on");
+                                    Program.Log("Developer mode disabled, trying to turn on");
                                     localKey.SetValue("AllowDevelopmentWithoutDevLicense", 1);
                                     break;
                                 case null:
@@ -58,7 +93,7 @@ namespace BedrockLauncher
                     }
                     catch (Exception r)
                     {
-                        Debug.Write("Cant enable developer mode for X64 machine Error: " + r);
+                        Program.Log("Cant enable developer mode for X64 machine Error: " + r, LogType.Debug);
                     }
                     break;
                 case false:
@@ -72,7 +107,7 @@ namespace BedrockLauncher
                             switch (localKey32.GetValue("AllowDevelopmentWithoutDevLicense"))
                             {
                                 case 0:
-                                    Debug.WriteLine("Developer mode disabled, trying to turn on");
+                                    Program.Log("Developer mode disabled, trying to turn on");
                                     localKey32.SetValue("AllowDevelopmentWithoutDevLicense", 1);
                                     break;
                                 case null:
@@ -83,7 +118,7 @@ namespace BedrockLauncher
                     }
                     catch (Exception r)
                     {
-                        Debug.Write("Cant enable developer mode for X86 machine Error: " + r);
+                        Program.Log("Cant enable developer mode for X86 machine Error: " + r, LogType.Debug);
                     }
                     break;
             }

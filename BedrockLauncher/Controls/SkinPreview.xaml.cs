@@ -165,7 +165,7 @@ namespace BedrockLauncher.Controls
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Program.LogConsoleLine(ex);
             }
         }
 

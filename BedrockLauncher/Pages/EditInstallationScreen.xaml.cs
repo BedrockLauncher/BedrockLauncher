@@ -51,15 +51,15 @@ namespace BedrockLauncher.Pages
             InstallationIconSelect.Init(i.IconPath, i.IsCustomIcon);
             EditingIndex = index;
 
-            Header.SetResourceReference(TextBlock.TextProperty, "EditingInstallationScreen_Header");
-            CreateButton.SetResourceReference(Button.ContentProperty, "EditingInstallationScreen_SaveButton");
+            Header.SetResourceReference(TextBlock.TextProperty, "EditInstallationScreen_AltTitle");
+            CreateButton.SetResourceReference(Button.ContentProperty, "EditInstallationScreen_AltCreateButton");
         }
 
 
         private void GetManualComboBoxEntries()
         {
-            Classes.MCVersion latest_release = new Classes.MCVersion("latest_release", Application.Current.Resources["AddInstallationScreen_LatestRelease"].ToString(), false, ConfigManager.GameManager);
-            Classes.MCVersion latest_beta = new Classes.MCVersion("latest_beta", Application.Current.Resources["AddInstallationScreen_LatestSnapshot"].ToString(), false, ConfigManager.GameManager);
+            Classes.MCVersion latest_release = new Classes.MCVersion("latest_release", Application.Current.Resources["EditInstallationScreen_LatestRelease"].ToString(), false, ConfigManager.GameManager);
+            Classes.MCVersion latest_beta = new Classes.MCVersion("latest_beta", Application.Current.Resources["EditInstallationScreen_LatestSnapshot"].ToString(), false, ConfigManager.GameManager);
             Versions.InsertRange(0, new List<Classes.MCVersion>() { latest_release, latest_beta });
         }
 

@@ -23,7 +23,7 @@
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Button VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="2"  Style="{StaticResource ClosePopupButton}" Name="CloseButton" Click="CloseButton_Click" Margin="0,0,10,0"></Button>
-            <TextBlock Focusable="False" Grid.ColumnSpan="3"  Text="{DynamicResource EditSkinScreen_Header}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="20" x:Name="Header"></TextBlock>
+            <TextBlock Focusable="False" Grid.ColumnSpan="3"  Text="{DynamicResource EditSkinScreen_Title}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="20" x:Name="Header"></TextBlock>
         </Grid>
         <Separator Grid.Row="1"></Separator>
         <Grid Grid.Row="2">
@@ -43,7 +43,7 @@
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <ComboBox TextBoxBase.TextChanged="TextureCombobox_TextChanged" SelectionChanged="TextureCombobox_SelectionChanged" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Style="{DynamicResource ComboBoxStyle2}" x:Name="TextureCombobox" IsEditable="True"></ComboBox>
-                        <Button Grid.Column="1" Content="{StaticResource GeneralText_Browse}" x:Name="BrowseButton" Click="BrowseButton_Click" HorizontalAlignment="Center" Margin="5" Style="{StaticResource TextBoxButton}"></Button>
+                        <Button Grid.Column="1" Content="{StaticResource GeneralSubtitles_Browse}" x:Name="BrowseButton" Click="BrowseButton_Click" HorizontalAlignment="Center" Margin="5" Style="{StaticResource TextBoxButton}"></Button>
                     </Grid>
                 </Border>
                 <TextBlock Margin="0,18,0,5" Text="{DynamicResource EditSkinScreen_TypeSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>

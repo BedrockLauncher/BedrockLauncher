@@ -15,9 +15,9 @@
              SelectedIndex="1"
              FontSize="14">
         <ComboBoxItem>
-            <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" Text="{DynamicResource MainWindowSettingsScreen_en_US}" FontWeight="Normal" VerticalAlignment="Center"/>
+            <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" Text="{DynamicResource LanguageEntries_en_US}" FontWeight="Normal" VerticalAlignment="Center"/>
         </ComboBoxItem>
         <ComboBoxItem>
-            <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"  Text="{DynamicResource MainWindowSettingsScreen_ru_RU}" FontWeight="Normal" VerticalAlignment="Center"/>
+            <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"  Text="{DynamicResource LanguageEntries_ru_RU}" FontWeight="Normal" VerticalAlignment="Center"/>
         </ComboBoxItem>
 </ComboBox>

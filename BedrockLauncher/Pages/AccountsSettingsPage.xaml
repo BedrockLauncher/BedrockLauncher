@@ -23,7 +23,7 @@
     </Page.Resources>
     <Grid Margin="0,0,0,0">
         <StackPanel Margin="42,42,0,0">
-            <TextBlock FontWeight="Bold" Margin="0,0,0,5"  FontSize="11" Text="{DynamicResource AcountsSettingsScreen_AccountDropdownSubtitle}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <TextBlock FontWeight="Bold" Margin="0,0,0,5"  FontSize="11" Text="{DynamicResource AcountsSettingsPage_AccountDropdown_Subtitle}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Left"/>
             <controls:InsiderSelector x:Name="AccountPicker" HorizontalAlignment="Left"></controls:InsiderSelector>
         </StackPanel>
     </Grid>

@@ -228,6 +228,7 @@
       <DependentUpon>SkinPreview.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\InvertableBooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\StringToUpperConverter.cs" />
     <Compile Include="Core\ConfigManager.cs" />
     <Compile Include="Classes\MCProfile.cs" />
     <Compile Include="Classes\MCProfilesList.cs" />
