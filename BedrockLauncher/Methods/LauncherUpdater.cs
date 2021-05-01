@@ -14,7 +14,7 @@ namespace BedrockLauncher.Methods
 {
     public class LauncherUpdater
     {
-        private string LATEST_BUILD_LINK { get => Properties.Settings.Default.GithubPage + "/releases/latest"; }
+        private string LATEST_BUILD_LINK { get => BL_Core.Properties.Settings.Default.GithubPage + "/releases/latest"; }
         private string latestTag;
         private string latestTagDescription;
         public LauncherUpdater()
@@ -54,13 +54,13 @@ namespace BedrockLauncher.Methods
             {
                 string[] urlParts = node.Attributes["content"].Value.Split('/');
                 this.latestTag = urlParts[urlParts.Length - 1]; // return latest part, for example 0.1.2 from full link
-                Program.Log("Current tag: " + Properties.Settings.Default.Version);
+                Program.Log("Current tag: " + BL_Core.Properties.Settings.Default.Version);
                 Program.Log("Latest tag: " + latestTag);
 
                 try
                 {
                     // if current tag < than latest tag
-                    if (int.Parse(Properties.Settings.Default.Version.Replace(".", "")) < int.Parse(latestTag.Replace(".", "")))
+                    if (int.Parse(BL_Core.Properties.Settings.Default.Version.Replace(".", "")) < int.Parse(latestTag.Replace(".", "")))
                     {
                         Program.Log("New version available!");
                         ShowUpdateButton(5000);

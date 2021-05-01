@@ -5,74 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Installer"
         mc:Ignorable="d"
-        Title="Minecraft Bedrock Launcher Setup Wizard" Height="450" Width="800" WindowStyle="ThreeDBorderWindow" Foreground="White" Background="#FF212121" ResizeMode="CanMinimize" MouseDown="Window_MouseDown" Icon="icon.ico" Initialized="Window_Initialized">
-    <Window.Resources>
-        <Style x:Key="FocusVisual">
-            <Setter Property="Control.Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <SolidColorBrush x:Key="Button.Static.Background" Color="#FF262626"/>
-        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF686868"/>
-        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FF515151"/>
-        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF868686"/>
-        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FF515151"/>
-        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FFFF"/>
-        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FF515151"/>
-        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
-        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Padding" Value="1"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
-                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="+18,0,+18,0" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsDefaulted" Value="true">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
-                                <Setter Property="Cursor" Value="Hand"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
-                                <Setter Property="Cursor" Value="Hand"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
-                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
-                            </Trigger>
-                            <Trigger Property="IsKeyboardFocused" Value="True">
-                                <Setter Property="BorderBrush" TargetName="border" Value="White"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
+        Title="{DynamicResource Installer_Title}" Height="450" Width="800" WindowStyle="ThreeDBorderWindow" Foreground="White" Background="#FF212121" ResizeMode="CanMinimize" MouseDown="Window_MouseDown" Icon="icon.ico" Initialized="Window_Initialized">
     <Grid Margin="0">
-        <Frame x:Name="MainFrame" Margin="0,0,0,50" NavigationUIVisibility="Hidden" Source="/Installer;component/WelcomePage.xaml"></Frame>
-        <Button x:Name="CancelBtn" Foreground="White" FontFamily="Arial" FontSize="13" FontWeight="Bold" Click="CancelBtn_Click" Content="Cancel" Margin="0,0,10,10" Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-        <Button x:Name="NextBtn" Foreground="White" FontFamily="Arial" FontSize="13" FontWeight="Bold" Click="NextBtn_Click" Content="Next" Margin="0,0,130,10" Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-        <Button x:Name="BackBtn" Foreground="White" FontFamily="Arial" FontSize="13" FontWeight="Bold" Click="BackBtn_Click" IsEnabled="False" Content="Back" Margin="0,0,240,10" Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-        <Button x:Name="FinishBtn" Visibility="Hidden" Foreground="White" FontFamily="Arial" FontSize="13" FontWeight="Bold" Content="Finish" Margin="0,0,10,10" Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <Frame x:Name="MainFrame" Margin="0,0,0,50" NavigationUIVisibility="Hidden" Source="/Installer;component/Pages/WelcomePage.xaml"></Frame>
+        <Button x:Name="CancelBtn" Style="{DynamicResource DialogButton}" Foreground="White" FontFamily="Arial" FontSize="13" FontWeight="Bold" Click="CancelBtn_Click" Content="{DynamicResource Installer_Cancel_Text}" Margin="0,0,10,10" Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <Button x:Name="NextBtn" Style="{DynamicResource DialogButton}" Foreground="White" FontFamily="Arial" FontSize="13" FontWeight="Bold" Click="NextBtn_Click" Content="{DynamicResource Installer_Next_Text}" Margin="0,0,130,10" Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <Button x:Name="BackBtn" Style="{DynamicResource DialogButton}" Foreground="White" FontFamily="Arial" FontSize="13" FontWeight="Bold" Click="BackBtn_Click" IsEnabled="False" Content="{DynamicResource Installer_Back_Text}" Margin="0,0,240,10" Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <Button x:Name="FinishBtn" Style="{DynamicResource DialogButton}" Visibility="Hidden" Foreground="White" FontFamily="Arial" FontSize="13" FontWeight="Bold" Content="{DynamicResource Installer_Finish_Text}" Margin="0,0,10,10" Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
     </Grid>
 </Window>

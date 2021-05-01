@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using Installer.Pages;
 
 namespace Installer
 {
@@ -77,6 +78,7 @@ namespace Installer
 
         private void Window_Initialized(object sender, EventArgs e)
         {
+            BL_Core.LanguageManager.Init();
             string[] ConsoleArgs = Environment.GetCommandLineArgs();
             foreach (string argument in ConsoleArgs)
             {

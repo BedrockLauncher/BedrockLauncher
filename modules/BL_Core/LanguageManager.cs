@@ -8,19 +8,14 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Forms.Design;
-using Newtonsoft.Json;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Threading;
 using System.Windows.Data;
-using BedrockLauncher.Interfaces;
-using BedrockLauncher.Methods;
-using BedrockLauncher.Classes;
 
-namespace BedrockLauncher.Core
+namespace BL_Core
 {
     public static class LanguageManager
     {
@@ -28,7 +23,7 @@ namespace BedrockLauncher.Core
         {
             ResourceDictionary dict = new ResourceDictionary
             {
-                Source = new Uri($"..\\Resources\\text\\lang.{language}.xaml", UriKind.Relative)
+                Source = new Uri($"\\BL_Core;component\\Resources\\text\\lang.{language}.xaml", UriKind.Relative),
             };
             Application.Current.Resources.MergedDictionaries.Add(dict);
         }
@@ -43,7 +38,6 @@ namespace BedrockLauncher.Core
                     switch (ci.Name)
                     {
                         default:
-                            Program.Log("default language");
                             Properties.Settings.Default.Language = "default";
                             Properties.Settings.Default.Save();
                             break;

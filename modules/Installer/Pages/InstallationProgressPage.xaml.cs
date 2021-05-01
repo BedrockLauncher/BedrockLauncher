@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows;
 
 
-namespace Installer
+namespace Installer.Pages
 {
     /// <summary>
     /// Логика взаимодействия для WelcomePage.xaml

@@ -33,12 +33,9 @@ using Version = BedrockLauncher.Classes.MCVersion;
 
 namespace BedrockLauncher
 {
-    //TODO: Duplicate Functionality on the Installation Screen
     //TODO: Import and Export Functionality on the Skin Pack Screen
-    //TODO: Launch External Launcher Button
-    //TODO: Functional Installer and Updater
-    //TODO: Beta Test and Optimize
 
+    //TODO: Beta Test and Optimize
     //TODO: (Later On) Better Animations
     //TODO: (Later On) Community Content / Personal Donations Section
 
@@ -238,7 +235,7 @@ namespace BedrockLauncher
         }
         private void Window_Initialized(object sender, EventArgs e)
         {
-            LanguageManager.Init();
+            BL_Core.LanguageManager.Init();
         }
         private void ConfigManager_ConfigStateChanged(object sender, EventArgs e)
         {
@@ -332,6 +329,7 @@ namespace BedrockLauncher
             if (senderName == BedrockEditionButton.Name) NavigateToMainPage();
             else if (senderName == NewsButton.Name) NavigateToNewsPage();
             else if (senderName == JavaEditionButton.Name) NavigateToJavaLauncher();
+            else if (senderName == ExternalLauncherButton.Name) NavigateToExternalLauncher();
             else if (senderName == ServersButton.Name) NavigateToServersScreen();
             else if (senderName == SettingsButton.Name) NavigateToSettings();
 
@@ -377,6 +375,21 @@ namespace BedrockLauncher
                 ErrorScreenShow.errormsg("CantFindJavaLauncher"); 
             }
         }
+        public void NavigateToExternalLauncher()
+        {
+            try
+            {
+                // Trying to find and open java launcher shortcut
+                Process.Start(Properties.Settings.Default.ExternalLauncherPath);
+                Application.Current.MainWindow.Close();
+            }
+            catch
+            {
+                NavigateToPlayScreen();
+                ErrorScreenShow.errormsg("CantFindExternalLauncher");
+            }
+        }
+
         public void NavigateToServersScreen()
         {
 

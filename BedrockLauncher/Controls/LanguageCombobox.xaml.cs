@@ -31,14 +31,14 @@ namespace BedrockLauncher.Controls
             switch (this.Text)
             {
                 case "Русский - Россия":
-                    LanguageManager.LanguageChange("ru-RU");
-                    Properties.Settings.Default.Language = "ru-RU";
-                    Properties.Settings.Default.Save();
+                    BL_Core.LanguageManager.LanguageChange("ru-RU");
+                    BL_Core.Properties.Settings.Default.Language = "ru-RU";
+                    BL_Core.Properties.Settings.Default.Save();
                     break;
                 case "English - United States":
-                    LanguageManager.LanguageChange("en-US");
-                    Properties.Settings.Default.Language = "en-US";
-                    Properties.Settings.Default.Save();
+                    BL_Core.LanguageManager.LanguageChange("en-US");
+                    BL_Core.Properties.Settings.Default.Language = "en-US";
+                    BL_Core.Properties.Settings.Default.Save();
                     break;
             }
         }
@@ -46,7 +46,7 @@ namespace BedrockLauncher.Controls
         private void LanguageCombobox_Initialized(object sender, EventArgs e)
         {
             // Set chosen language in language combobox
-            switch (Properties.Settings.Default.Language)
+            switch (BL_Core.Properties.Settings.Default.Language)
             {
                 case "en-US":
                     this.Text = "English - United States";

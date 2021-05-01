@@ -6,7 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/text/lang.xaml" />
+                <ResourceDictionary Source="/BL_Core;component/Resources/text/lang.xaml" />
                 <ResourceDictionary Source="Resources/styles/style.xaml"/>
                 <ResourceDictionary Source="Resources/styles/button.xaml"/>
                 <ResourceDictionary Source="Resources/styles/checkbox.xaml"/>

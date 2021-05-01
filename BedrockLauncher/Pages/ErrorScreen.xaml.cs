@@ -59,6 +59,11 @@ namespace BedrockLauncher.Pages
                     errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_CantFindJavaLauncher");
                     ConfigManager.MainThread.SetDialogFrame(errorScreen);
                     break;
+                case "CantFindExternalLauncher":
+                    errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_CantFindExternalLauncher_Title");
+                    errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_CantFindExternalLauncher");
+                    ConfigManager.MainThread.SetDialogFrame(errorScreen);
+                    break;
                 case "appregistererror":
                     errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_AppReregisterFailed_Title");
                     errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_AppReregisterFailed");

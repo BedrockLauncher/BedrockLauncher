@@ -326,6 +326,26 @@ namespace BedrockLauncher.Core
                 SaveProfiles();
             }
         }
+
+        public static void DuplicateInstallation(MCInstallation installation)
+        {
+            if (ProfileList.profiles.ContainsKey(CurrentProfile))
+            {
+                if (ProfileList.profiles[CurrentProfile].Installations == null) return;
+
+                string newName = installation.DisplayName;
+                int i = 1;
+
+                while (ProfileList.profiles[CurrentProfile].Installations.Exists(x => x.DisplayName == newName))
+                {
+                    newName = newName + "(" + i + ")";
+                    i++;
+                }
+
+                CreateInstallation(newName, installation.Version, installation.DirectoryName, installation.IconPath, installation.IsCustomIcon);
+            }
+        }
+
         public static void DeleteInstallation(MCInstallation installation)
         {
             if (ProfileList.profiles.ContainsKey(CurrentProfile))

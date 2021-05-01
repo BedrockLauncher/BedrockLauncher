@@ -39,6 +39,7 @@
                         <toolbar:NewsButton x:Name="NewsButton"></toolbar:NewsButton>
                         <toolbar:BedrockEditionButton x:Name="BedrockEditionButton"></toolbar:BedrockEditionButton>
                         <toolbar:JavaEditionButton x:Name="JavaEditionButton" Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=HideJavaShortcut, Converter={StaticResource ReverseBoolToVis}, ConverterParameter=Inverted}"></toolbar:JavaEditionButton>
+                        <toolbar:ExternalLauncherButton x:Name="ExternalLauncherButton" Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=ShowExternalLauncher, Converter={StaticResource BoolToVis}}"></toolbar:ExternalLauncherButton>
                         <toolbar:ServersButton x:Name="ServersButton" Visibility="Collapsed"></toolbar:ServersButton>
                     </StackPanel>
                     <toolbar:SettingsButton x:Name="SettingsButton"></toolbar:SettingsButton>

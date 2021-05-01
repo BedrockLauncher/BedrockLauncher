@@ -1,7 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:v="clr-namespace:System;assembly=mscorlib"
-                    xmlns:local="clr-namespace:BedrockLauncher">
+                    xmlns:v="clr-namespace:System;assembly=mscorlib">
     <!--#region Main Section-->
 
     <!--#region MainWindow -->
@@ -16,6 +15,7 @@
     <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java Launcher</v:String>
+    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Custom Launcher</v:String>
     <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Switch to</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
     <v:String x:Key="ToolbarButtons_ServersButton_Text">Servers</v:String>
@@ -199,8 +199,14 @@
 
     <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Enable experiemental save redirection</v:String>
     <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Hide Java Edition launcher shortcut</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Show external launcher shortcut</v:String>
     <v:String x:Key="GeneralSettingsScreen_BackupButton">Backup Save Data</v:String>
     <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Advanced Settings</v:String>
+
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">EXTERNAL LAUNCHER</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">PATH</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">NAME</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">ICON</v:String>
 
     <!--#endregion-->
 
@@ -273,6 +279,9 @@
     <v:String x:Key="Error_AuthenticationFailed_Title">Authentication failed</v:String>
     <v:String x:Key="Error_AuthenticationFailed">Failed to authenticate. Please make sure your account is subscribed to the beta programme.</v:String>
 
+    <v:String x:Key="Error_CantFindExternalLauncher_Title">Could not switch launcher</v:String>
+    <v:String x:Key="Error_CantFindExternalLauncher">Could not switch the launcher. Be sure you have the path to the launcher set correctly.</v:String>
+
     <v:String x:Key="Error_CantFindJavaLauncher_Title">Could not switch launcher</v:String>
     <v:String x:Key="Error_CantFindJavaLauncher">Could not find launcher. Be sure you have installed original Minecraft launcher from Minecraft.net .</v:String>
 
@@ -315,6 +324,41 @@
     <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Are you sure you want to delete &quot;{1}&quot;?&#10;This {0} will be lost forever! (A long time!)</v:String>
 
     <!--#endregion-->
+
+    <!--#endregion-->
+    
+    <!--#region Installer Section -->
+
+    <v:String x:Key="Installer_Title">Minecraft Bedrock Launcher Setup Wizard</v:String>
+
+    <v:String x:Key="Installer_Back_Text">Back</v:String>
+    <v:String x:Key="Installer_Next_Text">Next</v:String>
+    <v:String x:Key="Installer_Cancel_Text">Cancel</v:String>
+    <v:String x:Key="Installer_Finish_Text">Finish</v:String>
+
+    <v:String x:Key="Installer_WelcomePage_Title">Welcome to the Minecraft Bedrock Launcher Setup Wizard</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info_Text">This will install Minecraft Bedrock Launcher on your computer.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info2_Text">It is recommended that you dose all other applications before continuing.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info3_Text">Click Next to continue, or Cancel to exit Setup.</v:String>
+    
+    <v:String x:Key="Installer_LicenseAgreement_Title">License Agreement</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info_Text">Please read the following License Agreement. You must accept the terms of this</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">agreement before continuing with the installation.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">I accept the license.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">I dont accept the license.</v:String>
+
+    <v:String x:Key="Installer_InstallLocation_Title">Choose Install Location</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info_Text">Setup will install Minecraft Bedrock Launcher in the following folder. To install in a different folder,</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info2_Text">click Browse and select another folder.</v:String>
+
+    <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Destination Folder Folder</v:String>
+    <v:String x:Key="Installer_InstallLocation_Browse_Text">BROWSE</v:String>
+
+    <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Create a desktop icon</v:String>
+    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Add to Start menu</v:String>
+
+    <v:String x:Key="Installer_InstallationProgress_Title">Installing</v:String>
+    <v:String x:Key="Installer_InstallationProgress_Info_Text">Please wait while Setup installs Minecraft Bedrock Launcher on your computer.</v:String>
 
     <!--#endregion-->
     

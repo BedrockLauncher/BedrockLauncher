@@ -8,16 +8,20 @@ using Microsoft.Win32;
 using IWshRuntimeLibrary;
 using System.Xml;
 using System.Diagnostics;
+using Installer.Pages;
 
 namespace Installer
 {
     class LauncherInstaller
     {
-        private const string LATEST_BUILD_LINK = "https://github.com/XlynxX/BedrockLauncher/releases/latest/download/build.zip";
+        private string LATEST_BUILD_LINK { get => BL_Core.Properties.Settings.Default.GithubPage + "/releases/latest/download/build.zip"; }
         private string path;
         private string build_version;
         private bool silent;
         private InstallationProgressPage InstallationProgressPage;
+
+        public static bool MakeDesktopIcon { get; set; } = false;
+        public static bool MakeStartMenuIcon { get; set; } = false;
 
         public LauncherInstaller(string installationPath, InstallationProgressPage installationProgressPage, bool silent = false)
         {
@@ -201,14 +205,14 @@ namespace Installer
         private void FinishInstall(object sender, RoutedEventArgs e)
         {
             // create desktop shortcut if needed
-            if ((bool)InstallationProgressPage.desktopIconCheckBox.IsChecked) 
+            if ((bool)MakeDesktopIcon) 
             {
                 Console.WriteLine("added to desktop");
                 System.IO.File.Copy(Path.Combine(path, "Minecraft Bedrock Launcher.lnk"), Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Minecraft Bedrock Launcher.lnk"), true); 
             }
 
             // add to start menu if needed
-            if ((bool)InstallationProgressPage.startMenuCheckBox.IsChecked)
+            if ((bool)MakeStartMenuIcon)
             {
                 Console.WriteLine("added to start menu");
                 string commonStartMenuPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu);

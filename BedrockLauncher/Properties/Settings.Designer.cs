@@ -23,27 +23,6 @@ namespace BedrockLauncher.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1.0.0.0")]
-        public string Version {
-            get {
-                return ((string)(this["Version"]));
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("none")]
-        public string Language {
-            get {
-                return ((string)(this["Language"]));
-            }
-            set {
-                this["Language"] = value;
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
@@ -89,15 +68,6 @@ namespace BedrockLauncher.Properties {
             }
             set {
                 this["KeepLauncherOpen"] = value;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/CarJem/BedrockLauncher")]
-        public string GithubPage {
-            get {
-                return ((string)(this["GithubPage"]));
             }
         }
         
@@ -182,6 +152,54 @@ namespace BedrockLauncher.Properties {
             }
             set {
                 this["HideJavaShortcut"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowExternalLauncher {
+            get {
+                return ((bool)(this["ShowExternalLauncher"]));
+            }
+            set {
+                this["ShowExternalLauncher"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ExternalLauncherPath {
+            get {
+                return ((string)(this["ExternalLauncherPath"]));
+            }
+            set {
+                this["ExternalLauncherPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ExternalLauncherName {
+            get {
+                return ((string)(this["ExternalLauncherName"]));
+            }
+            set {
+                this["ExternalLauncherName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ExternalLauncherIconPath {
+            get {
+                return ((string)(this["ExternalLauncherIconPath"]));
+            }
+            set {
+                this["ExternalLauncherIconPath"] = value;
             }
         }
     }

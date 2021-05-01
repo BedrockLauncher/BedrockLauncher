@@ -4,16 +4,22 @@ using System.Windows.Controls;
 using System.Windows;
 
 
-namespace Installer
+namespace Installer.Pages
 {
     /// <summary>
     /// Логика взаимодействия для WelcomePage.xaml
     /// </summary>
     public partial class InstallLocationPage : Page
     {
+
+        private bool IsInit = false;
+
         public InstallLocationPage()
         {
             InitializeComponent();
+            desktopIconCheckBox.IsChecked = LauncherInstaller.MakeDesktopIcon;
+            startMenuCheckBox.IsChecked = LauncherInstaller.MakeStartMenuIcon;
+            IsInit = true;
         }
 
         private void Page_Initialized(object sender, EventArgs e)
@@ -48,6 +54,15 @@ namespace Installer
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             ((MainWindow) Application.Current.MainWindow).NextBtn.Content = "Install";
+        }
+
+        private void IconCheckBoxes_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            if (IsInit)
+            {
+               LauncherInstaller.MakeDesktopIcon = desktopIconCheckBox.IsChecked.Value;
+               LauncherInstaller.MakeStartMenuIcon = startMenuCheckBox.IsChecked.Value;
+            }
         }
     }
 }

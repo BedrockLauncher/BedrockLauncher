@@ -2,12 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BedrockLauncher.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Version" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">1.0.0.0</Value>
-    </Setting>
-    <Setting Name="Language" Type="System.String" Scope="User">
-      <Value Profile="(Default)">none</Value>
-    </Setting>
     <Setting Name="ShowBetas" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
@@ -19,9 +13,6 @@
     </Setting>
     <Setting Name="KeepLauncherOpen" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="GithubPage" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://github.com/CarJem/BedrockLauncher</Value>
     </Setting>
     <Setting Name="CurrentProfile" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -43,6 +34,18 @@
     </Setting>
     <Setting Name="HideJavaShortcut" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ShowExternalLauncher" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ExternalLauncherPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ExternalLauncherName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ExternalLauncherIconPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

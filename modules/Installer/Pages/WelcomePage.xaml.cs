@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Installer
+namespace Installer.Pages
 {
     /// <summary>
     /// Логика взаимодействия для WelcomePage.xaml

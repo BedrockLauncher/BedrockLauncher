@@ -194,6 +194,9 @@
     <Compile Include="Controls\Items\VersionItem.xaml.cs">
       <DependentUpon>VersionItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Toolbar\ExternalLauncherButton.xaml.cs">
+      <DependentUpon>ExternalLauncherButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Toolbar\ServersButton.xaml.cs">
       <DependentUpon>ServersButton.xaml</DependentUpon>
     </Compile>
@@ -229,6 +232,7 @@
     </Compile>
     <Compile Include="Converters\InvertableBooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\StringToUpperConverter.cs" />
+    <Compile Include="Converters\UrlToImageSourceConverter.cs" />
     <Compile Include="Core\ConfigManager.cs" />
     <Compile Include="Classes\MCProfile.cs" />
     <Compile Include="Classes\MCProfilesList.cs" />
@@ -246,7 +250,6 @@
     <Compile Include="Classes\Html\GlobalSchemeHandlerFactory.cs" />
     <Compile Include="Methods\Filepaths.cs" />
     <Compile Include="Methods\GameManager.cs" />
-    <Compile Include="Core\LanguageManager.cs" />
     <Compile Include="Interfaces\ICommonVersionCommands.cs" />
     <Compile Include="Methods\ConsoleArgumentParser.cs" />
     <Compile Include="Methods\MCSkinUtilities.cs" />
@@ -382,6 +385,10 @@
     <Page Include="Controls\Items\VersionItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Toolbar\ExternalLauncherButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Toolbar\ServersButton.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -599,18 +606,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\text\lang.en-US.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\text\lang.ru-RU.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\text\lang.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\SettingsTabs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -819,6 +814,14 @@
     <Resource Include="Resources\images\credits\mcmrarm_icon.jfif" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\modules\BL_Core\BL_Core.csproj">
+      <Project>{167a048a-8140-4f8d-87c3-a03d07f964d3}</Project>
+      <Name>BL_Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\modules\Installer\Installer.csproj">
+      <Project>{295729f7-172f-4bcd-a619-e495db5a4e2f}</Project>
+      <Name>Installer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\modules\SkinView3D\SkinView3D.csproj">
       <Project>{ccabef67-f4bf-4087-9291-62ee5e316934}</Project>
       <Name>SkinView3D</Name>

@@ -105,7 +105,10 @@ namespace BedrockLauncher.Controls.Items
 
         private void DuplicateInstallationButton_Click(object sender, RoutedEventArgs e)
         {
-
+            MenuItem button = sender as MenuItem;
+            var installation = button.DataContext as Classes.MCInstallation;
+            ConfigManager.DuplicateInstallation(installation);
+            ConfigManager.MainThread.RefreshInstallationList();
         }
     }
 }
