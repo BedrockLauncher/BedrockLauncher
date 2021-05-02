@@ -25,7 +25,6 @@ using BedrockLauncher.Interfaces;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Classes;
 using System.Windows.Media.Animation;
-using BedrockLauncher.Core;
 using BedrockLauncher.Pages;
 using BedrockLauncher.Pages.FirstLaunch;
 
@@ -65,6 +64,8 @@ namespace BedrockLauncher
         #region Extra Variables
 
         private KeyboardNavigationMode MainFrame_KeyboardNavigationMode_Default { get; set; }
+
+        private bool AllowedToCloseWithGameOpen { get; set; } = false;
 
         #endregion
 
@@ -130,6 +131,8 @@ namespace BedrockLauncher
             InstallationsList.ItemsSource = ConfigManager.CurrentInstallations;
             if (InstallationsList.SelectedItem == null) InstallationsList.SelectedItem = ConfigManager.CurrentInstallations.First();
         }
+
+
         private void UpdatePlayButton()
         {
             Task.Run(async () =>
@@ -144,24 +147,12 @@ namespace BedrockLauncher
                            return;
                        }
 
-                       if (ConfigManager.GameManager.IsUninstalling || ConfigManager.GameManager.IsDownloading || ConfigManager.GameManager.HasLaunchTask)
-                       {
-                           ProgressBarShowAnim();
-                           MainPlayButton.IsEnabled = false;
-                           InstallationsList.IsEnabled = false;
-                           installationsScreen.IsEnabled = false;
-                           settingsScreenPage.versionsSettingsPage.IsEnabled = false;
-                       }
-                       else
-                       {
-                           ProgressBarHideAnim();
-                           MainPlayButton.IsEnabled = true;
-                           InstallationsList.IsEnabled = true;
-                           installationsScreen.IsEnabled = true;
-                           settingsScreenPage.versionsSettingsPage.IsEnabled = true;
-                       }
+                       bool showProgress = ConfigManager.GameManager.IsUninstalling || ConfigManager.GameManager.IsDownloading || ConfigManager.GameManager.HasLaunchTask;
 
-                       if (selected.Version?.IsInstalled ?? false) PlayButtonText.SetResourceReference(TextBlock.TextProperty, "GameTab_PlayButton_Text");
+                       if (showProgress) ProgressBarShowAnim();
+                       else ProgressBarHideAnim();
+
+                       if (!ConfigManager.GameManager.IsGameNotOpen) PlayButtonText.SetResourceReference(TextBlock.TextProperty, "GameTab_PlayButton_Kill_Text");
                        else PlayButtonText.SetResourceReference(TextBlock.TextProperty, "GameTab_PlayButton_Text");
                    }));
             });
@@ -224,8 +215,16 @@ namespace BedrockLauncher
         }
         private void MainPlayButton_Click(object sender, RoutedEventArgs e)
         {
-            var i = InstallationsList.SelectedItem as MCInstallation;
-            ConfigManager.GameManager.Play(i);
+            if (ConfigManager.GameManager.GameProcess != null)
+            {
+                ConfigManager.GameManager.KillGame();
+            }
+            else
+            {
+                var i = InstallationsList.SelectedItem as MCInstallation;
+                ConfigManager.GameManager.Play(i);
+            }
+
         }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -358,34 +357,44 @@ namespace BedrockLauncher
             MainWindowFrame.Navigate(newsScreenPage);
             NewsButton.Button.IsChecked = true;
         }
-        public void NavigateToJavaLauncher()
+        public async void NavigateToJavaLauncher()
         {
-            try 
+            Action action = new Action(() =>
             {
-                // Trying to find and open java launcher shortcut
-                string JavaPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu) + @"\Programs\Minecraft Launcher\Minecraft Launcher";
-                Process.Start(JavaPath);
-                Application.Current.MainWindow.Close(); 
-            } 
-            catch 
-            {
-                NavigateToPlayScreen();
-                ErrorScreenShow.errormsg("CantFindJavaLauncher"); 
-            }
+                try
+                {
+                    // Trying to find and open java launcher shortcut
+                    string JavaPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu) + @"\Programs\Minecraft Launcher\Minecraft Launcher";
+                    Process.Start(JavaPath);
+                    Application.Current.MainWindow.Close();
+                }
+                catch
+                {
+                    NavigateToPlayScreen();
+                    ErrorScreenShow.errormsg("CantFindJavaLauncher");
+                }
+            });
+
+            NavigateToOtherLauncher(action);
         }
+
         public void NavigateToExternalLauncher()
         {
-            try
+            Action action = new Action(() =>
             {
-                // Trying to find and open java launcher shortcut
-                Process.Start(Properties.Settings.Default.ExternalLauncherPath);
-                Application.Current.MainWindow.Close();
-            }
-            catch
-            {
-                NavigateToPlayScreen();
-                ErrorScreenShow.errormsg("CantFindExternalLauncher");
-            }
+                try
+                {
+                    Process.Start(Properties.Settings.Default.ExternalLauncherPath);
+                    Application.Current.MainWindow.Close();
+                }
+                catch
+                {
+                    NavigateToPlayScreen();
+                    ErrorScreenShow.errormsg("CantFindExternalLauncher");
+                }
+            });
+
+            NavigateToOtherLauncher(action);
         }
 
         public void NavigateToServersScreen()
@@ -435,6 +444,66 @@ namespace BedrockLauncher
             SetOverlayFrame(new AddProfilePage());
         }
 
+
+        #endregion
+
+        #region Closing Stuff
+
+        private async void ShowPrompt_ClosingWithGameStillOpened(Action successAction)
+        {
+            await Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(async () =>
+            {
+                var title = this.FindResource("Dialog_CloseGame_Title") as string;
+                var content = this.FindResource("Dialog_CloseGame_Text") as string;
+
+                var result = await DialogPrompt.ShowDialog_YesNoCancel(title, content);
+
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    ConfigManager.GameManager.GameProcess.Kill();
+                    AllowedToCloseWithGameOpen = true;
+                    if (successAction != null) successAction.Invoke();
+                }
+                else if (result == System.Windows.Forms.DialogResult.No)
+                {
+                    AllowedToCloseWithGameOpen = true;
+                    if (successAction != null) successAction.Invoke();
+                }
+                else if (result == System.Windows.Forms.DialogResult.Cancel)
+                {
+                    AllowedToCloseWithGameOpen = false;
+                }
+
+            }));
+        }
+        public async void NavigateToOtherLauncher(Action action)
+        {
+            if (Properties.Settings.Default.CloseLauncherOnSwitch && ConfigManager.GameManager.GameProcess != null)
+            {
+                await Task.Run(() => ShowPrompt_ClosingWithGameStillOpened(action));
+            }
+            else action.Invoke();
+        }
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            Action action = new Action(() =>
+            {
+                this.Close();
+            });
+
+            if (Properties.Settings.Default.KeepLauncherOpen && ConfigManager.GameManager.GameProcess != null)
+            {
+                if (!AllowedToCloseWithGameOpen)
+                {
+                    e.Cancel = true;
+                    ShowPrompt_ClosingWithGameStillOpened(action);
+                }
+            }
+            else
+            {
+                e.Cancel = false;
+            }
+        }
 
         #endregion
     }

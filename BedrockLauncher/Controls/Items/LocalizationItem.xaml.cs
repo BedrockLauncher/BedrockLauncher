@@ -1,5 +1,5 @@
 ﻿using BedrockLauncher.Classes.SkinPack;
-using BedrockLauncher.Core;
+using BedrockLauncher.Methods;
 using System.Windows;
 using System.Windows.Controls;
 using System.Linq;
@@ -8,7 +8,6 @@ using System;
 using System.Windows.Media.Imaging;
 using System.Diagnostics;
 using System.IO;
-using BedrockLauncher.Methods;
 using System.ComponentModel;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 using System.Net.Cache;

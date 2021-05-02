@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:p="clr-namespace:BedrockLauncher.Properties"
       xmlns:classes="clr-namespace:BedrockLauncher.Classes"
+      xmlns:methods="clr-namespace:BedrockLauncher.Methods"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       xmlns:local="clr-namespace:BedrockLauncher"
       mc:Ignorable="d" 
@@ -27,7 +28,7 @@
                     <ColumnDefinition Width="200"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
-                    <Button x:Name="NewInstallationButton" Height="40" Width="100" Click="NewInstallationButton_Click" Foreground="White" Style="{DynamicResource PanelButton}">
+                    <Button x:Name="NewInstallationButton" IsEnabled="{Binding Source={x:Static methods:ConfigManager.GameManager}, Path=IsGameNotOpen}" Height="40" Width="100" Click="NewInstallationButton_Click" Foreground="White" Style="{DynamicResource PanelButton}">
                         <Button.Content>
                             <Grid>
                                 <Grid.ColumnDefinitions>

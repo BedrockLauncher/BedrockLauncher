@@ -13,7 +13,7 @@ using CefSharp.Wpf;
 using System.Runtime.CompilerServices;
 using BedrockLauncher.Classes.Html;
 using CefSharp.SchemeHandler;
-using BedrockLauncher.Core;
+
 
 namespace BedrockLauncher
 {

@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Windows.Media.Animation;
 using System.Windows.Controls;
 using System.Collections.Generic;
-using BedrockLauncher.Core;
+using BedrockLauncher.Methods;
 
 namespace BedrockLauncher.Methods
 {

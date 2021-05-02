@@ -22,12 +22,10 @@ using Windows.Management.Core;
 using Windows.Management.Deployment;
 using Windows.System;
 using BedrockLauncher.Interfaces;
-using BedrockLauncher.Methods;
 using BedrockLauncher.Classes;
 using BedrockLauncher.Classes.SkinPack;
 using BedrockLauncher.Pages;
 using System.Windows.Media.Animation;
-using BedrockLauncher.Core;
 using System.Security.AccessControl;
 using System.Security;
 using System.Security.Principal;
@@ -40,7 +38,7 @@ using System.Xml.Linq;
 
 namespace BedrockLauncher.Methods
 {
-    public class GameManager: ICommonVersionCommands
+    public class GameManager: NotifyPropertyChangedBase, ICommonVersionCommands
     {
         #region Status
 
@@ -62,6 +60,27 @@ namespace BedrockLauncher.Methods
         #region Constants
 
         public static readonly string MINECRAFT_PACKAGE_FAMILY = "Microsoft.MinecraftUWP_8wekyb3d8bbwe";
+        public static readonly string MINECRAFT_EXE_NAME = "Minecraft.Windows";
+
+        #endregion
+
+        #region Game Detection
+
+        public Process GameProcess { get; set; } = null;
+
+        private bool _IsGameNotRunning = true;
+        public bool IsGameNotOpen
+        {
+            get
+            {
+                return _IsGameNotRunning;
+            }
+            set
+            {
+                _IsGameNotRunning = value;
+                OnPropertyChanged(nameof(IsGameNotOpen));
+            }
+        }
 
         #endregion
 
@@ -106,9 +125,16 @@ namespace BedrockLauncher.Methods
 
         #region General Methods
 
+
+
         public void Remove(MCVersion v)
         {
             InvokeRemove(v);
+        }
+
+        public void KillGame()
+        {
+            InvokeKillGame();
         }
 
         public void Play(MCInstallation i)
@@ -195,8 +221,11 @@ namespace BedrockLauncher.Methods
                     v.StateChangeInfo.IsLaunching = true;
                     var pkg = await AppDiagnosticInfo.RequestInfoForPackageAsync(MINECRAFT_PACKAGE_FAMILY);
                     if (pkg.Count > 0)
+                    {
                         await pkg[0].LaunchAsync();
+                    }
                     Program.Log("App launch finished!");
+                    if (Properties.Settings.Default.KeepLauncherOpen) GetActiveProcess(v);
                     HasLaunchTask = false;
                     v.StateChangeInfo.IsLaunching = false;
                     Application.Current.Dispatcher.Invoke(() => { OnGameStateChanged(GameStateArgs.Empty); });
@@ -357,6 +386,60 @@ namespace BedrockLauncher.Methods
 
             });
         }
+        public async void InvokeKillGame()
+        {
+            if (ConfigManager.GameManager.GameProcess != null)
+            {
+                var title = ConfigManager.MainThread.FindResource("Dialog_KillGame_Title") as string;
+                var content = ConfigManager.MainThread.FindResource("Dialog_KillGame_Text") as string;
+
+                var result = await DialogPrompt.ShowDialog_YesNo(title, content);
+
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    GameProcess.Kill();
+                }
+            }
+        }
+
+        #endregion
+
+        #region Process Detection Methods
+
+        public async void GetActiveProcess(MCVersion v)
+        {
+            await Task.Run(() =>
+            {
+                string FilePath = Path.GetDirectoryName(v.ExePath);
+                string FileName = Path.GetFileNameWithoutExtension(v.ExePath).ToLower();
+
+                Process[] pList = Process.GetProcessesByName(FileName);
+
+                foreach (Process p in pList)
+                {
+                    string fileName = p.MainModule.FileName;
+                    if (fileName.StartsWith(FilePath, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        IsGameNotOpen = false;
+                        GameProcess = p;
+                        p.EnableRaisingEvents = true;
+                        p.Exited += GameProcess_Exited;
+                        break;
+                    }
+                }
+
+
+            });
+        }
+
+        private void GameProcess_Exited(object sender, EventArgs e)
+        {
+            Process p = sender as Process;
+            p.Exited -= GameProcess_Exited;
+            GameProcess = null;
+            IsGameNotOpen = true;
+            Application.Current.Dispatcher.Invoke(() => { OnGameStateChanged(GameStateArgs.Empty); });
+        }
 
         #endregion
 
@@ -405,7 +488,6 @@ namespace BedrockLauncher.Methods
                 return;
             }
         }
-
         private async Task RemovePackage(MCVersion v, Package pkg)
         {
             Program.Log("Removing package: " + pkg.Id.FullName);
@@ -479,7 +561,6 @@ namespace BedrockLauncher.Methods
 
             }
         }
-
         private async Task DeploymentProgressWrapper(MCVersion version, IAsyncOperationWithProgress<DeploymentResult, DeploymentProgress> t)
         {
             TaskCompletionSource<int> src = new TaskCompletionSource<int>();

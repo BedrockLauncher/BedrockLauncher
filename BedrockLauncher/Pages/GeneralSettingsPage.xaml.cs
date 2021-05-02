@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BedrockLauncher.Core;
+using BedrockLauncher.Methods;
 using Microsoft.Win32;
 
 namespace BedrockLauncher.Pages
@@ -35,6 +35,7 @@ namespace BedrockLauncher.Pages
             experiementalDataSaveRedirection.IsChecked = Properties.Settings.Default.SaveRedirection;
             hideJavaLauncherButtonCheckbox.IsChecked = Properties.Settings.Default.HideJavaShortcut;
             showExternalLauncherButtonCheckbox.IsChecked = Properties.Settings.Default.ShowExternalLauncher;
+            closeLauncherOnSwitchCheckbox.IsChecked = Properties.Settings.Default.CloseLauncherOnSwitch;
         }
 
         private void Page_Initialized(object sender, EventArgs e)
@@ -152,6 +153,21 @@ namespace BedrockLauncher.Pages
                     break;
                 case false:
                     Properties.Settings.Default.ShowExternalLauncher = false;
+                    Properties.Settings.Default.Save();
+                    break;
+            }
+        }
+
+        private void closeLauncherOnSwitchCheckbox_Click(object sender, RoutedEventArgs e)
+        {
+            switch (closeLauncherOnSwitchCheckbox.IsChecked)
+            {
+                case true:
+                    Properties.Settings.Default.CloseLauncherOnSwitch = true;
+                    Properties.Settings.Default.Save();
+                    break;
+                case false:
+                    Properties.Settings.Default.CloseLauncherOnSwitch = false;
                     Properties.Settings.Default.Save();
                     break;
             }

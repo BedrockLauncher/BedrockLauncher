@@ -1,4 +1,4 @@
-﻿using BedrockLauncher.Core;
+﻿using BedrockLauncher.Methods;
 using BedrockLauncher.Pages;
 using System;
 using System.Collections.Generic;

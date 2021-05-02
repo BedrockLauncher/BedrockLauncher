@@ -4,11 +4,13 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
 
 using Windows.Security.Credentials;
 using Windows.Foundation;
 using Windows.Security.Authentication.Web.Core;
 using System.Security.Authentication;
+using System.IO;
 
 namespace BedrockLauncher.Methods
 {
@@ -33,6 +35,20 @@ namespace BedrockLauncher.Methods
         }
 
         public static List<WUAccount> CurrentAccounts { get; set; } = new List<WUAccount>();
+
+        static WUTokenHelper()
+        {
+            var myPath = new Uri(typeof(WUTokenHelper).Assembly.CodeBase).LocalPath;
+            var myFolder = Path.GetDirectoryName(myPath);
+
+            var is64 = Environment.Is64BitProcess;
+            var subfolder = is64 ? "\\x64\\" : "\\x86\\";
+
+            LoadLibrary(myFolder + subfolder + "WUTokenHelper.dll");
+        }
+
+        [DllImport("kernel32.dll")]
+        private static extern IntPtr LoadLibrary(string dllToLoad);
 
         [DllImport("WUTokenHelper.dll", CallingConvention = CallingConvention.StdCall)] private static extern int GetWUToken(int userIndex, [MarshalAs(UnmanagedType.LPWStr)] out string token);
         [DllImport("WUTokenHelper.dll", CallingConvention = CallingConvention.StdCall)] private static extern int GetTotalWUAccounts();

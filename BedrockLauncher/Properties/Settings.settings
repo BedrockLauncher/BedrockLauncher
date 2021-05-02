@@ -50,5 +50,8 @@
     <Setting Name="CurrentTheme" Type="System.String" Scope="User">
       <Value Profile="(Default)">LatestUpdate</Value>
     </Setting>
+    <Setting Name="CloseLauncherOnSwitch" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

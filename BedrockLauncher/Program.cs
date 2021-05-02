@@ -13,7 +13,6 @@ using CefSharp.Wpf;
 using System.Runtime.CompilerServices;
 using BedrockLauncher.Classes.Html;
 using CefSharp.SchemeHandler;
-using BedrockLauncher.Core;
 
 namespace BedrockLauncher
 {
@@ -181,6 +180,7 @@ namespace BedrockLauncher
                            ? Assembly.LoadFile(archSpecificPath)
                            : null;
             }
+
 
             return null;
         }

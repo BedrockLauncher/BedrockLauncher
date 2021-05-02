@@ -16,7 +16,6 @@ using BedrockLauncher.Methods;
 using CodeHollow.FeedReader;
 using BedrockLauncher.Classes;
 using System.Diagnostics;
-using BedrockLauncher.Core;
 using BedrockLauncher.Controls.Items;
 
 namespace BedrockLauncher.Pages

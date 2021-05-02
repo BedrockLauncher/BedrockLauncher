@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using BedrockLauncher.Core;
+using BedrockLauncher.Methods;
 
 namespace BedrockLauncher.Methods
 {

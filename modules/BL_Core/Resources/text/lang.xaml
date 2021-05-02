@@ -61,6 +61,7 @@
 
     <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
     <v:String x:Key="GameTab_PlayButton_Text">Play</v:String>
+    <v:String x:Key="GameTab_PlayButton_Kill_Text">Kill</v:String>
     <v:String x:Key="GameTab_InstallationsButton_Text">Installations</v:String>
     <v:String x:Key="GameTab_SkinsButton_Text">Skins</v:String>
     <v:String x:Key="GameTab_PatchNotesButton_Text">Patch notes</v:String>
@@ -187,12 +188,13 @@
 
     <!--#region GeneralSettingsScreen -->
     <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">LANGUAGE</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">THEME</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">LAUNCHER THEME</v:String>
     
 
     <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">LAUNCHER SETTINGS</v:String>
     <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Use beta version of the launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Keep the launcher open while game is runnning</v:String>
+    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Close launcher when switching launchers</v:String>
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDITION SETTINGS</v:String>
     <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">SUPPORT CREATOR</v:String>
@@ -328,6 +330,12 @@
 
     <v:String x:Key="Dialog_DeleteItem_Title">Delete {0} permenantly</v:String>
     <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Are you sure you want to delete &quot;{1}&quot;?&#10;This {0} will be lost forever! (A long time!)</v:String>
+
+    <v:String x:Key="Dialog_KillGame_Title">Kill Game</v:String>
+    <v:String x:Key="Dialog_KillGame_Text">This is Dangerous, and is only recommeneded if you get stuck. Do you still want to close the game?</v:String>
+
+    <v:String x:Key="Dialog_CloseGame_Title">Game is Still Running</v:String>
+    <v:String x:Key="Dialog_CloseGame_Text">Would you like to force close it? (without saving changes, this is only recommended if you get stuck, please close the game normally)</v:String>
 
     <!--#endregion-->
 

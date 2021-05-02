@@ -51,6 +51,14 @@ namespace BedrockLauncher.Classes
             }
         }
 
+        public string ExePath
+        {
+            get
+            {
+                return GameDirectory + "\\Minecraft.Windows.exe";
+            }
+        }
+
         public bool IsInstalled => Directory.Exists(GameDirectory);
 
         public string DisplayName

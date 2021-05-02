@@ -43,6 +43,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -55,6 +56,7 @@
     <DocumentationFile>
     </DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
@@ -133,6 +135,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -169,6 +172,7 @@
     <Compile Include="Classes\SkinPack\MCSkinPackMainfest.cs" />
     <Compile Include="Classes\MediaWiki\RootObject.cs" />
     <Compile Include="Classes\ZipProgress.cs" />
+    <Compile Include="Controls\HtmlPanel2.cs" />
     <Compile Include="Controls\Items\BlockPickerItem.xaml.cs">
       <DependentUpon>BlockPickerItem.xaml</DependentUpon>
     </Compile>
@@ -236,7 +240,7 @@
     <Compile Include="Converters\InvertableBooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\StringToUpperConverter.cs" />
     <Compile Include="Converters\UrlToImageSourceConverter.cs" />
-    <Compile Include="Core\ConfigManager.cs" />
+    <Compile Include="Methods\ConfigManager.cs" />
     <Compile Include="Classes\MCProfile.cs" />
     <Compile Include="Classes\MCProfilesList.cs" />
     <Compile Include="Classes\NotifyPropertyChangedBase.cs" />
@@ -690,6 +694,9 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
     </PackageReference>
+    <PackageReference Include="System.Runtime">
+      <Version>4.3.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\icons\icon.ico" />
@@ -886,15 +893,16 @@
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>if $(PlatformName) == Any CPU (
-xcopy /y /e /c /i "$(SolutionDir)/bin/WUTokenHelper/Win32/$(ConfigurationName)" "$(ProjectDir)$(OutDir)"
+xcopy /y /e /c /i "$(SolutionDir)bin\WUTokenHelper\Win32\$(ConfigurationName)" "$(ProjectDir)$(OutDir)\x86"
+xcopy /y /e /c /i "$(SolutionDir)bin\WUTokenHelper\x64\$(ConfigurationName)" "$(ProjectDir)$(OutDir)\x64"
 )
 
 if $(PlatformName) == x86 (
-xcopy /y /e /c /i "$(SolutionDir)/bin/WUTokenHelper/Win32/$(ConfigurationName)" "$(ProjectDir)$(OutDir)"
+xcopy /y /e /c /i "$(SolutionDir)bin\WUTokenHelper\Win32\$(ConfigurationName)" "$(ProjectDir)$(OutDir)\x86"
 )
 
 if $(PlatformName) == x64 (
-xcopy /y /e /c /i "$(SolutionDir)/bin/WUTokenHelper/x64/$(ConfigurationName)" "$(ProjectDir)$(OutDir)"
+xcopy /y /e /c /i "$(SolutionDir)bin\WUTokenHelper\x64\$(ConfigurationName)" "$(ProjectDir)$(OutDir)\x64"
 )
 </PostBuildEvent>
   </PropertyGroup>

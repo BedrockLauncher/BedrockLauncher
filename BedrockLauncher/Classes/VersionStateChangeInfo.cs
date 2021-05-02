@@ -22,7 +22,7 @@ using Windows.Foundation;
 using Windows.Management.Core;
 using Windows.Management.Deployment;
 using Windows.System;
-using BedrockLauncher.Core;
+using BedrockLauncher.Methods;
 
 namespace BedrockLauncher.Classes
 {

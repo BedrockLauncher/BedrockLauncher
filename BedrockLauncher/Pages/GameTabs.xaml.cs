@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using BedrockLauncher.Core;
+using BedrockLauncher.Methods;
 
 namespace BedrockLauncher.Pages
 {

@@ -1,7 +1,8 @@
-﻿<Application x:Class="BedrockLauncher.App"
+﻿<Application
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:BedrockLauncher"
+             xmlns:WPF="clr-namespace:TheArtOfDev.HtmlRenderer.WPF;assembly=HtmlRenderer.WPF" x:Class="BedrockLauncher.App"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -26,7 +27,7 @@
                 <ResourceDictionary Source="Resources/styles/itemtemplates.xaml"/>
                 <ResourceDictionary>
                     <Style TargetType="{x:Type ComboBoxItem}">
-                        <EventSetter Event="RequestBringIntoView" Handler="ComboBoxItem_RequestBringIntoView"/>
+                        <EventSetter Event="FrameworkElement.RequestBringIntoView" Handler="ComboBoxItem_RequestBringIntoView"/>
                     </Style>
                     <Style TargetType="{x:Type Window}">
                         <Setter Property="FontFamily" Value="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>

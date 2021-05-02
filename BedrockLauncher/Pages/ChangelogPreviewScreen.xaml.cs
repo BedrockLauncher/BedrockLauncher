@@ -1,5 +1,5 @@
 ﻿using BedrockLauncher.Classes.SkinPack;
-using BedrockLauncher.Core;
+using BedrockLauncher.Methods;
 using CefSharp;
 using System;
 using System.Diagnostics;
@@ -25,8 +25,12 @@ namespace BedrockLauncher.Pages
             HTML = html;
             Header.Text = header;
             SourceHyperlink.NavigateUri = new Uri(url);
-            Clipboard.SetText(HTML);
-            Renderer.Text = HTML;
+            LoadHTML();
+        }
+
+        private void Renderer_ImageLoad(object sender, TheArtOfDev.HtmlRenderer.WPF.RoutedEvenArgs<TheArtOfDev.HtmlRenderer.Core.Entities.HtmlImageLoadEventArgs> args)
+        {
+
         }
 
         public ChangelogPreviewPage()
@@ -58,6 +62,26 @@ namespace BedrockLauncher.Pages
         {
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             e.Handled = true;
+        }
+
+        private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+
+        }
+
+        private void LoadHTML()
+        {
+            Renderer.Text = HTML;
+        }
+
+        private void Renderer_IsBrowserInitializedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            /*
+            if (Renderer.IsBrowserInitialized)
+            {
+                Renderer.LoadHtml(HTML);
+            }
+            */
         }
     }
 }

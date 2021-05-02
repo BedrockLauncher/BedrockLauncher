@@ -1,4 +1,4 @@
-﻿using BedrockLauncher.Core;
+﻿using BedrockLauncher.Methods;
 using System;
 using System.Collections.Generic;
 using System.Linq;

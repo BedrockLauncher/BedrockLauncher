@@ -11,10 +11,9 @@ using BedrockLauncher.Classes;
 using MCVersion = BedrockLauncher.Classes.MCVersion;
 using System.Windows.Threading;
 using System.Diagnostics;
-using BedrockLauncher.Methods;
 using System.Collections;
 
-namespace BedrockLauncher.Core
+namespace BedrockLauncher.Methods
 {
 
     public static class ConfigManager

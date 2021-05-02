@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BedrockLauncher.Pages"
       xmlns:controls="clr-namespace:BedrockLauncher.Controls"
-      xmlns:wpf="clr-namespace:TheArtOfDev.HtmlRenderer.WPF;assembly=HtmlRenderer.WPF"
+      xmlns:cef="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800"
       Title="WebDialogScreen" Background="#212121">
@@ -25,14 +25,15 @@
             </Grid.ColumnDefinitions>
             <Button VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="2"  Style="{StaticResource ClosePopupButton}" Name="CloseButton" Click="CloseButton_Click" Margin="0,0,10,0"></Button>
             <TextBlock Padding="10,0" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Hyperlink Style="{DynamicResource HyperLinkStyle}" Name="SourceHyperlink" RequestNavigate="Hyperlink_RequestNavigate">
+                <Hyperlink Name="SourceHyperlink" RequestNavigate="Hyperlink_RequestNavigate">
                     <TextBlock Text="Source" Focusable="False" Foreground="White" FontWeight="Bold" FontSize="20" x:Name="Header"></TextBlock>
                 </Hyperlink>
             </TextBlock>
         </Grid>
         <Separator Grid.Row="1"></Separator>
-        <Grid Grid.Row="2">
-            <wpf:HtmlPanel x:Name="Renderer" Margin="20" Background="Transparent"></wpf:HtmlPanel>
+        <Grid Grid.Row="2" SizeChanged="Grid_SizeChanged">
+            <!--<cef:ChromiumWebBrowser x:Name="Renderer" IsBrowserInitializedChanged="Renderer_IsBrowserInitializedChanged" Margin="20" Background="Transparent"/>-->
+            <controls:HtmlPanel2 x:Name="Renderer" Margin="20" Background="Transparent"/>
         </Grid>
         <!--<Separator Grid.Row="3"></Separator>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="4" Height="45" Margin="15,0">

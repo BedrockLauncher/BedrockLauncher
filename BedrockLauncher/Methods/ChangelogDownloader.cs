@@ -41,8 +41,9 @@ namespace BedrockLauncher.Methods
         private const string MCWikiBase = @"https://minecraft.fandom.com";
         private const string MCWikiAPI = @"https://minecraft.fandom.com/api.php";
 
-        private const string HTMLHeader = "<head><style>body { color: white; } a { color: green; }</style></head>";
-        private const string HTMLFormat = "<!DOCTYPE html><html><body>{0}{1}</body></html>";
+        private const string HTMLStyle = "<style>body { color: white; } a { color: green; } img { height: auto; max-width: 100%; }</style>";
+        private const string HTMLHeader = "<head>{0}{1}</head>";
+        private const string HTMLFormat = "<!DOCTYPE html><html>{0}<body>{1}</body></html>";
 
         private bool _IsRefreshable = true;
 
@@ -314,6 +315,7 @@ namespace BedrockLauncher.Methods
                             try
                             {
                                 var current_result = web.Load(item_url);
+                                //var stylesheets = GetStylesheets(current_result);
                                 var content = OptimizeFeedbackPage(current_result, base_url);
                                 bool isBeta = branch._branch == "beta";
 
@@ -326,7 +328,7 @@ namespace BedrockLauncher.Methods
                                         Url = item_url,
                                         ImageUrl = (isBeta ? MCPatchNotesItem.FallbackImageURL_Dev : MCPatchNotesItem.FallbackImageURL),
                                         PublishingDateString = GetPublishedDate(current_result),
-                                        Content = string.Format(HTMLFormat, HTMLHeader, content.InnerHtml),
+                                        Content = string.Format(HTMLFormat, UpdateHTMLHeader(new List<string>()), content.InnerHtml),
                                     };
 
                                     AddPatch(item);
@@ -390,6 +392,30 @@ namespace BedrockLauncher.Methods
                 if (valid_version) return current_version;
                 else return null;
             }
+
+        }
+
+        private string UpdateHTMLHeader(List<string> styles)
+        {
+            string stylesheets = String.Join(Environment.NewLine, styles);
+            return string.Format(HTMLHeader, stylesheets, HTMLStyle);
+        }
+
+        private List<string> GetStylesheets(HtmlDocument current_result)
+        {
+            var header_node = current_result.DocumentNode.SelectNodes("/html/head").FirstOrDefault();
+            var inline_stylelist = header_node.Descendants().Where(x => x.Name == "style").ToList();
+            var stylesheet_list = header_node.Descendants().Where(x => x.Name == "link" && x.GetAttributeValue("rel", "nostylesheet") == "stylesheet").ToList();
+            var merged_styles = inline_stylelist.Concat(stylesheet_list);
+
+            var final_list = new List<string>();
+
+            foreach (var style in merged_styles)
+            {
+                final_list.Add(style.OuterHtml);
+            }
+
+            return final_list;
 
         }
 

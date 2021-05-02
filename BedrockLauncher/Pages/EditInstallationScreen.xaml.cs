@@ -14,7 +14,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Classes;
-using BedrockLauncher.Core;
 
 namespace BedrockLauncher.Pages
 {

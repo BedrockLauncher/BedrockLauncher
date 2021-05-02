@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Web.UI.WebControls;
 using System.Windows.Documents;
-using BedrockLauncher.Core;
+using BedrockLauncher.Methods;
 
 namespace BedrockLauncher.Pages
 {

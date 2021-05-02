@@ -167,4 +167,11 @@ xcopy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)bin\WUTokenHelper\$(Platfor
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\..\packages\Microsoft.Windows.CppWinRT.2.0.210403.2\build\native\Microsoft.Windows.CppWinRT.targets" Condition="Exists('..\..\packages\Microsoft.Windows.CppWinRT.2.0.210403.2\build\native\Microsoft.Windows.CppWinRT.targets')" />
   </ImportGroup>
+  <Target Name="BuildFunction" AfterTargets="Build">
+    <MSBuild Condition="'$(Platform)'=='Win32'" Projects="$(MSBuildProjectFile)" Properties="Platform=x64;PlatFormTarget=x64" RunEachTargetSeparately="true"/>
+  </Target>
+
+  <Target Name="CleanAll" AfterTargets="Clean">
+    <MSBuild Condition="'$(Platform)'=='Win32'" Projects="$(MSBuildProjectFile)" Targets="Clean" Properties="Platform=x64;PlatFormTarget=x64" RunEachTargetSeparately="true"  />
+  </Target>
 </Project>

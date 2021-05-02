@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BedrockLauncher.Controls.Items"
+             xmlns:methods="clr-namespace:BedrockLauncher.Methods"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid x:Name="InstallationEntry" Margin="0,8,0,8">
@@ -28,7 +29,7 @@
             </StackPanel>
         </Grid>
         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Column="2" x:Name="ButtonPanel" Visibility="Collapsed">
-            <Button x:Name="Remove" Click="Delete_Click" Content="{DynamicResource GeneralText_Remove}" Style="{DynamicResource DialogButton_Red}"></Button>
+            <Button x:Name="Remove" Click="Delete_Click" IsEnabled="{Binding Source={x:Static methods:ConfigManager.GameManager}, Path=IsGameNotOpen}" Content="{DynamicResource GeneralText_Remove}" Style="{DynamicResource DialogButton_Red}"></Button>
             <Button x:Name="Folder" Click="Folder_Click" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" FontWeight="Bold" Style="{DynamicResource DialogButton}">
                 <Button.Content>
                     <Grid Width="16" Height="16">

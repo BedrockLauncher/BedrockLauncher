@@ -7,6 +7,7 @@
         xmlns:classes="clr-namespace:BedrockLauncher.Classes"
         xmlns:properties="clr-namespace:BedrockLauncher.Properties"
         xmlns:controls="clr-namespace:BedrockLauncher.Controls"
+        xmlns:methods="clr-namespace:BedrockLauncher.Methods"
         xmlns:toolbar="clr-namespace:BedrockLauncher.Controls.Toolbar"
         xmlns:converters="clr-namespace:BedrockLauncher.Converters"
         xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
@@ -21,7 +22,8 @@
         Foreground="{x:Null}" 
         MinWidth="1016" MinHeight="700" 
         Background="White"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Closing="Window_Closing">
     <Window.Resources>
         <wincontrols:BooleanToVisibilityConverter x:Key="BoolToVis"></wincontrols:BooleanToVisibilityConverter>
         <converters:InvertableBooleanToVisibilityConverter x:Key="ReverseBoolToVis"></converters:InvertableBooleanToVisibilityConverter>
@@ -35,7 +37,7 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <StackPanel x:Name="buttonStackPanel" Grid.Column="0" Background="#FF1E1E1E" HorizontalAlignment="Left">
-                        <toolbar:ProfileButton x:Name="ProfileButton"></toolbar:ProfileButton>
+                        <toolbar:ProfileButton IsEnabled="{Binding Source={x:Static methods:ConfigManager.GameManager}, Path=IsGameNotOpen}" x:Name="ProfileButton"></toolbar:ProfileButton>
                         <toolbar:NewsButton x:Name="NewsButton"></toolbar:NewsButton>
                         <toolbar:BedrockEditionButton x:Name="BedrockEditionButton"></toolbar:BedrockEditionButton>
                         <toolbar:JavaEditionButton x:Name="JavaEditionButton" Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=HideJavaShortcut, Converter={StaticResource ReverseBoolToVis}, ConverterParameter=Inverted}"></toolbar:JavaEditionButton>
@@ -80,7 +82,7 @@
                         Style="{DynamicResource BigGreenButton}">
                                 <TextBlock x:Name="PlayButtonText" Style="{DynamicResource BigGreenButton_Text}"/>
                             </Button>
-                            <ComboBox SelectedItem="1" SelectionChanged="GameStateChanged" DropDownClosed="GameStateChanged" ItemsSource="{Binding}" x:Name="InstallationsList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="200" Height="47" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}" SelectedIndex="{Binding Source={x:Static properties:Settings.Default}, Path=CurrentInstallation}" Foreground="White" Padding="-1,7,5,3">
+                            <ComboBox SelectedItem="1" IsEnabled="{Binding Source={x:Static methods:ConfigManager.GameManager}, Path=IsGameNotOpen}" SelectionChanged="GameStateChanged" DropDownClosed="GameStateChanged" ItemsSource="{Binding}" x:Name="InstallationsList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="200" Height="47" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}" SelectedIndex="{Binding Source={x:Static properties:Settings.Default}, Path=CurrentInstallation}" Foreground="White" Padding="-1,7,5,3">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <ContentControl Focusable="False" x:Name="control" Content="{Binding}">

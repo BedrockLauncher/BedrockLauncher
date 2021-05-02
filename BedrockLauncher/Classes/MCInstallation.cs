@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using BedrockLauncher.Core;
+using BedrockLauncher.Methods;
 using Newtonsoft.Json;
 using System.Windows.Media.Imaging;
 
