@@ -475,7 +475,7 @@
                     <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
                         <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         <Border.Background>
-                            <ImageBrush ImageSource="/BedrockLauncher;component/Resources/images/ui/bg/MainPagePlayButton.png"/>
+                            <ImageBrush ImageSource="/BedrockLauncher;component/resources/images/ui/panels/MainPagePlayButton.png"/>
                         </Border.Background>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -486,7 +486,7 @@
                             <Setter Property="Cursor" Value="Hand"/>
                             <Setter Property="Background" TargetName="border">
                                 <Setter.Value>
-                                    <ImageBrush ImageSource="/BedrockLauncher;component/Resources/images/ui/bg/MainPagePlayButtonOver.png" Stretch="Uniform"/>
+                                    <ImageBrush ImageSource="/BedrockLauncher;component/resources/images/ui/panels/MainPagePlayButtonOver.png" Stretch="Uniform"/>
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
@@ -494,7 +494,7 @@
                             <Setter Property="Cursor" Value="Hand"/>
                             <Setter Property="Background" TargetName="border">
                                 <Setter.Value>
-                                    <ImageBrush ImageSource="/BedrockLauncher;component/Resources/images/ui/bg/MainPagePlayButtonOver.png" Stretch="Uniform"/>
+                                    <ImageBrush ImageSource="/BedrockLauncher;component/resources/images/ui/panels/MainPagePlayButtonOver.png" Stretch="Uniform"/>
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
@@ -502,7 +502,7 @@
                             <Setter Property="Cursor" Value="Hand"/>
                             <Setter Property="Background" TargetName="border">
                                 <Setter.Value>
-                                    <ImageBrush ImageSource="/BedrockLauncher;component/Resources/images/ui/bg/MainPagePlayButtonPressed.png" Stretch="Uniform"/>
+                                    <ImageBrush ImageSource="/BedrockLauncher;component/resources/images/ui/panels/MainPagePlayButtonPressed.png" Stretch="Uniform"/>
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
@@ -541,7 +541,7 @@
         <Setter Property="Padding" Value="1"/>
         <Setter Property="Background">
             <Setter.Value>
-                <ImageBrush ImageSource="/BedrockLauncher;component/Resources/images/ui/bg/advancement_icon.png"/>
+                <ImageBrush ImageSource="/BedrockLauncher;component/resources/images/ui/panels/advancement_icon.png"/>
             </Setter.Value>
         </Setter>
         <Setter Property="Template">

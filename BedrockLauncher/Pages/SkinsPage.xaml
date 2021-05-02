@@ -24,16 +24,16 @@
         <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Grid.ColumnSpan="2">
             <Grid Background="#FF303030">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="140"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="1"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="200"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
-                    <Button x:Name="NewSkinPackButton" Height="40" Width="100" Click="NewSkinPackButton_Click" Foreground="White" Style="{DynamicResource PanelButton}">
+                <Grid Grid.Column="0" >
+                    <Button x:Name="NewSkinPackButton" Height="40" Margin="10,0" Width="Auto" Click="NewSkinPackButton_Click" Foreground="White" Style="{DynamicResource PanelButton}">
                         <Button.Content>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -42,7 +42,22 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Image Height="30" Margin="0,0,6,0" Source="{DynamicResource PlusIcon}"></Image>
-                                <TextBlock Grid.Column="2" Text="{DynamicResource SkinsPage_AddButton}" VerticalAlignment="Center" Margin="0,0,0,0"></TextBlock>
+                                <TextBlock Grid.Column="2" FontWeight="Bold" Text="{DynamicResource SkinsPage_AddButton}" VerticalAlignment="Center" Margin="0,0,0,0"></TextBlock>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Button x:Name="ImportSkinPackButton" Height="40" Margin="10,0" Width="Auto" Click="ImportSkinPackButton_Click" Foreground="White" Style="{DynamicResource PanelButton}">
+                        <Button.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Height="30" Margin="0,0,6,0" Source="{DynamicResource ImportIcon}"></Image>
+                                <TextBlock Grid.Column="2" Text="{DynamicResource SkinsPage_ImportButton}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,0,0"></TextBlock>
                             </Grid>
                         </Button.Content>
                     </Button>

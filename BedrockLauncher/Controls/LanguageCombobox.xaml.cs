@@ -28,14 +28,16 @@ namespace BedrockLauncher.Controls
 
         private void LanguageCombobox_DropDownClosed(object sender, EventArgs e)
         {
-            switch (this.Text)
+            var item = this.SelectedItem as ComboBoxItem;
+            if (item == null) return;
+            switch (item.Tag)
             {
-                case "Русский - Россия":
+                case "ru-RU":
                     BL_Core.LanguageManager.LanguageChange("ru-RU");
                     BL_Core.Properties.Settings.Default.Language = "ru-RU";
                     BL_Core.Properties.Settings.Default.Save();
                     break;
-                case "English - United States":
+                case "en-US":
                     BL_Core.LanguageManager.LanguageChange("en-US");
                     BL_Core.Properties.Settings.Default.Language = "en-US";
                     BL_Core.Properties.Settings.Default.Save();
@@ -45,17 +47,21 @@ namespace BedrockLauncher.Controls
 
         private void LanguageCombobox_Initialized(object sender, EventArgs e)
         {
+            var items = this.Items.Cast<ComboBoxItem>().Select(x => x).ToList();
+
+            var item = this.SelectedItem as ComboBoxItem;
+            if (item == null) return;
             // Set chosen language in language combobox
             switch (BL_Core.Properties.Settings.Default.Language)
             {
                 case "en-US":
-                    this.Text = "English - United States";
+                    this.SelectedItem = items.Where(x => x.Tag.ToString() == "en-US").FirstOrDefault();
                     break;
                 case "ru-RU":
-                    this.Text = "Русский - Россия";
+                    this.SelectedItem = items.Where(x => x.Tag.ToString() == "ru-RU").FirstOrDefault();
                     break;
                 default:
-                    this.Text = "English - United States";
+                    this.SelectedItem = items.Where(x => x.Tag.ToString() == "en-US").FirstOrDefault();
                     break;
             }
         }

@@ -194,6 +194,9 @@
     <Compile Include="Controls\Items\VersionItem.xaml.cs">
       <DependentUpon>VersionItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ThemeCombobox.xaml.cs">
+      <DependentUpon>ThemeCombobox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Toolbar\ExternalLauncherButton.xaml.cs">
       <DependentUpon>ExternalLauncherButton.xaml</DependentUpon>
     </Compile>
@@ -385,6 +388,10 @@
     <Page Include="Controls\Items\VersionItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ThemeCombobox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Toolbar\ExternalLauncherButton.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -628,6 +635,11 @@
     <None Include="app.manifest">
       <SubType>Designer</SubType>
     </None>
+    <Resource Include="Resources\fonts\MinecraftFive-Regular.ttf" />
+    <Resource Include="Resources\fonts\MinecraftSeven.ttf" />
+    <Resource Include="Resources\fonts\NotoSans-BoldItalic.ttf" />
+    <Resource Include="Resources\fonts\NotoSans-Italic.ttf" />
+    <Resource Include="Resources\fonts\MinecraftFive-Bold.ttf" />
     <Resource Include="Resources\fonts\WINGDNG3.TTF" />
     <Resource Include="Resources\fonts\Minecraft.ttf" />
     <Resource Include="Resources\fonts\MinecraftTen.ttf" />
@@ -721,7 +733,7 @@
     <Resource Include="Resources\images\installation_icons\White_Wool.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\images\logo\title.png" />
+    <Resource Include="Resources\images\ui\logo\title.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\ui\icons\grass_icon.png" />
@@ -734,11 +746,11 @@
     <Resource Include="Resources\images\ui\icons\bedrock_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\images\ui\bg\MainPagePlayButton.png" />
+    <Resource Include="Resources\images\ui\panels\MainPagePlayButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\images\ui\bg\MainPagePlayButtonOver.png" />
-    <Resource Include="Resources\images\ui\bg\MainPagePlayButtonPressed.png" />
+    <Resource Include="Resources\images\ui\panels\MainPagePlayButtonOver.png" />
+    <Resource Include="Resources\images\ui\panels\MainPagePlayButtonPressed.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\ui\icons\ms-icon.png" />
@@ -783,13 +795,12 @@
     <Resource Include="Resources\images\installation_icons\Spruce_Leaves.png" />
     <Resource Include="Resources\images\installation_icons\Spruce_Planks.png" />
     <Resource Include="Resources\images\installation_icons\Stone.png" />
-    <Resource Include="Resources\images\credits\carjem_logo.png" />
-    <Resource Include="Resources\images\credits\xlynxx.jpg" />
-    <Resource Include="Resources\images\bg\main_photo.jpg" />
-    <Resource Include="Resources\images\bg\stone_texture.png" />
-    <Resource Include="Resources\images\logo\logo.png" />
+    <Resource Include="Resources\images\ui\credits\carjem_logo.png" />
+    <Resource Include="Resources\images\ui\credits\xlynxx.jpg" />
+    <Resource Include="Resources\images\ui\bg\stone_texture.png" />
+    <Resource Include="Resources\images\ui\logo\logo.png" />
     <Resource Include="Resources\images\ui\elements\optionmark.png" />
-    <Resource Include="Resources\images\logo\subtitle.png" />
+    <Resource Include="Resources\images\ui\logo\subtitle.png" />
     <Resource Include="Resources\images\installation_icons\_BlockOrder.txt" />
     <Resource Include="Resources\images\installation_icons\_BlockOrder_Offical.txt" />
     <Resource Include="Resources\images\installation_icons\Crimson_Stem.png" />
@@ -798,20 +809,20 @@
     <Resource Include="Resources\images\installation_icons\Nether_Wart_Block.png" />
     <Resource Include="Resources\images\installation_icons\Warped_Planks.png" />
     <Resource Include="Resources\images\installation_icons\Warped_Wart_Block.png" />
-    <Resource Include="Resources\images\fallbacks\pack_icon.png" />
-    <Resource Include="Resources\images\fallbacks\pack.png" />
-    <Resource Include="Resources\images\fallbacks\invalid_pack.png" />
-    <Resource Include="Resources\images\fallbacks\invalid_pack_icon.png" />
-    <Resource Include="Resources\images\fallbacks\dev_pack_icon.png" />
-    <Resource Include="Resources\images\bg\firstlaunchbackground.jpg" />
+    <Resource Include="Resources\images\ui\packs\pack_icon.png" />
+    <Resource Include="Resources\images\ui\packs\pack.png" />
+    <Resource Include="Resources\images\ui\packs\invalid_pack.png" />
+    <Resource Include="Resources\images\ui\packs\invalid_pack_icon.png" />
+    <Resource Include="Resources\images\ui\packs\dev_pack_icon.png" />
+    <Resource Include="Resources\images\ui\bg\firstlaunchbackground.jpg" />
     <Resource Include="Resources\images\ui\icons\servers_icon.png" />
-    <Resource Include="Resources\images\ui\bg\advancement_icon.png" />
+    <Resource Include="Resources\images\ui\panels\advancement_icon.png" />
     <Resource Include="Resources\images\icons\bedrock_block_icon.ico" />
     <Resource Include="Resources\images\icons\grass_block_icon.ico" />
     <Resource Include="Resources\images\icons\crafting_table_block_icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\images\credits\mcmrarm_icon.jfif" />
+    <Resource Include="Resources\images\ui\credits\mcmrarm_icon.jfif" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\modules\BL_Core\BL_Core.csproj">
@@ -832,16 +843,41 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\images\credits\bs_community_icon.png" />
+    <Resource Include="Resources\images\ui\credits\bs_community_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\images\credits\mojang_icon.png" />
+    <Resource Include="Resources\images\ui\credits\mojang_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\images\credits\mojang_logo.jpg" />
+    <Resource Include="Resources\images\ui\credits\mojang_logo.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\ui\icons\external.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\ui\bg\play_screen\1.15_buzzy_bees_update.jpg" />
+    <Resource Include="Resources\images\ui\bg\play_screen\1.16_nether_update.png" />
+    <Resource Include="Resources\images\ui\bg\play_screen\1.13_update_aquatic.png" />
+    <Resource Include="Resources\images\ui\bg\play_screen\1.14_village_pillage_update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\ui\bg\play_screen\original_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\ui\bg\play_screen\1.08_cats_and_pandas.jpg" />
+    <Resource Include="Resources\images\ui\bg\play_screen\1.09_combat_update_java.jpg" />
+    <Resource Include="Resources\images\ui\bg\play_screen\1.11_exploration_update_java.jpg" />
+    <Resource Include="Resources\images\ui\bg\play_screen\1.12_world_of_color_update_java.png" />
+    <Resource Include="Resources\images\ui\bg\play_screen\1.13_technically_updated_java.jpg" />
+    <Resource Include="Resources\images\ui\bg\play_screen\bedrock_master.jfif" />
+    <Resource Include="Resources\images\ui\bg\play_screen\bedrock_standard.jfif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\ui\bg\play_screen\1.0_pocket_edition.png" />
+    <Resource Include="Resources\images\ui\bg\play_screen\other_dungeons.jpg" />
+    <Resource Include="Resources\images\ui\bg\play_screen\other_indie_days.jpg" />
+    <Resource Include="Resources\images\ui\bg\play_screen\other_late_legacy_console.jpg" />
+    <Resource Include="Resources\images\ui\bg\play_screen\other_mid_legacy_console.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
@@ -849,7 +885,17 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>xcopy /y /e /c /i "$(SolutionDir)/bin/SkinView3D" "$(ProjectDir)$(OutDir)" 
-xcopy /y /e /c /i "$(SolutionDir)/bin/WUTokenHelper" "$(ProjectDir)$(OutDir)"</PostBuildEvent>
+    <PostBuildEvent>if $(PlatformName) == Any CPU (
+xcopy /y /e /c /i "$(SolutionDir)/bin/WUTokenHelper/Win32/$(ConfigurationName)" "$(ProjectDir)$(OutDir)"
+)
+
+if $(PlatformName) == x86 (
+xcopy /y /e /c /i "$(SolutionDir)/bin/WUTokenHelper/Win32/$(ConfigurationName)" "$(ProjectDir)$(OutDir)"
+)
+
+if $(PlatformName) == x64 (
+xcopy /y /e /c /i "$(SolutionDir)/bin/WUTokenHelper/x64/$(ConfigurationName)" "$(ProjectDir)$(OutDir)"
+)
+</PostBuildEvent>
   </PropertyGroup>
 </Project>

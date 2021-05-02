@@ -89,7 +89,7 @@
 
                 <Grid SnapsToDevicePixels="True" RenderOptions.BitmapScalingMode="NearestNeighbor">
                     <Grid.Background>
-                        <ImageBrush TileMode="Tile" Viewport="0,0,320,320" ViewportUnits="Absolute" ImageSource="/BedrockLauncher;component/Resources/images/bg/stone_texture.png">
+                        <ImageBrush TileMode="Tile" Viewport="0,0,320,320" ViewportUnits="Absolute" ImageSource="/BedrockLauncher;component/resources/images/ui/bg/stone_texture.png">
                         </ImageBrush>
                     </Grid.Background>
                     <Grid.RowDefinitions>
@@ -111,7 +111,7 @@
                     </StackPanel>
                 </Grid>
             </Border>
-            <Image Margin="0,0" Height="100" VerticalAlignment="Top" Source="/BedrockLauncher;component/Resources/images/logo/logo.png"></Image>
+            <Image Margin="0,0" Height="100" VerticalAlignment="Top" Source="/BedrockLauncher;component/resources/images/ui/logo/logo.png"></Image>
         </Grid>
         <Frame x:Name="ContentFrame" VerticalAlignment="Stretch" Background="#22000000" HorizontalAlignment="Stretch" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>

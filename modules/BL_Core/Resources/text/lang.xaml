@@ -104,6 +104,7 @@
     <!--#region SkinsPage -->
 
     <v:String x:Key="SkinsPage_AddButton">New...</v:String>
+    <v:String x:Key="SkinsPage_ImportButton">Import...</v:String>
 
     <!--#endregion-->
 
@@ -186,6 +187,8 @@
 
     <!--#region GeneralSettingsScreen -->
     <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">LANGUAGE</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">THEME</v:String>
+    
 
     <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">LAUNCHER SETTINGS</v:String>
     <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Use beta version of the launcher</v:String>
@@ -300,6 +303,9 @@
     <v:String x:Key="Error_CantFindPaidServerList_Title">Could not open servers tab</v:String>
     <v:String x:Key="Error_CantFindPaidServerList">Paid Servers List not found.</v:String>
 
+    <v:String x:Key="Error_NotaSkinPack_Title">Unable to import skin pack</v:String>
+    <v:String x:Key="Error_NotaSkinPack">That's not a skin pack silly!</v:String>
+
     <!--#endregion-->
 
     <!--#region NewProfile -->
@@ -371,6 +377,31 @@
 
     <!--#endregion-->
 
+    <!--#region ThemeEntries -->
+
+    <v:String x:Key="ThemeEntries_LatestUpdate">Latest Update</v:String>
+    <v:String x:Key="ThemeEntries_Original">Original</v:String>
+
+    <v:String x:Key="ThemeEntries_NetherUpdate">Nether Update</v:String>
+    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Buzzy Bees Update</v:String>
+    <v:String x:Key="ThemeEntries_VillagePillageUpdate">Village &amp; Pillage Update</v:String>
+    <v:String x:Key="ThemeEntries_UpdateAquatic">Update Aquatic</v:String>
+    <v:String x:Key="ThemeEntries_TechnicallyUpdated">Technically Updated [Java]</v:String>
+    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">World of Color Update [Java]</v:String>
+    <v:String x:Key="ThemeEntries_ExplorationUpdate">Exploration Update [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CombatUpdate">Combat Update [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">Cats &amp; Pandas [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_PocketEditionRelease">Offical Release [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_BedrockStandard">Bedrock Edition Standard</v:String>
+    <v:String x:Key="ThemeEntries_BedrockMaster">Bedrock Edition Master</v:String>
+    <v:String x:Key="ThemeEntries_MidLegacyConsole">Mid Legacy Console Era</v:String>
+    <v:String x:Key="ThemeEntries_LateLegacyConsole">Late Legacy Console Era</v:String>
+    <v:String x:Key="ThemeEntries_IndieDays">Indie Days</v:String>
+    <v:String x:Key="ThemeEntries_Dungeons">Minecraft Dungeons</v:String>
+
+
+    <!--#endregion-->
+
     <!--#region GeneralText -->
 
     <v:String x:Key="GeneralText_Delete">Delete</v:String>
@@ -390,6 +421,7 @@
     <v:String x:Key="GeneralText_No">No</v:String>
     <v:String x:Key="GeneralText_Releases">Releases</v:String>
     <v:String x:Key="GeneralText_Betas">Betas</v:String>
+    <v:String x:Key="GeneralText_Export">Export</v:String>
 
     <v:String x:Key="GeneralText_Twitter">Twitter</v:String>
     <v:String x:Key="GeneralText_GitHub">GitHub</v:String>

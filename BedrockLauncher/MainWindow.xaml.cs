@@ -33,8 +33,6 @@ using Version = BedrockLauncher.Classes.MCVersion;
 
 namespace BedrockLauncher
 {
-    //TODO: Import and Export Functionality on the Skin Pack Screen
-
     //TODO: Beta Test and Optimize
     //TODO: (Later On) Better Animations
     //TODO: (Later On) Community Content / Personal Donations Section

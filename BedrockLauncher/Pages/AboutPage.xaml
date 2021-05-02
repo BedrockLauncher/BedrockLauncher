@@ -39,7 +39,7 @@
                     <RowDefinition Height="250"></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/BedrockLauncher;component/resources/images/credits/carjem_logo.png" Grid.Row="0"></Image>
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/BedrockLauncher;component/resources/images/ui/credits/carjem_logo.png" Grid.Row="0"></Image>
                 <Border Grid.Row="1" BorderThickness="0,2,0,0" BorderBrush="Gray">
                     <Grid Background="#FF262626">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
@@ -61,7 +61,7 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                    <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Right" Source="/BedrockLauncher;component/resources/images/credits/xlynxx.jpg">
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Right" Source="/BedrockLauncher;component/resources/images/ui/credits/xlynxx.jpg">
                 </Image>
                 <Grid Width="256" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <TextBlock Text="XlynxX" HorizontalAlignment="Left" Padding="20,0,0,0" FontSize="50" Foreground="White"></TextBlock>
@@ -91,7 +91,7 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Left" Source="/BedrockLauncher;component/resources/images/credits/mcmrarm_icon.jfif">
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Left" Source="/BedrockLauncher;component/resources/images/ui/credits/mcmrarm_icon.jfif">
                     </Image>
                     <Grid Width="256" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
                         <TextBlock Text="MCMrARM" HorizontalAlignment="Left" Padding="20,0,0,0" FontSize="30" Foreground="White"></TextBlock>
@@ -123,7 +123,7 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Left" Source="/BedrockLauncher;component/resources/images/credits/bs_community_icon.png">
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Left" Source="/BedrockLauncher;component/resources/images/ui/credits/bs_community_icon.png">
                     </Image>
                     <Grid Width="256" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
                         <TextBlock Text="Blessing Skin" HorizontalAlignment="Left" Padding="20,0,0,0" FontSize="30" Foreground="Black"></TextBlock>
@@ -154,9 +154,9 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Left" Source="/BedrockLauncher;component/resources/images/credits/mojang_icon.png"/>
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Left" Source="/BedrockLauncher;component/resources/images/ui/credits/mojang_icon.png"/>
                     <Grid Width="256" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
-                        <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Left" Source="/BedrockLauncher;component/resources/images/credits/mojang_logo.jpg"/>
+                        <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Left" Source="/BedrockLauncher;component/resources/images/ui/credits/mojang_logo.jpg"/>
                     </Grid>
                 </Grid>
                 <Grid Grid.Row="1" Background="#FF85262C">

@@ -39,6 +39,19 @@ namespace BedrockLauncher.Pages
     }
     public static class ErrorScreenShow
     {
+        public static void exceptionmsg(Exception error = null)
+        {
+            ErrorScreen errorScreen = new ErrorScreen();
+            // Show default error message
+            if (error == null)
+            {
+                ConfigManager.MainThread.SetDialogFrame(new ErrorScreen());
+            }
+            errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, error.HResult);
+            errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, error.Message);
+            ConfigManager.MainThread.SetDialogFrame(errorScreen);
+        }
+
         public static void errormsg(string error = null)
         {
             ErrorScreen errorScreen = new ErrorScreen();
@@ -77,6 +90,11 @@ namespace BedrockLauncher.Pages
                 case "downloadfailederror":
                     errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_AppDownloadFailed_Title");
                     errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_AppDownloadFailed");
+                    ConfigManager.MainThread.SetDialogFrame(errorScreen);
+                    break;
+                case "notaskinpack":
+                    errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_NotaSkinPack_Title");
+                    errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_NotaSkinPack");
                     ConfigManager.MainThread.SetDialogFrame(errorScreen);
                     break;
                 case "extractionfailed":

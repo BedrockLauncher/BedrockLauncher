@@ -18,6 +18,9 @@ using BedrockLauncher.Methods;
 using System.IO;
 using System.Data;
 using BedrockLauncher.Controls.Items;
+using Microsoft.Win32;
+using Path = System.IO.Path;
+using System.IO.Compression;
 
 namespace BedrockLauncher.Pages
 {
@@ -141,6 +144,47 @@ namespace BedrockLauncher.Pages
         {
             var skinPack = LoadedSkinPacks.SelectedItem as MCSkinPack;
             ConfigManager.MainThread.SetOverlayFrame(new EditSkinScreen(skinPack));
+        }
+
+        private void ImportSkinPackButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog()
+            {
+                Filter = "MCPACK Files (*.mcpack)|*.mcpack|ZIP Files (*.zip)|*.zip"
+            };
+            if (dialog.ShowDialog().Value)
+            {
+                try
+                {
+                    var file = ZipFile.OpenRead(dialog.FileName);
+                    if (file.Entries.ToList().Exists(x => x.FullName == "skins.json"))
+                    {
+                        file.Dispose();
+                        string InstallationPath = Filepaths.GetInstallationsFolderPath(ConfigManager.CurrentProfile, ConfigManager.CurrentInstallation.DirectoryName);
+                        string NewPackDirectoryName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
+                        string NewPackDirectory = Path.Combine(Filepaths.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
+
+                        while (Directory.Exists(NewPackDirectory))
+                        {
+                            NewPackDirectoryName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
+                            NewPackDirectory = Path.Combine(Filepaths.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
+                        }
+
+                        ZipFile.ExtractToDirectory(dialog.FileName, NewPackDirectory);
+                    }
+                    else
+                    {
+                        file.Dispose();
+                        ErrorScreenShow.errormsg("notaskinpack");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ErrorScreenShow.exceptionmsg(ex);
+                }
+
+            }
+            ReloadSkinPacks();
         }
 
         private void NewSkinPackButton_Click(object sender, RoutedEventArgs e)

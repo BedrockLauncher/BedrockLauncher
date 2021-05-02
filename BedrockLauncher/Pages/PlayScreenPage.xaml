@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="608" d:DesignWidth="828"
       Title="PlayScreenPage">
-    <Grid>
+    <Grid Loaded="Grid_Loaded">
         <Grid.RowDefinitions>
             <RowDefinition Height="18"></RowDefinition>
             <RowDefinition MinHeight="66"></RowDefinition>
@@ -19,9 +19,9 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.Background>
-            <ImageBrush Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality" ImageSource="/BedrockLauncher;component/Resources/images/bg/main_photo.jpg"/>
+            <ImageBrush Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality" x:Name="ImageBrush"/>
         </Grid.Background>
-        <Image VerticalAlignment="Top" MaxHeight="77" HorizontalAlignment="Stretch" Source="/BedrockLauncher;component/Resources/images/logo/title.png" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" Grid.Column="1" Grid.Row="1">
+        <Image VerticalAlignment="Top" MaxHeight="77" HorizontalAlignment="Stretch" Source="/BedrockLauncher;component/resources/images/ui/logo/title.png" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" Grid.Column="1" Grid.Row="1">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="1" ScaleY="1"/>

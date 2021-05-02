@@ -52,5 +52,14 @@ namespace BL_Core.Properties {
                 this["Language"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("NetherUpdate")]
+        public string LatestTheme {
+            get {
+                return ((string)(this["LatestTheme"]));
+            }
+        }
     }
 }

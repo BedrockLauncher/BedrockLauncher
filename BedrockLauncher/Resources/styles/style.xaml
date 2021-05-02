@@ -38,7 +38,7 @@
         <Setter Property="Height" Value="30"/>
         <Setter Property="Margin" Value="14,14,0,0"/>
     </Style>
-
+    
     <DrawingImage x:Key="PlusIcon">
         <DrawingImage.Drawing>
             <DrawingGroup ClipGeometry="M0,0 V512 H512 V0 H0 Z">
@@ -61,6 +61,15 @@
         </DrawingImage.Drawing>
     </DrawingImage>
 
+    <DrawingImage x:Key="ImportIcon">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V1000 H1000 V0 H0 Z">
+                <DrawingGroup Opacity="1">
+                    <GeometryDrawing Brush="White" Geometry="F1 M1000,1000z M0,0z M500,990C338.3,990,195,911.7,105.8,790.9L185.8,790.9C264,875.5 375.7,928.7 500,928.7 736.8,928.7 928.8,736.7 928.8,499.9 928.8,263.1 736.8,71.2 500,71.2 361.2,71.2 238.2,137.4 159.9,239.6L84.8999999999999,239.6C171.6,101.7 325,10 500,10 770.6,10 990,229.4 990,500 990,770.6 770.6,990 500,990 M459.3,368.5C452.1,362,452.1,351.3,459.3,344.7L485.3,320.9C492.5,314.3,504.1,314.3,511.3,320.9L693.5,487.9C700.7,494.5,700.7,505.2,693.5,511.8L511.3,678.8C504.1,685.4,492.5,685.4,485.3,678.8L459.3,654.9C452.1,648.3,452.1,637.6,459.3,631.1L568.8,530.7 25.3,530.7C16.8,530.7,10,523.9,10,515.4L10,484.8C10,476.3,16.8,469.5,25.3,469.5L569.3,469.5 459.3,368.5z" />
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
 
     <TextBlock x:Key="TitleText" Text="{Binding DisplayStatus}">
         <TextBlock.DataContext>

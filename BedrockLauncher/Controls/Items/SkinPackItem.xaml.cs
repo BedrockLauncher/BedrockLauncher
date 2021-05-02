@@ -1,9 +1,12 @@
 ﻿using BedrockLauncher.Classes.SkinPack;
 using BedrockLauncher.Core;
+using BedrockLauncher.Methods;
 using BedrockLauncher.Pages;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +19,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Path = System.IO.Path;
 
 namespace BedrockLauncher.Controls.Items
 {
@@ -88,6 +92,28 @@ namespace BedrockLauncher.Controls.Items
             ConfigManager.MainThread.SetOverlayFrame(new EditSkinPackScreen(skinPack, index));
 
             MoreButton.ContextMenu.IsOpen = false;
+        }
+
+        private void ExportSkinPackButton_Click(object sender, RoutedEventArgs e)
+        {
+            MoreButton.ContextMenu.IsOpen = false;
+            var skinPack = GetParent().LoadedSkinPacks.SelectedItem as MCSkinPack;
+
+            SaveFileDialog dialog = new SaveFileDialog()
+            {
+                Filter = "MCPACK Files (*.mcpack)|*.mcpack|ZIP Files (*.zip)|*.zip"
+            };
+            if (dialog.ShowDialog().Value)
+            {
+                try
+                {
+                    ZipFile.CreateFromDirectory(skinPack.Directory, dialog.FileName);
+                }
+                catch (Exception ex)
+                {
+                    ErrorScreenShow.exceptionmsg(ex);
+                }
+            }
         }
 
         private async void DeleteSkinPackButton_Click(object sender, RoutedEventArgs e)

@@ -93,8 +93,8 @@
       </WindowsMetadataFile>
     </Link>
     <PostBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">xcopy "$(TargetPath)" "$(SolutionDir)BedrockLauncher\$(TargetFileName)"* /y
-xcopy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)BedrockLauncher\$(TargetName).pdb"* /y</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">xcopy "$(TargetPath)" "$(SolutionDir)bin\WUTokenHelper\$(PlatformName)\$(ConfigurationName)\$(TargetFileName)"* /y
+xcopy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)bin\WUTokenHelper\$(PlatformName)\$(ConfigurationName)\$(TargetName).pdb"* /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Platform)'=='Win32'">
@@ -106,8 +106,8 @@ xcopy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)BedrockLauncher\$(TargetNam
       </WindowsMetadataFile>
     </Link>
     <PostBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">xcopy "$(TargetPath)" "$(SolutionDir)bin\WUTokenHelper\$(TargetFileName)"* /y
-xcopy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)bin\WUTokenHelper\$(TargetName).pdb"* /y</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">xcopy "$(TargetPath)" "$(SolutionDir)bin\WUTokenHelper\$(PlatformName)\$(ConfigurationName)\$(TargetFileName)"* /y
+xcopy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)bin\WUTokenHelper\$(PlatformName)\$(ConfigurationName)\$(TargetName).pdb"* /y</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">rd /s /q "$(SolutionDir)bin\WUTokenHelper\"</Command>
@@ -132,12 +132,12 @@ xcopy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)bin\WUTokenHelper\$(TargetN
       </WindowsMetadataFile>
     </Link>
     <PostBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">xcopy "$(TargetPath)" "$(SolutionDir)bin\WUTokenHelper\$(TargetFileName)"* /y
-xcopy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)bin\WUTokenHelper\$(TargetName).pdb"* /y</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">xcopy "$(TargetPath)" "$(SolutionDir)bin\WUTokenHelper\$(PlatformName)\$(ConfigurationName)\$(TargetFileName)"* /y
+xcopy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)bin\WUTokenHelper\$(PlatformName)\$(ConfigurationName)\$(TargetName).pdb"* /y</Command>
     </PostBuildEvent>
     <PostBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">xcopy "$(TargetPath)" "$(SolutionDir)BedrockLauncher\$(TargetFileName)"* /y
-xcopy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)BedrockLauncher\$(TargetName).pdb"* /y</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">xcopy "$(TargetPath)" "$(SolutionDir)bin\WUTokenHelper\$(PlatformName)\$(ConfigurationName)\$(TargetFileName)"* /y
+xcopy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)bin\WUTokenHelper\$(PlatformName)\$(ConfigurationName)\$(TargetName).pdb"* /y</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">rd /s /q "$(SolutionDir)bin\WUTokenHelper\"</Command>

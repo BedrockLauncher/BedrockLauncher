@@ -8,8 +8,8 @@ namespace BedrockLauncher.Classes
 {
     public class MCPatchNotesItem
     {
-        public const string FallbackImageURL = @"/BedrockLauncher;component/resources/images/fallbacks/pack_icon.png";
-        public const string FallbackImageURL_Dev = @"/BedrockLauncher;component/resources/images/fallbacks/dev_pack_icon.png";
+        public const string FallbackImageURL = @"/BedrockLauncher;component/resources/images/ui/packs/pack_icon.png";
+        public const string FallbackImageURL_Dev = @"/BedrockLauncher;component/resources/images/ui/packs/dev_pack_icon.png";
 
         public string Content { get; set; }
         public string ImageUrl { get; set; }

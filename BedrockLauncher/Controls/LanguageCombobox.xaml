@@ -12,12 +12,13 @@
              Initialized="LanguageCombobox_Initialized"
              Foreground="White"
              Style="{DynamicResource ComboBoxStyle2}" 
-             SelectedIndex="1"
+             SelectedIndex="0"
+             Padding="15,0"
              FontSize="14">
-        <ComboBoxItem>
-            <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" Text="{DynamicResource LanguageEntries_en_US}" FontWeight="Normal" VerticalAlignment="Center"/>
-        </ComboBoxItem>
-        <ComboBoxItem>
-            <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"  Text="{DynamicResource LanguageEntries_ru_RU}" FontWeight="Normal" VerticalAlignment="Center"/>
-        </ComboBoxItem>
+    <ComboBoxItem VerticalContentAlignment="Center" Tag="en-US">
+        <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" Text="{DynamicResource LanguageEntries_en_US}" FontWeight="Normal" VerticalAlignment="Center"/>
+    </ComboBoxItem>
+    <ComboBoxItem  VerticalContentAlignment="Center" Tag="ru-RU">
+        <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" Text="{DynamicResource LanguageEntries_ru_RU}" FontWeight="Normal" VerticalAlignment="Center"/>
+    </ComboBoxItem>
 </ComboBox>

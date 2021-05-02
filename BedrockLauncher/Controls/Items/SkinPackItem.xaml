@@ -43,6 +43,8 @@
                     <ContextMenu Closed="ContextMenu_Closed" Style="{DynamicResource NoCheckboxContextMenu}">
                         <MenuItem Header="{DynamicResource GeneralText_Edit}" Name="EditSkinPackButton" Click="EditSkinPackButton_Click"></MenuItem>
                         <MenuItem Header="{DynamicResource GeneralText_Delete}" Name="DeleteSkinPackButton" Click="DeleteSkinPackButton_Click"></MenuItem>
+                        <Separator></Separator>
+                        <MenuItem Header="{DynamicResource GeneralText_Export}" Name="ExportSkinPackButton" Click="ExportSkinPackButton_Click"></MenuItem>
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>

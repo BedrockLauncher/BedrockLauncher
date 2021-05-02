@@ -47,5 +47,8 @@
     <Setting Name="ExternalLauncherIconPath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="CurrentTheme" Type="System.String" Scope="User">
+      <Value Profile="(Default)">LatestUpdate</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

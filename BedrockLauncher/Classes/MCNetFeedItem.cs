@@ -9,7 +9,7 @@ namespace BedrockLauncher.Classes
 {
     public class MCNetFeedItem : FeedItem
     {
-        private const string FallbackImageURL = @"/BedrockLauncher;component/resources/images/fallbacks/invalid_pack.png";
+        private const string FallbackImageURL = @"/BedrockLauncher;component/resources/images/ui/packs/invalid_pack.png";
 
         public string ImageUrl
         {

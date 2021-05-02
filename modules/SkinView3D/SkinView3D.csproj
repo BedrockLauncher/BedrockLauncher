@@ -60,12 +60,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>rd /s /q "$(SolutionDir)bin\SkinView3D\"
-cd "$(ProjectDir)/SkinView"
+    <PreBuildEvent>cd "$(ProjectDir)/SkinView"
 npm install
 npm build</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>:: xcopy /y /e /c /i "$(ProjectDir)$(OutDir)" "$(SolutionDir)/bin/SkinView3D"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

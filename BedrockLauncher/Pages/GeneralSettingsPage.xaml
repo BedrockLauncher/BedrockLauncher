@@ -26,7 +26,7 @@
     </Page.Resources>
     <Grid Margin="0,0,0,0">
         <ScrollViewer>
-            <StackPanel>
+            <StackPanel Margin="0,0,0,20">
                 <TextBlock Margin="42,42,0,0" Text="{DynamicResource GeneralSettingsScreen_LanguageSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                 <controls:LanguageCombobox HorizontalAlignment="Left" Margin="42,20,0,0" FontSize="14" VerticalAlignment="Top" Padding="10,4,5,3" x:Name="LanguageCombobox"></controls:LanguageCombobox>
                 <TextBlock Margin="42,28,0,0" Text="{DynamicResource GeneralSettingsScreen_LauncherSettingsSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
@@ -34,6 +34,9 @@
                 <CheckBox x:Name="experiementalDataSaveRedirection" Click="experiementalDataSaveRedirection_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_ExperimentalSaveRedirection}" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
                 <CheckBox x:Name="hideJavaLauncherButtonCheckbox" Click="hideJavaLauncherButtonCheckbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_HideJavaLauncherShortcut}" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
                 <CheckBox x:Name="showExternalLauncherButtonCheckbox" Click="showExternalLauncherButtonCheckbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_ShowExternalLauncherShortcut}" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
+
+                <TextBlock Margin="42,42,0,0" Text="{DynamicResource GeneralSettingsScreen_ThemeSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+                <controls:ThemeCombobox HorizontalAlignment="Left" Margin="42,20,0,0" FontSize="14" VerticalAlignment="Top" Padding="10,4,5,3" x:Name="ThemeCombobox"></controls:ThemeCombobox>
 
                 <TextBlock Margin="42,22,0,0" Text="{DynamicResource GeneralSettingsScreen_ExternalLauncherSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                 <StackPanel Orientation="Horizontal">
