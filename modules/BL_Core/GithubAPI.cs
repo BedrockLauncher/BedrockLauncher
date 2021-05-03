@@ -9,7 +9,7 @@ namespace BL_Core
 {
     public class GithubAPI
     {
-        public const string RELEASE_URL = "https://api.github.com/repos/CarJem/BedrockLauncher/releases/latest";
+        public const string RELEASE_URL = "https://api.github.com/repos/BedrockLauncher/BedrockLauncher/releases/latest";
 
         public const string BETA_URL = "https://api.github.com/repos/BedrockLauncher/BedrockLauncher-Beta/releases/latest";
 
