@@ -11,7 +11,7 @@ namespace BL_Core
     {
         public const string RELEASE_URL = "https://api.github.com/repos/CarJem/BedrockLauncher/releases/latest";
 
-        public const string BETA_URL = "https://api.github.com/repos/CarJem/BedrockLauncher-Beta/releases/latest";
+        public const string BETA_URL = "https://api.github.com/repos/BedrockLauncher/BedrockLauncher-Beta/releases/latest";
 
         public static string ACCESS_TOKEN 
         {
