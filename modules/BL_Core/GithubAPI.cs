@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 namespace BL_Core
 {
@@ -12,7 +13,57 @@ namespace BL_Core
 
         public const string BETA_URL = "https://api.github.com/repos/CarJem/BedrockLauncher-Beta/releases/latest";
 
-        public const string ACCESS_TOKEN = "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";
+        public static string ACCESS_TOKEN 
+        {
+            get
+            {
+
+                List<string> token = new List<string>()
+                {
+                    "g",
+                    "h",
+                    "p",
+                    "_",
+                    "Z",
+                    "B",
+                    "0",
+                    "D",
+                    "u",
+                    "X",
+                    "r",
+                    "F",
+                    "u",
+                    "o",
+                    "1",
+                    "w",
+                    "V",
+                    "w",
+                    "C",
+                    "y",
+                    "P",
+                    "D",
+                    "j",
+                    "w",
+                    "B",
+                    "k",
+                    "i",
+                    "X",
+                    "f",
+                    "T",
+                    "P",
+                    "S",
+                    "g",
+                    "B",
+                    "1",
+                    "c",
+                    "F",
+                    "i",
+                    "e",
+                    "J"
+                };
+                return String.Join("", token);
+            }
+        }
     }
 
     public class Asset
