@@ -10,158 +10,108 @@ using System.Windows.Controls;
 using System.Collections.Generic;
 using BedrockLauncher.Methods;
 using Newtonsoft.Json;
+using BL_Core;
 
 namespace BedrockLauncher.Methods
 {
     public class LauncherUpdater
     {
+        #region Definitions
 
-        private class UpdateNote
+        public string Release_LatestTag { get; private set; } = string.Empty;
+        public string Release_LatestTagBody { get; private set; } = string.Empty;
+        public string Beta_LatestTag { get; private set; } = string.Empty;
+        public string Beta_LatestTagBody { get; private set; } = string.Empty;
+
+        #endregion
+
+        #region Accessors
+
+        public string GetLatestTag()
         {
-            public string Tag { get; set; }
-            public string Description { get; set; }
+            if (Properties.LauncherSettings.Default.UseBetaBuilds) return Beta_LatestTag;
+            else return Release_LatestTag;
         }
 
-        private string LATEST_BUILD_LINK { get => BL_Core.Properties.Settings.Default.GithubPage + "/releases/latest"; }
-        private string latestTag;
-        private string latestTagDescription;
+        public string GetLatestTagBody()
+        {
+            if (Properties.LauncherSettings.Default.UseBetaBuilds) return Beta_LatestTagBody;
+            else return Release_LatestTagBody;
+        }
+
+        #endregion
+
+        #region Init
+
         public LauncherUpdater()
         {
-            Program.Log("Checking for updates");
-            CheckUpdates();
+            CheckForUpdates();
         }
 
-        private async void CheckUpdates()
+        #endregion
+
+        #region Update Checking
+
+        public void CheckForUpdates()
+        {
+            Program.Log("Checking for updates");
+            CheckForUpdatesAsync();
+        }
+        private async void CheckForUpdatesAsync()
         {
             try
             {
-                if (Properties.Settings.Default.UseBetaBuilds)
-                {
-                    var json = await Task.Run(Beta_GetJSON);
-                    SetTag(json.Tag);
-                    SetTagDescription(json.Description);
-                }
-                else
-                {
-                    var html = await Task.Run(Release_GetHtml);
-                    Release_LookForLatestTag(html);
-                    Release_LookForDescription(html);
-                }
+                await Task.Run(Beta_GetJSON);
+                await Task.Run(Release_GetJSON);
+                CompareUpdate();
             }
             catch (Exception err)
             {
                 Program.Log("Check for updates failed\nError:" + err.Message);
-                latestTag = "";
-                latestTagDescription = "";
             }
         }
-
-        #region Release Updates
-
-        private HtmlAgilityPack.HtmlDocument Release_GetHtml()
-        {
-            using (WebClient wc = new WebClient())
-            {
-                var web = new HtmlWeb();
-                var doc = web.Load(LATEST_BUILD_LINK);
-                return doc;
-            }
-        }
-        private void Release_LookForLatestTag(HtmlDocument html)
-        {
-            foreach (HtmlNode node in html.DocumentNode.SelectNodes("//head/meta[@property='og:url']"))
-            {
-                string[] urlParts = node.Attributes["content"].Value.Split('/');
-                SetTag(urlParts[urlParts.Length - 1]); // return latest part, for example 0.1.2 from full link
-            }
-        }
-        private void Release_LookForDescription(HtmlDocument html)
-        {
-            foreach (HtmlNode node in html.DocumentNode.SelectNodes("//div[@class='markdown-body']"))
-            {
-                SetTagDescription(node.InnerText.Trim());
-            }
-        }
-
-        #endregion
-
-        #region Beta Updates
-
-        private UpdateNote Beta_GetJSON()
+        private void Release_GetJSON()
         {
             string json = string.Empty;
-            var url = "https://api.github.com/repos/CarJem/BedrockLauncher-Beta/contents/changelog.json";
+            var url = GithubAPI.RELEASE_URL;
             var httpRequest = (HttpWebRequest)WebRequest.Create(url);
+            httpRequest.Headers["Authorization"] = "Bearer " + GithubAPI.ACCESS_TOKEN;
             httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
-            httpRequest.Accept = "application/vnd.github.v3.raw";
-            httpRequest.Headers["Authorization"] = "Bearer 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";
             var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
             Console.WriteLine(httpResponse.StatusCode);
-            return JsonConvert.DeserializeObject<UpdateNote>(json); 
+            var note = JsonConvert.DeserializeObject<UpdateNote>(json);
+            this.Release_LatestTag = note.tag_name;
+            this.Release_LatestTagBody = note.body;
         }
+        private void Beta_GetJSON()
+        {
+            string json = string.Empty;
+            var url = GithubAPI.BETA_URL;
+            var httpRequest = (HttpWebRequest)WebRequest.Create(url);
+            httpRequest.Headers["Authorization"] = "Bearer " + GithubAPI.ACCESS_TOKEN;
+            httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
+            var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
+            Console.WriteLine(httpResponse.StatusCode);
+            var note = JsonConvert.DeserializeObject<UpdateNote>(json);
+            this.Beta_LatestTag = note.tag_name;
+            this.Beta_LatestTagBody = note.body;
+        }
+
 
         #endregion
 
-        #region All Updates
+        #region Button
 
-        public void SetTag(string tag)
-        {
-            this.latestTag = tag;
-            Program.Log("Current tag: " + BL_Core.Properties.Settings.Default.Version);
-            Program.Log("Latest tag: " + latestTag);
-
-            try
-            {
-                // if current tag < than latest tag
-                if (int.Parse(BL_Core.Properties.Settings.Default.Version.Replace(".", "")) < int.Parse(latestTag.Replace(".", "")))
-                {
-                    Program.Log("New version available!");
-                    ShowUpdateButton(5000);
-                }
-            }
-            catch
-            {
-
-            }
-        }
-
-        public void SetTagDescription(string description)
-        {
-            this.latestTagDescription = description;
-        }
-
-        #endregion
-
-        private void startUpdate()
-        {
-            try
-            {
-                string installerPath = Path.Combine(Directory.GetCurrentDirectory(), "Installer.exe");
-                ProcessStartInfo startInfo = new ProcessStartInfo
-                {
-                    FileName = installerPath,
-                    Arguments = @"--silent" + (Properties.Settings.Default.UseBetaBuilds),
-                    UseShellExecute = true,
-                    Verb = "runas"
-                };
-                Process.Start(startInfo);
-                Application.Current.Shutdown();
-            }
-            catch (Exception err)
-            {
-                Program.Log("Installer launch failed\nError: " + err);
-            }
-        }
-        async private void ShowUpdateButton(int time) 
+        private async void ShowUpdateButton(int time)
         {
             ConfigManager.MainThread.updateButton.Visibility = Visibility.Visible;
-            ConfigManager.MainThread.updateButton.Click += UpdateButton_Click;
-            showAdvancementButton();
+            ShowAdvancementButton();
             await Task.Delay(time);
-            hideAdvancementButton();
+            HideAdvancementButton();
         }
-        void hideAdvancementButton()
+        private void HideAdvancementButton()
         {
             // hide update 'advancement'
             Storyboard storyboard2 = new Storyboard();
@@ -176,8 +126,7 @@ namespace BedrockLauncher.Methods
             Storyboard.SetTarget(animation2, ConfigManager.MainThread.updateButton);
             storyboard2.Begin();
         }
-
-        void showAdvancementButton()
+        private void ShowAdvancementButton()
         {
             // show update 'advancement'
             Storyboard storyboard = new Storyboard();
@@ -193,18 +142,63 @@ namespace BedrockLauncher.Methods
             Storyboard.SetTarget(animation, ConfigManager.MainThread.updateButton);
             storyboard.Begin();
         }
-        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        public void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Log("Trying to update");
-            startUpdate();
+            StartUpdate();
         }
-        public string getLatestTag()
+
+        #endregion
+
+        private void CompareUpdate()
         {
-            return latestTag;
+            string LatestTag = (Properties.LauncherSettings.Default.UseBetaBuilds ? Beta_LatestTag : Release_LatestTag);
+            string CurrentTag = BL_Core.Properties.Settings.Default.Version;
+            Program.Log("Current tag: " + CurrentTag);
+            Program.Log("Latest tag: " + LatestTag);
+
+            try
+            {
+                // if current tag < than latest tag
+                if (int.Parse(CurrentTag.Replace(".", "")) < int.Parse(LatestTag.Replace(".", "")))
+                {
+                    Program.Log("New version available!");
+                    ShowUpdateButton(5000);
+                }
+            }
+            catch
+            {
+
+            }
         }
-        public string getLatestTagDescription()
+        private void StartUpdate()
         {
-            return latestTagDescription;
+            try
+            {
+                string installerPath = Path.Combine(Directory.GetCurrentDirectory(), "Installer.exe");
+                ProcessStartInfo startInfo = new ProcessStartInfo
+                {
+                    FileName = installerPath,
+                    Arguments = GetArgs(),
+                    UseShellExecute = true,
+                    Verb = "runas"
+                };
+                Process.Start(startInfo);
+                Application.Current.Shutdown();
+            }
+            catch (Exception err)
+            {
+                Program.Log("Installer launch failed\nError: " + err);
+            }
+
+
+            string GetArgs()
+            {
+                string silent = (Properties.LauncherSettings.Default.UseSilentUpdates ? "--silent" : "");
+                string beta = (Properties.LauncherSettings.Default.UseBetaBuilds ? "--beta" : "");
+
+                return string.Join(" ", silent, beta);
+            }
         }
     }
 }

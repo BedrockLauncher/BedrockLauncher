@@ -136,15 +136,6 @@ namespace BedrockLauncher.Classes
         public ICommand DownloadCommand { get; set; }
         public ICommand RemoveCommand { get; set; }
 
-        private VersionStateChangeInfo _stateChangeInfo;
-        public VersionStateChangeInfo StateChangeInfo
-        {
-            get { return _stateChangeInfo; }
-            set { _stateChangeInfo = value; OnPropertyChanged("StateChangeInfo"); OnPropertyChanged("IsStateChanging"); }
-        }
-
-        public bool IsStateChanging => StateChangeInfo != null;
-
         public void UpdateInstallStatus()
         {
             OnPropertyChanged("IsInstalled");

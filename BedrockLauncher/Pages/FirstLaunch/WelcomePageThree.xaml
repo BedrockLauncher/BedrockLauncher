@@ -8,14 +8,12 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="WelcomePageOne" Width="596" Height="254">
     <Grid Margin="0" Background="{x:Null}">
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Text="{DynamicResource FirstLaunch_CreateProfileSubTitle}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="24" Margin="0,40,0,0" FontWeight="Bold"/>
-        <TextBlock Text="{DynamicResource FirstLaunch_CreateProfileText}" Margin="133,0,0,18" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" Height="16" FontWeight="Bold" FontSize="11" Width="auto"/>
-        <Button x:Name="CreateProfileButton" Click="CreateProfileButton_Click" HorizontalAlignment="Center" Margin="0,0,0,7" VerticalAlignment="Bottom" Width="250" Height="56" Padding="0" Style="{DynamicResource BigGreenButton}">
-            <TextBlock Text="{DynamicResource NewProfile_CreateProfileButton}" Style="{DynamicResource BigGreenButton_Text}"/>
-        </Button>
-        <StackPanel Margin="0,185,8,8" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-            <Button x:Name="BackButton" Click="BackButton_Click" Content="{DynamicResource FirstLaunch_GoBackButton}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="20" Style="{DynamicResource DialogMiniButton}"/>
+        <TextBlock Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Top" Text="{DynamicResource FirstLaunch_WelcomeTitle}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="24" Margin="0,40,0,0" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" Text="{DynamicResource FirstLaunch_BeforeStartingToUse}" VerticalAlignment="Top" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Margin="28.5,60,28.5,0" TextWrapping="Wrap"/>
+        <StackPanel Margin="0,185,8,0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+            <Button x:Name="BackButton" Click="BackButton_Click" SnapsToDevicePixels="True" Foreground="White" Content="{DynamicResource FirstLaunch_BackButton}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Style="{DynamicResource DialogButton}"/>
+            <Button x:Name="NextButton" Click="NextButton_Click" SnapsToDevicePixels="True" Foreground="White" Content="{DynamicResource FirstLaunch_FinishButton}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="auto" Height="32" Style="{DynamicResource DialogButton}"/>
         </StackPanel>
-        <TextBox x:Name="ProfileNameTextbox" MaxLength="35" KeyDown="TextBox_KeyDown" Margin="0,35,0,0" Foreground="White" FontSize="14" AcceptsReturn="False" SpellCheck.IsEnabled="True" Language="en-US" HorizontalAlignment="Center" TextAlignment="Center" Height="32" VerticalAlignment="Center" Width="334" MaxLines="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button x:Name="BackupButton" Background="#FF008542" Click="BackupButton_Click" SnapsToDevicePixels="True" Foreground="White" Content="{DynamicResource GeneralText_Backup}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="32" Margin="8,0,0,17" Style="{DynamicResource DialogButton_Green}"/>
     </Grid>
 </Page>

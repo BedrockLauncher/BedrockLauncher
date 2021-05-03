@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Installer"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="794"
-      Title="WelcomePage" Height="371">
+      Title="WelcomePage" Height="371" Initialized="Page_Initialized">
     <Grid Margin="0" Background="#FF1B1B1B">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"></ColumnDefinition>
@@ -21,13 +21,18 @@
                 </Grid>
             </Grid>
         </Border>
-        <StackPanel Margin="10" VerticalAlignment="Center" Grid.Column="1">
-            <TextBlock LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap" Margin="5,5,0,0" Foreground="White" FontSize="17" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Calibri">
+        <StackPanel  Margin="10" VerticalAlignment="Center" Grid.Column="1">
+            <StackPanel x:Name="InstallPanel">
+                <TextBlock LineStackingStrategy="BlockLineHeight" TextWrapping="Wrap" Margin="5,5,0,0" Foreground="White" FontSize="17" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Calibri">
             <Run FontSize="26" FontWeight="Bold" Text="{DynamicResource Installer_InstallationProgress_Title}"/>
             <LineBreak/>
             <Run Text="{DynamicResource Installer_InstallationProgress_Info_Text}"/>
-            </TextBlock>
-            <ProgressBar x:Name="progressBar" Height="32" Margin="5,10,5,10" Foreground="#FF008542" Background="Black" BorderBrush="Black" Minimum="0"></ProgressBar>
+                </TextBlock>
+                <ProgressBar x:Name="progressBar" Height="32" Margin="5,10,5,10" Foreground="#FF008542" Background="Black" BorderBrush="Black" Minimum="0"></ProgressBar>
+            </StackPanel>
+            <CheckBox x:Name="launchOnExitCheckbox" IsChecked="True" Content="{DynamicResource Installer_InstallationProgress_LaunchOnExit_Text}" Foreground="White" HorizontalAlignment="Left" Margin="0,15,0,0" Checked="IconCheckBoxes_CheckChanged" Unchecked="IconCheckBoxes_CheckChanged" VerticalAlignment="Top" FontSize="13"/>
+
         </StackPanel>
+
     </Grid>
 </Page>

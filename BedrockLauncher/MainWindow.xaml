@@ -12,7 +12,7 @@
         xmlns:converters="clr-namespace:BedrockLauncher.Converters"
         xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
-        d:DataContext="{d:DesignInstance Type=classes:MCVersion}" 
+        d:DataContext="{d:DesignData classes:LauncherModel}" 
         x:Class="BedrockLauncher.MainWindow"
         mc:Ignorable="d"
         MouseDown="Window_MouseDown"
@@ -40,8 +40,8 @@
                         <toolbar:ProfileButton IsEnabled="{Binding Source={x:Static methods:ConfigManager.GameManager}, Path=IsGameNotOpen}" x:Name="ProfileButton"></toolbar:ProfileButton>
                         <toolbar:NewsButton x:Name="NewsButton"></toolbar:NewsButton>
                         <toolbar:BedrockEditionButton x:Name="BedrockEditionButton"></toolbar:BedrockEditionButton>
-                        <toolbar:JavaEditionButton x:Name="JavaEditionButton" Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=HideJavaShortcut, Converter={StaticResource ReverseBoolToVis}, ConverterParameter=Inverted}"></toolbar:JavaEditionButton>
-                        <toolbar:ExternalLauncherButton x:Name="ExternalLauncherButton" Visibility="{Binding Source={x:Static properties:Settings.Default}, Path=ShowExternalLauncher, Converter={StaticResource BoolToVis}}"></toolbar:ExternalLauncherButton>
+                        <toolbar:JavaEditionButton x:Name="JavaEditionButton" Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=HideJavaShortcut, Converter={StaticResource ReverseBoolToVis}, ConverterParameter=Inverted}"></toolbar:JavaEditionButton>
+                        <toolbar:ExternalLauncherButton x:Name="ExternalLauncherButton" Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=ShowExternalLauncher, Converter={StaticResource BoolToVis}}"></toolbar:ExternalLauncherButton>
                         <toolbar:ServersButton x:Name="ServersButton" Visibility="Collapsed"></toolbar:ServersButton>
                     </StackPanel>
                     <toolbar:SettingsButton x:Name="SettingsButton"></toolbar:SettingsButton>
@@ -52,7 +52,7 @@
                             <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Frame x:Name="MainWindowFrame" Focusable="False" VerticalAlignment="Stretch" Background="Black" NavigationUIVisibility="Hidden" Source="../Pages/GameTabs.xaml"/>
-                        <Button RenderOptions.BitmapScalingMode="NearestNeighbor" x:Name="updateButton" Visibility="Collapsed" Margin="0,-75,5,0" HorizontalAlignment="Right" Height="60" Width="260" VerticalAlignment="Top" BorderBrush="{x:Null}" Style="{DynamicResource AdvancementButton}">
+                        <Button Panel.ZIndex="1000" RenderOptions.BitmapScalingMode="NearestNeighbor" x:Name="updateButton" Visibility="Collapsed" Margin="0,-75,5,0" HorizontalAlignment="Right" Height="60" Width="260" VerticalAlignment="Top" BorderBrush="{x:Null}" Style="{DynamicResource AdvancementButton}">
                             <Grid Margin="-8,0,0,0" HorizontalAlignment="Left">
                                 <TextBlock LineHeight="20" RenderOptions.BitmapScalingMode="NearestNeighbor" FontSize="16" TextOptions.TextRenderingMode="Aliased" TextOptions.TextFormattingMode="Ideal" Margin="52,6,0,0" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Rus">
                         <Run Text="{DynamicResource UpdateButton_NewUpdate_Text}" Foreground="Yellow"/>
@@ -82,7 +82,7 @@
                         Style="{DynamicResource BigGreenButton}">
                                 <TextBlock x:Name="PlayButtonText" Style="{DynamicResource BigGreenButton_Text}"/>
                             </Button>
-                            <ComboBox SelectedItem="1" IsEnabled="{Binding Source={x:Static methods:ConfigManager.GameManager}, Path=IsGameNotOpen}" SelectionChanged="GameStateChanged" DropDownClosed="GameStateChanged" ItemsSource="{Binding}" x:Name="InstallationsList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="200" Height="47" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}" SelectedIndex="{Binding Source={x:Static properties:Settings.Default}, Path=CurrentInstallation}" Foreground="White" Padding="-1,7,5,3">
+                            <ComboBox SelectedItem="1" IsEnabled="{Binding Source={x:Static methods:ConfigManager.GameManager}, Path=IsGameNotOpen}" SelectionChanged="GameStateChanged" DropDownClosed="GameStateChanged" ItemsSource="{Binding}" x:Name="InstallationsList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="200" Height="47" Style="{DynamicResource ComboBoxStyle1}" ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}" SelectedIndex="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=CurrentInstallation}" Foreground="White" Padding="-1,7,5,3">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <ContentControl Focusable="False" x:Name="control" Content="{Binding}">

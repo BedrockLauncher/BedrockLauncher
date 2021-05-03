@@ -64,8 +64,15 @@ namespace BedrockLauncher
         #region Extra Variables
 
         private KeyboardNavigationMode MainFrame_KeyboardNavigationMode_Default { get; set; }
-
         private bool AllowedToCloseWithGameOpen { get; set; } = false;
+
+        public LauncherModel ViewModel
+        {
+            get 
+            {
+                return (this.DataContext as LauncherModel);
+            }
+        }
 
         #endregion
 
@@ -79,14 +86,15 @@ namespace BedrockLauncher
 
         private void Init()
         {
-
+            this.DataContext = new LauncherModel();
+            updateButton.Click += Updater.UpdateButton_Click;
             MainFrame_KeyboardNavigationMode_Default = KeyboardNavigation.GetTabNavigation(MainFrame);
 
             Panel.SetZIndex(OverlayFrame, 0);
             Panel.SetZIndex(ErrorFrame, 1);
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             // show first launch window if no profile
-            if (Properties.Settings.Default.CurrentProfile == "") SetOverlayFrame(new WelcomePage());
+            if (Properties.LauncherSettings.Default.CurrentProfile == "" || Properties.LauncherSettings.Default.IsFirstLaunch) SetOverlayFrame(new WelcomePage());
             NavigateToPlayScreen();
 
 
@@ -147,7 +155,7 @@ namespace BedrockLauncher
                            return;
                        }
 
-                       bool showProgress = ConfigManager.GameManager.IsUninstalling || ConfigManager.GameManager.IsDownloading || ConfigManager.GameManager.HasLaunchTask;
+                       bool showProgress = ConfigManager.GameManager.IsUninstalling || ConfigManager.GameManager.IsDownloading || ConfigManager.GameManager.HasLaunchTask || ConfigManager.GameManager.IsBackingUp;
 
                        if (showProgress) ProgressBarShowAnim();
                        else ProgressBarHideAnim();
@@ -357,7 +365,7 @@ namespace BedrockLauncher
             MainWindowFrame.Navigate(newsScreenPage);
             NewsButton.Button.IsChecked = true;
         }
-        public async void NavigateToJavaLauncher()
+        public void NavigateToJavaLauncher()
         {
             Action action = new Action(() =>
             {
@@ -384,7 +392,7 @@ namespace BedrockLauncher
             {
                 try
                 {
-                    Process.Start(Properties.Settings.Default.ExternalLauncherPath);
+                    Process.Start(Properties.LauncherSettings.Default.ExternalLauncherPath);
                     Application.Current.MainWindow.Close();
                 }
                 catch
@@ -478,7 +486,7 @@ namespace BedrockLauncher
         }
         public async void NavigateToOtherLauncher(Action action)
         {
-            if (Properties.Settings.Default.CloseLauncherOnSwitch && ConfigManager.GameManager.GameProcess != null)
+            if (Properties.LauncherSettings.Default.CloseLauncherOnSwitch && ConfigManager.GameManager.GameProcess != null)
             {
                 await Task.Run(() => ShowPrompt_ClosingWithGameStillOpened(action));
             }
@@ -491,7 +499,7 @@ namespace BedrockLauncher
                 this.Close();
             });
 
-            if (Properties.Settings.Default.KeepLauncherOpen && ConfigManager.GameManager.GameProcess != null)
+            if (Properties.LauncherSettings.Default.KeepLauncherOpen && ConfigManager.GameManager.GameProcess != null)
             {
                 if (!AllowedToCloseWithGameOpen)
                 {

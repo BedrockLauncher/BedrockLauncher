@@ -26,6 +26,7 @@ namespace Installer
         private LicenseAgreementPage licenseAgreementPage = new LicenseAgreementPage();
         private InstallLocationPage installLocationPage = new InstallLocationPage();
         private InstallationProgressPage installationProgressPage = new InstallationProgressPage();
+        private InstallTypePage installTypePage = new InstallTypePage();
         public MainWindow()
         {
             InitializeComponent();
@@ -51,6 +52,9 @@ namespace Installer
                     MainFrame.Navigate(licenseAgreementPage);
                     break;
                 case "LicenseAgreementPage":
+                    MainFrame.Navigate(installTypePage);
+                    break;
+                case "InstallTypePage":
                     MainFrame.Navigate(installLocationPage);
                     break;
                 case "InstallLocationPage":
@@ -68,8 +72,11 @@ namespace Installer
                 case "LicenseAgreementPage":
                     MainFrame.Navigate(welcomePage);
                     break;
-                case "InstallLocationPage":
+                case "InstallTypePage":
                     MainFrame.Navigate(licenseAgreementPage);
+                    break;
+                case "InstallLocationPage":
+                    MainFrame.Navigate(installTypePage);
                     break;
                 default:
                     break;
@@ -86,22 +93,14 @@ namespace Installer
                 if (argument.StartsWith("--"))
                 {
                     Console.WriteLine("Recieved argument: " + argument);
-                    // hide window and launch update process
-                    if (argument == "--silent") 
-                    {
-                        isSilent = true;
-                    }
-                    if (argument == "--beta")
-                    {
-                        LauncherInstaller.IsBeta = true;
-                    }
+                    if (argument == "--silent") isSilent = true;
+                    if (argument == "--beta") LauncherInstaller.IsBeta = true;
                 }
             }
-
             if (isSilent)
             {
                 Application.Current.MainWindow.Hide();
-                LauncherInstaller launcherInstaller = new LauncherInstaller(Directory.GetCurrentDirectory(), installationProgressPage, true);
+                LauncherInstaller launcherInstaller = new LauncherInstaller(Directory.GetCurrentDirectory(), installationProgressPage, isSilent);
             }
         }
     }

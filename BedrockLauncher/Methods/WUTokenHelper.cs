@@ -24,7 +24,7 @@ namespace BedrockLauncher.Methods
         {
             get
             {
-                return Properties.Settings.Default.CurrentInsiderAccount;
+                return Properties.LauncherSettings.Default.CurrentInsiderAccount;
             }
         }
 

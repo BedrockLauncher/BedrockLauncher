@@ -21,8 +21,8 @@
         <TextBlock LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,5">
             <Run FontSize="11" Text="{DynamicResource ToolbarButtons_SwitchEdition_Text}"/>
             <LineBreak/>
-            <Run FontSize="14" Text="{Binding Source={x:Static properties:Settings.Default}, Path=ExternalLauncherName}"/>
+            <Run FontSize="14" Text="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=ExternalLauncherName}"/>
         </TextBlock>
     </ToggleButton>
-    <Image Style="{StaticResource SideBarButtonIcon}" RenderOptions.BitmapScalingMode="HighQuality" x:Name="IconSource" Source="{Binding Source={x:Static properties:Settings.Default}, Path=ExternalLauncherIconPath, Converter={StaticResource UrlToImageSourceConverter}}"/>
+    <Image Style="{StaticResource SideBarButtonIcon}" RenderOptions.BitmapScalingMode="HighQuality" x:Name="IconSource" Source="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=ExternalLauncherIconPath, Converter={StaticResource UrlToImageSourceConverter}}"/>
 </Grid>

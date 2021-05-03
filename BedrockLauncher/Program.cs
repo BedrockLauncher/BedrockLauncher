@@ -32,25 +32,12 @@ namespace BedrockLauncher
             Log(o, LogType.ConsoleLine);
         }
 
-        public static void LogConsoleLine(string o)
-        {
-            Log(o, LogType.ConsoleLine);
-        }
-
-        public static void Log(string o, LogType logType = LogType.DebugLine)
-        {
-            if (logType.HasFlag(LogType.Console)) Console.Write(o);
-            if (logType.HasFlag(LogType.ConsoleLine)) Console.WriteLine(o);
-            if (logType.HasFlag(LogType.Debug)) Debug.Write(o);
-            if (logType.HasFlag(LogType.DebugLine)) Debug.WriteLine(o);
-        }
-
         public static void Log(object o, LogType logType = LogType.DebugLine)
         {
-            if (logType.HasFlag(LogType.Console)) Console.Write(o);
-            if (logType.HasFlag(LogType.ConsoleLine)) Console.WriteLine(o);
-            if (logType.HasFlag(LogType.Debug)) Debug.Write(o);
-            if (logType.HasFlag(LogType.DebugLine)) Debug.WriteLine(o);
+            if (logType == LogType.Console) Console.Write(o);
+            else if (logType == LogType.ConsoleLine) Console.WriteLine(o);
+            else if (logType == LogType.Debug) Debug.Write(o);
+            else if (logType == LogType.DebugLine) Debug.WriteLine(o);
         }
 
         public static void StartLogging(StartupEventArgs e)
@@ -92,7 +79,7 @@ namespace BedrockLauncher
                     }
                     catch (Exception r)
                     {
-                        Program.Log("Cant enable developer mode for X64 machine Error: " + r, LogType.Debug);
+                        Program.Log("Cant enable developer mode for X64 machine Error: " + r, LogType.DebugLine);
                     }
                     break;
                 case false:
@@ -117,7 +104,7 @@ namespace BedrockLauncher
                     }
                     catch (Exception r)
                     {
-                        Program.Log("Cant enable developer mode for X86 machine Error: " + r, LogType.Debug);
+                        Program.Log("Cant enable developer mode for X86 machine Error: " + r, LogType.DebugLine);
                     }
                     break;
             }

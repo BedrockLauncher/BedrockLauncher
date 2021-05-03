@@ -4,9 +4,13 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Installer"
+      xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="794"
       Title="WelcomePage" Height="371" Initialized="Page_Initialized" Loaded="Page_Loaded">
+    <Page.Resources>
+        <wincontrols:BooleanToVisibilityConverter x:Key="BoolToVis"></wincontrols:BooleanToVisibilityConverter>
+    </Page.Resources>
     <Grid Margin="0" Background="#FF1B1B1B">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"></ColumnDefinition>
@@ -46,8 +50,9 @@
                         <Button Grid.Column="1" Content="{DynamicResource Installer_InstallLocation_Browse_Text}" x:Name="BrowseDirectoryButton" Click="browseBtn_Click" HorizontalAlignment="Center" Margin="5" Style="{StaticResource TextBoxButton}"></Button>
                     </Grid>
                 </Border>
-                <CheckBox x:Name="desktopIconCheckBox" IsChecked="True" Content="{DynamicResource Installer_InstallLocation_CreateDesktopIcon_Text}" Foreground="White" HorizontalAlignment="Left" Margin="0,15,0,0" Checked="IconCheckBoxes_CheckChanged" Unchecked="IconCheckBoxes_CheckChanged" VerticalAlignment="Top" FontSize="13"/>
-                <CheckBox x:Name="startMenuCheckBox" IsChecked="True" Content="{DynamicResource Installer_InstallLocation_AddToStartMenu_Text}" Foreground="White" HorizontalAlignment="Left" Margin="0,5,0,0" Checked="IconCheckBoxes_CheckChanged" Unchecked="IconCheckBoxes_CheckChanged" VerticalAlignment="Top" FontSize="13"/>
+                <CheckBox x:Name="registerIconCheckBox" IsChecked="False" Content="{DynamicResource Installer_InstallLocation_RegisterApp_Text}" Foreground="White" HorizontalAlignment="Left" Margin="0,15,0,0" Checked="IconCheckBoxes_CheckChanged" Unchecked="IconCheckBoxes_CheckChanged" VerticalAlignment="Top" FontSize="13"/>
+                <CheckBox x:Name="desktopIconCheckBox" IsChecked="True" Visibility="{Binding ElementName=registerIconCheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}, FallbackValue=Hidden}" Content="{DynamicResource Installer_InstallLocation_CreateDesktopIcon_Text}" Foreground="White" HorizontalAlignment="Left" Margin="0,5,0,0" Checked="IconCheckBoxes_CheckChanged" Unchecked="IconCheckBoxes_CheckChanged" VerticalAlignment="Top" FontSize="13"/>
+                <CheckBox x:Name="startMenuCheckBox" IsChecked="True" Visibility="{Binding ElementName=registerIconCheckBox, Path=IsChecked, Converter={StaticResource BoolToVis}, FallbackValue=Hidden}" Content="{DynamicResource Installer_InstallLocation_AddToStartMenu_Text}" Foreground="White" HorizontalAlignment="Left" Margin="0,5,0,0" Checked="IconCheckBoxes_CheckChanged" Unchecked="IconCheckBoxes_CheckChanged" VerticalAlignment="Top" FontSize="13"/>
             </StackPanel>
         </StackPanel>
     </Grid>

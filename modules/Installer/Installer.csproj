@@ -97,6 +97,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -116,8 +117,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Extensions.cs" />
     <Compile Include="Pages\InstallationProgressPage.xaml.cs">
       <DependentUpon>InstallationProgressPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\InstallTypePage.xaml.cs">
+      <DependentUpon>InstallTypePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\InstallLocationPage.xaml.cs">
       <DependentUpon>InstallLocationPage.xaml</DependentUpon>
@@ -129,7 +134,12 @@
     <Compile Include="Pages\WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UpdateParam.cs" />
     <Page Include="Pages\InstallationProgressPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\InstallTypePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

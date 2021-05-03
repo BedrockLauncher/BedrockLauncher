@@ -40,6 +40,7 @@
     <v:String x:Key="ProgressBar_Uninstalling">Uninstalling</v:String>
     <v:String x:Key="ProgressBar_RegisteringPackage">Registering Package</v:String>
     <v:String x:Key="ProgressBar_RemovingPackage">Unregistering Package</v:String>
+    <v:String x:Key="ProgressBar_BackingUp">Backing up Save Data</v:String>
 
     <!--#endregion-->
 
@@ -162,6 +163,7 @@
     <v:String x:Key="LauncherNewsPage_Title_Text">Latest Build Changes</v:String>
     <v:String x:Key="LauncherNewsPage_Build_Text">Build</v:String>
     <v:String x:Key="LauncherNewsPage_Changes_Text">Changes:</v:String>
+    <v:String x:Key="LauncherNewsPage_CheckForUpdates">Check for Updates</v:String>
 
     <!--#endregion-->
 
@@ -195,6 +197,7 @@
     <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Use beta version of the launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Keep the launcher open while game is runnning</v:String>
     <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Close launcher when switching launchers</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SilentUpdates">Update the launcher silently</v:String>
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDITION SETTINGS</v:String>
     <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">SUPPORT CREATOR</v:String>
@@ -266,6 +269,7 @@
     <v:String x:Key="FirstLaunch_CreateProfileButton">Create</v:String>
     <v:String x:Key="FirstLaunch_NextButton">Next</v:String>
     <v:String x:Key="FirstLaunch_DownloadButton">Download</v:String>
+    <v:String x:Key="FirstLaunch_FinishButton">Finish</v:String>
 
     <!--#endregion-->
 
@@ -352,7 +356,7 @@
 
     <v:String x:Key="Installer_WelcomePage_Title">Welcome to the Minecraft Bedrock Launcher Setup Wizard</v:String>
     <v:String x:Key="Installer_WelcomePage_Info_Text">This will install Minecraft Bedrock Launcher on your computer.</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info2_Text">It is recommended that you dose all other applications before continuing.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info2_Text">It is recommended that you close all other applications before continuing.</v:String>
     <v:String x:Key="Installer_WelcomePage_Info3_Text">Click Next to continue, or Cancel to exit Setup.</v:String>
     
     <v:String x:Key="Installer_LicenseAgreement_Title">License Agreement</v:String>
@@ -360,6 +364,12 @@
     <v:String x:Key="Installer_LicenseAgreement_Info2_Text">agreement before continuing with the installation.</v:String>
     <v:String x:Key="Installer_LicenseAgreement_Accept_Text">I accept the license.</v:String>
     <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">I dont accept the license.</v:String>
+
+    <v:String x:Key="Installer_InstallType_Title">Choose Install Type</v:String>
+    <v:String x:Key="Installer_InstallType_Info_Text">Select which version of the launcher you want to download</v:String>
+
+    <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Beta Version</v:String>
+    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Release Version</v:String>
 
     <v:String x:Key="Installer_InstallLocation_Title">Choose Install Location</v:String>
     <v:String x:Key="Installer_InstallLocation_Info_Text">Setup will install Minecraft Bedrock Launcher in the following folder. To install in a different folder,</v:String>
@@ -370,6 +380,9 @@
 
     <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Create a desktop icon</v:String>
     <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Add to Start menu</v:String>
+    <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">Register Program</v:String>
+
+    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">Start Program on Exit</v:String>
 
     <v:String x:Key="Installer_InstallationProgress_Title">Installing</v:String>
     <v:String x:Key="Installer_InstallationProgress_Info_Text">Please wait while Setup installs Minecraft Bedrock Launcher on your computer.</v:String>

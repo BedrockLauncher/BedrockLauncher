@@ -17,6 +17,7 @@ namespace Installer.Pages
         public InstallLocationPage()
         {
             InitializeComponent();
+            registerIconCheckBox.IsChecked = LauncherInstaller.RegisterAsProgram;
             desktopIconCheckBox.IsChecked = LauncherInstaller.MakeDesktopIcon;
             startMenuCheckBox.IsChecked = LauncherInstaller.MakeStartMenuIcon;
             IsInit = true;
@@ -62,6 +63,7 @@ namespace Installer.Pages
             {
                LauncherInstaller.MakeDesktopIcon = desktopIconCheckBox.IsChecked.Value;
                LauncherInstaller.MakeStartMenuIcon = startMenuCheckBox.IsChecked.Value;
+               LauncherInstaller.RegisterAsProgram = registerIconCheckBox.IsChecked.Value;
             }
         }
     }

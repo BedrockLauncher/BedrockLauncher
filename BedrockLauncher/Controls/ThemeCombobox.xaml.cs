@@ -30,8 +30,8 @@ namespace BedrockLauncher.Controls
         {
             var item = this.SelectedItem as ComboBoxItem;
             if (item == null) return;
-            Properties.Settings.Default.CurrentTheme = item.Tag.ToString();
-            Properties.Settings.Default.Save();
+            Properties.LauncherSettings.Default.CurrentTheme = item.Tag.ToString();
+            Properties.LauncherSettings.Default.Save();
         }
 
         private void ThemeCombobox_Initialized(object sender, EventArgs e)
@@ -40,7 +40,7 @@ namespace BedrockLauncher.Controls
 
             var item = this.SelectedItem as ComboBoxItem;
             if (item == null) return;
-            string currentTheme = Properties.Settings.Default.CurrentTheme;
+            string currentTheme = Properties.LauncherSettings.Default.CurrentTheme;
 
 
             if (items.Exists(x => x.Tag.ToString() == currentTheme))

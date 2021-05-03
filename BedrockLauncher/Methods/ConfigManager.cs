@@ -20,13 +20,13 @@ namespace BedrockLauncher.Methods
     {
         #region Helpers
 
-        public static string CurrentProfile { get => Properties.Settings.Default.CurrentProfile; }
+        public static string CurrentProfile { get => Properties.LauncherSettings.Default.CurrentProfile; }
         public static MCInstallation CurrentInstallation 
         { 
             get
             {
                 if (ConfigManager.CurrentInstallations == null) return null;
-                return ConfigManager.CurrentInstallations[Properties.Settings.Default.CurrentInstallation];
+                return ConfigManager.CurrentInstallations[Properties.LauncherSettings.Default.CurrentInstallation];
             }
         }
 
@@ -185,8 +185,8 @@ namespace BedrockLauncher.Methods
 
                 ProfileList.profiles.Add(profile, profileSettings);
 
-                Properties.Settings.Default.CurrentProfile = profile;
-                Properties.Settings.Default.Save();
+                Properties.LauncherSettings.Default.CurrentProfile = profile;
+                Properties.LauncherSettings.Default.Save();
 
                 SaveProfiles();
                 return true;
@@ -215,8 +215,8 @@ namespace BedrockLauncher.Methods
         {
             if (ProfileList.profiles.ContainsKey(profile))
             {
-                Properties.Settings.Default.CurrentProfile = profile;
-                Properties.Settings.Default.Save();
+                Properties.LauncherSettings.Default.CurrentProfile = profile;
+                Properties.LauncherSettings.Default.Save();
             }
 
         }
@@ -366,8 +366,8 @@ namespace BedrockLauncher.Methods
 
             if (v != null)
             {
-                if (!Properties.Settings.Default.ShowBetas && v.isBeta) return false;
-                else if (!Properties.Settings.Default.ShowReleases && !v.isBeta) return false;
+                if (!Properties.LauncherSettings.Default.ShowBetas && v.isBeta) return false;
+                else if (!Properties.LauncherSettings.Default.ShowReleases && !v.isBeta) return false;
                 else return true;
             }
             else return false;
@@ -378,8 +378,8 @@ namespace BedrockLauncher.Methods
 
             if (v.IsInstalled)
             {
-                if (!Properties.Settings.Default.ShowBetas && v.IsBeta) return false;
-                else if (!Properties.Settings.Default.ShowReleases && !v.IsBeta) return false;
+                if (!Properties.LauncherSettings.Default.ShowBetas && v.IsBeta) return false;
+                else if (!Properties.LauncherSettings.Default.ShowReleases && !v.IsBeta) return false;
                 else return true;
             }
             else return false;
@@ -388,8 +388,8 @@ namespace BedrockLauncher.Methods
         public static bool Filter_InstallationList(object obj)
         {
             MCInstallation v = obj as MCInstallation;
-            if (!Properties.Settings.Default.ShowBetas && v.IsBeta) return false;
-            else if (!Properties.Settings.Default.ShowReleases && !v.IsBeta) return false;
+            if (!Properties.LauncherSettings.Default.ShowBetas && v.IsBeta) return false;
+            else if (!Properties.LauncherSettings.Default.ShowReleases && !v.IsBeta) return false;
             else return true;
         }
 

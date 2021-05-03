@@ -30,49 +30,12 @@ namespace BedrockLauncher.Pages
 
         private void Update()
         {
-            // Set checkboxes
-            keepLauncherOpenCheckBox.IsChecked = Properties.Settings.Default.KeepLauncherOpen;
-            experiementalDataSaveRedirection.IsChecked = Properties.Settings.Default.SaveRedirection;
-            hideJavaLauncherButtonCheckbox.IsChecked = Properties.Settings.Default.HideJavaShortcut;
-            showExternalLauncherButtonCheckbox.IsChecked = Properties.Settings.Default.ShowExternalLauncher;
-            closeLauncherOnSwitchCheckbox.IsChecked = Properties.Settings.Default.CloseLauncherOnSwitch;
-            betaVersionsButtonCheckbox.IsChecked = Properties.Settings.Default.UseBetaBuilds;
+
         }
 
         private void Page_Initialized(object sender, EventArgs e)
         {
             Update();
-        }
-
-        private void keepLauncherOpenCheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            // get and save value of checkbox
-            switch (keepLauncherOpenCheckBox.IsChecked)
-            {
-                case true:
-                    Properties.Settings.Default.KeepLauncherOpen = true;
-                    Properties.Settings.Default.Save();
-                    break;
-                case false:
-                    Properties.Settings.Default.KeepLauncherOpen = false;
-                    Properties.Settings.Default.Save();
-                    break;
-            }
-        }
-
-        private void experiementalDataSaveRedirection_Click(object sender, RoutedEventArgs e)
-        {
-            switch (experiementalDataSaveRedirection.IsChecked)
-            {
-                case true:
-                    Properties.Settings.Default.SaveRedirection = true;
-                    Properties.Settings.Default.Save();
-                    break;
-                case false:
-                    Properties.Settings.Default.SaveRedirection = false;
-                    Properties.Settings.Default.Save();
-                    break;
-            }
         }
 
         private void BackupButton_Click(object sender, RoutedEventArgs e)
@@ -86,21 +49,6 @@ namespace BedrockLauncher.Pages
             advancedOptionsWindow.ShowDialog();
         }
 
-        private void hideJavaLauncherButtonCheckbox_Click(object sender, RoutedEventArgs e)
-        {
-            switch (hideJavaLauncherButtonCheckbox.IsChecked)
-            {
-                case true:
-                    Properties.Settings.Default.HideJavaShortcut = true;
-                    Properties.Settings.Default.Save();
-                    break;
-                case false:
-                    Properties.Settings.Default.HideJavaShortcut = false;
-                    Properties.Settings.Default.Save();
-                    break;
-            }
-        }
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Update();
@@ -108,7 +56,7 @@ namespace BedrockLauncher.Pages
 
         private void ExternalLauncherPathTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Properties.Settings.Default.Save();
+            Properties.LauncherSettings.Default.Save();
         }
 
         private void BrowseLauncherButton_Click(object sender, RoutedEventArgs e)
@@ -119,8 +67,8 @@ namespace BedrockLauncher.Pages
             };
             if (dialog.ShowDialog().Value)
             {
-                Properties.Settings.Default.ExternalLauncherPath = dialog.FileName;
-                Properties.Settings.Default.Save();
+                Properties.LauncherSettings.Default.ExternalLauncherPath = dialog.FileName;
+                Properties.LauncherSettings.Default.Save();
             }
         }
 
@@ -133,60 +81,20 @@ namespace BedrockLauncher.Pages
             if (dialog.ShowDialog().Value)
             {
                 string fileToUse = Methods.Filepaths.AddImageToIconCache(dialog.FileName);
-                Properties.Settings.Default.ExternalLauncherIconPath = fileToUse;
-                Properties.Settings.Default.Save();
+                Properties.LauncherSettings.Default.ExternalLauncherIconPath = fileToUse;
+                Properties.LauncherSettings.Default.Save();
             }
         }
 
         private void ResetExternalLauncherIcon_Button_Click(object sender, RoutedEventArgs e)
         {
-            Properties.Settings.Default.ExternalLauncherIconPath = string.Empty;
-            Properties.Settings.Default.Save();
+            Properties.LauncherSettings.Default.ExternalLauncherIconPath = string.Empty;
+            Properties.LauncherSettings.Default.Save();
         }
 
-        private void showExternalLauncherButtonCheckbox_Click(object sender, RoutedEventArgs e)
+        private void Checkbox_Click(object sender, RoutedEventArgs e)
         {
-            switch (showExternalLauncherButtonCheckbox.IsChecked)
-            {
-                case true:
-                    Properties.Settings.Default.ShowExternalLauncher = true;
-                    Properties.Settings.Default.Save();
-                    break;
-                case false:
-                    Properties.Settings.Default.ShowExternalLauncher = false;
-                    Properties.Settings.Default.Save();
-                    break;
-            }
-        }
-
-        private void closeLauncherOnSwitchCheckbox_Click(object sender, RoutedEventArgs e)
-        {
-            switch (closeLauncherOnSwitchCheckbox.IsChecked)
-            {
-                case true:
-                    Properties.Settings.Default.CloseLauncherOnSwitch = true;
-                    Properties.Settings.Default.Save();
-                    break;
-                case false:
-                    Properties.Settings.Default.CloseLauncherOnSwitch = false;
-                    Properties.Settings.Default.Save();
-                    break;
-            }
-        }
-
-        private void betaVersionsButtonCheckbox_Click(object sender, RoutedEventArgs e)
-        {
-            switch (betaVersionsButtonCheckbox.IsChecked)
-            {
-                case true:
-                    Properties.Settings.Default.UseBetaBuilds = true;
-                    Properties.Settings.Default.Save();
-                    break;
-                case false:
-                    Properties.Settings.Default.UseBetaBuilds = false;
-                    Properties.Settings.Default.Save();
-                    break;
-            }
+            Properties.LauncherSettings.Default.Save();
         }
     }
 }

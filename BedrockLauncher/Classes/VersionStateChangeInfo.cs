@@ -36,6 +36,7 @@ namespace BedrockLauncher.Classes
         private bool _isUninstalling;
         private bool _isLaunching;
         private bool _isDownloading;
+        private bool _isBackingUp;
 
 
         private bool _isRemovingPackage;
@@ -170,11 +171,27 @@ namespace BedrockLauncher.Classes
             }
         }
 
+        public bool IsBackingUp
+        {
+            get { return _isBackingUp; }
+            set
+            {
+                _isBackingUp = value;
+                Application.Current.Dispatcher.Invoke(() => {
+                    ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_BackingUp");
+                });
+                ProgressBarIsIndeterminate(IsProgressIndeterminate);
+                ProgressBarUpdate();
+                OnPropertyChanged("IsProgressIndeterminate");
+                OnPropertyChanged("DisplayStatus");
+            }
+        }
+
         public bool IsProgressIndeterminate
         {
             get 
             { 
-                return IsInitializing || IsUninstalling || IsLaunching; 
+                return IsInitializing || IsUninstalling || IsLaunching || IsBackingUp; 
             }
         }
 

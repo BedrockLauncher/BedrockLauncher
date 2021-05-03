@@ -157,6 +157,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Html\SkinViewResourceSchemeHandler.cs" />
+    <Compile Include="Classes\LauncherModel.cs" />
+    <Compile Include="Properties\LauncherSettings.cs" />
     <Compile Include="Classes\MCInstallation.cs" />
     <Compile Include="Classes\MediaWiki\Continue.cs" />
     <Compile Include="Classes\MediaWiki\Limits.cs" />
@@ -287,11 +289,11 @@
     <Compile Include="Pages\FirstLaunch\WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\FirstLaunch\WelcomePageThree.xaml.cs">
-      <DependentUpon>WelcomePageThree.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\FirstLaunch\WelcomePageTwo.xaml.cs">
       <DependentUpon>WelcomePageTwo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FirstLaunch\WelcomePageThree.xaml.cs">
+      <DependentUpon>WelcomePageThree.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\FirstLaunch\WelcomePageOne.xaml.cs">
       <DependentUpon>WelcomePageOne.xaml</DependentUpon>
@@ -481,11 +483,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\FirstLaunch\WelcomePageThree.xaml">
+    <Page Include="Pages\FirstLaunch\WelcomePageTwo.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\FirstLaunch\WelcomePageTwo.xaml">
+    <Page Include="Pages\FirstLaunch\WelcomePageThree.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -892,7 +894,7 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>if "$(PlatformName)" == "Any CPU" (
+    <PostBuildEvent>if $(PlatformName) == Any CPU (
 xcopy /y /e /c /i "$(SolutionDir)bin\WUTokenHelper\Win32\$(ConfigurationName)" "$(ProjectDir)$(OutDir)\x86"
 xcopy /y /e /c /i "$(SolutionDir)bin\WUTokenHelper\x64\$(ConfigurationName)" "$(ProjectDir)$(OutDir)\x64"
 )

@@ -27,7 +27,7 @@
         </ToggleButton.ContextMenu>
         <ToggleButton.Content>
             <Grid Margin="5,0,0,0">
-                <TextBlock x:Name="ProfileName" Text="{Binding CurrentProfile, Mode=TwoWay, Source={x:Static p:Settings.Default}, UpdateSourceTrigger=PropertyChanged}" FontWeight="Normal" LineStackingStrategy="BlockLineHeight" LineHeight="14" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="0,0,0,3"/>
+                <TextBlock x:Name="ProfileName" Text="{Binding CurrentProfile, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" FontWeight="Normal" LineStackingStrategy="BlockLineHeight" LineHeight="14" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="0,0,0,3"/>
                 <TextBlock Margin="0,14,0,0" Foreground="#FF929292" Text="{DynamicResource ToolbarButtons_ProfileButton_ProfileType_Text}" FontWeight="Normal" FontSize="12"/>
             </Grid>
         </ToggleButton.Content>

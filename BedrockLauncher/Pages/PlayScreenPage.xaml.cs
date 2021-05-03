@@ -63,7 +63,7 @@ namespace BedrockLauncher.Pages
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             string packUri = string.Empty;
-            string currentTheme = Properties.Settings.Default.CurrentTheme;
+            string currentTheme = Properties.LauncherSettings.Default.CurrentTheme;
 
             switch (currentTheme)
             {

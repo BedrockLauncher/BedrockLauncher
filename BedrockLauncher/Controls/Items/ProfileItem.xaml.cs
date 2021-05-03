@@ -38,7 +38,7 @@ namespace BedrockLauncher.Controls.Items
             this.Tag = profile.Value;
             this.ProfileName.Text = profile.Key;
             _ProfileName = profile.Key;
-            if (Properties.Settings.Default.CurrentProfile == profile.Key) SelectedMark.Visibility = Visibility.Visible;
+            if (Properties.LauncherSettings.Default.CurrentProfile == profile.Key) SelectedMark.Visibility = Visibility.Visible;
         }
 
         private void SwitchProfile()

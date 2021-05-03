@@ -1,5 +1,4 @@
-﻿using BedrockLauncher.Methods;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BedrockLauncher.Methods;
 
 namespace BedrockLauncher.Pages.FirstLaunch
 {
@@ -29,18 +29,36 @@ namespace BedrockLauncher.Pages.FirstLaunch
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            pageSwitcher.MoveToPage(1);
+            pageSwitcher.MoveToPage(2);
         }
 
-        private void NextButton_Click(object sender, RoutedEventArgs e)
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            pageSwitcher.MoveToPage(3);
+            if (e.Key == Key.Enter) 
+            {
+                if (ProfileNameTextbox.Text.Length >= 1) 
+                { 
+                    CreateProfile(ProfileNameTextbox.Text);
+                    pageSwitcher.MoveToPage(3);
+                };
+            }
         }
 
-        private void BackupButton_Click(object sender, RoutedEventArgs e)
+        private void CreateProfileButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.GameManager.ConvertToInstallation();
-            pageSwitcher.MoveToPage(3);
+            if (ProfileNameTextbox.Text.Length >= 1) 
+            { 
+                CreateProfile(ProfileNameTextbox.Text);
+                pageSwitcher.MoveToPage(3);
+            };
+        }
+        public void CreateProfile(string profileName)
+        {
+            if (ConfigManager.CreateProfile(ProfileNameTextbox.Text))
+            {
+                Properties.LauncherSettings.Default.CurrentProfile = profileName;
+                Properties.LauncherSettings.Default.Save();
+            }
         }
     }
 }

@@ -37,8 +37,13 @@ namespace BedrockLauncher.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            string latest_tag = updater.getLatestTag();
-            string latest_description = updater.getLatestTagDescription();
+            RefreshData();
+        }
+
+        private void RefreshData()
+        {
+            string latest_tag = updater.GetLatestTag();
+            string latest_description = updater.GetLatestTagBody();
 
             if (latest_tag == string.Empty) latest_tag = "0.0.0";
 
@@ -46,6 +51,12 @@ namespace BedrockLauncher.Pages
 
             buildVersion.Text = "v" + latest_tag;
             buildChanges.Text = latest_description;
+        }
+
+        private void CheckForUpdatesButton_Click(object sender, RoutedEventArgs e)
+        {
+            updater.CheckForUpdates();
+            RefreshData();
         }
     }
 }

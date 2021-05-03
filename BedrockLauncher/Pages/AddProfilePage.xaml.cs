@@ -47,8 +47,8 @@ namespace BedrockLauncher.Pages
         {
             if (ConfigManager.CreateProfile(profileName))
             {
-                Properties.Settings.Default.CurrentProfile = profileName;
-                Properties.Settings.Default.Save();
+                Properties.LauncherSettings.Default.CurrentProfile = profileName;
+                Properties.LauncherSettings.Default.Save();
                 ConfigManager.MainThread.SetOverlayFrame(null);
             }
             else

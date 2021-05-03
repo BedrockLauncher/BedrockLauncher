@@ -14,6 +14,7 @@ namespace BedrockLauncher.Methods
         #region Strings
 
         public static readonly string UserDataFileName = "user_profile.json";
+        public static readonly string SettingsFileName = "settings.json";
         public static readonly string VersionCacheFileName = "versions.json";
         public static readonly string AppDataFolderName = ".minecraft_bedrock";
         public static readonly string InstallationsFolderName = "installations";
@@ -44,10 +45,15 @@ namespace BedrockLauncher.Methods
             if (!Directory.Exists(FixedDirectory)) Directory.CreateDirectory(FixedDirectory);
             return FixedDirectory;
         }
+
+        public static string GetSettingsFilePath()
+        {
+            return Path.Combine(CurrentLocation, SettingsFileName);
+        }
+
         public static string GetVersionsFilePath()
         {
             return VersionCacheFileName;
-
         }
         public static string GetProfilesFilePath()
         {
@@ -71,7 +77,7 @@ namespace BedrockLauncher.Methods
             string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", GameManager.MINECRAFT_PACKAGE_FAMILY);
 
 
-            if (Properties.Settings.Default.SaveRedirection) return Path.Combine(Route.Prepend(InstallationsPath).ToArray());
+            if (Properties.LauncherSettings.Default.SaveRedirection) return Path.Combine(Route.Prepend(InstallationsPath).ToArray());
             else return Path.Combine(Route.Prepend(PackageFolder).ToArray());
         }
 

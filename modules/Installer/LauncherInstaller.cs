@@ -13,33 +13,45 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using BL_Core;
 
 namespace Installer
 {
     class LauncherInstaller
     {
-        private string LATEST_BUILD_LINK { get => BL_Core.Properties.Settings.Default.GithubPage + "/releases/latest/download/build.zip"; }
-        private string path;
-        private string build_version;
-        private bool silent;
+        private string Path;
+        private string Build_Version;
+        private bool Silent;
         private InstallationProgressPage InstallationProgressPage;
 
         public static bool MakeDesktopIcon { get; set; } = false;
         public static bool MakeStartMenuIcon { get; set; } = false;
-        public static bool IsBeta { get; internal set; }
+        public static bool IsBeta { get; set; } = false;
+        public static bool RegisterAsProgram { get; set; } = false;
+        public static bool RunOnExit { get; set; } = true;
 
         public LauncherInstaller(string installationPath, InstallationProgressPage installationProgressPage, bool silent = false)
         {
-            this.silent = silent;
+            this.Silent = silent;
             this.InstallationProgressPage = installationProgressPage;
-            this.path = installationPath;
+            this.Path = installationPath;
+            Install_Start();
+        }
 
-            if (!Directory.Exists(installationPath))
+        #region Install Steps
+
+        private void Install_Start()
+        {
+            UpdateUI(UpdateParam.InstallStart);
+            if (!Directory.Exists(Path))
             {
                 try
                 {
-                    Directory.CreateDirectory(installationPath);
-                    Download(IsBeta);
+                    Directory.CreateDirectory(Path);
+                    Task.Run(() => Install_Download(IsBeta));
                     return;
                 }
                 catch (Exception err)
@@ -48,13 +60,14 @@ namespace Installer
                     return;
                 }
             }
-            cleanCurrent(installationPath);
-            Download(IsBeta);
+            else
+            {
+                Install_CleanFolder(Path);
+                Task.Run(() => Install_Download(IsBeta));
+            }
 
         }
-
-        // this will delete old version if exists
-        private void cleanCurrent(string path)
+        private void Install_CleanFolder(string path)
         {
             // kill launcher
             Process[] prs = Process.GetProcesses();
@@ -67,17 +80,17 @@ namespace Installer
 
             }
             // delete old installer if exists
-            if (System.IO.File.Exists(Path.Combine(path, "Installer.exe.old")))
+            if (System.IO.File.Exists(System.IO.Path.Combine(path, "Installer.exe.old")))
             {
-                System.IO.File.Delete(Path.Combine(path, "Installer.exe.old"));
+                System.IO.File.Delete(System.IO.Path.Combine(path, "Installer.exe.old"));
             }
 
-            foreach (string file in Directory.GetFiles(path)) 
+            foreach (string file in Directory.GetFiles(path))
             {
                 // renaming currently running installer to replace with new later
                 if (file.EndsWith("Installer.exe"))
                 {
-                    System.IO.File.Move(file, Path.Combine(path, "Installer.exe.old"));
+                    System.IO.File.Move(file, System.IO.Path.Combine(path, "Installer.exe.old"));
                 }
                 else
                 {
@@ -93,70 +106,49 @@ namespace Installer
                 }
             }
         }
-        // will download latest build and start installation upon downloaded
-
-        private void Download(bool beta)
+        private async void Install_Download(bool isBeta)
         {
-            if (beta) DownloadBeta();
-            else DownloadRelease();
-        }
-        private void DownloadRelease()
-        {
-            ((MainWindow)Application.Current.MainWindow).NextBtn.IsEnabled = false;
-            ((MainWindow)Application.Current.MainWindow).BackBtn.IsEnabled = false;
-            ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(this.InstallationProgressPage);
-
             // actually start downloading
-            using (WebClient wc = new WebClient())
-            {
-                wc.DownloadFileAsync(new Uri(LATEST_BUILD_LINK), Path.Combine(this.path, "build.zip"));
-                wc.DownloadProgressChanged += wc_DownloadProgressChanged;
-                wc.DownloadFileCompleted += ExtractAndInstall;
-            }
-        }
-        private void DownloadBeta()
-        {
-            ((MainWindow)Application.Current.MainWindow).NextBtn.IsEnabled = false;
-            ((MainWindow)Application.Current.MainWindow).BackBtn.IsEnabled = false;
-            ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(this.InstallationProgressPage);
-
-            // actually start downloading
-            string directoryContentsUrl = string.Empty;
             string downloadUrl = string.Empty;
+            int fileSize = 0;
 
-            var url = "https://api.github.com/repos/CarJem/BedrockLauncher-Beta/contents/build.zip";
-            var httpRequest = (HttpWebRequest)WebRequest.Create(url);
+
+            var release_page_url = (isBeta ? GithubAPI.BETA_URL : GithubAPI.RELEASE_URL);
+            var httpRequest = (HttpWebRequest)WebRequest.Create(release_page_url);
             httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
-            httpRequest.Headers["Authorization"] = "token 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";
-            httpRequest.Accept = "\"application/jsonp\"";
+            httpRequest.Headers["Authorization"] = "Bearer " + GithubAPI.ACCESS_TOKEN;
             var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
             {
                 var contentsJson = streamReader.ReadToEnd();
-                var contents = (JArray)JsonConvert.DeserializeObject(contentsJson);
-                foreach (var file in contents)
-                {
-                    var fileType = (string)file["type"];
-                    if (fileType == "dir") directoryContentsUrl = (string)file["url"];
-                    else if (fileType == "file") downloadUrl = (string)file["download_url"];
-                }
+                var contents = JsonConvert.DeserializeObject<UpdateNote>(contentsJson);
+                downloadUrl = contents.assets[0].url;
+                fileSize = contents.assets[0].size;
             }
 
-            using (WebClient wc = new WebClient())
+            var file = System.IO.Path.Combine(this.Path, "build.zip");
+            var httpRequest2 = (HttpWebRequest)WebRequest.Create(downloadUrl);
+            httpRequest2.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
+            httpRequest2.Headers["Authorization"] = "Bearer " + GithubAPI.ACCESS_TOKEN;
+            httpRequest2.Accept = "application/octet-stream";
+
+
+            Exception ex = null;
+
+            UpdateUI(UpdateParam.ProgressIndeterminate);
+
+            try
             {
-                wc.DownloadFileAsync(new Uri(downloadUrl), Path.Combine(this.path, "build.zip"));
-                wc.DownloadProgressChanged += wc_DownloadProgressChanged;
-                wc.DownloadFileCompleted += ExtractAndInstall;
+                using (Stream output = System.IO.File.OpenWrite(file))
+                    using (WebResponse response = httpRequest2.GetResponse())
+                        using (Stream stream = response.GetResponseStream())
+                            await stream.CopyToAsync(output);
             }
-        }
+            catch (Exception e) { ex = e; }
 
-        // Event to track the progress
-        void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-            this.InstallationProgressPage.progressBar.Value = e.ProgressPercentage;
+            Install_Extract(null, new System.ComponentModel.AsyncCompletedEventArgs(ex, false, null));
         }
-
-        void ExtractAndInstall(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        private void Install_Extract(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
             if (e.Cancelled)
             {
@@ -172,71 +164,74 @@ namespace Installer
                 return;
             }
 
-            // return buttons to life
-            ((MainWindow)Application.Current.MainWindow).CancelBtn.Content = "Finish";
-            ((MainWindow)Application.Current.MainWindow).NextBtn.Visibility = Visibility.Hidden;
-            ((MainWindow)Application.Current.MainWindow).BackBtn.Visibility = Visibility.Hidden;
-
             // unpack build archive
-            ZipFile.ExtractToDirectory(Path.Combine(this.path, "build.zip"), this.path);
-            System.IO.File.Delete(Path.Combine(this.path, "build.zip"));
+            ZipFile.ExtractToDirectory(System.IO.Path.Combine(this.Path, "build.zip"), this.Path);
+            System.IO.File.Delete(System.IO.Path.Combine(this.Path, "build.zip"));
+
+            UpdateUI(UpdateParam.ExtractionComplete);
 
             // async add to registry
-            RunAsyncTasks();
+            Install_RunAsyncTasks();
+        }
+        private async void Install_RunAsyncTasks()
+        {
+            if (RegisterAsProgram)
+            {
+                await Task.Run(RegisterApp);
+                CreateShortcut();
+            }
+            CreateOptionalShortcuts();
+
+
+            if (this.Silent)
+            {
+                LaunchApp();
+                Application.Current.Shutdown();
+            }
+            else UpdateUI(UpdateParam.InstallComplete);
+        }
+        private void Install_Finish(object sender, RoutedEventArgs e)
+        {
+            if (LauncherInstaller.RunOnExit) LaunchApp();
+            Application.Current.Shutdown();
         }
 
-        private async void RunAsyncTasks()
+        #endregion
+
+        #region Actions
+
+
+        private void LaunchApp()
         {
-            await Task.Run(getBuildVersion);
-            if (await Task.Run(RegisterApp))
-            {
-                CreateShortcut();
-                if (this.silent)
-                {
-                    Process.Start(new ProcessStartInfo(Path.Combine(path, "BedrockLauncher.exe")));
-                    Application.Current.Shutdown();
-                }
-                ((MainWindow)Application.Current.MainWindow).FinishBtn.Visibility = Visibility.Visible;
-                ((MainWindow)Application.Current.MainWindow).FinishBtn.Click += FinishInstall;
-                ((MainWindow)Application.Current.MainWindow).CancelBtn.Visibility = Visibility.Hidden;
-            }
+            Process.Start(new ProcessStartInfo(System.IO.Path.Combine(Path, "BedrockLauncher.exe")));
         }
-        bool getBuildVersion()
+        private bool GetBuildVersion()
         {
             XmlDocument xmldoc = new XmlDocument();
-            xmldoc.Load(Path.Combine(path, "BedrockLauncher.exe.config"));
+            xmldoc.Load(System.IO.Path.Combine(Path, "BedrockLauncher.exe.config"));
             XmlNodeList nodeList = xmldoc.GetElementsByTagName("setting");
             foreach (XmlNode node in nodeList)
             {
                 if (node.OuterXml.Contains("<setting name=\"Version\" serializeAs=\"String\">"))
                 {
                     Console.WriteLine("build version: " + node.InnerText);
-                    this.build_version = node.InnerText;
+                    this.Build_Version = node.InnerText;
                 }
             }
             return true;
         }
-        bool RegisterApp()
+        private bool RegisterApp()
         {
             try
             {
-                // Определяем ветку реестра, в которую будем вносить изменения
                 string registryLocation = @"Software\Microsoft\Windows\CurrentVersion\Uninstall";
-                // Открываем указанный подраздел в разделе реестра HKEY_LOCAL_MACHINE для записи
                 RegistryKey regKey = (Registry.LocalMachine).OpenSubKey(registryLocation, true);
-                // Создаём новый вложенный раздел с информацией по нашей программе
                 RegistryKey progKey = regKey.CreateSubKey("Minecraft Bedrock Launcher");
-                // Отображаемое имя
                 progKey.SetValue("DisplayName", "Minecraft Bedrock Launcher", RegistryValueKind.String);
-                // Папка с файлами
-                progKey.SetValue("InstallLocation", path, RegistryValueKind.ExpandString);
-                // Иконка
-                progKey.SetValue("DisplayIcon", Path.Combine(path, "BedrockLauncher.exe"), RegistryValueKind.String);
-                // Строка удаления
-                progKey.SetValue("UninstallString", Path.Combine(path, "Uninstaller.exe"), RegistryValueKind.ExpandString);
-                // Отображаемая версия
-                progKey.SetValue("DisplayVersion", build_version, RegistryValueKind.String);
-                // Издатель
+                progKey.SetValue("InstallLocation", Path, RegistryValueKind.ExpandString);
+                progKey.SetValue("DisplayIcon", System.IO.Path.Combine(Path, "BedrockLauncher.exe"), RegistryValueKind.String);
+                progKey.SetValue("UninstallString", System.IO.Path.Combine(Path, "Uninstaller.exe"), RegistryValueKind.ExpandString);
+                progKey.SetValue("DisplayVersion", Build_Version, RegistryValueKind.String);
                 progKey.SetValue("Publisher", "BedrockLauncher", RegistryValueKind.String);
                 Console.WriteLine("Successfully added to control panel!");
                 return true;
@@ -247,14 +242,24 @@ namespace Installer
                 return false;
             }
         }
+        private void CreateShortcut()
+        {
+            string shortcutPath = System.IO.Path.Combine(Path, "Minecraft Bedrock Launcher.lnk");
 
-        private void FinishInstall(object sender, RoutedEventArgs e)
+            WshShell wshShell = new WshShell();
+            IWshShortcut Shortcut = (IWshShortcut)wshShell.CreateShortcut(shortcutPath);
+            Shortcut.TargetPath = System.IO.Path.Combine(Path, "BedrockLauncher.exe");
+            Shortcut.WorkingDirectory = Path;
+            Shortcut.Save();
+            Console.WriteLine("shortcut created");
+        }
+        private void CreateOptionalShortcuts()
         {
             // create desktop shortcut if needed
-            if ((bool)MakeDesktopIcon) 
+            if ((bool)MakeDesktopIcon)
             {
                 Console.WriteLine("added to desktop");
-                System.IO.File.Copy(Path.Combine(path, "Minecraft Bedrock Launcher.lnk"), Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Minecraft Bedrock Launcher.lnk"), true); 
+                System.IO.File.Copy(System.IO.Path.Combine(Path, "Minecraft Bedrock Launcher.lnk"), System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Minecraft Bedrock Launcher.lnk"), true);
             }
 
             // add to start menu if needed
@@ -262,23 +267,45 @@ namespace Installer
             {
                 Console.WriteLine("added to start menu");
                 string commonStartMenuPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu);
-                string appStartMenuPath = Path.Combine(commonStartMenuPath, "Programs", "Minecraft Launcher");
+                string appStartMenuPath = System.IO.Path.Combine(commonStartMenuPath, "Programs", "Minecraft Launcher");
                 if (!Directory.Exists(appStartMenuPath)) { Directory.CreateDirectory(appStartMenuPath); }
-                System.IO.File.Copy(Path.Combine(path, "Minecraft Bedrock Launcher.lnk"), Path.Combine(appStartMenuPath, "Minecraft Bedrock Launcher.lnk"), true);
+                System.IO.File.Copy(System.IO.Path.Combine(Path, "Minecraft Bedrock Launcher.lnk"), System.IO.Path.Combine(appStartMenuPath, "Minecraft Bedrock Launcher.lnk"), true);
             }
-
-            Application.Current.Shutdown();
         }
-        private void CreateShortcut()
-        {
-            string shortcutPath = Path.Combine(path, "Minecraft Bedrock Launcher.lnk");
 
-            WshShell wshShell = new WshShell(); //создаем объект wsh shell
-            IWshShortcut Shortcut = (IWshShortcut) wshShell.CreateShortcut(shortcutPath);
-            Shortcut.TargetPath = Path.Combine(path, "BedrockLauncher.exe"); //путь к целевому файлу
-            Shortcut.WorkingDirectory = path;
-            Shortcut.Save();
-            Console.WriteLine("shortcut created");
+        #endregion
+
+        public void UpdateUI(UpdateParam param)
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                if (param == UpdateParam.InstallStart)
+                {
+                    ((MainWindow)Application.Current.MainWindow).NextBtn.IsEnabled = false;
+                    ((MainWindow)Application.Current.MainWindow).BackBtn.IsEnabled = false;
+                    ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(this.InstallationProgressPage);
+                }
+                else if (param == UpdateParam.ExtractionComplete)
+                {
+                    ((MainWindow)Application.Current.MainWindow).CancelBtn.Content = "Finish";
+                    ((MainWindow)Application.Current.MainWindow).NextBtn.Visibility = Visibility.Hidden;
+                    ((MainWindow)Application.Current.MainWindow).BackBtn.Visibility = Visibility.Hidden;
+
+                    this.InstallationProgressPage.progressBar.IsIndeterminate = false;
+                    this.InstallationProgressPage.InstallPanel.Visibility = Visibility.Collapsed;
+                }
+                else if (param == UpdateParam.InstallComplete)
+                {
+                    ((MainWindow)Application.Current.MainWindow).FinishBtn.Visibility = Visibility.Visible;
+                    ((MainWindow)Application.Current.MainWindow).FinishBtn.Click += Install_Finish;
+                    ((MainWindow)Application.Current.MainWindow).CancelBtn.Visibility = Visibility.Hidden;
+                }
+                else if (param == UpdateParam.ProgressIndeterminate)
+                {
+                    this.InstallationProgressPage.progressBar.IsIndeterminate = true;
+                }
+            });
+
         }
     }
 }
