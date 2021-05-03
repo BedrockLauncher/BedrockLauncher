@@ -9,6 +9,10 @@ using IWshRuntimeLibrary;
 using System.Xml;
 using System.Diagnostics;
 using Installer.Pages;
+using Newtonsoft.Json;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Newtonsoft.Json.Linq;
 
 namespace Installer
 {
@@ -22,6 +26,7 @@ namespace Installer
 
         public static bool MakeDesktopIcon { get; set; } = false;
         public static bool MakeStartMenuIcon { get; set; } = false;
+        public static bool IsBeta { get; internal set; }
 
         public LauncherInstaller(string installationPath, InstallationProgressPage installationProgressPage, bool silent = false)
         {
@@ -34,7 +39,7 @@ namespace Installer
                 try
                 {
                     Directory.CreateDirectory(installationPath);
-                    download();
+                    Download(IsBeta);
                     return;
                 }
                 catch (Exception err)
@@ -44,7 +49,7 @@ namespace Installer
                 }
             }
             cleanCurrent(installationPath);
-            download();
+            Download(IsBeta);
 
         }
 
@@ -89,7 +94,13 @@ namespace Installer
             }
         }
         // will download latest build and start installation upon downloaded
-        private void download()
+
+        private void Download(bool beta)
+        {
+            if (beta) DownloadBeta();
+            else DownloadRelease();
+        }
+        private void DownloadRelease()
         {
             ((MainWindow)Application.Current.MainWindow).NextBtn.IsEnabled = false;
             ((MainWindow)Application.Current.MainWindow).BackBtn.IsEnabled = false;
@@ -99,6 +110,41 @@ namespace Installer
             using (WebClient wc = new WebClient())
             {
                 wc.DownloadFileAsync(new Uri(LATEST_BUILD_LINK), Path.Combine(this.path, "build.zip"));
+                wc.DownloadProgressChanged += wc_DownloadProgressChanged;
+                wc.DownloadFileCompleted += ExtractAndInstall;
+            }
+        }
+        private void DownloadBeta()
+        {
+            ((MainWindow)Application.Current.MainWindow).NextBtn.IsEnabled = false;
+            ((MainWindow)Application.Current.MainWindow).BackBtn.IsEnabled = false;
+            ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(this.InstallationProgressPage);
+
+            // actually start downloading
+            string directoryContentsUrl = string.Empty;
+            string downloadUrl = string.Empty;
+
+            var url = "https://api.github.com/repos/CarJem/BedrockLauncher-Beta/contents/build.zip";
+            var httpRequest = (HttpWebRequest)WebRequest.Create(url);
+            httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
+            httpRequest.Headers["Authorization"] = "token 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";
+            httpRequest.Accept = "\"application/jsonp\"";
+            var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var contentsJson = streamReader.ReadToEnd();
+                var contents = (JArray)JsonConvert.DeserializeObject(contentsJson);
+                foreach (var file in contents)
+                {
+                    var fileType = (string)file["type"];
+                    if (fileType == "dir") directoryContentsUrl = (string)file["url"];
+                    else if (fileType == "file") downloadUrl = (string)file["download_url"];
+                }
+            }
+
+            using (WebClient wc = new WebClient())
+            {
+                wc.DownloadFileAsync(new Uri(downloadUrl), Path.Combine(this.path, "build.zip"));
                 wc.DownloadProgressChanged += wc_DownloadProgressChanged;
                 wc.DownloadFileCompleted += ExtractAndInstall;
             }

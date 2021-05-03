@@ -9,11 +9,19 @@ using System.Windows.Media.Animation;
 using System.Windows.Controls;
 using System.Collections.Generic;
 using BedrockLauncher.Methods;
+using Newtonsoft.Json;
 
 namespace BedrockLauncher.Methods
 {
     public class LauncherUpdater
     {
+
+        private class UpdateNote
+        {
+            public string Tag { get; set; }
+            public string Description { get; set; }
+        }
+
         private string LATEST_BUILD_LINK { get => BL_Core.Properties.Settings.Default.GithubPage + "/releases/latest"; }
         private string latestTag;
         private string latestTagDescription;
@@ -27,9 +35,18 @@ namespace BedrockLauncher.Methods
         {
             try
             {
-                var html = await Task.Run(getHtml);
-                lookForLatestTag(html);
-                lookForDescription(html);
+                if (Properties.Settings.Default.UseBetaBuilds)
+                {
+                    var json = await Task.Run(Beta_GetJSON);
+                    SetTag(json.Tag);
+                    SetTagDescription(json.Description);
+                }
+                else
+                {
+                    var html = await Task.Run(Release_GetHtml);
+                    Release_LookForLatestTag(html);
+                    Release_LookForDescription(html);
+                }
             }
             catch (Exception err)
             {
@@ -39,7 +56,9 @@ namespace BedrockLauncher.Methods
             }
         }
 
-        private HtmlAgilityPack.HtmlDocument getHtml()
+        #region Release Updates
+
+        private HtmlAgilityPack.HtmlDocument Release_GetHtml()
         {
             using (WebClient wc = new WebClient())
             {
@@ -48,38 +67,72 @@ namespace BedrockLauncher.Methods
                 return doc;
             }
         }
-        private void lookForLatestTag(HtmlDocument html)
+        private void Release_LookForLatestTag(HtmlDocument html)
         {
             foreach (HtmlNode node in html.DocumentNode.SelectNodes("//head/meta[@property='og:url']"))
             {
                 string[] urlParts = node.Attributes["content"].Value.Split('/');
-                this.latestTag = urlParts[urlParts.Length - 1]; // return latest part, for example 0.1.2 from full link
-                Program.Log("Current tag: " + BL_Core.Properties.Settings.Default.Version);
-                Program.Log("Latest tag: " + latestTag);
-
-                try
-                {
-                    // if current tag < than latest tag
-                    if (int.Parse(BL_Core.Properties.Settings.Default.Version.Replace(".", "")) < int.Parse(latestTag.Replace(".", "")))
-                    {
-                        Program.Log("New version available!");
-                        ShowUpdateButton(5000);
-                    }
-                }
-                catch
-                {
-
-                }
-
+                SetTag(urlParts[urlParts.Length - 1]); // return latest part, for example 0.1.2 from full link
             }
         }
-        private void lookForDescription(HtmlDocument html)
+        private void Release_LookForDescription(HtmlDocument html)
         {
             foreach (HtmlNode node in html.DocumentNode.SelectNodes("//div[@class='markdown-body']"))
             {
-                this.latestTagDescription = node.InnerText.Trim();
+                SetTagDescription(node.InnerText.Trim());
             }
         }
+
+        #endregion
+
+        #region Beta Updates
+
+        private UpdateNote Beta_GetJSON()
+        {
+            string json = string.Empty;
+            var url = "https://api.github.com/repos/CarJem/BedrockLauncher-Beta/contents/changelog.json";
+            var httpRequest = (HttpWebRequest)WebRequest.Create(url);
+            httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
+            httpRequest.Accept = "application/vnd.github.v3.raw";
+            httpRequest.Headers["Authorization"] = "Bearer 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";
+            var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
+            Console.WriteLine(httpResponse.StatusCode);
+            return JsonConvert.DeserializeObject<UpdateNote>(json); 
+        }
+
+        #endregion
+
+        #region All Updates
+
+        public void SetTag(string tag)
+        {
+            this.latestTag = tag;
+            Program.Log("Current tag: " + BL_Core.Properties.Settings.Default.Version);
+            Program.Log("Latest tag: " + latestTag);
+
+            try
+            {
+                // if current tag < than latest tag
+                if (int.Parse(BL_Core.Properties.Settings.Default.Version.Replace(".", "")) < int.Parse(latestTag.Replace(".", "")))
+                {
+                    Program.Log("New version available!");
+                    ShowUpdateButton(5000);
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        public void SetTagDescription(string description)
+        {
+            this.latestTagDescription = description;
+        }
+
+        #endregion
+
         private void startUpdate()
         {
             try
@@ -88,7 +141,7 @@ namespace BedrockLauncher.Methods
                 ProcessStartInfo startInfo = new ProcessStartInfo
                 {
                     FileName = installerPath,
-                    Arguments = @"--silent",
+                    Arguments = @"--silent" + (Properties.Settings.Default.UseBetaBuilds),
                     UseShellExecute = true,
                     Verb = "runas"
                 };

@@ -226,5 +226,17 @@ namespace BedrockLauncher.Properties {
                 this["CloseLauncherOnSwitch"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UseBetaBuilds {
+            get {
+                return ((bool)(this["UseBetaBuilds"]));
+            }
+            set {
+                this["UseBetaBuilds"] = value;
+            }
+        }
     }
 }

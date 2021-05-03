@@ -892,7 +892,7 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>if $(PlatformName) == Any CPU (
+    <PostBuildEvent>if "$(PlatformName)" == "Any CPU" (
 xcopy /y /e /c /i "$(SolutionDir)bin\WUTokenHelper\Win32\$(ConfigurationName)" "$(ProjectDir)$(OutDir)\x86"
 xcopy /y /e /c /i "$(SolutionDir)bin\WUTokenHelper\x64\$(ConfigurationName)" "$(ProjectDir)$(OutDir)\x64"
 )

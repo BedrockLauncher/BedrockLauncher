@@ -80,6 +80,7 @@ namespace Installer
         {
             BL_Core.LanguageManager.Init();
             string[] ConsoleArgs = Environment.GetCommandLineArgs();
+            bool isSilent = false;
             foreach (string argument in ConsoleArgs)
             {
                 if (argument.StartsWith("--"))
@@ -88,10 +89,19 @@ namespace Installer
                     // hide window and launch update process
                     if (argument == "--silent") 
                     {
-                        Application.Current.MainWindow.Hide();
-                        LauncherInstaller launcherInstaller = new LauncherInstaller(Directory.GetCurrentDirectory(), installationProgressPage, true); 
+                        isSilent = true;
+                    }
+                    if (argument == "--beta")
+                    {
+                        LauncherInstaller.IsBeta = true;
                     }
                 }
+            }
+
+            if (isSilent)
+            {
+                Application.Current.MainWindow.Hide();
+                LauncherInstaller launcherInstaller = new LauncherInstaller(Directory.GetCurrentDirectory(), installationProgressPage, true);
             }
         }
     }

@@ -36,6 +36,7 @@ namespace BedrockLauncher.Pages
             hideJavaLauncherButtonCheckbox.IsChecked = Properties.Settings.Default.HideJavaShortcut;
             showExternalLauncherButtonCheckbox.IsChecked = Properties.Settings.Default.ShowExternalLauncher;
             closeLauncherOnSwitchCheckbox.IsChecked = Properties.Settings.Default.CloseLauncherOnSwitch;
+            betaVersionsButtonCheckbox.IsChecked = Properties.Settings.Default.UseBetaBuilds;
         }
 
         private void Page_Initialized(object sender, EventArgs e)
@@ -168,6 +169,21 @@ namespace BedrockLauncher.Pages
                     break;
                 case false:
                     Properties.Settings.Default.CloseLauncherOnSwitch = false;
+                    Properties.Settings.Default.Save();
+                    break;
+            }
+        }
+
+        private void betaVersionsButtonCheckbox_Click(object sender, RoutedEventArgs e)
+        {
+            switch (betaVersionsButtonCheckbox.IsChecked)
+            {
+                case true:
+                    Properties.Settings.Default.UseBetaBuilds = true;
+                    Properties.Settings.Default.Save();
+                    break;
+                case false:
+                    Properties.Settings.Default.UseBetaBuilds = false;
                     Properties.Settings.Default.Save();
                     break;
             }
