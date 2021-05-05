@@ -28,7 +28,7 @@ namespace BedrockLauncher.Pages
 
         public void RefreshVersionsList()
         {
-            ConfigManager.OnConfigStateChanged(this, ConfigManager.ConfigStateArgs.Empty);
+            ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
         }
 
         private void Page_Initialized(object sender, EventArgs e)

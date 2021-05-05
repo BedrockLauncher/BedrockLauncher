@@ -90,14 +90,14 @@ namespace BedrockLauncher.Pages
         {
             ConfigManager.EditInstallation(EditingIndex, InstallationNameField.Text, InstallationDirectoryField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
             ConfigManager.MainThread.SetOverlayFrame(null);
-            ConfigManager.OnConfigStateChanged(this, ConfigManager.ConfigStateArgs.Empty);
+            ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
         }
 
         private void CreateInstallation()
         {
             ConfigManager.CreateInstallation(InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationDirectoryField.Text, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
             ConfigManager.MainThread.SetOverlayFrame(null);
-            ConfigManager.OnConfigStateChanged(this, ConfigManager.ConfigStateArgs.Empty);
+            ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
         }
 
         private void InstallationDirectoryField_TextChanged(object sender, TextChangedEventArgs e)

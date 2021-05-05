@@ -30,7 +30,7 @@ namespace BedrockLauncher.Pages
 
         private void Window_Initialized(object sender, EventArgs e)
         {
-            portableModeCheckBox.IsChecked = Properties.Settings.Default.PortableMode;
+            portableModeCheckBox.IsChecked = Properties.LauncherSettings.Default.PortableMode;
             UpdateDirectoryPathTextbox();
         }
 
@@ -40,12 +40,12 @@ namespace BedrockLauncher.Pages
             switch (portableModeCheckBox.IsChecked)
             {
                 case true:
-                    Properties.Settings.Default.PortableMode = true;
-                    Properties.Settings.Default.Save();
+                    Properties.LauncherSettings.Default.PortableMode = true;
+                    Properties.LauncherSettings.Default.Save();
                     break;
                 case false:
-                    Properties.Settings.Default.PortableMode = false;
-                    Properties.Settings.Default.Save();
+                    Properties.LauncherSettings.Default.PortableMode = false;
+                    Properties.LauncherSettings.Default.Save();
                     break;
             }
 
@@ -58,7 +58,7 @@ namespace BedrockLauncher.Pages
 
         private void UpdateDirectoryPathTextbox()
         {
-            if (Properties.Settings.Default.PortableMode)
+            if (Properties.LauncherSettings.Default.PortableMode)
             {
                 StorageDirectoryTextBox.IsEnabled = false;
                 StorageDirectoryTextBox.Text = "%PORTABLE%";
@@ -67,9 +67,9 @@ namespace BedrockLauncher.Pages
             {
                 StorageDirectoryTextBox.IsEnabled = true;
 
-                if (Properties.Settings.Default.FixedDirectory != string.Empty)
+                if (Properties.LauncherSettings.Default.FixedDirectory != string.Empty)
                 {
-                    StorageDirectoryTextBox.Text = Properties.Settings.Default.FixedDirectory;
+                    StorageDirectoryTextBox.Text = Properties.LauncherSettings.Default.FixedDirectory;
                 }
                 else
                 {
@@ -86,15 +86,15 @@ namespace BedrockLauncher.Pages
             };
             if (dialog.Show(new WindowInteropHelper(this).Handle))
             {
-                Properties.Settings.Default.FixedDirectory = dialog.FileName;
-                Properties.Settings.Default.Save();
+                Properties.LauncherSettings.Default.FixedDirectory = dialog.FileName;
+                Properties.LauncherSettings.Default.Save();
             }
         }
 
         private void ResetDirectoryToDefault()
         {
-            Properties.Settings.Default.FixedDirectory = string.Empty;
-            Properties.Settings.Default.Save();
+            Properties.LauncherSettings.Default.FixedDirectory = string.Empty;
+            Properties.LauncherSettings.Default.Save();
         }
 
         private void BrowseDirectoryButton_Click(object sender, RoutedEventArgs e)

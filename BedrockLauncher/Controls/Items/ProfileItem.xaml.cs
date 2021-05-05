@@ -45,7 +45,7 @@ namespace BedrockLauncher.Controls.Items
         {
             ConfigManager.SwitchProfile(_ProfileName);
             SelectorParent.ProfileContextMenu.IsOpen = false;
-            ConfigManager.OnConfigStateChanged(this, ConfigManager.ConfigStateArgs.Empty);
+            ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
         }
 
         private void SourceButton_Click(object sender, RoutedEventArgs e)

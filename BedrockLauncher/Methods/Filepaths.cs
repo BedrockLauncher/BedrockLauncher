@@ -25,7 +25,7 @@ namespace BedrockLauncher.Methods
 
         #region Common Paths
 
-        public static string CurrentLocation { get => (Properties.Settings.Default.PortableMode ? PortableLocation : GetFixedPath()); }
+        public static string CurrentLocation { get => (Properties.LauncherSettings.Default.PortableMode ? PortableLocation : GetFixedPath()); }
         public static string PortableLocation { get => System.Reflection.Assembly.GetExecutingAssembly().Location; }
         public static string DefaultLocation { get => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), AppDataFolderName); }
 
@@ -36,11 +36,11 @@ namespace BedrockLauncher.Methods
         private static string GetFixedPath()
         {
             string FixedDirectory = string.Empty;
-            if (Properties.Settings.Default.FixedDirectory == string.Empty)
+            if (Properties.LauncherSettings.Default.FixedDirectory == string.Empty)
             {
                 FixedDirectory = DefaultLocation;
             }
-            else FixedDirectory = Properties.Settings.Default.FixedDirectory;
+            else FixedDirectory = Properties.LauncherSettings.Default.FixedDirectory;
 
             if (!Directory.Exists(FixedDirectory)) Directory.CreateDirectory(FixedDirectory);
             return FixedDirectory;
@@ -48,7 +48,7 @@ namespace BedrockLauncher.Methods
 
         public static string GetSettingsFilePath()
         {
-            return Path.Combine(CurrentLocation, SettingsFileName);
+            return Path.Combine(Path.GetDirectoryName(PortableLocation), SettingsFileName);
         }
 
         public static string GetVersionsFilePath()
@@ -67,12 +67,14 @@ namespace BedrockLauncher.Methods
         }
         public static string GetInstallationsFolderPath(string profileName, string installationDirectory)
         {
+            if (!ConfigManager.ProfileList.profiles.ContainsKey(profileName)) return string.Empty;
             var profile = ConfigManager.ProfileList.profiles[profileName];
             string InstallationsPath = Path.Combine(profile.ProfilePath, installationDirectory);
             return Path.Combine(CurrentLocation, InstallationsFolderName, InstallationsPath, PackageDataFolderName);
         }
         public static string GetSkinPacksFolderPath(string InstallationsPath, bool DevFolder = false)
         {
+            if (InstallationsPath == string.Empty) return string.Empty;
             string[] Route = new string[] { "LocalState", "games", "com.mojang", (DevFolder ? "development_skin_packs" : "skin_packs") };
             string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", GameManager.MINECRAFT_PACKAGE_FAMILY);
 

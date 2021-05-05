@@ -22,29 +22,5 @@ namespace BedrockLauncher.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool PortableMode {
-            get {
-                return ((bool)(this["PortableMode"]));
-            }
-            set {
-                this["PortableMode"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string FixedDirectory {
-            get {
-                return ((string)(this["FixedDirectory"]));
-            }
-            set {
-                this["FixedDirectory"] = value;
-            }
-        }
     }
 }

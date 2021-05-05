@@ -125,6 +125,7 @@
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework">
       <EmbedInteropTypes>False</EmbedInteropTypes>
       <Private>False</Private>
@@ -148,7 +149,6 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
@@ -157,7 +157,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Html\SkinViewResourceSchemeHandler.cs" />
-    <Compile Include="Classes\LauncherModel.cs" />
+    <Compile Include="Controls\UpdateButton.xaml.cs">
+      <DependentUpon>UpdateButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\VersionSelector.xaml.cs">
+      <DependentUpon>VersionSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Events\ConfigStateArgs.cs" />
+    <Compile Include="Pages\FirstLaunch\WelcomePageFour.xaml.cs">
+      <DependentUpon>WelcomePageFour.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\LauncherModel.cs" />
+    <Compile Include="Events\GameRunningState.cs" />
+    <Compile Include="Events\ProgressBarState.cs" />
     <Compile Include="Properties\LauncherSettings.cs" />
     <Compile Include="Classes\MCInstallation.cs" />
     <Compile Include="Classes\MediaWiki\Continue.cs" />
@@ -289,11 +301,11 @@
     <Compile Include="Pages\FirstLaunch\WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\FirstLaunch\WelcomePageTwo.xaml.cs">
-      <DependentUpon>WelcomePageTwo.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\FirstLaunch\WelcomePageThree.xaml.cs">
       <DependentUpon>WelcomePageThree.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FirstLaunch\WelcomePageTwo.xaml.cs">
+      <DependentUpon>WelcomePageTwo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\FirstLaunch\WelcomePageOne.xaml.cs">
       <DependentUpon>WelcomePageOne.xaml</DependentUpon>
@@ -447,6 +459,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\UpdateButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\VersionSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AdvancedOptionsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -460,6 +480,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\DialogPrompt.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\FirstLaunch\WelcomePageFour.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -483,11 +507,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\FirstLaunch\WelcomePageTwo.xaml">
+    <Page Include="Pages\FirstLaunch\WelcomePageThree.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\FirstLaunch\WelcomePageThree.xaml">
+    <Page Include="Pages\FirstLaunch\WelcomePageTwo.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -594,6 +618,10 @@
     <Page Include="Resources\styles\menuitems.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\styles\radiobutton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\styles\richtextbox.xaml">
       <SubType>Designer</SubType>

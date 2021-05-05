@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BedrockLauncher.Methods;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,11 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BedrockLauncher.Methods;
 
 namespace BedrockLauncher.Pages.FirstLaunch
 {
@@ -22,9 +23,13 @@ namespace BedrockLauncher.Pages.FirstLaunch
     public partial class WelcomePageTwo : Page
     {
         public WelcomePagesSwitcher pageSwitcher = new WelcomePagesSwitcher();
+        private bool isInit = false;
+
         public WelcomePageTwo()
         {
             InitializeComponent();
+            UpdateDirectoryPathTextbox();
+            isInit = true;
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -32,33 +37,77 @@ namespace BedrockLauncher.Pages.FirstLaunch
             pageSwitcher.MoveToPage(2);
         }
 
-        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            if (e.Key == Key.Enter) 
+            ConfigManager.Init();
+            ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
+            pageSwitcher.MoveToPage(4);
+        }
+
+        private void UpdateDirectoryPathTextbox()
+        {
+            if (Properties.LauncherSettings.Default.PortableMode)
             {
-                if (ProfileNameTextbox.Text.Length >= 1) 
-                { 
-                    CreateProfile(ProfileNameTextbox.Text);
-                    pageSwitcher.MoveToPage(3);
-                };
+                StorageDirectoryTextBox.IsEnabled = false;
+                StorageDirectoryTextBox.Text = "%PORTABLE%";
+                PathBox.IsEnabled = false;
+            }
+            else
+            {
+                PathBox.IsEnabled = true;
+                StorageDirectoryTextBox.IsEnabled = true;
+
+                if (Properties.LauncherSettings.Default.FixedDirectory != string.Empty)
+                {
+                    StorageDirectoryTextBox.Text = Properties.LauncherSettings.Default.FixedDirectory;
+                }
+                else
+                {
+                    StorageDirectoryTextBox.Text = BedrockLauncher.Methods.Filepaths.DefaultLocation;
+                }
             }
         }
 
-        private void CreateProfileButton_Click(object sender, RoutedEventArgs e)
+        private void BrowseForDirectory()
         {
-            if (ProfileNameTextbox.Text.Length >= 1) 
-            { 
-                CreateProfile(ProfileNameTextbox.Text);
-                pageSwitcher.MoveToPage(3);
-            };
-        }
-        public void CreateProfile(string profileName)
-        {
-            if (ConfigManager.CreateProfile(ProfileNameTextbox.Text))
+            Controls.FolderSelectDialog dialog = new Controls.FolderSelectDialog()
             {
-                Properties.LauncherSettings.Default.CurrentProfile = profileName;
+                InitialDirectory = StorageDirectoryTextBox.Text
+            };
+            if (dialog.Show(new WindowInteropHelper(Application.Current.MainWindow).Handle))
+            {
+                Properties.LauncherSettings.Default.FixedDirectory = dialog.FileName;
                 Properties.LauncherSettings.Default.Save();
             }
+        }
+
+        private void ResetDirectoryToDefault()
+        {
+            Properties.LauncherSettings.Default.FixedDirectory = string.Empty;
+            Properties.LauncherSettings.Default.Save();
+        }
+
+        private void BrowseDirectoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            BrowseForDirectory();
+            UpdateDirectoryPathTextbox();
+        }
+
+        private void ResetDirectoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            ResetDirectoryToDefault();
+            UpdateDirectoryPathTextbox();
+        }
+
+        private void FixedRadioButton_CheckChanged(object sender, RoutedEventArgs e)
+        {
+            if (isInit)
+            {
+                Properties.LauncherSettings.Default.PortableMode = PortableRadioButton.IsChecked.Value;
+                Properties.LauncherSettings.Default.Save();
+                UpdateDirectoryPathTextbox();
+            }
+
         }
     }
 }

@@ -27,6 +27,7 @@ using BedrockLauncher.Classes;
 using System.Windows.Media.Animation;
 using BedrockLauncher.Pages;
 using BedrockLauncher.Pages.FirstLaunch;
+using BedrockLauncher.ViewModels;
 
 using Version = BedrockLauncher.Classes.MCVersion;
 
@@ -66,14 +67,6 @@ namespace BedrockLauncher
         private KeyboardNavigationMode MainFrame_KeyboardNavigationMode_Default { get; set; }
         private bool AllowedToCloseWithGameOpen { get; set; } = false;
 
-        public LauncherModel ViewModel
-        {
-            get 
-            {
-                return (this.DataContext as LauncherModel);
-            }
-        }
-
         #endregion
 
         #region Init
@@ -86,12 +79,17 @@ namespace BedrockLauncher
 
         private void Init()
         {
-            this.DataContext = new LauncherModel();
-            updateButton.Click += Updater.UpdateButton_Click;
+            this.DataContext = ConfigManager.ViewModel;
+            ConfigManager.ViewModel.GameRunningStateChanged += ViewModel_GameRunningStateChanged;
+            ConfigManager.ViewModel.ProgressBarStateChanged += ViewModel_ProgressBarStateChanged;
+
+
+            updateButton.ClickBase.Click += Updater.UpdateButton_Click;
             MainFrame_KeyboardNavigationMode_Default = KeyboardNavigation.GetTabNavigation(MainFrame);
 
             Panel.SetZIndex(OverlayFrame, 0);
             Panel.SetZIndex(ErrorFrame, 1);
+            Panel.SetZIndex(updateButton, 2);
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             // show first launch window if no profile
             if (Properties.LauncherSettings.Default.CurrentProfile == "" || Properties.LauncherSettings.Default.IsFirstLaunch) SetOverlayFrame(new WelcomePage());
@@ -99,9 +97,8 @@ namespace BedrockLauncher
 
 
             ConfigManager.Init();
-            ConfigManager.GameManager.GameStateChanged += GameManager_GameStateChanged;
             ConfigManager.ConfigStateChanged += ConfigManager_ConfigStateChanged;
-            ConfigManager.OnConfigStateChanged(this, ConfigManager.ConfigStateArgs.Empty);
+            ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
         }
 
         #endregion
@@ -140,31 +137,18 @@ namespace BedrockLauncher
             if (InstallationsList.SelectedItem == null) InstallationsList.SelectedItem = ConfigManager.CurrentInstallations.First();
         }
 
-
-        private void UpdatePlayButton()
+        private void ViewModel_ProgressBarStateChanged(object sender, EventArgs e)
         {
-            Task.Run(async () =>
-            {
-                   await Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(() =>
-                   {
-                       var selected = InstallationsList.SelectedItem as MCInstallation;
-                       if (selected == null)
-                       {
-                           PlayButtonText.SetResourceReference(TextBlock.TextProperty, "GameTab_PlayButton_Text");
-                           MainPlayButton.IsEnabled = false;
-                           return;
-                       }
-
-                       bool showProgress = ConfigManager.GameManager.IsUninstalling || ConfigManager.GameManager.IsDownloading || ConfigManager.GameManager.HasLaunchTask || ConfigManager.GameManager.IsBackingUp;
-
-                       if (showProgress) ProgressBarShowAnim();
-                       else ProgressBarHideAnim();
-
-                       if (!ConfigManager.GameManager.IsGameNotOpen) PlayButtonText.SetResourceReference(TextBlock.TextProperty, "GameTab_PlayButton_Kill_Text");
-                       else PlayButtonText.SetResourceReference(TextBlock.TextProperty, "GameTab_PlayButton_Text");
-                   }));
-            });
+            Events.ProgressBarState es = e as Events.ProgressBarState;
+            if (es.isVisible) ProgressBarShowAnim();
+            else ProgressBarHideAnim();
         }
+
+        private void ViewModel_GameRunningStateChanged(object sender, EventArgs e)
+        {
+            Events.GameRunningState es = e as Events.GameRunningState;
+        }
+
         private async void ProgressBarShowAnim()
         {
             if (ProgressBarGrid.Visibility == Visibility.Visible) return;
@@ -188,7 +172,6 @@ namespace BedrockLauncher
                 storyboard.Begin();
             });
         }
-
         private async void ProgressBarHideAnim()
         {
             if (ProgressBarGrid.Visibility == Visibility.Collapsed) return;
@@ -215,7 +198,6 @@ namespace BedrockLauncher
             ProgressBarText.Visibility = Visibility.Hidden;
             progressbarcontent.Visibility = Visibility.Hidden;
         }
-
         private void ShowProgressBarContent(object sender, EventArgs e)
         {
             ProgressBarText.Visibility = Visibility.Visible;
@@ -247,18 +229,8 @@ namespace BedrockLauncher
             RefreshInstallationControls();
             RefreshVersionControls();
         }
-        private void GameManager_GameStateChanged(object sender, EventArgs e)
+        private void InstallationsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UpdatePlayButton();
-            RefreshVersionControls();
-        }
-        private void GameStateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            UpdatePlayButton();
-        }
-        private void GameStateChanged(object sender, EventArgs e)
-        {
-            UpdatePlayButton();
             skinsPage.ReloadPage();
         }
 
@@ -513,6 +485,9 @@ namespace BedrockLauncher
             }
         }
 
+
         #endregion
+
+
     }
 }

@@ -41,8 +41,11 @@ namespace BedrockLauncher.Pages
             LoadedSkinPacks.Items.Clear();
             SkinPacks.Clear();
 
+            var installation = ConfigManager.CurrentInstallation;
 
-            string InstallationPath = Filepaths.GetInstallationsFolderPath(ConfigManager.CurrentProfile, ConfigManager.CurrentInstallation.DirectoryName);
+            if (installation == null) return;
+
+            string InstallationPath = Filepaths.GetInstallationsFolderPath(ConfigManager.CurrentProfile, installation.DirectoryName);
             string normal_folder = Filepaths.GetSkinPacksFolderPath(InstallationPath, false);
             string dev_folder = Filepaths.GetSkinPacksFolderPath(InstallationPath, true);
 

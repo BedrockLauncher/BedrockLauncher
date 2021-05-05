@@ -28,7 +28,7 @@
                     <ColumnDefinition Width="200"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
-                    <Button x:Name="NewInstallationButton" IsEnabled="{Binding Source={x:Static methods:ConfigManager.GameManager}, Path=IsGameNotOpen}" Height="40" Width="100" Click="NewInstallationButton_Click" Foreground="White" Style="{DynamicResource PanelButton}">
+                    <Button x:Name="NewInstallationButton" IsEnabled="{Binding Source={x:Static methods:ConfigManager.ViewModel}, Path=EnableVariousControls}" Height="40" Width="100" Click="NewInstallationButton_Click" Foreground="White" Style="{DynamicResource PanelButton}">
                         <Button.Content>
                             <Grid>
                                 <Grid.ColumnDefinitions>

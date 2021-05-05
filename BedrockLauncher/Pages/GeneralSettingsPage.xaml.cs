@@ -40,7 +40,7 @@ namespace BedrockLauncher.Pages
 
         private void BackupButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.GameManager.ConvertToInstallation();
+            ConfigManager.GameManager.BackupGameData();
         }
 
         private void AdvancedSettingsButton_Click(object sender, RoutedEventArgs e)

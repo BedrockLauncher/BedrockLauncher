@@ -6,6 +6,7 @@
     <!--#region MainWindow -->
 
     <v:String x:Key="MainWindow_Title">Minecraft Bedrock Launcher</v:String>
+    <v:String x:Key="MainWindow_Disclaimer">NOT ASSOCIATED OR APPROVED BY MOJANG</v:String>
 
     <!--#endregion-->
 
@@ -26,8 +27,8 @@
 
     <!--#region UpdateButton-->
 
-    <v:String x:Key="UpdateButton_NewUpdate_Text">New Release!</v:String>
-    <v:String x:Key="UpdateButton_Download_Text">Download!</v:String>
+    <v:String x:Key="UpdateButton_NewUpdate_Text">New Update!</v:String>
+    <v:String x:Key="UpdateButton_Download_Text">Click to download!</v:String>
 
     <!--#endregion-->
 
@@ -259,9 +260,17 @@
     <v:String x:Key="FirstLaunch_WelcomeTitle">Welcome!</v:String>
     <v:String x:Key="FirstLaunch_WelcomeSubTitle">Welcome to Minecraft Bedrock Launcher!</v:String>
     <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Create your first profile!</v:String>
+    <v:String x:Key="FirstLaunch_AlmostThereTitle">Almost there!</v:String>
+    <v:String x:Key="FirstLaunch_OneThingTitle">One thing...</v:String>
+    <v:String x:Key="FirstLaunch_OneThingSubtitle">Just check over these to make sure they're just how you like it.</v:String>
 
     <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Before using, it is highly recommended that you press backup to create an installation of your existing save data as the launcher does replace the original directory with a symbolic link which allows us to redirect save data.&#10;&#10; (Don't worry, you will not lose your data by doing this, you will only lose data if you press play and haven't backed your stuff up)</v:String>
 
+    <v:String x:Key="FirstLaunch_InstallType_Header">Save/Load Launcher Data From:</v:String>
+    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">Fixed Folder (Recommended)</v:String>
+    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">Portable/Root Folder</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Backup Existing Save Data</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(RECOMMENDED)</v:String>
     <v:String x:Key="FirstLaunch_CloseButton">Close</v:String>
     <v:String x:Key="FirstLaunch_BackButton">Back</v:String>
     <v:String x:Key="FirstLaunch_GoBackButton">❮ GO BACK</v:String>

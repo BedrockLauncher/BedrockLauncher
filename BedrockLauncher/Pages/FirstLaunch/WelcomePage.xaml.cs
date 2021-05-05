@@ -36,11 +36,12 @@ namespace BedrockLauncher.Pages.FirstLaunch
         public static WelcomePageOne pageOne;
         public static WelcomePageTwo pageTwo;
         public static WelcomePageThree pageThree;
+        public static WelcomePageFour pageFour;
         public void Init(WelcomePage page)
         {
             welcomePage = page;
         }
-        public void MoveToPage(byte page)
+        public void MoveToPage(byte page, bool backup = false)
         {
             switch (page)
             {
@@ -52,6 +53,15 @@ namespace BedrockLauncher.Pages.FirstLaunch
                     break;
                 case 3:
                     Page3();
+                    break;
+                case 4:
+                    Page4();
+                    break;
+                case 5:
+                    Page5(backup);
+                    break;
+                case 6:
+                    Page6();
                     break;
             }
 
@@ -92,6 +102,28 @@ namespace BedrockLauncher.Pages.FirstLaunch
                     welcomePage.WelcomePageFrame.Navigate(pageThree);
                 }
                 else { welcomePage.WelcomePageFrame.Navigate(pageThree); }
+            }
+
+            void Page4()
+            {
+                if (pageFour == null)
+                {
+                    pageFour = new WelcomePageFour();
+                    welcomePage.WelcomePageFrame.Navigate(pageFour);
+                }
+                else { welcomePage.WelcomePageFrame.Navigate(pageFour); }
+                ConfigManager.MainThread.SetOverlayFrame(null);
+            }
+
+            void Page5(bool _backup)
+            {
+                if (_backup) ConfigManager.GameManager.BackupGameData();
+                ConfigManager.MainThread.SetOverlayFrame(null);
+            }
+
+            void Page6()
+            {
+
             }
         }
     }

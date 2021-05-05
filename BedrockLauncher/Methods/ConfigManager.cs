@@ -18,14 +18,40 @@ namespace BedrockLauncher.Methods
 
     public static class ConfigManager
     {
+        #region ViewModel
+
+        public static ViewModels.LauncherModel ViewModel { get; set; } = new ViewModels.LauncherModel();
+
+        #endregion
+
         #region Helpers
 
-        public static string CurrentProfile { get => Properties.LauncherSettings.Default.CurrentProfile; }
+        public static string CurrentProfile 
+        {
+            get
+            {
+                if (ProfileList.profiles != null)
+                {
+                    if (ProfileList.profiles.ContainsKey(Properties.LauncherSettings.Default.CurrentProfile))
+                    {
+                        return Properties.LauncherSettings.Default.CurrentProfile;
+                    }
+                    else if (ProfileList.profiles.Count != 0)
+                    {
+                        string result = ProfileList.profiles.First().Key;
+                        Properties.LauncherSettings.Default.CurrentProfile = result;
+                        Properties.LauncherSettings.Default.Save();
+                        return result;
+                    }
+                }
+                return Properties.LauncherSettings.Default.CurrentProfile;
+            }
+        }
         public static MCInstallation CurrentInstallation 
         { 
             get
             {
-                if (ConfigManager.CurrentInstallations == null) return null;
+                if (ConfigManager.CurrentInstallations == null || Properties.LauncherSettings.Default.CurrentInstallation == -1) return null;
                 return ConfigManager.CurrentInstallations[Properties.LauncherSettings.Default.CurrentInstallation];
             }
         }
@@ -46,11 +72,7 @@ namespace BedrockLauncher.Methods
         #region Events
 
         public static event EventHandler ConfigStateChanged;
-        public class ConfigStateArgs : EventArgs
-        {
-            public static new ConfigStateArgs Empty => new ConfigStateArgs();
-        }
-        public static void OnConfigStateChanged(object sender, ConfigStateArgs e)
+        public static void OnConfigStateChanged(object sender, Events.ConfigStateArgs e)
         {
             EventHandler handler = ConfigStateChanged;
             if (handler != null)

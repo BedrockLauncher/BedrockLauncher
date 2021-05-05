@@ -25,6 +25,7 @@
                 <ResourceDictionary Source="Resources/styles/expander.xaml"/>
                 <ResourceDictionary Source="Resources/styles/richtextbox.xaml"/>
                 <ResourceDictionary Source="Resources/styles/itemtemplates.xaml"/>
+                <ResourceDictionary Source="Resources/styles/radiobutton.xaml"/>
                 <ResourceDictionary>
                     <Style TargetType="{x:Type ComboBoxItem}">
                         <EventSetter Event="FrameworkElement.RequestBringIntoView" Handler="ComboBoxItem_RequestBringIntoView"/>

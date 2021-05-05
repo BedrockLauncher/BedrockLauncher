@@ -28,7 +28,7 @@ namespace BedrockLauncher.Pages
 
         public void RefreshInstallationsList()
         {
-            ConfigManager.OnConfigStateChanged(this, ConfigManager.ConfigStateArgs.Empty);
+            ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
         }
 
         public void RefreshInstallationsList(object sender, RoutedEventArgs e)

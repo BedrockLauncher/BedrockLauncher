@@ -29,29 +29,91 @@ namespace BedrockLauncher.Classes
     public class VersionStateChangeInfo : NotifyPropertyChangedBase
     {
 
+        public enum StateChange
+        {
+            None,
+            isInitializing,
+            isExtracting,
+            isUninstalling,
+            isLaunching,
+            isDownloading,
+            isBackingUp,
+            isRemovingPackage,
+            isRegisteringPackage
+        }
+
         private const long _deploymentTotal = 100;
 
+        private StateChange _currentState = StateChange.None;
+
+        private long _CurrentProgress;
+        private long _TotalProgress;
+
+
+
+
+        public string DeploymentPackageName { get; set; }
+
+        public StateChange CurrentState
+        {
+            get { return _currentState; }
+            set
+            {
+                _currentState = value;
+                UpdateProgressBarContent(value);
+                ProgressBarIsIndeterminate(IsProgressIndeterminate);
+                ProgressBarUpdate();
+                OnPropertyChanged("IsProgressIndeterminate");
+                OnPropertyChanged("DisplayStatus");
+            }
+        }
+
+        private void UpdateProgressBarContent(StateChange value)
+        {
+            Application.Current.Dispatcher.Invoke(() => {
+                switch (value)
+                {
+                    case StateChange.isInitializing:
+                        ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_Downloading");
+                        break;
+                    case StateChange.isDownloading:
+                        ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_Downloading");
+                        break;
+                    case StateChange.isExtracting:
+                        ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_Extracting");
+                        break;
+                    case StateChange.isRegisteringPackage:
+                        ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_RegisteringPackage");
+                        break;
+                    case StateChange.isRemovingPackage:
+                        ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_RemovingPackage");
+                        break;
+                    case StateChange.isUninstalling:
+                        ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_Uninstalling");
+                        break;
+                    case StateChange.isLaunching:
+                        ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_Launching");
+                        break;
+                    case StateChange.isBackingUp:
+                        ConfigManager.MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_BackingUp");
+                        break;
+                }
+
+            });
+        }
+
+        /*
         private bool _isInitializing;
         private bool _isExtracting;
         private bool _isUninstalling;
         private bool _isLaunching;
         private bool _isDownloading;
         private bool _isBackingUp;
-
-
         private bool _isRemovingPackage;
         private bool _isRegisteringPackage;
+        */
 
-        public long _downloadedBytes_downloading;
-        private long _totalSize_downloading;
-
-        private long _deploymentProgress;
-
-        private int _extractedBytes_extracting;
-        private int _totalBytes_extracting;
-
-
-        public string DeploymentPackageName { get; set; }
+        /*
 
         public bool IsInitializing
         {
@@ -116,7 +178,7 @@ namespace BedrockLauncher.Classes
                 OnPropertyChanged("IsProgressIndeterminate");
                 OnPropertyChanged("DisplayStatus");
 
-                if (value == false) DeploymentProgress = 0;
+                if (value == false) CurrentProgress = 0;
             }
         }
 
@@ -136,7 +198,7 @@ namespace BedrockLauncher.Classes
                 OnPropertyChanged("IsProgressIndeterminate");
                 OnPropertyChanged("DisplayStatus");
 
-                if (value == false) DeploymentProgress = 0;
+                if (value == false) CurrentProgress = 0;
             }
         }
 
@@ -186,76 +248,69 @@ namespace BedrockLauncher.Classes
                 OnPropertyChanged("DisplayStatus");
             }
         }
+        */
 
         public bool IsProgressIndeterminate
         {
             get 
-            { 
-                return IsInitializing || IsUninstalling || IsLaunching || IsBackingUp; 
+            {
+                return CurrentState == StateChange.isInitializing || CurrentState == StateChange.isUninstalling || CurrentState == StateChange.isLaunching;
             }
         }
 
-        public long DownloadedBytes_Downloading
+        public long CurrentProgress
         {
-            get { return _downloadedBytes_downloading; }
+            get { return _CurrentProgress; }
             set
             {
-                _downloadedBytes_downloading = value;
-                ProgressBarUpdate(_downloadedBytes_downloading, _totalSize_downloading);
-                OnPropertyChanged("DownloadedBytes_Downloading");
-                OnPropertyChanged("DisplayStatus");
+                _CurrentProgress = value;
+                ProgressBarUpdate(_CurrentProgress, _TotalProgress);
+                OnPropertyChanged(nameof(CurrentProgress));
+                OnPropertyChanged(nameof(DisplayStatus));
             }
         }
 
-        public long TotalSize_Downloading
+        public long TotalProgress
         {
-            get { return _totalSize_downloading; }
-            set { _totalSize_downloading = value; OnPropertyChanged("TotalSize_Downloading"); OnPropertyChanged("DisplayStatus"); }
-        }
-
-        public long DeploymentProgress
-        {
-            get { return _deploymentProgress; }
-            set
-            {
-                _deploymentProgress = value;
-                ProgressBarUpdate(_deploymentProgress, _deploymentTotal);
-                OnPropertyChanged("DeploymentProgress");
-                OnPropertyChanged("DisplayStatus");
-            }
-        }
-
-        public int ExtractedBytes_Extracting
-        {
-            get { return _extractedBytes_extracting; }
-            set
-            {
-                _extractedBytes_extracting = value;
-                ProgressBarUpdate(_extractedBytes_extracting, _totalBytes_extracting);
-                OnPropertyChanged("ExtractedBytes_Extracting");
-                OnPropertyChanged("DisplayStatus");
-            }
-        }
-
-        public int TotalBytes_Extracting
-        {
-            get { return _totalBytes_extracting; }
-            set { _totalBytes_extracting = value; OnPropertyChanged("TotalBytes_Extracting"); OnPropertyChanged("DisplayStatus"); }
+            get { return _TotalProgress; }
+            set { _TotalProgress = value; OnPropertyChanged(nameof(TotalProgress)); OnPropertyChanged(nameof(DisplayStatus)); }
         }
 
         public string DisplayStatus
         {
             get
             {
+                switch (CurrentState)
+                {
+                    case StateChange.isInitializing:
+                        return "";
+                    case StateChange.isDownloading:
+                        return DownloadStatus;
+                    case StateChange.isExtracting:
+                        return ExtractingStatus;
+                    case StateChange.isRegisteringPackage:
+                        return DeploymentStatus;
+                    case StateChange.isRemovingPackage:
+                        return DeploymentStatus;
+                    case StateChange.isUninstalling:
+                        return "";
+                    case StateChange.isLaunching:
+                        return "";
+                    case StateChange.isBackingUp:
+                        return BackupStatus;
+                    case StateChange.None:
+                        return "";
+                    default:
+                        return "";
+                }
+            }
+        }
 
-                if (IsInitializing) return "";
-                else if (IsExtracting) return ExtractingStatus;
-                else if (IsUninstalling) return "";
-                else if (IsLaunching) return "";
-                else if (IsRegisteringPackage) return DeploymentStatus;
-                else if (IsRemovingPackage) return DeploymentStatus;
-                else if (IsDownloading) return DownloadStatus;
-                else return "";
+        private string BackupStatus
+        {
+            get
+            {
+                return string.Format("{0} / {1}", CurrentProgress, TotalProgress);
             }
         }
 
@@ -263,7 +318,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                return DeploymentProgress + "%" + string.Format(" [ {0} ]", DeploymentPackageName);
+                return CurrentProgress + "%" + string.Format(" [ {0} ]", DeploymentPackageName);
             }
         }
 
@@ -271,8 +326,8 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                int percent = 0;
-                if (TotalBytes_Extracting != 0) percent = (100 * ExtractedBytes_Extracting) / TotalBytes_Extracting;
+                long percent = 0;
+                if (TotalProgress != 0) percent = (100 * CurrentProgress) / TotalProgress;
                 return percent + "%";
             }
         }
@@ -281,7 +336,7 @@ namespace BedrockLauncher.Classes
         {
             get 
             {
-                return (Math.Round((double)DownloadedBytes_Downloading / 1024 / 1024, 2)).ToString() + " MB / " + (Math.Round((double)TotalSize_Downloading / 1024 / 1024, 2)).ToString() + " MB";
+                return (Math.Round((double)CurrentProgress / 1024 / 1024, 2)).ToString() + " MB / " + (Math.Round((double)TotalProgress / 1024 / 1024, 2)).ToString() + " MB";
             }
         }
 

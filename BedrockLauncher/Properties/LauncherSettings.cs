@@ -57,6 +57,9 @@ namespace BedrockLauncher.Properties
             File.WriteAllText(Filepaths.GetSettingsFilePath(), json);
         }
 
+        private bool _PortableMode = false;
+        private string _FixedDirectory = "";
+
         private bool _ShowBetas = true;
         private int _CurrentInstallation = 0;
         private bool _IsFirstLaunch = true;
@@ -75,6 +78,16 @@ namespace BedrockLauncher.Properties
         private bool _UseBetaBuilds = false;
         private bool _UseSilentUpdates = true;
 
+        public bool PortableMode
+        {
+            get { return _PortableMode; }
+            set { _PortableMode = value; OnPropertyChanged(nameof(PortableMode)); }
+        }
+        public string FixedDirectory
+        {
+            get { return _FixedDirectory; }
+            set { _FixedDirectory = value; OnPropertyChanged(nameof(FixedDirectory)); }
+        }
         public bool IsFirstLaunch
         {
             get { return _IsFirstLaunch;}

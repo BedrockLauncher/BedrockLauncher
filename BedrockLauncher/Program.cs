@@ -79,7 +79,10 @@ namespace BedrockLauncher
                     }
                     catch (Exception r)
                     {
-                        Program.Log("Cant enable developer mode for X64 machine Error: " + r, LogType.DebugLine);
+                        string message = "Cant enable developer mode for X64 machine Error: " + r;
+                        Program.Log(message, LogType.DebugLine);
+                        MessageBox.Show(message + r);
+                        throw r;
                     }
                     break;
                 case false:
@@ -104,7 +107,10 @@ namespace BedrockLauncher
                     }
                     catch (Exception r)
                     {
-                        Program.Log("Cant enable developer mode for X86 machine Error: " + r, LogType.DebugLine);
+                        string message = "Cant enable developer mode for X86 machine Error: " + r;
+                        Program.Log(message, LogType.DebugLine);
+                        MessageBox.Show(message + r);
+                        throw r;
                     }
                     break;
             }

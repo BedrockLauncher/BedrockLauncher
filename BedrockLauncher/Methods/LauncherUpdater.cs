@@ -103,45 +103,6 @@ namespace BedrockLauncher.Methods
         #endregion
 
         #region Button
-
-        private async void ShowUpdateButton(int time)
-        {
-            ConfigManager.MainThread.updateButton.Visibility = Visibility.Visible;
-            ShowAdvancementButton();
-            await Task.Delay(time);
-            HideAdvancementButton();
-        }
-        private void HideAdvancementButton()
-        {
-            // hide update 'advancement'
-            Storyboard storyboard2 = new Storyboard();
-            ThicknessAnimation animation2 = new ThicknessAnimation
-            {
-                From = new Thickness(0, 5, 5, 0),
-                To = new Thickness(0, -75, 5, 0),
-                Duration = new Duration(TimeSpan.FromMilliseconds(500))
-            };
-            storyboard2.Children.Add(animation2);
-            Storyboard.SetTargetProperty(animation2, new PropertyPath(Border.MarginProperty));
-            Storyboard.SetTarget(animation2, ConfigManager.MainThread.updateButton);
-            storyboard2.Begin();
-        }
-        private void ShowAdvancementButton()
-        {
-            // show update 'advancement'
-            Storyboard storyboard = new Storyboard();
-            ThicknessAnimation animation = new ThicknessAnimation
-            {
-                From = new Thickness(0, -75, 5, 0),
-                To = new Thickness(0, 5, 5, 0),
-                BeginTime = TimeSpan.FromSeconds(2),
-                Duration = new Duration(TimeSpan.FromMilliseconds(500))
-            };
-            storyboard.Children.Add(animation);
-            Storyboard.SetTargetProperty(animation, new PropertyPath(Border.MarginProperty));
-            Storyboard.SetTarget(animation, ConfigManager.MainThread.updateButton);
-            storyboard.Begin();
-        }
         public void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             Program.Log("Trying to update");
@@ -163,7 +124,7 @@ namespace BedrockLauncher.Methods
                 if (int.Parse(CurrentTag.Replace(".", "")) < int.Parse(LatestTag.Replace(".", "")))
                 {
                     Program.Log("New version available!");
-                    ShowUpdateButton(5000);
+                    ConfigManager.MainThread.updateButton.ShowUpdateButton();
                 }
             }
             catch

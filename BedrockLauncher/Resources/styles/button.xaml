@@ -518,59 +518,7 @@
         </Setter>
     </Style>
 
-    <SolidColorBrush x:Key="AdvancementButton.Static.Background" Color="#FFDDDDDD"/>
-    <SolidColorBrush x:Key="AdvancementButton.Static.Border" Color="#FF707070"/>
-    <SolidColorBrush x:Key="AdvancementButton.MouseOver.Background" Color="#FF353535"/>
-    <SolidColorBrush x:Key="AdvancementButton.MouseOver.Border" Color="#FF353535"/>
-    <SolidColorBrush x:Key="AdvancementButton.Pressed.Background" Color="#FF292929"/>
-    <SolidColorBrush x:Key="AdvancementButton.Pressed.Border" Color="#FF292929"/>
-    <SolidColorBrush x:Key="AdvancementButton.Disabled.Background" Color="#FFF4F4F4"/>
-    <SolidColorBrush x:Key="AdvancementButton.Disabled.Border" Color="#FFADB2B5"/>
-    <SolidColorBrush x:Key="AdvancementButton.Disabled.Foreground" Color="#FF838383"/>
 
-    <Style x:Key="AdvancementButton" TargetType="{x:Type Button}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-        <Setter Property="Background" Value="{StaticResource AdvancementButton.Static.Background}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource AdvancementButton.Static.Border}"/>
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="1"/>
-        <Setter Property="Background">
-            <Setter.Value>
-                <ImageBrush ImageSource="/BedrockLauncher;component/resources/images/ui/panels/advancement_icon.png"/>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
-                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="+18,0,+18,0" RecognizesAccessKey="True"  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsDefaulted" Value="true">
-                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Cursor" Value="Hand"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Cursor" Value="Hand"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" TargetName="border" Value="{StaticResource AdvancementButton.Disabled.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource AdvancementButton.Disabled.Border}"/>
-                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource AdvancementButton.Disabled.Foreground}"/>
-                        </Trigger>
-                        <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter Property="BorderBrush" TargetName="border" Value="White"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
 
     <Style x:Key="ProfileSelectorStyle" TargetType="{x:Type ToggleButton}">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
