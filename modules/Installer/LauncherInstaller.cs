@@ -80,10 +80,6 @@ namespace Installer
 
                 UpdateUI(UpdateParam.InstallStart);
 
-                Install_Validate(Path);
-
-                Install_Backup(Path, TempFolder);
-
                 try
                 {
                     Directory.CreateDirectory(Path);
@@ -94,6 +90,10 @@ namespace Installer
                     Install_Cancel();
                     return;
                 }
+
+                Install_Validate(Path);
+
+                Install_Backup(Path, TempFolder);
 
                 #endregion
 
@@ -221,7 +221,7 @@ namespace Installer
                 #region Exit Parameters
 
                 UpdateUI(UpdateParam.InstallComplete);
-                Install_Finish(true);
+                if (isSilent) Install_FinishSilent();
 
                 #endregion
             }
@@ -231,18 +231,15 @@ namespace Installer
                 Install_Cancel();
             }
         }
-        private void Install_Finish(bool isSilent)
+        private void Install_Finish()
         {
-            if (isSilent)
-            {
-                LaunchApp();
-                Application.Current.Dispatcher.Invoke(() => Application.Current.Shutdown());
-            }
-            else
-            {
-                if (this.RunOnExit) LaunchApp();
-                Application.Current.Shutdown();
-            }
+            if (this.RunOnExit) LaunchApp();
+            Application.Current.Shutdown();
+        }
+        private void Install_FinishSilent()
+        {
+            LaunchApp();
+            Application.Current.Dispatcher.Invoke(() => Application.Current.Shutdown());
         }
         private void Install_Validate(string path)
         {

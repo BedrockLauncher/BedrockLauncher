@@ -34,8 +34,8 @@ namespace BedrockLauncher
 
         public static void Log(object o, LogType logType = LogType.DebugLine)
         {
-            if (logType == LogType.Console) Console.Write(o);
-            else if (logType == LogType.ConsoleLine) Console.WriteLine(o);
+            if (logType == LogType.Console) Debug.Write(o);
+            else if (logType == LogType.ConsoleLine) Debug.WriteLine(o);
             else if (logType == LogType.Debug) Debug.Write(o);
             else if (logType == LogType.DebugLine) Debug.WriteLine(o);
         }

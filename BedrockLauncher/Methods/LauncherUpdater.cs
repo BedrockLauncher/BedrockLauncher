@@ -80,7 +80,7 @@ namespace BedrockLauncher.Methods
             httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
             var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
-            Console.WriteLine(httpResponse.StatusCode);
+            Program.Log(httpResponse.StatusCode);
             var note = JsonConvert.DeserializeObject<UpdateNote>(json);
             this.Release_LatestTag = note.tag_name;
             this.Release_LatestTagBody = note.body;
@@ -94,7 +94,7 @@ namespace BedrockLauncher.Methods
             httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
             var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
-            Console.WriteLine(httpResponse.StatusCode);
+            Program.Log(httpResponse.StatusCode);
             var note = JsonConvert.DeserializeObject<UpdateNote>(json);
             this.Beta_LatestTag = note.tag_name;
             this.Beta_LatestTagBody = note.body;
