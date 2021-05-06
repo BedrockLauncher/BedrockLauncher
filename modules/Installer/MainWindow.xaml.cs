@@ -63,11 +63,39 @@ namespace Installer
                     MainFrame.Navigate(installLocationPage);
                     break;
                 case "InstallLocationPage":
-                    Installer.Path = installLocationPage.installPathTextBox.Text;
-                    Installer.StartInstall();
+                    VerifyForInstall();
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void VerifyForInstall()
+        {
+            Installer.Path = installLocationPage.installPathTextBox.Text;
+
+            if (Directory.Exists(Installer.Path))
+            {
+                var files = Directory.GetFiles(Installer.Path).ToList();
+                var directory = Directory.GetDirectories(Installer.Path).ToList();
+                if (files.Count() == 0 && directory.Count() == 0) RunInstaller();
+                else ShowError();
+            }
+            else RunInstaller();
+
+            void RunInstaller()
+            {
+                Installer.StartInstall();
+            }
+
+            void ShowError()
+            {
+                var result = MessageBox.Show("Directory is not empty! Do you want to delete all of it's contents?", "", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    Directory.Delete(Installer.Path, true);
+                    RunInstaller();
+                }
             }
         }
 

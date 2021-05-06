@@ -30,6 +30,7 @@ namespace Installer
         private long CalculatedFileSize = 0;
         private bool CanCancel = false;
         private Task DownloadTask;
+        private bool InstallStarted = false;
 
 
 
@@ -58,10 +59,12 @@ namespace Installer
 
         public void CancelInstall()
         {
-            if (!ICancel.IsCancellationRequested && CanCancel) ICancel.Cancel();
+            if (!InstallStarted) Environment.Exit(0);
+            else if (!ICancel.IsCancellationRequested && CanCancel) ICancel.Cancel();
         }
         public void StartInstall()
         {
+            InstallStarted = false;
             ICancel.Token.Register(Install_Cancel);
             Task.Run(Install, ICancel.Token);
         }
@@ -217,19 +220,15 @@ namespace Installer
                 }
 
                 #endregion
-
-                #region Exit Parameters
-
-                UpdateUI(UpdateParam.InstallComplete);
-                if (isSilent) Install_FinishSilent();
-
-                #endregion
             }
             catch (Exception ex)
             {
                 MessageBox.Show(GetResourceString("Installer_Dialog_ErrorOccured_Text") + "\n" + ex.ToString());
                 Install_Cancel();
             }
+
+            UpdateUI(UpdateParam.InstallComplete);
+            if (Silent) Install_FinishSilent();
         }
         private void Install_Finish()
         {
@@ -251,7 +250,8 @@ namespace Installer
             Thread.Sleep(4000);
             while (!DownloadTask.IsCompleted || !DownloadTask.IsCanceled) Thread.Sleep(4000);
 
-            Install_Restore(TempFolder, Path);
+            if (Silent) Install_Restore(TempFolder, Path);
+            else Directory.Delete(Path, true);
             Environment.Exit(0);
         }
         private void Install_Backup(string from, string to)
@@ -463,7 +463,7 @@ namespace Installer
                         ((MainWindow)Application.Current.MainWindow).BackBtn.Visibility = Visibility.Hidden;
                         ((MainWindow)Application.Current.MainWindow).CancelBtn.Visibility = Visibility.Hidden;
                         ((MainWindow)Application.Current.MainWindow).FinishBtn.Visibility = Visibility.Visible;
-                        ((MainWindow)Application.Current.MainWindow).FinishBtn.Click += (sender, e) => Install_Finish(false);
+                        ((MainWindow)Application.Current.MainWindow).FinishBtn.Click += (sender, e) => Install_Finish();
 
                         this.ProgressPage.InstallPanel.Visibility = Visibility.Collapsed;
                         UpdateProgressBar(GetResourceString("Installer_ProgressBar_Finalizing"), 0, 0, false);
