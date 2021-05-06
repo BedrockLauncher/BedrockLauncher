@@ -46,7 +46,7 @@ namespace BedrockLauncher
     {
         #region Definitions
         // updater to check for updates (loaded in mainwindow init)
-        private static LauncherUpdater Updater = new LauncherUpdater();
+        public static LauncherUpdater Updater = new LauncherUpdater();
         private static ChangelogDownloader PatchNotesDownloader = new ChangelogDownloader();
 
         // load pages to not create new in memory after
@@ -80,7 +80,6 @@ namespace BedrockLauncher
         private void Init()
         {
             this.DataContext = ConfigManager.ViewModel;
-            ConfigManager.ViewModel.GameRunningStateChanged += ViewModel_GameRunningStateChanged;
             ConfigManager.ViewModel.ProgressBarStateChanged += ViewModel_ProgressBarStateChanged;
 
 
@@ -142,11 +141,6 @@ namespace BedrockLauncher
             Events.ProgressBarState es = e as Events.ProgressBarState;
             if (es.isVisible) ProgressBarShowAnim();
             else ProgressBarHideAnim();
-        }
-
-        private void ViewModel_GameRunningStateChanged(object sender, EventArgs e)
-        {
-            Events.GameRunningState es = e as Events.GameRunningState;
         }
 
         private async void ProgressBarShowAnim()

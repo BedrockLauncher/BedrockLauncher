@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using BedrockLauncher.Methods;
 using Newtonsoft.Json;
 using BL_Core;
+using System.Runtime.InteropServices;
 
 namespace BedrockLauncher.Methods
 {
@@ -136,15 +137,19 @@ namespace BedrockLauncher.Methods
         {
             try
             {
-                string installerPath = Path.Combine(Directory.GetCurrentDirectory(), "Installer.exe");
+                string installerPath = Path.Combine(Filepaths.ExecutableDirectory, "Installer.exe");
+                string tempPath = Path.Combine(Path.GetTempPath(), "Installer.exe");
+
+                File.Copy(installerPath, tempPath, true);
+
                 ProcessStartInfo startInfo = new ProcessStartInfo
                 {
-                    FileName = installerPath,
+                    FileName = tempPath,
                     Arguments = GetArgs(),
                     UseShellExecute = true,
-                    Verb = "runas"
+                    Verb = "runas",
                 };
-                Process.Start(startInfo);
+                System.Diagnostics.Process.Start(startInfo);
                 Application.Current.Shutdown();
             }
             catch (Exception err)
@@ -157,9 +162,12 @@ namespace BedrockLauncher.Methods
             {
                 string silent = (Properties.LauncherSettings.Default.UseSilentUpdates ? "--silent" : "");
                 string beta = (Properties.LauncherSettings.Default.UseBetaBuilds ? "--beta" : "");
+                string path = "--path=\"" + Filepaths.ExecutableDirectory + "\"";
 
                 return string.Join(" ", silent, beta);
             }
         }
+
+
     }
 }

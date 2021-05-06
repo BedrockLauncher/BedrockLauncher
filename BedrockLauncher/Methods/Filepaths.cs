@@ -25,8 +25,18 @@ namespace BedrockLauncher.Methods
 
         #region Common Paths
 
-        public static string CurrentLocation { get => (Properties.LauncherSettings.Default.PortableMode ? PortableLocation : GetFixedPath()); }
-        public static string PortableLocation { get => System.Reflection.Assembly.GetExecutingAssembly().Location; }
+        public static string CurrentLocation { get => (Properties.LauncherSettings.Default.PortableMode ? ExecutableDataDirectory : GetFixedPath()); }
+        public static string ExecutableLocation { get => System.Reflection.Assembly.GetExecutingAssembly().Location; }
+        public static string ExecutableDirectory { get => Path.GetDirectoryName(ExecutableLocation); }
+        public static string ExecutableDataDirectory 
+        { 
+            get 
+            {
+                string path = Path.Combine(Path.GetDirectoryName(ExecutableLocation), "data");
+                Directory.CreateDirectory(path);
+                return path;
+            }
+        }
         public static string DefaultLocation { get => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), AppDataFolderName); }
 
         #endregion
@@ -48,12 +58,12 @@ namespace BedrockLauncher.Methods
 
         public static string GetSettingsFilePath()
         {
-            return Path.Combine(Path.GetDirectoryName(PortableLocation), SettingsFileName);
+            return Path.Combine(ExecutableDataDirectory, SettingsFileName);
         }
 
         public static string GetVersionsFilePath()
         {
-            return VersionCacheFileName;
+            return Path.Combine(CurrentLocation, VersionCacheFileName);
         }
         public static string GetProfilesFilePath()
         {

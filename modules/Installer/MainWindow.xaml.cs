@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using Installer.Pages;
+using System.Diagnostics;
 
 namespace Installer
 {
@@ -27,6 +28,10 @@ namespace Installer
         private InstallLocationPage installLocationPage = new InstallLocationPage();
         private InstallationProgressPage installationProgressPage = new InstallationProgressPage();
         private InstallTypePage installTypePage = new InstallTypePage();
+
+
+        public static LauncherInstaller Installer = new LauncherInstaller();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -40,7 +45,7 @@ namespace Installer
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            Installer.CancelInstall();
         }
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)
@@ -58,7 +63,8 @@ namespace Installer
                     MainFrame.Navigate(installLocationPage);
                     break;
                 case "InstallLocationPage":
-                    LauncherInstaller launcherInstaller = new LauncherInstaller(installLocationPage.installPathTextBox.Text, installationProgressPage);
+                    Installer.Path = installLocationPage.installPathTextBox.Text;
+                    Installer.StartInstall();
                     break;
                 default:
                     break;
@@ -85,22 +91,31 @@ namespace Installer
 
         private void Window_Initialized(object sender, EventArgs e)
         {
+            Installer.ProgressPage = installationProgressPage;
             BL_Core.LanguageManager.Init();
             string[] ConsoleArgs = Environment.GetCommandLineArgs();
             bool isSilent = false;
+            bool isBeta = false;
+            string Path = Directory.GetCurrentDirectory();
             foreach (string argument in ConsoleArgs)
             {
                 if (argument.StartsWith("--"))
                 {
                     Console.WriteLine("Recieved argument: " + argument);
                     if (argument == "--silent") isSilent = true;
-                    if (argument == "--beta") LauncherInstaller.IsBeta = true;
+                    if (argument == "--beta") isBeta = true;
+                    if (argument.StartsWith("--path=")) Path = argument.Replace("--path=", "");
                 }
             }
+
+            Installer.Path = Path;
+            Installer.IsBeta = isBeta;
+
             if (isSilent)
             {
-                Application.Current.MainWindow.Hide();
-                LauncherInstaller launcherInstaller = new LauncherInstaller(Directory.GetCurrentDirectory(), installationProgressPage, isSilent);
+                this.Hide();
+                Installer.Silent = isSilent;
+                Installer.StartInstall();
             }
         }
     }

@@ -58,5 +58,10 @@ namespace BedrockLauncher.Pages
             updater.CheckForUpdates();
             RefreshData();
         }
+
+        private void ForceUpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            updater.UpdateButton_Click(sender, e);
+        }
     }
 }

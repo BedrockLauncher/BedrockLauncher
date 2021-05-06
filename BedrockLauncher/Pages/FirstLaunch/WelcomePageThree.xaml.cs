@@ -39,7 +39,7 @@ namespace BedrockLauncher.Pages.FirstLaunch
                 if (ProfileNameTextbox.Text.Length >= 1) 
                 { 
                     CreateProfile(ProfileNameTextbox.Text);
-                    pageSwitcher.MoveToPage(3);
+                    pageSwitcher.MoveToPage(4);
                 };
             }
         }
@@ -49,7 +49,7 @@ namespace BedrockLauncher.Pages.FirstLaunch
             if (ProfileNameTextbox.Text.Length >= 1) 
             { 
                 CreateProfile(ProfileNameTextbox.Text);
-                pageSwitcher.MoveToPage(3);
+                pageSwitcher.MoveToPage(4);
             };
         }
         public void CreateProfile(string profileName)

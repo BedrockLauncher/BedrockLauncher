@@ -69,7 +69,7 @@ namespace BL_Core
     public class Asset
     {
         public string url { get; set; }
-        public int size { get; set; }
+        public long size { get; set; }
     }
 
     public class UpdateNote

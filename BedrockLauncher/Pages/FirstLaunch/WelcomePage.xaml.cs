@@ -77,31 +77,31 @@ namespace BedrockLauncher.Pages.FirstLaunch
 
             void Page2()
             {
-                if (ConfigManager.ProfileList.profiles.Count() != 0)
+                if (pageTwo == null)
                 {
-                    Properties.LauncherSettings.Default.CurrentProfile = ConfigManager.ProfileList.profiles.FirstOrDefault().Key;
-                    Properties.LauncherSettings.Default.Save();
-                    MoveToPage(3);
+                    pageTwo = new WelcomePageTwo();
+                    welcomePage.WelcomePageFrame.Navigate(pageTwo);
                 }
-                else
-                {
-                    if (pageTwo == null)
-                    {
-                        pageTwo = new WelcomePageTwo();
-                        welcomePage.WelcomePageFrame.Navigate(pageTwo);
-                    }
-                    else { welcomePage.WelcomePageFrame.Navigate(pageTwo); }
-                }
+                else { welcomePage.WelcomePageFrame.Navigate(pageTwo); }
             }
 
             void Page3()
             {
-                if (pageThree == null)
+                if (ConfigManager.ProfileList.profiles.Count() != 0)
                 {
-                    pageThree = new WelcomePageThree();
-                    welcomePage.WelcomePageFrame.Navigate(pageThree);
+                    Properties.LauncherSettings.Default.CurrentProfile = ConfigManager.ProfileList.profiles.FirstOrDefault().Key;
+                    Properties.LauncherSettings.Default.Save();
+                    MoveToPage(4);
                 }
-                else { welcomePage.WelcomePageFrame.Navigate(pageThree); }
+                else
+                {
+                    if (pageThree == null)
+                    {
+                        pageThree = new WelcomePageThree();
+                        welcomePage.WelcomePageFrame.Navigate(pageThree);
+                    }
+                    else { welcomePage.WelcomePageFrame.Navigate(pageThree); }
+                }
             }
 
             void Page4()
@@ -112,7 +112,6 @@ namespace BedrockLauncher.Pages.FirstLaunch
                     welcomePage.WelcomePageFrame.Navigate(pageFour);
                 }
                 else { welcomePage.WelcomePageFrame.Navigate(pageFour); }
-                ConfigManager.MainThread.SetOverlayFrame(null);
             }
 
             void Page5(bool _backup)

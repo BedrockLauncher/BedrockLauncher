@@ -11,6 +11,7 @@
         <Grid>
             <StackPanel>
                 <Button Margin="0,1" FontSize="14" x:Name="CheckForUpdatesButton" HorizontalAlignment="Right" Click="CheckForUpdatesButton_Click" Content="{DynamicResource LauncherNewsPage_CheckForUpdates}" Style="{DynamicResource LinkButton}"></Button>
+                <Button Margin="0,1" FontSize="14" x:Name="ForceUpdateButton" HorizontalAlignment="Right" Click="ForceUpdateButton_Click" Content="{DynamicResource LauncherNewsPage_ForceUpdate}" Style="{DynamicResource LinkButton}"></Button>
                 <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Foreground="White" FontSize="17" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten">
                 <Run FontSize="26" Text="{DynamicResource LauncherNewsPage_Title_Text}"/>
                 </TextBlock>

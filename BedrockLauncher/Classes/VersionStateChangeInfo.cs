@@ -344,7 +344,7 @@ namespace BedrockLauncher.Classes
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                ConfigManager.MainThread.progressSizeHack.IsIndeterminate = isIndeterminate;
+                if (ConfigManager.MainThread != null) ConfigManager.MainThread.progressSizeHack.IsIndeterminate = isIndeterminate;
             });
         }
 
@@ -352,7 +352,7 @@ namespace BedrockLauncher.Classes
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                ConfigManager.MainThread.ProgressBarText.Text = DisplayStatus;
+                if (ConfigManager.MainThread != null) ConfigManager.MainThread.ProgressBarText.Text = DisplayStatus;
             });
         }
 
@@ -360,9 +360,9 @@ namespace BedrockLauncher.Classes
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                ConfigManager.MainThread.progressSizeHack.Value = downloadedBytes;
-                ConfigManager.MainThread.progressSizeHack.Maximum = totalSize;
-                ConfigManager.MainThread.ProgressBarText.Text = DisplayStatus;
+                if (ConfigManager.MainThread != null) ConfigManager.MainThread.progressSizeHack.Value = downloadedBytes;
+                if (ConfigManager.MainThread != null) ConfigManager.MainThread.progressSizeHack.Maximum = totalSize;
+                if (ConfigManager.MainThread != null) ConfigManager.MainThread.ProgressBarText.Text = DisplayStatus;
             });
         }
 

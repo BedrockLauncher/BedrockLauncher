@@ -280,6 +280,7 @@ namespace BedrockLauncher.Methods
             }
             else return new List<MCInstallation>();
         }
+
         public static void EditInstallation(int index, string name, string directory, MCVersion version, string iconPath = @"/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png", bool isCustom = false)
         {
             if (ProfileList.profiles.ContainsKey(CurrentProfile) && ProfileList.profiles[CurrentProfile].Installations.Count > index)

@@ -13,14 +13,8 @@ namespace BedrockLauncher.ViewModels
         #region Events
 
         public event EventHandler ProgressBarStateChanged;
-        public event EventHandler GameRunningStateChanged;
 
         protected virtual void OnProgressBarStateChanged(ProgressBarState e)
-        {
-            EventHandler handler = ProgressBarStateChanged;
-            if (handler != null) handler(this, e);
-        }
-        protected virtual void OnGameRunningStateChanged(GameRunningState e)
         {
             EventHandler handler = ProgressBarStateChanged;
             if (handler != null) handler(this, e);
@@ -40,26 +34,31 @@ namespace BedrockLauncher.ViewModels
             }
         }
 
+        public bool AllowEditing
+        {
+            get
+            {
+                return AllowPlaying && !IsGameRunning;
+            }
+        }
+
+        public bool AllowPlaying
+        {
+            get
+            {
+                var state = StateChangeInfo?.CurrentState ?? VersionStateChangeInfo.StateChange.None;
+                return state == VersionStateChangeInfo.StateChange.None;
+            }
+        }
+
         #endregion
 
         #region Bindings
 
-        private bool _IsGameRunning = false;
         private VersionStateChangeInfo _stateChangeInfo;
+        private bool _IsGameRunning = false;
         private bool _ShowProgressBar = false;
-        private bool _EnableVariousControls = true;
-        public bool EnableVariousControls
-        {
-            get
-            {
-                return _EnableVariousControls;
-            }
-            set
-            {
-                _EnableVariousControls = value;
-                OnPropertyChanged(nameof(EnableVariousControls));
-            }
-        }
+
         public bool IsGameRunning
         {
             get
@@ -69,15 +68,22 @@ namespace BedrockLauncher.ViewModels
             set
             {
                 _IsGameRunning = value;
-                EnableVariousControls = !value;
-                OnPropertyChanged(nameof(PlayButtonString));
-                OnPropertyChanged(nameof(IsGameRunning));
+                RefreshUI();
             }
         }
         public VersionStateChangeInfo StateChangeInfo
         {
-            get { return _stateChangeInfo; }
-            set { _stateChangeInfo = value; OnPropertyChanged("StateChangeInfo"); OnPropertyChanged("IsStateChanging"); }
+            get 
+            { 
+                return _stateChangeInfo; 
+            }
+            set 
+            { 
+                _stateChangeInfo = value; 
+                OnPropertyChanged(nameof(StateChangeInfo)); 
+                OnPropertyChanged(nameof(IsStateChanging));
+                RefreshUI();
+            }
         }
         public bool ShowProgressBar
         {
@@ -89,10 +95,19 @@ namespace BedrockLauncher.ViewModels
             {
                 _ShowProgressBar = value;
                 OnProgressBarStateChanged(new ProgressBarState(value));
-                OnPropertyChanged(nameof(ShowProgressBar));
+                RefreshUI();
             }
         }
 
         #endregion
+
+        private void RefreshUI()
+        {
+            OnPropertyChanged(nameof(AllowPlaying));
+            OnPropertyChanged(nameof(AllowEditing));
+            OnPropertyChanged(nameof(PlayButtonString));
+            OnPropertyChanged(nameof(IsGameRunning));
+            OnPropertyChanged(nameof(ShowProgressBar));
+        }
     }
 }

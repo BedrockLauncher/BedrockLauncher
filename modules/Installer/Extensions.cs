@@ -8,52 +8,67 @@ using System.Threading.Tasks;
 
 namespace Installer
 {
+
+    public static class FileExtentions
+    {
+        public static void CopyTo(this DirectoryInfo source, DirectoryInfo target)
+        {
+            if (!target.Exists)
+                target.Create();
+
+            foreach (var file in source.GetFiles())
+                file.CopyTo(Path.Combine(target.FullName, file.Name), true);
+
+            foreach (var subdir in source.GetDirectories())
+                subdir.CopyTo(target.CreateSubdirectory(subdir.Name));
+        }
+
+        public static bool IsFileInUse(string fileFullPath, bool throwIfNotExists)
+        {
+            if (System.IO.File.Exists(fileFullPath))
+            {
+                try
+                {
+                    //if this does not throw exception then the file is not use by another program
+                    using (FileStream fileStream = File.OpenWrite(fileFullPath))
+                    {
+                        if (fileStream == null)
+                            return true;
+                    }
+                    return false;
+                }
+                catch
+                {
+                    return true;
+                }
+            }
+            else if (!throwIfNotExists)
+            {
+                return true;
+            }
+            else
+            {
+                throw new FileNotFoundException("Specified path is not exsists", fileFullPath);
+            }
+        }
+    }
     public static class Extensions
     {
         private const int _DefaultBufferSize = 1000;
 
-        /// <summary>
-        /// Copys a stream to another stream
-        /// </summary>
-        /// <param name="source">The source <see cref="Stream"/> to copy from</param>
-        /// <param name="sourceLength">The length of the source stream, 
-        /// if known - used for progress reporting</param>
-        /// <param name="destination">The destination <see cref="Stream"/> to copy to</param>
-        /// <param name="bufferSize">The size of the copy block buffer</param>
-        /// <param name="progress">An <see cref="IProgress{T}"/> implementation 
-        /// for reporting progress</param>
-        /// <param name="cancellationToken">A cancellation token</param>
-        /// <returns>A task representing the operation</returns>
-        public static async Task CopyToAsync(
-            this Stream source,
-            long sourceLength,
-            Stream destination,
-            int bufferSize,
-            IProgress<KeyValuePair<long, long>> progress,
-            CancellationToken cancellationToken)
+        public static async Task CopyToAsync(this Stream source, Stream destination, IProgress<long> progress, CancellationToken cancellationToken = default(CancellationToken), int bufferSize = 0x1000)
         {
-            if (0 == bufferSize)
-                bufferSize = _DefaultBufferSize;
             var buffer = new byte[bufferSize];
-            if (0 > sourceLength && source.CanSeek)
-                sourceLength = source.Length - source.Position;
-            var totalBytesCopied = 0L;
-            if (null != progress)
-                progress.Report(new KeyValuePair<long, long>(totalBytesCopied, sourceLength));
-            var bytesRead = -1;
-            while (0 != bytesRead && !cancellationToken.IsCancellationRequested)
+            int bytesRead;
+            long totalRead = 0;
+            while ((bytesRead = await source.ReadAsync(buffer, 0, buffer.Length, cancellationToken)) > 0)
             {
-                bytesRead = await source.ReadAsync(buffer, 0, buffer.Length);
-                if (0 == bytesRead || cancellationToken.IsCancellationRequested)
-                    break;
-                await destination.WriteAsync(buffer, 0, buffer.Length);
-                totalBytesCopied += bytesRead;
-                if (null != progress)
-                    progress.Report(new KeyValuePair<long, long>(totalBytesCopied, sourceLength));
+                await destination.WriteAsync(buffer, 0, bytesRead, cancellationToken);
+                cancellationToken.ThrowIfCancellationRequested();
+                totalRead += bytesRead;
+                Thread.Sleep(10);
+                progress.Report(totalRead);
             }
-            if (0 < totalBytesCopied)
-                progress.Report(new KeyValuePair<long, long>(totalBytesCopied, sourceLength));
-            cancellationToken.ThrowIfCancellationRequested();
         }
     }
 }

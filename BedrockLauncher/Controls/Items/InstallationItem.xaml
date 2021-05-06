@@ -34,7 +34,7 @@
             </StackPanel>
         </Grid>
         <StackPanel Grid.Row="1" Orientation="Horizontal" Grid.Column="2" x:Name="ButtonPanel" Visibility="Collapsed">
-            <Button x:Name="Play" Click="Play_Click" IsEnabled="{Binding Source={x:Static methods:ConfigManager.ViewModel}, Path=EnableVariousControls}" Content="{DynamicResource InstallationsPage_PlayButton}" Style="{DynamicResource DialogButton_Green}"></Button>
+            <Button x:Name="Play" Click="Play_Click" IsEnabled="{Binding Source={x:Static methods:ConfigManager.ViewModel}, Path=AllowEditing, Mode=OneWay}" Content="{DynamicResource InstallationsPage_PlayButton}" Style="{DynamicResource DialogButton_Green}"></Button>
             <Button x:Name="Folder" Click="Folder_Click" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" FontWeight="Bold" Style="{DynamicResource DialogButton}">
                 <Button.Content>
                     <Grid Width="16" Height="16">
@@ -49,9 +49,9 @@
             <Button x:Name="More" Content="..." FontWeight="Bold" Style="{DynamicResource DialogButton}" Click="More_Click">
                 <Button.ContextMenu>
                     <ContextMenu Closed="ContextMenu_Closed" Style="{DynamicResource NoCheckboxContextMenu}">
-                        <MenuItem Header="{DynamicResource GeneralText_Edit}" IsEnabled="{Binding Source={x:Static methods:ConfigManager.ViewModel}, Path=EnableVariousControls}" Name="EditInstallationButton" Click="EditInstallationButton_Click"  Visibility="{Binding ReadOnly, Converter={StaticResource VisibleIfTrueConverter}, ConverterParameter=Inverted}"></MenuItem>
-                        <MenuItem Header="{DynamicResource GeneralText_Delete}" IsEnabled="{Binding Source={x:Static methods:ConfigManager.ViewModel}, Path=EnableVariousControls}" Name="DeleteInstallationButton" Click="DeleteInstallationButton_Click"  Visibility="{Binding ReadOnly, Converter={StaticResource VisibleIfTrueConverter}, ConverterParameter=Inverted}"></MenuItem>
-                        <MenuItem Header="{DynamicResource GeneralText_Duplicate}" IsEnabled="{Binding Source={x:Static methods:ConfigManager.ViewModel}, Path=EnableVariousControls}" Name="DuplicateInstallationButton" Click="DuplicateInstallationButton_Click"></MenuItem>
+                        <MenuItem Header="{DynamicResource GeneralText_Edit}" IsEnabled="{Binding Source={x:Static methods:ConfigManager.ViewModel}, Path=AllowEditing, Mode=OneWay}" Name="EditInstallationButton" Click="EditInstallationButton_Click"  Visibility="{Binding ReadOnly, Converter={StaticResource VisibleIfTrueConverter}, ConverterParameter=Inverted}"></MenuItem>
+                        <MenuItem Header="{DynamicResource GeneralText_Delete}" IsEnabled="{Binding Source={x:Static methods:ConfigManager.ViewModel}, Path=AllowEditing, Mode=OneWay}" Name="DeleteInstallationButton" Click="DeleteInstallationButton_Click"  Visibility="{Binding ReadOnly, Converter={StaticResource VisibleIfTrueConverter}, ConverterParameter=Inverted}"></MenuItem>
+                        <MenuItem Header="{DynamicResource GeneralText_Duplicate}" IsEnabled="{Binding Source={x:Static methods:ConfigManager.ViewModel}, Path=AllowEditing, Mode=OneWay}" Name="DuplicateInstallationButton" Click="DuplicateInstallationButton_Click"></MenuItem>
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>

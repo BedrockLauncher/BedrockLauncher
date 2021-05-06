@@ -267,11 +267,19 @@ namespace BedrockLauncher.Methods
                 try
                 {
                     var data = ApplicationDataManager.CreateForPackageFamily(MINECRAFT_PACKAGE_FAMILY);
-                    string recoveryPath = Path.Combine(Filepaths.GetInstallationsFolderPath(ConfigManager.CurrentProfile, "Recovery_Data"), "LocalState");
-                    if (!Directory.Exists(recoveryPath)) Directory.CreateDirectory(recoveryPath);
-                    Program.Log("Moving backup Minecraft data to: " + recoveryPath);
-                    RestoreCopy(data.LocalFolder.Path, recoveryPath);
-                    ConfigManager.CreateInstallation("Recovery_Data", null, "Recovery_Data");
+                    string dataPath;
+
+                    try { dataPath = data.LocalFolder.Path; }
+                    catch { dataPath = string.Empty; }
+
+                    if (dataPath != string.Empty)
+                    {
+                        string recoveryPath = Path.Combine(Filepaths.GetInstallationsFolderPath(ConfigManager.CurrentProfile, "Recovery_Data"), "LocalState");
+                        if (!Directory.Exists(recoveryPath)) Directory.CreateDirectory(recoveryPath);
+                        Program.Log("Moving backup Minecraft data to: " + recoveryPath);
+                        RestoreCopy(dataPath, recoveryPath);
+                        ConfigManager.CreateInstallation("Recovery_Data", null, "Recovery_Data");
+                    }
                 }
                 catch (Exception ex) { MessageBox.Show(ex.ToString()); }
                 EndBackup();
@@ -296,7 +304,7 @@ namespace BedrockLauncher.Methods
                     string ft = Path.Combine(to, Path.GetFileName(f));
                     if (File.Exists(ft))
                     {
-                        if (MessageBox.Show("The file " + ft + " already exists in the destination.\nDo you want to replace it? The old file will be lost otherwise.", "Restoring data directory from previous installation", MessageBoxButton.YesNo) != MessageBoxResult.Yes)
+                        if (MessageBox.Show(string.Format(Application.Current.FindResource("GameManager_RecoveringDataIssue_FileNotExistant_Text").ToString(), ft), Application.Current.FindResource("GameManager_RecoveringDataIssue_Title").ToString(), MessageBoxButton.YesNo) != MessageBoxResult.Yes)
                             continue;
                         File.Delete(ft);
                     }
@@ -308,7 +316,7 @@ namespace BedrockLauncher.Methods
                     string tp = Path.Combine(to, Path.GetFileName(f));
                     if (!Directory.Exists(tp))
                     {
-                        if (File.Exists(tp) && MessageBox.Show("The file " + tp + " is not a directory. Do you want to remove it? The data from the old directory will be lost otherwise.", "Restoring data directory from previous installation", MessageBoxButton.YesNo) != MessageBoxResult.Yes)
+                        if (File.Exists(tp) && MessageBox.Show(string.Format(Application.Current.FindResource("GameManager_RecoveringDataIssue_NotaDirectory_Text").ToString(), tp), Application.Current.FindResource("GameManager_RecoveringDataIssue_Title").ToString(), MessageBoxButton.YesNo) != MessageBoxResult.Yes)
                             continue;
                         Directory.CreateDirectory(tp);
                     }

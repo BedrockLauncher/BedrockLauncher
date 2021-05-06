@@ -17,189 +17,395 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using BL_Core;
+using MessageBox = System.Windows.MessageBox;
+using System.Threading;
 
 namespace Installer
 {
-    class LauncherInstaller
+    public class LauncherInstaller
     {
-        private string Path;
-        private string Build_Version;
-        private bool Silent;
-        private InstallationProgressPage InstallationProgressPage;
+        public InstallationProgressPage ProgressPage;
 
-        public static bool MakeDesktopIcon { get; set; } = false;
-        public static bool MakeStartMenuIcon { get; set; } = false;
-        public static bool IsBeta { get; set; } = false;
-        public static bool RegisterAsProgram { get; set; } = false;
-        public static bool RunOnExit { get; set; } = true;
+        private CancellationTokenSource ICancel = new CancellationTokenSource();
+        private long CalculatedFileSize = 0;
+        private bool CanCancel = false;
+        private Task DownloadTask;
 
-        public LauncherInstaller(string installationPath, InstallationProgressPage installationProgressPage, bool silent = false)
+
+
+        private static string TempFolder
         {
-            this.Silent = silent;
-            this.InstallationProgressPage = installationProgressPage;
-            this.Path = installationPath;
-            Install_Start();
+            get
+            {
+                return System.IO.Path.Combine(System.IO.Path.GetTempPath(), "InstallerTemp");
+            }
         }
+        private string Build_Version { get; set; } = string.Empty;
+        public string Path { get; set; } = string.Empty;
+        public bool Silent { get; set; } = false;
+        public bool MakeDesktopIcon { get; set; } = false;
+        public bool MakeStartMenuIcon { get; set; } = false;
+        public bool IsBeta { get; set; } = false;
+        public bool RegisterAsProgram { get; set; } = false;
+        public bool RunOnExit { get; set; } = true;
+
+        public LauncherInstaller()
+        {
+
+        }
+
+        #region General Methods
+
+        public void CancelInstall()
+        {
+            if (!ICancel.IsCancellationRequested && CanCancel) ICancel.Cancel();
+        }
+        public void StartInstall()
+        {
+            ICancel.Token.Register(Install_Cancel);
+            Task.Run(Install, ICancel.Token);
+        }
+
+        #endregion
 
         #region Install Steps
 
-        private void Install_Start()
+        private async void Install()
         {
-            UpdateUI(UpdateParam.InstallStart);
-            if (!Directory.Exists(Path))
+            try
             {
+                CanCancel = false;
+
+                #region Validation
+
+                UpdateUI(UpdateParam.InstallStart);
+
+                Install_Validate(Path);
+
+                Install_Backup(Path, TempFolder);
+
                 try
                 {
                     Directory.CreateDirectory(Path);
-                    Task.Run(() => Install_Download(IsBeta));
-                    return;
                 }
                 catch (Exception err)
                 {
-                    MessageBox.Show(err.ToString());
+                    MessageBox.Show(GetResourceString("Installer_Dialog_ErrorOccured_Text") + "\n" + err.ToString());
+                    Install_Cancel();
                     return;
                 }
+
+                #endregion
+
+                CanCancel = true;
+
+                #region Download Build
+
+                try
+                {
+                    // actually start downloading
+                    string downloadUrl = string.Empty;
+                    CalculatedFileSize = 0;
+                    Progress<long> progress = new System.Progress<long>();
+                    string progressTitle = GetResourceString("Installer_ProgressBar_Downloading");
+                    progress.ProgressChanged += (sender, e) => UpdateProgressBar(progressTitle, e, CalculatedFileSize, false);
+
+                    var release_page_url = (IsBeta ? GithubAPI.BETA_URL : GithubAPI.RELEASE_URL);
+                    var httpRequest = (HttpWebRequest)WebRequest.Create(release_page_url);
+                    httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
+                    httpRequest.Headers["Authorization"] = "Bearer " + GithubAPI.ACCESS_TOKEN;
+                    var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                    {
+                        var contentsJson = streamReader.ReadToEnd();
+                        var contents = JsonConvert.DeserializeObject<UpdateNote>(contentsJson);
+                        downloadUrl = contents.assets[0].url;
+                        CalculatedFileSize = contents.assets[0].size;
+                    }
+
+                    var file = System.IO.Path.Combine(this.Path, "build.zip");
+                    var httpRequest2 = (HttpWebRequest)WebRequest.Create(downloadUrl);
+                    httpRequest2.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
+                    httpRequest2.Headers["Authorization"] = "Bearer " + GithubAPI.ACCESS_TOKEN;
+                    httpRequest2.Accept = "application/octet-stream";
+
+                    using (Stream output = System.IO.File.OpenWrite(file))
+                    using (WebResponse response = httpRequest2.GetResponse())
+                    using (Stream stream = response.GetResponseStream())
+                    {
+                        DownloadTask = stream.CopyToAsync(output, progress, ICancel.Token, 81920);
+                        await DownloadTask;
+                    }
+                }
+                catch (Exception e)
+                {
+                    if (ICancel.IsCancellationRequested) return;
+                    if (e != null)
+                    {
+                        Console.WriteLine(e.ToString());
+                        MessageBox.Show(GetResourceString("Installer_Dialog_ErrorOccured_Text") + "\n" + e.ToString());
+                        Install_Cancel();
+                        return;
+                    }
+                }
+
+                #endregion
+
+                CanCancel = false;
+
+                #region Extract Build
+
+                // unpack build archive
+                ZipFile.ExtractToDirectory(System.IO.Path.Combine(this.Path, "build.zip"), this.Path);
+                System.IO.File.Delete(System.IO.Path.Combine(this.Path, "build.zip"));
+
+                #endregion
+
+                #region Register Program
+
+                if (RegisterAsProgram)
+                {
+
+                    try
+                    {
+                        string registryLocation = @"Software\Microsoft\Windows\CurrentVersion\Uninstall";
+                        RegistryKey regKey = (Registry.LocalMachine).OpenSubKey(registryLocation, true);
+                        RegistryKey progKey = regKey.CreateSubKey("Minecraft Bedrock Launcher");
+                        progKey.SetValue("DisplayName", "Minecraft Bedrock Launcher", RegistryValueKind.String);
+                        progKey.SetValue("InstallLocation", Path, RegistryValueKind.ExpandString);
+                        progKey.SetValue("DisplayIcon", System.IO.Path.Combine(Path, "BedrockLauncher.exe"), RegistryValueKind.String);
+                        progKey.SetValue("UninstallString", System.IO.Path.Combine(Path, "Uninstaller.exe"), RegistryValueKind.ExpandString);
+                        progKey.SetValue("DisplayVersion", Build_Version, RegistryValueKind.String);
+                        progKey.SetValue("Publisher", "BedrockLauncher", RegistryValueKind.String);
+                        Console.WriteLine("Successfully added to control panel!");
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("An error has occured! Error: {0}", e.Message);
+                    }
+
+                    string shortcutPath = System.IO.Path.Combine(Path, "Minecraft Bedrock Launcher.lnk");
+
+                    WshShell wshShell = new WshShell();
+                    IWshShortcut Shortcut = (IWshShortcut)wshShell.CreateShortcut(shortcutPath);
+                    Shortcut.TargetPath = System.IO.Path.Combine(Path, "BedrockLauncher.exe");
+                    Shortcut.WorkingDirectory = Path;
+                    Shortcut.Save();
+                    Console.WriteLine("shortcut created");
+
+                }
+
+                #endregion
+
+                #region Create Optional Shortcuts
+
+                // create desktop shortcut if needed
+                if ((bool)MakeDesktopIcon)
+                {
+                    Console.WriteLine("added to desktop");
+                    System.IO.File.Copy(System.IO.Path.Combine(Path, "Minecraft Bedrock Launcher.lnk"), System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Minecraft Bedrock Launcher.lnk"), true);
+                }
+
+                // add to start menu if needed
+                if ((bool)MakeStartMenuIcon)
+                {
+                    Console.WriteLine("added to start menu");
+                    string commonStartMenuPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu);
+                    string appStartMenuPath = System.IO.Path.Combine(commonStartMenuPath, "Programs", "Minecraft Launcher");
+                    if (!Directory.Exists(appStartMenuPath)) { Directory.CreateDirectory(appStartMenuPath); }
+                    System.IO.File.Copy(System.IO.Path.Combine(Path, "Minecraft Bedrock Launcher.lnk"), System.IO.Path.Combine(appStartMenuPath, "Minecraft Bedrock Launcher.lnk"), true);
+                }
+
+                #endregion
+
+                #region Exit Parameters
+
+                UpdateUI(UpdateParam.InstallComplete);
+                Install_Finish(true);
+
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(GetResourceString("Installer_Dialog_ErrorOccured_Text") + "\n" + ex.ToString());
+                Install_Cancel();
+            }
+        }
+        private void Install_Finish(bool isSilent)
+        {
+            if (isSilent)
+            {
+                LaunchApp();
+                Application.Current.Dispatcher.Invoke(() => Application.Current.Shutdown());
             }
             else
             {
-                Install_CleanFolder(Path);
-                Task.Run(() => Install_Download(IsBeta));
+                if (this.RunOnExit) LaunchApp();
+                Application.Current.Shutdown();
             }
-
         }
-        private void Install_CleanFolder(string path)
+        private void Install_Validate(string path)
         {
-            // kill launcher
-            Process[] prs = Process.GetProcesses();
-            foreach (Process pr in prs)
+            List<string> allfiles = Directory.GetFiles(path, "*", SearchOption.AllDirectories).ToList();
+            foreach (var file in allfiles) CheckFileLock(file);
+        }
+        private void Install_Cancel()
+        {
+            Thread.Sleep(4000);
+            while (!DownloadTask.IsCompleted || !DownloadTask.IsCanceled) Thread.Sleep(4000);
+
+            Install_Restore(TempFolder, Path);
+            Environment.Exit(0);
+        }
+        private void Install_Backup(string from, string to)
+        {
+            var dir = Directory.CreateDirectory(to);
+            EmptyDir(dir);
+            Directory.CreateDirectory(to);
+
+            foreach (var file in new DirectoryInfo(from).GetFiles()) MoveFile(file, from, to);
+            foreach (var folder in new DirectoryInfo(from).GetDirectories()) if ((folder.Name != "data")) MoveDirectory(folder, from, to);
+        }
+        private void Install_Restore(string from, string to)
+        {
+            var dir = Directory.CreateDirectory(to);
+            EmptyDir(dir, "data");
+            Directory.CreateDirectory(to);
+
+            foreach (var file in new DirectoryInfo(from).GetFiles()) MoveFile(file, from, to);
+            foreach (var folder in new DirectoryInfo(from).GetDirectories()) MoveDirectory(folder, from, to);
+        }
+
+        #endregion
+
+        #region File Management
+
+        private void EmptyDir(DirectoryInfo directory, string ignoreFolder = "")
+        {
+            foreach (FileInfo file in directory.GetFiles()) DeleteFile(file);
+            foreach (DirectoryInfo subdir in directory.GetDirectories()) DeleteDirectory(subdir);
+
+            void DeleteFile(FileInfo file, bool hasRetried = false)
             {
-                if (pr.ProcessName == "BedrockLauncher")
+                try
                 {
-                    pr.Kill();
+                    file.Delete();
                 }
-
-            }
-            // delete old installer if exists
-            if (System.IO.File.Exists(System.IO.Path.Combine(path, "Installer.exe.old")))
-            {
-                System.IO.File.Delete(System.IO.Path.Combine(path, "Installer.exe.old"));
-            }
-
-            foreach (string file in Directory.GetFiles(path))
-            {
-                // renaming currently running installer to replace with new later
-                if (file.EndsWith("Installer.exe"))
+                catch (Exception ex)
                 {
-                    System.IO.File.Move(file, System.IO.Path.Combine(path, "Installer.exe.old"));
+                    if (!hasRetried)
+                    {
+                        Task.Delay(5000);
+                        DeleteFile(file, true);
+                    }
+                    else
+                    {
+                        MessageBoxResult result = MessageBox.Show(ex.Message + Environment.NewLine + GetResourceString("Installer_Dialog_TryAgain_Text"), "", MessageBoxButton.YesNo);
+                        if (result == MessageBoxResult.Yes) DeleteFile(file);
+                    }
+                }
+            }
+            void DeleteDirectory(DirectoryInfo _dir, bool hasRetried = false)
+            {
+                try
+                {
+                    if (_dir.Name != ignoreFolder) _dir.Delete(true);
+                }
+                catch (Exception ex)
+                {
+
+                    if (!hasRetried)
+                    {
+                        Task.Delay(5000);
+                        DeleteDirectory(_dir, true);
+                    }
+                    else
+                    {
+                        MessageBoxResult result = MessageBox.Show(ex.Message + Environment.NewLine + GetResourceString("Installer_Dialog_TryAgain_Text"), "", MessageBoxButton.YesNo);
+                        if (result == MessageBoxResult.Yes) DeleteDirectory(_dir);
+                    }
+                }
+            }
+        }
+        private void MoveDirectory(DirectoryInfo directory, string _from, string _to, bool hasRetried = false)
+        {
+            try
+            {
+                if (!System.IO.Directory.Exists($@"{_to}\{directory.Name}")) directory.CopyTo(Directory.CreateDirectory($@"{_to}\{directory.Name}"));
+                if (directory.Exists) directory.Delete(true);
+            }
+            catch (Exception ex)
+            {
+                if (!hasRetried)
+                {
+                    Task.Delay(5000);
+                    MoveDirectory(directory, _from, _to, true);
                 }
                 else
                 {
-                    // delete other files
-                    try
-                    {
-                        System.IO.File.Delete(file);
-                    }
-                    catch (Exception err)
-                    {
-                        Console.WriteLine("error file: " + file + "error: " + err.Message);
-                    }
+                    MessageBoxResult result = MessageBox.Show(ex.Message + Environment.NewLine + GetResourceString("Installer_Dialog_TryAgain_Text"), GetResourceString("Installer_Dialog_MovingDirectoryFailed_Text"), MessageBoxButton.YesNoCancel);
+                    if (result == MessageBoxResult.Yes) MoveDirectory(directory, _from, _to);
+                    else if (result == MessageBoxResult.Cancel) Install_Cancel();
                 }
             }
         }
-        private async void Install_Download(bool isBeta)
+        private void MoveFile(FileInfo file, string _from, string _to, bool hasRetried = false)
         {
-            // actually start downloading
-            string downloadUrl = string.Empty;
-            int fileSize = 0;
-
-
-            var release_page_url = (isBeta ? GithubAPI.BETA_URL : GithubAPI.RELEASE_URL);
-            var httpRequest = (HttpWebRequest)WebRequest.Create(release_page_url);
-            httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
-            httpRequest.Headers["Authorization"] = "Bearer " + GithubAPI.ACCESS_TOKEN;
-            var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var contentsJson = streamReader.ReadToEnd();
-                var contents = JsonConvert.DeserializeObject<UpdateNote>(contentsJson);
-                downloadUrl = contents.assets[0].url;
-                fileSize = contents.assets[0].size;
-            }
-
-            var file = System.IO.Path.Combine(this.Path, "build.zip");
-            var httpRequest2 = (HttpWebRequest)WebRequest.Create(downloadUrl);
-            httpRequest2.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
-            httpRequest2.Headers["Authorization"] = "Bearer " + GithubAPI.ACCESS_TOKEN;
-            httpRequest2.Accept = "application/octet-stream";
-
-
-            Exception ex = null;
-
-            UpdateUI(UpdateParam.ProgressIndeterminate);
-
             try
             {
-                using (Stream output = System.IO.File.OpenWrite(file))
-                    using (WebResponse response = httpRequest2.GetResponse())
-                        using (Stream stream = response.GetResponseStream())
-                            await stream.CopyToAsync(output);
+                if (!System.IO.File.Exists($@"{_to}\{file.Name}")) file.CopyTo($@"{_to}\{file.Name}");
+                if (file.Exists) file.Delete();
             }
-            catch (Exception e) { ex = e; }
-
-            Install_Extract(null, new System.ComponentModel.AsyncCompletedEventArgs(ex, false, null));
+            catch (Exception ex)
+            {
+                if (!hasRetried)
+                {
+                    Task.Delay(5000);
+                    MoveFile(file, _from, _to, true);
+                }
+                else
+                {
+                    MessageBoxResult result = MessageBox.Show(ex.Message + Environment.NewLine + GetResourceString("Installer_Dialog_TryAgain_Text"), GetResourceString("Installer_Dialog_MovingFileFailed_Text"), MessageBoxButton.YesNoCancel);
+                    if (result == MessageBoxResult.Yes) MoveFile(file, _from, _to);
+                    else if (result == MessageBoxResult.Cancel) Install_Cancel();
+                }
+            }
         }
-        private void Install_Extract(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        private void CheckFileLock(string file, bool hasRetried = false)
         {
-            if (e.Cancelled)
+            if (FileExtentions.IsFileInUse(file, false))
             {
-                Console.WriteLine("File download cancelled.");
-                MessageBox.Show("File download cancelled.");
-                return;
+                if (!hasRetried)
+                {
+                    Task.Delay(5000);
+                    CheckFileLock(file, true);
+                }
+                else
+                {
+                    MessageBoxResult result = MessageBox.Show("Some of the files are currently in use. " + GetResourceString("Installer_Dialog_TryAgain_Text"), GetResourceString("Installer_Dialog_FileLocked_Text"), MessageBoxButton.YesNoCancel);
+                    if (result == MessageBoxResult.Yes) CheckFileLock(file);
+                    else if (result == MessageBoxResult.Cancel) Install_Cancel();
+                }
             }
-
-            if (e.Error != null)
-            {
-                Console.WriteLine(e.Error.ToString());
-                MessageBox.Show("An error has occured.\n" + e.Error.ToString());
-                return;
-            }
-
-            // unpack build archive
-            ZipFile.ExtractToDirectory(System.IO.Path.Combine(this.Path, "build.zip"), this.Path);
-            System.IO.File.Delete(System.IO.Path.Combine(this.Path, "build.zip"));
-
-            UpdateUI(UpdateParam.ExtractionComplete);
-
-            // async add to registry
-            Install_RunAsyncTasks();
         }
-        private async void Install_RunAsyncTasks()
-        {
-            if (RegisterAsProgram)
-            {
-                await Task.Run(RegisterApp);
-                CreateShortcut();
-            }
-            CreateOptionalShortcuts();
 
+        #endregion
 
-            if (this.Silent)
-            {
-                LaunchApp();
-                Application.Current.Shutdown();
-            }
-            else UpdateUI(UpdateParam.InstallComplete);
-        }
-        private void Install_Finish(object sender, RoutedEventArgs e)
+        #region Events
+
+        private void OnWindowClosed(object sender, EventArgs e)
         {
-            if (LauncherInstaller.RunOnExit) LaunchApp();
-            Application.Current.Shutdown();
+            CancelInstall();
         }
 
         #endregion
 
         #region Actions
 
+        private string GetResourceString(string resourceName)
+        {
+            return Application.Current.FindResource(resourceName) as string;
+        }
 
         private void LaunchApp()
         {
@@ -220,92 +426,57 @@ namespace Installer
             }
             return true;
         }
-        private bool RegisterApp()
+        public void UpdateProgressBar(string content, long value, long max, bool IsIndeterminate)
         {
-            try
+            Application.Current.Dispatcher.Invoke(() =>
             {
-                string registryLocation = @"Software\Microsoft\Windows\CurrentVersion\Uninstall";
-                RegistryKey regKey = (Registry.LocalMachine).OpenSubKey(registryLocation, true);
-                RegistryKey progKey = regKey.CreateSubKey("Minecraft Bedrock Launcher");
-                progKey.SetValue("DisplayName", "Minecraft Bedrock Launcher", RegistryValueKind.String);
-                progKey.SetValue("InstallLocation", Path, RegistryValueKind.ExpandString);
-                progKey.SetValue("DisplayIcon", System.IO.Path.Combine(Path, "BedrockLauncher.exe"), RegistryValueKind.String);
-                progKey.SetValue("UninstallString", System.IO.Path.Combine(Path, "Uninstaller.exe"), RegistryValueKind.ExpandString);
-                progKey.SetValue("DisplayVersion", Build_Version, RegistryValueKind.String);
-                progKey.SetValue("Publisher", "BedrockLauncher", RegistryValueKind.String);
-                Console.WriteLine("Successfully added to control panel!");
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("An error has occured! Error: {0}", ex.Message);
-                return false;
-            }
+                this.ProgressPage.progressBarContent.Text = content;
+                this.ProgressPage.progressBar.Value = value;
+                this.ProgressPage.progressBar.Maximum = max;
+                this.ProgressPage.progressBar.IsIndeterminate = IsIndeterminate;
+            }, System.Windows.Threading.DispatcherPriority.Background);
         }
-        private void CreateShortcut()
-        {
-            string shortcutPath = System.IO.Path.Combine(Path, "Minecraft Bedrock Launcher.lnk");
-
-            WshShell wshShell = new WshShell();
-            IWshShortcut Shortcut = (IWshShortcut)wshShell.CreateShortcut(shortcutPath);
-            Shortcut.TargetPath = System.IO.Path.Combine(Path, "BedrockLauncher.exe");
-            Shortcut.WorkingDirectory = Path;
-            Shortcut.Save();
-            Console.WriteLine("shortcut created");
-        }
-        private void CreateOptionalShortcuts()
-        {
-            // create desktop shortcut if needed
-            if ((bool)MakeDesktopIcon)
-            {
-                Console.WriteLine("added to desktop");
-                System.IO.File.Copy(System.IO.Path.Combine(Path, "Minecraft Bedrock Launcher.lnk"), System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Minecraft Bedrock Launcher.lnk"), true);
-            }
-
-            // add to start menu if needed
-            if ((bool)MakeStartMenuIcon)
-            {
-                Console.WriteLine("added to start menu");
-                string commonStartMenuPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu);
-                string appStartMenuPath = System.IO.Path.Combine(commonStartMenuPath, "Programs", "Minecraft Launcher");
-                if (!Directory.Exists(appStartMenuPath)) { Directory.CreateDirectory(appStartMenuPath); }
-                System.IO.File.Copy(System.IO.Path.Combine(Path, "Minecraft Bedrock Launcher.lnk"), System.IO.Path.Combine(appStartMenuPath, "Minecraft Bedrock Launcher.lnk"), true);
-            }
-        }
-
-        #endregion
-
         public void UpdateUI(UpdateParam param)
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
                 if (param == UpdateParam.InstallStart)
                 {
+                    ((MainWindow)Application.Current.MainWindow).Closed += OnWindowClosed;
+                    if (Silent)
+                    {
+                        ((MainWindow)Application.Current.MainWindow).Show();
+                        ProgressPage.launchOnExitCheckbox.IsEnabled = false;
+                        ProgressPage.launchOnExitCheckbox.Visibility = Visibility.Hidden;
+                    }
                     ((MainWindow)Application.Current.MainWindow).NextBtn.IsEnabled = false;
                     ((MainWindow)Application.Current.MainWindow).BackBtn.IsEnabled = false;
-                    ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(this.InstallationProgressPage);
-                }
-                else if (param == UpdateParam.ExtractionComplete)
-                {
-                    ((MainWindow)Application.Current.MainWindow).CancelBtn.Content = "Finish";
-                    ((MainWindow)Application.Current.MainWindow).NextBtn.Visibility = Visibility.Hidden;
-                    ((MainWindow)Application.Current.MainWindow).BackBtn.Visibility = Visibility.Hidden;
-
-                    this.InstallationProgressPage.progressBar.IsIndeterminate = false;
-                    this.InstallationProgressPage.InstallPanel.Visibility = Visibility.Collapsed;
+                    ((MainWindow)Application.Current.MainWindow).MainFrame.Navigate(this.ProgressPage);
+                    UpdateProgressBar(GetResourceString("Installer_ProgressBar_Initalizing"), 0, 0, true);
                 }
                 else if (param == UpdateParam.InstallComplete)
                 {
-                    ((MainWindow)Application.Current.MainWindow).FinishBtn.Visibility = Visibility.Visible;
-                    ((MainWindow)Application.Current.MainWindow).FinishBtn.Click += Install_Finish;
-                    ((MainWindow)Application.Current.MainWindow).CancelBtn.Visibility = Visibility.Hidden;
-                }
-                else if (param == UpdateParam.ProgressIndeterminate)
-                {
-                    this.InstallationProgressPage.progressBar.IsIndeterminate = true;
+
+                    ((MainWindow)Application.Current.MainWindow).Closed -= OnWindowClosed;
+                    if (Silent) ((MainWindow)Application.Current.MainWindow).Hide();
+                    else
+                    {
+                        ((MainWindow)Application.Current.MainWindow).CancelBtn.Content = "Finish";
+                        ((MainWindow)Application.Current.MainWindow).NextBtn.Visibility = Visibility.Hidden;
+                        ((MainWindow)Application.Current.MainWindow).BackBtn.Visibility = Visibility.Hidden;
+                        ((MainWindow)Application.Current.MainWindow).CancelBtn.Visibility = Visibility.Hidden;
+                        ((MainWindow)Application.Current.MainWindow).FinishBtn.Visibility = Visibility.Visible;
+                        ((MainWindow)Application.Current.MainWindow).FinishBtn.Click += (sender, e) => Install_Finish(false);
+
+                        this.ProgressPage.InstallPanel.Visibility = Visibility.Collapsed;
+                        UpdateProgressBar(GetResourceString("Installer_ProgressBar_Finalizing"), 0, 0, false);
+                    }
                 }
             });
 
         }
+
+        #endregion
+
     }
 }

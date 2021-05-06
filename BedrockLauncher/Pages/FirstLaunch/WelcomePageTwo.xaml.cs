@@ -34,14 +34,14 @@ namespace BedrockLauncher.Pages.FirstLaunch
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            pageSwitcher.MoveToPage(2);
+            pageSwitcher.MoveToPage(1);
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
             ConfigManager.Init();
             ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
-            pageSwitcher.MoveToPage(4);
+            pageSwitcher.MoveToPage(3);
         }
 
         private void UpdateDirectoryPathTextbox()

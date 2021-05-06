@@ -17,7 +17,7 @@ namespace Installer.Pages
         public InstallationProgressPage()
         {
             InitializeComponent();
-            launchOnExitCheckbox.IsChecked = LauncherInstaller.RunOnExit;
+            launchOnExitCheckbox.IsChecked = Installer.MainWindow.Installer.RunOnExit;
             IsMainInit = true;
         }
 
@@ -25,7 +25,7 @@ namespace Installer.Pages
         {
             if (IsInit && IsMainInit)
             {
-                LauncherInstaller.RunOnExit = launchOnExitCheckbox.IsChecked.Value;
+                Installer.MainWindow.Installer.RunOnExit = launchOnExitCheckbox.IsChecked.Value;
             }
         }
 

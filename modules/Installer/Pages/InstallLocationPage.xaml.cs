@@ -17,9 +17,9 @@ namespace Installer.Pages
         public InstallLocationPage()
         {
             InitializeComponent();
-            registerIconCheckBox.IsChecked = LauncherInstaller.RegisterAsProgram;
-            desktopIconCheckBox.IsChecked = LauncherInstaller.MakeDesktopIcon;
-            startMenuCheckBox.IsChecked = LauncherInstaller.MakeStartMenuIcon;
+            registerIconCheckBox.IsChecked = Installer.MainWindow.Installer.RegisterAsProgram;
+            desktopIconCheckBox.IsChecked = Installer.MainWindow.Installer.MakeDesktopIcon;
+            startMenuCheckBox.IsChecked = Installer.MainWindow.Installer.MakeStartMenuIcon;
             IsInit = true;
         }
 
@@ -61,9 +61,9 @@ namespace Installer.Pages
         {
             if (IsInit)
             {
-               LauncherInstaller.MakeDesktopIcon = desktopIconCheckBox.IsChecked.Value;
-               LauncherInstaller.MakeStartMenuIcon = startMenuCheckBox.IsChecked.Value;
-               LauncherInstaller.RegisterAsProgram = registerIconCheckBox.IsChecked.Value;
+                Installer.MainWindow.Installer.MakeDesktopIcon = desktopIconCheckBox.IsChecked.Value;
+                Installer.MainWindow.Installer.MakeStartMenuIcon = startMenuCheckBox.IsChecked.Value;
+                Installer.MainWindow.Installer.RegisterAsProgram = registerIconCheckBox.IsChecked.Value;
             }
         }
     }

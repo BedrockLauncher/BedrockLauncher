@@ -28,7 +28,10 @@
             <LineBreak/>
             <Run Text="{DynamicResource Installer_InstallationProgress_Info_Text}"/>
                 </TextBlock>
-                <ProgressBar x:Name="progressBar" Height="32" Margin="5,10,5,10" Foreground="#FF008542" Background="Black" BorderBrush="Black" Minimum="0"></ProgressBar>
+                <Grid Height="32" Margin="5,10,5,10" >
+                    <ProgressBar x:Name="progressBar" Foreground="#FF008542" Background="Black" BorderBrush="Black" Minimum="0"></ProgressBar>
+                    <TextBlock x:Name="progressBarContent" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"></TextBlock>
+                </Grid>
             </StackPanel>
             <CheckBox x:Name="launchOnExitCheckbox" IsChecked="True" Content="{DynamicResource Installer_InstallationProgress_LaunchOnExit_Text}" Foreground="White" HorizontalAlignment="Left" Margin="0,15,0,0" Checked="IconCheckBoxes_CheckChanged" Unchecked="IconCheckBoxes_CheckChanged" VerticalAlignment="Top" FontSize="13"/>
 

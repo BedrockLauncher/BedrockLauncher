@@ -9,8 +9,6 @@ namespace Installer
     public enum UpdateParam
     {
         InstallStart,
-        ExtractionComplete,
-        InstallComplete,
-        ProgressIndeterminate
+        InstallComplete
     }
 }

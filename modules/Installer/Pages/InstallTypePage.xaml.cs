@@ -22,13 +22,13 @@ namespace Installer.Pages
         {
             if (IsInit && IsFullInit)
             {
-                LauncherInstaller.IsBeta = BetaRadioButton.IsChecked.Value;
+                Installer.MainWindow.Installer.IsBeta = BetaRadioButton.IsChecked.Value;
             }
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            BetaRadioButton.IsChecked = LauncherInstaller.IsBeta;
+            BetaRadioButton.IsChecked = Installer.MainWindow.Installer.IsBeta;
             IsFullInit = true;
         }
 

@@ -3,10 +3,12 @@ using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
+using PostSharp.Community.Packer;
 
 // Общие сведения об этой сборке предоставляются следующим набором
 // набор атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
+[assembly: Packer()]
 [assembly: AssemblyTitle("Installer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
