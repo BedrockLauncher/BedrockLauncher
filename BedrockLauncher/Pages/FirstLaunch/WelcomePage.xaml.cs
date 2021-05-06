@@ -20,8 +20,6 @@ namespace BedrockLauncher.Pages.FirstLaunch
         public WelcomePage()
         {
             InitializeComponent();
-            Properties.LauncherSettings.Default.IsFirstLaunch = false;
-            Properties.LauncherSettings.Default.Save();
         }
 
         private void Page_Initialized(object sender, EventArgs e)
@@ -118,6 +116,8 @@ namespace BedrockLauncher.Pages.FirstLaunch
             {
                 if (_backup) ConfigManager.GameManager.BackupGameData();
                 ConfigManager.MainThread.SetOverlayFrame(null);
+                Properties.LauncherSettings.Default.IsFirstLaunch = false;
+                Properties.LauncherSettings.Default.Save();
             }
 
             void Page6()
