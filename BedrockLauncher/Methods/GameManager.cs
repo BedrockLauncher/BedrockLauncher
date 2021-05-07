@@ -127,6 +127,7 @@ namespace BedrockLauncher.Methods
         }
         public void Play(MCInstallation i)
         {
+            if (i == null) return;
             Properties.LauncherSettings.Default.CurrentInstallation = ConfigManager.CurrentInstallations.IndexOf(i);
             Properties.LauncherSettings.Default.Save();
 

@@ -27,6 +27,7 @@
     <ComboBoxItem  VerticalContentAlignment="Center" Tag="PocketEditionRelease" Content="{DynamicResource ThemeEntries_PocketEditionRelease}"/>
     <ComboBoxItem  VerticalContentAlignment="Center" Tag="BedrockStandard" Content="{DynamicResource ThemeEntries_BedrockStandard}"/>
     <ComboBoxItem  VerticalContentAlignment="Center" Tag="BedrockMaster" Content="{DynamicResource ThemeEntries_BedrockMaster}"/>
+    <ComboBoxItem  VerticalContentAlignment="Center" Tag="EarlyLegacyConsole" Content="{DynamicResource ThemeEntries_EarlyLegacyConsole}"/>
     <ComboBoxItem  VerticalContentAlignment="Center" Tag="MidLegacyConsole" Content="{DynamicResource ThemeEntries_MidLegacyConsole}"/>
     <ComboBoxItem  VerticalContentAlignment="Center" Tag="LateLegacyConsole" Content="{DynamicResource ThemeEntries_LateLegacyConsole}"/>
     <ComboBoxItem  VerticalContentAlignment="Center" Tag="IndieDays" Content="{DynamicResource ThemeEntries_IndieDays}"/>

@@ -37,6 +37,7 @@ namespace BedrockLauncher.Pages
             { "PocketEditionRelease", "1.0_pocket_edition.png" },
             { "BedrockStandard", "bedrock_standard.jfif" },
             { "BedrockMaster", "bedrock_master.jfif" },
+            { "EarlyLegacyConsole", "other_early_console_era.png" },
             { "MidLegacyConsole", "other_mid_legacy_console.jpeg" },
             { "LateLegacyConsole", "other_late_legacy_console.jpg" },
             { "IndieDays", "other_indie_days.jpg" },

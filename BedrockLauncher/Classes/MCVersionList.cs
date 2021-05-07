@@ -24,24 +24,10 @@ namespace BedrockLauncher.Classes
             _cacheFile = cacheFile;
             _commands = commands;
         }
-        public string GetLastRelease(JArray data)
-        {
-            Clear();
 
-            foreach (JArray o in data.AsEnumerable().Reverse())
-            {
-                if (o[2].AsEnumerable().ToString() == "0")
-                {
-                    string lastrelease = o[0].ToString();
-                    return lastrelease;
-                    //Add(new WPFDataTypes.GetLastRelease(lastrelease));
-                }
-            } return null;
-        }
         private void ParseList(JArray data)
         {
             Clear();
-            // ([name, uuid, isBeta])[]
             foreach (JArray o in data.AsEnumerable().Reverse())
             {
                 Add(new MCVersion(o[1].Value<string>(), o[0].Value<string>(), o[2].Value<int>() == 1, _commands));
@@ -59,7 +45,8 @@ namespace BedrockLauncher.Classes
                 }
             }
             catch (FileNotFoundException)
-            { // ignore
+            { 
+                // ignore
             }
         }
 
@@ -70,7 +57,6 @@ namespace BedrockLauncher.Classes
             var data = await resp.Content.ReadAsStringAsync();
             File.WriteAllText(_cacheFile, data);
             ParseList(JArray.Parse(data));
-            //BedrockLauncher.GetLastRelease.LastRelease() = GetLastRelease(JArray.Parse(data));
         }
 
     }

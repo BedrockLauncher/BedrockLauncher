@@ -455,6 +455,7 @@
     <v:String x:Key="ThemeEntries_PocketEditionRelease">Offical Release [Bedrock]</v:String>
     <v:String x:Key="ThemeEntries_BedrockStandard">Bedrock Edition Standard</v:String>
     <v:String x:Key="ThemeEntries_BedrockMaster">Bedrock Edition Master</v:String>
+    <v:String x:Key="ThemeEntries_EarlyLegacyConsole">Original Legacy Console Era</v:String>
     <v:String x:Key="ThemeEntries_MidLegacyConsole">Mid Legacy Console Era</v:String>
     <v:String x:Key="ThemeEntries_LateLegacyConsole">Late Legacy Console Era</v:String>
     <v:String x:Key="ThemeEntries_IndieDays">Indie Days</v:String>

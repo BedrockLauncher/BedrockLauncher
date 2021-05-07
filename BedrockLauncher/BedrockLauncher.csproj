@@ -83,7 +83,7 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\images\icons\bedrock_block_icon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\images\icons\launcher_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -904,6 +904,18 @@
     <Resource Include="Resources\images\ui\bg\play_screen\other_indie_days.jpg" />
     <Resource Include="Resources\images\ui\bg\play_screen\other_late_legacy_console.jpg" />
     <Resource Include="Resources\images\ui\bg\play_screen\other_mid_legacy_console.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\package.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\launcher_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\uninstaller_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\ui\bg\play_screen\other_early_console_era.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
