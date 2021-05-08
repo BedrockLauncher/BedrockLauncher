@@ -9,7 +9,7 @@
         xmlns:controls="clr-namespace:BedrockLauncher.Controls"
         xmlns:methods="clr-namespace:BedrockLauncher.Methods"
         xmlns:toolbar="clr-namespace:BedrockLauncher.Controls.Toolbar"
-        xmlns:converters="clr-namespace:BedrockLauncher.Converters"
+        xmlns:converters="clr-namespace:BedrockLauncher.Components"
         xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
         xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"

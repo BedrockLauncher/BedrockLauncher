@@ -8,7 +8,7 @@
              xmlns:properties="clr-namespace:BedrockLauncher.Properties"
              xmlns:controls="clr-namespace:BedrockLauncher.Controls"
              xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
-             xmlns:converters="clr-namespace:BedrockLauncher.Converters"
+             xmlns:converters="clr-namespace:BedrockLauncher.Components"
              xmlns:local="clr-namespace:BedrockLauncher.Controls"
              mc:Ignorable="d" Height="59" Margin="1,0,0,0" VerticalAlignment="Top">
     <Grid.Resources>

@@ -98,7 +98,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Resources\text\lang.en-US.xaml">
+    <Page Include="Resources\text\lang.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -106,7 +106,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\text\lang.xaml">
+    <Page Include="Resources\text\lang.en-US.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

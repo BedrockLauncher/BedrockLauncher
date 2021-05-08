@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace BedrockLauncher.Classes
+namespace BedrockLauncher.Components
 {
     public class NotifyPropertyChangedBase : INotifyPropertyChanged
     {

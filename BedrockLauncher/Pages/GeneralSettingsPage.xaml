@@ -9,7 +9,7 @@
       xmlns:methods="clr-namespace:BedrockLauncher.Methods"
       xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
       xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
-      xmlns:converters="clr-namespace:BedrockLauncher.Converters"
+      xmlns:converters="clr-namespace:BedrockLauncher.Components"
       x:Class="BedrockLauncher.Pages.GeneralSettingsPage"
       mc:Ignorable="d" 
       d:DesignHeight="828" d:DesignWidth="525"
@@ -86,8 +86,9 @@
                     <Button Style="{DynamicResource DialogButton}" x:Name="BackupButton" IsEnabled="{Binding Source={x:Static methods:ConfigManager.ViewModel}, Path=AllowEditing, Mode=OneWay}" Content="{DynamicResource GeneralSettingsScreen_BackupButton}" Height="30" HorizontalAlignment="Left" Click="BackupButton_Click"/>
                     <Button Style="{DynamicResource DialogButton_Red}" x:Name="AdvancedSettingsButton" IsEnabled="{Binding Source={x:Static methods:ConfigManager.ViewModel}, Path=AllowEditing, Mode=OneWay}" Content="{DynamicResource GeneralSettingsScreen_AdvancedSettingsButton}" Height="30" HorizontalAlignment="Left" Click="AdvancedSettingsButton_Click"/>
                 </StackPanel>
-                <Button Margin="35,1" FontSize="14" x:Name="CheckForUpdatesButton" HorizontalAlignment="Left" Click="CheckForUpdatesButton_Click" Content="{DynamicResource LauncherNewsPage_CheckForUpdates}" Style="{DynamicResource LinkButton}"></Button>
-                <Button Margin="35,1" FontSize="14" x:Name="ForceUpdateButton" HorizontalAlignment="Left" Click="ForceUpdateButton_Click" Content="{DynamicResource LauncherNewsPage_ForceUpdate}" Style="{DynamicResource LinkButton}"></Button>
+                <TextBlock Margin="42,28,0,0" Text="{DynamicResource GeneralSettingsScreen_UpdatesSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+                <Button Margin="42,10,0,1" FontSize="14" x:Name="CheckForUpdatesButton" HorizontalAlignment="Left" Click="CheckForUpdatesButton_Click" Content="{DynamicResource LauncherNewsPage_CheckForUpdates}" Style="{DynamicResource LinkButton}"></Button>
+                <Button Margin="42,1,0,1" FontSize="14" x:Name="ForceUpdateButton" HorizontalAlignment="Left" Click="ForceUpdateButton_Click" Content="{DynamicResource LauncherNewsPage_ForceUpdate}" Style="{DynamicResource LinkButton}"></Button>
 
             </StackPanel>
 

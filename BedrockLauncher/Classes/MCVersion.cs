@@ -24,6 +24,7 @@ using Windows.Management.Deployment;
 using Windows.System;
 
 using BedrockLauncher.Interfaces;
+using BedrockLauncher.Components;
 
 namespace BedrockLauncher.Classes
 {

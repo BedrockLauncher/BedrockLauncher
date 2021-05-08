@@ -32,6 +32,7 @@ using System.Security.Principal;
 using System.Security.Policy;
 using System.Security.RightsManagement;
 using System.Security.Permissions;
+using BedrockLauncher.Components;
 
 using MCVersion = BedrockLauncher.Classes.MCVersion;
 using System.Xml.Linq;

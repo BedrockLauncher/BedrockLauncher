@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using BedrockLauncher.Classes;
 using BedrockLauncher.Methods;
 using System.ComponentModel;
+using BedrockLauncher.Components;
 
 namespace BedrockLauncher.Properties
 {
@@ -75,7 +76,7 @@ namespace BedrockLauncher.Properties
         private string _ExternalLauncherIconPath = "";
         private string _CurrentTheme = "LatestUpdate";
         private bool _CloseLauncherOnSwitch = true;
-        private bool _UseBetaBuilds = false;
+        private bool _UseBetaBuilds = true;
         private bool _UseSilentUpdates = true;
 
         public bool PortableMode

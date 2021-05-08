@@ -45,6 +45,12 @@ namespace BedrockLauncher.Controls
             }
         }
 
+        private void ComboBoxItem_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
+        {
+            // To prevent scrolling when mouseover
+            e.Handled = true;
+        }
+
         private void LanguageCombobox_Initialized(object sender, EventArgs e)
         {
             var items = this.Items.Cast<ComboBoxItem>().Select(x => x).ToList();

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BedrockLauncher.Events;
 using BedrockLauncher.Classes;
+using BedrockLauncher.Components;
 
 namespace BedrockLauncher.ViewModels
 {

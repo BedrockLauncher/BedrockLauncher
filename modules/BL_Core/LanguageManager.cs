@@ -25,7 +25,8 @@ namespace BL_Core
             {
                 Source = new Uri($"\\BL_Core;component\\Resources\\text\\lang.{language}.xaml", UriKind.Relative),
             };
-            Application.Current.Resources.MergedDictionaries.Add(dict);
+
+            Application.Current.Resources.MergedDictionaries[0] = dict;
         }
 
         public static void Init()
@@ -56,11 +57,14 @@ namespace BL_Core
                 case "ru-RU":
                     LanguageChange("ru-RU");
                     break;
-
                 case "en-US":
                     LanguageChange("en-US");
                     break;
+                case "default":
+                    LanguageChange("en-US");
+                    break;
                 default:
+                    LanguageChange("en-US");
                     break;
 
             }

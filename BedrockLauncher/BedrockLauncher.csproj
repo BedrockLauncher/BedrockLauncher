@@ -157,6 +157,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Html\SkinViewResourceSchemeHandler.cs" />
+    <Compile Include="Components\ComboBoxBehaviors.cs" />
+    <Compile Include="Components\InteractivityHelper.cs" />
     <Compile Include="Controls\UpdateButton.xaml.cs">
       <DependentUpon>UpdateButton.xaml</DependentUpon>
     </Compile>
@@ -251,13 +253,13 @@
     <Compile Include="Controls\SkinPreview.xaml.cs">
       <DependentUpon>SkinPreview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Converters\InvertableBooleanToVisibilityConverter.cs" />
-    <Compile Include="Converters\StringToUpperConverter.cs" />
-    <Compile Include="Converters\UrlToImageSourceConverter.cs" />
+    <Compile Include="Components\InvertableBooleanToVisibilityConverter.cs" />
+    <Compile Include="Components\StringToUpperConverter.cs" />
+    <Compile Include="Components\UrlToImageSourceConverter.cs" />
     <Compile Include="Methods\ConfigManager.cs" />
     <Compile Include="Classes\MCProfile.cs" />
     <Compile Include="Classes\MCProfilesList.cs" />
-    <Compile Include="Classes\NotifyPropertyChangedBase.cs" />
+    <Compile Include="Components\NotifyPropertyChangedBase.cs" />
     <Compile Include="Classes\MCVersion.cs" />
     <Compile Include="Classes\VersionStateChangeInfo.cs" />
     <Compile Include="Methods\ZipFileExtensions.cs" />
@@ -357,7 +359,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Classes\RelayCommand.cs" />
+    <Compile Include="Components\RelayCommand.cs" />
     <Compile Include="Pages\SettingsTabs.xaml.cs">
       <DependentUpon>SettingsTabs.xaml</DependentUpon>
     </Compile>
@@ -370,7 +372,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Converters\OnlyDigitsValidationRule.cs" />
+    <Compile Include="Components\OnlyDigitsValidationRule.cs" />
     <DesignData Include="Data\Versions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -709,6 +711,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Windows.SDK.Contracts">
       <Version>10.0.19041.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf">
+      <Version>1.1.31</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>

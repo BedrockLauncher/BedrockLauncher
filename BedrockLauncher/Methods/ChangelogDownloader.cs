@@ -13,6 +13,7 @@ using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using HtmlAgilityPack;
 using System.Text.RegularExpressions;
+using BedrockLauncher.Components;
 
 namespace BedrockLauncher.Methods
 {

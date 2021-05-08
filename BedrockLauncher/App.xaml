@@ -27,9 +27,6 @@
                 <ResourceDictionary Source="Resources/styles/itemtemplates.xaml"/>
                 <ResourceDictionary Source="Resources/styles/radiobutton.xaml"/>
                 <ResourceDictionary>
-                    <Style TargetType="{x:Type ComboBoxItem}">
-                        <EventSetter Event="FrameworkElement.RequestBringIntoView" Handler="ComboBoxItem_RequestBringIntoView"/>
-                    </Style>
                     <Style TargetType="{x:Type Window}">
                         <Setter Property="FontFamily" Value="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
                     </Style>

@@ -13,7 +13,8 @@ using CefSharp.Wpf;
 using System.Runtime.CompilerServices;
 using BedrockLauncher.Classes.Html;
 using CefSharp.SchemeHandler;
-
+using BedrockLauncher.Classes;
+using System.Windows.Input;
 
 namespace BedrockLauncher
 {
@@ -27,13 +28,6 @@ namespace BedrockLauncher
             Program.StartLogging(e);
             Program.EnableDeveloperMode();
         }
-
-        private void ComboBoxItem_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
-        {
-            // To prevent scrolling when mouseover
-            e.Handled = true;
-        }
-
 
         public App()
         {
