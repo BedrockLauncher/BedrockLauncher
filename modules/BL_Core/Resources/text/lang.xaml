@@ -437,6 +437,13 @@
     <v:String x:Key="LanguageEntries_ru_RU">Русский - Россия</v:String>
 
     <!--#endregion-->
+    
+    <!--#region VersionEntries -->
+
+    <v:String x:Key="VersionEntries_LatestSnapshot">Latest Beta</v:String>
+    <v:String x:Key="VersionEntries_LatestRelease">Latest Release</v:String>
+
+    <!--#endregion-->
 
     <!--#region ThemeEntries -->
 

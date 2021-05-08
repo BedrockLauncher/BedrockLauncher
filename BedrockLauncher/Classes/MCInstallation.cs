@@ -55,7 +55,17 @@ namespace BedrockLauncher.Classes
         }
 
         [JsonIgnore]
-        public string VersionName => Version?.Name ?? string.Empty;
+        public string VersionName
+        {
+            get
+            {
+                string version = Version?.Name ?? string.Empty;
+                string concat = string.Format(" ({0})", version);
+                if (UseLatestBeta) return Application.Current.FindResource("VersionEntries_LatestSnapshot").ToString() + concat;
+                else if (UseLatestVersion) return Application.Current.FindResource("VersionEntries_LatestRelease").ToString() + concat;
+                else return version;
+            }
+        } 
 
     }
 }

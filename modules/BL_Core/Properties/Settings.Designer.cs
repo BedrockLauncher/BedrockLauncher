@@ -25,7 +25,7 @@ namespace BL_Core.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.0.0.5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.0.0.6")]
         public string Version {
             get {
                 return ((string)(this["Version"]));
@@ -34,7 +34,7 @@ namespace BL_Core.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/CarJem/BedrockLauncher")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/BedrockLauncher/BedrockLauncher")]
         public string GithubPage {
             get {
                 return ((string)(this["GithubPage"]));

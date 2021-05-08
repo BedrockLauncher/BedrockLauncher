@@ -239,6 +239,7 @@ namespace BedrockLauncher.Methods
             {
                 Properties.LauncherSettings.Default.CurrentProfile = profile;
                 Properties.LauncherSettings.Default.Save();
+                LoadInstallations(profile);
             }
 
         }
@@ -247,9 +248,11 @@ namespace BedrockLauncher.Methods
         #endregion
 
         #region Installations
-        public static void LoadInstallations()
+        public static void LoadInstallations(string profile = null)
         {
-            CurrentInstallations = ConfigManager.GetInstallations();
+            if (profile == null) profile = CurrentProfile;
+            CurrentInstallations = new List<MCInstallation>();
+            CurrentInstallations = ConfigManager.GetInstallations(profile);
 
             MCInstallation latest_release = new MCInstallation();
             latest_release.DisplayName = "Latest Release";
@@ -259,7 +262,7 @@ namespace BedrockLauncher.Methods
             latest_release.UseLatestBeta = false;
             latest_release.IconPath = @"/BedrockLauncher;component/Resources/images/installation_icons/Grass_Block.png";
             latest_release.ReadOnly = true;
-            CurrentInstallations.Add(latest_release);
+            if (!CurrentInstallations.Exists(x => x.DisplayName == "Latest Release" && x.ReadOnly)) CurrentInstallations.Add(latest_release);
 
             MCInstallation latest_beta = new MCInstallation();
             latest_beta.DisplayName = "Latest Beta";
@@ -269,14 +272,14 @@ namespace BedrockLauncher.Methods
             latest_beta.UseLatestBeta = true;
             latest_beta.IconPath = @"/BedrockLauncher;component/Resources/images/installation_icons/Crafting_Table.png";
             latest_beta.ReadOnly = true;
-            CurrentInstallations.Add(latest_beta);
+            if (!CurrentInstallations.Exists(x => x.DisplayName == "Latest Beta" && x.ReadOnly)) CurrentInstallations.Add(latest_beta);
         }
-        public static List<MCInstallation> GetInstallations()
+        public static List<MCInstallation> GetInstallations(string profile)
         {
-            if (ProfileList.profiles.ContainsKey(CurrentProfile))
+            if (ProfileList.profiles.ContainsKey(profile))
             {
-                if (ProfileList.profiles[CurrentProfile].Installations == null) ProfileList.profiles[CurrentProfile].Installations = new List<MCInstallation>();
-                return ProfileList.profiles[CurrentProfile].Installations;
+                if (ProfileList.profiles[profile].Installations == null) ProfileList.profiles[profile].Installations = new List<MCInstallation>();
+                return ProfileList.profiles[profile].Installations;
             }
             else return new List<MCInstallation>();
         }

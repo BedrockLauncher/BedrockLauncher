@@ -17,7 +17,7 @@
                 <MenuItem x:Name="RemoveProfileButton" Style="{DynamicResource IndentedMenuItem}" Foreground="Red" Header="{DynamicResource ProfileButton_RemoveProfile_Text}" Click="RemoveProfileButton_Click"></MenuItem>
                 <MenuItem x:Name="ManageProfilesButton" Style="{DynamicResource IndentedMenuItem}" Header="{DynamicResource ProfileButton_ManageProfiles_Text}" IsEnabled="False" Click="ManageProfilesButton_Click" Visibility="Collapsed"></MenuItem>
                 <MenuItem x:Name="EditProfileButton" Style="{DynamicResource IndentedMenuItem}" Header="{DynamicResource ProfileButton_ProfileSettings_Text}" IsEnabled="False" Click="EditProfileButton_Click" Visibility="Collapsed"></MenuItem>
-                <MenuItem Style="{DynamicResource IndentedMenuItem}" IsEnabled="False">
+                <MenuItem x:Name="OtherAccountsHeader" Style="{DynamicResource IndentedMenuItem}" IsEnabled="False">
                     <MenuItem.Header>
                         <TextBlock Margin="0,18,0,0" Foreground="#FF929292" Text="{DynamicResource ProfileButton_ChooseAccount_Text}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                     </MenuItem.Header>
