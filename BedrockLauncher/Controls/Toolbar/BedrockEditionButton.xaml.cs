@@ -27,11 +27,18 @@ namespace BedrockLauncher.Controls.Toolbar
         public BedrockEditionButton()
         {
             InitializeComponent();
+            this.DataContext = ConfigManager.ViewModel;
         }
 
         private void SideBarButton_Click(object sender, RoutedEventArgs e)
         {
             ConfigManager.MainThread.ButtonManager_Base(this.Name);
+        }
+
+        private void Button_CheckedChanged(object sender, RoutedEventArgs e)
+        {
+            if (Button.IsChecked.Value) Progressbar.Visibility = Visibility.Collapsed;
+            else Progressbar.Visibility = Visibility.Visible;
         }
     }
 }

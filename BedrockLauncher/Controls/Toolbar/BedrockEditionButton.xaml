@@ -9,11 +9,14 @@
              xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
              xmlns:local="clr-namespace:BedrockLauncher.Controls"
              mc:Ignorable="d" Height="59" Margin="1,0,0,0" VerticalAlignment="Top">
-    <ToggleButton x:Name="Button" Click="SideBarButton_Click" Style="{StaticResource SideBarButtonStyle}">
+    <ToggleButton x:Name="Button" Checked="Button_CheckedChanged" Unchecked="Button_CheckedChanged" Click="SideBarButton_Click" Style="{StaticResource SideBarButtonStyle}">
         <ToggleButton.ToolTip>
             <ToolTip Content="{DynamicResource ToolbarButtons_MinecraftEdition_Text}"/>
         </ToggleButton.ToolTip>
         <TextBlock LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,5"><Run FontSize="11" Text="{DynamicResource ToolbarButtons_Minecraft_Text}"/><LineBreak/><Run FontSize="14" Text="{DynamicResource ToolbarButtons_MinecraftEdition_Text}"/></TextBlock>
     </ToggleButton>
     <Image Style="{StaticResource SideBarButtonIcon}" Source="/BedrockLauncher;component/Resources/images/ui/icons/bedrock_icon.png"/>
+    <Grid x:Name="Progressbar">
+        <ProgressBar x:Name="progressSizeHack" Height="5" VerticalAlignment="Bottom" Visibility="Collapsed" Foreground="#FF008542" Background="Black" BorderBrush="Black" IsIndeterminate="{Binding StateChangeInfo.IsProgressIndeterminate}" Minimum="0"/>
+    </Grid>
 </Grid>

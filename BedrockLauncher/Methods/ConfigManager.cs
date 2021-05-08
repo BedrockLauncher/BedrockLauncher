@@ -283,7 +283,6 @@ namespace BedrockLauncher.Methods
             }
             else return new List<MCInstallation>();
         }
-
         public static void EditInstallation(int index, string name, string directory, MCVersion version, string iconPath = @"/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png", bool isCustom = false)
         {
             if (ProfileList.profiles.ContainsKey(CurrentProfile) && ProfileList.profiles[CurrentProfile].Installations.Count > index)
@@ -317,7 +316,6 @@ namespace BedrockLauncher.Methods
                 SaveProfiles();
             }
         }
-
         public static void CreateInstallation(string name, MCVersion version, string directory, string iconPath = @"/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png", bool isCustom = false)
         {
             if (ProfileList.profiles.ContainsKey(CurrentProfile))
@@ -351,7 +349,6 @@ namespace BedrockLauncher.Methods
                 SaveProfiles();
             }
         }
-
         public static void DuplicateInstallation(MCInstallation installation)
         {
             if (ProfileList.profiles.ContainsKey(CurrentProfile))
@@ -370,7 +367,6 @@ namespace BedrockLauncher.Methods
                 CreateInstallation(newName, installation.Version, installation.DirectoryName, installation.IconPath_Full, installation.IsCustomIcon);
             }
         }
-
         public static void DeleteInstallation(MCInstallation installation)
         {
             if (ProfileList.profiles.ContainsKey(CurrentProfile))

@@ -1,7 +1,0 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-  <Geometry x:Key="externalGeometry">F1 M32,32z M0,0z M18,5L18,7 23.5625,7 11.28125,19.28125 12.71875,20.71875 25,8.4375 25,14 27,14 27,5z M5,9L5,27 23,27 23,14 21,16 21,25 7,25 7,11 16,11 18,9z</Geometry>
-  <DrawingGroup x:Key="externalDrawingGroup" ClipGeometry="M0,0 V32 H32 V0 H0 Z">
-    <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource externalGeometry}" />
-  </DrawingGroup>
-  <DrawingImage x:Key="externalDrawingImage" Drawing="{StaticResource externalDrawingGroup}" />
-</ResourceDictionary>

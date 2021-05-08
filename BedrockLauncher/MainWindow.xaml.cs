@@ -153,6 +153,7 @@ namespace BedrockLauncher
             if (ProgressBarGrid.Visibility == Visibility.Visible) return;
             await Application.Current.Dispatcher.InvokeAsync(() =>
             {
+                BedrockEditionButton.progressSizeHack.Visibility = Visibility.Visible;
                 ProgressBarGrid.Visibility = Visibility.Visible;
                 ProgressBarText.Visibility = Visibility.Hidden;
                 progressbarcontent.Visibility = Visibility.Hidden;
@@ -176,6 +177,9 @@ namespace BedrockLauncher
             if (ProgressBarGrid.Visibility == Visibility.Collapsed) return;
             await Application.Current.Dispatcher.InvokeAsync(() =>
             {
+                ProgressBarGrid.Visibility = Visibility.Collapsed;
+                ProgressBarText.Visibility = Visibility.Hidden;
+
                 Storyboard storyboard = new Storyboard();
                 DoubleAnimation animation = new DoubleAnimation
                 {
@@ -193,9 +197,8 @@ namespace BedrockLauncher
 
         private void HideProgressBarContent(object sender, EventArgs e)
         {
-            ProgressBarGrid.Visibility = Visibility.Collapsed;
-            ProgressBarText.Visibility = Visibility.Hidden;
             progressbarcontent.Visibility = Visibility.Hidden;
+            BedrockEditionButton.progressSizeHack.Visibility = Visibility.Collapsed;
         }
         private void ShowProgressBarContent(object sender, EventArgs e)
         {
@@ -284,7 +287,7 @@ namespace BedrockLauncher
 
             foreach (ToggleButton button in toggleButtons) { button.IsChecked = false; }
 
-            PlayScreenBorder.Visibility = Visibility.Visible;
+            PlayScreenBorder.Visibility = Visibility.Collapsed;
 
             if (toggleButtons.Exists(x => x.Name == buttonName))
             {
@@ -394,6 +397,7 @@ namespace BedrockLauncher
             mainPage.PlayButton.IsChecked = true;
             mainPage.MainPageFrame.Navigate(playScreenPage);
             mainPage.LastButtonName = mainPage.PlayButton.Name;
+            PlayScreenBorder.Visibility = Visibility.Visible;
         }
         public void NavigateToInstallationsPage()
         {
