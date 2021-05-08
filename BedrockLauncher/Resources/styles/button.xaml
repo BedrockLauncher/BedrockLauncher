@@ -855,6 +855,69 @@
         </Setter>
     </Style>
 
+    <SolidColorBrush x:Key="DialogButton_Orange.Static.Foreground" Color="White"/>
+    <SolidColorBrush x:Key="DialogButton_Orange.Static.Background" Color="#FFFF5D00"/>
+    <SolidColorBrush x:Key="DialogButton_Orange.Static.Border" Color="#FFFF5D00"/>
+
+    <SolidColorBrush x:Key="DialogButton_Orange.MouseOver.Background" Color="#FFFF8139"/>
+    <SolidColorBrush x:Key="DialogButton_Orange.MouseOver.Border" Color="#FFFF8139"/>
+
+    <SolidColorBrush x:Key="DialogButton_Orange.Pressed.Background" Color="#FFC34700"/>
+    <SolidColorBrush x:Key="DialogButton_Orange.Pressed.Border" Color="#FFFF"/>
+
+    <SolidColorBrush x:Key="DialogButton_Orange.Disabled.Background" Color="#FF933500"/>
+    <SolidColorBrush x:Key="DialogButton_Orange.Disabled.Border" Color="#FF933500"/>
+    <SolidColorBrush x:Key="DialogButton_Orange.Disabled.Foreground" Color="#FF838383"/>
+
+    <Style x:Key="DialogButton_Orange" TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="Background" Value="{StaticResource DialogButton_Orange.Static.Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource DialogButton_Orange.Static.Border}"/>
+        <Setter Property="Foreground" Value="{DynamicResource DialogButton_Orange.Static.Foreground}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Margin" Value="4,4"/>
+        <Setter Property="FontFamily" Value="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" >
+                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="+18,0,+18,0" RecognizesAccessKey="True"  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefaulted" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource DialogButton_Orange.Pressed.Border}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource DialogButton_Orange.MouseOver.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource DialogButton_Orange.MouseOver.Border}"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource DialogButton_Orange.Pressed.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource DialogButton_Orange.Pressed.Border}"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource DialogButton_Orange.Disabled.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource DialogButton_Orange.Disabled.Border}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource DialogButton_Orange.Disabled.Foreground}"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="White"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
     <SolidColorBrush x:Key="PanelButton.Static.Background" Color="Transparent"/>
     <SolidColorBrush x:Key="PanelButton.Static.Border" Color="Transparent"/>
     <SolidColorBrush x:Key="PanelButton.Static.Foreground" Color="White"/>

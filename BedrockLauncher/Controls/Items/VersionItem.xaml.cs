@@ -60,7 +60,7 @@ namespace BedrockLauncher.Controls.Items
 
         private async void Delete_Click(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
+            MenuItem button = sender as MenuItem;
             var version = button.DataContext as Classes.MCVersion;
 
             var title = this.FindResource("Dialog_DeleteItem_Title") as string;
@@ -78,15 +78,25 @@ namespace BedrockLauncher.Controls.Items
 
         private void More_Click(object sender, RoutedEventArgs e)
         {
-            /*
             Button button = sender as Button;
-            var installation = button.DataContext as Classes.Installation;
-            InstallationsList.SelectedItem = installation;
+            var version = button.DataContext as Classes.MCVersion;
+            ConfigManager.MainThread.SetVersionPageSelection(version);
             button.ContextMenu.PlacementTarget = button;
             button.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
-            button.ContextMenu.DataContext = installation;
+            button.ContextMenu.DataContext = version;
             button.ContextMenu.IsOpen = true;
-            */
+        }
+
+        private void Repair_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            var version = button.DataContext as Classes.MCVersion;
+            ConfigManager.GameManager.Repair(version);
+        }
+
+        private void ContextMenu_Closed(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

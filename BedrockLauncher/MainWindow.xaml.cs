@@ -116,6 +116,11 @@ namespace BedrockLauncher
             view.Filter = ConfigManager.Filter_VersionList;
         }
 
+        public void SetVersionPageSelection(object item)
+        {
+            settingsScreenPage.versionsSettingsPage.VersionsList.SelectedItem = item;
+        }
+
         public void SetInstallationPageSelection(object item)
         {
             installationsScreen.InstallationsList.SelectedItem = item;

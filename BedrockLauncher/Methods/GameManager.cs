@@ -121,6 +121,11 @@ namespace BedrockLauncher.Methods
         {
             InvokeRemove(v);
         }
+        public void Repair(MCVersion v)
+        {
+            InvokeDownload(v, false);
+        }
+
         public void KillGame()
         {
             InvokeKillGame();

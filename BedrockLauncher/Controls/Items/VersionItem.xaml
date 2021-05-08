@@ -29,7 +29,7 @@
             </StackPanel>
         </Grid>
         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Column="2" x:Name="ButtonPanel" Visibility="Collapsed">
-            <Button x:Name="Remove" Click="Delete_Click" IsEnabled="{Binding Source={x:Static methods:ConfigManager.ViewModel}, Path=AllowEditing, Mode=OneWay}" Content="{DynamicResource GeneralText_Remove}" Style="{DynamicResource DialogButton_Red}"></Button>
+            <Button x:Name="Repair" Click="Repair_Click" IsEnabled="{Binding Source={x:Static methods:ConfigManager.ViewModel}, Path=AllowEditing, Mode=OneWay}" Content="{DynamicResource GeneralText_Repair}" Style="{DynamicResource DialogButton_Orange}"></Button>
             <Button x:Name="Folder" Click="Folder_Click" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" FontWeight="Bold" Style="{DynamicResource DialogButton}">
                 <Button.Content>
                     <Grid Width="16" Height="16">
@@ -41,7 +41,12 @@
                     </Grid>
                 </Button.Content>
             </Button>
-            <Button x:Name="More" Content="..." FontWeight="Bold" Style="{DynamicResource DialogButton}" Visibility="Collapsed" Click="More_Click">
+            <Button x:Name="More" Content="..." FontWeight="Bold" Style="{DynamicResource DialogButton}" Click="More_Click">
+                <Button.ContextMenu>
+                    <ContextMenu Closed="ContextMenu_Closed" Style="{DynamicResource NoCheckboxContextMenu}">
+                        <MenuItem Header="{DynamicResource GeneralText_Remove}" IsEnabled="{Binding Source={x:Static methods:ConfigManager.ViewModel}, Path=AllowEditing, Mode=OneWay}" Name="Remove" Click="Delete_Click"></MenuItem>
+                    </ContextMenu>
+                </Button.ContextMenu>
             </Button>
         </StackPanel>
     </Grid>
