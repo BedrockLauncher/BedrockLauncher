@@ -65,7 +65,7 @@
                             <Button  IsEnabled="{Binding Source={x:Static methods:ConfigManager.ViewModel}, Path=AllowPlaying, Mode=OneWay}" x:Name="MainPlayButton" Click="MainPlayButton_Click" HorizontalAlignment="Center" Margin="286,-8,286,0" VerticalAlignment="Top" Width="250" Height="56" Padding="0" Style="{DynamicResource BigGreenButton}">
                                 <TextBlock x:Name="PlayButtonText" Style="{DynamicResource BigGreenButton_Text}" Text="{Binding Path=PlayButtonString, Mode=OneWay}"/>
                             </Button>
-                            <controls:VersionSelector SelectedIndex="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=CurrentInstallation}" IsEnabled="{Binding Source={x:Static methods:ConfigManager.ViewModel}, Path=AllowEditing, Mode=OneWay}" SelectionChanged="InstallationsList_SelectionChanged" ItemsSource="{Binding}" x:Name="InstallationsList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="250" Height="50" Padding="-1,7,5,3"></controls:VersionSelector>
+                            <controls:InstallationSelector SelectedIndex="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=CurrentInstallation}" IsEnabled="{Binding Source={x:Static methods:ConfigManager.ViewModel}, Path=AllowEditing, Mode=OneWay}" SelectionChanged="InstallationsList_SelectionChanged" ItemsSource="{Binding}" x:Name="InstallationsList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="250" Height="50" Padding="-1,7,5,3"></controls:InstallationSelector>
                         </Grid>
                     </Grid>
                 </Grid>

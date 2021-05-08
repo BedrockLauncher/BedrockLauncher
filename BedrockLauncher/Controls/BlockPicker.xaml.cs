@@ -30,8 +30,6 @@ namespace BedrockLauncher.Controls
 
         #region Definitions
 
-        private const string IconPathPrefix = @"/BedrockLauncher;component/resources/images/installation_icons/";
-
         private List<string> BlockList = new List<string>();
         private List<BlockPickerItem> Buttons { get; set; } = new List<BlockPickerItem>();
         public bool IsIconCustom { get; private set; } = false;
@@ -95,7 +93,7 @@ namespace BedrockLauncher.Controls
         {
             var resource_data = Properties.Resources._BlockOrder;
             var list = resource_data.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
-            for (int i = 0; i < list.Count; i++) list[i] = IconPathPrefix + list[i];
+            for (int i = 0; i < list.Count; i++) list[i] = Methods.Filepaths.PrefabedIconRootPath + list[i];
             BlockList = list;
         }
 
@@ -296,7 +294,7 @@ namespace BedrockLauncher.Controls
             BitmapImage bmp = new BitmapImage();
             bmp.BeginInit();
             bmp.CacheOption = BitmapCacheOption.OnLoad;
-            bmp.UriSource = new Uri(path, UriKind.Absolute);
+            bmp.UriSource = new Uri(System.IO.Path.Combine(Methods.Filepaths.GetCacheFolderPath(), path), UriKind.Absolute);
             bmp.EndInit();
 
             img.Source = bmp;

@@ -7,6 +7,7 @@ using System.Windows;
 using BedrockLauncher.Methods;
 using Newtonsoft.Json;
 using System.Windows.Media.Imaging;
+using BedrockLauncher.Components;
 
 namespace BedrockLauncher.Classes
 {
@@ -15,12 +16,27 @@ namespace BedrockLauncher.Classes
         public string DisplayName { get; set; }
         public string VersionUUID { get; set; }
         public string IconPath { get; set; }
-        public bool IsCustomIcon { get; set; }
+        public bool IsCustomIcon { get; set; } = false;
         public string DirectoryName { get; set; }
         public bool ReadOnly { get; set; }
 
         public bool UseLatestVersion { get; set; }
         public bool UseLatestBeta { get; set; }
+
+
+        [JsonIgnore]
+        public string IconPath_Full
+        {
+            get
+            {
+                if (IsCustomIcon) return System.IO.Path.Combine(Filepaths.GetCacheFolderPath(), IconPath);
+                else return Filepaths.PrefabedIconRootPath + IconPath;
+            }
+            set
+            {
+                IconPath = System.IO.Path.GetFileName(value);
+            }
+        }
 
         [JsonIgnore]
         public MCVersion Version

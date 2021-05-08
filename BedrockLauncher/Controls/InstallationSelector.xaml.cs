@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace BedrockLauncher.Controls
 {
     /// <summary>
-    /// Interaction logic for VersionSelector.xaml
+    /// Interaction logic for InstallationSelector.xaml
     /// </summary>
-    public partial class VersionSelector : ComboBox
+    public partial class InstallationSelector : ComboBox
     {
-        public VersionSelector()
+        public InstallationSelector()
         {
             InitializeComponent();
         }

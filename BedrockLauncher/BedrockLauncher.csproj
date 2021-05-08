@@ -159,11 +159,14 @@
     <Compile Include="Classes\Html\SkinViewResourceSchemeHandler.cs" />
     <Compile Include="Components\ComboBoxBehaviors.cs" />
     <Compile Include="Components\InteractivityHelper.cs" />
+    <Compile Include="Controls\Items\InstallationSelectorItem.xaml.cs">
+      <DependentUpon>InstallationSelectorItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UpdateButton.xaml.cs">
       <DependentUpon>UpdateButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\VersionSelector.xaml.cs">
-      <DependentUpon>VersionSelector.xaml</DependentUpon>
+    <Compile Include="Controls\InstallationSelector.xaml.cs">
+      <DependentUpon>InstallationSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="Events\ConfigStateArgs.cs" />
     <Compile Include="Pages\FirstLaunch\WelcomePageFour.xaml.cs">
@@ -385,6 +388,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Items\InstallationSelectorItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Items\LocalizationItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -465,7 +472,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\VersionSelector.xaml">
+    <Page Include="Controls\InstallationSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

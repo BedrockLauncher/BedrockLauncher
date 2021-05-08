@@ -260,7 +260,7 @@ namespace BedrockLauncher.Methods
             latest_release.VersionUUID = "latest_release";
             latest_release.UseLatestVersion = true;
             latest_release.UseLatestBeta = false;
-            latest_release.IconPath = @"/BedrockLauncher;component/Resources/images/installation_icons/Grass_Block.png";
+            latest_release.IconPath_Full = @"/BedrockLauncher;component/Resources/images/installation_icons/Grass_Block.png";
             latest_release.ReadOnly = true;
             if (!CurrentInstallations.Exists(x => x.DisplayName == "Latest Release" && x.ReadOnly)) CurrentInstallations.Add(latest_release);
 
@@ -270,7 +270,7 @@ namespace BedrockLauncher.Methods
             latest_beta.VersionUUID = "latest_beta";
             latest_beta.UseLatestVersion = true;
             latest_beta.UseLatestBeta = true;
-            latest_beta.IconPath = @"/BedrockLauncher;component/Resources/images/installation_icons/Crafting_Table.png";
+            latest_beta.IconPath_Full = @"/BedrockLauncher;component/Resources/images/installation_icons/Crafting_Table.png";
             latest_beta.ReadOnly = true;
             if (!CurrentInstallations.Exists(x => x.DisplayName == "Latest Beta" && x.ReadOnly)) CurrentInstallations.Add(latest_beta);
         }
@@ -290,7 +290,7 @@ namespace BedrockLauncher.Methods
             {
                 MCInstallation installation = new MCInstallation();
                 installation.DisplayName = name;
-                installation.IconPath = iconPath;
+                installation.IconPath_Full = iconPath;
                 installation.IsCustomIcon = isCustom;
                 installation.DirectoryName = directory;
 
@@ -324,7 +324,7 @@ namespace BedrockLauncher.Methods
             {
                 MCInstallation installation = new MCInstallation();
                 installation.DisplayName = name;
-                installation.IconPath = iconPath;
+                installation.IconPath_Full = iconPath;
                 installation.IsCustomIcon = isCustom;
                 installation.DirectoryName = directory;
 
@@ -367,7 +367,7 @@ namespace BedrockLauncher.Methods
                     i++;
                 }
 
-                CreateInstallation(newName, installation.Version, installation.DirectoryName, installation.IconPath, installation.IsCustomIcon);
+                CreateInstallation(newName, installation.Version, installation.DirectoryName, installation.IconPath_Full, installation.IsCustomIcon);
             }
         }
 

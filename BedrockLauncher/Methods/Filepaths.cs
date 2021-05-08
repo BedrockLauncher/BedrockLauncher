@@ -20,6 +20,7 @@ namespace BedrockLauncher.Methods
         public static readonly string InstallationsFolderName = "installations";
         public static readonly string PackageDataFolderName = "packageData";
         public static readonly string IconCacheFolderName = "icon_cache";
+        public static readonly string PrefabedIconRootPath = @"/BedrockLauncher;component/resources/images/installation_icons/";
 
         #endregion
 

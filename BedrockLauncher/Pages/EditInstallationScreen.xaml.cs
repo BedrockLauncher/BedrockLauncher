@@ -47,7 +47,7 @@ namespace BedrockLauncher.Pages
             InstallationVersionSelect.SelectedItem = Versions.Where(x => x.UUID == i.VersionUUID).FirstOrDefault();
             InstallationNameField.Text = i.DisplayName;
             InstallationDirectoryField.Text = i.DirectoryName;
-            InstallationIconSelect.Init(i.IconPath, i.IsCustomIcon);
+            InstallationIconSelect.Init(i.IconPath_Full, i.IsCustomIcon);
             EditingIndex = index;
 
             Header.SetResourceReference(TextBlock.TextProperty, "EditInstallationScreen_AltTitle");
