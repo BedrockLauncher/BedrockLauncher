@@ -1,9 +1,9 @@
-﻿<Page x:Class="Installer.Pages.InstallationProgressPage"
+﻿<Page x:Class="BedrockLauncherSetup.Pages.InstallationProgressPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Installer"
+      xmlns:local="clr-namespace:BedrockLauncherSetup"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="794"
       Title="WelcomePage" Height="371" Initialized="Page_Initialized">

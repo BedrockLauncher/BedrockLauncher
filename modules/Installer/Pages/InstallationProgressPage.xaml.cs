@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows;
 
 
-namespace Installer.Pages
+namespace BedrockLauncherSetup.Pages
 {
     /// <summary>
     /// Логика взаимодействия для WelcomePage.xaml
@@ -17,7 +17,7 @@ namespace Installer.Pages
         public InstallationProgressPage()
         {
             InitializeComponent();
-            launchOnExitCheckbox.IsChecked = Installer.MainWindow.Installer.RunOnExit;
+            launchOnExitCheckbox.IsChecked = BedrockLauncherSetup.MainWindow.Installer.RunOnExit;
             IsMainInit = true;
         }
 
@@ -25,7 +25,7 @@ namespace Installer.Pages
         {
             if (IsInit && IsMainInit)
             {
-                Installer.MainWindow.Installer.RunOnExit = launchOnExitCheckbox.IsChecked.Value;
+                BedrockLauncherSetup.MainWindow.Installer.RunOnExit = launchOnExitCheckbox.IsChecked.Value;
             }
         }
 

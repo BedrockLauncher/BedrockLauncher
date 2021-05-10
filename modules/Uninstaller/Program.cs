@@ -2,7 +2,7 @@
 using System.IO;
 using System.Diagnostics;
 
-namespace Uninstaller
+namespace MCBedrockRemovalTool
 {
     class Program
     {

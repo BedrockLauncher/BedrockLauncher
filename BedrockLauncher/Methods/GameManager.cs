@@ -210,7 +210,9 @@ namespace BedrockLauncher.Methods
 
             Task.Run(async () =>
             {
-                StartDownload();
+                ConfigManager.ViewModel.ShowProgressBar = true;
+                ConfigManager.ViewModel.CancelCommand = new RelayCommand((o) => cancelSource.Cancel());
+
                 try
                 {
                     string dlPath = "Minecraft-" + v.Name + ".Appx";
@@ -221,23 +223,14 @@ namespace BedrockLauncher.Methods
                     await ExtractPackage(v, dlPath);
                 }
                 catch { }
-                EndDownload();
-                if (RunAfterwards) InvokeLaunch(v);
-            });
 
-            void StartDownload()
-            {
-                ConfigManager.ViewModel.ShowProgressBar = true;
-                ConfigManager.ViewModel.CancelCommand = new RelayCommand((o) => cancelSource.Cancel());
-            }
-
-            void EndDownload()
-            {
                 if (!RunAfterwards) ConfigManager.ViewModel.ShowProgressBar = false;
                 ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.None;
                 ConfigManager.ViewModel.CancelCommand = null;
                 v.UpdateInstallStatus();
-            }
+
+                if (RunAfterwards) InvokeLaunch(v);
+            });
         }
         private void InvokeRemove(MCVersion v)
         {
@@ -253,7 +246,7 @@ namespace BedrockLauncher.Methods
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    ErrorScreenShow.exceptionmsg(ex);
                 }
 
                 v.UpdateInstallStatus();
@@ -266,7 +259,9 @@ namespace BedrockLauncher.Methods
         {
             await Task.Run(() =>
             {
-                StartBackup();
+                ConfigManager.ViewModel.ShowProgressBar = true;
+                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.isBackingUp;
+
                 try
                 {
                     var data = ApplicationDataManager.CreateForPackageFamily(MINECRAFT_PACKAGE_FAMILY);
@@ -284,8 +279,10 @@ namespace BedrockLauncher.Methods
                         ConfigManager.CreateInstallation("Recovery_Data", null, "Recovery_Data");
                     }
                 }
-                catch (Exception ex) { MessageBox.Show(ex.ToString()); }
-                EndBackup();
+                catch (Exception ex) { ErrorScreenShow.exceptionmsg(ex); }
+
+                ConfigManager.ViewModel.ShowProgressBar = false;
+                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.None;
             });
             ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
 
@@ -326,25 +323,13 @@ namespace BedrockLauncher.Methods
                     RestoreCopy_Step(f, tp);
                 }
             }
-
-            void StartBackup()
-            {
-                ConfigManager.ViewModel.ShowProgressBar = true;
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.isBackingUp;
-            }
-
-            void EndBackup()
-            {
-                ConfigManager.ViewModel.ShowProgressBar = false;
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.None;
-            }
         }
         public async void InvokeKillGame()
         {
             if (ConfigManager.GameManager.GameProcess != null)
             {
-                var title = ConfigManager.MainThread.FindResource("Dialog_KillGame_Title") as string;
-                var content = ConfigManager.MainThread.FindResource("Dialog_KillGame_Text") as string;
+                var title = Application.Current.FindResource("Dialog_KillGame_Title") as string;
+                var content = Application.Current.FindResource("Dialog_KillGame_Text") as string;
 
                 var result = await DialogPrompt.ShowDialog_YesNo(title, content);
 
@@ -368,30 +353,20 @@ namespace BedrockLauncher.Methods
                 {
                     if (ConfigManager.ViewModel.CurrentState == ViewModels.LauncherModel.StateChange.isInitializing)
                     {
-                        StartDownload();
+                        ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.isDownloading;
                         Program.Log("Actual download started");
                         if (total.HasValue) ConfigManager.ViewModel.TotalProgress = total.Value;
                     }
                     ConfigManager.ViewModel.CurrentProgress = current;
                 }, cancelSource.Token);
                 Program.Log("Download complete");
-                EndDownload();
+                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.None;
             }
             catch (Exception e)
             {
-                EndDownload();
+                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.None;
                 Program.Log("Download failed:\n" + e.ToString());
                 throw e;
-            }
-
-            void StartDownload()
-            {
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.isDownloading;
-            }
-
-            void EndDownload()
-            {
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.None;
             }
         }
         private async Task BetaAuthenticate()
@@ -406,7 +381,7 @@ namespace BedrockLauncher.Methods
             catch (Exception e)
             {
                 Program.Log("Authentication failed:\n" + e.ToString());
-                MessageBox.Show("Failed to authenticate. Please make sure your account is subscribed to the beta programme.\n\n" + e.ToString(), "Authentication failed");
+                ErrorScreenShow.errormsg("autherror");
                 throw e;
             }
         }
@@ -414,7 +389,7 @@ namespace BedrockLauncher.Methods
         {
             try
             {
-                StartLaunch();
+                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.isLaunching;
                 var pkg = await AppDiagnosticInfo.RequestInfoForPackageAsync(MINECRAFT_PACKAGE_FAMILY);
                 if (pkg.Count > 0) await pkg[0].LaunchAsync();
                 Program.Log("App launch finished!");
@@ -426,11 +401,11 @@ namespace BedrockLauncher.Methods
                         Application.Current.MainWindow.Close();
                     });
                 }
-                EndLaunch();
+                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.None;
             }
             catch (Exception e)
             {
-                EndLaunch();
+                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.None;
                 Program.Log("App launch failed:\n" + e.ToString());
                 Application.Current.Dispatcher.Invoke(() =>
                 {
@@ -438,17 +413,6 @@ namespace BedrockLauncher.Methods
                 });
                 throw e;
             }
-
-            void StartLaunch()
-            {
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.isLaunching;
-            }
-
-            void EndLaunch()
-            {
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.None;
-            }
-
         }
         private async Task SetInstallationDataPath()
         {
@@ -519,7 +483,8 @@ namespace BedrockLauncher.Methods
             catch (Exception e)
             {
                 Program.Log("Extraction failed:\n" + e.ToString());
-                MessageBox.Show("Extraction failed:\n" + e.ToString());
+                ErrorScreenShow.exceptionmsg("Extraction failed", e);
+
                 if (zipReadingStream != null) zipReadingStream.Close();
                 ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.None;
                 return;
@@ -550,10 +515,7 @@ namespace BedrockLauncher.Methods
             foreach (var pkg in new PackageManager().FindPackages(MINECRAFT_PACKAGE_FAMILY))
             {
                 string location = GetPackagePath(pkg);
-                if (location == "" || location == gameDir)
-                {
-                    await RemovePackage(v, pkg);
-                }
+                if (location == "" || location == gameDir) await RemovePackage(v, pkg);
             }
         }
         private async Task ReRegisterPackage(MCVersion v, string gameDir)
@@ -578,27 +540,6 @@ namespace BedrockLauncher.Methods
                 Program.Log("App re-register done!");
                 ConfigManager.ViewModel.DeploymentPackageName = "";
                 ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.None;
-
-                string GetPackageNameFromMainifest(string filePath)
-                {
-                    try
-                    {
-                        string manifestXml = File.ReadAllText(filePath);
-                        XDocument XMLDoc = XDocument.Parse(manifestXml);
-                        var Descendants = XMLDoc.Descendants();
-                        XElement Identity = Descendants.Where(x => x.Name.LocalName == "Identity").FirstOrDefault();
-                        string Name = Identity.Attribute("Name").Value;
-                        string Version = Identity.Attribute("Version").Value;
-                        string ProcessorArchitecture = Identity.Attribute("ProcessorArchitecture").Value;
-                        return String.Join("_", Name, Version, ProcessorArchitecture);
-                    }
-                    catch
-                    {
-                        return "???";
-                    }
-
-
-                }
             }
             catch (Exception e)
             {
@@ -639,6 +580,24 @@ namespace BedrockLauncher.Methods
 
         #region Helper Methods
 
+        private string GetPackageNameFromMainifest(string filePath)
+        {
+            try
+            {
+                string manifestXml = File.ReadAllText(filePath);
+                XDocument XMLDoc = XDocument.Parse(manifestXml);
+                var Descendants = XMLDoc.Descendants();
+                XElement Identity = Descendants.Where(x => x.Name.LocalName == "Identity").FirstOrDefault();
+                string Name = Identity.Attribute("Name").Value;
+                string Version = Identity.Attribute("Version").Value;
+                string ProcessorArchitecture = Identity.Attribute("ProcessorArchitecture").Value;
+                return String.Join("_", Name, Version, ProcessorArchitecture);
+            }
+            catch
+            {
+                return "???";
+            }
+        }
         private string GetPackagePath(Package pkg)
         {
             try

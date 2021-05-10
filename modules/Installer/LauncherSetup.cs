@@ -8,7 +8,7 @@ using Microsoft.Win32;
 using IWshRuntimeLibrary;
 using System.Xml;
 using System.Diagnostics;
-using Installer.Pages;
+using BedrockLauncherSetup.Pages;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -20,9 +20,9 @@ using BL_Core;
 using MessageBox = System.Windows.MessageBox;
 using System.Threading;
 
-namespace Installer
+namespace BedrockLauncherSetup
 {
-    public class LauncherInstaller
+    public class LauncherSetup
     {
         public InstallationProgressPage ProgressPage;
 
@@ -50,7 +50,7 @@ namespace Installer
         public bool RegisterAsProgram { get; set; } = false;
         public bool RunOnExit { get; set; } = true;
 
-        public LauncherInstaller()
+        public LauncherSetup()
         {
 
         }

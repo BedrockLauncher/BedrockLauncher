@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:Installer"
+                    xmlns:local="clr-namespace:BedrockLauncherSetup"
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" >
     <SolidColorBrush x:Key="ComboBox2.Static.Background" Color="#FF131313"/>
     <SolidColorBrush x:Key="ComboBox2.Static.Border" Color="#FF131313"/>

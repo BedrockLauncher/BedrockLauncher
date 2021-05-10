@@ -13,10 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
-using Installer.Pages;
+using BedrockLauncherSetup.Pages;
 using System.Diagnostics;
 
-namespace Installer
+namespace BedrockLauncherSetup
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
@@ -30,7 +30,7 @@ namespace Installer
         private InstallTypePage installTypePage = new InstallTypePage();
 
 
-        public static LauncherInstaller Installer = new LauncherInstaller();
+        public static LauncherSetup Installer = new LauncherSetup();
 
         public MainWindow()
         {

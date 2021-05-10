@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows;
 
 
-namespace Installer.Pages
+namespace BedrockLauncherSetup.Pages
 {
     /// <summary>
     /// Логика взаимодействия для WelcomePage.xaml
@@ -22,13 +22,13 @@ namespace Installer.Pages
         {
             if (IsInit && IsFullInit)
             {
-                Installer.MainWindow.Installer.IsBeta = BetaRadioButton.IsChecked.Value;
+                BedrockLauncherSetup.MainWindow.Installer.IsBeta = BetaRadioButton.IsChecked.Value;
             }
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            BetaRadioButton.IsChecked = Installer.MainWindow.Installer.IsBeta;
+            BetaRadioButton.IsChecked = BedrockLauncherSetup.MainWindow.Installer.IsBeta;
             IsFullInit = true;
         }
 

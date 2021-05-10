@@ -26,19 +26,21 @@ namespace BedrockLauncher.Pages
         {
             System.Diagnostics.Process.Start("notepad.exe", $@"{Environment.CurrentDirectory}\Log.txt");
         }
-
-        private void Hyperlink_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
-        {
-            Program.LogConsoleLine("wha");
-        }
     }
     public static class ErrorScreenShow
     {
+        public static void exceptionmsg(string title, Exception error = null)
+        {
+            ErrorScreen errorScreen = new ErrorScreen();
+            // Show default error message
+            if (error == null)
+            {
+                ConfigManager.MainThread.SetDialogFrame(new ErrorScreen());
+            }
+            errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, title);
+            errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, error.Message);
+            ConfigManager.MainThread.SetDialogFrame(errorScreen);
+        }
         public static void exceptionmsg(Exception error = null)
         {
             ErrorScreen errorScreen = new ErrorScreen();

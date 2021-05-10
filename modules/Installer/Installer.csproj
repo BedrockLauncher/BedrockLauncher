@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{295729F7-172F-4BCD-A619-E495DB5A4E2F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Installer</RootNamespace>
+    <RootNamespace>BedrockLauncherSetup</RootNamespace>
     <AssemblyName>Installer</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -48,6 +48,8 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -130,7 +132,7 @@
     <Compile Include="Pages\InstallLocationPage.xaml.cs">
       <DependentUpon>InstallLocationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LauncherInstaller.cs" />
+    <Compile Include="LauncherSetup.cs" />
     <Compile Include="Pages\LicenseAgreementPage.xaml.cs">
       <DependentUpon>LicenseAgreementPage.xaml</DependentUpon>
     </Compile>
@@ -240,6 +242,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="App.config" />
     <None Include="Properties\app.manifest" />
     <Page Include="Resources\styles\radiobutton.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -249,7 +252,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 и x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -301,7 +304,7 @@
     <PostBuildEvent>@ECHO OFF
 SETLOCAL
 SET "sourcedir=$(TargetDir)"
-SET "keepfile=Installer.exe"
+SET "keepfile=$(TargetFileName)"
 
 FOR %25%25a IN ("%25sourcedir%25\*") DO IF /i NOT "%25%25~nxa"=="%25keepfile%25" DEL "%25%25a"
 FOR /D %25%25p IN ("%25sourcedir%25\*.*") DO rmdir "%25%25p" /s /q

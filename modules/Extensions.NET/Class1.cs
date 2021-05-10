@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BedrockLauncherSetup
+namespace Extensions.NET
 {
-    public enum UpdateParam
+    public class Class1
     {
-        InstallStart,
-        InstallComplete
     }
 }
