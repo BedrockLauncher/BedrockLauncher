@@ -120,7 +120,6 @@ namespace Installer
         private void Window_Initialized(object sender, EventArgs e)
         {
             Installer.ProgressPage = installationProgressPage;
-            BL_Core.LanguageManager.Init();
             string[] ConsoleArgs = Environment.GetCommandLineArgs();
             bool isSilent = false;
             bool isBeta = false;

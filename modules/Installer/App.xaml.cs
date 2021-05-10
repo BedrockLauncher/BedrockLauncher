@@ -13,5 +13,9 @@ namespace Installer
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            BL_Core.LanguageManager.Init();
+        }
     }
 }

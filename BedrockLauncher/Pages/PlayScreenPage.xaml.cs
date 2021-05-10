@@ -66,6 +66,20 @@ namespace BedrockLauncher.Pages
             string packUri = string.Empty;
             string currentTheme = Properties.LauncherSettings.Default.CurrentTheme;
 
+            bool isBugRock = Program.IsBugRockOfTheWeek();
+            if (isBugRock)
+            {
+                BedrockLogo.Visibility = Visibility.Collapsed;
+                BugrockLogo.Visibility = Visibility.Visible;
+                BugrockOfTheWeekLogo.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                BedrockLogo.Visibility = Visibility.Visible;
+                BugrockLogo.Visibility = Visibility.Collapsed;
+                BugrockOfTheWeekLogo.Visibility = Visibility.Collapsed;
+            }
+
             switch (currentTheme)
             {
                 case "LatestUpdate":

@@ -224,7 +224,7 @@ namespace BedrockLauncher
         }
         private void Window_Initialized(object sender, EventArgs e)
         {
-            BL_Core.LanguageManager.Init();
+
         }
         private void ConfigManager_ConfigStateChanged(object sender, EventArgs e)
         {

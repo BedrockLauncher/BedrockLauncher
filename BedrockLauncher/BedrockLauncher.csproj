@@ -264,7 +264,6 @@
     <Compile Include="Classes\MCProfilesList.cs" />
     <Compile Include="Components\NotifyPropertyChangedBase.cs" />
     <Compile Include="Classes\MCVersion.cs" />
-    <Compile Include="Classes\VersionStateChangeInfo.cs" />
     <Compile Include="Methods\ZipFileExtensions.cs" />
     <Compile Include="Pages\DialogPrompt.xaml.cs">
       <DependentUpon>DialogPrompt.xaml</DependentUpon>
@@ -376,10 +375,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Components\OnlyDigitsValidationRule.cs" />
-    <DesignData Include="Data\Versions.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </DesignData>
     <Page Include="Controls\Items\BlockPickerItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -928,6 +923,14 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\ui\bg\play_screen\other_early_console_era.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\ui\logo\BedrockEdition.png" />
+    <Resource Include="Resources\images\ui\logo\BugrockEdition.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\ui\logo\BugrockOfTheWeek.png" />
+    <Resource Include="Resources\images\ui\logo\OfTheWeek.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

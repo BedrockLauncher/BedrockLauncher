@@ -92,7 +92,7 @@ namespace BedrockLauncher.Methods
             return result;
         }
 
-        private IEnumerable<HtmlNode> NodeSearch(HtmlNode htmlNode, Func<HtmlNode, bool> Function)
+        private static IEnumerable<HtmlNode> NodeSearch(HtmlNode htmlNode, Func<HtmlNode, bool> Function)
         {
             return htmlNode.DescendantsAndSelf().ToList().Where(Function);
         }
@@ -260,6 +260,49 @@ namespace BedrockLauncher.Methods
 
         #region Feedback Site Patch Notes Downloader
 
+        public static bool GetBedrockOfTheWeekStatus()
+        {
+            HtmlWeb web = new HtmlWeb();
+            DateTime lastBeta = DateTime.MinValue;
+            string base_url = "https://feedback.minecraft.net/";
+            var branch = new FeedbackParams()
+            {
+                _branch = "beta",
+                _suburl = "/hc/en-us/sections/360001185332",
+                keyword = "Windows 10"
+            };
+
+            HtmlDocument tree;
+            IEnumerable<HtmlNode> vers = new List<HtmlNode>();
+
+            string furl = base_url + branch._suburl + string.Format("?page={0}", 1);
+            try { tree = web.Load(furl); }
+            catch { return false; }
+
+            vers = NodeSearch(tree.DocumentNode, (x => x.HasClass("article-list-link")));
+
+            if (vers == null || vers.Count() == 0) return false;
+
+            var link = vers.ToList()[0];
+
+            string text = link.InnerText;
+            if (text.Contains(branch.keyword))
+            {
+                string item_url = base_url + link.GetAttributeValue("href", string.Empty);
+                try
+                {
+                    var item = web.Load(item_url);
+                    lastBeta = GetPublishedDate(item);
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+
+            return (lastBeta.Date == DateTime.Today.Date);
+        }
+
         public void DownloadFeedbackPatchNotes()
         {
             ClearPatchList();
@@ -328,7 +371,7 @@ namespace BedrockLauncher.Methods
                                         isBeta = isBeta,
                                         Url = item_url,
                                         ImageUrl = (isBeta ? MCPatchNotesItem.FallbackImageURL_Dev : MCPatchNotesItem.FallbackImageURL),
-                                        PublishingDateString = GetPublishedDate(current_result),
+                                        PublishingDateString = GetPublishedDate(current_result).ToString(),
                                         Content = string.Format(HTMLFormat, UpdateHTMLHeader(new List<string>()), content.InnerHtml),
                                     };
 
@@ -349,41 +392,6 @@ namespace BedrockLauncher.Methods
             }
 
 
-            string GetPublishedDate(HtmlDocument doc)
-            {
-                string postedDate = string.Empty;
-
-                Func<HtmlNode, bool> description_meta = (x => x.Name == "meta" && x.HasAttributes);
-
-                foreach (var sub_node in NodeSearch(doc.DocumentNode, description_meta))
-                {
-                    string property = sub_node.GetAttributeValue("property", "");
-                    string content = sub_node.GetAttributeValue("content", "");
-                    if (property == "og:description")
-                    {
-                        if (content.StartsWith("Posted:"))
-                        {
-                            string constructed_date = content.Split(new[] { '\r', '\n' }).FirstOrDefault().Replace("Posted:", string.Empty);
-                            constructed_date = RemoveDaySuffixes(constructed_date);
-                            if (DateTime.TryParse(constructed_date, out DateTime extractedDate))
-                            {
-                                postedDate = extractedDate.ToString();
-                            }
-
-                            string RemoveDaySuffixes(string date_string)
-                            {
-                                string result = Regex.Replace(date_string, @"\b(\d+)(?:st|nd|rd|th)\b", "$1");
-                                return result;
-                            }
-
-                        }
-                    }
-                }
-
-                return postedDate;
-            }
-
-
             System.Version GetVersion(string title)
             {
                 Regex pattern = new Regex("\\d+(\\.\\d+)+");
@@ -396,28 +404,34 @@ namespace BedrockLauncher.Methods
 
         }
 
+        private static DateTime GetPublishedDate(HtmlDocument doc)
+        {
+            DateTime postedDate = DateTime.MinValue;
+
+            var content = doc.DocumentNode.InnerText;
+            if (content.Contains("Posted:"))
+            {
+                string detectedDate = content.Substring(content.IndexOf("Posted:")).Replace("Posted:", string.Empty);
+                string constructed_date = detectedDate.Split(new[] { '\r', '\n' }).FirstOrDefault();
+                constructed_date = RemoveDaySuffixes(constructed_date);
+                if (DateTime.TryParse(constructed_date, out DateTime extractedDate))
+                {
+                    postedDate = extractedDate;
+                }
+
+                string RemoveDaySuffixes(string date_string)
+                {
+                    string result = Regex.Replace(date_string, @"\b(\d+)(?:st|nd|rd|th)\b", "$1");
+                    return result;
+                }
+            }
+            return postedDate;
+        }
+
         private string UpdateHTMLHeader(List<string> styles)
         {
             string stylesheets = String.Join(Environment.NewLine, styles);
             return string.Format(HTMLHeader, stylesheets, HTMLStyle);
-        }
-
-        private List<string> GetStylesheets(HtmlDocument current_result)
-        {
-            var header_node = current_result.DocumentNode.SelectNodes("/html/head").FirstOrDefault();
-            var inline_stylelist = header_node.Descendants().Where(x => x.Name == "style").ToList();
-            var stylesheet_list = header_node.Descendants().Where(x => x.Name == "link" && x.GetAttributeValue("rel", "nostylesheet") == "stylesheet").ToList();
-            var merged_styles = inline_stylelist.Concat(stylesheet_list);
-
-            var final_list = new List<string>();
-
-            foreach (var style in merged_styles)
-            {
-                final_list.Add(style.OuterHtml);
-            }
-
-            return final_list;
-
         }
 
         private HtmlNode OptimizeFeedbackPage(HtmlDocument current_result, string base_url)

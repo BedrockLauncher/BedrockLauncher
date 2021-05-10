@@ -71,12 +71,6 @@
         </DrawingImage.Drawing>
     </DrawingImage>
 
-    <TextBlock x:Key="TitleText" Text="{Binding DisplayStatus}">
-        <TextBlock.DataContext>
-            <classes:VersionStateChangeInfo/>
-        </TextBlock.DataContext>
-    </TextBlock>
-
     <Style x:Key="FocusVisual">
         <Setter Property="Control.Template">
             <Setter.Value>

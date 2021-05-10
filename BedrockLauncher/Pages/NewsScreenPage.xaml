@@ -100,7 +100,7 @@
                         <Grid Background="Black" Opacity="0.75" Focusable="False" />
                     </Grid>
                     <StackPanel HorizontalAlignment="Left" Height="35" Grid.Row="1" VerticalAlignment="Bottom" Orientation="Horizontal">
-                        <ToggleButton x:Name="OfficalTab" Width="90" Click="ButtonManager" Content="{DynamicResource NewsScreen_OfficalTabTitle}" Style="{DynamicResource ToolbarButton}" IsChecked="True">
+                        <ToggleButton x:Name="OfficalTab" Width="90" Click="ButtonManager" Content="{DynamicResource NewsScreen_OfficialTabTitle}" Style="{DynamicResource ToolbarButton}" IsChecked="True">
                             <ToggleButton.ToolTip>
                                 <ToolTip Content="{DynamicResource NewsScreen_OfficalTabTitle}"/>
                             </ToggleButton.ToolTip>

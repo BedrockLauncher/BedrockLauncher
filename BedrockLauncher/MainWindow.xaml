@@ -13,7 +13,7 @@
         xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
         xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
-        d:DataContext="{d:DesignData viewModels:LauncherModel}" 
+        d:DataContext="{x:Static methods:ConfigManager.ViewModel}" 
         x:Class="BedrockLauncher.MainWindow"
         mc:Ignorable="d"
         MouseDown="Window_MouseDown"
@@ -38,7 +38,7 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <StackPanel x:Name="buttonStackPanel" Grid.Column="0" Background="#FF1E1E1E" HorizontalAlignment="Left">
-                        <toolbar:ProfileButton IsEnabled="{Binding Source={x:Static methods:ConfigManager.ViewModel}, Path=AllowEditing, Mode=OneWay}" x:Name="ProfileButton"></toolbar:ProfileButton>
+                        <toolbar:ProfileButton IsEnabled="{Binding Path=AllowEditing, Mode=OneWay}" x:Name="ProfileButton"></toolbar:ProfileButton>
                         <toolbar:NewsButton x:Name="NewsButton"></toolbar:NewsButton>
                         <toolbar:BedrockEditionButton x:Name="BedrockEditionButton"></toolbar:BedrockEditionButton>
                         <toolbar:JavaEditionButton x:Name="JavaEditionButton" Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=HideJavaShortcut, Converter={StaticResource ReverseBoolToVis}, ConverterParameter=Inverted}"></toolbar:JavaEditionButton>
@@ -62,10 +62,10 @@
                         </Grid>
                         <Grid x:Name="PlayScreenBorder" Grid.Row="2" x:FieldModifier="public" VerticalAlignment="Bottom" Background="#FF262626">
                             <TextBlock Style="{DynamicResource HeaderTextblock}" Text="{DynamicResource MainWindow_Disclaimer}" HorizontalAlignment="Right" Panel.ZIndex="0" VerticalAlignment="Center" Padding="0,0,5,0" Margin="0,0,0,0"/>
-                            <Button  IsEnabled="{Binding Source={x:Static methods:ConfigManager.ViewModel}, Path=AllowPlaying, Mode=OneWay}" x:Name="MainPlayButton" Click="MainPlayButton_Click" HorizontalAlignment="Center" Margin="286,-8,286,0" VerticalAlignment="Top" Width="250" Height="56" Padding="0" Style="{DynamicResource BigGreenButton}">
+                            <Button  IsEnabled="{Binding Path=AllowPlaying, Mode=OneWay}" x:Name="MainPlayButton" Click="MainPlayButton_Click" HorizontalAlignment="Center" Margin="286,-8,286,0" VerticalAlignment="Top" Width="250" Height="56" Padding="0" Style="{DynamicResource BigGreenButton}">
                                 <TextBlock x:Name="PlayButtonText" Style="{DynamicResource BigGreenButton_Text}" Text="{Binding Path=PlayButtonString, Mode=OneWay}"/>
                             </Button>
-                            <controls:InstallationSelector SelectedIndex="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=CurrentInstallation}" IsEnabled="{Binding Source={x:Static methods:ConfigManager.ViewModel}, Path=AllowEditing, Mode=OneWay}" SelectionChanged="InstallationsList_SelectionChanged" ItemsSource="{Binding}" x:Name="InstallationsList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="250" Height="50" Padding="-1,7,5,3"></controls:InstallationSelector>
+                            <controls:InstallationSelector SelectedIndex="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=CurrentInstallation}" IsEnabled="{Binding Path=AllowEditing, Mode=OneWay}" SelectionChanged="InstallationsList_SelectionChanged" ItemsSource="{Binding}" x:Name="InstallationsList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="250" Height="50" Padding="-1,7,5,3"></controls:InstallationSelector>
                         </Grid>
                     </Grid>
                 </Grid>

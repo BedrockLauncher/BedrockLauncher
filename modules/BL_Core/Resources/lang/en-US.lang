@@ -1,0 +1,509 @@
+﻿#region Main Section
+
+#region MainWindow
+
+text.MainWindow_Title=Minecraft Bedrock Launcher
+text.MainWindow_Disclaimer=NOT ASSOCIATED OR APPROVED BY MOJANG
+
+#endregion
+
+#region ToolbarButtons
+
+text.ToolbarButtons_NewsButton_Text=News
+text.ToolbarButtons_MinecraftEdition_Text=Bedrock Edition
+text.ToolbarButtons_MinecraftJavaEdition_Text=Java Edition
+text.ToolbarButtons_MinecraftJavaLauncher_Text=Java Launcher
+text.ToolbarButtons_CustomLauncher_Text=Custom Launcher
+text.ToolbarButtons_SwitchEdition_Text=Switch to
+text.ToolbarButtons_Minecraft_Text=MINECRAFT:
+text.ToolbarButtons_ServersButton_Text=Servers
+text.ToolbarButtons_ProfileButton_ProfileType_Text=Profile
+text.ToolbarButtons_SettingsButton_Text=Settings
+
+#endregion
+
+#region UpdateButton
+
+text.UpdateButton_NewUpdate_Text=New Update!
+text.UpdateButton_Download_Text=Click to download!
+
+#endregion
+
+#region ProgressBar
+
+text.ProgressBar_Downloading=Downloading
+text.ProgressBar_Installing=Installing
+text.ProgressBar_Launching=Launching
+text.ProgressBar_Extracting=Extracting
+text.ProgressBar_Uninstalling=Uninstalling
+text.ProgressBar_RegisteringPackage=Registering Package
+text.ProgressBar_RemovingPackage=Unregistering Package
+text.ProgressBar_BackingUp=Backing up Save Data
+
+#endregion
+
+#region ProfileButton
+
+text.ProfileButton_ManageProfiles_Text=Manage Profiles
+text.ProfileButton_ProfileSettings_Text=Profile Settings
+text.ProfileButton_AddProfile_Text=Add Profile
+text.ProfileButton_RemoveProfile_Text=Remove Profile
+text.ProfileButton_ChooseAccount_Text=CHOOSE PROFILE
+
+#endregion
+
+#endregion
+
+#region Game Section
+
+#region GameTab
+
+text.GameTab_Title=MINECRAFT: BEDROCK EDITION
+text.GameTab_PlayButton_Text=Play
+text.GameTab_PlayButton_Kill_Text=Kill
+text.GameTab_InstallationsButton_Text=Installations
+text.GameTab_SkinsButton_Text=Skins
+text.GameTab_PatchNotesButton_Text=Patch notes
+
+#endregion
+
+#region InstallationsPage
+
+text.InstallationsPage_AddButton=New...
+text.InstallationsPage_PlayButton=Play
+
+#endregion
+
+#region EditInstallationScreen
+
+text.EditInstallationScreen_Title=Create new installation
+text.EditInstallationScreen_AltTitle=Edit installation
+
+text.EditInstallationScreen_CreateButton=Create
+text.EditInstallationScreen_AltCreateButton=Save
+
+text.EditInstallationScreen_LatestSnapshot=Latest Beta
+text.EditInstallationScreen_LatestRelease=Latest Release
+
+text.EditInstallationScreen_NameSubtitle=NAME
+text.EditInstallationScreen_VersionSubtitle=VERSION
+text.EditInstallationScreen_DirectorySubtitle=DIRECTORY
+
+text.EditInstallationScreen_NameHintText=unamed installation
+text.EditInstallationScreen_DirectoryHintText=default path
+
+#endregion
+
+#region PatchNotesPage
+
+text.PatchNotesPage_MorePatchNotes=More patch notes
+text.PatchNotesPage_MorePatchNotesBeta=More beta patch notes
+
+#endregion
+
+#region SkinsPage
+
+text.SkinsPage_AddButton=New...
+text.SkinsPage_ImportButton=Import...
+
+#endregion
+
+#region EditSkinScreen
+
+text.EditSkinScreen_Title=Edit Skin
+text.EditSkinScreen_AltTitle=Add Skin
+
+text.EditSkinScreen_TextureSubtitle=TEXTURE
+text.EditSkinScreen_GeometrySubtitle=GEOMETRY
+text.EditSkinScreen_TypeSubtitle=TYPE
+text.EditSkinScreen_LocalizationSubtitle=LOCALIZATION NAME
+
+#endregion
+
+#region EditSkinPackScreen
+
+text.EditSkinPackScreen_DescriptionSubtitle=DESCRIPTION
+text.EditSkinPackScreen_GeometryPathSubtitle=GEOMETRY
+
+text.EditSkinPackScreen_LocalizationNameSubtitle=LOCALIZATION NAME
+text.EditSkinPackScreen_SerializeNameSubtitle=SERALIZABLE NAME
+text.EditSkinPackScreen_LocalizationLangSubtitle=LANGUAGE DEFINITIONS
+
+text.EditSkinPackScreen_AddLangTextBoxSubtitle=LANG NAME
+
+text.EditSkinPackScreen_DefinitionsSubtitle=OTHER DEFINITIONS
+text.EditSkinPackScreen_ContentSubtitle=CONTENT
+text.EditSkinPackScreen_ModulesSubtitle=MODULES
+
+text.EditSkinPackScreen_FormatVersionSubtitle=FROMAT VERSION
+
+text.EditSkinPackScreen_HeaderNameSubtitle=PACK NAME
+text.EditSkinPackScreen_HeaderUUIDSubtitle=UUID
+text.EditSkinPackScreen_HeaderVersionSubtitle=VERSION
+
+text.EditSkinPackScreen_ModulesTypeSubtitle=TYPE
+text.EditSkinPackScreen_ModulesUUIDSubtitle=UUID
+text.EditSkinPackScreen_ModulesVersionSubtitle=VERSION
+
+text.EditSkinPackScreen_Header=Edit Skin Pack
+text.EditSkinPackScreen_AddHeader=Add Skin Pack
+
+text.EditSkinPackScreen_Warning=* Please note that modifying language definitions and changing the pack icon are inreversible regardless if you save your changes or not!!!
+
+#endregion
+
+#endregion
+
+#region News Section
+
+#region LauncherNewsPage
+
+text.LauncherNewsPage_Title_Text=Latest Build Changes
+text.LauncherNewsPage_Build_Text=Build
+text.LauncherNewsPage_Changes_Text=Changes:
+text.LauncherNewsPage_CheckForUpdates=Check for Updates
+text.LauncherNewsPage_ForceUpdate=Force Update
+
+#endregion
+
+#region NewsScreenPage
+
+text.NewsScreen_LauncherTabTitle=Launcher
+text.NewsScreen_OfficialTabTitle=Official
+
+#endregion
+
+#endregion
+
+#region Settings Section
+
+#region SettingsTab
+
+text.SettingsTab_Title=SETTINGS
+text.SettingsTab_GeneralButton=General
+text.SettingsTab_AccountsButton=Accounts
+text.SettingsTab_AboutButton=About
+text.SettingsTab_VersionsButton=Versions
+
+#endregion
+
+#region GeneralSettingsScreen
+text.GeneralSettingsScreen_LanguageSubtitle=LANGUAGE
+text.GeneralSettingsScreen_ThemeSubtitle=LAUNCHER THEME
+
+
+text.GeneralSettingsScreen_LauncherSettingsSubtitle=LAUNCHER SETTINGS
+text.GeneralSettingsScreen_UseBetaLauncher=Use beta version of the launcher
+text.GeneralSettingsScreen_KeepLauncherOpen=Keep the launcher open while game is runnning
+text.GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher=Close launcher when switching launchers
+text.GeneralSettingsScreen_SilentUpdates=Update the launcher silently
+
+text.GeneralSettingsScreen_BedrockEditionSettingsSubtitle=MINECRAFT: BEDROCK EDITION SETTINGS
+text.GeneralSettingsScreen_SupportCreatorSubtitle=SUPPORT CREATOR
+
+text.GeneralSettingsScreen_UpdatesSubtitle=LAUNCHER UPDATES
+
+text.GeneralSettingsScreen_SupportCreatorButton=Support creator
+
+
+text.GeneralSettingsScreen_ExperimentalSaveRedirection=Enable experiemental save redirection
+text.GeneralSettingsScreen_HideJavaLauncherShortcut=Hide Java Edition launcher shortcut
+text.GeneralSettingsScreen_ShowExternalLauncherShortcut=Show external launcher shortcut
+text.GeneralSettingsScreen_BackupButton=Backup Save Data
+text.GeneralSettingsScreen_AdvancedSettingsButton=Advanced Settings
+
+text.GeneralSettingsScreen_ExternalLauncherSubtitle=EXTERNAL LAUNCHER
+text.GeneralSettingsScreen_ExternalLauncherNameSubtitle=PATH
+text.GeneralSettingsScreen_ExternalLauncherPathSubtitle=NAME
+text.GeneralSettingsScreen_ExternalLauncherIconSubtitle=ICON
+
+#endregion
+
+#region AcountsSettingsPage
+
+text.AcountsSettingsPage_AccountDropdown_Subtitle=INSIDER ACCOUNT
+
+#endregion
+
+#region AboutPage
+
+text.AboutPage_Title=ABOUT MINECRAFT: BEDROCK EDITION LAUNCHER
+text.AboutPage_DevelopedBy_Text=DEVELOPED BY
+text.AboutPage_OriginallyDevelopedBy_Text=FORKED FROM THE WORK OF
+text.AboutPage_SpecialThanks_Text=SPECIAL THANKS TO
+
+text.AboutPage_McMrArm_Text=For creating the original Minecraft Windows 10 Version Downloader (which this work derives from)
+text.AboutPage_BsCommunity_Text=For their work on SkinView3D, which is used for the skin viewing functionality in the launcher
+text.AboutPage_Mojang_Text=For Minecraft!!!
+text.AboutPage_Mojang_NoteText=*Mojang Studios Styled Icon Made by u/Julian-Wolfskin of Reddit
+text.AboutPage_BsRepo_Text=SkinView3D Repo
+
+#endregion
+
+#region AdvancedSettings
+
+text.AdvancedSettings_Title=Advanced Settings
+text.AdvancedSettings_LauncherOptions_Text=LAUNCHER OPTIONS
+text.AdvancedSettings_PathSubtitle_Text=STORAGE DIRECTORY
+text.AdvancedSettings_RestartButton_Text=Restart
+text.AdvancedSettings_Notice_Text=* All settings will restart the launcher
+text.AdvancedSettings_PortableMode_Text=Enable Portable Mode
+
+#endregion
+
+#endregion
+
+#region Dialog Section
+
+#region FirstLaunch
+
+text.FirstLaunch_WelcomeTitle=Welcome!
+text.FirstLaunch_WelcomeSubTitle=Welcome to Minecraft Bedrock Launcher!
+text.FirstLaunch_CreateProfileSubTitle=Create your first profile!
+text.FirstLaunch_AlmostThereTitle=Almost there!
+text.FirstLaunch_OneThingTitle=One thing...
+text.FirstLaunch_OneThingSubtitle=Just check over these to make sure they're just how you like it.
+
+text.FirstLaunch_BeforeStartingToUse=Before using, it is highly recommended that you press backup to create an installation of your existing save data as the launcher does replace the original directory with a symbolic link which allows us to redirect save data.\n\n (Don't worry, you will not lose your data by doing this, you will only lose data if you press play and haven't backed your stuff up)
+
+text.FirstLaunch_InstallType_Header=Save/Load Launcher Data From:
+text.FirstLaunch_FixedInstall_Checkbox=Fixed Folder (Recommended)
+text.FirstLaunch_PortableInstall_Checkbox=Portable/Root Folder
+text.FirstLaunch_BackupCheckBox_Text=Backup Existing Save Data
+text.FirstLaunch_BackupCheckBox_Subtext=(RECOMMENDED)
+text.FirstLaunch_CloseButton=Close
+text.FirstLaunch_BackButton=Back
+text.FirstLaunch_GoBackButton=❮ GO BACK
+text.FirstLaunch_CreateProfileText=PROFILE
+text.FirstLaunch_CreateProfileButton=Create
+text.FirstLaunch_NextButton=Next
+text.FirstLaunch_DownloadButton=Download
+text.FirstLaunch_FinishButton=Finish
+
+#endregion
+
+#region ErrorScreen
+
+text.ErrorScreen_Title=ERROR
+text.ErrorScreen_SubTitle=Launcher crashed
+text.ErrorScreen_DefaultErrorMessage=An unexpected issue occurred and the launcher has crashed. We're sorry for the inconvenience.
+text.ErrorScreen_CloseButton=Close
+text.ErrorScreen_ViewCrash=View crash report
+
+#endregion
+
+#region Errors
+
+text.Error_AuthenticationFailed_Title=Authentication failed
+text.Error_AuthenticationFailed=Failed to authenticate. Please make sure your account is subscribed to the beta programme.
+
+text.Error_CantFindExternalLauncher_Title=Could not switch launcher
+text.Error_CantFindExternalLauncher=Could not switch the launcher. Be sure you have the path to the launcher set correctly.
+
+text.Error_CantFindJavaLauncher_Title=Could not switch launcher
+text.Error_CantFindJavaLauncher=Could not find launcher. Be sure you have installed original Minecraft launcher from Minecraft.net .
+
+text.Error_AppReregisterFailed_Title=App re-register failed
+text.Error_AppReregisterFailed=Please try again :(
+
+text.Error_AppLaunchFailed_Title=Launch failed
+text.Error_AppLaunchFailed=Please try again :(
+
+text.Error_AppDownloadFailed_Title=Download failed
+text.Error_AppDownloadFailed=Please try again :(
+
+text.Error_AppExtractionFailed_Title=Extraction failed
+text.Error_AppExtractionFailed=Please try again :(
+
+text.Error_CantFindPaidServerList_Title=Could not open servers tab
+text.Error_CantFindPaidServerList=Paid Servers List not found.
+
+text.Error_NotaSkinPack_Title=Unable to import skin pack
+text.Error_NotaSkinPack=That's not a skin pack silly!
+
+#endregion
+
+#region NewProfile
+
+text.NewProfile_GoBackButton=❮ GO BACK
+text.NewProfile_CreateProfileText=PROFILE
+text.NewProfile_CreateProfileText_Error=THIS NAME IS ALREADY TAKEN
+text.NewProfile_CreateProfileSubTitle=Enter the name of your new profile!
+text.NewProfile_CreateProfileButton=Create
+
+#endregion
+
+#region Dialog
+
+text.Dialog_Item_Installation_Text=installation
+text.Dialog_Item_SkinPack_Text=skin pack
+text.Dialog_Item_Skin_Text=skin
+text.Dialog_Item_Version_Text=version
+text.Dialog_Item_Profile_Text=profile
+
+text.Dialog_DeleteItem_Title=Delete {0} permenantly
+text.Dialog_DeleteItem_Text=Are you sure you want to delete "{1}"?\nThis {0} will be lost forever! (A long time!)
+
+text.Dialog_KillGame_Title=Kill Game
+text.Dialog_KillGame_Text=This is Dangerous, and is only recommeneded if you get stuck. Do you still want to close the game?
+
+text.Dialog_CloseGame_Title=Game is Still Running
+text.Dialog_CloseGame_Text=Would you like to force close it? (without saving changes, this is only recommended if you get stuck, please close the game normally)
+
+#endregion
+
+#region Internal
+
+text.GameManager_RecoveringDataIssue_FileNotExistant_Text=The file {0} already exists in the destination.\nDo you want to replace it? The old file will be lost otherwise.
+text.GameManager_RecoveringDataIssue_NotaDirectory_Text=The file {0} is not a directory. Do you want to remove it? The data from the old directory will be lost otherwise.
+
+text.GameManager_RecoveringDataIssue_Title=Coverting Existing Save Data to Installation
+
+#endregion
+
+#endregion
+
+#region Installer Section
+
+
+#region UI
+
+text.Installer_Title=Minecraft Bedrock Launcher Setup Wizard
+
+text.Installer_Back_Text=Back
+text.Installer_Next_Text=Next
+text.Installer_Cancel_Text=Cancel
+text.Installer_Finish_Text=Finish
+
+text.Installer_WelcomePage_Title=Welcome to the Minecraft Bedrock Launcher Setup Wizard
+text.Installer_WelcomePage_Info_Text=This will install Minecraft Bedrock Launcher on your computer.
+text.Installer_WelcomePage_Info2_Text=It is recommended that you close all other applications before continuing.
+text.Installer_WelcomePage_Info3_Text=Click Next to continue, or Cancel to exit Setup.
+
+text.Installer_LicenseAgreement_Title=License Agreement
+text.Installer_LicenseAgreement_Info_Text=Please read the following License Agreement. You must accept the terms of this
+text.Installer_LicenseAgreement_Info2_Text=agreement before continuing with the installation.
+text.Installer_LicenseAgreement_Accept_Text=I accept the license.
+text.Installer_LicenseAgreement_DontAccept_Text=I dont accept the license.
+
+text.Installer_InstallType_Title=Choose Install Type
+text.Installer_InstallType_Info_Text=Select which version of the launcher you want to download
+
+text.Installer_InstallType_InstallLocation_BetaRadioButton_Text=Beta Version
+text.Installer_InstallType_InstallLocation_ReleaseRadioButton_Text=Release Version
+
+text.Installer_InstallLocation_Title=Choose Install Location
+text.Installer_InstallLocation_Info_Text=Setup will install Minecraft Bedrock Launcher in the following folder. To install in a different folder,
+text.Installer_InstallLocation_Info2_Text=click Browse and select another folder.
+
+text.Installer_InstallLocation_DestinationFolder_Header=Destination Folder Folder
+text.Installer_InstallLocation_Browse_Text=BROWSE
+
+text.Installer_InstallLocation_CreateDesktopIcon_Text=Create a desktop icon
+text.Installer_InstallLocation_AddToStartMenu_Text=Add to Start menu
+text.Installer_InstallLocation_RegisterApp_Text=Register Program
+
+text.Installer_InstallationProgress_LaunchOnExit_Text=Start Program on Exit
+
+text.Installer_InstallationProgress_Title=Installing
+text.Installer_InstallationProgress_Info_Text=Please wait while Setup installs Minecraft Bedrock Launcher on your computer.
+
+
+#endregion
+
+text.Installer_Dialog_MovingDirectoryFailed_Text=Unable to Move Directory
+text.Installer_Dialog_MovingFileFailed_Text=Unable to Move File
+text.Installer_Dialog_FileLocked_Text=File Being Used
+text.Installer_Dialog_TryAgain_Text=Try Again?
+text.Installer_Dialog_ErrorOccured_Text=An error has occured.
+
+#region ProgressBar
+
+text.Installer_ProgressBar_Downloading=Downloading...
+text.Installer_ProgressBar_Finalizing=Finalizing...
+text.Installer_ProgressBar_Initalizing=Initalizing...
+
+
+#endregion
+
+#endregion
+
+#region General Section
+
+#region LanguageEntries
+
+text.LanguageEntries_en_US=English - United States
+text.LanguageEntries_ru_RU=Русский - Россия
+
+#endregion
+
+#region VersionEntries
+
+text.VersionEntries_LatestSnapshot=Latest Beta
+text.VersionEntries_LatestRelease=Latest Release
+
+#endregion
+
+#region ThemeEntries
+
+text.ThemeEntries_LatestUpdate=Latest Update
+text.ThemeEntries_Original=Original
+
+text.ThemeEntries_NetherUpdate=Nether Update
+text.ThemeEntries_BuzzyBeesUpdate=Buzzy Bees Update
+text.ThemeEntries_VillagePillageUpdate=Village & Pillage Update
+text.ThemeEntries_UpdateAquatic=Update Aquatic
+text.ThemeEntries_TechnicallyUpdated=Technically Updated [Java]
+text.ThemeEntries_WorldOfColorUpdate=World of Color Update [Java]
+text.ThemeEntries_ExplorationUpdate=Exploration Update [Java]
+text.ThemeEntries_CombatUpdate=Combat Update [Java]
+text.ThemeEntries_CatsAndPandasUpdate=Cats & Pandas [Bedrock]
+text.ThemeEntries_PocketEditionRelease=Offical Release [Bedrock]
+text.ThemeEntries_BedrockStandard=Bedrock Edition Standard
+text.ThemeEntries_BedrockMaster=Bedrock Edition Master
+text.ThemeEntries_EarlyLegacyConsole=Original Legacy Console Era
+text.ThemeEntries_MidLegacyConsole=Mid Legacy Console Era
+text.ThemeEntries_LateLegacyConsole=Late Legacy Console Era
+text.ThemeEntries_IndieDays=Indie Days
+text.ThemeEntries_Dungeons=Minecraft Dungeons
+
+
+#endregion
+
+#region GeneralText
+
+text.GeneralText_Delete=Delete
+text.GeneralText_Edit=Edit
+text.GeneralText_Duplicate=Duplicate
+text.GeneralText_Remove=Remove
+text.GeneralText_Cancel=Cancel
+text.GeneralText_Update=Update
+text.GeneralText_Add=Add
+text.GeneralText_Save=Save
+text.GeneralText_Refresh=Refresh
+text.GeneralText_Backup=Backup
+text.GeneralText_Versions=Versions
+text.GeneralText_Browse=Browse
+text.GeneralText_Reset=Reset
+text.GeneralText_Yes=Yes
+text.GeneralText_No=No
+text.GeneralText_Releases=Releases
+text.GeneralText_Betas=Betas
+text.GeneralText_Export=Export
+text.GeneralText_Repair=Repair
+
+text.GeneralText_Twitter=Twitter
+text.GeneralText_GitHub=GitHub
+text.GeneralText_Website=Website
+
+#endregion
+
+#region GeneralSubtitles
+
+text.GeneralSubtitles_Versions=VERSIONS
+text.GeneralSubtitles_Browse=BROWSE
+text.GeneralSubtitles_Reset=RESET
+
+#endregion
+
+#endregion

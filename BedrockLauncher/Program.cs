@@ -116,6 +116,19 @@ namespace BedrockLauncher
             }
         }
 
+
+        private static bool _IsBugRockOfTheWeek = false;
+
+        public static void Init_IsBugRockOfTheWeek()
+        {
+            _IsBugRockOfTheWeek = ChangelogDownloader.GetBedrockOfTheWeekStatus();
+        }
+
+        public static bool IsBugRockOfTheWeek()
+        {
+            return _IsBugRockOfTheWeek;
+        }
+
         // Any CefSharp references have to be in another method with NonInlining
         // attribute so the assembly rolver has time to do it's thing.
         [MethodImpl(MethodImplOptions.NoInlining)]

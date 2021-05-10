@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BedrockLauncher.Classes;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
@@ -75,11 +76,11 @@ namespace BedrockLauncher.Methods
             protocol.SetMSAUserToken(WUTokenHelper.GetWUToken());
         }
 
-        public async Task Download(string updateIdentity, string revisionNumber, string destination, DownloadProgress progress, CancellationToken cancellationToken)
+        public async Task Download(MCVersion version, string updateIdentity, string revisionNumber, string destination, DownloadProgress progress, CancellationToken cancellationToken)
         {
             string link = await GetDownloadUrl(updateIdentity, revisionNumber);
             if (link == null)
-                throw new ArgumentException("Bad updateIdentity");
+                throw new ArgumentException(string.Format("Bad updateIdentity for {0}", version.DisplayName));
             Program.Log("Resolved download link: " + link);
             await DownloadFile(link, destination, progress, cancellationToken);
         }
