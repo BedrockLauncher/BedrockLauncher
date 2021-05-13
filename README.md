@@ -3,7 +3,7 @@ Big thanks to MCMrARM, forked from his launcher
 
 Install different Minecraft Bedrock versions at the same time, use different profiles and be happy
 
-![alt text](https://github.com/BedrockLauncher/BedrockLauncher/blob/master/readme_resources/Launcher%20Photo.png)
+![alt text](https://github.com/BedrockLauncher/BedrockLauncher/blob/master/readme_resources/Launcher%20photo.png)
 
 ## Disclaimer
 This tool will **not** help you to pirate the game, it requires that you have a Microsoft account which can be used to download Minecraft from the Store.
