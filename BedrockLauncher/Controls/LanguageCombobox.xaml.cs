@@ -24,10 +24,7 @@ namespace BedrockLauncher.Controls
     {
         public LanguageCombobox()
         {
-            if (LicenseManager.UsageMode == LicenseUsageMode.Runtime)
-            {
-                InitializeComponent();
-            }
+            InitializeComponent();
         }
 
         private void LanguageCombobox_DropDownClosed(object sender, EventArgs e)

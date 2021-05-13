@@ -23,10 +23,7 @@ namespace BedrockLauncher.Controls
     {
         public InstallationSelector()
         {
-            if (LicenseManager.UsageMode == LicenseUsageMode.Runtime)
-            {
-                InitializeComponent();
-            }
+            InitializeComponent();
         }
     }
 }

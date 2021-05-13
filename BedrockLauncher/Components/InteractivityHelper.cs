@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xaml.Behaviors;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -72,14 +73,11 @@ namespace BedrockLauncher.Components
             typeof(InteractivityItems),
             new PropertyMetadata(default(InteractivityTemplate), OnTemplateChanged));
 
-        private static void OnTemplateChanged(
-            DependencyObject d,
-            DependencyPropertyChangedEventArgs e)
+        private static void OnTemplateChanged(DependencyObject d,DependencyPropertyChangedEventArgs e)
         {
+            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime) return;
             InteractivityTemplate dt = (InteractivityTemplate)e.NewValue;
-#if (!SILVERLIGHT)
             dt.Seal();
-#endif
             InteractivityItems ih = (InteractivityItems)dt.LoadContent();
             BehaviorCollection bc = Interaction.GetBehaviors(d);
             TriggerCollection tc = Interaction.GetTriggers(d);
