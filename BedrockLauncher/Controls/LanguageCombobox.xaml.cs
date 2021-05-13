@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,24 +24,23 @@ namespace BedrockLauncher.Controls
     {
         public LanguageCombobox()
         {
-            InitializeComponent();
+            if (LicenseManager.UsageMode == LicenseUsageMode.Runtime)
+            {
+                InitializeComponent();
+            }
         }
 
         private void LanguageCombobox_DropDownClosed(object sender, EventArgs e)
         {
-            var item = this.SelectedItem as ComboBoxItem;
+            var item = this.SelectedItem as BL_Core.LanguageDefinition;
             if (item == null) return;
-            switch (item.Tag)
+            switch (item.Locale)
             {
                 case "ru-RU":
-                    BL_Core.LanguageManager.LanguageChange("ru-RU");
-                    BL_Core.Properties.Settings.Default.Language = "ru-RU";
-                    BL_Core.Properties.Settings.Default.Save();
+                    BL_Core.LanguageManager.SetLanguage("ru-RU");
                     break;
                 case "en-US":
-                    BL_Core.LanguageManager.LanguageChange("en-US");
-                    BL_Core.Properties.Settings.Default.Language = "en-US";
-                    BL_Core.Properties.Settings.Default.Save();
+                    BL_Core.LanguageManager.SetLanguage("en-US");
                     break;
             }
         }
@@ -53,7 +53,8 @@ namespace BedrockLauncher.Controls
 
         private void LanguageCombobox_Initialized(object sender, EventArgs e)
         {
-            var items = this.Items.Cast<ComboBoxItem>().Select(x => x).ToList();
+            var items = BL_Core.LanguageManager.GetResourceDictonaries();
+            this.ItemsSource = items;
 
             var item = this.SelectedItem as ComboBoxItem;
             if (item == null) return;
@@ -61,13 +62,13 @@ namespace BedrockLauncher.Controls
             switch (BL_Core.Properties.Settings.Default.Language)
             {
                 case "en-US":
-                    this.SelectedItem = items.Where(x => x.Tag.ToString() == "en-US").FirstOrDefault();
+                    this.SelectedItem = items.Where(x => x.Locale.ToString() == "en-US").FirstOrDefault();
                     break;
                 case "ru-RU":
-                    this.SelectedItem = items.Where(x => x.Tag.ToString() == "ru-RU").FirstOrDefault();
+                    this.SelectedItem = items.Where(x => x.Locale.ToString() == "ru-RU").FirstOrDefault();
                     break;
                 default:
-                    this.SelectedItem = items.Where(x => x.Tag.ToString() == "en-US").FirstOrDefault();
+                    this.SelectedItem = items.Where(x => x.Locale.ToString() == "en-US").FirstOrDefault();
                     break;
             }
         }

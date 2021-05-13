@@ -160,7 +160,7 @@ namespace BedrockLauncher.Methods
 
             string GetArgs()
             {
-                string silent = (Properties.LauncherSettings.Default.UseSilentUpdates ? "--silent" : "");
+                string silent = "--silent";
                 string beta = (Properties.LauncherSettings.Default.UseBetaBuilds ? "--beta" : "");
                 string path = "--path=\"" + Filepaths.ExecutableDirectory + "\"";
 

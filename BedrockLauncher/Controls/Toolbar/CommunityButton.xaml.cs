@@ -21,10 +21,10 @@ namespace BedrockLauncher.Controls.Toolbar
     /// <summary>
     /// Interaction logic for ServersButton.xaml
     /// </summary>
-    public partial class ServersButton : Grid
+    public partial class CommunityButton : Grid
     {
 
-        public ServersButton()
+        public CommunityButton()
         {
             InitializeComponent();
         }

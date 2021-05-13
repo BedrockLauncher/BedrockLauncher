@@ -83,6 +83,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GithubAPI.cs" />
+    <Compile Include="LanguageDefinition.cs" />
+    <Compile Include="LanguageDictionary.xaml.cs">
+      <DependentUpon>LanguageDictionary.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LanguageManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -97,7 +101,16 @@
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <EmbeddedResource Include="Resources\lang\en-US.lang" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="LanguageDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\lang\en-US.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

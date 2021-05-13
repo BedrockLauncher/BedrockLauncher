@@ -33,7 +33,9 @@ using Version = BedrockLauncher.Classes.MCVersion;
 
 namespace BedrockLauncher
 {
-    //TODO: Beta Test and Optimize
+    //TODO: Improve backup overwrite response (to avoid having to click it forever)
+    //TODO: Add the insider account control to the First Time Welcome Screen
+    //TODO: Add translation support to the remaining entries in GameManager.cs
     //TODO: (Later On) Better Animations
     //TODO: (Later On) Community Content / Personal Donations Section
 
@@ -74,7 +76,7 @@ namespace BedrockLauncher
         public MainWindow()
         {
             InitializeComponent();
-            Init();
+           if (LicenseManager.UsageMode != LicenseUsageMode.Designtime) Init();
         }
 
         private void Init()
@@ -266,7 +268,7 @@ namespace BedrockLauncher
             // but this works fine, at least
             List<ToggleButton> toggleButtons = new List<ToggleButton>() { 
                 // main window
-                ServersButton.Button,
+                CommunityButton.Button,
                 NewsButton.Button,
                 BedrockEditionButton.Button,
                 JavaEditionButton.Button,
@@ -309,7 +311,7 @@ namespace BedrockLauncher
             else if (senderName == NewsButton.Name) NavigateToNewsPage();
             else if (senderName == JavaEditionButton.Name) NavigateToJavaLauncher();
             else if (senderName == ExternalLauncherButton.Name) NavigateToExternalLauncher();
-            else if (senderName == ServersButton.Name) NavigateToServersScreen();
+            else if (senderName == CommunityButton.Name) NavigateToCommunityScreen();
             else if (senderName == SettingsButton.Name) NavigateToSettings();
 
             // MainPageButtons
@@ -379,9 +381,11 @@ namespace BedrockLauncher
             NavigateToOtherLauncher(action);
         }
 
-        public void NavigateToServersScreen()
+        public void NavigateToCommunityScreen()
         {
-
+            CommunityButton.Button.IsChecked = true;
+            MainWindowFrame.Navigate(noContentPage);
+            settingsScreenPage.SettingsScreenFrame.Navigate(noContentPage);
         }
         public void NavigateToSettings()
         {

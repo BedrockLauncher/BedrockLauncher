@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,10 @@ namespace BedrockLauncher.Controls
     {
         public InstallationSelector()
         {
-            InitializeComponent();
+            if (LicenseManager.UsageMode == LicenseUsageMode.Runtime)
+            {
+                InitializeComponent();
+            }
         }
     }
 }

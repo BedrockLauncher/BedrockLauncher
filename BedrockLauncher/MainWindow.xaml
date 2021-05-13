@@ -43,7 +43,7 @@
                         <toolbar:BedrockEditionButton x:Name="BedrockEditionButton"></toolbar:BedrockEditionButton>
                         <toolbar:JavaEditionButton x:Name="JavaEditionButton" Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=HideJavaShortcut, Converter={StaticResource ReverseBoolToVis}, ConverterParameter=Inverted}"></toolbar:JavaEditionButton>
                         <toolbar:ExternalLauncherButton x:Name="ExternalLauncherButton" Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=ShowExternalLauncher, Converter={StaticResource BoolToVis}}"></toolbar:ExternalLauncherButton>
-                        <toolbar:ServersButton x:Name="ServersButton" Visibility="Collapsed"></toolbar:ServersButton>
+                        <toolbar:CommunityButton x:Name="CommunityButton"></toolbar:CommunityButton>
                     </StackPanel>
                     <toolbar:SettingsButton x:Name="SettingsButton"></toolbar:SettingsButton>
                     <Grid Grid.Column="1">
@@ -52,13 +52,13 @@
                             <RowDefinition Height="Auto" MaxHeight="64"></RowDefinition>
                             <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Frame x:Name="MainWindowFrame" Focusable="False" VerticalAlignment="Stretch" Background="Black" NavigationUIVisibility="Hidden" Source="../Pages/GameTabs.xaml"/>
+                        <Frame x:Name="MainWindowFrame" Focusable="False" VerticalAlignment="Stretch" Background="Black" NavigationUIVisibility="Hidden" Source="/BedrockLauncher;component/Pages/GameTabs.xaml"/>
                         <Grid Grid.Row="1" x:Name="ProgressBarGrid" Background="#FF262626" Visibility="Collapsed">
-                        <ProgressBar x:Name="progressSizeHack" Height="32" Margin="10,8,10,22" Foreground="#FF008542" Background="Black" BorderBrush="Black" IsIndeterminate="{Binding StateChangeInfo.IsProgressIndeterminate}" Minimum="0"/>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock x:Name="progressbarcontent" SnapsToDevicePixels="True" Margin="26,-15,0,0" FontSize="12" Text="{DynamicResource ProgressBar_Downloading}"  HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
-                            <TextBlock SnapsToDevicePixels="True" Margin="+3,-15,0,0" FontSize="12" x:Name="ProgressBarText" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
-                        </StackPanel>
+                            <ProgressBar x:Name="progressSizeHack" Height="32" Margin="10,8,10,22" Foreground="#FF008542" Background="Black" BorderBrush="Black" IsIndeterminate="{Binding StateChangeInfo.IsProgressIndeterminate}" Minimum="0"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock x:Name="progressbarcontent" SnapsToDevicePixels="True" Margin="26,-15,0,0" FontSize="12" Text="{DynamicResource ProgressBar_Downloading}"  HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
+                                <TextBlock SnapsToDevicePixels="True" Margin="+3,-15,0,0" FontSize="12" x:Name="ProgressBarText" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
+                            </StackPanel>
                         </Grid>
                         <Grid x:Name="PlayScreenBorder" Grid.Row="2" x:FieldModifier="public" VerticalAlignment="Bottom" Background="#FF262626">
                             <TextBlock Style="{DynamicResource HeaderTextblock}" Text="{DynamicResource MainWindow_Disclaimer}" HorizontalAlignment="Right" Panel.ZIndex="0" VerticalAlignment="Center" Padding="0,0,5,0" Margin="0,0,0,0"/>

@@ -77,7 +77,6 @@ namespace BedrockLauncher.Properties
         private string _CurrentTheme = "LatestUpdate";
         private bool _CloseLauncherOnSwitch = true;
         private bool _UseBetaBuilds = true;
-        private bool _UseSilentUpdates = true;
 
         public bool PortableMode
         {
@@ -168,11 +167,6 @@ namespace BedrockLauncher.Properties
         {
             get { return _UseBetaBuilds; }
             set { _UseBetaBuilds = value; OnPropertyChanged(nameof(UseBetaBuilds)); }
-        }
-        public bool UseSilentUpdates
-        {
-            get { return _UseSilentUpdates; }
-            set { _UseSilentUpdates = value; OnPropertyChanged(nameof(UseSilentUpdates)); }
         }
 
     }

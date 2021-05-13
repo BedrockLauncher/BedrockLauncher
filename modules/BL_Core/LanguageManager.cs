@@ -7,131 +7,105 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
+using System.Collections;
+using Path = System.IO.Path;
 
 namespace BL_Core
 {
     public static class LanguageManager
     {
-        public static void LanguageChange(string language)
+
+        private static List<LanguageDefinition> AvaliableInternalLanguages 
+        {
+            get
+            {
+                return new List<LanguageDefinition>
+                {
+                    new LanguageDefinition("en-US")
+                };
+            }
+        }
+        private static void LanguageChange(LanguageDefinition definition)
         {
             var possible = Application.Current.Resources.MergedDictionaries.Where(x => x is LanguageDictionary).FirstOrDefault();
             Application.Current.Resources.MergedDictionaries.Remove(possible);
-            LanguageDictionary dict = new LanguageDictionary(language);
+
+            LanguageDictionary dict = new LanguageDictionary(definition);
             Application.Current.Resources.MergedDictionaries.Add(dict);
         }
 
+
+        #region Public Methods
+
+        public static List<LanguageDefinition> GetResourceDictonaries()
+        {
+            string Assembly = string.Empty;
+
+            int i = 0;
+
+            while (String.IsNullOrEmpty(Assembly) && i < 10)
+            {
+                var ass = System.Reflection.Assembly.GetEntryAssembly();
+                Assembly = ass.Location;
+                i++;
+            }
+
+            string Path = System.IO.Path.GetDirectoryName(Assembly);
+            string ExternalPath = System.IO.Path.Combine(Path, "data", "lang");
+            List<LanguageDefinition> Languages = AvaliableInternalLanguages;
+
+
+            if (!Directory.Exists(ExternalPath)) return Languages;
+
+            var ExternalLangFolder = new DirectoryInfo(ExternalPath);
+            foreach (var File in ExternalLangFolder.GetFiles("*", SearchOption.TopDirectoryOnly))
+            {
+                if (File.Extension != ".xaml") continue;
+                if (LanguageDefinition.TryPrase(File, out LanguageDefinition ExternalLang)) Languages.Add(ExternalLang);
+            }
+
+            return Languages;
+        }
+
+        public static void SetLanguage(string language)
+        {
+            var AvaliableLanguages = GetResourceDictonaries();
+
+            if (language == "none" || language == "default")
+            {
+                CultureInfo ci = CultureInfo.InstalledUICulture;
+                if (AvaliableLanguages.Exists(x => x.Locale == ci.Name)) SetLocaleLanguage(ci.Name);
+                else SetToDefaultLangauge();
+            }
+            else
+            {
+                if (AvaliableLanguages.Exists(x => x.Locale == language)) SetLocaleLanguage(language);
+                else SetToDefaultLangauge();
+            }
+
+            void SetToDefaultLangauge()
+            {
+                LanguageChange(LanguageDefinition.Default);
+                Properties.Settings.Default.Language = "default";
+                Properties.Settings.Default.Save();
+            }
+
+            void SetLocaleLanguage(string locale)
+            {
+                var Lang = AvaliableLanguages.Where(x => x.Locale == locale).FirstOrDefault();
+                LanguageChange(Lang);
+                Properties.Settings.Default.Language = locale;
+                Properties.Settings.Default.Save();
+            }
+        }
         public static void Init()
         {
-            // Language setting on startup
-            switch (Properties.Settings.Default.Language)
-            {
-                case "none":
-                    CultureInfo ci = CultureInfo.InstalledUICulture; // get system locale
-                    switch (ci.Name)
-                    {
-                        default:
-                            Properties.Settings.Default.Language = "default";
-                            Properties.Settings.Default.Save();
-                            break;
-                        case "ru-RU":
-                            LanguageChange(ci.Name);
-                            Properties.Settings.Default.Language = "ru-RU";
-                            Properties.Settings.Default.Save();
-                            break;
-                        case "en-US":
-                            LanguageChange(ci.Name);
-                            Properties.Settings.Default.Language = "en-US";
-                            Properties.Settings.Default.Save();
-                            break;
-                    }
-                    break;
-                case "ru-RU":
-                    LanguageChange("ru-RU");
-                    break;
-                case "en-US":
-                    LanguageChange("en-US");
-                    break;
-                case "default":
-                    LanguageChange("en-US");
-                    break;
-                default:
-                    LanguageChange("en-US");
-                    break;
-
-            }
+            string language = Properties.Settings.Default.Language;
+            SetLanguage(language);
         }
+
+        #endregion
     }
 
-    public class LanguageDictionary : ResourceDictionary
-    {
 
-
-        public const string DefaultLang = "en-US";
-
-        public LanguageDictionary(string language) : base()
-        {
-            Init(language);
-        }
-
-        public LanguageDictionary() : base()
-        {
-            Init();
-        }
-
-        private void Init(string language = null)
-        {
-            if (language == null) language = DefaultLang;
-            LoadLang(language);
-        }
-
-
-        private void LoadLang(string language)
-        {
-            try
-            {
-                this.Clear();
-                var assembly = Assembly.GetExecutingAssembly();
-                var resourceName = $"BL_Core.Resources.lang.{language}.lang";
-                List<string> localizations = new List<string>();
-
-                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-                {
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        string line;
-                        while ((line = reader.ReadLine()) != null)
-                        {
-                            localizations.Add(line);
-                        }
-                    }
-                }
-
-                foreach (var item in localizations)
-                {
-                    try
-                    {
-                        if (item.StartsWith("text.") && item.Contains("="))
-                        {
-                            string keypair = item.Remove(0, 5);
-                            int index = keypair.IndexOf("=");
-                            string key = keypair.Substring(0, index);
-                            index += 1;
-                            string value = keypair.Substring(index, keypair.Length - index);
-                            value = value.Replace("\\n", Environment.NewLine);
-                            this.Add(key, value);
-                        }
-                    }
-                    catch
-                    {
-                        Debug.WriteLine($"Unable to add \"{item}\" to localization");
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Unable to load \"{language}\" localization!\n{ex}");
-            }
-        }
-    }
 }

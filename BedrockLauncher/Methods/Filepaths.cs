@@ -33,7 +33,7 @@ namespace BedrockLauncher.Methods
         { 
             get 
             {
-                string path = Path.Combine(Path.GetDirectoryName(ExecutableLocation), "data");
+                string path = Path.Combine(ExecutableDirectory, "data");
                 Directory.CreateDirectory(path);
                 return path;
             }

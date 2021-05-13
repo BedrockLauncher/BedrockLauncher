@@ -17,10 +17,4 @@
              SelectedIndex="0"
              Padding="15,0"
              FontSize="14">
-    <ComboBoxItem VerticalContentAlignment="Center" Tag="en-US">
-        <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" Text="{DynamicResource LanguageEntries_en_US}" FontWeight="Normal" VerticalAlignment="Center"/>
-    </ComboBoxItem>
-    <ComboBoxItem  VerticalContentAlignment="Center" Tag="ru-RU">
-        <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" Text="{DynamicResource LanguageEntries_ru_RU}" FontWeight="Normal" VerticalAlignment="Center"/>
-    </ComboBoxItem>
 </ComboBox>

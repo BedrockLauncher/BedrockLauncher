@@ -18,6 +18,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <CefSharpAnyCpuSupport>true</CefSharpAnyCpuSupport>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -32,7 +33,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <CefSharpAnyCpuSupport>true</CefSharpAnyCpuSupport>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -122,7 +122,34 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Publish|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\AnyCPU\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Publish|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Publish|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -223,8 +250,8 @@
     <Compile Include="Controls\Toolbar\ExternalLauncherButton.xaml.cs">
       <DependentUpon>ExternalLauncherButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Toolbar\ServersButton.xaml.cs">
-      <DependentUpon>ServersButton.xaml</DependentUpon>
+    <Compile Include="Controls\Toolbar\CommunityButton.xaml.cs">
+      <DependentUpon>CommunityButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Toolbar\JavaEditionButton.xaml.cs">
       <DependentUpon>JavaEditionButton.xaml</DependentUpon>
@@ -419,7 +446,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Toolbar\ServersButton.xaml">
+    <Page Include="Controls\Toolbar\CommunityButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -683,7 +710,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 и x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -862,6 +889,10 @@
       <Project>{167a048a-8140-4f8d-87c3-a03d07f964d3}</Project>
       <Name>BL_Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\modules\Extensions.NET\Extensions.NET.csproj">
+      <Project>{6718749f-4346-4e5e-85df-d47faf22c9b6}</Project>
+      <Name>Extensions.NET</Name>
+    </ProjectReference>
     <ProjectReference Include="..\modules\Installer\Installer.csproj">
       <Project>{295729f7-172f-4bcd-a619-e495db5a4e2f}</Project>
       <Name>Installer</Name>
@@ -938,17 +969,26 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>if $(PlatformName) == Any CPU (
-xcopy /y /e /c /i "$(SolutionDir)bin\WUTokenHelper\Win32\$(ConfigurationName)" "$(ProjectDir)$(OutDir)\x86"
-xcopy /y /e /c /i "$(SolutionDir)bin\WUTokenHelper\x64\$(ConfigurationName)" "$(ProjectDir)$(OutDir)\x64"
+    <PostBuildEvent>SET CONFIG=$(ConfigurationName)
+if $(ConfigurationName) == Publish (
+SET CONFIG=Release
+)
+
+if $(PlatformName) == Any CPU (
+xcopy /y /e /c /i "$(SolutionDir)modules\bin\WUTokenHelper\Win32\%25CONFIG%25" "$(ProjectDir)$(OutDir)\x86"
+xcopy /y /e /c /i "$(SolutionDir)modules\bin\WUTokenHelper\x64\%25CONFIG%25" "$(ProjectDir)$(OutDir)\x64"
 )
 
 if $(PlatformName) == x86 (
-xcopy /y /e /c /i "$(SolutionDir)bin\WUTokenHelper\Win32\$(ConfigurationName)" "$(ProjectDir)$(OutDir)\x86"
+xcopy /y /e /c /i "$(SolutionDir)modules\bin\WUTokenHelper\Win32\%25CONFIG%25" "$(ProjectDir)$(OutDir)\x86"
 )
 
 if $(PlatformName) == x64 (
-xcopy /y /e /c /i "$(SolutionDir)bin\WUTokenHelper\x64\$(ConfigurationName)" "$(ProjectDir)$(OutDir)\x64"
+xcopy /y /e /c /i "$(SolutionDir)bin\WUTokenHelper\x64\%25CONFIG%25" "$(ProjectDir)$(OutDir)\x64"
+)
+
+if $(ConfigurationName) == Publish (
+"$(SolutionDir)\modules\bin\publisher\publisher.exe" "$(ProjectDir)$(OutDir)\"
 )
 </PostBuildEvent>
   </PropertyGroup>

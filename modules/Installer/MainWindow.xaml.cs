@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.IO;
 using BedrockLauncherSetup.Pages;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace BedrockLauncherSetup
 {
@@ -123,7 +124,7 @@ namespace BedrockLauncherSetup
             string[] ConsoleArgs = Environment.GetCommandLineArgs();
             bool isSilent = false;
             bool isBeta = false;
-            string Path = Directory.GetCurrentDirectory();
+            string Path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             foreach (string argument in ConsoleArgs)
             {
                 if (argument.StartsWith("--"))
