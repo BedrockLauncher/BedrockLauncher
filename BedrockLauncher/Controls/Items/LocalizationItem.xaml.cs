@@ -43,9 +43,9 @@ namespace BedrockLauncher.Controls.Items
             (d as LocalizationItem).ButtonPanelVisibility = (Visibility)e.NewValue;
         }
 
-        private Pages.EditSkinPackScreen GetParent()
+        private Pages.Preview.EditSkinPackScreen GetParent()
         {
-            return this.Tag as Pages.EditSkinPackScreen;
+            return this.Tag as Pages.Preview.EditSkinPackScreen;
         }
 
         private void DeleteLangButton_Click(object sender, RoutedEventArgs e)

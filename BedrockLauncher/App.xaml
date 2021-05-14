@@ -8,7 +8,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <bl:LanguageDictionary Source="/BL_Core;component/Resources/lang/en-US.xaml"></bl:LanguageDictionary>
+                <bl:LanguageDictionary Source="/BL_Core;component/Resources/lang/lang.en-US.xaml"></bl:LanguageDictionary>
                 <ResourceDictionary Source="Resources/styles/style.xaml"/>
                 <ResourceDictionary Source="Resources/styles/button.xaml"/>
                 <ResourceDictionary Source="Resources/styles/checkbox.xaml"/>

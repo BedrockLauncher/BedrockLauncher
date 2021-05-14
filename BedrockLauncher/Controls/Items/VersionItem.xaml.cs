@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BedrockLauncher.Pages.Common;
 
 namespace BedrockLauncher.Controls.Items
 {
@@ -46,9 +47,9 @@ namespace BedrockLauncher.Controls.Items
             (d as VersionItem).ButtonPanelVisibility = (Visibility)e.NewValue;
         }
 
-        private Pages.VersionsSettingsPage GetParent()
+        private Pages.Settings.VersionsSettingsPage GetParent()
         {
-            return this.Tag as Pages.VersionsSettingsPage;
+            return this.Tag as Pages.Settings.VersionsSettingsPage;
         }
 
         private void Folder_Click(object sender, RoutedEventArgs e)

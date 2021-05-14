@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Windows;
 using System.Collections;
 using Path = System.IO.Path;
+using System.Resources;
 
 namespace BL_Core
 {
@@ -21,7 +22,8 @@ namespace BL_Core
             {
                 return new List<LanguageDefinition>
                 {
-                    new LanguageDefinition("en-US")
+                    new LanguageDefinition("en-US"),
+                    new LanguageDefinition("pt-PT")
                 };
             }
         }
@@ -37,7 +39,7 @@ namespace BL_Core
 
         #region Public Methods
 
-        public static List<LanguageDefinition> GetResourceDictonaries()
+        public static string GetAssemblyDirectory()
         {
             string Assembly = string.Empty;
 
@@ -50,7 +52,12 @@ namespace BL_Core
                 i++;
             }
 
-            string Path = System.IO.Path.GetDirectoryName(Assembly);
+            return System.IO.Path.GetDirectoryName(Assembly);
+        }
+
+        public static List<LanguageDefinition> GetResourceDictonaries()
+        {
+            string Path = GetAssemblyDirectory();
             string ExternalPath = System.IO.Path.Combine(Path, "data", "lang");
             List<LanguageDefinition> Languages = AvaliableInternalLanguages;
 

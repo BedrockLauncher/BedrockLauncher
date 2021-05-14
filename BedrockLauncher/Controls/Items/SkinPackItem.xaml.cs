@@ -19,6 +19,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Path = System.IO.Path;
+using BedrockLauncher.Pages.Preview;
+using BedrockLauncher.Pages.Common;
 
 namespace BedrockLauncher.Controls.Items
 {
@@ -51,9 +53,9 @@ namespace BedrockLauncher.Controls.Items
             (d as SkinPackItem).ButtonPanelVisibility = (Visibility)e.NewValue;
         }
 
-        private SkinsPage GetParent()
+        private Pages.Play.SkinsPage GetParent()
         {
-            return this.Tag as SkinsPage;
+            return this.Tag as Pages.Play.SkinsPage;
         }
 
         private void MoreButton_Click(object sender, RoutedEventArgs e)

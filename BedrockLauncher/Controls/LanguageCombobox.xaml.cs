@@ -31,43 +31,35 @@ namespace BedrockLauncher.Controls
         {
             var item = this.SelectedItem as BL_Core.LanguageDefinition;
             if (item == null) return;
-            switch (item.Locale)
-            {
-                case "ru-RU":
-                    BL_Core.LanguageManager.SetLanguage("ru-RU");
-                    break;
-                case "en-US":
-                    BL_Core.LanguageManager.SetLanguage("en-US");
-                    break;
-            }
+            BL_Core.LanguageManager.SetLanguage(item.Locale);
         }
 
-        private void ComboBoxItem_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
+
+        private void ReloadLang()
         {
-            // To prevent scrolling when mouseover
-            e.Handled = true;
+            var items = BL_Core.LanguageManager.GetResourceDictonaries();
+            this.ItemsSource = items;
+            string language = BL_Core.Properties.Settings.Default.Language;
+
+            // Set chosen language in language combobox
+            if (items.Exists(x => x.Locale.ToString() == language))
+            {
+                this.SelectedItem = items.Where(x => x.Locale.ToString() == language).FirstOrDefault();
+            }
+            else
+            {
+                this.SelectedItem = items.Where(x => x.Locale.ToString() == "en-US").FirstOrDefault();
+            }
         }
 
         private void LanguageCombobox_Initialized(object sender, EventArgs e)
         {
-            var items = BL_Core.LanguageManager.GetResourceDictonaries();
-            this.ItemsSource = items;
 
-            var item = this.SelectedItem as ComboBoxItem;
-            if (item == null) return;
-            // Set chosen language in language combobox
-            switch (BL_Core.Properties.Settings.Default.Language)
-            {
-                case "en-US":
-                    this.SelectedItem = items.Where(x => x.Locale.ToString() == "en-US").FirstOrDefault();
-                    break;
-                case "ru-RU":
-                    this.SelectedItem = items.Where(x => x.Locale.ToString() == "ru-RU").FirstOrDefault();
-                    break;
-                default:
-                    this.SelectedItem = items.Where(x => x.Locale.ToString() == "en-US").FirstOrDefault();
-                    break;
-            }
+        }
+
+        private void LanguageCombobox_Loaded(object sender, RoutedEventArgs e)
+        {
+            ReloadLang();
         }
     }
 }

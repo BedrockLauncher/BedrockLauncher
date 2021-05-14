@@ -28,14 +28,15 @@ namespace BL_Core
             {
                 ResourceDictionary resourceDictionary = new ResourceDictionary();
                 resourceDictionary.Source = new Uri(fileInfo.FullName, UriKind.Absolute);
-                if (resourceDictionary.Count == 0)
+                if (resourceDictionary.Count == 0 || !fileInfo.Name.StartsWith("lang."))
                 {
                     definition = null;
                     return false;
                 }
                 else
                 {
-                    definition = new LanguageDefinition(fileInfo.Name.Replace(fileInfo.Extension, ""), fileInfo.FullName, true);
+                    string locale = fileInfo.Name.Remove(0, 5).Replace(fileInfo.Extension, "");
+                    definition = new LanguageDefinition(locale, fileInfo.FullName, true);
                     return true;
                 }
             }
@@ -76,14 +77,14 @@ namespace BL_Core
         public LanguageDefinition(string _locale)
         {
             this.Locale = _locale;
-            this.Path = $"/BL_Core;component/Resources/lang/{_locale}.xaml";
+            this.Path = $"/BL_Core;component/Resources/lang/lang.{_locale}.xaml";
             this.IsExternal = false;
             if (TryGetName(this.Path, this.IsExternal, out string _name)) this.Name = _name;
         }
         public LanguageDefinition()
         {
             this.Locale = "en-US";
-            this.Path = $"/BL_Core;component/Resources/lang/en-US.xaml";
+            this.Path = $"/BL_Core;component/Resources/lang/lang.en-US.xaml";
             this.IsExternal = false;
             if(TryGetName(this.Path, this.IsExternal, out string _name)) this.Name = _name;
         }

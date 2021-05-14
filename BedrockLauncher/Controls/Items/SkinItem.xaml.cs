@@ -16,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BedrockLauncher.Pages.Preview;
+using BedrockLauncher.Pages.Common;
 
 namespace BedrockLauncher.Controls.Items
 {
@@ -39,9 +41,9 @@ namespace BedrockLauncher.Controls.Items
             Program.LogConsoleLine("Closed");
         }
 
-        private SkinsPage GetParent()
+        private Pages.Play.SkinsPage GetParent()
         {
-            return this.Tag as SkinsPage;
+            return this.Tag as Pages.Play.SkinsPage;
         }
 
         public void OpenContextMenu()

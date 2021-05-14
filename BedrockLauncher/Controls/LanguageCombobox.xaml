@@ -12,6 +12,7 @@
              Width="330" Height="32" 
              DropDownClosed="LanguageCombobox_DropDownClosed"  
              Initialized="LanguageCombobox_Initialized"
+             Loaded="LanguageCombobox_Loaded"
              Foreground="White"
              Style="{DynamicResource ComboBoxStyle2}" 
              SelectedIndex="0"

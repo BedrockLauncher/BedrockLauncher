@@ -28,6 +28,11 @@ using System.Windows.Media.Animation;
 using BedrockLauncher.Pages;
 using BedrockLauncher.Pages.FirstLaunch;
 using BedrockLauncher.ViewModels;
+using BedrockLauncher.Pages.Settings;
+using BedrockLauncher.Pages.Play;
+using BedrockLauncher.Pages.News;
+using BedrockLauncher.Pages.Preview;
+using BedrockLauncher.Pages.Common;
 
 using Version = BedrockLauncher.Classes.MCVersion;
 

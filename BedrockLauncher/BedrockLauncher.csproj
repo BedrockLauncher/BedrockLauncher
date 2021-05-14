@@ -292,7 +292,7 @@
     <Compile Include="Components\NotifyPropertyChangedBase.cs" />
     <Compile Include="Classes\MCVersion.cs" />
     <Compile Include="Methods\ZipFileExtensions.cs" />
-    <Compile Include="Pages\DialogPrompt.xaml.cs">
+    <Compile Include="Pages\Common\DialogPrompt.xaml.cs">
       <DependentUpon>DialogPrompt.xaml</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -308,25 +308,25 @@
     <Compile Include="Methods\ChangelogDownloader.cs" />
     <Compile Include="Methods\SymLinkHelper.cs" />
     <Compile Include="Classes\Html\ResourceSchemeHandler.cs" />
-    <Compile Include="Pages\AdvancedOptionsWindow.xaml.cs">
+    <Compile Include="Pages\Settings\AdvancedOptionsWindow.xaml.cs">
       <DependentUpon>AdvancedOptionsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\CommunityNewsPage.xaml.cs">
+    <Compile Include="Pages\News\CommunityNewsPage.xaml.cs">
       <DependentUpon>CommunityNewsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\EditSkinPackScreen.xaml.cs">
+    <Compile Include="Pages\Preview\EditSkinPackScreen.xaml.cs">
       <DependentUpon>EditSkinPackScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\LauncherNewsPage.xaml.cs">
+    <Compile Include="Pages\News\LauncherNewsPage.xaml.cs">
       <DependentUpon>LauncherNewsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ChangelogPreviewScreen.xaml.cs">
+    <Compile Include="Pages\Preview\ChangelogPreviewScreen.xaml.cs">
       <DependentUpon>ChangelogPreviewScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\EditSkinScreen.xaml.cs">
+    <Compile Include="Pages\Preview\EditSkinScreen.xaml.cs">
       <DependentUpon>EditSkinScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ErrorScreen.xaml.cs">
+    <Compile Include="Pages\Common\ErrorScreen.xaml.cs">
       <DependentUpon>ErrorScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\FirstLaunch\WelcomePage.xaml.cs">
@@ -341,46 +341,46 @@
     <Compile Include="Pages\FirstLaunch\WelcomePageOne.xaml.cs">
       <DependentUpon>WelcomePageOne.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\EditInstallationScreen.xaml.cs">
+    <Compile Include="Pages\Preview\EditInstallationScreen.xaml.cs">
       <DependentUpon>EditInstallationScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PatchNotesPage.xaml.cs">
+    <Compile Include="Pages\Play\PatchNotesPage.xaml.cs">
       <DependentUpon>PatchNotesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\VersionsSettingsPage.xaml.cs">
+    <Compile Include="Pages\Settings\VersionsSettingsPage.xaml.cs">
       <DependentUpon>VersionsSettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\InstallationsScreen.xaml.cs">
+    <Compile Include="Pages\Play\InstallationsScreen.xaml.cs">
       <DependentUpon>InstallationsScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\NewsScreenPage.xaml.cs">
+    <Compile Include="Pages\News\NewsScreenPage.xaml.cs">
       <DependentUpon>NewsScreenPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AddProfilePage.xaml.cs">
+    <Compile Include="Pages\Preview\AddProfilePage.xaml.cs">
       <DependentUpon>AddProfilePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AboutPage.xaml.cs">
+    <Compile Include="Pages\Settings\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AccountsSettingsPage.xaml.cs">
+    <Compile Include="Pages\Settings\AccountsSettingsPage.xaml.cs">
       <DependentUpon>AccountsSettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\GeneralSettingsPage.xaml.cs">
+    <Compile Include="Pages\Settings\GeneralSettingsPage.xaml.cs">
       <DependentUpon>GeneralSettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\GameTabs.xaml.cs">
+    <Compile Include="Pages\Play\GameTabs.xaml.cs">
       <DependentUpon>GameTabs.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\NoContentPage.xaml.cs">
+    <Compile Include="Pages\Common\NoContentPage.xaml.cs">
       <DependentUpon>NoContentPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PlayScreenPage.xaml.cs">
+    <Compile Include="Pages\Play\PlayScreenPage.xaml.cs">
       <DependentUpon>PlayScreenPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SkinsPage.xaml.cs">
+    <Compile Include="Pages\Play\SkinsPage.xaml.cs">
       <DependentUpon>SkinsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -389,7 +389,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Components\RelayCommand.cs" />
-    <Compile Include="Pages\SettingsTabs.xaml.cs">
+    <Compile Include="Pages\Settings\SettingsTabs.xaml.cs">
       <DependentUpon>SettingsTabs.xaml</DependentUpon>
     </Compile>
     <Compile Include="Methods\LauncherUpdater.cs" />
@@ -498,19 +498,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\AdvancedOptionsWindow.xaml">
+    <Page Include="Pages\Settings\AdvancedOptionsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\CommunityNewsPage.xaml">
+    <Page Include="Pages\News\CommunityNewsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\EditSkinPackScreen.xaml">
+    <Page Include="Pages\Preview\EditSkinPackScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\DialogPrompt.xaml">
+    <Page Include="Pages\Common\DialogPrompt.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -518,19 +518,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\LauncherNewsPage.xaml">
+    <Page Include="Pages\News\LauncherNewsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ChangelogPreviewScreen.xaml">
+    <Page Include="Pages\Preview\ChangelogPreviewScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\EditSkinScreen.xaml">
+    <Page Include="Pages\Preview\EditSkinScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ErrorScreen.xaml">
+    <Page Include="Pages\Common\ErrorScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -550,43 +550,43 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\EditInstallationScreen.xaml">
+    <Page Include="Pages\Preview\EditInstallationScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\PatchNotesPage.xaml">
+    <Page Include="Pages\Play\PatchNotesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\VersionsSettingsPage.xaml">
+    <Page Include="Pages\Settings\VersionsSettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\InstallationsScreen.xaml">
+    <Page Include="Pages\Play\InstallationsScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\NewsScreenPage.xaml">
+    <Page Include="Pages\News\NewsScreenPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\AddProfilePage.xaml">
+    <Page Include="Pages\Preview\AddProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\AboutPage.xaml">
+    <Page Include="Pages\Settings\AboutPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\AccountsSettingsPage.xaml">
+    <Page Include="Pages\Settings\AccountsSettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\GeneralSettingsPage.xaml">
+    <Page Include="Pages\Settings\GeneralSettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\GameTabs.xaml">
+    <Page Include="Pages\Play\GameTabs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -594,15 +594,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\NoContentPage.xaml">
+    <Page Include="Pages\Common\NoContentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\PlayScreenPage.xaml">
+    <Page Include="Pages\Play\PlayScreenPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\SkinsPage.xaml">
+    <Page Include="Pages\Play\SkinsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -678,7 +678,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\SettingsTabs.xaml">
+    <Page Include="Pages\Settings\SettingsTabs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -963,6 +963,7 @@
     <Resource Include="Resources\images\ui\logo\BugrockOfTheWeek.png" />
     <Resource Include="Resources\images\ui\logo\OfTheWeek.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

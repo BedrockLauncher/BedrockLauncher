@@ -378,7 +378,7 @@
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Padding" Value="10,1"/>
         <Setter Property="FontFamily" Value="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Template">
@@ -395,6 +395,7 @@
                             <RowDefinition Height="3"></RowDefinition>
                         </Grid.RowDefinitions>
                         <ContentPresenter x:Name="contentPresenter" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="0" Focusable="False" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        <ContentPresenter x:Name="contentPresenter2" TextElement.FontWeight="Bold" Visibility="Hidden" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="0" Focusable="False" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         <Grid Visibility="Hidden" x:Name="SelectorIndicator" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Focusable="False" Background="{TemplateBinding BorderBrush}"/>
                     </Grid>
                     <ControlTemplate.Triggers>
