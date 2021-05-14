@@ -52,7 +52,7 @@
                             <RowDefinition Height="Auto" MaxHeight="64"></RowDefinition>
                             <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Frame x:Name="MainWindowFrame" Focusable="False" VerticalAlignment="Stretch" Background="Black" NavigationUIVisibility="Hidden" Source="/BedrockLauncher;component/Pages/Play/GameTabs.xaml"/>
+                        <Frame x:Name="MainWindowFrame" converters:DisableNavigation.Disable="True" Focusable="False" VerticalAlignment="Stretch" Background="Black" NavigationUIVisibility="Hidden" Source="/BedrockLauncher;component/Pages/Play/GameTabs.xaml"/>
                         <Grid Grid.Row="1" x:Name="ProgressBarGrid" Background="#FF262626" Visibility="Collapsed">
                             <ProgressBar x:Name="progressSizeHack" Height="32" Margin="10,8,10,22" Foreground="#FF008542" Background="Black" BorderBrush="Black" IsIndeterminate="{Binding IsProgressIndeterminate}" Minimum="0"/>
                             <StackPanel Orientation="Horizontal">
@@ -71,8 +71,8 @@
                 </Grid>
             </ContentPresenter.Content>
         </ContentPresenter>
-        <Frame x:Name="OverlayFrame" Focusable="False" Margin="0" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" Panel.ZIndex="-1"/>
-        <Frame x:Name="ErrorFrame" Focusable="False" Margin="0" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" Panel.ZIndex="-2"/>
+        <Frame x:Name="OverlayFrame" converters:DisableNavigation.Disable="True" Focusable="False" Margin="0" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" Panel.ZIndex="-1"/>
+        <Frame x:Name="ErrorFrame" converters:DisableNavigation.Disable="True" Focusable="False" Margin="0" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" Panel.ZIndex="-2"/>
         <controls:UpdateButton Visibility="Collapsed" Margin="0,-75,5,0" Grid.ColumnSpan="2" Panel.ZIndex="-3" x:Name="updateButton" HorizontalAlignment="Right" VerticalAlignment="Top"></controls:UpdateButton>
     </Grid>
 </Window>

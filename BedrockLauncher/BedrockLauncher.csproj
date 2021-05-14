@@ -185,6 +185,7 @@
     </ApplicationDefinition>
     <Compile Include="Classes\Html\SkinViewResourceSchemeHandler.cs" />
     <Compile Include="Components\ComboBoxBehaviors.cs" />
+    <Compile Include="Components\DisableNavigation.cs" />
     <Compile Include="Components\InteractivityHelper.cs" />
     <Compile Include="Controls\Items\InstallationSelectorItem.xaml.cs">
       <DependentUpon>InstallationSelectorItem.xaml</DependentUpon>
@@ -196,6 +197,12 @@
       <DependentUpon>InstallationSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="Events\ConfigStateArgs.cs" />
+    <Compile Include="Pages\Community\CommunityPage.xaml.cs">
+      <DependentUpon>CommunityPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FirstLaunch\WelcomePageFive.xaml.cs">
+      <DependentUpon>WelcomePageFive.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\FirstLaunch\WelcomePageFour.xaml.cs">
       <DependentUpon>WelcomePageFour.xaml</DependentUpon>
     </Compile>
@@ -497,6 +504,14 @@
     <Page Include="Controls\InstallationSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Community\CommunityPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FirstLaunch\WelcomePageFive.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Settings\AdvancedOptionsWindow.xaml">
       <SubType>Designer</SubType>
@@ -897,6 +912,10 @@
       <Project>{295729f7-172f-4bcd-a619-e495db5a4e2f}</Project>
       <Name>Installer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\modules\MCText\McTextBlock.csproj">
+      <Project>{6009282a-b8b0-4464-8417-3d06cecd7c09}</Project>
+      <Name>McTextBlock</Name>
+    </ProjectReference>
     <ProjectReference Include="..\modules\SkinView3D\SkinView3D.csproj">
       <Project>{ccabef67-f4bf-4087-9291-62ee5e316934}</Project>
       <Name>SkinView3D</Name>
@@ -908,12 +927,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\ui\credits\bs_community_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\ui\credits\mojang_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\ui\credits\mojang_logo.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\ui\icons\external.svg" />
@@ -963,7 +976,12 @@
     <Resource Include="Resources\images\ui\logo\BugrockOfTheWeek.png" />
     <Resource Include="Resources\images\ui\logo\OfTheWeek.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Pages\Web\Donate.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\ui\credits\mojang_logo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

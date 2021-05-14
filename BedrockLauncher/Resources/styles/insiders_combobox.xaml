@@ -4,26 +4,26 @@
                     xmlns:c="clr-namespace:BedrockLauncher.Components"
                     xmlns:local="clr-namespace:BedrockLauncher"
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" >
-    <SolidColorBrush x:Key="ComboBox3.Static.Background" Color="#FF262626"/>
-    <SolidColorBrush x:Key="ComboBox3.Static.Border" Color="#FF262626"/>
-    <SolidColorBrush x:Key="ComboBox3.Static.Editable.Background" Color="#FFFFFFFF"/>
-    <SolidColorBrush x:Key="ComboBox3.Static.Editable.Border" Color="#FFABADB3"/>
-    <SolidColorBrush x:Key="ComboBox3.Static.Editable.Button.Background" Color="Transparent"/>
-    <SolidColorBrush x:Key="ComboBox3.Static.Editable.Button.Border" Color="Transparent"/>
+    <SolidColorBrush x:Key="ComboBox3.Static.Background" Color="#FF131313"/>
+    <SolidColorBrush x:Key="ComboBox3.Static.Border" Color="#FF131313"/>
+    <SolidColorBrush x:Key="ComboBox3.Static.Editable.Background" Color="#FF131313"/>
+    <SolidColorBrush x:Key="ComboBox3.Static.Editable.Border" Color="#FF131313"/>
+    <SolidColorBrush x:Key="ComboBox3.Static.Editable.Button.Background" Color="#FF131313"/>
+    <SolidColorBrush x:Key="ComboBox3.Static.Editable.Button.Border" Color="#FF131313"/>
     <SolidColorBrush x:Key="ComboBox3.MouseOver.Glyph" Color="White"/>
-    <SolidColorBrush x:Key="ComboBox3.MouseOver.Background" Color="#FF3C3C3C"/>
-    <SolidColorBrush x:Key="ComboBox3.MouseOver.Border" Color="#FF3C3C3C"/>
-    <SolidColorBrush x:Key="ComboBox3.MouseOver.Editable.Background" Color="#FFFFFFFF"/>
-    <SolidColorBrush x:Key="ComboBox3.MouseOver.Editable.Border" Color="#FF7EB4EA"/>
-    <SolidColorBrush x:Key="ComboBox3.MouseOver.Editable.Button.Border" Color="#FF7EB4EA"/>
+    <SolidColorBrush x:Key="ComboBox3.MouseOver.Background" Color="#FF0E0E0E"/>
+    <SolidColorBrush x:Key="ComboBox3.MouseOver.Border" Color="#FF0E0E0E"/>
+    <SolidColorBrush x:Key="ComboBox3.MouseOver.Editable.Background" Color="#FF0E0E0E"/>
+    <SolidColorBrush x:Key="ComboBox3.MouseOver.Editable.Border" Color="#FF0E0E0E"/>
+    <SolidColorBrush x:Key="ComboBox3.MouseOver.Editable.Button.Border" Color="#FF0E0E0E"/>
     <SolidColorBrush x:Key="ComboBox3.Pressed.Glyph" Color="White"/>
     <SolidColorBrush x:Key="ComboBox3.Pressed.Border" Color="#FF569DE5"/>
-    <SolidColorBrush x:Key="ComboBox3.Pressed.Editable.Background" Color="#FFFFFFFF"/>
-    <SolidColorBrush x:Key="ComboBox3.Pressed.Editable.Border" Color="#FF569DE5"/>
-    <SolidColorBrush x:Key="ComboBox3.Pressed.Editable.Button.Border" Color="#FF569DE5"/>
+    <SolidColorBrush x:Key="ComboBox3.Pressed.Editable.Background" Color="#FF131313"/>
+    <SolidColorBrush x:Key="ComboBox3.Pressed.Editable.Border" Color="#FF131313"/>
+    <SolidColorBrush x:Key="ComboBox3.Pressed.Editable.Button.Border" Color="#FF131313"/>
     <SolidColorBrush x:Key="ComboBox3.Disabled.Glyph" Color="#FFBFBFBF"/>
-    <SolidColorBrush x:Key="ComboBox3.Disabled.Background" Color="#FF262626"/>
-    <SolidColorBrush x:Key="ComboBox3.Disabled.Border" Color="#FF262626"/>
+    <SolidColorBrush x:Key="ComboBox3.Disabled.Background" Color="#FFF0F0F0"/>
+    <SolidColorBrush x:Key="ComboBox3.Disabled.Border" Color="#FFD9D9D9"/>
     <SolidColorBrush x:Key="ComboBox3.Disabled.Editable.Background" Color="#FFFFFFFF"/>
     <SolidColorBrush x:Key="ComboBox3.Disabled.Editable.Border" Color="#FFBFBFBF"/>
     <SolidColorBrush x:Key="ComboBox3.Disabled.Editable.Button.Background" Color="Transparent"/>

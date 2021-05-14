@@ -42,5 +42,15 @@ namespace BedrockLauncher.Pages.Settings
             Process.Start(new ProcessStartInfo(button.Tag.ToString()));
             e.Handled = true;
         }
+
+        private void CheckForUpdatesButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Updater.CheckForUpdates();
+        }
+
+        private void ForceUpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Updater.UpdateButton_Click(sender, e);
+        }
     }
 }

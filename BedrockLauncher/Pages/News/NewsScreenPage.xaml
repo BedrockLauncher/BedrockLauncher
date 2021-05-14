@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BedrockLauncher"
+      xmlns:com="clr-namespace:BedrockLauncher.Components"
       mc:Ignorable="d" 
       d:DesignHeight="525" d:DesignWidth="828"
       Title="NewsScreenTabs" Loaded="Page_Loaded"  Background="#FF282828">
@@ -115,7 +116,7 @@
             </Border>
             <Image Margin="0,0" Height="84" VerticalAlignment="Top" Source="/BedrockLauncher;component/resources/images/ui/logo/logo.png"></Image>
         </Grid>
-        <Frame x:Name="ContentFrame" VerticalAlignment="Stretch" Background="#22000000" HorizontalAlignment="Stretch" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="ContentFrame" com:DisableNavigation.Disable="True" VerticalAlignment="Stretch" Background="#22000000" HorizontalAlignment="Stretch" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 
 

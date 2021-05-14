@@ -33,13 +33,11 @@ using BedrockLauncher.Pages.Play;
 using BedrockLauncher.Pages.News;
 using BedrockLauncher.Pages.Preview;
 using BedrockLauncher.Pages.Common;
-
-using Version = BedrockLauncher.Classes.MCVersion;
+using BedrockLauncher.Pages.Community;
 
 namespace BedrockLauncher
 {
     //TODO: Improve backup overwrite response (to avoid having to click it forever)
-    //TODO: Add the insider account control to the First Time Welcome Screen
     //TODO: Add translation support to the remaining entries in GameManager.cs
     //TODO: (Later On) Better Animations
     //TODO: (Later On) Community Content / Personal Donations Section
@@ -65,6 +63,7 @@ namespace BedrockLauncher
         private InstallationsScreen installationsScreen = new InstallationsScreen();
         private SkinsPage skinsPage = new SkinsPage();
         private PatchNotesPage patchNotesPage = new PatchNotesPage(PatchNotesDownloader);
+        private CommunityPage communityPage = new CommunityPage();
 
         private NoContentPage noContentPage = new NoContentPage();
         #endregion
@@ -388,9 +387,8 @@ namespace BedrockLauncher
 
         public void NavigateToCommunityScreen()
         {
+            MainWindowFrame.Navigate(communityPage);
             CommunityButton.Button.IsChecked = true;
-            MainWindowFrame.Navigate(noContentPage);
-            settingsScreenPage.SettingsScreenFrame.Navigate(noContentPage);
         }
         public void NavigateToSettings()
         {

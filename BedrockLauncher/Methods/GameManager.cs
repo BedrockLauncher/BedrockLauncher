@@ -151,7 +151,7 @@ namespace BedrockLauncher.Methods
         }
         public void OpenFolder(MCInstallation i)
         {
-            string Directory = Filepaths.GetInstallationsFolderPath(ConfigManager.CurrentProfile, i.DirectoryName);
+            string Directory = Filepaths.GetInstallationsFolderPath(ConfigManager.CurrentProfile, i.DirectoryName_Full);
             if (!System.IO.Directory.Exists(Directory)) System.IO.Directory.CreateDirectory(Directory);
             Process.Start("explorer.exe", Directory);
         }
@@ -422,7 +422,7 @@ namespace BedrockLauncher.Methods
                 if (Properties.LauncherSettings.Default.SaveRedirection)
                 {
                     string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY);
-                    string ProfileFolder = Path.GetFullPath(Filepaths.GetInstallationsFolderPath(ConfigManager.CurrentProfile, ConfigManager.CurrentInstallation.DirectoryName));
+                    string ProfileFolder = Path.GetFullPath(Filepaths.GetInstallationsFolderPath(ConfigManager.CurrentProfile, ConfigManager.CurrentInstallation.DirectoryName_Full));
 
                     if (Directory.Exists(PackageFolder))
                     {

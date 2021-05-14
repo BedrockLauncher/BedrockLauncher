@@ -240,7 +240,6 @@
     <v:String x:Key="AboutPage_McMrArm_Text">Por criar o Minecraft Windows 10 Version Downloader original (de onde este trabalho se baseia)</v:String>
     <v:String x:Key="AboutPage_BsCommunity_Text">Pelo o trabalho deles no SkinView3D, que é usado para o funcionalidade do visualizamento da skin no launcher</v:String>
     <v:String x:Key="AboutPage_Mojang_Text">Pelo Minecraft!!!</v:String>
-    <v:String x:Key="AboutPage_Mojang_NoteText">*Ícone estilizado da Mojang Studios feito por u/Julian-Wolfskin do Reddit</v:String>
     <v:String x:Key="AboutPage_BsRepo_Text">Repositório do SkinView3D</v:String>
 
     <!--#endregion-->

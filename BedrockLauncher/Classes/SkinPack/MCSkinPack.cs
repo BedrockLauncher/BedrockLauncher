@@ -86,7 +86,9 @@ namespace BedrockLauncher.Classes.SkinPack
         {
             get
             {
-                return Metadata?.header?.name ?? "pack.name" + (isDev ? " (DEV)" : "");
+                string rawName = Metadata?.header?.name ?? "pack.name";
+                GetLocalizedString(rawName, rawName);
+                return rawName + (isDev ? " (DEV)" : "");
             }
         }
 
@@ -110,13 +112,33 @@ namespace BedrockLauncher.Classes.SkinPack
             Texts = ValidateTexts(_Directory);
         }
 
-        public string GetLocalizedSkinName(string localization_name, string Lang = null)
+        public string GetLocalizedString(string localization_name, string keyName, string Lang = null)
         {
-            string keyName = string.Format("skin.{0}.{1}", Content.localization_name, localization_name);
+            string DefaultLang = BL_Core.LanguageDefinition.Default.Locale.Replace("-", "_");
+            if (Lang == null) Lang = BL_Core.Properties.Settings.Default.Language.Replace("-", "_");
+
             var data = GetData();
-            if (data == null) return localization_name;
-            if (!data.Global.ContainsKey(keyName)) return localization_name;
+            if (data == null) return GetAvaliable();
+            if (!data.Global.ContainsKey(keyName)) return GetAvaliable();
             return data.Global[keyName];
+
+
+
+            string GetAvaliable()
+            {
+
+
+                if (Texts.Values.Keys.Any())
+                {
+                    string Avaliable_Lang;
+
+                    if (Texts.Values.ContainsKey(DefaultLang)) Avaliable_Lang = Texts.Values.Keys.FirstOrDefault(x => x == DefaultLang);
+                    else Avaliable_Lang = Texts.Values.Keys.FirstOrDefault();
+
+                    if (Texts.Values[Avaliable_Lang].Global.ContainsKey(keyName)) return Texts.Values[Avaliable_Lang].Global[keyName];
+                }
+                return localization_name;
+            }
 
 
             IniParser.Model.IniData GetData()
@@ -129,6 +151,12 @@ namespace BedrockLauncher.Classes.SkinPack
 
                 return (Texts.Values.ContainsKey(Lang) ? Texts.Values[Lang] : null);
             }
+        }
+
+        public string GetLocalizedSkinName(string localization_name, string Lang = null)
+        {
+            string keyName = string.Format("skin.{0}.{1}", Content.localization_name, localization_name);
+            return GetLocalizedString(localization_name, keyName, Lang);
         }
 
         public static MCSkinPack ValidatePack(string Directory)

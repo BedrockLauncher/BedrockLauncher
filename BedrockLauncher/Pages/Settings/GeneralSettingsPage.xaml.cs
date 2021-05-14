@@ -96,15 +96,5 @@ namespace BedrockLauncher.Pages.Settings
         {
             Properties.LauncherSettings.Default.Save();
         }
-
-        private void CheckForUpdatesButton_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow.Updater.CheckForUpdates();
-        }
-
-        private void ForceUpdateButton_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow.Updater.UpdateButton_Click(sender, e);
-        }
     }
 }

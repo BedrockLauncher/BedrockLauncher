@@ -37,6 +37,21 @@ namespace BedrockLauncher.Classes
                 IconPath = System.IO.Path.GetFileName(value);
             }
         }
+        [JsonIgnore]
+        public string DirectoryName_Full
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(DirectoryName))
+                {
+                    char[] invalidFileNameChars = System.IO.Path.GetInvalidFileNameChars();
+                    string result = new string(DisplayName.Where(ch => !invalidFileNameChars.Contains(ch)).ToArray());
+                    return result;
+                }
+                else return DirectoryName;
+            }
+        }
+        
 
         [JsonIgnore]
         public MCVersion Version

@@ -168,6 +168,5 @@ namespace BedrockLauncher.Methods
             }
         }
 
-
     }
 }

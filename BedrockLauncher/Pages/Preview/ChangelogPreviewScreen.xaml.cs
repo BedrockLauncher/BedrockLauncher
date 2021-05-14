@@ -19,12 +19,14 @@ namespace BedrockLauncher.Pages.Preview
 
         public string HTML { get; set; } = string.Empty;
 
+        public string URL { get; set; } = string.Empty;
+
         public ChangelogPreviewPage(string html, string header, string url)
         {
             InitializeComponent();
             HTML = html;
             Header.Text = header;
-            SourceHyperlink.NavigateUri = new Uri(url);
+            URL = url;
             LoadHTML();
         }
 
@@ -58,12 +60,6 @@ namespace BedrockLauncher.Pages.Preview
 
         #endregion
 
-        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
-        {
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
-            e.Handled = true;
-        }
-
         private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
         {
 
@@ -82,6 +78,11 @@ namespace BedrockLauncher.Pages.Preview
                 Renderer.LoadHtml(HTML);
             }
             */
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(URL));
         }
     }
 }

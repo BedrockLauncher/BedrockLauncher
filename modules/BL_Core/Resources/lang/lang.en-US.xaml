@@ -11,6 +11,14 @@
     <v:String x:Key="MainWindow_Disclaimer">NOT ASSOCIATED OR APPROVED BY MOJANG</v:String>
 
     <!--#endregion-->
+    
+    <!-- #region CommunityPage -->
+
+    <v:String x:Key="CommunityPage_SupportText">❤ Support Development ❤</v:String>
+    <v:String x:Key="CommunityPage_ComingSoon">Coming Soon!</v:String>
+    <v:String x:Key="CommunityPage_CheckBackLater">Check back here later for something SUPER DUPER AWESOME!</v:String>
+
+    <!-- #endregion -->
 
     <!--#region ToolbarButtons -->
 
@@ -239,8 +247,8 @@
     <v:String x:Key="AboutPage_McMrArm_Text">For creating the original Minecraft Windows 10 Version Downloader (which this work derives from)</v:String>
     <v:String x:Key="AboutPage_BsCommunity_Text">For their work on SkinView3D, which is used for the skin viewing functionality in the launcher</v:String>
     <v:String x:Key="AboutPage_Mojang_Text">For Minecraft!!!</v:String>
-    <v:String x:Key="AboutPage_Mojang_NoteText">*Mojang Studios Styled Icon Made by u/Julian-Wolfskin of Reddit</v:String>
     <v:String x:Key="AboutPage_BsRepo_Text">SkinView3D Repo</v:String>
+    <v:String x:Key="AboutPage_CurrentBuild">Current Build: </v:String>
 
     <!--#endregion-->
 
@@ -267,6 +275,8 @@
     <v:String x:Key="FirstLaunch_AlmostThereTitle">Almost there!</v:String>
     <v:String x:Key="FirstLaunch_OneThingTitle">One thing...</v:String>
     <v:String x:Key="FirstLaunch_OneThingSubtitle">Just check over these to make sure they're just how you like it.</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountTitle">Choose an Insider Account</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* This will be used to verify and download betas. You must be opt-ed in the Xbox Insider Hub for the selected account to download betas. You also may need to restart the launcher or uninstall Minecraft for downloading betas to work.</v:String>
 
     <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Before using, it is highly recommended that you press backup to create an installation of your existing save data as the launcher does replace the original directory with a symbolic link which allows us to redirect save data.&#10;&#10; (Don't worry, you will not lose your data by doing this, you will only lose data if you press play and haven't backed your stuff up)</v:String>
 

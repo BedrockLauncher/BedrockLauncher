@@ -19,28 +19,22 @@ namespace BedrockLauncher.Pages.FirstLaunch
     /// <summary>
     /// Логика взаимодействия для WelcomePageOne.xaml
     /// </summary>
-    public partial class WelcomePageFour : Page
+    public partial class WelcomePageFive : Page
     {
         public WelcomePagesSwitcher pageSwitcher = new WelcomePagesSwitcher();
-        public WelcomePageFour()
+        public WelcomePageFive()
         {
             InitializeComponent();
-            BackButton.IsEnabled = false;
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            pageSwitcher.MoveToPage(3);
+            pageSwitcher.MoveToPage(4);
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            pageSwitcher.MoveToPage(5);
-        }
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            AccountPicker.RefreshProfileContextMenuItems();
+            pageSwitcher.MoveToPage(6, BackupCheckbox.IsChecked.Value);
         }
     }
 }

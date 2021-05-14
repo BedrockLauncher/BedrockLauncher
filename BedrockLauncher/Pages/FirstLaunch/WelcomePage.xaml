@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:com="clr-namespace:BedrockLauncher.Components"
       xmlns:local="clr-namespace:BedrockLauncher"
       mc:Ignorable="d" 
       d:DesignHeight="639" d:DesignWidth="1016"
@@ -15,8 +16,7 @@
         <Border x:Name="WelcomeBorder" CornerRadius="2" Background="#FF262626" Width="600" Height="258" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <Border x:Name="WelcomeBorder2" CornerRadius="2" Background="#FF262626" Width="600" Height="258" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Grid SnapsToDevicePixels="True">
-                <Frame x:Name="WelcomePageFrame" Margin="2,2,2,2" NavigationUIVisibility="Hidden" Source="/BedrockLauncher;component/Pages/FirstLaunch/WelcomePageOne.xaml"/>
-                <!--<Border Background="#FF313131" Height="1" Margin="0,185,0,72" />-->
+                <Frame com:DisableNavigation.Disable="True" x:Name="WelcomePageFrame" Margin="2,2,2,2" NavigationUIVisibility="Hidden" Source="/BedrockLauncher;component/Pages/FirstLaunch/WelcomePageOne.xaml"/>
             </Grid>
         </Border>
     </Grid>
