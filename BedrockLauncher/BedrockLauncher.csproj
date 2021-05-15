@@ -190,6 +190,9 @@
     <Compile Include="Controls\Items\InstallationSelectorItem.xaml.cs">
       <DependentUpon>InstallationSelectorItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Marquee.xaml.cs">
+      <DependentUpon>Marquee.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UpdateButton.xaml.cs">
       <DependentUpon>UpdateButton.xaml</DependentUpon>
     </Compile>
@@ -442,6 +445,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Items\VersionItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Marquee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

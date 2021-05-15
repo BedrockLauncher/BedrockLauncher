@@ -31,7 +31,6 @@ namespace BedrockLauncher
 
         public App()
         {
-            BL_Core.LanguageManager.Init();
             AppDomain.CurrentDomain.AssemblyResolve += Program.Resolver;
             Program.InitializeCefSharp();
             Program.Init_IsBugRockOfTheWeek();

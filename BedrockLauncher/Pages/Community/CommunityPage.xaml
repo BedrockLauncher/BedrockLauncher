@@ -13,11 +13,11 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="180"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="120"></RowDefinition>
+            <RowDefinition Height="125"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.ColumnSpan="2" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="{DynamicResource CommunityPage_ComingSoon}" Foreground="White" FontSize="30" TextAlignment="Center" FontWeight="DemiBold"></TextBlock>
@@ -29,8 +29,8 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Padding="0,5,0,5" Style="{DynamicResource HeaderTextblock}" Foreground="Red" Text="{DynamicResource CommunityPage_SupportText}" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"></TextBlock>
-                <cefSharp:ChromiumWebBrowser Focusable="False" VerticalAlignment="Stretch" ZoomLevelIncrement="0" Grid.Row="1" x:Name="Browser" LoadingStateChanged="Browser_LoadingStateChanged">
+                <TextBlock Grid.Row="0" Padding="15,5,15,5" Style="{DynamicResource HeaderTextblock}" Foreground="Red" Text="{DynamicResource CommunityPage_SupportText}" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"></TextBlock>
+                <cefSharp:ChromiumWebBrowser Focusable="False" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ZoomLevelIncrement="0" Grid.Row="1" x:Name="Browser" LoadingStateChanged="Browser_LoadingStateChanged">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Loaded">
                             <i:InvokeCommandAction Command="{Binding BrowserLoadedCommand}"/>

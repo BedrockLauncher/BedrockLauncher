@@ -79,12 +79,14 @@ namespace BedrockLauncher
 
         public MainWindow()
         {
-            InitializeComponent();
+
+           InitializeComponent();
            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime) Init();
         }
 
         private void Init()
         {
+            BL_Core.LanguageManager.Init();
             this.DataContext = ConfigManager.ViewModel;
             ConfigManager.ViewModel.ProgressBarStateChanged += ViewModel_ProgressBarStateChanged;
 
