@@ -8,7 +8,6 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
-using BedrockLauncher.Classes;
 
 namespace BedrockLauncher.Classes
 {

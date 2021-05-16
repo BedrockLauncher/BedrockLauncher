@@ -9,7 +9,7 @@
       xmlns:methods="clr-namespace:BedrockLauncher.Methods"
       xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
       xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
-      xmlns:converters="clr-namespace:BedrockLauncher.Components"
+      xmlns:converters="clr-namespace:BL_Core.Components;assembly=BL_Core"
       x:Class="BedrockLauncher.Pages.Settings.GeneralSettingsPage"
       mc:Ignorable="d" 
       d:DesignHeight="828" d:DesignWidth="525"

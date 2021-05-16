@@ -3,20 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
-using BedrockLauncher.Classes;
 using System.IO.Compression;
+using System.IO;
+using System.Threading;
 
-namespace BedrockLauncher.Methods
+namespace ExtensionsDotNET
 {
     public static class ZipFileExtensions
     {
-        public static void ExtractToDirectory(this ZipArchive source, string destinationDirectoryName, IProgress<ZipProgress> progress)
+        public class ZipProgress
         {
-            ExtractToDirectory(source, destinationDirectoryName, progress, overwrite: false);
+            public ZipProgress(int total, int processed, string currentItem)
+            {
+                Total = total;
+                Processed = processed;
+                CurrentItem = currentItem;
+            }
+            public int Total { get; }
+            public int Processed { get; }
+            public string CurrentItem { get; }
         }
 
-        public static void ExtractToDirectory(this ZipArchive source, string destinationDirectoryName, IProgress<ZipProgress> progress, bool overwrite)
+        public static void ExtractToDirectory(this ZipArchive source, string destinationDirectoryName, IProgress<ZipProgress> progress, CancellationTokenSource cancelSource)
+        {
+            ExtractToDirectory(source, destinationDirectoryName, progress, overwrite: false, cancelSource);
+        }
+        public static void ExtractToDirectory(this ZipArchive source, string destinationDirectoryName, IProgress<ZipProgress> progress)
+        {
+            ExtractToDirectory(source, destinationDirectoryName, progress, overwrite: false, cancelSource: new CancellationTokenSource());
+        }
+
+        public static void ExtractToDirectory(this ZipArchive source, string destinationDirectoryName, IProgress<ZipProgress> progress, bool overwrite, CancellationTokenSource cancelSource)
         {
             if (source == null)
                 throw new ArgumentNullException(nameof(source));
@@ -34,6 +51,9 @@ namespace BedrockLauncher.Methods
             int count = 0;
             foreach (ZipArchiveEntry entry in source.Entries)
             {
+
+                if (cancelSource.IsCancellationRequested) throw new TaskCanceledException(nameof(source));
+
                 count++;
                 string fileDestinationPath = Path.GetFullPath(Path.Combine(destinationDirectoryFullPath, entry.FullName));
 

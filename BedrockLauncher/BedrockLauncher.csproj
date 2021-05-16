@@ -184,8 +184,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Html\SkinViewResourceSchemeHandler.cs" />
+    <Compile Include="Classes\MCInstallation.cs" />
+    <Compile Include="Classes\MCNetFeedItem.cs" />
+    <Compile Include="Classes\MCPatchNotesItem.cs" />
+    <Compile Include="Classes\MCProfile.cs" />
+    <Compile Include="Classes\MCProfilesList.cs" />
+    <Compile Include="Classes\MCVersion.cs" />
+    <Compile Include="Classes\MCVersionList.cs" />
     <Compile Include="Components\ComboBoxBehaviors.cs" />
-    <Compile Include="Components\DisableNavigation.cs" />
     <Compile Include="Components\InteractivityHelper.cs" />
     <Compile Include="Controls\Items\InstallationSelectorItem.xaml.cs">
       <DependentUpon>InstallationSelectorItem.xaml</DependentUpon>
@@ -200,6 +206,8 @@
       <DependentUpon>InstallationSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="Events\ConfigStateArgs.cs" />
+    <Compile Include="Interfaces\ICommonVersionCommands.cs" />
+    <Compile Include="Methods\Filepaths.cs" />
     <Compile Include="Pages\Community\CommunityPage.xaml.cs">
       <DependentUpon>CommunityPage.xaml</DependentUpon>
     </Compile>
@@ -213,22 +221,13 @@
     <Compile Include="Events\GameRunningState.cs" />
     <Compile Include="Events\ProgressBarState.cs" />
     <Compile Include="Properties\LauncherSettings.cs" />
-    <Compile Include="Classes\MCInstallation.cs" />
-    <Compile Include="Classes\MediaWiki\Continue.cs" />
-    <Compile Include="Classes\MediaWiki\Limits.cs" />
-    <Compile Include="Classes\MediaWiki\Query.cs" />
-    <Compile Include="Classes\MediaWiki\Val.cs" />
-    <Compile Include="Classes\MCPatchNotesItem.cs" />
     <Compile Include="Classes\SkinPack\MCSkinPackContent.cs" />
     <Compile Include="Classes\SkinPack\MCSkinPackLang.cs" />
-    <Compile Include="Classes\MCNetFeedItem.cs" />
     <Compile Include="Classes\SkinPack\MCSkin.cs" />
     <Compile Include="Classes\SkinPack\MCSkinGeometry.cs" />
     <Compile Include="Classes\SkinPack\MCSkinPack.cs" />
     <Compile Include="Classes\SkinPack\MCSkinPackMainfest.cs" />
-    <Compile Include="Classes\MediaWiki\RootObject.cs" />
-    <Compile Include="Classes\ZipProgress.cs" />
-    <Compile Include="Controls\HtmlPanel2.cs" />
+    <Compile Include="Controls\HtmlPanelPro.cs" />
     <Compile Include="Controls\Items\BlockPickerItem.xaml.cs">
       <DependentUpon>BlockPickerItem.xaml</DependentUpon>
     </Compile>
@@ -293,30 +292,18 @@
     <Compile Include="Controls\SkinPreview.xaml.cs">
       <DependentUpon>SkinPreview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\InvertableBooleanToVisibilityConverter.cs" />
-    <Compile Include="Components\StringToUpperConverter.cs" />
-    <Compile Include="Components\UrlToImageSourceConverter.cs" />
     <Compile Include="Methods\ConfigManager.cs" />
-    <Compile Include="Classes\MCProfile.cs" />
-    <Compile Include="Classes\MCProfilesList.cs" />
-    <Compile Include="Components\NotifyPropertyChangedBase.cs" />
-    <Compile Include="Classes\MCVersion.cs" />
-    <Compile Include="Methods\ZipFileExtensions.cs" />
     <Compile Include="Pages\Common\DialogPrompt.xaml.cs">
       <DependentUpon>DialogPrompt.xaml</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="CustomDesignAttributes.cs" />
-    <Compile Include="Extensions.cs" />
     <Compile Include="Classes\Html\FileSchemeHandler.cs" />
     <Compile Include="Classes\Html\GlobalSchemeHandlerFactory.cs" />
-    <Compile Include="Methods\Filepaths.cs" />
     <Compile Include="Methods\GameManager.cs" />
-    <Compile Include="Interfaces\ICommonVersionCommands.cs" />
     <Compile Include="Methods\ConsoleArgumentParser.cs" />
     <Compile Include="Methods\MCSkinUtilities.cs" />
-    <Compile Include="Methods\ChangelogDownloader.cs" />
-    <Compile Include="Methods\SymLinkHelper.cs" />
+    <Compile Include="Downloaders\ChangelogDownloader.cs" />
     <Compile Include="Classes\Html\ResourceSchemeHandler.cs" />
     <Compile Include="Pages\Settings\AdvancedOptionsWindow.xaml.cs">
       <DependentUpon>AdvancedOptionsWindow.xaml</DependentUpon>
@@ -398,20 +385,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Components\RelayCommand.cs" />
     <Compile Include="Pages\Settings\SettingsTabs.xaml.cs">
       <DependentUpon>SettingsTabs.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Methods\LauncherUpdater.cs" />
-    <Compile Include="Methods\VersionDownloader.cs" />
-    <Compile Include="Classes\MCVersionList.cs" />
-    <Compile Include="Methods\WUProtocol.cs" />
-    <Compile Include="Methods\WUTokenHelper.cs" />
+    <Compile Include="Downloaders\LauncherUpdater.cs" />
+    <Compile Include="Downloaders\VersionDownloader.cs" />
+    <Compile Include="Downloaders\WUProtocol.cs" />
+    <Compile Include="Downloaders\WUTokenHelper.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Components\OnlyDigitsValidationRule.cs" />
     <Page Include="Controls\Items\BlockPickerItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -769,6 +753,9 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
     </PackageReference>
+    <PackageReference Include="SymbolicLinkSupport">
+      <Version>1.2.0</Version>
+    </PackageReference>
     <PackageReference Include="System.Runtime">
       <Version>4.3.1</Version>
     </PackageReference>
@@ -907,9 +894,9 @@
     <Resource Include="Resources\images\ui\credits\mcmrarm_icon.jfif" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\modules\BL_Core\BL_Core.csproj">
+    <ProjectReference Include="..\modules\BL_Core\BedrockLauncher.Core.csproj">
       <Project>{167a048a-8140-4f8d-87c3-a03d07f964d3}</Project>
-      <Name>BL_Core</Name>
+      <Name>BedrockLauncher.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\modules\Extensions.NET\Extensions.NET.csproj">
       <Project>{6718749f-4346-4e5e-85df-d47faf22c9b6}</Project>
@@ -989,6 +976,7 @@
   <ItemGroup>
     <Resource Include="Resources\images\ui\credits\mojang_logo.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

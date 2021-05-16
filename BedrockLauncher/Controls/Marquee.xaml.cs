@@ -21,12 +21,13 @@ namespace BedrockLauncher.Controls
     /// </summary>
     public partial class Marquee : ContentControl
     {
+        private bool isPlaying = false;
         private DoubleAnimation _doubleAnimation { get; set; } = new DoubleAnimation();
         private Storyboard _storyBoard { get; set; } = new Storyboard();
         private FrameworkElement _contentPresenter { get; set; }
 
         public static readonly DependencyProperty DurationProperty = DependencyProperty.RegisterAttached(nameof(Duration), typeof(Duration), typeof(Marquee));
-        private Duration _Duration { get; set; }
+        private Duration _Duration { get; set; } = Duration.Automatic;
         public Duration Duration
         {
             get
@@ -35,8 +36,8 @@ namespace BedrockLauncher.Controls
             }
             set
             {
-                SetValue(DurationProperty, value);
                 _Duration = value;
+                SetValue(DurationProperty, value);
                 Animate();
             }
         }
@@ -53,6 +54,17 @@ namespace BedrockLauncher.Controls
 
         private void Animate()
         {
+            if (isPlaying)
+            {
+                _storyBoard.Stop(_contentPresenter);
+                _storyBoard.Children.Clear();
+                _storyBoard = null;
+                _storyBoard = new Storyboard();
+                _doubleAnimation = null;
+                _doubleAnimation = new DoubleAnimation();
+                isPlaying = false;
+            }
+
             if (IsLoaded)
             {
                 _doubleAnimation.From = this.ActualWidth;
@@ -64,10 +76,26 @@ namespace BedrockLauncher.Controls
                 _storyBoard.Children.Add(_doubleAnimation);
 
                 _storyBoard.Begin(_contentPresenter, true);
+                isPlaying = true;
             }
         }
 
         private void ContentControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            Animate();
+        }
+
+        private void ContentControl_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Animate();
+        }
+
+        private void ContentControl_LayoutUpdated(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PART_Content_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             Animate();
         }

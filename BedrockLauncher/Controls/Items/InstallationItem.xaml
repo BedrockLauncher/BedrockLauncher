@@ -4,13 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BedrockLauncher.Controls.Items"
-             xmlns:converters="clr-namespace:BedrockLauncher.Components"
+             xmlns:com="clr-namespace:BL_Core.Components;assembly=BL_Core"
              xmlns:classes="clr-namespace:BedrockLauncher.Classes"
              xmlns:methods="clr-namespace:BedrockLauncher.Methods"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <converters:InvertableBooleanToVisibilityConverter x:Key="VisibleIfTrueConverter" />
+        <com:InvertableBooleanToVisibilityConverter x:Key="VisibleIfTrueConverter" />
     </UserControl.Resources>
     <Grid x:Name="InstallationEntry" Margin="0,8,0,8">
         <Grid.ColumnDefinitions>
@@ -29,7 +29,7 @@
                 </Image.OpacityMask>
             </Image>
             <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0">
-                <TextBlock FontSize="16" Foreground="#FFFFFFF1" FontWeight="DemiBold" Padding="0,0,0,0" Text="{Binding DisplayName}"/>
+                <TextBlock FontSize="16" Foreground="#FFFFFFF1" FontWeight="DemiBold" Padding="0,0,0,0" Text="{Binding DisplayName_Full}"/>
                 <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="SemiBold" Padding="0,0,0,0" Text="{Binding VersionName}"/>
             </StackPanel>
         </Grid>

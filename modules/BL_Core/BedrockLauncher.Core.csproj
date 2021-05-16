@@ -13,6 +13,8 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -68,6 +70,12 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CodeHollow.FeedReader, Version=1.2.1.0, Culture=neutral, PublicKeyToken=66d870f2b3d70f48, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\CodeHollow.FeedReader.1.2.1\lib\net452\CodeHollow.FeedReader.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -83,12 +91,24 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\MediaWiki\Continue.cs" />
+    <Compile Include="Classes\MediaWiki\Limits.cs" />
+    <Compile Include="Classes\MediaWiki\Query.cs" />
+    <Compile Include="Classes\MediaWiki\RootObject.cs" />
+    <Compile Include="Classes\MediaWiki\Val.cs" />
+    <Compile Include="Components\DisableNavigation.cs" />
+    <Compile Include="Components\InvertableBooleanToVisibilityConverter.cs" />
+    <Compile Include="Components\NotifyPropertyChangedBase.cs" />
+    <Compile Include="Components\RelayCommand.cs" />
+    <Compile Include="Components\StringToUpperConverter.cs" />
+    <Compile Include="Components\UrlToImageSourceConverter.cs" />
     <Compile Include="GithubAPI.cs" />
-    <Compile Include="LanguageDefinition.cs" />
-    <Compile Include="LanguageDictionary.xaml.cs">
+    <Compile Include="Language\LanguageDefinition.cs" />
+    <Compile Include="Language\LanguageDictionary.xaml.cs">
       <DependentUpon>LanguageDictionary.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LanguageManager.cs" />
+    <Compile Include="Language\LanguageManager.cs" />
+    <Compile Include="Methods\SymLinkHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -98,13 +118,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="LanguageDictionary.xaml">
+    <Page Include="Language\LanguageDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,5 +138,6 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

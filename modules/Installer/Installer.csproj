@@ -279,9 +279,9 @@
     <Resource Include="Resources\images\banner.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BL_Core\BL_Core.csproj">
+    <ProjectReference Include="..\BL_Core\BedrockLauncher.Core.csproj">
       <Project>{167a048a-8140-4f8d-87c3-a03d07f964d3}</Project>
-      <Name>BL_Core</Name>
+      <Name>BedrockLauncher.Core</Name>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
   </ItemGroup>

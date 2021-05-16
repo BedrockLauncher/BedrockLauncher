@@ -114,7 +114,7 @@ namespace BedrockLauncher.Classes.SkinPack
 
         public string GetLocalizedString(string localization_name, string keyName, string Lang = null)
         {
-            string DefaultLang = BL_Core.LanguageDefinition.Default.Locale.Replace("-", "_");
+            string DefaultLang = BL_Core.Language.LanguageDefinition.Default.Locale.Replace("-", "_");
             if (Lang == null) Lang = BL_Core.Properties.Settings.Default.Language.Replace("-", "_");
 
             var data = GetData();

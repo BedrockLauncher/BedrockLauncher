@@ -17,6 +17,7 @@ using CodeHollow.FeedReader;
 using BedrockLauncher.Classes;
 using System.Diagnostics;
 using System.Windows.Controls.Primitives;
+using BedrockLauncher.Downloaders;
 
 namespace BedrockLauncher.Pages.News
 {

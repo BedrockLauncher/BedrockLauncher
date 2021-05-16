@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BedrockLauncher.Classes.MediaWiki
+namespace BL_Core.Classes.MediaWiki
 {
     public class Limits
     {

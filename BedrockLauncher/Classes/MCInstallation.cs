@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using BedrockLauncher.Methods;
-using Newtonsoft.Json;
 using System.Windows.Media.Imaging;
-using BedrockLauncher.Components;
+using Newtonsoft.Json;
+using BedrockLauncher.Methods;
 
 namespace BedrockLauncher.Classes
 {
@@ -35,6 +34,16 @@ namespace BedrockLauncher.Classes
             set
             {
                 IconPath = System.IO.Path.GetFileName(value);
+            }
+        }
+        [JsonIgnore]
+        public string DisplayName_Full
+        {
+            get
+            {
+                if (VersionUUID == "latest_release" && ReadOnly) return Application.Current.FindResource("VersionEntries_LatestRelease").ToString();
+                else if (VersionUUID == "latest_beta" && ReadOnly) return Application.Current.FindResource("VersionEntries_LatestSnapshot").ToString();
+                else return DisplayName;
             }
         }
         [JsonIgnore]
@@ -91,9 +100,8 @@ namespace BedrockLauncher.Classes
             get
             {
                 string version = Version?.Name ?? string.Empty;
-                string concat = string.Format(" ({0})", version);
-                if (UseLatestBeta) return Application.Current.FindResource("VersionEntries_LatestSnapshot").ToString() + concat;
-                else if (UseLatestVersion) return Application.Current.FindResource("VersionEntries_LatestRelease").ToString() + concat;
+                if (UseLatestBeta) return Application.Current.FindResource("VersionEntries_LatestSnapshot").ToString();
+                else if (UseLatestVersion) return Application.Current.FindResource("VersionEntries_LatestRelease").ToString();
                 else return version;
             }
         } 

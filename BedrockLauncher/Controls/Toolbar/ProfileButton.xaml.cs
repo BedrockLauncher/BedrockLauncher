@@ -93,7 +93,7 @@ namespace BedrockLauncher.Controls.Toolbar
 
         private void AddProfileButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.MainThread.NavigateToNewProfilePage();
+            ConfigManager.ViewModel.NavigateToNewProfilePage();
         }
 
         private async void RemoveProfileButton_Click(object sender, RoutedEventArgs e)

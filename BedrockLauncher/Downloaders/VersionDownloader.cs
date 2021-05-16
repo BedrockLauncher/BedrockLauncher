@@ -8,8 +8,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
+using BedrockLauncher.Methods;
 
-namespace BedrockLauncher.Methods
+namespace BedrockLauncher.Downloaders
 {
     class VersionDownloader
     {
@@ -81,7 +82,7 @@ namespace BedrockLauncher.Methods
             string link = await GetDownloadUrl(updateIdentity, revisionNumber);
             if (link == null)
                 throw new ArgumentException(string.Format("Bad updateIdentity for {0}", version.DisplayName));
-            Program.Log("Resolved download link: " + link);
+            System.Diagnostics.Debug.WriteLine("Resolved download link: " + link);
             await DownloadFile(link, destination, progress, cancellationToken);
         }
 

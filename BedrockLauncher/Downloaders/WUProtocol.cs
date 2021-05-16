@@ -3,8 +3,9 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using BedrockLauncher.Methods;
 
-namespace BedrockLauncher.Methods
+namespace BedrockLauncher.Downloaders
 {
     class WUProtocol
     {

@@ -90,7 +90,7 @@ namespace BedrockLauncher.Controls.Items
         {
             var skinPack = GetParent().LoadedSkinPacks.SelectedItem as MCSkinPack;
             int index = GetParent().LoadedSkinPacks.SelectedIndex;
-            ConfigManager.MainThread.SetOverlayFrame(new EditSkinPackScreen(skinPack, index));
+            ConfigManager.ViewModel.SetOverlayFrame(new EditSkinPackScreen(skinPack, index));
 
             MoreButton.ContextMenu.IsOpen = false;
         }
@@ -140,7 +140,7 @@ namespace BedrockLauncher.Controls.Items
                 }
                 catch (Exception ex)
                 {
-                    Program.LogConsoleLine(ex);
+                    System.Diagnostics.Debug.WriteLine(ex);
                 }
                 GetParent().ReloadSkinPacks();
             }

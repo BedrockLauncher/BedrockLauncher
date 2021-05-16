@@ -12,20 +12,8 @@ using System.Windows.Forms.Design;
 using Newtonsoft.Json;
 
 using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.IO.Compression;
-using System.Threading;
-using System.Windows.Data;
-using Windows.ApplicationModel;
-using Windows.Foundation;
-using Windows.Management.Core;
-using Windows.Management.Deployment;
-using Windows.System;
 
-using BedrockLauncher.Methods;
-
-namespace BedrockLauncher.Components
+namespace BL_Core.Components
 {
     public class NotifyPropertyChangedBase : INotifyPropertyChanged
     {

@@ -77,7 +77,7 @@ namespace BedrockLauncher.Controls.Items
             {
 
                 ConfigManager.DeleteInstallation(installation);
-                ConfigManager.MainThread.RefreshInstallationList();
+                ConfigManager.ViewModel.RefreshConfig();
             }
         }
 
@@ -86,7 +86,7 @@ namespace BedrockLauncher.Controls.Items
             Button button = sender as Button;
             var installation = button.DataContext as Classes.MCInstallation;
             //ConfigManager.MainThread.RefreshInstallationList();
-            ConfigManager.MainThread.SetInstallationPageSelection(installation);
+            ConfigManager.ViewModel.SetInstallationPageSelection(installation);
             button.ContextMenu.PlacementTarget = button;
             button.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
             button.ContextMenu.DataContext = installation;
@@ -95,7 +95,7 @@ namespace BedrockLauncher.Controls.Items
 
         private void ContextMenu_Closed(object sender, RoutedEventArgs e)
         {
-            ConfigManager.MainThread.SetInstallationPageSelection(null);
+            ConfigManager.ViewModel.SetInstallationPageSelection(null);
         }
 
         private void EditInstallationButton_Click(object sender, RoutedEventArgs e)
@@ -103,7 +103,7 @@ namespace BedrockLauncher.Controls.Items
             MenuItem button = sender as MenuItem;
             var installation = button.DataContext as Classes.MCInstallation;
             int index = ConfigManager.CurrentInstallations.IndexOf(installation);
-            ConfigManager.MainThread.SetOverlayFrame(new EditInstallationScreen(index, installation));
+            ConfigManager.ViewModel.SetOverlayFrame(new EditInstallationScreen(index, installation));
         }
 
         private void DuplicateInstallationButton_Click(object sender, RoutedEventArgs e)
@@ -111,7 +111,7 @@ namespace BedrockLauncher.Controls.Items
             MenuItem button = sender as MenuItem;
             var installation = button.DataContext as Classes.MCInstallation;
             ConfigManager.DuplicateInstallation(installation);
-            ConfigManager.MainThread.RefreshInstallationList();
+            ConfigManager.ViewModel.RefreshConfig();
         }
     }
 }

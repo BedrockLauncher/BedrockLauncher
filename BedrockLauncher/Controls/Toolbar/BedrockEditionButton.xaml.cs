@@ -32,7 +32,7 @@ namespace BedrockLauncher.Controls.Toolbar
 
         private void SideBarButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.MainThread.ButtonManager_Base(this.Name);
+            ConfigManager.ViewModel.ButtonManager_Base(this.Name);
         }
 
         private void Button_CheckedChanged(object sender, RoutedEventArgs e)

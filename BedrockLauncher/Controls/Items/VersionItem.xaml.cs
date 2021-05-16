@@ -81,7 +81,7 @@ namespace BedrockLauncher.Controls.Items
         {
             Button button = sender as Button;
             var version = button.DataContext as Classes.MCVersion;
-            ConfigManager.MainThread.SetVersionPageSelection(version);
+            ConfigManager.ViewModel.SetVersionPageSelection(version);
             button.ContextMenu.PlacementTarget = button;
             button.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
             button.ContextMenu.DataContext = version;

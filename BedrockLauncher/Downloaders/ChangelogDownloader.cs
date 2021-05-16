@@ -8,14 +8,17 @@ using System.Net;
 using Newtonsoft.Json;
 using System.IO;
 using BedrockLauncher.Classes;
-using BedrockLauncher.Classes.MediaWiki;
+using BL_Core.Classes.MediaWiki;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using HtmlAgilityPack;
 using System.Text.RegularExpressions;
 using BedrockLauncher.Components;
+using BL_Core.Components;
+using ExtensionsDotNET;
+using BedrockLauncher.Methods;
 
-namespace BedrockLauncher.Methods
+namespace BedrockLauncher.Downloaders
 {
     public class ChangelogDownloader : NotifyPropertyChangedBase
     {
@@ -149,7 +152,7 @@ namespace BedrockLauncher.Methods
 
                     if (ListRequestData.@continue != null) cmcontinue = ListRequestData.@continue.cmcontinue;
                 }
-                catch (Exception ex) { Program.LogConsoleLine(ex); }
+                catch (Exception ex) { System.Diagnostics.Debug.WriteLine(ex); }
 
                 if (first_request) first_request = false;
             }
@@ -380,7 +383,7 @@ namespace BedrockLauncher.Methods
                             }
                             catch (Exception ex)
                             {
-                                Program.LogConsoleLine(ex);
+                                System.Diagnostics.Debug.WriteLine(ex);
                             }
 
 
@@ -471,7 +474,7 @@ namespace BedrockLauncher.Methods
             }
             catch (Exception ex)
             {
-                Program.LogConsoleLine(ex);
+                System.Diagnostics.Debug.WriteLine(ex);
                 IsRefreshable = true;
             }
         }

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Pages.Settings
 {
@@ -45,12 +46,12 @@ namespace BedrockLauncher.Pages.Settings
 
         private void CheckForUpdatesButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.Updater.CheckForUpdates();
+            LauncherModel.Updater.CheckForUpdates();
         }
 
         private void ForceUpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.Updater.UpdateButton_Click(sender, e);
+            LauncherModel.Updater.UpdateButton_Click(sender, e);
         }
     }
 }

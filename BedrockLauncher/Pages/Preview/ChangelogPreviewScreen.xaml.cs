@@ -44,17 +44,17 @@ namespace BedrockLauncher.Pages.Preview
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.MainThread.SetOverlayFrame(null);
+            ConfigManager.ViewModel.SetOverlayFrame(null);
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.MainThread.SetOverlayFrame(null);
+            ConfigManager.ViewModel.SetOverlayFrame(null);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.MainThread.SetOverlayFrame(null);
+            ConfigManager.ViewModel.SetOverlayFrame(null);
         }
 
 

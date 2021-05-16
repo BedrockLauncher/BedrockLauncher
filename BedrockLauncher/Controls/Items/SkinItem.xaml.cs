@@ -38,7 +38,7 @@ namespace BedrockLauncher.Controls.Items
 
         private void ContextMenu_ContextMenuClosing(object sender, ContextMenuEventArgs e)
         {
-            Program.LogConsoleLine("Closed");
+            System.Diagnostics.Debug.WriteLine("Closed");
         }
 
         private Pages.Play.SkinsPage GetParent()
@@ -61,7 +61,7 @@ namespace BedrockLauncher.Controls.Items
 
             Keyboard.ClearFocus();
 
-            ConfigManager.MainThread.SetOverlayFrame(new EditSkinScreen(skinPack, skin, index));
+            ConfigManager.ViewModel.SetOverlayFrame(new EditSkinScreen(skinPack, skin, index));
         }
 
         private async void DeleteSkinButton_Click(object sender, RoutedEventArgs e)

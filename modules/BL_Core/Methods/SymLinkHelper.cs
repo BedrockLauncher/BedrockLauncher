@@ -1,7 +1,9 @@
 using System.Runtime.InteropServices;
 using System.IO;
+using Microsoft.Win32.SafeHandles;
+using System;
 
-namespace BedrockLauncher.Methods
+namespace BL_Core.Methods
 {
     public class SymLinkHelper
     {

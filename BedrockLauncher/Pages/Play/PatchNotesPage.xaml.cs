@@ -17,6 +17,7 @@ using CodeHollow.FeedReader;
 using BedrockLauncher.Classes;
 using System.Diagnostics;
 using BedrockLauncher.Controls.Items;
+using BedrockLauncher.Downloaders;
 
 namespace BedrockLauncher.Pages.Play
 {

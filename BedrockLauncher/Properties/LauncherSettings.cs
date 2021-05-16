@@ -9,6 +9,7 @@ using BedrockLauncher.Classes;
 using BedrockLauncher.Methods;
 using System.ComponentModel;
 using BedrockLauncher.Components;
+using BL_Core.Components;
 
 namespace BedrockLauncher.Properties
 {

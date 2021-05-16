@@ -15,10 +15,10 @@ namespace BedrockLauncher.Methods
             "'--nowindow' - hide main window from showing up\n";
         public ConsoleArgumentParser(string[] args)
         {
-            Program.Log("Launched with arguments: ");
+            System.Diagnostics.Debug.WriteLine("Launched with arguments: ");
             foreach (string argument in args)
             {
-                if (!argument.StartsWith("--")) { Program.LogConsoleLine(WRONG_ARGUMENT_MESSAGE + argument); }
+                if (!argument.StartsWith("--")) { System.Diagnostics.Debug.WriteLine(WRONG_ARGUMENT_MESSAGE + argument); }
                 //if (argument == "--help")
             }
 

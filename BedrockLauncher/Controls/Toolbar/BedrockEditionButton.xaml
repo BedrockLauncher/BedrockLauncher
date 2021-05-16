@@ -17,6 +17,6 @@
     </ToggleButton>
     <Image Style="{StaticResource SideBarButtonIcon}" Source="/BedrockLauncher;component/Resources/images/ui/icons/bedrock_icon.png"/>
     <Grid x:Name="Progressbar">
-        <ProgressBar x:Name="progressSizeHack" Height="5" VerticalAlignment="Bottom" Visibility="Collapsed" Foreground="#FF008542" Background="Black" BorderBrush="Black" IsIndeterminate="{Binding StateChangeInfo.IsProgressIndeterminate}" Minimum="0"/>
+        <ProgressBar x:Name="progressSizeHack" Height="5" VerticalAlignment="Bottom" Visibility="Collapsed" Foreground="#FF008542" Background="Black" BorderBrush="Black" Minimum="0"/>
     </Grid>
 </Grid>

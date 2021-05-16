@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:p="clr-namespace:BedrockLauncher.Properties"
       xmlns:classes="clr-namespace:BedrockLauncher.Classes"
-      xmlns:converters="clr-namespace:BedrockLauncher.Components"
+      xmlns:converters="clr-namespace:BL_Core.Components;assembly=BL_Core"
       xmlns:local="clr-namespace:BedrockLauncher"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       mc:Ignorable="d" 

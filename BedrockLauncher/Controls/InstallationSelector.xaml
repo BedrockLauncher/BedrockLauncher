@@ -10,5 +10,6 @@
              mc:Ignorable="d" 
              Style="{DynamicResource ComboBoxStyle1}"
              Foreground="White"
+             HorizontalContentAlignment="Stretch"
              ItemTemplate="{DynamicResource InstallationSelectorItemTemplate}">
 </ComboBox>

@@ -27,7 +27,7 @@ namespace BedrockLauncher.Pages.Common
 
             prompt.CancelButton.Visibility = Visibility.Collapsed;
 
-            ConfigManager.MainThread.SetDialogFrame(prompt);
+            ConfigManager.ViewModel.SetDialogFrame(prompt);
 
             return await Task.Run(prompt.DialogWait);
         }
@@ -39,7 +39,7 @@ namespace BedrockLauncher.Pages.Common
             prompt.DialogTitle.Text = title;
             prompt.DialogText.Text = content;
 
-            ConfigManager.MainThread.SetDialogFrame(prompt);
+            ConfigManager.ViewModel.SetDialogFrame(prompt);
 
             return await Task.Run(prompt.DialogWait);
         }
@@ -58,19 +58,19 @@ namespace BedrockLauncher.Pages.Common
         private void YesButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = DialogResult.Yes;
-            ConfigManager.MainThread.SetDialogFrame(null);
+            ConfigManager.ViewModel.SetDialogFrame(null);
         }
 
         private void NoButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = DialogResult.No;
-            ConfigManager.MainThread.SetDialogFrame(null);
+            ConfigManager.ViewModel.SetDialogFrame(null);
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = DialogResult.Cancel;
-            ConfigManager.MainThread.SetDialogFrame(null);
+            ConfigManager.ViewModel.SetDialogFrame(null);
         }
     }
 }

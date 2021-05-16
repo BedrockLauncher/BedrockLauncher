@@ -20,7 +20,7 @@ namespace BedrockLauncher.Pages.Play
 
         private void Buttons_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.MainThread.ButtonManager(sender, e);
+            ConfigManager.ViewModel.ButtonManager(sender, e);
         }
     }
 }

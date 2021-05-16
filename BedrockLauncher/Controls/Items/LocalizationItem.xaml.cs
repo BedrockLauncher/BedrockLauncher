@@ -60,7 +60,7 @@ namespace BedrockLauncher.Controls.Items
             }
             catch (Exception ex)
             {
-                Program.LogConsoleLine(ex);
+                System.Diagnostics.Debug.WriteLine(ex);
             }
             GetParent().UpdateLocalizationList();
         }

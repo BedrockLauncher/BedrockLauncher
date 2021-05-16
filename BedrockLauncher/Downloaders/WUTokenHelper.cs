@@ -11,8 +11,9 @@ using Windows.Foundation;
 using Windows.Security.Authentication.Web.Core;
 using System.Security.Authentication;
 using System.IO;
+using BedrockLauncher.Methods;
 
-namespace BedrockLauncher.Methods
+namespace BedrockLauncher.Downloaders
 {
     class WUTokenHelper
     {

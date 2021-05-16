@@ -29,15 +29,17 @@ namespace BedrockLauncher.Controls
 
         private void LanguageCombobox_DropDownClosed(object sender, EventArgs e)
         {
-            var item = this.SelectedItem as BL_Core.LanguageDefinition;
+            var item = this.SelectedItem as BL_Core.Language.LanguageDefinition;
             if (item == null) return;
-            BL_Core.LanguageManager.SetLanguage(item.Locale);
+            BL_Core.Language.LanguageManager.SetLanguage(item.Locale);
+            ConfigManager.ViewModel.RefreshConfig();
+            ConfigManager.ViewModel.UpdateUI();
         }
 
 
         private void ReloadLang()
         {
-            var items = BL_Core.LanguageManager.GetResourceDictonaries();
+            var items = BL_Core.Language.LanguageManager.GetResourceDictonaries();
             this.ItemsSource = items;
             string language = BL_Core.Properties.Settings.Default.Language;
 

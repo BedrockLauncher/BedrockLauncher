@@ -4,11 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BedrockLauncher.Controls.Items"
-             xmlns:c="clr-namespace:BedrockLauncher.Classes"
+             xmlns:c="clr-namespace:BedrockLauncher.Controls"
              mc:Ignorable="d" 
+             x:Name="Host"
              d:DesignHeight="450" d:DesignWidth="800">
-    <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="{Binding DisplayName}"/>
-    <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="Normal" Padding="45,21,0,0" Text="{Binding VersionName}"/>
+    <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="45,0,0,0" Text="{Binding DisplayName_Full}"/>
+    <TextBlock FontSize="11" Foreground="#FFBEBEBE" Padding="45,21,0,0" FontWeight="Normal" Text="{Binding VersionName}"/>
     <Image RenderOptions.BitmapScalingMode="HighQuality" Source="{Binding IconPath_Full}" HorizontalAlignment="Left" Width="32" Height="32" Margin="5,1,0,0">
         <Image.OpacityMask>
             <ImageBrush ImageSource="{Binding IconPath_Full}"/>

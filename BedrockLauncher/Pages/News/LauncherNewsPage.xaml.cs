@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
+using BedrockLauncher.Downloaders;
 
 namespace BedrockLauncher.Pages.News
 {

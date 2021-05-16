@@ -17,11 +17,6 @@ using System.IO;
 using System.IO.Compression;
 using System.Threading;
 using System.Windows.Data;
-using Windows.ApplicationModel;
-using Windows.Foundation;
-using Windows.Management.Core;
-using Windows.Management.Deployment;
-using Windows.System;
 
 namespace BedrockLauncher.Interfaces
 {

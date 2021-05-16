@@ -149,7 +149,11 @@ namespace BedrockLauncher.Controls
         {
             try
             {
-                if (!localFile || Path == NoSkin)
+                if (!Renderer.CanExecuteJavascriptInMainFrame)
+                {
+                    return;
+                }
+                else if (!localFile || Path == NoSkin)
                 {
                     var result = await Renderer.EvaluateScriptAsync("setSkin", new object[] { Path, ModelType });
                 }
@@ -165,13 +169,13 @@ namespace BedrockLauncher.Controls
             }
             catch (Exception ex)
             {
-                Program.LogConsoleLine(ex);
+                System.Diagnostics.Debug.WriteLine(ex);
             }
         }
 
         private void OnBrowserFrameLoadEnd(object sender, FrameLoadEndEventArgs args)
         {
-            if (args.Frame.IsMain)
+            if (args.Frame.IsMain && Renderer.CanExecuteJavascriptInMainFrame)
             {
                 args
                     .Browser
@@ -183,7 +187,7 @@ namespace BedrockLauncher.Controls
 
         private void Renderer_LoadingStateChanged(object sender, LoadingStateChangedEventArgs e)
         {
-            if (e.IsLoading == false && isRenderable) RefreshView();
+            if (e.IsLoading == false && isRenderable && Renderer.CanExecuteJavascriptInMainFrame) RefreshView();
         }
     }
 }

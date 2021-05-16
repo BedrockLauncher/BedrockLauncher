@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{BD55
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkinView3D", "modules\SkinView3D\SkinView3D.csproj", "{CCABEF67-F4BF-4087-9291-62EE5E316934}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL_Core", "modules\BL_Core\BL_Core.csproj", "{167A048A-8140-4F8D-87C3-A03D07F964D3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrockLauncher.Core", "modules\BL_Core\BedrockLauncher.Core.csproj", "{167A048A-8140-4F8D-87C3-A03D07F964D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.NET", "modules\Extensions.NET\Extensions.NET.csproj", "{6718749F-4346-4E5E-85DF-D47FAF22C9B6}"
 EndProject

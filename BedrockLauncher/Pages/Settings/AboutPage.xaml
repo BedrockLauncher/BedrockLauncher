@@ -34,8 +34,8 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Border x:Key="CJMention" BorderThickness="2" BorderBrush="Transparent">
-            <Grid Height="300" Background="Transparent">
+        <Border x:Key="CJMention" BorderThickness="2" CornerRadius="16" BorderBrush="#55000000" Background="#55000000">
+            <Grid Height="300">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="250"></RowDefinition>
                     <RowDefinition></RowDefinition>
@@ -51,7 +51,7 @@
                 </Border>
             </Grid>
         </Border>
-        <Border x:Key="XlynxXMention" BorderThickness="2" BorderBrush="Transparent">
+        <Border x:Key="XlynxXMention" BorderThickness="2" CornerRadius="16" BorderBrush="#55000000" Background="#55000000">
             <Grid Height="300" Background="Transparent">
             <Grid.RowDefinitions>
                 <RowDefinition Height="250"></RowDefinition>
@@ -86,7 +86,7 @@
             </Grid>
         </Border>
 
-        <Border x:Key="MCMrARMMention" BorderThickness="2" BorderBrush="Transparent">
+        <Border x:Key="MCMrARMMention" BorderThickness="2" CornerRadius="16" BorderBrush="#55000000" Background="#55000000">
             <Grid Height="150">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
@@ -124,7 +124,7 @@
             </Grid>
         </Border>
 
-        <Border x:Key="BSCommunityMention" BorderThickness="2" BorderBrush="Transparent">
+        <Border x:Key="BSCommunityMention" BorderThickness="2" CornerRadius="16" BorderBrush="#55000000" Background="#55000000">
             <Grid Height="150">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
@@ -161,7 +161,7 @@
                 </Border>
             </Grid>
         </Border>
-        <Border x:Key="MojangMention" BorderThickness="2" BorderBrush="Transparent">
+        <Border x:Key="MojangMention" BorderThickness="2" CornerRadius="16" BorderBrush="#55000000" Background="#55000000">
             <Grid Height="150">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
@@ -185,16 +185,17 @@
                 </Border>
             </Grid>
         </Border>
-
-        <StackPanel Height="150" x:Key="MinorDetails" Margin="5,0" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-            <TextBlock Margin="0,28,0,0" Text="{DynamicResource GeneralSettingsScreen_UpdatesSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-            <TextBlock Margin="0,0,0,15" Foreground="White">
+        <Border Height="150" x:Key="MinorDetails" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" BorderThickness="2" CornerRadius="16" BorderBrush="#55000000" Background="#55000000">
+            <StackPanel Margin="5">
+                <TextBlock Margin="0,20,0,0" Text="{DynamicResource GeneralSettingsScreen_UpdatesSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+                <TextBlock Margin="0,0,0,15" Foreground="White">
                         <Run Text="{DynamicResource AboutPage_CurrentBuild}"/>
                         <Run Text="{Binding Source={x:Static core:Settings.Default}, Path=Version, Mode=OneWay}"/>
-            </TextBlock>
-            <Button Margin="0,10,0,1" FontSize="14" x:Name="CheckForUpdatesButton" HorizontalAlignment="Left" Click="CheckForUpdatesButton_Click" Content="{DynamicResource LauncherNewsPage_CheckForUpdates}" Style="{DynamicResource LinkButton}"></Button>
-            <Button Margin="0,1,0,1" FontSize="14" x:Name="ForceUpdateButton" HorizontalAlignment="Left" Click="ForceUpdateButton_Click" Content="{DynamicResource LauncherNewsPage_ForceUpdate}" Style="{DynamicResource LinkButton}"></Button>
-        </StackPanel>
+                </TextBlock>
+                <Button Margin="0,10,0,1" FontSize="14" x:Name="CheckForUpdatesButton" HorizontalAlignment="Left" Click="CheckForUpdatesButton_Click" Content="{DynamicResource LauncherNewsPage_CheckForUpdates}" Style="{DynamicResource LinkButton}"></Button>
+                <Button Margin="0,1,0,1" FontSize="14" x:Name="ForceUpdateButton" HorizontalAlignment="Left" Click="ForceUpdateButton_Click" Content="{DynamicResource LauncherNewsPage_ForceUpdate}" Style="{DynamicResource LinkButton}"></Button>
+            </StackPanel>
+        </Border>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -228,11 +229,11 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Column="1">
+                        <StackPanel Grid.Column="1"  Margin="5">
                             <ContentPresenter Margin="0,0,0,5" Content="{StaticResource MojangMention}"></ContentPresenter>
                             <ContentPresenter Margin="0,0,0,5" Content="{StaticResource MinorDetails}"></ContentPresenter>
                         </StackPanel>
-                        <StackPanel>
+                        <StackPanel Margin="5">
                             <ContentPresenter Margin="0,0,0,5" Content="{StaticResource MCMrARMMention}"></ContentPresenter>
                             <ContentPresenter Margin="0,0,0,5" Content="{StaticResource BSCommunityMention}"></ContentPresenter>
                         </StackPanel>

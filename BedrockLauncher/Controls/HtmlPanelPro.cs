@@ -14,10 +14,9 @@ using TheArtOfDev.HtmlRenderer.Core.Entities;
 
 namespace BedrockLauncher.Controls
 {
-
-    public class HtmlControl2 : HtmlControl
+    public class HtmlControlPro : HtmlControl
     {
-        public HtmlControl2() : base()
+        public HtmlControlPro() : base()
         {
 
         }
@@ -32,8 +31,7 @@ namespace BedrockLauncher.Controls
 
         }
     }
-
-    public class HtmlPanel2 : HtmlPanel
+    public class HtmlPanelPro : HtmlPanel
     {
 
         protected Grid Corner;
@@ -48,12 +46,12 @@ namespace BedrockLauncher.Controls
         }
 
 
-        static HtmlPanel2()
+        static HtmlPanelPro()
         {
             
         }
 
-        public HtmlPanel2() : base()
+        public HtmlPanelPro() : base()
         {
             Corner = new Grid();
             Corner.Name = "Corner";

@@ -12,34 +12,12 @@ using CefSharp;
 using CefSharp.Wpf;
 using System.Runtime.CompilerServices;
 using BedrockLauncher.Classes.Html;
-using CefSharp.SchemeHandler;
+using BedrockLauncher.Downloaders;
 
 namespace BedrockLauncher
 {
     public class Program
     {
-        public enum LogType
-        {
-            DebugLine,
-            Debug,
-            Console,
-            ConsoleLine
-            
-        }
-
-        public static void LogConsoleLine(object o)
-        {
-            Log(o, LogType.ConsoleLine);
-        }
-
-        public static void Log(object o, LogType logType = LogType.DebugLine)
-        {
-            if (logType == LogType.Console) Debug.Write(o);
-            else if (logType == LogType.ConsoleLine) Debug.WriteLine(o);
-            else if (logType == LogType.Debug) Debug.Write(o);
-            else if (logType == LogType.DebugLine) Debug.WriteLine(o);
-        }
-
         public static void StartLogging(StartupEventArgs e)
         {
             if (File.Exists("Log.txt")) { File.Delete("Log.txt"); }
@@ -68,7 +46,7 @@ namespace BedrockLauncher
                             switch (localKey.GetValue("AllowDevelopmentWithoutDevLicense"))
                             {
                                 case 0:
-                                    Program.Log("Developer mode disabled, trying to turn on");
+                                    System.Diagnostics.Debug.WriteLine("Developer mode disabled, trying to turn on");
                                     localKey.SetValue("AllowDevelopmentWithoutDevLicense", 1);
                                     break;
                                 case null:
@@ -80,7 +58,7 @@ namespace BedrockLauncher
                     catch (Exception r)
                     {
                         string message = "Cant enable developer mode for X64 machine Error: " + r;
-                        Program.Log(message, LogType.DebugLine);
+                        System.Diagnostics.Debug.WriteLine(message);
                         MessageBox.Show(message + r);
                         throw r;
                     }
@@ -96,7 +74,7 @@ namespace BedrockLauncher
                             switch (localKey32.GetValue("AllowDevelopmentWithoutDevLicense"))
                             {
                                 case 0:
-                                    Program.Log("Developer mode disabled, trying to turn on");
+                                    System.Diagnostics.Debug.WriteLine("Developer mode disabled, trying to turn on");
                                     localKey32.SetValue("AllowDevelopmentWithoutDevLicense", 1);
                                     break;
                                 case null:
@@ -108,7 +86,7 @@ namespace BedrockLauncher
                     catch (Exception r)
                     {
                         string message = "Cant enable developer mode for X86 machine Error: " + r;
-                        Program.Log(message, LogType.DebugLine);
+                        System.Diagnostics.Debug.WriteLine(message);
                         MessageBox.Show(message + r);
                         throw r;
                     }

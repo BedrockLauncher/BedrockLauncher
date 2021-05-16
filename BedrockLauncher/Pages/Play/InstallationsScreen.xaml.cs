@@ -39,7 +39,7 @@ namespace BedrockLauncher.Pages.Play
 
         private void NewInstallationButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.MainThread.SetOverlayFrame(new EditInstallationScreen());
+            ConfigManager.ViewModel.SetOverlayFrame(new EditInstallationScreen());
         }
 
 

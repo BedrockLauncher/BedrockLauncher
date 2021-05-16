@@ -128,7 +128,7 @@ namespace BedrockLauncher.Methods
                 }
                 catch (Exception e)
                 {
-                    Program.Log("List cache load failed:\n" + e.ToString());
+                    System.Diagnostics.Debug.WriteLine("List cache load failed:\n" + e.ToString());
                 }
                 try
                 {
@@ -136,7 +136,7 @@ namespace BedrockLauncher.Methods
                 }
                 catch (Exception e)
                 {
-                    Program.Log("List download failed:\n" + e.ToString());
+                    System.Diagnostics.Debug.WriteLine("List download failed:\n" + e.ToString());
                 }
             }));
 
@@ -160,20 +160,20 @@ namespace BedrockLauncher.Methods
 
             if (profileList.profiles == null) profileList.profiles = new Dictionary<string, MCProfile>();
 
-            Program.LogConsoleLine("Profile count: " + profileList.profiles.Count);
+            System.Diagnostics.Debug.WriteLine("Profile count: " + profileList.profiles.Count);
             foreach (MCProfile setting in profileList.profiles.Values)
             {
-                Program.LogConsoleLine("\nProfile found!: ");
-                Program.LogConsoleLine("Name: " + setting.Name);
-                Program.LogConsoleLine("Path: " + setting.ProfilePath);
+                System.Diagnostics.Debug.WriteLine("\nProfile found!: ");
+                System.Diagnostics.Debug.WriteLine("Name: " + setting.Name);
+                System.Diagnostics.Debug.WriteLine("Path: " + setting.ProfilePath);
 
                 if (setting.Installations == null) setting.Installations = new List<MCInstallation>();
-                Program.LogConsoleLine("Installations: " + setting.Installations.Count);
+                System.Diagnostics.Debug.WriteLine("Installations: " + setting.Installations.Count);
             }
 
             ProfileList = profileList;
 
-            if (ProfileList.profiles.Count() == 0) MainThread.SetOverlayFrame(new Pages.FirstLaunch.WelcomePage());
+            if (ProfileList.profiles.Count() == 0) ViewModel.SetOverlayFrame(new Pages.FirstLaunch.WelcomePage());
         }
         public static MCProfilesList CleanProfiles()
         {

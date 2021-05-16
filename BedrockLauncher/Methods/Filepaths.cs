@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using BedrockLauncher.Methods;
 
 namespace BedrockLauncher.Methods
 {
@@ -86,8 +85,8 @@ namespace BedrockLauncher.Methods
         public static string GetSkinPacksFolderPath(string InstallationsPath, bool DevFolder = false)
         {
             if (InstallationsPath == string.Empty) return string.Empty;
-            string[] Route = new string[] { "LocalState", "games", "com.mojang", (DevFolder ? "development_skin_packs" : "skin_packs") };
-            string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", GameManager.MINECRAFT_PACKAGE_FAMILY);
+            string[] Route = new string[] { (DevFolder ? "development_skin_packs" : "skin_packs") };
+            string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", GameManager.MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang");
 
 
             if (Properties.LauncherSettings.Default.SaveRedirection) return Path.Combine(Route.Prepend(InstallationsPath).ToArray());
@@ -124,7 +123,7 @@ namespace BedrockLauncher.Methods
             }
             catch (Exception ex)
             {
-                Program.LogConsoleLine(ex);
+                System.Diagnostics.Debug.WriteLine(ex);
                 return false;
             }
         }
@@ -140,7 +139,7 @@ namespace BedrockLauncher.Methods
             }
             catch (Exception ex)
             {
-                Program.LogConsoleLine(ex);
+                System.Diagnostics.Debug.WriteLine(ex);
                 return string.Empty;
             }
         }

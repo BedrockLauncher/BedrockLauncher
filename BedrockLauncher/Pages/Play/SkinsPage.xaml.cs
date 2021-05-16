@@ -22,6 +22,7 @@ using Path = System.IO.Path;
 using System.IO.Compression;
 using BedrockLauncher.Pages.Preview;
 using BedrockLauncher.Pages.Common;
+using ExtensionsDotNET;
 
 namespace BedrockLauncher.Pages.Play
 {
@@ -53,6 +54,8 @@ namespace BedrockLauncher.Pages.Play
 
             if (Directory.Exists(normal_folder)) AddPacks(normal_folder);
             if (Directory.Exists(dev_folder)) AddPacks(dev_folder);
+
+            UpdateAddSkinButton();
 
             void AddPacks(string _SourceFolder)
             {
@@ -121,13 +124,7 @@ namespace BedrockLauncher.Pages.Play
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ReloadPage();
-        }
-
-        public void ReloadPage()
-        {
             ReloadSkinPacks();
-            UpdateAddSkinButton();
         }
 
         private void LoadedSkinPacks_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -147,7 +144,7 @@ namespace BedrockLauncher.Pages.Play
         private void AddSkinButton_Click(object sender, RoutedEventArgs e)
         {
             var skinPack = LoadedSkinPacks.SelectedItem as MCSkinPack;
-            ConfigManager.MainThread.SetOverlayFrame(new EditSkinScreen(skinPack));
+            ConfigManager.ViewModel.SetOverlayFrame(new EditSkinScreen(skinPack));
         }
 
         private void ImportSkinPackButton_Click(object sender, RoutedEventArgs e)
@@ -193,7 +190,7 @@ namespace BedrockLauncher.Pages.Play
 
         private void NewSkinPackButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.MainThread.SetOverlayFrame(new EditSkinPackScreen());
+            ConfigManager.ViewModel.SetOverlayFrame(new EditSkinPackScreen());
         }
 
         private void SkinPreviewList_PreviewKeyUp(object sender, KeyEventArgs e)

@@ -5,14 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BedrockLauncher.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Loaded="ContentControl_Loaded">
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="ContentControl_Loaded" LayoutUpdated="ContentControl_LayoutUpdated" SizeChanged="ContentControl_SizeChanged">
     <ContentControl.Style>
-        <Style TargetType="{x:Type local:Marquee}">
+        <Style TargetType="{x:Type ContentControl}">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type local:Marquee}">
                         <Canvas>
-                            <ContentPresenter  x:Name="PART_Content"/>
+                            <ContentPresenter SizeChanged="PART_Content_SizeChanged" x:Name="PART_Content"/>
                         </Canvas>
                     </ControlTemplate>
                 </Setter.Value>

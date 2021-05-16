@@ -13,7 +13,7 @@ using Newtonsoft.Json;
 using BL_Core;
 using System.Runtime.InteropServices;
 
-namespace BedrockLauncher.Methods
+namespace BedrockLauncher.Downloaders
 {
     public class LauncherUpdater
     {
@@ -55,7 +55,7 @@ namespace BedrockLauncher.Methods
 
         public void CheckForUpdates()
         {
-            Program.Log("Checking for updates");
+            System.Diagnostics.Debug.WriteLine("Checking for updates");
             CheckForUpdatesAsync();
         }
         private async void CheckForUpdatesAsync()
@@ -68,7 +68,7 @@ namespace BedrockLauncher.Methods
             }
             catch (Exception err)
             {
-                Program.Log("Check for updates failed\nError:" + err.Message);
+                System.Diagnostics.Debug.WriteLine("Check for updates failed\nError:" + err.Message);
             }
         }
         private void Release_GetJSON()
@@ -80,7 +80,7 @@ namespace BedrockLauncher.Methods
             httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
             var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
-            Program.Log(httpResponse.StatusCode);
+            System.Diagnostics.Debug.WriteLine(httpResponse.StatusCode);
             var note = JsonConvert.DeserializeObject<UpdateNote>(json);
             this.Release_LatestTag = note.tag_name;
             this.Release_LatestTagBody = note.body;
@@ -94,7 +94,7 @@ namespace BedrockLauncher.Methods
             httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
             var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
-            Program.Log(httpResponse.StatusCode);
+            System.Diagnostics.Debug.WriteLine(httpResponse.StatusCode);
             var note = JsonConvert.DeserializeObject<UpdateNote>(json);
             this.Beta_LatestTag = note.tag_name;
             this.Beta_LatestTagBody = note.body;
@@ -106,7 +106,7 @@ namespace BedrockLauncher.Methods
         #region Button
         public void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            Program.Log("Trying to update");
+            System.Diagnostics.Debug.WriteLine("Trying to update");
             StartUpdate();
         }
 
@@ -116,15 +116,15 @@ namespace BedrockLauncher.Methods
         {
             string LatestTag = (Properties.LauncherSettings.Default.UseBetaBuilds ? Beta_LatestTag : Release_LatestTag);
             string CurrentTag = BL_Core.Properties.Settings.Default.Version;
-            Program.Log("Current tag: " + CurrentTag);
-            Program.Log("Latest tag: " + LatestTag);
+            System.Diagnostics.Debug.WriteLine("Current tag: " + CurrentTag);
+            System.Diagnostics.Debug.WriteLine("Latest tag: " + LatestTag);
 
             try
             {
                 // if current tag < than latest tag
                 if (int.Parse(CurrentTag.Replace(".", "")) < int.Parse(LatestTag.Replace(".", "")))
                 {
-                    Program.Log("New version available!");
+                    System.Diagnostics.Debug.WriteLine("New version available!");
                     ConfigManager.MainThread.updateButton.ShowUpdateButton();
                 }
             }
@@ -154,7 +154,7 @@ namespace BedrockLauncher.Methods
             }
             catch (Exception err)
             {
-                Program.Log("Installer launch failed\nError: " + err);
+                System.Diagnostics.Debug.WriteLine("Installer launch failed\nError: " + err);
             }
 
 

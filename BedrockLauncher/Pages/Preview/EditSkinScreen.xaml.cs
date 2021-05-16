@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
+using ExtensionsDotNET;
 
 namespace BedrockLauncher.Pages.Preview
 {
@@ -153,7 +154,7 @@ namespace BedrockLauncher.Pages.Preview
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.MainThread.SetOverlayFrame(null);
+            ConfigManager.ViewModel.SetOverlayFrame(null);
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
@@ -163,13 +164,13 @@ namespace BedrockLauncher.Pages.Preview
 
             if (isEditMode) skinPack.EditSkin(skin_index, skin);
             else skinPack.AddSkin(skin);
-            ConfigManager.MainThread.SetOverlayFrame(null);
-            ConfigManager.MainThread.RefreshSkinsPage();
+            ConfigManager.ViewModel.SetOverlayFrame(null);
+            ConfigManager.ViewModel.RefreshSkinsPage();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.MainThread.SetOverlayFrame(null);
+            ConfigManager.ViewModel.SetOverlayFrame(null);
         }
 
         #endregion
@@ -186,7 +187,7 @@ namespace BedrockLauncher.Pages.Preview
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string fileToImport = ofd.FileName;
-                string fileName = Extensions.GetAvaliableFileName(Path.GetFileName(ofd.FileName), skinPack.Directory);
+                string fileName = FileExtensions.GetAvaliableFileName(Path.GetFileName(ofd.FileName), skinPack.Directory);
                 File.Copy(fileToImport, Path.Combine(skinPack.Directory, fileName));
                 UpdateTextureDropdown(skinPack);
                 TextureCombobox.Text = fileName;

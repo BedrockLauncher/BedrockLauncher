@@ -17,14 +17,9 @@ using System.IO;
 using System.IO.Compression;
 using System.Threading;
 using System.Windows.Data;
-using Windows.ApplicationModel;
-using Windows.Foundation;
-using Windows.Management.Core;
-using Windows.Management.Deployment;
-using Windows.System;
 
 using BedrockLauncher.Interfaces;
-using BedrockLauncher.Components;
+using BL_Core.Components;
 
 namespace BedrockLauncher.Classes
 {
@@ -60,7 +55,19 @@ namespace BedrockLauncher.Classes
             }
         }
 
-        public bool IsInstalled => Directory.Exists(GameDirectory);
+        public bool IsInstalled
+        {
+            get
+            {
+                if (Directory.Exists(GameDirectory))
+                {
+                    var files = new DirectoryInfo(GameDirectory).EnumerateFiles();
+                    if (files.ToList().Exists(x => x.Name == "Minecraft.Windows.exe")) return true;
+                    else return false;
+                }
+                else return false;
+            }
+        }
 
         public string DisplayName
         {
@@ -113,7 +120,7 @@ namespace BedrockLauncher.Classes
                 _StoredInstallationSize = "N/A";
                 RequireSizeRecalculation = false;
             }
-            OnPropertyChanged("InstallationSize");
+            OnPropertyChanged(nameof(InstallationSize));
 
         }
 
@@ -139,7 +146,7 @@ namespace BedrockLauncher.Classes
 
         public void UpdateInstallStatus()
         {
-            OnPropertyChanged("IsInstalled");
+            OnPropertyChanged(nameof(IsInstalled));
             RequireSizeRecalculation = true;
         }
 
