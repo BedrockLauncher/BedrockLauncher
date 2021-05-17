@@ -245,6 +245,8 @@ namespace BedrockLauncher.ViewModels
             var view = CollectionViewSource.GetDefaultView(installationsScreen.InstallationsList.ItemsSource) as CollectionView;
             view.Filter = ConfigManager.Filter_InstallationList;
 
+            ConfigManager.MainThread.InstallationsList.Items.Cast<MCInstallation>().ToList().ForEach(x => x.Update());
+
             ConfigManager.MainThread.InstallationsList.ItemsSource = ConfigManager.CurrentInstallations;
             if (ConfigManager.MainThread.InstallationsList.SelectedItem == null) ConfigManager.MainThread.InstallationsList.SelectedItem = ConfigManager.CurrentInstallations.First();
         }

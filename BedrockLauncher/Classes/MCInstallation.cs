@@ -7,10 +7,11 @@ using System.Windows;
 using System.Windows.Media.Imaging;
 using Newtonsoft.Json;
 using BedrockLauncher.Methods;
+using BL_Core.Components;
 
 namespace BedrockLauncher.Classes
 {
-    public class MCInstallation
+    public class MCInstallation : NotifyPropertyChangedBase
     {
         public string DisplayName { get; set; }
         public string VersionUUID { get; set; }
@@ -104,7 +105,16 @@ namespace BedrockLauncher.Classes
                 else if (UseLatestVersion) return Application.Current.FindResource("VersionEntries_LatestRelease").ToString();
                 else return version;
             }
-        } 
+        }
+
+
+        public void Update()
+        {
+            OnPropertyChanged(nameof(DisplayName_Full));
+            OnPropertyChanged(nameof(DirectoryName_Full));
+            OnPropertyChanged(nameof(IconPath_Full));
+            OnPropertyChanged(nameof(VersionName));
+        }
 
     }
 }

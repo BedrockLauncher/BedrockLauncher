@@ -139,7 +139,7 @@
     <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">GEOMETRY</v:String>
 
     <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">LOCALIZATION NAME</v:String>
-    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">SERALIZABLE NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">SERIALIZATION NAME</v:String>
     <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">LANGUAGE DEFINITIONS</v:String>
 
     <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">LANG NAME</v:String>
@@ -148,7 +148,7 @@
     <v:String x:Key="EditSkinPackScreen_ContentSubtitle">CONTENT</v:String>
     <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">MODULES</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">FROMAT VERSION</v:String>
+    <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">FORMAT VERSION</v:String>
 
     <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">PACK NAME</v:String>
     <v:String x:Key="EditSkinPackScreen_HeaderUUIDSubtitle">UUID</v:String>

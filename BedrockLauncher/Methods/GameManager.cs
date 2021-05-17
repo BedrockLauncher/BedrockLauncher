@@ -485,7 +485,7 @@ namespace BedrockLauncher.Methods
                 }
             });
 
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
         }
         private async Task ExtractPackage(MCVersion v, string dlPath, CancellationTokenSource cancelSource)
         {
