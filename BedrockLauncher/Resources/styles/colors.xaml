@@ -11,6 +11,7 @@
 
     <SolidColorBrush x:Key="Background.Primary" Color="#262626"/>
     <SolidColorBrush x:Key="Background.Secondary" Color="#333333"/>
+    <SolidColorBrush x:Key="Background.Dialog" Color="#303030"/>
 
     <SolidColorBrush x:Key="Seperator.Background" Color="#5C5C5C"/>
 

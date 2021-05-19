@@ -22,7 +22,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="110"></RowDefinition>
         </Grid.RowDefinitions>
-        <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Grid.ColumnSpan="2">
+        <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource Seperator.Background}" Grid.ColumnSpan="2">
             <Grid Background="#FF303030">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -65,18 +65,18 @@
                 </Grid>
             </Grid>
         </Border>
-        <Grid Grid.RowSpan="2" Grid.Column="1" Grid.Row="1" Background="Gray"></Grid>
+        <Grid Grid.RowSpan="2" Grid.Column="1" Grid.Row="1" Background="{DynamicResource Seperator.Background}"></Grid>
         <ListView Grid.RowSpan="3" 
                   Keyboard.PreviewKeyUp="LoadedSkinPacks_PreviewKeyUp" 
                   BorderThickness="0,0,0,0" 
-                  Grid.Row="1" BorderBrush="Gray" x:Name="LoadedSkinPacks" 
+                  Grid.Row="1" BorderBrush="{DynamicResource Seperator.Background}" x:Name="LoadedSkinPacks" 
                   SelectionChanged="LoadedSkinPacks_SelectionChanged" 
                   HorizontalContentAlignment="Center" 
                   ItemTemplate="{StaticResource SkinPackItemTemplate}">
         </ListView>
         <Grid Grid.Column="2" Grid.Row="1" Background="#212121"></Grid>
         <controls:SkinPreview x:Name="SkinPreviewPanel" Grid.Column="2" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></controls:SkinPreview>
-        <Border BorderThickness="0,0,0,1" BorderBrush="Gray" Grid.Column="2" Grid.Row="0">
+        <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource Seperator.Background}" Grid.Column="2" Grid.Row="0">
             <Grid Background="#FF303030">
                 <mcf:McTextBlock Foreground="White" Name="CurrentSkinNameTextBlock" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center"></mcf:McTextBlock>
             </Grid>
@@ -93,9 +93,9 @@
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
         </ListView>
-            <Button Grid.Column="2" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Margin="0" Style="{DynamicResource DialogButton_Green_NoPadding}" Name="AddSkinButton" Click="AddSkinButton_Click">
+            <Button Grid.Column="2" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="5" Margin="0" Style="{DynamicResource DialogButton_Green}" Name="AddSkinButton" Click="AddSkinButton_Click">
                 <Button.Content>
-                    <Image Stretch="Uniform" Margin="5" Source="{DynamicResource PlusIcon}"></Image>
+                    <Image Stretch="Uniform" Margin="0" Source="{DynamicResource PlusIcon}"></Image>
                 </Button.Content>
             </Button>
         </Grid>

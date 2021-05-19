@@ -3,9 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BedrockLauncher.Pages"
         mc:Ignorable="d"
-        Title="{DynamicResource AdvancedSettings_Title}" Initialized="Window_Initialized" Height="450" Width="800" Background="#FF1E1E1E" ResizeMode="NoResize" Closed="Window_Closed">
+        Title="{DynamicResource AdvancedSettings_Title}" Initialized="Window_Initialized" Height="450" Width="800" Background="{DynamicResource Background.Primary}" ResizeMode="NoResize" Closed="Window_Closed">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"></RowDefinition>
@@ -14,13 +13,13 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="75"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Text="{DynamicResource AdvancedSettings_Title}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="20" x:Name="Header"></TextBlock>
+        <TextBlock Text="{DynamicResource AdvancedSettings_Title}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource PrimaryText.Foreground}" FontWeight="Bold" FontSize="20" x:Name="Header"></TextBlock>
         <Separator Grid.Row="1"></Separator>
         <StackPanel Grid.Row="2">
             <TextBlock Margin="42,42,0,0" Text="{DynamicResource AdvancedSettings_LauncherOptions_Text}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-            <CheckBox x:Name="portableModeCheckBox" Click="useFixedInstallLocation_Click" Foreground="White" Content="{DynamicResource AdvancedSettings_PortableMode_Text}" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
+            <CheckBox x:Name="portableModeCheckBox" Click="useFixedInstallLocation_Click" Foreground="{DynamicResource PrimaryText.Foreground}" Content="{DynamicResource AdvancedSettings_PortableMode_Text}" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
             <TextBlock Margin="42,22,0,0" Text="{DynamicResource AdvancedSettings_PathSubtitle_Text}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-            <Border Height="32" Background="#FF131313" Width="512" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" CornerRadius="4">
+            <Border Height="32" Background="{DynamicResource TextBox.Static.Background}" Width="512" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" CornerRadius="4">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>

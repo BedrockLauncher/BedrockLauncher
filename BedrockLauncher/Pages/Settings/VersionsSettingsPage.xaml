@@ -19,7 +19,7 @@
             <RowDefinition Height="60"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Border BorderThickness="0,0,0,1" BorderBrush="Gray">
+        <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource Seperator.Background}">
             <Grid Background="#FF303030" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>

@@ -4,12 +4,9 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:p="clr-namespace:BedrockLauncher.Properties"
-      xmlns:classes="clr-namespace:BedrockLauncher.Classes"
-      xmlns:methods="clr-namespace:BedrockLauncher.Methods"
       xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
-      xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
-      xmlns:local="clr-namespace:BedrockLauncher"
       mc:Ignorable="d" 
+      x:Name="PageHost"
       d:DesignHeight="608" d:DesignWidth="828"
       Title="InstallationsScreen" Initialized="Page_Initialized">
     <Grid Margin="0" Background="#FF303030" Style="{DynamicResource DisabledStyle}">

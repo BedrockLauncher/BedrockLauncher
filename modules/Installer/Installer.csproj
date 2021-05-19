@@ -284,6 +284,10 @@
       <Name>BedrockLauncher.Core</Name>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
+    <ProjectReference Include="..\Extensions.NET\Extensions.NET.csproj">
+      <Project>{6718749f-4346-4e5e-85df-d47faf22c9b6}</Project>
+      <Name>Extensions.NET</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack">

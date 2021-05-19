@@ -32,7 +32,7 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/BedrockLauncher;component/resources/images/ui/credits/carjem_logo.png" Grid.Row="0"></Image>
-                <Border Grid.Row="1" BorderThickness="0,2,0,0" BorderBrush="Gray">
+                <Border Grid.Row="1" BorderThickness="0,2,0,0" BorderBrush="{DynamicResource Seperator.Background}">
                     <Grid Background="Transparent">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
                             <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_Twitter}" Tag="{StaticResource CJ_TwitterURL}" Click="Button_Click" Padding="10,0"  FontSize="15"/>
@@ -66,7 +66,7 @@
                 </Grid>
 
             </Grid>
-            <Border Grid.Row="1" BorderThickness="0,2,0,0" BorderBrush="Gray">
+                <Border Grid.Row="1" BorderThickness="0,2,0,0" BorderBrush="{DynamicResource Seperator.Background}">
                     <Grid Background="Transparent">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_Twitter}" Tag="{StaticResource XlynxX_TwitterURL}" Click="Button_Click" Padding="10,0"  FontSize="15"/>
@@ -104,7 +104,7 @@
                 <Grid Grid.Row="1" Background="Transparent">
                     <TextBlock Text="{DynamicResource AboutPage_McMrArm_Text}" Padding="5" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" Foreground="White"></TextBlock>
                 </Grid>
-                <Border Grid.Row="2" BorderThickness="0,2,0,0" BorderBrush="Gray">
+                <Border Grid.Row="2" BorderThickness="0,2,0,0" BorderBrush="{DynamicResource Seperator.Background}">
                     <Grid Background="Transparent">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_Twitter}" Tag="{StaticResource McMrArm_TwitterURL}" Click="Button_Click" Padding="10,0"  FontSize="15"/>
@@ -142,7 +142,7 @@
                 <Grid Grid.Row="1" Background="Transparent">
                     <TextBlock Text="{DynamicResource AboutPage_BsCommunity_Text}" Padding="5" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" Foreground="White"></TextBlock>
                 </Grid>
-                <Border Grid.Row="2" BorderThickness="0,2,0,0" BorderBrush="Gray">
+                <Border Grid.Row="2" BorderThickness="0,2,0,0" BorderBrush="{DynamicResource Seperator.Background}">
                     <Grid Background="Transparent">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_GitHub}" Tag="{StaticResource BsCommunity_GithubURL}" Click="Button_Click" Padding="10,0"  FontSize="15"/>
@@ -167,7 +167,7 @@
                         <Run Text="{DynamicResource AboutPage_Mojang_Text}"></Run>
                     </TextBlock>
                 </Grid>
-                <Border Grid.Row="2" BorderThickness="0,2,0,0" BorderBrush="Gray">
+                <Border Grid.Row="2" BorderThickness="0,2,0,0" BorderBrush="{DynamicResource Seperator.Background}">
                     <Grid Background="Transparent">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_Website}" Tag="{StaticResource Mojang_URL}" Click="Button_Click" Padding="10,0"  FontSize="15"/>

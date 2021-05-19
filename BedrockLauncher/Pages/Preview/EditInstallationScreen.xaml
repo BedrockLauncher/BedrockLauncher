@@ -7,7 +7,7 @@
       xmlns:controls="clr-namespace:BedrockLauncher.Controls"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800"
-      Title="AddInstallationScreen" Width="Auto" Height="Auto" Foreground="{x:Null}" Background="#303030" SnapsToDevicePixels="True">
+      Title="AddInstallationScreen" Width="Auto" Height="Auto" Foreground="{x:Null}" Background="{DynamicResource Background.Dialog}" SnapsToDevicePixels="True">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"></RowDefinition>

@@ -53,11 +53,11 @@
                         </Grid.ColumnDefinitions>
                         <ProgressBar x:Name="progressSizeHack" Height="32" BorderThickness="0" Foreground="#FF008542" Background="Black" BorderBrush="Black" Minimum="0"/>
                         <StackPanel Grid.Column="1" Orientation="Horizontal">
-                            <Button Height="32" Width="32" Style="{DynamicResource DialogButton_NoPadding}" Foreground="White" Content="▶"  Visibility="Collapsed"></Button>
-                            <Button Height="32" Width="32" Style="{DynamicResource DialogButton_NoPadding}" Visibility="Collapsed">
+                            <Button Height="32" Width="32" Padding="0" Style="{DynamicResource DialogButton}" Foreground="White" Content="▶"  Visibility="Collapsed"></Button>
+                            <Button Height="32" Width="32" Padding="0" Style="{DynamicResource DialogButton}" Visibility="Collapsed">
                                 <TextBlock Text="┃┃" Foreground="White" Margin="0,-3.2,0,0"></TextBlock>
                             </Button>
-                            <Button Height="32" Width="32" Style="{DynamicResource DialogButton_NoPadding}" x:Name="CancelButton" Click="CancelButton_Click" IsEnabled="{Binding Path=AllowCancel}">
+                            <Button Height="32" Width="32" Padding="0" Style="{DynamicResource DialogButton}" x:Name="CancelButton" Click="CancelButton_Click" IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default},Path=AllowCancel, Mode=OneWay}">
                                 <TextBlock Text="❌" Foreground="White"></TextBlock>
                             </Button>
                         </StackPanel>

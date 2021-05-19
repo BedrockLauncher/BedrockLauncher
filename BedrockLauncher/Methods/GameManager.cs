@@ -59,23 +59,32 @@ namespace BedrockLauncher.Methods
         {
             await Task.Run(() =>
             {
-                string FilePath = Path.GetDirectoryName(v.ExePath);
-                string FileName = Path.GetFileNameWithoutExtension(v.ExePath).ToLower();
-
-                Process[] pList = Process.GetProcessesByName(FileName);
-
-                foreach (Process p in pList)
+                try
                 {
-                    string fileName = p.MainModule.FileName;
-                    if (fileName.StartsWith(FilePath, StringComparison.InvariantCultureIgnoreCase))
+                    string FilePath = Path.GetDirectoryName(v.ExePath);
+                    string FileName = Path.GetFileNameWithoutExtension(v.ExePath).ToLower();
+
+                    Process[] pList = Process.GetProcessesByName(FileName);
+
+                    foreach (Process p in pList)
                     {
-                        ViewModels.LauncherModel.Default.IsGameRunning = true;
-                        GameProcess = p;
-                        p.EnableRaisingEvents = true;
-                        p.Exited += GameProcessExited;
-                        break;
+                        string fileName = p.MainModule.FileName;
+                        if (fileName.StartsWith(FilePath, StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            ViewModels.LauncherModel.Default.IsGameRunning = true;
+                            GameProcess = p;
+                            p.EnableRaisingEvents = true;
+                            p.Exited += GameProcessExited;
+                            break;
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    throw ex;
+                }
+
 
 
             });
@@ -184,18 +193,11 @@ namespace BedrockLauncher.Methods
             Task.Run(async () =>
             {
                 StartLaunch();
-                try
-                {
-                    await SetInstallationDataPath();
-                    string gameDir = Path.GetFullPath(v.GameDirectory);
-                    await ReRegisterPackage(v, gameDir);
-                    await LaunchGame(v);
-                }
-                catch
-                {
-
-                }
-                EndLaunch();
+                await SetInstallationDataPath();
+                string gameDir = Path.GetFullPath(v.GameDirectory);
+                await ReRegisterPackage(v, gameDir);
+                bool closable = await LaunchGame(v);
+                if (!closable) EndLaunch();
             });
 
             void StartLaunch()
@@ -400,7 +402,7 @@ namespace BedrockLauncher.Methods
                 throw e;
             }
         }
-        private async Task LaunchGame(MCVersion v)
+        private async Task<bool> LaunchGame(MCVersion v)
         {
             try
             {
@@ -415,8 +417,13 @@ namespace BedrockLauncher.Methods
                     {
                         Application.Current.MainWindow.Close();
                     });
+                    return true;
                 }
-                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
+                else
+                {
+                    ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
+                    return false;
+                }
             }
             catch (Exception e)
             {

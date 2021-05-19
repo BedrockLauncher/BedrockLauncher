@@ -165,7 +165,11 @@ namespace BedrockLauncher.ViewModels
         {
             await Application.Current.Dispatcher.InvokeAsync(() =>
             {
-                ShowProgressBarContent_Pre();
+                MainThread.BedrockEditionButton.progressSizeHack.Visibility = Visibility.Visible;
+                MainThread.ProgressBarGrid.Visibility = Visibility.Visible;
+                MainThread.ProgressBarText.Visibility = Visibility.Hidden;
+                MainThread.progressbarcontent.Visibility = Visibility.Hidden;
+
                 Storyboard storyboard = new Storyboard();
                 DoubleAnimation animation = new DoubleAnimation
                 {
@@ -184,7 +188,10 @@ namespace BedrockLauncher.ViewModels
         {
             await Application.Current.Dispatcher.InvokeAsync(() =>
             {
-                HideProgressBarContent_Pre();
+                MainThread.BedrockEditionButton.progressSizeHack.Visibility = Visibility.Hidden;
+                MainThread.ProgressBarGrid.Visibility = Visibility.Visible;
+                MainThread.ProgressBarText.Visibility = Visibility.Hidden;
+                MainThread.progressbarcontent.Visibility = Visibility.Hidden;
 
                 Storyboard storyboard = new Storyboard();
                 DoubleAnimation animation = new DoubleAnimation
@@ -200,24 +207,11 @@ namespace BedrockLauncher.ViewModels
                 storyboard.Begin();
             });
         }
-        private void HideProgressBarContent_Pre()
-        {
-            MainThread.BedrockEditionButton.progressSizeHack.Visibility = Visibility.Hidden;
-            MainThread.ProgressBarGrid.Visibility = Visibility.Visible;
-            MainThread.ProgressBarText.Visibility = Visibility.Hidden;
-            MainThread.progressbarcontent.Visibility = Visibility.Hidden;
-        }
+
         private void HideProgressBarContent(object sender, EventArgs e)
         {
             MainThread.BedrockEditionButton.progressSizeHack.Visibility = Visibility.Hidden;
             MainThread.ProgressBarGrid.Visibility = Visibility.Collapsed;
-            MainThread.ProgressBarText.Visibility = Visibility.Hidden;
-            MainThread.progressbarcontent.Visibility = Visibility.Hidden;
-        }
-        private void ShowProgressBarContent_Pre()
-        {
-            MainThread.BedrockEditionButton.progressSizeHack.Visibility = Visibility.Visible;
-            MainThread.ProgressBarGrid.Visibility = Visibility.Visible;
             MainThread.ProgressBarText.Visibility = Visibility.Hidden;
             MainThread.progressbarcontent.Visibility = Visibility.Hidden;
         }

@@ -6,7 +6,7 @@
                     xmlns:v="clr-namespace:System;assembly=mscorlib">
 
     <DataTemplate x:Key="InstallationItemTemplate" DataType="{x:Type classes:MCInstallation}">
-        <i:InstallationItem x:Name="ItemControl" DataContext="{Binding }"/>
+        <i:InstallationItem x:Name="ItemControl" DataContext="{Binding }" Tag="{Binding ElementName=PageHost}"/>
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver}" Value="True">
                 <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
