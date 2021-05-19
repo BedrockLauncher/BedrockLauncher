@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="Version" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">0.0.1.1</Value>
+      <Value Profile="(Default)">0.0.1.2</Value>
     </Setting>
     <Setting Name="GithubPage" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://github.com/BedrockLauncher/BedrockLauncher</Value>
