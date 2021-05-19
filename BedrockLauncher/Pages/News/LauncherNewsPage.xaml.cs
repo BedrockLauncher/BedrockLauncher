@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Downloaders;
+using MdXaml;
 
 namespace BedrockLauncher.Pages.News
 {
@@ -50,8 +51,13 @@ namespace BedrockLauncher.Pages.News
 
             if (latest_description == string.Empty) latest_description = "N/A";
 
+            latest_description = latest_description.Replace("\r\n", "\r\n\r\n");
+
+            Markdown engine = new Markdown();
+            FlowDocument document = engine.Transform(latest_description);
+
             buildVersion.Text = "v" + latest_tag;
-            buildChanges.Text = latest_description;
+            buildChanges.Document = document;
         }
 
         private void CheckForUpdatesButton_Click(object sender, RoutedEventArgs e)

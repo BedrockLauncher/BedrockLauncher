@@ -233,7 +233,12 @@
 
     <!--#region AcountsSettingsPage -->
 
-    <v:String x:Key="AcountsSettingsPage_AccountDropdown_Subtitle">INSIDER ACCOUNT</v:String>
+    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">SELECTED ACCOUNT</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">INSIDER SETTINGS</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Normal Settings</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Legacy Settings</v:String>
+    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Manage Accounts</v:String>
+    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">ACCOUNT SETTINGS</v:String>
 
     <!--#endregion-->
 

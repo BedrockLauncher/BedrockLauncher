@@ -40,7 +40,7 @@ namespace BedrockLauncher.Controls.Items
         public static void LoadChangelog(MCPatchNotesItem item)
         {
             string header_title = string.Format("{0} {1}", (item.isBeta ? "Beta" : "Release"), item.Version);
-            ConfigManager.ViewModel.SetOverlayFrame(new ChangelogPreviewPage(item.Content, header_title, item.Url));
+            ViewModels.LauncherModel.Default.SetOverlayFrame(new ChangelogPreviewPage(item.Content, header_title, item.Url));
         }
     }
 }

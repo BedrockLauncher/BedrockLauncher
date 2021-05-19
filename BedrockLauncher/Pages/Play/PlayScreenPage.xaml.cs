@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BedrockLauncher.Classes;
+using BedrockLauncher.Methods;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,9 +17,6 @@ using System.Windows.Shapes;
 
 namespace BedrockLauncher.Pages.Play
 {
-    /// <summary>
-    /// Логика взаимодействия для PlayScreenPage.xaml
-    /// </summary>
     public partial class PlayScreenPage : Page
     {
 
@@ -48,12 +47,25 @@ namespace BedrockLauncher.Pages.Play
         public PlayScreenPage()
         {
             InitializeComponent();
-
+            ConfigManager.ConfigStateChanged += ConfigManager_ConfigStateChanged;
             for (int i = 0; i < Images.Count; i++)
             {
                 var entry = Images.ElementAt(i);
                 Images[entry.Key] = ImagePathPrefix + entry.Value;
             }
+        }
+
+        private void ConfigManager_ConfigStateChanged(object sender, EventArgs e)
+        {
+            RefreshInstallations();
+        }
+
+        private void RefreshInstallations()
+        {
+            InstallationsList.Items.Cast<MCInstallation>().ToList().ForEach(x => x.Update());
+
+            InstallationsList.ItemsSource = ConfigManager.CurrentInstallations;
+            if (InstallationsList.SelectedItem == null) InstallationsList.SelectedItem = ConfigManager.CurrentInstallations.First();
         }
 
         private string GetLatestImage()
@@ -63,6 +75,8 @@ namespace BedrockLauncher.Pages.Play
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
+            ViewModels.LauncherModel.Default.UpdateUI();
+
             string packUri = string.Empty;
             string currentTheme = Properties.LauncherSettings.Default.CurrentTheme;
 
@@ -93,6 +107,20 @@ namespace BedrockLauncher.Pages.Play
 
             var bmp = new BitmapImage(new Uri(packUri, UriKind.Absolute));
             ImageBrush.ImageSource = bmp;
+        }
+
+        private void MainPlayButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ConfigManager.GameManager.GameProcess != null) ConfigManager.GameManager.KillGame();
+            else
+            {
+                var i = InstallationsList.SelectedItem as MCInstallation;
+                ConfigManager.GameManager.Play(i);
+            }
+        }
+        private void InstallationsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ConfigManager.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
         }
     }
 }

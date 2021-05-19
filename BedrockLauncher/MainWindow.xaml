@@ -3,17 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BedrockLauncher"
-        xmlns:classes="clr-namespace:BedrockLauncher.Classes"
         xmlns:properties="clr-namespace:BedrockLauncher.Properties"
         xmlns:controls="clr-namespace:BedrockLauncher.Controls"
         xmlns:methods="clr-namespace:BedrockLauncher.Methods"
+        xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
         xmlns:toolbar="clr-namespace:BedrockLauncher.Controls.Toolbar"
         xmlns:com="clr-namespace:BL_Core.Components;assembly=BL_Core"
         xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
-        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
-        xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
-        d:DataContext="{x:Static methods:ConfigManager.ViewModel}" 
         x:Class="BedrockLauncher.MainWindow"
         mc:Ignorable="d"
         MouseDown="Window_MouseDown"
@@ -28,14 +24,14 @@
         <wincontrols:BooleanToVisibilityConverter x:Key="BoolToVis"></wincontrols:BooleanToVisibilityConverter>
         <com:InvertableBooleanToVisibilityConverter x:Key="ReverseBoolToVis"></com:InvertableBooleanToVisibilityConverter>
     </Window.Resources>
-    <Grid Margin="0,0,0,0" Background="#FF303030">
+    <Grid Margin="0,0,0,0" Background="{DynamicResource Background.Primary}">
         <Grid x:Name="MainFrame">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="180"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <StackPanel x:Name="buttonStackPanel" Grid.Column="0" Background="#FF1E1E1E" HorizontalAlignment="Left">
-                <toolbar:ProfileButton IsEnabled="{Binding Path=AllowEditing, Mode=OneWay}" x:Name="ProfileButton"></toolbar:ProfileButton>
+            <StackPanel x:Name="buttonStackPanel" Grid.Column="0" Background="{DynamicResource Background.Primary}" HorizontalAlignment="Left">
+                <toolbar:ProfileButton IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default},Path=AllowEditing, Mode=OneWay}" x:Name="ProfileButton"></toolbar:ProfileButton>
                 <toolbar:NewsButton x:Name="NewsButton"></toolbar:NewsButton>
                 <toolbar:BedrockEditionButton x:Name="BedrockEditionButton"></toolbar:BedrockEditionButton>
                 <toolbar:JavaEditionButton x:Name="JavaEditionButton" Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=HideJavaShortcut, Converter={StaticResource ReverseBoolToVis}, ConverterParameter=Inverted}"></toolbar:JavaEditionButton>
@@ -47,10 +43,9 @@
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="Auto" MaxHeight="64"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Frame x:Name="MainWindowFrame" com:DisableNavigation.Disable="True" Focusable="False" VerticalAlignment="Stretch" Background="Black" NavigationUIVisibility="Hidden" Source="/BedrockLauncher;component/Pages/Play/GameTabs.xaml"/>
-                <Grid Grid.Row="1" x:Name="ProgressBarGrid" Background="#FF262626" Visibility="Collapsed">
+                <Grid Grid.Row="1" x:Name="ProgressBarGrid" Background="{DynamicResource Background.Primary}" Visibility="Collapsed">
                     <Grid Margin="10,8,10,22">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
@@ -72,13 +67,6 @@
                         <TextBlock x:Name="progressbarcontent" SnapsToDevicePixels="True" Margin="26,-15,0,0" FontSize="12" Text="{DynamicResource ProgressBar_Downloading}"  HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
                         <TextBlock SnapsToDevicePixels="True" Margin="+3,-15,0,0" FontSize="12" x:Name="ProgressBarText" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
                     </StackPanel>
-                </Grid>
-                <Grid x:Name="PlayScreenBorder" Grid.Row="2" x:FieldModifier="public" VerticalAlignment="Bottom" Background="#FF262626">
-                    <TextBlock Style="{DynamicResource HeaderTextblock}" Text="{DynamicResource MainWindow_Disclaimer}" HorizontalAlignment="Right" Panel.ZIndex="0" VerticalAlignment="Center" Padding="0,0,5,0" Margin="0,0,0,0"/>
-                    <Button  IsEnabled="{Binding Path=AllowPlaying, Mode=OneWay}" x:Name="MainPlayButton" Click="MainPlayButton_Click" HorizontalAlignment="Center" Margin="286,-8,286,0" VerticalAlignment="Top" Width="250" Height="56" Padding="0" Style="{DynamicResource BigGreenButton}">
-                        <TextBlock x:Name="PlayButtonText" Style="{DynamicResource BigGreenButton_Text}" Text="{Binding Path=PlayButtonString, Mode=OneWay}"/>
-                    </Button>
-                    <controls:InstallationSelector SelectedIndex="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=CurrentInstallation}" IsEnabled="{Binding Path=AllowEditing, Mode=OneWay}" SelectionChanged="InstallationsList_SelectionChanged" ItemsSource="{Binding}" x:Name="InstallationsList" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="250" Height="50" Padding="-1,7,5,3"></controls:InstallationSelector>
                 </Grid>
             </Grid>
         </Grid>

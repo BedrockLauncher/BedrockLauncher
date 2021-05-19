@@ -5,9 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BedrockLauncher"
       xmlns:com="clr-namespace:BL_Core.Components;assembly=BL_Core"
+      Loaded="Page_Loaded"
       mc:Ignorable="d"
       Title="{DynamicResource SettingsTab_Title}" Foreground="{x:Null}" Background="#FF303030">
-    <Grid Background="#FF303030">
+    <Grid Background="{DynamicResource Background.Secondary}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -16,7 +17,7 @@
             BorderBrush="Transparent"
             BorderThickness="0,0,0,0"
             CornerRadius="0">
-            <Grid Background="#FF282828">
+            <Grid Background="{DynamicResource Background.Primary}">
                 <Label Foreground="White" Content="{DynamicResource SettingsTab_Title}" Margin="14,27,600,0" Style="{DynamicResource TabTitle}"/>
                 <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Orientation="Horizontal" Margin="5,49,0,0">
                     <ToggleButton x:Name="GeneralButton" Width="Auto" Click="ButtonManager" Content="{DynamicResource SettingsTab_GeneralButton}" Style="{DynamicResource ToolbarButton}" IsChecked="True">

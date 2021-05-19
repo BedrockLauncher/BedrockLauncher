@@ -193,6 +193,7 @@
     <Compile Include="Classes\MCVersionList.cs" />
     <Compile Include="Components\ComboBoxBehaviors.cs" />
     <Compile Include="Components\InteractivityHelper.cs" />
+    <Compile Include="Components\PageAnimator.cs" />
     <Compile Include="Controls\Items\InstallationSelectorItem.xaml.cs">
       <DependentUpon>InstallationSelectorItem.xaml</DependentUpon>
     </Compile>
@@ -350,8 +351,8 @@
     <Compile Include="Pages\Play\InstallationsScreen.xaml.cs">
       <DependentUpon>InstallationsScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\News\NewsScreenPage.xaml.cs">
-      <DependentUpon>NewsScreenPage.xaml</DependentUpon>
+    <Compile Include="Pages\News\NewsScreenTabs.xaml.cs">
+      <DependentUpon>NewsScreenTabs.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Preview\AddProfilePage.xaml.cs">
       <DependentUpon>AddProfilePage.xaml</DependentUpon>
@@ -572,7 +573,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\News\NewsScreenPage.xaml">
+    <Page Include="Pages\News\NewsScreenTabs.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -620,17 +621,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\styles\colors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\styles\expander.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\styles\installations_combobox.xaml">
+    <Page Include="Resources\styles\focus_visuals.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\styles\insiders_combobox.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Resources\styles\icons.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\styles\combobox.xaml">
       <SubType>Designer</SubType>
@@ -644,7 +649,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\styles\itemtemplates.xaml">
+    <Page Include="Resources\styles\item_templates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -653,6 +658,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\styles\menuitems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\styles\misc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -665,10 +674,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\styles\scrollbars.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\styles\style.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -702,6 +707,7 @@
     <None Include="app.manifest">
       <SubType>Designer</SubType>
     </None>
+    <Resource Include="Resources\fonts\X360.ttf" />
     <Resource Include="Resources\fonts\MinecraftFive-Regular.ttf" />
     <Resource Include="Resources\fonts\MinecraftSeven.ttf" />
     <Resource Include="Resources\fonts\NotoSans-BoldItalic.ttf" />
@@ -740,6 +746,9 @@
     </PackageReference>
     <PackageReference Include="ini-parser">
       <Version>2.5.2</Version>
+    </PackageReference>
+    <PackageReference Include="MdXaml">
+      <Version>1.10.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Windows.CppWinRT">
       <Version>2.0.210326.8</Version>
@@ -976,7 +985,12 @@
   <ItemGroup>
     <Resource Include="Resources\images\ui\credits\mojang_logo.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\images\ui\credits\microsoft_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\ui\credits\xbox_logo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

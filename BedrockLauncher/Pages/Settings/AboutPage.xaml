@@ -11,7 +11,7 @@
       xmlns:sys="clr-namespace:System;assembly=System"
       x:Class="BedrockLauncher.Pages.Settings.AboutPage"
       mc:Ignorable="d" 
-      d:DesignHeight="828" d:DesignWidth="525"
+      d:DesignHeight="728" d:DesignWidth="525"
       Title="AboutPage" Initialized="Page_Initialized" MinWidth="828" MinHeight="525">
     <Page.Resources>
 
@@ -25,15 +25,6 @@
         <sys:Uri x:Key="BsCommunity_RepoURL">https://github.com/bs-community/skinview3d</sys:Uri>
         <sys:Uri x:Key="Mojang_URL">https://www.minecraft.net/en-us/</sys:Uri>
 
-        <Style x:Key="FocusVisual">
-            <Setter Property="Control.Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
         <Border x:Key="CJMention" BorderThickness="2" CornerRadius="16" BorderBrush="#55000000" Background="#55000000">
             <Grid Height="300">
                 <Grid.RowDefinitions>

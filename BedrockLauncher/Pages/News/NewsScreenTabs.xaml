@@ -7,7 +7,7 @@
       xmlns:com="clr-namespace:BL_Core.Components;assembly=BL_Core"
       mc:Ignorable="d" 
       d:DesignHeight="525" d:DesignWidth="828"
-      Title="NewsScreenTabs" Loaded="Page_Loaded"  Background="#FF282828">
+      Title="NewsScreenTabs" Loaded="Page_Loaded"  Background="{DynamicResource Background.Primary}">
     <Page.Resources>
         <Style x:Key="TabControlStyle1" TargetType="{x:Type TabControl}">
             <Setter Property="Padding" Value="2"/>
@@ -75,7 +75,7 @@
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="84"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid>
@@ -88,12 +88,12 @@
                     <DropShadowEffect Direction="0" BlurRadius="15" ShadowDepth="1" />
                 </Border.Effect>
 
-                <Grid SnapsToDevicePixels="True" RenderOptions.BitmapScalingMode="NearestNeighbor"  Height="84">
+                <Grid SnapsToDevicePixels="True" RenderOptions.BitmapScalingMode="NearestNeighbor"  Height="100">
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Grid Grid.RowSpan="2" Height="45" VerticalAlignment="Top">
+                    <Grid Grid.RowSpan="2" Height="65" VerticalAlignment="Top">
                         <Grid.Background>
                             <ImageBrush TileMode="Tile" Viewport="0,0,320,320" ViewportUnits="Absolute" ImageSource="/BedrockLauncher;component/resources/images/ui/bg/stone_texture.png">
                             </ImageBrush>
@@ -103,7 +103,7 @@
                     <StackPanel HorizontalAlignment="Left" Height="35" Grid.Row="1" VerticalAlignment="Bottom" Orientation="Horizontal">
                         <ToggleButton x:Name="OfficalTab" Width="90" Click="ButtonManager" Content="{DynamicResource NewsScreen_OfficialTabTitle}" Style="{DynamicResource ToolbarButton}" IsChecked="True">
                             <ToggleButton.ToolTip>
-                                <ToolTip Content="{DynamicResource NewsScreen_OfficalTabTitle}"/>
+                                <ToolTip Content="{DynamicResource NewsScreen_OfficialTabTitle}"/>
                             </ToggleButton.ToolTip>
                         </ToggleButton>
                         <ToggleButton x:Name="LauncherTab" Width="92" Click="ButtonManager" Content="{DynamicResource NewsScreen_LauncherTabTitle}" Style="{DynamicResource ToolbarButton}">
@@ -116,7 +116,7 @@
             </Border>
             <Image Margin="0,0" Height="84" VerticalAlignment="Top" Source="/BedrockLauncher;component/resources/images/ui/logo/logo.png"></Image>
         </Grid>
-        <Frame x:Name="ContentFrame" com:DisableNavigation.Disable="True" VerticalAlignment="Stretch" Background="#22000000" HorizontalAlignment="Stretch" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="ContentFrame" com:DisableNavigation.Disable="True" VerticalAlignment="Stretch" Background="{DynamicResource Background.Secondary}" HorizontalAlignment="Stretch" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 
 

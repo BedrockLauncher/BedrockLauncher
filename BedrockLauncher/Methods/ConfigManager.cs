@@ -18,11 +18,6 @@ namespace BedrockLauncher.Methods
 
     public static class ConfigManager
     {
-        #region ViewModel
-
-        public static ViewModels.LauncherModel ViewModel { get; set; } = new ViewModels.LauncherModel();
-
-        #endregion
 
         #region Helpers
 
@@ -96,8 +91,6 @@ namespace BedrockLauncher.Methods
 
         #region General
 
-        public static MainWindow MainThread => (MainWindow)System.Windows.Application.Current.MainWindow;
-
         private static JsonSerializerSettings JsonSerializerSettings
         {
             get
@@ -120,7 +113,7 @@ namespace BedrockLauncher.Methods
         }
         public static void ReloadVersions()
         {
-            MainThread.Dispatcher.Invoke((Func<Task>)(async () =>
+            ViewModels.LauncherModel.MainThread.Dispatcher.Invoke((Func<Task>)(async () =>
             {
                 try
                 {
@@ -173,7 +166,7 @@ namespace BedrockLauncher.Methods
 
             ProfileList = profileList;
 
-            if (ProfileList.profiles.Count() == 0) ViewModel.SetOverlayFrame(new Pages.FirstLaunch.WelcomePage());
+            if (ProfileList.profiles.Count() == 0) ViewModels.LauncherModel.Default.SetOverlayFrame(new Pages.FirstLaunch.WelcomePage());
         }
         public static MCProfilesList CleanProfiles()
         {

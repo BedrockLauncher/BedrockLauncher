@@ -12,6 +12,7 @@
     <SolidColorBrush x:Key="Expander.Static.Circle.Fill" Color="Transparent"/>
     <SolidColorBrush x:Key="Expander.Static.Circle.Stroke" Color="Transparent"/>
     <SolidColorBrush x:Key="Expander.Static.Arrow.Stroke" Color="LightGray"/>
+    
     <Style x:Key="ExpanderRightHeaderStyle" TargetType="{x:Type ToggleButton}">
         <Setter Property="Template">
             <Setter.Value>

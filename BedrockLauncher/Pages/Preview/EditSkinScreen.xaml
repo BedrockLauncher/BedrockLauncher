@@ -34,7 +34,7 @@
             <controls:SkinPreview x:Name="SkinPreview" Grid.Column="1"></controls:SkinPreview>
             <StackPanel Margin="10" HorizontalAlignment="Center">
                 <TextBlock Margin="0,18,0,5" Text="{DynamicResource EditSkinScreen_GeometrySubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-                <ComboBox TextBoxBase.TextChanged="GeometryTextBox_TextChanged" SelectionChanged="GeometryTextBox_SelectionChanged" Height="32" Width="330"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Style="{DynamicResource ComboBoxStyle2}" x:Name="GeometryTextBox" IsEditable="True"></ComboBox>
+                <ComboBox Style="{DynamicResource GenericComboBoxStyle}" ItemContainerStyle="{DynamicResource GenericComboBoxItemStyle}" TextBoxBase.TextChanged="GeometryTextBox_TextChanged" SelectionChanged="GeometryTextBox_SelectionChanged" Height="32" Width="330"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left"  x:Name="GeometryTextBox" IsEditable="True"></ComboBox>
                 <TextBlock Margin="0,18,0,5" Text="{DynamicResource EditSkinScreen_TextureSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                 <Border Height="32" Background="#FF131313" Width="330" HorizontalAlignment="Left" VerticalAlignment="Top" CornerRadius="4">
                     <Grid>
@@ -42,14 +42,14 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <ComboBox TextBoxBase.TextChanged="TextureCombobox_TextChanged" SelectionChanged="TextureCombobox_SelectionChanged" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Style="{DynamicResource ComboBoxStyle2}" x:Name="TextureCombobox" IsEditable="True"></ComboBox>
+                        <ComboBox Style="{DynamicResource GenericComboBoxStyle}" ItemContainerStyle="{DynamicResource GenericComboBoxItemStyle}" TextBoxBase.TextChanged="TextureCombobox_TextChanged" SelectionChanged="TextureCombobox_SelectionChanged" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"  x:Name="TextureCombobox" IsEditable="True"></ComboBox>
                         <Button Grid.Column="1" Content="{StaticResource GeneralSubtitles_Browse}" x:Name="BrowseButton" Click="BrowseButton_Click" HorizontalAlignment="Center" Margin="5" Style="{StaticResource TextBoxButton}"></Button>
                     </Grid>
                 </Border>
                 <TextBlock Margin="0,18,0,5" Text="{DynamicResource EditSkinScreen_TypeSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-                <ComboBox Height="32" Width="330"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Style="{DynamicResource ComboBoxStyle2}" x:Name="TypeTextBox" IsEditable="True"></ComboBox>
+                <ComboBox Style="{DynamicResource GenericComboBoxStyle}" ItemContainerStyle="{DynamicResource GenericComboBoxItemStyle}" Height="32" Width="330"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left"  x:Name="TypeTextBox" IsEditable="True"></ComboBox>
                 <TextBlock Margin="0,18,0,5" Text="{DynamicResource EditSkinScreen_LocalizationSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-                <ComboBox Height="32" Width="330"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Style="{DynamicResource ComboBoxStyle2}" x:Name="LocalizationTextBox" IsEditable="True"></ComboBox>
+                <ComboBox Style="{DynamicResource GenericComboBoxStyle}" ItemContainerStyle="{DynamicResource GenericComboBoxItemStyle}" Height="32" Width="330"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left"  x:Name="LocalizationTextBox" IsEditable="True"></ComboBox>
             </StackPanel>
         </Grid>
         <Separator Grid.Row="3"></Separator>

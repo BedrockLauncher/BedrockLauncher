@@ -3,18 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:BedrockLauncher"
              xmlns:bl="clr-namespace:BL_Core.Language;assembly=BL_Core"
-             xmlns:WPF="clr-namespace:TheArtOfDev.HtmlRenderer.WPF;assembly=HtmlRenderer.WPF" x:Class="BedrockLauncher.App"
+             x:Class="BedrockLauncher.App"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <bl:LanguageDictionary Source="/BL_Core;component/Resources/lang/lang.en-US.xaml"></bl:LanguageDictionary>
-                <ResourceDictionary Source="Resources/styles/style.xaml"/>
+                <ResourceDictionary Source="Resources/styles/colors.xaml"/>
+                <ResourceDictionary Source="Resources/styles/icons.xaml"/>
+                <ResourceDictionary Source="Resources/styles/misc.xaml"/>
                 <ResourceDictionary Source="Resources/styles/button.xaml"/>
                 <ResourceDictionary Source="Resources/styles/checkbox.xaml"/>
                 <ResourceDictionary Source="Resources/styles/combobox.xaml"/>
-                <ResourceDictionary Source="Resources/styles/insiders_combobox.xaml"/>
-                <ResourceDictionary Source="Resources/styles/installations_combobox.xaml"/>
                 <ResourceDictionary Source="Resources/styles/contextmenu.xaml"/>
                 <ResourceDictionary Source="Resources/styles/menuitems.xaml"/>
                 <ResourceDictionary Source="Resources/styles/listview.xaml"/>
@@ -25,13 +25,9 @@
                 <ResourceDictionary Source="Resources/styles/tabbar.xaml"/>
                 <ResourceDictionary Source="Resources/styles/expander.xaml"/>
                 <ResourceDictionary Source="Resources/styles/richtextbox.xaml"/>
-                <ResourceDictionary Source="Resources/styles/itemtemplates.xaml"/>
                 <ResourceDictionary Source="Resources/styles/radiobutton.xaml"/>
-                <ResourceDictionary>
-                    <Style TargetType="{x:Type Window}">
-                        <Setter Property="FontFamily" Value="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
-                    </Style>
-                </ResourceDictionary>
+                <ResourceDictionary Source="Resources/styles/item_templates.xaml"/>
+                <ResourceDictionary Source="Resources/styles/focus_visuals.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

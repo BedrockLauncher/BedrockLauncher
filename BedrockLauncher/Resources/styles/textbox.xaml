@@ -18,7 +18,7 @@
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource BlankFocusVisual}"/>
         <Setter Property="AllowDrop" Value="true"/>
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
@@ -26,7 +26,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <ControlTemplate.Resources>
-                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                        <VisualBrush x:Key="CueBannerBrush2" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                             <VisualBrush.Visual>
                                 <Label Opacity="0.6" Padding="10,0" Content="{DynamicResource EditInstallationScreen_NameHintText}" Foreground="LightGray" />
                             </VisualBrush.Visual>
@@ -55,10 +55,10 @@
                             <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
                         </MultiTrigger>
                         <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
-                            <Setter Property="Background" TargetName="PART_ContentHost" Value="{StaticResource CueBannerBrush}" />
+                            <Setter Property="Background" TargetName="PART_ContentHost" Value="{StaticResource CueBannerBrush2}" />
                         </Trigger>
                         <Trigger Property="Text" Value="{x:Null}">
-                            <Setter Property="Background" TargetName="PART_ContentHost" Value="{StaticResource CueBannerBrush}" />
+                            <Setter Property="Background" TargetName="PART_ContentHost" Value="{StaticResource CueBannerBrush2}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -92,7 +92,7 @@
                         </VisualBrush>
                     </ControlTemplate.Resources>
                     <Border x:Name="border" CornerRadius="3" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-                        <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        <ScrollViewer x:Name="PART_ContentHost" Foreground="{x:Null}" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">
@@ -136,7 +136,7 @@
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource BlankFocusVisual}"/>
         <Setter Property="AllowDrop" Value="true"/>
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>

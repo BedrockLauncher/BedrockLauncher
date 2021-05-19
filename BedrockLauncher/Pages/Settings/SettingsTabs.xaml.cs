@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BedrockLauncher.Methods;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,9 +17,6 @@ using System.Windows.Shapes;
 
 namespace BedrockLauncher.Pages.Settings
 {
-    /// <summary>
-    /// Логика взаимодействия для SettingsScreen.xaml
-    /// </summary>
     public partial class SettingsTabs : Page
     {
         public GeneralSettingsPage generalSettingsPage = new GeneralSettingsPage();
@@ -28,7 +26,40 @@ namespace BedrockLauncher.Pages.Settings
         public SettingsTabs()
         {
             InitializeComponent();
+            this.SettingsScreenFrame.Navigating += SettingsScreenFrame_Navigating;
+            ConfigManager.ConfigStateChanged += ConfigManager_ConfigStateChanged;
+            NavigateToGeneralPage();
         }
+
+        private void ConfigManager_ConfigStateChanged(object sender, EventArgs e)
+        {
+            RefreshVersions();
+        }
+
+        private void SettingsScreenFrame_Navigating(object sender, NavigatingCancelEventArgs e)
+        {
+            int CurrentPageIndex = ViewModels.LauncherModel.Default.CurrentPageIndex_Settings;
+            int LastPageIndex = ViewModels.LauncherModel.Default.LastPageIndex_Settings;
+            if (CurrentPageIndex == LastPageIndex) return;
+
+            ExpandDirection direction;
+
+            if (CurrentPageIndex > LastPageIndex) direction = ExpandDirection.Right;
+            else direction = ExpandDirection.Left;
+
+            Components.PageAnimator.FrameSwipe(SettingsScreenFrame, SettingsScreenFrame.Content, direction);
+        }
+
+        #region UI
+
+        public void RefreshVersions()
+        {
+            versionsSettingsPage.VersionsList.ItemsSource = ConfigManager.Versions;
+            var view = CollectionViewSource.GetDefaultView(versionsSettingsPage.VersionsList.ItemsSource) as CollectionView;
+            view.Filter = ConfigManager.Filter_VersionList;
+        }
+
+        #endregion
 
         #region Navigation
 
@@ -61,23 +92,32 @@ namespace BedrockLauncher.Pages.Settings
 
         public void NavigateToGeneralPage()
         {
+            ViewModels.LauncherModel.Default.UpdateSettingsPageIndex(0);
             SettingsScreenFrame.Navigate(generalSettingsPage);
         }
         public void NavigateToVersionsPage()
         {
+            ViewModels.LauncherModel.Default.UpdateSettingsPageIndex(1);
             SettingsScreenFrame.Navigate(versionsSettingsPage);
         }
 
         public void NavigateToAccountsPage()
         {
+            ViewModels.LauncherModel.Default.UpdateSettingsPageIndex(2);
             SettingsScreenFrame.Navigate(accountsSettingsPage);
         }
 
         public void NavigateToAboutPage()
         {
+            ViewModels.LauncherModel.Default.UpdateSettingsPageIndex(3);
             SettingsScreenFrame.Navigate(aboutPage);
         }
 
         #endregion
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -42,7 +42,7 @@ namespace BedrockLauncher.Controls.Items
             }
         }
 
-        public static readonly DependencyProperty dependencyProperty = DependencyProperty.Register("ButtonPanelVisibility", typeof(Visibility), typeof(InstallationItem), new PropertyMetadata(Visibility.Collapsed, new PropertyChangedCallback(ChangePanelVisibility)));
+        public static readonly DependencyProperty ButtonPanelVisibilityProperty = DependencyProperty.Register("ButtonPanelVisibility", typeof(Visibility), typeof(InstallationItem), new PropertyMetadata(Visibility.Collapsed, new PropertyChangedCallback(ChangePanelVisibility)));
 
         private static void ChangePanelVisibility(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -77,7 +77,7 @@ namespace BedrockLauncher.Controls.Items
             {
 
                 ConfigManager.DeleteInstallation(installation);
-                ConfigManager.ViewModel.RefreshConfig();
+                ConfigManager.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
             }
         }
 
@@ -85,8 +85,7 @@ namespace BedrockLauncher.Controls.Items
         {
             Button button = sender as Button;
             var installation = button.DataContext as Classes.MCInstallation;
-            //ConfigManager.MainThread.RefreshInstallationList();
-            ConfigManager.ViewModel.SetInstallationPageSelection(installation);
+            (this.Tag as Pages.Play.InstallationsScreen).InstallationsList.SelectedItem = installation;
             button.ContextMenu.PlacementTarget = button;
             button.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
             button.ContextMenu.DataContext = installation;
@@ -95,7 +94,7 @@ namespace BedrockLauncher.Controls.Items
 
         private void ContextMenu_Closed(object sender, RoutedEventArgs e)
         {
-            ConfigManager.ViewModel.SetInstallationPageSelection(null);
+            (this.Tag as Pages.Play.InstallationsScreen).InstallationsList.SelectedItem = null;
         }
 
         private void EditInstallationButton_Click(object sender, RoutedEventArgs e)
@@ -103,7 +102,7 @@ namespace BedrockLauncher.Controls.Items
             MenuItem button = sender as MenuItem;
             var installation = button.DataContext as Classes.MCInstallation;
             int index = ConfigManager.CurrentInstallations.IndexOf(installation);
-            ConfigManager.ViewModel.SetOverlayFrame(new EditInstallationScreen(index, installation));
+            ViewModels.LauncherModel.Default.SetOverlayFrame(new EditInstallationScreen(index, installation));
         }
 
         private void DuplicateInstallationButton_Click(object sender, RoutedEventArgs e)
@@ -111,7 +110,7 @@ namespace BedrockLauncher.Controls.Items
             MenuItem button = sender as MenuItem;
             var installation = button.DataContext as Classes.MCInstallation;
             ConfigManager.DuplicateInstallation(installation);
-            ConfigManager.ViewModel.RefreshConfig();
+            ConfigManager.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
         }
     }
 }

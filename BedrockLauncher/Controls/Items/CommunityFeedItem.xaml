@@ -9,7 +9,7 @@
              Focusable="False"
              d:DesignHeight="365" d:DesignWidth="365" Click="FeedItemButton_Click" Style="{DynamicResource EmptyButton}">
     <Grid Focusable="False">
-        <Border Padding="5" Width="375" Height="375">
+        <Border Padding="1" Width="375" Height="375">
             <Grid Background="#131313">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="200"></RowDefinition>
@@ -36,7 +36,7 @@
 
             </Grid>
             <Border.Effect>
-                <DropShadowEffect Color="Black" Opacity="0.6"/>
+                <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
             </Border.Effect>
         </Border>
     </Grid>

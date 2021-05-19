@@ -36,7 +36,7 @@ namespace BedrockLauncher.Controls.Items
             }
         }
 
-        public static readonly DependencyProperty dependencyProperty = DependencyProperty.Register("ButtonPanelVisibility", typeof(Visibility), typeof(LocalizationItem), new PropertyMetadata(Visibility.Collapsed, new PropertyChangedCallback(ChangePanelVisibility)));
+        public static readonly DependencyProperty ButtonPanelVisibilityProperty = DependencyProperty.Register("ButtonPanelVisibility", typeof(Visibility), typeof(LocalizationItem), new PropertyMetadata(Visibility.Collapsed, new PropertyChangedCallback(ChangePanelVisibility)));
 
         private static void ChangePanelVisibility(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

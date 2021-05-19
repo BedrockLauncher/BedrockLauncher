@@ -41,8 +41,8 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <SolidColorBrush x:Key="Item.MouseOver.Background" Color="#33FFFFFF"/>
-    <SolidColorBrush x:Key="Item.MouseOver.Border" Color="#33FFFFFF"/>
+    <Color x:Key="Item.MouseOver.Background">#22FFFFFF</Color>
+    <Color x:Key="Item.MouseOver.Border">#22FFFFFF</Color>
     <SolidColorBrush x:Key="Item.SelectedInactive.Background" Color="Transparent"/>
     <SolidColorBrush x:Key="Item.SelectedInactive.Border" Color="White"/>
     <SolidColorBrush x:Key="Item.SelectedActive.Background" Color="Transparent"/>
@@ -56,7 +56,7 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListViewItem}">
@@ -64,13 +64,24 @@
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsMouseOver" Value="True"/>
-                            </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.MouseOver.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.MouseOver.Border}"/>
-                        </MultiTrigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="Bd" Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" Duration="0:0:0.1" To="{StaticResource Item.MouseOver.Background}" From="Transparent"/>
+                                        <ColorAnimation Storyboard.TargetName="Bd" Storyboard.TargetProperty="(BorderBrush).(SolidColorBrush.Color)" Duration="0:0:0.1" To="{StaticResource Item.MouseOver.Border}" From="Transparent"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="Bd" Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" Duration="0:0:0.1" From="{StaticResource Item.MouseOver.Background}" To="Transparent"/>
+                                        <ColorAnimation Storyboard.TargetName="Bd" Storyboard.TargetProperty="(BorderBrush).(SolidColorBrush.Color)" Duration="0:0:0.1" From="{StaticResource Item.MouseOver.Border}" To="Transparent"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="Selector.IsSelectionActive" Value="False"/>

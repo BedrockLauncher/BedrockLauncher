@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BedrockLauncher.Pages"
         mc:Ignorable="d"
-        Title="Advanced Options..." Initialized="Window_Initialized" Height="450" Width="800" Background="#FF1E1E1E" ResizeMode="NoResize" Closed="Window_Closed">
+        Title="{DynamicResource AdvancedSettings_Title}" Initialized="Window_Initialized" Height="450" Width="800" Background="#FF1E1E1E" ResizeMode="NoResize" Closed="Window_Closed">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"></RowDefinition>

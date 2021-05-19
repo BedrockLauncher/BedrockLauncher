@@ -69,7 +69,7 @@ namespace BedrockLauncher.Methods
                     string fileName = p.MainModule.FileName;
                     if (fileName.StartsWith(FilePath, StringComparison.InvariantCultureIgnoreCase))
                     {
-                        ConfigManager.ViewModel.IsGameRunning = true;
+                        ViewModels.LauncherModel.Default.IsGameRunning = true;
                         GameProcess = p;
                         p.EnableRaisingEvents = true;
                         p.Exited += GameProcessExited;
@@ -85,7 +85,7 @@ namespace BedrockLauncher.Methods
             Process p = sender as Process;
             p.Exited -= GameProcessExited;
             GameProcess = null;
-            ConfigManager.ViewModel.IsGameRunning = false;
+            ViewModels.LauncherModel.Default.IsGameRunning = false;
 
         }
 
@@ -200,14 +200,14 @@ namespace BedrockLauncher.Methods
 
             void StartLaunch()
             {
-                ConfigManager.ViewModel.ShowProgressBar = true;
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.isLaunching;
+                ViewModels.LauncherModel.Default.ShowProgressBar = true;
+                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isLaunching;
             }
 
             void EndLaunch()
             {
-                ConfigManager.ViewModel.ShowProgressBar = false;
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.None;
+                ViewModels.LauncherModel.Default.ShowProgressBar = false;
+                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
             }
         }
         private void InvokeDownload(MCVersion v, bool RunAfterwards = false)
@@ -218,9 +218,9 @@ namespace BedrockLauncher.Methods
             Task.Run(async () =>
             {
                 cancelSource = new CancellationTokenSource();
-                ConfigManager.ViewModel.ShowProgressBar = true;
-                ConfigManager.ViewModel.AllowCancel = true;
-                ConfigManager.ViewModel.CancelCommand = new RelayCommand((o) => InvokeCancel());
+                ViewModels.LauncherModel.Default.ShowProgressBar = true;
+                ViewModels.LauncherModel.Default.AllowCancel = true;
+                ViewModels.LauncherModel.Default.CancelCommand = new RelayCommand((o) => InvokeCancel());
 
                 try
                 {
@@ -236,10 +236,10 @@ namespace BedrockLauncher.Methods
                     wasCanceled = true;
                 }
 
-                if (!RunAfterwards || wasCanceled) ConfigManager.ViewModel.ShowProgressBar = false;
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.None;
-                ConfigManager.ViewModel.AllowCancel = false;
-                ConfigManager.ViewModel.CancelCommand = null;
+                if (!RunAfterwards || wasCanceled) ViewModels.LauncherModel.Default.ShowProgressBar = false;
+                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
+                ViewModels.LauncherModel.Default.AllowCancel = false;
+                ViewModels.LauncherModel.Default.CancelCommand = null;
                 cancelSource = null;
                 v.UpdateInstallStatus();
 
@@ -250,8 +250,8 @@ namespace BedrockLauncher.Methods
         {
             Task.Run(async () =>
             {
-                ConfigManager.ViewModel.ShowProgressBar = true;
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.isUninstalling;
+                ViewModels.LauncherModel.Default.ShowProgressBar = true;
+                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isUninstalling;
 
                 try
                 {
@@ -264,9 +264,9 @@ namespace BedrockLauncher.Methods
                 }
 
                 v.UpdateInstallStatus();
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.None;
-                ConfigManager.ViewModel.ShowProgressBar = false;
-                ConfigManager.ViewModel.RefreshVersionControls();
+                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
+                ViewModels.LauncherModel.Default.ShowProgressBar = false;
+                ConfigManager.OnConfigStateChanged(null, Events.ConfigStateArgs.Empty);
                 return;
             });
         }
@@ -274,8 +274,8 @@ namespace BedrockLauncher.Methods
         {
             await Task.Run(() =>
             {
-                ConfigManager.ViewModel.ShowProgressBar = true;
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.isBackingUp;
+                ViewModels.LauncherModel.Default.ShowProgressBar = true;
+                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isBackingUp;
 
                 try
                 {
@@ -296,8 +296,8 @@ namespace BedrockLauncher.Methods
                 }
                 catch (Exception ex) { ErrorScreenShow.exceptionmsg(ex); }
 
-                ConfigManager.ViewModel.ShowProgressBar = false;
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.None;
+                ViewModels.LauncherModel.Default.ShowProgressBar = false;
+                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
             });
             ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
 
@@ -306,8 +306,8 @@ namespace BedrockLauncher.Methods
             {
                 int Total = Directory.GetFiles(from, "*", SearchOption.AllDirectories).Length;
 
-                ConfigManager.ViewModel.TotalProgress = Total;
-                ConfigManager.ViewModel.CurrentProgress = 0;
+                ViewModels.LauncherModel.Default.TotalProgress = Total;
+                ViewModels.LauncherModel.Default.CurrentProgress = 0;
 
                 RestoreCopy_Step(from, to);
             }
@@ -324,7 +324,7 @@ namespace BedrockLauncher.Methods
                         File.Delete(ft);
                     }
                     File.Copy(f, ft);
-                    ConfigManager.ViewModel.CurrentProgress += 1;
+                    ViewModels.LauncherModel.Default.CurrentProgress += 1;
                 }
                 foreach (var f in Directory.EnumerateDirectories(from))
                 {
@@ -363,23 +363,23 @@ namespace BedrockLauncher.Methods
         {
             try
             {
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.isInitializing;
+                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isInitializing;
                 await downloader.Download(v, v.UUID, "1", dlPath, (current, total) =>
                 {
-                    if (ConfigManager.ViewModel.CurrentState == ViewModels.LauncherModel.StateChange.isInitializing)
+                    if (ViewModels.LauncherModel.Default.CurrentState == ViewModels.LauncherModel.StateChange.isInitializing)
                     {
-                        ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.isDownloading;
+                        ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isDownloading;
                         System.Diagnostics.Debug.WriteLine("Actual download started");
-                        if (total.HasValue) ConfigManager.ViewModel.TotalProgress = total.Value;
+                        if (total.HasValue) ViewModels.LauncherModel.Default.TotalProgress = total.Value;
                     }
-                    ConfigManager.ViewModel.CurrentProgress = current;
+                    ViewModels.LauncherModel.Default.CurrentProgress = current;
                 }, cancelSource.Token);
                 System.Diagnostics.Debug.WriteLine("Download complete");
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.None;
+                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
             }
             catch (Exception e)
             {
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.None;
+                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
                 System.Diagnostics.Debug.WriteLine("Download failed:\n" + e.ToString());
                 throw e;
             }
@@ -404,7 +404,7 @@ namespace BedrockLauncher.Methods
         {
             try
             {
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.isLaunching;
+                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isLaunching;
                 var pkg = await AppDiagnosticInfo.RequestInfoForPackageAsync(MINECRAFT_PACKAGE_FAMILY);
                 if (pkg.Count > 0) await pkg[0].LaunchAsync();
                 System.Diagnostics.Debug.WriteLine("App launch finished!");
@@ -416,11 +416,11 @@ namespace BedrockLauncher.Methods
                         Application.Current.MainWindow.Close();
                     });
                 }
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.None;
+                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
             }
             catch (Exception e)
             {
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.None;
+                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
                 System.Diagnostics.Debug.WriteLine("App launch failed:\n" + e.ToString());
                 Application.Current.Dispatcher.Invoke(() =>
                 {
@@ -493,7 +493,7 @@ namespace BedrockLauncher.Methods
             try
             {
                 System.Diagnostics.Debug.WriteLine("Extraction started");
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.isExtracting;
+                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isExtracting;
                 string dirPath = v.GameDirectory;
                 if (Directory.Exists(dirPath))
                     Directory.Delete(dirPath, true);
@@ -503,8 +503,8 @@ namespace BedrockLauncher.Methods
                 var progress = new Progress<ZipProgress>();
                 progress.ProgressChanged += (s, z) =>
                 {
-                    ConfigManager.ViewModel.CurrentProgress = z.Processed;
-                    ConfigManager.ViewModel.TotalProgress = z.Total;
+                    ViewModels.LauncherModel.Default.CurrentProgress = z.Processed;
+                    ViewModels.LauncherModel.Default.TotalProgress = z.Total;
                 };
                 await Task.Run(() => zip.ExtractToDirectory(dirPath, progress, cancelSource));
 
@@ -526,15 +526,15 @@ namespace BedrockLauncher.Methods
                 ErrorScreenShow.exceptionmsg("Extraction failed", e);
 
                 if (zipReadingStream != null) zipReadingStream.Close();
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.None;
+                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
                 return;
             }
         }
         private async Task RemovePackage(MCVersion v, Package pkg)
         {
             System.Diagnostics.Debug.WriteLine("Removing package: " + pkg.Id.FullName);
-            ConfigManager.ViewModel.DeploymentPackageName = pkg.Id.FullName;
-            ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.isRemovingPackage;
+            ViewModels.LauncherModel.Default.DeploymentPackageName = pkg.Id.FullName;
+            ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isRemovingPackage;
             if (!pkg.IsDevelopmentMode)
             {
                 await DeploymentProgressWrapper(v, new PackageManager().RemovePackageAsync(pkg.Id.FullName, 0));
@@ -545,8 +545,8 @@ namespace BedrockLauncher.Methods
                 await DeploymentProgressWrapper(v, new PackageManager().RemovePackageAsync(pkg.Id.FullName, RemovalOptions.PreserveApplicationData));
             }
             System.Diagnostics.Debug.WriteLine("Removal of package done: " + pkg.Id.FullName);
-            ConfigManager.ViewModel.DeploymentPackageName = "";
-            ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.None;
+            ViewModels.LauncherModel.Default.DeploymentPackageName = "";
+            ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
         }
         private async Task UnregisterPackage(MCVersion v, string gameDir)
         {
@@ -572,12 +572,12 @@ namespace BedrockLauncher.Methods
                 }
                 System.Diagnostics.Debug.WriteLine("Registering package");
                 string manifestPath = Path.Combine(gameDir, "AppxManifest.xml");
-                ConfigManager.ViewModel.DeploymentPackageName = GetPackageNameFromMainifest(manifestPath);
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.isRegisteringPackage;
+                ViewModels.LauncherModel.Default.DeploymentPackageName = GetPackageNameFromMainifest(manifestPath);
+                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isRegisteringPackage;
                 await DeploymentProgressWrapper(v, new PackageManager().RegisterPackageAsync(new Uri(manifestPath), null, DeploymentOptions.DevelopmentMode));
                 System.Diagnostics.Debug.WriteLine("App re-register done!");
-                ConfigManager.ViewModel.DeploymentPackageName = "";
-                ConfigManager.ViewModel.CurrentState = ViewModels.LauncherModel.StateChange.None;
+                ViewModels.LauncherModel.Default.DeploymentPackageName = "";
+                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
             }
             catch (Exception e)
             {
@@ -596,8 +596,8 @@ namespace BedrockLauncher.Methods
             t.Progress += (v, p) =>
             {
                 System.Diagnostics.Debug.WriteLine("Deployment progress: " + p.state + " " + p.percentage + "%");
-                ConfigManager.ViewModel.CurrentProgress = Convert.ToInt64(p.percentage);
-                ConfigManager.ViewModel.TotalProgress = ViewModels.LauncherModel.DeploymentMaximum;
+                ViewModels.LauncherModel.Default.CurrentProgress = Convert.ToInt64(p.percentage);
+                ViewModels.LauncherModel.Default.TotalProgress = ViewModels.LauncherModel.DeploymentMaximum;
             };
             t.Completed += (v, p) =>
             {

@@ -125,7 +125,7 @@ namespace BedrockLauncher.Downloaders
                 if (int.Parse(CurrentTag.Replace(".", "")) < int.Parse(LatestTag.Replace(".", "")))
                 {
                     System.Diagnostics.Debug.WriteLine("New version available!");
-                    ConfigManager.MainThread.updateButton.ShowUpdateButton();
+                    ViewModels.LauncherModel.MainThread.updateButton.ShowUpdateButton();
                 }
             }
             catch

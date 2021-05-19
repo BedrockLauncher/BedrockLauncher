@@ -21,9 +21,6 @@ using BedrockLauncher.Downloaders;
 
 namespace BedrockLauncher.Pages.News
 {
-    /// <summary>
-    /// Логика взаимодействия для News.xaml
-    /// </summary>
     public partial class NewsScreenTabs : Page
     {
         private CommunityNewsPage communityNewsPage = new CommunityNewsPage();
@@ -36,6 +33,21 @@ namespace BedrockLauncher.Pages.News
             InitializeComponent();
             LastTabName = OfficalTab.Name;
             launcherNewsPage = new LauncherNewsPage(updater);
+            this.ContentFrame.Navigating += ContentFrame_Navigating;
+        }
+
+        private void ContentFrame_Navigating(object sender, NavigatingCancelEventArgs e)
+        {
+            int CurrentPageIndex = ViewModels.LauncherModel.Default.CurrentPageIndex_News;
+            int LastPageIndex = ViewModels.LauncherModel.Default.LastPageIndex_News;
+            if (CurrentPageIndex == LastPageIndex) return;
+
+            ExpandDirection direction;
+
+            if (CurrentPageIndex > LastPageIndex) direction = ExpandDirection.Right;
+            else direction = ExpandDirection.Left;
+
+            Components.PageAnimator.FrameSwipe(ContentFrame, ContentFrame.Content, direction);
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -79,12 +91,14 @@ namespace BedrockLauncher.Pages.News
 
         public void NavigateToLauncherNews()
         {
+            ViewModels.LauncherModel.Default.UpdateNewsPageIndex(1);
             ContentFrame.Navigate(launcherNewsPage);
             LastTabName = LauncherTab.Name;
         }
 
         public void NavigateToCommunityNews()
         {
+            ViewModels.LauncherModel.Default.UpdateNewsPageIndex(0);
             ContentFrame.Navigate(communityNewsPage);
             LastTabName = OfficalTab.Name;
         }

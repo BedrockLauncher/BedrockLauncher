@@ -3,13 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:classes="clr-namespace:BedrockLauncher.Classes"
-             xmlns:controls="clr-namespace:BedrockLauncher.Controls"
-             xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
-             xmlns:local="clr-namespace:BedrockLauncher.Controls"
              mc:Ignorable="d" 
              Width="330" Height="59">
-    <ComboBox Name="AccountsList" DropDownClosed="AccountsList_DropDownClosed" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,0" ItemContainerStyle="{DynamicResource ComboBoxItemStyle3}" Foreground="White" Padding="10,7,5,3" Style="{DynamicResource ComboBoxStyle3}" FontSize="14" VerticalContentAlignment="Stretch">
+    <ComboBox Name="AccountsList" DropDownClosed="AccountsList_DropDownClosed" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,0" Foreground="White" Padding="10,7,5,3" FontSize="14" Style="{DynamicResource GenericComboBoxStyle}" ItemContainerStyle="{DynamicResource GenericComboBoxItemStyle}" VerticalContentAlignment="Stretch">
         <ComboBox.ItemTemplate>
             <DataTemplate>
                 <Grid Height="45" MinWidth="179">

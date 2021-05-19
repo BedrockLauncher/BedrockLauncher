@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:BedrockLauncher.Pages"
+      xmlns:mdxam="clr-namespace:MdXaml;assembly=MdXaml"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800" Loaded="Page_Loaded"
       Title="LauncherNewsPage">
@@ -24,7 +24,7 @@
                     <Run FontSize="23" Text="{DynamicResource LauncherNewsPage_Changes_Text}" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten"/>
                     <LineBreak/>
                     <LineBreak/>
-                    <Run x:Name="buildChanges" FontSize="13"/>
+	                <RichTextBox BorderThickness="0" xml:space="preserve" x:Name="buildChanges" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" Background="Transparent"/>
                 </TextBlock>
             </StackPanel>
         </Grid>

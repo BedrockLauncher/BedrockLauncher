@@ -31,7 +31,7 @@ namespace BedrockLauncher.Controls.Toolbar
 
         private void SideBarButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.ViewModel.ButtonManager_Base(this.Name);
+            ViewModels.LauncherModel.MainThread.ButtonManager_Base(this.Name);
         }
     }
 }

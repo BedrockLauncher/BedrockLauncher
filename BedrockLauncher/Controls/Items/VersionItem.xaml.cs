@@ -40,7 +40,7 @@ namespace BedrockLauncher.Controls.Items
             }
         }
 
-        public static readonly DependencyProperty dependencyProperty = DependencyProperty.Register("ButtonPanelVisibility", typeof(Visibility), typeof(VersionItem), new PropertyMetadata(Visibility.Collapsed, new PropertyChangedCallback(ChangePanelVisibility)));
+        public static readonly DependencyProperty ButtonPanelVisibilityProperty = DependencyProperty.Register("ButtonPanelVisibility", typeof(Visibility), typeof(VersionItem), new PropertyMetadata(Visibility.Collapsed, new PropertyChangedCallback(ChangePanelVisibility)));
 
         private static void ChangePanelVisibility(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -81,7 +81,7 @@ namespace BedrockLauncher.Controls.Items
         {
             Button button = sender as Button;
             var version = button.DataContext as Classes.MCVersion;
-            ConfigManager.ViewModel.SetVersionPageSelection(version);
+            (this.Tag as Pages.Settings.VersionsSettingsPage).VersionsList.SelectedItem = version;
             button.ContextMenu.PlacementTarget = button;
             button.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
             button.ContextMenu.DataContext = version;

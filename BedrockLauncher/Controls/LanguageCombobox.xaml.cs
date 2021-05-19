@@ -32,8 +32,8 @@ namespace BedrockLauncher.Controls
             var item = this.SelectedItem as BL_Core.Language.LanguageDefinition;
             if (item == null) return;
             BL_Core.Language.LanguageManager.SetLanguage(item.Locale);
-            ConfigManager.ViewModel.RefreshConfig();
-            ConfigManager.ViewModel.UpdateUI();
+            ConfigManager.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
+            ViewModels.LauncherModel.Default.UpdateUI();
         }
 
 
@@ -61,7 +61,7 @@ namespace BedrockLauncher.Controls
 
         private void LanguageCombobox_Loaded(object sender, RoutedEventArgs e)
         {
-            ReloadLang();
+            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime) ReloadLang();
         }
     }
 }

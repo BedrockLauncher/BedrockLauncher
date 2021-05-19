@@ -46,7 +46,7 @@ namespace BedrockLauncher.Controls.Items
             }
         }
 
-        public static readonly DependencyProperty dependencyProperty = DependencyProperty.Register("ButtonPanelVisibility", typeof(Visibility), typeof(SkinPackItem), new PropertyMetadata(Visibility.Collapsed, new PropertyChangedCallback(ChangePanelVisibility)));
+        public static readonly DependencyProperty ButtonPanelVisibilityProperty = DependencyProperty.Register("ButtonPanelVisibility", typeof(Visibility), typeof(SkinPackItem), new PropertyMetadata(Visibility.Collapsed, new PropertyChangedCallback(ChangePanelVisibility)));
 
         private static void ChangePanelVisibility(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -90,7 +90,7 @@ namespace BedrockLauncher.Controls.Items
         {
             var skinPack = GetParent().LoadedSkinPacks.SelectedItem as MCSkinPack;
             int index = GetParent().LoadedSkinPacks.SelectedIndex;
-            ConfigManager.ViewModel.SetOverlayFrame(new EditSkinPackScreen(skinPack, index));
+            ViewModels.LauncherModel.Default.SetOverlayFrame(new EditSkinPackScreen(skinPack, index));
 
             MoreButton.ContextMenu.IsOpen = false;
         }

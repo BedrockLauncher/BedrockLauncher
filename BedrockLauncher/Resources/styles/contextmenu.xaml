@@ -45,7 +45,7 @@
     </Style>
 
     <Style TargetType="{x:Type ContextMenu}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}"/>
         <Setter Property="Background" Value="{StaticResource ContextMenuBackground}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ContextMenuBorder2}"/>
         <Setter Property="Foreground" Value="{StaticResource NormalText}"/>

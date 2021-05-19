@@ -6,6 +6,7 @@
       xmlns:p="clr-namespace:BedrockLauncher.Properties"
       xmlns:classes="clr-namespace:BedrockLauncher.Classes"
       xmlns:methods="clr-namespace:BedrockLauncher.Methods"
+      xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       xmlns:local="clr-namespace:BedrockLauncher"
       mc:Ignorable="d" 
@@ -16,7 +17,7 @@
             <RowDefinition Height="60"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Border BorderThickness="0,0,0,1" BorderBrush="Gray">
+        <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource Seperator.Background}">
             <Grid Background="#FF303030">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -38,7 +39,7 @@
                 </Grid>
                 
                 <Grid Grid.Column="0" Margin="10,0">
-                    <Button x:Name="NewInstallationButton" IsEnabled="{Binding Source={x:Static methods:ConfigManager.ViewModel}, Path=AllowEditing, Mode=OneWay}" Height="40" Width="Auto" Click="NewInstallationButton_Click" Foreground="White" Style="{DynamicResource PanelButton}">
+                    <Button x:Name="NewInstallationButton" IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default}, Path=AllowEditing, Mode=OneWay}" Height="40" Width="Auto" Click="NewInstallationButton_Click" Foreground="White" Style="{DynamicResource PanelButton}">
                         <Button.Content>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -52,11 +53,11 @@
                         </Button.Content>
                     </Button>
                 </Grid>
-                <Separator Grid.Column="1" Foreground="#FFCCCCCC" Width="1" Margin="0,10,0,10" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"></Separator>
+                <Separator Grid.Column="1" Width="1" Margin="0,10,0,10"></Separator>
                 <Grid Grid.Column="2"></Grid>
-                <Separator Visibility="Collapsed" Grid.Column="3" Foreground="#FFCCCCCC" Width="1" Margin="0,10,0,10" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"></Separator>
+                <Separator Visibility="Collapsed" Grid.Column="3" Width="1" Margin="0,10,0,10"></Separator>
                 <Grid Grid.Column="4"></Grid>
-                <Separator Grid.Column="5" Foreground="#FFCCCCCC" Width="1" Margin="0,10,0,10" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"></Separator>
+                <Separator Grid.Column="5" Width="1" Margin="0,10,0,10"/>
             </Grid>
         </Border>
         <ListView x:Name="InstallationsList" SelectionMode="Single" Grid.Row="1" HorizontalContentAlignment="Center" ItemTemplate="{StaticResource InstallationItemTemplate}"></ListView>

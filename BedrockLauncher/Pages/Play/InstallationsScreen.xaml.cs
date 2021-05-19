@@ -17,29 +17,29 @@ using BedrockLauncher.Pages.Preview;
 
 namespace BedrockLauncher.Pages.Play
 {
-    /// <summary>
-    /// Логика взаимодействия для InstallationsScreen.xaml
-    /// </summary>
     public partial class InstallationsScreen : Page
     {
         public InstallationsScreen()
         {
             InitializeComponent();
+            ConfigManager.ConfigStateChanged += ConfigManager_ConfigStateChanged;
         }
 
-        public void RefreshInstallationsList()
+        private void ConfigManager_ConfigStateChanged(object sender, EventArgs e)
         {
-            ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
+            RefreshInstallationsList(null, null);
         }
 
         public void RefreshInstallationsList(object sender, RoutedEventArgs e)
         {
-            RefreshInstallationsList();
+            InstallationsList.ItemsSource = ConfigManager.CurrentInstallations;
+            var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
+            view.Filter = ConfigManager.Filter_InstallationList;
         }
 
         private void NewInstallationButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.ViewModel.SetOverlayFrame(new EditInstallationScreen());
+            ViewModels.LauncherModel.Default.SetOverlayFrame(new EditInstallationScreen());
         }
 
 
