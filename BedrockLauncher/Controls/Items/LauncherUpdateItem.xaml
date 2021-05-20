@@ -24,12 +24,10 @@
         <Separator Height="1" Margin="0,10,0,0"  HorizontalAlignment="Stretch"></Separator>
 
         <StackPanel Background="#232323">
-            <TextBlock Margin="10,30,10,40" TextWrapping="Wrap" Foreground="White" FontSize="17" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans">
-                    <Run FontSize="23" Text="{DynamicResource LauncherNewsPage_Changes_Text}" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten"/>
-                    <LineBreak/>
-                    <LineBreak/>
-	                <RichTextBox BorderThickness="0" xml:space="preserve" x:Name="buildChanges" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" Background="Transparent"/>
+            <TextBlock Margin="15,30,10,10" TextWrapping="Wrap" Foreground="White" FontSize="17" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans">
+                <Run FontSize="23" Text="{DynamicResource LauncherNewsPage_Changes_Text}" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten"/>
             </TextBlock>
+            <RichTextBox Margin="40,0,10,40" BorderThickness="0" xml:space="preserve" x:Name="buildChanges" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" Background="Transparent"/>
         </StackPanel>
         <Separator Height="1" Margin="0,0,0,10"  HorizontalAlignment="Stretch"></Separator>
         <StackPanel.Effect>

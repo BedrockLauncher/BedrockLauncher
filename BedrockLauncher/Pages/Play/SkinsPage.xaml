@@ -86,7 +86,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="50"/>
             </Grid.ColumnDefinitions>
-            <ListView BorderThickness="0,1,0,0" Keyboard.PreviewKeyUp="SkinPreviewList_PreviewKeyUp" BorderBrush="Gray" SelectionChanged="SkinPreviewList_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="Black" x:Name="SkinPreviewList" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" ItemTemplate="{StaticResource SkinItemTemplate}">
+            <ListView BorderThickness="0,1,0,0" Keyboard.PreviewKeyUp="SkinPreviewList_PreviewKeyUp" BorderBrush="{DynamicResource Seperator.Background}" SelectionChanged="SkinPreviewList_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="Black" x:Name="SkinPreviewList" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" ItemTemplate="{StaticResource SkinItemTemplate}">
                 <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel Orientation="Horizontal"></VirtualizingStackPanel>

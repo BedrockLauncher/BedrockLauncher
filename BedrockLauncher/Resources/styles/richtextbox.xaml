@@ -94,7 +94,11 @@
 
     <Style x:Key="FlowDocument_Style" TargetType="{x:Type FlowDocument}">
         <Setter Property="FontFamily" Value="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
+        <Style.Resources>
+
+        </Style.Resources>
     </Style>
+    
 
 
 </ResourceDictionary>
