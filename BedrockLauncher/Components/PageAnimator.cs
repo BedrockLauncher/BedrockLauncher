@@ -18,6 +18,8 @@ namespace BedrockLauncher.Components
         private static double stored_height { get; set; }
         private static double stored_min_width { get; set; }
         private static double stored_min_height { get; set; }
+        private static double stored_max_width { get; set; }
+        private static double stored_max_height { get; set; }
 
         private static bool inProgress = false;
 
@@ -71,42 +73,50 @@ namespace BedrockLauncher.Components
             stored_min_width = CurrentContent.MinWidth;
             stored_min_height = CurrentContent.MinHeight;
 
+            stored_max_width = CurrentContent.MaxWidth;
+            stored_max_height = CurrentContent.MaxHeight;
+
             Duration _duration = new Duration(TimeSpan.FromMilliseconds(175));
 
             ThicknessAnimation animation0 = new ThicknessAnimation();
 
+
+            double size = 150;
+            bool transparent = true;
+
             switch (direction)
             {
                 case ExpandDirection.Left:
-                    animation0.From = new Thickness(0, 0, 100, 0);
+                    animation0.From = new Thickness(-size, 0, size, 0);
                     break;
                 case ExpandDirection.Right:
-                    animation0.From = new Thickness(100, 0, 0, 0);
+                    animation0.From = new Thickness(size, 0, -size, 0);
                     break;
                 case ExpandDirection.Up:
-                    animation0.From = new Thickness(0, 0, 0, 100);
+                    animation0.From = new Thickness(0, -size, 0, size);
                     break;
                 case ExpandDirection.Down:
-                    animation0.From = new Thickness(0, 100, 0, 0);
+                    animation0.From = new Thickness(0, size, 0, -size);
                     break;
             }
-
-
-
 
             animation0.To = new Thickness(0, 0, 0, 0);
             animation0.Completed += Animation0_Completed;
             animation0.Duration = _duration;
 
-            DoubleAnimation animation1 = new DoubleAnimation();
-            animation1.From = 0;
-            animation1.To = 1;
-            animation1.Duration = _duration;
-
             CurrentContent.MinWidth = stored_width;
             CurrentContent.MinHeight = stored_height;
+            CurrentContent.MaxWidth = stored_width;
+            CurrentContent.MaxHeight = stored_height;
 
-            frame.BeginAnimation(Frame.OpacityProperty, animation1);
+            if (transparent)
+            {
+                DoubleAnimation animation1 = new DoubleAnimation();
+                animation1.From = 0;
+                animation1.To = 1;
+                animation1.Duration = _duration;
+                frame.BeginAnimation(Frame.OpacityProperty, animation1);
+            }
             frame.BeginAnimation(Frame.MarginProperty, animation0);
         }
 
@@ -114,6 +124,8 @@ namespace BedrockLauncher.Components
         {
             CurrentContent.MinWidth = stored_min_width;
             CurrentContent.MinHeight = stored_min_height;
+            CurrentContent.MaxWidth = stored_max_width;
+            CurrentContent.MaxHeight = stored_max_height;
             inProgress = false;
         }
     }

@@ -8,7 +8,7 @@
       Loaded="Page_Loaded"
       mc:Ignorable="d"
       Title="{DynamicResource SettingsTab_Title}" Foreground="{x:Null}" Background="#FF303030">
-    <Grid Background="{DynamicResource Background.Secondary}">
+    <Grid Background="{DynamicResource Background.Secondary}"  ClipToBounds="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -43,7 +43,7 @@
                 </StackPanel>
             </Grid>
         </Border>
-        <Frame x:Name="SettingsScreenFrame" com:DisableNavigation.Disable="True" Focusable="False" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="SettingsScreenFrame"  ClipToBounds="True" com:DisableNavigation.Disable="True" Focusable="False" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 
 </Page>

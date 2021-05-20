@@ -9,8 +9,8 @@ namespace BL_Core
 {
     public class GithubAPI
     {
-        public const string RELEASE_URL = "https://api.github.com/repos/BedrockLauncher/BedrockLauncher/releases/latest";
-        public const string BETA_URL = "https://api.github.com/repos/BedrockLauncher/BedrockLauncher-Beta/releases/latest";
+        public const string RELEASE_URL = "https://api.github.com/repos/BedrockLauncher/BedrockLauncher/releases";
+        public const string BETA_URL = "https://api.github.com/repos/BedrockLauncher/BedrockLauncher-Beta/releases";
         public static string ACCESS_TOKEN 
         {
             get
@@ -72,8 +72,12 @@ namespace BL_Core
 
     public class UpdateNote
     {
+        public string name { get; set; }
         public string tag_name { get; set; }
         public string body { get; set; }
+        public DateTime created_at { get; set; }
+        public DateTime published_at { get; set; }
         public Asset[] assets { get; set; }
+        public string url { get; set; }
     }
 }

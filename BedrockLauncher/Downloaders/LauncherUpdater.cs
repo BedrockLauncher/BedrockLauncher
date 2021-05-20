@@ -19,6 +19,39 @@ namespace BedrockLauncher.Downloaders
     {
         #region Definitions
 
+
+        public List<UpdateNote> Notes
+        {
+            get
+            {
+                var list = new List<UpdateNote>();
+                list.AddRange(ReleaseNotes);
+                list.AddRange(BetaNotes);
+                list.Sort((x, y) => y.published_at.CompareTo(x.published_at));
+                return list;
+            }
+        }
+        private List<UpdateNote> ReleaseNotes { get; set; } = new List<UpdateNote>();
+        private List<UpdateNote> BetaNotes { get; set; } = new List<UpdateNote>();
+
+        public string LatestTag
+        {
+            get
+            {
+                var list = Notes;
+                if (list.Count == 0) return string.Empty;
+                return list[0].tag_name;
+            }
+        }
+        public string LatestTagBody
+        {
+            get
+            {
+                var list = Notes;
+                if (list.Count == 0) return string.Empty;
+                return list[0].body;
+            }
+        }
         public string Release_LatestTag { get; private set; } = string.Empty;
         public string Release_LatestTagBody { get; private set; } = string.Empty;
         public string Beta_LatestTag { get; private set; } = string.Empty;
@@ -55,20 +88,24 @@ namespace BedrockLauncher.Downloaders
 
         public void CheckForUpdates()
         {
-            System.Diagnostics.Debug.WriteLine("Checking for updates");
             CheckForUpdatesAsync();
         }
-        private async void CheckForUpdatesAsync()
+        public async Task<bool> CheckForUpdatesAsync()
         {
+            System.Diagnostics.Debug.WriteLine("Checking for updates");
             try
             {
+                ReleaseNotes.Clear();
+                BetaNotes.Clear();
                 await Task.Run(Beta_GetJSON);
                 await Task.Run(Release_GetJSON);
                 CompareUpdate();
+                return true;
             }
             catch (Exception err)
             {
                 System.Diagnostics.Debug.WriteLine("Check for updates failed\nError:" + err.Message);
+                return false;
             }
         }
         private void Release_GetJSON()
@@ -81,9 +118,14 @@ namespace BedrockLauncher.Downloaders
             var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
             System.Diagnostics.Debug.WriteLine(httpResponse.StatusCode);
-            var note = JsonConvert.DeserializeObject<UpdateNote>(json);
-            this.Release_LatestTag = note.tag_name;
-            this.Release_LatestTagBody = note.body;
+            ReleaseNotes = JsonConvert.DeserializeObject<List<UpdateNote>>(json);
+            if (ReleaseNotes.Count != 0)
+            {
+                var note = ReleaseNotes[0];
+                this.Release_LatestTag = note.tag_name;
+                this.Release_LatestTagBody = note.body;
+            }
+
         }
         private void Beta_GetJSON()
         {
@@ -95,9 +137,13 @@ namespace BedrockLauncher.Downloaders
             var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
             System.Diagnostics.Debug.WriteLine(httpResponse.StatusCode);
-            var note = JsonConvert.DeserializeObject<UpdateNote>(json);
-            this.Beta_LatestTag = note.tag_name;
-            this.Beta_LatestTagBody = note.body;
+            BetaNotes.AddRange(JsonConvert.DeserializeObject<List<UpdateNote>>(json));
+            if (BetaNotes.Count != 0)
+            {
+                var note = BetaNotes[0];
+                this.Beta_LatestTag = note.tag_name;
+                this.Beta_LatestTagBody = note.body;
+            }
         }
 
 
