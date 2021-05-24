@@ -18,6 +18,7 @@ Be sure you have:
   - C++ Development Libraries
   - .NET Framework Development Libraries
 - Node.js (with the npm as a system enviorment path)
+- Vcpkg Package Manager (for C++ Libs)
 - **You Must be running as administator to build**
 
 Open the .sln project file in Visual Studio and Press the Build/Start Button
