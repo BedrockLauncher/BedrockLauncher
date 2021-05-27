@@ -243,6 +243,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="App.config" />
+    <None Include="postsharp.config" />
     <None Include="Properties\app.manifest" />
     <Page Include="Resources\styles\radiobutton.xaml">
       <Generator>MSBuild:Compile</Generator>

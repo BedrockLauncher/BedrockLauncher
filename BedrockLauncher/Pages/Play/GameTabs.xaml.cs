@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -24,11 +25,15 @@ namespace BedrockLauncher.Pages.Play
         public GameTabs()
         {
             InitializeComponent();
-            MainPageFrame.Navigating += MainPageFrame_Navigating;
         }
 
-        private void MainPageFrame_Navigating(object sender, System.Windows.Navigation.NavigatingCancelEventArgs e)
+        private async void Navigate(object content, bool animate = true)
         {
+            if (!animate)
+            {
+                await MainPageFrame.Dispatcher.InvokeAsync(() => MainPageFrame.Navigate(content));
+                return;
+            }
             int CurrentPageIndex = ViewModels.LauncherModel.Default.CurrentPageIndex_Play;
             int LastPageIndex = ViewModels.LauncherModel.Default.LastPageIndex_Play;
             if (CurrentPageIndex == LastPageIndex) return;
@@ -38,64 +43,84 @@ namespace BedrockLauncher.Pages.Play
             if (CurrentPageIndex > LastPageIndex) direction = ExpandDirection.Right;
             else direction = ExpandDirection.Left;
 
-            Components.PageAnimator.FrameSwipe(MainPageFrame, MainPageFrame.Content, direction);
+            await Task.Run(() => Components.PageAnimator.FrameSwipe(MainPageFrame, content, direction));
         }
 
 
 
         #region Navigation
 
-        public void ResetButtonManager(ToggleButton toggleButton)
+        public void ResetButtonManager(string buttonName)
         {
-            // just all buttons list
-            // ya i know this is really bad, i need to learn mvvm instead of doing this shit
-            // but this works fine, at least
-            List<ToggleButton> toggleButtons = new List<ToggleButton>() {
+            this.Dispatcher.Invoke(() =>
+            {
+                // just all buttons list
+                // ya i know this is really bad, i need to learn mvvm instead of doing this shit
+                // but this works fine, at least
+                List<ToggleButton> toggleButtons = new List<ToggleButton>() {
                 PlayButton,
                 InstallationsButton,
                 SkinsButton,
                 PatchNotesButton
             };
 
-            foreach (ToggleButton button in toggleButtons) { button.IsChecked = false; }
-            if (toggleButton != null) toggleButton.IsChecked = true;
+                foreach (ToggleButton button in toggleButtons) { button.IsChecked = false; }
+
+                if (toggleButtons.Exists(x => x.Name == buttonName))
+                {
+                    toggleButtons.Where(x => x.Name == buttonName).FirstOrDefault().IsChecked = true;
+                }
+            });
+
         }
 
-        public void ButtonManager2(object sender, RoutedEventArgs e)
+        public async void ButtonManager2(object sender, RoutedEventArgs e)
         {
-            var toggleButton = sender as ToggleButton;
-            ResetButtonManager(toggleButton);
-
-            if (toggleButton.Name == PlayButton.Name) NavigateToPlayScreen();
-            else if (toggleButton.Name == InstallationsButton.Name) NavigateToInstallationsPage();
-            else if (toggleButton.Name == SkinsButton.Name) NavigateToSkinsPage();
-            else if (toggleButton.Name == PatchNotesButton.Name) NavigateToPatchNotes();
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                var toggleButton = sender as ToggleButton;
+                string name = toggleButton.Name;
+                Task.Run(() => ButtonManager_Base(name));
+            });
         }
 
-        public void NavigateToPlayScreen()
+        public void ButtonManager_Base(string senderName, bool animate = true)
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                ResetButtonManager(senderName);
+
+                if (senderName == PlayButton.Name) NavigateToPlayScreen(animate);
+                else if (senderName == InstallationsButton.Name) NavigateToInstallationsPage(animate);
+                else if (senderName == SkinsButton.Name) NavigateToSkinsPage(animate);
+                else if (senderName == PatchNotesButton.Name) NavigateToPatchNotes(animate);
+            });
+        }
+
+        public void NavigateToPlayScreen(bool animate = true)
         {
             ViewModels.LauncherModel.Default.UpdatePlayPageIndex(0);
             PlayButton.IsChecked = true;
-            MainPageFrame.Navigate(playScreenPage);
+            Task.Run(() => Navigate(playScreenPage, animate));
 
         }
-        public void NavigateToInstallationsPage()
+        public void NavigateToInstallationsPage(bool animate = true)
         {
             ViewModels.LauncherModel.Default.UpdatePlayPageIndex(1);
             InstallationsButton.IsChecked = true;
-            MainPageFrame.Navigate(installationsScreen);
+            Task.Run(() => Navigate(installationsScreen, animate));
         }
-        public void NavigateToSkinsPage()
+        public void NavigateToSkinsPage(bool animate = true)
         {
             ViewModels.LauncherModel.Default.UpdatePlayPageIndex(2);
             SkinsButton.IsChecked = true;
-            MainPageFrame.Navigate(skinsPage);
+            Task.Run(() => Navigate(skinsPage, animate));
         }
-        public void NavigateToPatchNotes()
+        public void NavigateToPatchNotes(bool animate = true)
         {
             ViewModels.LauncherModel.Default.UpdatePlayPageIndex(3);
             PatchNotesButton.IsChecked = true;
-            MainPageFrame.Navigate(patchNotesPage);
+            Task.Run(() => Navigate(patchNotesPage, animate));
         }
 
         #endregion
@@ -103,7 +128,7 @@ namespace BedrockLauncher.Pages.Play
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             ResetButtonManager(null);
-            NavigateToPlayScreen();
+            ButtonManager_Base(PlayButton.Name, false);
         }
     }
 }

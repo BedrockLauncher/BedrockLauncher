@@ -15,6 +15,7 @@ namespace BedrockLauncher.Methods
         public static readonly string UserDataFileName = "user_profile.json";
         public static readonly string SettingsFileName = "settings.json";
         public static readonly string VersionCacheFileName = "versions.json";
+        public static readonly string UserVersionCacheFileName = "local_versions.json";
         public static readonly string AppDataFolderName = ".minecraft_bedrock";
         public static readonly string InstallationsFolderName = "installations";
         public static readonly string PackageDataFolderName = "packageData";
@@ -60,7 +61,10 @@ namespace BedrockLauncher.Methods
         {
             return Path.Combine(ExecutableDataDirectory, SettingsFileName);
         }
-
+        public static string GetUserVersionsFilePath()
+        {
+            return Path.Combine(CurrentLocation, UserVersionCacheFileName);
+        }
         public static string GetVersionsFilePath()
         {
             return Path.Combine(CurrentLocation, VersionCacheFileName);

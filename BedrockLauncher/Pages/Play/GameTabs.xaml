@@ -7,7 +7,7 @@
       xmlns:com="clr-namespace:BL_Core.Components;assembly=BL_Core"
       mc:Ignorable="d"
       Title="{DynamicResource GameTab_Title}" Foreground="{x:Null}" Background="#FF303030" Loaded="Page_Loaded">
-    <Grid Margin="0,0,0,0" Background="{DynamicResource Background.Secondary}"  ClipToBounds="True">
+    <Grid Margin="0,0,0,0" Background="{DynamicResource Background.Primary}"  ClipToBounds="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -42,6 +42,7 @@
                 </StackPanel>
             </Grid>
         </Border>
+        <Grid Grid.Row="1" Background="{DynamicResource Background.Tertiary}"></Grid>
         <Frame x:Name="MainPageFrame" com:DisableNavigation.Disable="True"  Focusable="False" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>

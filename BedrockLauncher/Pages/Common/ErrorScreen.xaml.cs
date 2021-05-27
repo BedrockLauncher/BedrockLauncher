@@ -31,85 +31,94 @@ namespace BedrockLauncher.Pages.Common
     {
         public static void exceptionmsg(string title, Exception error = null)
         {
-            ErrorScreen errorScreen = new ErrorScreen();
-            // Show default error message
-            if (error == null)
-            {
-                ViewModels.LauncherModel.Default.SetDialogFrame(new ErrorScreen());
-            }
-            errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, title);
-            errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, error.Message);
-            ViewModels.LauncherModel.Default.SetDialogFrame(errorScreen);
+            Application.Current.Dispatcher.Invoke(() => {
+                ErrorScreen errorScreen = new ErrorScreen();
+                // Show default error message
+                if (error == null)
+                {
+                    ViewModels.LauncherModel.Default.SetDialogFrame(new ErrorScreen());
+                }
+                errorScreen.ErrorType.Text = title;
+                errorScreen.ErrorText.Text = error.Message;
+                ViewModels.LauncherModel.Default.SetDialogFrame(errorScreen);
+            });
+
         }
         public static void exceptionmsg(Exception error = null)
         {
-            ErrorScreen errorScreen = new ErrorScreen();
-            // Show default error message
-            if (error == null)
-            {
-                ViewModels.LauncherModel.Default.SetDialogFrame(new ErrorScreen());
-            }
-            errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, error.HResult);
-            errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, error.Message);
-            ViewModels.LauncherModel.Default.SetDialogFrame(errorScreen);
+            Application.Current.Dispatcher.Invoke(() => {
+                ErrorScreen errorScreen = new ErrorScreen();
+                // Show default error message
+                if (error == null)
+                {
+                    ViewModels.LauncherModel.Default.SetDialogFrame(new ErrorScreen());
+                }
+                errorScreen.ErrorType.Text = error.HResult.ToString();
+                errorScreen.ErrorText.Text = error.Message;
+                ViewModels.LauncherModel.Default.SetDialogFrame(errorScreen);
+            });
+
         }
 
         public static void errormsg(string error = null)
         {
-            ErrorScreen errorScreen = new ErrorScreen();
-            // Show default error message
-            if (error == null)
-            {
-                ViewModels.LauncherModel.Default.SetDialogFrame(new ErrorScreen());
-            }
-            switch (error)
-            {
-                case "autherror":
-                    errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_AuthenticationFailed_Title");
-                    errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_AuthenticationFailed");
-                    ViewModels.LauncherModel.Default.SetDialogFrame(errorScreen);
-                    break;
-                case "CantFindJavaLauncher":
-                    errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_CantFindJavaLauncher_Title");
-                    errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_CantFindJavaLauncher");
-                    ViewModels.LauncherModel.Default.SetDialogFrame(errorScreen);
-                    break;
-                case "CantFindExternalLauncher":
-                    errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_CantFindExternalLauncher_Title");
-                    errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_CantFindExternalLauncher");
-                    ViewModels.LauncherModel.Default.SetDialogFrame(errorScreen);
-                    break;
-                case "appregistererror":
-                    errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_AppReregisterFailed_Title");
-                    errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_AppReregisterFailed");
-                    ViewModels.LauncherModel.Default.SetDialogFrame(errorScreen);
-                    break;
-                case "applauncherror":
-                    errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_AppLaunchFailed_Title");
-                    errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_AppLaunchFailed");
-                    ViewModels.LauncherModel.Default.SetDialogFrame(errorScreen);
-                    break;
-                case "downloadfailederror":
-                    errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_AppDownloadFailed_Title");
-                    errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_AppDownloadFailed");
-                    ViewModels.LauncherModel.Default.SetDialogFrame(errorScreen);
-                    break;
-                case "notaskinpack":
-                    errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_NotaSkinPack_Title");
-                    errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_NotaSkinPack");
-                    ViewModels.LauncherModel.Default.SetDialogFrame(errorScreen);
-                    break;
-                case "extractionfailed":
-                    errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_AppExtractionFailed_Title");
-                    errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_AppExtractionFailed");
-                    ViewModels.LauncherModel.Default.SetDialogFrame(errorScreen);
-                    break;
-                case "CantFindPaidServerList":
-                    errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_CantFindPaidServerList_Title");
-                    errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_CantFindPaidServerList");
-                    ViewModels.LauncherModel.Default.SetDialogFrame(errorScreen);
-                    break;
-            }
+            Application.Current.Dispatcher.Invoke(() => {
+                ErrorScreen errorScreen = new ErrorScreen();
+                // Show default error message
+                if (error == null)
+                {
+                    ViewModels.LauncherModel.Default.SetDialogFrame(new ErrorScreen());
+                }
+                switch (error)
+                {
+                    case "autherror":
+                        errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_AuthenticationFailed_Title");
+                        errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_AuthenticationFailed");
+                        ViewModels.LauncherModel.Default.SetDialogFrame(errorScreen);
+                        break;
+                    case "CantFindJavaLauncher":
+                        errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_CantFindJavaLauncher_Title");
+                        errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_CantFindJavaLauncher");
+                        ViewModels.LauncherModel.Default.SetDialogFrame(errorScreen);
+                        break;
+                    case "CantFindExternalLauncher":
+                        errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_CantFindExternalLauncher_Title");
+                        errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_CantFindExternalLauncher");
+                        ViewModels.LauncherModel.Default.SetDialogFrame(errorScreen);
+                        break;
+                    case "appregistererror":
+                        errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_AppReregisterFailed_Title");
+                        errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_AppReregisterFailed");
+                        ViewModels.LauncherModel.Default.SetDialogFrame(errorScreen);
+                        break;
+                    case "applauncherror":
+                        errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_AppLaunchFailed_Title");
+                        errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_AppLaunchFailed");
+                        ViewModels.LauncherModel.Default.SetDialogFrame(errorScreen);
+                        break;
+                    case "downloadfailederror":
+                        errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_AppDownloadFailed_Title");
+                        errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_AppDownloadFailed");
+                        ViewModels.LauncherModel.Default.SetDialogFrame(errorScreen);
+                        break;
+                    case "notaskinpack":
+                        errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_NotaSkinPack_Title");
+                        errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_NotaSkinPack");
+                        ViewModels.LauncherModel.Default.SetDialogFrame(errorScreen);
+                        break;
+                    case "extractionfailed":
+                        errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_AppExtractionFailed_Title");
+                        errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_AppExtractionFailed");
+                        ViewModels.LauncherModel.Default.SetDialogFrame(errorScreen);
+                        break;
+                    case "CantFindPaidServerList":
+                        errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_CantFindPaidServerList_Title");
+                        errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_CantFindPaidServerList");
+                        ViewModels.LauncherModel.Default.SetDialogFrame(errorScreen);
+                        break;
+                }
+            });
+
         }
     }
 }

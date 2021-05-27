@@ -186,7 +186,8 @@
     </ApplicationDefinition>
     <Compile Include="Classes\Html\SkinViewResourceSchemeHandler.cs" />
     <Compile Include="Classes\MCInstallation.cs" />
-    <Compile Include="Classes\MCNetFeedItem.cs" />
+    <Compile Include="Classes\MCNetFeedItemJSON.cs" />
+    <Compile Include="Classes\MCNetFeedItemRSS.cs" />
     <Compile Include="Classes\MCPatchNotesItem.cs" />
     <Compile Include="Classes\MCProfile.cs" />
     <Compile Include="Classes\MCProfilesList.cs" />
@@ -211,8 +212,10 @@
       <DependentUpon>InstallationSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="Events\ConfigStateArgs.cs" />
+    <Compile Include="Classes\MCNetFeedItem.cs" />
     <Compile Include="Interfaces\ICommonVersionCommands.cs" />
     <Compile Include="Methods\Filepaths.cs" />
+    <Compile Include="Methods\StoreNetwork.cs" />
     <Compile Include="Pages\Community\CommunityPage.xaml.cs">
       <DependentUpon>CommunityPage.xaml</DependentUpon>
     </Compile>
@@ -395,8 +398,6 @@
     </Compile>
     <Compile Include="Downloaders\LauncherUpdater.cs" />
     <Compile Include="Downloaders\VersionDownloader.cs" />
-    <Compile Include="Downloaders\WUProtocol.cs" />
-    <Compile Include="Downloaders\WUTokenHelper.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -784,7 +785,10 @@
       <Version>1.1.31</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>12.0.3</Version>
+      <Version>13.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="semver">
+      <Version>2.0.6</Version>
     </PackageReference>
     <PackageReference Include="SymbolicLinkSupport">
       <Version>1.2.0</Version>
@@ -927,6 +931,10 @@
     <Resource Include="Resources\images\ui\credits\mcmrarm_icon.jfif" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\modules\BedrockLauncher.UpdateProcessor\BedrockLauncher.UpdateProcessor.csproj">
+      <Project>{8d88d5ff-5132-4605-851d-2e020ea6483b}</Project>
+      <Name>BedrockLauncher.UpdateProcessor</Name>
+    </ProjectReference>
     <ProjectReference Include="..\modules\BL_Core\BedrockLauncher.Core.csproj">
       <Project>{167a048a-8140-4f8d-87c3-a03d07f964d3}</Project>
       <Name>BedrockLauncher.Core</Name>
@@ -1021,25 +1029,7 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>SET CONFIG=$(ConfigurationName)
-if $(ConfigurationName) == Publish (
-SET CONFIG=Release
-)
-
-if $(PlatformName) == Any CPU (
-xcopy /y /e /c /i "$(SolutionDir)modules\bin\WUTokenHelper\Win32\%25CONFIG%25" "$(ProjectDir)$(OutDir)\x86"
-xcopy /y /e /c /i "$(SolutionDir)modules\bin\WUTokenHelper\x64\%25CONFIG%25" "$(ProjectDir)$(OutDir)\x64"
-)
-
-if $(PlatformName) == x86 (
-xcopy /y /e /c /i "$(SolutionDir)modules\bin\WUTokenHelper\Win32\%25CONFIG%25" "$(ProjectDir)$(OutDir)\x86"
-)
-
-if $(PlatformName) == x64 (
-xcopy /y /e /c /i "$(SolutionDir)bin\WUTokenHelper\x64\%25CONFIG%25" "$(ProjectDir)$(OutDir)\x64"
-)
-
-if $(ConfigurationName) == Publish (
+    <PostBuildEvent>if $(ConfigurationName) == Publish (
 "$(SolutionDir)\modules\bin\publisher\publisher.exe" "$(ProjectDir)$(OutDir)\"
 )
 </PostBuildEvent>

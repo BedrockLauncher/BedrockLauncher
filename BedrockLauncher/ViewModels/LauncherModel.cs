@@ -45,7 +45,7 @@ namespace BedrockLauncher.ViewModels
             ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
 
             // show first launch window if no profile
-            if (isFirstLaunch) SetOverlayFrame(new WelcomePage(), false);
+            if (isFirstLaunch) SetOverlayFrame(new WelcomePage(), false, false);
             MainThread.NavigateToMainPage();
             ProgressBarStateChanged += ViewModel_ProgressBarStateChanged;
         }
@@ -54,17 +54,17 @@ namespace BedrockLauncher.ViewModels
 
         #region Page Indexes
 
-        public int CurrentPageIndex { get; private set; } = 0;
-        public int LastPageIndex { get; private set; } = 0;
+        public int CurrentPageIndex { get; private set; } = -2;
+        public int LastPageIndex { get; private set; } = -1;
 
-        public int CurrentPageIndex_News { get; private set; } = 0;
-        public int LastPageIndex_News { get; private set; } = 0;
+        public int CurrentPageIndex_News { get; private set; } = -2;
+        public int LastPageIndex_News { get; private set; } = -1;
 
-        public int CurrentPageIndex_Play { get; private set; } = 0;
-        public int LastPageIndex_Play { get; private set; } = 0;
+        public int CurrentPageIndex_Play { get; private set; } = -2;
+        public int LastPageIndex_Play { get; private set; } = -1;
 
-        public int CurrentPageIndex_Settings { get; private set; } = 0;
-        public int LastPageIndex_Settings { get; private set; } = 0;
+        public int CurrentPageIndex_Settings { get; private set; } = -2;
+        public int LastPageIndex_Settings { get; private set; } = -1;
 
         public void UpdatePageIndex(int index)
         {
@@ -287,34 +287,48 @@ namespace BedrockLauncher.ViewModels
                 e.Cancel = false;
             }
         }
-        public void SetDialogFrame(object content, bool useFade = true)
+        public async void SetDialogFrame(object content, bool useFade = true)
         {
-            bool isEmpty = content == null;
-            var focusMode = (isEmpty ? MainFrame_KeyboardNavigationMode_Default : KeyboardNavigationMode.None);
-            KeyboardNavigation.SetTabNavigation(MainThread.MainFrame, focusMode);
-            KeyboardNavigation.SetTabNavigation(MainThread.OverlayFrame, focusMode);
-            Keyboard.ClearFocus();
-
-            if (useFade)
+            await Application.Current.Dispatcher.InvokeAsync(() =>
             {
-                if (isEmpty) PageAnimator.FrameFadeOut(MainThread.ErrorFrame, content);
-                else PageAnimator.FrameFadeIn(MainThread.ErrorFrame, content);
-            }
-            else MainThread.ErrorFrame.Navigate(content);
+                bool isEmpty = content == null;
+                var focusMode = (isEmpty ? MainFrame_KeyboardNavigationMode_Default : KeyboardNavigationMode.None);
+                KeyboardNavigation.SetTabNavigation(MainThread.MainFrame, focusMode);
+                KeyboardNavigation.SetTabNavigation(MainThread.OverlayFrame, focusMode);
+                Keyboard.ClearFocus();
+
+                if (useFade)
+                {
+                    if (isEmpty) PageAnimator.FrameFadeOut(MainThread.ErrorFrame, content);
+                    else PageAnimator.FrameFadeIn(MainThread.ErrorFrame, content);
+                }
+                else MainThread.ErrorFrame.Navigate(content);
+            });
         }
-        public void SetOverlayFrame(object content, bool useFade = true)
+        public async void SetOverlayFrame(object content, bool useFade = true, bool useSwipe = true)
         {
-            bool isEmpty = content == null;
-            var focusMode = (isEmpty ? MainFrame_KeyboardNavigationMode_Default : KeyboardNavigationMode.None);
-            KeyboardNavigation.SetTabNavigation(MainThread.MainFrame, focusMode);
-            Keyboard.ClearFocus();
-
-            if (useFade)
+            await Application.Current.Dispatcher.InvokeAsync(() =>
             {
-                if (isEmpty) PageAnimator.FrameFadeOut(MainThread.OverlayFrame, content);
-                else PageAnimator.FrameFadeIn(MainThread.OverlayFrame, content);
-            }
-            else MainThread.OverlayFrame.Navigate(content);
+                bool isEmpty = content == null;
+                var focusMode = (isEmpty ? MainFrame_KeyboardNavigationMode_Default : KeyboardNavigationMode.None);
+                KeyboardNavigation.SetTabNavigation(MainThread.MainFrame, focusMode);
+                Keyboard.ClearFocus();
+
+                if (useFade)
+                {
+                    if (useSwipe)
+                    {
+                        if (isEmpty) PageAnimator.FrameSwipe_OverlayOut(MainThread.OverlayFrame, content);
+                        else PageAnimator.FrameSwipe_OverlayIn(MainThread.OverlayFrame, content);
+                    }
+                    else
+                    {
+                        if (isEmpty) PageAnimator.FrameFadeOut(MainThread.OverlayFrame, content);
+                        else PageAnimator.FrameFadeIn(MainThread.OverlayFrame, content);
+                    }
+                }
+                else MainThread.OverlayFrame.Navigate(content);
+            });
         }
 
 

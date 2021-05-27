@@ -78,6 +78,6 @@
     </DataTemplate>
 
     <DataTemplate x:Key="CommunityNewsItemTemplate" DataType="{x:Type classes:MCNetFeedItem}">
-        <i:CommunityFeedItem DataContext="{Binding}"></i:CommunityFeedItem>
+        <i:CommunityFeedItem VerticalContentAlignment="Stretch" FocusVisualStyle="{DynamicResource BlankFocusVisual}" DataContext="{Binding}"></i:CommunityFeedItem>
     </DataTemplate>
 </ResourceDictionary>

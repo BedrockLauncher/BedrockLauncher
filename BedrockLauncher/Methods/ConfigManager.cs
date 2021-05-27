@@ -18,7 +18,6 @@ namespace BedrockLauncher.Methods
 
     public static class ConfigManager
     {
-
         #region Helpers
 
         public static string CurrentProfile 
@@ -108,29 +107,14 @@ namespace BedrockLauncher.Methods
 
         public static void LoadVersions()
         {
-            Versions = new MCVersionList(Filepaths.GetVersionsFilePath(), GameManager);
+            Versions = new MCVersionList(Filepaths.GetVersionsFilePath(), Filepaths.GetUserVersionsFilePath(), GameManager);
             ReloadVersions();
         }
         public static void ReloadVersions()
         {
             ViewModels.LauncherModel.MainThread.Dispatcher.Invoke((Func<Task>)(async () =>
             {
-                try
-                {
-                    await ConfigManager.Versions.LoadFromCache();
-                }
-                catch (Exception e)
-                {
-                    System.Diagnostics.Debug.WriteLine("List cache load failed:\n" + e.ToString());
-                }
-                try
-                {
-                    await ConfigManager.Versions.DownloadList();
-                }
-                catch (Exception e)
-                {
-                    System.Diagnostics.Debug.WriteLine("List download failed:\n" + e.ToString());
-                }
+                await ConfigManager.Versions.UpdateVersions();
             }));
 
         }
@@ -152,17 +136,6 @@ namespace BedrockLauncher.Methods
             else profileList = new MCProfilesList();
 
             if (profileList.profiles == null) profileList.profiles = new Dictionary<string, MCProfile>();
-
-            System.Diagnostics.Debug.WriteLine("Profile count: " + profileList.profiles.Count);
-            foreach (MCProfile setting in profileList.profiles.Values)
-            {
-                System.Diagnostics.Debug.WriteLine("\nProfile found!: ");
-                System.Diagnostics.Debug.WriteLine("Name: " + setting.Name);
-                System.Diagnostics.Debug.WriteLine("Path: " + setting.ProfilePath);
-
-                if (setting.Installations == null) setting.Installations = new List<MCInstallation>();
-                System.Diagnostics.Debug.WriteLine("Installations: " + setting.Installations.Count);
-            }
 
             ProfileList = profileList;
 

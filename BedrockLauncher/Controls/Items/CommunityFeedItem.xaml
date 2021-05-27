@@ -8,32 +8,26 @@
              mc:Ignorable="d" 
              Focusable="False"
              d:DesignHeight="365" d:DesignWidth="365" Click="FeedItemButton_Click" Style="{DynamicResource EmptyButton}">
-    <Grid Focusable="False">
-        <Border Padding="1" Width="375" Height="375">
-            <Grid Background="#131313">
+    <Grid Focusable="False" VerticalAlignment="Stretch">
+        <Border Padding="0" VerticalAlignment="Stretch">
+            <Grid Background="#131313" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="200"></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition MaxHeight="{Binding ImageHeight}"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition MaxWidth="{Binding ImageWidth}"/>
+                    <ColumnDefinition Width="{Binding ImageWidth}"/>
                 </Grid.ColumnDefinitions>
-                <Image Grid.ColumnSpan="2" Grid.Row="0" Source="{Binding ImageUrl}" Stretch="UniformToFill">
-                    <Image.Effect>
-                        <BlurEffect Radius="50"></BlurEffect>
-                    </Image.Effect>
-                </Image>
-                <Border Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Row="0" BorderBrush="Black" BorderThickness="0" Width="256">
-                    <Image Source="{Binding ImageUrl}" Stretch="UniformToFill"></Image>
-                </Border>
-                <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" FontWeight="Normal" FontSize="25" Grid.ColumnSpan="2" Margin="15,15" TextWrapping="Wrap" Grid.Row="1" Text="{Binding Title}" Foreground="White"></TextBlock>
-                <TextBlock Grid.ColumnSpan="2" Margin="15,5" TextWrapping="Wrap" Grid.Row="2" Text="{Binding Description}" Foreground="White"></TextBlock>
-                <TextBlock Grid.Column="1" Margin="15,0,15,15" TextAlignment="Right" VerticalAlignment="Bottom" TextWrapping="Wrap" Grid.Row="3" Text="{Binding PublishingDateString}" Foreground="Gray"></TextBlock>
-                <TextBlock Grid.Column="0" Padding="2,2" Margin="15,0,0,15" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Bottom" TextWrapping="Wrap" Grid.Row="3" Text="{Binding PrimaryTag}" Foreground="White" Background="DimGray"></TextBlock>
+                
+                <Image Source="{Binding ImageUrl}" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
 
+                <TextBlock Background="#131313" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" FontWeight="Normal" FontSize="20" Padding="15,15" TextWrapping="Wrap" Text="{Binding Title}" Foreground="White"></TextBlock>
+                <DockPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" x:Name="Tb" Margin="15,15,15,15">
+                    <TextBlock Padding="4,2" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Grid.Row="3" Text="{Binding Tag}" Foreground="White" Background="#333333"></TextBlock>
+                    <TextBlock Margin="10,0,10,0" TextAlignment="Right" VerticalAlignment="Center" TextWrapping="Wrap" Grid.Row="3" Text="{Binding Date}" Foreground="#CCCCCC"></TextBlock>
+                </DockPanel>
             </Grid>
             <Border.Effect>
                 <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>

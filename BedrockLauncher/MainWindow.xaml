@@ -44,7 +44,8 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="Auto" MaxHeight="64"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Frame x:Name="MainWindowFrame" com:DisableNavigation.Disable="True" Focusable="False" VerticalAlignment="Stretch" Background="Black" NavigationUIVisibility="Hidden" Source="/BedrockLauncher;component/Pages/Play/GameTabs.xaml"/>
+                <Grid Background="{DynamicResource Background.Tertiary}"></Grid>
+                <Frame x:Name="MainWindowFrame" com:DisableNavigation.Disable="True" Focusable="False" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden"/>
                 <Grid Grid.Row="1" x:Name="ProgressBarGrid" Background="{DynamicResource Background.Primary}" Visibility="Collapsed">
                     <Grid Margin="10,8,10,22">
                         <Grid.ColumnDefinitions>

@@ -62,10 +62,13 @@ namespace BedrockLauncher.Pages.Play
 
         private void RefreshInstallations()
         {
-            InstallationsList.Items.Cast<MCInstallation>().ToList().ForEach(x => x.Update());
+            this.Dispatcher.Invoke(() =>
+            {
+                InstallationsList.Items.Cast<MCInstallation>().ToList().ForEach(x => x.Update());
 
-            InstallationsList.ItemsSource = ConfigManager.CurrentInstallations;
-            if (InstallationsList.SelectedItem == null) InstallationsList.SelectedItem = ConfigManager.CurrentInstallations.First();
+                InstallationsList.ItemsSource = ConfigManager.CurrentInstallations;
+                if (InstallationsList.SelectedItem == null) InstallationsList.SelectedItem = ConfigManager.CurrentInstallations.First();
+            });
         }
 
         private string GetLatestImage()

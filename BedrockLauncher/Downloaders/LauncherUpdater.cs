@@ -88,7 +88,11 @@ namespace BedrockLauncher.Downloaders
 
         public void CheckForUpdates()
         {
-            CheckForUpdatesAsync();
+            Task.Run(async () =>
+            {
+                await CheckForUpdatesAsync();
+            });
+
         }
         public async Task<bool> CheckForUpdatesAsync()
         {

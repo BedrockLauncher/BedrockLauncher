@@ -38,7 +38,6 @@ namespace BedrockLauncher.Methods
         #region Threading Tasks
 
         public CancellationTokenSource cancelSource = new CancellationTokenSource();
-        private readonly VersionDownloader _anonVersionDownloader = new VersionDownloader();
         private readonly VersionDownloader _userVersionDownloader = new VersionDownloader();
         private readonly Task _userVersionDownloaderLoginTask;
         private volatile int _userVersionDownloaderLoginTaskStarted;
@@ -227,14 +226,18 @@ namespace BedrockLauncher.Methods
                 try
                 {
                     string dlPath = "Minecraft-" + v.Name + ".Appx";
-                    VersionDownloader downloader = _anonVersionDownloader;
-                    downloader = _userVersionDownloader;
+                    VersionDownloader downloader = _userVersionDownloader;
                     if (v.IsBeta) await BetaAuthenticate();
                     await DownloadVersion(v, downloader, dlPath, cancelSource);
                     await ExtractPackage(v, dlPath, cancelSource);
                 }
                 catch (TaskCanceledException)
                 {
+                    wasCanceled = true;
+                }
+                catch (Exception ex)
+                {
+                    ErrorScreenShow.exceptionmsg(ex);
                     wasCanceled = true;
                 }
 
@@ -366,7 +369,7 @@ namespace BedrockLauncher.Methods
             try
             {
                 ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isInitializing;
-                await downloader.Download(v, v.UUID, "1", dlPath, (current, total) =>
+                await downloader.Download(v.DisplayName, v.UUID, 1, dlPath, (current, total) =>
                 {
                     if (ViewModels.LauncherModel.Default.CurrentState == ViewModels.LauncherModel.StateChange.isInitializing)
                     {
@@ -501,6 +504,7 @@ namespace BedrockLauncher.Methods
             {
                 System.Diagnostics.Debug.WriteLine("Extraction started");
                 ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isExtracting;
+                ViewModels.LauncherModel.Default.CurrentProgress = 0;
                 string dirPath = v.GameDirectory;
                 if (Directory.Exists(dirPath))
                     Directory.Delete(dirPath, true);
@@ -534,7 +538,7 @@ namespace BedrockLauncher.Methods
 
                 if (zipReadingStream != null) zipReadingStream.Close();
                 ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
-                return;
+                throw new TaskCanceledException();
             }
         }
         private async Task RemovePackage(MCVersion v, Package pkg)

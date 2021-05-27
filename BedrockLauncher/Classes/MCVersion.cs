@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Forms.Design;
 using Newtonsoft.Json;
+using System.Linq.Expressions;
 
 using System.ComponentModel;
 using System.Diagnostics;
@@ -20,6 +21,7 @@ using System.Windows.Data;
 
 using BedrockLauncher.Interfaces;
 using BL_Core.Components;
+using System.Text.RegularExpressions;
 
 namespace BedrockLauncher.Classes
 {
@@ -43,7 +45,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                return Methods.Filepaths.CurrentLocation + "\\versions\\Minecraft-" + Name;
+                return Methods.Filepaths.CurrentLocation + "\\versions\\Minecraft-" + UUID;
             }
         }
 
@@ -77,7 +79,7 @@ namespace BedrockLauncher.Classes
             }
         }
 
-       public string InstallationSize
+        public string InstallationSize
         {
             get
             {
@@ -149,6 +151,5 @@ namespace BedrockLauncher.Classes
             OnPropertyChanged(nameof(IsInstalled));
             RequireSizeRecalculation = true;
         }
-
     }
 }

@@ -43,6 +43,7 @@
                 </StackPanel>
             </Grid>
         </Border>
+        <Grid Grid.Row="1" Background="{DynamicResource Background.Tertiary}"></Grid>
         <Frame x:Name="SettingsScreenFrame"  ClipToBounds="True" com:DisableNavigation.Disable="True" Focusable="False" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 

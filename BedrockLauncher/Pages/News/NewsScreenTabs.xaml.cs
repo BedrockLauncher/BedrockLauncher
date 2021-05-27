@@ -33,11 +33,25 @@ namespace BedrockLauncher.Pages.News
             InitializeComponent();
             LastTabName = OfficalTab.Name;
             launcherNewsPage = new LauncherNewsPage(updater);
-            this.ContentFrame.Navigating += ContentFrame_Navigating;
         }
 
-        private void ContentFrame_Navigating(object sender, NavigatingCancelEventArgs e)
+
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            ButtonManager_Base(LastTabName, false);
+        }
+
+        #region Navigation
+
+        private async void Navigate(object content, bool animate = true)
+        {
+            if (!animate)
+            {
+                await ContentFrame.Dispatcher.InvokeAsync(() => ContentFrame.Navigate(content));
+                return;
+            }
+
             int CurrentPageIndex = ViewModels.LauncherModel.Default.CurrentPageIndex_News;
             int LastPageIndex = ViewModels.LauncherModel.Default.LastPageIndex_News;
             if (CurrentPageIndex == LastPageIndex) return;
@@ -47,59 +61,63 @@ namespace BedrockLauncher.Pages.News
             if (CurrentPageIndex > LastPageIndex) direction = ExpandDirection.Right;
             else direction = ExpandDirection.Left;
 
-            Components.PageAnimator.FrameSwipe(ContentFrame, ContentFrame.Content, direction);
+            await Task.Run(() => Components.PageAnimator.FrameSwipe(ContentFrame, content, direction));
         }
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            ButtonManager_Base(LastTabName);
-        }
-
-        #region Navigation
 
         public void ResetButtonManager(string buttonName)
         {
-            // just all buttons list
-            // ya i know this is really bad, i need to learn mvvm instead of doing this shit
-            // but this works fine, at least
-            List<ToggleButton> toggleButtons = new List<ToggleButton>() { 
+            this.Dispatcher.Invoke(() =>
+            {
+                // just all buttons list
+                // ya i know this is really bad, i need to learn mvvm instead of doing this shit
+                // but this works fine, at least
+                List<ToggleButton> toggleButtons = new List<ToggleButton>() {
                 LauncherTab,
                 OfficalTab
             };
 
-            foreach (ToggleButton button in toggleButtons) { button.IsChecked = false; }
+                foreach (ToggleButton button in toggleButtons) { button.IsChecked = false; }
 
-            if (toggleButtons.Exists(x => x.Name == buttonName))
+                if (toggleButtons.Exists(x => x.Name == buttonName))
+                {
+                    toggleButtons.Where(x => x.Name == buttonName).FirstOrDefault().IsChecked = true;
+                }
+            });
+
+        }
+
+        public async void ButtonManager(object sender, RoutedEventArgs e)
+        {
+            await this.Dispatcher.InvokeAsync(() =>
             {
-                toggleButtons.Where(x => x.Name == buttonName).FirstOrDefault().IsChecked = true;
-            }
+                var toggleButton = sender as ToggleButton;
+                string name = toggleButton.Name;
+                Task.Run(() => ButtonManager_Base(name));
+            });
         }
 
-        public void ButtonManager(object sender, RoutedEventArgs e)
+        public void ButtonManager_Base(string senderName, bool animate = true)
         {
-            var toggleButton = sender as ToggleButton;
-            ButtonManager_Base(toggleButton.Name);
+            this.Dispatcher.Invoke(() =>
+            {
+                ResetButtonManager(senderName);
+
+                if (senderName == LauncherTab.Name) NavigateToLauncherNews(animate);
+                else if (senderName == OfficalTab.Name) NavigateToCommunityNews(animate);
+            });
         }
 
-        public void ButtonManager_Base(string senderName)
-        {
-            ResetButtonManager(senderName);
-
-            if (senderName == LauncherTab.Name) NavigateToLauncherNews();
-            else if (senderName == OfficalTab.Name) NavigateToCommunityNews();
-        }
-
-        public void NavigateToLauncherNews()
+        public void NavigateToLauncherNews(bool animate = true)
         {
             ViewModels.LauncherModel.Default.UpdateNewsPageIndex(1);
-            ContentFrame.Navigate(launcherNewsPage);
+            Task.Run(() => Navigate(launcherNewsPage, animate));
             LastTabName = LauncherTab.Name;
         }
 
-        public void NavigateToCommunityNews()
+        public void NavigateToCommunityNews(bool animate = true)
         {
             ViewModels.LauncherModel.Default.UpdateNewsPageIndex(0);
-            ContentFrame.Navigate(communityNewsPage);
+            Task.Run(() => Navigate(communityNewsPage, animate));
             LastTabName = OfficalTab.Name;
         }
 

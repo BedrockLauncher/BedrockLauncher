@@ -9,14 +9,4 @@ using System.Threading.Tasks;
 namespace BedrockLauncherSetup
 {
 
-    public static class FileExtentions
-    {
-
-    }
-    public static class Extensions
-    {
-        private const int _DefaultBufferSize = 1000;
-
-
-    }
 }

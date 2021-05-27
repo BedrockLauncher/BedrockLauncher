@@ -116,7 +116,8 @@
             </Border>
             <Image Margin="0,0" Height="84" VerticalAlignment="Top" Source="/BedrockLauncher;component/resources/images/ui/logo/logo.png"></Image>
         </Grid>
-        <Frame x:Name="ContentFrame" ClipToBounds="True" com:DisableNavigation.Disable="True" VerticalAlignment="Stretch" Background="{DynamicResource Background.Secondary}" HorizontalAlignment="Stretch" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+        <Grid Grid.Row="1" Background="{DynamicResource Background.Tertiary}"></Grid>
+        <Frame x:Name="ContentFrame" ClipToBounds="True" com:DisableNavigation.Disable="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 
 

@@ -1,33 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using System.Net;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
 
-using Windows.Security.Credentials;
 using Windows.Foundation;
 using Windows.Security.Authentication.Web.Core;
-using System.Security.Authentication;
+using Windows.Security.Authentication.Web;
+using Windows.Security.Cryptography;
+using Windows.Security.Credentials;
 using System.IO;
-using BedrockLauncher.Methods;
+using Windows.System;
 
-namespace BedrockLauncher.Downloaders
+namespace BedrockLauncher.UpdateProcessor
 {
-    class WUTokenHelper
+    public class Win10AuthenticationManager
     {
         private const int WU_ERRORS_START = 0x7ffc0200;
         private const int WU_NO_ACCOUNT = 0x7ffc0200;
         private const int WU_ERRORS_END = 0x7ffc0200;
-
-        private static int SelectedUserIndex
-        {
-            get
-            {
-                return Properties.LauncherSettings.Default.CurrentInsiderAccount;
-            }
-        }
 
         public struct WUAccount
         {
@@ -37,9 +30,9 @@ namespace BedrockLauncher.Downloaders
 
         public static List<WUAccount> CurrentAccounts { get; set; } = new List<WUAccount>();
 
-        static WUTokenHelper()
+        static Win10AuthenticationManager()
         {
-            var myPath = new Uri(typeof(WUTokenHelper).Assembly.CodeBase).LocalPath;
+            var myPath = new Uri(typeof(Win10AuthenticationManager).Assembly.CodeBase).LocalPath;
             var myFolder = Path.GetDirectoryName(myPath);
 
             var is64 = Environment.Is64BitProcess;
@@ -81,7 +74,7 @@ namespace BedrockLauncher.Downloaders
             CurrentAccounts = results;
         }
 
-        public static string GetWUToken()
+        public static string GetWUToken(int SelectedUserIndex)
         {
             string token;
             int status = GetWUToken(SelectedUserIndex, out token);
@@ -107,4 +100,5 @@ namespace BedrockLauncher.Downloaders
         }
 
     }
+
 }

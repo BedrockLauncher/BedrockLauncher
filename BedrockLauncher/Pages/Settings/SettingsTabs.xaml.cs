@@ -26,9 +26,8 @@ namespace BedrockLauncher.Pages.Settings
         public SettingsTabs()
         {
             InitializeComponent();
-            this.SettingsScreenFrame.Navigating += SettingsScreenFrame_Navigating;
             ConfigManager.ConfigStateChanged += ConfigManager_ConfigStateChanged;
-            NavigateToGeneralPage();
+            ButtonManager_Base(GeneralButton.Name, false);
         }
 
         private void ConfigManager_ConfigStateChanged(object sender, EventArgs e)
@@ -36,8 +35,14 @@ namespace BedrockLauncher.Pages.Settings
             RefreshVersions();
         }
 
-        private void SettingsScreenFrame_Navigating(object sender, NavigatingCancelEventArgs e)
+        private async void Navigate(object content, bool animate = true)
         {
+            if (!animate)
+            {
+                await SettingsScreenFrame.Dispatcher.InvokeAsync(() => SettingsScreenFrame.Navigate(content));
+                return;
+            }
+
             int CurrentPageIndex = ViewModels.LauncherModel.Default.CurrentPageIndex_Settings;
             int LastPageIndex = ViewModels.LauncherModel.Default.LastPageIndex_Settings;
             if (CurrentPageIndex == LastPageIndex) return;
@@ -47,7 +52,7 @@ namespace BedrockLauncher.Pages.Settings
             if (CurrentPageIndex > LastPageIndex) direction = ExpandDirection.Right;
             else direction = ExpandDirection.Left;
 
-            Components.PageAnimator.FrameSwipe(SettingsScreenFrame, SettingsScreenFrame.Content, direction);
+            await Task.Run(() => Components.PageAnimator.FrameSwipe(SettingsScreenFrame, content, direction));
         }
 
         #region UI
@@ -63,54 +68,73 @@ namespace BedrockLauncher.Pages.Settings
 
         #region Navigation
 
-        public void ResetButtonManager(ToggleButton toggleButton)
+        public void ResetButtonManager(string buttonName)
         {
-            // just all buttons list
-            // ya i know this is really bad, i need to learn mvvm instead of doing this shit
-            // but this works fine, at least
-            List<ToggleButton> toggleButtons = new List<ToggleButton>() {
+            this.Dispatcher.Invoke(() =>
+            {
+                // just all buttons list
+                // ya i know this is really bad, i need to learn mvvm instead of doing this shit
+                // but this works fine, at least
+                List<ToggleButton> toggleButtons = new List<ToggleButton>() {
                 GeneralButton,
                 VersionsButton,
                 AccountsButton,
                 AboutButton
             };
 
-            foreach (ToggleButton button in toggleButtons) { button.IsChecked = false; }
-            toggleButton.IsChecked = true;
+                foreach (ToggleButton button in toggleButtons) { button.IsChecked = false; }
+
+                if (toggleButtons.Exists(x => x.Name == buttonName))
+                {
+                    toggleButtons.Where(x => x.Name == buttonName).FirstOrDefault().IsChecked = true;
+                }
+            });
+
         }
 
-        public void ButtonManager(object sender, RoutedEventArgs e)
+        public async void ButtonManager(object sender, RoutedEventArgs e)
         {
-            var toggleButton = sender as ToggleButton;
-            ResetButtonManager(toggleButton);
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                var toggleButton = sender as ToggleButton;
+                string name = toggleButton.Name;
+                Task.Run(() => ButtonManager_Base(name));
+            });
+        }
+        public void ButtonManager_Base(string senderName, bool animate = true)
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                ResetButtonManager(senderName);
 
-            if (toggleButton.Name == GeneralButton.Name) NavigateToGeneralPage();
-            else if (toggleButton.Name == AccountsButton.Name) NavigateToAccountsPage();
-            else if (toggleButton.Name == AboutButton.Name) NavigateToAboutPage();
-            else if (toggleButton.Name == VersionsButton.Name) NavigateToVersionsPage();
+                if (senderName == GeneralButton.Name) NavigateToGeneralPage(animate);
+                else if (senderName == AccountsButton.Name) NavigateToAccountsPage(animate);
+                else if (senderName == AboutButton.Name) NavigateToAboutPage(animate);
+                else if (senderName == VersionsButton.Name) NavigateToVersionsPage(animate);
+            });
         }
 
-        public void NavigateToGeneralPage()
+        public void NavigateToGeneralPage(bool animate = true)
         {
             ViewModels.LauncherModel.Default.UpdateSettingsPageIndex(0);
-            SettingsScreenFrame.Navigate(generalSettingsPage);
+            Task.Run(() => Navigate(generalSettingsPage, animate));
         }
-        public void NavigateToVersionsPage()
+        public void NavigateToVersionsPage(bool animate = true)
         {
             ViewModels.LauncherModel.Default.UpdateSettingsPageIndex(1);
-            SettingsScreenFrame.Navigate(versionsSettingsPage);
+            Task.Run(() => Navigate(versionsSettingsPage, animate));
         }
 
-        public void NavigateToAccountsPage()
+        public void NavigateToAccountsPage(bool animate = true)
         {
             ViewModels.LauncherModel.Default.UpdateSettingsPageIndex(2);
-            SettingsScreenFrame.Navigate(accountsSettingsPage);
+            Task.Run(() => Navigate(accountsSettingsPage, animate));
         }
 
-        public void NavigateToAboutPage()
+        public void NavigateToAboutPage(bool animate = true)
         {
             ViewModels.LauncherModel.Default.UpdateSettingsPageIndex(3);
-            SettingsScreenFrame.Navigate(aboutPage);
+            Task.Run(() => Navigate(aboutPage, animate));
         }
 
         #endregion
