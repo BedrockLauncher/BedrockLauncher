@@ -30,7 +30,7 @@ namespace BedrockLauncher.Controls
 
         public void RefreshProfileContextMenuItems()
         {
-            var _userAccountsFetch = new Task(async () =>
+            var _userAccountsFetch = new Task(() =>
             {
                 Win10AuthenticationManager.GetWUUsers();
             });
