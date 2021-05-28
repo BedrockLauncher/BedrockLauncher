@@ -19,6 +19,7 @@ Be sure you have:
   - .NET Framework Development Libraries
 - Node.js (with the npm as a system enviorment path)
 - Vcpkg Package Manager (for C++ Libs)
+- ReSharper Community Edition (for the installer)
 - **You Must be running as administator to build**
 
 Open the .sln project file in Visual Studio and Press the Build/Start Button
