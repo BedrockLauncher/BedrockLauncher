@@ -229,14 +229,14 @@ namespace BedrockLauncher.Pages.Preview
 
         private string GetNewPackFolder()
         {
-            string InstallationPath = Filepaths.GetInstallationsFolderPath(ConfigManager.CurrentProfile, ConfigManager.CurrentInstallation.DirectoryName);
+            string InstallationPath = FilepathManager.GetInstallationsFolderPath(ConfigManager.CurrentProfile, ConfigManager.CurrentInstallation.DirectoryName);
             string NewPackDirectoryName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
-            string NewPackDirectory = Path.Combine(Filepaths.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
+            string NewPackDirectory = Path.Combine(FilepathManager.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
 
             while (Directory.Exists(NewPackDirectory))
             {
                 NewPackDirectoryName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
-                NewPackDirectory = Path.Combine(Filepaths.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
+                NewPackDirectory = Path.Combine(FilepathManager.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
             }
 
             return NewPackDirectory;

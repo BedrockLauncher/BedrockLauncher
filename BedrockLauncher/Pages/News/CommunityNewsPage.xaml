@@ -10,7 +10,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CommunityNewsPage" Loaded="Page_Loaded">
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-        <ListView x:Name="OfficalNewsFeed" Keyboard.PreviewKeyUp="OfficalNewsFeed_KeyUp" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"  ItemTemplate="{StaticResource CommunityNewsItemTemplate}">
+        <ListView x:Name="OfficalNewsFeed" Keyboard.PreviewKeyUp="OfficalNewsFeed_KeyUp" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center" MaxWidth="{Binding ElementName=OfficalNewsFeed, Path=ActualWidth}"></WrapPanel>

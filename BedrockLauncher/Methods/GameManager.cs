@@ -18,7 +18,6 @@ using Windows.System;
 using BedrockLauncher.Interfaces;
 using BedrockLauncher.Classes;
 using BedrockLauncher.Classes.SkinPack;
-using BedrockLauncher.Components;
 using BedrockLauncher.Pages.Common;
 using BedrockLauncher.Downloaders;
 using BL_Core.Components;
@@ -156,7 +155,7 @@ namespace BedrockLauncher.Methods
         }
         public void OpenFolder(MCInstallation i)
         {
-            string Directory = Filepaths.GetInstallationsFolderPath(ConfigManager.CurrentProfile, i.DirectoryName_Full);
+            string Directory = FilepathManager.GetInstallationsFolderPath(ConfigManager.CurrentProfile, i.DirectoryName_Full);
             if (!System.IO.Directory.Exists(Directory)) System.IO.Directory.CreateDirectory(Directory);
             Process.Start("explorer.exe", Directory);
         }
@@ -292,7 +291,7 @@ namespace BedrockLauncher.Methods
 
                     if (dataPath != string.Empty)
                     {
-                        string recoveryPath = Path.Combine(Filepaths.GetInstallationsFolderPath(ConfigManager.CurrentProfile, "Recovery_Data"), "LocalState");
+                        string recoveryPath = Path.Combine(FilepathManager.GetInstallationsFolderPath(ConfigManager.CurrentProfile, "Recovery_Data"), "LocalState");
                         if (!Directory.Exists(recoveryPath)) Directory.CreateDirectory(recoveryPath);
                         System.Diagnostics.Debug.WriteLine("Moving backup Minecraft data to: " + recoveryPath);
                         RestoreCopy(dataPath, recoveryPath);
@@ -448,7 +447,7 @@ namespace BedrockLauncher.Methods
                     string LocalStateFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState");
                     string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang");
                     string PackageBakFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang.default");
-                    string ProfileFolder = Path.GetFullPath(Filepaths.GetInstallationsFolderPath(ConfigManager.CurrentProfile, ConfigManager.CurrentInstallation.DirectoryName_Full));
+                    string ProfileFolder = Path.GetFullPath(FilepathManager.GetInstallationsFolderPath(ConfigManager.CurrentProfile, ConfigManager.CurrentInstallation.DirectoryName_Full));
 
                     if (Directory.Exists(PackageFolder))
                     {

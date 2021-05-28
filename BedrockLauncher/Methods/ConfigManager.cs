@@ -107,7 +107,7 @@ namespace BedrockLauncher.Methods
 
         public static void LoadVersions()
         {
-            Versions = new MCVersionList(Filepaths.GetVersionsFilePath(), Filepaths.GetUserVersionsFilePath(), GameManager);
+            Versions = new MCVersionList(FilepathManager.GetVersionsFilePath(), FilepathManager.GetUserVersionsFilePath(), GameManager);
             ReloadVersions();
         }
         public static void ReloadVersions()
@@ -127,9 +127,9 @@ namespace BedrockLauncher.Methods
         {
             string json;
             MCProfilesList profileList;
-            if (File.Exists(Filepaths.GetProfilesFilePath()))
+            if (File.Exists(FilepathManager.GetProfilesFilePath()))
             {
-                json = File.ReadAllText(Filepaths.GetProfilesFilePath());
+                json = File.ReadAllText(FilepathManager.GetProfilesFilePath());
                 try { profileList = JsonConvert.DeserializeObject<MCProfilesList>(json, JsonSerializerSettings); }
                 catch { profileList = new MCProfilesList(); }
             }
@@ -154,7 +154,7 @@ namespace BedrockLauncher.Methods
         public static void SaveProfiles()
         {
             string json = JsonConvert.SerializeObject(CleanProfiles(), Formatting.Indented);
-            File.WriteAllText(Filepaths.GetProfilesFilePath(), json);
+            File.WriteAllText(FilepathManager.GetProfilesFilePath(), json);
             Init(true);
         }
         public static bool CreateProfile(string profile)

@@ -1,4 +1,4 @@
-﻿<Button x:Class="BedrockLauncher.Controls.Items.CommunityFeedItem"
+﻿<ListViewItem x:Class="BedrockLauncher.Controls.Items.CommunityFeedItem"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,11 +6,18 @@
              xmlns:local="clr-namespace:BedrockLauncher.Controls.Items"
              x:Name="FeedItemEntry"
              mc:Ignorable="d" 
-             Focusable="False"
-             d:DesignHeight="365" d:DesignWidth="365" Click="FeedItemButton_Click" Style="{DynamicResource EmptyButton}">
-    <Grid Focusable="False" VerticalAlignment="Stretch">
-        <Border Padding="0" VerticalAlignment="Stretch">
-            <Grid Background="#131313" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+             Focusable="True"
+             Padding="0"
+             Selected="FeedItemEntry_Selected"
+             Unselected="FeedItemEntry_Selected"
+             MouseEnter="FeedItemEntry_MouseEnter"
+             MouseLeave="FeedItemEntry_MouseLeave"
+             VerticalContentAlignment="Stretch" FocusVisualStyle="{DynamicResource BlankFocusVisual}"
+             Style="{DynamicResource EmptyListViewItem}"
+             d:DesignHeight="365" d:DesignWidth="365" MouseUp="FeedItemEntry_MouseUp" KeyUp="FeedItemEntry_KeyUp">
+    <ListViewItem.Content>
+        <Border BorderBrush="Transparent" BorderThickness="3" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Grid Background="{DynamicResource MCNetFeedItem.Static.Background}" x:Name="MainGrid" Focusable="False" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <Grid.RowDefinitions>
                     <RowDefinition MaxHeight="{Binding ImageHeight}"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
@@ -20,18 +27,18 @@
                     <ColumnDefinition MaxWidth="{Binding ImageWidth}"/>
                     <ColumnDefinition Width="{Binding ImageWidth}"/>
                 </Grid.ColumnDefinitions>
-                
+
                 <Image Source="{Binding ImageUrl}" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
 
-                <TextBlock Background="#131313" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" FontWeight="Normal" FontSize="20" Padding="15,15" TextWrapping="Wrap" Text="{Binding Title}" Foreground="White"></TextBlock>
+                <TextBlock Background="{Binding Background, ElementName=MainGrid}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" FontWeight="Normal" FontSize="20" Padding="15,15" TextWrapping="Wrap" Text="{Binding Title}" Foreground="White"></TextBlock>
                 <DockPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" x:Name="Tb" Margin="15,15,15,15">
                     <TextBlock Padding="4,2" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Grid.Row="3" Text="{Binding Tag}" Foreground="White" Background="#333333"></TextBlock>
                     <TextBlock Margin="10,0,10,0" TextAlignment="Right" VerticalAlignment="Center" TextWrapping="Wrap" Grid.Row="3" Text="{Binding Date}" Foreground="#CCCCCC"></TextBlock>
                 </DockPanel>
+                <Grid.Effect>
+                    <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
+                </Grid.Effect>
             </Grid>
-            <Border.Effect>
-                <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
-            </Border.Effect>
         </Border>
-    </Grid>
-</Button>
+    </ListViewItem.Content>
+</ListViewItem>

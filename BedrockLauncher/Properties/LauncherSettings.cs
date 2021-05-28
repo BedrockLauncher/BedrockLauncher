@@ -42,9 +42,9 @@ namespace BedrockLauncher.Properties
             }
             else
             {
-                if (File.Exists(Filepaths.GetSettingsFilePath()))
+                if (File.Exists(FilepathManager.GetSettingsFilePath()))
                 {
-                    json = File.ReadAllText(Filepaths.GetSettingsFilePath());
+                    json = File.ReadAllText(FilepathManager.GetSettingsFilePath());
                     try { Default = JsonConvert.DeserializeObject<LauncherSettings>(json, JsonSerializerSettings); }
                     catch { Default = new LauncherSettings(); }
                 }
@@ -56,7 +56,7 @@ namespace BedrockLauncher.Properties
         public void Save()
         {
             string json = JsonConvert.SerializeObject(this, Formatting.Indented);
-            File.WriteAllText(Filepaths.GetSettingsFilePath(), json);
+            File.WriteAllText(FilepathManager.GetSettingsFilePath(), json);
         }
 
         private bool _PortableMode = false;

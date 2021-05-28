@@ -13,7 +13,7 @@
       x:Class="BedrockLauncher.Pages.Settings.AboutPage"
       mc:Ignorable="d" 
       d:DesignHeight="728" d:DesignWidth="525"
-      Title="AboutPage" Initialized="Page_Initialized" MinWidth="828" MinHeight="525" Background="{DynamicResource Background.Secondary}">
+      Title="AboutPage" Initialized="Page_Initialized" MinWidth="728" MinHeight="525" Background="{DynamicResource Background.Secondary}">
     <Page.Resources>
 
         <sys:Uri x:Key="CJ_GithubURL">https://github.com/CarJem</sys:Uri>
@@ -63,7 +63,7 @@
                         </Image.OpacityMask>
                     </Image>
                 <Grid Width="256" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
-                    <TextBlock Text="XlynxX" HorizontalAlignment="Left" Padding="20,0,0,0" FontSize="50" Foreground="White"></TextBlock>
+                    <TextBlock Text="XlynxX" HorizontalAlignment="Left" Padding="20,0,0,0" FontSize="40" Foreground="White"></TextBlock>
                 </Grid>
 
             </Grid>

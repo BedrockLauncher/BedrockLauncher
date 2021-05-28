@@ -78,6 +78,15 @@
         <Setter Property="FontFamily" Value="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
         <Setter Property="MinWidth" Value="10"/>
         <Setter Property="SelectionBrush" Value="{DynamicResource TextBox.SelectionBrush}"/>
+        <Setter Property="ContextMenu">
+            <Setter.Value>
+                <ContextMenu>
+                    <MenuItem Command="Cut"/>
+                    <MenuItem Command="Copy"/>
+                    <MenuItem Command="Paste"/>
+                </ContextMenu>
+            </Setter.Value>
+        </Setter>
         <Style.BasedOn>
             <StaticResource ResourceKey="{x:Type TextBoxBase}"/>
         </Style.BasedOn>

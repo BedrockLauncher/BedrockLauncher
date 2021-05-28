@@ -45,6 +45,9 @@
     <sys:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">5</sys:Double>
     <sys:Double x:Key="{x:Static SystemParameters.HorizontalScrollBarHeightKey}">5</sys:Double>
 
+    <sys:Double x:Key="ComboBox_VerticalScrollBarWidthKey">5</sys:Double>
+    <sys:Double x:Key="ComboBox_HorizontalScrollBarHeightKey">5</sys:Double>
+
     <SolidColorBrush x:Key="ScrollBar.Static.Background" Color="#222222"/>
     <SolidColorBrush x:Key="ScrollBar.Static.Border" Color="#222222"/>
     <SolidColorBrush x:Key="ScrollBar.Pressed.Glyph" Color="#222222"/>
@@ -84,4 +87,25 @@
     <SolidColorBrush x:Key="ScrollBar_Combobox.Static.Thumb" Color="#FF5D5D5D"/>
 
     <SolidColorBrush x:Key="ComboBox.Dropdown.Static.Background" Color="#FF131313"/>
+
+    <SolidColorBrush x:Key="ContentMenu.Static.Background">#131313</SolidColorBrush>
+    <SolidColorBrush x:Key="ContentMenu.Static.Foreground">White</SolidColorBrush>
+    <SolidColorBrush x:Key="ContentMenu.Static.BorderBrush">#131313</SolidColorBrush>
+    
+    <SolidColorBrush x:Key="ContentMenu.MenuTPL.Background">#131313</SolidColorBrush>
+
+    <SolidColorBrush x:Key="TextBox.Static.Foreground" Color="White"/>
+    <SolidColorBrush x:Key="TextBox.Static.Background" Color="#FF131313"/>
+    <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FF131313"/>
+
+    <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF0E0E0E"/>
+    <SolidColorBrush x:Key="TextBox.MouseOver.Background" Color="#FF0E0E0E"/>
+
+    <SolidColorBrush x:Key="TextBox.Focus.Border" Color="White"/>
+    <SolidColorBrush x:Key="TextBox.Focus.Background" Color="#FF0E0E0E"/>
+
+    <SolidColorBrush x:Key="TextBox.SelectionBrush" Color="#FF035511"/>
+
+    <SolidColorBrush x:Key="MCNetFeedItem.Static.Background" Color="#131313"/>
+    <SolidColorBrush x:Key="MCNetFeedItem.Selected.Background" Color="#222222"/>
 </ResourceDictionary>

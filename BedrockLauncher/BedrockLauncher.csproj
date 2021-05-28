@@ -214,7 +214,7 @@
     <Compile Include="Events\ConfigStateArgs.cs" />
     <Compile Include="Classes\MCNetFeedItem.cs" />
     <Compile Include="Interfaces\ICommonVersionCommands.cs" />
-    <Compile Include="Methods\Filepaths.cs" />
+    <Compile Include="Methods\FilepathManager.cs" />
     <Compile Include="Methods\StoreNetwork.cs" />
     <Compile Include="Pages\Community\CommunityPage.xaml.cs">
       <DependentUpon>CommunityPage.xaml</DependentUpon>
@@ -309,7 +309,7 @@
     <Compile Include="Classes\Html\FileSchemeHandler.cs" />
     <Compile Include="Classes\Html\GlobalSchemeHandlerFactory.cs" />
     <Compile Include="Methods\GameManager.cs" />
-    <Compile Include="Methods\ConsoleArgumentParser.cs" />
+    <Compile Include="Methods\ConsoleArgumentManager.cs" />
     <Compile Include="Methods\MCSkinUtilities.cs" />
     <Compile Include="Downloaders\ChangelogDownloader.cs" />
     <Compile Include="Classes\Html\ResourceSchemeHandler.cs" />

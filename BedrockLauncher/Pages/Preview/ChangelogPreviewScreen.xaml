@@ -31,7 +31,7 @@
         <Separator Grid.Row="1"></Separator>
         <Grid Grid.Row="2" SizeChanged="Grid_SizeChanged">
             <!--<cef:ChromiumWebBrowser x:Name="Renderer" IsBrowserInitializedChanged="Renderer_IsBrowserInitializedChanged" Margin="20" Background="Transparent"/>-->
-            <controls:HtmlPanelPro x:Name="Renderer" Margin="20" Background="Transparent"/>
+            <controls:HtmlPanelPro x:Name="Renderer" Margin="0" Background="Transparent" IsContextMenuEnabled="False"/>
         </Grid>
         <!--<Separator Grid.Row="3"></Separator>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="4" Height="45" Margin="15,0">

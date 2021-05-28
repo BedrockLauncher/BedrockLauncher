@@ -24,10 +24,7 @@ namespace BedrockLauncher
             Debug.Listeners.Add(new TextWriterTraceListener("Log.txt"));
             Debug.AutoFlush = true;
 
-            if (e.Args != null)
-            {
-                new ConsoleArgumentParser(e.Args);
-            }
+            if (e.Args != null) new ConsoleArgumentManager(e.Args);
         }
 
         public static void EnableDeveloperMode()

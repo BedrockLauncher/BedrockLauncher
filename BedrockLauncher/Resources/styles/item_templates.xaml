@@ -76,8 +76,4 @@
     <DataTemplate x:Key="PatchNotesItemTemplate" DataType="{x:Type classes:MCPatchNotesItem}">
         <i:PatchNotesItem DataContext="{Binding}"></i:PatchNotesItem>
     </DataTemplate>
-
-    <DataTemplate x:Key="CommunityNewsItemTemplate" DataType="{x:Type classes:MCNetFeedItem}">
-        <i:CommunityFeedItem VerticalContentAlignment="Stretch" FocusVisualStyle="{DynamicResource BlankFocusVisual}" DataContext="{Binding}"></i:CommunityFeedItem>
-    </DataTemplate>
 </ResourceDictionary>

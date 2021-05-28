@@ -63,7 +63,7 @@ namespace BedrockLauncher.Pages.FirstLaunch
                 }
                 else
                 {
-                    StorageDirectoryTextBox.Text = BedrockLauncher.Methods.Filepaths.DefaultLocation;
+                    StorageDirectoryTextBox.Text = BedrockLauncher.Methods.FilepathManager.DefaultLocation;
                 }
             }
         }

@@ -55,8 +55,12 @@ namespace BedrockLauncher.Controls
         {
             Corner = new Grid();
             Corner.Name = "Corner";
-            Corner.Width = 18;
-            Corner.Height = 18;
+            Corner.Width = (double)FindResource(SystemParameters.VerticalScrollBarWidthKey);
+            Corner.Height = (double)FindResource(SystemParameters.HorizontalScrollBarHeightKey);
+
+            _verticalScrollBar.Width = (double)FindResource(SystemParameters.VerticalScrollBarWidthKey);
+            _horizontalScrollBar.Height = (double)FindResource(SystemParameters.HorizontalScrollBarHeightKey);
+
             Corner.VerticalAlignment = VerticalAlignment.Bottom;
             Corner.HorizontalAlignment = HorizontalAlignment.Right;
             Corner.Visibility = Visibility.Collapsed;

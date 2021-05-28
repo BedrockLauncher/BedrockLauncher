@@ -29,8 +29,8 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                if (IsCustomIcon) return System.IO.Path.Combine(Filepaths.GetCacheFolderPath(), IconPath);
-                else return Filepaths.PrefabedIconRootPath + IconPath;
+                if (IsCustomIcon) return System.IO.Path.Combine(FilepathManager.GetCacheFolderPath(), IconPath);
+                else return FilepathManager.PrefabedIconRootPath + IconPath;
             }
             set
             {

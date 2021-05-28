@@ -12,10 +12,10 @@
                 <ResourceDictionary Source="Resources/styles/colors.xaml"/>
                 <ResourceDictionary Source="Resources/styles/icons.xaml"/>
                 <ResourceDictionary Source="Resources/styles/misc.xaml"/>
+                <ResourceDictionary Source="Resources/styles/contextmenu.xaml"/>
                 <ResourceDictionary Source="Resources/styles/button.xaml"/>
                 <ResourceDictionary Source="Resources/styles/checkbox.xaml"/>
                 <ResourceDictionary Source="Resources/styles/combobox.xaml"/>
-                <ResourceDictionary Source="Resources/styles/contextmenu.xaml"/>
                 <ResourceDictionary Source="Resources/styles/menuitems.xaml"/>
                 <ResourceDictionary Source="Resources/styles/listview.xaml"/>
                 <ResourceDictionary Source="Resources/styles/textbox.xaml"/>

@@ -7,7 +7,7 @@ using System.IO;
 
 namespace BedrockLauncher.Methods
 {
-    public static class Filepaths
+    public static class FilepathManager
     {
 
         #region Strings

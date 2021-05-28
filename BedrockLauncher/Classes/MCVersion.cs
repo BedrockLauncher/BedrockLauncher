@@ -45,7 +45,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                return Methods.Filepaths.CurrentLocation + "\\versions\\Minecraft-" + UUID;
+                return Methods.FilepathManager.CurrentLocation + "\\versions\\Minecraft-" + UUID;
             }
         }
 

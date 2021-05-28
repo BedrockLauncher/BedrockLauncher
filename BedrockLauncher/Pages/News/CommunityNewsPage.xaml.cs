@@ -67,12 +67,12 @@ namespace BedrockLauncher.Pages.News
                 foreach (FeedItem item in feed.Items)
                 {
                     MCNetFeedItemRSS new_item = new MCNetFeedItemRSS(item);
-                    OfficalNewsFeed.Items.Add(new_item);
+                    OfficalNewsFeed.Items.Add(new CommunityFeedItem(new_item));
                 }
 
                 /*foreach (MCNetFeedItemJSON item in news.entries)
                 {
-                    if (item.newsType != null && item.tag != "Patch" && item.tag != "DLC" && item.newsType.Contains("News page")) OfficalNewsFeed.Items.Add(item);
+                    if (item.newsType != null && item.tag != "Patch" && item.tag != "DLC" && item.newsType.Contains("News page")) OfficalNewsFeed.Items.Add(new CommunityFeedItem(item));
                 }*/
             });
         }

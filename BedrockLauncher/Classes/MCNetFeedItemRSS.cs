@@ -60,8 +60,8 @@ namespace BedrockLauncher.Classes
         }
 
         public override string ImageUrl { get => GetImageUrl(); }
-        public override double ImageWidth { get => 200; }
-        public override double ImageHeight { get => 200; }
+        public override double ImageWidth { get => 190; }
+        public override double ImageHeight { get => 190; }
         public override string Tag { get => PrimaryTag; }
         public override string Date { get => PublishingDateString; }
         public override string Title { get; }

@@ -2,32 +2,27 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:BedrockLauncher.Resources.styles">
 
-    <SolidColorBrush x:Key="ContextMenuBackground">#131313</SolidColorBrush>
-    <SolidColorBrush x:Key="NormalText">White</SolidColorBrush>
-    <SolidColorBrush x:Key="ContextMenuBorder">#131313</SolidColorBrush>
-    <SolidColorBrush x:Key="ContextMenuBorder2">#131313</SolidColorBrush>
-
     <ItemsPanelTemplate x:Key="MenuTPL">
-        <StackPanel Margin="-30,0,-2,0" Background="#131313"/>
+        <StackPanel Margin="-30,0,-2,0" Background="{DynamicResource ContentMenu.MenuTPL.Background}"/>
     </ItemsPanelTemplate>
 
     <Style x:Key="NoCheckboxContextMenu" TargetType="{x:Type ContextMenu}">
-        <Setter Property="FocusVisualStyle" Value="{StaticResource BlankFocusVisual}"/>
-        <Setter Property="Background" Value="{StaticResource ContextMenuBackground}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource ContextMenuBorder2}"/>
-        <Setter Property="Foreground" Value="{StaticResource NormalText}"/>
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource BlankFocusVisual}"/>
+        <Setter Property="Background" Value="{DynamicResource ContentMenu.Static.Background}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ContentMenu.Static.BorderBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ContentMenu.Static.Foreground}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ContextMenu}">
-                    <Border x:Name="ContextMenuBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" CornerRadius="5" Padding="0,5" Background="{TemplateBinding Background}">
+                    <Border x:Name="ContentMenuBorderBrush" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" CornerRadius="5" Padding="0,5" Background="{TemplateBinding Background}">
                         <ScrollViewer x:Name="ContextMenuScrollViewer" Grid.ColumnSpan="2" Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
                             <Grid RenderOptions.ClearTypeHint="Enabled">
                                 <Canvas HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
-                                    <Rectangle x:Name="OpaqueRect" Fill="{Binding Background, ElementName=ContextMenuBorder}" Height="{Binding ActualHeight, ElementName=ContextMenuBorder}" Width="{Binding ActualWidth, ElementName=ContextMenuBorder}"/>
+                                    <Rectangle x:Name="OpaqueRect" Fill="{Binding Background, ElementName=ContentMenuBorderBrush}" Height="{Binding ActualHeight, ElementName=ContentMenuBorderBrush}" Width="{Binding ActualWidth, ElementName=ContentMenuBorderBrush}"/>
                                 </Canvas>
-                                <Rectangle Fill="{StaticResource ContextMenuBackground}" HorizontalAlignment="Left" RadiusY="2" RadiusX="2" Width="28"/>
-                                <Rectangle Fill="{StaticResource ContextMenuBackground}" HorizontalAlignment="Left" Width="1"/>
+                                <Rectangle Fill="{DynamicResource ContentMenu.Static.Background}" HorizontalAlignment="Left" RadiusY="2" RadiusX="2" Width="28"/>
+                                <Rectangle Fill="{DynamicResource ContentMenu.Static.Background}" HorizontalAlignment="Left" Width="1"/>
                                 <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Cycle" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                             </Grid>
                         </ScrollViewer>
@@ -41,26 +36,26 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="ItemsPanel" Value="{StaticResource MenuTPL}"></Setter>
+        <Setter Property="ItemsPanel" Value="{DynamicResource MenuTPL}"></Setter>
     </Style>
 
-    <Style TargetType="{x:Type ContextMenu}">
+    <Style x:Key="{x:Type ContextMenu}" TargetType="{x:Type ContextMenu}">
         <Setter Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}"/>
-        <Setter Property="Background" Value="{StaticResource ContextMenuBackground}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource ContextMenuBorder2}"/>
-        <Setter Property="Foreground" Value="{StaticResource NormalText}"/>
+        <Setter Property="Background" Value="{DynamicResource ContentMenu.Static.Background}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ContentMenu.Static.BorderBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ContentMenu.Static.Foreground}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ContextMenu}">
-                    <Border x:Name="ContextMenuBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                    <Border x:Name="ContentMenuBorderBrush" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
                         <ScrollViewer x:Name="ContextMenuScrollViewer" Grid.ColumnSpan="2" Margin="1,0" Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
                             <Grid RenderOptions.ClearTypeHint="Enabled">
                                 <Canvas HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
-                                    <Rectangle x:Name="OpaqueRect" Fill="{Binding Background, ElementName=ContextMenuBorder}" Height="{Binding ActualHeight, ElementName=ContextMenuBorder}" Width="{Binding ActualWidth, ElementName=ContextMenuBorder}"/>
+                                    <Rectangle x:Name="OpaqueRect" Fill="{Binding Background, ElementName=ContentMenuBorderBrush}" Height="{Binding ActualHeight, ElementName=ContentMenuBorderBrush}" Width="{Binding ActualWidth, ElementName=ContentMenuBorderBrush}"/>
                                 </Canvas>
-                                <Rectangle Fill="{StaticResource ContextMenuBackground}" HorizontalAlignment="Left" Margin="1,2" RadiusY="2" RadiusX="2" Width="28"/>
-                                <Rectangle Fill="{StaticResource ContextMenuBackground}" HorizontalAlignment="Left" Margin="29,2,0,2" Width="1"/>
+                                <Rectangle Fill="{DynamicResource ContentMenu.Static.Background}" HorizontalAlignment="Left" Margin="1,2" RadiusY="2" RadiusX="2" Width="28"/>
+                                <Rectangle Fill="{DynamicResource ContentMenu.Static.Background}" HorizontalAlignment="Left" Margin="29,2,0,2" Width="1"/>
                                 <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Cycle" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                             </Grid>
                         </ScrollViewer>
