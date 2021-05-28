@@ -286,16 +286,18 @@ namespace BedrockLauncher.Methods
                     var data = ApplicationDataManager.CreateForPackageFamily(MINECRAFT_PACKAGE_FAMILY);
                     string dataPath;
 
-                    try { dataPath = data.LocalFolder.Path; }
+                    try { dataPath = Path.Combine(data.LocalFolder.Path, "games", "com.mojang"); }
                     catch { dataPath = string.Empty; }
 
                     if (dataPath != string.Empty)
                     {
-                        string recoveryPath = Path.Combine(FilepathManager.GetInstallationsFolderPath(ConfigManager.CurrentProfile, "Recovery_Data"), "LocalState");
-                        if (!Directory.Exists(recoveryPath)) Directory.CreateDirectory(recoveryPath);
-                        System.Diagnostics.Debug.WriteLine("Moving backup Minecraft data to: " + recoveryPath);
-                        RestoreCopy(dataPath, recoveryPath);
-                        ConfigManager.CreateInstallation("Recovery_Data", null, "Recovery_Data");
+                        var dirData = GenerateStrings();
+                        string dataDir = Path.Combine(FilepathManager.GetInstallationsFolderPath(ConfigManager.CurrentProfile, dirData.Item1));
+
+                        if (!Directory.Exists(dirData.Item1)) Directory.CreateDirectory(dirData.Item1);
+                        System.Diagnostics.Debug.WriteLine("Moving backup Minecraft data to: " + dirData.Item1);
+                        RestoreCopy(dataPath, dirData.Item1);
+                        ConfigManager.CreateInstallation(dirData.Item2, null, dirData.Item1);
                     }
                 }
                 catch (Exception ex) { ErrorScreenShow.exceptionmsg(ex); }
@@ -305,6 +307,24 @@ namespace BedrockLauncher.Methods
             });
             ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
 
+            Tuple<string, string> GenerateStrings(string name = "Recovery Data", string dir = "RecoveryData")
+            {
+                string recoveryName = name;
+                string recoveryDir = dir;
+                int i = 1;
+
+                while (Directory.Exists(Path.Combine(FilepathManager.GetInstallationsFolderPath(ConfigManager.CurrentProfile, recoveryDir))) || i < 100)
+                {
+                    recoveryName = string.Format("{0} ({1})", name, i);
+                    recoveryDir = string.Format("{0}_{1}", dir, i);
+                    i++;
+                }
+
+                if (i >= 100) throw new Exception("Too many backups made");
+
+                return new Tuple<string, string>(recoveryName, recoveryDir);
+
+            }
 
             void RestoreCopy(string from, string to)
             {
@@ -321,7 +341,7 @@ namespace BedrockLauncher.Methods
                 foreach (var f in Directory.EnumerateFiles(from))
                 {
                     string ft = Path.Combine(to, Path.GetFileName(f));
-                    if (File.Exists(ft))
+                    if (File.Exists(ft) && !YesToAll)
                     {
                         if (MessageBox.Show(string.Format(Application.Current.FindResource("GameManager_RecoveringDataIssue_FileNotExistant_Text").ToString(), ft), Application.Current.FindResource("GameManager_RecoveringDataIssue_Title").ToString(), MessageBoxButton.YesNo) != MessageBoxResult.Yes)
                             continue;
@@ -333,7 +353,7 @@ namespace BedrockLauncher.Methods
                 foreach (var f in Directory.EnumerateDirectories(from))
                 {
                     string tp = Path.Combine(to, Path.GetFileName(f));
-                    if (!Directory.Exists(tp))
+                    if (!Directory.Exists(tp) && !YesToAll)
                     {
                         if (File.Exists(tp) && MessageBox.Show(string.Format(Application.Current.FindResource("GameManager_RecoveringDataIssue_NotaDirectory_Text").ToString(), tp), Application.Current.FindResource("GameManager_RecoveringDataIssue_Title").ToString(), MessageBoxButton.YesNo) != MessageBoxResult.Yes)
                             continue;
