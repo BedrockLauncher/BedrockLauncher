@@ -23,7 +23,9 @@ namespace BL_Core.Language
                 return new List<LanguageDefinition>
                 {
                     new LanguageDefinition("en-US"),
-                    new LanguageDefinition("pt-PT")
+                    new LanguageDefinition("pt-PT"),
+                    new LanguageDefinition("ru-RU"),
+                    new LanguageDefinition("pt-BR")
                 };
             }
         }

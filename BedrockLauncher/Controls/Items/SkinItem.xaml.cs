@@ -61,7 +61,7 @@ namespace BedrockLauncher.Controls.Items
 
             Keyboard.ClearFocus();
 
-            ViewModels.LauncherModel.Default.SetOverlayFrame(new EditSkinScreen(skinPack, skin, index));
+            ViewModels.LauncherModel.Default.SetOverlayFrame(new EditSkinScreen(skinPack, skin, index), false, false);
         }
 
         private async void DeleteSkinButton_Click(object sender, RoutedEventArgs e)
