@@ -139,7 +139,7 @@ namespace BedrockLauncher.Methods
 
             ProfileList = profileList;
 
-            if (ProfileList.profiles.Count() == 0) ViewModels.LauncherModel.Default.SetOverlayFrame(new Pages.FirstLaunch.WelcomePage());
+            if (ProfileList.profiles.Count() == 0) ViewModels.LauncherModel.Default.SetOverlayFrame(new Pages.FirstLaunch.WelcomePage(), false, false);
         }
         public static MCProfilesList CleanProfiles()
         {

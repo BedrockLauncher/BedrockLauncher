@@ -175,7 +175,7 @@ namespace BedrockLauncherSetup
                 string progressTitle = GetResourceString("Installer_ProgressBar_Downloading");
                 progress.ProgressChanged += (sender, e) => UpdateProgressBar(progressTitle, e, CalculatedFileSize, false);
 
-                var release_page_url = (IsBeta ? GithubAPI.BETA_URL : GithubAPI.RELEASE_URL);
+                var release_page_url = (IsBeta ? GithubAPI.BETA_URL : GithubAPI.RELEASE_URL) + "/latest";
                 var httpRequest = (HttpWebRequest)WebRequest.Create(release_page_url);
                 httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
                 httpRequest.Headers["Authorization"] = "Bearer " + GithubAPI.ACCESS_TOKEN;

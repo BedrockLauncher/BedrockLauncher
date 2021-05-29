@@ -324,20 +324,20 @@ namespace BedrockLauncher.Pages.Preview
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             if (!isEditMode) RemoveUnfinishedPack();
-            ViewModels.LauncherModel.Default.SetOverlayFrame(null);
+            ViewModels.LauncherModel.Default.SetOverlayFrame(null, false, false);
             ConfigManager.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
             SaveSkinPack();
-            ViewModels.LauncherModel.Default.SetOverlayFrame(null);
+            ViewModels.LauncherModel.Default.SetOverlayFrame(null, false, false);
             ConfigManager.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModels.LauncherModel.Default.SetOverlayFrame(null);
+            ViewModels.LauncherModel.Default.SetOverlayFrame(null, false, false);
             ConfigManager.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
         }
 

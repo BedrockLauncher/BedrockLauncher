@@ -154,7 +154,7 @@ namespace BedrockLauncher.Pages.Preview
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModels.LauncherModel.Default.SetOverlayFrame(null);
+            ViewModels.LauncherModel.Default.SetOverlayFrame(null, false, false);
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
@@ -164,13 +164,13 @@ namespace BedrockLauncher.Pages.Preview
 
             if (isEditMode) skinPack.EditSkin(skin_index, skin);
             else skinPack.AddSkin(skin);
-            ViewModels.LauncherModel.Default.SetOverlayFrame(null);
+            ViewModels.LauncherModel.Default.SetOverlayFrame(null, false, false);
             ConfigManager.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModels.LauncherModel.Default.SetOverlayFrame(null);
+            ViewModels.LauncherModel.Default.SetOverlayFrame(null, false, false);
         }
 
         #endregion
