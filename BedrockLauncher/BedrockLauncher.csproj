@@ -1023,6 +1023,9 @@
   <ItemGroup>
     <Resource Include="Resources\images\ui\credits\xbox_logo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\ui\bg\firstlaunchbackground_legacy.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
