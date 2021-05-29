@@ -221,6 +221,18 @@ namespace ExtensionsDotNET
             return processes;
         }
 
+        static public List<Process> TryWhoIsLocking(string path)
+        {
+            try
+            {
+                return WhoIsLocking(path);
+            }
+            catch
+            {
+                return new List<Process>();
+            }
+        }
+
         #endregion
     }
 }

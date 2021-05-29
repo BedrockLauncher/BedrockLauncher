@@ -80,6 +80,8 @@ namespace BedrockLauncherSetup
             {
                 CanCancel = false;
 
+                Thread.Sleep(3000);
+
                 UpdateUI(UpdateParam.InstallStart);
 
                 Install_InitalPrep(Path, TempFolder);
@@ -116,7 +118,7 @@ namespace BedrockLauncherSetup
                 }
                 catch (UnauthorizedAccessException)
                 {
-                    var results = FileExtensions.WhoIsLocking(dir);
+                    var results = FileExtensions.TryWhoIsLocking(dir);
                     var names = String.Join(Environment.NewLine, results.ConvertAll(x => string.Format("{0} ({1})", x.ProcessName, x.Id)).ToArray());
 
                     MessageBoxResult result = MessageBox.Show(GetResourceString("Installer_InstallationProgress_FilesInUse") + "\r\n" + names + "\r\n" + GetResourceString("Installer_Dialog_TryAgain_Text"), GetResourceString("Installer_Dialog_FileLocked_Text"), MessageBoxButton.YesNo);
@@ -132,29 +134,38 @@ namespace BedrockLauncherSetup
         }
         private void Install_UnlockCheck(string Path, string TempFolder)
         {
-            List<Process> LockingProcesses = new List<Process>();
-
-            var allPossibileFiles = Directory.GetFiles(Path, "*", SearchOption.AllDirectories).ToList();
-            allPossibileFiles.AddRange(Directory.GetFiles(TempFolder, "*", SearchOption.AllDirectories).ToList());
-
-            foreach (var file in allPossibileFiles)
+            try
             {
-                if (System.IO.File.Exists(file))
+                List<Process> LockingProcesses = new List<Process>();
+
+                var allPossibileFiles = Directory.GetFiles(Path, "*", SearchOption.AllDirectories).ToList();
+                allPossibileFiles.AddRange(Directory.GetFiles(TempFolder, "*", SearchOption.AllDirectories).ToList());
+
+                foreach (var file in allPossibileFiles)
                 {
-                    bool locked = FileExtensions.IsFileInUse(file, false);
-                    if (locked) LockingProcesses.AddRange(FileExtensions.WhoIsLocking(file));
+                    if (System.IO.File.Exists(file))
+                    {
+                        bool locked = FileExtensions.IsFileInUse(file, false);
+                        if (locked) LockingProcesses.AddRange(FileExtensions.TryWhoIsLocking(file));
+                    }
+                }
+
+                if (LockingProcesses.Count == 0) return;
+                else
+                {
+                    var names = String.Join(Environment.NewLine, LockingProcesses.ConvertAll(x => string.Format("{0} ({1})", x.ProcessName, x.Id)).ToArray());
+
+                    MessageBoxResult result = MessageBox.Show(GetResourceString("Installer_InstallationProgress_FilesInUse") + "\r\n" + names + "\r\n" + GetResourceString("Installer_Dialog_TryAgain_Text"), GetResourceString("Installer_Dialog_FileLocked_Text"), MessageBoxButton.YesNo);
+                    if (result == MessageBoxResult.Yes) Install_UnlockCheck(Path, TempFolder);
+                    else Install_Cancel(false);
                 }
             }
-
-            if (LockingProcesses.Count == 0) return;
-            else
+            catch (Exception err)
             {
-                var names = String.Concat(Environment.NewLine, LockingProcesses.ConvertAll(x => string.Format("{0} ({1})", x.ProcessName, x.Id)).ToArray());
-
-                MessageBoxResult result = MessageBox.Show(GetResourceString("Installer_InstallationProgress_FilesInUse") + "\r\n" + names + "\r\n" + GetResourceString("Installer_Dialog_TryAgain_Text"), GetResourceString("Installer_Dialog_FileLocked_Text"), MessageBoxButton.YesNo);
-                if (result == MessageBoxResult.Yes) Install_UnlockCheck(Path, TempFolder);
-                else Install_Cancel(false);
+                MessageBox.Show(GetResourceString("Installer_Dialog_ErrorOccured_Text") + "\n" + err.ToString());
+                Install_Cancel(false);
             }
+
         }
         private void Install_Backup(string from, string to)
         {
@@ -288,7 +299,12 @@ namespace BedrockLauncherSetup
         private void Install_Cancel(bool UndoChanges = true)
         {
             Thread.Sleep(4000);
-            while (!DownloadTask.IsCompleted || !DownloadTask.IsCanceled) Thread.Sleep(4000);
+
+            if (DownloadTask != null)
+            {
+                while (!DownloadTask.IsCompleted || !DownloadTask.IsCanceled) Thread.Sleep(4000);
+            }
+
 
             if (UndoChanges)
             {

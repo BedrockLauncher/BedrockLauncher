@@ -214,7 +214,7 @@ namespace BedrockLauncher.Downloaders
                 string beta = (Properties.LauncherSettings.Default.UseBetaBuilds ? "--beta" : "");
                 string path = "--path=\"" + FilepathManager.ExecutableDirectory + "\"";
 
-                return string.Join(" ", silent, beta);
+                return string.Join(" ", silent, beta, path);
             }
         }
 

@@ -311,6 +311,8 @@ SETLOCAL
 SET "sourcedir=$(TargetDir)"
 SET "keepfile=$(TargetFileName)"
 
+if ($(ConfigurationName) == Debug) GOTO :EOF
+
 FOR %25%25a IN ("%25sourcedir%25\*") DO IF /i NOT "%25%25~nxa"=="%25keepfile%25" DEL "%25%25a"
 FOR /D %25%25p IN ("%25sourcedir%25\*.*") DO rmdir "%25%25p" /s /q
 
