@@ -370,6 +370,11 @@
     <v:String x:Key="Dialog_CloseGame_Title">Game is Still Running</v:String>
     <v:String x:Key="Dialog_CloseGame_Text">Would you like to force close it? (without saving changes, this is only recommended if you get stuck, please close the game normally)</v:String>
 
+    <v:String x:Key="DialogBtn_YesToAll_Text">Yes To All</v:String>
+    <v:String x:Key="DialogBtn_NoToAll_Text">No To All</v:String>
+    <v:String x:Key="DialogBtn_Yes_Text">Yes</v:String>
+    <v:String x:Key="DialogBtn_No_Text">No</v:String>
+
     <!--#endregion-->
 
     <!--#region Internal -->

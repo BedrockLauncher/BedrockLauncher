@@ -28,6 +28,7 @@ using SymbolicLinkSupport;
 using MCVersion = BedrockLauncher.Classes.MCVersion;
 using ZipProgress = ExtensionsDotNET.ZipFileExtensions.ZipProgress;
 using System.Collections.Generic;
+using BL_Core.Controls;
 
 namespace BedrockLauncher.Methods
 {
@@ -313,6 +314,8 @@ namespace BedrockLauncher.Methods
                 string recoveryDir = dir;
                 int i = 1;
 
+
+
                 while (Directory.Exists(Path.Combine(FilepathManager.GetInstallationsFolderPath(ConfigManager.CurrentProfile, recoveryDir))) || i < 100)
                 {
                     recoveryName = string.Format("{0} ({1})", name, i);
@@ -333,19 +336,34 @@ namespace BedrockLauncher.Methods
                 ViewModels.LauncherModel.Default.TotalProgress = Total;
                 ViewModels.LauncherModel.Default.CurrentProgress = 0;
 
-                RestoreCopy_Step(from, to);
+                bool YesToAll = false;
+                bool NoToAll = false;
+
+                RestoreCopy_Step(from, to, ref YesToAll, ref NoToAll);
             }
 
-            void RestoreCopy_Step(string from, string to)
+            void RestoreCopy_Step(string from, string to, ref bool YesToAll, ref bool NoToAll)
             {
                 foreach (var f in Directory.EnumerateFiles(from))
                 {
                     string ft = Path.Combine(to, Path.GetFileName(f));
-                    if (File.Exists(ft) && !YesToAll)
+                    if (File.Exists(ft))
                     {
-                        if (MessageBox.Show(string.Format(Application.Current.FindResource("GameManager_RecoveringDataIssue_FileNotExistant_Text").ToString(), ft), Application.Current.FindResource("GameManager_RecoveringDataIssue_Title").ToString(), MessageBoxButton.YesNo) != MessageBoxResult.Yes)
-                            continue;
-                        File.Delete(ft);
+                        bool DeleteFile = false;
+                        bool SkipFile = false;
+
+                        if (!YesToAll && !NoToAll)
+                        {
+                            var result = ShowConfictDialog(ft, "GameManager_RecoveringDataIssue_FileNotExistant_Text", "GameManager_RecoveringDataIssue_Title");
+                            if (result == AltMessageBoxResult.YesToAll || result == AltMessageBoxResult.Yes) DeleteFile = true;
+                            else if (result == AltMessageBoxResult.NoToAll || result == AltMessageBoxResult.No) SkipFile = true;
+
+                            if (result == AltMessageBoxResult.YesToAll) YesToAll = true;
+                            else if (result == AltMessageBoxResult.NoToAll) NoToAll = true;
+                        }
+
+                        if (SkipFile || NoToAll) continue;
+                        else if (DeleteFile || YesToAll) File.Delete(ft);
                     }
                     File.Copy(f, ft);
                     ViewModels.LauncherModel.Default.CurrentProgress += 1;
@@ -353,14 +371,59 @@ namespace BedrockLauncher.Methods
                 foreach (var f in Directory.EnumerateDirectories(from))
                 {
                     string tp = Path.Combine(to, Path.GetFileName(f));
-                    if (!Directory.Exists(tp) && !YesToAll)
+                    if (!Directory.Exists(tp))
                     {
-                        if (File.Exists(tp) && MessageBox.Show(string.Format(Application.Current.FindResource("GameManager_RecoveringDataIssue_NotaDirectory_Text").ToString(), tp), Application.Current.FindResource("GameManager_RecoveringDataIssue_Title").ToString(), MessageBoxButton.YesNo) != MessageBoxResult.Yes)
-                            continue;
-                        Directory.CreateDirectory(tp);
+                        bool CreateDirectory = false;
+                        bool SkipDirectory = false;
+
+                        if (!YesToAll && !NoToAll)
+                        {
+                            var result = ShowConfictDialog(tp, "GameManager_RecoveringDataIssue_NotaDirectory_Text", "GameManager_RecoveringDataIssue_Title");
+                            if (result == AltMessageBoxResult.YesToAll || result == AltMessageBoxResult.Yes) CreateDirectory = true;
+                            else if (result == AltMessageBoxResult.NoToAll || result == AltMessageBoxResult.No) SkipDirectory = true;
+
+                            if (result == AltMessageBoxResult.YesToAll) YesToAll = true;
+                            else if (result == AltMessageBoxResult.NoToAll) NoToAll = true;
+                        }
+
+                        if (SkipDirectory || NoToAll) continue;
+                        else if (CreateDirectory || YesToAll) Directory.CreateDirectory(tp);
                     }
-                    RestoreCopy_Step(f, tp);
+                    RestoreCopy_Step(f, tp, ref YesToAll, ref NoToAll);
                 }
+            }
+
+            AltMessageBoxResult ShowConfictDialog(string source, string _titleRes, string _captionRes)
+            {
+                string title = string.Format(Application.Current.FindResource(_titleRes).ToString(), source);
+                string caption = Application.Current.FindResource(_captionRes).ToString();
+
+                string yesToAllText = Application.Current.FindResource("DialogBtn_YesToAll_Text").ToString();
+                string noToAllText = Application.Current.FindResource("DialogBtn_NoToAll_Text").ToString();
+                string yesText = Application.Current.FindResource("DialogBtn_Yes_Text").ToString();
+                string noText = Application.Current.FindResource("DialogBtn_No_Text").ToString();
+
+                AltMessageBoxArgs param = new BL_Core.Controls.AltMessageBoxArgs()
+                {
+                    button = new AltMessageBoxButton()
+                    {
+                        Default = AltMessageBoxResult.Cancel,
+                        useYesToAll = true,
+                        useYes = true,
+                        useNo = true,
+                        useNoToAll = true
+                    },
+
+                    caption = caption,
+                    title = title,
+
+                    NoText = noText,
+                    YesText = yesText,
+                    YesToAllText = yesToAllText,
+                    NoToAllText = noToAllText
+                };
+
+                return BL_Core.Controls.AltMessageBox.Show(param);
             }
         }
         public async void InvokeKillGame()

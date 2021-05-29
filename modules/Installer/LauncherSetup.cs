@@ -117,7 +117,7 @@ namespace BedrockLauncherSetup
                 catch (UnauthorizedAccessException)
                 {
                     var results = FileExtensions.WhoIsLocking(dir);
-                    var names = String.Concat(Environment.NewLine, results.ConvertAll(x => string.Format("{0} ({1})", x.ProcessName, x.Id)).ToArray());
+                    var names = String.Join(Environment.NewLine, results.ConvertAll(x => string.Format("{0} ({1})", x.ProcessName, x.Id)).ToArray());
 
                     MessageBoxResult result = MessageBox.Show("Some of the files are currently in use by the following: \r\n" + names + "\r\n" + GetResourceString("Installer_Dialog_TryAgain_Text"), GetResourceString("Installer_Dialog_FileLocked_Text"), MessageBoxButton.YesNo);
                     if (result == MessageBoxResult.Yes) Install_InitalPrep(Path, TempFolder);

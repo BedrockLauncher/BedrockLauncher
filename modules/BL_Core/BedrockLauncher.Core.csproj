@@ -80,6 +80,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -102,6 +103,9 @@
     <Compile Include="Components\RelayCommand.cs" />
     <Compile Include="Components\StringToUpperConverter.cs" />
     <Compile Include="Components\UrlToImageSourceConverter.cs" />
+    <Compile Include="Controls\AltMessageBox.xaml.cs">
+      <DependentUpon>AltMessageBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GithubAPI.cs" />
     <Compile Include="Language\LanguageDefinition.cs" />
     <Compile Include="Language\LanguageDictionary.xaml.cs">
@@ -125,6 +129,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\AltMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Language\LanguageDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
