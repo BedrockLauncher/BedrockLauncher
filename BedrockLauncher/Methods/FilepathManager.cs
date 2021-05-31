@@ -86,14 +86,14 @@ namespace BedrockLauncher.Methods
             string InstallationsPath = Path.Combine(profile.ProfilePath, installationDirectory);
             return Path.Combine(CurrentLocation, InstallationsFolderName, InstallationsPath, PackageDataFolderName);
         }
-        public static string GetSkinPacksFolderPath(string InstallationsPath, bool DevFolder = false)
+        public static string GetSkinPacksFolderPath(string InstallationsPath, bool DevFolder = false, bool HasSaveRedirection = true)
         {
             if (InstallationsPath == string.Empty) return string.Empty;
             string[] Route = new string[] { (DevFolder ? "development_skin_packs" : "skin_packs") };
             string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", GameManager.MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang");
 
 
-            if (Properties.LauncherSettings.Default.SaveRedirection) return Path.Combine(Route.Prepend(InstallationsPath).ToArray());
+            if (HasSaveRedirection) return Path.Combine(Route.Prepend(InstallationsPath).ToArray());
             else return Path.Combine(Route.Prepend(PackageFolder).ToArray());
         }
 

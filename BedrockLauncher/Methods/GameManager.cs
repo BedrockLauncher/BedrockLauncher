@@ -521,11 +521,11 @@ namespace BedrockLauncher.Methods
                 throw e;
             }
         }
-        private async Task SetInstallationDataPath()
+        private async Task SetInstallationDataPath(bool HasSaveRedirection = true)
         {
             await Task.Run(() =>
             {
-                if (Properties.LauncherSettings.Default.SaveRedirection)
+                if (HasSaveRedirection)
                 {
                     string LocalStateFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState");
                     string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang");

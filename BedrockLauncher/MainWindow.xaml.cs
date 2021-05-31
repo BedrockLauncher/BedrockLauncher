@@ -54,8 +54,13 @@ namespace BedrockLauncher
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
             if (LicenseManager.UsageMode != LicenseUsageMode.Designtime) Init();
         }
+
         private void Init()
         {
             Panel.SetZIndex(OverlayFrame, 0);
@@ -65,10 +70,8 @@ namespace BedrockLauncher
             BL_Core.Language.LanguageManager.Init();
             LauncherModel.Default.Init();
             this.updateButton.ClickBase.Click += LauncherModel.Updater.UpdateButton_Click;
-            ButtonManager_Base(BedrockEditionButton.Name, false);
+            ButtonManager_Base(BedrockEditionButton.Name);
         }
-
-
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -87,8 +90,10 @@ namespace BedrockLauncher
 
         #region Navigation
 
-        private async void Navigate(object content, bool animate = true)
+        private async void Navigate(object content)
         {
+            bool animate = Properties.LauncherSettings.Default.AnimatePageTransitions;
+
             if (!animate)
             {
                 await MainWindowFrame.Dispatcher.InvokeAsync(() => MainWindowFrame.Navigate(content));
@@ -140,18 +145,18 @@ namespace BedrockLauncher
                 Task.Run(() => ButtonManager_Base(name));
             });
         }
-        public void ButtonManager_Base(string senderName, bool animate = true)
+        public void ButtonManager_Base(string senderName)
         {
             this.Dispatcher.Invoke(() =>
             {
                 ResetButtonManager(senderName);
 
-                if (senderName == BedrockEditionButton.Name) NavigateToMainPage(animate);
-                else if (senderName == NewsButton.Name) NavigateToNewsPage(animate);
+                if (senderName == BedrockEditionButton.Name) NavigateToMainPage();
+                else if (senderName == NewsButton.Name) NavigateToNewsPage();
                 else if (senderName == JavaEditionButton.Name) NavigateToJavaLauncher();
                 else if (senderName == ExternalLauncherButton.Name) NavigateToExternalLauncher();
-                else if (senderName == CommunityButton.Name) NavigateToCommunityScreen(animate);
-                else if (senderName == SettingsButton.Name) NavigateToSettings(animate);
+                else if (senderName == CommunityButton.Name) NavigateToCommunityScreen();
+                else if (senderName == SettingsButton.Name) NavigateToSettings();
             });
 
         }
@@ -159,28 +164,28 @@ namespace BedrockLauncher
         {
             LauncherModel.Default.UpdatePageIndex(0);
             NewsButton.Button.IsChecked = true;
-            Task.Run(() => Navigate(newsScreenPage, animate));
+            Task.Run(() => Navigate(newsScreenPage));
         }
 
         public void NavigateToMainPage(bool animate = true)
         {
             LauncherModel.Default.UpdatePageIndex(1);
             BedrockEditionButton.Button.IsChecked = true;
-            Task.Run(() => Navigate(mainPage, animate));
+            Task.Run(() => Navigate(mainPage));
         }
 
         public void NavigateToCommunityScreen(bool animate = true)
         {
             LauncherModel.Default.UpdatePageIndex(2);
             CommunityButton.Button.IsChecked = true;
-            Task.Run(() => Navigate(communityPage, animate));
+            Task.Run(() => Navigate(communityPage));
 
         }
         public void NavigateToSettings(bool animate = true)
         {
             LauncherModel.Default.UpdatePageIndex(3);
             SettingsButton.Button.IsChecked = true;
-            Task.Run(() => Navigate(settingsScreenPage, animate));
+            Task.Run(() => Navigate(settingsScreenPage));
         }
 
         public void NavigateToJavaLauncher()
@@ -231,7 +236,7 @@ namespace BedrockLauncher
         }
         public void NavigateToNewProfilePage()
         {
-            LauncherModel.Default.SetOverlayFrame(new AddProfilePage(), true, false);
+            LauncherModel.Default.SetOverlayFrame(new AddProfilePage());
         }
 
         #endregion

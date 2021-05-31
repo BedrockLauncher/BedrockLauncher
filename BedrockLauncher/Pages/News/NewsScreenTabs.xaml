@@ -7,7 +7,7 @@
       xmlns:com="clr-namespace:BL_Core.Components;assembly=BL_Core"
       mc:Ignorable="d" 
       d:DesignHeight="525" d:DesignWidth="828"
-      Title="NewsScreenTabs" Loaded="Page_Loaded"  Background="{DynamicResource Background.Primary}">
+      Title="NewsScreenTabs" Loaded="Page_Loaded"  Background="{DynamicResource Background.Secondary}">
     <Page.Resources>
         <Style x:Key="TabControlStyle1" TargetType="{x:Type TabControl}">
             <Setter Property="Padding" Value="2"/>
@@ -75,49 +75,47 @@
     </Page.Resources>
     <Grid ClipToBounds="True">
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="110"></RowDefinition>
+            <RowDefinition Height="1"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid>
-            <Border
-            BorderBrush="Transparent"
-            BorderThickness="0,0,0,0"
-            CornerRadius="0"
-            VerticalAlignment="Top">
-                <Border.Effect>
-                    <DropShadowEffect Direction="0" BlurRadius="15" ShadowDepth="1" />
-                </Border.Effect>
-
-                <Grid SnapsToDevicePixels="True" RenderOptions.BitmapScalingMode="NearestNeighbor"  Height="100">
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Grid Grid.RowSpan="2" Height="65" VerticalAlignment="Top">
-                        <Grid.Background>
-                            <ImageBrush TileMode="Tile" Viewport="0,0,320,320" ViewportUnits="Absolute" ImageSource="/BedrockLauncher;component/resources/images/ui/bg/stone_texture.png">
-                            </ImageBrush>
-                        </Grid.Background>
-                        <Grid Background="Black" Opacity="0.75" Focusable="False" />
-                    </Grid>
-                    <StackPanel HorizontalAlignment="Left" Height="35" Grid.Row="1" VerticalAlignment="Bottom" Orientation="Horizontal">
-                        <ToggleButton x:Name="OfficalTab" Width="Auto" Click="ButtonManager" Content="{DynamicResource NewsScreen_OfficialTabTitle}" Style="{DynamicResource ToolbarButton}" IsChecked="True">
-                            <ToggleButton.ToolTip>
-                                <ToolTip Content="{DynamicResource NewsScreen_OfficialTabTitle}"/>
-                            </ToggleButton.ToolTip>
-                        </ToggleButton>
-                        <ToggleButton x:Name="LauncherTab" Width="Auto" Click="ButtonManager" Content="{DynamicResource NewsScreen_LauncherTabTitle}" Style="{DynamicResource ToolbarButton}">
-                            <ToggleButton.ToolTip>
-                                <ToolTip Content="{DynamicResource NewsScreen_LauncherTabTitle}"/>
-                            </ToggleButton.ToolTip>
-                        </ToggleButton>
-                    </StackPanel>
+        <Border BorderBrush="Transparent" BorderThickness="0,0,0,0" CornerRadius="0" VerticalAlignment="Top">
+            <Border.Effect>
+                <DropShadowEffect Direction="0" BlurRadius="15" ShadowDepth="1" />
+            </Border.Effect>
+            <Grid SnapsToDevicePixels="True" RenderOptions.BitmapScalingMode="NearestNeighbor"  Height="100">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.RowSpan="2" Height="65" VerticalAlignment="Top">
+                    <Grid.Background>
+                        <ImageBrush TileMode="Tile" Viewport="0,0,800,400" ViewportUnits="Absolute" ImageSource="/BedrockLauncher;component/resources/images/ui/bg/stone_texture.png">
+                        </ImageBrush>
+                    </Grid.Background>
                 </Grid>
-            </Border>
-            <Image Margin="0,0" Height="84" VerticalAlignment="Top" Source="/BedrockLauncher;component/resources/images/ui/logo/logo.png"></Image>
-        </Grid>
-        <Grid Grid.Row="1" Background="{DynamicResource Background.Tertiary}"></Grid>
-        <Frame x:Name="ContentFrame" ClipToBounds="True" com:DisableNavigation.Disable="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+            </Grid>
+        </Border>
+        <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Bottom" Orientation="Horizontal">
+            <ToggleButton x:Name="OfficalTab" Width="Auto" Click="ButtonManager" Content="{DynamicResource NewsScreen_OfficialTabTitle}" Style="{DynamicResource ToolbarButton}" IsChecked="True">
+                <ToggleButton.ToolTip>
+                    <ToolTip Content="{DynamicResource NewsScreen_OfficialTabTitle}"/>
+                </ToggleButton.ToolTip>
+            </ToggleButton>
+            <ToggleButton x:Name="JavaTab" Width="Auto" Click="ButtonManager" Content="{DynamicResource NewsScreen_JavaNDungeonsTabTitle}" Style="{DynamicResource ToolbarButton}">
+                <ToggleButton.ToolTip>
+                    <ToolTip Content="{DynamicResource NewsScreen_JavaNDungeonsTabTitle}"/>
+                </ToggleButton.ToolTip>
+            </ToggleButton>
+            <ToggleButton x:Name="LauncherTab" Width="Auto" Click="ButtonManager" Content="{DynamicResource NewsScreen_LauncherTabTitle}" Style="{DynamicResource ToolbarButton}">
+                <ToggleButton.ToolTip>
+                    <ToolTip Content="{DynamicResource NewsScreen_LauncherTabTitle}"/>
+                </ToggleButton.ToolTip>
+            </ToggleButton>
+        </StackPanel>
+        <Image Margin="0,15,0,0" Height="68" VerticalAlignment="Top" Source="/BedrockLauncher;component/resources/images/ui/logo/logo.png" RenderOptions.BitmapScalingMode="HighQuality"></Image>
+        <Separator Padding="0" Margin="0" Grid.Row="1"></Separator>
+        <Frame x:Name="ContentFrame" ClipToBounds="True" com:DisableNavigation.Disable="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="2" NavigationUIVisibility="Hidden"/>
     </Grid>
 
 

@@ -27,8 +27,10 @@ namespace BedrockLauncher.Pages.Play
             InitializeComponent();
         }
 
-        private async void Navigate(object content, bool animate = true)
+        private async void Navigate(object content)
         {
+            bool animate = Properties.LauncherSettings.Default.AnimatePageTransitions;
+
             if (!animate)
             {
                 await MainPageFrame.Dispatcher.InvokeAsync(() => MainPageFrame.Navigate(content));
@@ -84,43 +86,43 @@ namespace BedrockLauncher.Pages.Play
             });
         }
 
-        public void ButtonManager_Base(string senderName, bool animate = true)
+        public void ButtonManager_Base(string senderName)
         {
             this.Dispatcher.Invoke(() =>
             {
                 ResetButtonManager(senderName);
 
-                if (senderName == PlayButton.Name) NavigateToPlayScreen(animate);
-                else if (senderName == InstallationsButton.Name) NavigateToInstallationsPage(animate);
-                else if (senderName == SkinsButton.Name) NavigateToSkinsPage(animate);
-                else if (senderName == PatchNotesButton.Name) NavigateToPatchNotes(animate);
+                if (senderName == PlayButton.Name) NavigateToPlayScreen();
+                else if (senderName == InstallationsButton.Name) NavigateToInstallationsPage();
+                else if (senderName == SkinsButton.Name) NavigateToSkinsPage();
+                else if (senderName == PatchNotesButton.Name) NavigateToPatchNotes();
             });
         }
 
-        public void NavigateToPlayScreen(bool animate = true)
+        public void NavigateToPlayScreen()
         {
             ViewModels.LauncherModel.Default.UpdatePlayPageIndex(0);
             PlayButton.IsChecked = true;
-            Task.Run(() => Navigate(playScreenPage, animate));
+            Task.Run(() => Navigate(playScreenPage));
 
         }
-        public void NavigateToInstallationsPage(bool animate = true)
+        public void NavigateToInstallationsPage()
         {
             ViewModels.LauncherModel.Default.UpdatePlayPageIndex(1);
             InstallationsButton.IsChecked = true;
-            Task.Run(() => Navigate(installationsScreen, animate));
+            Task.Run(() => Navigate(installationsScreen));
         }
-        public void NavigateToSkinsPage(bool animate = true)
+        public void NavigateToSkinsPage()
         {
             ViewModels.LauncherModel.Default.UpdatePlayPageIndex(2);
             SkinsButton.IsChecked = true;
-            Task.Run(() => Navigate(skinsPage, animate));
+            Task.Run(() => Navigate(skinsPage));
         }
-        public void NavigateToPatchNotes(bool animate = true)
+        public void NavigateToPatchNotes()
         {
             ViewModels.LauncherModel.Default.UpdatePlayPageIndex(3);
             PatchNotesButton.IsChecked = true;
-            Task.Run(() => Navigate(patchNotesPage, animate));
+            Task.Run(() => Navigate(patchNotesPage));
         }
 
         #endregion
@@ -128,7 +130,7 @@ namespace BedrockLauncher.Pages.Play
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             ResetButtonManager(null);
-            ButtonManager_Base(PlayButton.Name, false);
+            ButtonManager_Base(PlayButton.Name);
         }
     }
 }

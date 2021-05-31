@@ -12,7 +12,7 @@
       x:Class="BedrockLauncher.Pages.Settings.GeneralSettingsPage"
       mc:Ignorable="d" 
       d:DesignHeight="828" d:DesignWidth="525"
-      Title="GeneralSettingsPage" Loaded="Page_Loaded" Initialized="Page_Initialized" MinWidth="828" MinHeight="525" Background="{DynamicResource Background.Secondary}">
+      Title="GeneralSettingsPage" Loaded="Page_Loaded" Initialized="Page_Initialized" MinWidth="728" MinHeight="525" Background="{DynamicResource Background.Secondary}">
     <Page.Resources>
         <wincontrols:BooleanToVisibilityConverter x:Key="BoolToVis"></wincontrols:BooleanToVisibilityConverter>
         <com:UrlToImageSourceConverter x:Key="UrlToImageSourceConverter"></com:UrlToImageSourceConverter>
@@ -20,54 +20,62 @@
     <Grid Margin="0,0,0,0">
         <ScrollViewer>
             <StackPanel Margin="0,0,0,20">
-                <TextBlock Margin="42,32,0,0" Text="{DynamicResource GeneralSettingsScreen_LanguageSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-                <controls:LanguageCombobox HorizontalAlignment="Left" Margin="42,20,0,0" FontSize="14" VerticalAlignment="Top" Padding="10,4,5,3" x:Name="LanguageCombobox"></controls:LanguageCombobox>
+                <TextBlock Margin="42,30,0,0" Text="{DynamicResource GeneralSettingsScreen_LanguageSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+                <controls:LanguageCombobox HorizontalAlignment="Left" Margin="42,5,0,0" FontSize="14" VerticalAlignment="Top" Padding="10,4,5,3" x:Name="LanguageCombobox"></controls:LanguageCombobox>
 
-                <TextBlock Margin="42,42,0,0" Text="{DynamicResource GeneralSettingsScreen_ThemeSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-                <controls:ThemeCombobox HorizontalAlignment="Left" Margin="42,20,0,0" FontSize="14" VerticalAlignment="Top" Padding="10,4,5,3" x:Name="ThemeCombobox"></controls:ThemeCombobox>
+                <TextBlock Margin="42,30,0,0" Text="{DynamicResource GeneralSettingsScreen_ThemeSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+                <controls:ThemeCombobox HorizontalAlignment="Left" Margin="42,5,0,0" FontSize="14" VerticalAlignment="Top" Padding="10,4,5,3" x:Name="ThemeCombobox"></controls:ThemeCombobox>
 
-                <TextBlock Margin="42,28,0,0" Text="{DynamicResource GeneralSettingsScreen_LauncherSettingsSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-                <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=KeepLauncherOpen}" IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default}, Path=AllowEditing, Mode=OneWay}" x:Name="keepLauncherOpenCheckBox" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_KeepLauncherOpen}" HorizontalAlignment="Left" Margin="42,20,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
-                <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=SaveRedirection}" IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default}, Path=AllowEditing, Mode=OneWay}" x:Name="experiementalDataSaveRedirection" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_ExperimentalSaveRedirection}" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
-                <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=HideJavaShortcut}" x:Name="hideJavaLauncherButtonCheckbox" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_HideJavaLauncherShortcut}" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
-                <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=CloseLauncherOnSwitch}" x:Name="closeLauncherOnSwitchCheckbox" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher}" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
-                <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=ShowExternalLauncher}" x:Name="showExternalLauncherButtonCheckbox" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_ShowExternalLauncherShortcut}" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
-                <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=UseBetaBuilds}" x:Name="betaVersionsButtonCheckbox" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_UseBetaLauncher}" HorizontalAlignment="Left" Margin="42,10,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
-
+                <TextBlock Margin="42,30,0,10" Text="{DynamicResource GeneralSettingsScreen_LauncherSettingsSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+                <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=UseBetaBuilds}" x:Name="betaVersionsButtonCheckbox" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_UseBetaLauncher}" HorizontalAlignment="Left" Margin="42,0,0,10" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
+                <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=KeepLauncherOpen}" IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default}, Path=AllowEditing, Mode=OneWay}" x:Name="keepLauncherOpenCheckBox" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_KeepLauncherOpen}" HorizontalAlignment="Left" Margin="42,0,0,10" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
+                <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=AnimatePageTransitions}" IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default}, Path=AllowEditing, Mode=OneWay}" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_AnimateTransitions}" HorizontalAlignment="Left" Margin="42,0,0,10" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
+                <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=AnimatePlayButton}" IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default}, Path=AllowEditing, Mode=OneWay}" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_AnimatePlayButton}" HorizontalAlignment="Left" Margin="42,0,0,10" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
                 
-                <StackPanel Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=ShowExternalLauncher, Converter={StaticResource BoolToVis}}">
-                    <TextBlock Margin="42,22,0,0" Text="{DynamicResource GeneralSettingsScreen_ExternalLauncherSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Width="75" Margin="42,11,0,0" Text="{DynamicResource GeneralSettingsScreen_ExternalLauncherPathSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-                        <Border Height="32" Background="#FF131313" Width="512" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" CornerRadius="4">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <TextBox x:Name="ExternalLauncherNameTextBox" Text="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=ExternalLauncherName}" TextChanged="ExternalLauncherPathTextBox_TextChanged" FontSize="14" Padding="10,4,5,3"></TextBox>
-                            </Grid>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock  Width="75" Margin="42,11,0,0" Text="{DynamicResource GeneralSettingsScreen_ExternalLauncherNameSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-                        <Border Height="32" Background="#FF131313" Width="512" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" CornerRadius="4">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <TextBox IsReadOnly="True" Text="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=ExternalLauncherPath}" TextChanged="ExternalLauncherPathTextBox_TextChanged" x:Name="ExternalLauncherPathTextBox" FontSize="14" Padding="10,4,5,3"></TextBox>
-                                <Button Grid.Column="1" Content="{StaticResource GeneralSubtitles_Browse}" x:Name="BrowseLauncherButton" Click="BrowseLauncherButton_Click" HorizontalAlignment="Center" Margin="5" Style="{StaticResource TextBoxButton}"></Button>
-                            </Grid>
-                        </Border>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Height="45" Margin="0,10">
-                        <TextBlock  Width="75" Margin="42,11,0,0" Text="{DynamicResource GeneralSettingsScreen_ExternalLauncherIconSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-                        <Image x:Name="ExternalLauncherIcon" RenderOptions.BitmapScalingMode="HighQuality" Width="45" Height="45" Margin="0,0,10,0"  Source="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=ExternalLauncherIconPath, Converter={StaticResource UrlToImageSourceConverter}}"></Image>
-                        <Button x:Name="BrowseExternalLauncherIcon_Button" Click="BrowseExternalLauncherIcon_Button_Click" Style="{DynamicResource DialogButton}" Content="{DynamicResource GeneralText_Browse}"></Button>
-                        <Button x:Name="ResetExternalLauncherIcon_Button" Click="ResetExternalLauncherIcon_Button_Click" Style="{DynamicResource DialogButton}" Content="{DynamicResource GeneralText_Reset}"></Button>
-                    </StackPanel>
+                <TextBlock Margin="42,30,0,10" Text="{DynamicResource GeneralSettingsScreen_ShortcutSettingsSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+                <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=HideJavaShortcut}" x:Name="hideJavaLauncherButtonCheckbox" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_HideJavaLauncherShortcut}" HorizontalAlignment="Left" Margin="42,0,0,10" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
+                <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=CloseLauncherOnSwitch}" x:Name="closeLauncherOnSwitchCheckbox" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher}" HorizontalAlignment="Left" Margin="42,0,0,10" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
+
+                <StackPanel Margin="42,30,0,0" Width="525" HorizontalAlignment="Left">
+                    <TextBlock Margin="0,0,0,0" Text="{DynamicResource GeneralSettingsScreen_ExternalLauncherSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+                    <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=ShowExternalLauncher}" x:Name="showExternalLauncherButtonCheckbox" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_ShowExternalLauncherShortcut}" HorizontalAlignment="Left" Margin="0,10,0,10" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
+                    <Grid Style="{DynamicResource DisabledStyle}" IsEnabled="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=ShowExternalLauncher}">
+                        <StackPanel Margin="2,0,0,0">
+                            <TextBlock Width="75" Margin="0,10,0,0" Text="{DynamicResource GeneralSettingsScreen_ExternalLauncherPathSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+                            <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
+                                <Border Height="32" Background="#FF131313" Width="512" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" CornerRadius="4">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBox x:Name="ExternalLauncherNameTextBox" Text="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=ExternalLauncherName}" TextChanged="ExternalLauncherPathTextBox_TextChanged" FontSize="14" Padding="10,4,5,3"></TextBox>
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+                            <TextBlock  Width="75" Margin="0,10,0,0" Text="{DynamicResource GeneralSettingsScreen_ExternalLauncherNameSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+                            <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
+                                <Border Height="32" Background="#FF131313" Width="512" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" CornerRadius="4">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBox IsReadOnly="True" Text="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=ExternalLauncherPath}" TextChanged="ExternalLauncherPathTextBox_TextChanged" x:Name="ExternalLauncherPathTextBox" FontSize="14" Padding="10,4,5,3"></TextBox>
+                                        <Button Grid.Column="1" Content="{StaticResource GeneralSubtitles_Browse}" x:Name="BrowseLauncherButton" Click="BrowseLauncherButton_Click" HorizontalAlignment="Center" Margin="5" Style="{StaticResource TextBoxButton}"></Button>
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+                            <TextBlock  Width="75" Margin="0,10,0,0" Text="{DynamicResource GeneralSettingsScreen_ExternalLauncherIconSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+                            <StackPanel Orientation="Horizontal" Height="54" Margin="0,5">
+                                <Border BorderThickness="8" Width="50" Height="50" CornerRadius="4" Background="{DynamicResource Background.Tertiary}" BorderBrush="{DynamicResource Background.Tertiary}" Margin="0,0,10,0">
+                                    <Image x:Name="ExternalLauncherIcon"  RenderOptions.BitmapScalingMode="HighQuality"  Source="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=ExternalLauncherIconPath, Converter={StaticResource UrlToImageSourceConverter}}"></Image>
+                                </Border>
+                                <Button x:Name="BrowseExternalLauncherIcon_Button" Click="BrowseExternalLauncherIcon_Button_Click" Height="30" Style="{DynamicResource DialogButton}" Content="{DynamicResource GeneralText_Browse}"></Button>
+                                <Button x:Name="ResetExternalLauncherIcon_Button" Click="ResetExternalLauncherIcon_Button_Click" Height="30"  Style="{DynamicResource DialogButton}" Content="{DynamicResource GeneralText_Reset}"></Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
                 </StackPanel>
 
                 <StackPanel Margin="35,10,0,0"  Orientation="Horizontal">

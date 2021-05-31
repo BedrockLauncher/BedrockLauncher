@@ -102,7 +102,7 @@ namespace BedrockLauncher.Controls.Items
             MenuItem button = sender as MenuItem;
             var installation = button.DataContext as Classes.MCInstallation;
             int index = ConfigManager.CurrentInstallations.IndexOf(installation);
-            ViewModels.LauncherModel.Default.SetOverlayFrame(new EditInstallationScreen(index, installation), false, false);
+            ViewModels.LauncherModel.Default.SetOverlayFrame(new EditInstallationScreen(index, installation));
         }
 
         private void DuplicateInstallationButton_Click(object sender, RoutedEventArgs e)

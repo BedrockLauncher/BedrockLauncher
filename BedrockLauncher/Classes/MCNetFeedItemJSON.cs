@@ -79,7 +79,7 @@ namespace BedrockLauncher.Classes
         public override double ImageHeight { get => GetHeight(); }
         public override string Title { get => title; }
         public override string Link { get => readMoreLink; }
-        public override string Tag { get => tag; }
+        public override string Tag { get => category; }
         public override string Date { get => date.ToString(); }
     }
 }

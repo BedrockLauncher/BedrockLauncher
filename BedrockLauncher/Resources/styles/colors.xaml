@@ -76,6 +76,10 @@
     <SolidColorBrush x:Key="ComboBox.Pressed.Border" Color="#FF0E0E0E"/>
     <SolidColorBrush x:Key="ComboBox.Pressed.Glyph" Color="#FFFFFF"/>
 
+    <SolidColorBrush x:Key="ComboBox.Focused.Background" Color="#FF191919"/>
+    <SolidColorBrush x:Key="ComboBox.Focused.Border" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="ComboBox.Focused.Glyph" Color="#FFFFFF"/>
+
     <SolidColorBrush x:Key="ComboBoxItem.Selected.Background" Color="#FF008542"/>
     <SolidColorBrush x:Key="ComboBoxItem.Selected.Border" Color="#FF008542"/>
 

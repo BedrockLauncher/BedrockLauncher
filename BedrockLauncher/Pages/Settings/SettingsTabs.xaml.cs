@@ -27,7 +27,7 @@ namespace BedrockLauncher.Pages.Settings
         {
             InitializeComponent();
             ConfigManager.ConfigStateChanged += ConfigManager_ConfigStateChanged;
-            ButtonManager_Base(GeneralButton.Name, false);
+            ButtonManager_Base(GeneralButton.Name);
         }
 
         private void ConfigManager_ConfigStateChanged(object sender, EventArgs e)
@@ -35,8 +35,10 @@ namespace BedrockLauncher.Pages.Settings
             RefreshVersions();
         }
 
-        private async void Navigate(object content, bool animate = true)
+        private async void Navigate(object content)
         {
+            bool animate = Properties.LauncherSettings.Default.AnimatePageTransitions;
+
             if (!animate)
             {
                 await SettingsScreenFrame.Dispatcher.InvokeAsync(() => SettingsScreenFrame.Navigate(content));
@@ -101,40 +103,40 @@ namespace BedrockLauncher.Pages.Settings
                 Task.Run(() => ButtonManager_Base(name));
             });
         }
-        public void ButtonManager_Base(string senderName, bool animate = true)
+        public void ButtonManager_Base(string senderName)
         {
             this.Dispatcher.Invoke(() =>
             {
                 ResetButtonManager(senderName);
 
-                if (senderName == GeneralButton.Name) NavigateToGeneralPage(animate);
-                else if (senderName == AccountsButton.Name) NavigateToAccountsPage(animate);
-                else if (senderName == AboutButton.Name) NavigateToAboutPage(animate);
-                else if (senderName == VersionsButton.Name) NavigateToVersionsPage(animate);
+                if (senderName == GeneralButton.Name) NavigateToGeneralPage();
+                else if (senderName == AccountsButton.Name) NavigateToAccountsPage();
+                else if (senderName == AboutButton.Name) NavigateToAboutPage();
+                else if (senderName == VersionsButton.Name) NavigateToVersionsPage();
             });
         }
 
-        public void NavigateToGeneralPage(bool animate = true)
+        public void NavigateToGeneralPage()
         {
             ViewModels.LauncherModel.Default.UpdateSettingsPageIndex(0);
-            Task.Run(() => Navigate(generalSettingsPage, animate));
+            Task.Run(() => Navigate(generalSettingsPage));
         }
-        public void NavigateToVersionsPage(bool animate = true)
+        public void NavigateToVersionsPage()
         {
             ViewModels.LauncherModel.Default.UpdateSettingsPageIndex(1);
-            Task.Run(() => Navigate(versionsSettingsPage, animate));
+            Task.Run(() => Navigate(versionsSettingsPage));
         }
 
-        public void NavigateToAccountsPage(bool animate = true)
+        public void NavigateToAccountsPage()
         {
             ViewModels.LauncherModel.Default.UpdateSettingsPageIndex(2);
-            Task.Run(() => Navigate(accountsSettingsPage, animate));
+            Task.Run(() => Navigate(accountsSettingsPage));
         }
 
-        public void NavigateToAboutPage(bool animate = true)
+        public void NavigateToAboutPage()
         {
             ViewModels.LauncherModel.Default.UpdateSettingsPageIndex(3);
-            Task.Run(() => Navigate(aboutPage, animate));
+            Task.Run(() => Navigate(aboutPage));
         }
 
         #endregion

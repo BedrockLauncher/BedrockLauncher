@@ -77,7 +77,7 @@ namespace BedrockLauncher.Pages.Preview
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModels.LauncherModel.Default.SetOverlayFrame(null, false, false);
+            ViewModels.LauncherModel.Default.SetOverlayFrame(null);
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
@@ -89,14 +89,14 @@ namespace BedrockLauncher.Pages.Preview
         private void UpdateInstallation()
         {
             ConfigManager.EditInstallation(EditingIndex, InstallationNameField.Text, InstallationDirectoryField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
-            ViewModels.LauncherModel.Default.SetOverlayFrame(null, false, false);
+            ViewModels.LauncherModel.Default.SetOverlayFrame(null);
             ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
         }
 
         private void CreateInstallation()
         {
             ConfigManager.CreateInstallation(InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationDirectoryField.Text, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
-            ViewModels.LauncherModel.Default.SetOverlayFrame(null, false, false);
+            ViewModels.LauncherModel.Default.SetOverlayFrame(null);
             ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
         }
 

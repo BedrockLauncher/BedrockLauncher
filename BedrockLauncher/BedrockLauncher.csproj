@@ -193,9 +193,13 @@
     <Compile Include="Classes\MCProfilesList.cs" />
     <Compile Include="Classes\MCVersion.cs" />
     <Compile Include="Classes\MCVersionList.cs" />
+    <Compile Include="Components\ButtonBehaviors.cs" />
     <Compile Include="Components\ComboBoxBehaviors.cs" />
     <Compile Include="Components\InteractivityHelper.cs" />
     <Compile Include="Components\PageAnimator.cs" />
+    <Compile Include="Controls\Items\JavaFeedItem.xaml.cs">
+      <DependentUpon>JavaFeedItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Items\InstallationSelectorItem.xaml.cs">
       <DependentUpon>InstallationSelectorItem.xaml</DependentUpon>
     </Compile>
@@ -224,6 +228,9 @@
     </Compile>
     <Compile Include="Pages\FirstLaunch\WelcomePageFour.xaml.cs">
       <DependentUpon>WelcomePageFour.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\News\Java_N_DungeonsNewsPage.xaml.cs">
+      <DependentUpon>Java_N_DungeonsNewsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\LauncherModel.cs" />
     <Compile Include="Events\GameRunningState.cs" />
@@ -406,6 +413,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Items\JavaFeedItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\Items\InstallationItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -511,6 +522,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\FirstLaunch\WelcomePageFive.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\News\Java_N_DungeonsNewsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -627,6 +642,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\styles\buttons\dialog_buttons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\styles\buttons\play_button.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -852,6 +871,7 @@
     <Resource Include="Resources\images\ui\icons\bedrock_icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\images\ui\panels\CardBorder.png" />
     <Resource Include="Resources\images\ui\panels\MainPagePlayButton.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1025,6 +1045,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\ui\bg\firstlaunchbackground_legacy.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\ui\panels\MainPagePlayButtonFocusOver.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

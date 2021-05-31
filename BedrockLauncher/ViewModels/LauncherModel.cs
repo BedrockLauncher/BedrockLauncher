@@ -45,7 +45,7 @@ namespace BedrockLauncher.ViewModels
             ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
 
             // show first launch window if no profile
-            if (isFirstLaunch) SetOverlayFrame(new WelcomePage(), false, false);
+            if (isFirstLaunch) SetOverlayFrame_Strict(new WelcomePage());
             MainThread.NavigateToMainPage();
             ProgressBarStateChanged += ViewModel_ProgressBarStateChanged;
         }
@@ -287,8 +287,10 @@ namespace BedrockLauncher.ViewModels
                 e.Cancel = false;
             }
         }
-        public async void SetDialogFrame(object content, bool useFade = true)
+        public async void SetDialogFrame(object content)
         {
+            bool animate = Properties.LauncherSettings.Default.AnimatePageTransitions;
+
             await Application.Current.Dispatcher.InvokeAsync(() =>
             {
                 bool isEmpty = content == null;
@@ -297,7 +299,7 @@ namespace BedrockLauncher.ViewModels
                 KeyboardNavigation.SetTabNavigation(MainThread.OverlayFrame, focusMode);
                 Keyboard.ClearFocus();
 
-                if (useFade)
+                if (animate)
                 {
                     if (isEmpty) PageAnimator.FrameFadeOut(MainThread.ErrorFrame, content);
                     else PageAnimator.FrameFadeIn(MainThread.ErrorFrame, content);
@@ -305,7 +307,20 @@ namespace BedrockLauncher.ViewModels
                 else MainThread.ErrorFrame.Navigate(content);
             });
         }
-        public async void SetOverlayFrame(object content, bool useFade = true, bool useSwipe = true)
+
+        public async void SetOverlayFrame_Strict(object content)
+        {
+            await Task.Run(() => SetOverlayFrame_Base(content, false));
+        }
+
+        public async void SetOverlayFrame(object content)
+        {
+            bool animate = Properties.LauncherSettings.Default.AnimatePageTransitions;
+            await Task.Run(() => SetOverlayFrame_Base(content, animate));
+        }
+
+
+        private async void SetOverlayFrame_Base(object content, bool animate)
         {
             await Application.Current.Dispatcher.InvokeAsync(() =>
             {
@@ -314,18 +329,10 @@ namespace BedrockLauncher.ViewModels
                 KeyboardNavigation.SetTabNavigation(MainThread.MainFrame, focusMode);
                 Keyboard.ClearFocus();
 
-                if (useFade)
+                if (animate)
                 {
-                    if (useSwipe)
-                    {
-                        if (isEmpty) PageAnimator.FrameSwipe_OverlayOut(MainThread.OverlayFrame, content);
-                        else PageAnimator.FrameSwipe_OverlayIn(MainThread.OverlayFrame, content);
-                    }
-                    else
-                    {
-                        if (isEmpty) PageAnimator.FrameFadeOut(MainThread.OverlayFrame, content);
-                        else PageAnimator.FrameFadeIn(MainThread.OverlayFrame, content);
-                    }
+                    if (isEmpty) PageAnimator.FrameSwipe_OverlayOut(MainThread.OverlayFrame, content);
+                    else PageAnimator.FrameSwipe_OverlayIn(MainThread.OverlayFrame, content);
                 }
                 else MainThread.OverlayFrame.Navigate(content);
             });

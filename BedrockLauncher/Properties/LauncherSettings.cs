@@ -59,25 +59,48 @@ namespace BedrockLauncher.Properties
             File.WriteAllText(FilepathManager.GetSettingsFilePath(), json);
         }
 
+        #region Launcher Settings
+
+        private string _CurrentTheme = "LatestUpdate";
+        private bool _UseBetaBuilds = true;
+        private bool _KeepLauncherOpen = false;
+        private bool _AnimatePlayButton = false;
+        private bool _AnimatePageTransitions = false;
+
+        public string CurrentTheme
+        {
+            get { return _CurrentTheme; }
+            set { _CurrentTheme = value; OnPropertyChanged(nameof(CurrentTheme)); }
+        }
+        public bool KeepLauncherOpen
+        {
+            get { return _KeepLauncherOpen; }
+            set { _KeepLauncherOpen = value; OnPropertyChanged(nameof(KeepLauncherOpen)); }
+        }
+        public bool UseBetaBuilds
+        {
+            get { return _UseBetaBuilds; }
+            set { _UseBetaBuilds = value; OnPropertyChanged(nameof(UseBetaBuilds)); }
+        }
+
+        public bool AnimatePlayButton
+        {
+            get { return _AnimatePlayButton; }
+            set { _AnimatePlayButton = value; OnPropertyChanged(nameof(AnimatePlayButton)); }
+        }
+
+        public bool AnimatePageTransitions
+        {
+            get { return _AnimatePageTransitions; }
+            set { _AnimatePageTransitions = value; OnPropertyChanged(nameof(AnimatePageTransitions)); }
+        }
+
+        #endregion
+
+        #region Advanced Settings
+
         private bool _PortableMode = false;
         private string _FixedDirectory = "";
-
-        private bool _ShowBetas = true;
-        private int _CurrentInstallation = 0;
-        private bool _IsFirstLaunch = true;
-        private string _CurrentProfile = "";
-        private bool _KeepLauncherOpen = false;
-        private bool _ShowReleases = true;
-        private int _CurrentInsiderAccount = 0;
-        private bool _SaveRedirection = true;
-        private bool _HideJavaShortcut = false;
-        private bool _ShowExternalLauncher = false;
-        private string _ExternalLauncherPath = "";
-        private string _ExternalLauncherName = "";
-        private string _ExternalLauncherIconPath = "";
-        private string _CurrentTheme = "LatestUpdate";
-        private bool _CloseLauncherOnSwitch = true;
-        private bool _UseBetaBuilds = true;
 
         public bool PortableMode
         {
@@ -89,21 +112,30 @@ namespace BedrockLauncher.Properties
             get { return _FixedDirectory; }
             set { _FixedDirectory = value; OnPropertyChanged(nameof(FixedDirectory)); }
         }
+
+        #endregion
+
+        #region Status Storage
+
+        private bool _ShowBetas = true;
+        private int _CurrentInstallation = 0;
+        private bool _IsFirstLaunch = true;
+        private string _CurrentProfile = "";
+        private bool _ShowReleases = true;
+        private int _CurrentInsiderAccount = 0;
+
         public bool IsFirstLaunch
         {
-            get { return _IsFirstLaunch;}
+            get { return _IsFirstLaunch; }
             set { _IsFirstLaunch = value; OnPropertyChanged(nameof(IsFirstLaunch)); }
         }
+
         public int CurrentInstallation
         {
             get { return _CurrentInstallation; }
             set { _CurrentInstallation = value; OnPropertyChanged(nameof(CurrentInstallation)); }
         }
-        public bool KeepLauncherOpen
-        {
-            get { return _KeepLauncherOpen; }
-            set { _KeepLauncherOpen = value; OnPropertyChanged(nameof(KeepLauncherOpen)); }
-        }
+
         public string CurrentProfile
         {
             get { return _CurrentProfile; }
@@ -124,11 +156,18 @@ namespace BedrockLauncher.Properties
             get { return _CurrentInsiderAccount; }
             set { _CurrentInsiderAccount = value; OnPropertyChanged(nameof(CurrentInsiderAccount)); }
         }
-        public bool SaveRedirection
-        {
-            get { return _SaveRedirection; }
-            set { _SaveRedirection = value; OnPropertyChanged(nameof(SaveRedirection)); }
-        }
+
+        #endregion
+
+        #region Shortcut Settings
+
+        private bool _HideJavaShortcut = false;
+        private bool _ShowExternalLauncher = false;
+        private string _ExternalLauncherPath = "";
+        private string _ExternalLauncherName = "";
+        private string _ExternalLauncherIconPath = "";
+        private bool _CloseLauncherOnSwitch = true;
+
         public bool HideJavaShortcut
         {
             get { return _HideJavaShortcut; }
@@ -154,21 +193,13 @@ namespace BedrockLauncher.Properties
             get { return _ExternalLauncherIconPath; }
             set { _ExternalLauncherIconPath = value; OnPropertyChanged(nameof(ExternalLauncherIconPath)); }
         }
-        public string CurrentTheme
-        {
-            get { return _CurrentTheme; }
-            set { _CurrentTheme = value; OnPropertyChanged(nameof(CurrentTheme)); }
-        }
         public bool CloseLauncherOnSwitch
         {
             get { return _CloseLauncherOnSwitch; }
             set { _CloseLauncherOnSwitch = value; OnPropertyChanged(nameof(CloseLauncherOnSwitch)); }
         }
-        public bool UseBetaBuilds
-        {
-            get { return _UseBetaBuilds; }
-            set { _UseBetaBuilds = value; OnPropertyChanged(nameof(UseBetaBuilds)); }
-        }
+
+        #endregion
 
     }
 }

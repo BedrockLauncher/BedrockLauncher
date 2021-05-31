@@ -150,7 +150,7 @@ namespace BedrockLauncher.Pages.Play
         private void AddSkinButton_Click(object sender, RoutedEventArgs e)
         {
             var skinPack = LoadedSkinPacks.SelectedItem as MCSkinPack;
-            ViewModels.LauncherModel.Default.SetOverlayFrame(new EditSkinScreen(skinPack), false, false);
+            ViewModels.LauncherModel.Default.SetOverlayFrame(new EditSkinScreen(skinPack));
         }
 
         private void ImportSkinPackButton_Click(object sender, RoutedEventArgs e)
@@ -196,7 +196,7 @@ namespace BedrockLauncher.Pages.Play
 
         private void NewSkinPackButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModels.LauncherModel.Default.SetOverlayFrame(new EditSkinPackScreen(), false, false);
+            ViewModels.LauncherModel.Default.SetOverlayFrame(new EditSkinPackScreen());
         }
 
         private void SkinPreviewList_PreviewKeyUp(object sender, KeyEventArgs e)

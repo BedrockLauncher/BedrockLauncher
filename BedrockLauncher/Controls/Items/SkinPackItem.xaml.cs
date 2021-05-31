@@ -90,7 +90,7 @@ namespace BedrockLauncher.Controls.Items
         {
             var skinPack = GetParent().LoadedSkinPacks.SelectedItem as MCSkinPack;
             int index = GetParent().LoadedSkinPacks.SelectedIndex;
-            ViewModels.LauncherModel.Default.SetOverlayFrame(new EditSkinPackScreen(skinPack, index), false, false);
+            ViewModels.LauncherModel.Default.SetOverlayFrame(new EditSkinPackScreen(skinPack, index));
 
             MoreButton.ContextMenu.IsOpen = false;
         }

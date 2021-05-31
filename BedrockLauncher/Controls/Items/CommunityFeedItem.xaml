@@ -16,7 +16,7 @@
              Style="{DynamicResource EmptyListViewItem}"
              d:DesignHeight="365" d:DesignWidth="365" MouseUp="FeedItemEntry_MouseUp" KeyUp="FeedItemEntry_KeyUp">
     <ListViewItem.Content>
-        <Border BorderBrush="Transparent" BorderThickness="3" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Border BorderBrush="Transparent" BorderThickness="10" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <Grid Background="{DynamicResource MCNetFeedItem.Static.Background}" x:Name="MainGrid" Focusable="False" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <Grid.RowDefinitions>
                     <RowDefinition MaxHeight="{Binding ImageHeight}"></RowDefinition>

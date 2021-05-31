@@ -22,15 +22,35 @@ using System.Net.Http;
 namespace BedrockLauncher.Pages.News
 {
     /// <summary>
-    /// Interaction logic for CommunityNewsPage.xaml
+    /// Interaction logic for Java_N_DungeonsNewsPage.xaml
     /// </summary>
-    public partial class CommunityNewsPage : Page
+    public partial class Java_N_DungeonsNewsPage : Page
     {
 
-        private const string RSS_Feed = @"https://www.minecraft.net/en-us/feeds/community-content/rss";
+        private const string JSON_Feed = @"https://launchercontent.mojang.com/news.json";
 
 
-        public CommunityNewsPage()
+        public async Task<MCNetLauncherFeed> GetJSON()
+        {
+            MCNetLauncherFeed result = null;
+            using (var httpClient = new HttpClient())
+            {
+                try
+                {
+                    var json = await httpClient.GetStringAsync(JSON_Feed);
+                    result = Newtonsoft.Json.JsonConvert.DeserializeObject<MCNetLauncherFeed>(json);
+                }
+                catch
+                {
+                    result = new MCNetLauncherFeed();
+                }
+
+            }
+            if (result == null) result = new MCNetLauncherFeed();
+            return result;
+        }
+
+        public Java_N_DungeonsNewsPage()
         {
             InitializeComponent();
         }
@@ -39,13 +59,12 @@ namespace BedrockLauncher.Pages.News
         {
             Dispatcher.Invoke(() => { OfficalNewsFeed.Items.Clear(); });
 
-            var feed = await FeedReader.ReadAsync(RSS_Feed);
+            var news = await GetJSON();
 
             Dispatcher.Invoke(() => {
-                foreach (FeedItem item in feed.Items)
+                foreach (MCNetFeedItemJSON item in news.entries)
                 {
-                    MCNetFeedItemRSS new_item = new MCNetFeedItemRSS(item);
-                    OfficalNewsFeed.Items.Add(new CommunityFeedItem(new_item));
+                    if (item.newsType != null && item.newsType.Contains("News page")) OfficalNewsFeed.Items.Add(new JavaFeedItem(item));
                 }
             });
         }
@@ -61,8 +80,8 @@ namespace BedrockLauncher.Pages.News
             {
                 if (OfficalNewsFeed.SelectedItem != null)
                 {
-                    var item = OfficalNewsFeed.SelectedItem as MCNetFeedItemRSS;
-                    CommunityFeedItem.LoadArticle(item);
+                    var item = OfficalNewsFeed.SelectedItem as MCNetFeedItemJSON;
+                    JavaFeedItem.LoadArticle(item);
                 }
             }
         }

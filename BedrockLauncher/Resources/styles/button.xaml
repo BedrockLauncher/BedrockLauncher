@@ -8,6 +8,7 @@
         <ResourceDictionary Source="/BedrockLauncher;component/Resources/styles/buttons/dialog_buttons.xaml"/>
         <ResourceDictionary Source="/BedrockLauncher;component/Resources/styles/buttons/sidebar_button.xaml"/>
         <ResourceDictionary Source="/BedrockLauncher;component/Resources/styles/buttons/toolbar_button.xaml"/>
+        <ResourceDictionary Source="/BedrockLauncher;component/Resources/styles/buttons/play_button.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <SolidColorBrush x:Key="Button.Static.Background" Color="#FF292929"/>
@@ -165,68 +166,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="BigGreenButton" TargetType="{x:Type Button}">
-        <Setter Property="FocusVisualStyle" Value="{DynamicResource BlankFocusVisual}"/>
-        <Setter Property="FontSize" Value="26"/>
-        <Setter Property="UseLayoutRounding" Value="True" />
-        <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
-        <Setter Property="BorderBrush" Value="{x:Null}"/>
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="FontFamily" Value="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="1"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        <Border.Background>
-                            <ImageBrush ImageSource="/BedrockLauncher;component/resources/images/ui/panels/MainPagePlayButton.png"/>
-                        </Border.Background>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsDefaulted" Value="true">
-                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                        </Trigger>
-                        <Trigger Property="IsFocused" Value="true">
-                            <Setter Property="Cursor" Value="Hand"/>
-                            <Setter Property="Background" TargetName="border">
-                                <Setter.Value>
-                                    <ImageBrush ImageSource="/BedrockLauncher;component/resources/images/ui/panels/MainPagePlayButtonOver.png" Stretch="Uniform"/>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Cursor" Value="Hand"/>
-                            <Setter Property="Background" TargetName="border">
-                                <Setter.Value>
-                                    <ImageBrush ImageSource="/BedrockLauncher;component/resources/images/ui/panels/MainPagePlayButtonOver.png" Stretch="Uniform"/>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Cursor" Value="Hand"/>
-                            <Setter Property="Background" TargetName="border">
-                                <Setter.Value>
-                                    <ImageBrush ImageSource="/BedrockLauncher;component/resources/images/ui/panels/MainPagePlayButtonPressed.png" Stretch="Uniform"/>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Opacity" Value="0.5"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Effect">
-            <Setter.Value>
-                <DropShadowEffect BlurRadius="0" Direction="270" Opacity="0.2" ShadowDepth="4"/>
-            </Setter.Value>
-        </Setter>
-    </Style>
+
 
 
 

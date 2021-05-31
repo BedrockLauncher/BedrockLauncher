@@ -28,7 +28,7 @@ namespace BedrockLauncher.Pages.Preview
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModels.LauncherModel.Default.SetOverlayFrame(null, false, false);
+            ViewModels.LauncherModel.Default.SetOverlayFrame(null);
         }
 
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
@@ -49,7 +49,7 @@ namespace BedrockLauncher.Pages.Preview
             {
                 Properties.LauncherSettings.Default.CurrentProfile = profileName;
                 Properties.LauncherSettings.Default.Save();
-                ViewModels.LauncherModel.Default.SetOverlayFrame(null, false, false);
+                ViewModels.LauncherModel.Default.SetOverlayFrame(null);
             }
             else
             {

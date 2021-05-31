@@ -25,6 +25,7 @@ namespace BedrockLauncher.Pages.News
     {
         private CommunityNewsPage communityNewsPage = new CommunityNewsPage();
         private LauncherNewsPage launcherNewsPage;
+        private Java_N_DungeonsNewsPage javaNewsPage = new Java_N_DungeonsNewsPage();
 
         private string LastTabName;
 
@@ -39,13 +40,15 @@ namespace BedrockLauncher.Pages.News
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ButtonManager_Base(LastTabName, false);
+            ButtonManager_Base(LastTabName);
         }
 
         #region Navigation
 
-        private async void Navigate(object content, bool animate = true)
+        private async void Navigate(object content)
         {
+            bool animate = Properties.LauncherSettings.Default.AnimatePageTransitions;
+
             if (!animate)
             {
                 await ContentFrame.Dispatcher.InvokeAsync(() => ContentFrame.Navigate(content));
@@ -73,6 +76,7 @@ namespace BedrockLauncher.Pages.News
                 // but this works fine, at least
                 List<ToggleButton> toggleButtons = new List<ToggleButton>() {
                 LauncherTab,
+                JavaTab,
                 OfficalTab
             };
 
@@ -96,28 +100,36 @@ namespace BedrockLauncher.Pages.News
             });
         }
 
-        public void ButtonManager_Base(string senderName, bool animate = true)
+        public void ButtonManager_Base(string senderName)
         {
             this.Dispatcher.Invoke(() =>
             {
                 ResetButtonManager(senderName);
 
-                if (senderName == LauncherTab.Name) NavigateToLauncherNews(animate);
-                else if (senderName == OfficalTab.Name) NavigateToCommunityNews(animate);
+                if (senderName == LauncherTab.Name) NavigateToLauncherNews();
+                else if (senderName == OfficalTab.Name) NavigateToCommunityNews();
+                else if (senderName == JavaTab.Name) NavigateToJavaNews();
             });
         }
 
-        public void NavigateToLauncherNews(bool animate = true)
+        public void NavigateToLauncherNews()
         {
-            ViewModels.LauncherModel.Default.UpdateNewsPageIndex(1);
-            Task.Run(() => Navigate(launcherNewsPage, animate));
+            ViewModels.LauncherModel.Default.UpdateNewsPageIndex(2);
+            Task.Run(() => Navigate(launcherNewsPage));
             LastTabName = LauncherTab.Name;
         }
 
-        public void NavigateToCommunityNews(bool animate = true)
+        public void NavigateToJavaNews()
+        {
+            ViewModels.LauncherModel.Default.UpdateNewsPageIndex(1);
+            Task.Run(() => Navigate(javaNewsPage));
+            LastTabName = LauncherTab.Name;
+        }
+
+        public void NavigateToCommunityNews()
         {
             ViewModels.LauncherModel.Default.UpdateNewsPageIndex(0);
-            Task.Run(() => Navigate(communityNewsPage, animate));
+            Task.Run(() => Navigate(communityNewsPage));
             LastTabName = OfficalTab.Name;
         }
 
