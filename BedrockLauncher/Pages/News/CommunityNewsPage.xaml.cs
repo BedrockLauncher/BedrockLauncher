@@ -37,11 +37,11 @@ namespace BedrockLauncher.Pages.News
 
         private async void UpdateRSSContent()
         {
-            Dispatcher.Invoke(() => { OfficalNewsFeed.Items.Clear(); });
+            await Dispatcher.InvokeAsync(() => { OfficalNewsFeed.Items.Clear(); });
 
             var feed = await FeedReader.ReadAsync(RSS_Feed);
 
-            Dispatcher.Invoke(() => {
+            await Dispatcher.InvokeAsync(() => {
                 foreach (FeedItem item in feed.Items)
                 {
                     MCNetFeedItemRSS new_item = new MCNetFeedItemRSS(item);
@@ -50,9 +50,9 @@ namespace BedrockLauncher.Pages.News
             });
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private async void Page_Loaded(object sender, EventArgs e)
         {
-            UpdateRSSContent();
+            await Task.Run(() => UpdateRSSContent());
         }
 
         private void OfficalNewsFeed_KeyUp(object sender, KeyEventArgs e)

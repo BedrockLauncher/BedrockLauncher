@@ -1,6 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:BedrockLauncher.Resources.styles">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ItemsPanelTemplate x:Key="MenuTPL">
         <StackPanel Margin="-30,0,-2,0" Background="{DynamicResource ContentMenu.MenuTPL.Background}"/>

@@ -1,11 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style TargetType="{x:Type Control}" x:Key="fontStyling">
-        <Setter Property="FontFamily" Value="/BedrockLauncher;component/Resources/fonts/#Noto Sans" />
-    </Style>
-    <Style TargetType="{x:Type TextBox}" BasedOn="{DynamicResource fontStyling}" />
-    <Style TargetType="{x:Type ListView}" BasedOn="{DynamicResource fontStyling}" />
-
     <Style TargetType="{x:Type Grid}" x:Key="DisabledStyle">
         <Setter Property="Opacity" Value="1.0"></Setter>
         <Style.Triggers>

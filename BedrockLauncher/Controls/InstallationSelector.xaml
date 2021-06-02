@@ -7,5 +7,5 @@
              Foreground="White"
              HorizontalContentAlignment="Stretch"
              Style="{DynamicResource InstallationSelectorComboBoxStyle}" ItemContainerStyle="{DynamicResource GenericComboBoxItemStyle_NoLeftPadding}"
-             ItemTemplate="{DynamicResource InstallationSelectorItemTemplate}" Background="{x:Null}">
+             ItemTemplate="{DynamicResource InstallationSelectorItemTemplate}">
 </ComboBox>

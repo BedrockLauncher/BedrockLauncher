@@ -37,14 +37,14 @@ namespace BedrockLauncher.Pages.News
             this.updater = updater;
         }
 
-        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        private async void Page_Loaded(object sender, EventArgs e)
         {
             await Task.Run(RefreshData);
         }
 
-        private void RefreshData()
+        private async void RefreshData()
         {
-            Application.Current.Dispatcher.Invoke(() => 
+            await Dispatcher.InvokeAsync(() => 
             {
                 UpdatesList.Children.Clear();
                 bool isFirstItem = true;

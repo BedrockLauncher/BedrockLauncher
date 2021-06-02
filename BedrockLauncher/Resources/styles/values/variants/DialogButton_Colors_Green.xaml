@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="DialogButton.Static.Foreground" Color="White"/>
+    <SolidColorBrush x:Key="DialogButton.Static.Background" Color="#FF008542"/>
+    <SolidColorBrush x:Key="DialogButton.Static.Border" Color="#FF008542"/>
+
+    <SolidColorBrush x:Key="DialogButton.MouseOver.Background" Color="#FF0DD166"/>
+    <SolidColorBrush x:Key="DialogButton.MouseOver.Border" Color="#FF0DD166"/>
+
+    <SolidColorBrush x:Key="DialogButton.Pressed.Background" Color="#FF006431"/>
+    <SolidColorBrush x:Key="DialogButton.Pressed.Border" Color="#FFFF"/>
+
+    <SolidColorBrush x:Key="DialogButton.Disabled.Background" Color="#FF006431"/>
+    <SolidColorBrush x:Key="DialogButton.Disabled.Border" Color="#FF006431"/>
+    <SolidColorBrush x:Key="DialogButton.Disabled.Foreground" Color="#FF838383"/>
+</ResourceDictionary>

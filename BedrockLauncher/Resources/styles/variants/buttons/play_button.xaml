@@ -1,11 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <ImageBrush x:Key="PlayButton.Static.Background" ImageSource="/BedrockLauncher;component/resources/images/ui/panels/MainPagePlayButton.png" Stretch="Uniform"/>
-    <ImageBrush x:Key="PlayButton.MouseOver.Background" ImageSource="/BedrockLauncher;component/resources/images/ui/panels/MainPagePlayButtonOver.png" Stretch="Uniform"/>
-    <ImageBrush x:Key="PlayButton.Pressed.Background" ImageSource="/BedrockLauncher;component/resources/images/ui/panels/MainPagePlayButtonPressed.png" Stretch="Uniform"/>
-    <ImageBrush x:Key="PlayButton.Focused.MouseOver.Background" ImageSource="/BedrockLauncher;component/resources/images/ui/panels/MainPagePlayButtonFocusOver.png" Stretch="Uniform"/>
-
     <Style x:Key="BigGreenButton" TargetType="{x:Type Button}">
         <Setter Property="FocusVisualStyle" Value="{DynamicResource BlankFocusVisual}"/>
         <Setter Property="FontSize" Value="26"/>
@@ -13,7 +8,7 @@
         <Setter Property="TextOptions.TextHintingMode" Value="Fixed"/>
         <Setter Property="Background" Value="{DynamicResource Button.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{x:Null}"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryText.Foreground}"/>
         <Setter Property="FontFamily" Value="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>

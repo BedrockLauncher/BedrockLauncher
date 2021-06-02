@@ -40,64 +40,68 @@ namespace BedrockLauncher.Pages.Play
             ConfigManager.ConfigStateChanged += ConfigManager_ConfigStateChanged;
         }
 
-        private void ConfigManager_ConfigStateChanged(object sender, EventArgs e)
+        private async void ConfigManager_ConfigStateChanged(object sender, EventArgs e)
         {
-            ReloadSkinPacks();
+            await Task.Run(() => ReloadSkinPacks());
         }
 
-        public void ReloadSkinPacks()
+        public async void ReloadSkinPacks()
         {
-            LoadedSkinPacks.Items.Clear();
-            SkinPacks.Clear();
-
-            var installation = ConfigManager.CurrentInstallation;
-
-            if (installation == null) return;
-
-            string InstallationPath = FilepathManager.GetInstallationsFolderPath(ConfigManager.CurrentProfile, installation.DirectoryName);
-            string normal_folder = FilepathManager.GetSkinPacksFolderPath(InstallationPath, false);
-            string dev_folder = FilepathManager.GetSkinPacksFolderPath(InstallationPath, true);
-
-            if (Directory.Exists(normal_folder)) AddPacks(normal_folder);
-            if (Directory.Exists(dev_folder)) AddPacks(dev_folder);
-
-            UpdateAddSkinButton();
-
-            void AddPacks(string _SourceFolder)
+            await this.Dispatcher.InvokeAsync(() =>
             {
-                var SourceFolder = new DirectoryInfo(_SourceFolder);
-                var FoundFolders = SourceFolder.GetDirectories();
-                foreach (var PossiblePack in FoundFolders)
+                LoadedSkinPacks.Items.Clear();
+                SkinPacks.Clear();
+
+                var installation = ConfigManager.CurrentInstallation;
+
+                if (installation == null) return;
+
+                string InstallationPath = FilepathManager.GetInstallationsFolderPath(ConfigManager.CurrentProfile, installation.DirectoryName);
+                string normal_folder = FilepathManager.GetSkinPacksFolderPath(InstallationPath, false);
+                string dev_folder = FilepathManager.GetSkinPacksFolderPath(InstallationPath, true);
+
+                if (Directory.Exists(normal_folder)) AddPacks(normal_folder);
+                if (Directory.Exists(dev_folder)) AddPacks(dev_folder);
+
+                UpdateAddSkinButton();
+
+                void AddPacks(string _SourceFolder)
                 {
-                    if (PossiblePack.GetFiles().ToList().Exists(x => x.Name == "manifest.json"))
+                    var SourceFolder = new DirectoryInfo(_SourceFolder);
+                    var FoundFolders = SourceFolder.GetDirectories();
+                    foreach (var PossiblePack in FoundFolders)
                     {
-                        var result = MCSkinPack.ValidatePack(PossiblePack.FullName);
-                        if (result != null)
+                        if (PossiblePack.GetFiles().ToList().Exists(x => x.Name == "manifest.json"))
                         {
-                            SkinPacks.Add(result);
-                            LoadedSkinPacks.Items.Add(result);
+                            var result = MCSkinPack.ValidatePack(PossiblePack.FullName);
+                            if (result != null)
+                            {
+                                SkinPacks.Add(result);
+                                LoadedSkinPacks.Items.Add(result);
+                            }
                         }
+
+
                     }
-
-
                 }
-            }
+            });
         }
 
-        private void ReloadSkins()
+        private async void ReloadSkins()
         {
-            if (!this.IsInitialized) return;
-            SkinPreviewList.Items.Clear();
-            var selected_item = LoadedSkinPacks.SelectedItem as MCSkinPack;
-            if (selected_item != null)
+            await this.Dispatcher.InvokeAsync(() =>
             {
-                foreach (var skin in selected_item.Content.skins)
+                if (!this.IsInitialized) return;
+                SkinPreviewList.Items.Clear();
+                var selected_item = LoadedSkinPacks.SelectedItem as MCSkinPack;
+                if (selected_item != null)
                 {
-                    SkinPreviewList.Items.Add(skin);
+                    foreach (var skin in selected_item.Content.skins)
+                    {
+                        SkinPreviewList.Items.Add(skin);
+                    }
                 }
-            }
-
-
+            });
         }
 
         private void UpdateAddSkinButton()
@@ -128,23 +132,29 @@ namespace BedrockLauncher.Pages.Play
 
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ReloadSkinPacks();
+            await Task.Run(() => ReloadSkinPacks());
         }
 
-        private void LoadedSkinPacks_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void LoadedSkinPacks_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ReloadSkins();
-            UpdateCurrentSkin();
-            UpdateAddSkinButton();
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                ReloadSkins();
+                UpdateCurrentSkin();
+                UpdateAddSkinButton();
+            });
         }
 
 
-        private void SkinPreviewList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void SkinPreviewList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UpdateCurrentSkin();
-            UpdateAddSkinButton();
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                UpdateCurrentSkin();
+                UpdateAddSkinButton();
+            });
         }
 
         private void AddSkinButton_Click(object sender, RoutedEventArgs e)

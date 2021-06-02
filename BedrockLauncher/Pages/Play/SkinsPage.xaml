@@ -22,7 +22,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="110"></RowDefinition>
         </Grid.RowDefinitions>
-        <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource Seperator.Background}" Grid.ColumnSpan="2">
+        <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource Seperator.Background}" Grid.ColumnSpan="3">
             <Grid Background="#FF303030">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -65,7 +65,7 @@
                 </Grid>
             </Grid>
         </Border>
-        <Grid Grid.RowSpan="2" Grid.Column="1" Grid.Row="1" Background="{DynamicResource Seperator.Background}"></Grid>
+
         <ListView Grid.RowSpan="3" 
                   Keyboard.PreviewKeyUp="LoadedSkinPacks_PreviewKeyUp" 
                   BorderThickness="0,0,0,0" 

@@ -186,6 +186,8 @@
     <v:String x:Key="NewsScreen_OfficialTabTitle">Official</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
 
+    <v:String x:Key="NewsScreen_SearchBar_Content">News title</v:String>
+
     <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
 

@@ -29,18 +29,12 @@ namespace BedrockLauncher.Pages.Play
         private ChangelogDownloader downloader;
 
 
-        public PatchNotesPage(ChangelogDownloader downloader)
+        public PatchNotesPage(ChangelogDownloader _downloader)
         {
             InitializeComponent();
-
-            this.downloader = downloader;
-            this.DataContext = this.downloader;
+            this.downloader = _downloader;
             this.downloader.RefreshableStateChanged += Downloader_RefreshableStateChanged;
-            this.downloader.UpdateList();
-
-            PatchNotesList.ItemsSource = downloader.PatchNotes;
-            var view = CollectionViewSource.GetDefaultView(PatchNotesList.ItemsSource) as CollectionView;
-            view.Filter = ConfigManager.Filter_PatchNotes;
+            this.DataContext = this.downloader;
         }
 
         private void Downloader_RefreshableStateChanged(object sender, EventArgs e)
@@ -53,13 +47,14 @@ namespace BedrockLauncher.Pages.Play
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            downloader.UpdateList();
+            await Task.Run(() => downloader.UpdateList());
         }
 
         private void RefreshList(object sender, RoutedEventArgs e)
         {
+
 
         }
 
@@ -87,6 +82,17 @@ namespace BedrockLauncher.Pages.Play
             string url = "https://feedback.minecraft.net/hc/en-us/sections/360001185332-Beta-Information-and-Changelogs";
             Process.Start(new ProcessStartInfo(url));
             e.Handled = true;
+        }
+
+        private async void Page_Initialized(object sender, EventArgs e)
+        {
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                this.downloader.UpdateList();
+                PatchNotesList.ItemsSource = downloader.PatchNotes;
+                var view = CollectionViewSource.GetDefaultView(PatchNotesList.ItemsSource) as CollectionView;
+                view.Filter = ConfigManager.Filter_PatchNotes;
+            });
         }
     }
 }

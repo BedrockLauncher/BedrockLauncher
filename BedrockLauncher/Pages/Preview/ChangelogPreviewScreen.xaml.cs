@@ -5,6 +5,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
@@ -24,10 +25,10 @@ namespace BedrockLauncher.Pages.Preview
         public ChangelogPreviewPage(string html, string header, string url)
         {
             InitializeComponent();
+
             HTML = html;
             Header.Text = header;
             URL = url;
-            LoadHTML();
         }
 
         private void Renderer_ImageLoad(object sender, TheArtOfDev.HtmlRenderer.WPF.RoutedEvenArgs<TheArtOfDev.HtmlRenderer.Core.Entities.HtmlImageLoadEventArgs> args)
@@ -65,9 +66,11 @@ namespace BedrockLauncher.Pages.Preview
 
         }
 
-        private void LoadHTML()
+        private async void LoadHTML()
         {
-            Renderer.Text = HTML;
+            await Dispatcher.InvokeAsync(() => {
+                Renderer.Text = HTML;
+            });
         }
 
         private void Renderer_IsBrowserInitializedChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -83,6 +86,11 @@ namespace BedrockLauncher.Pages.Preview
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Process.Start(new ProcessStartInfo(URL));
+        }
+
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            await Task.Run(() => LoadHTML());
         }
     }
 }

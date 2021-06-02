@@ -1,21 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:Installer">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <SolidColorBrush x:Key="RadioButton.Static.Border" Color="#FF707070"/>
-    <SolidColorBrush x:Key="RadioButton.MouseOver.Border" Color="#FFBCBCBC"/>
-    <SolidColorBrush x:Key="RadioButton.Disabled.Border" Color="#FF707070"/>
-    <SolidColorBrush x:Key="RadioButton.Pressed.Border" Color="#FF707070"/>
 
-    <SolidColorBrush x:Key="RadioButton.Static.Background" Color="#FF212121"/>
-    <SolidColorBrush x:Key="RadioButton.MouseOver.Background" Color="#FF212121"/>
-    <SolidColorBrush x:Key="RadioButton.Disabled.Background" Color="#FF212121"/>
-    <SolidColorBrush x:Key="RadioButton.Pressed.Background" Color="#FF212121"/>
-
-    <SolidColorBrush x:Key="RadioButton.MouseOver.Glyph" Color="LightGray"/>
-    <SolidColorBrush x:Key="RadioButton.Disabled.Glyph" Color="White"/>
-    <SolidColorBrush x:Key="RadioButton.Pressed.Glyph" Color="Gray"/>
-    <SolidColorBrush x:Key="RadioButton.Static.Glyph" Color="White"/>
     
     <Style TargetType="{x:Type RadioButton}">
         <Setter Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}"/>

@@ -3,9 +3,9 @@
                     xmlns:mdxam="clr-namespace:MdXaml;assembly=MdXaml">
 
     <Style x:Key="{x:Type TextBoxBase}" TargetType="{x:Type TextBoxBase}">
-        <Setter Property="Background" Value="{StaticResource TextBox.Static.Background}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
-        <Setter Property="Foreground" Value="{StaticResource TextBox.Static.Foreground}"/>
+        <Setter Property="Background" Value="{DynamicResource TextBox.Static.Background}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource TextBox.Static.Border}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextBox.Static.Foreground}"/>
         <Setter Property="FontFamily" Value="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
@@ -25,10 +25,10 @@
                             <Setter Property="Opacity" TargetName="border" Value="0.56"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource TextBox.MouseOver.Border}"/>
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="true">
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource TextBox.Focus.Border}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -44,6 +44,7 @@
             </MultiTrigger>
         </Style.Triggers>
     </Style>
+    
     <Style x:Key="{x:Type Hyperlink}" TargetType="{x:Type Hyperlink}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"/>
         <Setter Property="TextDecorations" Value="Underline"/>
@@ -59,6 +60,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    
     <Style TargetType="{x:Type RichTextBox}">
         <Style.Resources>
             <Style x:Key="{x:Type FlowDocument}" TargetType="{x:Type FlowDocument}">

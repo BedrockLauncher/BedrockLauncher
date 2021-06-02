@@ -75,7 +75,7 @@
     </Page.Resources>
     <Grid ClipToBounds="True">
         <Grid.RowDefinitions>
-            <RowDefinition Height="110"></RowDefinition>
+            <RowDefinition Height="120"></RowDefinition>
             <RowDefinition Height="1"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>

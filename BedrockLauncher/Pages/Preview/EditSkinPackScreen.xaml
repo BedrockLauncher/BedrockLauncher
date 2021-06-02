@@ -51,7 +51,7 @@
                     <TextBlock Margin="0,18,0,5" Text="{DynamicResource EditSkinPackScreen_DescriptionSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                     <TextBox Text="{Binding Path=HeaderDescription, ElementName=Page}" Height="32"  HorizontalAlignment="Stretch"  x:Name="DescriptionTextbox"></TextBox>
                     <TextBlock Margin="0,18,0,5" Text="{DynamicResource EditSkinPackScreen_HeaderUUIDSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-                    <Border Height="32" Background="#FF131313" HorizontalAlignment="Stretch" CornerRadius="4">
+                    <ContentControl Style="{DynamicResource TextboxLikeFrame}" Height="32" Background="#FF131313" HorizontalAlignment="Stretch">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
@@ -59,10 +59,10 @@
                             </Grid.ColumnDefinitions>
                             <TextBox Text="{Binding Path=HeaderUUID, ElementName=Page}" x:Name="HeaderUUIDTextbox"></TextBox>
                             <Button Grid.Column="1" x:Name="HeaderUUIDRefreshButton" Click="HeaderUUIDRefreshButton_Click" HorizontalAlignment="Center" Style="{DynamicResource TextBoxButton}">
-                                <TextBlock FontWeight="Regular" FontFamily="/BedrockLauncher;component/Resources/fonts/#Wingdings 3" FontSize="16" Text="Q" Margin="0" Padding="5"></TextBlock>
+                                <TextBlock FontWeight="Regular" FontFamily="/BedrockLauncher;component/Resources/fonts/#Wingdings 3" FontSize="16" Text="Q"></TextBlock>
                             </Button>
                         </Grid>
-                    </Border>
+                    </ContentControl>
                     <TextBlock Margin="0,18,0,5" Text="{DynamicResource EditSkinPackScreen_HeaderVersionSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                     <StackPanel Orientation="Horizontal">
                         <TextBox Text="{Binding Path=HeaderVersionMajor, ElementName=Page}" Height="32" Width="50" Margin="0,0,5,0" x:Name="HeaderVersionMajorTextbox" HorizontalAlignment="Left"></TextBox>
@@ -100,7 +100,7 @@
                                     <TextBlock Margin="0,18,0,5" Text="{DynamicResource EditSkinPackScreen_ModulesTypeSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                                     <TextBox Text="{Binding Path=ModuleType, ElementName=Page}" IsEnabled="False" Height="32" x:Name="ModuleNameTextbox" HorizontalAlignment="Stretch"></TextBox>
                                     <TextBlock Margin="0,18,0,5" Text="{DynamicResource EditSkinPackScreen_ModulesUUIDSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-                                    <Border Height="32" Background="#FF131313" HorizontalAlignment="Stretch" CornerRadius="4">
+                                    <ContentControl Style="{DynamicResource TextboxLikeFrame}" Height="32" Background="#FF131313" HorizontalAlignment="Stretch">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition></ColumnDefinition>
@@ -108,10 +108,10 @@
                                             </Grid.ColumnDefinitions>
                                             <TextBox Text="{Binding Path=ModuleUUID, ElementName=Page}" Height="32" x:Name="ModuleUUIDTextbox" HorizontalAlignment="Stretch"></TextBox>
                                             <Button Grid.Column="1" x:Name="ModuleUUIDRefreshButton" Click="ModuleUUIDRefreshButton_Click" HorizontalAlignment="Center" Style="{StaticResource TextBoxButton}">
-                                                <TextBlock FontWeight="Regular" FontFamily="/BedrockLauncher;component/Resources/fonts/#Wingdings 3" FontSize="16" Text="Q" Margin="0" Padding="5"></TextBlock>
+                                                <TextBlock FontWeight="Regular" FontFamily="/BedrockLauncher;component/Resources/fonts/#Wingdings 3" FontSize="16" Text="Q"></TextBlock>
                                             </Button>
                                         </Grid>
-                                    </Border>
+                                    </ContentControl>
                                     <TextBlock Margin="0,18,0,5" Text="{DynamicResource EditSkinPackScreen_ModulesVersionSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBox Text="{Binding Path=ModuleVersionMajor, ElementName=Page}" Height="32" Width="50" Margin="0,0,5,0" x:Name="ModuleVersionMajorTextbox" HorizontalAlignment="Left"></TextBox>

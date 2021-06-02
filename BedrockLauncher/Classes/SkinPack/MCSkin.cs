@@ -12,7 +12,7 @@ using BedrockLauncher.Methods;
 
 namespace BedrockLauncher.Classes.SkinPack
 {
-    public class MCSkin
+    public class MCSkin : ICloneable
     {
         public string geometry { get; set; }
         public string texture { get; set; }
@@ -113,6 +113,11 @@ namespace BedrockLauncher.Classes.SkinPack
 
                 return bitmapImage;
             }
+        }
+
+        public object Clone()
+        {
+            return MemberwiseClone();
         }
 
         #endregion

@@ -37,9 +37,6 @@ using BedrockLauncher.Pages.Community;
 
 namespace BedrockLauncher
 {
-    //TODO: Improve backup overwrite response (to avoid having to click it forever)
-    //TODO: Add translation support to the remaining entries in GameManager.cs
-    //TODO: (Later On) Better Animations
     //TODO: (Later On) Community Content / Personal Donations Section
 
     public partial class MainWindow : Window
@@ -111,9 +108,9 @@ namespace BedrockLauncher
             await Task.Run(() => Components.PageAnimator.FrameSwipe(MainWindowFrame, content, direction));
         }
 
-        public void ResetButtonManager(string buttonName)
+        public async void ResetButtonManager(string buttonName)
         {
-            this.Dispatcher.Invoke(() =>
+            await this.Dispatcher.InvokeAsync(() =>
             {
                 // just all buttons list
                 // ya i know this is really bad, i need to learn mvvm instead of doing this shit
@@ -145,9 +142,9 @@ namespace BedrockLauncher
                 Task.Run(() => ButtonManager_Base(name));
             });
         }
-        public void ButtonManager_Base(string senderName)
+        public async void ButtonManager_Base(string senderName)
         {
-            this.Dispatcher.Invoke(() =>
+            await this.Dispatcher.InvokeAsync(() =>
             {
                 ResetButtonManager(senderName);
 
@@ -160,83 +157,114 @@ namespace BedrockLauncher
             });
 
         }
-        public void NavigateToNewsPage(bool animate = true)
+        public async void NavigateToNewsPage(bool animate = true)
         {
-            LauncherModel.Default.UpdatePageIndex(0);
-            NewsButton.Button.IsChecked = true;
-            Task.Run(() => Navigate(newsScreenPage));
-        }
-
-        public void NavigateToMainPage(bool animate = true)
-        {
-            LauncherModel.Default.UpdatePageIndex(1);
-            BedrockEditionButton.Button.IsChecked = true;
-            Task.Run(() => Navigate(mainPage));
-        }
-
-        public void NavigateToCommunityScreen(bool animate = true)
-        {
-            LauncherModel.Default.UpdatePageIndex(2);
-            CommunityButton.Button.IsChecked = true;
-            Task.Run(() => Navigate(communityPage));
-
-        }
-        public void NavigateToSettings(bool animate = true)
-        {
-            LauncherModel.Default.UpdatePageIndex(3);
-            SettingsButton.Button.IsChecked = true;
-            Task.Run(() => Navigate(settingsScreenPage));
-        }
-
-        public void NavigateToJavaLauncher()
-        {
-            Action action = new Action(() =>
+            await this.Dispatcher.InvokeAsync(() =>
             {
-                try
-                {
-                    // Trying to find and open Java launcher shortcut
-                    string JavaPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu) + @"\Programs\Minecraft Launcher\Minecraft Launcher";
-                    Process.Start(JavaPath);
-                    Application.Current.MainWindow.Close();
-                }
-                catch
-                {
-                    mainPage.NavigateToPlayScreen();
-                    ErrorScreenShow.errormsg("CantFindJavaLauncher");
-                }
+                LauncherModel.Default.UpdatePageIndex(0);
+                NewsButton.Button.IsChecked = true;
+                Task.Run(() => Navigate(newsScreenPage));
             });
 
-            NavigateToOtherLauncher(action);
         }
-        public void NavigateToExternalLauncher()
+
+        public async void NavigateToMainPage(bool animate = true)
         {
-            Action action = new Action(() =>
+            await this.Dispatcher.InvokeAsync(() =>
             {
-                try
-                {
-                    Process.Start(Properties.LauncherSettings.Default.ExternalLauncherPath);
-                    Application.Current.MainWindow.Close();
-                }
-                catch
-                {
-                    mainPage.NavigateToPlayScreen();
-                    ErrorScreenShow.errormsg("CantFindExternalLauncher");
-                }
+                LauncherModel.Default.UpdatePageIndex(1);
+                BedrockEditionButton.Button.IsChecked = true;
+                Task.Run(() => Navigate(mainPage));
             });
 
-            NavigateToOtherLauncher(action);
+        }
+
+        public async void NavigateToCommunityScreen(bool animate = true)
+        {
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                LauncherModel.Default.UpdatePageIndex(2);
+                CommunityButton.Button.IsChecked = true;
+                Task.Run(() => Navigate(communityPage));
+            });
+
+
+        }
+        public async void NavigateToSettings(bool animate = true)
+        {
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                LauncherModel.Default.UpdatePageIndex(3);
+                SettingsButton.Button.IsChecked = true;
+                Task.Run(() => Navigate(settingsScreenPage));
+            });
+
+        }
+
+        public async void NavigateToJavaLauncher()
+        {
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                Action action = new Action(() =>
+                {
+                    try
+                    {
+                        // Trying to find and open Java launcher shortcut
+                        string JavaPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu) + @"\Programs\Minecraft Launcher\Minecraft Launcher";
+                        Process.Start(JavaPath);
+                        Application.Current.MainWindow.Close();
+                    }
+                    catch
+                    {
+                        mainPage.NavigateToPlayScreen();
+                        ErrorScreenShow.errormsg("CantFindJavaLauncher");
+                    }
+                });
+
+                NavigateToOtherLauncher(action);
+            });
+        }
+        public async void NavigateToExternalLauncher()
+        {
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                Action action = new Action(() =>
+                {
+                    try
+                    {
+                        Process.Start(Properties.LauncherSettings.Default.ExternalLauncherPath);
+                        Application.Current.MainWindow.Close();
+                    }
+                    catch
+                    {
+                        mainPage.NavigateToPlayScreen();
+                        ErrorScreenShow.errormsg("CantFindExternalLauncher");
+                    }
+                });
+
+                NavigateToOtherLauncher(action);
+            });
+
         }
         public async void NavigateToOtherLauncher(Action action)
         {
-            if (Properties.LauncherSettings.Default.CloseLauncherOnSwitch && ConfigManager.GameManager.GameProcess != null)
+            await this.Dispatcher.InvokeAsync(() =>
             {
-                await Task.Run(() => LauncherModel.Default.ShowPrompt_ClosingWithGameStillOpened(action));
-            }
-            else action.Invoke();
+                if (Properties.LauncherSettings.Default.CloseLauncherOnSwitch && ConfigManager.GameManager.GameProcess != null)
+                {
+                    Task.Run(() => LauncherModel.Default.ShowPrompt_ClosingWithGameStillOpened(action));
+                }
+                else action.Invoke();
+            });
+
         }
-        public void NavigateToNewProfilePage()
+        public async void NavigateToNewProfilePage()
         {
-            LauncherModel.Default.SetOverlayFrame(new AddProfilePage());
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                LauncherModel.Default.SetOverlayFrame(new AddProfilePage());
+            });
+
         }
 
         #endregion

@@ -129,7 +129,7 @@ namespace BedrockLauncher.UpdateProcessor
             security.Add(ticketsToken);
             ticketsToken.Add(Xml.CreateAttribute(NAMESPACE_WSSECURITY_UTILITY + "id", "ClientMSA"));
 
-            if (UserToken.Length > 0)
+            if (UserToken != null && UserToken.Length > 0)
             {
                 if (useMSAToken)
                 {

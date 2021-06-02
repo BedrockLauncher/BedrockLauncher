@@ -9,7 +9,7 @@
       xmlns:c="clr-namespace:BedrockLauncher.Classes"
       mc:Ignorable="d" 
       d:DesignHeight="525" d:DesignWidth="828"
-      Title="PatchNotesPage" x:Name="Page" Loaded="Page_Loaded"  Background="#FF282828">
+      Title="PatchNotesPage" x:Name="Page" Loaded="Page_Loaded"  Background="#FF282828" Initialized="Page_Initialized">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"></RowDefinition>

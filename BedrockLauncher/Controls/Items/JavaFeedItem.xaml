@@ -13,7 +13,7 @@
              Selected="FeedItemEntry_Selected"
              Unselected="FeedItemEntry_Selected"
              VerticalContentAlignment="Stretch" FocusVisualStyle="{DynamicResource BlankFocusVisual}"
-             Style="{DynamicResource EmptyListViewItem}"
+             Style="{DynamicResource EmptyStrechedListViewItem}"
              d:DesignHeight="400" d:DesignWidth="400" KeyUp="FeedItemEntry_KeyUp">
     <ListViewItem.Resources>
         <wincontrols:BooleanToVisibilityConverter x:Key="BoolToVis"></wincontrols:BooleanToVisibilityConverter>

@@ -18,6 +18,8 @@ namespace BedrockLauncher.Pages.Preview
 
         private MCSkin skin;
 
+        private MCSkin temp_skin;
+
         private int skin_index = -1;
 
         private bool isEditMode = false;
@@ -27,41 +29,44 @@ namespace BedrockLauncher.Pages.Preview
         public EditSkinScreen()
         {
             InitializeComponent();
-            Init(false);
+
+            isEditMode = false;
         }
 
         public EditSkinScreen(MCSkinPack _skinPack)
         {
+            InitializeComponent();
+
             skinPack = _skinPack;
             skin = new MCSkin(_skinPack.Directory);
-
-            InitializeComponent();
-            Init(false);
-            InitSkinFormFeilds();
+            temp_skin = (MCSkin)skin.Clone();
+            isEditMode = false;
         }
 
 
         public EditSkinScreen(MCSkinPack _skinPack, MCSkin _skin, int index)
         {
+            InitializeComponent();
+
             skinPack = _skinPack;
             skin = _skin;
+            temp_skin = (MCSkin)skin.Clone();
             skin_index = index;
 
-            InitializeComponent();
-            Init(true);
-            InitEditSkinFormFeilds();
+            isEditMode = true;
         }
 
-        private void Init(bool _isEditMode = true)
+        private void Init()
         {
-            isEditMode = _isEditMode;
             if (isEditMode)
             {
+                InitEditSkinFormFeilds();
                 Header.SetResourceReference(TextBlock.TextProperty, "EditSkinScreen_Title");
                 CreateButton.SetResourceReference(Button.ContentProperty, "GeneralText_Save");
             }
             else
             {
+                InitSkinFormFeilds();
                 Header.SetResourceReference(TextBlock.TextProperty, "EditSkinScreen_AltTitle");
                 CreateButton.SetResourceReference(Button.ContentProperty, "GeneralText_Add");
             }
@@ -138,14 +143,14 @@ namespace BedrockLauncher.Pages.Preview
 
         private void TextureCombobox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            skin.texture = TextureCombobox.Text;
-            SkinPreview.UpdateSkin(skin);
+            temp_skin.texture = TextureCombobox.Text;
+            SkinPreview.UpdateSkin(temp_skin);
         }
 
         private void GeometryTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            skin.geometry = GeometryTextBox.Text;
-            SkinPreview.UpdateSkin(skin);
+            temp_skin.geometry = GeometryTextBox.Text;
+            SkinPreview.UpdateSkin(temp_skin);
         }
 
         #endregion
@@ -159,8 +164,10 @@ namespace BedrockLauncher.Pages.Preview
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            skin.localization_name = LocalizationTextBox.Text;
-            skin.type = TypeTextBox.Text;
+            temp_skin.localization_name = LocalizationTextBox.Text;
+            temp_skin.type = TypeTextBox.Text;
+
+            skin = temp_skin;
 
             if (isEditMode) skinPack.EditSkin(skin_index, skin);
             else skinPack.AddSkin(skin);
@@ -204,6 +211,9 @@ namespace BedrockLauncher.Pages.Preview
 
         }
 
-
+        private void Page_Initialized(object sender, RoutedEventArgs e)
+        {
+            Init();
+        }
     }
 }
