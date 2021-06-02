@@ -25,6 +25,14 @@
         </PathGeometry.Figures>
     </PathGeometry>
 
+    <DrawingImage x:Key="SearchIcon">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V24 H24 V0 H0 Z">
+                <GeometryDrawing Brush="{DynamicResource OveralElements.Background}" Geometry="F0 M24,24z M0,0z M15.853,16.56C14.17,18.077 11.942,19 9.5,19 4.257,19 0,14.743 0,9.5 0,4.257 4.257,0 9.5,0 14.743,0 19,4.257 19,9.5 19,11.942 18.077,14.17 16.56,15.853L24,23.293 23.293,24 15.853,16.56z M9.5,0.999999999999998C14.191,0.999999999999998 18,4.809 18,9.5 18,14.191 14.191,18 9.5,18 4.809,18 1,14.191 1,9.5 1,4.809 4.809,1 9.5,1z" />
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
     <DrawingImage x:Key="PlusIcon">
         <DrawingImage.Drawing>
             <DrawingGroup ClipGeometry="M0,0 V512 H512 V0 H0 Z">
