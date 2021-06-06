@@ -37,21 +37,26 @@
 
                 <Grid Grid.Column="0" Margin="10,0">
                     <StackPanel>
-                        <Label Foreground="White" Content="{DynamicResource GeneralSubtitles_Versions}" Margin="0,10,0,0" FontWeight="Bold" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+                        <Label Foreground="White" Content="{DynamicResource GeneralSubtitles_Versions}" Margin="0,10,0,0" FontWeight="Bold" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
                         <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="Auto" Orientation="Horizontal" Margin="0,-10,0,0">
-                            <CheckBox Click="RefreshList" IsChecked="{Binding ShowReleases, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Releases}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
-                            <CheckBox Click="RefreshList" IsChecked="{Binding ShowBetas, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Betas}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
+                            <CheckBox Click="RefreshList" IsChecked="{Binding ShowReleases, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Releases}" Foreground="#FFCCCCCC" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
+                            <CheckBox Click="RefreshList" IsChecked="{Binding ShowBetas, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Betas}" Foreground="#FFCCCCCC" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
             </Grid>
         </Border>
-        <ListView Grid.Row="1" x:Name="PatchNotesList" Keyboard.PreviewKeyUp="PatchNotesList_KeyUp" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ItemTemplate="{StaticResource PatchNotesItemTemplate}">
+        <ListView Grid.Row="1" x:Name="PatchNotesList" Keyboard.PreviewKeyUp="PatchNotesList_KeyUp" ItemContainerStyle="{DynamicResource CardListViewItem}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center" MaxWidth="{Binding ElementName=PatchNotesList, Path=ActualWidth}"></WrapPanel>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="{x:Type c:MCPatchNotesItem}">
+                    <i:PatchNotesItem DataContext="{Binding .}"></i:PatchNotesItem>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </Grid>
 </Page>

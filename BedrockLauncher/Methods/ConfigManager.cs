@@ -79,9 +79,15 @@ namespace BedrockLauncher.Methods
 
         #region Init
 
-        public static void Init(bool SkipVersions = false)
+        public static void Reload()
         {
-            if (!SkipVersions) LoadVersions();
+            LoadProfiles();
+            LoadInstallations();
+        }
+
+        public static void Init()
+        {
+            LoadVersions();
             LoadProfiles();
             LoadInstallations();
         }
@@ -114,7 +120,7 @@ namespace BedrockLauncher.Methods
         {
             ViewModels.LauncherModel.MainThread.Dispatcher.Invoke((Func<Task>)(async () =>
             {
-                await ConfigManager.Versions.UpdateVersions();
+                await GameManager.VersionDownloader.UpdateVersions(Versions);
             }));
 
         }
@@ -155,7 +161,7 @@ namespace BedrockLauncher.Methods
         {
             string json = JsonConvert.SerializeObject(CleanProfiles(), Formatting.Indented);
             File.WriteAllText(FilepathManager.GetProfilesFilePath(), json);
-            Init(true);
+            Reload();
         }
         public static bool CreateProfile(string profile)
         {

@@ -39,7 +39,7 @@ namespace BedrockLauncher.Pages.FirstLaunch
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.Init();
+            ConfigManager.Reload();
             ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
             pageSwitcher.MoveToPage(3);
         }
@@ -70,7 +70,7 @@ namespace BedrockLauncher.Pages.FirstLaunch
 
         private void BrowseForDirectory()
         {
-            Controls.FolderSelectDialog dialog = new Controls.FolderSelectDialog()
+            BL_Core.Controls.FolderSelectDialog dialog = new BL_Core.Controls.FolderSelectDialog()
             {
                 InitialDirectory = StorageDirectoryTextBox.Text
             };

@@ -18,7 +18,7 @@ using Windows.System;
 using BedrockLauncher.Interfaces;
 using BedrockLauncher.Classes;
 using BedrockLauncher.Classes.SkinPack;
-using BedrockLauncher.Pages.Common;
+using BL_Core.Pages.Common;
 using BedrockLauncher.Downloaders;
 using BL_Core.Components;
 using BL_Core.Methods;
@@ -38,7 +38,7 @@ namespace BedrockLauncher.Methods
         #region Threading Tasks
 
         public CancellationTokenSource cancelSource = new CancellationTokenSource();
-        private readonly VersionDownloader _userVersionDownloader = new VersionDownloader();
+        public readonly VersionDownloader VersionDownloader = new VersionDownloader();
         private readonly Task _userVersionDownloaderLoginTask;
         private volatile int _userVersionDownloaderLoginTaskStarted;
 
@@ -112,7 +112,7 @@ namespace BedrockLauncher.Methods
         {
             _userVersionDownloaderLoginTask = new Task(() =>
             {
-                _userVersionDownloader.EnableUserAuthorization();
+                VersionDownloader.EnableUserAuthorization();
             });
         }
 
@@ -226,7 +226,7 @@ namespace BedrockLauncher.Methods
                 try
                 {
                     string dlPath = "Minecraft-" + v.Name + ".Appx";
-                    VersionDownloader downloader = _userVersionDownloader;
+                    VersionDownloader downloader = VersionDownloader;
                     if (v.IsBeta) await BetaAuthenticate();
                     await DownloadVersion(v, downloader, dlPath, cancelSource);
                     await ExtractPackage(v, dlPath, cancelSource);

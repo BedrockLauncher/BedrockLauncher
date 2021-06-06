@@ -28,7 +28,7 @@
 
                 <Grid Grid.Row="1" Grid.Column="0" Margin="10,0,10,10" VerticalAlignment="Center">
                     <StackPanel>
-                        <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_Search}" Margin="0,0,0,2" FontWeight="Bold" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+                        <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_Search}" Margin="0,0,0,2" FontWeight="Bold" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
                         <ContentControl Style="{DynamicResource TextboxLikeFrame}" Height="30">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -43,20 +43,26 @@
                 </Grid>
                 <Separator Grid.Row="1" Grid.Column="1" Width="1" Height="35" VerticalAlignment="Center"/>
                 <StackPanel Grid.Row="1" Grid.Column="2" Margin="5,0" VerticalAlignment="Center">
-                    <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_Categories}" Margin="5,2,0,10" FontWeight="Bold" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+                    <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_Categories}" Margin="5,2,0,10" FontWeight="Bold" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
                     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Orientation="Horizontal" Margin="0,0,10,10">
-                        <CheckBox Checked="CheckBox_CheckChanged" Unchecked="CheckBox_CheckChanged" IsChecked="{Binding ShowJavaContent}" Content="{DynamicResource ResourceKey=NewsScreen_JavaNDungeons_JavaCheckbox}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
-                        <CheckBox Checked="CheckBox_CheckChanged" Unchecked="CheckBox_CheckChanged" IsChecked="{Binding ShowDungeonsContent}" Content="{DynamicResource ResourceKey=NewsScreen_JavaNDungeons_DungeonsCheckbox}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
+                        <CheckBox Checked="CheckBox_CheckChanged" Unchecked="CheckBox_CheckChanged" IsChecked="{Binding ShowJavaContent}" Content="{DynamicResource ResourceKey=NewsScreen_JavaNDungeons_JavaCheckbox}" Foreground="White" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
+                        <CheckBox Checked="CheckBox_CheckChanged" Unchecked="CheckBox_CheckChanged" IsChecked="{Binding ShowDungeonsContent}" Content="{DynamicResource ResourceKey=NewsScreen_JavaNDungeons_DungeonsCheckbox}" Foreground="White" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
                     </StackPanel>
                 </StackPanel>
             </Grid>
         </Border>
-        <ListView x:Name="OfficalNewsFeed" ItemsSource="{Binding FeedItems}" Grid.Row="1" Keyboard.PreviewKeyUp="OfficalNewsFeed_KeyUp" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"  ItemContainerStyle="{DynamicResource StrechedListViewItem}">
+        <ListView x:Name="OfficalNewsFeed" ItemsSource="{Binding FeedItems}" Grid.Row="1" Keyboard.PreviewKeyUp="OfficalNewsFeed_KeyUp" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Top" ItemContainerStyle="{DynamicResource CardListViewItem}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel HorizontalAlignment="Center" MaxWidth="{Binding ElementName=OfficalNewsFeed, Path=ActualWidth}"></WrapPanel>
+                    <WrapPanel IsItemsHost="True" MaxWidth="{Binding ElementName=OfficalNewsFeed, Path=ActualWidth}"
+                        HorizontalAlignment="Center"/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="{x:Type c:MCNetFeedItemJSON}">
+                    <i:JavaFeedItem DataContext="{Binding .}"></i:JavaFeedItem>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </Grid>
 </Page>

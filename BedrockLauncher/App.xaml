@@ -9,25 +9,25 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <bl:LanguageDictionary Source="/BL_Core;component/Resources/lang/lang.en-US.xaml"></bl:LanguageDictionary>
-                <ResourceDictionary Source="Resources/styles/values/base_values.xaml"/>
-                <ResourceDictionary Source="Resources/styles/icons.xaml"/>
-                <ResourceDictionary Source="Resources/styles/misc.xaml"/>
-                <ResourceDictionary Source="Resources/styles/contextmenu.xaml"/>
-                <ResourceDictionary Source="Resources/styles/button.xaml"/>
-                <ResourceDictionary Source="Resources/styles/checkbox.xaml"/>
-                <ResourceDictionary Source="Resources/styles/combobox.xaml"/>
-                <ResourceDictionary Source="Resources/styles/menuitems.xaml"/>
-                <ResourceDictionary Source="Resources/styles/listview.xaml"/>
-                <ResourceDictionary Source="Resources/styles/textbox.xaml"/>
-                <ResourceDictionary Source="Resources/styles/textblock.xaml"/>
-                <ResourceDictionary Source="Resources/styles/frame.xaml"/>
-                <ResourceDictionary Source="Resources/styles/scrollbars.xaml"/>
-                <ResourceDictionary Source="Resources/styles/tabbar.xaml"/>
-                <ResourceDictionary Source="Resources/styles/expander.xaml"/>
-                <ResourceDictionary Source="Resources/styles/richtextbox.xaml"/>
-                <ResourceDictionary Source="Resources/styles/radiobutton.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/values/base_values.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/icons.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/misc.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/contextmenu.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/button.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/checkbox.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/combobox.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/menuitems.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/listview.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/textbox.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/textblock.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/frame.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/scrollbars.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/tabbar.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/expander.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/richtextbox.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/radiobutton.xaml"/>
                 <ResourceDictionary Source="Resources/styles/item_templates.xaml"/>
-                <ResourceDictionary Source="Resources/styles/focus_visuals.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/focus_visuals.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

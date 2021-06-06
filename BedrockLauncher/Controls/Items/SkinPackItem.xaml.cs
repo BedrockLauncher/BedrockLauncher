@@ -20,7 +20,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Path = System.IO.Path;
 using BedrockLauncher.Pages.Preview;
-using BedrockLauncher.Pages.Common;
+using BL_Core.Pages.Common;
 
 namespace BedrockLauncher.Controls.Items
 {

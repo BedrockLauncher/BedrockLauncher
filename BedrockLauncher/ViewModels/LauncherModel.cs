@@ -5,13 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using BedrockLauncher.Events;
 using BedrockLauncher.Classes;
-using BedrockLauncher.Components;
 using System.Windows;
 using System.Windows.Input;
 using BedrockLauncher.Methods;
 using System.Windows.Controls;
 using BedrockLauncher.Pages;
-using BedrockLauncher.Pages.Common;
 using BedrockLauncher.Pages.Community;
 using BedrockLauncher.Pages.Settings;
 using BedrockLauncher.Pages.News;
@@ -23,11 +21,12 @@ using BedrockLauncher.Pages.Preview;
 using BedrockLauncher.Pages.FirstLaunch;
 using System.Windows.Media.Animation;
 using BL_Core.Components;
+using BL_Core.Pages.Common;
 using BedrockLauncher.Downloaders;
 
 namespace BedrockLauncher.ViewModels
 {
-    public class LauncherModel : NotifyPropertyChangedBase
+    public class LauncherModel : NotifyPropertyChangedBase, IDialogHander
     {
         #region Init
 
@@ -48,6 +47,9 @@ namespace BedrockLauncher.ViewModels
             if (isFirstLaunch) SetOverlayFrame_Strict(new WelcomePage());
             MainThread.NavigateToMainPage();
             ProgressBarStateChanged += ViewModel_ProgressBarStateChanged;
+
+            ErrorScreenShow.SetHandler(this);
+            DialogPrompt.SetHandler(this);
         }
 
         #endregion

@@ -12,15 +12,19 @@ namespace BL_Core.Components
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            try
+            if (Uri.TryCreate(value.ToString(), UriKind.Absolute, out Uri result))
             {
-                var result  = new BitmapImage(new Uri(value.ToString()));
-                return result;
+                try
+                {
+                    var img = new BitmapImage(result);
+                    return img;
+                }
+                catch
+                {
+                    return null;
+                }
             }
-            catch
-            {
-                return null;
-            }
+            else return null;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

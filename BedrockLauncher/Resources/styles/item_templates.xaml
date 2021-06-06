@@ -73,7 +73,5 @@
         <i:InstallationSelectorItem DataContext="{Binding}"></i:InstallationSelectorItem>
     </DataTemplate>
 
-    <DataTemplate x:Key="PatchNotesItemTemplate" DataType="{x:Type classes:MCPatchNotesItem}">
-        <i:PatchNotesItem DataContext="{Binding}"></i:PatchNotesItem>
-    </DataTemplate>
+
 </ResourceDictionary>

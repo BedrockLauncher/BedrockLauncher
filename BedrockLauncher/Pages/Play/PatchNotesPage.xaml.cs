@@ -49,7 +49,10 @@ namespace BedrockLauncher.Pages.Play
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            await Task.Run(() => downloader.UpdateList());
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                downloader.UpdateList();
+            });
         }
 
         private void RefreshList(object sender, RoutedEventArgs e)

@@ -60,7 +60,7 @@ namespace BedrockLauncher.Pages.News
                 }
             }
 
-            public ObservableCollection<JavaFeedItem> FeedItems { get; set; } = new ObservableCollection<JavaFeedItem>();
+            public ObservableCollection<MCNetFeedItemJSON> FeedItems { get; set; } = new ObservableCollection<MCNetFeedItemJSON>();
 
             public void UpdateSource()
             {
@@ -112,7 +112,7 @@ namespace BedrockLauncher.Pages.News
             await Dispatcher.InvokeAsync(() => {
                 foreach (MCNetFeedItemJSON item in news.entries)
                 {
-                    if (item.newsType != null && item.newsType.Contains("News page")) (this.DataContext as Java_N_DungeonsContext).FeedItems.Add(new JavaFeedItem(item));
+                    if (item.newsType != null && item.newsType.Contains("News page")) (this.DataContext as Java_N_DungeonsContext).FeedItems.Add(item);
                 }
             });
         }

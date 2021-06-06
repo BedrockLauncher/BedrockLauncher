@@ -32,7 +32,7 @@ using BedrockLauncher.Pages.Settings;
 using BedrockLauncher.Pages.Play;
 using BedrockLauncher.Pages.News;
 using BedrockLauncher.Pages.Preview;
-using BedrockLauncher.Pages.Common;
+using BL_Core.Pages.Common;
 using BedrockLauncher.Pages.Community;
 
 namespace BedrockLauncher
@@ -45,6 +45,7 @@ namespace BedrockLauncher
         private SettingsTabs settingsScreenPage = new SettingsTabs();
         private NewsScreenTabs newsScreenPage = new NewsScreenTabs(ViewModels.LauncherModel.Updater);
         private CommunityPage communityPage = new CommunityPage();
+        private Dungeons.Pages.GameTabs dungeonsPage = new Dungeons.Pages.GameTabs();
 
         private NoContentPage noContentPage = new NoContentPage();
 
@@ -105,7 +106,7 @@ namespace BedrockLauncher
             if (CurrentPageIndex > LastPageIndex) direction = ExpandDirection.Down;
             else direction = ExpandDirection.Up;
 
-            await Task.Run(() => Components.PageAnimator.FrameSwipe(MainWindowFrame, content, direction));
+            await Task.Run(() => BL_Core.Components.PageAnimator.FrameSwipe(MainWindowFrame, content, direction));
         }
 
         public async void ResetButtonManager(string buttonName)
@@ -120,6 +121,7 @@ namespace BedrockLauncher
                 CommunityButton.Button,
                 NewsButton.Button,
                 BedrockEditionButton.Button,
+                DungeonsButton.Button,
                 JavaEditionButton.Button,
                 SettingsButton.Button,
             };
@@ -149,6 +151,7 @@ namespace BedrockLauncher
                 ResetButtonManager(senderName);
 
                 if (senderName == BedrockEditionButton.Name) NavigateToMainPage();
+                else if (senderName == DungeonsButton.Name) NavigateToDungeons();
                 else if (senderName == NewsButton.Name) NavigateToNewsPage();
                 else if (senderName == JavaEditionButton.Name) NavigateToJavaLauncher();
                 else if (senderName == ExternalLauncherButton.Name) NavigateToExternalLauncher();
@@ -179,27 +182,38 @@ namespace BedrockLauncher
 
         }
 
-        public async void NavigateToCommunityScreen(bool animate = true)
+        public async void NavigateToDungeons(bool animate = true)
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
                 LauncherModel.Default.UpdatePageIndex(2);
+                DungeonsButton.Button.IsChecked = true;
+                Task.Run(() => Navigate(dungeonsPage));
+            });
+
+        }
+
+        public async void NavigateToCommunityScreen(bool animate = true)
+        {
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                LauncherModel.Default.UpdatePageIndex(3);
                 CommunityButton.Button.IsChecked = true;
                 Task.Run(() => Navigate(communityPage));
             });
-
-
         }
         public async void NavigateToSettings(bool animate = true)
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
-                LauncherModel.Default.UpdatePageIndex(3);
+                LauncherModel.Default.UpdatePageIndex(4);
                 SettingsButton.Button.IsChecked = true;
                 Task.Run(() => Navigate(settingsScreenPage));
             });
 
         }
+
+
 
         public async void NavigateToJavaLauncher()
         {

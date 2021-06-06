@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using BedrockLauncher.Classes;
 using BedrockLauncher.Methods;
 using System.ComponentModel;
-using BedrockLauncher.Components;
 using BL_Core.Components;
 
 namespace BedrockLauncher.Properties
@@ -167,6 +166,7 @@ namespace BedrockLauncher.Properties
         private string _ExternalLauncherName = "";
         private string _ExternalLauncherIconPath = "";
         private bool _CloseLauncherOnSwitch = true;
+        private bool _EnableDungeonsSupport = false;
 
         public bool HideJavaShortcut
         {
@@ -197,6 +197,11 @@ namespace BedrockLauncher.Properties
         {
             get { return _CloseLauncherOnSwitch; }
             set { _CloseLauncherOnSwitch = value; OnPropertyChanged(nameof(CloseLauncherOnSwitch)); }
+        }
+        public bool EnableDungeonsSupport
+        {
+            get { return _EnableDungeonsSupport; }
+            set { _EnableDungeonsSupport = value; OnPropertyChanged(nameof(EnableDungeonsSupport)); }
         }
 
         #endregion

@@ -17,25 +17,23 @@ namespace BedrockLauncher.Classes
     public class MCVersionList : ObservableCollection<MCVersion>
     {
 
-        private readonly string _cacheFile;
-        private readonly string _userCacheFile;
-        private readonly Interfaces.ICommonVersionCommands _commands;
-        private readonly HttpClient _client = new HttpClient();
-        private static Win10StoreNetwork _store_manager = new Win10StoreNetwork();
+        public readonly string cacheFile;
+        public readonly string userCacheFile;
+        private readonly Interfaces.ICommonVersionCommands commands;
 
 
-        public MCVersionList(string cacheFile, string userCacheFile, Interfaces.ICommonVersionCommands commands)
+        public MCVersionList(string _cacheFile, string _userCacheFile, Interfaces.ICommonVersionCommands _commands)
         {
-            _cacheFile = cacheFile;
-            _userCacheFile = userCacheFile;
-            _commands = commands;
+            this.cacheFile = _cacheFile;
+            this.userCacheFile = _userCacheFile;
+            this.commands = _commands;
         }
 
-        private void PraseDB(Win10VersionDBManager.Win10VersionJsonDb db)
+        public void PraseDB(Win10VersionDBManager.Win10VersionJsonDb db)
         {
             foreach (var v in db.list)
             {
-                if (!this.ToList().Exists(x => x.UUID == v.uuid || x.Name == v.version)) this.Add(new MCVersion(v.uuid, v.version, v.isBeta, _commands));
+                if (!this.ToList().Exists(x => x.UUID == v.uuid || x.Name == v.version)) this.Add(new MCVersion(v.uuid, v.version, v.isBeta, commands));
             }
             this.Sort((x, y) => Compare(x, y));
 
@@ -55,111 +53,7 @@ namespace BedrockLauncher.Classes
             }
         }
 
-        public async Task UpdateVersions()
-        {
-            _store_manager.setMSAUserToken(Win10AuthenticationManager.GetWUToken(Properties.LauncherSettings.Default.CurrentInsiderAccount));
-            Clear();
 
-            try 
-            { 
-                LoadFromLocalCache(); 
-            }
-            catch (Exception e) 
-            { 
-                System.Diagnostics.Debug.WriteLine("Version list local cache load failed:\n" + e.ToString()); 
-            }
-            try 
-            { 
-                await DownloadGlobalList();
-            }
-            catch (Exception e) 
-            { 
-                System.Diagnostics.Debug.WriteLine("Version list download failed:\n" + e.ToString()); 
-            }
-            try 
-            { 
-                LoadFromUserCache();
-            }
-            catch (Exception e) 
-            { 
-                System.Diagnostics.Debug.WriteLine("Version list user cache load failed:\n" + e.ToString());
-            }
-            try 
-            { 
-                await DownloadLatestList();
-            }
-            catch (Exception e)
-            { 
-                System.Diagnostics.Debug.WriteLine("Version list update check failed:\n" + e.ToString());
-            }
-            Win10VersionDBManager.Win10VersionJsonDb LoadFromUserCache()
-            {
-                try
-                {
-                    Win10VersionDBManager.Win10VersionJsonDb db = new Win10VersionDBManager.Win10VersionJsonDb();
-                    db.ReadJson(_userCacheFile);
-                    PraseDB(db);
-                    return db;
-                }
-                catch (FileNotFoundException)
-                {
-                    // ignore
-                    return new Win10VersionDBManager.Win10VersionJsonDb();
-                }
-                catch
-                {
-                    return new Win10VersionDBManager.Win10VersionJsonDb();
-                }
-            }
-
-            Win10VersionDBManager.Win10VersionJsonDb LoadFromLocalCache()
-            {
-                try
-                {
-                    Win10VersionDBManager.Win10VersionJsonDb db = new Win10VersionDBManager.Win10VersionJsonDb();
-                    db.ReadJson(_cacheFile);
-                    PraseDB(db);
-                    return db;
-                }
-                catch (FileNotFoundException)
-                {
-                    // ignore
-                    return new Win10VersionDBManager.Win10VersionJsonDb();
-                }
-                catch
-                {
-                    return new Win10VersionDBManager.Win10VersionJsonDb();
-                }
-            }
-
-            async Task DownloadLatestList()
-            {
-                var db = LoadFromUserCache();
-                var config = await _store_manager.fetchConfigLastChanged();
-                var cookie = await _store_manager.fetchCookie(config, false);
-                var knownVersions = db.list.ToList().ConvertAll(x => x.uuid);
-                db.AddVersion(await Win10StoreManager.CheckForVersions(_store_manager, cookie, knownVersions, false), false);
-                db.WriteJson(_userCacheFile);
-                PraseDB(db);
-                config = await _store_manager.fetchConfigLastChanged();
-                cookie = await _store_manager.fetchCookie(config, true);
-                knownVersions = db.list.ToList().ConvertAll(x => x.uuid);
-                db.AddVersion(await Win10StoreManager.CheckForVersions(_store_manager, cookie, knownVersions, true), true);
-                db.WriteJson(_userCacheFile);
-                PraseDB(db);
-            }
-
-            async Task DownloadGlobalList()
-            {
-                Win10VersionDBManager.Win10VersionJsonDb db = new Win10VersionDBManager.Win10VersionJsonDb();
-                var resp = await _client.GetAsync("https://mrarm.io/r/w10-vdb");
-                resp.EnsureSuccessStatusCode();
-                var data = await resp.Content.ReadAsStringAsync();
-                db.PraseJson(data);
-                db.WriteJson(_cacheFile);
-                PraseDB(db);
-            }
-        }
 
 
 

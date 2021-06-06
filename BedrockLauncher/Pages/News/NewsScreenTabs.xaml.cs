@@ -64,7 +64,7 @@ namespace BedrockLauncher.Pages.News
             if (CurrentPageIndex > LastPageIndex) direction = ExpandDirection.Right;
             else direction = ExpandDirection.Left;
 
-            await Task.Run(() => Components.PageAnimator.FrameSwipe(ContentFrame, content, direction));
+            await Task.Run(() => BL_Core.Components.PageAnimator.FrameSwipe(ContentFrame, content, direction));
         }
 
         public async void ResetButtonManager(string buttonName)

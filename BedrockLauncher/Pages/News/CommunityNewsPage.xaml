@@ -10,12 +10,18 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CommunityNewsPage" Initialized="Page_Loaded">
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-        <ListView x:Name="OfficalNewsFeed" Keyboard.PreviewKeyUp="OfficalNewsFeed_KeyUp" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ItemContainerStyle="{DynamicResource StrechedListViewItem}">
+        <ListView x:Name="OfficalNewsFeed" Keyboard.PreviewKeyUp="OfficalNewsFeed_KeyUp" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ItemContainerStyle="{DynamicResource CardListViewItem}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel HorizontalAlignment="Center" MaxWidth="{Binding ElementName=OfficalNewsFeed, Path=ActualWidth}"></WrapPanel>
+                    <WrapPanel IsItemsHost="True" MaxWidth="{Binding ElementName=OfficalNewsFeed, Path=ActualWidth}"
+                        HorizontalAlignment="Center"/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="{x:Type c:MCNetFeedItemRSS}">
+                    <i:CommunityFeedItem DataContext="{Binding .}"></i:CommunityFeedItem>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </Grid>
 </Page>

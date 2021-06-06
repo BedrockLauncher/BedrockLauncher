@@ -12,9 +12,9 @@
     <Grid Margin="0" Background="{x:Null}">
         <Border Background="#FF313131" Height="1" VerticalAlignment="Bottom" Margin="0,0,0,55" />
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
-            <TextBlock Visibility="Visible" HorizontalAlignment="Center"  Text="{DynamicResource FirstLaunch_ChooseAccountTitle}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="24" Margin="0,30,0,0" FontWeight="Bold"/>
+            <TextBlock Visibility="Visible" HorizontalAlignment="Center"  Text="{DynamicResource FirstLaunch_ChooseAccountTitle}" Foreground="White" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" FontSize="24" Margin="0,30,0,0" FontWeight="Bold"/>
             <controls:InsiderSelector x:Name="AccountPicker" Margin="28.5,15,28.5,10"></controls:InsiderSelector>
-            <TextBlock HorizontalAlignment="Center" TextAlignment="Center" Text="{DynamicResource FirstLaunch_ChooseAccountSubtitle}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="10" Margin="28.5,5,28.5,20" TextWrapping="Wrap"/>
+            <TextBlock HorizontalAlignment="Center" TextAlignment="Center" Text="{DynamicResource FirstLaunch_ChooseAccountSubtitle}" Foreground="White" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" FontSize="10" Margin="28.5,5,28.5,20" TextWrapping="Wrap"/>
         </StackPanel>
         <StackPanel Margin="0,0,8,8" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" ScrollViewer.VerticalScrollBarVisibility="Disabled">
             <Button x:Name="BackButton" Click="BackButton_Click" SnapsToDevicePixels="True" Foreground="White" Content="{DynamicResource FirstLaunch_BackButton}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="32" Style="{DynamicResource DialogButton}"/>

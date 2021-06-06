@@ -10,7 +10,7 @@
              xmlns:local="clr-namespace:BedrockLauncher.Controls"
              mc:Ignorable="d" 
              Height="59" Margin="1,0,0,0" VerticalAlignment="Top" Style="{DynamicResource DisabledStyle}">
-    <ToggleButton IsThreeState="False" x:Name="SourceButton" Style="{StaticResource SideBarButtonStyle}" Click="SourceButton_Click" FontWeight="Normal" VerticalAlignment="Stretch" Checked="SourceButton_Checked" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="True" IsChecked="False">
+    <ToggleButton IsThreeState="False" x:Name="SourceButton" Style="{StaticResource SideBarButtonStyle}" Click="SourceButton_Click" FontWeight="Normal" VerticalAlignment="Stretch" Checked="SourceButton_Checked" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="True" IsChecked="False">
         <ToggleButton.ContextMenu>
             <ContextMenu x:Name="ProfileContextMenu" ContextMenuClosing="ProfileContextMenu_ContextMenuClosing" Style="{DynamicResource NoCheckboxContextMenu}" IsOpen="False">
                 <MenuItem x:Name="AddProfileButton" Style="{DynamicResource IndentedMenuItem}" Header="{DynamicResource ProfileButton_AddProfile_Text}" Click="AddProfileButton_Click"></MenuItem>

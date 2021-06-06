@@ -1,0 +1,86 @@
+﻿<Page x:Class="BedrockLauncher.Dungeons.Pages.InstallationPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:bl="clr-namespace:BL_Core.Language;assembly=BL_Core"
+             xmlns:com="clr-namespace:BL_Core.Components;assembly=BL_Core"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:properties="clr-namespace:BedrockLauncher.Dungeons.Properties"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="{DynamicResource Background.Secondary}">
+    <Page.Resources>
+        <ResourceDictionary>
+            <com:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+            <ResourceDictionary.MergedDictionaries>
+                <bl:LanguageDictionary Source="/BL_Core;component/Resources/lang/lang.en-US.xaml"></bl:LanguageDictionary>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/values/base_values.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/icons.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/misc.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/contextmenu.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/button.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/checkbox.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/combobox.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/menuitems.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/listview.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/textbox.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/textblock.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/frame.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/scrollbars.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/tabbar.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/expander.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/richtextbox.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/radiobutton.xaml"/>
+                <ResourceDictionary Source="/BL_Core;component/Resources/styles/focus_visuals.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <StackPanel Margin="20,20">
+        <TextBlock Text="GAME VARIANT" Style="{DynamicResource HeaderTextblock}"/>
+        <RadioButton Click="RadioButton_Click" IsChecked="{Binding Source={x:Static properties:DungeonSettings.Default}, Converter={StaticResource InverseBooleanConverter}, Path=IsWindowsStoreVariant}" GroupName="GameVariant" Content="Windows Launcher" Foreground="{DynamicResource PrimaryText.Foreground}" Margin="0,10,0,0"></RadioButton>
+        <RadioButton IsEnabled="False" Click="RadioButton_Click" IsChecked="{Binding Source={x:Static properties:DungeonSettings.Default}, Path=IsWindowsStoreVariant}" GroupName="GameVariant" Content="Windows Store" Foreground="{DynamicResource PrimaryText.Foreground}" Margin="0,5,0,20"></RadioButton>
+        <TextBlock Text="INSTALL LOCATION" Style="{DynamicResource HeaderTextblock}"/>
+        <ContentControl Style="{DynamicResource TextboxLikeFrame}" Height="32" Background="{DynamicResource TextBox.Static.Background}" Width="512" HorizontalAlignment="Left" Margin="0,10,0,20" VerticalAlignment="Top">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox Style="{DynamicResource BlankTextBox}" Text="{Binding Source={x:Static properties:DungeonSettings.Default}, Path=InstallLocation}" Tag="&lt;Default path&gt;" IsReadOnly="True" x:Name="StorageDirectoryTextBox" FontSize="14" Padding="10,4,5,3"></TextBox>
+                <Button Grid.Column="1" Content="{StaticResource GeneralSubtitles_Browse}" x:Name="BrowseDirectoryButton" Click="BrowseDirectoryButton_Click" HorizontalAlignment="Center" Margin="5" Style="{StaticResource TextBoxButton}"></Button>
+                <Separator Grid.Column="2"/>
+                <Button Grid.Column="3" Content="{StaticResource GeneralSubtitles_Reset}" x:Name="ResetDirectoryButton" Click="ResetDirectoryButton_Click" HorizontalAlignment="Center" Margin="5" Style="{StaticResource TextBoxButton}"></Button>
+            </Grid>
+        </ContentControl>
+        <TextBlock Text="MOD FOLDER LOCATION" Style="{DynamicResource HeaderTextblock}"/>
+        <ContentControl Style="{DynamicResource TextboxLikeFrame}" Height="32" Background="{DynamicResource TextBox.Static.Background}" Width="512" HorizontalAlignment="Left" Margin="0,10,0,20" VerticalAlignment="Top">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox Style="{DynamicResource BlankTextBox}" Text="{Binding Source={x:Static properties:DungeonSettings.Default}, Path=ModsLocation}" Tag="&lt;Default path&gt;" IsReadOnly="True" x:Name="ModDirectoryTextBox" FontSize="14" Padding="10,4,5,3"></TextBox>
+                <Button Grid.Column="1" Content="{StaticResource GeneralSubtitles_Browse}" x:Name="BrowseModDirectoryButton" Click="BrowseModDirectoryButton_Click" HorizontalAlignment="Center" Margin="5" Style="{StaticResource TextBoxButton}"></Button>
+                <Separator Grid.Column="2"/>
+                <Button Grid.Column="3" Content="{StaticResource GeneralSubtitles_Reset}" x:Name="ResetModDirectoryButton" Click="ResetModDirectoryButton_Click" HorizontalAlignment="Center" Margin="5" Style="{StaticResource TextBoxButton}"></Button>
+            </Grid>
+        </ContentControl>
+        <TextBlock Text="TECHNICAL ACTIONS" Style="{DynamicResource HeaderTextblock}" Margin="0,0,0,10"/>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel HorizontalAlignment="Left" Orientation="Vertical">
+                <Button Content="Install Mod Manager" Height="30" Style="{DynamicResource DialogButton_Green}" x:Name="InstallButton" Click="InstallButton_Click"/>
+                <Button Content="Remove Mod Manager" Height="30" Style="{DynamicResource DialogButton_Red}" x:Name="UninstallButton" Click="UninstallButton_Click"/>
+                <Button Content="Repair/Update Dungeons" Height="30" Style="{DynamicResource DialogButton_Orange}" x:Name="RepairButton" Click="RepairButton_Click"/>
+
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left" Orientation="Vertical">
+                <Button Content="Open Game Config Folder" Height="30" Style="{DynamicResource DialogButton}" HorizontalAlignment="Stretch" x:Name="OpenConfigButton" Click="OpenConfigButton_Click"/>
+                <Button Content="Open Save Data Folder" Height="30" Style="{DynamicResource DialogButton}" HorizontalAlignment="Stretch" x:Name="OpenSaveDataButton" Click="OpenSaveDataButton_Click"/>
+                <Button Content="Open Content Folder" Height="30" Style="{DynamicResource DialogButton}" HorizontalAlignment="Stretch" x:Name="OpenContentButton" Click="OpenContentButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</Page>

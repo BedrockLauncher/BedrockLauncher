@@ -45,7 +45,7 @@ namespace BedrockLauncher.Pages.News
                 foreach (FeedItem item in feed.Items)
                 {
                     MCNetFeedItemRSS new_item = new MCNetFeedItemRSS(item);
-                    OfficalNewsFeed.Items.Add(new CommunityFeedItem(new_item));
+                    OfficalNewsFeed.Items.Add(new_item);
                 }
             });
         }

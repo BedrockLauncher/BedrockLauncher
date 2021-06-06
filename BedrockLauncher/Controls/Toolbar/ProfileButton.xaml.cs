@@ -17,7 +17,7 @@ using System.Windows.Controls.Primitives;
 using BedrockLauncher.Classes;
 using BedrockLauncher.Controls.Items;
 using BedrockLauncher.Pages;
-using BedrockLauncher.Pages.Common;
+using BL_Core.Pages.Common;
 
 namespace BedrockLauncher.Controls.Toolbar
 {

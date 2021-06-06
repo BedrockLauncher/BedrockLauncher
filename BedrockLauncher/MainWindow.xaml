@@ -34,6 +34,7 @@
                 <toolbar:ProfileButton IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default},Path=AllowEditing, Mode=OneWay}" x:Name="ProfileButton"></toolbar:ProfileButton>
                 <toolbar:NewsButton x:Name="NewsButton"></toolbar:NewsButton>
                 <toolbar:BedrockEditionButton x:Name="BedrockEditionButton"></toolbar:BedrockEditionButton>
+                <toolbar:DungeonsButton x:Name="DungeonsButton"  Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=EnableDungeonsSupport, Converter={StaticResource BoolToVis}}"></toolbar:DungeonsButton>
                 <toolbar:JavaEditionButton x:Name="JavaEditionButton" Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=HideJavaShortcut, Converter={StaticResource ReverseBoolToVis}, ConverterParameter=Inverted}"></toolbar:JavaEditionButton>
                 <toolbar:ExternalLauncherButton x:Name="ExternalLauncherButton" Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=ShowExternalLauncher, Converter={StaticResource BoolToVis}}"></toolbar:ExternalLauncherButton>
                 <toolbar:CommunityButton x:Name="CommunityButton"></toolbar:CommunityButton>
@@ -65,8 +66,8 @@
                     </Grid>
 
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock x:Name="progressbarcontent" SnapsToDevicePixels="True" Margin="26,-15,0,0" FontSize="12" Text="{DynamicResource ProgressBar_Downloading}"  HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
-                        <TextBlock SnapsToDevicePixels="True" Margin="+3,-15,0,0" FontSize="12" x:Name="ProgressBarText" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
+                        <TextBlock x:Name="progressbarcontent" SnapsToDevicePixels="True" Margin="26,-15,0,0" FontSize="12" Text="{DynamicResource ProgressBar_Downloading}"  HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans"/>
+                        <TextBlock SnapsToDevicePixels="True" Margin="+3,-15,0,0" FontSize="12" x:Name="ProgressBarText" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans"/>
                     </StackPanel>
                 </Grid>
             </Grid>

@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BedrockLauncher"
-      xmlns:com="clr-namespace:BedrockLauncher.Components"
+      xmlns:com="clr-namespace:BL_Core.Components;assembly=BL_Core"
       xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
       xmlns:controls="clr-namespace:BedrockLauncher.Controls"
       xmlns:core="clr-namespace:BL_Core.Properties;assembly=BL_Core"

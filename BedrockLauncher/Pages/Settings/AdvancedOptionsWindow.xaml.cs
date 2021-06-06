@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
+using BL_Core.Controls;
 
 namespace BedrockLauncher.Pages.Settings
 {
@@ -53,7 +54,7 @@ namespace BedrockLauncher.Pages.Settings
 
             UpdateDirectoryPathTextbox();
 
-            ConfigManager.Init();
+            ConfigManager.Reload();
         }
 
         private void UpdateDirectoryPathTextbox()
@@ -80,7 +81,7 @@ namespace BedrockLauncher.Pages.Settings
 
         private void BrowseForDirectory()
         {
-            Controls.FolderSelectDialog dialog = new Controls.FolderSelectDialog()
+            FolderSelectDialog dialog = new FolderSelectDialog()
             {
                 InitialDirectory = StorageDirectoryTextBox.Text
             };

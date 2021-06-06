@@ -16,7 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Pages.Preview;
-using BedrockLauncher.Pages.Common;
+using BL_Core.Pages.Common;
 
 namespace BedrockLauncher.Controls.Items
 {

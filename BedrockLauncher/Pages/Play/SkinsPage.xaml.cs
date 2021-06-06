@@ -21,7 +21,7 @@ using Microsoft.Win32;
 using Path = System.IO.Path;
 using System.IO.Compression;
 using BedrockLauncher.Pages.Preview;
-using BedrockLauncher.Pages.Common;
+using BL_Core.Pages.Common;
 using ExtensionsDotNET;
 
 namespace BedrockLauncher.Pages.Play

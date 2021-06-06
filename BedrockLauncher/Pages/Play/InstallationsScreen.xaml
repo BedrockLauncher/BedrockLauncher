@@ -27,10 +27,10 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="6" Margin="10,0">
                     <StackPanel>
-                        <Label Foreground="White" Content="{DynamicResource GeneralSubtitles_Versions}" Margin="0,10,0,0" FontWeight="Bold" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+                        <Label Foreground="White" Content="{DynamicResource GeneralSubtitles_Versions}" Margin="0,10,0,0" FontWeight="Bold" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
                         <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="Auto" Orientation="Horizontal" Margin="0,-10,0,0">
-                            <CheckBox  Click="RefreshInstallationsList" IsChecked="{Binding ShowReleases, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Releases}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
-                            <CheckBox Click="RefreshInstallationsList" IsChecked="{Binding ShowBetas, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Betas}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
+                            <CheckBox  Click="RefreshInstallationsList" IsChecked="{Binding ShowReleases, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Releases}" Foreground="#FFCCCCCC" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
+                            <CheckBox Click="RefreshInstallationsList" IsChecked="{Binding ShowBetas, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Betas}" Foreground="#FFCCCCCC" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
                         </StackPanel>
                     </StackPanel>
                 </Grid>

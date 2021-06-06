@@ -16,14 +16,18 @@ using BedrockLauncher.Downloaders;
 
 namespace BedrockLauncher
 {
-    public class Program
+    public static class Program
     {
-        public static void StartLogging(StartupEventArgs e)
+        #region Actions
+        public static void StartLogging()
         {
             if (File.Exists("Log.txt")) { File.Delete("Log.txt"); }
             Debug.Listeners.Add(new TextWriterTraceListener("Log.txt"));
             Debug.AutoFlush = true;
+        }
 
+        public static void PraseArgs(StartupEventArgs e)
+        {
             if (e.Args != null) new ConsoleArgumentManager(e.Args);
         }
 
@@ -164,6 +168,34 @@ namespace BedrockLauncher
 
 
             return null;
+        }
+        #endregion
+
+        private static void OnDispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            Debug.WriteLine(e.Exception.Message);
+            MessageBox.Show("Unhandled exception occurred: \n" + e.Exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        [STAThread]
+        public static void Main()
+        {
+            Program.StartLogging();
+            Debug.WriteLine("Application Starting...");
+            var application = new App();
+            application.DispatcherUnhandledException += OnDispatcherUnhandledException;
+            application.Startup += Application_Startup;
+            application.InitializeComponent();
+            application.Run();
+        }
+
+        private static void Application_Startup(object sender, StartupEventArgs e)
+        {
+            AppDomain.CurrentDomain.AssemblyResolve += Program.Resolver;
+            Program.EnableDeveloperMode();
+            Program.InitializeCefSharp();
+            Program.Init_IsBugRockOfTheWeek();
+            Debug.WriteLine("Application Pre-Initalization Finished!");
         }
     }
 }
