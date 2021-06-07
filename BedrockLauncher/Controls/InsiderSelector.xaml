@@ -13,7 +13,7 @@
                         <ColumnDefinition Width="40"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" RenderOptions.BitmapScalingMode="HighQuality" IsHitTestVisible="False" SnapsToDevicePixels="True" Source="../Resources/images/ui/icons/ms-icon.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="29" Height="29" Margin="0,0,0,0"/>
+                    <Image Grid.Column="0" RenderOptions.BitmapScalingMode="HighQuality" IsHitTestVisible="False" SnapsToDevicePixels="True" Source="../Resources/images/icons/ms-icon.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="29" Height="29" Margin="0,0,0,0"/>
                     <Grid Margin="5,0,0,0" Grid.Column="1" VerticalAlignment="Center">
                         <TextBlock x:Name="ProfileName" Text="{Binding UserName}" FontWeight="Bold" LineStackingStrategy="BlockLineHeight" LineHeight="14" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="0,0,0,3"/>
                         <TextBlock Margin="0,14,0,0" Foreground="#FF929292" Text="{Binding AccountType}" FontWeight="Normal" FontSize="12"></TextBlock>
