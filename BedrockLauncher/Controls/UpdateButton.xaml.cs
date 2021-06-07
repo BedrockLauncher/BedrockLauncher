@@ -29,7 +29,7 @@ namespace BedrockLauncher.Controls
         }
         public void ShowUpdateButton()
         {
-            ShowAdvancementButton();
+            Dispatcher.Invoke(ShowAdvancementButton);
         }
         public async void ShowUpdateButton(int time = 5000)
         {

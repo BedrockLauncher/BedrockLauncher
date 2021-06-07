@@ -31,7 +31,17 @@ namespace BedrockLauncher.ViewModels
         #region Init
 
         public static LauncherModel Default { get; set; } = new LauncherModel();
-        public static MainWindow MainThread => (MainWindow)System.Windows.Application.Current.MainWindow;
+        public static MainWindow MainThread
+        {
+            get
+            {
+                return App.Current.Dispatcher.Invoke(() =>
+                {
+                    return (MainWindow)App.Current.MainWindow;
+                });
+            }
+        }
+
         public static LauncherUpdater Updater { get; set; } = new LauncherUpdater();
 
         public void Init()
