@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using BL_Core.Components;
 
@@ -15,7 +16,9 @@ namespace BL_Core.Components
 
         public static void ToolbarButton_LoseFocusExecute(object args)
         {
-            Keyboard.ClearFocus();
+            //var e = (args as RoutedEventArgs);
+            //var source = (e.Source as ToggleButton);
+            //Keyboard.ClearFocus();
         }
     }
 }

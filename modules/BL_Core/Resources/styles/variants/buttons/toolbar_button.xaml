@@ -68,9 +68,15 @@
                             <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource ToolbarButton.MouseOver.Foreground}"/>
                             <Setter Property="Cursor" Value="Hand"/>
                         </Trigger>
-                        <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter Property="BorderBrush" Value="{DynamicResource ToolbarButton.Focused.Border}"/>
-                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsKeyboardFocused" Value="True"/>
+                                <Condition Property="IsFocused" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter Property="BorderBrush" Value="{DynamicResource ToolbarButton.Focused.Border}"/>
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
                         <Trigger Property="IsFocused" Value="true">
                             <Setter Property="TextElement.FontWeight" TargetName="contentPresenter" Value="Bold"/>
                             <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource ToolbarButton.Selected.Foreground}"/>

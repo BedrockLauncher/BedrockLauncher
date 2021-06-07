@@ -930,6 +930,9 @@
   <ItemGroup>
     <Resource Include="Resources\images\icons\dungeons_icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\bedrock_grass_icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

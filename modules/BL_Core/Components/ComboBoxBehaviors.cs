@@ -18,7 +18,8 @@ namespace BL_Core.Components
 
         public static void ComboBox_RequestBringIntoViewExecute(object args)
         {
-
+            var e = (args as RoutedEventArgs);
+            e.Handled = true;
         }
 
         public static void ComboBox_ForgetNavigationExecute(object args)
