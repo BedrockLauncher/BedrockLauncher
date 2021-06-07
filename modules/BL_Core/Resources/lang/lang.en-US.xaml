@@ -188,9 +188,6 @@
 
     <v:String x:Key="NewsScreen_SearchBar_Content">News title</v:String>
 
-    <v:String x:Key="NewsPage_NoMatchingResultsTitle">No matching results</v:String>
-    <v:String x:Key="NewsPage_NoMatchingResultsText" xml:space="preserve">We couldn't find any news content matching your search. If you have category filters &#10;turned off, try turning the back on and search again</v:String>
-
     <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
 
@@ -390,6 +387,12 @@
     <v:String x:Key="DialogBtn_NoToAll_Text">No To All</v:String>
     <v:String x:Key="DialogBtn_Yes_Text">Yes</v:String>
     <v:String x:Key="DialogBtn_No_Text">No</v:String>
+
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">No matching results</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">We couldn't find news any content matching your search. If you have category filters &#10;turned off, try turning the back on and search again</v:String>
+
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">No result</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Found no items matching your search</v:String>
 
     <!--#endregion-->
 

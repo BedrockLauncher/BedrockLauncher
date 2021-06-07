@@ -35,6 +35,7 @@ namespace BedrockLauncher.Pages.Play
             this.downloader = _downloader;
             this.downloader.RefreshableStateChanged += Downloader_RefreshableStateChanged;
             this.DataContext = this.downloader;
+            this.downloader.PatchNotes.CollectionChanged += PatchNotes_CollectionChanged;
         }
 
         private void Downloader_RefreshableStateChanged(object sender, EventArgs e)
@@ -48,6 +49,7 @@ namespace BedrockLauncher.Pages.Play
             {
                 var view = CollectionViewSource.GetDefaultView(PatchNotesList.ItemsSource) as CollectionView;
                 view.Filter = ConfigManager.Filter_PatchNotes;
+                UpdateUI();
             });
         }
 
@@ -59,10 +61,9 @@ namespace BedrockLauncher.Pages.Play
             });
         }
 
-        private void RefreshList(object sender, RoutedEventArgs e)
+        private async void RefreshList(object sender, RoutedEventArgs e)
         {
-
-
+            await Task.Run(() => Page_Loaded(sender, e));
         }
 
         private void PatchNotesList_KeyUp(object sender, KeyEventArgs e)
@@ -97,6 +98,20 @@ namespace BedrockLauncher.Pages.Play
             {
                 this.downloader.UpdateList();
                 PatchNotesList.ItemsSource = downloader.PatchNotes;
+            });
+        }
+
+        private async void PatchNotes_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            await Task.Run(UpdateUI);
+        }
+
+        private async void UpdateUI()
+        {
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                if (PatchNotesList.Items.Count > 0 && NothingFound.Visibility != Visibility.Collapsed) NothingFound.Visibility = Visibility.Collapsed;
+                else if (PatchNotesList.Items.Count <= 0 && NothingFound.Visibility != Visibility.Visible) NothingFound.Visibility = Visibility.Visible;
             });
         }
     }

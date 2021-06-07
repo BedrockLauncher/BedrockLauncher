@@ -54,28 +54,22 @@ namespace BedrockLauncher.Methods
         #region Game Detection
 
         public Process GameProcess { get; set; } = null;
-        public async void GetGameProcess(MCVersion v)
+        public async void GetGameProcess(AppActivationResult v)
         {
             await Task.Run(() =>
             {
                 try
                 {
-                    string FilePath = Path.GetDirectoryName(v.ExePath);
-                    string FileName = Path.GetFileNameWithoutExtension(v.ExePath).ToLower();
-
-                    Process[] pList = Process.GetProcessesByName(FileName);
-
-                    foreach (Process p in pList)
+                    var result = v.AppResourceGroupInfo.GetProcessDiagnosticInfos();
+                    if (result != null && result.Count > 0)
                     {
-                        string fileName = p.MainModule.FileName;
-                        if (fileName.StartsWith(FilePath, StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            ViewModels.LauncherModel.Default.IsGameRunning = true;
-                            GameProcess = p;
-                            p.EnableRaisingEvents = true;
-                            p.Exited += GameProcessExited;
-                            break;
-                        }
+                        var ProcessId = (int)result.First().ProcessId;
+                        var Process = System.Diagnostics.Process.GetProcessById(ProcessId);
+
+                        ViewModels.LauncherModel.Default.IsGameRunning = true;
+                        GameProcess = Process;
+                        Process.EnableRaisingEvents = true;
+                        Process.Exited += GameProcessExited;
                     }
                 }
                 catch (Exception ex)
@@ -493,9 +487,10 @@ namespace BedrockLauncher.Methods
             {
                 ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isLaunching;
                 var pkg = await AppDiagnosticInfo.RequestInfoForPackageAsync(MINECRAFT_PACKAGE_FAMILY);
-                if (pkg.Count > 0) await pkg[0].LaunchAsync();
+                AppActivationResult activationResult = null;
+                if (pkg.Count > 0) activationResult = await pkg[0].LaunchAsync();
                 System.Diagnostics.Debug.WriteLine("App launch finished!");
-                if (Properties.LauncherSettings.Default.KeepLauncherOpen) GetGameProcess(v);
+                if (Properties.LauncherSettings.Default.KeepLauncherOpen && activationResult != null) GetGameProcess(activationResult);
                 if (Properties.LauncherSettings.Default.KeepLauncherOpen == false)
                 {
                     await Application.Current.Dispatcher.InvokeAsync(() =>

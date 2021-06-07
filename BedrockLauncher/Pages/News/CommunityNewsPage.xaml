@@ -5,24 +5,36 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:c="clr-namespace:BedrockLauncher.Classes"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
-      xmlns:local="clr-namespace:BedrockLauncher.Pages.News"
+      xmlns:common="clr-namespace:BedrockLauncher.Pages.Common"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CommunityNewsPage" Initialized="Page_Loaded">
-    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-        <ListView x:Name="OfficalNewsFeed" Keyboard.PreviewKeyUp="OfficalNewsFeed_KeyUp" ItemContainerStyle="{DynamicResource CardListViewItem}">
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel IsItemsHost="True" MaxWidth="{Binding ElementName=OfficalNewsFeed, Path=ActualWidth}"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <ListView x:Name="OfficalNewsFeed" Keyboard.PreviewKeyUp="OfficalNewsFeed_KeyUp" ItemContainerStyle="{DynamicResource CardListViewItem}">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel IsItemsHost="True" MaxWidth="{Binding ElementName=OfficalNewsFeed, Path=ActualWidth}"
                         HorizontalAlignment="Center"/>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-            <ListView.ItemTemplate>
-                <DataTemplate DataType="{x:Type c:MCNetFeedItemRSS}">
-                    <i:CommunityFeedItem DataContext="{Binding .}"></i:CommunityFeedItem>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <local:NoContentFoundPage VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="Collapsed"></local:NoContentFoundPage>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate DataType="{x:Type c:MCNetFeedItemRSS}">
+                        <i:CommunityFeedItem DataContext="{Binding .}"></i:CommunityFeedItem>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <common:NoNewsContentFoundPage VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="Collapsed"></common:NoNewsContentFoundPage>
+        </Grid>
+        <Border Grid.Row="1" BorderBrush="{DynamicResource Seperator.Background}" BorderThickness="0,1,0,0">
+            <Grid Background="#FF303030">
+                <Button Margin="0,1" FontSize="14" x:Name="RefreshButton" HorizontalAlignment="Right" Click="RefreshButton_Click" Content="{DynamicResource GeneralText_Refresh}" Style="{DynamicResource LinkButton}"></Button>
+            </Grid>
+        </Border>
+
     </Grid>
 </Page>

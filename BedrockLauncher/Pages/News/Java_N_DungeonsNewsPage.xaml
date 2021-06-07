@@ -6,7 +6,7 @@
       xmlns:f="clr-namespace:CodeHollow.FeedReader;assembly=CodeHollow.FeedReader"
       xmlns:c="clr-namespace:BedrockLauncher.Classes"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
-      xmlns:local="clr-namespace:BedrockLauncher.Pages.News"
+      xmlns:common="clr-namespace:BedrockLauncher.Pages.Common"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CommunityNewsPage" Initialized="Page_Loaded">
@@ -14,6 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
         <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource Seperator.Background}">
             <Grid Background="#FF303030">
@@ -65,7 +66,11 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <local:NoContentFoundPage Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="Collapsed"></local:NoContentFoundPage>
-
+        <common:NoNewsContentFoundPage Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="Collapsed"></common:NoNewsContentFoundPage>
+        <Border Grid.Row="2" BorderBrush="{DynamicResource Seperator.Background}" BorderThickness="0,1,0,0">
+            <Grid Background="#FF303030">
+                <Button Margin="0,1" FontSize="14" x:Name="RefreshButton" HorizontalAlignment="Right" Click="RefreshButton_Click" Content="{DynamicResource GeneralText_Refresh}" Style="{DynamicResource LinkButton}"></Button>
+            </Grid>
+        </Border>
     </Grid>
 </Page>

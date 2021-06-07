@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BedrockLauncher.Pages.News
+namespace BedrockLauncher.Pages.Common
 {
     public partial class NoContentFoundPage : Grid
     {

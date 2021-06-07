@@ -9,6 +9,7 @@
     <ScrollViewer Padding="20" Background="#FF333333">
         <StackPanel>
             <StackPanel>
+                <Button Margin="0,1" FontSize="14" x:Name="RefreshButton" HorizontalAlignment="Right" Click="RefreshButton_Click" Content="{DynamicResource GeneralText_Refresh}" Style="{DynamicResource LinkButton}"></Button>
                 <Button Margin="0,1" FontSize="14" x:Name="CheckForUpdatesButton" HorizontalAlignment="Right" Click="CheckForUpdatesButton_Click" Content="{DynamicResource LauncherNewsPage_CheckForUpdates}" Style="{DynamicResource LinkButton}"></Button>
                 <Button Margin="0,1" FontSize="14" x:Name="ForceUpdateButton" HorizontalAlignment="Right" Click="ForceUpdateButton_Click" Content="{DynamicResource LauncherNewsPage_ForceUpdate}" Style="{DynamicResource LinkButton}"></Button>
             </StackPanel>

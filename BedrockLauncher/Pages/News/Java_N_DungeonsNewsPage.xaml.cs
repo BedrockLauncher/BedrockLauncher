@@ -36,7 +36,13 @@ namespace BedrockLauncher.Pages.News
             InitializeComponent();
         }
 
-        public async void UpdateJSONContent()
+        private async void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            await UpdateJSONContent();
+            await Task.Run(UpdateContent);
+        }
+
+        public async Task UpdateJSONContent()
         {
             await Dispatcher.InvokeAsync(() =>
             {
@@ -58,6 +64,7 @@ namespace BedrockLauncher.Pages.News
 
             }
             if (result == null) result = new MCNetLauncherFeed();
+            if (result.entries == null) result.entries = new List<MCNetFeedItemJSON>();
 
             await Dispatcher.InvokeAsync(() => {
                 foreach (MCNetFeedItemJSON item in result.entries)
@@ -69,15 +76,7 @@ namespace BedrockLauncher.Pages.News
 
         private async void Page_Loaded(object sender, EventArgs e)
         {
-            this.SearchBox.Text = string.Empty;
-
-            await Task.Run(() => UpdateJSONContent());
-
-            await Dispatcher.InvokeAsync(() =>
-            {
-                OfficalNewsFeed.ItemsSource = FeedItems;
-                UpdateNoContentLabel();
-            });
+            await Task.Run(() => RefreshButton_Click(sender, null));
         }
 
         private void OfficalNewsFeed_KeyUp(object sender, KeyEventArgs e)
@@ -92,23 +91,15 @@ namespace BedrockLauncher.Pages.News
             }
         }
 
-        private async void UpdateNoContentLabel()
-        {
-            await Dispatcher.InvokeAsync(() =>
-            {
-                if (OfficalNewsFeed.Items.Count == 0) NothingFound.Visibility = Visibility.Visible;
-                else NothingFound.Visibility = Visibility.Collapsed;
-            });
-        }
-
         private async void UpdateContent()
         {
             await Dispatcher.InvokeAsync(() =>
             {
-                OfficalNewsFeed.ItemsSource = FeedItems;
-                CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(OfficalNewsFeed.ItemsSource);
-                view.Filter = OfficalNewsFeed_FeedFilter;
-                UpdateNoContentLabel();
+                OfficalNewsFeed.Items.Clear();
+                foreach (var item in FeedItems.Where(x => OfficalNewsFeed_FeedFilter(x))) OfficalNewsFeed.Items.Add(item);
+
+                if (OfficalNewsFeed.Items.Count == 0) NothingFound.Visibility = Visibility.Visible;
+                else NothingFound.Visibility = Visibility.Collapsed;
             });
         }
 

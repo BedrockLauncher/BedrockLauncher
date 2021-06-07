@@ -97,12 +97,21 @@ namespace BedrockLauncher.Pages.News
         private async void CheckForUpdatesButton_Click(object sender, RoutedEventArgs e)
         {
             bool result = await Task.Run(updater.CheckForUpdatesAsync);
-            await Task.Run(RefreshData);
         }
 
         private void ForceUpdateButton_Click(object sender, RoutedEventArgs e)
         {
             updater.UpdateButton_Click(sender, e);
+        }
+
+        private void CheckForUpdatesButton_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private async void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            await Task.Run(RefreshData);
         }
     }
 }

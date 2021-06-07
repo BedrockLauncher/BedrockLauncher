@@ -35,6 +35,11 @@ namespace BedrockLauncher.Pages.News
             InitializeComponent();
         }
 
+        private async void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            await Task.Run(() => UpdateRSSContent());
+        }
+
         private async void UpdateRSSContent()
         {
             try

@@ -35,6 +35,7 @@ namespace BedrockLauncher.Pages.Play
             InstallationsList.ItemsSource = ConfigManager.CurrentInstallations;
             var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
             view.Filter = ConfigManager.Filter_InstallationList;
+            Task.Run(UpdateUI);
         }
 
         private void NewInstallationButton_Click(object sender, RoutedEventArgs e)
@@ -49,12 +50,22 @@ namespace BedrockLauncher.Pages.Play
 
         }
 
+        private async void UpdateUI()
+        {
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                if (InstallationsList.Items.Count > 0 && NothingFound.Visibility != Visibility.Collapsed) NothingFound.Visibility = Visibility.Collapsed;
+                else if (InstallationsList.Items.Count <= 0 && NothingFound.Visibility != Visibility.Visible) NothingFound.Visibility = Visibility.Visible;
+            });
+        }
+
         private async void PageHost_Loaded(object sender, RoutedEventArgs e)
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
                 var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
                 view.Filter = ConfigManager.Filter_InstallationList;
+                Task.Run(UpdateUI);
             });
         }
     }
