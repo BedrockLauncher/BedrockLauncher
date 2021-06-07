@@ -689,8 +689,8 @@ namespace BedrockLauncher.Methods
             t.Progress += (v, p) =>
             {
                 System.Diagnostics.Debug.WriteLine("Deployment progress: " + p.state + " " + p.percentage + "%");
-                ViewModels.LauncherModel.Default.CurrentProgress = Convert.ToInt64(p.percentage);
-                ViewModels.LauncherModel.Default.TotalProgress = ViewModels.LauncherModel.DeploymentMaximum;
+                if (Properties.LauncherSettings.Default.ShowAdvancedInstallDetails) ViewModels.LauncherModel.Default.CurrentProgress = Convert.ToInt64(p.percentage);
+                if (Properties.LauncherSettings.Default.ShowAdvancedInstallDetails) ViewModels.LauncherModel.Default.TotalProgress = ViewModels.LauncherModel.DeploymentMaximum;
             };
             t.Completed += (v, p) =>
             {

@@ -15,7 +15,7 @@
             <Separator></Separator>
             <StackPanel Margin="18,0,0,0">
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,15">
-                    <Image Source="/BedrockLauncher;component/Resources/images/ui/credits/xbox_logo.png" RenderOptions.BitmapScalingMode="HighQuality" Height="32" Margin="0,0,10,0"/>
+                    <Image Source="/BedrockLauncher;component/Resources/images/credits/xbox_logo.png" RenderOptions.BitmapScalingMode="HighQuality" Height="32" Margin="0,0,10,0"/>
                     <TextBlock FontFamily="/BL_Core;component/Resources/fonts/#X360 by Redge" FontSize="20" Foreground="{DynamicResource PrimaryText.Foreground}" VerticalAlignment="Center">
                         <Run Text="XBOX" Foreground="#009461"></Run>
                         <Run Text="INSIDER"></Run>
@@ -32,10 +32,10 @@
             <Separator Margin="0,0,0,100"></Separator>
             <Separator></Separator>
             <StackPanel Orientation="Horizontal" Margin="0,10,0,15">
-                <Image Source="/BedrockLauncher;component/Resources/images/ui/credits/microsoft_logo.png" RenderOptions.BitmapScalingMode="HighQuality" Width="Auto" Height="60" HorizontalAlignment="Left"></Image>
+                <Image Source="/BedrockLauncher;component/Resources/images/credits/microsoft_logo.png" RenderOptions.BitmapScalingMode="HighQuality" Width="Auto" Height="60" HorizontalAlignment="Left"></Image>
                 <Separator Background="White" Height="30"></Separator>
                 <Grid Width="Auto" Height="50" HorizontalAlignment="Left" RenderOptions.BitmapScalingMode="HighQuality">
-                    <Image Margin="18,12,12,12" Source="/BedrockLauncher;component/Resources/images/ui/credits/mojang_logo.png"></Image>
+                    <Image Margin="18,12,12,12" Source="/BedrockLauncher;component/Resources/images/credits/mojang_logo.png"></Image>
                 </Grid>
             </StackPanel>
             <TextBlock FontWeight="Bold" Margin="16,0,0,5" FontSize="11" Text="{DynamicResource AcountsSettingsPage_AccountSettings_Text}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Left"/>

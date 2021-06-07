@@ -8,9 +8,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrockLauncher", "BedrockL
 		{4BC35DC2-02A8-47E6-8823-76C696CB2E7E} = {4BC35DC2-02A8-47E6-8823-76C696CB2E7E}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Installer", "modules\Installer\Installer.csproj", "{295729F7-172F-4BCD-A619-E495DB5A4E2F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrockLauncher.Installer", "modules\Installer\BedrockLauncher.Installer.csproj", "{295729F7-172F-4BCD-A619-E495DB5A4E2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uninstaller", "modules\Uninstaller\Uninstaller.csproj", "{3232778B-1A3B-4D31-88A1-7A43B8B66723}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrockLauncher.Uninstaller", "modules\Uninstaller\BedrockLauncher.Uninstaller.csproj", "{3232778B-1A3B-4D31-88A1-7A43B8B66723}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WUTokenHelper", "modules\WUTokenHelper\WUTokenHelper.vcxproj", "{B7336BA7-1E83-43D8-BD0E-3D44C6E3D4E7}"
 EndProject

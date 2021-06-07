@@ -40,7 +40,7 @@
                 </Grid.Effect>
             </Grid>
 
-            <Image x:Name="BugrockOfTheWeekLogo" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" MaxHeight="{DynamicResource MaxLogoHeight}" Source="/BedrockLauncher;component/resources/images/ui/logo/OfTheWeek.png" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" >
+            <Image x:Name="BugrockOfTheWeekLogo" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" MaxHeight="{DynamicResource MaxLogoHeight}" Source="/BedrockLauncher;component/resources/images/logo/OfTheWeek.png" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" >
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="1" ScaleY="1"/>
@@ -71,7 +71,7 @@
                     </EventTrigger>
                 </Image.Triggers>
             </Image>
-            <Image x:Name="BugrockLogo"  VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" MaxHeight="{DynamicResource MaxLogoHeight}" Source="/BedrockLauncher;component/resources/images/ui/logo/BugrockEdition.png" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" >
+            <Image x:Name="BugrockLogo"  VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" MaxHeight="{DynamicResource MaxLogoHeight}" Source="/BedrockLauncher;component/resources/images/logo/BugrockEdition.png" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" >
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="1" ScaleY="1"/>
@@ -96,7 +96,7 @@
                     </EventTrigger>
                 </Image.Triggers>
             </Image>
-            <Image x:Name="BedrockLogo" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" MaxHeight="{DynamicResource MaxLogoHeight}" Source="/BedrockLauncher;component/resources/images/ui/logo/BedrockEdition.png" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" >
+            <Image x:Name="BedrockLogo" VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" MaxHeight="{DynamicResource MaxLogoHeight}" Source="/BedrockLauncher;component/resources/images/logo/BedrockEdition.png" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" >
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="1" ScaleY="1"/>

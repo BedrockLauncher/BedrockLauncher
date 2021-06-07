@@ -28,52 +28,21 @@ namespace BedrockLauncher.Pages.News
     /// </summary>
     public partial class Java_N_DungeonsNewsPage : Page
     {
+        private const string JSON_Feed = @"https://launchercontent.mojang.com/news.json";
+        private List<MCNetFeedItem> FeedItems { get; set; } = new List<MCNetFeedItem>();
 
-        public class Java_N_DungeonsContext : BL_Core.Components.NotifyPropertyChangedBase
+        public Java_N_DungeonsNewsPage()
         {
-            private bool _ShowJavaContent = true;
-            private bool _ShowDungeonsContent = true;
-
-            public bool ShowJavaContent
-            {
-                get
-                {
-                    return _ShowJavaContent;
-                }
-                set
-                {
-                    _ShowJavaContent = value;
-                    OnPropertyChanged(nameof(ShowJavaContent));
-                }
-            }
-
-            public bool ShowDungeonsContent
-            {
-                get
-                {
-                    return _ShowDungeonsContent;
-                }
-                set
-                {
-                    _ShowDungeonsContent = value;
-                    OnPropertyChanged(nameof(ShowDungeonsContent));
-                }
-            }
-
-            public ObservableCollection<MCNetFeedItemJSON> FeedItems { get; set; } = new ObservableCollection<MCNetFeedItemJSON>();
-
-            public void UpdateSource()
-            {
-                OnPropertyChanged(nameof(FeedItems));
-            }
+            InitializeComponent();
         }
 
-
-        private const string JSON_Feed = @"https://launchercontent.mojang.com/news.json";
-
-
-        public async Task<MCNetLauncherFeed> GetJSON()
+        public async void UpdateJSONContent()
         {
+            await Dispatcher.InvokeAsync(() =>
+            {
+                this.FeedItems.Clear();
+            });
+
             MCNetLauncherFeed result = null;
             using (var httpClient = new HttpClient())
             {
@@ -89,42 +58,26 @@ namespace BedrockLauncher.Pages.News
 
             }
             if (result == null) result = new MCNetLauncherFeed();
-            return result;
-        }
-
-        public Java_N_DungeonsNewsPage()
-        {
-            this.DataContext = new Java_N_DungeonsContext();
-            InitializeComponent();
-        }
-
-        private async void UpdateRSSContent()
-        {
-            await Dispatcher.InvokeAsync(() => 
-            { 
-                (this.DataContext as Java_N_DungeonsContext).FeedItems.Clear(); 
-            });
-
-
-
-            var news = await GetJSON();
 
             await Dispatcher.InvokeAsync(() => {
-                foreach (MCNetFeedItemJSON item in news.entries)
+                foreach (MCNetFeedItemJSON item in result.entries)
                 {
-                    if (item.newsType != null && item.newsType.Contains("News page")) (this.DataContext as Java_N_DungeonsContext).FeedItems.Add(item);
+                    if (item.newsType != null && item.newsType.Contains("News page")) FeedItems.Add(item);
                 }
             });
         }
 
         private async void Page_Loaded(object sender, EventArgs e)
         {
-            //TODO: Fix the Binding Errors Caused by Not Reseting these Values
-            (this.DataContext as Java_N_DungeonsContext).ShowDungeonsContent = true;
-            (this.DataContext as Java_N_DungeonsContext).ShowJavaContent = true;
             this.SearchBox.Text = string.Empty;
 
-            await Task.Run(() => UpdateRSSContent());
+            await Task.Run(() => UpdateJSONContent());
+
+            await Dispatcher.InvokeAsync(() =>
+            {
+                OfficalNewsFeed.ItemsSource = FeedItems;
+                UpdateNoContentLabel();
+            });
         }
 
         private void OfficalNewsFeed_KeyUp(object sender, KeyEventArgs e)
@@ -139,49 +92,59 @@ namespace BedrockLauncher.Pages.News
             }
         }
 
-        private void UpdateContent()
+        private async void UpdateNoContentLabel()
         {
-            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(OfficalNewsFeed.ItemsSource);
-            view.Filter = IsAllowed;
-
-            bool IsAllowed(object obj)
+            await Dispatcher.InvokeAsync(() =>
             {
-                if (!(obj is JavaFeedItem)) return false;
-                else
+                if (OfficalNewsFeed.Items.Count == 0) NothingFound.Visibility = Visibility.Visible;
+                else NothingFound.Visibility = Visibility.Collapsed;
+            });
+        }
+
+        private async void UpdateContent()
+        {
+            await Dispatcher.InvokeAsync(() =>
+            {
+                OfficalNewsFeed.ItemsSource = FeedItems;
+                CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(OfficalNewsFeed.ItemsSource);
+                view.Filter = OfficalNewsFeed_FeedFilter;
+                UpdateNoContentLabel();
+            });
+        }
+
+        private bool OfficalNewsFeed_FeedFilter(object obj)
+        {
+            if (!(obj is MCNetFeedItemJSON)) return false;
+            else
+            {
+                var item = (obj as MCNetFeedItemJSON);
+                if (item.newsType != null && item.newsType.Contains("News page"))
                 {
-                    var item = ((obj as JavaFeedItem).DataContext as MCNetFeedItemJSON);
-                    if (item.newsType != null && item.newsType.Contains("News page"))
-                    {
-                        var context = (this.DataContext as Java_N_DungeonsContext);
-                        if (item.category == "Minecraft: Java Edition" && context.ShowJavaContent) return FilterState(item);
-                        else if (item.category == "Minecraft Dungeons" && context.ShowDungeonsContent) return FilterState(item);
-                        else return false;
-                    }
+                    if (item.category == "Minecraft: Java Edition" && ShowJavaContent.IsChecked.Value) return ContainsText(item);
+                    else if (item.category == "Minecraft Dungeons" && ShowDungeonsContent.IsChecked.Value) return ContainsText(item);
                     else return false;
                 }
+                else return false;
             }
 
-            bool FilterState(MCNetFeedItemJSON item)
+            bool ContainsText(MCNetFeedItemJSON _item)
             {
                 string searchParam = SearchBox.Text;
-                if (string.IsNullOrEmpty(searchParam) || item.title.Contains(searchParam, StringComparison.OrdinalIgnoreCase)) return true;
+                if (string.IsNullOrEmpty(searchParam) || _item.title.Contains(searchParam, StringComparison.OrdinalIgnoreCase)) return true;
                 else return false;
-
             }
         }
 
-        private void CheckBox_CheckChanged(object sender, RoutedEventArgs e)
+        private async void CheckBox_CheckChanged(object sender, RoutedEventArgs e)
         {
             if (!this.IsInitialized) return;
-            UpdateContent();
-            (this.DataContext as Java_N_DungeonsContext).UpdateSource();
+            await Task.Run(UpdateContent);
         }
 
-        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        private async void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!this.IsInitialized) return;
-            UpdateContent();
-            (this.DataContext as Java_N_DungeonsContext).UpdateSource();
+            await Task.Run(UpdateContent);
         }
     }
 }

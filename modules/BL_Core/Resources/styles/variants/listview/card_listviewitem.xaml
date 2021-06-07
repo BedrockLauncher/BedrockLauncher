@@ -1,11 +1,14 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+    
     <Style TargetType="{x:Type ListViewItem}" x:Key="CardListViewItem">
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Padding" Value="0,0"/>
-        <Setter Property="Margin" Value="4"/>
-        <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="Background" Value="{DynamicResource CardListViewItem.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource CardListViewItem.Static.Border}"/>
         <Setter Property="BorderThickness" Value="1"/>
@@ -39,5 +42,9 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type ListViewItem}" x:Key="CardListViewItemVertical" BasedOn="{StaticResource CardListViewItem}">
+        <Setter Property="VerticalContentAlignment" Value="Top"/>
     </Style>
 </ResourceDictionary>

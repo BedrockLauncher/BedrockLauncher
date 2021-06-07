@@ -15,7 +15,7 @@
         </ToggleButton.ToolTip>
         <TextBlock LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,5"><Run FontSize="11" Text="{DynamicResource ToolbarButtons_Minecraft_Text}"/><LineBreak/><Run FontSize="14" Text="{DynamicResource ToolbarButtons_MinecraftEdition_Text}"/></TextBlock>
     </ToggleButton>
-    <Image Style="{StaticResource SideBarButtonIcon}" Source="/BedrockLauncher;component/Resources/images/ui/icons/bedrock_icon.png"/>
+    <Image Style="{StaticResource SideBarButtonIcon}" Source="/BedrockLauncher;component/Resources/images/icons/bedrock_icon.png"/>
     <Grid x:Name="Progressbar">
         <ProgressBar x:Name="progressSizeHack" Height="5" VerticalAlignment="Bottom" Visibility="Collapsed" Foreground="#FF008542" Background="Black" BorderBrush="Black" Minimum="0"/>
     </Grid>

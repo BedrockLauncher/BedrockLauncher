@@ -12,7 +12,7 @@
              Height="60" Width="300">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/BedrockLauncher;component/resources/images/ui/panels/advancement_icon.png"/>
+            <ImageBrush ImageSource="/BedrockLauncher;component/resources/images/panels/advancement_icon.png"/>
         </Grid.Background>
         <Grid Margin="8,0,0,0" HorizontalAlignment="Stretch">
             <Grid.ColumnDefinitions>
@@ -22,7 +22,7 @@
             </Grid.ColumnDefinitions>
             <Button Style="{DynamicResource EmptyButton}" x:Name="ClickBase">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="/BedrockLauncher;component/Resources/images/icons/package.ico" Margin="3" HorizontalAlignment="Left" Height="42" Width="42"/>
+                    <Image Source="/BedrockLauncher;component/Resources/images/icons/ico/package.ico" Margin="3" HorizontalAlignment="Left" Height="42" Width="42"/>
                     <TextBlock LineHeight="20" RenderOptions.BitmapScalingMode="NearestNeighbor" FontSize="16" TextOptions.TextRenderingMode="Aliased" TextOptions.TextFormattingMode="Ideal" Margin="2,6,0,0" FontFamily="/BL_Core;component/Resources/fonts/#Minecraft Rus">
                         <Run Text="{DynamicResource UpdateButton_NewUpdate_Text}" Foreground="Yellow"/>
                         <LineBreak/>

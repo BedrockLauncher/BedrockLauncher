@@ -29,7 +29,7 @@ namespace BedrockLauncher.Classes
     {
         public MCVersion(string uuid, string name, bool isBeta, ICommonVersionCommands commands)
         {
-            this.UUID = uuid;
+            this.UUID = uuid.ToLower();
             this.Name = name;
             this.IsBeta = isBeta;
             this.DownloadCommand = commands.DownloadCommand;
@@ -61,13 +61,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                if (Directory.Exists(GameDirectory))
-                {
-                    var files = new DirectoryInfo(GameDirectory).EnumerateFiles();
-                    if (files.ToList().Exists(x => x.Name == "Minecraft.Windows.exe")) return true;
-                    else return false;
-                }
-                else return false;
+                return Directory.Exists(GameDirectory);
             }
         }
 
@@ -130,7 +124,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                return IsBeta ? @"/BedrockLauncher;component/Resources/images/icons/crafting_table_block_icon.ico" : @"/BedrockLauncher;component/Resources/images/icons/grass_block_icon.ico";
+                return IsBeta ? @"/BedrockLauncher;component/Resources/images/icons/ico/crafting_table_block_icon.ico" : @"/BedrockLauncher;component/Resources/images/icons/ico/grass_block_icon.ico";
             }
         }
 

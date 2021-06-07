@@ -68,7 +68,7 @@ namespace BedrockLauncher.Dungeons.Properties
 
         #region Shortcut Settings
 
-        private bool _IsWindowsStoreVariant = false;
+        //private bool _IsWindowsStoreVariant = false;
         private string _InstallLocation = string.Empty;
         private string _ModsLocation = string.Empty;
 

@@ -46,7 +46,7 @@
                 </Grid>
             </Grid>
         </Border>
-        <ListView Grid.Row="1" x:Name="PatchNotesList" Keyboard.PreviewKeyUp="PatchNotesList_KeyUp" ItemContainerStyle="{DynamicResource CardListViewItem}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+        <ListView Grid.Row="1" x:Name="PatchNotesList" Keyboard.PreviewKeyUp="PatchNotesList_KeyUp" ItemContainerStyle="{DynamicResource CardListViewItem}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center" MaxWidth="{Binding ElementName=PatchNotesList, Path=ActualWidth}"></WrapPanel>

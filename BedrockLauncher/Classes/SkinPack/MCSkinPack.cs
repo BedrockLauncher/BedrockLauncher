@@ -62,7 +62,7 @@ namespace BedrockLauncher.Classes.SkinPack
 
         public bool isDev { get; private set; }
 
-        public const string FallbackIcon = @"/BedrockLauncher;component/resources/images/ui/packs/invalid_pack_icon.png";
+        public const string FallbackIcon = @"/BedrockLauncher;component/resources/images/packs/invalid_pack_icon.png";
 
         public Uri CurrentIcon
         {

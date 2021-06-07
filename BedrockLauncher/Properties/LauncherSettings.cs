@@ -61,10 +61,18 @@ namespace BedrockLauncher.Properties
         #region Launcher Settings
 
         private string _CurrentTheme = "LatestUpdate";
+        private bool _ShowAdvancedInstallDetails = false;
         private bool _UseBetaBuilds = true;
         private bool _KeepLauncherOpen = false;
         private bool _AnimatePlayButton = false;
         private bool _AnimatePageTransitions = false;
+
+
+        public bool ShowAdvancedInstallDetails
+        {
+            get { return _ShowAdvancedInstallDetails; }
+            set { _ShowAdvancedInstallDetails = value; OnPropertyChanged(nameof(ShowAdvancedInstallDetails)); }
+        }
 
         public string CurrentTheme
         {

@@ -6,6 +6,7 @@
       xmlns:f="clr-namespace:CodeHollow.FeedReader;assembly=CodeHollow.FeedReader"
       xmlns:c="clr-namespace:BedrockLauncher.Classes"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
+      xmlns:local="clr-namespace:BedrockLauncher.Pages.News"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CommunityNewsPage" Initialized="Page_Loaded">
@@ -45,13 +46,13 @@
                 <StackPanel Grid.Row="1" Grid.Column="2" Margin="5,0" VerticalAlignment="Center">
                     <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_Categories}" Margin="5,2,0,10" FontWeight="Bold" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
                     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Orientation="Horizontal" Margin="0,0,10,10">
-                        <CheckBox Checked="CheckBox_CheckChanged" Unchecked="CheckBox_CheckChanged" IsChecked="{Binding ShowJavaContent}" Content="{DynamicResource ResourceKey=NewsScreen_JavaNDungeons_JavaCheckbox}" Foreground="White" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
-                        <CheckBox Checked="CheckBox_CheckChanged" Unchecked="CheckBox_CheckChanged" IsChecked="{Binding ShowDungeonsContent}" Content="{DynamicResource ResourceKey=NewsScreen_JavaNDungeons_DungeonsCheckbox}" Foreground="White" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
+                        <CheckBox x:Name="ShowJavaContent" Checked="CheckBox_CheckChanged" Unchecked="CheckBox_CheckChanged" IsChecked="True" Content="{DynamicResource ResourceKey=NewsScreen_JavaNDungeons_JavaCheckbox}" Foreground="White" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
+                        <CheckBox x:Name="ShowDungeonsContent" Checked="CheckBox_CheckChanged" Unchecked="CheckBox_CheckChanged" IsChecked="True" Content="{DynamicResource ResourceKey=NewsScreen_JavaNDungeons_DungeonsCheckbox}" Foreground="White" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
                     </StackPanel>
                 </StackPanel>
             </Grid>
         </Border>
-        <ListView x:Name="OfficalNewsFeed" ItemsSource="{Binding FeedItems}" Grid.Row="1" Keyboard.PreviewKeyUp="OfficalNewsFeed_KeyUp" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Top" ItemContainerStyle="{DynamicResource CardListViewItem}">
+        <ListView x:Name="OfficalNewsFeed" ItemsSource="{Binding FeedItems}" Grid.Row="1" Keyboard.PreviewKeyUp="OfficalNewsFeed_KeyUp" ItemContainerStyle="{DynamicResource CardListViewItemVertical}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel IsItemsHost="True" MaxWidth="{Binding ElementName=OfficalNewsFeed, Path=ActualWidth}"
@@ -64,5 +65,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <local:NoContentFoundPage Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="Collapsed"></local:NoContentFoundPage>
+
     </Grid>
 </Page>

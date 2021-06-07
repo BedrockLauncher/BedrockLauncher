@@ -15,5 +15,5 @@
         </ToggleButton.ToolTip>
         <TextBlock Text="{DynamicResource ToolbarButtons_CommunityButton_Text}" Foreground="Yellow" LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,3"/>
     </ToggleButton>
-    <Image Style="{StaticResource SideBarButtonIcon}" Source="/BedrockLauncher;component/Resources/images/ui/icons/servers_icon.png"/>
+    <Image Style="{StaticResource SideBarButtonIcon}" Source="/BedrockLauncher;component/Resources/images/icons/servers_icon.png"/>
 </Grid>

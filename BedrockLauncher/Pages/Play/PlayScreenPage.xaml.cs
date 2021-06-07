@@ -20,7 +20,7 @@ namespace BedrockLauncher.Pages.Play
     public partial class PlayScreenPage : Page
     {
 
-        private const string ImagePathPrefix = @"pack://application:,,,/BedrockLauncher;component/resources/images/ui/bg/play_screen/";
+        private const string ImagePathPrefix = @"pack://application:,,,/BedrockLauncher;component/resources/images/bg/play_screen/";
 
         public Dictionary<string, string> Images = new Dictionary<string, string>()
         {

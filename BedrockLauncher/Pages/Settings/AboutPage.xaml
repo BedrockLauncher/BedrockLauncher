@@ -32,7 +32,7 @@
                     <RowDefinition Height="250"></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/BedrockLauncher;component/resources/images/ui/credits/carjem_logo.png" Grid.Row="0"></Image>
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/BedrockLauncher;component/resources/images/credits/carjem_logo.png" Grid.Row="0"></Image>
                 <Border Grid.Row="1" BorderThickness="0,2,0,0" BorderBrush="{DynamicResource Seperator.Background}">
                     <Grid Background="Transparent">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
@@ -54,7 +54,7 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                    <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Right" Source="/BedrockLauncher;component/resources/images/ui/credits/xlynxx.jpg">
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Right" Source="/BedrockLauncher;component/resources/images/credits/xlynxx.jpg">
                         <Image.OpacityMask>
                             <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
                                 <GradientStop Color="#ffffffff" Offset="0.8" />
@@ -90,7 +90,7 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Left" Source="/BedrockLauncher;component/resources/images/ui/credits/mcmrarm_icon.jfif">
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Left" Source="/BedrockLauncher;component/resources/images/credits/mcmrarm_icon.jfif">
                         <Image.OpacityMask>
                             <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
                                 <GradientStop Color="#ffffffff" Offset="0.8" />
@@ -128,7 +128,7 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Left" Source="/BedrockLauncher;component/resources/images/ui/credits/bs_community_icon.png">
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Left" Source="/BedrockLauncher;component/resources/images/credits/bs_community_icon.png">
                         <Image.OpacityMask>
                             <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
                                 <GradientStop Color="#ffffffff" Offset="0.8" />
@@ -161,7 +161,7 @@
                     <RowDefinition Height="40"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid Height="65" Background="Transparent">
-                    <Image Height="40" RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/BedrockLauncher;component/resources/images/ui/credits/mojang_logo.png"/>
+                    <Image Height="40" RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/BedrockLauncher;component/resources/images/credits/mojang_logo.png"/>
                 </Grid>
                 <Grid Grid.Row="1" Background="Transparent">
                     <TextBlock Padding="5" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" Foreground="White">

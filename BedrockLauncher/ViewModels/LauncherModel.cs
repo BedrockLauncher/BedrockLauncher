@@ -143,7 +143,11 @@ namespace BedrockLauncher.ViewModels
         }
         private void ProgressBarUpdate(double downloadedBytes, double totalSize)
         {
-            bool isIndeterminate = (CurrentState == StateChange.isInitializing || CurrentState == StateChange.isUninstalling || CurrentState == StateChange.isLaunching);
+            bool isAdvanced = Properties.LauncherSettings.Default.ShowAdvancedInstallDetails;
+            bool isIndeterminate = (CurrentState == StateChange.isInitializing || 
+                CurrentState == StateChange.isUninstalling || 
+                CurrentState == StateChange.isLaunching || 
+                (!isAdvanced ? (CurrentState == StateChange.isRemovingPackage || CurrentState == StateChange.isRegisteringPackage) : false));
 
             Application.Current.Dispatcher.Invoke(() =>
             {
@@ -470,10 +474,15 @@ namespace BedrockLauncher.ViewModels
             get { return _currentState; }
             set
             {
-                _currentState = value;
-                OnPropertyChanged(nameof(DisplayStatus));
-                UpdateProgressBarContent(value);
-                ProgressBarUpdate();
+                bool IsAdvancedDetail = value == StateChange.isRegisteringPackage || value == StateChange.isRemovingPackage;
+                if (!Properties.LauncherSettings.Default.ShowAdvancedInstallDetails && IsAdvancedDetail) return;
+                else
+                {
+                    _currentState = value;
+                    OnPropertyChanged(nameof(DisplayStatus));
+                    UpdateProgressBarContent(value);
+                    ProgressBarUpdate();
+                }
             }
         }
         public bool AllowCancel

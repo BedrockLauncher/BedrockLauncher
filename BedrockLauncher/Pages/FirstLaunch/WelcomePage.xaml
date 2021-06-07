@@ -9,7 +9,7 @@
       d:DesignHeight="639" d:DesignWidth="1016"
       Title="WelcomePage" Foreground="{x:Null}" Initialized="Page_Initialized">
     <Page.Background>
-        <ImageBrush ImageSource="/BedrockLauncher;component/resources/images/ui/bg/firstlaunchbackground.jpg" Stretch="UniformToFill"/>
+        <ImageBrush ImageSource="/BedrockLauncher;component/resources/images/bg/firstlaunchbackground.jpg" Stretch="UniformToFill"/>
     </Page.Background>
     <Grid Margin="0" Background="#7F000000">
         <TextBlock Foreground="white" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" FontSize="11" FontWeight="Bold" Text="{DynamicResource MainWindow_Disclaimer}" Margin="20,20" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>

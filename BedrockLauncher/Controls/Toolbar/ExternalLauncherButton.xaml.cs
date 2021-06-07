@@ -29,9 +29,10 @@ namespace BedrockLauncher.Controls.Toolbar
             InitializeComponent();
         }
 
-        private void SideBarButton_Click(object sender, RoutedEventArgs e)
+        private async void SideBarButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModels.LauncherModel.MainThread.ButtonManager_Base(this.Name);
+            await Task.Run(ViewModels.LauncherModel.MainThread.NavigateToExternalLauncher);
+            await this.Dispatcher.InvokeAsync(() => { this.Button.IsChecked = false; });
         }
     }
 }

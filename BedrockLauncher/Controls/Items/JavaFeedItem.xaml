@@ -38,42 +38,42 @@
                 </Grid.RowDefinitions>
                 <Image Grid.Column="0" Grid.Row="0" RenderOptions.BitmapScalingMode="NearestNeighbor" Width="{DynamicResource BorderSizeDouble}" Height="{DynamicResource BorderSizeDouble}" Stretch="Uniform">
                     <Image.Source>
-                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/ui/panels/CardBorder.png" SourceRect="0 0 7 7"></CroppedBitmap>
+                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/panels/CardBorder.png" SourceRect="0 0 7 7"></CroppedBitmap>
                     </Image.Source>
                 </Image>
                 <Image Grid.Column="0" Grid.Row="1" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="Fill">
                     <Image.Source>
-                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/ui/panels/CardBorder.png" SourceRect="0 7 7 46"></CroppedBitmap>
+                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/panels/CardBorder.png" SourceRect="0 7 7 46"></CroppedBitmap>
                     </Image.Source>
                 </Image>
                 <Image Grid.Column="0" Grid.Row="2" RenderOptions.BitmapScalingMode="NearestNeighbor" Width="{DynamicResource BorderSizeDouble}" Height="{DynamicResource BorderSizeDouble}" Stretch="Uniform">
                     <Image.Source>
-                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/ui/panels/CardBorder.png" SourceRect="0 53 7 7"></CroppedBitmap>
+                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/panels/CardBorder.png" SourceRect="0 53 7 7"></CroppedBitmap>
                     </Image.Source>
                 </Image>
                 <Image Grid.Column="2" Grid.Row="1" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="Fill">
                     <Image.Source>
-                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/ui/panels/CardBorder.png" SourceRect="53 7 7 46"></CroppedBitmap>
+                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/panels/CardBorder.png" SourceRect="53 7 7 46"></CroppedBitmap>
                     </Image.Source>
                 </Image>
                 <Image Grid.Column="2" Grid.Row="2"  RenderOptions.BitmapScalingMode="NearestNeighbor" Width="{DynamicResource BorderSizeDouble}" Height="{DynamicResource BorderSizeDouble}" Stretch="Uniform">
                     <Image.Source>
-                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/ui/panels/CardBorder.png" SourceRect="53 53 7 7"></CroppedBitmap>
+                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/panels/CardBorder.png" SourceRect="53 53 7 7"></CroppedBitmap>
                     </Image.Source>
                 </Image>
                 <Image Grid.Column="1" Grid.Row="0" RenderOptions.BitmapScalingMode="NearestNeighbor" Height="{DynamicResource BorderSizeDouble}" Stretch="Fill">
                     <Image.Source>
-                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/ui/panels/CardBorder.png" SourceRect="7 0 46 7"></CroppedBitmap>
+                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/panels/CardBorder.png" SourceRect="7 0 46 7"></CroppedBitmap>
                     </Image.Source>
                 </Image>
                 <Image Grid.Column="2" Grid.Row="0"  RenderOptions.BitmapScalingMode="NearestNeighbor" Width="{DynamicResource BorderSizeDouble}" Height="{DynamicResource BorderSizeDouble}" Stretch="Uniform">
                     <Image.Source>
-                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/ui/panels/CardBorder.png" SourceRect="53 0 7 7"></CroppedBitmap>
+                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/panels/CardBorder.png" SourceRect="53 0 7 7"></CroppedBitmap>
                     </Image.Source>
                 </Image>
                 <Image Grid.Column="1" Grid.Row="2" RenderOptions.BitmapScalingMode="NearestNeighbor" Height="{DynamicResource BorderSizeDouble}" Stretch="Fill">
                     <Image.Source>
-                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/ui/panels/CardBorder.png" SourceRect="7 53 46 7"></CroppedBitmap>
+                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/panels/CardBorder.png" SourceRect="7 53 46 7"></CroppedBitmap>
                     </Image.Source>
                 </Image>
             </Grid>

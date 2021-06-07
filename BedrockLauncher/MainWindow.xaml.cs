@@ -221,15 +221,18 @@ namespace BedrockLauncher
             {
                 Action action = new Action(() =>
                 {
+                    string JavaPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu) + @"\Programs\Minecraft Launcher\Minecraft Launcher.lnk";
+
                     try
                     {
                         // Trying to find and open Java launcher shortcut
-                        string JavaPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu) + @"\Programs\Minecraft Launcher\Minecraft Launcher";
                         Process.Start(JavaPath);
-                        Application.Current.MainWindow.Close();
+                        if (Properties.LauncherSettings.Default.CloseLauncherOnSwitch) Application.Current.MainWindow.Close();
                     }
-                    catch
+                    catch (Exception ex)
                     {
+                        Debug.WriteLine(string.Format("CantFindJavaLauncher: {0}", JavaPath));
+                        Debug.WriteLine(ex);
                         mainPage.NavigateToPlayScreen();
                         ErrorScreenShow.errormsg("CantFindJavaLauncher");
                     }
@@ -244,13 +247,16 @@ namespace BedrockLauncher
             {
                 Action action = new Action(() =>
                 {
+                    string LauncherPath = Properties.LauncherSettings.Default.ExternalLauncherPath;
                     try
                     {
-                        Process.Start(Properties.LauncherSettings.Default.ExternalLauncherPath);
-                        Application.Current.MainWindow.Close();
+                        Process.Start(LauncherPath);
+                        if (Properties.LauncherSettings.Default.CloseLauncherOnSwitch) Application.Current.MainWindow.Close();
                     }
-                    catch
+                    catch (Exception ex)
                     {
+                        Debug.WriteLine(string.Format("CantFindExternalLauncher: {0}", LauncherPath));
+                        Debug.WriteLine(ex);
                         mainPage.NavigateToPlayScreen();
                         ErrorScreenShow.errormsg("CantFindExternalLauncher");
                     }

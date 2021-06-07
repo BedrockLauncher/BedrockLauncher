@@ -32,5 +32,5 @@
             </Grid>
         </ToggleButton.Content>
     </ToggleButton>
-    <Image IsHitTestVisible="False" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True" Source="/BedrockLauncher;component/Resources/images/ui/icons/mojang-icon.png" MinWidth="30" MinHeight="30" HorizontalAlignment="Left" VerticalAlignment="Center" Width="30" Height="30" Margin="14,0,0,3"/>
+    <Image IsHitTestVisible="False" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True" Source="/BedrockLauncher;component/Resources/images/icons/mojang-icon.png" MinWidth="30" MinHeight="30" HorizontalAlignment="Left" VerticalAlignment="Center" Width="30" Height="30" Margin="14,0,0,3"/>
 </Grid>
