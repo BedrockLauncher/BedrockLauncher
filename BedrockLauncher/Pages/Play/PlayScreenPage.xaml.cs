@@ -60,9 +60,9 @@ namespace BedrockLauncher.Pages.Play
             await this.Dispatcher.InvokeAsync(() =>
             {
                 InstallationsList.Items.Cast<MCInstallation>().ToList().ForEach(x => x.Update());
-
-                InstallationsList.ItemsSource = ConfigManager.CurrentInstallations;
                 if (InstallationsList.SelectedItem == null) InstallationsList.SelectedItem = ConfigManager.CurrentInstallations.First();
+                if (InstallationsList.ItemsSource != null) CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource).Refresh();
+                else InstallationsList.ItemsSource = ConfigManager.CurrentInstallations;
             });
         }
 

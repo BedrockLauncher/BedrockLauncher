@@ -24,6 +24,17 @@ namespace BedrockLauncher.Pages.Settings
         public VersionsSettingsPage()
         {
             InitializeComponent();
+            ConfigManager.ConfigStateChanged += ConfigManager_ConfigStateChanged;
+        }
+
+        private async void ConfigManager_ConfigStateChanged(object sender, EventArgs e)
+        {
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                VersionsList.ItemsSource = ConfigManager.Versions;
+                var view = CollectionViewSource.GetDefaultView(VersionsList.ItemsSource) as CollectionView;
+                view.Filter = ConfigManager.Filter_VersionList;
+            });
         }
 
         public void RefreshVersionsList()
@@ -33,12 +44,21 @@ namespace BedrockLauncher.Pages.Settings
 
         private void Page_Initialized(object sender, EventArgs e)
         {
-
+            
         }
 
         private void RefreshVersionsList(object sender, RoutedEventArgs e)
         {
             RefreshVersionsList();
+        }
+
+        private async void PageHost_Loaded(object sender, RoutedEventArgs e)
+        {
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                var view = CollectionViewSource.GetDefaultView(VersionsList.ItemsSource) as CollectionView;
+                view.Filter = ConfigManager.Filter_VersionList;
+            });
         }
     }
 }

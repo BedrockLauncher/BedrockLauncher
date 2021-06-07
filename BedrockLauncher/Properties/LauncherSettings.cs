@@ -175,6 +175,7 @@ namespace BedrockLauncher.Properties
         private string _ExternalLauncherIconPath = "";
         private bool _CloseLauncherOnSwitch = true;
         private bool _EnableDungeonsSupport = false;
+        private string _ExternalLauncherArguments = string.Empty;
 
         public bool HideJavaShortcut
         {
@@ -194,7 +195,12 @@ namespace BedrockLauncher.Properties
         public string ExternalLauncherPath
         {
             get { return _ExternalLauncherPath; }
-            set { _ExternalLauncherPath = value; OnPropertyChanged(nameof(_ExternalLauncherPath)); }
+            set { _ExternalLauncherPath = value; OnPropertyChanged(nameof(ExternalLauncherPath)); }
+        }
+        public string ExternalLauncherArguments
+        {
+            get { return _ExternalLauncherArguments; }
+            set { _ExternalLauncherArguments = value; OnPropertyChanged(nameof(ExternalLauncherArguments)); }
         }
         public string ExternalLauncherIconPath
         {

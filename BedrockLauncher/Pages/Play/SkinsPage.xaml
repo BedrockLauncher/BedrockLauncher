@@ -7,6 +7,8 @@
       xmlns:controls="clr-namespace:BedrockLauncher.Controls"
       xmlns:classes="clr-namespace:BedrockLauncher.Classes.SkinPack"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
+      xmlns:properties="clr-namespace:BedrockLauncher.Properties"
+      xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SkinsPage" Initialized="Page_Initialized" Loaded="Page_Loaded" x:Name="SkinsPageHost">
@@ -64,15 +66,26 @@
                 </Grid>
             </Grid>
         </Border>
-
-        <ListView Grid.RowSpan="3" 
-                  Keyboard.PreviewKeyUp="LoadedSkinPacks_PreviewKeyUp" 
-                  BorderThickness="0,0,0,0" 
-                  Grid.Row="1" BorderBrush="{DynamicResource Seperator.Background}" x:Name="LoadedSkinPacks" 
+        <Separator Grid.Row="1" Grid.Column="1" Margin="0" Padding="0" Grid.RowSpan="2"></Separator>
+        <Grid Grid.RowSpan="3" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="55"></RowDefinition>
+                <RowDefinition Height="1"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Background="{DynamicResource ListBox.Static.Background}">
+                <controls:InstallationSelector VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectedIndex="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=CurrentInstallation}" IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default}, Path=AllowEditing, Mode=OneWay}" SelectionChanged="InstallationsList_SelectionChanged" ItemsSource="{Binding}" x:Name="InstallationsList" Margin="4,4,4,4" Padding="-1,7,5,3"></controls:InstallationSelector>
+            </Grid>
+            <Separator Grid.Row="1" Padding="0" Margin="0"></Separator>
+            <ListView Grid.Row="2"
+                  Keyboard.PreviewKeyUp="LoadedSkinPacks_PreviewKeyUp"
+                  x:Name="LoadedSkinPacks" 
                   SelectionChanged="LoadedSkinPacks_SelectionChanged" 
                   HorizontalContentAlignment="Center" 
                   ItemTemplate="{StaticResource SkinPackItemTemplate}">
-        </ListView>
+            </ListView>
+        </Grid>
+
         <Grid Grid.Column="2" Grid.Row="1" Background="#212121"></Grid>
         <controls:SkinPreview x:Name="SkinPreviewPanel" Grid.Column="2" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></controls:SkinPreview>
         <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource Seperator.Background}" Grid.Column="2" Grid.Row="0">

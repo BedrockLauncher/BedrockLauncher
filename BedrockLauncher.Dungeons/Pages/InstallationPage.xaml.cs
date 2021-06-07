@@ -30,7 +30,7 @@ namespace BedrockLauncher.Dungeons.Pages
         private void BrowseDirectoryButton_Click(object sender, RoutedEventArgs e)
         {
             FolderSelectDialog dialog = new FolderSelectDialog();
-            if (dialog.Show())
+            if (dialog.ShowDialog())
             {
                 Properties.DungeonSettings.Default.InstallLocation = dialog.FileName;
                 Properties.DungeonSettings.Default.Save();
@@ -71,7 +71,7 @@ namespace BedrockLauncher.Dungeons.Pages
         private void BrowseModDirectoryButton_Click(object sender, RoutedEventArgs e)
         {
             FolderSelectDialog dialog = new FolderSelectDialog();
-            if (dialog.Show())
+            if (dialog.ShowDialog())
             {
                 Properties.DungeonSettings.Default.ModsLocation = dialog.FileName;
                 Properties.DungeonSettings.Default.Save();

@@ -26,13 +26,7 @@ namespace BedrockLauncher.Pages.Settings
         public SettingsTabs()
         {
             InitializeComponent();
-            ConfigManager.ConfigStateChanged += ConfigManager_ConfigStateChanged;
             ButtonManager_Base(GeneralButton.Name);
-        }
-
-        private void ConfigManager_ConfigStateChanged(object sender, EventArgs e)
-        {
-            RefreshVersions();
         }
 
         private async void Navigate(object content)
@@ -56,17 +50,6 @@ namespace BedrockLauncher.Pages.Settings
 
             await Task.Run(() => BL_Core.Components.PageAnimator.FrameSwipe(SettingsScreenFrame, content, direction));
         }
-
-        #region UI
-
-        public void RefreshVersions()
-        {
-            versionsSettingsPage.VersionsList.ItemsSource = ConfigManager.Versions;
-            var view = CollectionViewSource.GetDefaultView(versionsSettingsPage.VersionsList.ItemsSource) as CollectionView;
-            view.Filter = ConfigManager.Filter_VersionList;
-        }
-
-        #endregion
 
         #region Navigation
 

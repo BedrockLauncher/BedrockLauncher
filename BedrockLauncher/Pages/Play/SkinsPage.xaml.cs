@@ -23,6 +23,7 @@ using System.IO.Compression;
 using BedrockLauncher.Pages.Preview;
 using BL_Core.Pages.Common;
 using ExtensionsDotNET;
+using BedrockLauncher.Classes;
 
 namespace BedrockLauncher.Pages.Play
 {
@@ -42,7 +43,21 @@ namespace BedrockLauncher.Pages.Play
 
         private async void ConfigManager_ConfigStateChanged(object sender, EventArgs e)
         {
-            await Task.Run(() => ReloadSkinPacks());
+            await Task.Run(() => {
+                RefreshInstallations();
+                ReloadSkinPacks();
+            });
+        }
+
+        private async void RefreshInstallations()
+        {
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                InstallationsList.Items.Cast<MCInstallation>().ToList().ForEach(x => x.Update());
+                if (InstallationsList.SelectedItem == null) InstallationsList.SelectedItem = ConfigManager.CurrentInstallations.First();
+                if (InstallationsList.ItemsSource != null) CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource).Refresh();
+                else InstallationsList.ItemsSource = ConfigManager.CurrentInstallations;
+            });
         }
 
         public async void ReloadSkinPacks()
@@ -227,6 +242,11 @@ namespace BedrockLauncher.Pages.Play
         private void LoadedSkinPacks_PreviewKeyUp(object sender, KeyEventArgs e)
         {
 
+        }
+
+        private void InstallationsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ConfigManager.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
         }
     }
 }

@@ -42,9 +42,13 @@ namespace BedrockLauncher.Pages.Play
             UpdateButton.IsEnabled = downloader.IsRefreshable;
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                var view = CollectionViewSource.GetDefaultView(PatchNotesList.ItemsSource) as CollectionView;
+                view.Filter = ConfigManager.Filter_PatchNotes;
+            });
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
@@ -93,8 +97,6 @@ namespace BedrockLauncher.Pages.Play
             {
                 this.downloader.UpdateList();
                 PatchNotesList.ItemsSource = downloader.PatchNotes;
-                var view = CollectionViewSource.GetDefaultView(PatchNotesList.ItemsSource) as CollectionView;
-                view.Filter = ConfigManager.Filter_PatchNotes;
             });
         }
     }

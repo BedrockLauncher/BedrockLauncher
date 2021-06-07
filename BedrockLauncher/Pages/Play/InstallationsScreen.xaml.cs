@@ -49,6 +49,13 @@ namespace BedrockLauncher.Pages.Play
 
         }
 
-
+        private async void PageHost_Loaded(object sender, RoutedEventArgs e)
+        {
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
+                view.Filter = ConfigManager.Filter_InstallationList;
+            });
+        }
     }
 }

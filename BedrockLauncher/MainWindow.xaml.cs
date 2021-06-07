@@ -248,14 +248,15 @@ namespace BedrockLauncher
                 Action action = new Action(() =>
                 {
                     string LauncherPath = Properties.LauncherSettings.Default.ExternalLauncherPath;
+                    string Arguments = Properties.LauncherSettings.Default.ExternalLauncherArguments;
                     try
                     {
-                        Process.Start(LauncherPath);
+                        Process.Start(LauncherPath, Arguments);
                         if (Properties.LauncherSettings.Default.CloseLauncherOnSwitch) Application.Current.MainWindow.Close();
                     }
                     catch (Exception ex)
                     {
-                        Debug.WriteLine(string.Format("CantFindExternalLauncher: {0}", LauncherPath));
+                        Debug.WriteLine(string.Format("CantFindExternalLauncher:\n\nPath: {0}\nArguments: {1}", LauncherPath, Arguments));
                         Debug.WriteLine(ex);
                         mainPage.NavigateToPlayScreen();
                         ErrorScreenShow.errormsg("CantFindExternalLauncher");

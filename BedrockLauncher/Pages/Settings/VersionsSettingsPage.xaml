@@ -10,7 +10,7 @@
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       mc:Ignorable="d" 
       d:DesignHeight="608" d:DesignWidth="828"
-      Title="VersionsPage" x:Name="PageHost" Initialized="Page_Initialized">
+      Title="VersionsPage" x:Name="PageHost" Initialized="Page_Initialized" Loaded="PageHost_Loaded">
     <Page.Resources>
         <converters:InvertableBooleanToVisibilityConverter x:Key="VisibleIfTrueConverter" />
     </Page.Resources>

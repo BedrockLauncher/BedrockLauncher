@@ -74,7 +74,7 @@ namespace BedrockLauncher.Pages.FirstLaunch
             {
                 InitialDirectory = StorageDirectoryTextBox.Text
             };
-            if (dialog.Show(new WindowInteropHelper(Application.Current.MainWindow).Handle))
+            if (dialog.ShowDialog(new WindowInteropHelper(Application.Current.MainWindow).Handle))
             {
                 Properties.LauncherSettings.Default.FixedDirectory = dialog.FileName;
                 Properties.LauncherSettings.Default.Save();

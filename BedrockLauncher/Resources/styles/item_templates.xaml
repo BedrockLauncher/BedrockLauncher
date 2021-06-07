@@ -69,9 +69,4 @@
         </DataTemplate.Triggers>
     </DataTemplate>
 
-    <DataTemplate x:Key="InstallationSelectorItemTemplate" DataType="{x:Type classes:MCInstallation}">
-        <i:InstallationSelectorItem DataContext="{Binding}"></i:InstallationSelectorItem>
-    </DataTemplate>
-
-
 </ResourceDictionary>

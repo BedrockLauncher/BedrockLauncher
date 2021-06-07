@@ -8,7 +8,7 @@
       mc:Ignorable="d" 
       x:Name="PageHost"
       d:DesignHeight="608" d:DesignWidth="828"
-      Title="InstallationsScreen" Initialized="Page_Initialized">
+      Title="InstallationsScreen" Initialized="Page_Initialized" Loaded="PageHost_Loaded">
     <Grid Margin="0" Background="#FF303030" Style="{DynamicResource DisabledStyle}">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"></RowDefinition>

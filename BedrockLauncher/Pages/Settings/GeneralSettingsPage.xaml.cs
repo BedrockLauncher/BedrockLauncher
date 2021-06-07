@@ -69,6 +69,7 @@ namespace BedrockLauncher.Pages.Settings
             {
                 Properties.LauncherSettings.Default.ExternalLauncherPath = dialog.FileName;
                 Properties.LauncherSettings.Default.Save();
+                ExternalLauncherPathTextBox.GetBindingExpression(TextBox.TextProperty).UpdateTarget();
             }
         }
 
