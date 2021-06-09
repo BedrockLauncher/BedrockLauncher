@@ -62,7 +62,7 @@ namespace BedrockLauncher.Properties
 
         private string _CurrentTheme = "LatestUpdate";
         private bool _ShowAdvancedInstallDetails = false;
-        private bool _UseBetaBuilds = true;
+        private bool _UseBetaBuilds = false;
         private bool _KeepLauncherOpen = false;
         private bool _AnimatePlayButton = false;
         private bool _AnimatePageTransitions = false;
