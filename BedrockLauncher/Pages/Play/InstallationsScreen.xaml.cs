@@ -32,10 +32,14 @@ namespace BedrockLauncher.Pages.Play
 
         public void RefreshInstallationsList(object sender, RoutedEventArgs e)
         {
-            InstallationsList.ItemsSource = ConfigManager.Default.CurrentInstallations;
-            var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
-            view.Filter = ConfigManager.Default.Filter_InstallationList;
-            Task.Run(UpdateUI);
+            this.Dispatcher.Invoke(() =>
+            {
+                InstallationsList.ItemsSource = ConfigManager.Default.CurrentInstallations;
+                var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
+                view.Filter = ConfigManager.Default.Filter_InstallationList;
+                Task.Run(UpdateUI);
+            });
+
         }
 
         private void NewInstallationButton_Click(object sender, RoutedEventArgs e)
