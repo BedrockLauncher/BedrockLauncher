@@ -210,7 +210,6 @@
     </Compile>
     <Compile Include="Events\ConfigStateArgs.cs" />
     <Compile Include="Methods\FilepathManager.cs" />
-    <Compile Include="Methods\StoreNetwork.cs" />
     <Compile Include="Pages\Common\NoContentFoundPage.xaml.cs">
       <DependentUpon>NoContentFoundPage.xaml</DependentUpon>
     </Compile>
