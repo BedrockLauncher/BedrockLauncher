@@ -19,7 +19,6 @@ using System.IO.Compression;
 using System.Threading;
 using System.Windows.Data;
 
-using BedrockLauncher.Interfaces;
 using BL_Core.Components;
 using System.Text.RegularExpressions;
 
@@ -27,14 +26,11 @@ namespace BedrockLauncher.Classes
 {
     public class MCVersion : NotifyPropertyChangedBase
     {
-        public MCVersion(string uuid, string name, bool isBeta, ICommonVersionCommands commands)
+        public MCVersion(string uuid, string name, bool isBeta)
         {
             this.UUID = uuid.ToLower();
             this.Name = name;
             this.IsBeta = isBeta;
-            this.DownloadCommand = commands.DownloadCommand;
-            this.LaunchCommand = commands.LaunchCommand;
-            this.RemoveCommand = commands.RemoveCommand;
         }
 
         public string UUID { get; set; }
@@ -135,10 +131,6 @@ namespace BedrockLauncher.Classes
                 return IsInstalled ? "Installed" : "Not installed";
             }
         }
-
-        public ICommand LaunchCommand { get; set; }
-        public ICommand DownloadCommand { get; set; }
-        public ICommand RemoveCommand { get; set; }
 
         public void UpdateInstallStatus()
         {

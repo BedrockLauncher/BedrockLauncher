@@ -18,7 +18,7 @@ using BedrockLauncher.Classes;
 namespace BedrockLauncher.Pages.Preview
 {
     /// <summary>
-    /// Interaction logic for AddInstallationScreen.xaml
+    /// Interaction logic for EditInstallationScreen.xaml
     /// </summary>
     public partial class EditInstallationScreen : Page
     {
@@ -57,8 +57,8 @@ namespace BedrockLauncher.Pages.Preview
 
         private void GetManualComboBoxEntries()
         {
-            Classes.MCVersion latest_release = new Classes.MCVersion("latest_release", Application.Current.Resources["EditInstallationScreen_LatestRelease"].ToString(), false, ConfigManager.GameManager);
-            Classes.MCVersion latest_beta = new Classes.MCVersion("latest_beta", Application.Current.Resources["EditInstallationScreen_LatestSnapshot"].ToString(), false, ConfigManager.GameManager);
+            Classes.MCVersion latest_release = new Classes.MCVersion("latest_release", Application.Current.Resources["EditInstallationScreen_LatestRelease"].ToString(), false);
+            Classes.MCVersion latest_beta = new Classes.MCVersion("latest_beta", Application.Current.Resources["EditInstallationScreen_LatestSnapshot"].ToString(), false);
             Versions.InsertRange(0, new List<Classes.MCVersion>() { latest_release, latest_beta });
         }
 

@@ -16,24 +16,20 @@ namespace BedrockLauncher.Classes
 {
     public class MCVersionList : ObservableCollection<MCVersion>
     {
-
         public readonly string cacheFile;
         public readonly string userCacheFile;
-        private readonly Interfaces.ICommonVersionCommands commands;
 
-
-        public MCVersionList(string _cacheFile, string _userCacheFile, Interfaces.ICommonVersionCommands _commands)
+        public MCVersionList(string _cacheFile, string _userCacheFile)
         {
             this.cacheFile = _cacheFile;
             this.userCacheFile = _userCacheFile;
-            this.commands = _commands;
         }
 
         public void PraseDB(Win10VersionDBManager.Win10VersionJsonDb db)
         {
             foreach (var v in db.list)
             {
-                if (!this.ToList().Exists(x => x.UUID == v.uuid || x.Name == v.version)) this.Add(new MCVersion(v.uuid, v.version, v.isBeta, commands));
+                if (!this.ToList().Exists(x => x.UUID == v.uuid || x.Name == v.version)) this.Add(new MCVersion(v.uuid, v.version, v.isBeta));
             }
             this.Sort((x, y) => Compare(x, y));
 

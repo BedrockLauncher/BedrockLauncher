@@ -15,7 +15,6 @@ using Windows.Foundation;
 using Windows.Management.Core;
 using Windows.Management.Deployment;
 using Windows.System;
-using BedrockLauncher.Interfaces;
 using BedrockLauncher.Classes;
 using BedrockLauncher.Classes.SkinPack;
 using BL_Core.Pages.Common;
@@ -32,7 +31,7 @@ using BL_Core.Controls;
 
 namespace BedrockLauncher.Methods
 {
-    public class GameManager: NotifyPropertyChangedBase, ICommonVersionCommands
+    public class GameManager: NotifyPropertyChangedBase
     {
 
         #region Threading Tasks

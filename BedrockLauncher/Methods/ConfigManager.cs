@@ -113,7 +113,7 @@ namespace BedrockLauncher.Methods
 
         public static void LoadVersions()
         {
-            Versions = new MCVersionList(FilepathManager.GetVersionsFilePath(), FilepathManager.GetUserVersionsFilePath(), GameManager);
+            Versions = new MCVersionList(FilepathManager.GetVersionsFilePath(), FilepathManager.GetUserVersionsFilePath());
             ReloadVersions();
         }
         public static void ReloadVersions()
