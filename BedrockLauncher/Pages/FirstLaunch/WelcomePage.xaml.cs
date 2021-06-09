@@ -86,9 +86,9 @@ namespace BedrockLauncher.Pages.FirstLaunch
 
             void Page3()
             {
-                if (ConfigManager.ProfileList.profiles.Count() != 0)
+                if (ConfigManager.Default.ProfileList.profiles.Count() != 0)
                 {
-                    Properties.LauncherSettings.Default.CurrentProfile = ConfigManager.ProfileList.profiles.FirstOrDefault().Key;
+                    Properties.LauncherSettings.Default.CurrentProfile = ConfigManager.Default.ProfileList.profiles.FirstOrDefault().Key;
                     Properties.LauncherSettings.Default.Save();
                     MoveToPage(4);
                 }
@@ -125,7 +125,7 @@ namespace BedrockLauncher.Pages.FirstLaunch
 
             void Page6(bool _backup)
             {
-                if (_backup) ConfigManager.GameManager.BackupGameData();
+                if (_backup) ConfigManager.Default.GameManager.BackupGameData();
                 ViewModels.LauncherModel.Default.SetOverlayFrame_Strict(null);
                 Properties.LauncherSettings.Default.IsFirstLaunch = false;
                 Properties.LauncherSettings.Default.Save();

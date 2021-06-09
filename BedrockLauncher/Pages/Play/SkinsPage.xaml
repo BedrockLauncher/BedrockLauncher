@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mcf="clr-namespace:BL_Core.Controls.McTextBlock;assembly=BL_Core"
       xmlns:controls="clr-namespace:BedrockLauncher.Controls"
-      xmlns:classes="clr-namespace:BedrockLauncher.Classes.SkinPack"
+      xmlns:classes="clr-namespace:BL_Core.Classes.SkinPack;assembly=BL_Core"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       xmlns:properties="clr-namespace:BedrockLauncher.Properties"
       xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"

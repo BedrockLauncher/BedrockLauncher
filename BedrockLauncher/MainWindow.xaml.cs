@@ -82,7 +82,7 @@ namespace BedrockLauncher
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.GameManager.Cancel();
+            ConfigManager.Default.GameManager.Cancel();
         }
 
         #region Navigation
@@ -270,7 +270,7 @@ namespace BedrockLauncher
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
-                if (Properties.LauncherSettings.Default.CloseLauncherOnSwitch && ConfigManager.GameManager.GameProcess != null)
+                if (Properties.LauncherSettings.Default.CloseLauncherOnSwitch && ConfigManager.Default.GameManager.GameProcess != null)
                 {
                     Task.Run(() => LauncherModel.Default.ShowPrompt_ClosingWithGameStillOpened(action));
                 }

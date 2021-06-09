@@ -41,9 +41,9 @@ namespace BedrockLauncher.Controls.Toolbar
             }
             OtherAccountControls.Clear();
 
-            int profileCount = ConfigManager.ProfileList.profiles.Count;
+            int profileCount = ConfigManager.Default.ProfileList.profiles.Count;
 
-            foreach (var entry in ConfigManager.ProfileList.profiles)
+            foreach (var entry in ConfigManager.Default.ProfileList.profiles)
             {
                 ProfileItem profile = new ProfileItem(entry, this);
                 if (!(profileCount <= 1))
@@ -108,7 +108,7 @@ namespace BedrockLauncher.Controls.Toolbar
 
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                ConfigManager.RemoveProfile(profile);
+                ConfigManager.Default.RemoveProfile(profile);
             }
 
         }

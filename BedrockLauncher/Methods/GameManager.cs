@@ -16,18 +16,17 @@ using Windows.Management.Core;
 using Windows.Management.Deployment;
 using Windows.System;
 using BedrockLauncher.Classes;
-using BedrockLauncher.Classes.SkinPack;
 using BL_Core.Pages.Common;
 using BedrockLauncher.Downloaders;
 using BL_Core.Components;
 using BL_Core.Methods;
 using ExtensionsDotNET;
 using SymbolicLinkSupport;
-
-using MCVersion = BedrockLauncher.Classes.MCVersion;
 using ZipProgress = ExtensionsDotNET.ZipFileExtensions.ZipProgress;
 using System.Collections.Generic;
 using BL_Core.Controls;
+using BL_Core.Classes;
+using BL_Core.Classes.SkinPack;
 
 namespace BedrockLauncher.Methods
 {
@@ -133,7 +132,7 @@ namespace BedrockLauncher.Methods
         public void Play(MCInstallation i)
         {
             if (i == null) return;
-            Properties.LauncherSettings.Default.CurrentInstallation = ConfigManager.CurrentInstallations.IndexOf(i);
+            Properties.LauncherSettings.Default.CurrentInstallation = ConfigManager.Default.CurrentInstallations.IndexOf(i);
             Properties.LauncherSettings.Default.Save();
 
             var v = i.Version;
@@ -149,7 +148,7 @@ namespace BedrockLauncher.Methods
         }
         public void OpenFolder(MCInstallation i)
         {
-            string Directory = FilepathManager.GetInstallationsFolderPath(ConfigManager.CurrentProfile, i.DirectoryName_Full);
+            string Directory = FilepathManager.Default.GetInstallationsFolderPath(ConfigManager.Default.CurrentProfile, i.DirectoryName_Full);
             if (!System.IO.Directory.Exists(Directory)) System.IO.Directory.CreateDirectory(Directory);
             Process.Start("explorer.exe", Directory);
         }
@@ -264,7 +263,7 @@ namespace BedrockLauncher.Methods
                 v.UpdateInstallStatus();
                 ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
                 ViewModels.LauncherModel.Default.ShowProgressBar = false;
-                ConfigManager.OnConfigStateChanged(null, Events.ConfigStateArgs.Empty);
+                ConfigManager.Default.OnConfigStateChanged(null, Events.ConfigStateArgs.Empty);
                 return;
             });
         }
@@ -286,12 +285,12 @@ namespace BedrockLauncher.Methods
                     if (dataPath != string.Empty)
                     {
                         var dirData = GenerateStrings();
-                        string dataDir = Path.Combine(FilepathManager.GetInstallationsFolderPath(ConfigManager.CurrentProfile, dirData.Item1));
+                        string dataDir = Path.Combine(FilepathManager.Default.GetInstallationsFolderPath(ConfigManager.Default.CurrentProfile, dirData.Item1));
 
                         if (!Directory.Exists(dirData.Item1)) Directory.CreateDirectory(dirData.Item1);
                         System.Diagnostics.Debug.WriteLine("Moving backup Minecraft data to: " + dirData.Item1);
                         RestoreCopy(dataPath, dirData.Item1);
-                        ConfigManager.CreateInstallation(dirData.Item2, null, dirData.Item1);
+                        ConfigManager.Default.CreateInstallation(dirData.Item2, null, dirData.Item1);
                     }
                 }
                 catch (Exception ex) { ErrorScreenShow.exceptionmsg(ex); }
@@ -299,7 +298,7 @@ namespace BedrockLauncher.Methods
                 ViewModels.LauncherModel.Default.ShowProgressBar = false;
                 ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
             });
-            ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
+            ConfigManager.Default.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
 
             Tuple<string, string> GenerateStrings(string name = "Recovery Data", string dir = "RecoveryData")
             {
@@ -309,7 +308,7 @@ namespace BedrockLauncher.Methods
 
 
 
-                while (Directory.Exists(Path.Combine(FilepathManager.GetInstallationsFolderPath(ConfigManager.CurrentProfile, recoveryDir))) || i < 100)
+                while (Directory.Exists(Path.Combine(FilepathManager.Default.GetInstallationsFolderPath(ConfigManager.Default.CurrentProfile, recoveryDir))) || i < 100)
                 {
                     recoveryName = string.Format("{0} ({1})", name, i);
                     recoveryDir = string.Format("{0}_{1}", dir, i);
@@ -421,7 +420,7 @@ namespace BedrockLauncher.Methods
         }
         public async void InvokeKillGame()
         {
-            if (ConfigManager.GameManager.GameProcess != null)
+            if (ConfigManager.Default.GameManager.GameProcess != null)
             {
                 var title = Application.Current.FindResource("Dialog_KillGame_Title") as string;
                 var content = Application.Current.FindResource("Dialog_KillGame_Text") as string;
@@ -522,7 +521,7 @@ namespace BedrockLauncher.Methods
                 string LocalStateFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState");
                 string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang");
                 string PackageBakFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang.default");
-                string ProfileFolder = Path.GetFullPath(FilepathManager.GetInstallationsFolderPath(ConfigManager.CurrentProfile, ConfigManager.CurrentInstallation.DirectoryName_Full));
+                string ProfileFolder = Path.GetFullPath(FilepathManager.Default.GetInstallationsFolderPath(ConfigManager.Default.CurrentProfile, ConfigManager.Default.CurrentInstallation.DirectoryName_Full));
 
                 if (Directory.Exists(PackageFolder))
                 {

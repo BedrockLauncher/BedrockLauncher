@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BedrockLauncher.Classes.SkinPack;
+using BL_Core.Classes.SkinPack;
 using BedrockLauncher.Methods;
 using System.IO;
 using System.Data;
@@ -24,6 +24,7 @@ using BedrockLauncher.Pages.Preview;
 using BL_Core.Pages.Common;
 using ExtensionsDotNET;
 using BedrockLauncher.Classes;
+using BL_Core.Classes;
 
 namespace BedrockLauncher.Pages.Play
 {
@@ -38,7 +39,7 @@ namespace BedrockLauncher.Pages.Play
         public SkinsPage()
         {
             InitializeComponent();
-            ConfigManager.ConfigStateChanged += ConfigManager_ConfigStateChanged;
+            ConfigManager.Default.ConfigStateChanged += ConfigManager_ConfigStateChanged;
         }
 
         private async void ConfigManager_ConfigStateChanged(object sender, EventArgs e)
@@ -54,9 +55,9 @@ namespace BedrockLauncher.Pages.Play
             await this.Dispatcher.InvokeAsync(() =>
             {
                 InstallationsList.Items.Cast<MCInstallation>().ToList().ForEach(x => x.Update());
-                if (InstallationsList.SelectedItem == null) InstallationsList.SelectedItem = ConfigManager.CurrentInstallations.First();
+                if (InstallationsList.SelectedItem == null) InstallationsList.SelectedItem = ConfigManager.Default.CurrentInstallations.First();
                 if (InstallationsList.ItemsSource != null) CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource).Refresh();
-                else InstallationsList.ItemsSource = ConfigManager.CurrentInstallations;
+                else InstallationsList.ItemsSource = ConfigManager.Default.CurrentInstallations;
             });
         }
 
@@ -67,13 +68,13 @@ namespace BedrockLauncher.Pages.Play
                 LoadedSkinPacks.Items.Clear();
                 SkinPacks.Clear();
 
-                var installation = ConfigManager.CurrentInstallation;
+                var installation = ConfigManager.Default.CurrentInstallation;
 
                 if (installation == null) return;
 
-                string InstallationPath = FilepathManager.GetInstallationsFolderPath(ConfigManager.CurrentProfile, installation.DirectoryName);
-                string normal_folder = FilepathManager.GetSkinPacksFolderPath(InstallationPath, false);
-                string dev_folder = FilepathManager.GetSkinPacksFolderPath(InstallationPath, true);
+                string InstallationPath = FilepathManager.Default.GetInstallationsFolderPath(ConfigManager.Default.CurrentProfile, installation.DirectoryName);
+                string normal_folder = FilepathManager.Default.GetSkinPacksFolderPath(InstallationPath, false);
+                string dev_folder = FilepathManager.Default.GetSkinPacksFolderPath(InstallationPath, true);
 
                 if (Directory.Exists(normal_folder)) AddPacks(normal_folder);
                 if (Directory.Exists(dev_folder)) AddPacks(dev_folder);
@@ -192,14 +193,14 @@ namespace BedrockLauncher.Pages.Play
                     if (file.Entries.ToList().Exists(x => x.FullName == "skins.json"))
                     {
                         file.Dispose();
-                        string InstallationPath = FilepathManager.GetInstallationsFolderPath(ConfigManager.CurrentProfile, ConfigManager.CurrentInstallation.DirectoryName);
+                        string InstallationPath = FilepathManager.Default.GetInstallationsFolderPath(ConfigManager.Default.CurrentProfile, ConfigManager.Default.CurrentInstallation.DirectoryName);
                         string NewPackDirectoryName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
-                        string NewPackDirectory = Path.Combine(FilepathManager.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
+                        string NewPackDirectory = Path.Combine(FilepathManager.Default.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
 
                         while (Directory.Exists(NewPackDirectory))
                         {
                             NewPackDirectoryName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
-                            NewPackDirectory = Path.Combine(FilepathManager.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
+                            NewPackDirectory = Path.Combine(FilepathManager.Default.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
                         }
 
                         ZipFile.ExtractToDirectory(dialog.FileName, NewPackDirectory);
@@ -246,7 +247,7 @@ namespace BedrockLauncher.Pages.Play
 
         private void InstallationsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ConfigManager.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
+            ConfigManager.Default.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
         }
     }
 }

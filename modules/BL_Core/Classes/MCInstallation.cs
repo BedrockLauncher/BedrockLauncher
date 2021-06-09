@@ -6,13 +6,28 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using Newtonsoft.Json;
-using BedrockLauncher.Methods;
 using BL_Core.Components;
+using BL_Core.Interfaces;
 
-namespace BedrockLauncher.Classes
+namespace BL_Core.Classes
 {
     public class MCInstallation : NotifyPropertyChangedBase
     {
+
+        private static IFilepathManager FilepathManager { get; set; }
+        private static IConfigManager ConfigManager { get; set; }
+
+        public static void SetFilepathManager(IFilepathManager manager)
+        {
+            FilepathManager = manager;
+        }
+
+        public static void SetConfigManager(IConfigManager manager)
+        {
+            ConfigManager = manager;
+        }
+
+
         public string DisplayName { get; set; }
         public string VersionUUID { get; set; }
         public string IconPath { get; set; }

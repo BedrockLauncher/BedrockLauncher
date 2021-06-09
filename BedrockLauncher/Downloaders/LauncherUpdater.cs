@@ -187,7 +187,7 @@ namespace BedrockLauncher.Downloaders
         {
             try
             {
-                string installerPath = Path.Combine(FilepathManager.ExecutableDirectory, "Installer.exe");
+                string installerPath = Path.Combine(FilepathManager.Default.ExecutableDirectory, "Installer.exe");
                 string tempPath = Path.Combine(Path.GetTempPath(), "Installer.exe");
 
                 File.Copy(installerPath, tempPath, true);
@@ -212,7 +212,7 @@ namespace BedrockLauncher.Downloaders
             {
                 string silent = "--silent";
                 string beta = (Properties.LauncherSettings.Default.UseBetaBuilds ? "--beta" : "");
-                string path = "--path=\"" + FilepathManager.ExecutableDirectory + "\"";
+                string path = "--path=\"" + FilepathManager.Default.ExecutableDirectory + "\"";
 
                 return string.Join(" ", silent, beta, path);
             }

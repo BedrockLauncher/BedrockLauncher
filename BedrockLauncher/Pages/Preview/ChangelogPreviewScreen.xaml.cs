@@ -1,5 +1,4 @@
-﻿using BedrockLauncher.Classes.SkinPack;
-using BedrockLauncher.Methods;
+﻿using BedrockLauncher.Methods;
 using CefSharp;
 using System;
 using System.Diagnostics;

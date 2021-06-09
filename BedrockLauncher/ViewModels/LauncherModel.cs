@@ -50,8 +50,8 @@ namespace BedrockLauncher.ViewModels
 
             MainFrame_KeyboardNavigationMode_Default = KeyboardNavigation.GetTabNavigation(MainThread.MainFrame);
 
-            ConfigManager.Init();
-            ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
+            ConfigManager.Default.Init();
+            ConfigManager.Default.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
 
             // show first launch window if no profile
             if (isFirstLaunch) SetOverlayFrame_Strict(new WelcomePage());
@@ -267,7 +267,7 @@ namespace BedrockLauncher.ViewModels
 
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
-                    ConfigManager.GameManager.GameProcess.Kill();
+                    ConfigManager.Default.GameManager.GameProcess.Kill();
                     AllowedToCloseWithGameOpen = true;
                     if (successAction != null) successAction.Invoke();
                 }
@@ -290,7 +290,7 @@ namespace BedrockLauncher.ViewModels
                 MainThread.Close();
             });
 
-            if (Properties.LauncherSettings.Default.KeepLauncherOpen && ConfigManager.GameManager.GameProcess != null)
+            if (Properties.LauncherSettings.Default.KeepLauncherOpen && ConfigManager.Default.GameManager.GameProcess != null)
             {
                 if (!AllowedToCloseWithGameOpen)
                 {

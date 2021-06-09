@@ -1,6 +1,4 @@
-﻿using BedrockLauncher.Classes.SkinPack;
-using BedrockLauncher.Methods;
-using BedrockLauncher.Pages;
+﻿using BedrockLauncher.Pages;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Pages.Preview;
 using BL_Core.Pages.Common;
+using BL_Core.Classes.SkinPack;
 
 namespace BedrockLauncher.Controls.Items
 {

@@ -187,14 +187,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Html\SkinViewResourceSchemeHandler.cs" />
-    <Compile Include="Classes\MCInstallation.cs" />
-    <Compile Include="Classes\MCNetFeedItemJSON.cs" />
-    <Compile Include="Classes\MCNetFeedItemRSS.cs" />
-    <Compile Include="Classes\MCPatchNotesItem.cs" />
-    <Compile Include="Classes\MCProfile.cs" />
-    <Compile Include="Classes\MCProfilesList.cs" />
-    <Compile Include="Classes\MCVersion.cs" />
-    <Compile Include="Classes\MCVersionList.cs" />
     <Compile Include="Controls\Items\JavaFeedItem.xaml.cs">
       <DependentUpon>JavaFeedItem.xaml</DependentUpon>
     </Compile>
@@ -217,7 +209,6 @@
       <DependentUpon>InstallationSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="Events\ConfigStateArgs.cs" />
-    <Compile Include="Classes\MCNetFeedItem.cs" />
     <Compile Include="Methods\FilepathManager.cs" />
     <Compile Include="Methods\StoreNetwork.cs" />
     <Compile Include="Pages\Common\NoContentFoundPage.xaml.cs">
@@ -242,12 +233,6 @@
     <Compile Include="Events\GameRunningState.cs" />
     <Compile Include="Events\ProgressBarState.cs" />
     <Compile Include="Properties\LauncherSettings.cs" />
-    <Compile Include="Classes\SkinPack\MCSkinPackContent.cs" />
-    <Compile Include="Classes\SkinPack\MCSkinPackLang.cs" />
-    <Compile Include="Classes\SkinPack\MCSkin.cs" />
-    <Compile Include="Classes\SkinPack\MCSkinGeometry.cs" />
-    <Compile Include="Classes\SkinPack\MCSkinPack.cs" />
-    <Compile Include="Classes\SkinPack\MCSkinPackMainfest.cs" />
     <Compile Include="Controls\HtmlPanelPro.cs" />
     <Compile Include="Controls\Items\BlockPickerItem.xaml.cs">
       <DependentUpon>BlockPickerItem.xaml</DependentUpon>
@@ -318,7 +303,6 @@
     <Compile Include="Classes\Html\GlobalSchemeHandlerFactory.cs" />
     <Compile Include="Methods\GameManager.cs" />
     <Compile Include="Methods\ConsoleArgumentManager.cs" />
-    <Compile Include="Methods\MCSkinUtilities.cs" />
     <Compile Include="Downloaders\ChangelogDownloader.cs" />
     <Compile Include="Classes\Html\ResourceSchemeHandler.cs" />
     <Compile Include="Pages\Settings\AdvancedOptionsWindow.xaml.cs">

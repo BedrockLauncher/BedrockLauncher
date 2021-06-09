@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BedrockLauncher.Classes
+namespace BL_Core.Classes
 {
     public class MCPatchNotesItem
     {

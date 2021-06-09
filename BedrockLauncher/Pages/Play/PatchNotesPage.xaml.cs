@@ -18,6 +18,7 @@ using BedrockLauncher.Classes;
 using System.Diagnostics;
 using BedrockLauncher.Controls.Items;
 using BedrockLauncher.Downloaders;
+using BL_Core.Classes;
 
 namespace BedrockLauncher.Pages.Play
 {
@@ -48,7 +49,7 @@ namespace BedrockLauncher.Pages.Play
             await this.Dispatcher.InvokeAsync(() =>
             {
                 var view = CollectionViewSource.GetDefaultView(PatchNotesList.ItemsSource) as CollectionView;
-                view.Filter = ConfigManager.Filter_PatchNotes;
+                view.Filter = ConfigManager.Default.Filter_PatchNotes;
                 UpdateUI();
             });
         }

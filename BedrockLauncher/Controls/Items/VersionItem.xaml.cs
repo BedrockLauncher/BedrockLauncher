@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BL_Core.Pages.Common;
+using BL_Core.Classes;
 
 namespace BedrockLauncher.Controls.Items
 {
@@ -55,14 +56,14 @@ namespace BedrockLauncher.Controls.Items
         private void Folder_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            var version = button.DataContext as Classes.MCVersion;
-            ConfigManager.GameManager.OpenFolder(version);
+            var version = button.DataContext as MCVersion;
+            ConfigManager.Default.GameManager.OpenFolder(version);
         }
 
         private async void Delete_Click(object sender, RoutedEventArgs e)
         {
             MenuItem button = sender as MenuItem;
-            var version = button.DataContext as Classes.MCVersion;
+            var version = button.DataContext as MCVersion;
 
             var title = this.FindResource("Dialog_DeleteItem_Title") as string;
             var content = this.FindResource("Dialog_DeleteItem_Text") as string;
@@ -72,7 +73,7 @@ namespace BedrockLauncher.Controls.Items
 
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                ConfigManager.GameManager.Remove(version);
+                ConfigManager.Default.GameManager.Remove(version);
                 GetParent().RefreshVersionsList();
             }
         }
@@ -80,7 +81,7 @@ namespace BedrockLauncher.Controls.Items
         private void More_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            var version = button.DataContext as Classes.MCVersion;
+            var version = button.DataContext as MCVersion;
             (this.Tag as Pages.Settings.VersionsSettingsPage).VersionsList.SelectedItem = version;
             button.ContextMenu.PlacementTarget = button;
             button.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
@@ -91,8 +92,8 @@ namespace BedrockLauncher.Controls.Items
         private void Repair_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            var version = button.DataContext as Classes.MCVersion;
-            ConfigManager.GameManager.Repair(version);
+            var version = button.DataContext as MCVersion;
+            ConfigManager.Default.GameManager.Repair(version);
         }
 
         private void ContextMenu_Closed(object sender, RoutedEventArgs e)

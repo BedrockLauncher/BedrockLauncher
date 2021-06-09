@@ -14,8 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Classes;
-
 using BedrockLauncher.Controls.Toolbar;
+using BL_Core.Classes;
 
 namespace BedrockLauncher.Controls.Items
 {
@@ -43,9 +43,9 @@ namespace BedrockLauncher.Controls.Items
 
         private void SwitchProfile()
         {
-            ConfigManager.SwitchProfile(_ProfileName);
+            ConfigManager.Default.SwitchProfile(_ProfileName);
             SelectorParent.ProfileContextMenu.IsOpen = false;
-            ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
+            ConfigManager.Default.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
         }
 
         private void SourceButton_Click(object sender, RoutedEventArgs e)

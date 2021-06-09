@@ -54,7 +54,7 @@ namespace BedrockLauncher.Pages.Settings
 
             UpdateDirectoryPathTextbox();
 
-            ConfigManager.Reload();
+            ConfigManager.Default.Reload();
         }
 
         private void UpdateDirectoryPathTextbox()
@@ -74,7 +74,7 @@ namespace BedrockLauncher.Pages.Settings
                 }
                 else
                 {
-                    StorageDirectoryTextBox.Text = BedrockLauncher.Methods.FilepathManager.DefaultLocation;
+                    StorageDirectoryTextBox.Text = BedrockLauncher.Methods.FilepathManager.Default.DefaultLocation;
                 }
             }
         }

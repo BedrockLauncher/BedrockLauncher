@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Classes;
+using BL_Core.Classes;
 
 namespace BedrockLauncher.Pages.Preview
 {
@@ -22,7 +23,7 @@ namespace BedrockLauncher.Pages.Preview
     /// </summary>
     public partial class EditInstallationScreen : Page
     {
-        private List<Classes.MCVersion> Versions { get; set; } = new List<Classes.MCVersion>();
+        private List<MCVersion> Versions { get; set; } = new List<MCVersion>();
 
         private bool IsEditMode = false;
 
@@ -57,16 +58,16 @@ namespace BedrockLauncher.Pages.Preview
 
         private void GetManualComboBoxEntries()
         {
-            Classes.MCVersion latest_release = new Classes.MCVersion("latest_release", Application.Current.Resources["EditInstallationScreen_LatestRelease"].ToString(), false);
-            Classes.MCVersion latest_beta = new Classes.MCVersion("latest_beta", Application.Current.Resources["EditInstallationScreen_LatestSnapshot"].ToString(), false);
-            Versions.InsertRange(0, new List<Classes.MCVersion>() { latest_release, latest_beta });
+            MCVersion latest_release = new MCVersion("latest_release", Application.Current.Resources["EditInstallationScreen_LatestRelease"].ToString(), false);
+            MCVersion latest_beta = new MCVersion("latest_beta", Application.Current.Resources["EditInstallationScreen_LatestSnapshot"].ToString(), false);
+            Versions.InsertRange(0, new List<MCVersion>() { latest_release, latest_beta });
         }
 
         private void UpdateVersionsComboBox()
         {
             Versions.Clear();
             InstallationVersionSelect.ItemsSource = null;
-            foreach (var entry in ConfigManager.Versions)
+            foreach (var entry in ConfigManager.Default.Versions)
             {
                 Versions.Add(entry);
             }
@@ -88,16 +89,16 @@ namespace BedrockLauncher.Pages.Preview
 
         private void UpdateInstallation()
         {
-            ConfigManager.EditInstallation(EditingIndex, InstallationNameField.Text, InstallationDirectoryField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
+            ConfigManager.Default.EditInstallation(EditingIndex, InstallationNameField.Text, InstallationDirectoryField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
             ViewModels.LauncherModel.Default.SetOverlayFrame(null);
-            ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
+            ConfigManager.Default.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
         }
 
         private void CreateInstallation()
         {
-            ConfigManager.CreateInstallation(InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationDirectoryField.Text, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
+            ConfigManager.Default.CreateInstallation(InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationDirectoryField.Text, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
             ViewModels.LauncherModel.Default.SetOverlayFrame(null);
-            ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
+            ConfigManager.Default.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
         }
 
         private void InstallationDirectoryField_TextChanged(object sender, TextChangedEventArgs e)

@@ -1,10 +1,11 @@
-﻿using BedrockLauncher.Classes.SkinPack;
+﻿
 using BedrockLauncher.Methods;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 using ExtensionsDotNET;
+using BL_Core.Classes.SkinPack;
 
 namespace BedrockLauncher.Pages.Preview
 {
@@ -172,7 +173,7 @@ namespace BedrockLauncher.Pages.Preview
             if (isEditMode) skinPack.EditSkin(skin_index, skin);
             else skinPack.AddSkin(skin);
             ViewModels.LauncherModel.Default.SetOverlayFrame(null);
-            ConfigManager.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
+            ConfigManager.Default.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

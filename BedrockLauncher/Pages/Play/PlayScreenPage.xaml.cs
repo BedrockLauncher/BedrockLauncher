@@ -1,5 +1,6 @@
 ﻿using BedrockLauncher.Classes;
 using BedrockLauncher.Methods;
+using BL_Core.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +48,7 @@ namespace BedrockLauncher.Pages.Play
         public PlayScreenPage()
         {
             InitializeComponent();
-            ConfigManager.ConfigStateChanged += ConfigManager_ConfigStateChanged;
+            ConfigManager.Default.ConfigStateChanged += ConfigManager_ConfigStateChanged;
         }
 
         private async void ConfigManager_ConfigStateChanged(object sender, EventArgs e)
@@ -60,9 +61,9 @@ namespace BedrockLauncher.Pages.Play
             await this.Dispatcher.InvokeAsync(() =>
             {
                 InstallationsList.Items.Cast<MCInstallation>().ToList().ForEach(x => x.Update());
-                if (InstallationsList.SelectedItem == null) InstallationsList.SelectedItem = ConfigManager.CurrentInstallations.First();
+                if (InstallationsList.SelectedItem == null) InstallationsList.SelectedItem = ConfigManager.Default.CurrentInstallations.First();
                 if (InstallationsList.ItemsSource != null) CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource).Refresh();
-                else InstallationsList.ItemsSource = ConfigManager.CurrentInstallations;
+                else InstallationsList.ItemsSource = ConfigManager.Default.CurrentInstallations;
             });
         }
 
@@ -112,16 +113,16 @@ namespace BedrockLauncher.Pages.Play
 
         private void MainPlayButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ConfigManager.GameManager.GameProcess != null) ConfigManager.GameManager.KillGame();
+            if (ConfigManager.Default.GameManager.GameProcess != null) ConfigManager.Default.GameManager.KillGame();
             else
             {
                 var i = InstallationsList.SelectedItem as MCInstallation;
-                ConfigManager.GameManager.Play(i);
+                ConfigManager.Default.GameManager.Play(i);
             }
         }
         private void InstallationsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ConfigManager.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
+            ConfigManager.Default.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
         }
     }
 }

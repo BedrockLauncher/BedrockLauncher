@@ -39,8 +39,8 @@ namespace BedrockLauncher.Pages.FirstLaunch
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.Reload();
-            ConfigManager.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
+            ConfigManager.Default.Reload();
+            ConfigManager.Default.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
             pageSwitcher.MoveToPage(3);
         }
 
@@ -63,7 +63,7 @@ namespace BedrockLauncher.Pages.FirstLaunch
                 }
                 else
                 {
-                    StorageDirectoryTextBox.Text = BedrockLauncher.Methods.FilepathManager.DefaultLocation;
+                    StorageDirectoryTextBox.Text = BedrockLauncher.Methods.FilepathManager.Default.DefaultLocation;
                 }
             }
         }

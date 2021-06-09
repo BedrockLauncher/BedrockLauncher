@@ -6,6 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using BedrockLauncher.UpdateProcessor;
 using System.Linq;
+using ExtensionsDotNET;
+using BL_Core.Classes;
 
 namespace BedrockLauncher.Downloaders
 {
@@ -52,6 +54,30 @@ namespace BedrockLauncher.Downloaders
 
         public delegate void DownloadProgress(long current, long? total);
 
+        public void PraseDB(MCVersionList list, Win10VersionDBManager.Win10VersionJsonDb db)
+        {
+            foreach (var v in db.list)
+            {
+                if (!list.ToList().Exists(x => x.UUID == v.uuid || x.Name == v.version)) list.Add(new MCVersion(v.uuid, v.version, v.isBeta));
+            }
+            list.Sort((x, y) => Compare(x, y));
+
+            int Compare(MCVersion x, MCVersion y)
+            {
+                try
+                {
+                    var a = new Version(x.Name);
+                    var b = new Version(y.Name);
+                    return b.CompareTo(a);
+                }
+                catch
+                {
+                    return y.Name.CompareTo(x.Name);
+                }
+
+            }
+        }
+
         public async Task UpdateVersions(MCVersionList versions)
         {
             _store_manager.setMSAUserToken(Win10AuthenticationManager.GetWUToken(Properties.LauncherSettings.Default.CurrentInsiderAccount));
@@ -68,7 +94,7 @@ namespace BedrockLauncher.Downloaders
                 {
                     Win10VersionDBManager.Win10VersionJsonDb db = new Win10VersionDBManager.Win10VersionJsonDb();
                     db.ReadJson(versions.userCacheFile);
-                    versions.PraseDB(db);
+                    PraseDB(versions, db);
                     return db;
                 }
                 catch (FileNotFoundException e)
@@ -90,7 +116,7 @@ namespace BedrockLauncher.Downloaders
                 {
                     Win10VersionDBManager.Win10VersionJsonDb db = new Win10VersionDBManager.Win10VersionJsonDb();
                     db.ReadJson(versions.cacheFile);
-                    versions.PraseDB(db);
+                    PraseDB(versions, db);
                     return db;
                 }
                 catch (FileNotFoundException e)
@@ -116,13 +142,13 @@ namespace BedrockLauncher.Downloaders
                     var knownVersions = db.list.ToList().ConvertAll(x => x.uuid);
                     db.AddVersion(await Win10StoreManager.CheckForVersions(_store_manager, cookie, knownVersions, false), false);
                     db.WriteJson(versions.userCacheFile);
-                    versions.PraseDB(db);
+                    PraseDB(versions, db);
                     config = await _store_manager.fetchConfigLastChanged();
                     cookie = await _store_manager.fetchCookie(config, true);
                     knownVersions = db.list.ToList().ConvertAll(x => x.uuid);
                     db.AddVersion(await Win10StoreManager.CheckForVersions(_store_manager, cookie, knownVersions, true), true);
                     db.WriteJson(versions.userCacheFile);
-                    versions.PraseDB(db);
+                    PraseDB(versions, db);
                 }
                 catch (Exception e)
                 {
@@ -140,7 +166,7 @@ namespace BedrockLauncher.Downloaders
                     var data = await resp.Content.ReadAsStringAsync();
                     db.PraseJson(data);
                     db.WriteJson(versions.cacheFile);
-                    versions.PraseDB(db);
+                    PraseDB(versions, db);
                 }
                 catch (Exception e)
                 {

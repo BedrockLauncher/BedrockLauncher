@@ -41,9 +41,9 @@ namespace BedrockLauncher.Properties
             }
             else
             {
-                if (File.Exists(FilepathManager.GetSettingsFilePath()))
+                if (File.Exists(FilepathManager.Default.GetSettingsFilePath()))
                 {
-                    json = File.ReadAllText(FilepathManager.GetSettingsFilePath());
+                    json = File.ReadAllText(FilepathManager.Default.GetSettingsFilePath());
                     try { Default = JsonConvert.DeserializeObject<LauncherSettings>(json, JsonSerializerSettings); }
                     catch { Default = new LauncherSettings(); }
                 }
@@ -55,7 +55,7 @@ namespace BedrockLauncher.Properties
         public void Save()
         {
             string json = JsonConvert.SerializeObject(this, Formatting.Indented);
-            File.WriteAllText(FilepathManager.GetSettingsFilePath(), json);
+            File.WriteAllText(FilepathManager.Default.GetSettingsFilePath(), json);
         }
 
         #region Launcher Settings

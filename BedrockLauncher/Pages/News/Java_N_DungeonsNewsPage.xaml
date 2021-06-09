@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:f="clr-namespace:CodeHollow.FeedReader;assembly=CodeHollow.FeedReader"
-      xmlns:c="clr-namespace:BedrockLauncher.Classes"
+      xmlns:c="clr-namespace:BL_Core.Classes;assembly=BL_Core"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       xmlns:common="clr-namespace:BedrockLauncher.Pages.Common"
       mc:Ignorable="d" 

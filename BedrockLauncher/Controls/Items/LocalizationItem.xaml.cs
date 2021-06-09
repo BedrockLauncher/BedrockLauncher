@@ -1,5 +1,4 @@
-﻿using BedrockLauncher.Classes.SkinPack;
-using BedrockLauncher.Methods;
+﻿using BedrockLauncher.Methods;
 using System.Windows;
 using System.Windows.Controls;
 using System.Linq;

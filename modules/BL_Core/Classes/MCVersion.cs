@@ -21,11 +21,19 @@ using System.Windows.Data;
 
 using BL_Core.Components;
 using System.Text.RegularExpressions;
+using BL_Core.Interfaces;
 
-namespace BedrockLauncher.Classes
+namespace BL_Core.Classes
 {
     public class MCVersion : NotifyPropertyChangedBase
     {
+        private static IFilepathManager FilepathManager { get; set; }
+
+        public static void SetFilepathManager(IFilepathManager manager)
+        {
+            FilepathManager = manager;
+        }
+
         public MCVersion(string uuid, string name, bool isBeta)
         {
             this.UUID = uuid.ToLower();
@@ -41,7 +49,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                return Methods.FilepathManager.CurrentLocation + "\\versions\\Minecraft-" + UUID;
+                return FilepathManager.CurrentLocation + "\\versions\\Minecraft-" + UUID;
             }
         }
 

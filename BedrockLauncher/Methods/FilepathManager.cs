@@ -4,32 +4,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using BL_Core.Interfaces;
+using BL_Core.Classes;
 
 namespace BedrockLauncher.Methods
 {
-    public static class FilepathManager
+    public class FilepathManager : IFilepathManager
     {
+        public static FilepathManager Default { get; set; }
+
+        static FilepathManager()
+        {
+            Default = new FilepathManager();
+            MCInstallation.SetFilepathManager(Default);
+            MCVersion.SetFilepathManager(Default);
+        }
 
         #region Strings
 
-        public static readonly string UserDataFileName = "user_profile.json";
-        public static readonly string SettingsFileName = "settings.json";
-        public static readonly string VersionCacheFileName = "versions.json";
-        public static readonly string UserVersionCacheFileName = "local_versions.json";
-        public static readonly string AppDataFolderName = ".minecraft_bedrock";
-        public static readonly string InstallationsFolderName = "installations";
-        public static readonly string PackageDataFolderName = "packageData";
-        public static readonly string IconCacheFolderName = "icon_cache";
-        public static readonly string PrefabedIconRootPath = @"/BedrockLauncher;component/resources/images/installation_icons/";
+        public string UserDataFileName { get => "user_profile.json"; }
+        public string SettingsFileName { get => "settings.json"; }
+        public string VersionCacheFileName { get => "versions.json"; }
+        public string UserVersionCacheFileName { get => "local_versions.json"; }
+        public string AppDataFolderName { get => ".minecraft_bedrock"; }
+        public string InstallationsFolderName { get => "installations"; }
+        public string PackageDataFolderName { get => "packageData"; }
+        public string IconCacheFolderName { get => "icon_cache"; }
+        public string PrefabedIconRootPath { get => @"/BedrockLauncher;component/resources/images/installation_icons/"; }
 
         #endregion
 
         #region Common Paths
 
-        public static string CurrentLocation { get => (Properties.LauncherSettings.Default.PortableMode ? ExecutableDataDirectory : GetFixedPath()); }
-        public static string ExecutableLocation { get => System.Reflection.Assembly.GetExecutingAssembly().Location; }
-        public static string ExecutableDirectory { get => Path.GetDirectoryName(ExecutableLocation); }
-        public static string ExecutableDataDirectory 
+        public string CurrentLocation { get => (Properties.LauncherSettings.Default.PortableMode ? ExecutableDataDirectory : GetFixedPath()); }
+        public string ExecutableLocation { get => System.Reflection.Assembly.GetExecutingAssembly().Location; }
+        public string ExecutableDirectory { get => Path.GetDirectoryName(ExecutableLocation); }
+        public string ExecutableDataDirectory 
         { 
             get 
             {
@@ -38,13 +48,13 @@ namespace BedrockLauncher.Methods
                 return path;
             }
         }
-        public static string DefaultLocation { get => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), AppDataFolderName); }
+        public string DefaultLocation { get => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), AppDataFolderName); }
 
         #endregion
 
         #region Dynamic Paths
 
-        private static string GetFixedPath()
+        private string GetFixedPath()
         {
             string FixedDirectory = string.Empty;
             if (Properties.LauncherSettings.Default.FixedDirectory == string.Empty)
@@ -57,36 +67,36 @@ namespace BedrockLauncher.Methods
             return FixedDirectory;
         }
 
-        public static string GetSettingsFilePath()
+        public string GetSettingsFilePath()
         {
             return Path.Combine(ExecutableDataDirectory, SettingsFileName);
         }
-        public static string GetUserVersionsFilePath()
+        public string GetUserVersionsFilePath()
         {
             return Path.Combine(CurrentLocation, UserVersionCacheFileName);
         }
-        public static string GetVersionsFilePath()
+        public string GetVersionsFilePath()
         {
             return Path.Combine(CurrentLocation, VersionCacheFileName);
         }
-        public static string GetProfilesFilePath()
+        public string GetProfilesFilePath()
         {
             return Path.Combine(CurrentLocation, UserDataFileName);
         }
-        public static string GetCacheFolderPath()
+        public string GetCacheFolderPath()
         {
             string cache_dir = Path.Combine(CurrentLocation, IconCacheFolderName);
             if (!Directory.Exists(cache_dir)) Directory.CreateDirectory(cache_dir);
             return cache_dir;
         }
-        public static string GetInstallationsFolderPath(string profileName, string installationDirectory)
+        public string GetInstallationsFolderPath(string profileName, string installationDirectory)
         {
-            if (!ConfigManager.ProfileList.profiles.ContainsKey(profileName)) return string.Empty;
-            var profile = ConfigManager.ProfileList.profiles[profileName];
+            if (!ConfigManager.Default.ProfileList.profiles.ContainsKey(profileName)) return string.Empty;
+            var profile = ConfigManager.Default.ProfileList.profiles[profileName];
             string InstallationsPath = Path.Combine(profile.ProfilePath, installationDirectory);
             return Path.Combine(CurrentLocation, InstallationsFolderName, InstallationsPath, PackageDataFolderName);
         }
-        public static string GetSkinPacksFolderPath(string InstallationsPath, bool DevFolder = false, bool HasSaveRedirection = true)
+        public string GetSkinPacksFolderPath(string InstallationsPath, bool DevFolder = false, bool HasSaveRedirection = true)
         {
             if (InstallationsPath == string.Empty) return string.Empty;
             string[] Route = new string[] { (DevFolder ? "development_skin_packs" : "skin_packs") };
@@ -104,7 +114,7 @@ namespace BedrockLauncher.Methods
         #region Image Cache
 
 
-        public static string GenerateIconCacheFileName(string extension)
+        public string GenerateIconCacheFileName(string extension)
         {
             string cache_dir = GetCacheFolderPath();
             string destFileName = string.Empty;
@@ -118,7 +128,7 @@ namespace BedrockLauncher.Methods
             return destFileName;
         }
 
-        public static bool RemoveImageFromIconCache(string filePath)
+        public bool RemoveImageFromIconCache(string filePath)
         {
             try
             {
@@ -132,7 +142,7 @@ namespace BedrockLauncher.Methods
             }
         }
 
-        public static string AddImageToIconCache(string sourceFilePath)
+        public string AddImageToIconCache(string sourceFilePath)
         {
             string destFileName = GenerateIconCacheFileName(Path.GetExtension(sourceFilePath));
 

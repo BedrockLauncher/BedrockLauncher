@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BedrockLauncher.Classes.SkinPack
+namespace BL_Core.Classes
 {
-    public enum MCSkinGeometry
+    public class MCProfilesList
     {
-        Normal,
-        Custom,
-        Slim
+        public Dictionary<string, MCProfile> profiles { get; set; }
     }
 }

@@ -9,7 +9,7 @@ using System.Drawing;
 using System.Windows.Media.Imaging;
 using System.Drawing.Imaging;
 
-namespace BedrockLauncher.Classes.SkinPack
+namespace BL_Core.Classes.SkinPack
 {
     public class MCSkinPack
     {

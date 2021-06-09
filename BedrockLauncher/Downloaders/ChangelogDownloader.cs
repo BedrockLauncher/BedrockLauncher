@@ -16,6 +16,7 @@ using System.Text.RegularExpressions;
 using BL_Core.Components;
 using ExtensionsDotNET;
 using BedrockLauncher.Methods;
+using BL_Core.Classes;
 
 namespace BedrockLauncher.Downloaders
 {

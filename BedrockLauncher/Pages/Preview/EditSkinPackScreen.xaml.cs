@@ -1,4 +1,4 @@
-﻿using BedrockLauncher.Classes.SkinPack;
+﻿using BL_Core.Classes.SkinPack;
 using BedrockLauncher.Methods;
 using System.Windows;
 using System.Windows.Controls;
@@ -229,14 +229,14 @@ namespace BedrockLauncher.Pages.Preview
 
         private string GetNewPackFolder()
         {
-            string InstallationPath = FilepathManager.GetInstallationsFolderPath(ConfigManager.CurrentProfile, ConfigManager.CurrentInstallation.DirectoryName);
+            string InstallationPath = FilepathManager.Default.GetInstallationsFolderPath(ConfigManager.Default.CurrentProfile, ConfigManager.Default.CurrentInstallation.DirectoryName);
             string NewPackDirectoryName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
-            string NewPackDirectory = Path.Combine(FilepathManager.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
+            string NewPackDirectory = Path.Combine(FilepathManager.Default.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
 
             while (Directory.Exists(NewPackDirectory))
             {
                 NewPackDirectoryName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
-                NewPackDirectory = Path.Combine(FilepathManager.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
+                NewPackDirectory = Path.Combine(FilepathManager.Default.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
             }
 
             return NewPackDirectory;
@@ -325,20 +325,20 @@ namespace BedrockLauncher.Pages.Preview
         {
             if (!isEditMode) RemoveUnfinishedPack();
             ViewModels.LauncherModel.Default.SetOverlayFrame(null);
-            ConfigManager.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
+            ConfigManager.Default.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
             SaveSkinPack();
             ViewModels.LauncherModel.Default.SetOverlayFrame(null);
-            ConfigManager.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
+            ConfigManager.Default.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             ViewModels.LauncherModel.Default.SetOverlayFrame(null);
-            ConfigManager.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
+            ConfigManager.Default.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
         }
 
         #endregion

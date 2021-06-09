@@ -22,7 +22,7 @@ namespace BedrockLauncher.Pages.Play
         public InstallationsScreen()
         {
             InitializeComponent();
-            ConfigManager.ConfigStateChanged += ConfigManager_ConfigStateChanged;
+            ConfigManager.Default.ConfigStateChanged += ConfigManager_ConfigStateChanged;
         }
 
         private void ConfigManager_ConfigStateChanged(object sender, EventArgs e)
@@ -32,9 +32,9 @@ namespace BedrockLauncher.Pages.Play
 
         public void RefreshInstallationsList(object sender, RoutedEventArgs e)
         {
-            InstallationsList.ItemsSource = ConfigManager.CurrentInstallations;
+            InstallationsList.ItemsSource = ConfigManager.Default.CurrentInstallations;
             var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
-            view.Filter = ConfigManager.Filter_InstallationList;
+            view.Filter = ConfigManager.Default.Filter_InstallationList;
             Task.Run(UpdateUI);
         }
 
@@ -64,7 +64,7 @@ namespace BedrockLauncher.Pages.Play
             await this.Dispatcher.InvokeAsync(() =>
             {
                 var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
-                view.Filter = ConfigManager.Filter_InstallationList;
+                view.Filter = ConfigManager.Default.Filter_InstallationList;
                 Task.Run(UpdateUI);
             });
         }

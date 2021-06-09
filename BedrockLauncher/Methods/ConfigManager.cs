@@ -8,19 +8,28 @@ using System.Windows;
 using Newtonsoft.Json;
 using System.IO;
 using BedrockLauncher.Classes;
-using MCVersion = BedrockLauncher.Classes.MCVersion;
 using System.Windows.Threading;
 using System.Diagnostics;
 using System.Collections;
+using BL_Core.Classes;
+using BL_Core.Interfaces;
 
 namespace BedrockLauncher.Methods
 {
 
-    public static class ConfigManager
+    public class ConfigManager : IConfigManager
     {
+        public static ConfigManager Default { get; set; }
+
+        static ConfigManager()
+        {
+            Default = new ConfigManager();
+            MCInstallation.SetConfigManager(Default);
+        }
+
         #region Helpers
 
-        public static string CurrentProfile 
+        public string CurrentProfile 
         {
             get
             {
@@ -41,12 +50,12 @@ namespace BedrockLauncher.Methods
                 return Properties.LauncherSettings.Default.CurrentProfile;
             }
         }
-        public static MCInstallation CurrentInstallation 
+        public MCInstallation CurrentInstallation 
         { 
             get
             {
-                if (ConfigManager.CurrentInstallations == null || Properties.LauncherSettings.Default.CurrentInstallation == -1) return null;
-                return ConfigManager.CurrentInstallations[Properties.LauncherSettings.Default.CurrentInstallation];
+                if (CurrentInstallations == null || Properties.LauncherSettings.Default.CurrentInstallation == -1) return null;
+                return CurrentInstallations[Properties.LauncherSettings.Default.CurrentInstallation];
             }
         }
 
@@ -55,18 +64,18 @@ namespace BedrockLauncher.Methods
         #region Storage Holders
 
 
-        public static MCProfilesList ProfileList { get; private set; }
-        public static MCVersionList Versions { get; private set; }
-        public static GameManager GameManager { get; private set; } = new GameManager();
-        public static List<MCInstallation> CurrentInstallations { get; private set; }
+        public MCProfilesList ProfileList { get; private set; }
+        public MCVersionList Versions { get; private set; }
+        public GameManager GameManager { get; private set; } = new GameManager();
+        public  List<MCInstallation> CurrentInstallations { get; private set; }
 
 
         #endregion
 
         #region Events
 
-        public static event EventHandler ConfigStateChanged;
-        public static void OnConfigStateChanged(object sender, Events.ConfigStateArgs e)
+        public  event EventHandler ConfigStateChanged;
+        public  void OnConfigStateChanged(object sender, Events.ConfigStateArgs e)
         {
             EventHandler handler = ConfigStateChanged;
             if (handler != null)
@@ -79,13 +88,13 @@ namespace BedrockLauncher.Methods
 
         #region Init
 
-        public static void Reload()
+        public  void Reload()
         {
             LoadProfiles();
             LoadInstallations();
         }
 
-        public static void Init()
+        public  void Init()
         {
             LoadVersions();
             LoadProfiles();
@@ -96,7 +105,7 @@ namespace BedrockLauncher.Methods
 
         #region General
 
-        private static JsonSerializerSettings JsonSerializerSettings
+        private  JsonSerializerSettings JsonSerializerSettings
         {
             get
             {
@@ -111,12 +120,12 @@ namespace BedrockLauncher.Methods
 
         #region Versions
 
-        public static void LoadVersions()
+        public  void LoadVersions()
         {
-            Versions = new MCVersionList(FilepathManager.GetVersionsFilePath(), FilepathManager.GetUserVersionsFilePath());
+            Versions = new MCVersionList(FilepathManager.Default.GetVersionsFilePath(), FilepathManager.Default.GetUserVersionsFilePath());
             ReloadVersions();
         }
-        public static void ReloadVersions()
+        public  void ReloadVersions()
         {
             ViewModels.LauncherModel.MainThread.Dispatcher.Invoke((Func<Task>)(async () =>
             {
@@ -129,13 +138,13 @@ namespace BedrockLauncher.Methods
 
         #region Profiles
 
-        public static void LoadProfiles()
+        public  void LoadProfiles()
         {
             string json;
             MCProfilesList profileList;
-            if (File.Exists(FilepathManager.GetProfilesFilePath()))
+            if (File.Exists(FilepathManager.Default.GetProfilesFilePath()))
             {
-                json = File.ReadAllText(FilepathManager.GetProfilesFilePath());
+                json = File.ReadAllText(FilepathManager.Default.GetProfilesFilePath());
                 try { profileList = JsonConvert.DeserializeObject<MCProfilesList>(json, JsonSerializerSettings); }
                 catch { profileList = new MCProfilesList(); }
             }
@@ -147,7 +156,7 @@ namespace BedrockLauncher.Methods
 
             if (ProfileList.profiles.Count() == 0) ViewModels.LauncherModel.Default.SetOverlayFrame_Strict(new Pages.FirstLaunch.WelcomePage());
         }
-        public static MCProfilesList CleanProfiles()
+        public  MCProfilesList CleanProfiles()
         {
             MCProfilesList cleaned_list = ProfileList;
             foreach (var profile in cleaned_list.profiles)
@@ -157,13 +166,13 @@ namespace BedrockLauncher.Methods
             return cleaned_list;
 
         }
-        public static void SaveProfiles()
+        public  void SaveProfiles()
         {
             string json = JsonConvert.SerializeObject(CleanProfiles(), Formatting.Indented);
-            File.WriteAllText(FilepathManager.GetProfilesFilePath(), json);
+            File.WriteAllText(FilepathManager.Default.GetProfilesFilePath(), json);
             Reload();
         }
-        public static bool CreateProfile(string profile)
+        public  bool CreateProfile(string profile)
         {
             MCProfile profileSettings = new MCProfile();
 
@@ -192,7 +201,7 @@ namespace BedrockLauncher.Methods
                 return new string(pathName.Where(ch => !invalidFileNameChars.Contains(ch)).ToArray());
             }
         }
-        public static void RemoveProfile(string profile)
+        public  void RemoveProfile(string profile)
         {
             if (ProfileList.profiles.ContainsKey(profile) && ProfileList.profiles.Count > 1)
             {
@@ -205,7 +214,7 @@ namespace BedrockLauncher.Methods
             }
 
         }
-        public static void SwitchProfile(string profile)
+        public  void SwitchProfile(string profile)
         {
             if (ProfileList.profiles.ContainsKey(profile))
             {
@@ -220,11 +229,11 @@ namespace BedrockLauncher.Methods
         #endregion
 
         #region Installations
-        public static void LoadInstallations(string profile = null)
+        public  void LoadInstallations(string profile = null)
         {
             if (profile == null) profile = CurrentProfile;
             CurrentInstallations = new List<MCInstallation>();
-            CurrentInstallations = ConfigManager.GetInstallations(profile);
+            CurrentInstallations = GetInstallations(profile);
 
             MCInstallation latest_release = new MCInstallation();
             latest_release.DisplayName = "Latest Release";
@@ -246,7 +255,7 @@ namespace BedrockLauncher.Methods
             latest_beta.ReadOnly = true;
             if (!CurrentInstallations.Exists(x => x.DisplayName == "Latest Beta" && x.ReadOnly)) CurrentInstallations.Add(latest_beta);
         }
-        public static List<MCInstallation> GetInstallations(string profile)
+        public  List<MCInstallation> GetInstallations(string profile)
         {
             if (ProfileList.profiles.ContainsKey(profile))
             {
@@ -255,7 +264,7 @@ namespace BedrockLauncher.Methods
             }
             else return new List<MCInstallation>();
         }
-        public static void EditInstallation(int index, string name, string directory, MCVersion version, string iconPath = @"/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png", bool isCustom = false)
+        public  void EditInstallation(int index, string name, string directory, MCVersion version, string iconPath = @"/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png", bool isCustom = false)
         {
             if (ProfileList.profiles.ContainsKey(CurrentProfile) && ProfileList.profiles[CurrentProfile].Installations.Count > index)
             {
@@ -288,7 +297,7 @@ namespace BedrockLauncher.Methods
                 SaveProfiles();
             }
         }
-        public static void CreateInstallation(string name, MCVersion version, string directory, string iconPath = @"/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png", bool isCustom = false)
+        public  void CreateInstallation(string name, MCVersion version, string directory, string iconPath = @"/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png", bool isCustom = false)
         {
             if (ProfileList.profiles.ContainsKey(CurrentProfile))
             {
@@ -321,7 +330,7 @@ namespace BedrockLauncher.Methods
                 SaveProfiles();
             }
         }
-        public static void DuplicateInstallation(MCInstallation installation)
+        public  void DuplicateInstallation(MCInstallation installation)
         {
             if (ProfileList.profiles.ContainsKey(CurrentProfile))
             {
@@ -339,7 +348,7 @@ namespace BedrockLauncher.Methods
                 CreateInstallation(newName, installation.Version, installation.DirectoryName, installation.IconPath_Full, installation.IsCustomIcon);
             }
         }
-        public static void DeleteInstallation(MCInstallation installation)
+        public  void DeleteInstallation(MCInstallation installation)
         {
             if (ProfileList.profiles.ContainsKey(CurrentProfile))
             {
@@ -354,7 +363,7 @@ namespace BedrockLauncher.Methods
 
         #region ListView Filters/Sorting
 
-        public static bool Filter_PatchNotes(object obj)
+        public  bool Filter_PatchNotes(object obj)
         {
             MCPatchNotesItem v = obj as MCPatchNotesItem;
 
@@ -366,7 +375,7 @@ namespace BedrockLauncher.Methods
             }
             else return false;
         }
-        public static bool Filter_VersionList(object obj)
+        public  bool Filter_VersionList(object obj)
         {
             MCVersion v = obj as MCVersion;
 
@@ -379,7 +388,7 @@ namespace BedrockLauncher.Methods
             else return false;
 
         }
-        public static bool Filter_InstallationList(object obj)
+        public  bool Filter_InstallationList(object obj)
         {
             MCInstallation v = obj as MCInstallation;
             if (!Properties.LauncherSettings.Default.ShowBetas && v.IsBeta) return false;

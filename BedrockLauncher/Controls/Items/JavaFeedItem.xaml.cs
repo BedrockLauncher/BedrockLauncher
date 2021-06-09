@@ -1,4 +1,5 @@
 ﻿using BedrockLauncher.Classes;
+using BL_Core.Classes;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
