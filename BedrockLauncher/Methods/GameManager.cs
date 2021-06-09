@@ -516,62 +516,58 @@ namespace BedrockLauncher.Methods
                 throw e;
             }
         }
-        private async Task SetInstallationDataPath(bool HasSaveRedirection = true)
+        private async Task SetInstallationDataPath()
         {
             await Task.Run(() =>
             {
-                if (HasSaveRedirection)
+                string LocalStateFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState");
+                string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang");
+                string PackageBakFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang.default");
+                string ProfileFolder = Path.GetFullPath(FilepathManager.GetInstallationsFolderPath(ConfigManager.CurrentProfile, ConfigManager.CurrentInstallation.DirectoryName_Full));
+
+                if (Directory.Exists(PackageFolder))
                 {
-                    string LocalStateFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState");
-                    string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang");
-                    string PackageBakFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang.default");
-                    string ProfileFolder = Path.GetFullPath(FilepathManager.GetInstallationsFolderPath(ConfigManager.CurrentProfile, ConfigManager.CurrentInstallation.DirectoryName_Full));
-
-                    if (Directory.Exists(PackageFolder))
-                    {
-                        var dir = new DirectoryInfo(PackageFolder);
-                        if (!dir.IsSymbolicLink()) dir.MoveTo(PackageBakFolder);
-                        else dir.Delete(true);
-                    }
-
-                    DirectoryInfo profileDir = Directory.CreateDirectory(ProfileFolder);
-                    SymLinkHelper.CreateSymbolicLink(PackageFolder, ProfileFolder, SymLinkHelper.SymbolicLinkType.Directory);
-                    DirectoryInfo pkgDir = Directory.CreateDirectory(PackageFolder);
-                    DirectoryInfo lsDir = Directory.CreateDirectory(LocalStateFolder);
-
-                    SecurityIdentifier owner = WindowsIdentity.GetCurrent().User;
-                    SecurityIdentifier authenticated_users_identity = new SecurityIdentifier("S-1-5-11");
-
-                    FileSystemAccessRule owner_access_rules = new FileSystemAccessRule(owner, FileSystemRights.FullControl, InheritanceFlags.ObjectInherit | InheritanceFlags.ContainerInherit, PropagationFlags.None, AccessControlType.Allow);
-                    FileSystemAccessRule au_access_rules = new FileSystemAccessRule(authenticated_users_identity, FileSystemRights.FullControl, InheritanceFlags.ObjectInherit | InheritanceFlags.ContainerInherit, PropagationFlags.None, AccessControlType.Allow);
-
-                    var lsSecurity = lsDir.GetAccessControl();
-                    AuthorizationRuleCollection rules = lsSecurity.GetAccessRules(true, true, typeof(NTAccount));
-                    List<FileSystemAccessRule> needed_rules = new List<FileSystemAccessRule>();
-                    foreach (AccessRule rule in rules)
-                    {
-                        if (rule.IdentityReference is SecurityIdentifier)
-                        {
-                            var required_rule = new FileSystemAccessRule(rule.IdentityReference, FileSystemRights.FullControl, rule.InheritanceFlags, rule.PropagationFlags, rule.AccessControlType);
-                            needed_rules.Add(required_rule);
-                        }
-                    }
-
-                    var pkgSecurity = pkgDir.GetAccessControl();
-                    pkgSecurity.SetOwner(owner);
-                    pkgSecurity.AddAccessRule(au_access_rules);
-                    pkgSecurity.AddAccessRule(owner_access_rules);
-                    pkgDir.SetAccessControl(pkgSecurity);
-
-                    var profileSecurity = profileDir.GetAccessControl();
-                    profileSecurity.SetOwner(owner);
-                    profileSecurity.AddAccessRule(au_access_rules);
-                    profileSecurity.AddAccessRule(owner_access_rules);
-                    needed_rules.ForEach(x => profileSecurity.AddAccessRule(x));
-                    profileDir.SetAccessControl(profileSecurity);
+                    var dir = new DirectoryInfo(PackageFolder);
+                    if (!dir.IsSymbolicLink()) dir.MoveTo(PackageBakFolder);
+                    else dir.Delete(true);
                 }
-            });
 
+                DirectoryInfo profileDir = Directory.CreateDirectory(ProfileFolder);
+                SymLinkHelper.CreateSymbolicLink(PackageFolder, ProfileFolder, SymLinkHelper.SymbolicLinkType.Directory);
+                DirectoryInfo pkgDir = Directory.CreateDirectory(PackageFolder);
+                DirectoryInfo lsDir = Directory.CreateDirectory(LocalStateFolder);
+
+                SecurityIdentifier owner = WindowsIdentity.GetCurrent().User;
+                SecurityIdentifier authenticated_users_identity = new SecurityIdentifier("S-1-5-11");
+
+                FileSystemAccessRule owner_access_rules = new FileSystemAccessRule(owner, FileSystemRights.FullControl, InheritanceFlags.ObjectInherit | InheritanceFlags.ContainerInherit, PropagationFlags.None, AccessControlType.Allow);
+                FileSystemAccessRule au_access_rules = new FileSystemAccessRule(authenticated_users_identity, FileSystemRights.FullControl, InheritanceFlags.ObjectInherit | InheritanceFlags.ContainerInherit, PropagationFlags.None, AccessControlType.Allow);
+
+                var lsSecurity = lsDir.GetAccessControl();
+                AuthorizationRuleCollection rules = lsSecurity.GetAccessRules(true, true, typeof(NTAccount));
+                List<FileSystemAccessRule> needed_rules = new List<FileSystemAccessRule>();
+                foreach (AccessRule rule in rules)
+                {
+                    if (rule.IdentityReference is SecurityIdentifier)
+                    {
+                        var required_rule = new FileSystemAccessRule(rule.IdentityReference, FileSystemRights.FullControl, rule.InheritanceFlags, rule.PropagationFlags, rule.AccessControlType);
+                        needed_rules.Add(required_rule);
+                    }
+                }
+
+                var pkgSecurity = pkgDir.GetAccessControl();
+                pkgSecurity.SetOwner(owner);
+                pkgSecurity.AddAccessRule(au_access_rules);
+                pkgSecurity.AddAccessRule(owner_access_rules);
+                pkgDir.SetAccessControl(pkgSecurity);
+
+                var profileSecurity = profileDir.GetAccessControl();
+                profileSecurity.SetOwner(owner);
+                profileSecurity.AddAccessRule(au_access_rules);
+                profileSecurity.AddAccessRule(owner_access_rules);
+                needed_rules.ForEach(x => profileSecurity.AddAccessRule(x));
+                profileDir.SetAccessControl(profileSecurity);
+            });
             Thread.Sleep(1000);
         }
         private async Task ExtractPackage(MCVersion v, string dlPath, CancellationTokenSource cancelSource)

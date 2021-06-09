@@ -2,7 +2,7 @@
 using System.IO;
 using System.Diagnostics;
 
-namespace MCBedrockRemovalTool
+namespace BL_Remover
 {
     class Program
     {

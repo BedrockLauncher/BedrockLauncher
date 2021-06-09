@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Windows;
 
 
-namespace BedrockLauncherSetup.Pages
+namespace BL_Setup.Pages
 {
     /// <summary>
     /// Логика взаимодействия для WelcomePage.xaml

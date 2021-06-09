@@ -13,11 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
-using BedrockLauncherSetup.Pages;
+using BL_Setup.Pages;
 using System.Diagnostics;
 using System.Reflection;
 
-namespace BedrockLauncherSetup
+namespace BL_Setup
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml

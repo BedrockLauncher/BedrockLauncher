@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:BedrockLauncherSetup">
+                    xmlns:local="clr-namespace:BL_Setup">
     <SolidColorBrush x:Key="Expander.MouseOver.Circle.Stroke" Color="Transparent"/>
     <SolidColorBrush x:Key="Expander.MouseOver.Circle.Fill" Color="Transparent"/>
     <SolidColorBrush x:Key="Expander.MouseOver.Arrow.Stroke" Color="White"/>
