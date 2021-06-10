@@ -1,4 +1,4 @@
-# ![minecraft bedrock launcher icon](./repo_assets/BedrockLauncher_icons/64x64.ico) Minecraft Bedrock Launcher
+# ![minecraft bedrock launcher icon](./repo_assets/BedrockLauncher_icons/64x64.ico) Minecraft Bedrock Edition Launcher
 
 [![minecraft bedrock launcher download button](https://img.shields.io/github/v/release/BedrockLauncher/BedrockLauncher?color=brightgreen&label=Download&logo=windows&style=for-the-badge)](https://github.com/BedrockLauncher/BedrockLauncher/releases/latest/download/Installer.exe)
 
@@ -29,7 +29,6 @@ Be sure you have:
     - [C++ Development Libraries](https://docs.microsoft.com/en-us/cpp/overview/visual-cpp-in-visual-studio)
     - [.NET Framework Development Libraries](https://visualstudio.microsoft.com/vs/features/net-development/)
  - [Node.js](https://nodejs.org/) (with the [npm](https://www.npmjs.com/) as a system environment path)
- - [Vcpkg Package Manager](https://github.com/microsoft/vcpkg) (for C++ Libs)
  - [PostSharp Community Edition](https://www.postsharp.net/) (for the installer)
  - **You Must be running as administrator to build!** (tutorial: [Microsoft Support](https://support.microsoft.com/windows/20de74e0-ac7f-3502-a866-32915af2a34d))
 
