@@ -30,7 +30,7 @@ Be sure you have:
     - [.NET Framework Development Libraries](https://visualstudio.microsoft.com/vs/features/net-development/)
  - [Node.js](https://nodejs.org/) (with the [npm](https://www.npmjs.com/) as a system environment path)
  - [Vcpkg Package Manager](https://github.com/microsoft/vcpkg) (for C++ Libs)
- - [ReSharper Community Edition](https://www.jetbrains.com/resharper/) (for the installer)
+ - [PostSharp Community Edition](https://www.postsharp.net/) (for the installer)
  - **You Must be running as administrator to build!** (tutorial: [Microsoft Support](https://support.microsoft.com/windows/20de74e0-ac7f-3502-a866-32915af2a34d))
 
 Open the [`.sln`](https://fileinfo.com/extension/sln) project file in [Visual Studio](https://visualstudio.microsoft.com/downloads/) with the following packages and Press the Build/Start Button.
