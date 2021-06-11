@@ -1,34 +1,34 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Linq;
-using System.Windows.Input;
+﻿using BedrockLauncher.Classes;
+using BedrockLauncher.Downloaders;
+using BedrockLauncher.Core.Classes;
+using BedrockLauncher.Core.Classes.SkinPack;
+using BedrockLauncher.Core.Components;
+using BedrockLauncher.Core.Controls;
+using BedrockLauncher.Core.Methods;
+using BedrockLauncher.Core.Pages.Common;
+using ExtensionsDotNET;
+using SymbolicLinkSupport;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
-using System.Threading;
+using System.Linq;
 using System.Security.AccessControl;
 using System.Security.Principal;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 using System.Xml.Linq;
 using Windows.ApplicationModel;
 using Windows.Foundation;
 using Windows.Management.Core;
 using Windows.Management.Deployment;
 using Windows.System;
-using BedrockLauncher.Classes;
-using BL_Core.Pages.Common;
-using BedrockLauncher.Downloaders;
-using BL_Core.Components;
-using BL_Core.Methods;
-using ExtensionsDotNET;
-using SymbolicLinkSupport;
 using ZipProgress = ExtensionsDotNET.ZipFileExtensions.ZipProgress;
-using System.Collections.Generic;
-using BL_Core.Controls;
-using BL_Core.Classes;
-using BL_Core.Classes.SkinPack;
 
-namespace BedrockLauncher.Methods
+namespace BedrockLauncher.ViewModels
 {
     public class GameManager: NotifyPropertyChangedBase
     {
@@ -36,7 +36,6 @@ namespace BedrockLauncher.Methods
         #region Threading Tasks
 
         public CancellationTokenSource cancelSource = new CancellationTokenSource();
-        public readonly VersionDownloader VersionDownloader = new VersionDownloader();
         private readonly Task _userVersionDownloaderLoginTask;
         private volatile int _userVersionDownloaderLoginTaskStarted;
 
@@ -91,20 +90,13 @@ namespace BedrockLauncher.Methods
 
         #endregion
 
-        #region ICommands
-        public ICommand LaunchCommand => new RelayCommand((v) => InvokeLaunch((MCVersion)v));
-        public ICommand RemoveCommand => new RelayCommand((v) => InvokeRemove((MCVersion)v));
-        public ICommand DownloadCommand => new RelayCommand((v) => InvokeDownload((MCVersion)v));
-
-        #endregion
-
         #region Init
 
         public GameManager()
         {
             _userVersionDownloaderLoginTask = new Task(() =>
             {
-                VersionDownloader.EnableUserAuthorization();
+                LauncherModel.Default.VersionDownloader.EnableUserAuthorization();
             });
         }
 
@@ -116,11 +108,11 @@ namespace BedrockLauncher.Methods
         {
             InvokeCancel();
         }
-        public void Remove(MCVersion v)
+        public void Remove(BLVersion v)
         {
             InvokeRemove(v);
         }
-        public void Repair(MCVersion v)
+        public void Repair(BLVersion v)
         {
             InvokeDownload(v, false);
         }
@@ -129,13 +121,13 @@ namespace BedrockLauncher.Methods
         {
             InvokeKillGame();
         }
-        public void Play(MCInstallation i)
+        public void Play(BLInstallation i)
         {
             if (i == null) return;
-            Properties.LauncherSettings.Default.CurrentInstallation = ConfigManager.Default.CurrentInstallations.IndexOf(i);
+            Properties.LauncherSettings.Default.CurrentInstallation = LauncherModel.Default.ConfigManager.CurrentInstallations.IndexOf(i);
             Properties.LauncherSettings.Default.Save();
 
-            var v = i.Version;
+            var v = i.Version as BLVersion;
             switch (v.DisplayInstallStatus.ToString())
             {
                 case "Not installed":
@@ -146,13 +138,13 @@ namespace BedrockLauncher.Methods
                     break;
             }
         }
-        public void OpenFolder(MCInstallation i)
+        public void OpenFolder(BLInstallation i)
         {
-            string Directory = FilepathManager.Default.GetInstallationsFolderPath(ConfigManager.Default.CurrentProfile, i.DirectoryName_Full);
+            string Directory = LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.ConfigManager.CurrentProfile, i.DirectoryName_Full);
             if (!System.IO.Directory.Exists(Directory)) System.IO.Directory.CreateDirectory(Directory);
             Process.Start("explorer.exe", Directory);
         }
-        public void OpenFolder(MCVersion i)
+        public void OpenFolder(BLVersion i)
         {
             string Directory = Path.GetFullPath(i.GameDirectory);
             if (!System.IO.Directory.Exists(Directory)) System.IO.Directory.CreateDirectory(Directory);
@@ -179,16 +171,24 @@ namespace BedrockLauncher.Methods
             }
         }
 
-        private void InvokeLaunch(MCVersion v)
+        private void InvokeLaunch(BLVersion v)
         {
             Task.Run(async () =>
             {
-                StartLaunch();
-                await SetInstallationDataPath();
-                string gameDir = Path.GetFullPath(v.GameDirectory);
-                await ReRegisterPackage(v, gameDir);
-                bool closable = await LaunchGame(v);
-                if (!closable) EndLaunch();
+                try
+                {
+                    StartLaunch();
+                    await SetInstallationDataPath();
+                    string gameDir = Path.GetFullPath(v.GameDirectory);
+                    await ReRegisterPackage(v, gameDir);
+                    bool closable = await LaunchGame(v);
+                    if (!closable) EndLaunch();
+                }
+                catch
+                {
+                    EndLaunch();
+                }
+
             });
 
             void StartLaunch()
@@ -203,7 +203,7 @@ namespace BedrockLauncher.Methods
                 ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
             }
         }
-        private void InvokeDownload(MCVersion v, bool RunAfterwards = false)
+        private void InvokeDownload(BLVersion v, bool RunAfterwards = false)
         {
             System.Diagnostics.Debug.WriteLine("Download start");
             bool wasCanceled = false;
@@ -218,7 +218,7 @@ namespace BedrockLauncher.Methods
                 try
                 {
                     string dlPath = "Minecraft-" + v.Name + ".Appx";
-                    VersionDownloader downloader = VersionDownloader;
+                    VersionDownloader downloader = LauncherModel.Default.VersionDownloader;
                     if (v.IsBeta) await BetaAuthenticate();
                     await DownloadVersion(v, downloader, dlPath, cancelSource);
                     await ExtractPackage(v, dlPath, cancelSource);
@@ -243,7 +243,7 @@ namespace BedrockLauncher.Methods
                 if (RunAfterwards && !wasCanceled) InvokeLaunch(v);
             });
         }
-        private void InvokeRemove(MCVersion v)
+        private void InvokeRemove(BLVersion v)
         {
             Task.Run(async () =>
             {
@@ -263,7 +263,6 @@ namespace BedrockLauncher.Methods
                 v.UpdateInstallStatus();
                 ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
                 ViewModels.LauncherModel.Default.ShowProgressBar = false;
-                ConfigManager.Default.OnConfigStateChanged(null, Events.ConfigStateArgs.Empty);
                 return;
             });
         }
@@ -285,12 +284,10 @@ namespace BedrockLauncher.Methods
                     if (dataPath != string.Empty)
                     {
                         var dirData = GenerateStrings();
-                        string dataDir = Path.Combine(FilepathManager.Default.GetInstallationsFolderPath(ConfigManager.Default.CurrentProfile, dirData.Item1));
-
-                        if (!Directory.Exists(dirData.Item1)) Directory.CreateDirectory(dirData.Item1);
-                        System.Diagnostics.Debug.WriteLine("Moving backup Minecraft data to: " + dirData.Item1);
-                        RestoreCopy(dataPath, dirData.Item1);
-                        ConfigManager.Default.CreateInstallation(dirData.Item2, null, dirData.Item1);
+                        if (!Directory.Exists(dirData.Item2)) Directory.CreateDirectory(dirData.Item2);
+                        System.Diagnostics.Debug.WriteLine("Moving backup Minecraft data to: " + dirData.Item2);
+                        RestoreCopy(dataPath, dirData.Item2);
+                        Application.Current.Dispatcher.Invoke(() => LauncherModel.Default.ConfigManager.CreateInstallation(dirData.Item1, null, dirData.Item2));
                     }
                 }
                 catch (Exception ex) { ErrorScreenShow.exceptionmsg(ex); }
@@ -298,26 +295,30 @@ namespace BedrockLauncher.Methods
                 ViewModels.LauncherModel.Default.ShowProgressBar = false;
                 ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
             });
-            ConfigManager.Default.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
 
             Tuple<string, string> GenerateStrings(string name = "Recovery Data", string dir = "RecoveryData")
             {
                 string recoveryName = name;
                 string recoveryDir = dir;
+                string directoryPath = string.Empty;
                 int i = 1;
 
 
-
-                while (Directory.Exists(Path.Combine(FilepathManager.Default.GetInstallationsFolderPath(ConfigManager.Default.CurrentProfile, recoveryDir))) || i < 100)
+                while (i < 100)
                 {
-                    recoveryName = string.Format("{0} ({1})", name, i);
-                    recoveryDir = string.Format("{0}_{1}", dir, i);
+                    if (i != 1)
+                    {
+                        recoveryName = string.Format("{0} ({1})", name, i);
+                        recoveryDir = string.Format("{0}_{1}", dir, i);
+                    }
+                    directoryPath = Path.Combine(LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.ConfigManager.CurrentProfile, recoveryDir));
+                    if (!Directory.Exists(directoryPath)) break;
                     i++;
                 }
 
                 if (i >= 100) throw new Exception("Too many backups made");
 
-                return new Tuple<string, string>(recoveryName, recoveryDir);
+                return new Tuple<string, string>(recoveryName, directoryPath);
 
             }
 
@@ -363,24 +364,7 @@ namespace BedrockLauncher.Methods
                 foreach (var f in Directory.EnumerateDirectories(from))
                 {
                     string tp = Path.Combine(to, Path.GetFileName(f));
-                    if (!Directory.Exists(tp))
-                    {
-                        bool CreateDirectory = false;
-                        bool SkipDirectory = false;
-
-                        if (!YesToAll && !NoToAll)
-                        {
-                            var result = ShowConfictDialog(tp, "GameManager_RecoveringDataIssue_NotaDirectory_Text", "GameManager_RecoveringDataIssue_Title");
-                            if (result == AltMessageBoxResult.YesToAll || result == AltMessageBoxResult.Yes) CreateDirectory = true;
-                            else if (result == AltMessageBoxResult.NoToAll || result == AltMessageBoxResult.No) SkipDirectory = true;
-
-                            if (result == AltMessageBoxResult.YesToAll) YesToAll = true;
-                            else if (result == AltMessageBoxResult.NoToAll) NoToAll = true;
-                        }
-
-                        if (SkipDirectory || NoToAll) continue;
-                        else if (CreateDirectory || YesToAll) Directory.CreateDirectory(tp);
-                    }
+                    Directory.CreateDirectory(tp);
                     RestoreCopy_Step(f, tp, ref YesToAll, ref NoToAll);
                 }
             }
@@ -395,7 +379,7 @@ namespace BedrockLauncher.Methods
                 string yesText = Application.Current.FindResource("DialogBtn_Yes_Text").ToString();
                 string noText = Application.Current.FindResource("DialogBtn_No_Text").ToString();
 
-                AltMessageBoxArgs param = new BL_Core.Controls.AltMessageBoxArgs()
+                AltMessageBoxArgs param = new BedrockLauncher.Core.Controls.AltMessageBoxArgs()
                 {
                     button = new AltMessageBoxButton()
                     {
@@ -415,12 +399,13 @@ namespace BedrockLauncher.Methods
                     NoToAllText = noToAllText
                 };
 
-                return BL_Core.Controls.AltMessageBox.Show(param);
+                
+                return LauncherModel.MainThread.Dispatcher.Invoke(() => BedrockLauncher.Core.Controls.AltMessageBox.Show(param));
             }
         }
         public async void InvokeKillGame()
         {
-            if (ConfigManager.Default.GameManager.GameProcess != null)
+            if (LauncherModel.Default.GameManager.GameProcess != null)
             {
                 var title = Application.Current.FindResource("Dialog_KillGame_Title") as string;
                 var content = Application.Current.FindResource("Dialog_KillGame_Text") as string;
@@ -438,7 +423,7 @@ namespace BedrockLauncher.Methods
 
         #region Task Methods
 
-        private async Task DownloadVersion(MCVersion v, VersionDownloader downloader, string dlPath, CancellationTokenSource cancelSource)
+        private async Task DownloadVersion(BLVersion v, VersionDownloader downloader, string dlPath, CancellationTokenSource cancelSource)
         {
             try
             {
@@ -518,57 +503,65 @@ namespace BedrockLauncher.Methods
         {
             await Task.Run(() =>
             {
-                string LocalStateFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState");
-                string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang");
-                string PackageBakFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang.default");
-                string ProfileFolder = Path.GetFullPath(FilepathManager.Default.GetInstallationsFolderPath(ConfigManager.Default.CurrentProfile, ConfigManager.Default.CurrentInstallation.DirectoryName_Full));
-
-                if (Directory.Exists(PackageFolder))
+                try
                 {
-                    var dir = new DirectoryInfo(PackageFolder);
-                    if (!dir.IsSymbolicLink()) dir.MoveTo(PackageBakFolder);
-                    else dir.Delete(true);
-                }
+                    string LocalStateFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState");
+                    string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang");
+                    string PackageBakFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang.default");
+                    string ProfileFolder = Path.GetFullPath(LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.ConfigManager.CurrentProfile, LauncherModel.Default.ConfigManager.CurrentInstallation.DirectoryName_Full));
 
-                DirectoryInfo profileDir = Directory.CreateDirectory(ProfileFolder);
-                SymLinkHelper.CreateSymbolicLink(PackageFolder, ProfileFolder, SymLinkHelper.SymbolicLinkType.Directory);
-                DirectoryInfo pkgDir = Directory.CreateDirectory(PackageFolder);
-                DirectoryInfo lsDir = Directory.CreateDirectory(LocalStateFolder);
-
-                SecurityIdentifier owner = WindowsIdentity.GetCurrent().User;
-                SecurityIdentifier authenticated_users_identity = new SecurityIdentifier("S-1-5-11");
-
-                FileSystemAccessRule owner_access_rules = new FileSystemAccessRule(owner, FileSystemRights.FullControl, InheritanceFlags.ObjectInherit | InheritanceFlags.ContainerInherit, PropagationFlags.None, AccessControlType.Allow);
-                FileSystemAccessRule au_access_rules = new FileSystemAccessRule(authenticated_users_identity, FileSystemRights.FullControl, InheritanceFlags.ObjectInherit | InheritanceFlags.ContainerInherit, PropagationFlags.None, AccessControlType.Allow);
-
-                var lsSecurity = lsDir.GetAccessControl();
-                AuthorizationRuleCollection rules = lsSecurity.GetAccessRules(true, true, typeof(NTAccount));
-                List<FileSystemAccessRule> needed_rules = new List<FileSystemAccessRule>();
-                foreach (AccessRule rule in rules)
-                {
-                    if (rule.IdentityReference is SecurityIdentifier)
+                    if (Directory.Exists(PackageFolder))
                     {
-                        var required_rule = new FileSystemAccessRule(rule.IdentityReference, FileSystemRights.FullControl, rule.InheritanceFlags, rule.PropagationFlags, rule.AccessControlType);
-                        needed_rules.Add(required_rule);
+                        var dir = new DirectoryInfo(PackageFolder);
+                        if (!dir.IsSymbolicLink()) dir.MoveTo(PackageBakFolder);
+                        else dir.Delete(true);
                     }
+
+                    DirectoryInfo profileDir = Directory.CreateDirectory(ProfileFolder);
+                    SymLinkHelper.CreateSymbolicLink(PackageFolder, ProfileFolder, SymLinkHelper.SymbolicLinkType.Directory);
+                    DirectoryInfo pkgDir = Directory.CreateDirectory(PackageFolder);
+                    DirectoryInfo lsDir = Directory.CreateDirectory(LocalStateFolder);
+
+                    SecurityIdentifier owner = WindowsIdentity.GetCurrent().User;
+                    SecurityIdentifier authenticated_users_identity = new SecurityIdentifier("S-1-5-11");
+
+                    FileSystemAccessRule owner_access_rules = new FileSystemAccessRule(owner, FileSystemRights.FullControl, InheritanceFlags.ObjectInherit | InheritanceFlags.ContainerInherit, PropagationFlags.None, AccessControlType.Allow);
+                    FileSystemAccessRule au_access_rules = new FileSystemAccessRule(authenticated_users_identity, FileSystemRights.FullControl, InheritanceFlags.ObjectInherit | InheritanceFlags.ContainerInherit, PropagationFlags.None, AccessControlType.Allow);
+
+                    var lsSecurity = lsDir.GetAccessControl();
+                    AuthorizationRuleCollection rules = lsSecurity.GetAccessRules(true, true, typeof(NTAccount));
+                    List<FileSystemAccessRule> needed_rules = new List<FileSystemAccessRule>();
+                    foreach (AccessRule rule in rules)
+                    {
+                        if (rule.IdentityReference is SecurityIdentifier)
+                        {
+                            var required_rule = new FileSystemAccessRule(rule.IdentityReference, FileSystemRights.FullControl, rule.InheritanceFlags, rule.PropagationFlags, rule.AccessControlType);
+                            needed_rules.Add(required_rule);
+                        }
+                    }
+
+                    var pkgSecurity = pkgDir.GetAccessControl();
+                    pkgSecurity.SetOwner(owner);
+                    pkgSecurity.AddAccessRule(au_access_rules);
+                    pkgSecurity.AddAccessRule(owner_access_rules);
+                    pkgDir.SetAccessControl(pkgSecurity);
+
+                    var profileSecurity = profileDir.GetAccessControl();
+                    profileSecurity.SetOwner(owner);
+                    profileSecurity.AddAccessRule(au_access_rules);
+                    profileSecurity.AddAccessRule(owner_access_rules);
+                    needed_rules.ForEach(x => profileSecurity.AddAccessRule(x));
+                    profileDir.SetAccessControl(profileSecurity);
                 }
-
-                var pkgSecurity = pkgDir.GetAccessControl();
-                pkgSecurity.SetOwner(owner);
-                pkgSecurity.AddAccessRule(au_access_rules);
-                pkgSecurity.AddAccessRule(owner_access_rules);
-                pkgDir.SetAccessControl(pkgSecurity);
-
-                var profileSecurity = profileDir.GetAccessControl();
-                profileSecurity.SetOwner(owner);
-                profileSecurity.AddAccessRule(au_access_rules);
-                profileSecurity.AddAccessRule(owner_access_rules);
-                needed_rules.ForEach(x => profileSecurity.AddAccessRule(x));
-                profileDir.SetAccessControl(profileSecurity);
+                catch (Exception e)
+                {
+                    ErrorScreenShow.exceptionmsg(e);
+                    throw e;
+                }
             });
             Thread.Sleep(1000);
         }
-        private async Task ExtractPackage(MCVersion v, string dlPath, CancellationTokenSource cancelSource)
+        private async Task ExtractPackage(BLVersion v, string dlPath, CancellationTokenSource cancelSource)
         {
             Stream zipReadingStream = null;
             try
@@ -732,8 +725,6 @@ namespace BedrockLauncher.Methods
         }
 
         #endregion
-
-
 
     }
 }

@@ -8,7 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media.Animation;
 
-namespace BL_Core.Components
+namespace BedrockLauncher.Core.Components
 {
     public static class PageAnimator
     {

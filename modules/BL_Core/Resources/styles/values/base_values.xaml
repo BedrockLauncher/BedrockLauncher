@@ -312,10 +312,10 @@
 
     <!--#region Play Button -->
 
-    <ImageBrush x:Key="PlayButton.Static.Background" ImageSource="/BL_Core;component/resources/images/ui/panels/MainPagePlayButton.png" Stretch="Uniform"/>
-    <ImageBrush x:Key="PlayButton.MouseOver.Background" ImageSource="/BL_Core;component/resources/images/ui/panels/MainPagePlayButtonOver.png" Stretch="Uniform"/>
-    <ImageBrush x:Key="PlayButton.Pressed.Background" ImageSource="/BL_Core;component/resources/images/ui/panels/MainPagePlayButtonPressed.png" Stretch="Uniform"/>
-    <ImageBrush x:Key="PlayButton.Focused.MouseOver.Background" ImageSource="/BL_Core;component/resources/images/ui/panels/MainPagePlayButtonFocusOver.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="PlayButton.Static.Background" ImageSource="/BedrockLauncher.Core;component/resources/images/ui/panels/MainPagePlayButton.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="PlayButton.MouseOver.Background" ImageSource="/BedrockLauncher.Core;component/resources/images/ui/panels/MainPagePlayButtonOver.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="PlayButton.Pressed.Background" ImageSource="/BedrockLauncher.Core;component/resources/images/ui/panels/MainPagePlayButtonPressed.png" Stretch="Uniform"/>
+    <ImageBrush x:Key="PlayButton.Focused.MouseOver.Background" ImageSource="/BedrockLauncher.Core;component/resources/images/ui/panels/MainPagePlayButtonFocusOver.png" Stretch="Uniform"/>
 
     <!--#endregion-->
 

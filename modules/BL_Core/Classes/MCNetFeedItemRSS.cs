@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using CodeHollow.FeedReader;
 using CodeHollow.FeedReader.Feeds;
 
-namespace BL_Core.Classes
+namespace BedrockLauncher.Core.Classes
 {
     public class MCNetFeedItemRSS : MCNetFeedItem
     {

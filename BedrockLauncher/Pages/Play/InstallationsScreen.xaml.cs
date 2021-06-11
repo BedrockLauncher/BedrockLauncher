@@ -14,32 +14,29 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Pages.Preview;
+using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Pages.Play
 {
     public partial class InstallationsScreen : Page
     {
+        private bool HasLoadedOnce = false;
         public InstallationsScreen()
         {
             InitializeComponent();
-            ConfigManager.Default.ConfigStateChanged += ConfigManager_ConfigStateChanged;
+            ShowBetasCheckBox.Click += (sender, e) => RefreshInstallationsList();
+            ShowReleasesCheckBox.Click += (sender, e) => RefreshInstallationsList();
         }
 
-        private void ConfigManager_ConfigStateChanged(object sender, EventArgs e)
+        public async void RefreshInstallationsList()
         {
-            RefreshInstallationsList(null, null);
-        }
-
-        public void RefreshInstallationsList(object sender, RoutedEventArgs e)
-        {
-            this.Dispatcher.Invoke(() =>
+            await this.Dispatcher.InvokeAsync(() =>
             {
-                InstallationsList.ItemsSource = ConfigManager.Default.CurrentInstallations;
                 var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
-                view.Filter = ConfigManager.Default.Filter_InstallationList;
-                Task.Run(UpdateUI);
+                view.Refresh();
+                if (InstallationsList.Items.Count > 0 && NothingFound.Visibility != Visibility.Collapsed) NothingFound.Visibility = Visibility.Collapsed;
+                else if (InstallationsList.Items.Count <= 0 && NothingFound.Visibility != Visibility.Visible) NothingFound.Visibility = Visibility.Visible;
             });
-
         }
 
         private void NewInstallationButton_Click(object sender, RoutedEventArgs e)
@@ -47,29 +44,18 @@ namespace BedrockLauncher.Pages.Play
             ViewModels.LauncherModel.Default.SetOverlayFrame(new EditInstallationScreen());
         }
 
-
-
-        private void Page_Initialized(object sender, EventArgs e)
-        {
-
-        }
-
-        private async void UpdateUI()
-        {
-            await this.Dispatcher.InvokeAsync(() =>
-            {
-                if (InstallationsList.Items.Count > 0 && NothingFound.Visibility != Visibility.Collapsed) NothingFound.Visibility = Visibility.Collapsed;
-                else if (InstallationsList.Items.Count <= 0 && NothingFound.Visibility != Visibility.Visible) NothingFound.Visibility = Visibility.Visible;
-            });
-        }
-
         private async void PageHost_Loaded(object sender, RoutedEventArgs e)
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
-                var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
-                view.Filter = ConfigManager.Default.Filter_InstallationList;
-                Task.Run(UpdateUI);
+                if (!HasLoadedOnce)
+                {
+                    InstallationsList.ItemsSource = LauncherModel.Default.ConfigManager.CurrentInstallations;
+                    var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
+                    view.Filter = LauncherModel.Default.ConfigManager.Filter_InstallationList;
+                    HasLoadedOnce = true;
+                }
+                RefreshInstallationsList();
             });
         }
     }

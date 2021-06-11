@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:f="clr-namespace:CodeHollow.FeedReader;assembly=CodeHollow.FeedReader"
-      xmlns:c="clr-namespace:BL_Core.Classes;assembly=BL_Core"
+      xmlns:c="clr-namespace:BedrockLauncher.Core.Classes;assembly=BedrockLauncher.Core"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       xmlns:common="clr-namespace:BedrockLauncher.Pages.Common"
       mc:Ignorable="d" 
@@ -30,7 +30,7 @@
 
                 <Grid Grid.Row="1" Grid.Column="0" Margin="10,0,10,10" VerticalAlignment="Center">
                     <StackPanel>
-                        <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_Search}" Margin="0,0,0,2" FontWeight="Bold" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+                        <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_Search}" Margin="0,0,0,2" FontWeight="Bold" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
                         <ContentControl Style="{DynamicResource TextboxLikeFrame}" Height="30">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -45,10 +45,10 @@
                 </Grid>
                 <Separator Grid.Row="1" Grid.Column="1" Width="1" Height="35" VerticalAlignment="Center"/>
                 <StackPanel Grid.Row="1" Grid.Column="2" Margin="5,0" VerticalAlignment="Center">
-                    <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_Categories}" Margin="5,2,0,10" FontWeight="Bold" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+                    <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_Categories}" Margin="5,2,0,10" FontWeight="Bold" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
                     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Orientation="Horizontal" Margin="0,0,10,10">
-                        <CheckBox x:Name="ShowJavaContent" Checked="CheckBox_CheckChanged" Unchecked="CheckBox_CheckChanged" IsChecked="True" Content="{DynamicResource ResourceKey=NewsScreen_JavaNDungeons_JavaCheckbox}" Foreground="White" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
-                        <CheckBox x:Name="ShowDungeonsContent" Checked="CheckBox_CheckChanged" Unchecked="CheckBox_CheckChanged" IsChecked="True" Content="{DynamicResource ResourceKey=NewsScreen_JavaNDungeons_DungeonsCheckbox}" Foreground="White" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
+                        <CheckBox x:Name="ShowJavaContent" Checked="CheckBox_CheckChanged" Unchecked="CheckBox_CheckChanged" IsChecked="True" Content="{DynamicResource ResourceKey=NewsScreen_JavaNDungeons_JavaCheckbox}" Foreground="White" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
+                        <CheckBox x:Name="ShowDungeonsContent" Checked="CheckBox_CheckChanged" Unchecked="CheckBox_CheckChanged" IsChecked="True" Content="{DynamicResource ResourceKey=NewsScreen_JavaNDungeons_DungeonsCheckbox}" Foreground="White" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
                     </StackPanel>
                 </StackPanel>
             </Grid>

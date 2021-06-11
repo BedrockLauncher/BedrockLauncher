@@ -9,7 +9,7 @@ using System.Drawing;
 using System.Windows.Media.Imaging;
 using System.Drawing.Imaging;
 
-namespace BL_Core.Classes.SkinPack
+namespace BedrockLauncher.Core.Classes.SkinPack
 {
     public class MCSkinPack
     {
@@ -114,8 +114,8 @@ namespace BL_Core.Classes.SkinPack
 
         public string GetLocalizedString(string localization_name, string keyName, string Lang = null)
         {
-            string DefaultLang = BL_Core.Language.LanguageDefinition.Default.Locale.Replace("-", "_");
-            if (Lang == null) Lang = BL_Core.Properties.Settings.Default.Language.Replace("-", "_");
+            string DefaultLang = BedrockLauncher.Core.Language.LanguageDefinition.Default.Locale.Replace("-", "_");
+            if (Lang == null) Lang = BedrockLauncher.Core.Properties.Settings.Default.Language.Replace("-", "_");
 
             var data = GetData();
             if (data == null) return GetAvaliable();

@@ -3,13 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:classes="clr-namespace:BL_Core.Classes;assembly=BL_Core"
+             xmlns:classes="clr-namespace:BedrockLauncher.Classes"
              xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
+             SelectionChanged="ComboBox_SelectionChanged"
              mc:Ignorable="d" 
              Foreground="White"
              Style="{DynamicResource InstallationSelectorComboBoxStyle}">
     <ComboBox.ItemContainerStyle>
-        <Style TargetType="{x:Type ComboBoxItem}" xmlns:c="clr-namespace:BL_Core.Components;assembly=BL_Core">
+        <Style TargetType="{x:Type ComboBoxItem}" xmlns:c="clr-namespace:BedrockLauncher.Core.Components;assembly=BedrockLauncher.Core">
             <Setter Property="SnapsToDevicePixels" Value="True"/>
             <Setter Property="Padding" Value="0,5,0,5"/>
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -44,7 +45,7 @@
         </Style>
     </ComboBox.ItemContainerStyle>
     <ComboBox.ItemTemplate>
-        <DataTemplate DataType="{x:Type classes:MCInstallation}">
+        <DataTemplate DataType="{x:Type classes:BLInstallation}">
             <i:InstallationSelectorItem DataContext="{Binding}"></i:InstallationSelectorItem>
         </DataTemplate>
     </ComboBox.ItemTemplate>

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 
-namespace BL_Core
+namespace BedrockLauncher.Core
 {
     public class GithubAPI
     {

@@ -4,17 +4,17 @@
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/BL_Core;component/Resources/styles/variants/buttons/close_buttons.xaml"/>
-        <ResourceDictionary Source="/BL_Core;component/Resources/styles/variants/buttons/dialog_buttons.xaml"/>
-        <ResourceDictionary Source="/BL_Core;component/Resources/styles/variants/buttons/sidebar_button.xaml"/>
-        <ResourceDictionary Source="/BL_Core;component/Resources/styles/variants/buttons/toolbar_button.xaml"/>
-        <ResourceDictionary Source="/BL_Core;component/Resources/styles/variants/buttons/play_button.xaml"/>
-        <ResourceDictionary Source="/BL_Core;component/Resources/styles/variants/buttons/panel_button.xaml"/>
-        <ResourceDictionary Source="/BL_Core;component/Resources/styles/variants/buttons/minor_dialog_button.xaml"/>
-        <ResourceDictionary Source="/BL_Core;component/Resources/styles/variants/buttons/profile_selector_button.xaml"/>
-        <ResourceDictionary Source="/BL_Core;component/Resources/styles/variants/buttons/text_box_button.xaml"/>
-        <ResourceDictionary Source="/BL_Core;component/Resources/styles/variants/buttons/link_button.xaml"/>
-        <ResourceDictionary Source="/BL_Core;component/Resources/styles/variants/buttons/empty_button.xaml"/>
+        <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/variants/buttons/close_buttons.xaml"/>
+        <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/variants/buttons/dialog_buttons.xaml"/>
+        <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/variants/buttons/sidebar_button.xaml"/>
+        <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/variants/buttons/toolbar_button.xaml"/>
+        <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/variants/buttons/play_button.xaml"/>
+        <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/variants/buttons/panel_button.xaml"/>
+        <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/variants/buttons/minor_dialog_button.xaml"/>
+        <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/variants/buttons/profile_selector_button.xaml"/>
+        <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/variants/buttons/text_box_button.xaml"/>
+        <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/variants/buttons/link_button.xaml"/>
+        <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/variants/buttons/empty_button.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type ToggleButton}">

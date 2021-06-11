@@ -1,4 +1,4 @@
-﻿using BL_Core.Classes.SkinPack;
+﻿using BedrockLauncher.Core.Classes.SkinPack;
 using BedrockLauncher.Methods;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,6 +11,7 @@ using System.IO;
 using System.ComponentModel;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 using System.Net.Cache;
+using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Pages.Preview
 {
@@ -229,14 +230,14 @@ namespace BedrockLauncher.Pages.Preview
 
         private string GetNewPackFolder()
         {
-            string InstallationPath = FilepathManager.Default.GetInstallationsFolderPath(ConfigManager.Default.CurrentProfile, ConfigManager.Default.CurrentInstallation.DirectoryName);
+            string InstallationPath = LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.ConfigManager.CurrentProfile, LauncherModel.Default.ConfigManager.CurrentInstallation.DirectoryName);
             string NewPackDirectoryName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
-            string NewPackDirectory = Path.Combine(FilepathManager.Default.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
+            string NewPackDirectory = Path.Combine(LauncherModel.Default.FilepathManager.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
 
             while (Directory.Exists(NewPackDirectory))
             {
                 NewPackDirectoryName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
-                NewPackDirectory = Path.Combine(FilepathManager.Default.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
+                NewPackDirectory = Path.Combine(LauncherModel.Default.FilepathManager.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
             }
 
             return NewPackDirectory;
@@ -325,20 +326,17 @@ namespace BedrockLauncher.Pages.Preview
         {
             if (!isEditMode) RemoveUnfinishedPack();
             ViewModels.LauncherModel.Default.SetOverlayFrame(null);
-            ConfigManager.Default.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
             SaveSkinPack();
             ViewModels.LauncherModel.Default.SetOverlayFrame(null);
-            ConfigManager.Default.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             ViewModels.LauncherModel.Default.SetOverlayFrame(null);
-            ConfigManager.Default.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
         }
 
         #endregion

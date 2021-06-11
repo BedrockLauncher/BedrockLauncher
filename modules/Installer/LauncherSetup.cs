@@ -16,7 +16,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using BL_Core;
+using BedrockLauncher.Core;
 using MessageBox = System.Windows.MessageBox;
 using System.Threading;
 using ExtensionsDotNET;

@@ -17,7 +17,8 @@ using System.Windows.Controls.Primitives;
 using BedrockLauncher.Classes;
 using BedrockLauncher.Controls.Items;
 using BedrockLauncher.Pages;
-using BL_Core.Pages.Common;
+using BedrockLauncher.Core.Pages.Common;
+using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Controls.Toolbar
 {
@@ -41,9 +42,9 @@ namespace BedrockLauncher.Controls.Toolbar
             }
             OtherAccountControls.Clear();
 
-            int profileCount = ConfigManager.Default.ProfileList.profiles.Count;
+            int profileCount = LauncherModel.Default.ConfigManager.ProfileList.profiles.Count;
 
-            foreach (var entry in ConfigManager.Default.ProfileList.profiles)
+            foreach (var entry in LauncherModel.Default.ConfigManager.ProfileList.profiles)
             {
                 ProfileItem profile = new ProfileItem(entry, this);
                 if (!(profileCount <= 1))
@@ -108,7 +109,7 @@ namespace BedrockLauncher.Controls.Toolbar
 
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                ConfigManager.Default.RemoveProfile(profile);
+                LauncherModel.Default.ConfigManager.RemoveProfile(profile);
             }
 
         }

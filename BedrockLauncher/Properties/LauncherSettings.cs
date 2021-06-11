@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 using BedrockLauncher.Classes;
 using BedrockLauncher.Methods;
 using System.ComponentModel;
-using BL_Core.Components;
+using BedrockLauncher.Core.Components;
+using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Properties
 {
@@ -41,9 +42,9 @@ namespace BedrockLauncher.Properties
             }
             else
             {
-                if (File.Exists(FilepathManager.Default.GetSettingsFilePath()))
+                if (File.Exists(LauncherModel.Default.FilepathManager.GetSettingsFilePath()))
                 {
-                    json = File.ReadAllText(FilepathManager.Default.GetSettingsFilePath());
+                    json = File.ReadAllText(LauncherModel.Default.FilepathManager.GetSettingsFilePath());
                     try { Default = JsonConvert.DeserializeObject<LauncherSettings>(json, JsonSerializerSettings); }
                     catch { Default = new LauncherSettings(); }
                 }
@@ -55,7 +56,7 @@ namespace BedrockLauncher.Properties
         public void Save()
         {
             string json = JsonConvert.SerializeObject(this, Formatting.Indented);
-            File.WriteAllText(FilepathManager.Default.GetSettingsFilePath(), json);
+            File.WriteAllText(LauncherModel.Default.FilepathManager.GetSettingsFilePath(), json);
         }
 
         #region Launcher Settings
@@ -151,12 +152,22 @@ namespace BedrockLauncher.Properties
         public bool ShowReleases
         {
             get { return _ShowReleases; }
-            set { _ShowReleases = value; OnPropertyChanged(nameof(ShowReleases)); }
+            set 
+            {
+                if (!(_ShowBetas == false && value == false)) _ShowReleases = value;
+                OnPropertyChanged(nameof(ShowReleases));
+                OnPropertyChanged(nameof(ShowBetas));
+            }
         }
         public bool ShowBetas
         {
             get { return _ShowBetas; }
-            set { _ShowBetas = value; OnPropertyChanged(nameof(ShowBetas)); }
+            set 
+            {
+                if (!(_ShowReleases == false && value == false)) _ShowBetas = value;
+                OnPropertyChanged(nameof(ShowBetas));
+                OnPropertyChanged(nameof(ShowReleases));
+            }
         }
         public int CurrentInsiderAccount
         {

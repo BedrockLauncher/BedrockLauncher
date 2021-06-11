@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace BL_Core.Language
+namespace BedrockLauncher.Core.Language
 {
     public class LanguageDefinition
     {
@@ -77,14 +77,14 @@ namespace BL_Core.Language
         public LanguageDefinition(string _locale)
         {
             this.Locale = _locale;
-            this.Path = $"/BL_Core;component/Resources/lang/lang.{_locale}.xaml";
+            this.Path = $"/BedrockLauncher.Core;component/Resources/lang/lang.{_locale}.xaml";
             this.IsExternal = false;
             if (TryGetName(this.Path, this.IsExternal, out string _name)) this.Name = _name;
         }
         public LanguageDefinition()
         {
             this.Locale = "en-US";
-            this.Path = $"/BL_Core;component/Resources/lang/lang.en-US.xaml";
+            this.Path = $"/BedrockLauncher.Core;component/Resources/lang/lang.en-US.xaml";
             this.IsExternal = false;
             if(TryGetName(this.Path, this.IsExternal, out string _name)) this.Name = _name;
         }

@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
+using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Controls
 {
@@ -29,19 +30,18 @@ namespace BedrockLauncher.Controls
 
         private void LanguageCombobox_DropDownClosed(object sender, EventArgs e)
         {
-            var item = this.SelectedItem as BL_Core.Language.LanguageDefinition;
+            var item = this.SelectedItem as BedrockLauncher.Core.Language.LanguageDefinition;
             if (item == null) return;
-            BL_Core.Language.LanguageManager.SetLanguage(item.Locale);
-            ConfigManager.Default.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
+            BedrockLauncher.Core.Language.LanguageManager.SetLanguage(item.Locale);
             ViewModels.LauncherModel.Default.UpdateUI();
         }
 
 
         private void ReloadLang()
         {
-            var items = BL_Core.Language.LanguageManager.GetResourceDictonaries();
+            var items = BedrockLauncher.Core.Language.LanguageManager.GetResourceDictonaries();
             this.ItemsSource = items;
-            string language = BL_Core.Properties.Settings.Default.Language;
+            string language = BedrockLauncher.Core.Properties.Settings.Default.Language;
 
             // Set chosen language in language combobox
             if (items.Exists(x => x.Locale.ToString() == language))

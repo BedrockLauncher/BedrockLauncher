@@ -16,7 +16,7 @@
             <StackPanel Margin="18,0,0,0">
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,15">
                     <Image Source="/BedrockLauncher;component/Resources/images/credits/xbox_logo.png" RenderOptions.BitmapScalingMode="HighQuality" Height="32" Margin="0,0,10,0"/>
-                    <TextBlock FontFamily="/BL_Core;component/Resources/fonts/#X360 by Redge" FontSize="20" Foreground="{DynamicResource PrimaryText.Foreground}" VerticalAlignment="Center">
+                    <TextBlock FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#X360 by Redge" FontSize="20" Foreground="{DynamicResource PrimaryText.Foreground}" VerticalAlignment="Center">
                         <Run Text="XBOX" Foreground="#009461"></Run>
                         <Run Text="INSIDER"></Run>
                     </TextBlock>

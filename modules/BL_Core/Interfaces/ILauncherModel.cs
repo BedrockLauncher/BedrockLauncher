@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BedrockLauncher.Core.Classes.SkinPack
+namespace BedrockLauncher.Core.Interfaces
 {
-    public enum MCSkinGeometry
+    public interface ILauncherModel
     {
-        Normal,
-        Custom,
-        Slim
+
     }
 }

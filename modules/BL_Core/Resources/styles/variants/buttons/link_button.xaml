@@ -5,7 +5,7 @@
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="FontWeight" Value="DemiBold" />
-        <Setter Property="FontFamily" Value="/BL_Core;component/#Noto Sans"/>
+        <Setter Property="FontFamily" Value="/BedrockLauncher.Core;component/#Noto Sans"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">

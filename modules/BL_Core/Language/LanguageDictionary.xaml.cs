@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace BL_Core.Language
+namespace BedrockLauncher.Core.Language
 {
     public partial class LanguageDictionary : ResourceDictionary
     {

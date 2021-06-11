@@ -9,7 +9,7 @@ using System.Drawing;
 using System.Windows.Media.Imaging;
 using System.Drawing.Imaging;
 
-namespace BL_Core.Methods
+namespace BedrockLauncher.Core.Methods
 {
     public static class MCSkinUtilites
     {

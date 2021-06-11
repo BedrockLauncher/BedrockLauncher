@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 using Microsoft.Win32;
+using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Pages.Settings
 {
@@ -40,7 +41,7 @@ namespace BedrockLauncher.Pages.Settings
 
         private void BackupButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.Default.GameManager.BackupGameData();
+            LauncherModel.Default.GameManager.BackupGameData();
         }
 
         private void AdvancedSettingsButton_Click(object sender, RoutedEventArgs e)
@@ -81,7 +82,7 @@ namespace BedrockLauncher.Pages.Settings
             };
             if (dialog.ShowDialog().Value)
             {
-                string fileToUse = Methods.FilepathManager.Default.AddImageToIconCache(dialog.FileName);
+                string fileToUse = LauncherModel.Default.FilepathManager.AddImageToIconCache(dialog.FileName);
                 Properties.LauncherSettings.Default.ExternalLauncherIconPath = fileToUse;
                 Properties.LauncherSettings.Default.Save();
             }

@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.IO;
-using BL_Core.Pages.Common;
-using BL_Core.Methods;
+using BedrockLauncher.Core.Pages.Common;
+using BedrockLauncher.Core.Methods;
 
 namespace BedrockLauncher.Dungeons.Methods
 {
@@ -159,7 +159,7 @@ namespace BedrockLauncher.Dungeons.Methods
                 string ModsFolder = Path.Combine(GetDungeonsContentFolder(), "Paks", "~mods");
                 string OurFolder = GetOurDungeonsModFolder();
                 Directory.CreateDirectory(OurFolder);
-                BL_Core.Methods.SymLinkHelper.CreateSymbolicLink(ModsFolder, OurFolder, SymLinkHelper.SymbolicLinkType.Directory);
+                BedrockLauncher.Core.Methods.SymLinkHelper.CreateSymbolicLink(ModsFolder, OurFolder, SymLinkHelper.SymbolicLinkType.Directory);
             }
             catch (Exception ex)
             {

@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Pages.FirstLaunch
 {
@@ -39,8 +40,7 @@ namespace BedrockLauncher.Pages.FirstLaunch
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.Default.Reload();
-            ConfigManager.Default.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
+            LauncherModel.Default.ConfigManager.Reload();
             pageSwitcher.MoveToPage(3);
         }
 
@@ -63,14 +63,14 @@ namespace BedrockLauncher.Pages.FirstLaunch
                 }
                 else
                 {
-                    StorageDirectoryTextBox.Text = BedrockLauncher.Methods.FilepathManager.Default.DefaultLocation;
+                    StorageDirectoryTextBox.Text = LauncherModel.Default.FilepathManager.DefaultLocation;
                 }
             }
         }
 
         private void BrowseForDirectory()
         {
-            BL_Core.Controls.FolderSelectDialog dialog = new BL_Core.Controls.FolderSelectDialog()
+            BedrockLauncher.Core.Controls.FolderSelectDialog dialog = new BedrockLauncher.Core.Controls.FolderSelectDialog()
             {
                 InitialDirectory = StorageDirectoryTextBox.Text
             };

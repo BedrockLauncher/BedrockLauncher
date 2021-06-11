@@ -8,9 +8,9 @@ using System.IO;
 using System.Drawing;
 using System.Windows.Media.Imaging;
 using System.Drawing.Imaging;
-using BL_Core.Methods;
+using BedrockLauncher.Core.Methods;
 
-namespace BL_Core.Classes.SkinPack
+namespace BedrockLauncher.Core.Classes.SkinPack
 {
     public class MCSkin : ICloneable
     {

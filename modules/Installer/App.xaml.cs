@@ -15,7 +15,7 @@ namespace BL_Setup
     {
         public App()
         {
-            BL_Core.Language.LanguageManager.Init();
+            BedrockLauncher.Core.Language.LanguageManager.Init();
         }
     }
 }

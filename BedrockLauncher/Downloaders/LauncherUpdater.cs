@@ -10,8 +10,9 @@ using System.Windows.Controls;
 using System.Collections.Generic;
 using BedrockLauncher.Methods;
 using Newtonsoft.Json;
-using BL_Core;
+using BedrockLauncher.Core;
 using System.Runtime.InteropServices;
+using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Downloaders
 {
@@ -121,7 +122,6 @@ namespace BedrockLauncher.Downloaders
             httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
             var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
-            System.Diagnostics.Debug.WriteLine(httpResponse.StatusCode);
             ReleaseNotes = JsonConvert.DeserializeObject<List<UpdateNote>>(json);
             if (ReleaseNotes.Count != 0)
             {
@@ -140,7 +140,6 @@ namespace BedrockLauncher.Downloaders
             httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
             var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
-            System.Diagnostics.Debug.WriteLine(httpResponse.StatusCode);
             BetaNotes.AddRange(JsonConvert.DeserializeObject<List<UpdateNote>>(json));
             if (BetaNotes.Count != 0)
             {
@@ -165,7 +164,7 @@ namespace BedrockLauncher.Downloaders
         private void CompareUpdate()
         {
             string LatestTag = (Properties.LauncherSettings.Default.UseBetaBuilds ? Beta_LatestTag : Release_LatestTag);
-            string CurrentTag = BL_Core.Properties.Settings.Default.Version;
+            string CurrentTag = BedrockLauncher.Core.Properties.Settings.Default.Version;
             System.Diagnostics.Debug.WriteLine("Current tag: " + CurrentTag);
             System.Diagnostics.Debug.WriteLine("Latest tag: " + LatestTag);
 
@@ -187,7 +186,7 @@ namespace BedrockLauncher.Downloaders
         {
             try
             {
-                string installerPath = Path.Combine(FilepathManager.Default.ExecutableDirectory, "Installer.exe");
+                string installerPath = Path.Combine(LauncherModel.Default.FilepathManager.ExecutableDirectory, "Installer.exe");
                 string tempPath = Path.Combine(Path.GetTempPath(), "Installer.exe");
 
                 File.Copy(installerPath, tempPath, true);
@@ -212,7 +211,7 @@ namespace BedrockLauncher.Downloaders
             {
                 string silent = "--silent";
                 string beta = (Properties.LauncherSettings.Default.UseBetaBuilds ? "--beta" : "");
-                string path = "--path=\"" + FilepathManager.Default.ExecutableDirectory + "\"";
+                string path = "--path=\"" + LauncherModel.Default.FilepathManager.ExecutableDirectory + "\"";
 
                 return string.Join(" ", silent, beta, path);
             }

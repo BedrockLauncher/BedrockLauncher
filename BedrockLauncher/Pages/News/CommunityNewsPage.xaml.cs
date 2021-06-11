@@ -18,7 +18,7 @@ using System.Diagnostics;
 using BedrockLauncher.Controls.Items;
 using System.Net;
 using System.Net.Http;
-using BL_Core.Classes;
+using BedrockLauncher.Core.Classes;
 
 namespace BedrockLauncher.Pages.News
 {

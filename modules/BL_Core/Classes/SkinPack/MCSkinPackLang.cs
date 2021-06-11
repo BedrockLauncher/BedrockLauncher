@@ -8,7 +8,7 @@ using IniParser;
 using IniParser.Model;
 using Newtonsoft.Json;
 
-namespace BL_Core.Classes.SkinPack
+namespace BedrockLauncher.Core.Classes.SkinPack
 {
     public class MCSkinPackLang
     {

@@ -180,7 +180,7 @@
                                 TextOptions.TextFormattingMode="Ideal"
                                 TextAlignment="Center"
                                        Margin="3,0,0,1"
-                                FontFamily="/BL_Core;component/Resources/fonts/#Minecraft Rus"
+                                FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Minecraft Rus"
                                 Text="x"/>
                         </Grid>
                     </Border>

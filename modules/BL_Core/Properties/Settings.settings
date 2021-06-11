@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BL_Core.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BedrockLauncher.Core.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="Version" Type="System.String" Scope="Application">
@@ -12,7 +12,7 @@
       <Value Profile="(Default)">none</Value>
     </Setting>
     <Setting Name="LatestTheme" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">NetherUpdate</Value>
+      <Value Profile="(Default)">CavesAndCliffsPart1Update</Value>
     </Setting>
   </Settings>
 </SettingsFile>

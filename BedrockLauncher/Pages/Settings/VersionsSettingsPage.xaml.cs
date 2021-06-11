@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
+using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Pages.Settings
 {
@@ -21,25 +22,20 @@ namespace BedrockLauncher.Pages.Settings
     /// </summary>
     public partial class VersionsSettingsPage : Page
     {
+
+        private bool HasLoadedOnce = false;
         public VersionsSettingsPage()
         {
             InitializeComponent();
-            ConfigManager.Default.ConfigStateChanged += ConfigManager_ConfigStateChanged;
         }
 
-        private async void ConfigManager_ConfigStateChanged(object sender, EventArgs e)
+        public async void RefreshVersionsList()
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
-                VersionsList.ItemsSource = ConfigManager.Default.Versions;
                 var view = CollectionViewSource.GetDefaultView(VersionsList.ItemsSource) as CollectionView;
-                view.Filter = ConfigManager.Default.Filter_VersionList;
+                view.Refresh();
             });
-        }
-
-        public void RefreshVersionsList()
-        {
-            ConfigManager.Default.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
         }
 
         private void Page_Initialized(object sender, EventArgs e)
@@ -56,8 +52,13 @@ namespace BedrockLauncher.Pages.Settings
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
-                var view = CollectionViewSource.GetDefaultView(VersionsList.ItemsSource) as CollectionView;
-                view.Filter = ConfigManager.Default.Filter_VersionList;
+                if (!HasLoadedOnce)
+                {
+                    VersionsList.ItemsSource = LauncherModel.Default.ConfigManager.Versions;
+                    var view = CollectionViewSource.GetDefaultView(VersionsList.ItemsSource) as CollectionView;
+                    view.Filter = LauncherModel.Default.ConfigManager.Filter_VersionList;
+                    HasLoadedOnce = true;
+                }
             });
         }
     }

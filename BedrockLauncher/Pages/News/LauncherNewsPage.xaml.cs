@@ -51,7 +51,7 @@ namespace BedrockLauncher.Pages.News
                 string latest_name = this.FindResource("LauncherNewsPage_Title_Text").ToString();
                 foreach (var item in updater.Notes)
                 {
-                    bool isBeta = item.url.Contains(BL_Core.GithubAPI.BETA_URL);
+                    bool isBeta = item.url.Contains(BedrockLauncher.Core.GithubAPI.BETA_URL);
                     if (isFirstItem)
                     {
                         GenerateEntry(latest_name, item, isBeta, true);
@@ -60,7 +60,7 @@ namespace BedrockLauncher.Pages.News
                     else GenerateEntry(item.name, item, isBeta);
                 }
 
-                void GenerateEntry(string name, BL_Core.UpdateNote item, bool isBeta, bool isLatest = false)
+                void GenerateEntry(string name, BedrockLauncher.Core.UpdateNote item, bool isBeta, bool isLatest = false)
                 {
                     string body = item.body;
                     string tag = item.tag_name;
@@ -80,7 +80,7 @@ namespace BedrockLauncher.Pages.News
                     else if (isBeta) launcherUpdateItem.buildTitle.Foreground = Brushes.Gold;
                     else launcherUpdateItem.buildTitle.Foreground = Brushes.White;
 
-                    if (tag == BL_Core.Properties.Settings.Default.Version) launcherUpdateItem.CurrentBox.Visibility = Visibility.Visible;
+                    if (tag == BedrockLauncher.Core.Properties.Settings.Default.Version) launcherUpdateItem.CurrentBox.Visibility = Visibility.Visible;
 
                     launcherUpdateItem.buildTitle.Text = name;
                     launcherUpdateItem.buildVersion.Text = string.Format("v{0}{1}", tag, (isBeta ? " (Beta)" : ""));

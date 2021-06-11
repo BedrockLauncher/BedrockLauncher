@@ -18,7 +18,8 @@ using BedrockLauncher.Classes;
 using System.Diagnostics;
 using BedrockLauncher.Controls.Items;
 using BedrockLauncher.Downloaders;
-using BL_Core.Classes;
+using BedrockLauncher.Core.Classes;
+using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Pages.Play
 {
@@ -49,9 +50,22 @@ namespace BedrockLauncher.Pages.Play
             await this.Dispatcher.InvokeAsync(() =>
             {
                 var view = CollectionViewSource.GetDefaultView(PatchNotesList.ItemsSource) as CollectionView;
-                view.Filter = ConfigManager.Default.Filter_PatchNotes;
+                view.Filter = Filter_PatchNotes;
                 UpdateUI();
             });
+        }
+
+        public bool Filter_PatchNotes(object obj)
+        {
+            MCPatchNotesItem v = obj as MCPatchNotesItem;
+
+            if (v != null)
+            {
+                if (!BetasCheckBox.IsChecked.Value && v.isBeta) return false;
+                else if (!ReleasesCheckBox.IsChecked.Value && !v.isBeta) return false;
+                else return true;
+            }
+            else return false;
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)

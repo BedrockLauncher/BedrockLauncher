@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:c="clr-namespace:BL_Core.Components"
+                    xmlns:c="clr-namespace:BedrockLauncher.Core.Components"
                     xmlns:i="http://schemas.microsoft.com/xaml/behaviors">
     
     <SolidColorBrush x:Key="ToolbarButton.Static.Background" Color="Transparent"/>
@@ -43,7 +43,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="10,1"/>
-        <Setter Property="FontFamily" Value="/BL_Core;component/Resources/fonts/#Noto Sans"/>
+        <Setter Property="FontFamily" Value="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="c:InteractivityItems.Template" Value="{DynamicResource ToolbarButton_FocusBehavior}"/>
         <Setter Property="Template">

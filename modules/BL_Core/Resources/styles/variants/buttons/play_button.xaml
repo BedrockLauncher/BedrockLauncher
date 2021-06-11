@@ -9,7 +9,7 @@
         <Setter Property="Background" Value="{DynamicResource Button.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{x:Null}"/>
         <Setter Property="Foreground" Value="{DynamicResource PrimaryText.Foreground}"/>
-        <Setter Property="FontFamily" Value="/BL_Core;component/Resources/fonts/#Minecraft Ten"/>
+        <Setter Property="FontFamily" Value="/BedrockLauncher.Core;component/Resources/fonts/#Minecraft Ten"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -70,7 +70,7 @@
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Margin" Value="0,-4,0,0"/>
         <Setter Property="TextOptions.TextHintingMode" Value="Fixed"/>
-        <Setter Property="FontFamily" Value="/BL_Core;component/Resources/fonts/#Minecraft Ten"/>
+        <Setter Property="FontFamily" Value="/BedrockLauncher.Core;component/Resources/fonts/#Minecraft Ten"/>
         <Setter Property="TextTrimming" Value="WordEllipsis"/>
         <Setter Property="TextAlignment" Value="Center"/>
         <Setter Property="Effect">

@@ -2,8 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/BL_Core;component/Resources/styles/variants/listview/card_listviewitem.xaml"/>
-        <ResourceDictionary Source="/BL_Core;component/Resources/styles/variants/listview/empty_listviewitem.xaml"/>
+        <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/variants/listview/card_listviewitem.xaml"/>
+        <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/variants/listview/empty_listviewitem.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type ListView}">
@@ -16,7 +16,7 @@
         <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
         <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-        <Setter Property="FontFamily" Value="/BL_Core;component/Resources/fonts/#Noto Sans" />
+        <Setter Property="FontFamily" Value="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans" />
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Template">
             <Setter.Value>

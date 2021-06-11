@@ -20,13 +20,15 @@ using System.Diagnostics;
 using BedrockLauncher.Pages.Preview;
 using BedrockLauncher.Pages.FirstLaunch;
 using System.Windows.Media.Animation;
-using BL_Core.Components;
-using BL_Core.Pages.Common;
+using BedrockLauncher.Core.Components;
+using BedrockLauncher.Core.Pages.Common;
+using BedrockLauncher.Core.Interfaces;
 using BedrockLauncher.Downloaders;
+using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.ViewModels
 {
-    public class LauncherModel : NotifyPropertyChangedBase, IDialogHander
+    public class LauncherModel : NotifyPropertyChangedBase, IDialogHander, ILauncherModel
     {
         #region Init
 
@@ -41,7 +43,6 @@ namespace BedrockLauncher.ViewModels
                 });
             }
         }
-
         public static LauncherUpdater Updater { get; set; } = new LauncherUpdater();
 
         public void Init()
@@ -50,8 +51,7 @@ namespace BedrockLauncher.ViewModels
 
             MainFrame_KeyboardNavigationMode_Default = KeyboardNavigation.GetTabNavigation(MainThread.MainFrame);
 
-            ConfigManager.Default.Init();
-            ConfigManager.Default.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
+            ConfigManager.Init();
 
             // show first launch window if no profile
             if (isFirstLaunch) SetOverlayFrame_Strict(new WelcomePage());
@@ -61,6 +61,15 @@ namespace BedrockLauncher.ViewModels
             ErrorScreenShow.SetHandler(this);
             DialogPrompt.SetHandler(this);
         }
+
+        #endregion
+
+        #region Other Models
+
+        public ConfigManager ConfigManager { get; private set; } = new ConfigManager();
+        public FilepathManager FilepathManager { get; private set; } = new FilepathManager();
+        public GameManager GameManager { get; private set; } = new GameManager();
+        public VersionDownloader VersionDownloader { get; private set; } = new VersionDownloader();
 
         #endregion
 
@@ -267,7 +276,7 @@ namespace BedrockLauncher.ViewModels
 
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
-                    ConfigManager.Default.GameManager.GameProcess.Kill();
+                    LauncherModel.Default.GameManager.GameProcess.Kill();
                     AllowedToCloseWithGameOpen = true;
                     if (successAction != null) successAction.Invoke();
                 }
@@ -290,7 +299,7 @@ namespace BedrockLauncher.ViewModels
                 MainThread.Close();
             });
 
-            if (Properties.LauncherSettings.Default.KeepLauncherOpen && ConfigManager.Default.GameManager.GameProcess != null)
+            if (Properties.LauncherSettings.Default.KeepLauncherOpen && LauncherModel.Default.GameManager.GameProcess != null)
             {
                 if (!AllowedToCloseWithGameOpen)
                 {

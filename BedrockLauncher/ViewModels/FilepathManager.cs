@@ -4,22 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using BL_Core.Interfaces;
-using BL_Core.Classes;
+using BedrockLauncher.Core.Interfaces;
+using BedrockLauncher.Core.Classes;
 
-namespace BedrockLauncher.Methods
+namespace BedrockLauncher.ViewModels
 {
-    public class FilepathManager : IFilepathManager
+    public class FilepathManager
     {
-        public static FilepathManager Default { get; set; }
-
-        static FilepathManager()
-        {
-            Default = new FilepathManager();
-            MCInstallation.SetFilepathManager(Default);
-            MCVersion.SetFilepathManager(Default);
-        }
-
         #region Strings
 
         public string UserDataFileName { get => "user_profile.json"; }
@@ -91,8 +82,8 @@ namespace BedrockLauncher.Methods
         }
         public string GetInstallationsFolderPath(string profileName, string installationDirectory)
         {
-            if (!ConfigManager.Default.ProfileList.profiles.ContainsKey(profileName)) return string.Empty;
-            var profile = ConfigManager.Default.ProfileList.profiles[profileName];
+            if (!LauncherModel.Default.ConfigManager.ProfileList.profiles.ContainsKey(profileName)) return string.Empty;
+            var profile = LauncherModel.Default.ConfigManager.ProfileList.profiles[profileName];
             string InstallationsPath = Path.Combine(profile.ProfilePath, installationDirectory);
             return Path.Combine(CurrentLocation, InstallationsFolderName, InstallationsPath, PackageDataFolderName);
         }

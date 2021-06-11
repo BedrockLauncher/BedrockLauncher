@@ -488,6 +488,7 @@
     <v:String x:Key="ThemeEntries_LatestUpdate">Latest Update</v:String>
     <v:String x:Key="ThemeEntries_Original">Original</v:String>
 
+    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">Caves &amp; Cliffs (Part 1)</v:String>
     <v:String x:Key="ThemeEntries_NetherUpdate">Nether Update</v:String>
     <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Buzzy Bees Update</v:String>
     <v:String x:Key="ThemeEntries_VillagePillageUpdate">Village &amp; Pillage Update</v:String>

@@ -7,7 +7,7 @@
         <Setter Property="Foreground" Value="{DynamicResource TextBox.Static.Foreground}"/>
         <Setter Property="CaretBrush" Value="{DynamicResource TextBox.Static.Foreground}"/>
         <Setter Property="SelectionBrush" Value="{DynamicResource TextBox.SelectionBrush}"/>
-        <Setter Property="FontFamily" Value="/BL_Core;component/Resources/fonts/#Noto Sans"/>
+        <Setter Property="FontFamily" Value="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Padding" Value="9,0"></Setter>
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
@@ -98,7 +98,7 @@
         <Setter Property="Background" Value="{DynamicResource TextBox.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource TextBox.Static.Border}"/>
         <Setter Property="Foreground" Value="{DynamicResource TextBox.Static.Foreground}"/>
-        <Setter Property="FontFamily" Value="/BL_Core;component/Resources/fonts/#Noto Sans"/>
+        <Setter Property="FontFamily" Value="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans"/>
         <Setter Property="Padding" Value="9,0"></Setter>
         <Setter Property="IsTabStop" Value="False"></Setter>
         <Setter Property="BorderThickness" Value="1"/>
