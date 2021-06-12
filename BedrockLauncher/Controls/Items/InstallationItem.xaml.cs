@@ -74,7 +74,7 @@ namespace BedrockLauncher.Controls.Items
 
             MenuItem button = sender as MenuItem;
             var installation = button.DataContext as BLInstallation;
-            var result = await DialogPrompt.ShowDialog_YesNo(title, content, item, installation.DisplayName);
+            var result = await DialogPrompt.ShowDialog_YesNo(title, content, item, installation.DisplayName_Full);
 
             if (result == System.Windows.Forms.DialogResult.Yes)
             {

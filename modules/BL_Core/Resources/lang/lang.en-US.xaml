@@ -95,8 +95,8 @@
     <v:String x:Key="EditInstallationScreen_CreateButton">Create</v:String>
     <v:String x:Key="EditInstallationScreen_AltCreateButton">Save</v:String>
 
-    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Latest Beta</v:String>
-    <v:String x:Key="EditInstallationScreen_LatestRelease">Latest Release</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Latest beta</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestRelease">Latest release</v:String>
 
     <v:String x:Key="EditInstallationScreen_NameSubtitle">NAME</v:String>
     <v:String x:Key="EditInstallationScreen_VersionSubtitle">VERSION</v:String>
@@ -480,6 +480,7 @@
 
     <v:String x:Key="VersionEntries_LatestSnapshot">Latest Beta</v:String>
     <v:String x:Key="VersionEntries_LatestRelease">Latest Release</v:String>
+    <v:String x:Key="VersionEntries_UnnamedInstallation">&lt;unnamed installation&gt;</v:String>
 
     <!--#endregion-->
 
