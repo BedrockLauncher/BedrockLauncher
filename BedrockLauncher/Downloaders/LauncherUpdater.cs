@@ -186,8 +186,8 @@ namespace BedrockLauncher.Downloaders
         {
             try
             {
-                string installerPath = Path.Combine(LauncherModel.Default.FilepathManager.ExecutableDirectory, "Installer.exe");
-                string tempPath = Path.Combine(Path.GetTempPath(), "Installer.exe");
+                string installerPath = Path.Combine(LauncherModel.Default.FilepathManager.ExecutableDirectory, "BedrockLauncher.Installer.exe");
+                string tempPath = Path.Combine(Path.GetTempPath(), "BedrockLauncher.Installer.exe");
 
                 File.Copy(installerPath, tempPath, true);
 

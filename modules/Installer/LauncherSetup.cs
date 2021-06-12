@@ -245,7 +245,7 @@ namespace BedrockLauncher.Installer
                     progKey.SetValue("DisplayName", "Minecraft Bedrock Launcher", RegistryValueKind.String);
                     progKey.SetValue("InstallLocation", Path, RegistryValueKind.ExpandString);
                     progKey.SetValue("DisplayIcon", System.IO.Path.Combine(Path, "BedrockLauncher.exe"), RegistryValueKind.String);
-                    progKey.SetValue("UninstallString", System.IO.Path.Combine(Path, "Uninstaller.exe"), RegistryValueKind.ExpandString);
+                    progKey.SetValue("UninstallString", System.IO.Path.Combine(Path, "BedrockLauncher.Uninstaller.exe"), RegistryValueKind.ExpandString);
                     progKey.SetValue("DisplayVersion", Build_Version, RegistryValueKind.String);
                     progKey.SetValue("Publisher", "BedrockLauncher", RegistryValueKind.String);
                     Console.WriteLine("Successfully added to control panel!");
