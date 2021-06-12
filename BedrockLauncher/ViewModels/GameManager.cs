@@ -170,7 +170,6 @@ namespace BedrockLauncher.ViewModels
                 cancelSource.Cancel();
             }
         }
-
         private void InvokeLaunch(BLVersion v)
         {
             Task.Run(async () =>

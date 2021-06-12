@@ -20,7 +20,6 @@ namespace BedrockLauncher.ViewModels
 
     public class ConfigManager
     {
-
         #region Helpers
 
         public string CurrentProfile 

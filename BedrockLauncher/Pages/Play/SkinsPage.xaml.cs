@@ -26,6 +26,7 @@ using ExtensionsDotNET;
 using BedrockLauncher.Classes;
 using BedrockLauncher.Core.Classes;
 using BedrockLauncher.ViewModels;
+using System.Collections.ObjectModel;
 
 namespace BedrockLauncher.Pages.Play
 {
@@ -34,8 +35,10 @@ namespace BedrockLauncher.Pages.Play
     /// </summary>
     public partial class SkinsPage : Page
     {
-        public List<MCSkinPack> SkinPacks { get; set; } = new List<MCSkinPack>();
         private bool HasLoadedOnce = false;
+        public ObservableCollection<MCSkinPack> SkinPacks { get; set; } = new ObservableCollection<MCSkinPack>();
+        public ObservableCollection<MCSkin> Skins { get; set; } = new ObservableCollection<MCSkin>();
+
 
         #region Init
 
@@ -53,6 +56,8 @@ namespace BedrockLauncher.Pages.Play
             {
                 if (!HasLoadedOnce)
                 {
+                    LoadedSkinPacks.ItemsSource = SkinPacks;
+                    SkinPreviewList.ItemsSource = Skins;
                     InstallationsList.ItemsSource = LauncherModel.Default.ConfigManager.CurrentInstallations;
                     var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
                     view.Filter = LauncherModel.Default.ConfigManager.Filter_InstallationList;
@@ -79,7 +84,6 @@ namespace BedrockLauncher.Pages.Play
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
-                LoadedSkinPacks.Items.Clear();
                 SkinPacks.Clear();
 
                 var installation = LauncherModel.Default.ConfigManager.CurrentInstallation;
@@ -107,7 +111,6 @@ namespace BedrockLauncher.Pages.Play
                             if (result != null)
                             {
                                 SkinPacks.Add(result);
-                                LoadedSkinPacks.Items.Add(result);
                             }
                         }
 
@@ -121,13 +124,13 @@ namespace BedrockLauncher.Pages.Play
             await this.Dispatcher.InvokeAsync(() =>
             {
                 if (!this.IsInitialized) return;
-                SkinPreviewList.Items.Clear();
+                Skins.Clear();
                 var selected_item = LoadedSkinPacks.SelectedItem as MCSkinPack;
                 if (selected_item != null)
                 {
                     foreach (var skin in selected_item.Content.skins)
                     {
-                        SkinPreviewList.Items.Add(skin);
+                        Skins.Add(skin);
                     }
                 }
             });
