@@ -8,7 +8,7 @@ using Microsoft.Win32;
 using IWshRuntimeLibrary;
 using System.Xml;
 using System.Diagnostics;
-using BL_Setup.Pages;
+using BedrockLauncher.Installer.Pages;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -21,7 +21,7 @@ using MessageBox = System.Windows.MessageBox;
 using System.Threading;
 using ExtensionsDotNET;
 
-namespace BL_Setup
+namespace BedrockLauncher.Installer
 {
     public class LauncherSetup
     {

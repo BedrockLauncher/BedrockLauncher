@@ -1,8 +1,8 @@
-﻿<Application x:Class="BL_Setup.App"
+﻿<Application x:Class="BedrockLauncher.Installer.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:bl="clr-namespace:BedrockLauncher.Core.Language;assembly=BedrockLauncher.Core"
-             xmlns:local="clr-namespace:BL_Setup"
+             xmlns:local="clr-namespace:BedrockLauncher.Installer"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>

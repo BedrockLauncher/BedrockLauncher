@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows;
 
 
-namespace BL_Setup.Pages
+namespace BedrockLauncher.Installer.Pages
 {
     /// <summary>
     /// Логика взаимодействия для WelcomePage.xaml
@@ -17,9 +17,9 @@ namespace BL_Setup.Pages
         public InstallLocationPage()
         {
             InitializeComponent();
-            registerIconCheckBox.IsChecked = BL_Setup.MainWindow.Installer.RegisterAsProgram;
-            desktopIconCheckBox.IsChecked = BL_Setup.MainWindow.Installer.MakeDesktopIcon;
-            startMenuCheckBox.IsChecked = BL_Setup.MainWindow.Installer.MakeStartMenuIcon;
+            registerIconCheckBox.IsChecked = BedrockLauncher.Installer.MainWindow.Installer.RegisterAsProgram;
+            desktopIconCheckBox.IsChecked = BedrockLauncher.Installer.MainWindow.Installer.MakeDesktopIcon;
+            startMenuCheckBox.IsChecked = BedrockLauncher.Installer.MainWindow.Installer.MakeStartMenuIcon;
             IsInit = true;
         }
 
@@ -61,9 +61,9 @@ namespace BL_Setup.Pages
         {
             if (IsInit)
             {
-                BL_Setup.MainWindow.Installer.MakeDesktopIcon = desktopIconCheckBox.IsChecked.Value;
-                BL_Setup.MainWindow.Installer.MakeStartMenuIcon = startMenuCheckBox.IsChecked.Value;
-                BL_Setup.MainWindow.Installer.RegisterAsProgram = registerIconCheckBox.IsChecked.Value;
+                BedrockLauncher.Installer.MainWindow.Installer.MakeDesktopIcon = desktopIconCheckBox.IsChecked.Value;
+                BedrockLauncher.Installer.MainWindow.Installer.MakeStartMenuIcon = startMenuCheckBox.IsChecked.Value;
+                BedrockLauncher.Installer.MainWindow.Installer.RegisterAsProgram = registerIconCheckBox.IsChecked.Value;
             }
         }
     }

@@ -1,9 +1,9 @@
-﻿<Window x:Class="BL_Setup.MainWindow"
+﻿<Window x:Class="BedrockLauncher.Installer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BL_Setup"
+        xmlns:local="clr-namespace:BedrockLauncher.Installer"
         mc:Ignorable="d"
         Title="{DynamicResource Installer_Title}" Height="450" Width="800" WindowStyle="ThreeDBorderWindow" Foreground="White" Background="#FF212121" ResizeMode="CanMinimize" MouseDown="Window_MouseDown" Icon="icon.ico" Initialized="Window_Initialized">
     <Grid Margin="0">

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BL_Setup.Pages
+namespace BedrockLauncher.Installer.Pages
 {
     /// <summary>
     /// Логика взаимодействия для WelcomePage.xaml
