@@ -30,7 +30,7 @@ namespace BedrockLauncher.Pages.News
     public partial class Java_N_DungeonsNewsPage : Page
     {
         private const string JSON_Feed = @"https://launchercontent.mojang.com/news.json";
-        private List<MCNetFeedItem> FeedItems { get; set; } = new List<MCNetFeedItem>();
+        private ObservableCollection<MCNetFeedItem> FeedItems { get; set; } = new ObservableCollection<MCNetFeedItem>();
 
         public Java_N_DungeonsNewsPage()
         {

@@ -19,6 +19,7 @@ using BedrockLauncher.Controls.Items;
 using System.Net;
 using System.Net.Http;
 using BedrockLauncher.Core.Classes;
+using System.Collections.ObjectModel;
 
 namespace BedrockLauncher.Pages.News
 {
@@ -30,15 +31,18 @@ namespace BedrockLauncher.Pages.News
 
         private const string RSS_Feed = @"https://www.minecraft.net/en-us/feeds/community-content/rss";
 
+        private ObservableCollection<MCNetFeedItem> FeedItems { get; set; } = new ObservableCollection<MCNetFeedItem>();
+
 
         public CommunityNewsPage()
         {
             InitializeComponent();
+            OfficalNewsFeed.ItemsSource = FeedItems;
         }
 
         private async void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
-            await Task.Run(() => UpdateRSSContent());
+            await Task.Run(UpdateRSSContent);
         }
 
         private async void UpdateRSSContent()
@@ -47,7 +51,7 @@ namespace BedrockLauncher.Pages.News
             {
                 await Dispatcher.InvokeAsync(() => {
                     NothingFound.Visibility = Visibility.Collapsed;
-                    OfficalNewsFeed.Items.Clear(); 
+                    FeedItems.Clear(); 
                 });
 
                 var feed = await FeedReader.ReadAsync(RSS_Feed);
@@ -56,7 +60,7 @@ namespace BedrockLauncher.Pages.News
                     foreach (FeedItem item in feed.Items)
                     {
                         MCNetFeedItemRSS new_item = new MCNetFeedItemRSS(item);
-                        OfficalNewsFeed.Items.Add(new_item);
+                        FeedItems.Add(new_item);
                     }
                 });
             }
@@ -71,7 +75,7 @@ namespace BedrockLauncher.Pages.News
 
         private async void Page_Loaded(object sender, EventArgs e)
         {
-            await Task.Run(() => UpdateRSSContent());
+            await Task.Run(UpdateRSSContent);
         }
 
         private void OfficalNewsFeed_KeyUp(object sender, KeyEventArgs e)
