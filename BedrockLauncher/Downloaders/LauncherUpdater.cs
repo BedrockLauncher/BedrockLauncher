@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using BedrockLauncher.Core;
 using System.Runtime.InteropServices;
 using BedrockLauncher.ViewModels;
+using System.Linq;
 
 namespace BedrockLauncher.Downloaders
 {
@@ -35,43 +36,38 @@ namespace BedrockLauncher.Downloaders
         private List<UpdateNote> ReleaseNotes { get; set; } = new List<UpdateNote>();
         private List<UpdateNote> BetaNotes { get; set; } = new List<UpdateNote>();
 
-        public string LatestTag
-        {
-            get
-            {
-                var list = Notes;
-                if (list.Count == 0) return string.Empty;
-                return list[0].tag_name;
-            }
-        }
-        public string LatestTagBody
-        {
-            get
-            {
-                var list = Notes;
-                if (list.Count == 0) return string.Empty;
-                return list[0].body;
-            }
-        }
-        public string Release_LatestTag { get; private set; } = string.Empty;
-        public string Release_LatestTagBody { get; private set; } = string.Empty;
-        public string Beta_LatestTag { get; private set; } = string.Empty;
-        public string Beta_LatestTagBody { get; private set; } = string.Empty;
+
 
         #endregion
 
         #region Accessors
 
+        public bool isLatestBeta()
+        {
+            var list = Notes;
+            if (list.Count == 0) return false;
+            if (Properties.LauncherSettings.Default.UseBetaBuilds) return list[0].isBeta;
+            else return false;
+        }
+
         public string GetLatestTag()
         {
-            if (Properties.LauncherSettings.Default.UseBetaBuilds) return Beta_LatestTag;
-            else return Release_LatestTag;
+            var list = Notes;
+            if (list.Count == 0) return string.Empty;
+
+            if (Properties.LauncherSettings.Default.UseBetaBuilds) return list[0].tag_name;
+            else if (list.Exists(x => !x.isBeta)) return list.First(x => x.isBeta == false).tag_name;
+            else return string.Empty;
         }
 
         public string GetLatestTagBody()
         {
-            if (Properties.LauncherSettings.Default.UseBetaBuilds) return Beta_LatestTagBody;
-            else return Release_LatestTagBody;
+            var list = Notes;
+            if (list.Count == 0) return string.Empty;
+
+            if (Properties.LauncherSettings.Default.UseBetaBuilds) return list[0].body;
+            else if (list.Exists(x => !x.isBeta)) return list.First(x => x.isBeta == false).body;
+            else return string.Empty;
         }
 
         #endregion
@@ -123,12 +119,7 @@ namespace BedrockLauncher.Downloaders
             var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
             ReleaseNotes = JsonConvert.DeserializeObject<List<UpdateNote>>(json);
-            if (ReleaseNotes.Count != 0)
-            {
-                var note = ReleaseNotes[0];
-                this.Release_LatestTag = note.tag_name;
-                this.Release_LatestTagBody = note.body;
-            }
+            foreach (var entry in ReleaseNotes) entry.isBeta = false;
 
         }
         private void Beta_GetJSON()
@@ -141,12 +132,7 @@ namespace BedrockLauncher.Downloaders
             var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
             BetaNotes.AddRange(JsonConvert.DeserializeObject<List<UpdateNote>>(json));
-            if (BetaNotes.Count != 0)
-            {
-                var note = BetaNotes[0];
-                this.Beta_LatestTag = note.tag_name;
-                this.Beta_LatestTagBody = note.body;
-            }
+            foreach (var entry in BetaNotes) entry.isBeta = true;
         }
 
 
@@ -163,15 +149,15 @@ namespace BedrockLauncher.Downloaders
 
         private void CompareUpdate()
         {
-            string LatestTag = (Properties.LauncherSettings.Default.UseBetaBuilds ? Beta_LatestTag : Release_LatestTag);
-            string CurrentTag = BedrockLauncher.Core.Properties.Settings.Default.Version;
-            System.Diagnostics.Debug.WriteLine("Current tag: " + CurrentTag);
-            System.Diagnostics.Debug.WriteLine("Latest tag: " + LatestTag);
+            string OnlineTag = GetLatestTag();
+            string LocalTag = BedrockLauncher.Core.Properties.Settings.Default.Version;
+            System.Diagnostics.Debug.WriteLine("Current tag: " + LocalTag);
+            System.Diagnostics.Debug.WriteLine("Latest tag: " + OnlineTag);
 
             try
             {
                 // if current tag < than latest tag
-                if (int.Parse(CurrentTag.Replace(".", "")) < int.Parse(LatestTag.Replace(".", "")))
+                if (int.Parse(LocalTag.Replace(".", "")) < int.Parse(OnlineTag.Replace(".", "")))
                 {
                     System.Diagnostics.Debug.WriteLine("New version available!");
                     ViewModels.LauncherModel.MainThread.updateButton.ShowUpdateButton();
@@ -210,7 +196,7 @@ namespace BedrockLauncher.Downloaders
             string GetArgs()
             {
                 string silent = "--silent";
-                string beta = (Properties.LauncherSettings.Default.UseBetaBuilds ? "--beta" : "");
+                string beta = isLatestBeta() ? "--beta" : "";
                 string path = "--path=\"" + LauncherModel.Default.FilepathManager.ExecutableDirectory + "\"";
 
                 return string.Join(" ", silent, beta, path);

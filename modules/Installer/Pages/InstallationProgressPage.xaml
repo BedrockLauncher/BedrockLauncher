@@ -16,7 +16,7 @@
             <Grid>
                 <Grid>
                     <Grid.Background>
-                        <ImageBrush ImageSource="/Installer;component/Resources/images/banner.png" Stretch="UniformToFill"></ImageBrush>
+                        <ImageBrush ImageSource="/BedrockLauncher.Installer;component/Resources/images/banner.png" Stretch="UniformToFill"></ImageBrush>
                     </Grid.Background>
                 </Grid>
             </Grid>

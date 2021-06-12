@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
+using Newtonsoft.Json;
 
 namespace BedrockLauncher.Core
 {
@@ -79,5 +80,8 @@ namespace BedrockLauncher.Core
         public DateTime published_at { get; set; }
         public Asset[] assets { get; set; }
         public string url { get; set; }
+
+        [JsonIgnore]
+        public bool isBeta { get; set; }
     }
 }

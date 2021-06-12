@@ -46,9 +46,9 @@ namespace BedrockLauncher.Installer
         public string Path { get; set; } = string.Empty;
         public bool Silent { get; set; } = false;
         public bool MakeDesktopIcon { get; set; } = false;
-        public bool MakeStartMenuIcon { get; set; } = false;
+        public bool MakeStartMenuIcon { get; set; } = true;
         public bool IsBeta { get; set; } = false;
-        public bool RegisterAsProgram { get; set; } = false;
+        public bool RegisterAsProgram { get; set; } = true;
         public bool RunOnExit { get; set; } = true;
 
         public LauncherSetup()
