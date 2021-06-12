@@ -329,35 +329,14 @@ namespace BedrockLauncher.ViewModels
                 ViewModels.LauncherModel.Default.TotalProgress = Total;
                 ViewModels.LauncherModel.Default.CurrentProgress = 0;
 
-                bool YesToAll = false;
-                bool NoToAll = false;
-
-                RestoreCopy_Step(from, to, ref YesToAll, ref NoToAll);
+                RestoreCopy_Step(from, to);
             }
 
-            void RestoreCopy_Step(string from, string to, ref bool YesToAll, ref bool NoToAll)
+            void RestoreCopy_Step(string from, string to)
             {
                 foreach (var f in Directory.EnumerateFiles(from))
                 {
                     string ft = Path.Combine(to, Path.GetFileName(f));
-                    if (File.Exists(ft))
-                    {
-                        bool DeleteFile = false;
-                        bool SkipFile = false;
-
-                        if (!YesToAll && !NoToAll)
-                        {
-                            var result = ShowConfictDialog(ft, "GameManager_RecoveringDataIssue_FileNotExistant_Text", "GameManager_RecoveringDataIssue_Title");
-                            if (result == AltMessageBoxResult.YesToAll || result == AltMessageBoxResult.Yes) DeleteFile = true;
-                            else if (result == AltMessageBoxResult.NoToAll || result == AltMessageBoxResult.No) SkipFile = true;
-
-                            if (result == AltMessageBoxResult.YesToAll) YesToAll = true;
-                            else if (result == AltMessageBoxResult.NoToAll) NoToAll = true;
-                        }
-
-                        if (SkipFile || NoToAll) continue;
-                        else if (DeleteFile || YesToAll) File.Delete(ft);
-                    }
                     File.Copy(f, ft);
                     ViewModels.LauncherModel.Default.CurrentProgress += 1;
                 }
@@ -365,42 +344,8 @@ namespace BedrockLauncher.ViewModels
                 {
                     string tp = Path.Combine(to, Path.GetFileName(f));
                     Directory.CreateDirectory(tp);
-                    RestoreCopy_Step(f, tp, ref YesToAll, ref NoToAll);
+                    RestoreCopy_Step(f, tp);
                 }
-            }
-
-            AltMessageBoxResult ShowConfictDialog(string source, string _titleRes, string _captionRes)
-            {
-                string title = string.Format(Application.Current.FindResource(_titleRes).ToString(), source);
-                string caption = Application.Current.FindResource(_captionRes).ToString();
-
-                string yesToAllText = Application.Current.FindResource("DialogBtn_YesToAll_Text").ToString();
-                string noToAllText = Application.Current.FindResource("DialogBtn_NoToAll_Text").ToString();
-                string yesText = Application.Current.FindResource("DialogBtn_Yes_Text").ToString();
-                string noText = Application.Current.FindResource("DialogBtn_No_Text").ToString();
-
-                AltMessageBoxArgs param = new BedrockLauncher.Core.Controls.AltMessageBoxArgs()
-                {
-                    button = new AltMessageBoxButton()
-                    {
-                        Default = AltMessageBoxResult.Cancel,
-                        useYesToAll = true,
-                        useYes = true,
-                        useNo = true,
-                        useNoToAll = true
-                    },
-
-                    caption = caption,
-                    title = title,
-
-                    NoText = noText,
-                    YesText = yesText,
-                    YesToAllText = yesToAllText,
-                    NoToAllText = noToAllText
-                };
-
-                
-                return LauncherModel.MainThread.Dispatcher.Invoke(() => BedrockLauncher.Core.Controls.AltMessageBox.Show(param));
             }
         }
         public async void InvokeKillGame()
