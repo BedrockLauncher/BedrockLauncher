@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrockLauncher", "BedrockL
 		{4BC35DC2-02A8-47E6-8823-76C696CB2E7E} = {4BC35DC2-02A8-47E6-8823-76C696CB2E7E}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrockLauncher.Uninstaller", "modules\Uninstaller\BedrockLauncher.Uninstaller.csproj", "{3232778B-1A3B-4D31-88A1-7A43B8B66723}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrockLauncher.Uninstaller", "modules\BedrockLauncher.Uninstaller\BedrockLauncher.Uninstaller.csproj", "{3232778B-1A3B-4D31-88A1-7A43B8B66723}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WUTokenHelper", "modules\WUTokenHelper\WUTokenHelper.vcxproj", "{B7336BA7-1E83-43D8-BD0E-3D44C6E3D4E7}"
 EndProject
@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{BD55
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkinView3D", "modules\SkinView3D\SkinView3D.csproj", "{CCABEF67-F4BF-4087-9291-62EE5E316934}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrockLauncher.Core", "modules\BL_Core\BedrockLauncher.Core.csproj", "{167A048A-8140-4F8D-87C3-A03D07F964D3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrockLauncher.Core", "modules\BedrockLauncher.Core\BedrockLauncher.Core.csproj", "{167A048A-8140-4F8D-87C3-A03D07F964D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.NET", "modules\Extensions.NET\Extensions.NET.csproj", "{6718749F-4346-4E5E-85DF-D47FAF22C9B6}"
 EndProject
@@ -26,7 +26,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localizer", "modules\Locali
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrockLauncher.UpdateProcessor", "modules\BedrockLauncher.UpdateProcessor\BedrockLauncher.UpdateProcessor.csproj", "{8D88D5FF-5132-4605-851D-2E020EA6483B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrockLauncher.Dungeons", "BedrockLauncher.Dungeons\BedrockLauncher.Dungeons.csproj", "{A04AF51F-1E8C-44B0-9EBC-E3C7D6B3F4D3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrockLauncher.Dungeons", "modules\BedrockLauncher.Dungeons\BedrockLauncher.Dungeons.csproj", "{A04AF51F-1E8C-44B0-9EBC-E3C7D6B3F4D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

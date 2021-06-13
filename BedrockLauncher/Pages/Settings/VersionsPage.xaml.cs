@@ -17,14 +17,11 @@ using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Pages.Settings
 {
-    /// <summary>
-    /// Логика взаимодействия для InstallationsScreen.xaml
-    /// </summary>
-    public partial class VersionsSettingsPage : Page
+    public partial class VersionsPage : Page
     {
 
         private bool HasLoadedOnce = false;
-        public VersionsSettingsPage()
+        public VersionsPage()
         {
             InitializeComponent();
         }

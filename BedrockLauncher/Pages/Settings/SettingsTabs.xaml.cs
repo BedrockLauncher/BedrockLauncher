@@ -21,7 +21,7 @@ namespace BedrockLauncher.Pages.Settings
     {
         public GeneralSettingsPage generalSettingsPage = new GeneralSettingsPage();
         public AccountsSettingsPage accountsSettingsPage = new AccountsSettingsPage();
-        public VersionsSettingsPage versionsSettingsPage = new VersionsSettingsPage();
+        public VersionsPage versionsSettingsPage = new VersionsPage();
         public AboutPage aboutPage = new AboutPage();
         public SettingsTabs()
         {
