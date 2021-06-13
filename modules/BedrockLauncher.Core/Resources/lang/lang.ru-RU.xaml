@@ -11,7 +11,7 @@
     <v:String x:Key="MainWindow_Disclaimer">НЕ СВЯЗАНО С ИЛИ ОДОБРЕНО MOJANG</v:String>
 
     <!--#endregion-->
-    
+
     <!-- #region CommunityPage -->
 
     <v:String x:Key="CommunityPage_SupportText">❤ Поддержать разработку ❤</v:String>
@@ -185,7 +185,7 @@
     <v:String x:Key="NewsScreen_LauncherTabTitle">Лаунчер</v:String>
     <v:String x:Key="NewsScreen_OfficialTabTitle">Официальные</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
-    
+
     <v:String x:Key="NewsScreen_SearchBar_Content">Заголовок новости</v:String>
 
     <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Издание Java</v:String>
@@ -211,17 +211,15 @@
     <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">ЯЗЫК</v:String>
     <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">ОБЛИК ЛАУНЧЕРА</v:String>
 
-
     <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">НАСТРОЙКИ ЛАУНЧЕРА</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">НАСТРОЙКИ ЯРЛЫКОВ</v:String>
     <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Использовать бета-версию лаунчера</v:String>
     <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Оставлять лаунчер открытым, когда запущена игра</v:String>
-    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Закрывать лаунчер при смене его смене</v:String>
+    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Закрывать лаунчер при его смене</v:String>
     <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Анимация переходов между страницами лаунчера</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Анимация кнопки запуска на страницах Играть</v:String>
-    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Включить поддержку Minecraft Dungeons (Не законч.)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Анимация кнопки запуска на страницах запуска игры</v:String>
+    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Включить поддержку Minecraft Dungeons (не законч.)</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Показывать больше информации при установке версий</v:String>
-
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">НАСТРОЙКИ MINECRAFT: ИЗДАНИЕ BEDROCK</v:String>
     <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">ПОДДЕРЖАТЬ СОЗДАТЕЛЯ</v:String>
@@ -229,7 +227,6 @@
     <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">ОБНОВЛЕНИЯ ЛАУНЧЕРА</v:String>
 
     <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Поддержать создателя</v:String>
-
 
     <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Включить экспериментальное изменение путей сохранений</v:String>
     <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Спрятать пункт &quot;Лаунчер Java&quot;</v:String>
@@ -267,7 +264,7 @@
     <v:String x:Key="AboutPage_BsCommunity_Text">За их работу над SkinView3D, что используется для просмотра скинов в лаунчере</v:String>
     <v:String x:Key="AboutPage_Mojang_Text">За создание Minecraft!</v:String>
     <v:String x:Key="AboutPage_BsRepo_Text">Репозиторий SkinView3D</v:String>
-    <v:String x:Key="AboutPage_CurrentBuild">Текущая сборка: </v:String>
+    <v:String x:Key="AboutPage_CurrentBuild">Текущая сборка:</v:String>
 
     <!--#endregion-->
 
@@ -407,73 +404,6 @@
 
     <!--#endregion-->
 
-    <!--#region Installer Section -->
-
-
-    <!--#region UI -->
-
-    <v:String x:Key="Installer_Title">Программа установки лаунчера Minecraft Bedrock</v:String>
-
-    <v:String x:Key="Installer_Back_Text">Назад</v:String>
-    <v:String x:Key="Installer_Next_Text">Далее</v:String>
-    <v:String x:Key="Installer_Cancel_Text">Отмена</v:String>
-    <v:String x:Key="Installer_Finish_Text">Завершить</v:String>
-
-    <v:String x:Key="Installer_WelcomePage_Title">Добро пожаловать в программу установки лаунчера Minecraft Bedrock</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info_Text">Она установит лаунчер Minecraft Bedrock на твой компьютер.</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info2_Text">Рекомендуется закрыть все остальные приложения перед установкой.</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info3_Text">Нажми Далее, чтобы продолжить, или нажми Отмена, чтобы отменить установку.</v:String>
-
-    <v:String x:Key="Installer_LicenseAgreement_Title">Лицензионное соглашение</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Info_Text">Прочитай следующее лицензионное соглашение. Тебе нужно принять</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">соглашение, чтобы продолжить установку.</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">Я принимаю.</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">Я не принимаю.</v:String>
-
-    <v:String x:Key="Installer_InstallType_Title">Выберите тип установки</v:String>
-    <v:String x:Key="Installer_InstallType_Info_Text">Выбери, какую версию лаунчера ты хочешь скачать</v:String>
-
-    <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Бета-версия</v:String>
-    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Релизная версия</v:String>
-
-    <v:String x:Key="Installer_InstallLocation_Title">Выбрать путь установки</v:String>
-    <v:String x:Key="Installer_InstallLocation_Info_Text">Лаунчер Minecraft Bedrock будет установлен в следующую папку. Чтобы изменить путь установки,</v:String>
-    <v:String x:Key="Installer_InstallLocation_Info2_Text">нажми Обзор и выбери другую папку.</v:String>
-
-    <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Конечная папка</v:String>
-    <v:String x:Key="Installer_InstallLocation_Browse_Text">ОБЗОР</v:String>
-
-    <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Создать ярлык на рабочем столе</v:String>
-    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Добавить в меню "Пуск"</v:String>
-    <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">Зарегистрировать программу</v:String>
-
-    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">Запустить программу по завершению установки</v:String>
-
-    <v:String x:Key="Installer_InstallationProgress_FilesInUse">Некоторые файлы в данный момент используются следующими процессами:</v:String>
-
-    <v:String x:Key="Installer_InstallationProgress_Title">Идет установка</v:String>
-    <v:String x:Key="Installer_InstallationProgress_Info_Text">Пожалуйста, подожди, пока лаунчер Minecraft Bedrock устанавливается на твой компьютер.</v:String>
-
-
-    <!--#endregion-->
-
-    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">Не удалось изменить каталог</v:String>
-    <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">Не удалось переместить файл</v:String>
-    <v:String x:Key="Installer_Dialog_FileLocked_Text">Файл используется другой программой</v:String>
-    <v:String x:Key="Installer_Dialog_TryAgain_Text">Попробовать снова?</v:String>
-    <v:String x:Key="Installer_Dialog_ErrorOccured_Text">Возникла ошибка.</v:String>
-
-    <!--#region ProgressBar -->
-
-    <v:String x:Key="Installer_ProgressBar_Downloading">Скачиваем...</v:String>
-    <v:String x:Key="Installer_ProgressBar_Finalizing">Завершаем...</v:String>
-    <v:String x:Key="Installer_ProgressBar_Initalizing">Инициализируем...</v:String>
-
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
     <!--#region General Section -->
 
     <!--#region VersionEntries -->
@@ -488,15 +418,15 @@
     <v:String x:Key="ThemeEntries_LatestUpdate">Последнее обновление</v:String>
     <v:String x:Key="ThemeEntries_Original">Оригинальное</v:String>
 
-    <v:String x:Key="ThemeEntries_NetherUpdate">Обновление Адское</v:String>
-    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Обновление Жужащщие пчелы</v:String>
-    <v:String x:Key="ThemeEntries_VillagePillageUpdate">Обновление Деревня &amp; Грабеж</v:String>
-    <v:String x:Key="ThemeEntries_UpdateAquatic">Обновление Морское</v:String>
-    <v:String x:Key="ThemeEntries_TechnicallyUpdated">Обновление Техническое [Java]</v:String>
-    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">Обновление Цветной мир [Java]</v:String>
-    <v:String x:Key="ThemeEntries_ExplorationUpdate">Обновление Исследовательское [Java]</v:String>
-    <v:String x:Key="ThemeEntries_CombatUpdate">Обновление Боевое [Java]</v:String>
-    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">Коты &amp; Панды [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_NetherUpdate">Обновление &quot;Адское&quot;</v:String>
+    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Обновление &quot;Жужащщие пчелы&quot;</v:String>
+    <v:String x:Key="ThemeEntries_VillagePillageUpdate">Обновление &quot;Деревня &amp; Грабеж&quot;</v:String>
+    <v:String x:Key="ThemeEntries_UpdateAquatic">Обновление &quot;Морское&quot;</v:String>
+    <v:String x:Key="ThemeEntries_TechnicallyUpdated">Обновление &quot;Техническое&quot; [Java]</v:String>
+    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">Обновление &quot;Цветной мир&quot; [Java]</v:String>
+    <v:String x:Key="ThemeEntries_ExplorationUpdate">Обновление &quot;Исследовательское&quot; [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CombatUpdate">Обновление &quot;Боевое&quot; [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">Обновление &quot;Коты &amp; Панды&quot; [Bedrock]</v:String>
     <v:String x:Key="ThemeEntries_PocketEditionRelease">Официальный релиз [Bedrock]</v:String>
     <v:String x:Key="ThemeEntries_BedrockStandard">Стандартное издание Bedrock</v:String>
     <v:String x:Key="ThemeEntries_BedrockMaster">Мастерское издание Bedrock</v:String>
@@ -505,7 +435,6 @@
     <v:String x:Key="ThemeEntries_LateLegacyConsole">Период поздних версий Legacy Console</v:String>
     <v:String x:Key="ThemeEntries_IndieDays">Период Indie</v:String>
     <v:String x:Key="ThemeEntries_Dungeons">Minecraft Dungeons</v:String>
-
 
     <!--#endregion-->
 
