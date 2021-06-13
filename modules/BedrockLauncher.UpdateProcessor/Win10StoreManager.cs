@@ -48,7 +48,7 @@ namespace BedrockLauncher.UpdateProcessor
 
                     string mergedString = e.serverId + " " + e.updateId + " " + e.packageMoniker;
                     if (knownVersions.Exists(x => x == e.updateId)) continue;
-                    System.Diagnostics.Debug.WriteLine(string.Format("New UWP version: \n{0}", mergedString));
+                    System.Diagnostics.Debug.WriteLine(string.Format("New UWP version: {0}", mergedString));
                     hasAnyNewVersions = true;
                     knownVersions.Add(mergedString);
                     newUpdates.Add(e);

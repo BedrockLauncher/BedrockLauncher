@@ -14,6 +14,7 @@
       Title="VersionsPage" x:Name="PageHost" Initialized="Page_Initialized" Loaded="PageHost_Loaded">
     <Page.Resources>
         <converters:InvertableBooleanToVisibilityConverter x:Key="VisibleIfTrueConverter" />
+        <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"></converters:InverseBooleanConverter>
     </Page.Resources>
     <Grid Margin="0" Background="#FF303030" Style="{DynamicResource DisabledStyle}">
         <Grid.RowDefinitions>
@@ -36,6 +37,7 @@
                 </Grid>
             </Grid>
         </Border>
+        <Button VerticalAlignment="Center" Margin="10,10" FontSize="14" x:Name="RefreshButton" IsEnabled="{Binding ConfigManager.IsVersionsUpdating, Source={x:Static viewModels:LauncherModel.Default}, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource InverseBooleanConverter}}" HorizontalAlignment="Right" Click="RefreshButton_Click" Content="{DynamicResource GeneralText_Refresh}" Style="{DynamicResource LinkButton}"></Button>
         <ListView x:Name="VersionsList" SelectionMode="Single" Grid.Row="1" HorizontalContentAlignment="Center" ItemTemplate="{StaticResource VersionItemTemplate}"/>
     </Grid>
 </Page>

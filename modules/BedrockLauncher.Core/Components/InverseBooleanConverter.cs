@@ -15,7 +15,7 @@ namespace BedrockLauncher.Core.Components
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (targetType != typeof(bool?))
+            if (targetType != typeof(bool?) && targetType != typeof(bool))
             {
                 throw new InvalidOperationException("The target must be a nullable boolean");
             }

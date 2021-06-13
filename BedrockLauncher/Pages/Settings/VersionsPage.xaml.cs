@@ -58,5 +58,10 @@ namespace BedrockLauncher.Pages.Settings
                 }
             });
         }
+
+        private async void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            await Task.Run(ViewModels.LauncherModel.Default.ConfigManager.LoadVersions);
+        }
     }
 }

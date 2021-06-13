@@ -14,13 +14,16 @@ using System.Collections;
 using BedrockLauncher.Core.Classes;
 using BedrockLauncher.Core.Interfaces;
 using System.Collections.ObjectModel;
+using BedrockLauncher.Core.Components;
 
 namespace BedrockLauncher.ViewModels
 {
 
-    public class ConfigManager
+    public class ConfigManager : NotifyPropertyChangedBase
     {
         #region Helpers
+
+        private bool _IsVersionsUpdating = false;
 
         public string CurrentProfile 
         {
@@ -50,6 +53,11 @@ namespace BedrockLauncher.ViewModels
                 if (CurrentInstallations == null || Properties.LauncherSettings.Default.CurrentInstallation == -1) return null;
                 return CurrentInstallations[Properties.LauncherSettings.Default.CurrentInstallation];
             }
+        }
+        public bool IsVersionsUpdating
+        {
+            get { return _IsVersionsUpdating; }
+            set { _IsVersionsUpdating = value; OnPropertyChanged(nameof(IsVersionsUpdating)); }
         }
 
         #endregion
@@ -97,11 +105,14 @@ namespace BedrockLauncher.ViewModels
         #endregion
 
         #region Versions
-        public void LoadVersions()
+        public async void LoadVersions()
         {
-            LauncherModel.MainThread.Dispatcher.Invoke((Func<Task>)(async () =>
+            if (IsVersionsUpdating) return;
+            await LauncherModel.MainThread.Dispatcher.Invoke((Func<Task>)(async () =>
             {
+                IsVersionsUpdating = true;
                 await LauncherModel.Default.VersionDownloader.UpdateVersions(Versions);
+                IsVersionsUpdating = false;
             }));
         }
 
