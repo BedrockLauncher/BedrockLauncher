@@ -4,8 +4,9 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Threading.Tasks;
+using BedrockLauncher.Core.Interfaces;
 
-namespace BL_Core.Pages.Common
+namespace BedrockLauncher.Core.Pages.Common
 {
     /// <summary>
     /// Логика взаимодействия для DialogPrompt.xaml

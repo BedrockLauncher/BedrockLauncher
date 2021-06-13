@@ -176,13 +176,20 @@
     <v:String x:Key="LauncherNewsPage_Changes_Text">Изменения:</v:String>
     <v:String x:Key="LauncherNewsPage_CheckForUpdates">Проверить обновления</v:String>
     <v:String x:Key="LauncherNewsPage_ForceUpdate">Форсированное обновление</v:String>
+    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Текущая</v:String>
 
     <!--#endregion-->
 
     <!--#region NewsScreenPage -->
 
     <v:String x:Key="NewsScreen_LauncherTabTitle">Лаунчер</v:String>
-    <v:String x:Key="NewsScreen_OfficialTabTitle">Оф. новости</v:String>
+    <v:String x:Key="NewsScreen_OfficialTabTitle">Официальные</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
+    
+    <v:String x:Key="NewsScreen_SearchBar_Content">Заголовок новости</v:String>
+
+    <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Издание Java</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
 
     <!--#endregion-->
 
@@ -206,9 +213,15 @@
 
 
     <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">НАСТРОЙКИ ЛАУНЧЕРА</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">НАСТРОЙКИ ЯРЛЫКОВ</v:String>
     <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Использовать бета-версию лаунчера</v:String>
-    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Оставлять лаунчер открым, когда запущена игра</v:String>
-    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Закрывать лаунчер при смене лаунчеров</v:String>
+    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Оставлять лаунчер открытым, когда запущена игра</v:String>
+    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Закрывать лаунчер при смене его смене</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Анимация переходов между страницами лаунчера</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Анимация кнопки запуска на страницах Играть</v:String>
+    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Включить поддержку Minecraft Dungeons (Не законч.)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Показывать больше информации при установке версий</v:String>
+
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">НАСТРОЙКИ MINECRAFT: ИЗДАНИЕ BEDROCK</v:String>
     <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">ПОДДЕРЖАТЬ СОЗДАТЕЛЯ</v:String>
@@ -219,14 +232,15 @@
 
 
     <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Включить экспериментальное изменение путей сохранений</v:String>
-    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Спрятать иконку Издания Java</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Показать иконку пользовательского лаунчера</v:String>
+    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Спрятать пункт &quot;Лаунчер Java&quot;</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Добавить выбор пользовательского лаунчера</v:String>
     <v:String x:Key="GeneralSettingsScreen_BackupButton">Создать копию сохраненных данных</v:String>
     <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Продвинутые настройки</v:String>
 
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">ПОЛЬЗОВАТЕЛЬСКИЙ ЛАУНЧЕР</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">ПУТЬ</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">НАЗВАНИЕ</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">АРГУМЕНТЫ</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">ИКОНКА</v:String>
 
     <!--#endregion-->
@@ -236,9 +250,9 @@
     <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">ВЫБРАННЫЙ АККАУНТ</v:String>
     <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">НАСТРОЙКИ ПРОГРАММЫ XBOX INSIDER</v:String>
     <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Обычные настройки</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Старые настройки</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Устаревшие настройки</v:String>
     <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Управлять аккаунтами</v:String>
-    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">НАСТРОЙКИ АККАУНТА</v:String>
+    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">НАСТРОЙКИ АККАУНТОВ</v:String>
 
     <!--#endregion-->
 
@@ -279,17 +293,17 @@
     <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Создайте свой первый профиль!</v:String>
     <v:String x:Key="FirstLaunch_AlmostThereTitle">Почти готово!</v:String>
     <v:String x:Key="FirstLaunch_OneThingTitle">Еще один момент...</v:String>
-    <v:String x:Key="FirstLaunch_OneThingSubtitle">JПроверь следующее и убедись, что все настроено под тебя.</v:String>
-    <v:String x:Key="FirstLaunch_ChooseAccountTitle">Выбрать аккаунт Xbox Insider</v:String>
-    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* Он используется и проверки и скачивания бета-версий. Ты должен состоять в программе Xbox Insider Hub для выбранного аккаунта. Тебе также может потребоваться перезапустить лаунчер или удалить Minecraft, чтобы можно было начать скачивать бета-версии.</v:String>
+    <v:String x:Key="FirstLaunch_OneThingSubtitle">Проверь следующие настройки и убедись, что все настроено под тебя.</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountTitle">Выбрери тип аккаунта Xbox Insider</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">Он используется для проверки и скачивания бета-версий. Выбранный аккаунт должен состоять в программе Xbox Insider Hub. Тебе также может потребоваться перезапустить лаунчер или удалить Minecraft, чтобы можно было начать скачивать бета-версий.</v:String>
 
-    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Перед использованием настоятельно рекомендуется создать копию существующих данных, так как лаунчер заменяет первоначальную директорию на ссылку, что позволяет перенаправлять сохраненные данные.&#10;&#10; (Без паники, ты не потеряешь свои данные, они потеряются только в том случае, если ты нажмешь Играть и не сделаешь их копию)</v:String>
+    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Перед использованием советуем создать копию существующих данных, так как лаунчер изменяет каталог хранения данных.&#10;&#10; (Без паники, исходные данные будут утеряны только в том случае, если ты не сделаешь их копию)</v:String>
 
-    <v:String x:Key="FirstLaunch_InstallType_Header">Сохранить/загрузить данные лаунчера из:</v:String>
-    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">Постоянная папка (рекомендовано)</v:String>
-    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">Временная папка</v:String>
-    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Создать копию существующих данных</v:String>
-    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(РЕКОМЕНДОВАНО)</v:String>
+    <v:String x:Key="FirstLaunch_InstallType_Header">Папка хранения данных лаунчера:</v:String>
+    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">Постоянная (рекомендуется)</v:String>
+    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">Временная</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Создать копию данных</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(РЕКОМЕНДУЕТСЯ)</v:String>
     <v:String x:Key="FirstLaunch_CloseButton">Закрыть</v:String>
     <v:String x:Key="FirstLaunch_BackButton">Назад</v:String>
     <v:String x:Key="FirstLaunch_GoBackButton">❮ ВЕРНУТЬСЯ</v:String>
@@ -314,10 +328,10 @@
     <!--#region Errors -->
 
     <v:String x:Key="Error_AuthenticationFailed_Title">Аутентификация не пройдена</v:String>
-    <v:String x:Key="Error_AuthenticationFailed">Не получилось пройти аутентификацию. Убедись, что твой аккаунт состоит в программе бета-версий.</v:String>
+    <v:String x:Key="Error_AuthenticationFailed">Не получилось пройти аутентификацию. Убедись, что твой аккаунт участвует в программе бета-версий.</v:String>
 
     <v:String x:Key="Error_CantFindExternalLauncher_Title">Не удалось переключить лаунчер</v:String>
-    <v:String x:Key="Error_CantFindExternalLauncher">Не удалось переключить лаунчер. Убедись, что выбрать верный путь до лаунчера.</v:String>
+    <v:String x:Key="Error_CantFindExternalLauncher">Не удалось переключить лаунчер. Убедись, что указан верный путь.</v:String>
 
     <v:String x:Key="Error_CantFindJavaLauncher_Title">Не удалось переключить лаунчер</v:String>
     <v:String x:Key="Error_CantFindJavaLauncher">Не удалось найти лаунчер. Убедись, что у тебя установлен оригинальный лаунчер Minecraft с Minecraft.net.</v:String>
@@ -367,14 +381,25 @@
     <v:String x:Key="Dialog_KillGame_Text">Это опасно и рекомендуется только в том случае, если ты застрял. Все еще хочешь закрыть игру?</v:String>
 
     <v:String x:Key="Dialog_CloseGame_Title">Игра все еще запущена</v:String>
-    <v:String x:Key="Dialog_CloseGame_Text">Хочешь принудительно закрыть её? (это не сохранит прогресс, рекомендуется только в том случае, если ты застрял)</v:String>
+    <v:String x:Key="Dialog_CloseGame_Text">Хочешь принудительно закрыть её? (это не сохранит прогресс, рекомендуется только в том случае, если игра зависла)</v:String>
+
+    <v:String x:Key="DialogBtn_YesToAll_Text">Да для всех</v:String>
+    <v:String x:Key="DialogBtn_NoToAll_Text">Нет для всех</v:String>
+    <v:String x:Key="DialogBtn_Yes_Text">Да</v:String>
+    <v:String x:Key="DialogBtn_No_Text">Нет</v:String>
+
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">Нет соответствующих результатов</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">Мы не смогли найти новости по твоему запросы. Если у тебя выключены &#10;фильтры, включи их и попробуй снова</v:String>
+
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Нет результатов</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">По твоему запросу ничего не найдено</v:String>
 
     <!--#endregion-->
 
     <!--#region Internal -->
 
     <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">Файл {0} уже существует.\nХочешь перезаписать его? В этом случае старый файл будет утерян.</v:String>
-    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">Файл {0} не является директорией. Хочешь удалить его? В этом случае данные из старой директории будет утеряны.</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">Файл {0} не является катологом. Хочешь удалить его? В этом случае данные из старого каталога будет утеряны.</v:String>
 
     <v:String x:Key="GameManager_RecoveringDataIssue_Title">Конвертируем существующие сохраненные данные в установку</v:String>
 
@@ -424,13 +449,15 @@
 
     <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">Запустить программу по завершению установки</v:String>
 
+    <v:String x:Key="Installer_InstallationProgress_FilesInUse">Некоторые файлы в данный момент используются следующими процессами:</v:String>
+
     <v:String x:Key="Installer_InstallationProgress_Title">Идет установка</v:String>
     <v:String x:Key="Installer_InstallationProgress_Info_Text">Пожалуйста, подожди, пока лаунчер Minecraft Bedrock устанавливается на твой компьютер.</v:String>
 
 
     <!--#endregion-->
 
-    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">Не удалось изменить директорию</v:String>
+    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">Не удалось изменить каталог</v:String>
     <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">Не удалось переместить файл</v:String>
     <v:String x:Key="Installer_Dialog_FileLocked_Text">Файл используется другой программой</v:String>
     <v:String x:Key="Installer_Dialog_TryAgain_Text">Попробовать снова?</v:String>
@@ -515,6 +542,8 @@
     <v:String x:Key="GeneralSubtitles_Versions">ВЕРСИИ</v:String>
     <v:String x:Key="GeneralSubtitles_Browse">ОБЗОР</v:String>
     <v:String x:Key="GeneralSubtitles_Reset">СБРОСИТЬ</v:String>
+    <v:String x:Key="GeneralSubtitles_Categories">КАТЕГОРИИ</v:String>
+    <v:String x:Key="GeneralSubtitles_Search">ПОИСК</v:String>
 
     <!--#endregion-->
 

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Dungeons.Methods;
-using BL_Core.Controls;
+using BedrockLauncher.Core.Controls;
 
 namespace BedrockLauncher.Dungeons.Pages
 {

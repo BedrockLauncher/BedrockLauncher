@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BL_Core.Pages.Common
+namespace BedrockLauncher.Core.Pages.Common
 {
     /// <summary>
     /// Логика взаимодействия для NoContentPage.xaml

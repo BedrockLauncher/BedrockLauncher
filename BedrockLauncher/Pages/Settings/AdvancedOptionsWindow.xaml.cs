@@ -13,7 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
-using BL_Core.Controls;
+using BedrockLauncher.Core.Controls;
+using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Pages.Settings
 {
@@ -54,7 +55,7 @@ namespace BedrockLauncher.Pages.Settings
 
             UpdateDirectoryPathTextbox();
 
-            ConfigManager.Default.Reload();
+            LauncherModel.Default.ConfigManager.Reload();
         }
 
         private void UpdateDirectoryPathTextbox()
@@ -74,7 +75,7 @@ namespace BedrockLauncher.Pages.Settings
                 }
                 else
                 {
-                    StorageDirectoryTextBox.Text = BedrockLauncher.Methods.FilepathManager.Default.DefaultLocation;
+                    StorageDirectoryTextBox.Text = LauncherModel.Default.FilepathManager.DefaultLocation;
                 }
             }
         }

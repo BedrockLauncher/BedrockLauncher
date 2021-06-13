@@ -31,7 +31,7 @@ using BedrockLauncher.Pages.Settings;
 using BedrockLauncher.Pages.Play;
 using BedrockLauncher.Pages.News;
 using BedrockLauncher.Pages.Preview;
-using BL_Core.Pages.Common;
+using BedrockLauncher.Core.Pages.Common;
 using BedrockLauncher.Pages.Community;
 
 namespace BedrockLauncher
@@ -64,7 +64,7 @@ namespace BedrockLauncher
             Panel.SetZIndex(ErrorFrame, 1);
             Panel.SetZIndex(updateButton, 2);
 
-            BL_Core.Language.LanguageManager.Init();
+            BedrockLauncher.Core.Language.LanguageManager.Init();
             LauncherModel.Default.Init();
             this.updateButton.ClickBase.Click += LauncherModel.Updater.UpdateButton_Click;
             ButtonManager_Base(BedrockEditionButton.Name);
@@ -82,7 +82,7 @@ namespace BedrockLauncher
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ConfigManager.Default.GameManager.Cancel();
+            LauncherModel.Default.GameManager.Cancel();
         }
 
         #region Navigation
@@ -105,7 +105,7 @@ namespace BedrockLauncher
             if (CurrentPageIndex > LastPageIndex) direction = ExpandDirection.Down;
             else direction = ExpandDirection.Up;
 
-            await Task.Run(() => BL_Core.Components.PageAnimator.FrameSwipe(MainWindowFrame, content, direction));
+            await Task.Run(() => BedrockLauncher.Core.Components.PageAnimator.FrameSwipe(MainWindowFrame, content, direction));
         }
 
         public async void ResetButtonManager(string buttonName)
@@ -270,7 +270,7 @@ namespace BedrockLauncher
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
-                if (Properties.LauncherSettings.Default.CloseLauncherOnSwitch && ConfigManager.Default.GameManager.GameProcess != null)
+                if (Properties.LauncherSettings.Default.CloseLauncherOnSwitch && LauncherModel.Default.GameManager.GameProcess != null)
                 {
                     Task.Run(() => LauncherModel.Default.ShowPrompt_ClosingWithGameStillOpened(action));
                 }

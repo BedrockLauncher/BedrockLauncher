@@ -102,8 +102,8 @@
     <v:String x:Key="EditInstallationScreen_VersionSubtitle">VERSÃO</v:String>
     <v:String x:Key="EditInstallationScreen_DirectorySubtitle">DIRETÓRIO</v:String>
 
-    <v:String x:Key="EditInstallationScreen_NameHintText">Instalação sem nome</v:String>
-    <v:String x:Key="EditInstallationScreen_DirectoryHintText">Diretório predefinido</v:String>
+    <v:String x:Key="EditInstallationScreen_NameHintText">&lt;instalação sem nome&gt;</v:String>
+    <v:String x:Key="EditInstallationScreen_DirectoryHintText">&lt;diretório predefinido&gt;</v:String>
 
     <!--#endregion-->
 
@@ -176,6 +176,7 @@
     <v:String x:Key="LauncherNewsPage_Changes_Text">Mudanças:</v:String>
     <v:String x:Key="LauncherNewsPage_CheckForUpdates">Verificar por atualizações</v:String>
     <v:String x:Key="LauncherNewsPage_ForceUpdate">Forçar atualização</v:String>
+    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Em uso</v:String>
 
     <!--#endregion-->
 
@@ -183,6 +184,12 @@
 
     <v:String x:Key="NewsScreen_LauncherTabTitle">Launcher</v:String>
     <v:String x:Key="NewsScreen_OfficialTabTitle">Oficial</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
+
+    <v:String x:Key="NewsScreen_SearchBar_Content">Título das novidades</v:String>
+
+    <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
 
     <!--#endregion-->
 
@@ -205,9 +212,12 @@
     <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">TEMA DO LAUNCHER</v:String>
 
     <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">DEFINIÇÕES DO LAUNCHER</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">DEFINIÇÕES DO ATALHO</v:String>
     <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Usar versão experimental do launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Manter o launcher aberto durante a execução do jogo</v:String>
     <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Fechar o launcher quando mudar de launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animar as transição de páginas no launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animar o botão de jogar nas páginas do launcher</v:String>
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">DEFINIÇÕES DO MINECRAFT: BEDROCK EDITION</v:String>
     <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">SUPORTE O CRIADOR</v:String>
@@ -222,7 +232,7 @@
     <v:String x:Key="GeneralSettingsScreen_BackupButton">Fazer cópia dos dados salvos</v:String>
     <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Definições avançadas</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">LAUNCHER EXTERNO</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">DEFINIÇÕES DO LAUNCHER EXTERNO</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">DIRETÓRIO</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">NOME</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">ÍCONE</v:String>
@@ -374,6 +384,11 @@
     <v:String x:Key="Dialog_CloseGame_Title">Jogo ainda está em execução</v:String>
     <v:String x:Key="Dialog_CloseGame_Text">Gostarias de fechá-lo forçadamente? (sem salvar as mudanças, isto é apenas recomendado se ficares preso, por favor feche o jogo normalmente)</v:String>
 
+    <v:String x:Key="DialogBtn_YesToAll_Text">Sim para todos</v:String>
+    <v:String x:Key="DialogBtn_NoToAll_Text">Não para todos</v:String>
+    <v:String x:Key="DialogBtn_Yes_Text">Sim</v:String>
+    <v:String x:Key="DialogBtn_No_Text">Não</v:String>
+
     <!--#endregion-->
 
     <!--#region Internal -->
@@ -518,6 +533,8 @@
     <v:String x:Key="GeneralSubtitles_Versions">VERSÕES</v:String>
     <v:String x:Key="GeneralSubtitles_Browse">PROCURAR</v:String>
     <v:String x:Key="GeneralSubtitles_Reset">REPOR</v:String>
+      <v:String x:Key="GeneralSubtitles_Categories">CATEGORIAS</v:String>
+    <v:String x:Key="GeneralSubtitles_Search">PROCURAR</v:String>
 
     <!--#endregion-->
 

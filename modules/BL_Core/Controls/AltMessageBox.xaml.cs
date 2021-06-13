@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace BL_Core.Controls
+namespace BedrockLauncher.Core.Controls
 {
     /// <summary>
     /// Interaction logic for AltMessageBox.xaml
@@ -154,8 +154,7 @@ namespace BL_Core.Controls
 
             if (param.icon == MessageBoxImage.None) Image_MessageBox.Visibility = System.Windows.Visibility.Collapsed;
             else DisplayImage(param.icon);
-
-            DisplayButtons(AltMessageBoxButton.OK);
+            DisplayButtons(param.button);
         }
 
         internal AltMessageBox(string message, string caption)

@@ -187,6 +187,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Html\SkinViewResourceSchemeHandler.cs" />
+    <Compile Include="Classes\BLInstallation.cs" />
+    <Compile Include="Classes\BLVersion.cs" />
     <Compile Include="Controls\Items\JavaFeedItem.xaml.cs">
       <DependentUpon>JavaFeedItem.xaml</DependentUpon>
     </Compile>
@@ -208,8 +210,7 @@
     <Compile Include="Controls\InstallationSelector.xaml.cs">
       <DependentUpon>InstallationSelector.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Events\ConfigStateArgs.cs" />
-    <Compile Include="Methods\FilepathManager.cs" />
+    <Compile Include="ViewModels\FilepathManager.cs" />
     <Compile Include="Pages\Common\NoContentFoundPage.xaml.cs">
       <DependentUpon>NoContentFoundPage.xaml</DependentUpon>
     </Compile>
@@ -296,11 +297,11 @@
     <Compile Include="Controls\SkinPreview.xaml.cs">
       <DependentUpon>SkinPreview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Methods\ConfigManager.cs" />
+    <Compile Include="ViewModels\ConfigManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Classes\Html\FileSchemeHandler.cs" />
     <Compile Include="Classes\Html\GlobalSchemeHandlerFactory.cs" />
-    <Compile Include="Methods\GameManager.cs" />
+    <Compile Include="ViewModels\GameManager.cs" />
     <Compile Include="Methods\ConsoleArgumentManager.cs" />
     <Compile Include="Downloaders\ChangelogDownloader.cs" />
     <Compile Include="Classes\Html\ResourceSchemeHandler.cs" />
@@ -837,10 +838,6 @@
       <Project>{6718749f-4346-4e5e-85df-d47faf22c9b6}</Project>
       <Name>Extensions.NET</Name>
     </ProjectReference>
-    <ProjectReference Include="..\modules\Installer\BedrockLauncher.Installer.csproj">
-      <Project>{295729f7-172f-4bcd-a619-e495db5a4e2f}</Project>
-      <Name>BedrockLauncher.Installer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\modules\SkinView3D\SkinView3D.csproj">
       <Project>{ccabef67-f4bf-4087-9291-62ee5e316934}</Project>
       <Name>SkinView3D</Name>
@@ -921,6 +918,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\icons\bedrock_grass_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\play_screen\1.17_caves_and_cliffs_part_1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

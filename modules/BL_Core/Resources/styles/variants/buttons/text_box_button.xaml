@@ -3,7 +3,7 @@
     <Style x:Key="TextBoxButton" TargetType="{x:Type Button}">
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="FontSize" Value="11"/>
-        <Setter Property="FontFamily" Value="/BL_Core;component/#Noto Sans"/>
+        <Setter Property="FontFamily" Value="/BedrockLauncher.Core;component/#Noto Sans"/>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource BlankFocusVisual}"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>

@@ -16,8 +16,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Pages.Preview;
-using BL_Core.Pages.Common;
-using BL_Core.Classes;
+using BedrockLauncher.Core.Pages.Common;
+using BedrockLauncher.Core.Classes;
+using BedrockLauncher.ViewModels;
+using BedrockLauncher.Classes;
 
 namespace BedrockLauncher.Controls.Items
 {
@@ -53,15 +55,15 @@ namespace BedrockLauncher.Controls.Items
         private void Folder_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            var installation = button.DataContext as MCInstallation;
-            ConfigManager.Default.GameManager.OpenFolder(installation);
+            var installation = button.DataContext as BLInstallation;
+            LauncherModel.Default.GameManager.OpenFolder(installation);
         }
 
         private void Play_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            var installation = button.DataContext as MCInstallation;
-            ConfigManager.Default.GameManager.Play(installation);
+            var installation = button.DataContext as BLInstallation;
+            LauncherModel.Default.GameManager.Play(installation);
         }
 
         private async void DeleteInstallationButton_Click(object sender, RoutedEventArgs e)
@@ -71,21 +73,20 @@ namespace BedrockLauncher.Controls.Items
             var item = this.FindResource("Dialog_Item_Installation_Text") as string;
 
             MenuItem button = sender as MenuItem;
-            var installation = button.DataContext as MCInstallation;
-            var result = await DialogPrompt.ShowDialog_YesNo(title, content, item, installation.DisplayName);
+            var installation = button.DataContext as BLInstallation;
+            var result = await DialogPrompt.ShowDialog_YesNo(title, content, item, installation.DisplayName_Full);
 
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
 
-                ConfigManager.Default.DeleteInstallation(installation);
-                ConfigManager.Default.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
+                LauncherModel.Default.ConfigManager.DeleteInstallation(installation);
             }
         }
 
         private void More_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            var installation = button.DataContext as MCInstallation;
+            var installation = button.DataContext as BLInstallation;
             (this.Tag as Pages.Play.InstallationsScreen).InstallationsList.SelectedItem = installation;
             button.ContextMenu.PlacementTarget = button;
             button.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
@@ -101,17 +102,16 @@ namespace BedrockLauncher.Controls.Items
         private void EditInstallationButton_Click(object sender, RoutedEventArgs e)
         {
             MenuItem button = sender as MenuItem;
-            var installation = button.DataContext as MCInstallation;
-            int index = ConfigManager.Default.CurrentInstallations.IndexOf(installation);
+            var installation = button.DataContext as BLInstallation;
+            int index = LauncherModel.Default.ConfigManager.CurrentInstallations.IndexOf(installation);
             ViewModels.LauncherModel.Default.SetOverlayFrame(new EditInstallationScreen(index, installation));
         }
 
         private void DuplicateInstallationButton_Click(object sender, RoutedEventArgs e)
         {
             MenuItem button = sender as MenuItem;
-            var installation = button.DataContext as MCInstallation;
-            ConfigManager.Default.DuplicateInstallation(installation);
-            ConfigManager.Default.OnConfigStateChanged(sender, Events.ConfigStateArgs.Empty);
+            var installation = button.DataContext as BLInstallation;
+            LauncherModel.Default.ConfigManager.DuplicateInstallation(installation);
         }
     }
 }

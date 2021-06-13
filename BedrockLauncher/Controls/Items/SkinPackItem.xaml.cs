@@ -19,8 +19,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Path = System.IO.Path;
 using BedrockLauncher.Pages.Preview;
-using BL_Core.Pages.Common;
-using BL_Core.Classes.SkinPack;
+using BedrockLauncher.Core.Pages.Common;
+using BedrockLauncher.Core.Classes.SkinPack;
+using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Controls.Items
 {
@@ -74,7 +75,7 @@ namespace BedrockLauncher.Controls.Items
         {
             Button button = sender as Button;
             var skinPack = button.DataContext as MCSkinPack;
-            ConfigManager.Default.GameManager.OpenFolder(skinPack);
+            LauncherModel.Default.GameManager.OpenFolder(skinPack);
         }
 
         public void OpenContextMenu(MCSkinPack skinPack)

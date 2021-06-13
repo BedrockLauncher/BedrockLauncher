@@ -14,7 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Classes;
-using BL_Core.Classes;
+using BedrockLauncher.Core.Classes;
+using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Pages.Preview
 {
@@ -23,7 +24,7 @@ namespace BedrockLauncher.Pages.Preview
     /// </summary>
     public partial class EditInstallationScreen : Page
     {
-        private List<MCVersion> Versions { get; set; } = new List<MCVersion>();
+        private List<BLVersion> Versions { get; set; } = new List<BLVersion>();
 
         private bool IsEditMode = false;
 
@@ -35,14 +36,14 @@ namespace BedrockLauncher.Pages.Preview
             UpdateVersionsComboBox();
         }
 
-        public EditInstallationScreen(int index, MCInstallation i)
+        public EditInstallationScreen(int index, BLInstallation i)
         {
             InitializeComponent();
             UpdateVersionsComboBox();
             UpdateEditingFields(index, i);
         }
 
-        private void UpdateEditingFields(int index, MCInstallation i)
+        private void UpdateEditingFields(int index, BLInstallation i)
         {
             IsEditMode = true;
             InstallationVersionSelect.SelectedItem = Versions.Where(x => x.UUID == i.VersionUUID).FirstOrDefault();
@@ -58,19 +59,16 @@ namespace BedrockLauncher.Pages.Preview
 
         private void GetManualComboBoxEntries()
         {
-            MCVersion latest_release = new MCVersion("latest_release", Application.Current.Resources["EditInstallationScreen_LatestRelease"].ToString(), false);
-            MCVersion latest_beta = new MCVersion("latest_beta", Application.Current.Resources["EditInstallationScreen_LatestSnapshot"].ToString(), false);
-            Versions.InsertRange(0, new List<MCVersion>() { latest_release, latest_beta });
+            BLVersion latest_release = new BLVersion("latest_release", Application.Current.Resources["EditInstallationScreen_LatestRelease"].ToString(), false);
+            BLVersion latest_beta = new BLVersion("latest_beta", Application.Current.Resources["EditInstallationScreen_LatestSnapshot"].ToString(), false);
+            Versions.InsertRange(0, new List<BLVersion>() { latest_release, latest_beta });
         }
 
         private void UpdateVersionsComboBox()
         {
             Versions.Clear();
             InstallationVersionSelect.ItemsSource = null;
-            foreach (var entry in ConfigManager.Default.Versions)
-            {
-                Versions.Add(entry);
-            }
+            foreach (var entry in LauncherModel.Default.ConfigManager.Versions) Versions.Add(BLVersion.Convert(entry));
             GetManualComboBoxEntries();
             InstallationVersionSelect.ItemsSource = Versions;
             InstallationVersionSelect.SelectedIndex = 0;
@@ -89,16 +87,14 @@ namespace BedrockLauncher.Pages.Preview
 
         private void UpdateInstallation()
         {
-            ConfigManager.Default.EditInstallation(EditingIndex, InstallationNameField.Text, InstallationDirectoryField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
-            ViewModels.LauncherModel.Default.SetOverlayFrame(null);
-            ConfigManager.Default.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
+            LauncherModel.Default.ConfigManager.EditInstallation(EditingIndex, InstallationNameField.Text, InstallationDirectoryField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
+            LauncherModel.Default.SetOverlayFrame(null);
         }
 
         private void CreateInstallation()
         {
-            ConfigManager.Default.CreateInstallation(InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationDirectoryField.Text, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
-            ViewModels.LauncherModel.Default.SetOverlayFrame(null);
-            ConfigManager.Default.OnConfigStateChanged(this, Events.ConfigStateArgs.Empty);
+            LauncherModel.Default.ConfigManager.CreateInstallation(InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationDirectoryField.Text, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
+            LauncherModel.Default.SetOverlayFrame(null);
         }
 
         private void InstallationDirectoryField_TextChanged(object sender, TextChangedEventArgs e)

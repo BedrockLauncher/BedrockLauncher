@@ -7,7 +7,7 @@
         xmlns:methods="clr-namespace:BedrockLauncher.Methods"
         xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
         xmlns:toolbar="clr-namespace:BedrockLauncher.Controls.Toolbar"
-        xmlns:com="clr-namespace:BL_Core.Components;assembly=BL_Core"
+        xmlns:com="clr-namespace:BedrockLauncher.Core.Components;assembly=BedrockLauncher.Core"
         xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
         x:Class="BedrockLauncher.MainWindow"
         mc:Ignorable="d"
@@ -66,8 +66,8 @@
                     </Grid>
 
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock x:Name="progressbarcontent" SnapsToDevicePixels="True" Margin="26,-15,0,0" FontSize="12" Text="{DynamicResource ProgressBar_Downloading}"  HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans"/>
-                        <TextBlock SnapsToDevicePixels="True" Margin="+3,-15,0,0" FontSize="12" x:Name="ProgressBarText" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans"/>
+                        <TextBlock x:Name="progressbarcontent" SnapsToDevicePixels="True" Margin="26,-15,0,0" FontSize="12" Text="{DynamicResource ProgressBar_Downloading}"  HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans"/>
+                        <TextBlock SnapsToDevicePixels="True" Margin="+3,-15,0,0" FontSize="12" x:Name="ProgressBarText" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans"/>
                     </StackPanel>
                 </Grid>
             </Grid>

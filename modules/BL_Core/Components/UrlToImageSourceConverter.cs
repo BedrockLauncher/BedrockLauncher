@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
 
-namespace BL_Core.Components
+namespace BedrockLauncher.Core.Components
 {
     public class UrlToImageSourceConverter : IValueConverter
     {

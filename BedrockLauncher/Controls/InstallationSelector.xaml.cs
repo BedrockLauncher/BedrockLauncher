@@ -25,5 +25,10 @@ namespace BedrockLauncher.Controls
         {
             InitializeComponent();
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.SelectedIndex == -1) Properties.LauncherSettings.Default.CurrentInstallation = 0;
+        }
     }
 }

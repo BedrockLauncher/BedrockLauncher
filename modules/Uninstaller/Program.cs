@@ -2,7 +2,7 @@
 using System.IO;
 using System.Diagnostics;
 
-namespace BL_Remover
+namespace BedrockLauncher.Uninstaller
 {
     class Program
     {

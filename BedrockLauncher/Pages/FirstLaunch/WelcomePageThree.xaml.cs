@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
+using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Pages.FirstLaunch
 {
@@ -54,7 +55,7 @@ namespace BedrockLauncher.Pages.FirstLaunch
         }
         public void CreateProfile(string profileName)
         {
-            if (ConfigManager.Default.CreateProfile(ProfileNameTextbox.Text))
+            if (LauncherModel.Default.ConfigManager.CreateProfile(ProfileNameTextbox.Text))
             {
                 Properties.LauncherSettings.Default.CurrentProfile = profileName;
                 Properties.LauncherSettings.Default.Save();

@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Media.Animation;
-using BL_Core.Pages.Common;
+using BedrockLauncher.Core.Pages.Common;
 
 namespace BedrockLauncher.Dungeons.Pages
 {
@@ -51,7 +51,7 @@ namespace BedrockLauncher.Dungeons.Pages
             if (CurrentPageIndex > LastPageIndex) direction = ExpandDirection.Right;
             else direction = ExpandDirection.Left;
 
-            await Task.Run(() => BL_Core.Components.PageAnimator.FrameSwipe(MainPageFrame, content, direction));
+            await Task.Run(() => BedrockLauncher.Core.Components.PageAnimator.FrameSwipe(MainPageFrame, content, direction));
         }
 
 

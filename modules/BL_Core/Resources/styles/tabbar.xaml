@@ -73,7 +73,7 @@
         <Setter Property="Padding" Value="8,0,8,0"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-        <Setter Property="FontFamily" Value="/BL_Core;component/Resources/fonts/#Noto Sans"/>
+        <Setter Property="FontFamily" Value="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Template">
             <Setter.Value>

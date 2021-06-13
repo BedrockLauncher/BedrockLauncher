@@ -7,7 +7,7 @@ using System.Windows.Forms;
 // a vista-style dialog.
 // ------------------------------------------------------------------
 
-namespace BL_Core.Controls
+namespace BedrockLauncher.Core.Controls
 {
     /// <summary>
     /// Wraps System.Windows.Forms.OpenFileDialog to make it present

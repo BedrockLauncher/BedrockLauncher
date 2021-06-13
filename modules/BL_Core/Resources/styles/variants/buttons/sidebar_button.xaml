@@ -9,7 +9,7 @@
         <Setter Property="Background" Value="{DynamicResource ButtonSide.Static.Background}"></Setter>
         <Setter Property="BorderBrush" Value="{DynamicResource ButtonSide.Static.Border}"></Setter>
         <Setter Property="Foreground" Value="{DynamicResource ButtonSide.Static.Foreground}"></Setter>
-        <Setter Property="FontFamily" Value="/BL_Core;component/Resources/fonts/#Noto Sans"></Setter>
+        <Setter Property="FontFamily" Value="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans"></Setter>
         <Setter Property="FontSize" Value="14"></Setter>
         <Setter Property="Padding" Value="55,1,1,1"></Setter>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource FocusVisual}"/>

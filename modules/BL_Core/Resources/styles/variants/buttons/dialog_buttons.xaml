@@ -12,7 +12,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="13,1"/>
         <Setter Property="Margin" Value="4,4"/>
-        <Setter Property="FontFamily" Value="/BL_Core;component/Resources/fonts/#Noto Sans"/>
+        <Setter Property="FontFamily" Value="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Template">
@@ -52,19 +52,19 @@
 
     <Style x:Key="DialogButton_Green" TargetType="{x:Type Button}" BasedOn="{StaticResource DialogButton}" >
         <Style.Resources>
-            <ResourceDictionary Source="/BL_Core;component/Resources/styles/values/variants/DialogButton_Colors_Green.xaml"/>
+            <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/values/variants/DialogButton_Colors_Green.xaml"/>
         </Style.Resources>
     </Style>
 
     <Style x:Key="DialogButton_Red" TargetType="{x:Type Button}" BasedOn="{StaticResource DialogButton}">
         <Style.Resources>
-            <ResourceDictionary Source="/BL_Core;component/Resources/styles/values/variants/DialogButton_Colors_Red.xaml"/>
+            <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/values/variants/DialogButton_Colors_Red.xaml"/>
         </Style.Resources>
     </Style>
 
     <Style x:Key="DialogButton_Orange" TargetType="{x:Type Button}" BasedOn="{StaticResource DialogButton}">
         <Style.Resources>
-            <ResourceDictionary Source="/BL_Core;component/Resources/styles/values/variants/DialogButton_Colors_Orange.xaml"/>
+            <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/values/variants/DialogButton_Colors_Orange.xaml"/>
         </Style.Resources>
     </Style>
 </ResourceDictionary>

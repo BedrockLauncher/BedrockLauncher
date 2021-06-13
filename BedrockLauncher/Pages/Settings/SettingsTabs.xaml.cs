@@ -48,7 +48,7 @@ namespace BedrockLauncher.Pages.Settings
             if (CurrentPageIndex > LastPageIndex) direction = ExpandDirection.Right;
             else direction = ExpandDirection.Left;
 
-            await Task.Run(() => BL_Core.Components.PageAnimator.FrameSwipe(SettingsScreenFrame, content, direction));
+            await Task.Run(() => BedrockLauncher.Core.Components.PageAnimator.FrameSwipe(SettingsScreenFrame, content, direction));
         }
 
         #region Navigation

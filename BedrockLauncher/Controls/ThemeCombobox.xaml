@@ -14,6 +14,7 @@
              SelectedIndex="0"
              FontSize="14">
     <ComboBoxItem VerticalContentAlignment="Center"  Tag="LatestUpdate" Foreground="Yellow" Content="{DynamicResource ThemeEntries_LatestUpdate}"/>
+    <ComboBoxItem  VerticalContentAlignment="Center" Tag="CavesAndCliffsPart1Update" Content="{DynamicResource ThemeEntries_CavesAndCliffsPart1Update}"/>
     <ComboBoxItem  VerticalContentAlignment="Center" Tag="NetherUpdate" Content="{DynamicResource ThemeEntries_NetherUpdate}"/>
     <ComboBoxItem  VerticalContentAlignment="Center" Tag="BuzzyBeesUpdate" Content="{DynamicResource ThemeEntries_BuzzyBeesUpdate}"/>
     <ComboBoxItem  VerticalContentAlignment="Center" Tag="VillagePillageUpdate" Content="{DynamicResource ThemeEntries_VillagePillageUpdate}"/>

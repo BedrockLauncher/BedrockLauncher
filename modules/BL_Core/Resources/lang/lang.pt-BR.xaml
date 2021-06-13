@@ -73,7 +73,7 @@
 
     <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
     <v:String x:Key="GameTab_PlayButton_Text">Jogar</v:String>
-    <v:String x:Key="GameTab_PlayButton_Kill_Text">Excluir</v:String>
+    <v:String x:Key="GameTab_PlayButton_Kill_Text">Fechar</v:String>
     <v:String x:Key="GameTab_InstallationsButton_Text">Instalações</v:String>
     <v:String x:Key="GameTab_SkinsButton_Text">Skins</v:String>
     <v:String x:Key="GameTab_PatchNotesButton_Text">Notas de atualização</v:String>
@@ -368,8 +368,8 @@
     <v:String x:Key="Dialog_DeleteItem_Title">Excluir {0} permanentemente</v:String>
     <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Você tem certeza de que quer excluir &quot;{1}&quot;?&#10; {0} será perdido para sempre! (É muito tempo!)</v:String>
 
-    <v:String x:Key="Dialog_KillGame_Title">Excluir Jogo</v:String>
-    <v:String x:Key="Dialog_KillGame_Text">Isto é perigoso e é apenas recomendado se o jogo travar. Você ainda quer sair do jogo?</v:String>
+    <v:String x:Key="Dialog_KillGame_Title">Fechar Jogo</v:String>
+    <v:String x:Key="Dialog_KillGame_Text">Isto é perigoso e é apenas recomendado se o jogo travar. Você mesmo assim quer fechar o jogo?</v:String>
 
     <v:String x:Key="Dialog_CloseGame_Title">Jogo ainda está em execução</v:String>
     <v:String x:Key="Dialog_CloseGame_Text">Gostaria de forçar o fechamento do jogo?? (sem salvar as mudanças, isto é apenas recomendado se ele travar, por favor feche o jogo normalmente)</v:String>

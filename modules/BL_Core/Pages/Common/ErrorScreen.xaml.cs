@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using BedrockLauncher.Core.Interfaces;
 
-namespace BL_Core.Pages.Common
+namespace BedrockLauncher.Core.Pages.Common
 {
     /// <summary>
     /// Логика взаимодействия для ErrorScreen.xaml

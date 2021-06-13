@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace BL_Core.Controls.McTextBlock {
+namespace BedrockLauncher.Core.Controls.McTextBlock {
     public class McTextBlock : FrameworkElement {
         private const string RANDOM_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         private const string OBFUSCATION_STOPPERS = "0123456789abcdefrABCDEFR";
@@ -132,6 +132,7 @@ namespace BL_Core.Controls.McTextBlock {
             if (_formattedText != null) return;
 
             IsAnimated = false; //Wird in RemoveCodes() auf true gesetzt, falls irgendwas tatsächlcih effektiv obfuscated ist
+#pragma warning disable CS0618 // Type or member is obsolete
             _formattedText = new FormattedText(
                 RemoveCodes(Text),
                 CultureInfo.CurrentCulture,
@@ -144,6 +145,7 @@ namespace BL_Core.Controls.McTextBlock {
                 new SolidColorBrush(Foreground)) {
                     TextAlignment = TextAlignment
                 };
+#pragma warning restore CS0618 // Type or member is obsolete
 
             var currentColor = Foreground;
             var currentStyle = FontStyles.Normal;

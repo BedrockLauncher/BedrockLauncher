@@ -10,8 +10,11 @@ using System.Windows.Controls;
 using System.Collections.Generic;
 using BedrockLauncher.Methods;
 using Newtonsoft.Json;
-using BL_Core;
+using BedrockLauncher.Core;
 using System.Runtime.InteropServices;
+using BedrockLauncher.ViewModels;
+using System.Linq;
+using System.Threading;
 
 namespace BedrockLauncher.Downloaders
 {
@@ -34,43 +37,38 @@ namespace BedrockLauncher.Downloaders
         private List<UpdateNote> ReleaseNotes { get; set; } = new List<UpdateNote>();
         private List<UpdateNote> BetaNotes { get; set; } = new List<UpdateNote>();
 
-        public string LatestTag
-        {
-            get
-            {
-                var list = Notes;
-                if (list.Count == 0) return string.Empty;
-                return list[0].tag_name;
-            }
-        }
-        public string LatestTagBody
-        {
-            get
-            {
-                var list = Notes;
-                if (list.Count == 0) return string.Empty;
-                return list[0].body;
-            }
-        }
-        public string Release_LatestTag { get; private set; } = string.Empty;
-        public string Release_LatestTagBody { get; private set; } = string.Empty;
-        public string Beta_LatestTag { get; private set; } = string.Empty;
-        public string Beta_LatestTagBody { get; private set; } = string.Empty;
+
 
         #endregion
 
         #region Accessors
 
+        public bool isLatestBeta()
+        {
+            var list = Notes;
+            if (list.Count == 0) return false;
+            if (Properties.LauncherSettings.Default.UseBetaBuilds) return list[0].isBeta;
+            else return false;
+        }
+
         public string GetLatestTag()
         {
-            if (Properties.LauncherSettings.Default.UseBetaBuilds) return Beta_LatestTag;
-            else return Release_LatestTag;
+            var list = Notes;
+            if (list.Count == 0) return string.Empty;
+
+            if (Properties.LauncherSettings.Default.UseBetaBuilds) return list[0].tag_name;
+            else if (list.Exists(x => !x.isBeta)) return list.First(x => x.isBeta == false).tag_name;
+            else return string.Empty;
         }
 
         public string GetLatestTagBody()
         {
-            if (Properties.LauncherSettings.Default.UseBetaBuilds) return Beta_LatestTagBody;
-            else return Release_LatestTagBody;
+            var list = Notes;
+            if (list.Count == 0) return string.Empty;
+
+            if (Properties.LauncherSettings.Default.UseBetaBuilds) return list[0].body;
+            else if (list.Exists(x => !x.isBeta)) return list.First(x => x.isBeta == false).body;
+            else return string.Empty;
         }
 
         #endregion
@@ -121,14 +119,8 @@ namespace BedrockLauncher.Downloaders
             httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
             var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
-            System.Diagnostics.Debug.WriteLine(httpResponse.StatusCode);
             ReleaseNotes = JsonConvert.DeserializeObject<List<UpdateNote>>(json);
-            if (ReleaseNotes.Count != 0)
-            {
-                var note = ReleaseNotes[0];
-                this.Release_LatestTag = note.tag_name;
-                this.Release_LatestTagBody = note.body;
-            }
+            foreach (var entry in ReleaseNotes) entry.isBeta = false;
 
         }
         private void Beta_GetJSON()
@@ -140,14 +132,8 @@ namespace BedrockLauncher.Downloaders
             httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
             var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
-            System.Diagnostics.Debug.WriteLine(httpResponse.StatusCode);
             BetaNotes.AddRange(JsonConvert.DeserializeObject<List<UpdateNote>>(json));
-            if (BetaNotes.Count != 0)
-            {
-                var note = BetaNotes[0];
-                this.Beta_LatestTag = note.tag_name;
-                this.Beta_LatestTagBody = note.body;
-            }
+            foreach (var entry in BetaNotes) entry.isBeta = true;
         }
 
 
@@ -164,15 +150,15 @@ namespace BedrockLauncher.Downloaders
 
         private void CompareUpdate()
         {
-            string LatestTag = (Properties.LauncherSettings.Default.UseBetaBuilds ? Beta_LatestTag : Release_LatestTag);
-            string CurrentTag = BL_Core.Properties.Settings.Default.Version;
-            System.Diagnostics.Debug.WriteLine("Current tag: " + CurrentTag);
-            System.Diagnostics.Debug.WriteLine("Latest tag: " + LatestTag);
+            string OnlineTag = GetLatestTag();
+            string LocalTag = BedrockLauncher.Core.Properties.Settings.Default.Version;
+            System.Diagnostics.Debug.WriteLine("Current tag: " + LocalTag);
+            System.Diagnostics.Debug.WriteLine("Latest tag: " + OnlineTag);
 
             try
             {
                 // if current tag < than latest tag
-                if (int.Parse(CurrentTag.Replace(".", "")) < int.Parse(LatestTag.Replace(".", "")))
+                if (int.Parse(LocalTag.Replace(".", "")) < int.Parse(OnlineTag.Replace(".", "")))
                 {
                     System.Diagnostics.Debug.WriteLine("New version available!");
                     ViewModels.LauncherModel.MainThread.updateButton.ShowUpdateButton();
@@ -183,24 +169,65 @@ namespace BedrockLauncher.Downloaders
 
             }
         }
-        private void StartUpdate()
+
+        private async void StartUpdate()
         {
+            string InstallerPath = string.Empty;
+
             try
             {
-                string installerPath = Path.Combine(FilepathManager.Default.ExecutableDirectory, "Installer.exe");
-                string tempPath = Path.Combine(Path.GetTempPath(), "Installer.exe");
+                WebClient client = new WebClient();
+                string installerName = "BedrockLauncher.Installer.exe";
+                string json = string.Empty;
+                var httpRequest = (HttpWebRequest)WebRequest.Create("https://api.github.com/repos/BedrockLauncher/BedrockLauncher.Installer/releases/latest");
+                httpRequest.Headers["Authorization"] = "Bearer " + GithubAPI.ACCESS_TOKEN;
+                httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
+                var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
+                var result = JsonConvert.DeserializeObject<UpdateNote>(json);
 
-                File.Copy(installerPath, tempPath, true);
-
-                ProcessStartInfo startInfo = new ProcessStartInfo
+                if (result.assets != null)
                 {
-                    FileName = tempPath,
-                    Arguments = GetArgs(),
-                    UseShellExecute = true,
-                    Verb = "runas",
-                };
-                System.Diagnostics.Process.Start(startInfo);
-                Application.Current.Shutdown();
+                    if (result.assets.ToList().Exists(x => x.name == installerName))
+                    {
+                        var installer = result.assets.ToList().FirstOrDefault(x => x.name == installerName);
+                        InstallerPath = Path.Combine(Path.GetTempPath(), installerName);
+                        File.Delete(InstallerPath);
+
+                        var httpRequest2 = (HttpWebRequest)WebRequest.Create(installer.url);
+                        httpRequest2.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
+                        httpRequest2.Headers["Authorization"] = "Bearer " + GithubAPI.ACCESS_TOKEN;
+                        httpRequest2.Accept = "application/octet-stream";
+
+                        using (Stream output = System.IO.File.OpenWrite(InstallerPath))
+                        using (WebResponse response = httpRequest2.GetResponse())
+                        using (Stream stream = response.GetResponseStream())
+                        {
+                            await stream.CopyToAsync(output);
+                        }
+
+                        
+                        ProcessStartInfo startInfo = new ProcessStartInfo
+                        {
+                            FileName = InstallerPath,
+                            Arguments = GetArgs(),
+                            UseShellExecute = true,
+                            Verb = "runas",
+                        };
+                        System.Diagnostics.Process.Start(startInfo);
+                        Application.Current.Shutdown();
+
+                        string GetArgs()
+                        {
+                            string silent = "--silent";
+                            string beta = isLatestBeta() ? "--beta" : "";
+                            string path = "--path=\"" + LauncherModel.Default.FilepathManager.ExecutableDirectory + "\"";
+
+                            return string.Join(" ", silent, beta, path);
+                        }
+                        
+                    }
+                }
             }
             catch (Exception err)
             {
@@ -208,15 +235,6 @@ namespace BedrockLauncher.Downloaders
             }
 
 
-            string GetArgs()
-            {
-                string silent = "--silent";
-                string beta = (Properties.LauncherSettings.Default.UseBetaBuilds ? "--beta" : "");
-                string path = "--path=\"" + FilepathManager.Default.ExecutableDirectory + "\"";
-
-                return string.Join(" ", silent, beta, path);
-            }
         }
-
     }
 }

@@ -6,7 +6,7 @@
         <Setter Property="Background" Value="{DynamicResource TextBox.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource TextBox.Static.Border}"/>
         <Setter Property="Foreground" Value="{DynamicResource TextBox.Static.Foreground}"/>
-        <Setter Property="FontFamily" Value="/BL_Core;component/Resources/fonts/#Noto Sans"/>
+        <Setter Property="FontFamily" Value="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
@@ -77,7 +77,7 @@
                 </Style.Triggers>
             </Style>
         </Style.Resources>
-        <Setter Property="FontFamily" Value="/BL_Core;component/Resources/fonts/#Noto Sans"/>
+        <Setter Property="FontFamily" Value="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans"/>
         <Setter Property="MinWidth" Value="10"/>
         <Setter Property="SelectionBrush" Value="{DynamicResource TextBox.SelectionBrush}"/>
         <Setter Property="ContextMenu">
@@ -95,16 +95,16 @@
     </Style>
 
     <Style x:Key="FlowDocument_CodeBlock" TargetType="{x:Type Run}">
-        <Setter Property="FontFamily" Value="/BL_Core;component/Resources/fonts/#Noto Sans"/>
+        <Setter Property="FontFamily" Value="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans"/>
         <Setter Property="Background" Value="#AA000000"/>
     </Style>
 
     <Style x:Key="FlowDocument_Style_Paragrath" TargetType="{x:Type Paragraph}">
-        <Setter Property="FontFamily" Value="/BL_Core;component/Resources/fonts/#Noto Sans"/>
+        <Setter Property="FontFamily" Value="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans"/>
     </Style>
 
     <Style x:Key="FlowDocument_Style" TargetType="{x:Type FlowDocument}">
-        <Setter Property="FontFamily" Value="/BL_Core;component/Resources/fonts/#Noto Sans"/>
+        <Setter Property="FontFamily" Value="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans"/>
         <Style.Resources>
 
         </Style.Resources>

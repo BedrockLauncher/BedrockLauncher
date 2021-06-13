@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
+using Newtonsoft.Json;
 
-namespace BL_Core
+namespace BedrockLauncher.Core
 {
     public class GithubAPI
     {
@@ -68,6 +69,7 @@ namespace BL_Core
     {
         public string url { get; set; }
         public long size { get; set; }
+        public string name { get; set; }
     }
 
     public class UpdateNote
@@ -79,5 +81,8 @@ namespace BL_Core
         public DateTime published_at { get; set; }
         public Asset[] assets { get; set; }
         public string url { get; set; }
+
+        [JsonIgnore]
+        public bool isBeta { get; set; }
     }
 }

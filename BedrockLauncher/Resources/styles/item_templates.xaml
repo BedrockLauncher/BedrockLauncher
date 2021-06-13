@@ -1,11 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:classes="clr-namespace:BL_Core.Classes;assembly=BL_Core"
-                    xmlns:skinClasses="clr-namespace:BL_Core.Classes.SkinPack;assembly=BL_Core"
+                    xmlns:classes="clr-namespace:BedrockLauncher.Core.Classes;assembly=BedrockLauncher.Core"
+                    xmlns:classes2="clr-namespace:BedrockLauncher.Classes"
+                    xmlns:skinClasses="clr-namespace:BedrockLauncher.Core.Classes.SkinPack;assembly=BedrockLauncher.Core"
                     xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
                     xmlns:v="clr-namespace:System;assembly=mscorlib">
 
-    <DataTemplate x:Key="InstallationItemTemplate" DataType="{x:Type classes:MCInstallation}">
+    <DataTemplate x:Key="InstallationItemTemplate" DataType="{x:Type classes2:BLInstallation}">
         <i:InstallationItem x:Name="ItemControl" DataContext="{Binding }" Tag="{Binding ElementName=PageHost}"/>
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver}" Value="True">
@@ -20,7 +21,7 @@
         </DataTemplate.Triggers>
     </DataTemplate>
 
-    <DataTemplate x:Key="VersionItemTemplate" DataType="{x:Type classes:MCVersion}">
+    <DataTemplate x:Key="VersionItemTemplate" DataType="{x:Type classes2:BLVersion}">
         <i:VersionItem x:Name="ItemControl" DataContext="{Binding }" Tag="{Binding ElementName=PageHost}"></i:VersionItem>
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver}" Value="True">

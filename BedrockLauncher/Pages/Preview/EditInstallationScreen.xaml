@@ -34,7 +34,7 @@
                         <TextBlock Margin="0,28,0,5" Text="{DynamicResource EditInstallationScreen_NameSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                         <TextBox Height="32" Tag="{DynamicResource EditInstallationScreen_NameHintText}" Width="330" x:Name="InstallationNameField" AcceptsReturn="False" SpellCheck.IsEnabled="False"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Text=""></TextBox>
                         <TextBlock Margin="0,28,0,5" Text="{DynamicResource EditInstallationScreen_VersionSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-                        <ComboBox Height="32" x:Name="InstallationVersionSelect" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource GenericComboBoxStyle}" ItemContainerStyle="{DynamicResource GenericComboBoxItemStyle_LeftCenter_XY}" Foreground="White" Padding="13,0,0,0" SelectedIndex="1" FontSize="14">
+                        <ComboBox Height="32" x:Name="InstallationVersionSelect" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource GenericComboBoxStyle}" Foreground="White" Padding="13,0,0,0" SelectedIndex="1" FontSize="14">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Style="{DynamicResource CommonTextblock}" Text="{Binding DisplayName}"></TextBlock>

@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:p="clr-namespace:BedrockLauncher.Properties"
       xmlns:classes="clr-namespace:BedrockLauncher.Classes"
-      xmlns:converters="clr-namespace:BL_Core.Components;assembly=BL_Core"
+      xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
+      xmlns:converters="clr-namespace:BedrockLauncher.Core.Components;assembly=BedrockLauncher.Core"
       xmlns:local="clr-namespace:BedrockLauncher"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       mc:Ignorable="d" 
@@ -26,10 +27,10 @@
                 </Grid.ColumnDefinitions>
                 <Grid Margin="10,0">
                     <StackPanel>
-                        <Label Foreground="{DynamicResource PrimaryText.Foreground}" Content="{DynamicResource GeneralSubtitles_Versions}" Margin="0,10,0,0" FontWeight="Bold" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+                        <Label Foreground="{DynamicResource PrimaryText.Foreground}" Content="{DynamicResource GeneralSubtitles_Versions}" Margin="0,10,0,0" FontWeight="Bold" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
                         <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="828" Orientation="Horizontal" Margin="0,-10,0,0">
-                            <CheckBox Click="RefreshVersionsList" IsChecked="{Binding ShowReleases, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Releases}" Foreground="#FFCCCCCC" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
-                            <CheckBox Click="RefreshVersionsList" IsChecked="{Binding ShowBetas, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Betas}" Foreground="#FFCCCCCC" FontFamily="/BL_Core;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
+                            <CheckBox Click="RefreshVersionsList" IsChecked="{Binding ShowReleases, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Releases}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default}, Path=AllowEditing, Mode=OneWay}"></CheckBox>
+                            <CheckBox Click="RefreshVersionsList" IsChecked="{Binding ShowBetas, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Betas}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default}, Path=AllowEditing, Mode=OneWay}"></CheckBox>
                         </StackPanel>
                     </StackPanel>
                 </Grid>

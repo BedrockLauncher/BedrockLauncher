@@ -3,7 +3,7 @@ using System.IO;
 using Microsoft.Win32.SafeHandles;
 using System;
 
-namespace BL_Core.Methods
+namespace BedrockLauncher.Core.Methods
 {
     public class SymLinkHelper
     {

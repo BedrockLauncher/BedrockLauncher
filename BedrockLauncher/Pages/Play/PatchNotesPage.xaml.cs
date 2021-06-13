@@ -18,7 +18,8 @@ using BedrockLauncher.Classes;
 using System.Diagnostics;
 using BedrockLauncher.Controls.Items;
 using BedrockLauncher.Downloaders;
-using BL_Core.Classes;
+using BedrockLauncher.Core.Classes;
+using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Pages.Play
 {
@@ -34,31 +35,45 @@ namespace BedrockLauncher.Pages.Play
         {
             InitializeComponent();
             this.downloader = _downloader;
-            this.downloader.RefreshableStateChanged += Downloader_RefreshableStateChanged;
             this.DataContext = this.downloader;
-            this.downloader.PatchNotes.CollectionChanged += PatchNotes_CollectionChanged;
         }
 
         private void Downloader_RefreshableStateChanged(object sender, EventArgs e)
         {
-            UpdateButton.IsEnabled = downloader.IsRefreshable;
+            this.Dispatcher.Invoke(() =>
+            {
+                UpdateButton.IsEnabled = downloader.IsRefreshable;
+            });
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            await this.Dispatcher.InvokeAsync(() =>
+            await this.Dispatcher.InvokeAsync(async () =>
             {
                 var view = CollectionViewSource.GetDefaultView(PatchNotesList.ItemsSource) as CollectionView;
-                view.Filter = ConfigManager.Default.Filter_PatchNotes;
-                UpdateUI();
+                view.Filter = Filter_PatchNotes;
+                await Task.Run(UpdateUI);
             });
+        }
+
+        public bool Filter_PatchNotes(object obj)
+        {
+            MCPatchNotesItem v = obj as MCPatchNotesItem;
+
+            if (v != null)
+            {
+                if (!BetasCheckBox.IsChecked.Value && v.isBeta) return false;
+                else if (!ReleasesCheckBox.IsChecked.Value && !v.isBeta) return false;
+                else return true;
+            }
+            else return false;
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            await this.Dispatcher.InvokeAsync(() =>
+            await this.Dispatcher.InvokeAsync(async () =>
             {
-                downloader.UpdateList();
+                await Task.Run(downloader.UpdateList);
             });
         }
 
@@ -95,10 +110,12 @@ namespace BedrockLauncher.Pages.Play
 
         private async void Page_Initialized(object sender, EventArgs e)
         {
-            await this.Dispatcher.InvokeAsync(() =>
+            await this.Dispatcher.InvokeAsync(async () =>
             {
-                this.downloader.UpdateList();
+                this.downloader.RefreshableStateChanged += Downloader_RefreshableStateChanged;
+                this.downloader.PatchNotes.CollectionChanged += PatchNotes_CollectionChanged;
                 PatchNotesList.ItemsSource = downloader.PatchNotes;
+                await Task.Run(this.downloader.UpdateList);
             });
         }
 

@@ -13,7 +13,7 @@ using Newtonsoft.Json;
 
 using System.ComponentModel;
 
-namespace BL_Core.Components
+namespace BedrockLauncher.Core.Components
 {
     public class NotifyPropertyChangedBase : INotifyPropertyChanged
     {
