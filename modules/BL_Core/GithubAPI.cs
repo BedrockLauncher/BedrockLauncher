@@ -69,6 +69,7 @@ namespace BedrockLauncher.Core
     {
         public string url { get; set; }
         public long size { get; set; }
+        public string name { get; set; }
     }
 
     public class UpdateNote

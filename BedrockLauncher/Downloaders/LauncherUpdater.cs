@@ -14,6 +14,7 @@ using BedrockLauncher.Core;
 using System.Runtime.InteropServices;
 using BedrockLauncher.ViewModels;
 using System.Linq;
+using System.Threading;
 
 namespace BedrockLauncher.Downloaders
 {
@@ -168,24 +169,65 @@ namespace BedrockLauncher.Downloaders
 
             }
         }
-        private void StartUpdate()
+
+        private async void StartUpdate()
         {
+            string InstallerPath = string.Empty;
+
             try
             {
-                string installerPath = Path.Combine(LauncherModel.Default.FilepathManager.ExecutableDirectory, "BedrockLauncher.Installer.exe");
-                string tempPath = Path.Combine(Path.GetTempPath(), "BedrockLauncher.Installer.exe");
+                WebClient client = new WebClient();
+                string installerName = "BedrockLauncher.Installer.exe";
+                string json = string.Empty;
+                var httpRequest = (HttpWebRequest)WebRequest.Create("https://api.github.com/repos/BedrockLauncher/BedrockLauncher.Installer/releases/latest");
+                httpRequest.Headers["Authorization"] = "Bearer " + GithubAPI.ACCESS_TOKEN;
+                httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
+                var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
+                var result = JsonConvert.DeserializeObject<UpdateNote>(json);
 
-                File.Copy(installerPath, tempPath, true);
-
-                ProcessStartInfo startInfo = new ProcessStartInfo
+                if (result.assets != null)
                 {
-                    FileName = tempPath,
-                    Arguments = GetArgs(),
-                    UseShellExecute = true,
-                    Verb = "runas",
-                };
-                System.Diagnostics.Process.Start(startInfo);
-                Application.Current.Shutdown();
+                    if (result.assets.ToList().Exists(x => x.name == installerName))
+                    {
+                        var installer = result.assets.ToList().FirstOrDefault(x => x.name == installerName);
+                        InstallerPath = Path.Combine(Path.GetTempPath(), installerName);
+                        File.Delete(InstallerPath);
+
+                        var httpRequest2 = (HttpWebRequest)WebRequest.Create(installer.url);
+                        httpRequest2.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
+                        httpRequest2.Headers["Authorization"] = "Bearer " + GithubAPI.ACCESS_TOKEN;
+                        httpRequest2.Accept = "application/octet-stream";
+
+                        using (Stream output = System.IO.File.OpenWrite(InstallerPath))
+                        using (WebResponse response = httpRequest2.GetResponse())
+                        using (Stream stream = response.GetResponseStream())
+                        {
+                            await stream.CopyToAsync(output);
+                        }
+
+                        
+                        ProcessStartInfo startInfo = new ProcessStartInfo
+                        {
+                            FileName = InstallerPath,
+                            Arguments = GetArgs(),
+                            UseShellExecute = true,
+                            Verb = "runas",
+                        };
+                        System.Diagnostics.Process.Start(startInfo);
+                        Application.Current.Shutdown();
+
+                        string GetArgs()
+                        {
+                            string silent = "--silent";
+                            string beta = isLatestBeta() ? "--beta" : "";
+                            string path = "--path=\"" + LauncherModel.Default.FilepathManager.ExecutableDirectory + "\"";
+
+                            return string.Join(" ", silent, beta, path);
+                        }
+                        
+                    }
+                }
             }
             catch (Exception err)
             {
@@ -193,15 +235,6 @@ namespace BedrockLauncher.Downloaders
             }
 
 
-            string GetArgs()
-            {
-                string silent = "--silent";
-                string beta = isLatestBeta() ? "--beta" : "";
-                string path = "--path=\"" + LauncherModel.Default.FilepathManager.ExecutableDirectory + "\"";
-
-                return string.Join(" ", silent, beta, path);
-            }
         }
-
     }
 }

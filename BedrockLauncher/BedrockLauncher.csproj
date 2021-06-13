@@ -838,10 +838,6 @@
       <Project>{6718749f-4346-4e5e-85df-d47faf22c9b6}</Project>
       <Name>Extensions.NET</Name>
     </ProjectReference>
-    <ProjectReference Include="..\modules\Installer\BedrockLauncher.Installer.csproj">
-      <Project>{295729f7-172f-4bcd-a619-e495db5a4e2f}</Project>
-      <Name>BedrockLauncher.Installer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\modules\SkinView3D\SkinView3D.csproj">
       <Project>{ccabef67-f4bf-4087-9291-62ee5e316934}</Project>
       <Name>SkinView3D</Name>
