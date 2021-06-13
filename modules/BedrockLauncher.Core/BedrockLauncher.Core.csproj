@@ -384,5 +384,20 @@
   <ItemGroup>
     <Resource Include="Resources\images\ui\panels\MainPagePlayButtonPressed.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\packs\dev_pack_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\packs\invalid_pack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\packs\invalid_pack_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\packs\pack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\packs\pack_icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -807,11 +807,6 @@
     <Resource Include="Resources\images\installation_icons\Nether_Wart_Block.png" />
     <Resource Include="Resources\images\installation_icons\Warped_Planks.png" />
     <Resource Include="Resources\images\installation_icons\Warped_Wart_Block.png" />
-    <Resource Include="Resources\images\packs\pack_icon.png" />
-    <Resource Include="Resources\images\packs\pack.png" />
-    <Resource Include="Resources\images\packs\invalid_pack.png" />
-    <Resource Include="Resources\images\packs\invalid_pack_icon.png" />
-    <Resource Include="Resources\images\packs\dev_pack_icon.png" />
     <Resource Include="Resources\images\bg\firstlaunchbackground.jpg" />
     <Resource Include="Resources\images\icons\servers_icon.png" />
     <Resource Include="Resources\images\panels\advancement_icon.png" />

@@ -25,8 +25,8 @@
                 </Image.OpacityMask>
             </Image>
             <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0">
-                <TextBlock FontSize="16" Foreground="#FFFFFFF1" FontWeight="DemiBold" Padding="0,0,0,0" Text="{Binding DisplayName}"/>
-                <TextBlock FontSize="11" Foreground="#FFBEBEBE" FontWeight="SemiBold" Padding="0,0,0,0" Text="{Binding InstallationSize}"/>
+                <TextBlock FontSize="16" Foreground="{DynamicResource PrimaryText.Foreground}" FontWeight="DemiBold" Padding="0,0,0,0" Text="{Binding DisplayName}"/>
+                <TextBlock FontSize="11" Foreground="{DynamicResource SecondaryText.Foreground}" FontWeight="SemiBold" Padding="0,0,0,0" Text="{Binding InstallationSize}"/>
             </StackPanel>
         </Grid>
         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Column="2" x:Name="ButtonPanel" Visibility="Collapsed">
@@ -34,11 +34,7 @@
             <Button x:Name="Folder" Click="Folder_Click" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" FontWeight="Bold" Style="{DynamicResource DialogButton}">
                 <Button.Content>
                     <Grid Width="16" Height="16">
-                        <Path Stretch="Uniform" Fill="White" StrokeThickness="0">
-                            <Path.Data>
-                                <PathGeometry Figures="M 1.3997323e-4 2.2488189 H -2.5131058 V 4.9996896e-7 L -2.5133858 -2.2488189 h 0.7939371 0.79387707 l -2.2e-4 0.2645666 v 0.2645676 H 0.79379707 2.5133859 V 0.26456708 2.2488189 Z m 0 -0.2645666 H 2.2488368 V 0.26456708 -1.4551172 H 1.3997323e-4 -2.2484168 l -1.4e-4 1.71968428 V 1.9842523 Z M -1.7194487 -1.7614592 l 0.5289081 -1.439e-4 v -0.2669835 h -0.5289381 -0.5289381 v 0.2671274 z" FillRule="Nonzero"/>
-                            </Path.Data>
-                        </Path>
+                        <Path Stretch="Uniform" Fill="{DynamicResource OveralElements.Background}" StrokeThickness="0" Data="{DynamicResource FolderIcon}"/>
                     </Grid>
                 </Button.Content>
             </Button>
