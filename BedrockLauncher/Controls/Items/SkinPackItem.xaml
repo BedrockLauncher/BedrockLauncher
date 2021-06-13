@@ -36,7 +36,10 @@
                     </Grid>
                 </Button.Content>
             </Button>
-            <Button Style="{DynamicResource DialogButton}" Content="..." Foreground="White" Name="MoreButton" Click="MoreButton_Click">
+            <Button Style="{DynamicResource DialogButton}" Foreground="White" Name="MoreButton" Click="MoreButton_Click">
+                <Button.Content>
+                    <Image Width="16" Height="16" Source="{DynamicResource Expandable}" Stretch="None"/>
+                </Button.Content>
                 <Button.ContextMenu>
                     <ContextMenu Closed="ContextMenu_Closed" Style="{DynamicResource NoCheckboxContextMenu}">
                         <MenuItem Header="{DynamicResource GeneralText_Edit}" Name="EditSkinPackButton" Click="EditSkinPackButton_Click"></MenuItem>

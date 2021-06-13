@@ -40,7 +40,10 @@
                     </Grid>
                 </Button.Content>
             </Button>
-            <Button x:Name="More" Content="..." FontWeight="Bold" Style="{DynamicResource DialogButton}" Click="More_Click">
+            <Button x:Name="More" FontWeight="Bold" Style="{DynamicResource DialogButton}" Click="More_Click">
+                <Button.Content>
+                    <Image Width="16" Height="16" Source="{DynamicResource Expandable}" Stretch="None"/>
+                </Button.Content>
                 <Button.ContextMenu>
                     <ContextMenu Closed="ContextMenu_Closed" Style="{DynamicResource NoCheckboxContextMenu}">
                         <MenuItem Header="{DynamicResource GeneralText_Edit}" IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default}, Path=AllowEditing, Mode=OneWay}" Name="EditInstallationButton" Click="EditInstallationButton_Click"  Visibility="{Binding ReadOnly, Converter={StaticResource VisibleIfTrueConverter}, ConverterParameter=Inverted}"></MenuItem>
