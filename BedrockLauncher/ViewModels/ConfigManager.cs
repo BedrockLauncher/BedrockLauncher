@@ -18,14 +18,81 @@ using BedrockLauncher.Core.Components;
 
 namespace BedrockLauncher.ViewModels
 {
-
     public class ConfigManager : NotifyPropertyChangedBase
     {
-        #region Helpers
+        #region Init
+
+        public void Reload()
+        {
+            LoadProfiles();
+            LoadInstallations();
+        }
+
+        public void Init()
+        {
+            LoadVersions();
+            LoadProfiles();
+            LoadInstallations();
+        }
+
+        #endregion
+
+        #region General
+        private JsonSerializerSettings JsonSerializerSettings
+        {
+            get
+            {
+                var settings = new JsonSerializerSettings();
+                settings.NullValueHandling = NullValueHandling.Ignore;
+                settings.MissingMemberHandling = MissingMemberHandling.Ignore;
+                return settings;
+            }
+        }
+
+        #endregion
+
+        #region Versions
+        public ObservableCollection<BLVersion> Versions { get; private set; } = new ObservableCollection<BLVersion>();
 
         private bool _IsVersionsUpdating = false;
+        public bool IsVersionsUpdating
+        {
+            get { return _IsVersionsUpdating; }
+            set { _IsVersionsUpdating = value; OnPropertyChanged(nameof(IsVersionsUpdating)); }
+        }
 
-        public string CurrentProfile 
+        public async void LoadVersions()
+        {
+            if (IsVersionsUpdating) return;
+            await Application.Current.Dispatcher.Invoke((Func<Task>)(async () =>
+            {
+                IsVersionsUpdating = true;
+                await LauncherModel.Default.VersionDownloader.UpdateVersions(Versions);
+                IsVersionsUpdating = false;
+            }));
+        }
+
+        public bool Filter_VersionList(object obj)
+        {
+            BLVersion v = BLVersion.Convert(obj as MCVersion);
+
+            if (v != null && v.IsInstalled)
+            {
+                if (!Properties.LauncherSettings.Default.ShowBetas && v.IsBeta) return false;
+                else if (!Properties.LauncherSettings.Default.ShowReleases && !v.IsBeta) return false;
+                else return true;
+            }
+            else return false;
+
+        }
+
+        #endregion
+
+        #region Profiles
+
+        public MCProfilesList ProfileList { get; private set; } = new MCProfilesList();
+
+        public string CurrentProfileName
         {
             get
             {
@@ -46,79 +113,25 @@ namespace BedrockLauncher.ViewModels
                 return Properties.LauncherSettings.Default.CurrentProfile;
             }
         }
-        public BLInstallation CurrentInstallation 
-        { 
-            get
-            {
-                if (CurrentInstallations == null || Properties.LauncherSettings.Default.CurrentInstallation == -1) return null;
-                return CurrentInstallations[Properties.LauncherSettings.Default.CurrentInstallation];
-            }
-        }
-        public bool IsVersionsUpdating
-        {
-            get { return _IsVersionsUpdating; }
-            set { _IsVersionsUpdating = value; OnPropertyChanged(nameof(IsVersionsUpdating)); }
-        }
-
-        #endregion
-
-        #region Storage Holders
-
-
-        public MCProfilesList ProfileList { get; private set; } = new MCProfilesList();
-        public ObservableCollection<BLVersion> Versions { get; private set; } = new ObservableCollection<BLVersion>();
-        public ObservableCollection<BLInstallation> CurrentInstallations { get; private set; } = new ObservableCollection<BLInstallation>();
-
-
-        #endregion
-
-        #region Init
-
-        public void Reload()
-        {
-            LoadProfiles();
-            LoadInstallations();
-        }
-
-        public void Init()
-        {
-            LoadVersions();
-            LoadProfiles();
-            LoadInstallations();
-        }
-
-        #endregion
-
-        #region General
-
-        private  JsonSerializerSettings JsonSerializerSettings
+        public MCProfile CurrentProfile
         {
             get
             {
-                var settings = new JsonSerializerSettings();
-                settings.NullValueHandling = NullValueHandling.Ignore;
-                settings.MissingMemberHandling = MissingMemberHandling.Ignore;
-                return settings;
+                string savedProfileKey = Properties.LauncherSettings.Default.CurrentProfile;
+                if (ProfileList.profiles != null)
+                {
+                    if (ProfileList.profiles.ContainsKey(savedProfileKey)) return ProfileList.profiles[savedProfileKey];
+                    else if (ProfileList.profiles.Count != 0)
+                    {
+                        var result = ProfileList.profiles.First();
+                        Properties.LauncherSettings.Default.CurrentProfile = result.Key;
+                        Properties.LauncherSettings.Default.Save();
+                        return result.Value;
+                    }
+                }
+                return null;
             }
         }
-
-        #endregion
-
-        #region Versions
-        public async void LoadVersions()
-        {
-            if (IsVersionsUpdating) return;
-            await LauncherModel.MainThread.Dispatcher.Invoke((Func<Task>)(async () =>
-            {
-                IsVersionsUpdating = true;
-                await LauncherModel.Default.VersionDownloader.UpdateVersions(Versions);
-                IsVersionsUpdating = false;
-            }));
-        }
-
-        #endregion
-
-        #region Profiles
 
         public void LoadProfiles()
         {
@@ -213,9 +226,21 @@ namespace BedrockLauncher.ViewModels
         #endregion
 
         #region Installations
+        public BLInstallation CurrentInstallation
+        {
+            get
+            {
+                if (CurrentInstallations == null || Properties.LauncherSettings.Default.CurrentInstallation == -1) return null;
+                return CurrentInstallations[Properties.LauncherSettings.Default.CurrentInstallation];
+            }
+        }
+        public ObservableCollection<BLInstallation> CurrentInstallations { get; private set; } = new ObservableCollection<BLInstallation>();
+
+        public const string InstallationDefaultIcon = @"/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png";
+
         public void LoadInstallations(string profile = null)
         {
-            if (profile == null) profile = CurrentProfile;
+            if (profile == null) profile = CurrentProfileName;
             CurrentInstallations.Clear();
             GetInstallations().ForEach(x => CurrentInstallations.Add(x));
 
@@ -249,9 +274,9 @@ namespace BedrockLauncher.ViewModels
                 else return new List<BLInstallation>();
             }
         }
-        public void EditInstallation(int index, string name, string directory, BLVersion version, string iconPath = @"/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png", bool isCustom = false)
+        public void EditInstallation(int index, string name, string directory, BLVersion version, string iconPath = InstallationDefaultIcon, bool isCustom = false)
         {
-            if (ProfileList.profiles.ContainsKey(CurrentProfile) && ProfileList.profiles[CurrentProfile].Installations.Count > index)
+            if (ProfileList.profiles.ContainsKey(CurrentProfileName) && ProfileList.profiles[CurrentProfileName].Installations.Count > index)
             {
                 BLInstallation installation = new BLInstallation();
                 installation.DisplayName = name;
@@ -277,14 +302,14 @@ namespace BedrockLauncher.ViewModels
                 }
 
 
-                if (ProfileList.profiles[CurrentProfile].Installations == null) ProfileList.profiles[CurrentProfile].Installations = new List<MCInstallation>();
-                ProfileList.profiles[CurrentProfile].Installations[index] = installation;
+                if (ProfileList.profiles[CurrentProfileName].Installations == null) ProfileList.profiles[CurrentProfileName].Installations = new List<MCInstallation>();
+                ProfileList.profiles[CurrentProfileName].Installations[index] = installation;
                 SaveProfiles();
             }
         }
-        public void CreateInstallation(string name, MCVersion version, string directory, string iconPath = @"/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png", bool isCustom = false)
+        public void CreateInstallation(string name, MCVersion version, string directory, string iconPath = InstallationDefaultIcon, bool isCustom = false)
         {
-            if (ProfileList.profiles.ContainsKey(CurrentProfile))
+            if (ProfileList.profiles.ContainsKey(CurrentProfileName))
             {
                 BLInstallation installation = new BLInstallation();
                 installation.DisplayName = name;
@@ -310,21 +335,21 @@ namespace BedrockLauncher.ViewModels
                 }
 
 
-                if (ProfileList.profiles[CurrentProfile].Installations == null) ProfileList.profiles[CurrentProfile].Installations = new List<MCInstallation>();
-                ProfileList.profiles[CurrentProfile].Installations.Add(installation);
+                if (ProfileList.profiles[CurrentProfileName].Installations == null) ProfileList.profiles[CurrentProfileName].Installations = new List<MCInstallation>();
+                ProfileList.profiles[CurrentProfileName].Installations.Add(installation);
                 SaveProfiles();
             }
         }
         public void DuplicateInstallation(BLInstallation installation)
         {
-            if (ProfileList.profiles.ContainsKey(CurrentProfile))
+            if (ProfileList.profiles.ContainsKey(CurrentProfileName))
             {
-                if (ProfileList.profiles[CurrentProfile].Installations == null) return;
+                if (ProfileList.profiles[CurrentProfileName].Installations == null) return;
 
                 string newName = installation.DisplayName;
                 int i = 1;
 
-                while (ProfileList.profiles[CurrentProfile].Installations.Exists(x => x.DisplayName == newName))
+                while (ProfileList.profiles[CurrentProfileName].Installations.Exists(x => x.DisplayName == newName))
                 {
                     newName = newName + "(" + i + ")";
                     i++;
@@ -335,29 +360,12 @@ namespace BedrockLauncher.ViewModels
         }
         public void DeleteInstallation(BLInstallation installation)
         {
-            if (ProfileList.profiles.ContainsKey(CurrentProfile))
+            if (ProfileList.profiles.ContainsKey(CurrentProfileName))
             {
-                if (ProfileList.profiles[CurrentProfile].Installations == null) return;
-                ProfileList.profiles[CurrentProfile].Installations.RemoveAll(x => x.DisplayName == installation.DisplayName && !x.ReadOnly);
+                if (ProfileList.profiles[CurrentProfileName].Installations == null) return;
+                ProfileList.profiles[CurrentProfileName].Installations.RemoveAll(x => x.DisplayName == installation.DisplayName && !x.ReadOnly);
                 SaveProfiles();
             }
-        }
-        #endregion
-
-        #region ListView Filters/Sorting
-
-        public bool Filter_VersionList(object obj)
-        {
-            BLVersion v = BLVersion.Convert(obj as MCVersion);
-
-            if (v != null && v.IsInstalled)
-            {
-                if (!Properties.LauncherSettings.Default.ShowBetas && v.IsBeta) return false;
-                else if (!Properties.LauncherSettings.Default.ShowReleases && !v.IsBeta) return false;
-                else return true;
-            }
-            else return false;
-
         }
         public bool Filter_InstallationList(object obj)
         {
@@ -367,7 +375,6 @@ namespace BedrockLauncher.ViewModels
             else if (!Properties.LauncherSettings.Default.ShowReleases && !v.IsBeta) return false;
             else return true;
         }
-
         #endregion
     }
 }

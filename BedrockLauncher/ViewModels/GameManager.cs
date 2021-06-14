@@ -32,7 +32,6 @@ namespace BedrockLauncher.ViewModels
 {
     public class GameManager: NotifyPropertyChangedBase
     {
-
         #region Threading Tasks
 
         public CancellationTokenSource cancelSource = new CancellationTokenSource();
@@ -103,169 +102,22 @@ namespace BedrockLauncher.ViewModels
         #endregion
 
         #region General Methods
-
-        public void Cancel()
+        public async void KillGame()
         {
-            InvokeCancel();
-        }
-        public void Remove(BLVersion v)
-        {
-            InvokeRemove(v);
-        }
-        public void Repair(BLVersion v)
-        {
-            InvokeDownload(v, false);
-        }
-
-        public void KillGame()
-        {
-            InvokeKillGame();
-        }
-        public void Play(BLInstallation i)
-        {
-            if (i == null) return;
-            Properties.LauncherSettings.Default.CurrentInstallation = LauncherModel.Default.ConfigManager.CurrentInstallations.IndexOf(i);
-            Properties.LauncherSettings.Default.Save();
-
-            var v = i.Version as BLVersion;
-            switch (v.DisplayInstallStatus.ToString())
+            if (LauncherModel.Default.GameManager.GameProcess != null)
             {
-                case "Not installed":
-                    InvokeDownload(v, true);
-                    break;
-                case "Installed":
-                    InvokeLaunch(v);
-                    break;
+                var title = Application.Current.FindResource("Dialog_KillGame_Title") as string;
+                var content = Application.Current.FindResource("Dialog_KillGame_Text") as string;
+
+                var result = await DialogPrompt.ShowDialog_YesNo(title, content);
+
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    GameProcess.Kill();
+                }
             }
         }
-        public void OpenFolder(BLInstallation i)
-        {
-            string Directory = LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.ConfigManager.CurrentProfile, i.DirectoryName_Full);
-            if (!System.IO.Directory.Exists(Directory)) System.IO.Directory.CreateDirectory(Directory);
-            Process.Start("explorer.exe", Directory);
-        }
-        public void OpenFolder(BLVersion i)
-        {
-            string Directory = Path.GetFullPath(i.GameDirectory);
-            if (!System.IO.Directory.Exists(Directory)) System.IO.Directory.CreateDirectory(Directory);
-            Process.Start("explorer.exe", Directory);
-        }
-        public void OpenFolder(MCSkinPack i)
-        {
-            Process.Start("explorer.exe", i.Directory);
-        }
-        public void BackupGameData()
-        {
-            InvokeBackup();
-        }
-
-        #endregion
-
-        #region Invoke Methods
-
-        private void InvokeCancel()
-        {
-            if (cancelSource != null && !cancelSource.IsCancellationRequested)
-            {
-                cancelSource.Cancel();
-            }
-        }
-        private void InvokeLaunch(BLVersion v)
-        {
-            Task.Run(async () =>
-            {
-                try
-                {
-                    StartLaunch();
-                    await SetInstallationDataPath();
-                    string gameDir = Path.GetFullPath(v.GameDirectory);
-                    await ReRegisterPackage(v, gameDir);
-                    bool closable = await LaunchGame(v);
-                    if (!closable) EndLaunch();
-                }
-                catch
-                {
-                    EndLaunch();
-                }
-
-            });
-
-            void StartLaunch()
-            {
-                ViewModels.LauncherModel.Default.ShowProgressBar = true;
-                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isLaunching;
-            }
-
-            void EndLaunch()
-            {
-                ViewModels.LauncherModel.Default.ShowProgressBar = false;
-                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
-            }
-        }
-        private void InvokeDownload(BLVersion v, bool RunAfterwards = false)
-        {
-            System.Diagnostics.Debug.WriteLine("Download start");
-            bool wasCanceled = false;
-
-            Task.Run(async () =>
-            {
-                cancelSource = new CancellationTokenSource();
-                ViewModels.LauncherModel.Default.ShowProgressBar = true;
-                ViewModels.LauncherModel.Default.AllowCancel = true;
-                ViewModels.LauncherModel.Default.CancelCommand = new RelayCommand((o) => InvokeCancel());
-
-                try
-                {
-                    string dlPath = "Minecraft-" + v.Name + ".Appx";
-                    VersionDownloader downloader = LauncherModel.Default.VersionDownloader;
-                    if (v.IsBeta) await BetaAuthenticate();
-                    await DownloadVersion(v, downloader, dlPath, cancelSource);
-                    await ExtractPackage(v, dlPath, cancelSource);
-                }
-                catch (TaskCanceledException)
-                {
-                    wasCanceled = true;
-                }
-                catch (Exception ex)
-                {
-                    ErrorScreenShow.exceptionmsg(ex);
-                    wasCanceled = true;
-                }
-
-                if (!RunAfterwards || wasCanceled) ViewModels.LauncherModel.Default.ShowProgressBar = false;
-                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
-                ViewModels.LauncherModel.Default.AllowCancel = false;
-                ViewModels.LauncherModel.Default.CancelCommand = null;
-                cancelSource = null;
-                v.UpdateInstallStatus();
-
-                if (RunAfterwards && !wasCanceled) InvokeLaunch(v);
-            });
-        }
-        private void InvokeRemove(BLVersion v)
-        {
-            Task.Run(async () =>
-            {
-                ViewModels.LauncherModel.Default.ShowProgressBar = true;
-                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isUninstalling;
-
-                try
-                {
-                    await UnregisterPackage(v, Path.GetFullPath(v.GameDirectory));
-                    Directory.Delete(v.GameDirectory, true);
-                }
-                catch (Exception ex)
-                {
-                    ErrorScreenShow.exceptionmsg(ex);
-                }
-
-                v.UpdateInstallStatus();
-                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
-                ViewModels.LauncherModel.Default.ShowProgressBar = false;
-                return;
-            });
-        }
-        private async void InvokeBackup()
+        public async void Backup()
         {
             await Task.Run(() =>
             {
@@ -310,7 +162,7 @@ namespace BedrockLauncher.ViewModels
                         recoveryName = string.Format("{0} ({1})", name, i);
                         recoveryDir = string.Format("{0}_{1}", dir, i);
                     }
-                    directoryPath = Path.Combine(LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.ConfigManager.CurrentProfile, recoveryDir));
+                    directoryPath = Path.Combine(LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.ConfigManager.CurrentProfileName, recoveryDir));
                     if (!Directory.Exists(directoryPath)) break;
                     i++;
                 }
@@ -347,26 +199,142 @@ namespace BedrockLauncher.ViewModels
                 }
             }
         }
-        public async void InvokeKillGame()
+        public async void Repair(BLVersion v)
         {
-            if (LauncherModel.Default.GameManager.GameProcess != null)
+            await Download(v, false);
+        }
+        public async void Remove(BLVersion v)
+        {
+            ViewModels.LauncherModel.Default.ShowProgressBar = true;
+            ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isUninstalling;
+
+            try
             {
-                var title = Application.Current.FindResource("Dialog_KillGame_Title") as string;
-                var content = Application.Current.FindResource("Dialog_KillGame_Text") as string;
+                await UnregisterPackage(v, Path.GetFullPath(v.GameDirectory));
+                Directory.Delete(v.GameDirectory, true);
+            }
+            catch (Exception ex)
+            {
+                ErrorScreenShow.exceptionmsg(ex);
+            }
 
-                var result = await DialogPrompt.ShowDialog_YesNo(title, content);
+            v.UpdateInstallStatus();
+            ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
+            ViewModels.LauncherModel.Default.ShowProgressBar = false;
+            return;
+        }
+        public async void Play(MCProfile p, BLInstallation i, bool KeepLauncherOpen, bool Save = true)
+        {
+            if (i == null) return;
 
-                if (result == System.Windows.Forms.DialogResult.Yes)
+            if (Save)
+            {
+                Properties.LauncherSettings.Default.CurrentInstallation = LauncherModel.Default.ConfigManager.CurrentInstallations.IndexOf(i);
+                Properties.LauncherSettings.Default.Save();
+            }
+
+
+            switch (i.Version.DisplayInstallStatus.ToString())
+            {
+                case "Not installed":
+                    var wasCanceled = await Download(i.Version, true);
+                    if (!wasCanceled) Launch();
+                    break;
+                case "Installed":
+                    Launch();
+                    break;
+            }
+
+
+            async void Launch()
+            {
+                var v = i.Version;
+                try
                 {
-                    GameProcess.Kill();
+                    StartLaunch();
+                    await SetInstallationDataPath(p, i);
+                    string gameDir = Path.GetFullPath(v.GameDirectory);
+                    await ReRegisterPackage(v, gameDir);
+                    bool closable = await LaunchGame(v, KeepLauncherOpen);
+                    if (!closable) EndLaunch();
+                }
+                catch
+                {
+                    EndLaunch();
+                }
+
+                void StartLaunch()
+                {
+                    ViewModels.LauncherModel.Default.ShowProgressBar = true;
+                    ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isLaunching;
+                }
+
+                void EndLaunch()
+                {
+                    ViewModels.LauncherModel.Default.ShowProgressBar = false;
+                    ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
                 }
             }
+        }
+        public void OpenFolder(object i)
+        {
+            string Directory = string.Empty;
+
+            if (i is BLInstallation) Directory = LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.ConfigManager.CurrentProfileName, (i as BLInstallation).DirectoryName_Full);
+            else if (i is BLVersion) Directory = Path.GetFullPath((i as BLVersion).GameDirectory);
+            else if (i is MCSkinPack) Directory = (i as MCSkinPack).Directory;
+
+            if (!System.IO.Directory.Exists(Directory)) System.IO.Directory.CreateDirectory(Directory);
+            Process.Start("explorer.exe", Directory);
+        }
+        public void Cancel()
+        {
+            if (cancelSource != null && !cancelSource.IsCancellationRequested) cancelSource.Cancel();
         }
 
         #endregion
 
         #region Task Methods
 
+        private async Task<bool> Download(BLVersion v, bool RunAfterwards)
+        {
+            System.Diagnostics.Debug.WriteLine("Download start");
+            bool wasCanceled = false;
+
+            cancelSource = new CancellationTokenSource();
+            ViewModels.LauncherModel.Default.ShowProgressBar = true;
+            ViewModels.LauncherModel.Default.AllowCancel = true;
+            ViewModels.LauncherModel.Default.CancelCommand = new RelayCommand((o) => Cancel());
+
+            try
+            {
+                string dlPath = "Minecraft-" + v.Name + ".Appx";
+                VersionDownloader downloader = LauncherModel.Default.VersionDownloader;
+                if (v.IsBeta) await BetaAuthenticate();
+                await DownloadVersion(v, downloader, dlPath, cancelSource);
+                await ExtractPackage(v, dlPath, cancelSource);
+            }
+            catch (TaskCanceledException)
+            {
+                wasCanceled = true;
+            }
+            catch (Exception ex)
+            {
+                ErrorScreenShow.exceptionmsg(ex);
+                wasCanceled = true;
+            }
+
+            if (!RunAfterwards || wasCanceled) ViewModels.LauncherModel.Default.ShowProgressBar = false;
+            ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
+            ViewModels.LauncherModel.Default.AllowCancel = false;
+            ViewModels.LauncherModel.Default.CancelCommand = null;
+            cancelSource = null;
+            v.UpdateInstallStatus();
+
+            return wasCanceled;
+
+
+        }
         private async Task DownloadVersion(BLVersion v, VersionDownloader downloader, string dlPath, CancellationTokenSource cancelSource)
         {
             try
@@ -408,7 +376,7 @@ namespace BedrockLauncher.ViewModels
                 throw e;
             }
         }
-        private async Task<bool> LaunchGame(MCVersion v)
+        private async Task<bool> LaunchGame(MCVersion v, bool KeepLauncherOpen)
         {
             try
             {
@@ -417,8 +385,8 @@ namespace BedrockLauncher.ViewModels
                 AppActivationResult activationResult = null;
                 if (pkg.Count > 0) activationResult = await pkg[0].LaunchAsync();
                 System.Diagnostics.Debug.WriteLine("App launch finished!");
-                if (Properties.LauncherSettings.Default.KeepLauncherOpen && activationResult != null) GetGameProcess(activationResult);
-                if (Properties.LauncherSettings.Default.KeepLauncherOpen == false)
+                if (KeepLauncherOpen && activationResult != null) GetGameProcess(activationResult);
+                if (KeepLauncherOpen == false)
                 {
                     await Application.Current.Dispatcher.InvokeAsync(() =>
                     {
@@ -443,7 +411,7 @@ namespace BedrockLauncher.ViewModels
                 throw e;
             }
         }
-        private async Task SetInstallationDataPath()
+        private async Task SetInstallationDataPath(MCProfile p, BLInstallation i)
         {
             await Task.Run(() =>
             {
@@ -452,7 +420,7 @@ namespace BedrockLauncher.ViewModels
                     string LocalStateFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState");
                     string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang");
                     string PackageBakFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang.default");
-                    string ProfileFolder = Path.GetFullPath(LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.ConfigManager.CurrentProfile, LauncherModel.Default.ConfigManager.CurrentInstallation.DirectoryName_Full));
+                    string ProfileFolder = Path.GetFullPath(LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(p.Name, i.DirectoryName_Full));
 
                     if (Directory.Exists(PackageFolder))
                     {

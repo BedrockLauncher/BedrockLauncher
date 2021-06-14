@@ -90,7 +90,7 @@ namespace BedrockLauncher.Pages.Play
 
                 if (installation == null) return;
 
-                string InstallationPath = LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.ConfigManager.CurrentProfile, installation.DirectoryName);
+                string InstallationPath = LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.ConfigManager.CurrentProfileName, installation.DirectoryName);
                 string normal_folder = LauncherModel.Default.FilepathManager.GetSkinPacksFolderPath(InstallationPath, false);
                 string dev_folder = LauncherModel.Default.FilepathManager.GetSkinPacksFolderPath(InstallationPath, true);
 
@@ -204,7 +204,7 @@ namespace BedrockLauncher.Pages.Play
                     if (file.Entries.ToList().Exists(x => x.FullName == "skins.json"))
                     {
                         file.Dispose();
-                        string InstallationPath = LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.ConfigManager.CurrentProfile, LauncherModel.Default.ConfigManager.CurrentInstallation.DirectoryName);
+                        string InstallationPath = LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.ConfigManager.CurrentProfileName, LauncherModel.Default.ConfigManager.CurrentInstallation.DirectoryName);
                         string NewPackDirectoryName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
                         string NewPackDirectory = Path.Combine(LauncherModel.Default.FilepathManager.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
 

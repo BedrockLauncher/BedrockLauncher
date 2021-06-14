@@ -63,7 +63,8 @@ namespace BedrockLauncher.Controls.Items
         {
             Button button = sender as Button;
             var installation = button.DataContext as BLInstallation;
-            LauncherModel.Default.GameManager.Play(installation);
+            bool KeepLauncherOpen = Properties.LauncherSettings.Default.KeepLauncherOpen;
+            LauncherModel.Default.GameManager.Play(LauncherModel.Default.ConfigManager.CurrentProfile, installation, KeepLauncherOpen);
         }
 
         private async void DeleteInstallationButton_Click(object sender, RoutedEventArgs e)
