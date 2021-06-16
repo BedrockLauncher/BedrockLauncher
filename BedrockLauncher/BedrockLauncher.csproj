@@ -186,9 +186,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\DLC.cs" />
     <Compile Include="Classes\Html\SkinViewResourceSchemeHandler.cs" />
     <Compile Include="Classes\BLInstallation.cs" />
     <Compile Include="Classes\BLVersion.cs" />
+    <Compile Include="Controls\Items\DLCItem.xaml.cs">
+      <DependentUpon>DLCItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Items\JavaFeedItem.xaml.cs">
       <DependentUpon>JavaFeedItem.xaml</DependentUpon>
     </Compile>
@@ -392,6 +396,10 @@
     <Page Include="Controls\Items\BlockPickerItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Items\DLCItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Items\JavaFeedItem.xaml">
       <Generator>MSBuild:Compile</Generator>

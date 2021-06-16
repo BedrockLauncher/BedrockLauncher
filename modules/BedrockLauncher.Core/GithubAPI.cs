@@ -12,57 +12,6 @@ namespace BedrockLauncher.Core
     {
         public const string RELEASE_URL = "https://api.github.com/repos/BedrockLauncher/BedrockLauncher/releases";
         public const string BETA_URL = "https://api.github.com/repos/BedrockLauncher/BedrockLauncher-Beta/releases";
-        public static string ACCESS_TOKEN 
-        {
-            get
-            {
-
-                List<string> token = new List<string>()
-                {
-                    "g",
-                    "h",
-                    "p",
-                    "_",
-                    "Z",
-                    "B",
-                    "0",
-                    "D",
-                    "u",
-                    "X",
-                    "r",
-                    "F",
-                    "u",
-                    "o",
-                    "1",
-                    "w",
-                    "V",
-                    "w",
-                    "C",
-                    "y",
-                    "P",
-                    "D",
-                    "j",
-                    "w",
-                    "B",
-                    "k",
-                    "i",
-                    "X",
-                    "f",
-                    "T",
-                    "P",
-                    "S",
-                    "g",
-                    "B",
-                    "1",
-                    "c",
-                    "F",
-                    "i",
-                    "e",
-                    "J"
-                };
-                return String.Join("", token);
-            }
-        }
     }
 
     public class Asset

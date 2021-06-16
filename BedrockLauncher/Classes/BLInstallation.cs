@@ -7,6 +7,7 @@ using System.Windows;
 using BedrockLauncher.Core.Classes;
 using Newtonsoft.Json;
 using BedrockLauncher.ViewModels;
+using System.ComponentModel;
 
 namespace BedrockLauncher.Classes
 {
@@ -91,7 +92,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                string version = Version?.Name ?? string.Empty;
+                string version = Version?.Name ?? "???";
                 if (UseLatestBeta) return Application.Current.FindResource("VersionEntries_LatestSnapshot").ToString();
                 else if (UseLatestVersion) return Application.Current.FindResource("VersionEntries_LatestRelease").ToString();
                 else return version;

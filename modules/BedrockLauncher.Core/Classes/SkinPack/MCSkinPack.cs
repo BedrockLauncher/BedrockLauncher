@@ -8,6 +8,7 @@ using System.IO;
 using System.Drawing;
 using System.Windows.Media.Imaging;
 using System.Drawing.Imaging;
+using System.ComponentModel;
 
 namespace BedrockLauncher.Core.Classes.SkinPack
 {
@@ -62,7 +63,7 @@ namespace BedrockLauncher.Core.Classes.SkinPack
 
         public bool isDev { get; private set; }
 
-        public const string FallbackIcon = @"/BedrockLauncher;component/resources/images/packs/invalid_pack_icon.png";
+        public const string FallbackIcon = @"/BedrockLauncher.Core;component/Resources/images/packs/invalid_pack_icon.png";
 
         public Uri CurrentIcon
         {

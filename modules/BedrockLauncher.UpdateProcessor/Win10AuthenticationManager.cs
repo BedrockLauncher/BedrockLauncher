@@ -54,30 +54,30 @@ namespace BedrockLauncher.UpdateProcessor
             CurrentAccounts.Clear();
             List<WUAccount> results = new List<WUAccount>();
             int count = GetTotalWUAccounts();
-            if (count == 0)
+
+            WUAccount default_account = new WUAccount();
+            default_account.UserName = "Default Account";
+            default_account.AccountType = "(No Authentication)";
+            results.Add(default_account);
+
+            for (int i = 0; i < count; i++)
             {
                 WUAccount account = new WUAccount();
-                account.UserName = "Default Account";
+                account.UserName = GetWUAccountUserName(i);
                 account.AccountType = "Microsoft";
                 results.Add(account);
             }
-            else
-            {
-                for (int i = 0; i < count; i++)
-                {
-                    WUAccount account = new WUAccount();
-                    account.UserName = GetWUAccountUserName(i);
-                    account.AccountType = "Microsoft";
-                    results.Add(account);
-                }
-            }
+
             CurrentAccounts = results;
         }
 
         public static string GetWUToken(int SelectedUserIndex)
         {
+            int index = SelectedUserIndex - 1;
+            if (index == -1) return string.Empty;
+
             string token;
-            int status = GetWUToken(SelectedUserIndex, out token);
+            int status = GetWUToken(index, out token);
             if (status >= WU_ERRORS_START && status <= WU_ERRORS_END) throw new WUTokenException(status);
             else if (status != 0) Marshal.ThrowExceptionForHR(status);
             return token;

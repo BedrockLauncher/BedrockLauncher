@@ -5,10 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:com="clr-namespace:BedrockLauncher.Core.Components;assembly=BedrockLauncher.Core"
              xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:classes="clr-namespace:BedrockLauncher.Classes"
+             d:DataContext="{d:DesignInstance classes:BLInstallation, IsDesignTimeCreatable=False}">
     <UserControl.Resources>
         <com:InvertableBooleanToVisibilityConverter x:Key="VisibleIfTrueConverter" />
+        <BitmapImage x:Key="IconPath_DesignTime" UriSource="/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png"/>
     </UserControl.Resources>
     <Grid x:Name="InstallationEntry" Margin="0,8,0,8">
         <Grid.ColumnDefinitions>
@@ -21,9 +24,9 @@
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Image RenderOptions.BitmapScalingMode="HighQuality" Source="{Binding IconPath_Full}" Grid.Column="0" HorizontalAlignment="Left" Width="40" Height="40" Margin="0,0,0,0">
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Source="{Binding IconPath_Full, FallbackValue={StaticResource IconPath_DesignTime}}" Grid.Column="0" HorizontalAlignment="Left" Width="40" Height="40" Margin="0,0,0,0">
                 <Image.OpacityMask>
-                    <ImageBrush ImageSource="{Binding IconPath_Full}"/>
+                    <ImageBrush ImageSource="{Binding IconPath_Full, FallbackValue={StaticResource IconPath_DesignTime}}"/>
                 </Image.OpacityMask>
             </Image>
             <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0">

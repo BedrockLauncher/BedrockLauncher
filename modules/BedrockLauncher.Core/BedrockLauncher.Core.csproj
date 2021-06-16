@@ -123,6 +123,9 @@
     <Compile Include="Controls\FolderSelectDialog.cs" />
     <Compile Include="Controls\McTextBlock\Formatting.cs" />
     <Compile Include="Controls\McTextBlock\McTextBlock.cs" />
+    <Compile Include="Controls\SpecialBorder.xaml.cs">
+      <DependentUpon>SpecialBorder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GithubAPI.cs" />
     <Compile Include="Interfaces\ILauncherModel.cs" />
     <Compile Include="Language\LanguageDefinition.cs" />
@@ -169,6 +172,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\AltMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SpecialBorder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
