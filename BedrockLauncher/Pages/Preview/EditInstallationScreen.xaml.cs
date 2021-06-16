@@ -60,7 +60,7 @@ namespace BedrockLauncher.Pages.Preview
         private void GetManualComboBoxEntries()
         {
             BLVersion latest_release = new BLVersion("latest_release", Application.Current.Resources["EditInstallationScreen_LatestRelease"].ToString(), false);
-            BLVersion latest_beta = new BLVersion("latest_beta", Application.Current.Resources["EditInstallationScreen_LatestSnapshot"].ToString(), false);
+            BLVersion latest_beta = new BLVersion("latest_beta", Application.Current.Resources["EditInstallationScreen_LatestSnapshot"].ToString(), true);
             Versions.InsertRange(0, new List<BLVersion>() { latest_release, latest_beta });
         }
 
@@ -71,7 +71,23 @@ namespace BedrockLauncher.Pages.Preview
             foreach (var entry in LauncherModel.Default.ConfigManager.Versions) Versions.Add(BLVersion.Convert(entry));
             GetManualComboBoxEntries();
             InstallationVersionSelect.ItemsSource = Versions;
+            var view = CollectionViewSource.GetDefaultView(InstallationVersionSelect.ItemsSource) as CollectionView;
+            view.Filter = Filter_VersionList;
             InstallationVersionSelect.SelectedIndex = 0;
+        }
+
+        public bool Filter_VersionList(object obj)
+        {
+            BLVersion v = BLVersion.Convert(obj as MCVersion);
+
+            if (v != null)
+            {
+                if (!Properties.LauncherSettings.Default.ShowBetas && v.IsBeta) return false;
+                else if (!Properties.LauncherSettings.Default.ShowReleases && !v.IsBeta) return false;
+                else return true;
+            }
+            else return false;
+
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
