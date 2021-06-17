@@ -8,6 +8,7 @@ using BedrockLauncher.Core.Classes;
 using Newtonsoft.Json;
 using BedrockLauncher.ViewModels;
 using System.ComponentModel;
+using System.IO;
 
 namespace BedrockLauncher.Classes
 {
@@ -24,8 +25,8 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                if (IsCustomIcon) return System.IO.Path.Combine(LauncherModel.Default.FilepathManager.GetCacheFolderPath(), IconPath);
-                else return IconPath;
+                if (IsCustomIcon) return Path.Combine(LauncherModel.Default.FilepathManager.GetCacheFolderPath(), IconPath);
+                else return @"/BedrockLauncher;component/Resources/images/installation_icons/" + IconPath;
             }
         }
         [JsonIgnore]

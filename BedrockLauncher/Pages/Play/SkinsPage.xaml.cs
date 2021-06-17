@@ -219,7 +219,7 @@ namespace BedrockLauncher.Pages.Play
                     else
                     {
                         file.Dispose();
-                        ErrorScreenShow.errormsg("notaskinpack");
+                        ErrorScreenShow.errormsg("Error_NotaSkinPack_Title", "Error_NotaSkinPack");
                     }
                 }
                 catch (Exception ex)

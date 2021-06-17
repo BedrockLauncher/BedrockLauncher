@@ -357,6 +357,7 @@ namespace BedrockLauncher.ViewModels
             {
                 ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
                 System.Diagnostics.Debug.WriteLine("Download failed:\n" + e.ToString());
+                ErrorScreenShow.errormsg("Error_AppDownloadFailed_Title", "Error_AppDownloadFailed");
                 throw e;
             }
         }
@@ -372,7 +373,7 @@ namespace BedrockLauncher.ViewModels
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine("Authentication failed:\n" + e.ToString());
-                ErrorScreenShow.errormsg("autherror");
+                ErrorScreenShow.errormsg("Error_AuthenticationFailed_Title", "Error_AuthenticationFailed");
                 throw e;
             }
         }
@@ -404,10 +405,7 @@ namespace BedrockLauncher.ViewModels
             {
                 ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
                 System.Diagnostics.Debug.WriteLine("App launch failed:\n" + e.ToString());
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    ErrorScreenShow.errormsg("applauncherror");
-                });
+                ErrorScreenShow.errormsg("Error_AppLaunchFailed_Title", "Error_AppLaunchFailed");
                 throw e;
             }
         }
@@ -510,8 +508,7 @@ namespace BedrockLauncher.ViewModels
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine("Extraction failed:\n" + e.ToString());
-                ErrorScreenShow.exceptionmsg("Extraction failed", e);
-
+                ErrorScreenShow.errormsg("Error_AppExtractionFailed_Title", "Error_AppExtractionFailed");
                 if (zipReadingStream != null) zipReadingStream.Close();
                 ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
                 throw new TaskCanceledException();
@@ -569,10 +566,7 @@ namespace BedrockLauncher.ViewModels
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine("App re-register failed:\n" + e.ToString());
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    ErrorScreenShow.errormsg("appregistererror");
-                });
+                ErrorScreenShow.errormsg("Error_AppReregisterFailed_Title", "Error_AppReregisterFailed");
                 throw e;
             }
 

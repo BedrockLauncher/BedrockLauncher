@@ -74,63 +74,13 @@ namespace BedrockLauncher.Core.Pages.Common
 
         }
 
-        public static void errormsg(string error = null)
+        public static void errormsg(string title, string message)
         {
             Application.Current.Dispatcher.Invoke(() => {
                 ErrorScreen errorScreen = new ErrorScreen(Handler);
-                // Show default error message
-                if (error == null)
-                {
-                    Handler.SetDialogFrame(new ErrorScreen(Handler));
-                }
-                switch (error)
-                {
-                    case "autherror":
-                        errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_AuthenticationFailed_Title");
-                        errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_AuthenticationFailed");
-                        Handler.SetDialogFrame(errorScreen);
-                        break;
-                    case "CantFindJavaLauncher":
-                        errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_CantFindJavaLauncher_Title");
-                        errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_CantFindJavaLauncher");
-                        Handler.SetDialogFrame(errorScreen);
-                        break;
-                    case "CantFindExternalLauncher":
-                        errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_CantFindExternalLauncher_Title");
-                        errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_CantFindExternalLauncher");
-                        Handler.SetDialogFrame(errorScreen);
-                        break;
-                    case "appregistererror":
-                        errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_AppReregisterFailed_Title");
-                        errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_AppReregisterFailed");
-                        Handler.SetDialogFrame(errorScreen);
-                        break;
-                    case "applauncherror":
-                        errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_AppLaunchFailed_Title");
-                        errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_AppLaunchFailed");
-                        Handler.SetDialogFrame(errorScreen);
-                        break;
-                    case "downloadfailederror":
-                        errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_AppDownloadFailed_Title");
-                        errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_AppDownloadFailed");
-                        Handler.SetDialogFrame(errorScreen);
-                        break;
-                    case "notaskinpack":
-                        errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_NotaSkinPack_Title");
-                        errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_NotaSkinPack");
-                        Handler.SetDialogFrame(errorScreen);
-                        break;
-                    case "extractionfailed":
-                        errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_AppExtractionFailed_Title");
-                        errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_AppExtractionFailed");
-                        Handler.SetDialogFrame(errorScreen);
-                        break;
-                    case "CantFindPaidServerList":
-                        errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, "Error_CantFindPaidServerList_Title");
-                        errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, "Error_CantFindPaidServerList");
-                        Handler.SetDialogFrame(errorScreen);
-                        break;
-                }
+                errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, title);
+                errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, message);
+                Handler.SetDialogFrame(errorScreen);
             });
 
         }

@@ -236,7 +236,7 @@ namespace BedrockLauncher.ViewModels
         }
         public ObservableCollection<BLInstallation> CurrentInstallations { get; private set; } = new ObservableCollection<BLInstallation>();
 
-        public const string InstallationDefaultIcon = @"/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png";
+        public const string InstallationDefaultIcon = @"Furnace.png";
 
         public void LoadInstallations(string profile = null)
         {
@@ -250,7 +250,8 @@ namespace BedrockLauncher.ViewModels
             latest_release.VersionUUID = "latest_release";
             latest_release.UseLatestVersion = true;
             latest_release.UseLatestBeta = false;
-            latest_release.IconPath = LauncherModel.Default.FilepathManager.PrefabedIconRootPath + "Grass_Block.png";
+            latest_release.IconPath = "Grass_Block.png";
+            latest_release.IsCustomIcon = false;
             latest_release.ReadOnly = true;
             if (!CurrentInstallations.ToList().Exists(x => x.DisplayName == "Latest Release" && x.ReadOnly)) CurrentInstallations.Add(latest_release);
 
@@ -260,7 +261,8 @@ namespace BedrockLauncher.ViewModels
             latest_beta.VersionUUID = "latest_beta";
             latest_beta.UseLatestVersion = true;
             latest_beta.UseLatestBeta = true;
-            latest_beta.IconPath = LauncherModel.Default.FilepathManager.PrefabedIconRootPath + "Crafting_Table.png";
+            latest_beta.IconPath = "Crafting_Table.png";
+            latest_beta.IsCustomIcon = false;
             latest_beta.ReadOnly = true;
             if (!CurrentInstallations.ToList().Exists(x => x.DisplayName == "Latest Beta" && x.ReadOnly)) CurrentInstallations.Add(latest_beta);
 
@@ -355,7 +357,7 @@ namespace BedrockLauncher.ViewModels
                     i++;
                 }
 
-                CreateInstallation(newName, installation.Version, installation.DirectoryName, installation.IconPath_Full, installation.IsCustomIcon);
+                CreateInstallation(newName, installation.Version, installation.DirectoryName, installation.IconPath, installation.IsCustomIcon);
             }
         }
         public void DeleteInstallation(BLInstallation installation)
@@ -368,7 +370,7 @@ namespace BedrockLauncher.ViewModels
             }
         }
         public bool Filter_InstallationList(object obj)
-        {
+        {   
             BLInstallation v = BLInstallation.Convert(obj as MCInstallation);
             if (v == null) return false;
             else if (!Properties.LauncherSettings.Default.ShowBetas && v.IsBeta) return false;

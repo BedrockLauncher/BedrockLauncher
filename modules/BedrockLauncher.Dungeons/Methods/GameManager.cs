@@ -177,7 +177,7 @@ namespace BedrockLauncher.Dungeons.Methods
             }
             catch
             {
-                ErrorScreenShow.errormsg("CantFindJavaLauncher");
+                ErrorScreenShow.errormsg("Error_CantFindJavaLauncher_Title", "Error_CantFindJavaLauncher");
             }
         }
 

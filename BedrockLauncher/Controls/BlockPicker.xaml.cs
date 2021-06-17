@@ -34,34 +34,36 @@ namespace BedrockLauncher.Controls
         private List<string> BlockList = new List<string>();
         private List<BlockPickerItem> Buttons { get; set; } = new List<BlockPickerItem>();
         public bool IsIconCustom { get; private set; } = false;
-        public string IconPath { get => (SelectedBlockIcon.Source as BitmapImage).UriSource.OriginalString; }
+        public string IconPath
+        {
+            get
+            {
+                string uri = (SelectedBlockIcon.Source as BitmapImage).UriSource.OriginalString;
+                if (IsIconCustom) return System.IO.Path.GetFileName(uri);
+                else return uri.Replace(LauncherModel.Default.FilepathManager.PrefabedIconRootPath, "");
+            }
+        }
 
         #endregion
 
         #region Set Icon Data
 
-        private void SetPrefabbedIconData(string value)
-        {
-            string packUri = value;
-            var bmp = new BitmapImage(new Uri(packUri, UriKind.Relative));
-            SelectedBlockIcon.Source = bmp;
-            IsIconCustom = false;
-        }
-        private void SetCustomIconData(string filePath)
+        private void SetIconData(string uri)
         {
             try
             {
-                BitmapImage bmp = new BitmapImage();
-                bmp.BeginInit();
-                bmp.CacheOption = BitmapCacheOption.OnLoad;
-                bmp.UriSource = new Uri(filePath, UriKind.Absolute);
-                bmp.EndInit();
-
-                if (bmp != null)
+                BitmapImage bmp;
+                if (IsIconCustom)
                 {
-                    SelectedBlockIcon.Source = bmp;
-                    IsIconCustom = true;
+                    bmp = new BitmapImage();
+                    bmp.BeginInit();
+                    bmp.CacheOption = BitmapCacheOption.OnLoad;
+                    bmp.UriSource = new Uri(uri, UriKind.Absolute);
+                    bmp.EndInit();
                 }
+                else bmp = new BitmapImage(new Uri(uri, UriKind.Relative));
+
+                if (bmp != null) SelectedBlockIcon.Source = bmp;
             }
             catch (Exception ex)
             {
@@ -78,7 +80,7 @@ namespace BedrockLauncher.Controls
             InitializeComponent();
             GetBlockList();
 
-            SetPrefabbedIconData(BlockList.Where(x => x.Contains("furnace.png")).FirstOrDefault());
+            SetIconData(BlockList.Where(x => x.Contains("furnace.png")).FirstOrDefault());
 
             GenerateListItems();
             UpdateDropdownArrow();
@@ -86,8 +88,7 @@ namespace BedrockLauncher.Controls
         public void Init(string value, bool isCustom)
         {
             IsIconCustom = isCustom;
-            if (IsIconCustom) SetCustomIconData(value);
-            else SetPrefabbedIconData(value);
+            SetIconData(value);
         }
 
         public void GetBlockList()
@@ -150,13 +151,15 @@ namespace BedrockLauncher.Controls
 
         private void SetIcon(string path)
         {
-            SetCustomIconData(path);
+            IsIconCustom = true;
+            SetIconData(path);
             DropdownButton.IsChecked = false;
             GenerateListItems();
         }
         private void SetIcon(int index)
         {
-            SetPrefabbedIconData(BlockList[index]);
+            IsIconCustom = false;
+            SetIconData(BlockList[index]);
             DropdownButton.IsChecked = false;
         }
 
