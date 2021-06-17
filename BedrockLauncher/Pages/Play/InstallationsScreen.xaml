@@ -6,6 +6,8 @@
       xmlns:p="clr-namespace:BedrockLauncher.Properties"
       xmlns:common="clr-namespace:BedrockLauncher.Pages.Common"
       xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
+      xmlns:classes2="clr-namespace:BedrockLauncher.Classes"
+      xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       mc:Ignorable="d" 
       x:Name="PageHost"
       d:DesignHeight="608" d:DesignWidth="828"
@@ -36,29 +38,42 @@
                     </StackPanel>
                 </Grid>
                 
-                <Grid Grid.Column="0" Margin="10,0">
-                    <Button x:Name="NewInstallationButton" IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default}, Path=AllowEditing, Mode=OneWay}" Height="40" Width="Auto" Click="NewInstallationButton_Click" Foreground="White" Style="{DynamicResource PanelButton}">
-                        <Button.Content>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
 
-                                <Image Height="30" Margin="0,0,6,0" Source="{DynamicResource PlusIcon}"></Image>
-                                <TextBlock Grid.Column="1" Text="{DynamicResource InstallationsPage_AddButton}" VerticalAlignment="Center" Margin="0,0,0,0"></TextBlock>
-                            </Grid>
-                        </Button.Content>
-                    </Button>
-                </Grid>
-                <Separator Grid.Column="1" Width="1" Margin="0,10,0,10"></Separator>
                 <Grid Grid.Column="2"></Grid>
                 <Separator Visibility="Collapsed" Grid.Column="3" Width="1" Margin="0,10,0,10"></Separator>
                 <Grid Grid.Column="4"></Grid>
                 <Separator Grid.Column="5" Width="1" Margin="0,10,0,10"/>
             </Grid>
         </Border>
-        <ListView x:Name="InstallationsList" SelectionMode="Single" Grid.Row="1" HorizontalContentAlignment="Center" ItemTemplate="{StaticResource InstallationItemTemplate}"></ListView>
-        <common:NoContentFoundPage Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="Collapsed"></common:NoContentFoundPage>
+        <Grid HorizontalAlignment="Stretch" Grid.Row="1" Background="{DynamicResource ListBox.Static.Background}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Width="{Binding ElementName=InstallationsList, Path=ActualWidth}" Margin="10">
+                <Button x:Name="NewInstallationButton" Content="{DynamicResource InstallationsPage_AddButton}" IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default}, Path=AllowEditing, Mode=OneWay}" Height="30" Width="Auto" Click="NewInstallationButton_Click" HorizontalAlignment="Left" Foreground="White" Style="{DynamicResource DialogButton}"/>
+            </Grid>
+            <ListView x:Name="InstallationsList" SelectionMode="Single" Grid.Row="1" HorizontalContentAlignment="Center" HorizontalAlignment="Center">
+                <ListView.ItemTemplate>
+                    <DataTemplate DataType="{x:Type classes2:BLInstallation}">
+                        <Grid Focusable="False" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                            <i:InstallationItem x:Name="ItemControl" DataContext="{Binding }" Tag="{Binding ElementName=PageHost}"/>
+                        </Grid>
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver}" Value="True">
+                                <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsFocused}" Value="True">
+                                <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}" Value="True">
+                                <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <common:NoContentFoundPage Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="Collapsed"></common:NoContentFoundPage>
+        </Grid>
     </Grid>
 </Page>

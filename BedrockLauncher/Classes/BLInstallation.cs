@@ -25,6 +25,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
+
                 if (IsCustomIcon) return Path.Combine(LauncherModel.Default.FilepathManager.GetCacheFolderPath(), IconPath);
                 else return @"/BedrockLauncher;component/Resources/images/installation_icons/" + IconPath;
             }
@@ -61,7 +62,6 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-
                 if (UseLatestVersion)
                 {
                     var latest_beta = LauncherModel.Default.ConfigManager.Versions.ToList().FirstOrDefault(x => x.IsBeta == true);
@@ -99,7 +99,6 @@ namespace BedrockLauncher.Classes
                 else return version;
             }
         }
-
 
         public void Update()
         {

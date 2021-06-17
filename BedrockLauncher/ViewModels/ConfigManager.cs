@@ -370,7 +370,7 @@ namespace BedrockLauncher.ViewModels
             }
         }
         public bool Filter_InstallationList(object obj)
-        {   
+        {
             BLInstallation v = BLInstallation.Convert(obj as MCInstallation);
             if (v == null) return false;
             else if (!Properties.LauncherSettings.Default.ShowBetas && v.IsBeta) return false;

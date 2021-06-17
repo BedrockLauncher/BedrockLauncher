@@ -82,7 +82,7 @@
 
     <!--#region InstallationsPage -->
 
-    <v:String x:Key="InstallationsPage_AddButton">New...</v:String>
+    <v:String x:Key="InstallationsPage_AddButton">New installation</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">Play</v:String>
 
     <!--#endregion-->
