@@ -20,6 +20,7 @@ namespace BedrockLauncher.Downloaders
 
         private string cacheFile => LauncherModel.Default.FilepathManager.GetVersionsFilePath();
         private string userCacheFile => LauncherModel.Default.FilepathManager.GetUserVersionsFilePath();
+        private string technicalUserCacheFile => LauncherModel.Default.FilepathManager.GetUserVersionsTechnicalFilePath();
 
         public void EnableUserAuthorization()
         {
@@ -82,100 +83,147 @@ namespace BedrockLauncher.Downloaders
         }
         public async Task UpdateVersions(ObservableCollection<BLVersion> versions)
         {
-            _store_manager.setMSAUserToken(Win10AuthenticationManager.GetWUToken(Properties.LauncherSettings.Default.CurrentInsiderAccount));
+            try 
+            {
+                _store_manager.setMSAUserToken(Win10AuthenticationManager.GetWUToken(Properties.LauncherSettings.Default.CurrentInsiderAccount));
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error while Authenticating UserToken for Version Fetching:\n" + ex);
+            }
             versions.Clear();
 
-            LoadFromLocalCache();
-            await DownloadGlobalList();
-            LoadFromUserCache();
-            await DownloadLatestList();
+            LoadFromLocalCache(versions);
+            await LoadFromURL(versions);
+            LoadFromUserCache(versions);
+            await LoadFromAPI(versions);
+            await LoadFromAPI_Technical();
+        }
 
-            Win10VersionDBManager.Win10VersionJsonDb LoadFromUserCache()
+        public Win10VersionDBManager.Win10VersionJsonDb LoadFromUserCache(ObservableCollection<BLVersion> versions)
+        {
+            try
             {
-                try
-                {
-                    Win10VersionDBManager.Win10VersionJsonDb db = new Win10VersionDBManager.Win10VersionJsonDb();
-                    db.ReadJson(userCacheFile);
-                    PraseDB(versions, db);
-                    return db;
-                }
-                catch (FileNotFoundException e)
-                {
-                    // ignore
-                    System.Diagnostics.Debug.WriteLine("Version list user cache load failed:\n" + e.ToString());
-                    return new Win10VersionDBManager.Win10VersionJsonDb();
-                }
-                catch (Exception e)
-                {
-                    System.Diagnostics.Debug.WriteLine("Version list user cache load failed:\n" + e.ToString());
-                    return new Win10VersionDBManager.Win10VersionJsonDb();
-                }
+                Win10VersionDBManager.Win10VersionJsonDb db = new Win10VersionDBManager.Win10VersionJsonDb();
+                db.ReadJson(userCacheFile);
+                PraseDB(versions, db);
+                return db;
+            }
+            catch (FileNotFoundException e)
+            {
+                // ignore
+                System.Diagnostics.Debug.WriteLine("Version list user cache load failed:\n" + e.ToString());
+                return new Win10VersionDBManager.Win10VersionJsonDb();
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("Version list user cache load failed:\n" + e.ToString());
+                return new Win10VersionDBManager.Win10VersionJsonDb();
+            }
+        }
+        public Win10VersionDBManager.Win10VersionJsonDb LoadFromLocalCache(ObservableCollection<BLVersion> versions)
+        {
+            try
+            {
+                Win10VersionDBManager.Win10VersionJsonDb db = new Win10VersionDBManager.Win10VersionJsonDb();
+                db.ReadJson(cacheFile);
+                PraseDB(versions, db);
+                return db;
+            }
+            catch (FileNotFoundException e)
+            {
+                // ignore
+                System.Diagnostics.Debug.WriteLine("Version list local cache load failed:\n" + e.ToString());
+                return new Win10VersionDBManager.Win10VersionJsonDb();
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("Version list local cache load failed:\n" + e.ToString());
+                return new Win10VersionDBManager.Win10VersionJsonDb();
+            }
+        }
+        public Win10VersionDBManager.Win10VersionTextDb LoadFromTechCache()
+        {
+            try
+            {
+                Win10VersionDBManager.Win10VersionTextDb db = new Win10VersionDBManager.Win10VersionTextDb();
+                db.Read(technicalUserCacheFile);
+                return db;
+            }
+            catch (FileNotFoundException e)
+            {
+                // ignore
+                System.Diagnostics.Debug.WriteLine("Version list technical cache load failed:\n" + e.ToString());
+                return new Win10VersionDBManager.Win10VersionTextDb();
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("Version list technical cache load failed:\n" + e.ToString());
+                return new Win10VersionDBManager.Win10VersionTextDb();
+            }
+        }
+
+        public async Task LoadFromAPI_Technical()
+        {
+            try
+            {
+                var db = LoadFromTechCache();
+                var config = await _store_manager.fetchConfigLastChanged();
+                var cookie = await _store_manager.fetchCookie(config, false);
+                var knownVersions = db.releaseList.ToList().ConvertAll(x => x.uuid);
+                db.AddVersion(await Win10StoreManager.CheckForVersions(_store_manager, cookie, knownVersions, false), false);
+                db.Write(technicalUserCacheFile);
+                config = await _store_manager.fetchConfigLastChanged();
+                cookie = await _store_manager.fetchCookie(config, true);
+                knownVersions = db.betaList.ToList().ConvertAll(x => x.uuid);
+                db.AddVersion(await Win10StoreManager.CheckForVersions(_store_manager, cookie, knownVersions, true), true);
+                db.Write(technicalUserCacheFile);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("Version list update check failed:\n" + e.ToString());
+            }
+        }
+        public async Task LoadFromAPI(ObservableCollection<BLVersion> versions)
+        {
+            try
+            {
+                var db = LoadFromUserCache(versions);
+                var config = await _store_manager.fetchConfigLastChanged();
+                var cookie = await _store_manager.fetchCookie(config, false);
+                var knownVersions = db.list.ToList().ConvertAll(x => x.uuid);
+                db.AddVersion(await Win10StoreManager.CheckForVersions(_store_manager, cookie, knownVersions, false), false);
+                db.WriteJson(userCacheFile);
+                PraseDB(versions, db);
+                config = await _store_manager.fetchConfigLastChanged();
+                cookie = await _store_manager.fetchCookie(config, true);
+                knownVersions = db.list.ToList().ConvertAll(x => x.uuid);
+                db.AddVersion(await Win10StoreManager.CheckForVersions(_store_manager, cookie, knownVersions, true), true);
+                db.WriteJson(userCacheFile);
+                PraseDB(versions, db);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("Version list update check failed:\n" + e.ToString());
+            }
+        }
+        public async Task LoadFromURL(ObservableCollection<BLVersion> versions)
+        {
+            try
+            {
+                Win10VersionDBManager.Win10VersionJsonDb db = new Win10VersionDBManager.Win10VersionJsonDb();
+                var resp = await _client.GetAsync("https://mrarm.io/r/w10-vdb");
+                resp.EnsureSuccessStatusCode();
+                var data = await resp.Content.ReadAsStringAsync();
+                db.PraseJson(data);
+                db.WriteJson(cacheFile);
+                PraseDB(versions, db);
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("Version list download failed:\n" + e.ToString());
             }
 
-            Win10VersionDBManager.Win10VersionJsonDb LoadFromLocalCache()
-            {
-                try
-                {
-                    Win10VersionDBManager.Win10VersionJsonDb db = new Win10VersionDBManager.Win10VersionJsonDb();
-                    db.ReadJson(cacheFile);
-                    PraseDB(versions, db);
-                    return db;
-                }
-                catch (FileNotFoundException e)
-                {
-                    // ignore
-                    System.Diagnostics.Debug.WriteLine("Version list local cache load failed:\n" + e.ToString());
-                    return new Win10VersionDBManager.Win10VersionJsonDb();
-                }
-                catch (Exception e)
-                {
-                    System.Diagnostics.Debug.WriteLine("Version list local cache load failed:\n" + e.ToString());
-                    return new Win10VersionDBManager.Win10VersionJsonDb();
-                }
-            }
-
-            async Task DownloadLatestList()
-            {
-                try
-                {
-                    var db = LoadFromUserCache();
-                    var config = await _store_manager.fetchConfigLastChanged();
-                    var cookie = await _store_manager.fetchCookie(config, false);
-                    var knownVersions = db.list.ToList().ConvertAll(x => x.uuid);
-                    db.AddVersion(await Win10StoreManager.CheckForVersions(_store_manager, cookie, knownVersions, false), false);
-                    db.WriteJson(userCacheFile);
-                    PraseDB(versions, db);
-                    config = await _store_manager.fetchConfigLastChanged();
-                    cookie = await _store_manager.fetchCookie(config, true);
-                    knownVersions = db.list.ToList().ConvertAll(x => x.uuid);
-                    db.AddVersion(await Win10StoreManager.CheckForVersions(_store_manager, cookie, knownVersions, true), true);
-                    db.WriteJson(userCacheFile);
-                    PraseDB(versions, db);
-                }
-                catch (Exception e)
-                {
-                    System.Diagnostics.Debug.WriteLine("Version list update check failed:\n" + e.ToString());
-                }
-            }
-
-            async Task DownloadGlobalList()
-            {
-                try
-                {
-                    Win10VersionDBManager.Win10VersionJsonDb db = new Win10VersionDBManager.Win10VersionJsonDb();
-                    var resp = await _client.GetAsync("https://mrarm.io/r/w10-vdb");
-                    resp.EnsureSuccessStatusCode();
-                    var data = await resp.Content.ReadAsStringAsync();
-                    db.PraseJson(data);
-                    db.WriteJson(cacheFile);
-                    PraseDB(versions, db);
-                }
-                catch (Exception e)
-                {
-                    System.Diagnostics.Debug.WriteLine("Version list download failed:\n" + e.ToString());
-                }
-
-            }
         }
 
         public delegate void DownloadProgress(long current, long? total);

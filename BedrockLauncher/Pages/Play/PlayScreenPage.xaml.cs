@@ -119,7 +119,8 @@ namespace BedrockLauncher.Pages.Play
             else
             {
                 var i = InstallationsList.SelectedItem as BLInstallation;
-                LauncherModel.Default.GameManager.Play(i);
+                bool KeepLauncherOpen = Properties.LauncherSettings.Default.KeepLauncherOpen;
+                LauncherModel.Default.GameManager.Play(ViewModels.LauncherModel.Default.ConfigManager.CurrentProfile, i, KeepLauncherOpen);
             }
         }
     }

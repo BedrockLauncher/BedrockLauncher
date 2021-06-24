@@ -18,7 +18,7 @@ using BedrockLauncher.ViewModels;
 namespace BedrockLauncher.Pages.Settings
 {
     /// <summary>
-    /// Логика взаимодействия для AccountsSettingsPage.xaml
+    /// Логика взаимодействия для AboutPage.xaml
     /// </summary>
     public partial class AboutPage : Page
     {

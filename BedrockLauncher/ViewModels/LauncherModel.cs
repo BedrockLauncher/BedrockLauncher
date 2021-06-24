@@ -48,9 +48,7 @@ namespace BedrockLauncher.ViewModels
         public void Init()
         {
             bool isFirstLaunch = Properties.LauncherSettings.Default.CurrentProfile == "" || Properties.LauncherSettings.Default.IsFirstLaunch;
-
             MainFrame_KeyboardNavigationMode_Default = KeyboardNavigation.GetTabNavigation(MainThread.MainFrame);
-
             ConfigManager.Init();
 
             // show first launch window if no profile
@@ -60,6 +58,8 @@ namespace BedrockLauncher.ViewModels
 
             ErrorScreenShow.SetHandler(this);
             DialogPrompt.SetHandler(this);
+
+            ConsoleArgumentManager.PraseArgs(Program.Arguments);
         }
 
         #endregion

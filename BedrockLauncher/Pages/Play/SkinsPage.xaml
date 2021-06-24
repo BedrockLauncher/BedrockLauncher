@@ -81,7 +81,7 @@
                   Keyboard.PreviewKeyUp="LoadedSkinPacks_PreviewKeyUp"
                   x:Name="LoadedSkinPacks" 
                   SelectionChanged="LoadedSkinPacks_SelectionChanged" 
-                  HorizontalContentAlignment="Center" 
+                  HorizontalContentAlignment="Stretch" 
                   ItemTemplate="{StaticResource SkinPackItemTemplate}">
             </ListView>
         </Grid>

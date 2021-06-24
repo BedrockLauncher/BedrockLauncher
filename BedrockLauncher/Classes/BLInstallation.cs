@@ -7,6 +7,8 @@ using System.Windows;
 using BedrockLauncher.Core.Classes;
 using Newtonsoft.Json;
 using BedrockLauncher.ViewModels;
+using System.ComponentModel;
+using System.IO;
 
 namespace BedrockLauncher.Classes
 {
@@ -23,8 +25,9 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                if (IsCustomIcon) return System.IO.Path.Combine(LauncherModel.Default.FilepathManager.GetCacheFolderPath(), IconPath);
-                else return IconPath;
+
+                if (IsCustomIcon) return Path.Combine(LauncherModel.Default.FilepathManager.GetCacheFolderPath(), IconPath);
+                else return @"/BedrockLauncher;component/Resources/images/installation_icons/" + IconPath;
             }
         }
         [JsonIgnore]
@@ -59,7 +62,6 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-
                 if (UseLatestVersion)
                 {
                     var latest_beta = LauncherModel.Default.ConfigManager.Versions.ToList().FirstOrDefault(x => x.IsBeta == true);
@@ -91,13 +93,12 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                string version = Version?.Name ?? string.Empty;
+                string version = Version?.Name ?? "???";
                 if (UseLatestBeta) return Application.Current.FindResource("VersionEntries_LatestSnapshot").ToString();
                 else if (UseLatestVersion) return Application.Current.FindResource("VersionEntries_LatestRelease").ToString();
                 else return version;
             }
         }
-
 
         public void Update()
         {

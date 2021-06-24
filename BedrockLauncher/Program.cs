@@ -26,11 +26,6 @@ namespace BedrockLauncher
             Debug.AutoFlush = true;
         }
 
-        public static void PraseArgs(StartupEventArgs e)
-        {
-            if (e.Args != null) new ConsoleArgumentManager(e.Args);
-        }
-
         public static void EnableDeveloperMode()
         {
             //changing registry to enable developer mode
@@ -177,6 +172,8 @@ namespace BedrockLauncher
             MessageBox.Show("Unhandled exception occurred: \n" + e.Exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
+        public static string[] Arguments { get; private set; }
+
         [STAThread]
         public static void Main()
         {
@@ -195,6 +192,7 @@ namespace BedrockLauncher
             Program.EnableDeveloperMode();
             Program.InitializeCefSharp();
             Program.Init_IsBugRockOfTheWeek();
+            Arguments = e.Args;
             Debug.WriteLine("Application Pre-Initalization Finished!");
         }
     }

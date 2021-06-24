@@ -1,0 +1,83 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style TargetType="{x:Type Image}" x:Key="SideBarButtonIcon">
+        <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor"/>
+        <Setter Property="IsHitTestVisible" Value="False"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="MinWidth" Value="29"/>
+        <Setter Property="MinHeight" Value="29"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="14,14,0,0"/>
+    </Style>
+
+    <PathGeometry x:Key="CrossIcon">
+        <PathGeometry.Figures>
+            <PathFigure StartPoint="0,0">
+                <LineSegment Point="25,25"/>
+            </PathFigure>
+            <PathFigure StartPoint="0,25">
+                <LineSegment Point="25,0"/>
+            </PathFigure>
+        </PathGeometry.Figures>
+    </PathGeometry>
+
+    <DrawingImage x:Key="SearchIcon">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V24 H24 V0 H0 Z">
+                <GeometryDrawing Brush="{DynamicResource OveralElements.Background}" Geometry="F0 M24,24z M0,0z M15.853,16.56C14.17,18.077 11.942,19 9.5,19 4.257,19 0,14.743 0,9.5 0,4.257 4.257,0 9.5,0 14.743,0 19,4.257 19,9.5 19,11.942 18.077,14.17 16.56,15.853L24,23.293 23.293,24 15.853,16.56z M9.5,0.999999999999998C14.191,0.999999999999998 18,4.809 18,9.5 18,14.191 14.191,18 9.5,18 4.809,18 1,14.191 1,9.5 1,4.809 4.809,1 9.5,1z" />
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <DrawingImage x:Key="PlusIcon">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V512 H512 V0 H0 Z">
+                <DrawingGroup Opacity="1">
+                    <DrawingGroup Opacity="1">
+                        <GeometryDrawing Brush="{DynamicResource OveralElements.Background}" Geometry="F1 M512,512z M0,0z M256,0C114.84,0 0,114.84 0,256 0,397.16 114.84,512 256,512 397.16,512 512,397.16 512,256 512,114.84 397.16,0 256,0z M256,475.429C135.003,475.429 36.571,376.997 36.571,256 36.571,135.003 135.003,36.571 256,36.571 376.997,36.571 475.429,135.003 475.429,256 475.429,376.997 376.997,475.429 256,475.429z" />
+                    </DrawingGroup>
+                </DrawingGroup>
+                <DrawingGroup Opacity="1">
+                    <DrawingGroup Opacity="1">
+                        <GeometryDrawing Brush="{DynamicResource OveralElements.Background}" Geometry="F1 M512,512z M0,0z M256,134.095C245.9,134.095,237.714,142.281,237.714,152.381L237.714,359.619C237.714,369.719 245.9,377.905 256,377.905 266.1,377.905 274.286,369.719 274.286,359.619L274.286,152.381C274.286,142.281,266.1,134.095,256,134.095z" />
+                    </DrawingGroup>
+                </DrawingGroup>
+                <DrawingGroup Opacity="1">
+                    <DrawingGroup Opacity="1">
+                        <GeometryDrawing Brush="{DynamicResource OveralElements.Background}" Geometry="F1 M512,512z M0,0z M359.619,237.714L152.381,237.714C142.281,237.714 134.095,245.9 134.095,256 134.095,266.1 142.281,274.286 152.381,274.286L359.619,274.286C369.719,274.286 377.905,266.1 377.905,256 377.905,245.9 369.719,237.714 359.619,237.714z" />
+                    </DrawingGroup>
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <DrawingImage x:Key="ImportIcon">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V1000 H1000 V0 H0 Z">
+                <DrawingGroup Opacity="1">
+                    <GeometryDrawing Brush="{DynamicResource OveralElements.Background}" Geometry="F1 M1000,1000z M0,0z M500,990C338.3,990,195,911.7,105.8,790.9L185.8,790.9C264,875.5 375.7,928.7 500,928.7 736.8,928.7 928.8,736.7 928.8,499.9 928.8,263.1 736.8,71.2 500,71.2 361.2,71.2 238.2,137.4 159.9,239.6L84.8999999999999,239.6C171.6,101.7 325,10 500,10 770.6,10 990,229.4 990,500 990,770.6 770.6,990 500,990 M459.3,368.5C452.1,362,452.1,351.3,459.3,344.7L485.3,320.9C492.5,314.3,504.1,314.3,511.3,320.9L693.5,487.9C700.7,494.5,700.7,505.2,693.5,511.8L511.3,678.8C504.1,685.4,492.5,685.4,485.3,678.8L459.3,654.9C452.1,648.3,452.1,637.6,459.3,631.1L568.8,530.7 25.3,530.7C16.8,530.7,10,523.9,10,515.4L10,484.8C10,476.3,16.8,469.5,25.3,469.5L569.3,469.5 459.3,368.5z" />
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <DrawingImage x:Key="Expandable">
+        <DrawingImage.Drawing>
+            <GeometryDrawing Brush="{DynamicResource OveralElements.Background}">
+                <GeometryDrawing.Geometry>
+                    <GeometryGroup>
+                        <RectangleGeometry Rect="0,0,3,3"></RectangleGeometry>
+                        <RectangleGeometry Rect="5,0,3,3"></RectangleGeometry>
+                        <RectangleGeometry Rect="10,0,3,3"></RectangleGeometry>
+                    </GeometryGroup>
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <PathGeometry x:Key="FolderIcon" Figures="M 1.3997323e-4 2.2488189 H -2.5131058 V 4.9996896e-7 L -2.5133858 -2.2488189 h 0.7939371 0.79387707 l -2.2e-4 0.2645666 v 0.2645676 H 0.79379707 2.5133859 V 0.26456708 2.2488189 Z m 0 -0.2645666 H 2.2488368 V 0.26456708 -1.4551172 H 1.3997323e-4 -2.2484168 l -1.4e-4 1.71968428 V 1.9842523 Z M -1.7194487 -1.7614592 l 0.5289081 -1.439e-4 v -0.2669835 h -0.5289381 -0.5289381 v 0.2671274 z" FillRule="Nonzero"/>
+</ResourceDictionary>

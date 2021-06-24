@@ -17,6 +17,7 @@ namespace BedrockLauncher.ViewModels
         public string SettingsFileName { get => "settings.json"; }
         public string VersionCacheFileName { get => "versions.json"; }
         public string UserVersionCacheFileName { get => "local_versions.json"; }
+        public string TechnicalUserVersionCacheFileName { get => "technical_local_versions.txt"; }
         public string AppDataFolderName { get => ".minecraft_bedrock"; }
         public string InstallationsFolderName { get => "installations"; }
         public string PackageDataFolderName { get => "packageData"; }
@@ -65,6 +66,10 @@ namespace BedrockLauncher.ViewModels
         public string GetUserVersionsFilePath()
         {
             return Path.Combine(CurrentLocation, UserVersionCacheFileName);
+        }
+        public string GetUserVersionsTechnicalFilePath()
+        {
+            return Path.Combine(CurrentLocation, TechnicalUserVersionCacheFileName);
         }
         public string GetVersionsFilePath()
         {

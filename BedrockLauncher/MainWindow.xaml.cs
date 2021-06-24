@@ -159,7 +159,8 @@ namespace BedrockLauncher
             });
 
         }
-        public async void NavigateToNewsPage(bool animate = true)
+
+        public async void NavigateToNewsPage()
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
@@ -169,8 +170,7 @@ namespace BedrockLauncher
             });
 
         }
-
-        public async void NavigateToMainPage(bool animate = true)
+        public async void NavigateToMainPage()
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
@@ -180,8 +180,7 @@ namespace BedrockLauncher
             });
 
         }
-
-        public async void NavigateToDungeons(bool animate = true)
+        public async void NavigateToDungeons()
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
@@ -191,8 +190,7 @@ namespace BedrockLauncher
             });
 
         }
-
-        public async void NavigateToCommunityScreen(bool animate = true)
+        public async void NavigateToCommunityScreen()
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
@@ -201,7 +199,7 @@ namespace BedrockLauncher
                 Task.Run(() => Navigate(communityPage));
             });
         }
-        public async void NavigateToSettings(bool animate = true)
+        public async void NavigateToSettings()
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
@@ -211,9 +209,6 @@ namespace BedrockLauncher
             });
 
         }
-
-
-
         public async void NavigateToJavaLauncher()
         {
             await this.Dispatcher.InvokeAsync(() =>
@@ -233,7 +228,7 @@ namespace BedrockLauncher
                         Debug.WriteLine(string.Format("CantFindJavaLauncher: {0}", JavaPath));
                         Debug.WriteLine(ex);
                         mainPage.NavigateToPlayScreen();
-                        ErrorScreenShow.errormsg("CantFindJavaLauncher");
+                        ErrorScreenShow.errormsg("Error_CantFindJavaLauncher_Title", "Error_CantFindJavaLauncher");
                     }
                 });
 
@@ -258,7 +253,7 @@ namespace BedrockLauncher
                         Debug.WriteLine(string.Format("CantFindExternalLauncher:\n\nPath: {0}\nArguments: {1}", LauncherPath, Arguments));
                         Debug.WriteLine(ex);
                         mainPage.NavigateToPlayScreen();
-                        ErrorScreenShow.errormsg("CantFindExternalLauncher");
+                        ErrorScreenShow.errormsg("Error_CantFindExternalLauncher_Title", "Error_CantFindExternalLauncher");
                     }
                 });
 

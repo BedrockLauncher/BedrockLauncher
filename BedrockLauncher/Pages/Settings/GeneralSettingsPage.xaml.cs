@@ -41,7 +41,7 @@ namespace BedrockLauncher.Pages.Settings
 
         private void BackupButton_Click(object sender, RoutedEventArgs e)
         {
-            LauncherModel.Default.GameManager.BackupGameData();
+            LauncherModel.Default.GameManager.Backup();
         }
 
         private void AdvancedSettingsButton_Click(object sender, RoutedEventArgs e)

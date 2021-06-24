@@ -5,22 +5,6 @@
                     xmlns:skinClasses="clr-namespace:BedrockLauncher.Core.Classes.SkinPack;assembly=BedrockLauncher.Core"
                     xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
                     xmlns:v="clr-namespace:System;assembly=mscorlib">
-
-    <DataTemplate x:Key="InstallationItemTemplate" DataType="{x:Type classes2:BLInstallation}">
-        <i:InstallationItem x:Name="ItemControl" DataContext="{Binding }" Tag="{Binding ElementName=PageHost}"/>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver}" Value="True">
-                <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
-            </DataTrigger>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsFocused}" Value="True">
-                <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
-            </DataTrigger>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}" Value="True">
-                <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
-            </DataTrigger>
-        </DataTemplate.Triggers>
-    </DataTemplate>
-
     <DataTemplate x:Key="VersionItemTemplate" DataType="{x:Type classes2:BLVersion}">
         <i:VersionItem x:Name="ItemControl" DataContext="{Binding }" Tag="{Binding ElementName=PageHost}"></i:VersionItem>
         <DataTemplate.Triggers>

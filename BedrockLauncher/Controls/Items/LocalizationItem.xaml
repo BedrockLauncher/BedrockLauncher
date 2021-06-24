@@ -14,7 +14,10 @@
         </Grid.ColumnDefinitions>
         <TextBlock FontSize="13" Foreground="#FFFFFFF1" Padding="0,5" Text="{Binding }"/>
         <StackPanel Orientation="Horizontal" Grid.Column="2" x:Name="ButtonPanel" Visibility="Hidden">
-            <Button x:Name="More" Content="..." FontWeight="Bold" Style="{DynamicResource DialogButton}" Click="More_Click">
+            <Button x:Name="More" FontWeight="Bold" Style="{DynamicResource DialogButton}" Click="More_Click">
+                <Button.Content>
+                    <Image Width="16" Height="16" Source="{DynamicResource Expandable}" Stretch="None"/>
+                </Button.Content>
                 <Button.ContextMenu>
                     <ContextMenu Closed="ContextMenu_Closed" Style="{DynamicResource NoCheckboxContextMenu}">
                         <MenuItem Header="{DynamicResource GeneralText_Edit}" Name="EditLangButton" Click="EditLangButton_Click"></MenuItem>

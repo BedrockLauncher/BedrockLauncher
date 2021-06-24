@@ -126,7 +126,7 @@ namespace BedrockLauncher.Pages.FirstLaunch
 
             void Page6(bool _backup)
             {
-                if (_backup) LauncherModel.Default.GameManager.BackupGameData();
+                if (_backup) LauncherModel.Default.GameManager.Backup();
                 ViewModels.LauncherModel.Default.SetOverlayFrame_Strict(null);
                 Properties.LauncherSettings.Default.IsFirstLaunch = false;
                 Properties.LauncherSettings.Default.Save();

@@ -186,9 +186,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\DLC.cs" />
     <Compile Include="Classes\Html\SkinViewResourceSchemeHandler.cs" />
     <Compile Include="Classes\BLInstallation.cs" />
     <Compile Include="Classes\BLVersion.cs" />
+    <Compile Include="Controls\Items\DLCItem.xaml.cs">
+      <DependentUpon>DLCItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Items\JavaFeedItem.xaml.cs">
       <DependentUpon>JavaFeedItem.xaml</DependentUpon>
     </Compile>
@@ -210,6 +214,7 @@
     <Compile Include="Controls\InstallationSelector.xaml.cs">
       <DependentUpon>InstallationSelector.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Downloaders\WikiChangelogDownloader.cs" />
     <Compile Include="ViewModels\FilepathManager.cs" />
     <Compile Include="Pages\Common\NoContentFoundPage.xaml.cs">
       <DependentUpon>NoContentFoundPage.xaml</DependentUpon>
@@ -341,8 +346,8 @@
     <Compile Include="Pages\Play\PatchNotesPage.xaml.cs">
       <DependentUpon>PatchNotesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Settings\VersionsSettingsPage.xaml.cs">
-      <DependentUpon>VersionsSettingsPage.xaml</DependentUpon>
+    <Compile Include="Pages\Settings\VersionsPage.xaml.cs">
+      <DependentUpon>VersionsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Play\InstallationsScreen.xaml.cs">
       <DependentUpon>InstallationsScreen.xaml</DependentUpon>
@@ -391,6 +396,10 @@
     <Page Include="Controls\Items\BlockPickerItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Items\DLCItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Items\JavaFeedItem.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -572,7 +581,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Settings\VersionsSettingsPage.xaml">
+    <Page Include="Pages\Settings\VersionsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -806,11 +815,6 @@
     <Resource Include="Resources\images\installation_icons\Nether_Wart_Block.png" />
     <Resource Include="Resources\images\installation_icons\Warped_Planks.png" />
     <Resource Include="Resources\images\installation_icons\Warped_Wart_Block.png" />
-    <Resource Include="Resources\images\packs\pack_icon.png" />
-    <Resource Include="Resources\images\packs\pack.png" />
-    <Resource Include="Resources\images\packs\invalid_pack.png" />
-    <Resource Include="Resources\images\packs\invalid_pack_icon.png" />
-    <Resource Include="Resources\images\packs\dev_pack_icon.png" />
     <Resource Include="Resources\images\bg\firstlaunchbackground.jpg" />
     <Resource Include="Resources\images\icons\servers_icon.png" />
     <Resource Include="Resources\images\panels\advancement_icon.png" />
@@ -822,7 +826,7 @@
     <Resource Include="Resources\images\credits\mcmrarm_icon.jfif" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BedrockLauncher.Dungeons\BedrockLauncher.Dungeons.csproj">
+    <ProjectReference Include="..\modules\BedrockLauncher.Dungeons\BedrockLauncher.Dungeons.csproj">
       <Project>{a04af51f-1e8c-44b0-9ebc-e3c7d6b3f4d3}</Project>
       <Name>BedrockLauncher.Dungeons</Name>
     </ProjectReference>
@@ -830,7 +834,7 @@
       <Project>{8d88d5ff-5132-4605-851d-2e020ea6483b}</Project>
       <Name>BedrockLauncher.UpdateProcessor</Name>
     </ProjectReference>
-    <ProjectReference Include="..\modules\BL_Core\BedrockLauncher.Core.csproj">
+    <ProjectReference Include="..\modules\BedrockLauncher.Core\BedrockLauncher.Core.csproj">
       <Project>{167a048a-8140-4f8d-87c3-a03d07f964d3}</Project>
       <Name>BedrockLauncher.Core</Name>
     </ProjectReference>
@@ -842,7 +846,7 @@
       <Project>{ccabef67-f4bf-4087-9291-62ee5e316934}</Project>
       <Name>SkinView3D</Name>
     </ProjectReference>
-    <ProjectReference Include="..\modules\Uninstaller\BedrockLauncher.Uninstaller.csproj">
+    <ProjectReference Include="..\modules\BedrockLauncher.Uninstaller\BedrockLauncher.Uninstaller.csproj">
       <Project>{3232778b-1a3b-4d31-88a1-7a43b8b66723}</Project>
       <Name>BedrockLauncher.Uninstaller</Name>
     </ProjectReference>

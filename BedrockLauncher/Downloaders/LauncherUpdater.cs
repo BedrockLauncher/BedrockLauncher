@@ -115,7 +115,6 @@ namespace BedrockLauncher.Downloaders
             string json = string.Empty;
             var url = GithubAPI.RELEASE_URL;
             var httpRequest = (HttpWebRequest)WebRequest.Create(url);
-            httpRequest.Headers["Authorization"] = "Bearer " + GithubAPI.ACCESS_TOKEN;
             httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
             var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
@@ -128,7 +127,6 @@ namespace BedrockLauncher.Downloaders
             string json = string.Empty;
             var url = GithubAPI.BETA_URL;
             var httpRequest = (HttpWebRequest)WebRequest.Create(url);
-            httpRequest.Headers["Authorization"] = "Bearer " + GithubAPI.ACCESS_TOKEN;
             httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
             var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
@@ -180,7 +178,6 @@ namespace BedrockLauncher.Downloaders
                 string installerName = "BedrockLauncher.Installer.exe";
                 string json = string.Empty;
                 var httpRequest = (HttpWebRequest)WebRequest.Create("https://api.github.com/repos/BedrockLauncher/BedrockLauncher.Installer/releases/latest");
-                httpRequest.Headers["Authorization"] = "Bearer " + GithubAPI.ACCESS_TOKEN;
                 httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
                 var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
@@ -196,7 +193,6 @@ namespace BedrockLauncher.Downloaders
 
                         var httpRequest2 = (HttpWebRequest)WebRequest.Create(installer.url);
                         httpRequest2.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
-                        httpRequest2.Headers["Authorization"] = "Bearer " + GithubAPI.ACCESS_TOKEN;
                         httpRequest2.Accept = "application/octet-stream";
 
                         using (Stream output = System.IO.File.OpenWrite(InstallerPath))
