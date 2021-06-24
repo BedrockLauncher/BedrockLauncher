@@ -1,6 +1,6 @@
 # ![minecraft bedrock launcher icon](./repo_assets/BedrockLauncher_icons/64x64.ico) Minecraft Bedrock Edition Launcher
 
-[![minecraft bedrock launcher download button](https://img.shields.io/github/v/release/BedrockLauncher/BedrockLauncher?color=blue&label=Visit%20Official%20Website&logo=github&style=for-the-badge)](https://bedrocklauncher.github.io/)
+[![minecraft bedrock launcher download button](https://img.shields.io/github/v/tag/BedrockLauncher/BedrockLauncher.GitHub.io?color=blue&label=Visit%20Official%20Website&logo=github&style=for-the-badge)](https://bedrocklauncher.github.io/)
 
 [![minecraft bedrock launcher download button](https://img.shields.io/github/v/release/BedrockLauncher/BedrockLauncher?color=brightgreen&label=Download%20Installer&logo=windows&style=for-the-badge)](https://github.com/BedrockLauncher/BedrockLauncher.Installer/releases/latest/download/BedrockLauncher.Installer.exe)
 
