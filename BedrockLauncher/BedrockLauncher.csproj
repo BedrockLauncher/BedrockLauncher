@@ -859,28 +859,28 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\bg\play_screen\1.15_buzzy_bees_update.jpg" />
-    <Resource Include="Resources\images\bg\play_screen\1.16_nether_update.png" />
-    <Resource Include="Resources\images\bg\play_screen\1.13_update_aquatic.png" />
-    <Resource Include="Resources\images\bg\play_screen\1.14_village_pillage_update.png" />
+    <Resource Include="Resources\images\bg\play_screen\1.16_nether_update.jpg" />
+    <Resource Include="Resources\images\bg\play_screen\1.13_update_aquatic.jpg" />
+    <Resource Include="Resources\images\bg\play_screen\1.14_village_pillage_update.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\original_image.png" />
+    <Resource Include="Resources\images\bg\play_screen\original_image.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\bg\play_screen\1.08_cats_and_pandas.jpg" />
     <Resource Include="Resources\images\bg\play_screen\1.09_combat_update_java.jpg" />
     <Resource Include="Resources\images\bg\play_screen\1.11_exploration_update_java.jpg" />
-    <Resource Include="Resources\images\bg\play_screen\1.12_world_of_color_update_java.png" />
+    <Resource Include="Resources\images\bg\play_screen\1.12_world_of_color_update_java.jpg" />
     <Resource Include="Resources\images\bg\play_screen\1.13_technically_updated_java.jpg" />
-    <Resource Include="Resources\images\bg\play_screen\bedrock_master.jfif" />
-    <Resource Include="Resources\images\bg\play_screen\bedrock_standard.jfif" />
+    <Resource Include="Resources\images\bg\play_screen\bedrock_master.jpg" />
+    <Resource Include="Resources\images\bg\play_screen\bedrock_standard.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\1.0_pocket_edition.png" />
+    <Resource Include="Resources\images\bg\play_screen\1.0_pocket_edition.jpg" />
     <Resource Include="Resources\images\bg\play_screen\other_dungeons.jpg" />
     <Resource Include="Resources\images\bg\play_screen\other_indie_days.jpg" />
     <Resource Include="Resources\images\bg\play_screen\other_late_legacy_console.jpg" />
-    <Resource Include="Resources\images\bg\play_screen\other_mid_legacy_console.jpeg" />
+    <Resource Include="Resources\images\bg\play_screen\other_mid_legacy_console.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\icons\ico\package.ico" />

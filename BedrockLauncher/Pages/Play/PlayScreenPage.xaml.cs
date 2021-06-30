@@ -26,25 +26,25 @@ namespace BedrockLauncher.Pages.Play
 
         public Dictionary<string, string> Images = new Dictionary<string, string>()
         {
-            { "CavesAndCliffsPart1Update", ImagePathPrefix + "1.17_caves_and_cliffs_part_1.png" },
-            { "NetherUpdate", ImagePathPrefix + "1.16_nether_update.png" },
-            { "BuzzyBeesUpdate", ImagePathPrefix + "1.15_buzzy_bees_update.jpg" },
-            { "VillagePillageUpdate", ImagePathPrefix + "1.14_village_pillage_update.png" },
-            { "UpdateAquatic", ImagePathPrefix + "1.13_update_aquatic.png" },
-            { "TechnicallyUpdated", ImagePathPrefix + "1.13_technically_updated_java.jpg" },
-            { "WorldOfColorUpdate", ImagePathPrefix + "1.12_world_of_color_update_java.png" },
-            { "ExplorationUpdate", ImagePathPrefix + "1.11_exploration_update_java.jpg" },
-            { "CombatUpdate", ImagePathPrefix + "1.09_combat_update_java.jpg" },
-            { "CatsAndPandasUpdate", ImagePathPrefix + "1.08_cats_and_pandas.jpg" },
-            { "PocketEditionRelease", ImagePathPrefix + "1.0_pocket_edition.png" },
-            { "BedrockStandard", ImagePathPrefix + "bedrock_standard.jfif" },
-            { "BedrockMaster", ImagePathPrefix + "bedrock_master.jfif" },
-            { "EarlyLegacyConsole", ImagePathPrefix + "other_early_console_era.png" },
-            { "MidLegacyConsole", ImagePathPrefix + "other_mid_legacy_console.jpeg" },
-            { "LateLegacyConsole", ImagePathPrefix + "other_late_legacy_console.jpg" },
-            { "IndieDays", ImagePathPrefix + "other_indie_days.jpg" },
-            { "Dungeons", ImagePathPrefix + "other_dungeons.jpg" },
-            { "Original", ImagePathPrefix + "original_image.png" }
+            { "CavesAndCliffsPart1Update", ImagePathPrefix + "1.17_caves_and_cliffs_part_1.jpg" },
+            { "NetherUpdate",              ImagePathPrefix + "1.16_nether_update.jpg" },
+            { "BuzzyBeesUpdate",           ImagePathPrefix + "1.15_buzzy_bees_update.jpg" },
+            { "VillagePillageUpdate",      ImagePathPrefix + "1.14_village_pillage_update.jpg" },
+            { "UpdateAquatic",             ImagePathPrefix + "1.13_update_aquatic.jpg" },
+            { "TechnicallyUpdated",        ImagePathPrefix + "1.13_technically_updated_java.jpg" },
+            { "WorldOfColorUpdate",        ImagePathPrefix + "1.12_world_of_color_update_java.jpg" },
+            { "ExplorationUpdate",         ImagePathPrefix + "1.11_exploration_update_java.jpg" },
+            { "CombatUpdate",              ImagePathPrefix + "1.09_combat_update_java.jpg" },
+            { "CatsAndPandasUpdate",       ImagePathPrefix + "1.08_cats_and_pandas.jpg" },
+            { "PocketEditionRelease",      ImagePathPrefix + "1.0_pocket_edition.jpg" },
+            { "BedrockStandard",           ImagePathPrefix + "bedrock_standard.jpg" },
+            { "BedrockMaster",             ImagePathPrefix + "bedrock_master.jpg" },
+            { "EarlyLegacyConsole",        ImagePathPrefix + "other_early_console_era.jpg" },
+            { "MidLegacyConsole",          ImagePathPrefix + "other_mid_legacy_console.jpg" },
+            { "LateLegacyConsole",         ImagePathPrefix + "other_late_legacy_console.jpg" },
+            { "IndieDays",                 ImagePathPrefix + "other_indie_days.jpg" },
+            { "Dungeons",                  ImagePathPrefix + "other_dungeons.jpg" },
+            { "Original",                  ImagePathPrefix + "original_image.jpg" }
         };
 
         private bool HasLoadedOnce = false;
