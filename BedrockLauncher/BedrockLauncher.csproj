@@ -892,9 +892,6 @@
     <Resource Include="Resources\images\icons\ico\uninstaller_icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\other_early_console_era.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\images\logo\BedrockEdition.png" />
     <Resource Include="Resources\images\logo\BugrockEdition.png" />
   </ItemGroup>
@@ -924,7 +921,8 @@
     <Resource Include="Resources\images\icons\bedrock_grass_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\1.17_caves_and_cliffs_part_1.png" />
+    <Resource Include="Resources\images\bg\play_screen\1.17_caves_and_cliffs_part_1.jpg" />
+    <Resource Include="Resources\images\bg\play_screen\other_early_console_era.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
