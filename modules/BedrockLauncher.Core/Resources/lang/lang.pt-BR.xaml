@@ -6,7 +6,7 @@
 
     <!--#region MainWindow -->
 
-    <v:String x:Key="MainWindow_Title">Minecraft Bedrock Launcher</v:String>
+    <v:String x:Key="MainWindow_Title">Launcher do Minecraft Bedrock</v:String>
     <v:String x:Key="MainWindow_Disclaimer">NÃO É ASSOCIADO OU APROVADO PELA MOJANG</v:String>
 
     <!--#endregion-->
@@ -22,9 +22,9 @@
     <!--#region ToolbarButtons -->
 
     <v:String x:Key="ToolbarButtons_NewsButton_Text">Novidades</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java Launcher</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Versão Bedrock</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Versão Java</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Launcher Java</v:String>
     <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Launcher Personalizado</v:String>
     <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Mudar para</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
@@ -70,7 +70,7 @@
 
     <!--#region GameTab -->
 
-    <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
+    <v:String x:Key="GameTab_Title">MINECRAFT: VERSÃO BEDROCK</v:String>
     <v:String x:Key="GameTab_PlayButton_Text">Jogar</v:String>
     <v:String x:Key="GameTab_PlayButton_Kill_Text">Fechar</v:String>
     <v:String x:Key="GameTab_InstallationsButton_Text">Instalações</v:String>
@@ -175,7 +175,7 @@
     <v:String x:Key="LauncherNewsPage_Changes_Text">Mudanças:</v:String>
     <v:String x:Key="LauncherNewsPage_CheckForUpdates">Verificar atualizações</v:String>
     <v:String x:Key="LauncherNewsPage_ForceUpdate">Forçar atualização</v:String>
-    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Current</v:String>
+    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Atual</v:String>
 
     <!--#endregion-->
 
@@ -185,9 +185,9 @@
     <v:String x:Key="NewsScreen_OfficialTabTitle">Oficial</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
 
-    <v:String x:Key="NewsScreen_SearchBar_Content">News title</v:String>
+    <v:String x:Key="NewsScreen_SearchBar_Content">Notícias</v:String>
 
-    <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Versão Java</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
 
     <!--#endregion-->
