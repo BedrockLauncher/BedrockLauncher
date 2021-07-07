@@ -81,7 +81,7 @@
 
     <!--#region InstallationsPage -->
 
-    <v:String x:Key="InstallationsPage_AddButton">Nova...</v:String>
+    <v:String x:Key="InstallationsPage_AddButton">Nova</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">Jogar</v:String>
 
     <!--#endregion-->
