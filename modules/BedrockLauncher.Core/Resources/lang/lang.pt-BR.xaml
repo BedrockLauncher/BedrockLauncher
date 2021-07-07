@@ -492,7 +492,7 @@
     <v:String x:Key="ThemeEntries_Original">Original</v:String>
 
     <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">Caves &amp; Cliffs (Parte 1)</v:String>
-    <v:String x:Key="ThemeEntries_NetherUpdate">Nether Updade</v:String>
+    <v:String x:Key="ThemeEntries_NetherUpdate">Nether Update</v:String>
     <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Buzzy Bees Update</v:String>
     <v:String x:Key="ThemeEntries_VillagePillageUpdate">Village &amp; Pillage Update</v:String>
     <v:String x:Key="ThemeEntries_UpdateAquatic">Update Aquatic</v:String>
@@ -507,7 +507,7 @@
     <v:String x:Key="ThemeEntries_EarlyLegacyConsole">Legacy Console Original</v:String>
     <v:String x:Key="ThemeEntries_MidLegacyConsole">Legacy Console Intermediário</v:String>
     <v:String x:Key="ThemeEntries_LateLegacyConsole">Último Legacy Console</v:String>
-    <v:String x:Key="ThemeEntries_IndieDays">Dias Indie</v:String>
+    <v:String x:Key="ThemeEntries_IndieDays">Indie Days</v:String>
     <v:String x:Key="ThemeEntries_Dungeons">Minecraft Dungeons</v:String>
 
 
@@ -524,13 +524,13 @@
     <v:String x:Key="GeneralText_Add">Adicionar</v:String>
     <v:String x:Key="GeneralText_Save">Salvar</v:String>
     <v:String x:Key="GeneralText_Refresh">Atualizar</v:String>
-    <v:String x:Key="GeneralText_Backup">Copiar</v:String>
+    <v:String x:Key="GeneralText_Backup">Criar Backup</v:String>
     <v:String x:Key="GeneralText_Versions">Versões</v:String>
-    <v:String x:Key="GeneralText_Browse">Procurar</v:String>
-    <v:String x:Key="GeneralText_Reset">Resetar</v:String>
+    <v:String x:Key="GeneralText_Browse">Buscar</v:String>
+    <v:String x:Key="GeneralText_Reset">Restaurar</v:String>
     <v:String x:Key="GeneralText_Yes">Sim</v:String>
     <v:String x:Key="GeneralText_No">Não</v:String>
-    <v:String x:Key="GeneralText_Releases">Oficiais</v:String>
+    <v:String x:Key="GeneralText_Releases">Lançamentos</v:String>
     <v:String x:Key="GeneralText_Betas">Betas</v:String>
     <v:String x:Key="GeneralText_Export">Exportar</v:String>
     <v:String x:Key="GeneralText_Repair">Reparar</v:String>
@@ -544,8 +544,8 @@
     <!--#region GeneralSubtitles -->
 
     <v:String x:Key="GeneralSubtitles_Versions">VERSÕES</v:String>
-    <v:String x:Key="GeneralSubtitles_Browse">PROCURAR</v:String>
-    <v:String x:Key="GeneralSubtitles_Reset">REPOR</v:String>
+    <v:String x:Key="GeneralSubtitles_Browse">BUSCAR</v:String>
+    <v:String x:Key="GeneralSubtitles_Reset">RESET</v:String>
     <v:String x:Key="GeneralSubtitles_Categories">CATEGORIES</v:String>
     <v:String x:Key="GeneralSubtitles_Search">SEARCH</v:String>
 
