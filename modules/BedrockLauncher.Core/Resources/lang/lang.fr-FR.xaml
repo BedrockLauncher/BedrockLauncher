@@ -2,65 +2,65 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:v="clr-namespace:System;assembly=mscorlib">
     <!--#region Main Section-->
 
-    <v:String x:Key="LanguageString">English - United States</v:String>
+    <v:String x:Key="LanguageString">Français - France</v:String>
 
     <!--#region MainWindow -->
 
-    <v:String x:Key="MainWindow_Title">Minecraft Bedrock Launcher</v:String>
-    <v:String x:Key="MainWindow_Disclaimer">NOT ASSOCIATED OR APPROVED BY MOJANG</v:String>
+    <v:String x:Key="MainWindow_Title">Launcher Minecraft Bedrock</v:String>
+    <v:String x:Key="MainWindow_Disclaimer">PAS ASSOCIÉ OU APPROUVÉ PAR MOJANG</v:String>
 
     <!--#endregion-->
     
     <!-- #region CommunityPage -->
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
-    <v:String x:Key="CommunityPage_ComingSoon">Coming Soon!</v:String>
-    <v:String x:Key="CommunityPage_CheckBackLater">Check back here later for something SUPER DUPER AWESOME!</v:String>
+    <v:String x:Key="CommunityPage_ComingSoon">Bientôt Disponible!</v:String>
+    <v:String x:Key="CommunityPage_CheckBackLater">Revenez ici plus tard pour découvrir quelque chose de SUPER HYPER COOL!</v:String>
 
     <!-- #endregion -->
 
     <!--#region ToolbarButtons -->
 
-    <v:String x:Key="ToolbarButtons_NewsButton_Text">News</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java Launcher</v:String>
-    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Custom Launcher</v:String>
-    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Switch to</v:String>
+    <v:String x:Key="ToolbarButtons_NewsButton_Text">Nouveautés</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Édition</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Édition</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Launcher Java</v:String>
+    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Launcher Personnalisé</v:String>
+    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Basculer vers</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
-    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Community</v:String>
-    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Profile</v:String>
-    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Settings</v:String>
+    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Communauté</v:String>
+    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Profil</v:String>
+    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Paramètres</v:String>
 
     <!--#endregion-->
 
     <!--#region UpdateButton-->
 
-    <v:String x:Key="UpdateButton_NewUpdate_Text">New Update!</v:String>
-    <v:String x:Key="UpdateButton_Download_Text">Click to download!</v:String>
+    <v:String x:Key="UpdateButton_NewUpdate_Text">Nouvelle Mise à Jour!</v:String>
+    <v:String x:Key="UpdateButton_Download_Text">Cliquez pour télécharger!</v:String>
 
     <!--#endregion-->
 
     <!--#region ProgressBar -->
 
-    <v:String x:Key="ProgressBar_Downloading">Downloading</v:String>
-    <v:String x:Key="ProgressBar_Installing">Installing</v:String>
-    <v:String x:Key="ProgressBar_Launching">Launching</v:String>
-    <v:String x:Key="ProgressBar_Extracting">Extracting</v:String>
-    <v:String x:Key="ProgressBar_Uninstalling">Uninstalling</v:String>
-    <v:String x:Key="ProgressBar_RegisteringPackage">Registering Package</v:String>
-    <v:String x:Key="ProgressBar_RemovingPackage">Unregistering Package</v:String>
-    <v:String x:Key="ProgressBar_BackingUp">Backing up Save Data</v:String>
+    <v:String x:Key="ProgressBar_Downloading">Téléchargement</v:String>
+    <v:String x:Key="ProgressBar_Installing">Installation</v:String>
+    <v:String x:Key="ProgressBar_Launching">Lancement</v:String>
+    <v:String x:Key="ProgressBar_Extracting">Extraction en cours</v:String>
+    <v:String x:Key="ProgressBar_Uninstalling">Désinstallation</v:String>
+    <v:String x:Key="ProgressBar_RegisteringPackage">Inscription du Paquet</v:String>
+    <v:String x:Key="ProgressBar_RemovingPackage">Désinscription du Paquet</v:String>
+    <v:String x:Key="ProgressBar_BackingUp">Sauvegarde des Données</v:String>
 
     <!--#endregion-->
 
     <!--#region ProfileButton -->
 
-    <v:String x:Key="ProfileButton_ManageProfiles_Text">Manage Profiles</v:String>
-    <v:String x:Key="ProfileButton_ProfileSettings_Text">Profile Settings</v:String>
-    <v:String x:Key="ProfileButton_AddProfile_Text">Add Profile</v:String>
-    <v:String x:Key="ProfileButton_RemoveProfile_Text">Remove Profile</v:String>
-    <v:String x:Key="ProfileButton_ChooseAccount_Text">CHOOSE PROFILE</v:String>
+    <v:String x:Key="ProfileButton_ManageProfiles_Text">Gérer les Profils</v:String>
+    <v:String x:Key="ProfileButton_ProfileSettings_Text">Paramètres du Compte</v:String>
+    <v:String x:Key="ProfileButton_AddProfile_Text">Ajouter un Profil</v:String>
+    <v:String x:Key="ProfileButton_RemoveProfile_Text">Supprimer un Profil</v:String>
+    <v:String x:Key="ProfileButton_ChooseAccount_Text">CHOISISSEZ LE PROFIL</v:String>
 
     <!--#endregion-->
 
@@ -70,8 +70,8 @@
 
     <!--#region GameTab -->
 
-    <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
-    <v:String x:Key="GameTab_PlayButton_Text">Play</v:String>
+    <v:String x:Key="GameTab_Title">MINECRAFT : BEDROCK ÉDITION</v:String>
+    <v:String x:Key="GameTab_PlayButton_Text">Jouer</v:String>
     <v:String x:Key="GameTab_PlayButton_Kill_Text">Kill</v:String>
     <v:String x:Key="GameTab_InstallationsButton_Text">Installations</v:String>
     <v:String x:Key="GameTab_SkinsButton_Text">Skins</v:String>
