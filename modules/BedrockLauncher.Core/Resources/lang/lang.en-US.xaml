@@ -1,6 +1,5 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:v="clr-namespace:System;assembly=mscorlib">
+﻿<?xml version="1.0"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:v="clr-namespace:System;assembly=mscorlib">
     <!--#region Main Section-->
 
     <v:String x:Key="LanguageString">English - United States</v:String>
@@ -14,7 +13,7 @@
     
     <!-- #region CommunityPage -->
 
-    <v:String x:Key="CommunityPage_SupportText">❤ Support Development ❤</v:String>
+    <v:String x:Key="CommunityPage_SupportText"></v:String>
     <v:String x:Key="CommunityPage_ComingSoon">Coming Soon!</v:String>
     <v:String x:Key="CommunityPage_CheckBackLater">Check back here later for something SUPER DUPER AWESOME!</v:String>
 
@@ -297,7 +296,9 @@
     <v:String x:Key="FirstLaunch_ChooseAccountTitle">Choose an Insider Account</v:String>
     <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* This will be used to verify and download betas. You must be opted in the Xbox Insider Hub for the selected account to download betas. You also may need to restart the launcher or uninstall Minecraft for downloading betas to work.</v:String>
 
-    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Before using, it is highly recommended that you press backup to create an installation of your existing save data as the launcher does replace the original directory with a symbolic link which allows us to redirect save data.&#10;&#10; (Don't worry, you will not lose your data by doing this, you will only lose data if you press play and haven't backed your stuff up)</v:String>
+    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Before using, it is highly recommended that you press backup to create an installation of your existing save data as the launcher does replace the original directory with a symbolic link which allows us to redirect save data.
+
+ (Don't worry, you will not lose your data by doing this, you will only lose data if you press play and haven't backed your stuff up)</v:String>
 
     <v:String x:Key="FirstLaunch_InstallType_Header">Save/Load Launcher Data From:</v:String>
     <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">Fixed Folder (Recommended)</v:String>
@@ -306,7 +307,7 @@
     <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(RECOMMENDED)</v:String>
     <v:String x:Key="FirstLaunch_CloseButton">Close</v:String>
     <v:String x:Key="FirstLaunch_BackButton">Back</v:String>
-    <v:String x:Key="FirstLaunch_GoBackButton">❮ GO BACK</v:String>
+    <v:String x:Key="FirstLaunch_GoBackButton"></v:String>
     <v:String x:Key="FirstLaunch_CreateProfileText">PROFILE</v:String>
     <v:String x:Key="FirstLaunch_CreateProfileButton">Create</v:String>
     <v:String x:Key="FirstLaunch_NextButton">Next</v:String>
@@ -358,7 +359,7 @@
 
     <!--#region NewProfile -->
 
-    <v:String x:Key="NewProfile_GoBackButton">❮ GO BACK</v:String>
+    <v:String x:Key="NewProfile_GoBackButton"></v:String>
     <v:String x:Key="NewProfile_CreateProfileText">PROFILE</v:String>
     <v:String x:Key="NewProfile_CreateProfileText_Error">THIS NAME IS ALREADY TAKEN</v:String>
     <v:String x:Key="NewProfile_CreateProfileSubTitle">Enter the name of your new profile!</v:String>
@@ -375,7 +376,8 @@
     <v:String x:Key="Dialog_Item_Profile_Text">profile</v:String>
 
     <v:String x:Key="Dialog_DeleteItem_Title">Delete {0} permanently</v:String>
-    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Are you sure you want to delete &quot;{1}&quot;?&#10;This {0} will be lost forever! (A long time!)</v:String>
+    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Are you sure you want to delete &quot;{1}&quot;?
+This {0} will be lost forever! (A long time!)</v:String>
 
     <v:String x:Key="Dialog_KillGame_Title">Kill Game</v:String>
     <v:String x:Key="Dialog_KillGame_Text">This is Dangerous, and is only recommended if you get stuck. Do you still want to close the game?</v:String>
@@ -389,7 +391,8 @@
     <v:String x:Key="DialogBtn_No_Text">No</v:String>
 
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">No matching results</v:String>
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">We couldn't find news any content matching your search. If you have category filters &#10;turned off, try turning the back on and search again</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">We couldn't find news any content matching your search. If you have category filters 
+turned off, try turning the back on and search again</v:String>
 
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">No result</v:String>
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Found no items matching your search</v:String>
