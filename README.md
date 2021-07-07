@@ -4,7 +4,7 @@
 
 [![minecraft bedrock launcher download button](https://img.shields.io/github/v/release/BedrockLauncher/BedrockLauncher?color=brightgreen&label=Download%20Installer&logo=windows&style=for-the-badge)](https://github.com/BedrockLauncher/BedrockLauncher.Installer/releases/latest/download/BedrockLauncher.Installer.exe)
 
-[![minecraft bedrock launcher download button](https://img.shields.io/static/v1?color=282C34&labelColor=282C34&label=Crowdin&message=Translate&logo=crowdin&style=for-the-badge)](https://crwd.in/bedrocklauncher)
+[![minecraft bedrock launcher download button](https://img.shields.io/static/v1?color=282C34&labelColor=282C34&label=Crowdin&message=Translate&logo=crowdin&style=for-the-badge)](https://crowdin.com/project/bedrocklauncher)
 
 An unofficial **Minecraft for Windows 10** launcher that enables similar features from the **Minecraft Java Edition Launcher**.
 
