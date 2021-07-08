@@ -72,7 +72,7 @@
 
     <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
     <v:String x:Key="GameTab_PlayButton_Text">Main</v:String>
-    <v:String x:Key="GameTab_PlayButton_Kill_Text">Kill</v:String>
+    <v:String x:Key="GameTab_PlayButton_Kill_Text">Matikan</v:String>
     <v:String x:Key="GameTab_InstallationsButton_Text">Pemasangan</v:String>
     <v:String x:Key="GameTab_SkinsButton_Text">Skin</v:String>
     <v:String x:Key="GameTab_PatchNotesButton_Text">Nota Tampalan</v:String>
@@ -108,8 +108,8 @@
 
     <!--#region PatchNotesPage -->
 
-    <v:String x:Key="PatchNotesPage_MorePatchNotes">More patch notes</v:String>
-    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">More beta patch notes</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotes">Lebih banyak nota tampalan</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">Lebih banyak nota tampalan beta</v:String>
 
     <!--#endregion-->
 
@@ -128,7 +128,7 @@
     <v:String x:Key="EditSkinScreen_TextureSubtitle">TEKSTUR</v:String>
     <v:String x:Key="EditSkinScreen_GeometrySubtitle">GEOMETRI</v:String>
     <v:String x:Key="EditSkinScreen_TypeSubtitle">JENIS</v:String>
-    <v:String x:Key="EditSkinScreen_LocalizationSubtitle">LOCALIZATION NAME</v:String>
+    <v:String x:Key="EditSkinScreen_LocalizationSubtitle">NAMA LOKALISASI</v:String>
 
     <!--#endregion-->
 
@@ -137,15 +137,15 @@
     <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">PENERANGAN</v:String>
     <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">GEOMETRI</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">LOCALIZATION NAME</v:String>
-    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">SERIALIZATION NAME</v:String>
-    <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">LANGUAGE DEFINITIONS</v:String>
+    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">NAMA LOKALISASI</v:String>
+    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">NAMA SERIALISASI</v:String>
+    <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">DEFINISI BAHASA</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">LANG NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">NAMA BAHASA</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">OTHER DEFINITIONS</v:String>
-    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">CONTENT</v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">MODULES</v:String>
+    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">LAIN-LAIN DEFINISI</v:String>
+    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">KANDUNGAN</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">MODUL</v:String>
 
     <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">VERSI FORMAT</v:String>
 
@@ -160,7 +160,7 @@
     <v:String x:Key="EditSkinPackScreen_Header">Sunting Pek Skin</v:String>
     <v:String x:Key="EditSkinPackScreen_AddHeader">Tambah Pek Skin</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_Warning">* Please note that modifying language definitions and changing the pack icon are irreversible regardless if you save your changes or not!!!</v:String>
+    <v:String x:Key="EditSkinPackScreen_Warning">* Harap maklum bahawa mengubah definisi bahasa dan menukar ikon pek tidak dapat dipulihkan tanpa mengira sama ada anda telah menyimpan perubahan itu atau tidak!!!</v:String>
 
     <!--#endregion-->
 
@@ -214,20 +214,20 @@
     <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">TETAPAN PELANCAR</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">TETAPAN SHORTCUT</v:String>
     <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Gunakan versi beta Pelancar</v:String>
-    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Keep the Launcher open while games are running</v:String>
+    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Kekalkan Pelancar terbuka saat permainan dijalankan</v:String>
     <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Tutup Pelancar apabila menukar pelancar</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animate transitions between pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animate play button on the Play pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Enable Minecraft Dungeons Support (WIP)</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Show advanced information when installing packages</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animasikan peralihan diantara halaman di dalam Pelayan</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animasikan butang main di halaman Main di dalam Pelayan</v:String>
+    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Aktifkan Sokongan Minecraft Dungeons (WIP)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Tunjukkan informasi lanjut apabila memuat turun pakej</v:String>
     
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">TETAPAN MINECRAFT: BEDROCK EDITION</v:String>
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">SUPPORT CREATOR</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">SOKONG PENCIPTA</v:String>
 
     <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">KEMAS KINI PELANCAR</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Support creator</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Sokong Pencipta</v:String>
 
 
     <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Enable experimental save redirection</v:String>
@@ -236,10 +236,10 @@
     <v:String x:Key="GeneralSettingsScreen_BackupButton">Backup Save Data</v:String>
     <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Advanced Settings</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">EXTERNAL LAUNCHER SETTINGS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">TETAPAN PELANCAR EKSTERNAL</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">PATH</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">NAMA</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">ARGUMENTS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">ARGUMEN</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">IKON</v:String>
 
     <!--#endregion-->
@@ -259,7 +259,7 @@
 
     <v:String x:Key="AboutPage_Title">TENTANG PELANCAR MINECRAFT: BEDROCK EDITION</v:String>
     <v:String x:Key="AboutPage_DevelopedBy_Text">DIBANGUNKAN OLEH</v:String>
-    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">FORKED FROM THE WORK OF</v:String>
+    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">DICABANG DARIPADA KERJA OLEH</v:String>
     <v:String x:Key="AboutPage_SpecialThanks_Text">TERIMA KASIH KEPADA</v:String>
 
     <v:String x:Key="AboutPage_McMrArm_Text">Untuk membuat pemuat turun versi Minecraft Windows 10 (dimana kerja ini berasal)</v:String>
@@ -277,7 +277,7 @@
     <v:String x:Key="AdvancedSettings_PathSubtitle_Text">DIREKTORI STORAN</v:String>
     <v:String x:Key="AdvancedSettings_RestartButton_Text">Mula Semula</v:String>
     <v:String x:Key="AdvancedSettings_Notice_Text">* Semua tetapan akan memulakan semula pelancar</v:String>
-    <v:String x:Key="AdvancedSettings_PortableMode_Text">Enable Portable Mode</v:String>
+    <v:String x:Key="AdvancedSettings_PortableMode_Text">Aktifkan Mod Mudah Alih</v:String>
 
     <!--#endregion-->
 
