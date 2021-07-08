@@ -2,7 +2,7 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:v="clr-namespace:System;assembly=mscorlib">
     <!--#region Main Section-->
 
-    <v:String x:Key="LanguageString">English - United States</v:String>
+    <v:String x:Key="LanguageString">Bahasa Indonesia - Indonesia</v:String>
 
     <!--#region MainWindow -->
 
@@ -14,14 +14,14 @@
     <!-- #region CommunityPage -->
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
-    <v:String x:Key="CommunityPage_ComingSoon">Coming Soon!</v:String>
+    <v:String x:Key="CommunityPage_ComingSoon">Segera Hadir!</v:String>
     <v:String x:Key="CommunityPage_CheckBackLater">Check back here later for something SUPER DUPER AWESOME!</v:String>
 
     <!-- #endregion -->
 
     <!--#region ToolbarButtons -->
 
-    <v:String x:Key="ToolbarButtons_NewsButton_Text">News</v:String>
+    <v:String x:Key="ToolbarButtons_NewsButton_Text">Berita</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java Launcher</v:String>
@@ -37,13 +37,13 @@
     <!--#region UpdateButton-->
 
     <v:String x:Key="UpdateButton_NewUpdate_Text">New Update!</v:String>
-    <v:String x:Key="UpdateButton_Download_Text">Click to download!</v:String>
+    <v:String x:Key="UpdateButton_Download_Text">Klik untuk mengunduh!</v:String>
 
     <!--#endregion-->
 
     <!--#region ProgressBar -->
 
-    <v:String x:Key="ProgressBar_Downloading">Downloading</v:String>
+    <v:String x:Key="ProgressBar_Downloading">Mengunduh</v:String>
     <v:String x:Key="ProgressBar_Installing">Installing</v:String>
     <v:String x:Key="ProgressBar_Launching">Launching</v:String>
     <v:String x:Key="ProgressBar_Extracting">Extracting</v:String>
@@ -56,10 +56,10 @@
 
     <!--#region ProfileButton -->
 
-    <v:String x:Key="ProfileButton_ManageProfiles_Text">Manage Profiles</v:String>
+    <v:String x:Key="ProfileButton_ManageProfiles_Text">Atur Profil</v:String>
     <v:String x:Key="ProfileButton_ProfileSettings_Text">Profile Settings</v:String>
-    <v:String x:Key="ProfileButton_AddProfile_Text">Add Profile</v:String>
-    <v:String x:Key="ProfileButton_RemoveProfile_Text">Remove Profile</v:String>
+    <v:String x:Key="ProfileButton_AddProfile_Text">Tambah Profil</v:String>
+    <v:String x:Key="ProfileButton_RemoveProfile_Text">Hapus Profil</v:String>
     <v:String x:Key="ProfileButton_ChooseAccount_Text">CHOOSE PROFILE</v:String>
 
     <!--#endregion-->
@@ -71,18 +71,18 @@
     <!--#region GameTab -->
 
     <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
-    <v:String x:Key="GameTab_PlayButton_Text">Play</v:String>
+    <v:String x:Key="GameTab_PlayButton_Text">Main</v:String>
     <v:String x:Key="GameTab_PlayButton_Kill_Text">Kill</v:String>
-    <v:String x:Key="GameTab_InstallationsButton_Text">Installations</v:String>
-    <v:String x:Key="GameTab_SkinsButton_Text">Skins</v:String>
-    <v:String x:Key="GameTab_PatchNotesButton_Text">Patch notes</v:String>
+    <v:String x:Key="GameTab_InstallationsButton_Text">Instalasi</v:String>
+    <v:String x:Key="GameTab_SkinsButton_Text">Skin</v:String>
+    <v:String x:Key="GameTab_PatchNotesButton_Text">Catatan patch</v:String>
 
     <!--#endregion-->
 
     <!--#region InstallationsPage -->
 
-    <v:String x:Key="InstallationsPage_AddButton">New installation</v:String>
-    <v:String x:Key="InstallationsPage_PlayButton">Play</v:String>
+    <v:String x:Key="InstallationsPage_AddButton">Instalasi baru</v:String>
+    <v:String x:Key="InstallationsPage_PlayButton">Main</v:String>
 
     <!--#endregion-->
 
