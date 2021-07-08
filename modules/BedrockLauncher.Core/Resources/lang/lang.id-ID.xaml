@@ -15,7 +15,7 @@
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
     <v:String x:Key="CommunityPage_ComingSoon">Segera Hadir!</v:String>
-    <v:String x:Key="CommunityPage_CheckBackLater">Check back here later for something SUPER DUPER AWESOME!</v:String>
+    <v:String x:Key="CommunityPage_CheckBackLater">Cek kembali di sini nanti untuk sesuatu yang SUPER DUPER LUAR BIASA!</v:String>
 
     <!-- #endregion -->
 
@@ -26,7 +26,7 @@
     <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java Launcher</v:String>
     <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Custom Launcher</v:String>
-    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Switch to</v:String>
+    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Beralih ke</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
     <v:String x:Key="ToolbarButtons_CommunityButton_Text">Komunitas</v:String>
     <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Profil</v:String>
@@ -44,9 +44,9 @@
     <!--#region ProgressBar -->
 
     <v:String x:Key="ProgressBar_Downloading">Mengunduh</v:String>
-    <v:String x:Key="ProgressBar_Installing">Installing</v:String>
+    <v:String x:Key="ProgressBar_Installing">Menginstal</v:String>
     <v:String x:Key="ProgressBar_Launching">Launching</v:String>
-    <v:String x:Key="ProgressBar_Extracting">Extracting</v:String>
+    <v:String x:Key="ProgressBar_Extracting">Mengekstrak</v:String>
     <v:String x:Key="ProgressBar_Uninstalling">Uninstalling</v:String>
     <v:String x:Key="ProgressBar_RegisteringPackage">Registering Package</v:String>
     <v:String x:Key="ProgressBar_RemovingPackage">Unregistering Package</v:String>
@@ -88,7 +88,7 @@
 
     <!--#region EditInstallationScreen -->
 
-    <v:String x:Key="EditInstallationScreen_Title">Create new installation</v:String>
+    <v:String x:Key="EditInstallationScreen_Title">Buat instalasi baru</v:String>
     <v:String x:Key="EditInstallationScreen_AltTitle">Edit installation</v:String>
 
     <v:String x:Key="EditInstallationScreen_CreateButton">Buat</v:String>
@@ -115,8 +115,8 @@
 
     <!--#region SkinsPage -->
 
-    <v:String x:Key="SkinsPage_AddButton">New...</v:String>
-    <v:String x:Key="SkinsPage_ImportButton">Import...</v:String>
+    <v:String x:Key="SkinsPage_AddButton">Baru...</v:String>
+    <v:String x:Key="SkinsPage_ImportButton">Mengimpor...</v:String>
 
     <!--#endregion-->
 
@@ -125,16 +125,16 @@
     <v:String x:Key="EditSkinScreen_Title">Edit Skin</v:String>
     <v:String x:Key="EditSkinScreen_AltTitle">Add Skin</v:String>
 
-    <v:String x:Key="EditSkinScreen_TextureSubtitle">TEXTURE</v:String>
+    <v:String x:Key="EditSkinScreen_TextureSubtitle">Tekstur</v:String>
     <v:String x:Key="EditSkinScreen_GeometrySubtitle">GEOMETRY</v:String>
-    <v:String x:Key="EditSkinScreen_TypeSubtitle">TYPE</v:String>
+    <v:String x:Key="EditSkinScreen_TypeSubtitle">Tipe</v:String>
     <v:String x:Key="EditSkinScreen_LocalizationSubtitle">LOCALIZATION NAME</v:String>
 
     <!--#endregion-->
 
     <!--#region EditSkinPackScreen -->
 
-    <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">DESCRIPTION</v:String>
+    <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">Deskripsi</v:String>
     <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">GEOMETRY</v:String>
 
     <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">LOCALIZATION NAME</v:String>
@@ -153,9 +153,9 @@
     <v:String x:Key="EditSkinPackScreen_HeaderUUIDSubtitle">UUID</v:String>
     <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">VERSION</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">TYPE</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">Tipe</v:String>
     <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">UUID</v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">VERSION</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">VERSI</v:String>
 
     <v:String x:Key="EditSkinPackScreen_Header">Edit Skin Pack</v:String>
     <v:String x:Key="EditSkinPackScreen_AddHeader">Add Skin Pack</v:String>
