@@ -2,11 +2,11 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:v="clr-namespace:System;assembly=mscorlib">
     <!--#region Main Section-->
 
-    <v:String x:Key="LanguageString">English - United States</v:String>
+    <v:String x:Key="LanguageString">Bahasa Melayu - Malaysia</v:String>
 
     <!--#region MainWindow -->
 
-    <v:String x:Key="MainWindow_Title">Minecraft Bedrock Launcher</v:String>
+    <v:String x:Key="MainWindow_Title">Pelancar Minecraft Bedrock</v:String>
     <v:String x:Key="MainWindow_Disclaimer">NOT ASSOCIATED OR APPROVED BY MOJANG</v:String>
 
     <!--#endregion-->
@@ -14,50 +14,50 @@
     <!-- #region CommunityPage -->
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
-    <v:String x:Key="CommunityPage_ComingSoon">Coming Soon!</v:String>
+    <v:String x:Key="CommunityPage_ComingSoon">Akan Datang!</v:String>
     <v:String x:Key="CommunityPage_CheckBackLater">Check back here later for something SUPER DUPER AWESOME!</v:String>
 
     <!-- #endregion -->
 
     <!--#region ToolbarButtons -->
 
-    <v:String x:Key="ToolbarButtons_NewsButton_Text">News</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java Launcher</v:String>
-    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Custom Launcher</v:String>
-    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Switch to</v:String>
+    <v:String x:Key="ToolbarButtons_NewsButton_Text">Berita</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Edisi Bedrock</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Edisi Java</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Pelancar Java</v:String>
+    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Pelancar Khas</v:String>
+    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Beralih ke</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
-    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Community</v:String>
-    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Profile</v:String>
-    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Settings</v:String>
+    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Komuniti</v:String>
+    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Profil</v:String>
+    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Tetapan</v:String>
 
     <!--#endregion-->
 
     <!--#region UpdateButton-->
 
     <v:String x:Key="UpdateButton_NewUpdate_Text">New Update!</v:String>
-    <v:String x:Key="UpdateButton_Download_Text">Click to download!</v:String>
+    <v:String x:Key="UpdateButton_Download_Text">Klik untuk muat turun!</v:String>
 
     <!--#endregion-->
 
     <!--#region ProgressBar -->
 
-    <v:String x:Key="ProgressBar_Downloading">Downloading</v:String>
-    <v:String x:Key="ProgressBar_Installing">Installing</v:String>
-    <v:String x:Key="ProgressBar_Launching">Launching</v:String>
-    <v:String x:Key="ProgressBar_Extracting">Extracting</v:String>
-    <v:String x:Key="ProgressBar_Uninstalling">Uninstalling</v:String>
-    <v:String x:Key="ProgressBar_RegisteringPackage">Registering Package</v:String>
-    <v:String x:Key="ProgressBar_RemovingPackage">Unregistering Package</v:String>
+    <v:String x:Key="ProgressBar_Downloading">Memuat Turun</v:String>
+    <v:String x:Key="ProgressBar_Installing">Memasang</v:String>
+    <v:String x:Key="ProgressBar_Launching">Melancar</v:String>
+    <v:String x:Key="ProgressBar_Extracting">Mengekstrak</v:String>
+    <v:String x:Key="ProgressBar_Uninstalling">Menyahpasang</v:String>
+    <v:String x:Key="ProgressBar_RegisteringPackage">Mendaftarkan Pakej</v:String>
+    <v:String x:Key="ProgressBar_RemovingPackage">Menyahdaftarkan Pakej</v:String>
     <v:String x:Key="ProgressBar_BackingUp">Backing up Save Data</v:String>
 
     <!--#endregion-->
 
     <!--#region ProfileButton -->
 
-    <v:String x:Key="ProfileButton_ManageProfiles_Text">Manage Profiles</v:String>
-    <v:String x:Key="ProfileButton_ProfileSettings_Text">Profile Settings</v:String>
+    <v:String x:Key="ProfileButton_ManageProfiles_Text">Uruskan Profil</v:String>
+    <v:String x:Key="ProfileButton_ProfileSettings_Text">Tetapan Profil</v:String>
     <v:String x:Key="ProfileButton_AddProfile_Text">Add Profile</v:String>
     <v:String x:Key="ProfileButton_RemoveProfile_Text">Remove Profile</v:String>
     <v:String x:Key="ProfileButton_ChooseAccount_Text">CHOOSE PROFILE</v:String>
