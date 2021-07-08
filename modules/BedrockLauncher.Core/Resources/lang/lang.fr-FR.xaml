@@ -6,8 +6,8 @@
 
     <!--#region MainWindow -->
 
-    <v:String x:Key="MainWindow_Title">Launcher Minecraft Bedrock</v:String>
-    <v:String x:Key="MainWindow_Disclaimer">PAS ASSOCIÉ OU APPROUVÉ PAR MOJANG</v:String>
+    <v:String x:Key="MainWindow_Title">Minecraft Bedrock Launcher</v:String>
+    <v:String x:Key="MainWindow_Disclaimer">N'EST PAS ASSOCIÉ OU APPROUVÉ PAR MOJANG</v:String>
 
     <!--#endregion-->
     
@@ -138,7 +138,7 @@
     <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">GÉOMÉTRIE</v:String>
 
     <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">NOM DE L'EMPLACEMENT</v:String>
-    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">NOM DE L'EMPLACEMENT</v:String>
+    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">NOM DE LA SÉRIALISATION</v:String>
     <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">DÉFINITIONS DE LA LANGUE</v:String>
 
     <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">NOM DE LA LANGUE</v:String>
@@ -200,7 +200,7 @@
 
     <v:String x:Key="SettingsTab_Title">PARAMÈTRES</v:String>
     <v:String x:Key="SettingsTab_GeneralButton">Général</v:String>
-    <v:String x:Key="SettingsTab_AccountsButton">Compte</v:String>
+    <v:String x:Key="SettingsTab_AccountsButton">Comptes</v:String>
     <v:String x:Key="SettingsTab_AboutButton">À propos</v:String>
     <v:String x:Key="SettingsTab_VersionsButton">Versions</v:String>
 
@@ -208,7 +208,7 @@
 
     <!--#region GeneralSettingsScreen -->
     <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">LANGUE</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">THEME DE DU LAUNCHER</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">THÈME DU LAUNCHER</v:String>
 
 
     <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">PARAMÈTRES DU LAUNCHER</v:String>
@@ -381,11 +381,11 @@
     <v:String x:Key="Dialog_KillGame_Title">Tuer le Jeu</v:String>
     <v:String x:Key="Dialog_KillGame_Text">Ceci est dangereux, et n'est recommandé que si vous êtes bloqué. Voulez-vous quand même fermer le jeu?</v:String>
 
-    <v:String x:Key="Dialog_CloseGame_Title">Le Jeu est Toujours en cours d'Exécution</v:String>
+    <v:String x:Key="Dialog_CloseGame_Title">Le Jeu est toujours en cours d'Exécution</v:String>
     <v:String x:Key="Dialog_CloseGame_Text">Voulez-vous forcer la fermeture? (sans enregistrer les modifications, ceci n'est recommandé que si vous êtes bloqué, veuillez fermer le jeu normalement)</v:String>
 
-    <v:String x:Key="DialogBtn_YesToAll_Text">Oui pour Tout</v:String>
-    <v:String x:Key="DialogBtn_NoToAll_Text">Non pour Tout</v:String>
+    <v:String x:Key="DialogBtn_YesToAll_Text">Oui pour tout</v:String>
+    <v:String x:Key="DialogBtn_NoToAll_Text">Non pour tout</v:String>
     <v:String x:Key="DialogBtn_Yes_Text">Oui</v:String>
     <v:String x:Key="DialogBtn_No_Text">Non</v:String>
 
@@ -400,10 +400,10 @@ désactivé les, essayer de les réactivé par la suite et retenté votre recher
 
     <!--#region Internal -->
 
-    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">The file {0} already exists in the destination.\nDo you want to replace it? The old file will be lost otherwise.</v:String>
-    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">The file {0} is not a directory. Do you want to remove it? The data from the old directory will be lost otherwise.</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">Le fichier {0} existe déjà dans cette destination.\nVoulez-vous le remplacer? Sinon l'ancien fichier sera perdu.</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">Le fichier {0} n'est pas un répertoire. Voulez-vous le supprimer? Sinon les données de l'ancien répertoire seront perdues.</v:String>
 
-    <v:String x:Key="GameManager_RecoveringDataIssue_Title">Converting Existing Save Data to Installation</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_Title">Conversion des données de sauvegarde existantes pour l'installation</v:String>
 
     <!--#endregion-->
 
@@ -414,32 +414,33 @@ désactivé les, essayer de les réactivé par la suite et retenté votre recher
 
     <!--#region UI -->
 
-    <v:String x:Key="Installer_Title">Minecraft Bedrock Launcher Setup Wizard</v:String>
+    <v:String x:Key="Installer_Title">Guide d'installation Minecraft Bedrock Launcher</v:String>
 
-    <v:String x:Key="Installer_Back_Text">Back</v:String>
-    <v:String x:Key="Installer_Next_Text">Next</v:String>
-    <v:String x:Key="Installer_Cancel_Text">Cancel</v:String>
-    <v:String x:Key="Installer_Finish_Text">Finish</v:String>
+    <v:String x:Key="Installer_Back_Text">Retour</v:String>
+    <v:String x:Key="Installer_Next_Text">Suivant</v:String>
+    <v:String x:Key="Installer_Cancel_Text">Annuler</v:String>
+    <v:String x:Key="Installer_Finish_Text">Terminé</v:String>
 
-    <v:String x:Key="Installer_WelcomePage_Title">Welcome to the Minecraft Bedrock Launcher Setup Wizard</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info_Text">This will install Minecraft Bedrock Launcher on your computer.</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info2_Text">It is recommended that you close all other applications before continuing.</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info3_Text">Click Next to continue, or Cancel to exit Setup.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Title">Bienvenue dans le Guide d'installation 
+du Minecraft Bedrock Launcher</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info_Text">Ceci installera Minecraft Bedrock Launcher sur votre ordinateur.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info2_Text">Il est recommandé de fermer toutes les autres applications avant de poursuivre.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info3_Text">Cliquez sur Suivant pour continuer, ou Annuler pour quitter le Setup.</v:String>
 
-    <v:String x:Key="Installer_LicenseAgreement_Title">License Agreement</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Info_Text">Please read the following License Agreement. You must accept the terms of this</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">agreement before continuing with the installation.</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">I accept the license.</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">I don't accept the license.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Title">Contrat de Licence</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info_Text">Veuillez lire le Contrat de Licence suivant. Vous devez accepter les termes de ce</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">contrat avant de poursuivre l'installation.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">J'accepte la licence.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">Je n'accepte pas la licence.</v:String>
 
-    <v:String x:Key="Installer_InstallType_Title">Choose Install Type</v:String>
-    <v:String x:Key="Installer_InstallType_Info_Text">Select which version of the launcher you want to download</v:String>
+    <v:String x:Key="Installer_InstallType_Title">Choisir le Type d'Installation</v:String>
+    <v:String x:Key="Installer_InstallType_Info_Text">Sélectionnez la version du launcher que vous souhaitez télécharger</v:String>
 
-    <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Beta Version</v:String>
-    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Release Version</v:String>
+    <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Version Bêta</v:String>
+    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Version Récente</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_Title">Choose Install Location</v:String>
-    <v:String x:Key="Installer_InstallLocation_Info_Text">Setup will install Minecraft Bedrock Launcher in the following folder. To install in a different folder,</v:String>
+    <v:String x:Key="Installer_InstallLocation_Title">Choisir un Emplacement d'Installation</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info_Text">Le Guide va installer le Minecraft Bedrock Launcher dans le dossier suivant. Pour installer dans un dossier différent,</v:String>
     <v:String x:Key="Installer_InstallLocation_Info2_Text">cliquez sur Parcourir et sélectionnez un autre dossier.</v:String>
 
     <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Répertoire de destination</v:String>
@@ -524,30 +525,30 @@ désactivé les, essayer de les réactivé par la suite et retenté votre recher
     <v:String x:Key="GeneralText_Add">Ajouter</v:String>
     <v:String x:Key="GeneralText_Save">Enregistrer</v:String>
     <v:String x:Key="GeneralText_Refresh">Actualiser</v:String>
-    <v:String x:Key="GeneralText_Backup">Backup</v:String>
+    <v:String x:Key="GeneralText_Backup">Sauvegarde</v:String>
     <v:String x:Key="GeneralText_Versions">Versions</v:String>
-    <v:String x:Key="GeneralText_Browse">Browse</v:String>
+    <v:String x:Key="GeneralText_Browse">Parcourir</v:String>
     <v:String x:Key="GeneralText_Reset">Reset</v:String>
-    <v:String x:Key="GeneralText_Yes">Yes</v:String>
-    <v:String x:Key="GeneralText_No">No</v:String>
-    <v:String x:Key="GeneralText_Releases">Releases</v:String>
-    <v:String x:Key="GeneralText_Betas">Betas</v:String>
-    <v:String x:Key="GeneralText_Export">Export</v:String>
-    <v:String x:Key="GeneralText_Repair">Repair</v:String>
+    <v:String x:Key="GeneralText_Yes">Oui</v:String>
+    <v:String x:Key="GeneralText_No">Non</v:String>
+    <v:String x:Key="GeneralText_Releases">Versions</v:String>
+    <v:String x:Key="GeneralText_Betas">Bêtas</v:String>
+    <v:String x:Key="GeneralText_Export">Exporter</v:String>
+    <v:String x:Key="GeneralText_Repair">Réparer</v:String>
 
     <v:String x:Key="GeneralText_Twitter">Twitter</v:String>
     <v:String x:Key="GeneralText_GitHub">GitHub</v:String>
-    <v:String x:Key="GeneralText_Website">Website</v:String>
+    <v:String x:Key="GeneralText_Website">Site Web</v:String>
 
     <!--#endregion-->
 
     <!--#region GeneralSubtitles -->
 
     <v:String x:Key="GeneralSubtitles_Versions">VERSIONS</v:String>
-    <v:String x:Key="GeneralSubtitles_Browse">BROWSE</v:String>
+    <v:String x:Key="GeneralSubtitles_Browse">PARCOURIR</v:String>
     <v:String x:Key="GeneralSubtitles_Reset">RESET</v:String>
-    <v:String x:Key="GeneralSubtitles_Categories">CATEGORIES</v:String>
-    <v:String x:Key="GeneralSubtitles_Search">SEARCH</v:String>
+    <v:String x:Key="GeneralSubtitles_Categories">CATÉGORIES</v:String>
+    <v:String x:Key="GeneralSubtitles_Search">RECHERCHER</v:String>
 
     <!--#endregion-->
 
