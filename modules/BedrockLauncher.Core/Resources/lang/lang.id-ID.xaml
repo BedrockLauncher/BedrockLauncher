@@ -7,7 +7,7 @@
     <!--#region MainWindow -->
 
     <v:String x:Key="MainWindow_Title">Minecraft Bedrock Launcher</v:String>
-    <v:String x:Key="MainWindow_Disclaimer">NOT ASSOCIATED OR APPROVED BY MOJANG</v:String>
+    <v:String x:Key="MainWindow_Disclaimer">TIDAK BERHUBUNGAN DENGAN ATAU DISETUJUI OLEH MOJANG</v:String>
 
     <!--#endregion-->
     
@@ -28,15 +28,15 @@
     <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Custom Launcher</v:String>
     <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Switch to</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
-    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Community</v:String>
-    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Profile</v:String>
-    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Settings</v:String>
+    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Komunitas</v:String>
+    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Profil</v:String>
+    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Pengaturan</v:String>
 
     <!--#endregion-->
 
     <!--#region UpdateButton-->
 
-    <v:String x:Key="UpdateButton_NewUpdate_Text">New Update!</v:String>
+    <v:String x:Key="UpdateButton_NewUpdate_Text">Update Baru!</v:String>
     <v:String x:Key="UpdateButton_Download_Text">Klik untuk mengunduh!</v:String>
 
     <!--#endregion-->
@@ -91,15 +91,15 @@
     <v:String x:Key="EditInstallationScreen_Title">Create new installation</v:String>
     <v:String x:Key="EditInstallationScreen_AltTitle">Edit installation</v:String>
 
-    <v:String x:Key="EditInstallationScreen_CreateButton">Create</v:String>
-    <v:String x:Key="EditInstallationScreen_AltCreateButton">Save</v:String>
+    <v:String x:Key="EditInstallationScreen_CreateButton">Buat</v:String>
+    <v:String x:Key="EditInstallationScreen_AltCreateButton">Simpan</v:String>
 
     <v:String x:Key="EditInstallationScreen_LatestSnapshot">Latest beta</v:String>
     <v:String x:Key="EditInstallationScreen_LatestRelease">Latest release</v:String>
 
-    <v:String x:Key="EditInstallationScreen_NameSubtitle">NAME</v:String>
-    <v:String x:Key="EditInstallationScreen_VersionSubtitle">VERSION</v:String>
-    <v:String x:Key="EditInstallationScreen_DirectorySubtitle">DIRECTORY</v:String>
+    <v:String x:Key="EditInstallationScreen_NameSubtitle">NAMA</v:String>
+    <v:String x:Key="EditInstallationScreen_VersionSubtitle">VERSI</v:String>
+    <v:String x:Key="EditInstallationScreen_DirectorySubtitle">DIREKTORI</v:String>
 
     <v:String x:Key="EditInstallationScreen_NameHintText">&lt;unnamed installation&gt;</v:String>
     <v:String x:Key="EditInstallationScreen_DirectoryHintText">&lt;default path&gt;</v:String>
