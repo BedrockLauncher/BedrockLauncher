@@ -143,24 +143,24 @@
 
     <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">نام زبان</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">OTHER DEFINITIONS</v:String>
-    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">CONTENT</v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">MODULES</v:String>
+    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">تعاریف دیگر</v:String>
+    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">محتوی</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">ماژول ها</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">FORMAT VERSION</v:String>
+    <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">نسخه فرمت</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">PACK NAME</v:String>
-    <v:String x:Key="EditSkinPackScreen_HeaderUUIDSubtitle">UUID</v:String>
-    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">VERSION</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">نام بسته</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderUUIDSubtitle">شماره شناسایی یکتا</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">نسخه</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">TYPE</v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">UUID</v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">VERSION</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">نوع</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">شماره شناسایی یکتا</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">نسخه</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_Header">Edit Skin Pack</v:String>
-    <v:String x:Key="EditSkinPackScreen_AddHeader">Add Skin Pack</v:String>
+    <v:String x:Key="EditSkinPackScreen_Header">ویرایش اسکین پک</v:String>
+    <v:String x:Key="EditSkinPackScreen_AddHeader">اضافه کردن اسکین پک</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_Warning">* Please note that modifying language definitions and changing the pack icon are irreversible regardless if you save your changes or not!!!</v:String>
+    <v:String x:Key="EditSkinPackScreen_Warning">*لطفا به خاطر داشته باشید که ویرایش تعاریف زبانی و تغییر نماد پک غیر قابل بازگشت هست, حتی اگر تغییراتتان را ذخیره نکنید!!!</v:String>
 
     <!--#endregion-->
 
@@ -170,25 +170,25 @@
 
     <!--#region LauncherNewsPage -->
 
-    <v:String x:Key="LauncherNewsPage_Title_Text">Latest Build Changes</v:String>
-    <v:String x:Key="LauncherNewsPage_Build_Text">Build</v:String>
-    <v:String x:Key="LauncherNewsPage_Changes_Text">Changes:</v:String>
-    <v:String x:Key="LauncherNewsPage_CheckForUpdates">Check for Updates</v:String>
-    <v:String x:Key="LauncherNewsPage_ForceUpdate">Force Update</v:String>
-    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Current</v:String>
+    <v:String x:Key="LauncherNewsPage_Title_Text">تغییرات آخرین نسخه</v:String>
+    <v:String x:Key="LauncherNewsPage_Build_Text">نسخه</v:String>
+    <v:String x:Key="LauncherNewsPage_Changes_Text">تغییرات:</v:String>
+    <v:String x:Key="LauncherNewsPage_CheckForUpdates">بررسی برای بروزرسانی</v:String>
+    <v:String x:Key="LauncherNewsPage_ForceUpdate">بروز رسانی اجباری</v:String>
+    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">فعلی</v:String>
 
     <!--#endregion-->
 
     <!--#region NewsScreenPage -->
 
-    <v:String x:Key="NewsScreen_LauncherTabTitle">Launcher</v:String>
-    <v:String x:Key="NewsScreen_OfficialTabTitle">Official</v:String>
-    <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
+    <v:String x:Key="NewsScreen_LauncherTabTitle">لانچر</v:String>
+    <v:String x:Key="NewsScreen_OfficialTabTitle">رسمی</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">جاوا / دانجنز</v:String>
 
-    <v:String x:Key="NewsScreen_SearchBar_Content">News title</v:String>
+    <v:String x:Key="NewsScreen_SearchBar_Content">عنوان جدید</v:String>
 
-    <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
-    <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">ماینکرفت نسخه جاوا</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">ماینکرفت دانجنز</v:String>
 
     <!--#endregion-->
 
@@ -198,66 +198,66 @@
 
     <!--#region SettingsTab -->
 
-    <v:String x:Key="SettingsTab_Title">SETTINGS</v:String>
-    <v:String x:Key="SettingsTab_GeneralButton">General</v:String>
-    <v:String x:Key="SettingsTab_AccountsButton">Accounts</v:String>
-    <v:String x:Key="SettingsTab_AboutButton">About</v:String>
-    <v:String x:Key="SettingsTab_VersionsButton">Versions</v:String>
+    <v:String x:Key="SettingsTab_Title">تنظیمات</v:String>
+    <v:String x:Key="SettingsTab_GeneralButton">کلی</v:String>
+    <v:String x:Key="SettingsTab_AccountsButton">حساب های کاربری</v:String>
+    <v:String x:Key="SettingsTab_AboutButton">درباره</v:String>
+    <v:String x:Key="SettingsTab_VersionsButton">نسخه ها</v:String>
 
     <!--#endregion-->
 
     <!--#region GeneralSettingsScreen -->
-    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">LANGUAGE</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">LAUNCHER THEME</v:String>
+    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">زبان</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">تم زبان</v:String>
 
 
-    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">LAUNCHER SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">SHORTCUT SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Use beta version of the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Keep the Launcher open while games are running</v:String>
-    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Close Launcher when switching launchers</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animate transitions between pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animate play button on the Play pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Enable Minecraft Dungeons Support (WIP)</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Show advanced information when installing packages</v:String>
+    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">تنظیمات لانچر</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">تنظیمات میانبر</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">نسخه بتای لانچر را استفاده کن</v:String>
+    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">لانچر را هنگامی که بازی درحال اجرا است باز نگه دار</v:String>
+    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">لانچر را وقتی به لانچر دیگری انتقال یافتی ببند</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">انیمیشن بین صفحه ها در لانچر</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">انیمیشن دکمه شروع بازی در صفحه های شروع بازی در لانچر</v:String>
+    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">پشتیبانی از لانچر ماینکرفت دانجنز (ناقص)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">اطلاعات بیشتر در هنگام نصب پکیج ها</v:String>
     
 
-    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDITION SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">SUPPORT CREATOR</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">تنظیمات ماینکرفت: نسخه بدراک</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">پشتیبانی از سازنده</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">LAUNCHER UPDATES</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">بروزرسانی های لانچر</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Support creator</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">پشتیبانی از سازنده</v:String>
 
 
-    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Enable experimental save redirection</v:String>
-    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Hide Java Edition launcher shortcut</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Show external launcher shortcut</v:String>
-    <v:String x:Key="GeneralSettingsScreen_BackupButton">Backup Save Data</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Advanced Settings</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">فعال سازی تغییر مکان محل ذخیره سازی</v:String>
+    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">میانبر لانچر جاوا را نشان نده</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">میانبر لانچر خارجی را نشان بده</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BackupButton">در حال پشتیبان‌گیری از ذخیره ها</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">تنظیمات پیشرفته</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">EXTERNAL LAUNCHER SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">PATH</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">NAME</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">ARGUMENTS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">ICON</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">تنظیمات لانچر خارجی</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">محل</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">نام</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">بحی</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">نماد</v:String>
 
     <!--#endregion-->
 
     <!--#region AcountsSettingsPage -->
 
-    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">SELECTED ACCOUNT</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">INSIDER SETTINGS</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Normal Settings</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Legacy Settings</v:String>
-    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Manage Accounts</v:String>
-    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">ACCOUNT SETTINGS</v:String>
+    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">حساب کاربری انتخاب شده</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">تنظیمات Insider</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">تنظیمات عادی</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">تنظیمات Legacy</v:String>
+    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">مدیریت حساب‌های کاربری</v:String>
+    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">تنظیمات حساب کاربری</v:String>
 
     <!--#endregion-->
 
     <!--#region AboutPage -->
 
-    <v:String x:Key="AboutPage_Title">ABOUT MINECRAFT: BEDROCK EDITION LAUNCHER</v:String>
+    <v:String x:Key="AboutPage_Title">درباره ماینکرفت: لانچر نسخه بدراک</v:String>
     <v:String x:Key="AboutPage_DevelopedBy_Text">DEVELOPED BY</v:String>
     <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">FORKED FROM THE WORK OF</v:String>
     <v:String x:Key="AboutPage_SpecialThanks_Text">SPECIAL THANKS TO</v:String>
