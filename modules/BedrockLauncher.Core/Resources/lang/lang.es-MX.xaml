@@ -7,60 +7,60 @@
     <!--#region MainWindow -->
 
     <v:String x:Key="MainWindow_Title">Minecraft Bedrock Launcher</v:String>
-    <v:String x:Key="MainWindow_Disclaimer">NOT ASSOCIATED OR APPROVED BY MOJANG</v:String>
+    <v:String x:Key="MainWindow_Disclaimer">NO ASOCIADO O APROBADO POR MOJANG</v:String>
 
     <!--#endregion-->
     
     <!-- #region CommunityPage -->
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
-    <v:String x:Key="CommunityPage_ComingSoon">Coming Soon!</v:String>
-    <v:String x:Key="CommunityPage_CheckBackLater">Check back here later for something SUPER DUPER AWESOME!</v:String>
+    <v:String x:Key="CommunityPage_ComingSoon">Muy pronto!</v:String>
+    <v:String x:Key="CommunityPage_CheckBackLater">Regresa aquí después para also SUPER DUPER INCREÍBLE!</v:String>
 
     <!-- #endregion -->
 
     <!--#region ToolbarButtons -->
 
-    <v:String x:Key="ToolbarButtons_NewsButton_Text">News</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java Launcher</v:String>
-    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Custom Launcher</v:String>
-    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Switch to</v:String>
+    <v:String x:Key="ToolbarButtons_NewsButton_Text">Noticias</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Edición Bedrock</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Edición Java</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Launcher Java</v:String>
+    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Launcher personalizado</v:String>
+    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Cambiar a</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
-    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Community</v:String>
-    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Profile</v:String>
-    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Settings</v:String>
+    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Comunidad</v:String>
+    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Perfil</v:String>
+    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Opciones</v:String>
 
     <!--#endregion-->
 
     <!--#region UpdateButton-->
 
-    <v:String x:Key="UpdateButton_NewUpdate_Text">New Update!</v:String>
-    <v:String x:Key="UpdateButton_Download_Text">Click to download!</v:String>
+    <v:String x:Key="UpdateButton_NewUpdate_Text">Nueva actualización!</v:String>
+    <v:String x:Key="UpdateButton_Download_Text">Click para descargar!</v:String>
 
     <!--#endregion-->
 
     <!--#region ProgressBar -->
 
-    <v:String x:Key="ProgressBar_Downloading">Downloading</v:String>
-    <v:String x:Key="ProgressBar_Installing">Installing</v:String>
-    <v:String x:Key="ProgressBar_Launching">Launching</v:String>
-    <v:String x:Key="ProgressBar_Extracting">Extracting</v:String>
-    <v:String x:Key="ProgressBar_Uninstalling">Uninstalling</v:String>
-    <v:String x:Key="ProgressBar_RegisteringPackage">Registering Package</v:String>
-    <v:String x:Key="ProgressBar_RemovingPackage">Unregistering Package</v:String>
-    <v:String x:Key="ProgressBar_BackingUp">Backing up Save Data</v:String>
+    <v:String x:Key="ProgressBar_Downloading">Descargando</v:String>
+    <v:String x:Key="ProgressBar_Installing">Instalando</v:String>
+    <v:String x:Key="ProgressBar_Launching">Lanzando</v:String>
+    <v:String x:Key="ProgressBar_Extracting">Extrayendo</v:String>
+    <v:String x:Key="ProgressBar_Uninstalling">Desinstalando</v:String>
+    <v:String x:Key="ProgressBar_RegisteringPackage">Registrando paquete</v:String>
+    <v:String x:Key="ProgressBar_RemovingPackage">Desregistrando paquete</v:String>
+    <v:String x:Key="ProgressBar_BackingUp">Guardando datos</v:String>
 
     <!--#endregion-->
 
     <!--#region ProfileButton -->
 
-    <v:String x:Key="ProfileButton_ManageProfiles_Text">Manage Profiles</v:String>
-    <v:String x:Key="ProfileButton_ProfileSettings_Text">Profile Settings</v:String>
-    <v:String x:Key="ProfileButton_AddProfile_Text">Add Profile</v:String>
-    <v:String x:Key="ProfileButton_RemoveProfile_Text">Remove Profile</v:String>
-    <v:String x:Key="ProfileButton_ChooseAccount_Text">CHOOSE PROFILE</v:String>
+    <v:String x:Key="ProfileButton_ManageProfiles_Text">Administrar perfiles</v:String>
+    <v:String x:Key="ProfileButton_ProfileSettings_Text">Opciones de perfil</v:String>
+    <v:String x:Key="ProfileButton_AddProfile_Text">Añadir perfil</v:String>
+    <v:String x:Key="ProfileButton_RemoveProfile_Text">Quitar perfil</v:String>
+    <v:String x:Key="ProfileButton_ChooseAccount_Text">ELEGIR PERFIL</v:String>
 
     <!--#endregion-->
 
@@ -71,44 +71,44 @@
     <!--#region GameTab -->
 
     <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
-    <v:String x:Key="GameTab_PlayButton_Text">Play</v:String>
-    <v:String x:Key="GameTab_PlayButton_Kill_Text">Kill</v:String>
-    <v:String x:Key="GameTab_InstallationsButton_Text">Installations</v:String>
+    <v:String x:Key="GameTab_PlayButton_Text">Jugar</v:String>
+    <v:String x:Key="GameTab_PlayButton_Kill_Text">Matar</v:String>
+    <v:String x:Key="GameTab_InstallationsButton_Text">Instalaciones</v:String>
     <v:String x:Key="GameTab_SkinsButton_Text">Skins</v:String>
-    <v:String x:Key="GameTab_PatchNotesButton_Text">Patch notes</v:String>
+    <v:String x:Key="GameTab_PatchNotesButton_Text">Notas de versiones</v:String>
 
     <!--#endregion-->
 
     <!--#region InstallationsPage -->
 
-    <v:String x:Key="InstallationsPage_AddButton">New installation</v:String>
-    <v:String x:Key="InstallationsPage_PlayButton">Play</v:String>
+    <v:String x:Key="InstallationsPage_AddButton">Nueva instalación</v:String>
+    <v:String x:Key="InstallationsPage_PlayButton">Jugar</v:String>
 
     <!--#endregion-->
 
     <!--#region EditInstallationScreen -->
 
-    <v:String x:Key="EditInstallationScreen_Title">Create new installation</v:String>
-    <v:String x:Key="EditInstallationScreen_AltTitle">Edit installation</v:String>
+    <v:String x:Key="EditInstallationScreen_Title">Crear nueva instalación</v:String>
+    <v:String x:Key="EditInstallationScreen_AltTitle">Editar instalación</v:String>
 
-    <v:String x:Key="EditInstallationScreen_CreateButton">Create</v:String>
-    <v:String x:Key="EditInstallationScreen_AltCreateButton">Save</v:String>
+    <v:String x:Key="EditInstallationScreen_CreateButton">Crear</v:String>
+    <v:String x:Key="EditInstallationScreen_AltCreateButton">Guardar</v:String>
 
-    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Latest beta</v:String>
-    <v:String x:Key="EditInstallationScreen_LatestRelease">Latest release</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Ultima beta</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestRelease">Ultima release</v:String>
 
-    <v:String x:Key="EditInstallationScreen_NameSubtitle">NAME</v:String>
+    <v:String x:Key="EditInstallationScreen_NameSubtitle">NOMBRE</v:String>
     <v:String x:Key="EditInstallationScreen_VersionSubtitle">VERSION</v:String>
-    <v:String x:Key="EditInstallationScreen_DirectorySubtitle">DIRECTORY</v:String>
+    <v:String x:Key="EditInstallationScreen_DirectorySubtitle">DIRECTORIO</v:String>
 
-    <v:String x:Key="EditInstallationScreen_NameHintText">&lt;unnamed installation&gt;</v:String>
+    <v:String x:Key="EditInstallationScreen_NameHintText">&lt;instalación sin nombre&gt;</v:String>
     <v:String x:Key="EditInstallationScreen_DirectoryHintText">&lt;default path&gt;</v:String>
 
     <!--#endregion-->
 
     <!--#region PatchNotesPage -->
 
-    <v:String x:Key="PatchNotesPage_MorePatchNotes">More patch notes</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotes">Más notas de versiones</v:String>
     <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">More beta patch notes</v:String>
 
     <!--#endregion-->
@@ -213,21 +213,21 @@
 
     <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">LAUNCHER SETTINGS</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">SHORTCUT SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Use beta version of the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Keep the Launcher open while games are running</v:String>
-    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Close Launcher when switching launchers</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animate transitions between pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animate play button on the Play pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Enable Minecraft Dungeons Support (WIP)</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Show advanced information when installing packages</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Usar versión beta del lancher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Mantener el Launcher abierto mientras el juego se ejecuta</v:String>
+    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Cerrar Launcher al cambiar Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animar transiciones entre páginas en el Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animar botón de jugar on las páginas de jugar del Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Activar soporte de Minecraft Dungeons</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Mostrar información avanzada al instalar paquetes</v:String>
     
 
-    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDITION SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">SUPPORT CREATOR</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">OPCIONES DE MINECRAFT: BEDROCK EDITION</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">AYUDAR AL CREADOR</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">LAUNCHER UPDATES</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">ACTUALIZACIONES DEL LAUNCHER</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Support creator</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Ayudar al creador</v:String>
 
 
     <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Enable experimental save redirection</v:String>
