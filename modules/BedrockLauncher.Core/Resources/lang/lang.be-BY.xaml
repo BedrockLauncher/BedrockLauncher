@@ -48,19 +48,19 @@
     <v:String x:Key="ProgressBar_Launching">Вядзецца запуск</v:String>
     <v:String x:Key="ProgressBar_Extracting">Выманне</v:String>
     <v:String x:Key="ProgressBar_Uninstalling">Выдаленне</v:String>
-    <v:String x:Key="ProgressBar_RegisteringPackage">Registering Package</v:String>
-    <v:String x:Key="ProgressBar_RemovingPackage">Unregistering Package</v:String>
-    <v:String x:Key="ProgressBar_BackingUp">Backing up Save Data</v:String>
+    <v:String x:Key="ProgressBar_RegisteringPackage">Рэгістрацыя пакета</v:String>
+    <v:String x:Key="ProgressBar_RemovingPackage">Адмена рэгістрацыі пакета</v:String>
+    <v:String x:Key="ProgressBar_BackingUp">Рэзервовае капіраванне захаваных дадзеных</v:String>
 
     <!--#endregion-->
 
     <!--#region ProfileButton -->
 
-    <v:String x:Key="ProfileButton_ManageProfiles_Text">Manage Profiles</v:String>
-    <v:String x:Key="ProfileButton_ProfileSettings_Text">Profile Settings</v:String>
-    <v:String x:Key="ProfileButton_AddProfile_Text">Add Profile</v:String>
-    <v:String x:Key="ProfileButton_RemoveProfile_Text">Remove Profile</v:String>
-    <v:String x:Key="ProfileButton_ChooseAccount_Text">CHOOSE PROFILE</v:String>
+    <v:String x:Key="ProfileButton_ManageProfiles_Text">Кіраванне профілямі</v:String>
+    <v:String x:Key="ProfileButton_ProfileSettings_Text">Налады профілю</v:String>
+    <v:String x:Key="ProfileButton_AddProfile_Text">Дадаць профіль</v:String>
+    <v:String x:Key="ProfileButton_RemoveProfile_Text">Выдаліць профіль</v:String>
+    <v:String x:Key="ProfileButton_ChooseAccount_Text">ВЫБЕРЫЦЕ ПРОФІЛЬ</v:String>
 
     <!--#endregion-->
 
@@ -71,34 +71,34 @@
     <!--#region GameTab -->
 
     <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
-    <v:String x:Key="GameTab_PlayButton_Text">Play</v:String>
-    <v:String x:Key="GameTab_PlayButton_Kill_Text">Kill</v:String>
-    <v:String x:Key="GameTab_InstallationsButton_Text">Installations</v:String>
-    <v:String x:Key="GameTab_SkinsButton_Text">Skins</v:String>
-    <v:String x:Key="GameTab_PatchNotesButton_Text">Patch notes</v:String>
+    <v:String x:Key="GameTab_PlayButton_Text">Гуляць</v:String>
+    <v:String x:Key="GameTab_PlayButton_Kill_Text">Спыніць</v:String>
+    <v:String x:Key="GameTab_InstallationsButton_Text">Устаноўкі</v:String>
+    <v:String x:Key="GameTab_SkinsButton_Text">Скіны</v:String>
+    <v:String x:Key="GameTab_PatchNotesButton_Text">Спіс змен</v:String>
 
     <!--#endregion-->
 
     <!--#region InstallationsPage -->
 
-    <v:String x:Key="InstallationsPage_AddButton">New installation</v:String>
-    <v:String x:Key="InstallationsPage_PlayButton">Play</v:String>
+    <v:String x:Key="InstallationsPage_AddButton">Новая ўсталёўка</v:String>
+    <v:String x:Key="InstallationsPage_PlayButton">Гуляць</v:String>
 
     <!--#endregion-->
 
     <!--#region EditInstallationScreen -->
 
-    <v:String x:Key="EditInstallationScreen_Title">Create new installation</v:String>
-    <v:String x:Key="EditInstallationScreen_AltTitle">Edit installation</v:String>
+    <v:String x:Key="EditInstallationScreen_Title">Стварыць новую ўстаноўку</v:String>
+    <v:String x:Key="EditInstallationScreen_AltTitle">Рэдагаваць ўстаноўку</v:String>
 
-    <v:String x:Key="EditInstallationScreen_CreateButton">Create</v:String>
-    <v:String x:Key="EditInstallationScreen_AltCreateButton">Save</v:String>
+    <v:String x:Key="EditInstallationScreen_CreateButton">Стварыць</v:String>
+    <v:String x:Key="EditInstallationScreen_AltCreateButton">Захаваць</v:String>
 
-    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Latest beta</v:String>
-    <v:String x:Key="EditInstallationScreen_LatestRelease">Latest release</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Апошняя бэта</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestRelease">Апошні рэліз</v:String>
 
-    <v:String x:Key="EditInstallationScreen_NameSubtitle">NAME</v:String>
-    <v:String x:Key="EditInstallationScreen_VersionSubtitle">VERSION</v:String>
+    <v:String x:Key="EditInstallationScreen_NameSubtitle">НАЗВА</v:String>
+    <v:String x:Key="EditInstallationScreen_VersionSubtitle">ВЕРСІЯ</v:String>
     <v:String x:Key="EditInstallationScreen_DirectorySubtitle">DIRECTORY</v:String>
 
     <v:String x:Key="EditInstallationScreen_NameHintText">&lt;unnamed installation&gt;</v:String>
@@ -108,37 +108,37 @@
 
     <!--#region PatchNotesPage -->
 
-    <v:String x:Key="PatchNotesPage_MorePatchNotes">More patch notes</v:String>
-    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">More beta patch notes</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotes">Больш</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">Больш (бэта)</v:String>
 
     <!--#endregion-->
 
     <!--#region SkinsPage -->
 
-    <v:String x:Key="SkinsPage_AddButton">New...</v:String>
-    <v:String x:Key="SkinsPage_ImportButton">Import...</v:String>
+    <v:String x:Key="SkinsPage_AddButton">Новы... </v:String>
+    <v:String x:Key="SkinsPage_ImportButton">Імпартаваць...</v:String>
 
     <!--#endregion-->
 
     <!--#region EditSkinScreen -->
 
-    <v:String x:Key="EditSkinScreen_Title">Edit Skin</v:String>
-    <v:String x:Key="EditSkinScreen_AltTitle">Add Skin</v:String>
+    <v:String x:Key="EditSkinScreen_Title">Рэдагаваць скін</v:String>
+    <v:String x:Key="EditSkinScreen_AltTitle">Дадаць скін</v:String>
 
-    <v:String x:Key="EditSkinScreen_TextureSubtitle">TEXTURE</v:String>
-    <v:String x:Key="EditSkinScreen_GeometrySubtitle">GEOMETRY</v:String>
-    <v:String x:Key="EditSkinScreen_TypeSubtitle">TYPE</v:String>
-    <v:String x:Key="EditSkinScreen_LocalizationSubtitle">LOCALIZATION NAME</v:String>
+    <v:String x:Key="EditSkinScreen_TextureSubtitle">ТЭКСТУРА</v:String>
+    <v:String x:Key="EditSkinScreen_GeometrySubtitle">ГЕАМЕТРЫЯ</v:String>
+    <v:String x:Key="EditSkinScreen_TypeSubtitle">ТЫП</v:String>
+    <v:String x:Key="EditSkinScreen_LocalizationSubtitle">ІМЯ ЛАКАЛІЗАЦЫІ</v:String>
 
     <!--#endregion-->
 
     <!--#region EditSkinPackScreen -->
 
-    <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">DESCRIPTION</v:String>
-    <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">GEOMETRY</v:String>
+    <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">АПІСАННЕ</v:String>
+    <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">ГЕАМЕТРЫЯ</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">LOCALIZATION NAME</v:String>
-    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">SERIALIZATION NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">ІМЯ У ЛАКАЛІЗАЦЫІ</v:String>
+    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">НАЗВА СЕРЫЯЛІЗАЦЫІ</v:String>
     <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">LANGUAGE DEFINITIONS</v:String>
 
     <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">LANG NAME</v:String>
