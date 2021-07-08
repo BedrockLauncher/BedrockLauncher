@@ -215,26 +215,26 @@
     <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">SHORTCUT SETTINGS</v:String>
     <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Use beta version of the Launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Ponechat Spouštěč otevřený, když jsou hry spuštěny</v:String>
-    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Close Launcher when switching launchers</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animate transitions between pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animate play button on the Play pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Enable Minecraft Dungeons Support (WIP)</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Show advanced information when installing packages</v:String>
+    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Zavřít Spouštěč při přepínání spouštěčů</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animovat přechody mezi stránkami v Spouštěči</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animovat tlačítko hrát na stránkách Hrát ve Spouštěči</v:String>
+    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Povolit podporu Minecraft Dungeons (nedokončeno)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Zobrazit rozšířené informace při instalaci balíčků</v:String>
     
 
-    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDITION SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">SUPPORT CREATOR</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDICE NASTAVENÍ</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">PODPOŘIT TVŮRCE</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">LAUNCHER UPDATES</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">AKTUALIZACE SPOUŠTĚČE</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Support creator</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Podpořit tvůrce</v:String>
 
 
-    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Enable experimental save redirection</v:String>
-    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Hide Java Edition launcher shortcut</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Show external launcher shortcut</v:String>
-    <v:String x:Key="GeneralSettingsScreen_BackupButton">Backup Save Data</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Advanced Settings</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Povolit experimentální přesměrování uložení</v:String>
+    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Skrýt zástupce spouštěče Java Edice</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Zobrazit zástupce externího spouštěče</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BackupButton">Zálohovat Data Uložení</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Pokročilá Nastavení</v:String>
 
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">EXTERNAL LAUNCHER SETTINGS</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">PATH</v:String>
