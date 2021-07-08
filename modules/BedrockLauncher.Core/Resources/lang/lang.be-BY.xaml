@@ -6,48 +6,48 @@
 
     <!--#region MainWindow -->
 
-    <v:String x:Key="MainWindow_Title">Minecraft Bedrock Launcher</v:String>
-    <v:String x:Key="MainWindow_Disclaimer">NOT ASSOCIATED OR APPROVED BY MOJANG</v:String>
+    <v:String x:Key="MainWindow_Title">Лаунчар Minecraft Bedrock</v:String>
+    <v:String x:Key="MainWindow_Disclaimer">НЕ ЗВЯЗАНЫ АБО НЕ АДОБРАНЫ MOJANG</v:String>
 
     <!--#endregion-->
     
     <!-- #region CommunityPage -->
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
-    <v:String x:Key="CommunityPage_ComingSoon">Coming Soon!</v:String>
-    <v:String x:Key="CommunityPage_CheckBackLater">Check back here later for something SUPER DUPER AWESOME!</v:String>
+    <v:String x:Key="CommunityPage_ComingSoon">Будзе скора!</v:String>
+    <v:String x:Key="CommunityPage_CheckBackLater">Зазірніце сюды пазней, каб даведацца пра нешта СУПЕР-ДЗІУНАЕ!</v:String>
 
     <!-- #endregion -->
 
     <!--#region ToolbarButtons -->
 
-    <v:String x:Key="ToolbarButtons_NewsButton_Text">News</v:String>
+    <v:String x:Key="ToolbarButtons_NewsButton_Text">Навіны</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java Launcher</v:String>
-    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Custom Launcher</v:String>
-    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Switch to</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Лаунчар Java</v:String>
+    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Карыстацкі лаунчар</v:String>
+    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Пераключыцца на</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
-    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Community</v:String>
-    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Profile</v:String>
-    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Settings</v:String>
+    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Супольнасць</v:String>
+    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Профіль</v:String>
+    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Налады</v:String>
 
     <!--#endregion-->
 
     <!--#region UpdateButton-->
 
-    <v:String x:Key="UpdateButton_NewUpdate_Text">New Update!</v:String>
-    <v:String x:Key="UpdateButton_Download_Text">Click to download!</v:String>
+    <v:String x:Key="UpdateButton_NewUpdate_Text">Новае абнаўленне!</v:String>
+    <v:String x:Key="UpdateButton_Download_Text">Націсніце, каб спампаваць!</v:String>
 
     <!--#endregion-->
 
     <!--#region ProgressBar -->
 
-    <v:String x:Key="ProgressBar_Downloading">Downloading</v:String>
-    <v:String x:Key="ProgressBar_Installing">Installing</v:String>
-    <v:String x:Key="ProgressBar_Launching">Launching</v:String>
-    <v:String x:Key="ProgressBar_Extracting">Extracting</v:String>
-    <v:String x:Key="ProgressBar_Uninstalling">Uninstalling</v:String>
+    <v:String x:Key="ProgressBar_Downloading">Спампаванне</v:String>
+    <v:String x:Key="ProgressBar_Installing">Ўстаноўка</v:String>
+    <v:String x:Key="ProgressBar_Launching">Вядзецца запуск</v:String>
+    <v:String x:Key="ProgressBar_Extracting">Выманне</v:String>
+    <v:String x:Key="ProgressBar_Uninstalling">Выдаленне</v:String>
     <v:String x:Key="ProgressBar_RegisteringPackage">Registering Package</v:String>
     <v:String x:Key="ProgressBar_RemovingPackage">Unregistering Package</v:String>
     <v:String x:Key="ProgressBar_BackingUp">Backing up Save Data</v:String>
