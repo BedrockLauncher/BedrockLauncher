@@ -138,7 +138,7 @@
     <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">GÉOMÉTRIE</v:String>
 
     <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">NOM DE L'EMPLACEMENT</v:String>
-    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">SERIALIZATION NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">NOM DE L'EMPLACEMENT</v:String>
     <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">DÉFINITIONS DE LA LANGUE</v:String>
 
     <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">NOM DE LA LANGUE</v:String>
@@ -174,18 +174,18 @@
     <v:String x:Key="LauncherNewsPage_Build_Text">Version</v:String>
     <v:String x:Key="LauncherNewsPage_Changes_Text">Modifications:</v:String>
     <v:String x:Key="LauncherNewsPage_CheckForUpdates">Vérifier les Mises à jour</v:String>
-    <v:String x:Key="LauncherNewsPage_ForceUpdate">Force Update</v:String>
-    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Current</v:String>
+    <v:String x:Key="LauncherNewsPage_ForceUpdate">Forcer la mise à jour</v:String>
+    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Actuelle</v:String>
 
     <!--#endregion-->
 
     <!--#region NewsScreenPage -->
 
     <v:String x:Key="NewsScreen_LauncherTabTitle">Launcher</v:String>
-    <v:String x:Key="NewsScreen_OfficialTabTitle">Official</v:String>
+    <v:String x:Key="NewsScreen_OfficialTabTitle">Officiel</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
 
-    <v:String x:Key="NewsScreen_SearchBar_Content">News title</v:String>
+    <v:String x:Key="NewsScreen_SearchBar_Content">Titre d'actualité</v:String>
 
     <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
@@ -198,47 +198,47 @@
 
     <!--#region SettingsTab -->
 
-    <v:String x:Key="SettingsTab_Title">SETTINGS</v:String>
-    <v:String x:Key="SettingsTab_GeneralButton">General</v:String>
-    <v:String x:Key="SettingsTab_AccountsButton">Accounts</v:String>
-    <v:String x:Key="SettingsTab_AboutButton">About</v:String>
+    <v:String x:Key="SettingsTab_Title">PARAMÈTRES</v:String>
+    <v:String x:Key="SettingsTab_GeneralButton">Général</v:String>
+    <v:String x:Key="SettingsTab_AccountsButton">Compte</v:String>
+    <v:String x:Key="SettingsTab_AboutButton">À propos</v:String>
     <v:String x:Key="SettingsTab_VersionsButton">Versions</v:String>
 
     <!--#endregion-->
 
     <!--#region GeneralSettingsScreen -->
-    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">LANGUAGE</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">LAUNCHER THEME</v:String>
+    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">LANGUE</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">THEME DE DU LAUNCHER</v:String>
 
 
-    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">LAUNCHER SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">SHORTCUT SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Use beta version of the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Keep the Launcher open while games are running</v:String>
-    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Close Launcher when switching launchers</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animate transitions between pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animate play button on the Play pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Enable Minecraft Dungeons Support (WIP)</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Show advanced information when installing packages</v:String>
+    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">PARAMÈTRES DU LAUNCHER</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">PARAMÈTRES DES RACCOURCIS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Utiliser la version bêta du Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Garder le Launcher ouvert pendant que le jeu est en cours d'exécution</v:String>
+    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Fermer le launcher lors du lancement vers un autres Launchers</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animer la transition entre les pages dans le Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animer le bouton jouer dans la section Jouer du Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Activé le Support de Minecraft Dungeons (WIP)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Afficher des informations avancées lors de l'installation de fichiers</v:String>
     
 
-    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDITION SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">SUPPORT CREATOR</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">PARAMÈTRES MINECRAFT: BEDROCK ÉDITION</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">SOUTENIR CRÉATEUR</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">LAUNCHER UPDATES</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">MISE À JOUR DU LAUNCHER</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Support creator</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Soutenir créateur</v:String>
 
 
-    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Enable experimental save redirection</v:String>
-    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Hide Java Edition launcher shortcut</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Show external launcher shortcut</v:String>
-    <v:String x:Key="GeneralSettingsScreen_BackupButton">Backup Save Data</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Advanced Settings</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Activer la redirection de sauvegarde expérimentale</v:String>
+    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Masquer le raccourci du Launcher Java Édition</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Afficher le raccourci du launcheur externe</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BackupButton">Sauvegarder les Données de Sauvegarde</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Paramètres Avancés</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">EXTERNAL LAUNCHER SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">PATH</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">NAME</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">PARAMÈTRES DU LAUNCHER EXTERNE</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">CHEMIN</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">NOM</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">ARGUMENTS</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">ICON</v:String>
 
@@ -246,23 +246,23 @@
 
     <!--#region AcountsSettingsPage -->
 
-    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">SELECTED ACCOUNT</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">INSIDER SETTINGS</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Normal Settings</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Legacy Settings</v:String>
-    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Manage Accounts</v:String>
-    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">ACCOUNT SETTINGS</v:String>
+    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">COMPTE SÉLECTIONNÉ</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">PARAMÈTRES INSIDER</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Paramètres par défaut</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Paramètres de confidentialité</v:String>
+    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Gérer le(s) compte(s)</v:String>
+    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">PARAMÈTRES DU COMPTE</v:String>
 
     <!--#endregion-->
 
     <!--#region AboutPage -->
 
-    <v:String x:Key="AboutPage_Title">ABOUT MINECRAFT: BEDROCK EDITION LAUNCHER</v:String>
-    <v:String x:Key="AboutPage_DevelopedBy_Text">DEVELOPED BY</v:String>
-    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">FORKED FROM THE WORK OF</v:String>
-    <v:String x:Key="AboutPage_SpecialThanks_Text">SPECIAL THANKS TO</v:String>
+    <v:String x:Key="AboutPage_Title">À PROPOS DU MINECRAFT: BEDROCK EDITION LAUNCHER</v:String>
+    <v:String x:Key="AboutPage_DevelopedBy_Text">DÉVELOPER PAR</v:String>
+    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">A VUE LE JOUR GRÂCE AU TRAVAIL DE</v:String>
+    <v:String x:Key="AboutPage_SpecialThanks_Text">REMERCIEMENTS SPÉCIAUX À</v:String>
 
-    <v:String x:Key="AboutPage_McMrArm_Text">For creating the original Minecraft Windows 10 Version downloader (which this work derives from)</v:String>
+    <v:String x:Key="AboutPage_McMrArm_Text">Pour avoir créer le téléchargeur original de la version Minecraft Windows 10 (dont ce travail est dérivé)</v:String>
     <v:String x:Key="AboutPage_BsCommunity_Text">Pour leurs travail sur SkinView3D, qui est utilisé pour la fonctionnalité de visualisation du skin dans le launcher</v:String>
     <v:String x:Key="AboutPage_Mojang_Text">Pour Minecraft!!!</v:String>
     <v:String x:Key="AboutPage_BsRepo_Text">SkinView3D Repo</v:String>
@@ -349,40 +349,39 @@
     <v:String x:Key="Error_AppExtractionFailed_Title">L'extraction a échoué</v:String>
     <v:String x:Key="Error_AppExtractionFailed">Veuillez réessayer :(</v:String>
 
-    <v:String x:Key="Error_CantFindPaidServerList_Title">Could not open servers tab</v:String>
-    <v:String x:Key="Error_CantFindPaidServerList">Paid Servers List not found.</v:String>
+    <v:String x:Key="Error_CantFindPaidServerList_Title">Impossible d'ouvrir l'onglet serveurs</v:String>
+    <v:String x:Key="Error_CantFindPaidServerList">Liste des Serveurs Payants introuvable.</v:String>
 
-    <v:String x:Key="Error_NotaSkinPack_Title">Unable to import skin pack</v:String>
-    <v:String x:Key="Error_NotaSkinPack">That's not a skin pack silly!</v:String>
+    <v:String x:Key="Error_NotaSkinPack_Title">Impossible d'importer le Pack de Skin</v:String>
+    <v:String x:Key="Error_NotaSkinPack">Ce n'est pas un pack de Skin. Idiot!</v:String>
 
     <!--#endregion-->
 
     <!--#region NewProfile -->
 
     <v:String x:Key="NewProfile_GoBackButton"></v:String>
-    <v:String x:Key="NewProfile_CreateProfileText">PROFILE</v:String>
-    <v:String x:Key="NewProfile_CreateProfileText_Error">THIS NAME IS ALREADY TAKEN</v:String>
-    <v:String x:Key="NewProfile_CreateProfileSubTitle">Enter the name of your new profile!</v:String>
-    <v:String x:Key="NewProfile_CreateProfileButton">Create</v:String>
+    <v:String x:Key="NewProfile_CreateProfileText">PROFIL</v:String>
+    <v:String x:Key="NewProfile_CreateProfileText_Error">CE NOM EST DÉJÀ PRIS</v:String>
+    <v:String x:Key="NewProfile_CreateProfileSubTitle">Entrez le nom de votre nouveau profil!</v:String>
+    <v:String x:Key="NewProfile_CreateProfileButton">Créer</v:String>
 
     <!--#endregion-->
 
     <!--#region Dialog -->
 
     <v:String x:Key="Dialog_Item_Installation_Text">installation</v:String>
-    <v:String x:Key="Dialog_Item_SkinPack_Text">skin pack</v:String>
+    <v:String x:Key="Dialog_Item_SkinPack_Text">pack de skin</v:String>
     <v:String x:Key="Dialog_Item_Skin_Text">skin</v:String>
     <v:String x:Key="Dialog_Item_Version_Text">version</v:String>
-    <v:String x:Key="Dialog_Item_Profile_Text">profile</v:String>
+    <v:String x:Key="Dialog_Item_Profile_Text">profil</v:String>
 
-    <v:String x:Key="Dialog_DeleteItem_Title">Delete {0} permanently</v:String>
-    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Are you sure you want to delete &quot;{1}&quot;?
-This {0} will be lost forever! (A long time!)</v:String>
+    <v:String x:Key="Dialog_DeleteItem_Title">Supprimer {0} fichier(s) définitivement</v:String>
+    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Voulez-vous vraiment supprimer &quot;{1}&quot; fichier(s)? Ces {0} fichier(s) seront perdu définitivement (et définitivement c'est long)</v:String>
 
-    <v:String x:Key="Dialog_KillGame_Title">Kill Game</v:String>
-    <v:String x:Key="Dialog_KillGame_Text">This is Dangerous, and is only recommended if you get stuck. Do you still want to close the game?</v:String>
+    <v:String x:Key="Dialog_KillGame_Title">Tuer le Jeu</v:String>
+    <v:String x:Key="Dialog_KillGame_Text">Ceci est dangereux, et n'est recommandé que si vous êtes bloqué. Voulez-vous quand même fermer le jeu?</v:String>
 
-    <v:String x:Key="Dialog_CloseGame_Title">Game is Still Running</v:String>
+    <v:String x:Key="Dialog_CloseGame_Title">Le Jeu est Toujours en cours d'Exécution</v:String>
     <v:String x:Key="Dialog_CloseGame_Text">Would you like to force close it? (without saving changes, this is only recommended if you get stuck, please close the game normally)</v:String>
 
     <v:String x:Key="DialogBtn_YesToAll_Text">Yes To All</v:String>
