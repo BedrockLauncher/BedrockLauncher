@@ -15,7 +15,7 @@
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
     <v:String x:Key="CommunityPage_ComingSoon">Akan Datang!</v:String>
-    <v:String x:Key="CommunityPage_CheckBackLater">Check back here later for something SUPER DUPER AWESOME!</v:String>
+    <v:String x:Key="CommunityPage_CheckBackLater">Datang kembali ke sini kemudian untuk sesuatu yang SUNGGUH LUAR BIASA!</v:String>
 
     <!-- #endregion -->
 
@@ -36,7 +36,7 @@
 
     <!--#region UpdateButton-->
 
-    <v:String x:Key="UpdateButton_NewUpdate_Text">New Update!</v:String>
+    <v:String x:Key="UpdateButton_NewUpdate_Text">Kemas Kini Baru!</v:String>
     <v:String x:Key="UpdateButton_Download_Text">Klik untuk muat turun!</v:String>
 
     <!--#endregion-->
@@ -50,7 +50,7 @@
     <v:String x:Key="ProgressBar_Uninstalling">Menyahpasang</v:String>
     <v:String x:Key="ProgressBar_RegisteringPackage">Mendaftarkan Pakej</v:String>
     <v:String x:Key="ProgressBar_RemovingPackage">Menyahdaftarkan Pakej</v:String>
-    <v:String x:Key="ProgressBar_BackingUp">Backing up Save Data</v:String>
+    <v:String x:Key="ProgressBar_BackingUp">Menyandarkan Simpanan Data</v:String>
 
     <!--#endregion-->
 
@@ -379,7 +379,7 @@
     <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Adakah anda pasti untuk memadam &quot;{1}&quot;?
 {0} ini akan hilang selamanya! (Masa yang lama!)</v:String>
 
-    <v:String x:Key="Dialog_KillGame_Title">Kill Game</v:String>
+    <v:String x:Key="Dialog_KillGame_Title">Matikan Permainan</v:String>
     <v:String x:Key="Dialog_KillGame_Text">This is Dangerous, and is only recommended if you get stuck. Do you still want to close the game?</v:String>
 
     <v:String x:Key="Dialog_CloseGame_Title">Permainan Masih Berjalan</v:String>
@@ -443,10 +443,10 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="Installer_InstallLocation_Info_Text">Setup will install Minecraft Bedrock Launcher in the following folder. To install in a different folder,</v:String>
     <v:String x:Key="Installer_InstallLocation_Info2_Text">klik Cari dan pilih folder yang lain.</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Destination Folder</v:String>
+    <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Folder Destinasi</v:String>
     <v:String x:Key="Installer_InstallLocation_Browse_Text">CARI</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Create a desktop icon</v:String>
+    <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Cipta ikon desktop</v:String>
     <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Add to Start menu</v:String>
     <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">Daftar Program</v:String>
 
@@ -455,7 +455,7 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="Installer_InstallationProgress_FilesInUse">Some of the files are currently in use by the following:</v:String>
 
     <v:String x:Key="Installer_InstallationProgress_Title">Memasang</v:String>
-    <v:String x:Key="Installer_InstallationProgress_Info_Text">Please wait while Setup installs Minecraft Bedrock Launcher on your computer.</v:String>
+    <v:String x:Key="Installer_InstallationProgress_Info_Text">Sila tunggu sementara Pemasang Perisian memasang Pelancar Minecraft Bedrock pada komputer anda.</v:String>
 
 
     <!--#endregion-->
