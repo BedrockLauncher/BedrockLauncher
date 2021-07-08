@@ -482,7 +482,7 @@
 
     <v:String x:Key="VersionEntries_LatestSnapshot">Versão beta mais recente</v:String>
     <v:String x:Key="VersionEntries_LatestRelease">Versão mais recente</v:String>
-    <v:String x:Key="VersionEntries_UnnamedInstallation">&lt;unnamed installation&gt;</v:String>
+    <v:String x:Key="VersionEntries_UnnamedInstallation">Instalação sem nome</v:String>
 
     <!--#endregion-->
 
