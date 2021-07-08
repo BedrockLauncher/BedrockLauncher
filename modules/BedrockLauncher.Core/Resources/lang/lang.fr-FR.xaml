@@ -382,19 +382,19 @@
     <v:String x:Key="Dialog_KillGame_Text">Ceci est dangereux, et n'est recommandé que si vous êtes bloqué. Voulez-vous quand même fermer le jeu?</v:String>
 
     <v:String x:Key="Dialog_CloseGame_Title">Le Jeu est Toujours en cours d'Exécution</v:String>
-    <v:String x:Key="Dialog_CloseGame_Text">Would you like to force close it? (without saving changes, this is only recommended if you get stuck, please close the game normally)</v:String>
+    <v:String x:Key="Dialog_CloseGame_Text">Voulez-vous forcer la fermeture? (sans enregistrer les modifications, ceci n'est recommandé que si vous êtes bloqué, veuillez fermer le jeu normalement)</v:String>
 
-    <v:String x:Key="DialogBtn_YesToAll_Text">Yes To All</v:String>
-    <v:String x:Key="DialogBtn_NoToAll_Text">No To All</v:String>
-    <v:String x:Key="DialogBtn_Yes_Text">Yes</v:String>
-    <v:String x:Key="DialogBtn_No_Text">No</v:String>
+    <v:String x:Key="DialogBtn_YesToAll_Text">Oui pour Tout</v:String>
+    <v:String x:Key="DialogBtn_NoToAll_Text">Non pour Tout</v:String>
+    <v:String x:Key="DialogBtn_Yes_Text">Oui</v:String>
+    <v:String x:Key="DialogBtn_No_Text">Non</v:String>
 
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">No matching results</v:String>
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">We couldn't find news any content matching your search. If you have category filters 
-turned off, try turning the back on and search again</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">Aucun résultat trouvé</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">Nous n'avons pas pu trouver de nouveaux contenu correspondant à votre recherche. Si vous utilisez des filtres de catégorie 
+désactivé les, essayer de les réactivé par la suite et retenté votre recherche</v:String>
 
-    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">No result</v:String>
-    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Found no items matching your search</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Aucun résultat</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Aucun articles correspondant à votre recherche</v:String>
 
     <!--#endregion-->
 
