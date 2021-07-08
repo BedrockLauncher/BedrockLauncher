@@ -2,7 +2,7 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:v="clr-namespace:System;assembly=mscorlib">
     <!--#region Main Section-->
 
-    <v:String x:Key="LanguageString">英语（美国）</v:String>
+    <v:String x:Key="LanguageString">简体中文（中国）</v:String>
 
     <!--#region MainWindow -->
 
@@ -441,36 +441,36 @@
 
     <v:String x:Key="Installer_InstallLocation_Title">选择安装位置</v:String>
     <v:String x:Key="Installer_InstallLocation_Info_Text">安装程序将在下面的文件夹中安装 Minecraft Bedrock Launcher。如要在另一个文件夹中安装，</v:String>
-    <v:String x:Key="Installer_InstallLocation_Info2_Text">click Browse and select another folder.</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info2_Text">点击浏览并选择其他文件夹。</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Destination Folder</v:String>
-    <v:String x:Key="Installer_InstallLocation_Browse_Text">BROWSE</v:String>
+    <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">目标文件夹</v:String>
+    <v:String x:Key="Installer_InstallLocation_Browse_Text">浏览</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Create a desktop icon</v:String>
-    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Add to Start menu</v:String>
-    <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">Register Program</v:String>
+    <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">创建桌面图标</v:String>
+    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">添加到开始菜单</v:String>
+    <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">注册程序</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">Start Program on Exit</v:String>
+    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">退出时启动程序</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_FilesInUse">Some of the files are currently in use by the following:</v:String>
+    <v:String x:Key="Installer_InstallationProgress_FilesInUse">以下文件目前正在使用：</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_Title">Installing</v:String>
-    <v:String x:Key="Installer_InstallationProgress_Info_Text">Please wait while Setup installs Minecraft Bedrock Launcher on your computer.</v:String>
+    <v:String x:Key="Installer_InstallationProgress_Title">安装中</v:String>
+    <v:String x:Key="Installer_InstallationProgress_Info_Text">安装程序正在安装 Minecraft Bedrock Launcher到您的电脑中，请稍等。</v:String>
 
 
     <!--#endregion-->
 
-    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">Unable to Move Directory</v:String>
-    <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">Unable to Move File</v:String>
-    <v:String x:Key="Installer_Dialog_FileLocked_Text">File Being Used</v:String>
-    <v:String x:Key="Installer_Dialog_TryAgain_Text">Try Again?</v:String>
-    <v:String x:Key="Installer_Dialog_ErrorOccured_Text">An error has occurred.</v:String>
+    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">无法创建目录</v:String>
+    <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">无法移动文件</v:String>
+    <v:String x:Key="Installer_Dialog_FileLocked_Text">文件正在使用</v:String>
+    <v:String x:Key="Installer_Dialog_TryAgain_Text">重试？</v:String>
+    <v:String x:Key="Installer_Dialog_ErrorOccured_Text">发生错误。</v:String>
 
     <!--#region ProgressBar -->
 
-    <v:String x:Key="Installer_ProgressBar_Downloading">Downloading...</v:String>
-    <v:String x:Key="Installer_ProgressBar_Finalizing">Finalizing...</v:String>
-    <v:String x:Key="Installer_ProgressBar_Initalizing">Initializing...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Downloading">正在下载...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Finalizing">正在完成...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Initalizing">正在初始化...</v:String>
 
 
     <!--#endregion-->
@@ -481,34 +481,34 @@
 
     <!--#region VersionEntries -->
 
-    <v:String x:Key="VersionEntries_LatestSnapshot">Latest Beta</v:String>
-    <v:String x:Key="VersionEntries_LatestRelease">Latest Release</v:String>
+    <v:String x:Key="VersionEntries_LatestSnapshot">最新Beta</v:String>
+    <v:String x:Key="VersionEntries_LatestRelease">最新Release</v:String>
     <v:String x:Key="VersionEntries_UnnamedInstallation">&lt;unnamed installation&gt;</v:String>
 
     <!--#endregion-->
 
     <!--#region ThemeEntries -->
 
-    <v:String x:Key="ThemeEntries_LatestUpdate">Latest Update</v:String>
-    <v:String x:Key="ThemeEntries_Original">Original</v:String>
+    <v:String x:Key="ThemeEntries_LatestUpdate">最新更新</v:String>
+    <v:String x:Key="ThemeEntries_Original">原始</v:String>
 
-    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">Caves &amp; Cliffs (Part 1)</v:String>
-    <v:String x:Key="ThemeEntries_NetherUpdate">Nether Update</v:String>
-    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Buzzy Bees Update</v:String>
-    <v:String x:Key="ThemeEntries_VillagePillageUpdate">Village &amp; Pillage Update</v:String>
-    <v:String x:Key="ThemeEntries_UpdateAquatic">Update Aquatic</v:String>
-    <v:String x:Key="ThemeEntries_TechnicallyUpdated">Technically Updated [Java]</v:String>
-    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">World of Color Update [Java]</v:String>
-    <v:String x:Key="ThemeEntries_ExplorationUpdate">Exploration Update [Java]</v:String>
-    <v:String x:Key="ThemeEntries_CombatUpdate">Combat Update [Java]</v:String>
-    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">Cats &amp; Pandas [Bedrock]</v:String>
-    <v:String x:Key="ThemeEntries_PocketEditionRelease">Official Release [Bedrock]</v:String>
-    <v:String x:Key="ThemeEntries_BedrockStandard">Bedrock Edition Standard</v:String>
-    <v:String x:Key="ThemeEntries_BedrockMaster">Bedrock Edition Master</v:String>
-    <v:String x:Key="ThemeEntries_EarlyLegacyConsole">Original Legacy Console Era</v:String>
-    <v:String x:Key="ThemeEntries_MidLegacyConsole">Mid Legacy Console Era</v:String>
-    <v:String x:Key="ThemeEntries_LateLegacyConsole">Late Legacy Console Era</v:String>
-    <v:String x:Key="ThemeEntries_IndieDays">Indie Days</v:String>
+    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">洞穴与山崖（第一部分）</v:String>
+    <v:String x:Key="ThemeEntries_NetherUpdate">下界更新</v:String>
+    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">嗡嗡蜂群更新</v:String>
+    <v:String x:Key="ThemeEntries_VillagePillageUpdate">村庄与掠夺更新</v:String>
+    <v:String x:Key="ThemeEntries_UpdateAquatic">水域更新</v:String>
+    <v:String x:Key="ThemeEntries_TechnicallyUpdated">技术更新 [Java]</v:String>
+    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">多彩世界更新 [Java]</v:String>
+    <v:String x:Key="ThemeEntries_ExplorationUpdate">探索更新 [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CombatUpdate">战斗更新 [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">猫与熊猫 [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_PocketEditionRelease">官方版本 [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_BedrockStandard">基岩版标准</v:String>
+    <v:String x:Key="ThemeEntries_BedrockMaster">基岩版大师</v:String>
+    <v:String x:Key="ThemeEntries_EarlyLegacyConsole">原始控制台</v:String>
+    <v:String x:Key="ThemeEntries_MidLegacyConsole">中旧控制台</v:String>
+    <v:String x:Key="ThemeEntries_LateLegacyConsole">旧版控制台</v:String>
+    <v:String x:Key="ThemeEntries_IndieDays">独立日</v:String>
     <v:String x:Key="ThemeEntries_Dungeons">Minecraft Dungeons</v:String>
 
 
@@ -516,39 +516,39 @@
 
     <!--#region GeneralText -->
 
-    <v:String x:Key="GeneralText_Delete">Delete</v:String>
-    <v:String x:Key="GeneralText_Edit">Edit</v:String>
-    <v:String x:Key="GeneralText_Duplicate">Duplicate</v:String>
-    <v:String x:Key="GeneralText_Remove">Remove</v:String>
-    <v:String x:Key="GeneralText_Cancel">Cancel</v:String>
-    <v:String x:Key="GeneralText_Update">Update</v:String>
-    <v:String x:Key="GeneralText_Add">Add</v:String>
-    <v:String x:Key="GeneralText_Save">Save</v:String>
-    <v:String x:Key="GeneralText_Refresh">Refresh</v:String>
-    <v:String x:Key="GeneralText_Backup">Backup</v:String>
-    <v:String x:Key="GeneralText_Versions">Versions</v:String>
-    <v:String x:Key="GeneralText_Browse">Browse</v:String>
-    <v:String x:Key="GeneralText_Reset">Reset</v:String>
-    <v:String x:Key="GeneralText_Yes">Yes</v:String>
-    <v:String x:Key="GeneralText_No">No</v:String>
-    <v:String x:Key="GeneralText_Releases">Releases</v:String>
-    <v:String x:Key="GeneralText_Betas">Betas</v:String>
-    <v:String x:Key="GeneralText_Export">Export</v:String>
-    <v:String x:Key="GeneralText_Repair">Repair</v:String>
+    <v:String x:Key="GeneralText_Delete">删除</v:String>
+    <v:String x:Key="GeneralText_Edit">编辑</v:String>
+    <v:String x:Key="GeneralText_Duplicate">复制</v:String>
+    <v:String x:Key="GeneralText_Remove">移除</v:String>
+    <v:String x:Key="GeneralText_Cancel">取消</v:String>
+    <v:String x:Key="GeneralText_Update">更新</v:String>
+    <v:String x:Key="GeneralText_Add">添加</v:String>
+    <v:String x:Key="GeneralText_Save">保存</v:String>
+    <v:String x:Key="GeneralText_Refresh">刷新</v:String>
+    <v:String x:Key="GeneralText_Backup">备份</v:String>
+    <v:String x:Key="GeneralText_Versions">版本</v:String>
+    <v:String x:Key="GeneralText_Browse">浏览</v:String>
+    <v:String x:Key="GeneralText_Reset">重置</v:String>
+    <v:String x:Key="GeneralText_Yes">是</v:String>
+    <v:String x:Key="GeneralText_No">否</v:String>
+    <v:String x:Key="GeneralText_Releases">发行版</v:String>
+    <v:String x:Key="GeneralText_Betas">Beta版</v:String>
+    <v:String x:Key="GeneralText_Export">导出</v:String>
+    <v:String x:Key="GeneralText_Repair">修复</v:String>
 
     <v:String x:Key="GeneralText_Twitter">Twitter</v:String>
     <v:String x:Key="GeneralText_GitHub">GitHub</v:String>
-    <v:String x:Key="GeneralText_Website">Website</v:String>
+    <v:String x:Key="GeneralText_Website">网站</v:String>
 
     <!--#endregion-->
 
     <!--#region GeneralSubtitles -->
 
-    <v:String x:Key="GeneralSubtitles_Versions">VERSIONS</v:String>
-    <v:String x:Key="GeneralSubtitles_Browse">BROWSE</v:String>
-    <v:String x:Key="GeneralSubtitles_Reset">RESET</v:String>
-    <v:String x:Key="GeneralSubtitles_Categories">CATEGORIES</v:String>
-    <v:String x:Key="GeneralSubtitles_Search">SEARCH</v:String>
+    <v:String x:Key="GeneralSubtitles_Versions">版本</v:String>
+    <v:String x:Key="GeneralSubtitles_Browse">浏览</v:String>
+    <v:String x:Key="GeneralSubtitles_Reset">重置</v:String>
+    <v:String x:Key="GeneralSubtitles_Categories">类别</v:String>
+    <v:String x:Key="GeneralSubtitles_Search">搜索</v:String>
 
     <!--#endregion-->
 
