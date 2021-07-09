@@ -213,21 +213,21 @@
 
     <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">НАЛАДЫ ЛАУНЧАРА</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">НАЛАДЫ ЦЭТЛІКОУ</v:String>
-    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Выкарыстоўваць бэта версію лаўнчара</v:String>
-    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Пакідаць лаўнчар адкрытым, пакуль запушчаны гульні</v:String>
-    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Close Launcher when switching launchers</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animate transitions between pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animate play button on the Play pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Enable Minecraft Dungeons Support (WIP)</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Show advanced information when installing packages</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Выкарыстоўваць бэта версію лаунчера</v:String>
+    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Пакідаць лаунчер адкрытым, пакуль запушчаны гульні</v:String>
+    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Зачыніць лаунчер пры яго змене</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Анімацыя пераходаў паміж старонкамі лаунчера</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Анімацыя кнопкі гульні на старонках лаунчера</v:String>
+    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Уключыць падтрымку Minecraft Dungeons (нясконч.)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Паказваць дадатковую інфармацыю пры ўсталяванні пакетаў</v:String>
     
 
-    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDITION SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">SUPPORT CREATOR</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">НАЛАДЫ MINECRAFT: BEDROCK EDITION</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">ПАДТРЫМАЦЬ СТВАРАЛЬНІКА</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">LAUNCHER UPDATES</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">АБНАЎЛЕННІ ЛАУНЧЕРА</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Support creator</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Падтрымаць стваральніка</v:String>
 
 
     <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Enable experimental save redirection</v:String>
