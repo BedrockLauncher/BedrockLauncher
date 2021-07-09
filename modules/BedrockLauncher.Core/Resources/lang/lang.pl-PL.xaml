@@ -122,8 +122,8 @@
 
     <!--#region EditSkinScreen -->
 
-    <v:String x:Key="EditSkinScreen_Title">Edit Skin</v:String>
-    <v:String x:Key="EditSkinScreen_AltTitle">Add Skin</v:String>
+    <v:String x:Key="EditSkinScreen_Title">Edytuj skórkę</v:String>
+    <v:String x:Key="EditSkinScreen_AltTitle">Dodaj skórkę</v:String>
 
     <v:String x:Key="EditSkinScreen_TextureSubtitle">TEKSTURA</v:String>
     <v:String x:Key="EditSkinScreen_GeometrySubtitle">GEOMETRIA</v:String>
@@ -157,8 +157,8 @@
     <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">UUID</v:String>
     <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">WERSJA</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_Header">Edit Skin Pack</v:String>
-    <v:String x:Key="EditSkinPackScreen_AddHeader">Add Skin Pack</v:String>
+    <v:String x:Key="EditSkinPackScreen_Header">Edytuj pakiet skórek</v:String>
+    <v:String x:Key="EditSkinPackScreen_AddHeader">Dodaj pakiet skórek</v:String>
 
     <v:String x:Key="EditSkinPackScreen_Warning">* Please note that modifying language definitions and changing the pack icon are irreversible regardless if you save your changes or not!!!</v:String>
 
@@ -218,11 +218,11 @@
     <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Zamknij Launcher podczas przełączania launcherów</v:String>
     <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animate transitions between pages in the Launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animate play button on the Play pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Enable Minecraft Dungeons Support (WIP)</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Show advanced information when installing packages</v:String>
+    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Włącz wsparcie dla Minecraft Dungeons (nieukończone)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Wyświetl dodatkowe informacje podczas instalacji pakietów</v:String>
     
 
-    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDITION SETTINGS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">USTAWIENIA MINECRAFT: BEDROCK EDITION</v:String>
     <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">WSPIERAJ TWÓRCĘ</v:String>
 
     <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">AKTUALIZACJE LAUNCHERA</v:String>
@@ -231,12 +231,12 @@
 
 
     <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Enable experimental save redirection</v:String>
-    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Hide Java Edition launcher shortcut</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Show external launcher shortcut</v:String>
+    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Ukryj skrót launchera Java Edition</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Wyświetl skrót do zewnętrznego launchera</v:String>
     <v:String x:Key="GeneralSettingsScreen_BackupButton">Utwórz kopię danych zapisu</v:String>
     <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Ustawienia zaawansowane</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">EXTERNAL LAUNCHER SETTINGS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">USTAWIENIA ZEWNĘTRZNEGO LAUNCHERA</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">ŚCIEŻKA</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">NAZWA</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">ARGUMENTS</v:String>
@@ -259,7 +259,7 @@
 
     <v:String x:Key="AboutPage_Title">INFORMACJE O MINECRAFT: BEDROCK EDITION LAUNCHER</v:String>
     <v:String x:Key="AboutPage_DevelopedBy_Text">STWORZONE PRZEZ</v:String>
-    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">FORKED FROM THE WORK OF</v:String>
+    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">NA PODSTAWIE PROJEKTU AUTORSTWA</v:String>
     <v:String x:Key="AboutPage_SpecialThanks_Text">SPECJALNE PODZIĘKOWANIA DLA</v:String>
 
     <v:String x:Key="AboutPage_McMrArm_Text">For creating the original Minecraft Windows 10 Version downloader (which this work derives from)</v:String>
@@ -370,8 +370,8 @@
     <!--#region Dialog -->
 
     <v:String x:Key="Dialog_Item_Installation_Text">instalacja</v:String>
-    <v:String x:Key="Dialog_Item_SkinPack_Text">skin pack</v:String>
-    <v:String x:Key="Dialog_Item_Skin_Text">skin</v:String>
+    <v:String x:Key="Dialog_Item_SkinPack_Text">pakiet skórek</v:String>
+    <v:String x:Key="Dialog_Item_Skin_Text">skórka</v:String>
     <v:String x:Key="Dialog_Item_Version_Text">wersja</v:String>
     <v:String x:Key="Dialog_Item_Profile_Text">profil</v:String>
 
@@ -385,8 +385,8 @@
     <v:String x:Key="Dialog_CloseGame_Title">Gra jest nadal uruchomiona</v:String>
     <v:String x:Key="Dialog_CloseGame_Text">Czy chcesz wymusić jej zakończenie? (bez zapisywania zmian, jest to zalecane tylko, gdy gra nie odpowiada, zalecamy normalne zamknięcie gry)</v:String>
 
-    <v:String x:Key="DialogBtn_YesToAll_Text">Yes To All</v:String>
-    <v:String x:Key="DialogBtn_NoToAll_Text">No To All</v:String>
+    <v:String x:Key="DialogBtn_YesToAll_Text">Tak na wszystkie</v:String>
+    <v:String x:Key="DialogBtn_NoToAll_Text">Nie na wszystkie</v:String>
     <v:String x:Key="DialogBtn_Yes_Text">Tak</v:String>
     <v:String x:Key="DialogBtn_No_Text">Nie</v:String>
 
@@ -439,15 +439,15 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Beta Version</v:String>
     <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Release Version</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_Title">Choose Install Location</v:String>
-    <v:String x:Key="Installer_InstallLocation_Info_Text">Setup will install Minecraft Bedrock Launcher in the following folder. To install in a different folder,</v:String>
-    <v:String x:Key="Installer_InstallLocation_Info2_Text">click Browse and select another folder.</v:String>
+    <v:String x:Key="Installer_InstallLocation_Title">Wybierz lokalizację instalacji</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info_Text">Konfigurator zainstaluje Minecraft Bedrock Launcher w następującym folderze. Aby zainstalować w innym folderze,</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info2_Text">naciśnij Przeglądaj i wybierz inny folder.</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Destination Folder</v:String>
-    <v:String x:Key="Installer_InstallLocation_Browse_Text">BROWSE</v:String>
+    <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Folder docelowy</v:String>
+    <v:String x:Key="Installer_InstallLocation_Browse_Text">PRZEGLĄDAJ</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Create a desktop icon</v:String>
-    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Add to Start menu</v:String>
+    <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Utwórz skrót na pulpicie</v:String>
+    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Dodaj skrót do menu start</v:String>
     <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">Register Program</v:String>
 
     <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">Start Program on Exit</v:String>
