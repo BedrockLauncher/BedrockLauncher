@@ -138,29 +138,29 @@
     <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">幾何学</v:String>
 
     <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">ローカリゼーション名</v:String>
-    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">SERIALIZATION NAME</v:String>
-    <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">LANGUAGE DEFINITIONS</v:String>
+    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">シリアル化名</v:String>
+    <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">言語の定義</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">LANG NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">「ラング」名</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">OTHER DEFINITIONS</v:String>
-    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">CONTENT</v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">MODULES</v:String>
+    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">その他の定義</v:String>
+    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">コンテンツ</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">モジュール</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">FORMAT VERSION</v:String>
+    <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">フォーマットバージョン</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">PACK NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">パック名</v:String>
     <v:String x:Key="EditSkinPackScreen_HeaderUUIDSubtitle">UUID</v:String>
-    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">VERSION</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">バージョン</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">TYPE</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">タイプ</v:String>
     <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">UUID</v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">VERSION</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">バージョン</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_Header">Edit Skin Pack</v:String>
-    <v:String x:Key="EditSkinPackScreen_AddHeader">Add Skin Pack</v:String>
+    <v:String x:Key="EditSkinPackScreen_Header">スキンパックの編集</v:String>
+    <v:String x:Key="EditSkinPackScreen_AddHeader">スキンパックを追加する</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_Warning">* Please note that modifying language definitions and changing the pack icon are irreversible regardless if you save your changes or not!!!</v:String>
+    <v:String x:Key="EditSkinPackScreen_Warning">*言語定義の変更とパックアイコンの変更は、変更を保存するかどうかに関係なく元に戻せないことに注意してください!!!</v:String>
 
     <!--#endregion-->
 
@@ -170,22 +170,22 @@
 
     <!--#region LauncherNewsPage -->
 
-    <v:String x:Key="LauncherNewsPage_Title_Text">Latest Build Changes</v:String>
-    <v:String x:Key="LauncherNewsPage_Build_Text">Build</v:String>
-    <v:String x:Key="LauncherNewsPage_Changes_Text">Changes:</v:String>
-    <v:String x:Key="LauncherNewsPage_CheckForUpdates">Check for Updates</v:String>
+    <v:String x:Key="LauncherNewsPage_Title_Text">最新のビルド変更</v:String>
+    <v:String x:Key="LauncherNewsPage_Build_Text">ビルド</v:String>
+    <v:String x:Key="LauncherNewsPage_Changes_Text">変更点：</v:String>
+    <v:String x:Key="LauncherNewsPage_CheckForUpdates">更新を確認する</v:String>
     <v:String x:Key="LauncherNewsPage_ForceUpdate">Force Update</v:String>
-    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Current</v:String>
+    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">電流</v:String>
 
     <!--#endregion-->
 
     <!--#region NewsScreenPage -->
 
-    <v:String x:Key="NewsScreen_LauncherTabTitle">Launcher</v:String>
-    <v:String x:Key="NewsScreen_OfficialTabTitle">Official</v:String>
+    <v:String x:Key="NewsScreen_LauncherTabTitle">ランチャー</v:String>
+    <v:String x:Key="NewsScreen_OfficialTabTitle">公式</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
 
-    <v:String x:Key="NewsScreen_SearchBar_Content">News title</v:String>
+    <v:String x:Key="NewsScreen_SearchBar_Content">ニュースタイトル</v:String>
 
     <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
@@ -198,26 +198,26 @@
 
     <!--#region SettingsTab -->
 
-    <v:String x:Key="SettingsTab_Title">SETTINGS</v:String>
-    <v:String x:Key="SettingsTab_GeneralButton">General</v:String>
-    <v:String x:Key="SettingsTab_AccountsButton">Accounts</v:String>
-    <v:String x:Key="SettingsTab_AboutButton">About</v:String>
-    <v:String x:Key="SettingsTab_VersionsButton">Versions</v:String>
+    <v:String x:Key="SettingsTab_Title">設定</v:String>
+    <v:String x:Key="SettingsTab_GeneralButton">一般</v:String>
+    <v:String x:Key="SettingsTab_AccountsButton">口座</v:String>
+    <v:String x:Key="SettingsTab_AboutButton">約</v:String>
+    <v:String x:Key="SettingsTab_VersionsButton">バージョン</v:String>
 
     <!--#endregion-->
 
     <!--#region GeneralSettingsScreen -->
-    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">LANGUAGE</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">LAUNCHER THEME</v:String>
+    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">言語</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">ランチャーテーマ</v:String>
 
 
-    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">LAUNCHER SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">SHORTCUT SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Use beta version of the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Keep the Launcher open while games are running</v:String>
-    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Close Launcher when switching launchers</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animate transitions between pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animate play button on the Play pages in the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">ランチャーの設定</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">ショートカット設定</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">ランチャーのベータ版を使用する</v:String>
+    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">ゲームの実行中はランチャーを開いたままにします</v:String>
+    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">ランチャーを切り替えるときにランチャーを閉じる</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">ランチャーでページ間のトランジションをアニメーション化する</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">ランチャーの再生ページにある再生ボタンをアニメーション化する</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Minecraftダンジョンサポートを有効にする (WIP)</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">パッケージをインストールするときに詳細情報を表示する</v:String>
     
