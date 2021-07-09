@@ -338,59 +338,59 @@
     <v:String x:Key="Error_CantFindJavaLauncher">پیدا کردن لانچر ناموفق بود. مطمئن شوید که شما لانچر رسمی ماینکرفت را از Minecraft.net دریافت کرده اید.</v:String>
 
     <v:String x:Key="Error_AppReregisterFailed_Title">رجیستر کردن دوباره نرم افزار ناموفق بود</v:String>
-    <v:String x:Key="Error_AppReregisterFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppReregisterFailed">لطفا دوباره سعی کنید :(</v:String>
 
-    <v:String x:Key="Error_AppLaunchFailed_Title">Launch failed</v:String>
-    <v:String x:Key="Error_AppLaunchFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppLaunchFailed_Title">لانچ کردن با شکست مواجه شد</v:String>
+    <v:String x:Key="Error_AppLaunchFailed">لطفا دوباره سعی کنید :(</v:String>
 
-    <v:String x:Key="Error_AppDownloadFailed_Title">Download failed</v:String>
-    <v:String x:Key="Error_AppDownloadFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppDownloadFailed_Title">دانلود با شکست مواجه شد</v:String>
+    <v:String x:Key="Error_AppDownloadFailed">لطفا دوباره سعی کنید :(</v:String>
 
-    <v:String x:Key="Error_AppExtractionFailed_Title">Extraction failed</v:String>
-    <v:String x:Key="Error_AppExtractionFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppExtractionFailed_Title">استخراج با مشکل مواجه شد</v:String>
+    <v:String x:Key="Error_AppExtractionFailed">لطفا دوباره سعی کنید :(</v:String>
 
-    <v:String x:Key="Error_CantFindPaidServerList_Title">Could not open servers tab</v:String>
-    <v:String x:Key="Error_CantFindPaidServerList">Paid Servers List not found.</v:String>
+    <v:String x:Key="Error_CantFindPaidServerList_Title">باز کردن بخش سرور ها با شکست مواجه شد</v:String>
+    <v:String x:Key="Error_CantFindPaidServerList">لیست سرور های پولی پیدا نشد.</v:String>
 
-    <v:String x:Key="Error_NotaSkinPack_Title">Unable to import skin pack</v:String>
-    <v:String x:Key="Error_NotaSkinPack">That's not a skin pack silly!</v:String>
+    <v:String x:Key="Error_NotaSkinPack_Title">باز کردن بسته اسکین با شکست مواجه شد</v:String>
+    <v:String x:Key="Error_NotaSkinPack">این یک بسته اسکین نیست دیوانه!</v:String>
 
     <!--#endregion-->
 
     <!--#region NewProfile -->
 
     <v:String x:Key="NewProfile_GoBackButton"></v:String>
-    <v:String x:Key="NewProfile_CreateProfileText">PROFILE</v:String>
-    <v:String x:Key="NewProfile_CreateProfileText_Error">THIS NAME IS ALREADY TAKEN</v:String>
-    <v:String x:Key="NewProfile_CreateProfileSubTitle">Enter the name of your new profile!</v:String>
-    <v:String x:Key="NewProfile_CreateProfileButton">Create</v:String>
+    <v:String x:Key="NewProfile_CreateProfileText">نمایه</v:String>
+    <v:String x:Key="NewProfile_CreateProfileText_Error">نام قبلا رزرو شده</v:String>
+    <v:String x:Key="NewProfile_CreateProfileSubTitle">نام نمایه جدیدتان را وارد کنید!</v:String>
+    <v:String x:Key="NewProfile_CreateProfileButton">ایجاد</v:String>
 
     <!--#endregion-->
 
     <!--#region Dialog -->
 
-    <v:String x:Key="Dialog_Item_Installation_Text">installation</v:String>
-    <v:String x:Key="Dialog_Item_SkinPack_Text">skin pack</v:String>
-    <v:String x:Key="Dialog_Item_Skin_Text">skin</v:String>
-    <v:String x:Key="Dialog_Item_Version_Text">version</v:String>
-    <v:String x:Key="Dialog_Item_Profile_Text">profile</v:String>
+    <v:String x:Key="Dialog_Item_Installation_Text">نصب شده</v:String>
+    <v:String x:Key="Dialog_Item_SkinPack_Text">بسته اسکین</v:String>
+    <v:String x:Key="Dialog_Item_Skin_Text">اسکین</v:String>
+    <v:String x:Key="Dialog_Item_Version_Text">نسخه</v:String>
+    <v:String x:Key="Dialog_Item_Profile_Text">نمایه</v:String>
 
-    <v:String x:Key="Dialog_DeleteItem_Title">Delete {0} permanently</v:String>
-    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Are you sure you want to delete &quot;{1}&quot;?
-This {0} will be lost forever! (A long time!)</v:String>
+    <v:String x:Key="Dialog_DeleteItem_Title">برای همیشه {0} را حذف کن</v:String>
+    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">آیا مطمئنید میخواهید &quot;{1}&quot; را پاک کنید؟
+این {0} برای همیشه پاک خواهد شد! (زمان بسیار زیاد!)</v:String>
 
-    <v:String x:Key="Dialog_KillGame_Title">Kill Game</v:String>
-    <v:String x:Key="Dialog_KillGame_Text">This is Dangerous, and is only recommended if you get stuck. Do you still want to close the game?</v:String>
+    <v:String x:Key="Dialog_KillGame_Title">بازی را خاطمه بده</v:String>
+    <v:String x:Key="Dialog_KillGame_Text">این کار خطرناک است, و فقط زمانی پیشنهاد میشود که شما گرفتار شده اید. آیا هنوز میخواهید بازی را خاطمه دهید?</v:String>
 
-    <v:String x:Key="Dialog_CloseGame_Title">Game is Still Running</v:String>
-    <v:String x:Key="Dialog_CloseGame_Text">Would you like to force close it? (without saving changes, this is only recommended if you get stuck, please close the game normally)</v:String>
+    <v:String x:Key="Dialog_CloseGame_Title">بازی هنور درحال اجراست</v:String>
+    <v:String x:Key="Dialog_CloseGame_Text">آیا میخواهید با زور آن را ببندید؟ (بدون ذخیره تغییرات, این فقط زمانی پیشنهاد میشود که شما گرفتار شده اید, لطفا بازی را به صورت معمولی ببندید)</v:String>
 
-    <v:String x:Key="DialogBtn_YesToAll_Text">Yes To All</v:String>
-    <v:String x:Key="DialogBtn_NoToAll_Text">No To All</v:String>
-    <v:String x:Key="DialogBtn_Yes_Text">Yes</v:String>
-    <v:String x:Key="DialogBtn_No_Text">No</v:String>
+    <v:String x:Key="DialogBtn_YesToAll_Text">بله به همه</v:String>
+    <v:String x:Key="DialogBtn_NoToAll_Text">خیر به همه</v:String>
+    <v:String x:Key="DialogBtn_Yes_Text">بله</v:String>
+    <v:String x:Key="DialogBtn_No_Text">خیر</v:String>
 
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">No matching results</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">هیچ نتیجه ی مرتبطی یافت نشد</v:String>
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">We couldn't find news any content matching your search. If you have category filters 
 turned off, try turning the back on and search again</v:String>
 
