@@ -15,52 +15,52 @@
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
     <v:String x:Key="CommunityPage_ComingSoon">近日公開！</v:String>
-    <v:String x:Key="CommunityPage_CheckBackLater">Check back here later for something SUPER DUPER AWESOME!</v:String>
+    <v:String x:Key="CommunityPage_CheckBackLater">何かスーパーダッパー素晴らしいもののために後でここに戻ってチェック!</v:String>
 
     <!-- #endregion -->
 
     <!--#region ToolbarButtons -->
 
-    <v:String x:Key="ToolbarButtons_NewsButton_Text">News</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java Launcher</v:String>
-    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Custom Launcher</v:String>
-    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Switch to</v:String>
+    <v:String x:Key="ToolbarButtons_NewsButton_Text">ニュース</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrockエディション</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java版</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Javaランチャー</v:String>
+    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">カスタムランチャー</v:String>
+    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">切り替える</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
-    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Community</v:String>
-    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Profile</v:String>
-    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Settings</v:String>
+    <v:String x:Key="ToolbarButtons_CommunityButton_Text">コミュニティ</v:String>
+    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">プロフィール</v:String>
+    <v:String x:Key="ToolbarButtons_SettingsButton_Text">設定</v:String>
 
     <!--#endregion-->
 
     <!--#region UpdateButton-->
 
-    <v:String x:Key="UpdateButton_NewUpdate_Text">New Update!</v:String>
-    <v:String x:Key="UpdateButton_Download_Text">Click to download!</v:String>
+    <v:String x:Key="UpdateButton_NewUpdate_Text">新しいアップデート！</v:String>
+    <v:String x:Key="UpdateButton_Download_Text">クリックしてダウンロード！</v:String>
 
     <!--#endregion-->
 
     <!--#region ProgressBar -->
 
-    <v:String x:Key="ProgressBar_Downloading">Downloading</v:String>
-    <v:String x:Key="ProgressBar_Installing">Installing</v:String>
-    <v:String x:Key="ProgressBar_Launching">Launching</v:String>
-    <v:String x:Key="ProgressBar_Extracting">Extracting</v:String>
-    <v:String x:Key="ProgressBar_Uninstalling">Uninstalling</v:String>
-    <v:String x:Key="ProgressBar_RegisteringPackage">Registering Package</v:String>
-    <v:String x:Key="ProgressBar_RemovingPackage">Unregistering Package</v:String>
-    <v:String x:Key="ProgressBar_BackingUp">Backing up Save Data</v:String>
+    <v:String x:Key="ProgressBar_Downloading">ダウンロード中</v:String>
+    <v:String x:Key="ProgressBar_Installing">インストールが進行中...</v:String>
+    <v:String x:Key="ProgressBar_Launching">起動中</v:String>
+    <v:String x:Key="ProgressBar_Extracting">展開中</v:String>
+    <v:String x:Key="ProgressBar_Uninstalling">アンインストール</v:String>
+    <v:String x:Key="ProgressBar_RegisteringPackage">パッケージの登録</v:String>
+    <v:String x:Key="ProgressBar_RemovingPackage">パッケージの登録解除</v:String>
+    <v:String x:Key="ProgressBar_BackingUp">保存したデータのバックアップを作成する</v:String>
 
     <!--#endregion-->
 
     <!--#region ProfileButton -->
 
-    <v:String x:Key="ProfileButton_ManageProfiles_Text">Manage Profiles</v:String>
-    <v:String x:Key="ProfileButton_ProfileSettings_Text">Profile Settings</v:String>
-    <v:String x:Key="ProfileButton_AddProfile_Text">Add Profile</v:String>
-    <v:String x:Key="ProfileButton_RemoveProfile_Text">Remove Profile</v:String>
-    <v:String x:Key="ProfileButton_ChooseAccount_Text">CHOOSE PROFILE</v:String>
+    <v:String x:Key="ProfileButton_ManageProfiles_Text">プロファイルの管理</v:String>
+    <v:String x:Key="ProfileButton_ProfileSettings_Text">プロフィール設定</v:String>
+    <v:String x:Key="ProfileButton_AddProfile_Text">プロファイルを追加...</v:String>
+    <v:String x:Key="ProfileButton_RemoveProfile_Text">プロファイルを削除</v:String>
+    <v:String x:Key="ProfileButton_ChooseAccount_Text">プロフィールを選択します。</v:String>
 
     <!--#endregion-->
 
@@ -71,35 +71,35 @@
     <!--#region GameTab -->
 
     <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
-    <v:String x:Key="GameTab_PlayButton_Text">Play</v:String>
-    <v:String x:Key="GameTab_PlayButton_Kill_Text">Kill</v:String>
-    <v:String x:Key="GameTab_InstallationsButton_Text">Installations</v:String>
-    <v:String x:Key="GameTab_SkinsButton_Text">Skins</v:String>
-    <v:String x:Key="GameTab_PatchNotesButton_Text">Patch notes</v:String>
+    <v:String x:Key="GameTab_PlayButton_Text">プレイ</v:String>
+    <v:String x:Key="GameTab_PlayButton_Kill_Text">キル</v:String>
+    <v:String x:Key="GameTab_InstallationsButton_Text">インスタレーション</v:String>
+    <v:String x:Key="GameTab_SkinsButton_Text">スキン</v:String>
+    <v:String x:Key="GameTab_PatchNotesButton_Text">パッチ ノート</v:String>
 
     <!--#endregion-->
 
     <!--#region InstallationsPage -->
 
-    <v:String x:Key="InstallationsPage_AddButton">New installation</v:String>
-    <v:String x:Key="InstallationsPage_PlayButton">Play</v:String>
+    <v:String x:Key="InstallationsPage_AddButton">新しいインストール</v:String>
+    <v:String x:Key="InstallationsPage_PlayButton">プレイ</v:String>
 
     <!--#endregion-->
 
     <!--#region EditInstallationScreen -->
 
-    <v:String x:Key="EditInstallationScreen_Title">Create new installation</v:String>
-    <v:String x:Key="EditInstallationScreen_AltTitle">Edit installation</v:String>
+    <v:String x:Key="EditInstallationScreen_Title">新しいインストールを作成します</v:String>
+    <v:String x:Key="EditInstallationScreen_AltTitle">インストールの編集</v:String>
 
-    <v:String x:Key="EditInstallationScreen_CreateButton">Create</v:String>
-    <v:String x:Key="EditInstallationScreen_AltCreateButton">Save</v:String>
+    <v:String x:Key="EditInstallationScreen_CreateButton">作成</v:String>
+    <v:String x:Key="EditInstallationScreen_AltCreateButton">セーブ</v:String>
 
-    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Latest beta</v:String>
-    <v:String x:Key="EditInstallationScreen_LatestRelease">Latest release</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestSnapshot">最新のベータ版</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestRelease">最新のリリース</v:String>
 
-    <v:String x:Key="EditInstallationScreen_NameSubtitle">NAME</v:String>
-    <v:String x:Key="EditInstallationScreen_VersionSubtitle">VERSION</v:String>
-    <v:String x:Key="EditInstallationScreen_DirectorySubtitle">DIRECTORY</v:String>
+    <v:String x:Key="EditInstallationScreen_NameSubtitle">名前</v:String>
+    <v:String x:Key="EditInstallationScreen_VersionSubtitle">バージョン</v:String>
+    <v:String x:Key="EditInstallationScreen_DirectorySubtitle">ディレクトリ</v:String>
 
     <v:String x:Key="EditInstallationScreen_NameHintText">&lt;unnamed installation&gt;</v:String>
     <v:String x:Key="EditInstallationScreen_DirectoryHintText">&lt;default path&gt;</v:String>
@@ -108,21 +108,21 @@
 
     <!--#region PatchNotesPage -->
 
-    <v:String x:Key="PatchNotesPage_MorePatchNotes">More patch notes</v:String>
-    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">More beta patch notes</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotes">その他のパッチノート</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">その他のベータパッチノート</v:String>
 
     <!--#endregion-->
 
     <!--#region SkinsPage -->
 
-    <v:String x:Key="SkinsPage_AddButton">New...</v:String>
-    <v:String x:Key="SkinsPage_ImportButton">Import...</v:String>
+    <v:String x:Key="SkinsPage_AddButton">新規...	</v:String>
+    <v:String x:Key="SkinsPage_ImportButton">インポート...</v:String>
 
     <!--#endregion-->
 
     <!--#region EditSkinScreen -->
 
-    <v:String x:Key="EditSkinScreen_Title">Edit Skin</v:String>
+    <v:String x:Key="EditSkinScreen_Title">スキンを編集する</v:String>
     <v:String x:Key="EditSkinScreen_AltTitle">Add Skin</v:String>
 
     <v:String x:Key="EditSkinScreen_TextureSubtitle">TEXTURE</v:String>
@@ -218,20 +218,20 @@
     <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Close Launcher when switching launchers</v:String>
     <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animate transitions between pages in the Launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animate play button on the Play pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Enable Minecraft Dungeons Support (WIP)</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Show advanced information when installing packages</v:String>
+    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Minecraftダンジョンサポートを有効にする (WIP)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">パッケージをインストールするときに詳細情報を表示する</v:String>
     
 
-    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDITION SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">SUPPORT CREATOR</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT：BEDROCK EDITIONの設定</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">サポートクリエーター</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">LAUNCHER UPDATES</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">ランチャーアップデート</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Support creator</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">サポートクリエーター</v:String>
 
 
-    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Enable experimental save redirection</v:String>
-    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Hide Java Edition launcher shortcut</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">実験的な保存リダイレクトを有効にする</v:String>
+    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Java Editionランチャーのショートカットを非表示にする</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Show external launcher shortcut</v:String>
     <v:String x:Key="GeneralSettingsScreen_BackupButton">Backup Save Data</v:String>
     <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Advanced Settings</v:String>
