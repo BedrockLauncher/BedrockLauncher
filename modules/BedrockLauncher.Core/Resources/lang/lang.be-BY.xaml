@@ -230,50 +230,50 @@
     <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Падтрымаць стваральніка</v:String>
 
 
-    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Enable experimental save redirection</v:String>
-    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Hide Java Edition launcher shortcut</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Show external launcher shortcut</v:String>
-    <v:String x:Key="GeneralSettingsScreen_BackupButton">Backup Save Data</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Advanced Settings</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Уключыць эксперыментальнае перанакіраванне захавання</v:String>
+    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Схаваць ярлык лаунчера Java Edition</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Паказаць ярлык знешняга лаунчера</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BackupButton">Рэзервовае капіраванне захаваных дадзеных</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Пашырыныя налады</v:String>
 
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">EXTERNAL LAUNCHER SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">PATH</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">NAME</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">ARGUMENTS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">ICON</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">ШЛЯХ</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">НАЗВА</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">АРГУМЕНТЫ</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">ЗНАЧОК</v:String>
 
     <!--#endregion-->
 
     <!--#region AcountsSettingsPage -->
 
-    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">SELECTED ACCOUNT</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">INSIDER SETTINGS</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Normal Settings</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Legacy Settings</v:String>
-    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Manage Accounts</v:String>
-    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">ACCOUNT SETTINGS</v:String>
+    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">АБРАНЫ УЛІКОВЫ ЗАПІС</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">НАЛАДЫ XBOX INSIDER</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Звычайныя налады</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Састарэлыя налады</v:String>
+    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Кіраванне ўліковымі запісамі</v:String>
+    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">НАЛАДЫ УЛІКОВАГА ЗАПІСУ</v:String>
 
     <!--#endregion-->
 
     <!--#region AboutPage -->
 
-    <v:String x:Key="AboutPage_Title">ABOUT MINECRAFT: BEDROCK EDITION LAUNCHER</v:String>
-    <v:String x:Key="AboutPage_DevelopedBy_Text">DEVELOPED BY</v:String>
-    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">FORKED FROM THE WORK OF</v:String>
-    <v:String x:Key="AboutPage_SpecialThanks_Text">SPECIAL THANKS TO</v:String>
+    <v:String x:Key="AboutPage_Title">АБ ЛАУНЧЕРЕ MINECRAFT: BEDROCK EDITION</v:String>
+    <v:String x:Key="AboutPage_DevelopedBy_Text">РАСПРАЦАВАНЫ</v:String>
+    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">Заснавана ад работы</v:String>
+    <v:String x:Key="AboutPage_SpecialThanks_Text">АСАБЛИВАЯ ПАДЗЯКА</v:String>
 
-    <v:String x:Key="AboutPage_McMrArm_Text">For creating the original Minecraft Windows 10 Version downloader (which this work derives from)</v:String>
-    <v:String x:Key="AboutPage_BsCommunity_Text">For their work on SkinView3D, which is used for the skin viewing functionality in the launcher</v:String>
-    <v:String x:Key="AboutPage_Mojang_Text">For Minecraft!!!</v:String>
+    <v:String x:Key="AboutPage_McMrArm_Text">За стварэнне арыгінальнага загрузніка Minecraft Windows 10 Version (з чаго вынікае гэтая распрацоўка)</v:String>
+    <v:String x:Key="AboutPage_BsCommunity_Text">За іх працу над SkinView3D, якая выкарыстоўваецца для прагляду скіна ў лаунчере</v:String>
+    <v:String x:Key="AboutPage_Mojang_Text">За Minecraft!!!</v:String>
     <v:String x:Key="AboutPage_BsRepo_Text">SkinView3D Repo</v:String>
-    <v:String x:Key="AboutPage_CurrentBuild">Current Build: </v:String>
+    <v:String x:Key="AboutPage_CurrentBuild">Бягучая зборка: </v:String>
 
     <!--#endregion-->
 
     <!--#region AdvancedSettings -->
 
-    <v:String x:Key="AdvancedSettings_Title">Advanced Settings</v:String>
-    <v:String x:Key="AdvancedSettings_LauncherOptions_Text">LAUNCHER OPTIONS</v:String>
+    <v:String x:Key="AdvancedSettings_Title">Пашырыныя налады</v:String>
+    <v:String x:Key="AdvancedSettings_LauncherOptions_Text">НАЛАДЫ ЛАУНЧАРА</v:String>
     <v:String x:Key="AdvancedSettings_PathSubtitle_Text">STORAGE DIRECTORY</v:String>
     <v:String x:Key="AdvancedSettings_RestartButton_Text">Restart</v:String>
     <v:String x:Key="AdvancedSettings_Notice_Text">* All settings will restart the launcher</v:String>
