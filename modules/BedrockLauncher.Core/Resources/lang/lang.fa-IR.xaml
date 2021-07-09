@@ -126,7 +126,7 @@
     <v:String x:Key="EditSkinScreen_AltTitle">اسکین اضافه کن</v:String>
 
     <v:String x:Key="EditSkinScreen_TextureSubtitle">تکسچر</v:String>
-    <v:String x:Key="EditSkinScreen_GeometrySubtitle">GEOMETRY</v:String>
+    <v:String x:Key="EditSkinScreen_GeometrySubtitle">ژئومتری</v:String>
     <v:String x:Key="EditSkinScreen_TypeSubtitle">نوع</v:String>
     <v:String x:Key="EditSkinScreen_LocalizationSubtitle">نام بومی سازی</v:String>
 
@@ -135,9 +135,9 @@
     <!--#region EditSkinPackScreen -->
 
     <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">توضیحات</v:String>
-    <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">GEOMETRY</v:String>
+    <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">ژئومتری</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">LOCALIZATION NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">نام بومی سازی</v:String>
     <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">نام سریال سازی</v:String>
     <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">تعاریف زبان</v:String>
 
@@ -258,26 +258,26 @@
     <!--#region AboutPage -->
 
     <v:String x:Key="AboutPage_Title">درباره ماینکرفت: لانچر نسخه بدراک</v:String>
-    <v:String x:Key="AboutPage_DevelopedBy_Text">DEVELOPED BY</v:String>
-    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">FORKED FROM THE WORK OF</v:String>
-    <v:String x:Key="AboutPage_SpecialThanks_Text">SPECIAL THANKS TO</v:String>
+    <v:String x:Key="AboutPage_DevelopedBy_Text">توسعه داده شده توسط</v:String>
+    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">با الهام از کار</v:String>
+    <v:String x:Key="AboutPage_SpecialThanks_Text">با تشکر ویژه از</v:String>
 
-    <v:String x:Key="AboutPage_McMrArm_Text">For creating the original Minecraft Windows 10 Version downloader (which this work derives from)</v:String>
-    <v:String x:Key="AboutPage_BsCommunity_Text">For their work on SkinView3D, which is used for the skin viewing functionality in the launcher</v:String>
-    <v:String x:Key="AboutPage_Mojang_Text">For Minecraft!!!</v:String>
-    <v:String x:Key="AboutPage_BsRepo_Text">SkinView3D Repo</v:String>
-    <v:String x:Key="AboutPage_CurrentBuild">Current Build: </v:String>
+    <v:String x:Key="AboutPage_McMrArm_Text">برای ساخت دانلود کننده اولیه ماینکرفت ویندوز 10 (که این برنامه از آن بهره میبرد)</v:String>
+    <v:String x:Key="AboutPage_BsCommunity_Text">برای کارشان روی SkinView3D, که برای دیدن اسکین در لانچر استفاده شده است</v:String>
+    <v:String x:Key="AboutPage_Mojang_Text">برای ماینکرفت!!!</v:String>
+    <v:String x:Key="AboutPage_BsRepo_Text">SkinView3D repo</v:String>
+    <v:String x:Key="AboutPage_CurrentBuild">نسخه کنونی: </v:String>
 
     <!--#endregion-->
 
     <!--#region AdvancedSettings -->
 
-    <v:String x:Key="AdvancedSettings_Title">Advanced Settings</v:String>
-    <v:String x:Key="AdvancedSettings_LauncherOptions_Text">LAUNCHER OPTIONS</v:String>
-    <v:String x:Key="AdvancedSettings_PathSubtitle_Text">STORAGE DIRECTORY</v:String>
-    <v:String x:Key="AdvancedSettings_RestartButton_Text">Restart</v:String>
-    <v:String x:Key="AdvancedSettings_Notice_Text">* All settings will restart the launcher</v:String>
-    <v:String x:Key="AdvancedSettings_PortableMode_Text">Enable Portable Mode</v:String>
+    <v:String x:Key="AdvancedSettings_Title">تنظیمات پیشرفته</v:String>
+    <v:String x:Key="AdvancedSettings_LauncherOptions_Text">تنظیمات لانچر</v:String>
+    <v:String x:Key="AdvancedSettings_PathSubtitle_Text">محل ذخیره سازی</v:String>
+    <v:String x:Key="AdvancedSettings_RestartButton_Text">راه اندازی مجدد</v:String>
+    <v:String x:Key="AdvancedSettings_Notice_Text">* تمام تنظیمات لانچر را دوباره راه اندازی خواهد کرد</v:String>
+    <v:String x:Key="AdvancedSettings_PortableMode_Text">فعال سازی حالت قابل انتقال</v:String>
 
     <!--#endregion-->
 
@@ -287,57 +287,57 @@
 
     <!--#region FirstLaunch -->
 
-    <v:String x:Key="FirstLaunch_WelcomeTitle">Welcome!</v:String>
-    <v:String x:Key="FirstLaunch_WelcomeSubTitle">Welcome to Minecraft Bedrock Launcher!</v:String>
-    <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Create your first profile!</v:String>
-    <v:String x:Key="FirstLaunch_AlmostThereTitle">Almost there!</v:String>
-    <v:String x:Key="FirstLaunch_OneThingTitle">One thing...</v:String>
-    <v:String x:Key="FirstLaunch_OneThingSubtitle">Just check over these to make sure they're just how you like it.</v:String>
-    <v:String x:Key="FirstLaunch_ChooseAccountTitle">Choose an Insider Account</v:String>
-    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* This will be used to verify and download betas. You must be opted in the Xbox Insider Hub for the selected account to download betas. You also may need to restart the launcher or uninstall Minecraft for downloading betas to work.</v:String>
+    <v:String x:Key="FirstLaunch_WelcomeTitle">خوش آمدید!</v:String>
+    <v:String x:Key="FirstLaunch_WelcomeSubTitle">به لانچر بدراک ماینکرفت خوش آمدید!</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileSubTitle">اولین نمایه خودتان را ایجاد کنید!</v:String>
+    <v:String x:Key="FirstLaunch_AlmostThereTitle">تقریبا تمومه!</v:String>
+    <v:String x:Key="FirstLaunch_OneThingTitle">یه چیز دیگه...</v:String>
+    <v:String x:Key="FirstLaunch_OneThingSubtitle">فقط اینها را بررسی کنید تا مطمعن شوید همه چیز همانطوری است که میخواهید.</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountTitle">یک حساب کاربری Insider انتخاب کنید</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* این برای تایید و دانلود نسخه های بتا استفاده میشود. شما باید در Xbox Insider Hub حساب خود را وارد بتا کرده باشید. شاید لازم باشد برای دانلود بتا ها ماینکرفت را حذف و نصب کنید و لانچر را دوباره راه اندازی کنید.</v:String>
 
-    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Before using, it is highly recommended that you press backup to create an installation of your existing save data as the launcher does replace the original directory with a symbolic link which allows us to redirect save data.
+    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">قبل از استفاده شدیدا توصیه میشود که با کلیک روی پشتیبان گیری که نصب از داده های ذخیره شده کنونی خود یک پشتیبانی بگیرید. چون لانچر محل نصب اصلی را با یک لینک نمادین جایگزین میکند که به ما اجازه میدهد تا داده های ذخیره شده را جا به جا کنیم.
 
- (Don't worry, you will not lose your data by doing this, you will only lose data if you press play and haven't backed your stuff up)</v:String>
+(نگران نباشید, داده های شما با این کار از بین نمیرود, شما وقتی داده های خودتان را از دست میدهید که روی دکمه شروع بازی کلیک کرده و پشتیبان گیری نکرده باشید)</v:String>
 
-    <v:String x:Key="FirstLaunch_InstallType_Header">Save/Load Launcher Data From:</v:String>
-    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">Fixed Folder (Recommended)</v:String>
-    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">Portable/Root Folder</v:String>
-    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Backup Existing Save Data</v:String>
-    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(RECOMMENDED)</v:String>
-    <v:String x:Key="FirstLaunch_CloseButton">Close</v:String>
-    <v:String x:Key="FirstLaunch_BackButton">Back</v:String>
+    <v:String x:Key="FirstLaunch_InstallType_Header">ذخیره/بارگیری اطلاعات لانچر از:</v:String>
+    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">پوشه ثابت (پیشنهاد میشود)</v:String>
+    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">پوشه قابل انتقال/ریشه</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">پشتیبان گیری از داده های ذخیره شده کنونی</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(پیشنهاد میشود)</v:String>
+    <v:String x:Key="FirstLaunch_CloseButton">ببند</v:String>
+    <v:String x:Key="FirstLaunch_BackButton">برگشت</v:String>
     <v:String x:Key="FirstLaunch_GoBackButton"></v:String>
-    <v:String x:Key="FirstLaunch_CreateProfileText">PROFILE</v:String>
-    <v:String x:Key="FirstLaunch_CreateProfileButton">Create</v:String>
-    <v:String x:Key="FirstLaunch_NextButton">Next</v:String>
-    <v:String x:Key="FirstLaunch_DownloadButton">Download</v:String>
-    <v:String x:Key="FirstLaunch_FinishButton">Finish</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileText">نمایه</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileButton">ایجاد</v:String>
+    <v:String x:Key="FirstLaunch_NextButton">بعدی</v:String>
+    <v:String x:Key="FirstLaunch_DownloadButton">دانلود</v:String>
+    <v:String x:Key="FirstLaunch_FinishButton">پایان</v:String>
 
     <!--#endregion-->
 
     <!--#region ErrorScreen -->
 
-    <v:String x:Key="ErrorScreen_Title">ERROR</v:String>
-    <v:String x:Key="ErrorScreen_SubTitle">Launcher crashed</v:String>
-    <v:String x:Key="ErrorScreen_DefaultErrorMessage">An unexpected issue occurred and the launcher has crashed. We're sorry for the inconvenience.</v:String>
-    <v:String x:Key="ErrorScreen_CloseButton">Close</v:String>
-    <v:String x:Key="ErrorScreen_ViewCrash">View crash report</v:String>
+    <v:String x:Key="ErrorScreen_Title">خطا</v:String>
+    <v:String x:Key="ErrorScreen_SubTitle">مشکلی برای لانچر پیش آمد</v:String>
+    <v:String x:Key="ErrorScreen_DefaultErrorMessage">یک مشکل نامعلوم پیش آمد و لانچر بسته شد. متاسفیم.</v:String>
+    <v:String x:Key="ErrorScreen_CloseButton">ببند</v:String>
+    <v:String x:Key="ErrorScreen_ViewCrash">ارسال گزارش مشکل</v:String>
 
     <!--#endregion-->
 
     <!--#region Errors -->
 
-    <v:String x:Key="Error_AuthenticationFailed_Title">Authentication failed</v:String>
-    <v:String x:Key="Error_AuthenticationFailed">Failed to authenticate. Please make sure your account is subscribed to the beta program.</v:String>
+    <v:String x:Key="Error_AuthenticationFailed_Title">تایید اعتبار ناموفق بود</v:String>
+    <v:String x:Key="Error_AuthenticationFailed">تایید اعتبار ناموفق بود. لطفا مطمئن شوید حساب کاربری Insider شما وارد بتا شده است.</v:String>
 
-    <v:String x:Key="Error_CantFindExternalLauncher_Title">Could not switch launcher</v:String>
-    <v:String x:Key="Error_CantFindExternalLauncher">Could not switch the launcher. Be sure you have the path to the launcher set correctly.</v:String>
+    <v:String x:Key="Error_CantFindExternalLauncher_Title">سوییچ کردن لانچر ناموفق بود</v:String>
+    <v:String x:Key="Error_CantFindExternalLauncher">سوییچ کردن لانچر ناموفق بود. مطمئن شوید که مسیر انتخاب شده به لانچر صحیح است.</v:String>
 
-    <v:String x:Key="Error_CantFindJavaLauncher_Title">Could not switch launcher</v:String>
-    <v:String x:Key="Error_CantFindJavaLauncher">Could not find launcher. Be sure you have installed original Minecraft launcher from Minecraft.net .</v:String>
+    <v:String x:Key="Error_CantFindJavaLauncher_Title">سوییچ کردن لانچر ناموفق بود</v:String>
+    <v:String x:Key="Error_CantFindJavaLauncher">پیدا کردن لانچر ناموفق بود. مطمئن شوید که شما لانچر رسمی ماینکرفت را از Minecraft.net دریافت کرده اید.</v:String>
 
-    <v:String x:Key="Error_AppReregisterFailed_Title">App re-register failed</v:String>
+    <v:String x:Key="Error_AppReregisterFailed_Title">رجیستر کردن دوباره نرم افزار ناموفق بود</v:String>
     <v:String x:Key="Error_AppReregisterFailed">Please try again :(</v:String>
 
     <v:String x:Key="Error_AppLaunchFailed_Title">Launch failed</v:String>
