@@ -99,10 +99,10 @@
 
     <v:String x:Key="EditInstallationScreen_NameSubtitle">НАЗВА</v:String>
     <v:String x:Key="EditInstallationScreen_VersionSubtitle">ВЕРСІЯ</v:String>
-    <v:String x:Key="EditInstallationScreen_DirectorySubtitle">DIRECTORY</v:String>
+    <v:String x:Key="EditInstallationScreen_DirectorySubtitle">КАТАЛОГ</v:String>
 
-    <v:String x:Key="EditInstallationScreen_NameHintText">&lt;unnamed installation&gt;</v:String>
-    <v:String x:Key="EditInstallationScreen_DirectoryHintText">&lt;default path&gt;</v:String>
+    <v:String x:Key="EditInstallationScreen_NameHintText">&lt;неназваная ўстаноўка&gt;</v:String>
+    <v:String x:Key="EditInstallationScreen_DirectoryHintText">&lt;шлях па змаўчанні&gt;</v:String>
 
     <!--#endregion-->
 
@@ -139,23 +139,23 @@
 
     <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">ІМЯ У ЛАКАЛІЗАЦЫІ</v:String>
     <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">НАЗВА СЕРЫЯЛІЗАЦЫІ</v:String>
-    <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">LANGUAGE DEFINITIONS</v:String>
+    <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">АЗНАЧЭННІ МОВЫ</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">LANG NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">НАЗВА МОВЫ</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">OTHER DEFINITIONS</v:String>
-    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">CONTENT</v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">MODULES</v:String>
+    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">ІНШЫЯ АЗНАЧЭННІ</v:String>
+    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">ЗМЕСТ</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">МОДУЛІ</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">FORMAT VERSION</v:String>
+    <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">ВЕРСІЯ ФАРМАТУ</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">PACK NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">НАЗВА ПАКЕТА</v:String>
     <v:String x:Key="EditSkinPackScreen_HeaderUUIDSubtitle">UUID</v:String>
-    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">VERSION</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">ВЕРСІЯ</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">TYPE</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">ТЫП</v:String>
     <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">UUID</v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">VERSION</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">ВЕРСІЯ</v:String>
 
     <v:String x:Key="EditSkinPackScreen_Header">Edit Skin Pack</v:String>
     <v:String x:Key="EditSkinPackScreen_AddHeader">Add Skin Pack</v:String>
