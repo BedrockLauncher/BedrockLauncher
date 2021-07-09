@@ -123,21 +123,21 @@
     <!--#region EditSkinScreen -->
 
     <v:String x:Key="EditSkinScreen_Title">スキンを編集する</v:String>
-    <v:String x:Key="EditSkinScreen_AltTitle">Add Skin</v:String>
+    <v:String x:Key="EditSkinScreen_AltTitle">スキンを追加</v:String>
 
-    <v:String x:Key="EditSkinScreen_TextureSubtitle">TEXTURE</v:String>
-    <v:String x:Key="EditSkinScreen_GeometrySubtitle">GEOMETRY</v:String>
-    <v:String x:Key="EditSkinScreen_TypeSubtitle">TYPE</v:String>
-    <v:String x:Key="EditSkinScreen_LocalizationSubtitle">LOCALIZATION NAME</v:String>
+    <v:String x:Key="EditSkinScreen_TextureSubtitle">テクスチャ</v:String>
+    <v:String x:Key="EditSkinScreen_GeometrySubtitle">幾何学</v:String>
+    <v:String x:Key="EditSkinScreen_TypeSubtitle">タイプ</v:String>
+    <v:String x:Key="EditSkinScreen_LocalizationSubtitle">ローカリゼーション名</v:String>
 
     <!--#endregion-->
 
     <!--#region EditSkinPackScreen -->
 
-    <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">DESCRIPTION</v:String>
-    <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">GEOMETRY</v:String>
+    <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">説明</v:String>
+    <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">幾何学</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">LOCALIZATION NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">ローカリゼーション名</v:String>
     <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">SERIALIZATION NAME</v:String>
     <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">LANGUAGE DEFINITIONS</v:String>
 
