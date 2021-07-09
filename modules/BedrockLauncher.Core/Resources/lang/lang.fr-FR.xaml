@@ -24,7 +24,7 @@
     <v:String x:Key="ToolbarButtons_NewsButton_Text">Nouveautés</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Édition</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Édition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Launcher Java</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java Launcher</v:String>
     <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Launcher Personnalisé</v:String>
     <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Basculer vers</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
@@ -160,7 +160,7 @@
     <v:String x:Key="EditSkinPackScreen_Header">Modifier le Pack de Skins</v:String>
     <v:String x:Key="EditSkinPackScreen_AddHeader">Ajouter un Pack de Skins</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_Warning">* Veuillez noter que la modification des définitions de langue et la modification de l'icône du pack sont irréversibles, que vous ayez sauvegarder ou non vos modifications!!!</v:String>
+    <v:String x:Key="EditSkinPackScreen_Warning">* Veuillez noter que la modification des définitions de langue et la modification de l'icône du pack sont irréversibles, que vous ayez sauvegarder ou non vos changements!!!</v:String>
 
     <!--#endregion-->
 
@@ -296,14 +296,14 @@
     <v:String x:Key="FirstLaunch_ChooseAccountTitle">Choisissez un Compte Insider</v:String>
     <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* Ceci sera utilisé pour vérifier et télécharger les bêtas. Vous devez être inscrit dans le Xbox Insider Hub pour que le compte sélectionner puisse téléchargé les bêtas. Vous devrez sûrement aussi redémarrer le launcher ou désinstaller Minecraft pour télécharger les bêtas pour que cela fonctionne.</v:String>
 
-    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Avant d'utiliser, Il est fortement recommandé d'appuyer sauvegarder pour créer une installation de vos données de sauvegarde déjà existantes, car le launcher remplace le répertoire original par un lien symbolique qui nous permet de rediriger les données sauvegardées.
+    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Avant d'utiliser, Il est fortement recommandé d'appuyer sur sauvegarder pour créer une installation de vos données de sauvegarde déjà existantes, car le launcher remplace le répertoire original par un lien symbolique qui nous permet de rediriger les données sauvegardées.
 
  (Ne vous inquiétez pas, vous ne perdrez pas vos données en faisant ceci, vous ne perdrez de données que si vous appuyez sur Jouer et que vous n'avez pas au préalable sauvegardé avant)</v:String>
 
     <v:String x:Key="FirstLaunch_InstallType_Header">Sauvegarder/Charger les données du launcher depuis:</v:String>
     <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">Répertoire Fixe (Recommandé)</v:String>
     <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">Portable/Dossier à la Racine</v:String>
-    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Sauvegardé les Données de déjà Existantes</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Sauvegardé les Données de Sauvegarde déjà Existantes</v:String>
     <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(RECOMMANDÉ)</v:String>
     <v:String x:Key="FirstLaunch_CloseButton">Fermer</v:String>
     <v:String x:Key="FirstLaunch_BackButton">Retour</v:String>
@@ -390,8 +390,8 @@
     <v:String x:Key="DialogBtn_No_Text">Non</v:String>
 
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">Aucun résultat trouvé</v:String>
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">Nous n'avons pas pu trouver de nouveaux contenu correspondant à votre recherche. Si vous utilisez des filtres de catégorie 
-désactivé les, essayer de les réactivé par la suite et retenté votre recherche</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">Nous n'avons pas pu trouver de nouveaux résultats correspondant à votre recherche. Si vous utilisez des filtres de catégorie 
+Désactiver les, essayer de les réactivé par la suite et retenté votre recherche</v:String>
 
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Aucun résultat</v:String>
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Aucun articles correspondant à votre recherche</v:String>
@@ -525,7 +525,7 @@ du Minecraft Bedrock Launcher</v:String>
     <v:String x:Key="GeneralText_Add">Ajouter</v:String>
     <v:String x:Key="GeneralText_Save">Enregistrer</v:String>
     <v:String x:Key="GeneralText_Refresh">Actualiser</v:String>
-    <v:String x:Key="GeneralText_Backup">Sauvegarde</v:String>
+    <v:String x:Key="GeneralText_Backup">Sauvegarder</v:String>
     <v:String x:Key="GeneralText_Versions">Versions</v:String>
     <v:String x:Key="GeneralText_Browse">Parcourir</v:String>
     <v:String x:Key="GeneralText_Reset">Reset</v:String>
