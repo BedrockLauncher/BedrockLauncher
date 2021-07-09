@@ -215,7 +215,7 @@
     <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">PARAMÈTRES DES RACCOURCIS</v:String>
     <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Utiliser la version bêta du Launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Garder le Launcher ouvert pendant que le jeu est en cours d'exécution</v:String>
-    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Fermer le launcher lors du lancement vers un autres Launchers</v:String>
+    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Fermer le launcher lors du basculement vers un autres Launchers</v:String>
     <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animer la transition entre les pages dans le Launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animer le bouton jouer dans la section Jouer du Launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Activé le Support de Minecraft Dungeons (WIP)</v:String>
@@ -331,10 +331,10 @@
     <v:String x:Key="Error_AuthenticationFailed_Title">Échec de l'authentification</v:String>
     <v:String x:Key="Error_AuthenticationFailed">Échec de l'authentification. Veuillez vous assurer que votre compte est inscrit au programme bêta.</v:String>
 
-    <v:String x:Key="Error_CantFindExternalLauncher_Title">Impossible de changer de launcher</v:String>
-    <v:String x:Key="Error_CantFindExternalLauncher">Impossible de changer le launcher. Assurez-vous d'avoir le chemin d'accès au launcher correctement défini.</v:String>
+    <v:String x:Key="Error_CantFindExternalLauncher_Title">Impossible de basculer vers un autre launcher</v:String>
+    <v:String x:Key="Error_CantFindExternalLauncher">Impossible de basculer vers un autre launcher. Assurez-vous d'avoir le chemin d'accès au launcher correctement défini.</v:String>
 
-    <v:String x:Key="Error_CantFindJavaLauncher_Title">Impossible de changer de launcher</v:String>
+    <v:String x:Key="Error_CantFindJavaLauncher_Title">Impossible de basculer vers un autre launcher</v:String>
     <v:String x:Key="Error_CantFindJavaLauncher">Impossible de trouver le launcher. Assurez-vous d'avoir installé le launcher original de Minecraft depuis Minecraft.net .</v:String>
 
     <v:String x:Key="Error_AppReregisterFailed_Title">La Réinscription de l'appli a échoué</v:String>
