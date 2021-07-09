@@ -157,10 +157,10 @@
     <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">UUID</v:String>
     <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">ВЕРСІЯ</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_Header">Edit Skin Pack</v:String>
-    <v:String x:Key="EditSkinPackScreen_AddHeader">Add Skin Pack</v:String>
+    <v:String x:Key="EditSkinPackScreen_Header">Рэдагаваць набор скіноў</v:String>
+    <v:String x:Key="EditSkinPackScreen_AddHeader">Дадаць набор скіноў</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_Warning">* Please note that modifying language definitions and changing the pack icon are irreversible regardless if you save your changes or not!!!</v:String>
+    <v:String x:Key="EditSkinPackScreen_Warning">* Звярні ўвагу, што рэдагаванне азначэнняў мовы і змяненне значка пакета незваротныя, незалежна ад таго, захоўваеш ты змены ці не!!! </v:String>
 
     <!--#endregion-->
 
@@ -170,22 +170,22 @@
 
     <!--#region LauncherNewsPage -->
 
-    <v:String x:Key="LauncherNewsPage_Title_Text">Latest Build Changes</v:String>
-    <v:String x:Key="LauncherNewsPage_Build_Text">Build</v:String>
-    <v:String x:Key="LauncherNewsPage_Changes_Text">Changes:</v:String>
-    <v:String x:Key="LauncherNewsPage_CheckForUpdates">Check for Updates</v:String>
-    <v:String x:Key="LauncherNewsPage_ForceUpdate">Force Update</v:String>
-    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Current</v:String>
+    <v:String x:Key="LauncherNewsPage_Title_Text">Апошнія змены зборкі</v:String>
+    <v:String x:Key="LauncherNewsPage_Build_Text">Зборка</v:String>
+    <v:String x:Key="LauncherNewsPage_Changes_Text">Змены:</v:String>
+    <v:String x:Key="LauncherNewsPage_CheckForUpdates">Праверыць абнаўленні</v:String>
+    <v:String x:Key="LauncherNewsPage_ForceUpdate">Прымусовае абнаўленне</v:String>
+    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Бягучая</v:String>
 
     <!--#endregion-->
 
     <!--#region NewsScreenPage -->
 
-    <v:String x:Key="NewsScreen_LauncherTabTitle">Launcher</v:String>
-    <v:String x:Key="NewsScreen_OfficialTabTitle">Official</v:String>
+    <v:String x:Key="NewsScreen_LauncherTabTitle">Лаўнчар</v:String>
+    <v:String x:Key="NewsScreen_OfficialTabTitle">Афіцыйна</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
 
-    <v:String x:Key="NewsScreen_SearchBar_Content">News title</v:String>
+    <v:String x:Key="NewsScreen_SearchBar_Content">Загаловак навіны</v:String>
 
     <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
@@ -198,23 +198,23 @@
 
     <!--#region SettingsTab -->
 
-    <v:String x:Key="SettingsTab_Title">SETTINGS</v:String>
-    <v:String x:Key="SettingsTab_GeneralButton">General</v:String>
-    <v:String x:Key="SettingsTab_AccountsButton">Accounts</v:String>
-    <v:String x:Key="SettingsTab_AboutButton">About</v:String>
-    <v:String x:Key="SettingsTab_VersionsButton">Versions</v:String>
+    <v:String x:Key="SettingsTab_Title">НАЛАДЫ</v:String>
+    <v:String x:Key="SettingsTab_GeneralButton">Агульныя</v:String>
+    <v:String x:Key="SettingsTab_AccountsButton">Уліковыя запісы</v:String>
+    <v:String x:Key="SettingsTab_AboutButton">Інфармацыя</v:String>
+    <v:String x:Key="SettingsTab_VersionsButton">Версіі</v:String>
 
     <!--#endregion-->
 
     <!--#region GeneralSettingsScreen -->
-    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">LANGUAGE</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">LAUNCHER THEME</v:String>
+    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">МОВА</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">СТЫЛЬ ЛАУНЧАРА</v:String>
 
 
-    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">LAUNCHER SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">SHORTCUT SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Use beta version of the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Keep the Launcher open while games are running</v:String>
+    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">НАЛАДЫ ЛАУНЧАРА</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">НАЛАДЫ ЦЭТЛІКОУ</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Выкарыстоўваць бэта версію лаўнчара</v:String>
+    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Пакідаць лаўнчар адкрытым, пакуль запушчаны гульні</v:String>
     <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Close Launcher when switching launchers</v:String>
     <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animate transitions between pages in the Launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animate play button on the Play pages in the Launcher</v:String>
