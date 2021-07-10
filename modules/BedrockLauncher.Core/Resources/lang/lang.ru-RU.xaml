@@ -15,7 +15,7 @@
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
     <v:String x:Key="CommunityPage_ComingSoon">Скоро!</v:String>
-    <v:String x:Key="CommunityPage_CheckBackLater">Вернитесь сюда позже за СУПЕРКРУТЫМИ НИШТЯКАМИ!</v:String>
+    <v:String x:Key="CommunityPage_CheckBackLater">Вернись сюда позже за СУПЕРКРУТЫМИ НИШТЯКАМИ!</v:String>
 
     <!-- #endregion -->
 
@@ -25,7 +25,7 @@
     <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Лаунчер Java</v:String>
-    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Пользовательский лаунчер</v:String>
+    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Пользовательский лаунче</v:String>
     <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Переключиться на</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
     <v:String x:Key="ToolbarButtons_CommunityButton_Text">Сообщество</v:String>
@@ -88,8 +88,8 @@
 
     <!--#region EditInstallationScreen -->
 
-    <v:String x:Key="EditInstallationScreen_Title">Создать новую установку</v:String>
-    <v:String x:Key="EditInstallationScreen_AltTitle">Редактировать установку</v:String>
+    <v:String x:Key="EditInstallationScreen_Title">Создать новую установк</v:String>
+    <v:String x:Key="EditInstallationScreen_AltTitle">Редактировать установк</v:String>
 
     <v:String x:Key="EditInstallationScreen_CreateButton">Создать</v:String>
     <v:String x:Key="EditInstallationScreen_AltCreateButton">Сохранить</v:String>
@@ -126,16 +126,16 @@
     <v:String x:Key="EditSkinScreen_AltTitle">Добавить скин</v:String>
 
     <v:String x:Key="EditSkinScreen_TextureSubtitle">ТЕКСТУРА</v:String>
-    <v:String x:Key="EditSkinScreen_GeometrySubtitle">ГЕОМЕТРИЯ</v:String>
-    <v:String x:Key="EditSkinScreen_TypeSubtitle">ТИП</v:String>
-    <v:String x:Key="EditSkinScreen_LocalizationSubtitle">ИМЯ ЛОКАЛИЗАЦИИ</v:String>
+    <v:String x:Key="EditSkinScreen_GeometrySubtitle">ГЕОМЕТРИ</v:String>
+    <v:String x:Key="EditSkinScreen_TypeSubtitle">ТИ</v:String>
+    <v:String x:Key="EditSkinScreen_LocalizationSubtitle">НАЗВАНИЕ ЛОКАЛИЗАЦИИ</v:String>
 
     <!--#endregion-->
 
     <!--#region EditSkinPackScreen -->
 
     <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">ОПИСАНИЕ</v:String>
-    <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">ГЕОМЕТРИЯ</v:String>
+    <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">ГЕОМЕТРИ</v:String>
 
     <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">ИМЯ В ЛОКАЛИЗАЦИИ</v:String>
     <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">СЕРИЙНОЕ ИМ</v:String>
@@ -155,7 +155,7 @@
 
     <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">ТИ</v:String>
     <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">UUID</v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">ВЕРСИЯ</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">ВЕРСИ</v:String>
 
     <v:String x:Key="EditSkinPackScreen_Header">Редактировать набор скинов</v:String>
     <v:String x:Key="EditSkinPackScreen_AddHeader">Добавить набор скинов</v:String>
@@ -170,7 +170,7 @@
 
     <!--#region LauncherNewsPage -->
 
-    <v:String x:Key="LauncherNewsPage_Title_Text">Изменения в последней сборки</v:String>
+    <v:String x:Key="LauncherNewsPage_Title_Text">Изменения в последней сборке</v:String>
     <v:String x:Key="LauncherNewsPage_Build_Text">Сборка</v:String>
     <v:String x:Key="LauncherNewsPage_Changes_Text">Изменения:</v:String>
     <v:String x:Key="LauncherNewsPage_CheckForUpdates">Проверить обновления</v:String>
@@ -181,11 +181,11 @@
 
     <!--#region NewsScreenPage -->
 
-    <v:String x:Key="NewsScreen_LauncherTabTitle">Лаунчер</v:String>
+    <v:String x:Key="NewsScreen_LauncherTabTitle">Лаунче</v:String>
     <v:String x:Key="NewsScreen_OfficialTabTitle">Официальные</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
 
-    <v:String x:Key="NewsScreen_SearchBar_Content">Заголовок новости</v:String>
+    <v:String x:Key="NewsScreen_SearchBar_Content">Заголовок</v:String>
 
     <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
@@ -201,13 +201,13 @@
     <v:String x:Key="SettingsTab_Title">НАСТРОЙКИ</v:String>
     <v:String x:Key="SettingsTab_GeneralButton">Основные</v:String>
     <v:String x:Key="SettingsTab_AccountsButton">Учётные записи</v:String>
-    <v:String x:Key="SettingsTab_AboutButton">О лаунчере</v:String>
+    <v:String x:Key="SettingsTab_AboutButton">Информация</v:String>
     <v:String x:Key="SettingsTab_VersionsButton">Версии</v:String>
 
     <!--#endregion-->
 
     <!--#region GeneralSettingsScreen -->
-    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">ЯЗЫК</v:String>
+    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">ЯЗЫ</v:String>
     <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">ТЕМА ЛАУНЧЕРА</v:String>
 
 
@@ -223,7 +223,7 @@
     
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">НАСТРОЙКИ MINECRAFT: BEDROCK EDITION</v:String>
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">ПОДДЕРЖАТЬ СОЗДАТЕЛЯ</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">ПОДДЕРЖАТЬ СОЗДАТЕЛ</v:String>
 
     <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">ОБНОВЛЕНИЯ ЛАУНЧЕРА</v:String>
 
@@ -231,9 +231,9 @@
 
 
     <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Включить экспериментальное изменение путей сохранений</v:String>
-    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Спрятать пункт &quot;Лаунчер Java&quot;</v:String>
+    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Спрятать ярлык &quot;Лаунчер Java&quot;</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Добавить выбор пользовательского лаунчера</v:String>
-    <v:String x:Key="GeneralSettingsScreen_BackupButton">Создать копию сохраненных данны</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BackupButton">Создать резервную копию данны</v:String>
     <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Продвинутые настройки</v:String>
 
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">НАСТРОЙКИ ВНЕШНЕГО ЛАУНЧЕРА</v:String>
@@ -257,7 +257,7 @@
 
     <!--#region AboutPage -->
 
-    <v:String x:Key="AboutPage_Title">О ЛАУНЧЕРЕ MINECRAFT: ИЗДАНИЕ BEDROCK</v:String>
+    <v:String x:Key="AboutPage_Title">О ЛАУНЧЕРЕ MINECRAFT: BEDROCK EDITION</v:String>
     <v:String x:Key="AboutPage_DevelopedBy_Text">РАЗРАБОТАНО</v:String>
     <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">ОСНОВАНО НА РАБОТЕ</v:String>
     <v:String x:Key="AboutPage_SpecialThanks_Text">ОСОБАЯ БЛАГОДАРНОСТЬ</v:String>
@@ -294,11 +294,11 @@
     <v:String x:Key="FirstLaunch_OneThingTitle">Еще один момент...</v:String>
     <v:String x:Key="FirstLaunch_OneThingSubtitle">Проверь следующие настройки и убедись, что все настроено под тебя.</v:String>
     <v:String x:Key="FirstLaunch_ChooseAccountTitle">Выбрери тип аккаунта Xbox Insider</v:String>
-    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">Он используется для проверки и скачивания бета-версий. Выбранный аккаунт должен состоять в программе Xbox Insider Hub. Тебе также может потребоваться перезапустить лаунчер или удалить Minecraft, чтобы можно было начать скачивать бета-версий.</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">Он используется для проверки и скачивания бета-версий. Выбранный аккаунт должен состоять в программе Xbox Insider Hub. Тебе также может потребоваться перезапустить лаунчер или удалить Minecraft, чтобы можно было начать скачивать бета-версии.</v:String>
 
     <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Перед использованием советуем создать копию существующих данных, так как лаунчер изменяет каталог хранения данных.
 
- (Без паники, исходные данные будут утеряны только в том случае, если ты не сделаешь их копию)</v:String>
+ (Не паникуй, исходные данные будут утеряны только в том случае, если ты не сделаешь их копию)</v:String>
 
     <v:String x:Key="FirstLaunch_InstallType_Header">Папка хранения данных лаунчера:</v:String>
     <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">Постоянная (рекомендуется)</v:String>
@@ -319,7 +319,7 @@
     <!--#region ErrorScreen -->
 
     <v:String x:Key="ErrorScreen_Title">ОШИБКА</v:String>
-    <v:String x:Key="ErrorScreen_SubTitle">Лаунчер аварийно завершил работу</v:String>
+    <v:String x:Key="ErrorScreen_SubTitle">Лаунчер аварийно завершил работ</v:String>
     <v:String x:Key="ErrorScreen_DefaultErrorMessage">Случилась непредвиденная ошибка, и лаунчер прекратил свою работу. Приносим извинения.</v:String>
     <v:String x:Key="ErrorScreen_CloseButton">Закрыть</v:String>
     <v:String x:Key="ErrorScreen_ViewCrash">Посмотреть отчет об ошибке</v:String>
@@ -335,7 +335,7 @@
     <v:String x:Key="Error_CantFindExternalLauncher">Не удалось переключить лаунчер. Убедись, что указан верный путь.</v:String>
 
     <v:String x:Key="Error_CantFindJavaLauncher_Title">Не удалось переключить лаунче</v:String>
-    <v:String x:Key="Error_CantFindJavaLauncher">Не удалось найти лаунчер. Убедись, что у тебя установлен оригинальный лаунчер Minecraft с Minecraft.net.</v:String>
+    <v:String x:Key="Error_CantFindJavaLauncher">Не удалось найти лаунчер. Убедись, что у тебя установлен оригинальный лаунчер Minecraft с Minecraft.net .</v:String>
 
     <v:String x:Key="Error_AppReregisterFailed_Title">Перерегистрация приложения не удалась</v:String>
     <v:String x:Key="Error_AppReregisterFailed">Повтори попытку :(</v:String>
@@ -349,7 +349,7 @@
     <v:String x:Key="Error_AppExtractionFailed_Title">Распакова не удалась</v:String>
     <v:String x:Key="Error_AppExtractionFailed">Повтори попытку :(</v:String>
 
-    <v:String x:Key="Error_CantFindPaidServerList_Title">Не удалось открыть табло серверов</v:String>
+    <v:String x:Key="Error_CantFindPaidServerList_Title">Не удалось открыть список серверов</v:String>
     <v:String x:Key="Error_CantFindPaidServerList">Список платных серверов не найден.</v:String>
 
     <v:String x:Key="Error_NotaSkinPack_Title">Не удалось импортировать набор скинов</v:String>
@@ -379,7 +379,7 @@
     <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Ты уверен, что хочешь удалить &quot;{1}&quot;?
 {0} будет утерян навсегда! (Прямо совсем!)</v:String>
 
-    <v:String x:Key="Dialog_KillGame_Title">Завершить игру</v:String>
+    <v:String x:Key="Dialog_KillGame_Title">Завершить игр</v:String>
     <v:String x:Key="Dialog_KillGame_Text">Это опасно и рекомендуется только в том случае, если ты застрял. Все еще хочешь закрыть игру?</v:String>
 
     <v:String x:Key="Dialog_CloseGame_Title">Игра все еще запущена</v:String>
@@ -391,8 +391,7 @@
     <v:String x:Key="DialogBtn_No_Text">Не</v:String>
 
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">Нет соответствующих результатов</v:String>
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">Мы не смогли найти новости по твоему запросы. Если у тебя выключены 
-фильтры, включи их и попробуй снова</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">Результаты по твоему запросу не найдены. Если у тебя выключены фильтры, включи их и попробуй снова</v:String>
 
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Нет результатов</v:String>
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">По твоему запросу ничего не найдено</v:String>
@@ -437,18 +436,18 @@
     <v:String x:Key="Installer_InstallType_Info_Text">Выбери, какую версию лаунчера ты хочешь скачать</v:String>
 
     <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Бета-версия</v:String>
-    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Релизная версия</v:String>
+    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Релизная-версия</v:String>
 
     <v:String x:Key="Installer_InstallLocation_Title">Выбери путь установки</v:String>
     <v:String x:Key="Installer_InstallLocation_Info_Text">Лаунчер Minecraft Bedrock будет установлен в следующую папку. Чтобы изменить путь установки,</v:String>
     <v:String x:Key="Installer_InstallLocation_Info2_Text">нажми Обзор и выбери другую папку.</v:String>
 
     <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Конечная папка</v:String>
-    <v:String x:Key="Installer_InstallLocation_Browse_Text">ОБЗОР</v:String>
+    <v:String x:Key="Installer_InstallLocation_Browse_Text">ОБЗО</v:String>
 
     <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Создать ярлык на рабочем столе</v:String>
     <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Закрепить в начальном меню</v:String>
-    <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">Зарегистрировать программу</v:String>
+    <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">Зарегистрировать программ</v:String>
 
     <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">Запустить по завершению установки</v:String>
 
@@ -460,7 +459,7 @@
 
     <!--#endregion-->
 
-    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">Невозможно переместить папку</v:String>
+    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">Невозможно переместить папк</v:String>
     <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">Невозможно переместить файл</v:String>
     <v:String x:Key="Installer_Dialog_FileLocked_Text">Используемый файл</v:String>
     <v:String x:Key="Installer_Dialog_TryAgain_Text">Попробовать снова?</v:String>
@@ -492,21 +491,21 @@
     <v:String x:Key="ThemeEntries_LatestUpdate">Последнее обновление</v:String>
     <v:String x:Key="ThemeEntries_Original">Оригинальное</v:String>
 
-    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">Пещеры и скалы (часть 1)</v:String>
+    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">Обновление &quot;Пещеры и скалы&quot; (часть 1)</v:String>
     <v:String x:Key="ThemeEntries_NetherUpdate">Обновление &quot;Адское&quot;</v:String>
-    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Обновление &quot;Жужащщие пчелы&quot;</v:String>
-    <v:String x:Key="ThemeEntries_VillagePillageUpdate">Обновление &quot;Деревня &amp; Грабеж&quot;</v:String>
+    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Обновление &quot;Жужжащие пчелы&quot;</v:String>
+    <v:String x:Key="ThemeEntries_VillagePillageUpdate">Обновление &quot;Жители и разбойники&quot;</v:String>
     <v:String x:Key="ThemeEntries_UpdateAquatic">Обновление &quot;Морское&quot;</v:String>
     <v:String x:Key="ThemeEntries_TechnicallyUpdated">Обновление &quot;Техническое&quot; [Java]</v:String>
-    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">Обновление &quot;Цветной мир&quot; [Java]</v:String>
+    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">Обновление &quot;Мир цвета&quot; [Java]</v:String>
     <v:String x:Key="ThemeEntries_ExplorationUpdate">Обновление &quot;Исследовательское&quot; [Java]</v:String>
     <v:String x:Key="ThemeEntries_CombatUpdate">Обновление &quot;Боевое&quot; [Java]</v:String>
-    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">Обновление &quot;Коты &amp; Панды&quot; [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">Обновление &quot;Коты и Панды&quot; [Bedrock]</v:String>
     <v:String x:Key="ThemeEntries_PocketEditionRelease">Официальный релиз [Bedrock]</v:String>
     <v:String x:Key="ThemeEntries_BedrockStandard">Стандартное издание Bedrock</v:String>
     <v:String x:Key="ThemeEntries_BedrockMaster">Мастерское издание Bedrock</v:String>
     <v:String x:Key="ThemeEntries_EarlyLegacyConsole">Период ранних версий Legacy Console</v:String>
-    <v:String x:Key="ThemeEntries_MidLegacyConsole">Период основных версий Legacy Console</v:String>
+    <v:String x:Key="ThemeEntries_MidLegacyConsole">Период средних версий Legacy Console</v:String>
     <v:String x:Key="ThemeEntries_LateLegacyConsole">Период поздних версий Legacy Console</v:String>
     <v:String x:Key="ThemeEntries_IndieDays">Период Indie</v:String>
     <v:String x:Key="ThemeEntries_Dungeons">Minecraft Dungeons</v:String>
@@ -531,10 +530,10 @@
     <v:String x:Key="GeneralText_Reset">Сбросить</v:String>
     <v:String x:Key="GeneralText_Yes">Да</v:String>
     <v:String x:Key="GeneralText_No">Не</v:String>
-    <v:String x:Key="GeneralText_Releases">Выпуски</v:String>
+    <v:String x:Key="GeneralText_Releases">Релизы</v:String>
     <v:String x:Key="GeneralText_Betas">Бета-версии</v:String>
     <v:String x:Key="GeneralText_Export">Экспортировать</v:String>
-    <v:String x:Key="GeneralText_Repair">Починить</v:String>
+    <v:String x:Key="GeneralText_Repair">Исправить</v:String>
 
     <v:String x:Key="GeneralText_Twitter">Twitter</v:String>
     <v:String x:Key="GeneralText_GitHub">GitHub</v:String>
