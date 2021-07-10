@@ -21,7 +21,7 @@
 
     <!--#region ToolbarButtons -->
 
-    <v:String x:Key="ToolbarButtons_NewsButton_Text">Nouveautés</v:String>
+    <v:String x:Key="ToolbarButtons_NewsButton_Text">Actualités</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Édition</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Édition</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java Launcher</v:String>
@@ -73,7 +73,7 @@
     <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK ÉDITION</v:String>
     <v:String x:Key="GameTab_PlayButton_Text">Jouer</v:String>
     <v:String x:Key="GameTab_PlayButton_Kill_Text">Fin de tâche</v:String>
-    <v:String x:Key="GameTab_InstallationsButton_Text">Installations</v:String>
+    <v:String x:Key="GameTab_InstallationsButton_Text">Configurations</v:String>
     <v:String x:Key="GameTab_SkinsButton_Text">Skins</v:String>
     <v:String x:Key="GameTab_PatchNotesButton_Text">Notes de mise à jour</v:String>
 
@@ -81,15 +81,15 @@
 
     <!--#region InstallationsPage -->
 
-    <v:String x:Key="InstallationsPage_AddButton">Nouvelle installation</v:String>
+    <v:String x:Key="InstallationsPage_AddButton">Nouvelle configuration</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">Jouer</v:String>
 
     <!--#endregion-->
 
     <!--#region EditInstallationScreen -->
 
-    <v:String x:Key="EditInstallationScreen_Title">Créer une nouvelle installation</v:String>
-    <v:String x:Key="EditInstallationScreen_AltTitle">Modifier l'installation</v:String>
+    <v:String x:Key="EditInstallationScreen_Title">Créer une nouvelle configuration</v:String>
+    <v:String x:Key="EditInstallationScreen_AltTitle">Modifier la configuration</v:String>
 
     <v:String x:Key="EditInstallationScreen_CreateButton">Créer</v:String>
     <v:String x:Key="EditInstallationScreen_AltCreateButton">Enregistrer</v:String>
@@ -101,15 +101,15 @@
     <v:String x:Key="EditInstallationScreen_VersionSubtitle">VERSION</v:String>
     <v:String x:Key="EditInstallationScreen_DirectorySubtitle">RÉPERTOIRE</v:String>
 
-    <v:String x:Key="EditInstallationScreen_NameHintText">&lt;unnamed installation&gt;</v:String>
-    <v:String x:Key="EditInstallationScreen_DirectoryHintText">&lt;default path&gt;</v:String>
+    <v:String x:Key="EditInstallationScreen_NameHintText">configuration sans nom</v:String>
+    <v:String x:Key="EditInstallationScreen_DirectoryHintText">Répertoire par défaut</v:String>
 
     <!--#endregion-->
 
     <!--#region PatchNotesPage -->
 
-    <v:String x:Key="PatchNotesPage_MorePatchNotes">D'autres notes de mise à jour</v:String>
-    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">D'autres notes de bêta</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotes">Plus de notes de mise à jour</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">Plus de notes de bêta</v:String>
 
     <!--#endregion-->
 
@@ -369,14 +369,14 @@
 
     <!--#region Dialog -->
 
-    <v:String x:Key="Dialog_Item_Installation_Text">installation</v:String>
+    <v:String x:Key="Dialog_Item_Installation_Text">configuration</v:String>
     <v:String x:Key="Dialog_Item_SkinPack_Text">pack de skin</v:String>
     <v:String x:Key="Dialog_Item_Skin_Text">skin</v:String>
     <v:String x:Key="Dialog_Item_Version_Text">version</v:String>
     <v:String x:Key="Dialog_Item_Profile_Text">profil</v:String>
 
     <v:String x:Key="Dialog_DeleteItem_Title">Supprimer {0} fichier(s) définitivement</v:String>
-    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Voulez-vous vraiment supprimer &quot;{1}&quot; fichier(s)? Ces {0} fichier(s) seront perdu définitivement (et définitivement c'est long)</v:String>
+    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Voulez-vous vraiment supprimer &quot;{1}&quot;? Cette {0} sera perdu définitivement (et définitivement c'est long)</v:String>
 
     <v:String x:Key="Dialog_KillGame_Title">Fin de tâche du Jeu</v:String>
     <v:String x:Key="Dialog_KillGame_Text">Ceci est dangereux, et n'est recommandé que si vous êtes bloqué. Voulez-vous quand même fermer le jeu?</v:String>
@@ -483,7 +483,7 @@ du Minecraft Bedrock Launcher</v:String>
 
     <v:String x:Key="VersionEntries_LatestSnapshot">Dernière bêta</v:String>
     <v:String x:Key="VersionEntries_LatestRelease">Dernière version</v:String>
-    <v:String x:Key="VersionEntries_UnnamedInstallation">&lt;unnamed installation&gt;</v:String>
+    <v:String x:Key="VersionEntries_UnnamedInstallation">configuration sans nom</v:String>
 
     <!--#endregion-->
 
@@ -531,7 +531,7 @@ du Minecraft Bedrock Launcher</v:String>
     <v:String x:Key="GeneralText_Reset">Reset</v:String>
     <v:String x:Key="GeneralText_Yes">Oui</v:String>
     <v:String x:Key="GeneralText_No">Non</v:String>
-    <v:String x:Key="GeneralText_Releases">Versions</v:String>
+    <v:String x:Key="GeneralText_Releases">Officielles</v:String>
     <v:String x:Key="GeneralText_Betas">Bêtas</v:String>
     <v:String x:Key="GeneralText_Export">Exporter</v:String>
     <v:String x:Key="GeneralText_Repair">Réparer</v:String>
