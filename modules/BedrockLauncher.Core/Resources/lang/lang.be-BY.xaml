@@ -508,7 +508,7 @@
     <v:String x:Key="ThemeEntries_EarlyLegacyConsole">Перыяд ранніх версій Legacy Console</v:String>
     <v:String x:Key="ThemeEntries_MidLegacyConsole">Перыяд сярэдніх версій Legacy Console</v:String>
     <v:String x:Key="ThemeEntries_LateLegacyConsole">Перыяд апошніх версій Legacy Console</v:String>
-    <v:String x:Key="ThemeEntries_IndieDays">Дні Indie</v:String>
+    <v:String x:Key="ThemeEntries_IndieDays">Перыяд Indie</v:String>
     <v:String x:Key="ThemeEntries_Dungeons">Minecraft Dungeons</v:String>
 
 
