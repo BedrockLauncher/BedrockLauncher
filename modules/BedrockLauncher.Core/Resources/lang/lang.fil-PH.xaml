@@ -44,23 +44,23 @@
     <!--#region ProgressBar -->
 
     <v:String x:Key="ProgressBar_Downloading">Nag-dadownload</v:String>
-    <v:String x:Key="ProgressBar_Installing">Installing</v:String>
-    <v:String x:Key="ProgressBar_Launching">Launching</v:String>
-    <v:String x:Key="ProgressBar_Extracting">Extracting</v:String>
-    <v:String x:Key="ProgressBar_Uninstalling">Uninstalling</v:String>
-    <v:String x:Key="ProgressBar_RegisteringPackage">Registering Package</v:String>
-    <v:String x:Key="ProgressBar_RemovingPackage">Unregistering Package</v:String>
-    <v:String x:Key="ProgressBar_BackingUp">Backing up Save Data</v:String>
+    <v:String x:Key="ProgressBar_Installing">Nag-iinstall</v:String>
+    <v:String x:Key="ProgressBar_Launching">Nag-lalaunch</v:String>
+    <v:String x:Key="ProgressBar_Extracting">Nag-eextract</v:String>
+    <v:String x:Key="ProgressBar_Uninstalling">Tinatanggal</v:String>
+    <v:String x:Key="ProgressBar_RegisteringPackage">Nag-rerehistro ng Package</v:String>
+    <v:String x:Key="ProgressBar_RemovingPackage">Tinatanggal ang Pagrehistro ng Package</v:String>
+    <v:String x:Key="ProgressBar_BackingUp">Nag-babackup ng save data</v:String>
 
     <!--#endregion-->
 
     <!--#region ProfileButton -->
 
-    <v:String x:Key="ProfileButton_ManageProfiles_Text">Manage Profiles</v:String>
-    <v:String x:Key="ProfileButton_ProfileSettings_Text">Profile Settings</v:String>
-    <v:String x:Key="ProfileButton_AddProfile_Text">Add Profile</v:String>
-    <v:String x:Key="ProfileButton_RemoveProfile_Text">Remove Profile</v:String>
-    <v:String x:Key="ProfileButton_ChooseAccount_Text">CHOOSE PROFILE</v:String>
+    <v:String x:Key="ProfileButton_ManageProfiles_Text">I-manage ang profile</v:String>
+    <v:String x:Key="ProfileButton_ProfileSettings_Text">Mga opsyon sa profile</v:String>
+    <v:String x:Key="ProfileButton_AddProfile_Text">Dumagdag ng Profile</v:String>
+    <v:String x:Key="ProfileButton_RemoveProfile_Text">Tumanggal ng Profile</v:String>
+    <v:String x:Key="ProfileButton_ChooseAccount_Text">PUMILI NG PROFILE</v:String>
 
     <!--#endregion-->
 
@@ -71,44 +71,44 @@
     <!--#region GameTab -->
 
     <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
-    <v:String x:Key="GameTab_PlayButton_Text">Play</v:String>
-    <v:String x:Key="GameTab_PlayButton_Kill_Text">Kill</v:String>
-    <v:String x:Key="GameTab_InstallationsButton_Text">Installations</v:String>
-    <v:String x:Key="GameTab_SkinsButton_Text">Skins</v:String>
-    <v:String x:Key="GameTab_PatchNotesButton_Text">Patch notes</v:String>
+    <v:String x:Key="GameTab_PlayButton_Text">Maglaro</v:String>
+    <v:String x:Key="GameTab_PlayButton_Kill_Text">Wakasin</v:String>
+    <v:String x:Key="GameTab_InstallationsButton_Text">Mga installasyon</v:String>
+    <v:String x:Key="GameTab_SkinsButton_Text">Mga skin</v:String>
+    <v:String x:Key="GameTab_PatchNotesButton_Text">Mga patch note</v:String>
 
     <!--#endregion-->
 
     <!--#region InstallationsPage -->
 
-    <v:String x:Key="InstallationsPage_AddButton">New installation</v:String>
-    <v:String x:Key="InstallationsPage_PlayButton">Play</v:String>
+    <v:String x:Key="InstallationsPage_AddButton">Bagong installasyon</v:String>
+    <v:String x:Key="InstallationsPage_PlayButton">Maglaro</v:String>
 
     <!--#endregion-->
 
     <!--#region EditInstallationScreen -->
 
-    <v:String x:Key="EditInstallationScreen_Title">Create new installation</v:String>
-    <v:String x:Key="EditInstallationScreen_AltTitle">Edit installation</v:String>
+    <v:String x:Key="EditInstallationScreen_Title">Gumawa ng bagong installasyon</v:String>
+    <v:String x:Key="EditInstallationScreen_AltTitle">I-edit ang installasyon</v:String>
 
-    <v:String x:Key="EditInstallationScreen_CreateButton">Create</v:String>
-    <v:String x:Key="EditInstallationScreen_AltCreateButton">Save</v:String>
+    <v:String x:Key="EditInstallationScreen_CreateButton">Gumawa</v:String>
+    <v:String x:Key="EditInstallationScreen_AltCreateButton">Mag-save</v:String>
 
-    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Latest beta</v:String>
-    <v:String x:Key="EditInstallationScreen_LatestRelease">Latest release</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Pinakabagong beta</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestRelease">Pinakabagong release</v:String>
 
-    <v:String x:Key="EditInstallationScreen_NameSubtitle">NAME</v:String>
+    <v:String x:Key="EditInstallationScreen_NameSubtitle">PANGALAN</v:String>
     <v:String x:Key="EditInstallationScreen_VersionSubtitle">VERSION</v:String>
     <v:String x:Key="EditInstallationScreen_DirectorySubtitle">DIRECTORY</v:String>
 
-    <v:String x:Key="EditInstallationScreen_NameHintText">&lt;unnamed installation&gt;</v:String>
-    <v:String x:Key="EditInstallationScreen_DirectoryHintText">&lt;default path&gt;</v:String>
+    <v:String x:Key="EditInstallationScreen_NameHintText">&lt;installasyon na walang pangalan&gt;</v:String>
+    <v:String x:Key="EditInstallationScreen_DirectoryHintText">&lt;path na default&gt;</v:String>
 
     <!--#endregion-->
 
     <!--#region PatchNotesPage -->
 
-    <v:String x:Key="PatchNotesPage_MorePatchNotes">More patch notes</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotes">Mga ibang patch note</v:String>
     <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">More beta patch notes</v:String>
 
     <!--#endregion-->
@@ -198,40 +198,40 @@
 
     <!--#region SettingsTab -->
 
-    <v:String x:Key="SettingsTab_Title">SETTINGS</v:String>
+    <v:String x:Key="SettingsTab_Title">OPSYON</v:String>
     <v:String x:Key="SettingsTab_GeneralButton">General</v:String>
-    <v:String x:Key="SettingsTab_AccountsButton">Accounts</v:String>
-    <v:String x:Key="SettingsTab_AboutButton">About</v:String>
-    <v:String x:Key="SettingsTab_VersionsButton">Versions</v:String>
+    <v:String x:Key="SettingsTab_AccountsButton">Mga account</v:String>
+    <v:String x:Key="SettingsTab_AboutButton">Tungkol dito</v:String>
+    <v:String x:Key="SettingsTab_VersionsButton">Mga Version</v:String>
 
     <!--#endregion-->
 
     <!--#region GeneralSettingsScreen -->
-    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">LANGUAGE</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">LAUNCHER THEME</v:String>
+    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">LENGUAHE</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">TEMA NG LAUNCHER</v:String>
 
 
-    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">LAUNCHER SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">SHORTCUT SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Use beta version of the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Keep the Launcher open while games are running</v:String>
-    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Close Launcher when switching launchers</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animate transitions between pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animate play button on the Play pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Enable Minecraft Dungeons Support (WIP)</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Show advanced information when installing packages</v:String>
+    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">SETTINGS NG LAUNCHER</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">SETTINGS NG SHORTCUT</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Gamitin ang beta na version ng Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Huwag isarado ang launcher habang may laro na naka-open</v:String>
+    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Isarado ang launcher habang pumapalit ng mga launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">I-animate ang mga transisyon sa pagitan ng mga page sa Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">I-animate ang Play Button sa mga Play Page ng Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">I-enable ang Minecraft Dungeons Support (WIP)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Ipakita ang advanced na impormasyon habang nag-iinstall ng package</v:String>
     
 
-    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDITION SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">SUPPORT CREATOR</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDITION NA SETTINGS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">SUPORTAHIN ANG CREATOR</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">LAUNCHER UPDATES</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">MGA UPDATE SA LAUNCHER</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Support creator</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Suportahin ang creator</v:String>
 
 
-    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Enable experimental save redirection</v:String>
-    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Hide Java Edition launcher shortcut</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">I-enable ang expiremental na save redireksyon</v:String>
+    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Itago ang Java Edition launcher shortcut</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Show external launcher shortcut</v:String>
     <v:String x:Key="GeneralSettingsScreen_BackupButton">Backup Save Data</v:String>
     <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Advanced Settings</v:String>
