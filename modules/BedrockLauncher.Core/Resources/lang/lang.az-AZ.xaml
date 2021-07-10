@@ -109,14 +109,14 @@
     <!--#region PatchNotesPage -->
 
     <v:String x:Key="PatchNotesPage_MorePatchNotes">Daha çox yamaq qeydləri</v:String>
-    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">More beta patch notes</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">Daha çox beta yamaq qeydləri</v:String>
 
     <!--#endregion-->
 
     <!--#region SkinsPage -->
 
-    <v:String x:Key="SkinsPage_AddButton">New...</v:String>
-    <v:String x:Key="SkinsPage_ImportButton">Import...</v:String>
+    <v:String x:Key="SkinsPage_AddButton">Yeni...</v:String>
+    <v:String x:Key="SkinsPage_ImportButton">İdxal et...</v:String>
 
     <!--#endregion-->
 
@@ -127,17 +127,17 @@
 
     <v:String x:Key="EditSkinScreen_TextureSubtitle">TEXTURE</v:String>
     <v:String x:Key="EditSkinScreen_GeometrySubtitle">GEOMETRY</v:String>
-    <v:String x:Key="EditSkinScreen_TypeSubtitle">TYPE</v:String>
-    <v:String x:Key="EditSkinScreen_LocalizationSubtitle">LOCALIZATION NAME</v:String>
+    <v:String x:Key="EditSkinScreen_TypeSubtitle">NÖV</v:String>
+    <v:String x:Key="EditSkinScreen_LocalizationSubtitle">YERLİLƏŞDİRMƏ ADI</v:String>
 
     <!--#endregion-->
 
     <!--#region EditSkinPackScreen -->
 
-    <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">DESCRIPTION</v:String>
+    <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">AÇIQLAMA</v:String>
     <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">GEOMETRY</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">LOCALIZATION NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">YERLİLƏŞDİRMƏ ADI</v:String>
     <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">SERIALIZATION NAME</v:String>
     <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">LANGUAGE DEFINITIONS</v:String>
 
