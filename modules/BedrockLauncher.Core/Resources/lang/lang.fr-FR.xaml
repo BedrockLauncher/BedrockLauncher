@@ -391,7 +391,7 @@
 
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">Aucun résultat trouvé</v:String>
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">Nous n'avons pas pu trouver de nouveaux résultats correspondant à votre recherche. Si vous utilisez des filtres de catégorie 
-désactiver les, essayer de les réactivé par la suite et retenté votre recherche</v:String>
+désactiver les, réactiver les et retenter votre recherche</v:String>
 
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Aucun résultat</v:String>
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Aucun articles correspondant à votre recherche</v:String>
