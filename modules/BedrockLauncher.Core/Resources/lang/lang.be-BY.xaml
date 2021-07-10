@@ -200,7 +200,7 @@
 
     <v:String x:Key="SettingsTab_Title">НАЛАДЫ</v:String>
     <v:String x:Key="SettingsTab_GeneralButton">Агульныя</v:String>
-    <v:String x:Key="SettingsTab_AccountsButton">Уліковыя запісы</v:String>
+    <v:String x:Key="SettingsTab_AccountsButton">Профілі</v:String>
     <v:String x:Key="SettingsTab_AboutButton">Інфармацыя</v:String>
     <v:String x:Key="SettingsTab_VersionsButton">Версіі</v:String>
 
@@ -274,10 +274,10 @@
 
     <v:String x:Key="AdvancedSettings_Title">Пашырыныя налады</v:String>
     <v:String x:Key="AdvancedSettings_LauncherOptions_Text">НАЛАДЫ ЛАУНЧАРА</v:String>
-    <v:String x:Key="AdvancedSettings_PathSubtitle_Text">STORAGE DIRECTORY</v:String>
-    <v:String x:Key="AdvancedSettings_RestartButton_Text">Restart</v:String>
-    <v:String x:Key="AdvancedSettings_Notice_Text">* All settings will restart the launcher</v:String>
-    <v:String x:Key="AdvancedSettings_PortableMode_Text">Enable Portable Mode</v:String>
+    <v:String x:Key="AdvancedSettings_PathSubtitle_Text">КАТАЛОГ ЗАХОУВАННЯ</v:String>
+    <v:String x:Key="AdvancedSettings_RestartButton_Text">Перазапусціць</v:String>
+    <v:String x:Key="AdvancedSettings_Notice_Text">* Усе налады патрабуюць перазапуску лаунчера</v:String>
+    <v:String x:Key="AdvancedSettings_PortableMode_Text">Уключыць партатыўны рэжым</v:String>
 
     <!--#endregion-->
 
@@ -287,32 +287,32 @@
 
     <!--#region FirstLaunch -->
 
-    <v:String x:Key="FirstLaunch_WelcomeTitle">Welcome!</v:String>
-    <v:String x:Key="FirstLaunch_WelcomeSubTitle">Welcome to Minecraft Bedrock Launcher!</v:String>
-    <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Create your first profile!</v:String>
-    <v:String x:Key="FirstLaunch_AlmostThereTitle">Almost there!</v:String>
-    <v:String x:Key="FirstLaunch_OneThingTitle">One thing...</v:String>
-    <v:String x:Key="FirstLaunch_OneThingSubtitle">Just check over these to make sure they're just how you like it.</v:String>
-    <v:String x:Key="FirstLaunch_ChooseAccountTitle">Choose an Insider Account</v:String>
-    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* This will be used to verify and download betas. You must be opted in the Xbox Insider Hub for the selected account to download betas. You also may need to restart the launcher or uninstall Minecraft for downloading betas to work.</v:String>
+    <v:String x:Key="FirstLaunch_WelcomeTitle">Вітаем!</v:String>
+    <v:String x:Key="FirstLaunch_WelcomeSubTitle">Вітаем у лаунчере Minecraft Bedrock!</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Стварыце свой першы профіль!</v:String>
+    <v:String x:Key="FirstLaunch_AlmostThereTitle">Амаль гатова!</v:String>
+    <v:String x:Key="FirstLaunch_OneThingTitle">Яшчэ адзін момант...</v:String>
+    <v:String x:Key="FirstLaunch_OneThingSubtitle">Правер наступныя налады, каб пераканацца, што яны табе падабаюцца.</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountTitle">Выберы акаўнт Xbox Insider</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* Гэта будзе выкарыстоўвацца для праверкі і загрузкі бэта-версій. Ты павіннен выбраць у Xbox Insider Hub абраны ўліковы запіс для загрузкі бэта-версій. Табе таксама можа спатрэбіцца перазагрузіць лаунчер альбо выдаліць Minecraft, каб загрузіць бэта-версію.</v:String>
 
-    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Before using, it is highly recommended that you press backup to create an installation of your existing save data as the launcher does replace the original directory with a symbolic link which allows us to redirect save data.
+    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Перад выкарыстаннем настойліва рэкамендуецца стварыць рэзервовае капіяванне існуючых дадзеных, бо лаунчер замяняе зыходны каталог захавання дадзеных.
 
- (Don't worry, you will not lose your data by doing this, you will only lose data if you press play and haven't backed your stuff up)</v:String>
+ (Не хвалюйся, пры гэтым ты не страціш свае дадзеныя, ты страціш дадзеныя толькі ў тым выпадку, калі не зробіш іх копію)</v:String>
 
-    <v:String x:Key="FirstLaunch_InstallType_Header">Save/Load Launcher Data From:</v:String>
-    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">Fixed Folder (Recommended)</v:String>
-    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">Portable/Root Folder</v:String>
-    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Backup Existing Save Data</v:String>
-    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(RECOMMENDED)</v:String>
-    <v:String x:Key="FirstLaunch_CloseButton">Close</v:String>
-    <v:String x:Key="FirstLaunch_BackButton">Back</v:String>
+    <v:String x:Key="FirstLaunch_InstallType_Header">Захаваць/Загрузіць дадзеныя лаунчера з:</v:String>
+    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">Фіксаваная папка (рэкамендуецца)</v:String>
+    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">Партатыўная/каранёвая папка</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Стварыць копію існуючых дадзеных</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(РЭКАМЕНДУЕЦЦА)</v:String>
+    <v:String x:Key="FirstLaunch_CloseButton">Закрыць</v:String>
+    <v:String x:Key="FirstLaunch_BackButton">Назад</v:String>
     <v:String x:Key="FirstLaunch_GoBackButton"></v:String>
-    <v:String x:Key="FirstLaunch_CreateProfileText">PROFILE</v:String>
-    <v:String x:Key="FirstLaunch_CreateProfileButton">Create</v:String>
-    <v:String x:Key="FirstLaunch_NextButton">Next</v:String>
-    <v:String x:Key="FirstLaunch_DownloadButton">Download</v:String>
-    <v:String x:Key="FirstLaunch_FinishButton">Finish</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileText">ПРОФІЛЬ</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileButton">Стварыць</v:String>
+    <v:String x:Key="FirstLaunch_NextButton">Далей</v:String>
+    <v:String x:Key="FirstLaunch_DownloadButton">Спампаваць</v:String>
+    <v:String x:Key="FirstLaunch_FinishButton">Гатова</v:String>
 
     <!--#endregion-->
 
