@@ -250,7 +250,7 @@
     <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">НАЛАДЫ XBOX INSIDER</v:String>
     <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Звычайныя налады</v:String>
     <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Састарэлыя налады</v:String>
-    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Кіраванне ўліковымі запісамі</v:String>
+    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Кіраванне профілямі</v:String>
     <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">НАЛАДЫ УЛІКОВАГА ЗАПІСУ</v:String>
 
     <!--#endregion-->
@@ -294,7 +294,7 @@
     <v:String x:Key="FirstLaunch_OneThingTitle">Яшчэ адзін момант...</v:String>
     <v:String x:Key="FirstLaunch_OneThingSubtitle">Правер наступныя налады, каб пераканацца, што яны табе падабаюцца.</v:String>
     <v:String x:Key="FirstLaunch_ChooseAccountTitle">Выберы акаўнт Xbox Insider</v:String>
-    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* Гэта будзе выкарыстоўвацца для праверкі і загрузкі бэта-версій. Ты павіннен выбраць у Xbox Insider Hub абраны ўліковы запіс для загрузкі бэта-версій. Табе таксама можа спатрэбіцца перазагрузіць лаунчер альбо выдаліць Minecraft, каб загрузіць бэта-версію.</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* Гэта будзе выкарыстоўвацца для праверкі і загрузкі бэта-версій. Ты павіннен выбраць у Xbox Insider Hub абраны профільдля загрузкі бэта-версій. Табе таксама можа спатрэбіцца перазагрузіць лаунчер альбо выдаліць Minecraft, каб загрузіць бэта-версію.</v:String>
 
     <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Перад выкарыстаннем настойліва рэкамендуецца стварыць рэзервовае капіяванне існуючых дадзеных, бо лаунчер замяняе зыходны каталог захавання дадзеных.
 
@@ -318,11 +318,11 @@
 
     <!--#region ErrorScreen -->
 
-    <v:String x:Key="ErrorScreen_Title">ERROR</v:String>
-    <v:String x:Key="ErrorScreen_SubTitle">Launcher crashed</v:String>
-    <v:String x:Key="ErrorScreen_DefaultErrorMessage">An unexpected issue occurred and the launcher has crashed. We're sorry for the inconvenience.</v:String>
-    <v:String x:Key="ErrorScreen_CloseButton">Close</v:String>
-    <v:String x:Key="ErrorScreen_ViewCrash">View crash report</v:String>
+    <v:String x:Key="ErrorScreen_Title">ПАМЫЛКА</v:String>
+    <v:String x:Key="ErrorScreen_SubTitle">Лаунчер аварыйна закрыўся</v:String>
+    <v:String x:Key="ErrorScreen_DefaultErrorMessage">Адбылася нечаканая праблема, і лаунчер пацярпел няўдачу. Прабачце за нязручнасці.</v:String>
+    <v:String x:Key="ErrorScreen_CloseButton">Закрыць</v:String>
+    <v:String x:Key="ErrorScreen_ViewCrash">Праглядзець справаздачу аб падзенні</v:String>
 
     <!--#endregion-->
 
