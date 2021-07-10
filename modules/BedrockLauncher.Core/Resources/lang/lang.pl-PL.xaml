@@ -216,8 +216,8 @@
     <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Użyj wersji beta Launchera</v:String>
     <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Pozostaw Launcher otwarty, gdy gra jest uruchomiona</v:String>
     <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Zamknij Launcher podczas przełączania launcherów</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animate transitions between pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animate play button on the Play pages in the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animowane przejścia pomiędzy stronami Launchera</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animowany przycisk Graj</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Włącz wsparcie dla Minecraft Dungeons (nieukończone)</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Wyświetl dodatkowe informacje podczas instalacji pakietów</v:String>
     
