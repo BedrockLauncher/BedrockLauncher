@@ -21,30 +21,30 @@
 
     <!--#region ToolbarButtons -->
 
-    <v:String x:Key="ToolbarButtons_NewsButton_Text">News</v:String>
+    <v:String x:Key="ToolbarButtons_NewsButton_Text">Uutiset</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java Launcher</v:String>
     <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Custom Launcher</v:String>
-    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Switch to</v:String>
+    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Vaihda versioon</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
     <v:String x:Key="ToolbarButtons_CommunityButton_Text">Community</v:String>
-    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Profile</v:String>
-    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Settings</v:String>
+    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Profiili</v:String>
+    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Asetukset</v:String>
 
     <!--#endregion-->
 
     <!--#region UpdateButton-->
 
-    <v:String x:Key="UpdateButton_NewUpdate_Text">New Update!</v:String>
+    <v:String x:Key="UpdateButton_NewUpdate_Text">Uusi päivitys!</v:String>
     <v:String x:Key="UpdateButton_Download_Text">Click to download!</v:String>
 
     <!--#endregion-->
 
     <!--#region ProgressBar -->
 
-    <v:String x:Key="ProgressBar_Downloading">Downloading</v:String>
-    <v:String x:Key="ProgressBar_Installing">Installing</v:String>
+    <v:String x:Key="ProgressBar_Downloading">Ladataan</v:String>
+    <v:String x:Key="ProgressBar_Installing">Asennetaan</v:String>
     <v:String x:Key="ProgressBar_Launching">Launching</v:String>
     <v:String x:Key="ProgressBar_Extracting">Extracting</v:String>
     <v:String x:Key="ProgressBar_Uninstalling">Uninstalling</v:String>
@@ -60,7 +60,7 @@
     <v:String x:Key="ProfileButton_ProfileSettings_Text">Profile Settings</v:String>
     <v:String x:Key="ProfileButton_AddProfile_Text">Add Profile</v:String>
     <v:String x:Key="ProfileButton_RemoveProfile_Text">Remove Profile</v:String>
-    <v:String x:Key="ProfileButton_ChooseAccount_Text">CHOOSE PROFILE</v:String>
+    <v:String x:Key="ProfileButton_ChooseAccount_Text">VALITSE PROFIILI</v:String>
 
     <!--#endregion-->
 
@@ -71,7 +71,7 @@
     <!--#region GameTab -->
 
     <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
-    <v:String x:Key="GameTab_PlayButton_Text">Play</v:String>
+    <v:String x:Key="GameTab_PlayButton_Text">Pelaa</v:String>
     <v:String x:Key="GameTab_PlayButton_Kill_Text">Kill</v:String>
     <v:String x:Key="GameTab_InstallationsButton_Text">Installations</v:String>
     <v:String x:Key="GameTab_SkinsButton_Text">Skins</v:String>
@@ -82,7 +82,7 @@
     <!--#region InstallationsPage -->
 
     <v:String x:Key="InstallationsPage_AddButton">New installation</v:String>
-    <v:String x:Key="InstallationsPage_PlayButton">Play</v:String>
+    <v:String x:Key="InstallationsPage_PlayButton">Pelaa</v:String>
 
     <!--#endregion-->
 
@@ -91,15 +91,15 @@
     <v:String x:Key="EditInstallationScreen_Title">Create new installation</v:String>
     <v:String x:Key="EditInstallationScreen_AltTitle">Edit installation</v:String>
 
-    <v:String x:Key="EditInstallationScreen_CreateButton">Create</v:String>
+    <v:String x:Key="EditInstallationScreen_CreateButton">Luo</v:String>
     <v:String x:Key="EditInstallationScreen_AltCreateButton">Save</v:String>
 
     <v:String x:Key="EditInstallationScreen_LatestSnapshot">Latest beta</v:String>
     <v:String x:Key="EditInstallationScreen_LatestRelease">Latest release</v:String>
 
-    <v:String x:Key="EditInstallationScreen_NameSubtitle">NAME</v:String>
-    <v:String x:Key="EditInstallationScreen_VersionSubtitle">VERSION</v:String>
-    <v:String x:Key="EditInstallationScreen_DirectorySubtitle">DIRECTORY</v:String>
+    <v:String x:Key="EditInstallationScreen_NameSubtitle">NIMI</v:String>
+    <v:String x:Key="EditInstallationScreen_VersionSubtitle">VERSIO</v:String>
+    <v:String x:Key="EditInstallationScreen_DirectorySubtitle">HAKEMISTO</v:String>
 
     <v:String x:Key="EditInstallationScreen_NameHintText">&lt;unnamed installation&gt;</v:String>
     <v:String x:Key="EditInstallationScreen_DirectoryHintText">&lt;default path&gt;</v:String>
