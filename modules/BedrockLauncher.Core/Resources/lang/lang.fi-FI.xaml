@@ -45,7 +45,7 @@
 
     <v:String x:Key="ProgressBar_Downloading">Ladataan</v:String>
     <v:String x:Key="ProgressBar_Installing">Asennetaan</v:String>
-    <v:String x:Key="ProgressBar_Launching">Launching</v:String>
+    <v:String x:Key="ProgressBar_Launching">Käynnistetään</v:String>
     <v:String x:Key="ProgressBar_Extracting">Extracting</v:String>
     <v:String x:Key="ProgressBar_Uninstalling">Uninstalling</v:String>
     <v:String x:Key="ProgressBar_RegisteringPackage">Registering Package</v:String>
@@ -58,8 +58,8 @@
 
     <v:String x:Key="ProfileButton_ManageProfiles_Text">Manage Profiles</v:String>
     <v:String x:Key="ProfileButton_ProfileSettings_Text">Profile Settings</v:String>
-    <v:String x:Key="ProfileButton_AddProfile_Text">Add Profile</v:String>
-    <v:String x:Key="ProfileButton_RemoveProfile_Text">Remove Profile</v:String>
+    <v:String x:Key="ProfileButton_AddProfile_Text">Lisää profiili</v:String>
+    <v:String x:Key="ProfileButton_RemoveProfile_Text">Poista profiili</v:String>
     <v:String x:Key="ProfileButton_ChooseAccount_Text">VALITSE PROFIILI</v:String>
 
     <!--#endregion-->
@@ -92,7 +92,7 @@
     <v:String x:Key="EditInstallationScreen_AltTitle">Edit installation</v:String>
 
     <v:String x:Key="EditInstallationScreen_CreateButton">Luo</v:String>
-    <v:String x:Key="EditInstallationScreen_AltCreateButton">Save</v:String>
+    <v:String x:Key="EditInstallationScreen_AltCreateButton">Tallenna</v:String>
 
     <v:String x:Key="EditInstallationScreen_LatestSnapshot">Latest beta</v:String>
     <v:String x:Key="EditInstallationScreen_LatestRelease">Latest release</v:String>
@@ -182,7 +182,7 @@
     <!--#region NewsScreenPage -->
 
     <v:String x:Key="NewsScreen_LauncherTabTitle">Launcher</v:String>
-    <v:String x:Key="NewsScreen_OfficialTabTitle">Official</v:String>
+    <v:String x:Key="NewsScreen_OfficialTabTitle">Virallinen</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
 
     <v:String x:Key="NewsScreen_SearchBar_Content">News title</v:String>
@@ -198,16 +198,16 @@
 
     <!--#region SettingsTab -->
 
-    <v:String x:Key="SettingsTab_Title">SETTINGS</v:String>
+    <v:String x:Key="SettingsTab_Title">ASETUKSET</v:String>
     <v:String x:Key="SettingsTab_GeneralButton">General</v:String>
-    <v:String x:Key="SettingsTab_AccountsButton">Accounts</v:String>
+    <v:String x:Key="SettingsTab_AccountsButton">Tilit</v:String>
     <v:String x:Key="SettingsTab_AboutButton">About</v:String>
-    <v:String x:Key="SettingsTab_VersionsButton">Versions</v:String>
+    <v:String x:Key="SettingsTab_VersionsButton">Versiot</v:String>
 
     <!--#endregion-->
 
     <!--#region GeneralSettingsScreen -->
-    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">LANGUAGE</v:String>
+    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">KIELI</v:String>
     <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">LAUNCHER THEME</v:String>
 
 
@@ -234,7 +234,7 @@
     <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Hide Java Edition launcher shortcut</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Show external launcher shortcut</v:String>
     <v:String x:Key="GeneralSettingsScreen_BackupButton">Backup Save Data</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Advanced Settings</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Edistyneet asetukset</v:String>
 
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">EXTERNAL LAUNCHER SETTINGS</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">PATH</v:String>
@@ -248,7 +248,7 @@
 
     <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">SELECTED ACCOUNT</v:String>
     <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">INSIDER SETTINGS</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Normal Settings</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Tavalliset asetukset</v:String>
     <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Legacy Settings</v:String>
     <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Manage Accounts</v:String>
     <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">ACCOUNT SETTINGS</v:String>
@@ -272,7 +272,7 @@
 
     <!--#region AdvancedSettings -->
 
-    <v:String x:Key="AdvancedSettings_Title">Advanced Settings</v:String>
+    <v:String x:Key="AdvancedSettings_Title">Edistyneet asetukset</v:String>
     <v:String x:Key="AdvancedSettings_LauncherOptions_Text">LAUNCHER OPTIONS</v:String>
     <v:String x:Key="AdvancedSettings_PathSubtitle_Text">STORAGE DIRECTORY</v:String>
     <v:String x:Key="AdvancedSettings_RestartButton_Text">Restart</v:String>
@@ -287,7 +287,7 @@
 
     <!--#region FirstLaunch -->
 
-    <v:String x:Key="FirstLaunch_WelcomeTitle">Welcome!</v:String>
+    <v:String x:Key="FirstLaunch_WelcomeTitle">Tervetuloa!</v:String>
     <v:String x:Key="FirstLaunch_WelcomeSubTitle">Welcome to Minecraft Bedrock Launcher!</v:String>
     <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Create your first profile!</v:String>
     <v:String x:Key="FirstLaunch_AlmostThereTitle">Almost there!</v:String>
@@ -305,12 +305,12 @@
     <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">Portable/Root Folder</v:String>
     <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Backup Existing Save Data</v:String>
     <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(RECOMMENDED)</v:String>
-    <v:String x:Key="FirstLaunch_CloseButton">Close</v:String>
-    <v:String x:Key="FirstLaunch_BackButton">Back</v:String>
+    <v:String x:Key="FirstLaunch_CloseButton">Sulje</v:String>
+    <v:String x:Key="FirstLaunch_BackButton">Takaisin</v:String>
     <v:String x:Key="FirstLaunch_GoBackButton"></v:String>
-    <v:String x:Key="FirstLaunch_CreateProfileText">PROFILE</v:String>
-    <v:String x:Key="FirstLaunch_CreateProfileButton">Create</v:String>
-    <v:String x:Key="FirstLaunch_NextButton">Next</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileText">PROFIILI</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileButton">Luo</v:String>
+    <v:String x:Key="FirstLaunch_NextButton">Seuraava</v:String>
     <v:String x:Key="FirstLaunch_DownloadButton">Download</v:String>
     <v:String x:Key="FirstLaunch_FinishButton">Finish</v:String>
 
@@ -321,7 +321,7 @@
     <v:String x:Key="ErrorScreen_Title">ERROR</v:String>
     <v:String x:Key="ErrorScreen_SubTitle">Launcher crashed</v:String>
     <v:String x:Key="ErrorScreen_DefaultErrorMessage">An unexpected issue occurred and the launcher has crashed. We're sorry for the inconvenience.</v:String>
-    <v:String x:Key="ErrorScreen_CloseButton">Close</v:String>
+    <v:String x:Key="ErrorScreen_CloseButton">Sulje</v:String>
     <v:String x:Key="ErrorScreen_ViewCrash">View crash report</v:String>
 
     <!--#endregion-->
@@ -454,7 +454,7 @@ turned off, try turning the back on and search again</v:String>
 
     <v:String x:Key="Installer_InstallationProgress_FilesInUse">Some of the files are currently in use by the following:</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_Title">Installing</v:String>
+    <v:String x:Key="Installer_InstallationProgress_Title">Asennetaan</v:String>
     <v:String x:Key="Installer_InstallationProgress_Info_Text">Please wait while Setup installs Minecraft Bedrock Launcher on your computer.</v:String>
 
 
@@ -468,7 +468,7 @@ turned off, try turning the back on and search again</v:String>
 
     <!--#region ProgressBar -->
 
-    <v:String x:Key="Installer_ProgressBar_Downloading">Downloading...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Downloading">Ladataan...</v:String>
     <v:String x:Key="Installer_ProgressBar_Finalizing">Finalizing...</v:String>
     <v:String x:Key="Installer_ProgressBar_Initalizing">Initializing...</v:String>
 
@@ -481,8 +481,8 @@ turned off, try turning the back on and search again</v:String>
 
     <!--#region VersionEntries -->
 
-    <v:String x:Key="VersionEntries_LatestSnapshot">Latest Beta</v:String>
-    <v:String x:Key="VersionEntries_LatestRelease">Latest Release</v:String>
+    <v:String x:Key="VersionEntries_LatestSnapshot">Viimeisin beta</v:String>
+    <v:String x:Key="VersionEntries_LatestRelease">Viimeisin julkaisu</v:String>
     <v:String x:Key="VersionEntries_UnnamedInstallation">&lt;unnamed installation&gt;</v:String>
 
     <!--#endregion-->
@@ -490,11 +490,11 @@ turned off, try turning the back on and search again</v:String>
     <!--#region ThemeEntries -->
 
     <v:String x:Key="ThemeEntries_LatestUpdate">Latest Update</v:String>
-    <v:String x:Key="ThemeEntries_Original">Original</v:String>
+    <v:String x:Key="ThemeEntries_Original">Alkuperäinen</v:String>
 
     <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">Caves &amp; Cliffs (Part 1)</v:String>
-    <v:String x:Key="ThemeEntries_NetherUpdate">Nether Update</v:String>
-    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Buzzy Bees Update</v:String>
+    <v:String x:Key="ThemeEntries_NetherUpdate">Nether-päivitys</v:String>
+    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Surisevat mehiläiset-päivitys</v:String>
     <v:String x:Key="ThemeEntries_VillagePillageUpdate">Village &amp; Pillage Update</v:String>
     <v:String x:Key="ThemeEntries_UpdateAquatic">Update Aquatic</v:String>
     <v:String x:Key="ThemeEntries_TechnicallyUpdated">Technically Updated [Java]</v:String>
@@ -516,38 +516,38 @@ turned off, try turning the back on and search again</v:String>
 
     <!--#region GeneralText -->
 
-    <v:String x:Key="GeneralText_Delete">Delete</v:String>
-    <v:String x:Key="GeneralText_Edit">Edit</v:String>
+    <v:String x:Key="GeneralText_Delete">Poista</v:String>
+    <v:String x:Key="GeneralText_Edit">Muokkaa</v:String>
     <v:String x:Key="GeneralText_Duplicate">Duplicate</v:String>
-    <v:String x:Key="GeneralText_Remove">Remove</v:String>
-    <v:String x:Key="GeneralText_Cancel">Cancel</v:String>
+    <v:String x:Key="GeneralText_Remove">Poista</v:String>
+    <v:String x:Key="GeneralText_Cancel">Peruuta</v:String>
     <v:String x:Key="GeneralText_Update">Update</v:String>
-    <v:String x:Key="GeneralText_Add">Add</v:String>
-    <v:String x:Key="GeneralText_Save">Save</v:String>
+    <v:String x:Key="GeneralText_Add">Lisää</v:String>
+    <v:String x:Key="GeneralText_Save">Tallenna</v:String>
     <v:String x:Key="GeneralText_Refresh">Refresh</v:String>
     <v:String x:Key="GeneralText_Backup">Backup</v:String>
-    <v:String x:Key="GeneralText_Versions">Versions</v:String>
-    <v:String x:Key="GeneralText_Browse">Browse</v:String>
-    <v:String x:Key="GeneralText_Reset">Reset</v:String>
-    <v:String x:Key="GeneralText_Yes">Yes</v:String>
-    <v:String x:Key="GeneralText_No">No</v:String>
+    <v:String x:Key="GeneralText_Versions">Versiot</v:String>
+    <v:String x:Key="GeneralText_Browse">Selaa</v:String>
+    <v:String x:Key="GeneralText_Reset">Nollaa</v:String>
+    <v:String x:Key="GeneralText_Yes">Kyllä</v:String>
+    <v:String x:Key="GeneralText_No">Ei</v:String>
     <v:String x:Key="GeneralText_Releases">Releases</v:String>
-    <v:String x:Key="GeneralText_Betas">Betas</v:String>
-    <v:String x:Key="GeneralText_Export">Export</v:String>
+    <v:String x:Key="GeneralText_Betas">Betat</v:String>
+    <v:String x:Key="GeneralText_Export">Vie</v:String>
     <v:String x:Key="GeneralText_Repair">Repair</v:String>
 
     <v:String x:Key="GeneralText_Twitter">Twitter</v:String>
     <v:String x:Key="GeneralText_GitHub">GitHub</v:String>
-    <v:String x:Key="GeneralText_Website">Website</v:String>
+    <v:String x:Key="GeneralText_Website">Verkkosivu</v:String>
 
     <!--#endregion-->
 
     <!--#region GeneralSubtitles -->
 
-    <v:String x:Key="GeneralSubtitles_Versions">VERSIONS</v:String>
-    <v:String x:Key="GeneralSubtitles_Browse">BROWSE</v:String>
-    <v:String x:Key="GeneralSubtitles_Reset">RESET</v:String>
-    <v:String x:Key="GeneralSubtitles_Categories">CATEGORIES</v:String>
+    <v:String x:Key="GeneralSubtitles_Versions">VERSIOT</v:String>
+    <v:String x:Key="GeneralSubtitles_Browse">SELAA</v:String>
+    <v:String x:Key="GeneralSubtitles_Reset">NOLLAA</v:String>
+    <v:String x:Key="GeneralSubtitles_Categories">KATEGORIAT</v:String>
     <v:String x:Key="GeneralSubtitles_Search">SEARCH</v:String>
 
     <!--#endregion-->
