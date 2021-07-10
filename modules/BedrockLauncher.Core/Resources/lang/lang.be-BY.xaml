@@ -236,7 +236,7 @@
     <v:String x:Key="GeneralSettingsScreen_BackupButton">Рэзервовае капіраванне захаваных дадзеных</v:String>
     <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Пашырыныя налады</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">EXTERNAL LAUNCHER SETTINGS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">НАЛАДЫ ЗНЕШНЯГА ЛАУНЧЕРА</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">ШЛЯХ</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">НАЗВА</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">АРГУМЕНТЫ</v:String>
@@ -265,7 +265,7 @@
     <v:String x:Key="AboutPage_McMrArm_Text">За стварэнне арыгінальнага загрузніка Minecraft Windows 10 Version (з чаго вынікае гэтая распрацоўка)</v:String>
     <v:String x:Key="AboutPage_BsCommunity_Text">За іх працу над SkinView3D, якая выкарыстоўваецца для прагляду скіна ў лаунчере</v:String>
     <v:String x:Key="AboutPage_Mojang_Text">За Minecraft!!!</v:String>
-    <v:String x:Key="AboutPage_BsRepo_Text">SkinView3D Repo</v:String>
+    <v:String x:Key="AboutPage_BsRepo_Text">Рэпазітар SkinView3D</v:String>
     <v:String x:Key="AboutPage_CurrentBuild">Бягучая зборка: </v:String>
 
     <!--#endregion-->
@@ -328,61 +328,61 @@
 
     <!--#region Errors -->
 
-    <v:String x:Key="Error_AuthenticationFailed_Title">Authentication failed</v:String>
-    <v:String x:Key="Error_AuthenticationFailed">Failed to authenticate. Please make sure your account is subscribed to the beta program.</v:String>
+    <v:String x:Key="Error_AuthenticationFailed_Title">Памылка аўтэнтыфікацыі</v:String>
+    <v:String x:Key="Error_AuthenticationFailed">Не атрымалася прайсці аўтэнтыфікацыю. Пераканайся, што твой уліковы запіс падпісаны на бэта-праграму.</v:String>
 
-    <v:String x:Key="Error_CantFindExternalLauncher_Title">Could not switch launcher</v:String>
-    <v:String x:Key="Error_CantFindExternalLauncher">Could not switch the launcher. Be sure you have the path to the launcher set correctly.</v:String>
+    <v:String x:Key="Error_CantFindExternalLauncher_Title">Не атрымалася пераключыць лаунчер</v:String>
+    <v:String x:Key="Error_CantFindExternalLauncher">Не атрымалася пераключыць лаунчер. Пераканайцеся, што шлях да лаунчера ўстаноўлены правільна.</v:String>
 
-    <v:String x:Key="Error_CantFindJavaLauncher_Title">Could not switch launcher</v:String>
-    <v:String x:Key="Error_CantFindJavaLauncher">Could not find launcher. Be sure you have installed original Minecraft launcher from Minecraft.net .</v:String>
+    <v:String x:Key="Error_CantFindJavaLauncher_Title">Не атрымалася пераключыць лаунчер</v:String>
+    <v:String x:Key="Error_CantFindJavaLauncher">Не атрымалася знайсці лаунчер. Пераканайцеся, што вы ўсталявалі арыгінальны лаунчер Minecraft з Minecraft.net .</v:String>
 
-    <v:String x:Key="Error_AppReregisterFailed_Title">App re-register failed</v:String>
-    <v:String x:Key="Error_AppReregisterFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppReregisterFailed_Title">Не атрымалася перарэгістраваць праграму</v:String>
+    <v:String x:Key="Error_AppReregisterFailed">Будзь ласка, паспрабуй яшчэ раз :(</v:String>
 
-    <v:String x:Key="Error_AppLaunchFailed_Title">Launch failed</v:String>
-    <v:String x:Key="Error_AppLaunchFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppLaunchFailed_Title">Не атрымалася запусціць</v:String>
+    <v:String x:Key="Error_AppLaunchFailed">Будзь ласка, паспрабуй яшчэ раз :(</v:String>
 
-    <v:String x:Key="Error_AppDownloadFailed_Title">Download failed</v:String>
-    <v:String x:Key="Error_AppDownloadFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppDownloadFailed_Title">Не атрымалася спампаваць</v:String>
+    <v:String x:Key="Error_AppDownloadFailed">Будзь ласка, паспрабуй яшчэ раз :(</v:String>
 
-    <v:String x:Key="Error_AppExtractionFailed_Title">Extraction failed</v:String>
-    <v:String x:Key="Error_AppExtractionFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppExtractionFailed_Title">Не атрымалася распакаваць</v:String>
+    <v:String x:Key="Error_AppExtractionFailed">Будзь ласка, паспрабуй яшчэ раз :(</v:String>
 
-    <v:String x:Key="Error_CantFindPaidServerList_Title">Could not open servers tab</v:String>
-    <v:String x:Key="Error_CantFindPaidServerList">Paid Servers List not found.</v:String>
+    <v:String x:Key="Error_CantFindPaidServerList_Title">Не атрымалася адкрыць укладку сервераў</v:String>
+    <v:String x:Key="Error_CantFindPaidServerList">Спіс платных сервераў не знойдзены.</v:String>
 
-    <v:String x:Key="Error_NotaSkinPack_Title">Unable to import skin pack</v:String>
-    <v:String x:Key="Error_NotaSkinPack">That's not a skin pack silly!</v:String>
+    <v:String x:Key="Error_NotaSkinPack_Title">Немагчыма імпартаваць набор скіноў</v:String>
+    <v:String x:Key="Error_NotaSkinPack">Гэта не набор скіноў!</v:String>
 
     <!--#endregion-->
 
     <!--#region NewProfile -->
 
     <v:String x:Key="NewProfile_GoBackButton"></v:String>
-    <v:String x:Key="NewProfile_CreateProfileText">PROFILE</v:String>
-    <v:String x:Key="NewProfile_CreateProfileText_Error">THIS NAME IS ALREADY TAKEN</v:String>
-    <v:String x:Key="NewProfile_CreateProfileSubTitle">Enter the name of your new profile!</v:String>
-    <v:String x:Key="NewProfile_CreateProfileButton">Create</v:String>
+    <v:String x:Key="NewProfile_CreateProfileText">ПРОФІЛЬ</v:String>
+    <v:String x:Key="NewProfile_CreateProfileText_Error">ГЭТА ІМЯ УЖО ВЫКАРЫСТОЎВАЕЦЦА</v:String>
+    <v:String x:Key="NewProfile_CreateProfileSubTitle">Увядзі назву новага профілю!</v:String>
+    <v:String x:Key="NewProfile_CreateProfileButton">Стварыць</v:String>
 
     <!--#endregion-->
 
     <!--#region Dialog -->
 
-    <v:String x:Key="Dialog_Item_Installation_Text">installation</v:String>
-    <v:String x:Key="Dialog_Item_SkinPack_Text">skin pack</v:String>
-    <v:String x:Key="Dialog_Item_Skin_Text">skin</v:String>
-    <v:String x:Key="Dialog_Item_Version_Text">version</v:String>
-    <v:String x:Key="Dialog_Item_Profile_Text">profile</v:String>
+    <v:String x:Key="Dialog_Item_Installation_Text">устаноўка</v:String>
+    <v:String x:Key="Dialog_Item_SkinPack_Text">набор скіноў</v:String>
+    <v:String x:Key="Dialog_Item_Skin_Text">скін</v:String>
+    <v:String x:Key="Dialog_Item_Version_Text">версія</v:String>
+    <v:String x:Key="Dialog_Item_Profile_Text">профіль</v:String>
 
-    <v:String x:Key="Dialog_DeleteItem_Title">Delete {0} permanently</v:String>
-    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Are you sure you want to delete &quot;{1}&quot;?
-This {0} will be lost forever! (A long time!)</v:String>
+    <v:String x:Key="Dialog_DeleteItem_Title">Выдаліць {0} назаўсёды</v:String>
+    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Ты ўпэўнены, што хочаш выдаліць &quot;{1}&quot;?
+Гэта {0} будзе назаўжды страчана! (Зусім, зусім!)</v:String>
 
-    <v:String x:Key="Dialog_KillGame_Title">Kill Game</v:String>
-    <v:String x:Key="Dialog_KillGame_Text">This is Dangerous, and is only recommended if you get stuck. Do you still want to close the game?</v:String>
+    <v:String x:Key="Dialog_KillGame_Title">Закрыць гульню</v:String>
+    <v:String x:Key="Dialog_KillGame_Text">Гэта небяспечна і рэкамендуецца толькі ў тым выпадку, калі ты затрымаліся. Усё яшчэ хочаш закрыць гульню?</v:String>
 
-    <v:String x:Key="Dialog_CloseGame_Title">Game is Still Running</v:String>
+    <v:String x:Key="Dialog_CloseGame_Title">Гульня ўсё яшчэ запушчана</v:String>
     <v:String x:Key="Dialog_CloseGame_Text">Would you like to force close it? (without saving changes, this is only recommended if you get stuck, please close the game normally)</v:String>
 
     <v:String x:Key="DialogBtn_YesToAll_Text">Yes To All</v:String>
