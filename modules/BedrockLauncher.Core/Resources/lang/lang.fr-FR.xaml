@@ -70,10 +70,10 @@
 
     <!--#region GameTab -->
 
-    <v:String x:Key="GameTab_Title">MINECRAFT : BEDROCK ÉDITION</v:String>
+    <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK ÉDITION</v:String>
     <v:String x:Key="GameTab_PlayButton_Text">Jouer</v:String>
     <v:String x:Key="GameTab_PlayButton_Kill_Text">Fin de tâche</v:String>
-    <v:String x:Key="GameTab_InstallationsButton_Text">Installation</v:String>
+    <v:String x:Key="GameTab_InstallationsButton_Text">Installations</v:String>
     <v:String x:Key="GameTab_SkinsButton_Text">Skins</v:String>
     <v:String x:Key="GameTab_PatchNotesButton_Text">Notes de mise à jour</v:String>
 
@@ -257,8 +257,8 @@
 
     <!--#region AboutPage -->
 
-    <v:String x:Key="AboutPage_Title">À PROPOS DU MINECRAFT: BEDROCK EDITION LAUNCHER</v:String>
-    <v:String x:Key="AboutPage_DevelopedBy_Text">DÉVELOPER PAR</v:String>
+    <v:String x:Key="AboutPage_Title">À PROPOS DU MINECRAFT: BEDROCK ÉDITION LAUNCHER</v:String>
+    <v:String x:Key="AboutPage_DevelopedBy_Text">DÉVELOPPÉ PAR</v:String>
     <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">A VUE LE JOUR GRÂCE AU TRAVAIL DE</v:String>
     <v:String x:Key="AboutPage_SpecialThanks_Text">REMERCIEMENTS SPÉCIAUX À</v:String>
 
@@ -292,7 +292,7 @@
     <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Créez votre premier profil!</v:String>
     <v:String x:Key="FirstLaunch_AlmostThereTitle">On y est presque!</v:String>
     <v:String x:Key="FirstLaunch_OneThingTitle">Une dernière chose...</v:String>
-    <v:String x:Key="FirstLaunch_OneThingSubtitle">Vérifier pour vous assurer que tout est exactement comme vous le souhaitiez.</v:String>
+    <v:String x:Key="FirstLaunch_OneThingSubtitle">Vérifier pour vous assurer que tout est exactement comme vous le souhaitez.</v:String>
     <v:String x:Key="FirstLaunch_ChooseAccountTitle">Choisissez un Compte Insider</v:String>
     <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* Ceci sera utilisé pour vérifier et télécharger les bêtas. Vous devez être inscrit dans le Xbox Insider Hub pour que le compte sélectionner puisse téléchargé les bêtas. Vous devrez sûrement aussi redémarrer le launcher ou désinstaller Minecraft pour télécharger les bêtas pour que cela fonctionne.</v:String>
 
@@ -300,7 +300,7 @@
 
  (Ne vous inquiétez pas, vous ne perdrez pas vos données en faisant ceci, vous ne perdrez de données que si vous appuyez sur Jouer et que vous n'avez pas au préalable sauvegardé avant)</v:String>
 
-    <v:String x:Key="FirstLaunch_InstallType_Header">Sauvegarder/Charger les données du launcher depuis:</v:String>
+    <v:String x:Key="FirstLaunch_InstallType_Header">Sauvegarder/Charger les Données du Launcher depuis:</v:String>
     <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">Répertoire Fixe (Recommandé)</v:String>
     <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">Portable/Dossier à la Racine</v:String>
     <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Sauvegardé les Données de Sauvegarde déjà Existantes</v:String>
@@ -378,7 +378,7 @@
     <v:String x:Key="Dialog_DeleteItem_Title">Supprimer {0} fichier(s) définitivement</v:String>
     <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Voulez-vous vraiment supprimer &quot;{1}&quot; fichier(s)? Ces {0} fichier(s) seront perdu définitivement (et définitivement c'est long)</v:String>
 
-    <v:String x:Key="Dialog_KillGame_Title">Tuer le Jeu</v:String>
+    <v:String x:Key="Dialog_KillGame_Title">Fin de tâche du Jeu</v:String>
     <v:String x:Key="Dialog_KillGame_Text">Ceci est dangereux, et n'est recommandé que si vous êtes bloqué. Voulez-vous quand même fermer le jeu?</v:String>
 
     <v:String x:Key="Dialog_CloseGame_Title">Le Jeu est toujours en cours d'Exécution</v:String>
@@ -391,7 +391,7 @@
 
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">Aucun résultat trouvé</v:String>
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">Nous n'avons pas pu trouver de nouveaux résultats correspondant à votre recherche. Si vous utilisez des filtres de catégorie 
-Désactiver les, essayer de les réactivé par la suite et retenté votre recherche</v:String>
+désactiver les, essayer de les réactivé par la suite et retenté votre recherche</v:String>
 
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Aucun résultat</v:String>
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Aucun articles correspondant à votre recherche</v:String>
@@ -400,7 +400,7 @@ Désactiver les, essayer de les réactivé par la suite et retenté votre recher
 
     <!--#region Internal -->
 
-    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">Le fichier {0} existe déjà dans cette destination.\nVoulez-vous le remplacer? Sinon l'ancien fichier sera perdu.</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">Le fichier {0} existe déjà dans cette emplacement.\nVoulez-vous le remplacer? Sinon l'ancien fichier sera perdu.</v:String>
     <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">Le fichier {0} n'est pas un répertoire. Voulez-vous le supprimer? Sinon les données de l'ancien répertoire seront perdues.</v:String>
 
     <v:String x:Key="GameManager_RecoveringDataIssue_Title">Conversion des données de sauvegarde existantes pour l'installation</v:String>
@@ -423,7 +423,7 @@ Désactiver les, essayer de les réactivé par la suite et retenté votre recher
 
     <v:String x:Key="Installer_WelcomePage_Title">Bienvenue dans le Guide d'installation 
 du Minecraft Bedrock Launcher</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info_Text">Ceci installera Minecraft Bedrock Launcher sur votre ordinateur.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info_Text">Ceci installera le Minecraft Bedrock Launcher sur votre ordinateur.</v:String>
     <v:String x:Key="Installer_WelcomePage_Info2_Text">Il est recommandé de fermer toutes les autres applications avant de poursuivre.</v:String>
     <v:String x:Key="Installer_WelcomePage_Info3_Text">Cliquez sur Suivant pour continuer, ou Annuler pour quitter le Setup.</v:String>
 
@@ -452,10 +452,10 @@ du Minecraft Bedrock Launcher</v:String>
 
     <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">Démarrer le programme à la Sortie</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_FilesInUse">Certains fichiers sont pour l'instant en cours d'utilisation par:</v:String>
+    <v:String x:Key="Installer_InstallationProgress_FilesInUse">Certains fichiers sont pour l'instant en cours d'exécution:</v:String>
 
     <v:String x:Key="Installer_InstallationProgress_Title">Installation</v:String>
-    <v:String x:Key="Installer_InstallationProgress_Info_Text">Veuillez patienter pendant que le Setup installe Minecraft Bedrock Launcher sur votre ordinateur.</v:String>
+    <v:String x:Key="Installer_InstallationProgress_Info_Text">Veuillez patienter pendant que le Setup installe le Minecraft Bedrock Launcher sur votre ordinateur.</v:String>
 
 
     <!--#endregion-->
@@ -498,7 +498,7 @@ du Minecraft Bedrock Launcher</v:String>
     <v:String x:Key="ThemeEntries_VillagePillageUpdate">Mise à jour Village et pillage</v:String>
     <v:String x:Key="ThemeEntries_UpdateAquatic">Mise à jour Aquatique</v:String>
     <v:String x:Key="ThemeEntries_TechnicallyUpdated">Mise à jour technique [Java]</v:String>
-    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">Mise à jour du monde de la couleur [Java]</v:String>
+    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">Mise à jour Monde de la couleur [Java]</v:String>
     <v:String x:Key="ThemeEntries_ExplorationUpdate">Mise à jour de l'exploration [Java]</v:String>
     <v:String x:Key="ThemeEntries_CombatUpdate">Mise à jour des combats [Java]</v:String>
     <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">Chats &amp; Pandas [Bedrock]</v:String>
