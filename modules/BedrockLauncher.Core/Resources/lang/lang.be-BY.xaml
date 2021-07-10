@@ -383,28 +383,28 @@
     <v:String x:Key="Dialog_KillGame_Text">Гэта небяспечна і рэкамендуецца толькі ў тым выпадку, калі ты затрымаліся. Усё яшчэ хочаш закрыць гульню?</v:String>
 
     <v:String x:Key="Dialog_CloseGame_Title">Гульня ўсё яшчэ запушчана</v:String>
-    <v:String x:Key="Dialog_CloseGame_Text">Would you like to force close it? (without saving changes, this is only recommended if you get stuck, please close the game normally)</v:String>
+    <v:String x:Key="Dialog_CloseGame_Text">Хочаш прымусова яе закрыць? (без захавання зменаў, рэкамендуецца толькі ў тым выпадку, калі гульня завісла)</v:String>
 
-    <v:String x:Key="DialogBtn_YesToAll_Text">Yes To All</v:String>
-    <v:String x:Key="DialogBtn_NoToAll_Text">No To All</v:String>
-    <v:String x:Key="DialogBtn_Yes_Text">Yes</v:String>
-    <v:String x:Key="DialogBtn_No_Text">No</v:String>
+    <v:String x:Key="DialogBtn_YesToAll_Text">Так для ўсіх</v:String>
+    <v:String x:Key="DialogBtn_NoToAll_Text">Не для ўсіх</v:String>
+    <v:String x:Key="DialogBtn_Yes_Text">Так</v:String>
+    <v:String x:Key="DialogBtn_No_Text">Не</v:String>
 
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">No matching results</v:String>
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">We couldn't find news any content matching your search. If you have category filters 
-turned off, try turning the back on and search again</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">Няма адпаведных рэзультатаў</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">Нам не ўдалося знайсці навіны, якія б адпавядалі твайму пошуку. Калі твае фільтры катэгорый 
+выключаны, паспрабуй ўключыць іх і зноў шукаць</v:String>
 
-    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">No result</v:String>
-    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Found no items matching your search</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Няма рэзультатаў</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Па твайму запросу нічога не знойдзена</v:String>
 
     <!--#endregion-->
 
     <!--#region Internal -->
 
-    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">The file {0} already exists in the destination.\nDo you want to replace it? The old file will be lost otherwise.</v:String>
-    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">The file {0} is not a directory. Do you want to remove it? The data from the old directory will be lost otherwise.</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">Файл {0} ужо існуе ў месцы прызначэння.\n Ты хочаш яго замяніць? У гэтым выпадку стары файл будзе страчаны.</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">Файл {0} не з'яўляецца каталогам. Ты хочаш выдаліць яго? У гэтым выпадку дадзеныя са старога каталога будуць страчаны.</v:String>
 
-    <v:String x:Key="GameManager_RecoveringDataIssue_Title">Converting Existing Save Data to Installation</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_Title">Пераўтварэнне існуючых захаваных дадзеных у ўстаноўку</v:String>
 
     <!--#endregion-->
 
@@ -415,31 +415,31 @@ turned off, try turning the back on and search again</v:String>
 
     <!--#region UI -->
 
-    <v:String x:Key="Installer_Title">Minecraft Bedrock Launcher Setup Wizard</v:String>
+    <v:String x:Key="Installer_Title">Праграма ўстаноўкі лаунчера Minecraft Bedrock</v:String>
 
-    <v:String x:Key="Installer_Back_Text">Back</v:String>
-    <v:String x:Key="Installer_Next_Text">Next</v:String>
-    <v:String x:Key="Installer_Cancel_Text">Cancel</v:String>
-    <v:String x:Key="Installer_Finish_Text">Finish</v:String>
+    <v:String x:Key="Installer_Back_Text">Назад</v:String>
+    <v:String x:Key="Installer_Next_Text">Далей</v:String>
+    <v:String x:Key="Installer_Cancel_Text">Скасаваць</v:String>
+    <v:String x:Key="Installer_Finish_Text">Гатова</v:String>
 
-    <v:String x:Key="Installer_WelcomePage_Title">Welcome to the Minecraft Bedrock Launcher Setup Wizard</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info_Text">This will install Minecraft Bedrock Launcher on your computer.</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info2_Text">It is recommended that you close all other applications before continuing.</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info3_Text">Click Next to continue, or Cancel to exit Setup.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Title">Віншуем у праграме ўстаноўкі лаунчера Minecraft Bedrock</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info_Text">Гэта ўсталюе лаунчер Minecraft Bedrock на ваш кампутар.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info2_Text">Перш чым працягваць, рэкамендуецца закрыць усе астатнія праграмы.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info3_Text">Націсніце Далей каб працягнуць, ці Адмена - каб выйсці з праграмы ўсталявання.</v:String>
 
-    <v:String x:Key="Installer_LicenseAgreement_Title">License Agreement</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Info_Text">Please read the following License Agreement. You must accept the terms of this</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">agreement before continuing with the installation.</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">I accept the license.</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">I don't accept the license.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Title">Ліцэнзійнае пагадненне</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info_Text">Азнаёмся з наступным ліцэнзійным пагадненнем. Ты павіннен прыняць умовы гэтага</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">пагаднення, перш чым працягнуць устаноўку.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">Я прымаю.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">Я не прымаю.</v:String>
 
-    <v:String x:Key="Installer_InstallType_Title">Choose Install Type</v:String>
-    <v:String x:Key="Installer_InstallType_Info_Text">Select which version of the launcher you want to download</v:String>
+    <v:String x:Key="Installer_InstallType_Title">Абярыце тып ўсталёўкі</v:String>
+    <v:String x:Key="Installer_InstallType_Info_Text">Выберы, якую версію лаунчера ты хочаш спампаваць</v:String>
 
-    <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Beta Version</v:String>
-    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Release Version</v:String>
+    <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Бэта-версія</v:String>
+    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Фінальная-версія</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_Title">Choose Install Location</v:String>
+    <v:String x:Key="Installer_InstallLocation_Title">Выберы месца ўсталявання</v:String>
     <v:String x:Key="Installer_InstallLocation_Info_Text">Setup will install Minecraft Bedrock Launcher in the following folder. To install in a different folder,</v:String>
     <v:String x:Key="Installer_InstallLocation_Info2_Text">click Browse and select another folder.</v:String>
 
