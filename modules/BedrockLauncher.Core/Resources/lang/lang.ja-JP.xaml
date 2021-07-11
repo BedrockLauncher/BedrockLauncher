@@ -174,7 +174,7 @@
     <v:String x:Key="LauncherNewsPage_Build_Text">ビルド</v:String>
     <v:String x:Key="LauncherNewsPage_Changes_Text">変更点：</v:String>
     <v:String x:Key="LauncherNewsPage_CheckForUpdates">更新を確認する</v:String>
-    <v:String x:Key="LauncherNewsPage_ForceUpdate">Force Update</v:String>
+    <v:String x:Key="LauncherNewsPage_ForceUpdate">強制アップデート</v:String>
     <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">電流</v:String>
 
     <!--#endregion-->
@@ -232,35 +232,35 @@
 
     <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">実験的な保存リダイレクトを有効にする</v:String>
     <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Java Editionランチャーのショートカットを非表示にする</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Show external launcher shortcut</v:String>
-    <v:String x:Key="GeneralSettingsScreen_BackupButton">Backup Save Data</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Advanced Settings</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">外部ランチャーのショートカットを表示する</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BackupButton">セーブデータのバックアップ</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">高度な設定</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">EXTERNAL LAUNCHER SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">PATH</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">NAME</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">ARGUMENTS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">ICON</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">外部ランチャー設定</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">パス</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">名前</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">引数</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">アイコン</v:String>
 
     <!--#endregion-->
 
     <!--#region AcountsSettingsPage -->
 
-    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">SELECTED ACCOUNT</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">INSIDER SETTINGS</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Normal Settings</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Legacy Settings</v:String>
+    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">選択したアカウント</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">インサイダー設定</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">通常の設定</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">レガシー設定</v:String>
     <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Manage Accounts</v:String>
-    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">ACCOUNT SETTINGS</v:String>
+    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">アカウント設定</v:String>
 
     <!--#endregion-->
 
     <!--#region AboutPage -->
 
-    <v:String x:Key="AboutPage_Title">ABOUT MINECRAFT: BEDROCK EDITION LAUNCHER</v:String>
-    <v:String x:Key="AboutPage_DevelopedBy_Text">DEVELOPED BY</v:String>
-    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">FORKED FROM THE WORK OF</v:String>
-    <v:String x:Key="AboutPage_SpecialThanks_Text">SPECIAL THANKS TO</v:String>
+    <v:String x:Key="AboutPage_Title">MINECRAFTについて：BEDROCK EDITION LAUNCHER</v:String>
+    <v:String x:Key="AboutPage_DevelopedBy_Text">によって開発された</v:String>
+    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">の仕事からフォーク</v:String>
+    <v:String x:Key="AboutPage_SpecialThanks_Text">特別な感謝</v:String>
 
     <v:String x:Key="AboutPage_McMrArm_Text">For creating the original Minecraft Windows 10 Version downloader (which this work derives from)</v:String>
     <v:String x:Key="AboutPage_BsCommunity_Text">For their work on SkinView3D, which is used for the skin viewing functionality in the launcher</v:String>
