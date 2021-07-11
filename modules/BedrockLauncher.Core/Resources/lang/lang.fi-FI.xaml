@@ -14,7 +14,7 @@
     <!-- #region CommunityPage -->
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
-    <v:String x:Key="CommunityPage_ComingSoon">Coming Soon!</v:String>
+    <v:String x:Key="CommunityPage_ComingSoon">Tulossa pian!</v:String>
     <v:String x:Key="CommunityPage_CheckBackLater">Check back here later for something SUPER DUPER AWESOME!</v:String>
 
     <!-- #endregion -->
@@ -73,7 +73,7 @@
     <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
     <v:String x:Key="GameTab_PlayButton_Text">Pelaa</v:String>
     <v:String x:Key="GameTab_PlayButton_Kill_Text">Kill</v:String>
-    <v:String x:Key="GameTab_InstallationsButton_Text">Installations</v:String>
+    <v:String x:Key="GameTab_InstallationsButton_Text">Asennukset</v:String>
     <v:String x:Key="GameTab_SkinsButton_Text">Skins</v:String>
     <v:String x:Key="GameTab_PatchNotesButton_Text">Patch notes</v:String>
 
@@ -94,8 +94,8 @@
     <v:String x:Key="EditInstallationScreen_CreateButton">Luo</v:String>
     <v:String x:Key="EditInstallationScreen_AltCreateButton">Tallenna</v:String>
 
-    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Latest beta</v:String>
-    <v:String x:Key="EditInstallationScreen_LatestRelease">Latest release</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Viimeisin beta</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestRelease">Viimeisin julkaisu</v:String>
 
     <v:String x:Key="EditInstallationScreen_NameSubtitle">NIMI</v:String>
     <v:String x:Key="EditInstallationScreen_VersionSubtitle">VERSIO</v:String>
@@ -172,7 +172,7 @@
 
     <v:String x:Key="LauncherNewsPage_Title_Text">Latest Build Changes</v:String>
     <v:String x:Key="LauncherNewsPage_Build_Text">Build</v:String>
-    <v:String x:Key="LauncherNewsPage_Changes_Text">Changes:</v:String>
+    <v:String x:Key="LauncherNewsPage_Changes_Text">Muutokset:</v:String>
     <v:String x:Key="LauncherNewsPage_CheckForUpdates">Check for Updates</v:String>
     <v:String x:Key="LauncherNewsPage_ForceUpdate">Force Update</v:String>
     <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Current</v:String>
@@ -201,7 +201,7 @@
     <v:String x:Key="SettingsTab_Title">ASETUKSET</v:String>
     <v:String x:Key="SettingsTab_GeneralButton">General</v:String>
     <v:String x:Key="SettingsTab_AccountsButton">Tilit</v:String>
-    <v:String x:Key="SettingsTab_AboutButton">About</v:String>
+    <v:String x:Key="SettingsTab_AboutButton">Tietoa</v:String>
     <v:String x:Key="SettingsTab_VersionsButton">Versiot</v:String>
 
     <!--#endregion-->
@@ -227,7 +227,7 @@
 
     <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">LAUNCHER UPDATES</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Support creator</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Tue tekijää</v:String>
 
 
     <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Enable experimental save redirection</v:String>
@@ -240,7 +240,7 @@
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">PATH</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">NAME</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">ARGUMENTS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">ICON</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">KUVAKE</v:String>
 
     <!--#endregion-->
 
@@ -275,7 +275,7 @@
     <v:String x:Key="AdvancedSettings_Title">Edistyneet asetukset</v:String>
     <v:String x:Key="AdvancedSettings_LauncherOptions_Text">LAUNCHER OPTIONS</v:String>
     <v:String x:Key="AdvancedSettings_PathSubtitle_Text">STORAGE DIRECTORY</v:String>
-    <v:String x:Key="AdvancedSettings_RestartButton_Text">Restart</v:String>
+    <v:String x:Key="AdvancedSettings_RestartButton_Text">Käynnistä uudelleen</v:String>
     <v:String x:Key="AdvancedSettings_Notice_Text">* All settings will restart the launcher</v:String>
     <v:String x:Key="AdvancedSettings_PortableMode_Text">Enable Portable Mode</v:String>
 
@@ -311,14 +311,14 @@
     <v:String x:Key="FirstLaunch_CreateProfileText">PROFIILI</v:String>
     <v:String x:Key="FirstLaunch_CreateProfileButton">Luo</v:String>
     <v:String x:Key="FirstLaunch_NextButton">Seuraava</v:String>
-    <v:String x:Key="FirstLaunch_DownloadButton">Download</v:String>
-    <v:String x:Key="FirstLaunch_FinishButton">Finish</v:String>
+    <v:String x:Key="FirstLaunch_DownloadButton">Lataa</v:String>
+    <v:String x:Key="FirstLaunch_FinishButton">Valmis</v:String>
 
     <!--#endregion-->
 
     <!--#region ErrorScreen -->
 
-    <v:String x:Key="ErrorScreen_Title">ERROR</v:String>
+    <v:String x:Key="ErrorScreen_Title">VIRHE</v:String>
     <v:String x:Key="ErrorScreen_SubTitle">Launcher crashed</v:String>
     <v:String x:Key="ErrorScreen_DefaultErrorMessage">An unexpected issue occurred and the launcher has crashed. We're sorry for the inconvenience.</v:String>
     <v:String x:Key="ErrorScreen_CloseButton">Sulje</v:String>
@@ -340,10 +340,10 @@
     <v:String x:Key="Error_AppReregisterFailed_Title">App re-register failed</v:String>
     <v:String x:Key="Error_AppReregisterFailed">Please try again :(</v:String>
 
-    <v:String x:Key="Error_AppLaunchFailed_Title">Launch failed</v:String>
+    <v:String x:Key="Error_AppLaunchFailed_Title">Käynnistys epäonnistui</v:String>
     <v:String x:Key="Error_AppLaunchFailed">Please try again :(</v:String>
 
-    <v:String x:Key="Error_AppDownloadFailed_Title">Download failed</v:String>
+    <v:String x:Key="Error_AppDownloadFailed_Title">Lataus epäonnistui</v:String>
     <v:String x:Key="Error_AppDownloadFailed">Please try again :(</v:String>
 
     <v:String x:Key="Error_AppExtractionFailed_Title">Extraction failed</v:String>
@@ -360,10 +360,10 @@
     <!--#region NewProfile -->
 
     <v:String x:Key="NewProfile_GoBackButton"></v:String>
-    <v:String x:Key="NewProfile_CreateProfileText">PROFILE</v:String>
+    <v:String x:Key="NewProfile_CreateProfileText">Profiili</v:String>
     <v:String x:Key="NewProfile_CreateProfileText_Error">THIS NAME IS ALREADY TAKEN</v:String>
     <v:String x:Key="NewProfile_CreateProfileSubTitle">Enter the name of your new profile!</v:String>
-    <v:String x:Key="NewProfile_CreateProfileButton">Create</v:String>
+    <v:String x:Key="NewProfile_CreateProfileButton">Luo</v:String>
 
     <!--#endregion-->
 
@@ -371,9 +371,9 @@
 
     <v:String x:Key="Dialog_Item_Installation_Text">installation</v:String>
     <v:String x:Key="Dialog_Item_SkinPack_Text">skin pack</v:String>
-    <v:String x:Key="Dialog_Item_Skin_Text">skin</v:String>
-    <v:String x:Key="Dialog_Item_Version_Text">version</v:String>
-    <v:String x:Key="Dialog_Item_Profile_Text">profile</v:String>
+    <v:String x:Key="Dialog_Item_Skin_Text">iho</v:String>
+    <v:String x:Key="Dialog_Item_Version_Text">versio</v:String>
+    <v:String x:Key="Dialog_Item_Profile_Text">profiili</v:String>
 
     <v:String x:Key="Dialog_DeleteItem_Title">Delete {0} permanently</v:String>
     <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Are you sure you want to delete &quot;{1}&quot;?
@@ -387,8 +387,8 @@ This {0} will be lost forever! (A long time!)</v:String>
 
     <v:String x:Key="DialogBtn_YesToAll_Text">Yes To All</v:String>
     <v:String x:Key="DialogBtn_NoToAll_Text">No To All</v:String>
-    <v:String x:Key="DialogBtn_Yes_Text">Yes</v:String>
-    <v:String x:Key="DialogBtn_No_Text">No</v:String>
+    <v:String x:Key="DialogBtn_Yes_Text">Kyllä</v:String>
+    <v:String x:Key="DialogBtn_No_Text">Ei</v:String>
 
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">No matching results</v:String>
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">We couldn't find news any content matching your search. If you have category filters 
@@ -417,10 +417,10 @@ turned off, try turning the back on and search again</v:String>
 
     <v:String x:Key="Installer_Title">Minecraft Bedrock Launcher Setup Wizard</v:String>
 
-    <v:String x:Key="Installer_Back_Text">Back</v:String>
-    <v:String x:Key="Installer_Next_Text">Next</v:String>
-    <v:String x:Key="Installer_Cancel_Text">Cancel</v:String>
-    <v:String x:Key="Installer_Finish_Text">Finish</v:String>
+    <v:String x:Key="Installer_Back_Text">Takaisin</v:String>
+    <v:String x:Key="Installer_Next_Text">Seuraava</v:String>
+    <v:String x:Key="Installer_Cancel_Text">Peruuta</v:String>
+    <v:String x:Key="Installer_Finish_Text">Valmis</v:String>
 
     <v:String x:Key="Installer_WelcomePage_Title">Welcome to the Minecraft Bedrock Launcher Setup Wizard</v:String>
     <v:String x:Key="Installer_WelcomePage_Info_Text">This will install Minecraft Bedrock Launcher on your computer.</v:String>
@@ -436,15 +436,15 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="Installer_InstallType_Title">Choose Install Type</v:String>
     <v:String x:Key="Installer_InstallType_Info_Text">Select which version of the launcher you want to download</v:String>
 
-    <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Beta Version</v:String>
-    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Release Version</v:String>
+    <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Betaversio</v:String>
+    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Julkaisuversio</v:String>
 
     <v:String x:Key="Installer_InstallLocation_Title">Choose Install Location</v:String>
     <v:String x:Key="Installer_InstallLocation_Info_Text">Setup will install Minecraft Bedrock Launcher in the following folder. To install in a different folder,</v:String>
     <v:String x:Key="Installer_InstallLocation_Info2_Text">click Browse and select another folder.</v:String>
 
     <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Destination Folder</v:String>
-    <v:String x:Key="Installer_InstallLocation_Browse_Text">BROWSE</v:String>
+    <v:String x:Key="Installer_InstallLocation_Browse_Text">SELAA</v:String>
 
     <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Create a desktop icon</v:String>
     <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Add to Start menu</v:String>
@@ -463,7 +463,7 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">Unable to Move Directory</v:String>
     <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">Unable to Move File</v:String>
     <v:String x:Key="Installer_Dialog_FileLocked_Text">File Being Used</v:String>
-    <v:String x:Key="Installer_Dialog_TryAgain_Text">Try Again?</v:String>
+    <v:String x:Key="Installer_Dialog_TryAgain_Text">Yritä uudelleen?</v:String>
     <v:String x:Key="Installer_Dialog_ErrorOccured_Text">An error has occurred.</v:String>
 
     <!--#region ProgressBar -->
@@ -489,7 +489,7 @@ turned off, try turning the back on and search again</v:String>
 
     <!--#region ThemeEntries -->
 
-    <v:String x:Key="ThemeEntries_LatestUpdate">Latest Update</v:String>
+    <v:String x:Key="ThemeEntries_LatestUpdate">Viimeisin päivitys</v:String>
     <v:String x:Key="ThemeEntries_Original">Alkuperäinen</v:String>
 
     <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">Caves &amp; Cliffs (Part 1)</v:String>
@@ -531,7 +531,7 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="GeneralText_Reset">Nollaa</v:String>
     <v:String x:Key="GeneralText_Yes">Kyllä</v:String>
     <v:String x:Key="GeneralText_No">Ei</v:String>
-    <v:String x:Key="GeneralText_Releases">Releases</v:String>
+    <v:String x:Key="GeneralText_Releases">Julkaisut</v:String>
     <v:String x:Key="GeneralText_Betas">Betat</v:String>
     <v:String x:Key="GeneralText_Export">Vie</v:String>
     <v:String x:Key="GeneralText_Repair">Repair</v:String>
