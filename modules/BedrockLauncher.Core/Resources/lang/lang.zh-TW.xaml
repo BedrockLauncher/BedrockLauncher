@@ -2,52 +2,52 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:v="clr-namespace:System;assembly=mscorlib">
     <!--#region Main Section-->
 
-    <v:String x:Key="LanguageString">English - United States</v:String>
+    <v:String x:Key="LanguageString">繁體中文（台灣）</v:String>
 
     <!--#region MainWindow -->
 
     <v:String x:Key="MainWindow_Title">Minecraft Bedrock Launcher</v:String>
-    <v:String x:Key="MainWindow_Disclaimer">NOT ASSOCIATED OR APPROVED BY MOJANG</v:String>
+    <v:String x:Key="MainWindow_Disclaimer">未經Mojang許可</v:String>
 
     <!--#endregion-->
     
     <!-- #region CommunityPage -->
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
-    <v:String x:Key="CommunityPage_ComingSoon">Coming Soon!</v:String>
-    <v:String x:Key="CommunityPage_CheckBackLater">Check back here later for something SUPER DUPER AWESOME!</v:String>
+    <v:String x:Key="CommunityPage_ComingSoon">即將推出！</v:String>
+    <v:String x:Key="CommunityPage_CheckBackLater">稍後查看這裡是否有支持者</v:String>
 
     <!-- #endregion -->
 
     <!--#region ToolbarButtons -->
 
-    <v:String x:Key="ToolbarButtons_NewsButton_Text">News</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java Launcher</v:String>
-    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Custom Launcher</v:String>
-    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Switch to</v:String>
+    <v:String x:Key="ToolbarButtons_NewsButton_Text">新聞</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">基岩版</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java版</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java啟動器</v:String>
+    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">自定啟動器</v:String>
+    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">切換至</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
-    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Community</v:String>
-    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Profile</v:String>
-    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Settings</v:String>
+    <v:String x:Key="ToolbarButtons_CommunityButton_Text">社群</v:String>
+    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">配置文件</v:String>
+    <v:String x:Key="ToolbarButtons_SettingsButton_Text">設定</v:String>
 
     <!--#endregion-->
 
     <!--#region UpdateButton-->
 
-    <v:String x:Key="UpdateButton_NewUpdate_Text">New Update!</v:String>
-    <v:String x:Key="UpdateButton_Download_Text">Click to download!</v:String>
+    <v:String x:Key="UpdateButton_NewUpdate_Text">有新的更新!</v:String>
+    <v:String x:Key="UpdateButton_Download_Text">點擊下載！</v:String>
 
     <!--#endregion-->
 
     <!--#region ProgressBar -->
 
-    <v:String x:Key="ProgressBar_Downloading">Downloading</v:String>
-    <v:String x:Key="ProgressBar_Installing">Installing</v:String>
-    <v:String x:Key="ProgressBar_Launching">Launching</v:String>
-    <v:String x:Key="ProgressBar_Extracting">Extracting</v:String>
-    <v:String x:Key="ProgressBar_Uninstalling">Uninstalling</v:String>
+    <v:String x:Key="ProgressBar_Downloading">正在下載...</v:String>
+    <v:String x:Key="ProgressBar_Installing">安裝中...</v:String>
+    <v:String x:Key="ProgressBar_Launching">正在啟動...</v:String>
+    <v:String x:Key="ProgressBar_Extracting">正在解壓</v:String>
+    <v:String x:Key="ProgressBar_Uninstalling">解除安裝中</v:String>
     <v:String x:Key="ProgressBar_RegisteringPackage">Registering Package</v:String>
     <v:String x:Key="ProgressBar_RemovingPackage">Unregistering Package</v:String>
     <v:String x:Key="ProgressBar_BackingUp">Backing up Save Data</v:String>
