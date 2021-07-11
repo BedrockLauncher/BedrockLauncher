@@ -394,6 +394,12 @@
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">We couldn't find news any content matching your search. If you have category filters 
 turned off, try turning the back on and search again</v:String>
 
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Loading...</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Please wait!</v:String>
+
+    <v:String x:Key="Dialog_ResultPanel_Error_Title">Error</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
+
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Tiada keputusan</v:String>
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Found no items matching your search</v:String>
 
