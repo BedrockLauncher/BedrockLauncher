@@ -393,6 +393,12 @@
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">一致する結果はありません</v:String>
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">検索に一致するコンテンツのニュースは見つかりませんでした。 カテゴリフィルターがある場合オフにした後、オンに戻してもう一度検索してみてください</v:String>
 
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Loading...</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Please wait!</v:String>
+
+    <v:String x:Key="Dialog_ResultPanel_Error_Title">Error</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
+
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">検索結果はありません</v:String>
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">検索に一致するアイテムが見つかりませんでした</v:String>
 
