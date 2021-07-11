@@ -394,6 +394,12 @@
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">Нам не ўдалося знайсці тое, што б адпавядала твайму пошуку. Калі твае фільтры катэгорый 
 выключаны, паспрабуй ўключыць іх і зноў шукаць</v:String>
 
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Loading...</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Please wait!</v:String>
+
+    <v:String x:Key="Dialog_ResultPanel_Error_Title">Error</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
+
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Няма рэзультатаў</v:String>
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Па твайму запросу нічога не знойдзена</v:String>
 
