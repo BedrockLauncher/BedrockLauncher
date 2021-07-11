@@ -393,6 +393,12 @@
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">Нет соответствующих результатов</v:String>
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">Результаты по твоему запросу не найдены. Если у тебя выключены фильтры, включи их и попробуй снова</v:String>
 
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Loading...</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Please wait!</v:String>
+
+    <v:String x:Key="Dialog_ResultPanel_Error_Title">Error</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
+
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Нет результатов</v:String>
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">По твоему запросу ничего не найдено</v:String>
 
