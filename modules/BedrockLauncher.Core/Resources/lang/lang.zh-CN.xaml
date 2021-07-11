@@ -94,8 +94,8 @@
     <v:String x:Key="EditInstallationScreen_CreateButton">新建</v:String>
     <v:String x:Key="EditInstallationScreen_AltCreateButton">保存</v:String>
 
-    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Latest beta</v:String>
-    <v:String x:Key="EditInstallationScreen_LatestRelease">Latest release</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestSnapshot">最新Beta</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestRelease">最新版本</v:String>
 
     <v:String x:Key="EditInstallationScreen_NameSubtitle">名称</v:String>
     <v:String x:Key="EditInstallationScreen_VersionSubtitle">版本</v:String>
