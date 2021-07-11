@@ -216,7 +216,7 @@ namespace BedrockLauncher.Downloaders
 
                 while (!isFinished)
                 {
-                    furl = base_url + branch._suburl + string.Format("?page={0}", currentPage);
+                    furl = base_url + branch._suburl + string.Format("?page={0}#articles", currentPage);
                     try { tree = web.Load(furl); }
                     catch { isFinished = true; continue; }
 
