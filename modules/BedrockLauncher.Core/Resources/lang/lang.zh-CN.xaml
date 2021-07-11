@@ -394,6 +394,12 @@
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">我们找不到任何符合您搜索内容的新闻。如果您有类别筛选器 
 已关闭，请尝试返回并再次搜索</v:String>
 
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Loading...</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Please wait!</v:String>
+
+    <v:String x:Key="Dialog_ResultPanel_Error_Title">Error</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
+
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">无结果</v:String>
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">没有匹配您的搜索的项目</v:String>
 
