@@ -39,8 +39,7 @@ namespace BedrockLauncher.Pages.News
 
         private async void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
-            await UpdateJSONContent();
-            await Task.Run(UpdateContent);
+            await Task.Run(() => UpdateContent(true));
         }
 
         public async Task UpdateJSONContent()
@@ -92,14 +91,20 @@ namespace BedrockLauncher.Pages.News
             }
         }
 
-        private async void UpdateContent()
+        private async void UpdateContent(bool ForceUpdate)
         {
             await Dispatcher.InvokeAsync(() =>
             {
                 OfficalNewsFeed.Items.Clear();
-                foreach (var item in FeedItems.Where(x => OfficalNewsFeed_FeedFilter(x))) OfficalNewsFeed.Items.Add(item);
+                NothingFound.Visibility = Visibility.Visible;
+                NothingFound.PanelType = Core.Controls.ResultPanelType.Loading;
+            });
 
-                if (OfficalNewsFeed.Items.Count == 0) NothingFound.Visibility = Visibility.Visible;
+            if (ForceUpdate) await UpdateJSONContent();
+
+            await Dispatcher.InvokeAsync(() => {
+                foreach (var item in FeedItems.Where(x => OfficalNewsFeed_FeedFilter(x))) OfficalNewsFeed.Items.Add(item);
+                if (OfficalNewsFeed.Items.Count == 0) NothingFound.PanelType = Core.Controls.ResultPanelType.NoNews;
                 else NothingFound.Visibility = Visibility.Collapsed;
             });
         }
@@ -130,13 +135,13 @@ namespace BedrockLauncher.Pages.News
         private async void CheckBox_CheckChanged(object sender, RoutedEventArgs e)
         {
             if (!this.IsInitialized) return;
-            await Task.Run(UpdateContent);
+            await Task.Run(() => UpdateContent(false));
         }
 
         private async void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!this.IsInitialized) return;
-            await Task.Run(UpdateContent);
+            await Task.Run(() => UpdateContent(false));
         }
     }
 }

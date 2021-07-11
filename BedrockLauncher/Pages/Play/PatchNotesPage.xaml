@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
-      xmlns:common="clr-namespace:BedrockLauncher.Pages.Common"
+      xmlns:common="clr-namespace:BedrockLauncher.Core.Controls;assembly=BedrockLauncher.Core"
       xmlns:p="clr-namespace:BedrockLauncher.Properties"
       xmlns:c="clr-namespace:BedrockLauncher.Core.Classes;assembly=BedrockLauncher.Core"
       mc:Ignorable="d" 
@@ -58,6 +58,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <common:NoContentFoundPage Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="Collapsed"></common:NoContentFoundPage>
+        <common:ResultPanel PanelType="NoContent" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="Collapsed"></common:ResultPanel>
     </Grid>
 </Page>

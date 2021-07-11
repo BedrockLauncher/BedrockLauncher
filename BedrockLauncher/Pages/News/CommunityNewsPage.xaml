@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:c="clr-namespace:BedrockLauncher.Core.Classes;assembly=BedrockLauncher.Core"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
-      xmlns:common="clr-namespace:BedrockLauncher.Pages.Common"
+      xmlns:common="clr-namespace:BedrockLauncher.Core.Controls;assembly=BedrockLauncher.Core"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CommunityNewsPage" Initialized="Page_Loaded">
@@ -28,7 +28,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <common:NoNewsContentFoundPage VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="Collapsed"></common:NoNewsContentFoundPage>
+            <common:ResultPanel PanelType="NoNews" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="Collapsed"></common:ResultPanel>
         </Grid>
         <Border Grid.Row="1" BorderBrush="{DynamicResource Seperator.Background}" BorderThickness="0,1,0,0">
             <Grid Background="#FF303030">

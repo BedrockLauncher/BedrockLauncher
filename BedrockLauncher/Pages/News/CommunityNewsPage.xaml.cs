@@ -50,23 +50,28 @@ namespace BedrockLauncher.Pages.News
             try
             {
                 await Dispatcher.InvokeAsync(() => {
-                    NothingFound.Visibility = Visibility.Collapsed;
+                    NothingFound.PanelType = Core.Controls.ResultPanelType.Loading;
+                    NothingFound.Visibility = Visibility.Visible;
                     FeedItems.Clear(); 
                 });
 
-                var feed = await FeedReader.ReadAsync(RSS_Feed);
+                Feed feed = await FeedReader.ReadAsync(RSS_Feed);
 
                 await Dispatcher.InvokeAsync(() => {
                     foreach (FeedItem item in feed.Items)
                     {
                         MCNetFeedItemRSS new_item = new MCNetFeedItemRSS(item);
                         FeedItems.Add(new_item);
+                        NothingFound.Visibility = Visibility.Collapsed;
                     }
                 });
+
+                if (FeedItems.Count == 0) NothingFound.Visibility = Visibility.Visible;
             }
-            catch
+            catch (Exception ex)
             {
                 await Dispatcher.InvokeAsync(() => {
+                    NothingFound.PanelType = Core.Controls.ResultPanelType.Error;
                     NothingFound.Visibility = Visibility.Visible;
                 });
             }

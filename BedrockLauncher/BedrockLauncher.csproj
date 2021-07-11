@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>BedrockLauncher</RootNamespace>
     <AssemblyName>BedrockLauncher</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -216,9 +216,6 @@
     </Compile>
     <Compile Include="Downloaders\WikiChangelogDownloader.cs" />
     <Compile Include="ViewModels\FilepathManager.cs" />
-    <Compile Include="Pages\Common\NoContentFoundPage.xaml.cs">
-      <DependentUpon>NoContentFoundPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Community\CommunityPage.xaml.cs">
       <DependentUpon>CommunityPage.xaml</DependentUpon>
     </Compile>
@@ -230,9 +227,6 @@
     </Compile>
     <Compile Include="Pages\News\Java_N_DungeonsNewsPage.xaml.cs">
       <DependentUpon>Java_N_DungeonsNewsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Common\NoNewsContentFoundPage.xaml.cs">
-      <DependentUpon>NoNewsContentFoundPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\LauncherModel.cs" />
     <Compile Include="Events\GameRunningState.cs" />
@@ -509,10 +503,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Common\NoContentFoundPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Pages\Community\CommunityPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -522,10 +512,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\News\Java_N_DungeonsNewsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Common\NoNewsContentFoundPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

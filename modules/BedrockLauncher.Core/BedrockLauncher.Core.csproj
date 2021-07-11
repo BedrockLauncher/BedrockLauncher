@@ -76,6 +76,8 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -123,6 +125,9 @@
     <Compile Include="Controls\FolderSelectDialog.cs" />
     <Compile Include="Controls\McTextBlock\Formatting.cs" />
     <Compile Include="Controls\McTextBlock\McTextBlock.cs" />
+    <Compile Include="Controls\ResultPanel.xaml.cs">
+      <DependentUpon>ResultPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SpecialBorder.xaml.cs">
       <DependentUpon>SpecialBorder.xaml</DependentUpon>
     </Compile>
@@ -174,6 +179,10 @@
     <Page Include="Controls\AltMessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ResultPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\SpecialBorder.xaml">
       <SubType>Designer</SubType>
