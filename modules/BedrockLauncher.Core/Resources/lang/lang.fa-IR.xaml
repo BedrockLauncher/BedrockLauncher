@@ -391,16 +391,15 @@
     <v:String x:Key="DialogBtn_No_Text">خیر</v:String>
 
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">هیچ نتیجه ی مرتبطی یافت نشد</v:String>
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">We couldn't find news any content matching your search. If you have category filters 
-turned off, try turning the back on and search again</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">ما هیچ محتوایی مطابق با جستجوی شما پیدا نکردیم. اگر فیلتر دسته بندی خاموش است, دوباره تلاش کنید</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Loading...</v:String>
-    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Please wait!</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title">درحال بارگذاری...</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">لطفا صبر کنید!</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Error_Title">Error</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Title">خطا</v:String>
     <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
 
-    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">No result</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">بدون نتیجه</v:String>
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Found no items matching your search</v:String>
 
     <!--#endregion-->
