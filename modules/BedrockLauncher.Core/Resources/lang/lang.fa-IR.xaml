@@ -400,14 +400,14 @@
     <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
 
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">بدون نتیجه</v:String>
-    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Found no items matching your search</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">هیچ موردی مطابق جست و جوی شما پیدا نشد</v:String>
 
     <!--#endregion-->
 
     <!--#region Internal -->
 
-    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">The file {0} already exists in the destination.\nDo you want to replace it? The old file will be lost otherwise.</v:String>
-    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">The file {0} is not a directory. Do you want to remove it? The data from the old directory will be lost otherwise.</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">فایل {0} از قبل در مسیر وجود دارد.\nآیا میخواهید آن را جایگزین کنید؟ فایل قبل پاک خواهد شد.</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">فایل {0} یک مسیر نیست. آیا میخواهید آن را پاک کنید؟ اطلاعات مسیر قبلی پاک خواهد شد.</v:String>
 
     <v:String x:Key="GameManager_RecoveringDataIssue_Title">Converting Existing Save Data to Installation</v:String>
 
