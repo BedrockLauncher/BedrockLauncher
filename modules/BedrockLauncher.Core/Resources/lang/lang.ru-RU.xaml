@@ -88,7 +88,7 @@
 
     <!--#region EditInstallationScreen -->
 
-    <v:String x:Key="EditInstallationScreen_Title">Создать новую установк</v:String>
+    <v:String x:Key="EditInstallationScreen_Title">Cоздать новую установк</v:String>
     <v:String x:Key="EditInstallationScreen_AltTitle">Редактировать установк</v:String>
 
     <v:String x:Key="EditInstallationScreen_CreateButton">Создать</v:String>
@@ -233,10 +233,10 @@
     <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Включить экспериментальное изменение путей сохранений</v:String>
     <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Спрятать ярлык &quot;Лаунчер Java&quot;</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Добавить выбор пользовательского лаунчера</v:String>
-    <v:String x:Key="GeneralSettingsScreen_BackupButton">Создать резервную копию данны</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BackupButton">Создать копию сохраненных данны</v:String>
     <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Продвинутые настройки</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">НАСТРОЙКИ ВНЕШНЕГО ЛАУНЧЕРА</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">ПОЛЬЗОВАТЕЛЬСКИЙ ЛАУНЧЕ</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">ПУТЬ</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">НАЗВАНИЕ</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">АРГУМЕНТЫ</v:String>
