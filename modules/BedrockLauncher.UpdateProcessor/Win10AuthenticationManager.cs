@@ -32,7 +32,7 @@ namespace BedrockLauncher.UpdateProcessor
 
         static Win10AuthenticationManager()
         {
-            var myPath = new Uri(typeof(Win10AuthenticationManager).Assembly.CodeBase).LocalPath;
+            var myPath = new Uri(AppDomain.CurrentDomain.BaseDirectory).LocalPath;
             var myFolder = Path.GetDirectoryName(myPath);
 
             var is64 = Environment.Is64BitProcess;
@@ -47,7 +47,8 @@ namespace BedrockLauncher.UpdateProcessor
         [DllImport("WUTokenHelper.dll", CallingConvention = CallingConvention.StdCall)] private static extern int GetWUToken(int userIndex, [MarshalAs(UnmanagedType.LPWStr)] out string token);
         [DllImport("WUTokenHelper.dll", CallingConvention = CallingConvention.StdCall)] private static extern int GetTotalWUAccounts();
         [DllImport("WUTokenHelper.dll", CallingConvention = CallingConvention.Cdecl)] [return: MarshalAs(UnmanagedType.BStr)] private static extern string GetWUAccountUserName(int userIndex);
-        [DllImport("WUTokenHelper.dll", CallingConvention = CallingConvention.Cdecl)] [return: MarshalAs(UnmanagedType.BStr)] private static extern string GetWUAccountID(int userIndex);
+        [DllImport("WUTokenHelper.dll", CallingConvention = CallingConvention.Cdecl)] [return: MarshalAs(UnmanagedType.BStr)] private static extern string GetWUProviderName(int userIndex);
+
 
         public static void GetWUUsers()
         {
@@ -64,7 +65,7 @@ namespace BedrockLauncher.UpdateProcessor
             {
                 WUAccount account = new WUAccount();
                 account.UserName = GetWUAccountUserName(i);
-                account.AccountType = "Microsoft";
+                account.AccountType = GetWUProviderName(i);
                 results.Add(account);
             }
 

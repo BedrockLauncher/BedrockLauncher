@@ -81,9 +81,11 @@ namespace BedrockLauncher.Downloaders
             System.Diagnostics.Debug.WriteLine("Resolved download link: " + link);
             await DownloadFile(link, destination, progress, cancellationToken);
         }
-        public async Task UpdateVersions(ObservableCollection<BLVersion> versions)
+
+
+        private int SetMSAUserToken()
         {
-            try 
+            try
             {
                 _store_manager.setMSAUserToken(Win10AuthenticationManager.GetWUToken(Properties.LauncherSettings.Default.CurrentInsiderAccount));
             }
@@ -91,6 +93,12 @@ namespace BedrockLauncher.Downloaders
             {
                 System.Diagnostics.Debug.WriteLine("Error while Authenticating UserToken for Version Fetching:\n" + ex);
             }
+            return 1;
+        }
+
+        public async Task UpdateVersions(ObservableCollection<BLVersion> versions)
+        {
+            await ThreadingExtensions.StartSTATask<int>(() => SetMSAUserToken());
             versions.Clear();
 
             LoadFromLocalCache(versions);

@@ -93,11 +93,12 @@
       </WindowsMetadataFile>
     </Link>
     <PostBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">xcopy "$(TargetPath)" "$(SolutionDir)modules\bin\WUTokenHelper\$(PlatformName)\$(ConfigurationName)\$(TargetFileName)"* /y
-xcopy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)modules\bin\WUTokenHelper\$(PlatformName)\$(ConfigurationName)\$(TargetName).pdb"* /y</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">rd /s /q "$(SolutionDir)modules\bin\WUTokenHelper\$(PlatformName)\$(ConfigurationName)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Platform)'=='Win32'">
@@ -109,11 +110,12 @@ xcopy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)modules\bin\WUTokenHelper\$
       </WindowsMetadataFile>
     </Link>
     <PostBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">xcopy "$(TargetPath)" "$(SolutionDir)modules\bin\WUTokenHelper\$(PlatformName)\$(ConfigurationName)\$(TargetFileName)"* /y
-xcopy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)modules\bin\WUTokenHelper\$(PlatformName)\$(ConfigurationName)\$(TargetName).pdb"* /y</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">rd /s /q "$(SolutionDir)modules\bin\WUTokenHelper\$(PlatformName)\$(ConfigurationName)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
@@ -135,18 +137,20 @@ xcopy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)modules\bin\WUTokenHelper\$
       </WindowsMetadataFile>
     </Link>
     <PostBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">xcopy "$(TargetPath)" "$(SolutionDir)modules\bin\WUTokenHelper\$(PlatformName)\$(ConfigurationName)\$(TargetFileName)"* /y
-xcopy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)modules\bin\WUTokenHelper\$(PlatformName)\$(ConfigurationName)\$(TargetName).pdb"* /y</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Command>
     </PostBuildEvent>
     <PostBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">xcopy "$(TargetPath)" "$(SolutionDir)modules\bin\WUTokenHelper\$(PlatformName)\$(ConfigurationName)\$(TargetFileName)"* /y
-xcopy "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)modules\bin\WUTokenHelper\$(PlatformName)\$(ConfigurationName)\$(TargetName).pdb"* /y</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">rd /s /q "$(SolutionDir)modules\bin\WUTokenHelper\$(PlatformName)\$(ConfigurationName)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Command>
     </PreBuildEvent>
     <PreBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">rd /s /q "$(SolutionDir)modules\bin\WUTokenHelper\$(PlatformName)\$(ConfigurationName)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

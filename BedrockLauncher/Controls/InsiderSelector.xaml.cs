@@ -34,7 +34,7 @@ namespace BedrockLauncher.Controls
             {
                 Win10AuthenticationManager.GetWUUsers();
             });
-            Task.Run((Func<Task>)(async () =>
+            Task.Run(async () =>
             {
                 _userAccountsFetch.Start();
                 await _userAccountsFetch;
@@ -49,7 +49,7 @@ namespace BedrockLauncher.Controls
                     }
                     else AccountsList.SelectedIndex = Properties.LauncherSettings.Default.CurrentInsiderAccount;
                 }));
-            }));
+            });
         }
 
         private void AccountsList_DropDownClosed(object sender, EventArgs e)

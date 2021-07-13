@@ -353,6 +353,11 @@ namespace BedrockLauncher.ViewModels
                 System.Diagnostics.Debug.WriteLine("Download complete");
                 ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
             }
+            catch (TaskCanceledException e)
+            {
+                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
+                throw e;
+            }
             catch (Exception e)
             {
                 ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;

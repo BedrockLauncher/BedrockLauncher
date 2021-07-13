@@ -8,7 +8,7 @@ namespace BedrockLauncher.UpdateProcessor
 {
     public static class Win10StoreManager
     {
-        public async static Task<List<Win10StoreNetwork.UpdateInfo>> CheckForVersions(Win10StoreNetwork net, Win10StoreNetwork.CookieData cookie, List<string> knownVersions, bool isBeta)
+        public async static Task<List<Win10StoreNetwork.UpdateInfo>> CheckForVersions(Win10StoreNetwork net, Win10StoreNetwork.CookieData cookie, List<string> knownVersions, bool isBeta, bool verbose = false)
         {
             Win10StoreNetwork.SyncResult res = new Win10StoreNetwork.SyncResult();
             try
@@ -48,7 +48,7 @@ namespace BedrockLauncher.UpdateProcessor
 
                     string mergedString = e.serverId + " " + e.updateId + " " + e.packageMoniker;
                     if (knownVersions.Exists(x => x == e.updateId)) continue;
-                    System.Diagnostics.Debug.WriteLine(string.Format("New UWP version: {0}", mergedString));
+                    if (verbose) System.Diagnostics.Debug.WriteLine(string.Format("New UWP version: {0}", mergedString));
                     hasAnyNewVersions = true;
                     knownVersions.Add(mergedString);
                     newUpdates.Add(e);
