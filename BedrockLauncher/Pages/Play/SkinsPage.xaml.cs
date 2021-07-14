@@ -77,6 +77,7 @@ namespace BedrockLauncher.Pages.Play
             await this.Dispatcher.InvokeAsync(() =>
             {
                 var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
+                //LauncherModel.Default.ConfigManager.Sort_InstallationList(ref view);
                 view.Refresh();
             });
         }

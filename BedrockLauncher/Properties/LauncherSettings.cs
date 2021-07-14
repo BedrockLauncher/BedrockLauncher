@@ -126,7 +126,7 @@ namespace BedrockLauncher.Properties
         #region Status Storage
 
         private bool _ShowBetas = true;
-        private int _CurrentInstallation = 0;
+        private string _CurrentInstallation = string.Empty;
         private bool _IsFirstLaunch = true;
         private string _CurrentProfile = "";
         private bool _ShowReleases = true;
@@ -138,7 +138,7 @@ namespace BedrockLauncher.Properties
             set { _IsFirstLaunch = value; OnPropertyChanged(nameof(IsFirstLaunch)); }
         }
 
-        public int CurrentInstallation
+        public string CurrentInstallation
         {
             get { return _CurrentInstallation; }
             set { _CurrentInstallation = value; OnPropertyChanged(nameof(CurrentInstallation)); }

@@ -109,8 +109,12 @@ namespace BedrockLauncher
 
         private static void OnDispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
-            Debug.WriteLine(e.Exception.Message);
-            MessageBox.Show("Unhandled exception occurred: \n" + e.Exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            Debug.WriteLine(e.ToString());
+            string message = e.Exception.Message + Environment.NewLine + Environment.NewLine + e.ToString();
+            string title = e.Exception.HResult.ToString();
+
+
+            MessageBox.Show(message, title, MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         public static bool ArchitextureTest()

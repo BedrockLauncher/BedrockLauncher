@@ -17,7 +17,8 @@ namespace BedrockLauncher.Classes
 
         public static BLInstallation Convert(MCInstallation obj)
         {
-            return JsonConvert.DeserializeObject<BLInstallation>(JsonConvert.SerializeObject(obj));
+            var result = JsonConvert.DeserializeObject<BLInstallation>(JsonConvert.SerializeObject(obj));
+            return result;
         }
 
         [JsonIgnore]
@@ -97,6 +98,15 @@ namespace BedrockLauncher.Classes
                 if (UseLatestBeta) return Application.Current.FindResource("VersionEntries_LatestSnapshot").ToString();
                 else if (UseLatestVersion) return Application.Current.FindResource("VersionEntries_LatestRelease").ToString();
                 else return version;
+            }
+        }
+
+        [JsonIgnore]
+        public string LastPlayedT
+        {
+            get
+            {
+                return LastPlayed.ToString("s");
             }
         }
 

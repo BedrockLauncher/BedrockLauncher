@@ -38,9 +38,17 @@ namespace BedrockLauncher.Controls
         {
             get
             {
-                string uri = (SelectedBlockIcon.Source as BitmapImage).UriSource.OriginalString;
-                if (IsIconCustom) return System.IO.Path.GetFileName(uri);
-                else return uri.Replace(LauncherModel.Default.FilepathManager.PrefabedIconRootPath, "");
+                try
+                {
+                    string uri = (SelectedBlockIcon.Source as BitmapImage).UriSource.OriginalString;
+                    return System.IO.Path.GetFileName(uri);
+                }
+                catch
+                {
+                    IsIconCustom = false;
+                    return "furnace.png";
+                }
+
             }
         }
 
@@ -61,9 +69,12 @@ namespace BedrockLauncher.Controls
                     bmp.UriSource = new Uri(uri, UriKind.Absolute);
                     bmp.EndInit();
                 }
-                else bmp = new BitmapImage(new Uri(uri, UriKind.Relative));
+                else
+                {
+                    bmp = new BitmapImage(new Uri(uri, UriKind.Relative));
+                }
 
-                if (bmp != null) SelectedBlockIcon.Source = bmp;
+                    if (bmp != null) SelectedBlockIcon.Source = bmp;
             }
             catch (Exception ex)
             {

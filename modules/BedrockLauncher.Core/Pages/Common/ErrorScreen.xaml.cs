@@ -54,6 +54,11 @@ namespace BedrockLauncher.Core.Pages.Common
                 }
                 errorScreen.ErrorType.Text = title;
                 errorScreen.ErrorText.Text = error.Message;
+                if (error != null)
+                {
+                    errorScreen.ErrorStackTrace.Visibility = Visibility.Visible;
+                    errorScreen.ErrorStackTrace.Text = error.ToString();
+                }
                 Handler.SetDialogFrame(errorScreen);
             });
 
@@ -69,17 +74,27 @@ namespace BedrockLauncher.Core.Pages.Common
                 }
                 errorScreen.ErrorType.Text = error.HResult.ToString();
                 errorScreen.ErrorText.Text = error.Message;
+                if (error != null)
+                {
+                    errorScreen.ErrorStackTrace.Visibility = Visibility.Visible;
+                    errorScreen.ErrorStackTrace.Text = error.ToString();
+                }
                 Handler.SetDialogFrame(errorScreen);
             });
 
         }
 
-        public static void errormsg(string title, string message)
+        public static void errormsg(string title, string message, Exception e = null)
         {
             Application.Current.Dispatcher.Invoke(() => {
                 ErrorScreen errorScreen = new ErrorScreen(Handler);
                 errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, title);
                 errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, message);
+                if (e != null)
+                {
+                    errorScreen.ErrorStackTrace.Visibility = Visibility.Visible;
+                    errorScreen.ErrorStackTrace.Text = e.ToString();
+                }
                 Handler.SetDialogFrame(errorScreen);
             });
 

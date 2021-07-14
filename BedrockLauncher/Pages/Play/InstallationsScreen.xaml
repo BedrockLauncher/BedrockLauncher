@@ -14,7 +14,7 @@
       Title="InstallationsScreen" Loaded="PageHost_Loaded">
     <Grid Margin="0" Background="#FF303030" Style="{DynamicResource DisabledStyle}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource Seperator.Background}">
@@ -28,21 +28,41 @@
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Grid Grid.Column="6" Margin="10,0">
+                <Grid Grid.Column="2" Margin="10,0,10,10" VerticalAlignment="Center">
                     <StackPanel>
-                        <Label Foreground="White" Content="{DynamicResource GeneralSubtitles_Versions}" Margin="0,10,0,0" FontWeight="Bold" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
-                        <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="Auto" Orientation="Horizontal" Margin="0,-10,0,0">
+                        <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_Search}" Margin="0,0,0,4" FontWeight="Bold" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+                        <ContentControl Style="{DynamicResource TextboxLikeFrame}" Height="30">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Image Width="20" Margin="5,0,0,0" Height="20" Source="{DynamicResource SearchIcon}" ></Image>
+                                <TextBox Grid.Column="1" Style="{DynamicResource BlankTextBox}" x:Name="SearchBox" Tag="{DynamicResource InstallationsPage_SearchBar_Content}" TextChanged="SearchBox_TextChanged"></TextBox>
+                            </Grid>
+                        </ContentControl>
+                    </StackPanel>
+                </Grid>
+                <Separator Grid.Column="3" Width="1" Margin="0,10,0,10"></Separator>
+                <Grid Grid.Column="4" Margin="10,0,10,10" VerticalAlignment="Center">
+                    <StackPanel>
+                        <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_SortBy}" Margin="2,0,0,4" FontWeight="Bold" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+                        <ComboBox x:Name="SortByComboBox" Style="{DynamicResource BlankComboBoxStyle}" SelectedIndex="0" Padding="4,0,0,0" VerticalContentAlignment="Center" SelectionChanged="ComboBox_SelectionChanged" Height="30">
+                            <ComboBoxItem Content="{DynamicResource InstallationsPage_SortBy_LatestPlayed}" x:Name="SortByLatestPlayed"></ComboBoxItem>
+                            <ComboBoxItem Content="{DynamicResource InstallationsPage_SortBy_Name}" x:Name="SortByName"></ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                </Grid>
+                <Separator Grid.Column="5" Width="1" Margin="0,10,0,10"/>
+                <Grid Grid.Column="6" Margin="10" VerticalAlignment="Center">
+                    <StackPanel>
+                        <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_Versions}" Margin="4,0,0,4" FontWeight="Bold" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+                        <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Center" Width="Auto" Orientation="Horizontal" Margin="0,0,0,0">
                             <CheckBox x:Name="ShowReleasesCheckBox" IsChecked="{Binding ShowReleases, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Releases}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default}, Path=AllowEditing, Mode=OneWay}"></CheckBox>
                             <CheckBox x:Name="ShowBetasCheckBox" IsChecked="{Binding ShowBetas, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Betas}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default}, Path=AllowEditing, Mode=OneWay}"></CheckBox>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
-                
-
-                <Grid Grid.Column="2"></Grid>
-                <Separator Visibility="Collapsed" Grid.Column="3" Width="1" Margin="0,10,0,10"></Separator>
-                <Grid Grid.Column="4"></Grid>
-                <Separator Grid.Column="5" Width="1" Margin="0,10,0,10"/>
             </Grid>
         </Border>
         <Grid HorizontalAlignment="Stretch" Grid.Row="1" Background="{DynamicResource ListBox.Static.Background}">

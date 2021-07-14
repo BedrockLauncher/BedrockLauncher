@@ -4,16 +4,16 @@
     <SolidColorBrush x:Key="ComboBox.Static.Border" Color="Transparent"/>
     <SolidColorBrush x:Key="ComboBox.Static.Glyph" Color="#FFFFFF"/>
 
-    <SolidColorBrush x:Key="ComboBox.MouseOver.Background" Color="Transparent"/>
-    <SolidColorBrush x:Key="ComboBox.MouseOver.Border" Color="Transparent"/>
+    <SolidColorBrush x:Key="ComboBox.MouseOver.Background" Color="#17FFFFFF"/>
+    <SolidColorBrush x:Key="ComboBox.MouseOver.Border" Color="#17FFFFFF"/>
     <SolidColorBrush x:Key="ComboBox.MouseOver.Glyph" Color="#FFFFFF"/>
 
-    <SolidColorBrush x:Key="ComboBox.Focused.Background" Color="Transparent"/>
-    <SolidColorBrush x:Key="ComboBox.Focused.Border" Color="Transparent"/>
+    <SolidColorBrush x:Key="ComboBox.Focused.Background" Color="#27FFFFFF"/>
+    <SolidColorBrush x:Key="ComboBox.Focused.Border" Color="#27FFFFFF"/>
     <SolidColorBrush x:Key="ComboBox.Focused.Glyph" Color="#FFFFFF"/>
 
-    <SolidColorBrush x:Key="ComboBox.Pressed.Background" Color="Transparent"/>
-    <SolidColorBrush x:Key="ComboBox.Pressed.Border" Color="Transparent"/>
+    <SolidColorBrush x:Key="ComboBox.Pressed.Background" Color="#12FFFFFF"/>
+    <SolidColorBrush x:Key="ComboBox.Pressed.Border" Color="#12FFFFFF"/>
     <SolidColorBrush x:Key="ComboBox.Pressed.Glyph" Color="#FFFFFF"/>
 
     <SolidColorBrush x:Key="ComboBoxItem.Selected.Background" Color="#FF008542"/>

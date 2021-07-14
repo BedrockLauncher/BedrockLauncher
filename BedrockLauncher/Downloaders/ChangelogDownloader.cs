@@ -172,6 +172,17 @@ namespace BedrockLauncher.Downloaders
                 PatchNotes.Clear();
             });
         }
+
+        private string GetPatchNotesCoverImage(HtmlNode content, bool isBeta)
+        {
+            if (content.DescendantsAndSelf().ToList().Exists(x => x.Name == "img"))
+            {
+                var node = content.DescendantsAndSelf().ToList().Where(x => x.Name == "img").FirstOrDefault();
+                var value = node.GetAttributeValue("src", "null");
+                if (value != "null") return value;
+            }
+            return (isBeta ? MCPatchNotesItem.FallbackImageURL_Dev : MCPatchNotesItem.FallbackImageURL);
+        }
         private void AddPatch(MCPatchNotesItem patch)
         {
             if (App.Current == null) return;
@@ -248,7 +259,7 @@ namespace BedrockLauncher.Downloaders
                                         Version = GetVersion(text),
                                         isBeta = isBeta,
                                         Url = item_url,
-                                        ImageUrl = (isBeta ? MCPatchNotesItem.FallbackImageURL_Dev : MCPatchNotesItem.FallbackImageURL),
+                                        ImageUrl = GetPatchNotesCoverImage(content, isBeta),
                                         PublishingDateString = GetPublishedDate(current_result).ToString(),
                                         Content = string.Format(HTMLFormat, UpdateHTMLHeader(new List<string>()), content.InnerHtml),
                                     };

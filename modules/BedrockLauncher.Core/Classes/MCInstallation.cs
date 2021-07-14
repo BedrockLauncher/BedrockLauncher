@@ -22,5 +22,8 @@ namespace BedrockLauncher.Core.Classes
 
         public bool UseLatestVersion { get; set; }
         public bool UseLatestBeta { get; set; }
+
+        public DateTime LastPlayed { get; set; }
+        public string InstallationUUID { get; set; } = Guid.NewGuid().ToString();
     }
 }

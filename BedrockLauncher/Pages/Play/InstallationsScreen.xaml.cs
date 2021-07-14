@@ -33,6 +33,7 @@ namespace BedrockLauncher.Pages.Play
             await this.Dispatcher.InvokeAsync(() =>
             {
                 var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
+                LauncherModel.Default.ConfigManager.Sort_InstallationList(ref view);
                 view.Refresh();
                 if (InstallationsList.Items.Count > 0 && NothingFound.Visibility != Visibility.Collapsed) NothingFound.Visibility = Visibility.Collapsed;
                 else if (InstallationsList.Items.Count <= 0 && NothingFound.Visibility != Visibility.Visible) NothingFound.Visibility = Visibility.Visible;
@@ -57,6 +58,30 @@ namespace BedrockLauncher.Pages.Play
                 }
                 RefreshInstallationsList();
             });
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (HasLoadedOnce)
+            {
+                LauncherModel.Default.ConfigManager.Installations_SearchFilter = SearchBox.Text;
+                RefreshInstallationsList();
+            }
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (HasLoadedOnce)
+            {
+
+                if (SortByComboBox.SelectedItem == SortByLatestPlayed)
+                    LauncherModel.Default.ConfigManager.Installations_SortFilter = ConfigManager.SortBy_Installation.LatestPlayed;
+
+                if (SortByComboBox.SelectedItem == SortByName)
+                    LauncherModel.Default.ConfigManager.Installations_SortFilter = ConfigManager.SortBy_Installation.Name;
+
+                RefreshInstallationsList();
+            }
         }
     }
 }
