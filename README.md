@@ -25,7 +25,7 @@ An unofficial **Minecraft for Windows 10** launcher that enables similar feature
  - The [screenshots](#Screenshots) shown may not represent the actual product due to early rapid prototyping.
 
 ## Get the launcher
-Install the launcher using the [dedicated installer](https://github.com/BedrockLauncher/BedrockLauncher/releases/latest/download/Installer.exe). Alternatively, you can go to the [releases tab](https://github.com/BedrockLauncher/BedrockLauncher/releases) to download a specific version.
+Install the launcher using the [dedicated installer](https://github.com/BedrockLauncher/BedrockLauncher.Installer/releases/latest/download/BedrockLauncher.Installer.exe). Alternatively, you can go to the [releases tab](https://github.com/BedrockLauncher/BedrockLauncher/releases) to download a specific version.
 
 ## Compiling the launcher yourself
 Be sure you have:
