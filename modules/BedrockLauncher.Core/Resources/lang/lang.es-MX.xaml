@@ -84,6 +84,11 @@
     <v:String x:Key="InstallationsPage_AddButton">Nueva instalación</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">Jugar</v:String>
 
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed"></v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name"></v:String>
+
+    <v:String x:Key="InstallationsPage_SearchBar_Content"></v:String>
+
     <!--#endregion-->
 
     <!--#region EditInstallationScreen -->
@@ -395,11 +400,11 @@ Esto {0} será perdido para siempre! (Es muchísimo tiempo!)</v:String>
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">No pudimos encontrar noticias sobre ningún contenido que coincida con tu búsqueda. Si tienes filtros de categoría 
 desactivados, intenta volver a activar y vuelve a buscar</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Loading...</v:String>
-    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Please wait!</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title"></v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve"></v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Error_Title">Error</v:String>
-    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Title"></v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve"></v:String>
 
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">No hay resultados</v:String>
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">No se encontraron elementos que coincidan con tu búsqueda</v:String>
@@ -556,6 +561,7 @@ desactivados, intenta volver a activar y vuelve a buscar</v:String>
     <v:String x:Key="GeneralSubtitles_Reset">REESTABLECER</v:String>
     <v:String x:Key="GeneralSubtitles_Categories">CATEGORÍAS</v:String>
     <v:String x:Key="GeneralSubtitles_Search">BUSCAR</v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy"></v:String>
 
     <!--#endregion-->
 
