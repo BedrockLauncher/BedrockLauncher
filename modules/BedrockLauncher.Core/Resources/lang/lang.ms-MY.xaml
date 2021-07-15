@@ -84,6 +84,11 @@
     <v:String x:Key="InstallationsPage_AddButton">Pemasangan Baru</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">Main</v:String>
 
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed"></v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name"></v:String>
+
+    <v:String x:Key="InstallationsPage_SearchBar_Content"></v:String>
+
     <!--#endregion-->
 
     <!--#region EditInstallationScreen -->
@@ -230,14 +235,14 @@
     <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Sokong Pencipta</v:String>
 
 
-    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Enable experimental save redirection</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection"></v:String>
     <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Sembunyikan shortcut ke pelancar Java Edition</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Show external launcher shortcut</v:String>
-    <v:String x:Key="GeneralSettingsScreen_BackupButton">Backup Save Data</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Advanced Settings</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut"></v:String>
+    <v:String x:Key="GeneralSettingsScreen_BackupButton"></v:String>
+    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton"></v:String>
 
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">TETAPAN PELANCAR EKSTERNAL</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">PATH</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle"></v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">NAMA</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">ARGUMEN</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">IKON</v:String>
@@ -292,19 +297,17 @@
     <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Cipta profil pertama anda!</v:String>
     <v:String x:Key="FirstLaunch_AlmostThereTitle">Hampir selesai!</v:String>
     <v:String x:Key="FirstLaunch_OneThingTitle">Satu perkara lagi...</v:String>
-    <v:String x:Key="FirstLaunch_OneThingSubtitle">Just check over these to make sure they're just how you like it.</v:String>
+    <v:String x:Key="FirstLaunch_OneThingSubtitle"></v:String>
     <v:String x:Key="FirstLaunch_ChooseAccountTitle">Pilih sebuah Akaun Insider</v:String>
-    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* This will be used to verify and download betas. You must be opted in the Xbox Insider Hub for the selected account to download betas. You also may need to restart the launcher or uninstall Minecraft for downloading betas to work.</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle"></v:String>
 
-    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Before using, it is highly recommended that you press backup to create an installation of your existing save data as the launcher does replace the original directory with a symbolic link which allows us to redirect save data.
+    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve"></v:String>
 
- (Don't worry, you will not lose your data by doing this, you will only lose data if you press play and haven't backed your stuff up)</v:String>
-
-    <v:String x:Key="FirstLaunch_InstallType_Header">Save/Load Launcher Data From:</v:String>
-    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">Fixed Folder (Recommended)</v:String>
-    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">Portable/Root Folder</v:String>
-    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Backup Existing Save Data</v:String>
-    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(RECOMMENDED)</v:String>
+    <v:String x:Key="FirstLaunch_InstallType_Header"></v:String>
+    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox"></v:String>
+    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox"></v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Text"></v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext"></v:String>
     <v:String x:Key="FirstLaunch_CloseButton">Tutup</v:String>
     <v:String x:Key="FirstLaunch_BackButton">Kembali</v:String>
     <v:String x:Key="FirstLaunch_GoBackButton"></v:String>
@@ -320,22 +323,22 @@
 
     <v:String x:Key="ErrorScreen_Title">RALAT</v:String>
     <v:String x:Key="ErrorScreen_SubTitle">Pelancar ranap</v:String>
-    <v:String x:Key="ErrorScreen_DefaultErrorMessage">An unexpected issue occurred and the launcher has crashed. We're sorry for the inconvenience.</v:String>
+    <v:String x:Key="ErrorScreen_DefaultErrorMessage"></v:String>
     <v:String x:Key="ErrorScreen_CloseButton">Tutup</v:String>
-    <v:String x:Key="ErrorScreen_ViewCrash">View crash report</v:String>
+    <v:String x:Key="ErrorScreen_ViewCrash"></v:String>
 
     <!--#endregion-->
 
     <!--#region Errors -->
 
-    <v:String x:Key="Error_AuthenticationFailed_Title">Authentication failed</v:String>
-    <v:String x:Key="Error_AuthenticationFailed">Failed to authenticate. Please make sure your account is subscribed to the beta program.</v:String>
+    <v:String x:Key="Error_AuthenticationFailed_Title"></v:String>
+    <v:String x:Key="Error_AuthenticationFailed"></v:String>
 
-    <v:String x:Key="Error_CantFindExternalLauncher_Title">Could not switch launcher</v:String>
-    <v:String x:Key="Error_CantFindExternalLauncher">Could not switch the launcher. Be sure you have the path to the launcher set correctly.</v:String>
+    <v:String x:Key="Error_CantFindExternalLauncher_Title"></v:String>
+    <v:String x:Key="Error_CantFindExternalLauncher"></v:String>
 
-    <v:String x:Key="Error_CantFindJavaLauncher_Title">Could not switch launcher</v:String>
-    <v:String x:Key="Error_CantFindJavaLauncher">Could not find launcher. Be sure you have installed original Minecraft launcher from Minecraft.net .</v:String>
+    <v:String x:Key="Error_CantFindJavaLauncher_Title"></v:String>
+    <v:String x:Key="Error_CantFindJavaLauncher"></v:String>
 
     <v:String x:Key="Error_AppReregisterFailed_Title">Pendaftaran semula aplikasi gagal</v:String>
     <v:String x:Key="Error_AppReregisterFailed">Sila cuba lagi :(</v:String>
@@ -350,7 +353,7 @@
     <v:String x:Key="Error_AppExtractionFailed">Sila cuba lagi :(</v:String>
 
     <v:String x:Key="Error_CantFindPaidServerList_Title">Tidak boleh membuka tab pelayan</v:String>
-    <v:String x:Key="Error_CantFindPaidServerList">Paid Servers List not found.</v:String>
+    <v:String x:Key="Error_CantFindPaidServerList"></v:String>
 
     <v:String x:Key="Error_NotaSkinPack_Title">Tidak dapat mengimport pek skin</v:String>
     <v:String x:Key="Error_NotaSkinPack">Itu bukan pek skin lah!</v:String>
@@ -380,10 +383,10 @@
 {0} ini akan hilang selamanya! (Masa yang lama!)</v:String>
 
     <v:String x:Key="Dialog_KillGame_Title">Matikan Permainan</v:String>
-    <v:String x:Key="Dialog_KillGame_Text">This is Dangerous, and is only recommended if you get stuck. Do you still want to close the game?</v:String>
+    <v:String x:Key="Dialog_KillGame_Text"></v:String>
 
     <v:String x:Key="Dialog_CloseGame_Title">Permainan Masih Berjalan</v:String>
-    <v:String x:Key="Dialog_CloseGame_Text">Would you like to force close it? (without saving changes, this is only recommended if you get stuck, please close the game normally)</v:String>
+    <v:String x:Key="Dialog_CloseGame_Text"></v:String>
 
     <v:String x:Key="DialogBtn_YesToAll_Text">Ya Untuk Semua</v:String>
     <v:String x:Key="DialogBtn_NoToAll_Text">Tidak Untuk Semua</v:String>
@@ -391,26 +394,25 @@
     <v:String x:Key="DialogBtn_No_Text">Tidak</v:String>
 
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">Tiada keputusan yang sepadan</v:String>
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">We couldn't find news any content matching your search. If you have category filters 
-turned off, try turning the back on and search again</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve"></v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Loading...</v:String>
-    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Please wait!</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title"></v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve"></v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Error_Title">Error</v:String>
-    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Title"></v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve"></v:String>
 
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Tiada keputusan</v:String>
-    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Found no items matching your search</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve"></v:String>
 
     <!--#endregion-->
 
     <!--#region Internal -->
 
-    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">The file {0} already exists in the destination.\nDo you want to replace it? The old file will be lost otherwise.</v:String>
-    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">The file {0} is not a directory. Do you want to remove it? The data from the old directory will be lost otherwise.</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text"></v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text"></v:String>
 
-    <v:String x:Key="GameManager_RecoveringDataIssue_Title">Converting Existing Save Data to Installation</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_Title"></v:String>
 
     <!--#endregion-->
 
@@ -421,17 +423,17 @@ turned off, try turning the back on and search again</v:String>
 
     <!--#region UI -->
 
-    <v:String x:Key="Installer_Title">Minecraft Bedrock Launcher Setup Wizard</v:String>
+    <v:String x:Key="Installer_Title"></v:String>
 
     <v:String x:Key="Installer_Back_Text">Kembali</v:String>
     <v:String x:Key="Installer_Next_Text">Seterusnya</v:String>
     <v:String x:Key="Installer_Cancel_Text">Batal</v:String>
     <v:String x:Key="Installer_Finish_Text">Selesai</v:String>
 
-    <v:String x:Key="Installer_WelcomePage_Title">Welcome to the Minecraft Bedrock Launcher Setup Wizard</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info_Text">This will install Minecraft Bedrock Launcher on your computer.</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info2_Text">It is recommended that you close all other applications before continuing.</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info3_Text">Click Next to continue, or Cancel to exit Setup.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Title"></v:String>
+    <v:String x:Key="Installer_WelcomePage_Info_Text"></v:String>
+    <v:String x:Key="Installer_WelcomePage_Info2_Text"></v:String>
+    <v:String x:Key="Installer_WelcomePage_Info3_Text"></v:String>
 
     <v:String x:Key="Installer_LicenseAgreement_Title">Perjanjian Lesen</v:String>
     <v:String x:Key="Installer_LicenseAgreement_Info_Text">Sila baca Perjanjian Lesen berikut. Anda mesti menerima terma dalam perjanjian ini</v:String>
@@ -440,25 +442,25 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">Saya tidak bersetuju.</v:String>
 
     <v:String x:Key="Installer_InstallType_Title">Pilih Jenis Pemasangan</v:String>
-    <v:String x:Key="Installer_InstallType_Info_Text">Select which version of the launcher you want to download</v:String>
+    <v:String x:Key="Installer_InstallType_Info_Text"></v:String>
 
     <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Versi Beta</v:String>
     <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Versi Keluaran</v:String>
 
     <v:String x:Key="Installer_InstallLocation_Title">Pilih Lokasi Pemasangan</v:String>
-    <v:String x:Key="Installer_InstallLocation_Info_Text">Setup will install Minecraft Bedrock Launcher in the following folder. To install in a different folder,</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info_Text"></v:String>
     <v:String x:Key="Installer_InstallLocation_Info2_Text">klik Cari dan pilih folder yang lain.</v:String>
 
     <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Folder Destinasi</v:String>
     <v:String x:Key="Installer_InstallLocation_Browse_Text">CARI</v:String>
 
     <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Cipta ikon desktop</v:String>
-    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Add to Start menu</v:String>
+    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text"></v:String>
     <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">Daftar Program</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">Start Program on Exit</v:String>
+    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text"></v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_FilesInUse">Some of the files are currently in use by the following:</v:String>
+    <v:String x:Key="Installer_InstallationProgress_FilesInUse"></v:String>
 
     <v:String x:Key="Installer_InstallationProgress_Title">Memasang</v:String>
     <v:String x:Key="Installer_InstallationProgress_Info_Text">Sila tunggu sementara Pemasang Perisian memasang Pelancar Minecraft Bedrock pada komputer anda.</v:String>
@@ -555,6 +557,7 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="GeneralSubtitles_Reset">SET SEMULA</v:String>
     <v:String x:Key="GeneralSubtitles_Categories">KATEGORI</v:String>
     <v:String x:Key="GeneralSubtitles_Search">CARI</v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy"></v:String>
 
     <!--#endregion-->
 
