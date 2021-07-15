@@ -84,6 +84,11 @@
     <v:String x:Key="InstallationsPage_AddButton">Nova instalação</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">Jogar</v:String>
 
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed"></v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name"></v:String>
+
+    <v:String x:Key="InstallationsPage_SearchBar_Content"></v:String>
+
     <!--#endregion-->
 
     <!--#region EditInstallationScreen -->
@@ -393,11 +398,11 @@
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">Sem resultados correspondentes</v:String>
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">Não conseguimos encontrar conteúdo correspondente a sua busca. Se tiver filtros de categorias destivados, tente ativá-los e pesquise novamente</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Loading...</v:String>
-    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Please wait!</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title"></v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve"></v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Error_Title">Error</v:String>
-    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Title"></v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve"></v:String>
 
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Sem resultados</v:String>
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Nenhum item encontrado correspondente a sua busca</v:String>
@@ -513,7 +518,7 @@
     <v:String x:Key="ThemeEntries_EarlyLegacyConsole">Legacy Console Original</v:String>
     <v:String x:Key="ThemeEntries_MidLegacyConsole">Legacy Console Intermediário</v:String>
     <v:String x:Key="ThemeEntries_LateLegacyConsole">Último Legacy Console</v:String>
-    <v:String x:Key="ThemeEntries_IndieDays">Indie Days</v:String>
+    <v:String x:Key="ThemeEntries_IndieDays"></v:String>
     <v:String x:Key="ThemeEntries_Dungeons">Minecraft Dungeons</v:String>
 
 
@@ -554,6 +559,7 @@
     <v:String x:Key="GeneralSubtitles_Reset">RESET</v:String>
     <v:String x:Key="GeneralSubtitles_Categories">Categorias</v:String>
     <v:String x:Key="GeneralSubtitles_Search">Buscar</v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy"></v:String>
 
     <!--#endregion-->
 
