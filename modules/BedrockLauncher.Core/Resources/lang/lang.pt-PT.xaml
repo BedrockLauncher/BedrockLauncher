@@ -6,7 +6,7 @@
 
     <!--#region MainWindow -->
 
-    <v:String x:Key="MainWindow_Title">Minecraft Bedrock Launcher</v:String>
+    <v:String x:Key="MainWindow_Title"></v:String>
     <v:String x:Key="MainWindow_Disclaimer">NÃO É ASSOCIADO OU APROVADO PELA MOJANG</v:String>
 
     <!--#endregion-->
@@ -22,12 +22,12 @@
     <!--#region ToolbarButtons -->
 
     <v:String x:Key="ToolbarButtons_NewsButton_Text">Novidades</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java Launcher</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text"></v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text"></v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text"></v:String>
     <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Launcher Personalizado</v:String>
     <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Mudar para</v:String>
-    <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
+    <v:String x:Key="ToolbarButtons_Minecraft_Text"></v:String>
     <v:String x:Key="ToolbarButtons_CommunityButton_Text">Comunidade</v:String>
     <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Perfil</v:String>
     <v:String x:Key="ToolbarButtons_SettingsButton_Text">Definições</v:String>
@@ -70,11 +70,11 @@
 
     <!--#region GameTab -->
 
-    <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
+    <v:String x:Key="GameTab_Title"></v:String>
     <v:String x:Key="GameTab_PlayButton_Text">Jogar</v:String>
     <v:String x:Key="GameTab_PlayButton_Kill_Text">Destruir</v:String>
     <v:String x:Key="GameTab_InstallationsButton_Text">Instalações</v:String>
-    <v:String x:Key="GameTab_SkinsButton_Text">Skins</v:String>
+    <v:String x:Key="GameTab_SkinsButton_Text"></v:String>
     <v:String x:Key="GameTab_PatchNotesButton_Text">Notas de lançamento</v:String>
 
     <!--#endregion-->
@@ -83,6 +83,11 @@
 
     <v:String x:Key="InstallationsPage_AddButton">Nova</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">Jogar</v:String>
+
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed"></v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name"></v:String>
+
+    <v:String x:Key="InstallationsPage_SearchBar_Content"></v:String>
 
     <!--#endregion-->
 
@@ -150,11 +155,11 @@
     <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">FORMATO DA VERSÂO</v:String>
 
     <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">NOME DO PACOTE</v:String>
-    <v:String x:Key="EditSkinPackScreen_HeaderUUIDSubtitle">UUID</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderUUIDSubtitle"></v:String>
     <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">VERSÂO</v:String>
 
     <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">TIPO</v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">UUID</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle"></v:String>
     <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">VERSÃO</v:String>
 
     <v:String x:Key="EditSkinPackScreen_Header">Editar pacote de skins</v:String>
@@ -181,14 +186,14 @@
 
     <!--#region NewsScreenPage -->
 
-    <v:String x:Key="NewsScreen_LauncherTabTitle">Launcher</v:String>
+    <v:String x:Key="NewsScreen_LauncherTabTitle"></v:String>
     <v:String x:Key="NewsScreen_OfficialTabTitle">Oficial</v:String>
-    <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle"></v:String>
 
     <v:String x:Key="NewsScreen_SearchBar_Content">Título das novidades</v:String>
 
-    <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
-    <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox"></v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox"></v:String>
 
     <!--#endregion-->
 
@@ -218,8 +223,8 @@
     <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Fechar o launcher quando mudar de launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animar as transição de páginas no launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animar o botão de jogar nas páginas do launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Enable Minecraft Dungeons Support (WIP)</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Show advanced information when installing packages</v:String>
+    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport"></v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails"></v:String>
     
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">DEFINIÇÕES DO MINECRAFT: BEDROCK EDITION</v:String>
@@ -239,7 +244,7 @@
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">DEFINIÇÕES DO LAUNCHER EXTERNO</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">DIRETÓRIO</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">NOME</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">ARGUMENTS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle"></v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">ÍCONE</v:String>
 
     <!--#endregion-->
@@ -371,7 +376,7 @@
 
     <v:String x:Key="Dialog_Item_Installation_Text">instalação</v:String>
     <v:String x:Key="Dialog_Item_SkinPack_Text">pacote de skins</v:String>
-    <v:String x:Key="Dialog_Item_Skin_Text">skin</v:String>
+    <v:String x:Key="Dialog_Item_Skin_Text"></v:String>
     <v:String x:Key="Dialog_Item_Version_Text">versão</v:String>
     <v:String x:Key="Dialog_Item_Profile_Text">perfil</v:String>
 
@@ -390,18 +395,17 @@
     <v:String x:Key="DialogBtn_Yes_Text">Sim</v:String>
     <v:String x:Key="DialogBtn_No_Text">Não</v:String>
 
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">No matching results</v:String>
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">We couldn't find news any content matching your search. If you have category filters 
-turned off, try turning the back on and search again</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle"></v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve"></v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Loading...</v:String>
-    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Please wait!</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title"></v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve"></v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Error_Title">Error</v:String>
-    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Title"></v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve"></v:String>
 
-    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">No result</v:String>
-    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Found no items matching your search</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle"></v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve"></v:String>
 
     <!--#endregion-->
 
@@ -489,33 +493,33 @@ turned off, try turning the back on and search again</v:String>
 
     <v:String x:Key="VersionEntries_LatestSnapshot">Versão experimental mais recente</v:String>
     <v:String x:Key="VersionEntries_LatestRelease">Versão mais recente</v:String>
-    <v:String x:Key="VersionEntries_UnnamedInstallation">&lt;unnamed installation&gt;</v:String>
+    <v:String x:Key="VersionEntries_UnnamedInstallation"></v:String>
 
     <!--#endregion-->
 
     <!--#region ThemeEntries -->
 
     <v:String x:Key="ThemeEntries_LatestUpdate">Atualização mais recente</v:String>
-    <v:String x:Key="ThemeEntries_Original">Original</v:String>
+    <v:String x:Key="ThemeEntries_Original"></v:String>
 
-    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">Caves &amp; Cliffs (Part 1)</v:String>
-    <v:String x:Key="ThemeEntries_NetherUpdate">Nether Update</v:String>
-    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Buzzy Bees Update</v:String>
-    <v:String x:Key="ThemeEntries_VillagePillageUpdate">Village &amp; Pillage Update</v:String>
-    <v:String x:Key="ThemeEntries_UpdateAquatic">Update Aquatic</v:String>
-    <v:String x:Key="ThemeEntries_TechnicallyUpdated">Technically Updated [Java]</v:String>
-    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">World of Color Update [Java]</v:String>
-    <v:String x:Key="ThemeEntries_ExplorationUpdate">Exploration Update [Java]</v:String>
-    <v:String x:Key="ThemeEntries_CombatUpdate">Combat Update [Java]</v:String>
-    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">Cats &amp; Pandas [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update"></v:String>
+    <v:String x:Key="ThemeEntries_NetherUpdate"></v:String>
+    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate"></v:String>
+    <v:String x:Key="ThemeEntries_VillagePillageUpdate"></v:String>
+    <v:String x:Key="ThemeEntries_UpdateAquatic"></v:String>
+    <v:String x:Key="ThemeEntries_TechnicallyUpdated"></v:String>
+    <v:String x:Key="ThemeEntries_WorldOfColorUpdate"></v:String>
+    <v:String x:Key="ThemeEntries_ExplorationUpdate"></v:String>
+    <v:String x:Key="ThemeEntries_CombatUpdate"></v:String>
+    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate"></v:String>
     <v:String x:Key="ThemeEntries_PocketEditionRelease">Versão Oficial [Bedrock]</v:String>
-    <v:String x:Key="ThemeEntries_BedrockStandard">Bedrock Edition Standard</v:String>
-    <v:String x:Key="ThemeEntries_BedrockMaster">Bedrock Edition Master</v:String>
-    <v:String x:Key="ThemeEntries_EarlyLegacyConsole">Original Legacy Console Era</v:String>
-    <v:String x:Key="ThemeEntries_MidLegacyConsole">Mid Legacy Console Era</v:String>
-    <v:String x:Key="ThemeEntries_LateLegacyConsole">Late Legacy Console Era</v:String>
-    <v:String x:Key="ThemeEntries_IndieDays">Indie Days</v:String>
-    <v:String x:Key="ThemeEntries_Dungeons">Minecraft Dungeons</v:String>
+    <v:String x:Key="ThemeEntries_BedrockStandard"></v:String>
+    <v:String x:Key="ThemeEntries_BedrockMaster"></v:String>
+    <v:String x:Key="ThemeEntries_EarlyLegacyConsole"></v:String>
+    <v:String x:Key="ThemeEntries_MidLegacyConsole"></v:String>
+    <v:String x:Key="ThemeEntries_LateLegacyConsole"></v:String>
+    <v:String x:Key="ThemeEntries_IndieDays"></v:String>
+    <v:String x:Key="ThemeEntries_Dungeons"></v:String>
 
 
     <!--#endregion-->
@@ -542,9 +546,9 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="GeneralText_Export">Exportar</v:String>
     <v:String x:Key="GeneralText_Repair">Reparar</v:String>
 
-    <v:String x:Key="GeneralText_Twitter">Twitter</v:String>
-    <v:String x:Key="GeneralText_GitHub">GitHub</v:String>
-    <v:String x:Key="GeneralText_Website">Website</v:String>
+    <v:String x:Key="GeneralText_Twitter"></v:String>
+    <v:String x:Key="GeneralText_GitHub"></v:String>
+    <v:String x:Key="GeneralText_Website"></v:String>
 
     <!--#endregion-->
 
@@ -555,6 +559,7 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="GeneralSubtitles_Reset">REPOR</v:String>
     <v:String x:Key="GeneralSubtitles_Categories">CATEGORIAS</v:String>
     <v:String x:Key="GeneralSubtitles_Search">PROCURAR</v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy"></v:String>
 
     <!--#endregion-->
 
