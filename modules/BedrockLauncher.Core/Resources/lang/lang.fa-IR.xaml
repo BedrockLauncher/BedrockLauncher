@@ -84,6 +84,11 @@
     <v:String x:Key="InstallationsPage_AddButton">نصب جدید</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">شروع بازی</v:String>
 
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">جدیدترین بازی شده</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name">نام</v:String>
+
+    <v:String x:Key="InstallationsPage_SearchBar_Content">نام نصب</v:String>
+
     <!--#endregion-->
 
     <!--#region EditInstallationScreen -->
@@ -409,7 +414,7 @@
     <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">فایل {0} از قبل در مسیر وجود دارد.\nآیا میخواهید آن را جایگزین کنید؟ فایل قبل پاک خواهد شد.</v:String>
     <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">فایل {0} یک مسیر نیست. آیا میخواهید آن را پاک کنید؟ اطلاعات مسیر قبلی پاک خواهد شد.</v:String>
 
-    <v:String x:Key="GameManager_RecoveringDataIssue_Title">Converting Existing Save Data to Installation</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_Title">تبدیل اطلاعات ذخیره شده کنونی به نصب</v:String>
 
     <!--#endregion-->
 
@@ -420,62 +425,62 @@
 
     <!--#region UI -->
 
-    <v:String x:Key="Installer_Title">Minecraft Bedrock Launcher Setup Wizard</v:String>
+    <v:String x:Key="Installer_Title">نصب کننده بدراک لانچر ماینکرفت</v:String>
 
-    <v:String x:Key="Installer_Back_Text">Back</v:String>
-    <v:String x:Key="Installer_Next_Text">Next</v:String>
-    <v:String x:Key="Installer_Cancel_Text">Cancel</v:String>
-    <v:String x:Key="Installer_Finish_Text">Finish</v:String>
+    <v:String x:Key="Installer_Back_Text">برگشت</v:String>
+    <v:String x:Key="Installer_Next_Text">بعدی</v:String>
+    <v:String x:Key="Installer_Cancel_Text">لغو</v:String>
+    <v:String x:Key="Installer_Finish_Text">پایان</v:String>
 
-    <v:String x:Key="Installer_WelcomePage_Title">Welcome to the Minecraft Bedrock Launcher Setup Wizard</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info_Text">This will install Minecraft Bedrock Launcher on your computer.</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info2_Text">It is recommended that you close all other applications before continuing.</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info3_Text">Click Next to continue, or Cancel to exit Setup.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Title">به نصب کننده بدراک لانچر ماینکرفت خوش آمدید</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info_Text">این نرم افزار بدراک لانچر ماینکرفت را بر روی کامپیوتر شما نصب خواهد کرد.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info2_Text">بهتر است قبل از نصب تمام نرم افزار های دیگر را ببندید.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info3_Text">برای ادامه دادن کلیک کنید, یا برای خروج لغو کنید.</v:String>
 
-    <v:String x:Key="Installer_LicenseAgreement_Title">License Agreement</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Info_Text">Please read the following License Agreement. You must accept the terms of this</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">agreement before continuing with the installation.</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">I accept the license.</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">I don't accept the license.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Title">توافق نامه مجوز</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info_Text">لطفا توافق نامه مجوز مقابل را بخوانید. شما باید آنها را قبول کنید</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">قبول کردن قبل از ادامه نصب.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">من مجوز را قبول میکنم.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">من مجوز را قبول نمیکنم.</v:String>
 
-    <v:String x:Key="Installer_InstallType_Title">Choose Install Type</v:String>
-    <v:String x:Key="Installer_InstallType_Info_Text">Select which version of the launcher you want to download</v:String>
+    <v:String x:Key="Installer_InstallType_Title">نوع نصب را انتخاب کنید</v:String>
+    <v:String x:Key="Installer_InstallType_Info_Text">انتخاب کنید چه نسخه ای از لانچر را میخواهید نصب کنید</v:String>
 
-    <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Beta Version</v:String>
-    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Release Version</v:String>
+    <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">نسخه بتا</v:String>
+    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">نسخه غیر بتا</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_Title">Choose Install Location</v:String>
-    <v:String x:Key="Installer_InstallLocation_Info_Text">Setup will install Minecraft Bedrock Launcher in the following folder. To install in a different folder,</v:String>
-    <v:String x:Key="Installer_InstallLocation_Info2_Text">click Browse and select another folder.</v:String>
+    <v:String x:Key="Installer_InstallLocation_Title">محل نصب را انتخاب کنید</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info_Text">برپاساز لانچر بدراک ماینکرفت را در پوشه زیر نصب خواهد کرد. برای نصب در پوشه دیگر,</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info2_Text">روی &quot;جستجو&quot; کلیک کرده و پوشه دیگری را انتخاب کنید.</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Destination Folder</v:String>
-    <v:String x:Key="Installer_InstallLocation_Browse_Text">BROWSE</v:String>
+    <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">پوشه مورد نظر</v:String>
+    <v:String x:Key="Installer_InstallLocation_Browse_Text">مرور</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Create a desktop icon</v:String>
-    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Add to Start menu</v:String>
-    <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">Register Program</v:String>
+    <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">یک نماد روی دسکتاپ ایجاد شود</v:String>
+    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">به منوی استارت اضافه شود</v:String>
+    <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">برنامه رجیستر و ثبت شود</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">Start Program on Exit</v:String>
+    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">برنامه هنگام خروج باز شود</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_FilesInUse">Some of the files are currently in use by the following:</v:String>
+    <v:String x:Key="Installer_InstallationProgress_FilesInUse">بعضی از فایل ها توسط چیزی در حال استفاده هستند:</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_Title">Installing</v:String>
-    <v:String x:Key="Installer_InstallationProgress_Info_Text">Please wait while Setup installs Minecraft Bedrock Launcher on your computer.</v:String>
+    <v:String x:Key="Installer_InstallationProgress_Title">در حال نصب</v:String>
+    <v:String x:Key="Installer_InstallationProgress_Info_Text">لطفا منتظر بمانید تا برپا کننده نرم افزار بدراک لانچر ماینکرفت را روی کامپیوتر شما نصب کند.</v:String>
 
 
     <!--#endregion-->
 
-    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">Unable to Move Directory</v:String>
-    <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">Unable to Move File</v:String>
-    <v:String x:Key="Installer_Dialog_FileLocked_Text">File Being Used</v:String>
-    <v:String x:Key="Installer_Dialog_TryAgain_Text">Try Again?</v:String>
-    <v:String x:Key="Installer_Dialog_ErrorOccured_Text">An error has occurred.</v:String>
+    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">انتقال به مسیر مشخص شده ناموفق بود</v:String>
+    <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">نمیتوان فایل را انتقال داد</v:String>
+    <v:String x:Key="Installer_Dialog_FileLocked_Text">فایل درحال استفاده است</v:String>
+    <v:String x:Key="Installer_Dialog_TryAgain_Text">دوباره تلاش کن?</v:String>
+    <v:String x:Key="Installer_Dialog_ErrorOccured_Text">خطایی رخ داده است.</v:String>
 
     <!--#region ProgressBar -->
 
-    <v:String x:Key="Installer_ProgressBar_Downloading">Downloading...</v:String>
-    <v:String x:Key="Installer_ProgressBar_Finalizing">Finalizing...</v:String>
-    <v:String x:Key="Installer_ProgressBar_Initalizing">Initializing...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Downloading">در حال دانلود...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Finalizing">در حال نهایی سازی...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Initalizing">در حال راه‌اندازی...</v:String>
 
 
     <!--#endregion-->
@@ -486,74 +491,75 @@
 
     <!--#region VersionEntries -->
 
-    <v:String x:Key="VersionEntries_LatestSnapshot">Latest Beta</v:String>
-    <v:String x:Key="VersionEntries_LatestRelease">Latest Release</v:String>
-    <v:String x:Key="VersionEntries_UnnamedInstallation">&lt;unnamed installation&gt;</v:String>
+    <v:String x:Key="VersionEntries_LatestSnapshot">آخرین بتا</v:String>
+    <v:String x:Key="VersionEntries_LatestRelease">آخرین نسخه</v:String>
+    <v:String x:Key="VersionEntries_UnnamedInstallation">&lt;نصب بی نام&gt;</v:String>
 
     <!--#endregion-->
 
     <!--#region ThemeEntries -->
 
-    <v:String x:Key="ThemeEntries_LatestUpdate">Latest Update</v:String>
-    <v:String x:Key="ThemeEntries_Original">Original</v:String>
+    <v:String x:Key="ThemeEntries_LatestUpdate">آخرین بروزرسانی</v:String>
+    <v:String x:Key="ThemeEntries_Original">اصلی</v:String>
 
-    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">Caves &amp; Cliffs (Part 1)</v:String>
-    <v:String x:Key="ThemeEntries_NetherUpdate">Nether Update</v:String>
-    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Buzzy Bees Update</v:String>
-    <v:String x:Key="ThemeEntries_VillagePillageUpdate">Village &amp; Pillage Update</v:String>
-    <v:String x:Key="ThemeEntries_UpdateAquatic">Update Aquatic</v:String>
-    <v:String x:Key="ThemeEntries_TechnicallyUpdated">Technically Updated [Java]</v:String>
-    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">World of Color Update [Java]</v:String>
-    <v:String x:Key="ThemeEntries_ExplorationUpdate">Exploration Update [Java]</v:String>
-    <v:String x:Key="ThemeEntries_CombatUpdate">Combat Update [Java]</v:String>
-    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">Cats &amp; Pandas [Bedrock]</v:String>
-    <v:String x:Key="ThemeEntries_PocketEditionRelease">Official Release [Bedrock]</v:String>
-    <v:String x:Key="ThemeEntries_BedrockStandard">Bedrock Edition Standard</v:String>
-    <v:String x:Key="ThemeEntries_BedrockMaster">Bedrock Edition Master</v:String>
-    <v:String x:Key="ThemeEntries_EarlyLegacyConsole">Original Legacy Console Era</v:String>
-    <v:String x:Key="ThemeEntries_MidLegacyConsole">Mid Legacy Console Era</v:String>
-    <v:String x:Key="ThemeEntries_LateLegacyConsole">Late Legacy Console Era</v:String>
-    <v:String x:Key="ThemeEntries_IndieDays">Indie Days</v:String>
-    <v:String x:Key="ThemeEntries_Dungeons">Minecraft Dungeons</v:String>
+    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">کیوز اند کلیفز (پارت 1)</v:String>
+    <v:String x:Key="ThemeEntries_NetherUpdate">ندر آپدیت</v:String>
+    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">آپدیت بازی بیز</v:String>
+    <v:String x:Key="ThemeEntries_VillagePillageUpdate">آپدیت ویلج و پیلج</v:String>
+    <v:String x:Key="ThemeEntries_UpdateAquatic">آپدیت اکواتیک</v:String>
+    <v:String x:Key="ThemeEntries_TechnicallyUpdated">تکنیکلی آپدیتد [Java]</v:String>
+    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">آپدیت ورلد آو کالر [Java]</v:String>
+    <v:String x:Key="ThemeEntries_ExplorationUpdate">آپدیت اکسپلوریشن [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CombatUpdate">آپدیت کامبت [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">گربه ها و پاندا ها [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_PocketEditionRelease">رهانش رسمی [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_BedrockStandard">نسخه بدراک استاندارد</v:String>
+    <v:String x:Key="ThemeEntries_BedrockMaster">نسخه بدراک مستر</v:String>
+    <v:String x:Key="ThemeEntries_EarlyLegacyConsole">دوران اصلی میراث کنسول</v:String>
+    <v:String x:Key="ThemeEntries_MidLegacyConsole">اواسط دوران اصلی میراث کنسول</v:String>
+    <v:String x:Key="ThemeEntries_LateLegacyConsole">اواخر دوران اصلی میراث کنسول</v:String>
+    <v:String x:Key="ThemeEntries_IndieDays">روزهای اول</v:String>
+    <v:String x:Key="ThemeEntries_Dungeons">ماینکرفت دانجنز</v:String>
 
 
     <!--#endregion-->
 
     <!--#region GeneralText -->
 
-    <v:String x:Key="GeneralText_Delete">Delete</v:String>
-    <v:String x:Key="GeneralText_Edit">Edit</v:String>
-    <v:String x:Key="GeneralText_Duplicate">Duplicate</v:String>
-    <v:String x:Key="GeneralText_Remove">Remove</v:String>
-    <v:String x:Key="GeneralText_Cancel">Cancel</v:String>
-    <v:String x:Key="GeneralText_Update">Update</v:String>
-    <v:String x:Key="GeneralText_Add">Add</v:String>
-    <v:String x:Key="GeneralText_Save">Save</v:String>
-    <v:String x:Key="GeneralText_Refresh">Refresh</v:String>
-    <v:String x:Key="GeneralText_Backup">Backup</v:String>
-    <v:String x:Key="GeneralText_Versions">Versions</v:String>
-    <v:String x:Key="GeneralText_Browse">Browse</v:String>
-    <v:String x:Key="GeneralText_Reset">Reset</v:String>
-    <v:String x:Key="GeneralText_Yes">Yes</v:String>
-    <v:String x:Key="GeneralText_No">No</v:String>
-    <v:String x:Key="GeneralText_Releases">Releases</v:String>
-    <v:String x:Key="GeneralText_Betas">Betas</v:String>
-    <v:String x:Key="GeneralText_Export">Export</v:String>
-    <v:String x:Key="GeneralText_Repair">Repair</v:String>
+    <v:String x:Key="GeneralText_Delete">حذف</v:String>
+    <v:String x:Key="GeneralText_Edit">ويرايش</v:String>
+    <v:String x:Key="GeneralText_Duplicate">تکراری</v:String>
+    <v:String x:Key="GeneralText_Remove">حذف</v:String>
+    <v:String x:Key="GeneralText_Cancel">لغو</v:String>
+    <v:String x:Key="GeneralText_Update">به‌روز رسانی</v:String>
+    <v:String x:Key="GeneralText_Add">ﺍﻓﺰﻭﺩﻥ</v:String>
+    <v:String x:Key="GeneralText_Save">ذخیره</v:String>
+    <v:String x:Key="GeneralText_Refresh">بارگذاری مجدد</v:String>
+    <v:String x:Key="GeneralText_Backup">پشتیبان‌گیری</v:String>
+    <v:String x:Key="GeneralText_Versions">نسخه ها</v:String>
+    <v:String x:Key="GeneralText_Browse">مرور</v:String>
+    <v:String x:Key="GeneralText_Reset">بازنشانی</v:String>
+    <v:String x:Key="GeneralText_Yes">آری</v:String>
+    <v:String x:Key="GeneralText_No">خیر</v:String>
+    <v:String x:Key="GeneralText_Releases">نسخه‌های منتشر شده</v:String>
+    <v:String x:Key="GeneralText_Betas">نسخه های بتا</v:String>
+    <v:String x:Key="GeneralText_Export">خروجی گرفتن</v:String>
+    <v:String x:Key="GeneralText_Repair">بازسازی</v:String>
 
-    <v:String x:Key="GeneralText_Twitter">Twitter</v:String>
+    <v:String x:Key="GeneralText_Twitter">توییتر</v:String>
     <v:String x:Key="GeneralText_GitHub">GitHub</v:String>
-    <v:String x:Key="GeneralText_Website">Website</v:String>
+    <v:String x:Key="GeneralText_Website">وبسایت</v:String>
 
     <!--#endregion-->
 
     <!--#region GeneralSubtitles -->
 
-    <v:String x:Key="GeneralSubtitles_Versions">VERSIONS</v:String>
-    <v:String x:Key="GeneralSubtitles_Browse">BROWSE</v:String>
-    <v:String x:Key="GeneralSubtitles_Reset">RESET</v:String>
-    <v:String x:Key="GeneralSubtitles_Categories">CATEGORIES</v:String>
-    <v:String x:Key="GeneralSubtitles_Search">SEARCH</v:String>
+    <v:String x:Key="GeneralSubtitles_Versions">نسخه ها</v:String>
+    <v:String x:Key="GeneralSubtitles_Browse">مرور</v:String>
+    <v:String x:Key="GeneralSubtitles_Reset">بازنشانی</v:String>
+    <v:String x:Key="GeneralSubtitles_Categories">دسته بندی ها</v:String>
+    <v:String x:Key="GeneralSubtitles_Search">جست و جو</v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy">مرتب کن با</v:String>
 
     <!--#endregion-->
 
