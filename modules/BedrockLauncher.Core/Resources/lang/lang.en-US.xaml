@@ -87,6 +87,11 @@
     <v:String x:Key="InstallationsPage_AddButton">New installation</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">Play</v:String>
 
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">Latest Played</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name">Name</v:String>
+
+    <v:String x:Key="InstallationsPage_SearchBar_Content">Installation name</v:String>
+
     <!--#endregion-->
 
     <!--#region EditInstallationScreen -->
@@ -554,6 +559,7 @@
     <v:String x:Key="GeneralSubtitles_Reset">RESET</v:String>
     <v:String x:Key="GeneralSubtitles_Categories">CATEGORIES</v:String>
     <v:String x:Key="GeneralSubtitles_Search">SEARCH</v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy">SORT BY</v:String>
 
     <!--#endregion-->
 
