@@ -84,6 +84,11 @@
     <v:String x:Key="InstallationsPage_AddButton">Nouvelle configuration</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">Jouer</v:String>
 
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed"></v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name"></v:String>
+
+    <v:String x:Key="InstallationsPage_SearchBar_Content"></v:String>
+
     <!--#endregion-->
 
     <!--#region EditInstallationScreen -->
@@ -393,10 +398,10 @@
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">Nous n'avons pas pu trouver de nouveaux résultats correspondant à votre recherche. Si vous utilisez des filtres de catégorie 
 désactiver les, réactiver les et retenter votre recherche</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Loading...</v:String>
-    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Please wait!</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Chargement...</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Veuillez patienter!</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Error_Title">Error</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Title">Erreur</v:String>
     <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
 
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Aucun résultat</v:String>
@@ -555,6 +560,7 @@ du Minecraft Bedrock Launcher</v:String>
     <v:String x:Key="GeneralSubtitles_Reset">RESET</v:String>
     <v:String x:Key="GeneralSubtitles_Categories">CATÉGORIES</v:String>
     <v:String x:Key="GeneralSubtitles_Search">RECHERCHER</v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy"></v:String>
 
     <!--#endregion-->
 
