@@ -84,6 +84,11 @@
     <v:String x:Key="InstallationsPage_AddButton">Новая ўсталёўка</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">Гуляць</v:String>
 
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed"></v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name"></v:String>
+
+    <v:String x:Key="InstallationsPage_SearchBar_Content"></v:String>
+
     <!--#endregion-->
 
     <!--#region EditInstallationScreen -->
@@ -555,6 +560,7 @@
     <v:String x:Key="GeneralSubtitles_Reset">СКІД</v:String>
     <v:String x:Key="GeneralSubtitles_Categories">КАТЭГОРЫ</v:String>
     <v:String x:Key="GeneralSubtitles_Search">ПОШУ</v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy"></v:String>
 
     <!--#endregion-->
 
