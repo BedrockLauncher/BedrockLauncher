@@ -84,6 +84,11 @@
     <v:String x:Key="InstallationsPage_AddButton">新建安装</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">开始游戏</v:String>
 
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">最后一次游玩</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name">名称</v:String>
+
+    <v:String x:Key="InstallationsPage_SearchBar_Content">安装名称</v:String>
+
     <!--#endregion-->
 
     <!--#region EditInstallationScreen -->
@@ -394,10 +399,10 @@
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">我们找不到任何符合您搜索内容的新闻。如果您有类别筛选器 
 已关闭，请尝试返回并再次搜索</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Loading...</v:String>
-    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Please wait!</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title">正在加载......</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">请稍等！</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Error_Title">Error</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Title">错误</v:String>
     <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
 
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">无结果</v:String>
@@ -555,6 +560,7 @@
     <v:String x:Key="GeneralSubtitles_Reset">重置</v:String>
     <v:String x:Key="GeneralSubtitles_Categories">类别</v:String>
     <v:String x:Key="GeneralSubtitles_Search">搜索</v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy">排序方式</v:String>
 
     <!--#endregion-->
 
