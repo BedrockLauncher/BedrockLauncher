@@ -28,7 +28,7 @@ namespace BedrockLauncher.Pages.Preview
 
         private bool IsEditMode = false;
 
-        private int EditingIndex = -1;
+        private string SelectedUUID = string.Empty;
 
         public EditInstallationScreen()
         {
@@ -36,21 +36,21 @@ namespace BedrockLauncher.Pages.Preview
             UpdateVersionsComboBox();
         }
 
-        public EditInstallationScreen(int index, BLInstallation i)
+        public EditInstallationScreen(BLInstallation i)
         {
             InitializeComponent();
             UpdateVersionsComboBox();
-            UpdateEditingFields(index, i);
+            UpdateEditingFields(i);
         }
 
-        private void UpdateEditingFields(int index, BLInstallation i)
+        private void UpdateEditingFields(BLInstallation i)
         {
             IsEditMode = true;
             InstallationVersionSelect.SelectedItem = Versions.Where(x => x.UUID == i.VersionUUID).FirstOrDefault();
             InstallationNameField.Text = i.DisplayName;
             InstallationDirectoryField.Text = i.DirectoryName;
             InstallationIconSelect.Init(i.IconPath_Full, i.IsCustomIcon);
-            EditingIndex = index;
+            SelectedUUID = i.InstallationUUID;
 
             Header.SetResourceReference(TextBlock.TextProperty, "EditInstallationScreen_AltTitle");
             CreateButton.SetResourceReference(Button.ContentProperty, "EditInstallationScreen_AltCreateButton");
@@ -68,7 +68,7 @@ namespace BedrockLauncher.Pages.Preview
         {
             Versions.Clear();
             InstallationVersionSelect.ItemsSource = null;
-            foreach (var entry in LauncherModel.Default.ConfigManager.Versions) Versions.Add(BLVersion.Convert(entry));
+            foreach (var entry in LauncherModel.Default.Versions) Versions.Add(BLVersion.Convert(entry));
             GetManualComboBoxEntries();
             InstallationVersionSelect.ItemsSource = Versions;
             var view = CollectionViewSource.GetDefaultView(InstallationVersionSelect.ItemsSource) as CollectionView;
@@ -103,13 +103,13 @@ namespace BedrockLauncher.Pages.Preview
 
         private void UpdateInstallation()
         {
-            LauncherModel.Default.ConfigManager.EditInstallation(EditingIndex, InstallationNameField.Text, InstallationDirectoryField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
+            LauncherModel.Default.Config.Installation_Edit(SelectedUUID, InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationDirectoryField.Text, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
             LauncherModel.Default.SetOverlayFrame(null);
         }
 
         private void CreateInstallation()
         {
-            LauncherModel.Default.ConfigManager.CreateInstallation(InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationDirectoryField.Text, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
+            LauncherModel.Default.Config.Installation_Create(InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationDirectoryField.Text, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
             LauncherModel.Default.SetOverlayFrame(null);
         }
 

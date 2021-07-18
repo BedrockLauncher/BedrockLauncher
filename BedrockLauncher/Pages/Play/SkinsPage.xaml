@@ -74,7 +74,7 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Grid Background="{DynamicResource ListBox.Static.Background}">
-                <controls:InstallationSelector VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectedValuePath="InstallationUUID" SelectedValue="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=CurrentInstallation}" IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default}, Path=AllowEditing, Mode=OneWay}" SelectionChanged="InstallationsList_SelectionChanged" ItemsSource="{Binding}" x:Name="InstallationsList" Margin="4,4,4,4" Padding="-1,7,5,3"></controls:InstallationSelector>
+                <controls:InstallationSelector VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectionChanged="InstallationsList_SelectionChanged" ItemsSource="{Binding}" x:Name="InstallationsList" Margin="4,4,4,4" Padding="-1,7,5,3"></controls:InstallationSelector>
             </Grid>
             <Separator Grid.Row="1" Padding="0" Margin="0"></Separator>
             <ListView Grid.Row="2"

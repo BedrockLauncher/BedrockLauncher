@@ -64,7 +64,7 @@ namespace BedrockLauncher.Controls.Items
             Button button = sender as Button;
             var installation = button.DataContext as BLInstallation;
             bool KeepLauncherOpen = Properties.LauncherSettings.Default.KeepLauncherOpen;
-            LauncherModel.Default.GameManager.Play(LauncherModel.Default.ConfigManager.CurrentProfile, installation, KeepLauncherOpen);
+            LauncherModel.Default.GameManager.Play(LauncherModel.Default.Config.CurrentProfile, installation, KeepLauncherOpen);
         }
 
         private async void DeleteInstallationButton_Click(object sender, RoutedEventArgs e)
@@ -80,7 +80,7 @@ namespace BedrockLauncher.Controls.Items
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
 
-                LauncherModel.Default.ConfigManager.DeleteInstallation(installation);
+                LauncherModel.Default.Config.Installation_Delete(installation);
             }
         }
 
@@ -104,15 +104,14 @@ namespace BedrockLauncher.Controls.Items
         {
             MenuItem button = sender as MenuItem;
             var installation = button.DataContext as BLInstallation;
-            int index = LauncherModel.Default.ConfigManager.CurrentInstallations.IndexOf(installation);
-            ViewModels.LauncherModel.Default.SetOverlayFrame(new EditInstallationScreen(index, installation));
+            ViewModels.LauncherModel.Default.SetOverlayFrame(new EditInstallationScreen(installation));
         }
 
         private void DuplicateInstallationButton_Click(object sender, RoutedEventArgs e)
         {
             MenuItem button = sender as MenuItem;
             var installation = button.DataContext as BLInstallation;
-            LauncherModel.Default.ConfigManager.DuplicateInstallation(installation);
+            LauncherModel.Default.Config.Installation_Clone(installation);
         }
     }
 }

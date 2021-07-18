@@ -172,6 +172,7 @@
     <Compile Include="Classes\Html\SkinViewResourceSchemeHandler.cs" />
     <Compile Include="Classes\BLInstallation.cs" />
     <Compile Include="Classes\BLVersion.cs" />
+    <Compile Include="Classes\BLProfileList.cs" />
     <Compile Include="Controls\Items\DLCItem.xaml.cs">
       <DependentUpon>DLCItem.xaml</DependentUpon>
     </Compile>
@@ -278,7 +279,6 @@
     <Compile Include="Controls\SkinPreview.xaml.cs">
       <DependentUpon>SkinPreview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\ConfigManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Classes\Html\FileSchemeHandler.cs" />
     <Compile Include="Classes\Html\GlobalSchemeHandlerFactory.cs" />

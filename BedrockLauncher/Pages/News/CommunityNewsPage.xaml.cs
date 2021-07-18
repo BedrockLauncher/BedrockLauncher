@@ -29,7 +29,7 @@ namespace BedrockLauncher.Pages.News
     public partial class CommunityNewsPage : Page
     {
 
-        private const string RSS_Feed = @"https://www.minecraft.net/en-us/feeds/community-content/rss";
+        private const string RSS_Feed = "https://www.minecraft.net/en-us/feeds/community-content/rss";
 
         private ObservableCollection<MCNetFeedItem> FeedItems { get; set; } = new ObservableCollection<MCNetFeedItem>();
 
@@ -47,34 +47,44 @@ namespace BedrockLauncher.Pages.News
 
         private async void UpdateRSSContent()
         {
-            try
+            using (var httpClient = new HttpClient())
             {
-                await Dispatcher.InvokeAsync(() => {
-                    NothingFound.PanelType = Core.Controls.ResultPanelType.Loading;
-                    NothingFound.Visibility = Visibility.Visible;
-                    FeedItems.Clear(); 
-                });
 
-                Feed feed = await FeedReader.ReadAsync(RSS_Feed);
+                httpClient.Timeout = TimeSpan.FromSeconds(15);
+                try
+                {
+                    await Dispatcher.InvokeAsync(() => {
+                        NothingFound.PanelType = Core.Controls.ResultPanelType.Loading;
+                        NothingFound.Visibility = Visibility.Visible;
+                        FeedItems.Clear();
+                    });
 
-                await Dispatcher.InvokeAsync(() => {
-                    foreach (FeedItem item in feed.Items)
-                    {
-                        MCNetFeedItemRSS new_item = new MCNetFeedItemRSS(item);
-                        FeedItems.Add(new_item);
-                        NothingFound.Visibility = Visibility.Collapsed;
-                    }
-                });
+                    var rss = await httpClient.GetStringAsync(RSS_Feed);
 
-                if (FeedItems.Count == 0) NothingFound.Visibility = Visibility.Visible;
+                    Feed feed = FeedReader.ReadFromString(rss);
+
+                    await Dispatcher.InvokeAsync(() => {
+                        foreach (FeedItem item in feed.Items)
+                        {
+                            MCNetFeedItemRSS new_item = new MCNetFeedItemRSS(item);
+                            FeedItems.Add(new_item);
+                            NothingFound.Visibility = Visibility.Collapsed;
+                        }
+                    });
+
+                    if (FeedItems.Count == 0) NothingFound.Visibility = Visibility.Visible;
+                }
+                catch (Exception ex)
+                {
+                    await Dispatcher.InvokeAsync(() => {
+                        NothingFound.PanelType = Core.Controls.ResultPanelType.Error;
+                        NothingFound.Visibility = Visibility.Visible;
+                    });
+                }
+
             }
-            catch (Exception ex)
-            {
-                await Dispatcher.InvokeAsync(() => {
-                    NothingFound.PanelType = Core.Controls.ResultPanelType.Error;
-                    NothingFound.Visibility = Visibility.Visible;
-                });
-            }
+
+
 
         }
 

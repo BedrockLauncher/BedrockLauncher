@@ -51,9 +51,9 @@ namespace BedrockLauncher.Pages.Settings
             {
                 if (!HasLoadedOnce)
                 {
-                    VersionsList.ItemsSource = LauncherModel.Default.ConfigManager.Versions;
+                    VersionsList.ItemsSource = LauncherModel.Default.Versions;
                     var view = CollectionViewSource.GetDefaultView(VersionsList.ItemsSource) as CollectionView;
-                    view.Filter = LauncherModel.Default.ConfigManager.Filter_VersionList;
+                    view.Filter = LauncherModel.Default.Filter_VersionList;
                     HasLoadedOnce = true;
                 }
             });
@@ -61,7 +61,7 @@ namespace BedrockLauncher.Pages.Settings
 
         private async void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
-            await Task.Run(ViewModels.LauncherModel.Default.ConfigManager.LoadVersions);
+            await Task.Run(ViewModels.LauncherModel.Default.LoadVersions);
         }
     }
 }

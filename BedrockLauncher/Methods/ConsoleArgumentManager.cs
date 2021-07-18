@@ -90,7 +90,7 @@ namespace BedrockLauncher.Methods
             int count = args.Length - 1;
             if (index + 2 <= count)
             {
-                var profiles = ViewModels.LauncherModel.Default.ConfigManager.ProfileList.profiles;
+                var profiles = ViewModels.LauncherModel.Default.Config.profiles;
                 string profileName = args[index + 1];
                 string installationName = args[index + 2];
 
@@ -99,12 +99,12 @@ namespace BedrockLauncher.Methods
                 //Profile Not Found
                 else if (!profiles.ContainsKey(profileName)) return false;
                 //Installation Not Found
-                else if (!profiles[profileName].Installations.Exists(x => x.DisplayName == installationName)) return false;
+                else if (!profiles[profileName].Installations.Any(x => x.DisplayName == installationName)) return false;
                 //Launch Installation
                 else
                 {
                     var p = profiles[profileName];
-                    var i = BLInstallation.Convert(p.Installations.Where(x => x.DisplayName == installationName).FirstOrDefault());
+                    var i = p.Installations.Where(x => x.DisplayName == installationName).FirstOrDefault();
                     bool c = Properties.LauncherSettings.Default.KeepLauncherOpen;
                     if (KeepOpenOnLaunch) c = true;
                     else if (CloseOnLaunch) c = false;   

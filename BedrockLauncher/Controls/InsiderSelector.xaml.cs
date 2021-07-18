@@ -58,7 +58,7 @@ namespace BedrockLauncher.Controls
             else if (Win10AuthenticationManager.CurrentAccounts.Count < AccountsList.SelectedIndex) AccountsList.SelectedIndex = 0;
             Properties.LauncherSettings.Default.CurrentInsiderAccount = AccountsList.SelectedIndex;
             Properties.LauncherSettings.Default.Save();
-            ViewModels.LauncherModel.Default.ConfigManager.LoadVersions();
+            ViewModels.LauncherModel.Default.LoadVersions();
             RefreshProfileContextMenuItems();
         }
     }

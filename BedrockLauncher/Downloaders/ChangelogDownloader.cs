@@ -197,8 +197,8 @@ namespace BedrockLauncher.Downloaders
             ClearPatchList();
 
             HtmlWeb web = new HtmlWeb();
-
-            string base_url = "https://feedback.minecraft.net/";
+            web.BrowserTimeout = TimeSpan.FromSeconds(10);
+            string base_url = "https://feedback.minecraft.net";
             List<FeedbackParams> checklist = new List<FeedbackParams>()
             {
                 new FeedbackParams()

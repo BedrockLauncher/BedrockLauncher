@@ -87,8 +87,8 @@ namespace BedrockLauncher.ViewModels
         }
         public string GetInstallationsFolderPath(string profileName, string installationDirectory)
         {
-            if (!LauncherModel.Default.ConfigManager.ProfileList.profiles.ContainsKey(profileName)) return string.Empty;
-            var profile = LauncherModel.Default.ConfigManager.ProfileList.profiles[profileName];
+            if (!LauncherModel.Default.Config.profiles.ContainsKey(profileName)) return string.Empty;
+            var profile = LauncherModel.Default.Config.profiles[profileName];
             string InstallationsPath = Path.Combine(profile.ProfilePath, installationDirectory);
             return Path.Combine(CurrentLocation, InstallationsFolderName, InstallationsPath, PackageDataFolderName);
         }

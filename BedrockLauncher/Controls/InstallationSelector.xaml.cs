@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BedrockLauncher.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -21,14 +22,46 @@ namespace BedrockLauncher.Controls
     /// </summary>
     public partial class InstallationSelector : ComboBox
     {
+        private bool HasLoadedOnce = false;
+
         public InstallationSelector()
         {
             InitializeComponent();
+            LauncherModel.Default.ConfigUpdated += InstallationsUpdate;
         }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public async void RefreshInstallations()
         {
-
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                var view = CollectionViewSource.GetDefaultView(this.ItemsSource) as CollectionView;
+                LauncherModel.Default.Sort_InstallationList(ref view);
+                view.Refresh();
+            });
+        }
+        private async Task ReloadInstallations()
+        {
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                if (!HasLoadedOnce)
+                {
+                    this.ItemsSource = null;
+                    this.ItemsSource = LauncherModel.Default.Config.CurrentInstallations;
+                    var view = CollectionViewSource.GetDefaultView(this.ItemsSource) as CollectionView;
+                    view.Filter = LauncherModel.Default.Filter_InstallationList;
+                    HasLoadedOnce = true;
+                    this.SelectedIndex = 0;
+                }
+                this.RefreshInstallations();
+            });
+        }
+        private async void ComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            await this.ReloadInstallations();
+        }
+        private async void InstallationsUpdate(object sender, EventArgs e)
+        {
+            HasLoadedOnce = false;
+            await this.ReloadInstallations();
         }
     }
 }

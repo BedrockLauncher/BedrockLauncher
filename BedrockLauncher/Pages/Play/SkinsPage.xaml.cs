@@ -58,12 +58,8 @@ namespace BedrockLauncher.Pages.Play
                 {
                     LoadedSkinPacks.ItemsSource = SkinPacks;
                     SkinPreviewList.ItemsSource = Skins;
-                    InstallationsList.ItemsSource = LauncherModel.Default.ConfigManager.CurrentInstallations;
-                    var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
-                    view.Filter = LauncherModel.Default.ConfigManager.Filter_InstallationList;
                     HasLoadedOnce = true;
                 }
-                RefreshInstallationsList();
                 ReloadSkinPacks();
             });
         }
@@ -72,26 +68,17 @@ namespace BedrockLauncher.Pages.Play
         #endregion
 
         #region UI
-        private async void RefreshInstallationsList()
-        {
-            await this.Dispatcher.InvokeAsync(() =>
-            {
-                var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
-                //LauncherModel.Default.ConfigManager.Sort_InstallationList(ref view);
-                view.Refresh();
-            });
-        }
         public async void ReloadSkinPacks()
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
                 SkinPacks.Clear();
 
-                var installation = LauncherModel.Default.ConfigManager.CurrentInstallation;
+                var installation = LauncherModel.Default.Config.CurrentInstallation;
 
                 if (installation == null) return;
 
-                string InstallationPath = LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.ConfigManager.CurrentProfileName, installation.DirectoryName);
+                string InstallationPath = LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.Config.CurrentProfileUUID, installation.DirectoryName);
                 string normal_folder = LauncherModel.Default.FilepathManager.GetSkinPacksFolderPath(InstallationPath, false);
                 string dev_folder = LauncherModel.Default.FilepathManager.GetSkinPacksFolderPath(InstallationPath, true);
 
@@ -205,7 +192,7 @@ namespace BedrockLauncher.Pages.Play
                     if (file.Entries.ToList().Exists(x => x.FullName == "skins.json"))
                     {
                         file.Dispose();
-                        string InstallationPath = LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.ConfigManager.CurrentProfileName, LauncherModel.Default.ConfigManager.CurrentInstallation.DirectoryName);
+                        string InstallationPath = LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.Config.CurrentProfileUUID, LauncherModel.Default.Config.CurrentInstallation.DirectoryName);
                         string NewPackDirectoryName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
                         string NewPackDirectory = Path.Combine(LauncherModel.Default.FilepathManager.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
 

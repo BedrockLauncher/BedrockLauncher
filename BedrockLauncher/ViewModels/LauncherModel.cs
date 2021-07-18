@@ -25,6 +25,9 @@ using BedrockLauncher.Core.Pages.Common;
 using BedrockLauncher.Core.Interfaces;
 using BedrockLauncher.Downloaders;
 using BedrockLauncher.ViewModels;
+using BedrockLauncher.Core.Classes;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace BedrockLauncher.ViewModels
 {
@@ -47,9 +50,14 @@ namespace BedrockLauncher.ViewModels
 
         public void Init()
         {
-            bool isFirstLaunch = Properties.LauncherSettings.Default.CurrentProfile == "" || Properties.LauncherSettings.Default.IsFirstLaunch;
             MainFrame_KeyboardNavigationMode_Default = KeyboardNavigation.GetTabNavigation(MainThread.MainFrame);
-            ConfigManager.Init();
+
+            LoadVersions();
+            LoadConfig();
+
+            bool isFirstLaunch = Properties.LauncherSettings.Default.CurrentProfile == "" ||
+                Properties.LauncherSettings.Default.IsFirstLaunch ||
+                Config.profiles.Count() == 0;
 
             // show first launch window if no profile
             if (isFirstLaunch) SetOverlayFrame_Strict(new WelcomePage());
@@ -65,8 +73,6 @@ namespace BedrockLauncher.ViewModels
         #endregion
 
         #region Other Models
-
-        public ConfigManager ConfigManager { get; private set; } = new ConfigManager();
         public FilepathManager FilepathManager { get; private set; } = new FilepathManager();
         public GameManager GameManager { get; private set; } = new GameManager();
         public VersionDownloader VersionDownloader { get; private set; } = new VersionDownloader();
@@ -392,6 +398,14 @@ namespace BedrockLauncher.ViewModels
             if (handler != null) handler(this, e);
         }
 
+        public event EventHandler ConfigUpdated;
+        protected virtual void OnConfigUpdated(PropertyChangedEventArgs e)
+        {
+            EventHandler handler = ConfigUpdated;
+            if (e.PropertyName == nameof(Config.CurrentInstallations))
+                if (handler != null) handler(this, e);
+        }
+
         #endregion
 
         #region One Way Bindings
@@ -581,6 +595,127 @@ namespace BedrockLauncher.ViewModels
         public const long DeploymentMaximum = 100;
         public ICommand CancelCommand { get; set; }
         public string DeploymentPackageName { get; set; }
+
+        #endregion
+
+        #region ConfigManager Porting
+
+        #region Enums
+
+        public enum SortBy_Installation : int
+        {
+            LatestPlayed,
+            Name
+        }
+
+        #endregion
+
+        #region Variables
+
+
+        public string CurrentInstallationUUID
+        {
+            get
+            {
+                return Config.CurrentInstallationUUID;
+            }
+            set
+            {
+                Config.CurrentInstallationUUID = value;
+                OnPropertyChanged(nameof(CurrentInstallationUUID));
+            }
+        }
+        public string CurrentProfileUUID
+        {
+            get
+            {
+                return Config.CurrentProfileUUID;
+            }
+            set
+            {
+                Config.CurrentProfileUUID = value;
+                OnPropertyChanged(nameof(CurrentProfileUUID));
+                OnPropertyChanged(nameof(CurrentInstallationUUID));
+            }
+        }
+
+        public ObservableCollection<BLVersion> Versions { get; private set; } = new ObservableCollection<BLVersion>();
+        public MCProfilesList Config { get; private set; } = new MCProfilesList();
+        public SortBy_Installation Installations_SortFilter { get; set; } = SortBy_Installation.LatestPlayed;
+        public string Installations_SearchFilter { get; set; } = string.Empty;
+
+        #region public bool IsVersionsUpdating
+
+        private bool _IsVersionsUpdating = false;
+        public bool IsVersionsUpdating
+        {
+            get { return _IsVersionsUpdating; }
+            set { _IsVersionsUpdating = value; OnPropertyChanged(nameof(IsVersionsUpdating)); }
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Methods
+
+        public void Reload()
+        {
+            LoadConfig();
+        }
+
+        private void LoadConfig()
+        {
+            Config.PropertyChanged -= (sender, e) => OnConfigUpdated(e);
+            Config = MCProfilesList.Load(LauncherModel.Default.FilepathManager.GetProfilesFilePath(), Properties.LauncherSettings.Default.CurrentProfile, Properties.LauncherSettings.Default.CurrentProfile);
+            Config.PropertyChanged += (sender, e) => OnConfigUpdated(e);
+        }
+
+        public async void LoadVersions()
+        {
+            if (IsVersionsUpdating) return;
+            await Application.Current.Dispatcher.Invoke((Func<Task>)(async () =>
+            {
+                IsVersionsUpdating = true;
+                await LauncherModel.Default.VersionDownloader.UpdateVersions(Versions);
+                IsVersionsUpdating = false;
+            }));
+        }
+
+        #endregion
+
+        #region Filters/Sorting
+
+        public bool Filter_InstallationList(object obj)
+        {
+            BLInstallation v = obj as BLInstallation;
+            if (v == null) return false;
+            else if (!Properties.LauncherSettings.Default.ShowBetas && v.IsBeta) return false;
+            else if (!Properties.LauncherSettings.Default.ShowReleases && !v.IsBeta) return false;
+            else if (!v.DisplayName.Contains(Installations_SearchFilter)) return false;
+            else return true;
+        }
+        public void Sort_InstallationList(ref CollectionView view)
+        {
+            view.SortDescriptions.Clear();
+            if (Installations_SortFilter == SortBy_Installation.LatestPlayed) view.SortDescriptions.Add(new System.ComponentModel.SortDescription("LastPlayedT", System.ComponentModel.ListSortDirection.Descending));
+            if (Installations_SortFilter == SortBy_Installation.Name) view.SortDescriptions.Add(new System.ComponentModel.SortDescription("DisplayName", System.ComponentModel.ListSortDirection.Ascending));
+        }
+        public bool Filter_VersionList(object obj)
+        {
+            BLVersion v = BLVersion.Convert(obj as MCVersion);
+
+            if (v != null && v.IsInstalled)
+            {
+                if (!Properties.LauncherSettings.Default.ShowBetas && v.IsBeta) return false;
+                else if (!Properties.LauncherSettings.Default.ShowReleases && !v.IsBeta) return false;
+                else return true;
+            }
+            else return false;
+
+        }
+
+        #endregion
 
         #endregion
     }

@@ -47,23 +47,13 @@ namespace BedrockLauncher.Pages.Play
             { "Original",                  ImagePathPrefix + "original_image.jpg" }
         };
 
-        private bool HasLoadedOnce = false;
-
         public PlayScreenPage()
         {
             InitializeComponent();
         }
 
 
-        public async void RefreshInstallationsList()
-        {
-            await this.Dispatcher.InvokeAsync(() =>
-            {
-                var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
-                //LauncherModel.Default.ConfigManager.Sort_InstallationList(ref view);
-                view.Refresh();
-            });
-        }
+
         private string GetLatestImage()
         {
             return Images.First().Value;
@@ -72,14 +62,6 @@ namespace BedrockLauncher.Pages.Play
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
-                if (!HasLoadedOnce)
-                {
-                    InstallationsList.ItemsSource = LauncherModel.Default.ConfigManager.CurrentInstallations;
-                    var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
-                    view.Filter = LauncherModel.Default.ConfigManager.Filter_InstallationList;
-                    HasLoadedOnce = true;
-                }
-                RefreshInstallationsList();
                 LauncherModel.Default.UpdateUI();
 
                 string packUri = string.Empty;
@@ -121,7 +103,7 @@ namespace BedrockLauncher.Pages.Play
             {
                 var i = InstallationsList.SelectedItem as BLInstallation;
                 bool KeepLauncherOpen = Properties.LauncherSettings.Default.KeepLauncherOpen;
-                LauncherModel.Default.GameManager.Play(ViewModels.LauncherModel.Default.ConfigManager.CurrentProfile, i, KeepLauncherOpen);
+                LauncherModel.Default.GameManager.Play(ViewModels.LauncherModel.Default.Config.CurrentProfile, i, KeepLauncherOpen);
             }
         }
     }

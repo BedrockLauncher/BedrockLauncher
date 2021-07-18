@@ -24,63 +24,69 @@ namespace BedrockLauncher.Pages.Play
         public InstallationsScreen()
         {
             InitializeComponent();
-            ShowBetasCheckBox.Click += (sender, e) => RefreshInstallationsList();
-            ShowReleasesCheckBox.Click += (sender, e) => RefreshInstallationsList();
+            ShowBetasCheckBox.Click += (sender, e) => RefreshInstallations();
+            ShowReleasesCheckBox.Click += (sender, e) => RefreshInstallations();
+            LauncherModel.Default.ConfigUpdated += InstallationsUpdate;
         }
-
-        public async void RefreshInstallationsList()
+        public async void RefreshInstallations()
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
                 var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
-                LauncherModel.Default.ConfigManager.Sort_InstallationList(ref view);
+                LauncherModel.Default.Sort_InstallationList(ref view);
                 view.Refresh();
                 if (InstallationsList.Items.Count > 0 && NothingFound.Visibility != Visibility.Collapsed) NothingFound.Visibility = Visibility.Collapsed;
                 else if (InstallationsList.Items.Count <= 0 && NothingFound.Visibility != Visibility.Visible) NothingFound.Visibility = Visibility.Visible;
             });
         }
-
         private void NewInstallationButton_Click(object sender, RoutedEventArgs e)
         {
             ViewModels.LauncherModel.Default.SetOverlayFrame(new EditInstallationScreen());
         }
-
         private async void PageHost_Loaded(object sender, RoutedEventArgs e)
+        {
+            await this.ReloadInstallations();
+        }
+        private async Task ReloadInstallations()
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
                 if (!HasLoadedOnce)
                 {
-                    InstallationsList.ItemsSource = LauncherModel.Default.ConfigManager.CurrentInstallations;
+                    InstallationsList.ItemsSource = null;
+                    InstallationsList.ItemsSource = LauncherModel.Default.Config.CurrentInstallations;
                     var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
-                    view.Filter = LauncherModel.Default.ConfigManager.Filter_InstallationList;
+                    view.Filter = LauncherModel.Default.Filter_InstallationList;
                     HasLoadedOnce = true;
                 }
-                RefreshInstallationsList();
+                this.RefreshInstallations();
             });
         }
-
+        private async void InstallationsUpdate(object sender, EventArgs e)
+        {
+            HasLoadedOnce = false;
+            await this.ReloadInstallations();
+        }
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (HasLoadedOnce)
             {
-                LauncherModel.Default.ConfigManager.Installations_SearchFilter = SearchBox.Text;
-                RefreshInstallationsList();
+                LauncherModel.Default.Installations_SearchFilter = SearchBox.Text;
+                RefreshInstallations();
             }
         }
-
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (HasLoadedOnce)
             {
 
                 if (SortByComboBox.SelectedItem == SortByLatestPlayed)
-                    LauncherModel.Default.ConfigManager.Installations_SortFilter = ConfigManager.SortBy_Installation.LatestPlayed;
+                    LauncherModel.Default.Installations_SortFilter = LauncherModel.SortBy_Installation.LatestPlayed;
 
                 if (SortByComboBox.SelectedItem == SortByName)
-                    LauncherModel.Default.ConfigManager.Installations_SortFilter = ConfigManager.SortBy_Installation.Name;
+                    LauncherModel.Default.Installations_SortFilter = LauncherModel.SortBy_Installation.Name;
 
-                RefreshInstallationsList();
+                RefreshInstallations();
             }
         }
     }

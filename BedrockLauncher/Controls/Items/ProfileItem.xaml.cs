@@ -44,7 +44,7 @@ namespace BedrockLauncher.Controls.Items
 
         private void SwitchProfile()
         {
-            LauncherModel.Default.ConfigManager.SwitchProfile(_ProfileName);
+            LauncherModel.Default.Config.Profile_Switch(_ProfileName);
             SelectorParent.ProfileContextMenu.IsOpen = false;
         }
 

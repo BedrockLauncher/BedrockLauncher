@@ -138,7 +138,7 @@ namespace BedrockLauncher.ViewModels
                         if (!Directory.Exists(dirData.Item2)) Directory.CreateDirectory(dirData.Item2);
                         System.Diagnostics.Debug.WriteLine("Moving backup Minecraft data to: " + dirData.Item2);
                         RestoreCopy(dataPath, dirData.Item2);
-                        Application.Current.Dispatcher.Invoke(() => LauncherModel.Default.ConfigManager.CreateInstallation(dirData.Item1, null, dirData.Item2));
+                        Application.Current.Dispatcher.Invoke(() => LauncherModel.Default.Config.Installation_Create(dirData.Item1, null, dirData.Item2));
                     }
                 }
                 catch (Exception ex) { ErrorScreenShow.exceptionmsg(ex); }
@@ -162,7 +162,7 @@ namespace BedrockLauncher.ViewModels
                         recoveryName = string.Format("{0} ({1})", name, i);
                         recoveryDir = string.Format("{0}_{1}", dir, i);
                     }
-                    directoryPath = Path.Combine(LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.ConfigManager.CurrentProfileName, recoveryDir));
+                    directoryPath = Path.Combine(LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.Config.CurrentProfileUUID, recoveryDir));
                     if (!Directory.Exists(directoryPath)) break;
                     i++;
                 }
@@ -228,7 +228,7 @@ namespace BedrockLauncher.ViewModels
             if (i == null) return;
 
             i.LastPlayed = DateTime.Now;
-            LauncherModel.Default.ConfigManager.TimestampInstallation(i);
+            LauncherModel.Default.Config.Installation_UpdateLP(i);
 
             if (Save)
             {
@@ -283,7 +283,7 @@ namespace BedrockLauncher.ViewModels
         {
             string Directory = string.Empty;
 
-            if (i is BLInstallation) Directory = LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.ConfigManager.CurrentProfileName, (i as BLInstallation).DirectoryName_Full);
+            if (i is BLInstallation) Directory = LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.Config.CurrentProfileUUID, (i as BLInstallation).DirectoryName_Full);
             else if (i is BLVersion) Directory = Path.GetFullPath((i as BLVersion).GameDirectory);
             else if (i is MCSkinPack) Directory = (i as MCSkinPack).Directory;
 

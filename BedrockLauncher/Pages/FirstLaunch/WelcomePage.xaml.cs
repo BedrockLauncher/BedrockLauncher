@@ -87,9 +87,9 @@ namespace BedrockLauncher.Pages.FirstLaunch
 
             void Page3()
             {
-                if (LauncherModel.Default.ConfigManager.ProfileList.profiles.Count() != 0)
+                if (LauncherModel.Default.Config.profiles.Count() != 0)
                 {
-                    Properties.LauncherSettings.Default.CurrentProfile = LauncherModel.Default.ConfigManager.ProfileList.profiles.FirstOrDefault().Key;
+                    Properties.LauncherSettings.Default.CurrentProfile = LauncherModel.Default.Config.profiles.FirstOrDefault().Key;
                     Properties.LauncherSettings.Default.Save();
                     MoveToPage(4);
                 }
