@@ -76,6 +76,10 @@ namespace BedrockLauncher.Core.Components
                 ResetPageValues(animationArgs);
             };
             animation0.Duration = duration;
+            animation0.EasingFunction = new QuarticEase()
+            {
+                EasingMode = EasingMode.EaseOut
+            };
             return animation0;
         }
         private static DoubleAnimation GetFadeAnimation(Duration duration, bool fadeIn)
@@ -103,7 +107,7 @@ namespace BedrockLauncher.Core.Components
             frame.Opacity = 0;
             frame.Navigate(content);
             Storyboard storyboard = new Storyboard();
-            DoubleAnimation animation = GetFadeAnimation(new Duration(TimeSpan.FromMilliseconds(200)), true);
+            DoubleAnimation animation = GetFadeAnimation(new Duration(TimeSpan.FromMilliseconds(500)), true);
             storyboard.Children.Add(animation);
             Storyboard.SetTargetProperty(animation, new PropertyPath(Frame.OpacityProperty));
             Storyboard.SetTarget(animation, frame);
@@ -112,7 +116,7 @@ namespace BedrockLauncher.Core.Components
         public static void FrameFadeOut(Frame frame, object content)
         {
             Storyboard storyboard = new Storyboard();
-            DoubleAnimation animation = GetFadeAnimation(new Duration(TimeSpan.FromMilliseconds(200)), false);
+            DoubleAnimation animation = GetFadeAnimation(new Duration(TimeSpan.FromMilliseconds(500)), false);
             storyboard.Children.Add(animation);
             Storyboard.SetTargetProperty(animation, new PropertyPath(Frame.OpacityProperty));
             Storyboard.SetTarget(animation, frame);
@@ -151,7 +155,7 @@ namespace BedrockLauncher.Core.Components
                 SetPageValuesForAnimation(animationArgs);
 
                 Storyboard storyboard = new Storyboard();
-                Duration duration = new Duration(TimeSpan.FromMilliseconds(175));
+                Duration duration = new Duration(TimeSpan.FromMilliseconds(1000));
 
                 if (useFade)
                 {
@@ -161,7 +165,7 @@ namespace BedrockLauncher.Core.Components
                     Storyboard.SetTarget(fadeAnim, frame);
                 }
 
-                var swipeAnim = GetSwipeAnimation(animationArgs, 150, duration, direction);
+                var swipeAnim = GetSwipeAnimation(animationArgs, 200, duration, direction);
                 storyboard.Children.Add(swipeAnim);
                 Storyboard.SetTargetProperty(swipeAnim, new PropertyPath(Frame.MarginProperty));
                 Storyboard.SetTarget(swipeAnim, frame);
