@@ -36,7 +36,7 @@ namespace BedrockLauncher.UpdateProcessor
             var myFolder = Path.GetDirectoryName(myPath);
 
             var is64 = Environment.Is64BitProcess;
-            var subfolder = is64 ? "\\x64\\" : "\\x86\\";
+            var subfolder = is64 ? "\\x64\\" : "\\Win32\\";
 
             LoadLibrary(myFolder + subfolder + "WUTokenHelper.dll");
         }

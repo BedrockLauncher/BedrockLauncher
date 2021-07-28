@@ -135,7 +135,7 @@
   <PropertyGroup>
     <PreBuildEvent>cd "$(ProjectDir)/SkinView"
 npm install
-npm build</PreBuildEvent>
+npm run build</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>
