@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.IO.Compression;
+using System.Diagnostics;
 
 namespace Publisher
 {
@@ -46,6 +47,8 @@ namespace Publisher
             ZipFile.CreateFromDirectory(inPath, outFile);
 
             Console.WriteLine($"Deployed to Zip File at \"{outFile}\"");
+
+            Process.Start("explorer.exe", outPath);
         }
     }
 }
