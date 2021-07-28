@@ -134,7 +134,6 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>cd "$(ProjectDir)/SkinView"
-npm install
 npm run build</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>

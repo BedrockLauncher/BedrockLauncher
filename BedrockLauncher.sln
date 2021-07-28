@@ -23,9 +23,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localizer", "modules\Localizer\Localizer.csproj", "{8DFF755D-2569-4F15-B3ED-4B4FF3F9B141}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrockLauncher.UpdateProcessor", "modules\BedrockLauncher.UpdateProcessor\BedrockLauncher.UpdateProcessor.csproj", "{8D88D5FF-5132-4605-851D-2E020EA6483B}"
-	ProjectSection(ProjectDependencies) = postProject
-		{B7336BA7-1E83-43D8-BD0E-3D44C6E3D4E7} = {B7336BA7-1E83-43D8-BD0E-3D44C6E3D4E7}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrockLauncher.Dungeons", "modules\BedrockLauncher.Dungeons\BedrockLauncher.Dungeons.csproj", "{A04AF51F-1E8C-44B0-9EBC-E3C7D6B3F4D3}"
 EndProject

@@ -34,8 +34,12 @@ namespace BedrockLauncher.Controls
             await this.Dispatcher.InvokeAsync(() =>
             {
                 var view = CollectionViewSource.GetDefaultView(this.ItemsSource) as CollectionView;
-                LauncherModel.Default.Sort_InstallationList(ref view);
-                view.Refresh();
+                if (view != null)
+                {
+                    LauncherModel.Default.Sort_InstallationList(ref view);
+                    if (view.Filter == null) view.Filter = LauncherModel.Default.Filter_InstallationList;
+                    view.Refresh();
+                }
             });
         }
         private async Task ReloadInstallations()
@@ -47,7 +51,7 @@ namespace BedrockLauncher.Controls
                     this.ItemsSource = null;
                     this.ItemsSource = LauncherModel.Default.Config.CurrentInstallations;
                     var view = CollectionViewSource.GetDefaultView(this.ItemsSource) as CollectionView;
-                    view.Filter = LauncherModel.Default.Filter_InstallationList;
+                    if (view != null) view.Filter = LauncherModel.Default.Filter_InstallationList;
                     HasLoadedOnce = true;
                     this.SelectedIndex = 0;
                 }
