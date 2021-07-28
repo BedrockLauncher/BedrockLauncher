@@ -148,6 +148,19 @@ namespace BedrockLauncher.Dungeons.Methods
             Process.Start("ms-windows-store://DownloadsAndUpdates/");
         }
 
+        public static void RemoveModManagement_Store()
+        {
+            try
+            {
+                string ModsFolder = Path.Combine(GetDungeonsContentFolder(), "Paks", "~mods");
+                Directory.Delete(ModsFolder, true);
+            }
+            catch (Exception ex)
+            {
+                ErrorScreenShow.exceptionmsg(ex);
+            }
+        }
+
         #endregion
 
         #region Actions (Windows 7/10 Launcher)
@@ -268,8 +281,8 @@ namespace BedrockLauncher.Dungeons.Methods
 
         public static void RemoveModManagement()
         {
-            if (Properties.DungeonSettings.Default.IsWindowsStoreVariant) InstallModManagement_Store();
-            else InstallModManagement_Launcher();
+            if (Properties.DungeonSettings.Default.IsWindowsStoreVariant) RemoveModManagement_Store();
+            else RemoveModManagement_Launcher();
         }
 
         #endregion
