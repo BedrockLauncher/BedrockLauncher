@@ -22,6 +22,9 @@ namespace BedrockLauncher.Core.Components
            public double stored_max_height { get; set; }
            public Page CurrentContent { get; set; }
         }
+
+        private static bool SuperSmoothAnimations = false;
+
         #region General Methods
 
         private static void StorePageValues(AnimationArgs args)
@@ -50,6 +53,32 @@ namespace BedrockLauncher.Core.Components
             args.CurrentContent.MaxWidth = args.stored_max_width;
             args.CurrentContent.MaxHeight = args.stored_max_height;
         }
+
+        private static IEasingFunction GetSwipeAnimationEasingFunction()
+        {
+
+            if (SuperSmoothAnimations) return new QuarticEase() { EasingMode = EasingMode.EaseOut };
+            else return null;
+        }
+
+        private static int GetFadeSpeed()
+        {
+            if (SuperSmoothAnimations) return 500;
+            else return 200;
+        }
+
+        private static int GetSwipeSpeed()
+        {
+            if (SuperSmoothAnimations) return 1000;
+            else return 175;
+        }
+
+        private static int GetSwipeSize()
+        {
+            if (SuperSmoothAnimations) return 200;
+            else return 150;
+        }
+
         private static ThicknessAnimation GetSwipeAnimation(AnimationArgs animationArgs, double size, Duration duration, ExpandDirection direction)
         {
             ThicknessAnimation animation0 = new ThicknessAnimation();
@@ -76,6 +105,7 @@ namespace BedrockLauncher.Core.Components
                 ResetPageValues(animationArgs);
             };
             animation0.Duration = duration;
+            animation0.EasingFunction = GetSwipeAnimationEasingFunction();
             return animation0;
         }
         private static DoubleAnimation GetFadeAnimation(Duration duration, bool fadeIn)
@@ -103,7 +133,7 @@ namespace BedrockLauncher.Core.Components
             frame.Opacity = 0;
             frame.Navigate(content);
             Storyboard storyboard = new Storyboard();
-            DoubleAnimation animation = GetFadeAnimation(new Duration(TimeSpan.FromMilliseconds(200)), true);
+            DoubleAnimation animation = GetFadeAnimation(new Duration(TimeSpan.FromMilliseconds(GetFadeSpeed())), true);
             storyboard.Children.Add(animation);
             Storyboard.SetTargetProperty(animation, new PropertyPath(Frame.OpacityProperty));
             Storyboard.SetTarget(animation, frame);
@@ -112,7 +142,7 @@ namespace BedrockLauncher.Core.Components
         public static void FrameFadeOut(Frame frame, object content)
         {
             Storyboard storyboard = new Storyboard();
-            DoubleAnimation animation = GetFadeAnimation(new Duration(TimeSpan.FromMilliseconds(200)), false);
+            DoubleAnimation animation = GetFadeAnimation(new Duration(TimeSpan.FromMilliseconds(GetFadeSpeed())), false);
             storyboard.Children.Add(animation);
             Storyboard.SetTargetProperty(animation, new PropertyPath(Frame.OpacityProperty));
             Storyboard.SetTarget(animation, frame);
@@ -151,7 +181,7 @@ namespace BedrockLauncher.Core.Components
                 SetPageValuesForAnimation(animationArgs);
 
                 Storyboard storyboard = new Storyboard();
-                Duration duration = new Duration(TimeSpan.FromMilliseconds(175));
+                Duration duration = new Duration(TimeSpan.FromMilliseconds(GetSwipeSpeed()));
 
                 if (useFade)
                 {
@@ -161,7 +191,7 @@ namespace BedrockLauncher.Core.Components
                     Storyboard.SetTarget(fadeAnim, frame);
                 }
 
-                var swipeAnim = GetSwipeAnimation(animationArgs, 150, duration, direction);
+                var swipeAnim = GetSwipeAnimation(animationArgs, GetSwipeSize(), duration, direction);
                 storyboard.Children.Add(swipeAnim);
                 Storyboard.SetTargetProperty(swipeAnim, new PropertyPath(Frame.MarginProperty));
                 Storyboard.SetTarget(swipeAnim, frame);

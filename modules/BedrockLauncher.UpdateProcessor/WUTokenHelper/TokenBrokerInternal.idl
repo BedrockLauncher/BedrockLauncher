@@ -1,0 +1,26 @@
+namespace Windows.Internal.Security.Authentication.Web{
+
+[version(1)]
+[uuid(07650a66-66ea-489d-aa90-0dabc75f3567)]
+interface ITokenBrokerInternalStatics : IInspectable {
+
+	HRESULT filler_GetTokenSilently();
+	HRESULT filler_GetSecureInputParameters();
+	HRESULT filler_ReportBackgroundCompletion();
+	HRESULT filler_FindAccount();
+	HRESULT filler_FindAccountForApp();
+	HRESULT filler_FindAccountForProvider();
+
+	HRESULT FindAllAccountsAsync(
+		[out][retval] Windows.Foundation.IAsyncOperation<Windows.Foundation.Collections.IVectorView<Windows.Security.Credentials.WebAccount > *> ** operation);
+
+}
+
+[version(1)]
+[static(Windows.Internal.Security.Authentication.Web.ITokenBrokerInternalStatics, 1)]
+[marshaling_behavior(agile)]
+[threading(both)]
+runtimeclass TokenBrokerInternal {
+}
+
+}

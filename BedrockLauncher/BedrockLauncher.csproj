@@ -630,7 +630,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CefSharp.Wpf">
-      <Version>90.6.50</Version>
+      <Version>91.1.230</Version>
     </PackageReference>
     <PackageReference Include="CodeHollow.FeedReader">
       <Version>1.2.1</Version>
