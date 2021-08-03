@@ -9,13 +9,13 @@ Contributing is an essential part of open source projects like Bedrock Launcher;
 
 ## Hard Floor Code Regulations
 *Things that cannot be ignored at any cost*
-- Abide to the [code of conduct](https://github.com/BedrockLauncher/BedrockLauncher/CODE_OF_CONDUCT.md)
+- Abide to the [code of conduct](./CODE_OF_CONDUCT.md)
 - Maintain the folder structure at the root directory
 - Do not make changes that moves the launcher away from parity with the official Java launcher
 - Do not leave builds in the commit
 
 ## Prerequisites
-Make sure you meet both the [hardware prerequisites](https://github.com/BedrockLauncher/BedrockLauncher/HARDWARE_PREREQUISITES.md) and [software software](https://github.com/BedrockLauncher/BedrockLauncher/SOFTWARE_PREREQUISITES.md) prerequisites to avoid introducing random environmental variables.
+Make sure you meet both the [hardware prerequisites](./HARDWARE_PREREQUISITES.md) and [software software](./SOFTWARE_PREREQUISITES.md) prerequisites to avoid introducing random environmental variables.
 
 ## GitHub interactions
 - Your interactions on GitHub should be civil, well worded, and clear
