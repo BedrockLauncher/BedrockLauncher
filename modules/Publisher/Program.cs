@@ -30,7 +30,7 @@ namespace Publisher
 
             foreach (var folder in new System.IO.DirectoryInfo(inbuildPath).GetDirectories("*", SearchOption.TopDirectoryOnly))
             {
-                if (folder.Name != "data" && folder.Name != "GPUCache")
+                if (folder.Name != "data" && folder.Name != "cache")
                 {
                     ExtensionsDotNET.DirectoryExtensions.Copy(folder.FullName, Path.Combine(outbuildPath, folder.Name));
                 }
