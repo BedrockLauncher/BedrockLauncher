@@ -123,7 +123,7 @@ namespace BedrockLauncher
         public async static Task<CoreWebView2Environment> GetCoreWebView2Environment()
         {
             var op = new CoreWebView2EnvironmentOptions("--disable-web-security");
-            string cache_folder = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "cache");
+            string cache_folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "BedrockLauncher", "cache");
             return await CoreWebView2Environment.CreateAsync(null, cache_folder, op);
         }
 
