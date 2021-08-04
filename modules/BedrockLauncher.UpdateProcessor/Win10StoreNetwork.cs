@@ -424,7 +424,6 @@ namespace BedrockLauncher.UpdateProcessor
             {
                 string request = buildDownloadLinkRequest(updateIdentity, revisionNumber, useMSAToken);
                 string ret = await doHttpRequest(SECURED_URL, request);
-                Xml.Save("Result.xml", ret);
                 XDocument doc = XDocument.Parse(ret);
                 var envelope = Xml.first_node_or_throw(doc.Root, NAMESPACE_SOAP + "Envelope");
                 var body = Xml.first_node_or_throw(envelope, NAMESPACE_SOAP + "Body");

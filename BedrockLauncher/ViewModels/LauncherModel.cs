@@ -268,6 +268,13 @@ namespace BedrockLauncher.ViewModels
 
         #region Prompts
 
+        public event EventHandler OverlayFrameChanged;
+        protected virtual void OnOverlayFrameChanged(OverlayChangedState e)
+        {
+            EventHandler handler = OverlayFrameChanged;
+            if (handler != null) handler(this, e);
+        }
+
         private bool AllowedToCloseWithGameOpen { get; set; } = false;
         private KeyboardNavigationMode MainFrame_KeyboardNavigationMode_Default { get; set; }
 
@@ -366,6 +373,8 @@ namespace BedrockLauncher.ViewModels
                     else PageAnimator.FrameSwipe_OverlayIn(MainThread.OverlayFrame, content);
                 }
                 else MainThread.OverlayFrame.Navigate(content);
+
+                OnOverlayFrameChanged(new OverlayChangedState(content == null));
             });
         }
 
