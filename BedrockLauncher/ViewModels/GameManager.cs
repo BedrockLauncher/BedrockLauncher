@@ -1,11 +1,10 @@
 ﻿using BedrockLauncher.Classes;
-using BedrockLauncher.Downloaders;
 using BedrockLauncher.Core.Classes;
 using BedrockLauncher.Core.Classes.SkinPack;
 using BedrockLauncher.Core.Components;
-using BedrockLauncher.Core.Controls;
 using BedrockLauncher.Core.Methods;
 using BedrockLauncher.Core.Pages.Common;
+using BedrockLauncher.Downloaders;
 using ExtensionsDotNET;
 using SymbolicLinkSupport;
 using System;
@@ -19,7 +18,6 @@ using System.Security.Principal;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
 using System.Xml.Linq;
 using Windows.ApplicationModel;
 using Windows.Foundation;
@@ -522,7 +520,6 @@ namespace BedrockLauncher.ViewModels
                 throw new TaskCanceledException();
             }
         }
-
         private async Task UnregisterPackage(MCVersion v, string gameDir, bool reRegisterMode)
         {
             foreach (var pkg in new PackageManager().FindPackages(MINECRAFT_PACKAGE_FAMILY))
@@ -533,23 +530,17 @@ namespace BedrockLauncher.ViewModels
                     if (location == gameDir && reRegisterMode)
                     {
                         System.Diagnostics.Debug.WriteLine("Skipping package removal - same path: " + pkg.Id.FullName + " " + location);
-                        return;
-                    }
-                    System.Diagnostics.Debug.WriteLine("Removing package: " + pkg.Id.FullName);
-                    ViewModels.LauncherModel.Default.DeploymentPackageName = pkg.Id.FullName;
-                    ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isRemovingPackage;
-                    if (!pkg.IsDevelopmentMode)
-                    {
-                        await DeploymentProgressWrapper(v, new PackageManager().RemovePackageAsync(pkg.Id.FullName, RemovalOptions.PreserveApplicationData));
                     }
                     else
                     {
-                        System.Diagnostics.Debug.WriteLine("Package is in development mode");
-                        await DeploymentProgressWrapper(v, new PackageManager().RemovePackageAsync(pkg.Id.FullName, RemovalOptions.PreserveApplicationData));
+                        System.Diagnostics.Debug.WriteLine("Removing package: " + pkg.Id.FullName);
+                        ViewModels.LauncherModel.Default.DeploymentPackageName = pkg.Id.FullName;
+                        ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isRemovingPackage;
+                        await DeploymentProgressWrapper(new PackageManager().RemovePackageAsync(pkg.Id.FullName, RemovalOptions.PreserveApplicationData | RemovalOptions.RemoveForAllUsers));
+                        System.Diagnostics.Debug.WriteLine("Removal of package done: " + pkg.Id.FullName);
+                        ViewModels.LauncherModel.Default.DeploymentPackageName = "";
+                        ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
                     }
-                    System.Diagnostics.Debug.WriteLine("Removal of package done: " + pkg.Id.FullName);
-                    ViewModels.LauncherModel.Default.DeploymentPackageName = "";
-                    ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
                 }
             }
         }
@@ -562,7 +553,7 @@ namespace BedrockLauncher.ViewModels
                 string manifestPath = Path.Combine(gameDir, "AppxManifest.xml");
                 ViewModels.LauncherModel.Default.DeploymentPackageName = GetPackageNameFromMainifest(manifestPath);
                 ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isRegisteringPackage;
-                await DeploymentProgressWrapper(v, new PackageManager().RegisterPackageAsync(new Uri(manifestPath), null, DeploymentOptions.DevelopmentMode));
+                await DeploymentProgressWrapper(new PackageManager().RegisterPackageAsync(new Uri(manifestPath), null, DeploymentOptions.DevelopmentMode));
                 System.Diagnostics.Debug.WriteLine("App re-register done!");
                 ViewModels.LauncherModel.Default.DeploymentPackageName = "";
                 ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
@@ -575,7 +566,7 @@ namespace BedrockLauncher.ViewModels
             }
 
         }
-        private async Task DeploymentProgressWrapper(MCVersion version, IAsyncOperationWithProgress<DeploymentResult, DeploymentProgress> t)
+        private async Task DeploymentProgressWrapper(IAsyncOperationWithProgress<DeploymentResult, DeploymentProgress> t)
         {
             TaskCompletionSource<int> src = new TaskCompletionSource<int>();
             t.Progress += (v, p) =>
