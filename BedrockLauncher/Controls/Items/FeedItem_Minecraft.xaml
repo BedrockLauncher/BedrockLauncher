@@ -1,8 +1,10 @@
-﻿<Button x:Class="BedrockLauncher.Controls.Items.CommunityFeedItem"
+﻿<Button x:Class="BedrockLauncher.Controls.Items.FeedItem_Minecraft"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:c="clr-namespace:BedrockLauncher.Core.Classes;assembly=BedrockLauncher.Core"
+             xmlns:http2="clr-namespace:ExtensionsDotNET.HTTP2;assembly=ExtensionsDotNET"
              xmlns:local="clr-namespace:BedrockLauncher.Controls.Items"
              x:Name="FeedItemEntry"
              mc:Ignorable="d" 
@@ -11,7 +13,11 @@
              Click="FeedItemEntry_Click"
              VerticalContentAlignment="Stretch" FocusVisualStyle="{DynamicResource BlankFocusVisual}"
              Style="{DynamicResource EmptyButton}"
+             d:DataContext="{d:DesignInstance c:NewsItem_MinecraftRSS}"
              d:DesignHeight="365" d:DesignWidth="365">
+    <Button.Resources>
+        <http2:ImageSourceConverterHTTP2 x:Key="ImageSourceConverter"></http2:ImageSourceConverterHTTP2>
+    </Button.Resources>
     <Grid x:Name="MainGrid" Focusable="False" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition MaxHeight="{Binding ImageHeight}"></RowDefinition>
@@ -23,7 +29,7 @@
             <ColumnDefinition Width="{Binding ImageWidth}"/>
         </Grid.ColumnDefinitions>
 
-        <Image Source="{Binding ImageUrl}" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
+        <Image Source="{Binding ImageUrl, Converter={StaticResource ImageSourceConverter}, IsAsync=True}" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
 
         <TextBlock Background="{Binding Background, ElementName=MainGrid}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Minecraft Ten" FontWeight="Normal" FontSize="20" Padding="15,15" TextWrapping="Wrap" Text="{Binding Title}" Foreground="White"></TextBlock>
         <DockPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" x:Name="Tb" Margin="15,15,15,15">

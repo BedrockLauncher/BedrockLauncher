@@ -4,7 +4,6 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:controls="clr-namespace:BedrockLauncher.Controls"
-      xmlns:cef="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800"
       Title="WebDialogScreen" Background="{DynamicResource Background.Dialog}" Loaded="Page_Loaded">
@@ -13,8 +12,6 @@
             <RowDefinition Height="60"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <!--<RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="75"></RowDefinition>-->
         </Grid.RowDefinitions>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -29,13 +26,7 @@
         </Grid>
         <Separator Grid.Row="1"></Separator>
         <Grid Grid.Row="2" SizeChanged="Grid_SizeChanged">
-            <!--<cef:ChromiumWebBrowser x:Name="Renderer" IsBrowserInitializedChanged="Renderer_IsBrowserInitializedChanged" Margin="20" Background="Transparent"/>-->
             <controls:HtmlPanelPro x:Name="Renderer" Margin="0" Background="Transparent" IsContextMenuEnabled="False"/>
         </Grid>
-        <!--<Separator Grid.Row="3"></Separator>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="4" Height="45" Margin="15,0">
-            <Button x:Name="CancelButton" Click="CancelButton_Click" Content="{DynamicResource GeneralText_Cancel}" Style="{DynamicResource DialogButton}"></Button>
-            <Button x:Name="CreateButton" Click="CreateButton_Click" Content="{DynamicResource GeneralText_Add}" Style="{DynamicResource DialogButton_Green}"></Button>
-        </StackPanel>-->
     </Grid>
 </Page>

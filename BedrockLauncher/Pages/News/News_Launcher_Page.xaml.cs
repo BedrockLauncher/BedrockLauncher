@@ -19,19 +19,19 @@ using MdXaml;
 namespace BedrockLauncher.Pages.News
 {
     /// <summary>
-    /// Interaction logic for LauncherNewsPage.xaml
+    /// Interaction logic for News_Launcher_Page.xaml
     /// </summary>
-    public partial class LauncherNewsPage : Page
+    public partial class News_Launcher_Page : Page
     {
 
         private LauncherUpdater updater;
 
-        public LauncherNewsPage()
+        public News_Launcher_Page()
         {
             InitializeComponent();
         }
 
-        public LauncherNewsPage(LauncherUpdater updater)
+        public News_Launcher_Page(LauncherUpdater updater)
         {
             InitializeComponent();
             this.updater = updater;

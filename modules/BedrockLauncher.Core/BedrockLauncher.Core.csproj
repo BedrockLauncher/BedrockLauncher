@@ -88,9 +88,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\MCNetFeedItem.cs" />
-    <Compile Include="Classes\MCNetFeedItemJSON.cs" />
-    <Compile Include="Classes\MCNetFeedItemRSS.cs" />
+    <Compile Include="Classes\NewsItem.cs" />
+    <Compile Include="Classes\NewsItem_Launcher.cs" />
+    <Compile Include="Classes\NewsItem_RSS.cs" />
+    <Compile Include="Classes\NewsItem_MinecraftRSS.cs" />
     <Compile Include="Classes\MCPatchNotesItem.cs" />
     <Compile Include="Classes\MCVersion.cs" />
     <Compile Include="Classes\MediaWiki\Continue.cs" />

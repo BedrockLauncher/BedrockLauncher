@@ -19,23 +19,23 @@ using System.Windows.Shapes;
 namespace BedrockLauncher.Controls.Items
 {
     /// <summary>
-    /// Interaction logic for CommunityFeedItem.xaml
+    /// Interaction logic for FeedItem_RSS.xaml
     /// </summary>
-    public partial class CommunityFeedItem : Button
+    public partial class FeedItem_RSS : Button
     {
-        public CommunityFeedItem()
+        public FeedItem_RSS()
         {
             InitializeComponent();
         }
 
-        public static void LoadArticle(MCNetFeedItem item)
+        public static void LoadArticle(NewsItem item)
         {
             Process.Start(new ProcessStartInfo(item.Link));
         }
 
         private void FeedItemEntry_Click(object sender, RoutedEventArgs e)
         {
-            MCNetFeedItem item = this.DataContext as MCNetFeedItem;
+            NewsItem item = this.DataContext as NewsItem;
             LoadArticle(item);
         }
     }

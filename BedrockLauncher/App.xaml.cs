@@ -8,11 +8,7 @@ using Microsoft.Win32;
 using System.IO;
 using BedrockLauncher.Methods;
 using System.Reflection;
-using CefSharp;
-using CefSharp.Wpf;
 using System.Runtime.CompilerServices;
-using BedrockLauncher.Classes.Html;
-using CefSharp.SchemeHandler;
 using BedrockLauncher.Classes;
 using System.Windows.Input;
 
