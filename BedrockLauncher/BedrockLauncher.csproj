@@ -175,8 +175,11 @@
     <Compile Include="Controls\Items\DLCItem.xaml.cs">
       <DependentUpon>DLCItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Items\JavaFeedItem.xaml.cs">
-      <DependentUpon>JavaFeedItem.xaml</DependentUpon>
+    <Compile Include="Controls\Items\FeedItem_JavaDungeons.xaml.cs">
+      <DependentUpon>FeedItem_JavaDungeons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Items\FeedItem_RSS.xaml.cs">
+      <DependentUpon>FeedItem_RSS.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Items\InstallationSelectorItem.xaml.cs">
       <DependentUpon>InstallationSelectorItem.xaml</DependentUpon>
@@ -198,6 +201,9 @@
     </Compile>
     <Compile Include="Downloaders\WikiChangelogDownloader.cs" />
     <Compile Include="Events\OverlayState.cs" />
+    <Compile Include="Pages\News\News_MinecraftForums_Page.xaml.cs">
+      <DependentUpon>News_MinecraftForums_Page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\FilepathManager.cs" />
     <Compile Include="Pages\Community\CommunityPage.xaml.cs">
       <DependentUpon>CommunityPage.xaml</DependentUpon>
@@ -208,8 +214,8 @@
     <Compile Include="Pages\FirstLaunch\WelcomePageFour.xaml.cs">
       <DependentUpon>WelcomePageFour.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\News\Java_N_DungeonsNewsPage.xaml.cs">
-      <DependentUpon>Java_N_DungeonsNewsPage.xaml</DependentUpon>
+    <Compile Include="Pages\News\News_JavaDungeons_Page.xaml.cs">
+      <DependentUpon>News_JavaDungeons_Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\LauncherModel.cs" />
     <Compile Include="Events\GameRunningState.cs" />
@@ -228,8 +234,8 @@
     <Compile Include="Controls\Items\PatchNotesItem.xaml.cs">
       <DependentUpon>PatchNotesItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Items\CommunityFeedItem.xaml.cs">
-      <DependentUpon>CommunityFeedItem.xaml</DependentUpon>
+    <Compile Include="Controls\Items\FeedItem_Minecraft.xaml.cs">
+      <DependentUpon>FeedItem_Minecraft.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Items\SkinItem.xaml.cs">
       <DependentUpon>SkinItem.xaml</DependentUpon>
@@ -286,14 +292,14 @@
     <Compile Include="Pages\Settings\AdvancedOptionsWindow.xaml.cs">
       <DependentUpon>AdvancedOptionsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\News\CommunityNewsPage.xaml.cs">
-      <DependentUpon>CommunityNewsPage.xaml</DependentUpon>
+    <Compile Include="Pages\News\News_Minecraft_Page.xaml.cs">
+      <DependentUpon>News_Minecraft_Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Preview\EditSkinPackScreen.xaml.cs">
       <DependentUpon>EditSkinPackScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\News\LauncherNewsPage.xaml.cs">
-      <DependentUpon>LauncherNewsPage.xaml</DependentUpon>
+    <Compile Include="Pages\News\News_Launcher_Page.xaml.cs">
+      <DependentUpon>News_Launcher_Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Preview\ChangelogPreviewScreen.xaml.cs">
       <DependentUpon>ChangelogPreviewScreen.xaml</DependentUpon>
@@ -374,7 +380,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Items\JavaFeedItem.xaml">
+    <Page Include="Controls\Items\FeedItem_JavaDungeons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Items\FeedItem_RSS.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -398,7 +408,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Items\CommunityFeedItem.xaml">
+    <Page Include="Controls\Items\FeedItem_Minecraft.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -490,7 +500,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\News\Java_N_DungeonsNewsPage.xaml">
+    <Page Include="Pages\News\News_JavaDungeons_Page.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\News\News_MinecraftForums_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -498,7 +512,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\News\CommunityNewsPage.xaml">
+    <Page Include="Pages\News\News_Minecraft_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -510,7 +524,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\News\LauncherNewsPage.xaml">
+    <Page Include="Pages\News\News_Launcher_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -659,11 +673,17 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>
     </PackageReference>
+    <PackageReference Include="RestSharp">
+      <Version>106.12.0</Version>
+    </PackageReference>
     <PackageReference Include="semver">
       <Version>2.0.6</Version>
     </PackageReference>
     <PackageReference Include="SymbolicLinkSupport">
       <Version>1.2.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Net.Http.WinHttpHandler">
+      <Version>5.0.0</Version>
     </PackageReference>
     <PackageReference Include="System.Runtime">
       <Version>4.3.1</Version>

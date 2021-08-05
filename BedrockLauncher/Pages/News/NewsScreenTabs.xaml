@@ -107,6 +107,11 @@
                     <ToolTip Content="{DynamicResource NewsScreen_JavaNDungeonsTabTitle}"/>
                 </ToggleButton.ToolTip>
             </ToggleButton>
+            <ToggleButton x:Name="ForumsTab" Width="Auto" Click="ButtonManager" Content="{DynamicResource NewsScreen_MinecraftForumsTitle}" Style="{DynamicResource ToolbarButton}">
+                <ToggleButton.ToolTip>
+                    <ToolTip Content="{DynamicResource NewsScreen_MinecraftForumsTitle}"/>
+                </ToggleButton.ToolTip>
+            </ToggleButton>
             <ToggleButton x:Name="LauncherTab" Width="Auto" Click="ButtonManager" Content="{DynamicResource NewsScreen_LauncherTabTitle}" Style="{DynamicResource ToolbarButton}">
                 <ToggleButton.ToolTip>
                     <ToolTip Content="{DynamicResource NewsScreen_LauncherTabTitle}"/>

@@ -1,4 +1,4 @@
-﻿<Page x:Class="BedrockLauncher.Pages.News.CommunityNewsPage"
+﻿<Page x:Class="BedrockLauncher.Pages.News.News_MinecraftForums_Page"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -23,8 +23,8 @@
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
-                    <DataTemplate DataType="{x:Type c:MCNetFeedItemRSS}">
-                        <i:CommunityFeedItem DataContext="{Binding .}"></i:CommunityFeedItem>
+                    <DataTemplate DataType="{x:Type c:NewsItem_RSS}">
+                        <i:FeedItem_RSS DataContext="{Binding .}"></i:FeedItem_RSS>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

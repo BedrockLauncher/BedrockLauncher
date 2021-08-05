@@ -8,7 +8,7 @@ using CodeHollow.FeedReader.Feeds;
 
 namespace BedrockLauncher.Core.Classes
 {
-    public class MCNetFeedItemRSS : MCNetFeedItem
+    public class NewsItem_RSS : NewsItem
     {
         private const string FallbackImageURL = @"/BedrockLauncher.Core;component/resources/images/packs/invalid_pack.png";
 
@@ -20,32 +20,14 @@ namespace BedrockLauncher.Core.Classes
                 if (attributes.ToList().Exists(x => x.Name.LocalName == "imageURL"))
                 {
                     var result = attributes.Where(x => x.Name.LocalName == "imageURL").FirstOrDefault();
-                    return @"https://www.minecraft.net/" + result.Value;
+                    return result.Value;
                 }
             }
 
             return FallbackImageURL;
         }
 
-        public string PrimaryTag
-        {
-            get
-            {
-                var attributes = this.SpecificItem.Element.Elements();
-                if (attributes != null)
-                {
-                    if (attributes.ToList().Exists(x => x.Name.LocalName == "primaryTag"))
-                    {
-                        var result = attributes.Where(x => x.Name.LocalName == "primaryTag").FirstOrDefault();
-                        return result.Value;
-                    }
-                }
-
-                return "NULL";
-            }
-        }
-
-        public MCNetFeedItemRSS(FeedItem item) : base()
+        public NewsItem_RSS(FeedItem item) : base()
         {
             this.Author = item.Author;
             this.Categories = item.Categories;
@@ -62,7 +44,7 @@ namespace BedrockLauncher.Core.Classes
         public override string ImageUrl { get => GetImageUrl(); }
         public override double ImageWidth { get => 190; }
         public override double ImageHeight { get => 190; }
-        public override string Tag { get => PrimaryTag; }
+        public override string Tag { get => "RSS"; }
         public override string Date { get => PublishingDateString; }
         public override string Title { get; }
         public override string Link { get; }

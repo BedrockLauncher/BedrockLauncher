@@ -1,4 +1,4 @@
-﻿<Page x:Class="BedrockLauncher.Pages.News.Java_N_DungeonsNewsPage"
+﻿<Page x:Class="BedrockLauncher.Pages.News.News_JavaDungeons_Page"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -61,8 +61,8 @@
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
-                <DataTemplate DataType="{x:Type c:MCNetFeedItemJSON}">
-                    <i:JavaFeedItem DataContext="{Binding .}"></i:JavaFeedItem>
+                <DataTemplate DataType="{x:Type c:NewsItem_Launcher}">
+                    <i:FeedItem_JavaDungeons DataContext="{Binding .}"></i:FeedItem_JavaDungeons>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

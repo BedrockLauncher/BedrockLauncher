@@ -8,13 +8,13 @@ using CodeHollow.FeedReader;
 namespace BedrockLauncher.Core.Classes
 {
 
-    public class MCNetLauncherFeed
+    public class LauncherNewsFeed
     {
         public int version { get; set; }
-        public List<MCNetFeedItemJSON> entries { get; set; }
+        public List<NewsItem_Launcher> entries { get; set; }
     }
 
-    public class MCNetFeedItemJSON : MCNetFeedItem
+    public class NewsItem_Launcher : NewsItem
     {
 
         public class Dimensions
