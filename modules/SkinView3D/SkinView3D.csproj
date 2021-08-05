@@ -84,56 +84,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="SkinView\bundles\skinview3d.bundle.js" />
-    <Resource Include="SkinView\previews\index.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="SkinView\bundles\skinview3d.bundle.js.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SkinView\rollup.config.js" />
-    <Resource Include="SkinView\previews\img\NoSkin.png" />
-    <Content Include="SkinView\libs\animation.js" />
-    <Content Include="SkinView\libs\fxaa.js" />
-    <Content Include="SkinView\libs\model.js" />
-    <Content Include="SkinView\libs\orbit_controls.js" />
-    <Content Include="SkinView\libs\skinview3d.js" />
-    <Content Include="SkinView\libs\viewer.js" />
-    <Content Include="SkinView\previews\stylesheet.css" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="SkinView\.editorconfig" />
-    <None Include="SkinView\.eslintrc.yaml" />
-    <None Include="SkinView\.gitignore" />
-    <None Include="SkinView\libs\animation.js.map" />
-    <None Include="SkinView\libs\fxaa.js.map" />
-    <None Include="SkinView\libs\model.js.map" />
-    <None Include="SkinView\libs\orbit_controls.js.map" />
-    <None Include="SkinView\libs\skinview3d.js.map" />
-    <None Include="SkinView\libs\viewer.js.map" />
-    <None Include="SkinView\LICENSE" />
-    <None Include="SkinView\package-lock.json" />
-    <None Include="SkinView\package.json" />
-    <None Include="SkinView\README.md" />
-    <None Include="SkinView\tsconfig.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="SkinView\libs\animation.d.ts" />
-    <TypeScriptCompile Include="SkinView\libs\fxaa.d.ts" />
-    <TypeScriptCompile Include="SkinView\libs\model.d.ts" />
-    <TypeScriptCompile Include="SkinView\libs\orbit_controls.d.ts" />
-    <TypeScriptCompile Include="SkinView\libs\skinview3d.d.ts" />
-    <TypeScriptCompile Include="SkinView\libs\viewer.d.ts" />
-    <TypeScriptCompile Include="SkinView\src\animation.ts" />
-    <TypeScriptCompile Include="SkinView\src\fxaa.ts" />
-    <TypeScriptCompile Include="SkinView\src\model.ts" />
-    <TypeScriptCompile Include="SkinView\src\orbit_controls.ts" />
-    <TypeScriptCompile Include="SkinView\src\skinview3d.ts" />
-    <TypeScriptCompile Include="SkinView\src\viewer.ts" />
+    <Content Include="runtimes\SkinView\\**\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>cd "$(ProjectDir)/SkinView"
+    <PreBuildEvent>cd "$(ProjectDir)/runtimes/SkinView"
 npm run build</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>

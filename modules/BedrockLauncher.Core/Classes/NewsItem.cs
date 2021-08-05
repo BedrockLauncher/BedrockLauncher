@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BedrockLauncher.Core.Classes
 {
-    public class MCNetFeedItem
+    public class NewsItem
     {
        public virtual string ImageUrl { get; }
        public virtual double ImageWidth { get; }

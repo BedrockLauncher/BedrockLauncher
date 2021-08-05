@@ -27,6 +27,7 @@ using BedrockLauncher.Classes;
 using BedrockLauncher.Core.Classes;
 using BedrockLauncher.ViewModels;
 using System.Collections.ObjectModel;
+using BedrockLauncher.Events;
 
 namespace BedrockLauncher.Pages.Play
 {
@@ -45,11 +46,23 @@ namespace BedrockLauncher.Pages.Play
         public SkinsPage()
         {
             InitializeComponent();
+            LauncherModel.Default.OverlayFrameChanged += Default_OverlayFrameChanged;
         }
         private void Page_Initialized(object sender, EventArgs e)
         {
 
         }
+
+        private void Default_OverlayFrameChanged(object sender, EventArgs e)
+        {
+            if (e is OverlayChangedState)
+            {
+                var args = e as OverlayChangedState;
+                if (args.isEmpty) SkinPreviewPanel.Visibility = Visibility.Visible;
+                else SkinPreviewPanel.Visibility = Visibility.Hidden;
+            }
+        }
+
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             await this.Dispatcher.InvokeAsync(() =>

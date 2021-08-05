@@ -25,14 +25,14 @@ using BedrockLauncher.Core.Classes;
 namespace BedrockLauncher.Pages.News
 {
     /// <summary>
-    /// Interaction logic for Java_N_DungeonsNewsPage.xaml
+    /// Interaction logic for News_JavaDungeons_Page.xaml
     /// </summary>
-    public partial class Java_N_DungeonsNewsPage : Page
+    public partial class News_JavaDungeons_Page : Page
     {
         private const string JSON_Feed = @"https://launchercontent.mojang.com/news.json";
-        private ObservableCollection<MCNetFeedItem> FeedItems { get; set; } = new ObservableCollection<MCNetFeedItem>();
+        private ObservableCollection<NewsItem> FeedItems { get; set; } = new ObservableCollection<NewsItem>();
 
-        public Java_N_DungeonsNewsPage()
+        public News_JavaDungeons_Page()
         {
             InitializeComponent();
         }
@@ -49,25 +49,25 @@ namespace BedrockLauncher.Pages.News
                 this.FeedItems.Clear();
             });
 
-            MCNetLauncherFeed result = null;
+            LauncherNewsFeed result = null;
             using (var httpClient = new HttpClient())
             {
                 try
                 {
                     var json = await httpClient.GetStringAsync(JSON_Feed);
-                    result = Newtonsoft.Json.JsonConvert.DeserializeObject<MCNetLauncherFeed>(json);
+                    result = Newtonsoft.Json.JsonConvert.DeserializeObject<LauncherNewsFeed>(json);
                 }
                 catch
                 {
-                    result = new MCNetLauncherFeed();
+                    result = new LauncherNewsFeed();
                 }
 
             }
-            if (result == null) result = new MCNetLauncherFeed();
-            if (result.entries == null) result.entries = new List<MCNetFeedItemJSON>();
+            if (result == null) result = new LauncherNewsFeed();
+            if (result.entries == null) result.entries = new List<NewsItem_Launcher>();
 
             await Dispatcher.InvokeAsync(() => {
-                foreach (MCNetFeedItemJSON item in result.entries)
+                foreach (NewsItem_Launcher item in result.entries)
                 {
                     if (item.newsType != null && item.newsType.Contains("News page")) FeedItems.Add(item);
                 }
@@ -85,8 +85,8 @@ namespace BedrockLauncher.Pages.News
             {
                 if (OfficalNewsFeed.SelectedItem != null)
                 {
-                    var item = OfficalNewsFeed.SelectedItem as MCNetFeedItemJSON;
-                    JavaFeedItem.LoadArticle(item);
+                    var item = OfficalNewsFeed.SelectedItem as NewsItem_Launcher;
+                    FeedItem_JavaDungeons.LoadArticle(item);
                 }
             }
         }
@@ -111,10 +111,10 @@ namespace BedrockLauncher.Pages.News
 
         private bool OfficalNewsFeed_FeedFilter(object obj)
         {
-            if (!(obj is MCNetFeedItemJSON)) return false;
+            if (!(obj is NewsItem_Launcher)) return false;
             else
             {
-                var item = (obj as MCNetFeedItemJSON);
+                var item = (obj as NewsItem_Launcher);
                 if (item.newsType != null && item.newsType.Contains("News page"))
                 {
                     if (item.category == "Minecraft: Java Edition" && ShowJavaContent.IsChecked.Value) return ContainsText(item);
@@ -124,7 +124,7 @@ namespace BedrockLauncher.Pages.News
                 else return false;
             }
 
-            bool ContainsText(MCNetFeedItemJSON _item)
+            bool ContainsText(NewsItem_Launcher _item)
             {
                 string searchParam = SearchBox.Text;
                 if (string.IsNullOrEmpty(searchParam) || _item.title.Contains(searchParam, StringComparison.OrdinalIgnoreCase)) return true;

@@ -1,0 +1,40 @@
+﻿<Page x:Class="BedrockLauncher.Pages.News.News_Minecraft_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:c="clr-namespace:BedrockLauncher.Core.Classes;assembly=BedrockLauncher.Core"
+      xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
+      xmlns:common="clr-namespace:BedrockLauncher.Core.Controls;assembly=BedrockLauncher.Core"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CommunityNewsPage" Initialized="Page_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <ListView x:Name="OfficalNewsFeed" Keyboard.PreviewKeyUp="OfficalNewsFeed_KeyUp" ItemContainerStyle="{DynamicResource CardListViewItem}">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel IsItemsHost="True" MaxWidth="{Binding ElementName=OfficalNewsFeed, Path=ActualWidth}"
+                        HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate DataType="{x:Type c:NewsItem_MinecraftRSS}">
+                        <i:FeedItem_Minecraft DataContext="{Binding .}"></i:FeedItem_Minecraft>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <common:ResultPanel PanelType="NoNews" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="Collapsed"></common:ResultPanel>
+        </Grid>
+        <Border Grid.Row="1" BorderBrush="{DynamicResource Seperator.Background}" BorderThickness="0,1,0,0">
+            <Grid Background="#FF303030">
+                <Button Margin="0,1" FontSize="14" x:Name="RefreshButton" HorizontalAlignment="Right" Click="RefreshButton_Click" Content="{DynamicResource GeneralText_Refresh}" Style="{DynamicResource LinkButton}"></Button>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Page>

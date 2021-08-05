@@ -69,36 +69,36 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Win32\Windows.Internal.Security.Authentication.Web.winmd">
+    <Content Include="runtimes\WUTokenHelper\Win32\Windows.Internal.Security.Authentication.Web.winmd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Win32\WUTokenHelper.exp">
+    <Content Include="runtimes\WUTokenHelper\Win32\WUTokenHelper.exp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Win32\WUTokenHelper.lib">
+    <Content Include="runtimes\WUTokenHelper\Win32\WUTokenHelper.lib">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="x64\Windows.Internal.Security.Authentication.Web.winmd">
+    <Content Include="runtimes\WUTokenHelper\x64\Windows.Internal.Security.Authentication.Web.winmd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="x64\WUTokenHelper.exp">
+    <Content Include="runtimes\WUTokenHelper\x64\WUTokenHelper.exp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="x64\WUTokenHelper.lib">
+    <Content Include="runtimes\WUTokenHelper\x64\WUTokenHelper.lib">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Win32\WUTokenHelper.dll">
+    <Content Include="runtimes\WUTokenHelper\Win32\WUTokenHelper.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Win32\WUTokenHelper.pdb">
+    <Content Include="runtimes\WUTokenHelper\Win32\WUTokenHelper.pdb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="x64\WUTokenHelper.dll">
+    <Content Include="runtimes\WUTokenHelper\x64\WUTokenHelper.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="x64\WUTokenHelper.pdb">
+    <Content Include="runtimes\WUTokenHelper\x64\WUTokenHelper.pdb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -107,9 +107,9 @@
     <PreBuildEvent>cd "$(ProjectDir)WUTokenHelper"
 "$(DevEnvDir)devenv" "$(SolutionPath)" /Build "Release" /Project "WUTokenHelper.vcxproj" /ProjectConfig "Release|Win32"
 "$(DevEnvDir)devenv" "$(SolutionPath)" /Build "Release" /Project "WUTokenHelper.vcxproj" /ProjectConfig "Release|x64"
-cd "$(ProjectDir)"
+cd "$(ProjectDir)runtime\WUTokenHelper"
 rmdir "Win32" /s /q
 rmdir "x64" /s /q
-xcopy "$(ProjectDir)WUTokenHelper\bin\Release" "$(ProjectDir)" /E /I</PreBuildEvent>
+xcopy "$(ProjectDir)WUTokenHelper\bin\Release" "$(ProjectDir)runtime\WUTokenHelper" /E /I</PreBuildEvent>
   </PropertyGroup>
 </Project>

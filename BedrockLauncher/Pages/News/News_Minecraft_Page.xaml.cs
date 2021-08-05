@@ -20,21 +20,24 @@ using System.Net;
 using System.Net.Http;
 using BedrockLauncher.Core.Classes;
 using System.Collections.ObjectModel;
+using RestSharp;
+using BedrockLauncher.Core.Pages.Common;
+using ExtensionsDotNET.HTTP2;
 
 namespace BedrockLauncher.Pages.News
 {
     /// <summary>
-    /// Interaction logic for CommunityNewsPage.xaml
+    /// Interaction logic for News_Minecraft_Page.xaml
     /// </summary>
-    public partial class CommunityNewsPage : Page
+    public partial class News_Minecraft_Page : Page
     {
 
         private const string RSS_Feed = "https://www.minecraft.net/en-us/feeds/community-content/rss";
 
-        private ObservableCollection<MCNetFeedItem> FeedItems { get; set; } = new ObservableCollection<MCNetFeedItem>();
+        private ObservableCollection<NewsItem> FeedItems { get; set; } = new ObservableCollection<NewsItem>();
 
 
-        public CommunityNewsPage()
+        public News_Minecraft_Page()
         {
             InitializeComponent();
             OfficalNewsFeed.ItemsSource = FeedItems;
@@ -47,44 +50,41 @@ namespace BedrockLauncher.Pages.News
 
         private async void UpdateRSSContent()
         {
-            using (var httpClient = new HttpClient())
+
+            try
             {
-
-                httpClient.Timeout = TimeSpan.FromSeconds(15);
-                try
+                await Dispatcher.InvokeAsync(() =>
                 {
-                    await Dispatcher.InvokeAsync(() => {
-                        NothingFound.PanelType = Core.Controls.ResultPanelType.Loading;
-                        NothingFound.Visibility = Visibility.Visible;
-                        FeedItems.Clear();
-                    });
+                    NothingFound.PanelType = Core.Controls.ResultPanelType.Loading;
+                    NothingFound.Visibility = Visibility.Visible;
+                    FeedItems.Clear();
+                });
 
-                    var rss = await httpClient.GetStringAsync(RSS_Feed);
 
-                    Feed feed = FeedReader.ReadFromString(rss);
+                string rss = string.Empty;
+                using (var httpClient = new HttpClient(new Http2Handler())) rss = await httpClient.GetStringAsync(RSS_Feed);
+                Feed feed = FeedReader.ReadFromString(rss);
 
-                    await Dispatcher.InvokeAsync(() => {
-                        foreach (FeedItem item in feed.Items)
-                        {
-                            MCNetFeedItemRSS new_item = new MCNetFeedItemRSS(item);
-                            FeedItems.Add(new_item);
-                            NothingFound.Visibility = Visibility.Collapsed;
-                        }
-                    });
+                await Dispatcher.InvokeAsync(() =>
+                {
+                    foreach (FeedItem item in feed.Items)
+                    {
+                        NewsItem_MinecraftRSS new_item = new NewsItem_MinecraftRSS(item);
+                        FeedItems.Add(new_item);
+                        NothingFound.Visibility = Visibility.Collapsed;
+                    }
 
                     if (FeedItems.Count == 0) NothingFound.Visibility = Visibility.Visible;
-                }
-                catch (Exception ex)
-                {
-                    await Dispatcher.InvokeAsync(() => {
-                        NothingFound.PanelType = Core.Controls.ResultPanelType.Error;
-                        NothingFound.Visibility = Visibility.Visible;
-                    });
-                }
-
+                });
             }
-
-
+            catch
+            {
+                await Dispatcher.InvokeAsync(() =>
+                {
+                    NothingFound.PanelType = Core.Controls.ResultPanelType.Error;
+                    NothingFound.Visibility = Visibility.Visible;
+                });
+            }
 
         }
 
@@ -99,8 +99,8 @@ namespace BedrockLauncher.Pages.News
             {
                 if (OfficalNewsFeed.SelectedItem != null)
                 {
-                    var item = OfficalNewsFeed.SelectedItem as MCNetFeedItemRSS;
-                    CommunityFeedItem.LoadArticle(item);
+                    var item = OfficalNewsFeed.SelectedItem as NewsItem_MinecraftRSS;
+                    FeedItem_Minecraft.LoadArticle(item);
                 }
             }
         }

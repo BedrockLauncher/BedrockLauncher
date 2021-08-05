@@ -19,23 +19,23 @@ using System.Windows.Shapes;
 namespace BedrockLauncher.Controls.Items
 {
     /// <summary>
-    /// Interaction logic for JavaFeedItem.xaml
+    /// Interaction logic for FeedItem_JavaDungeons.xaml
     /// </summary>
-    public partial class JavaFeedItem : Button
+    public partial class FeedItem_JavaDungeons : Button
     {
-        public JavaFeedItem()
+        public FeedItem_JavaDungeons()
         {
             InitializeComponent();
         }
 
-        public static void LoadArticle(MCNetFeedItem item)
+        public static void LoadArticle(NewsItem item)
         {
             Process.Start(new ProcessStartInfo(item.Link));
         }
 
         private void FeedItemEntry_Click(object sender, RoutedEventArgs e)
         {
-            MCNetFeedItem item = this.DataContext as MCNetFeedItem;
+            NewsItem item = this.DataContext as NewsItem;
             LoadArticle(item);
         }
     }

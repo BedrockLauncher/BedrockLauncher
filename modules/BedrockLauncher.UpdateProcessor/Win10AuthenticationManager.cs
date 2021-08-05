@@ -33,7 +33,7 @@ namespace BedrockLauncher.UpdateProcessor
         static Win10AuthenticationManager()
         {
             var myPath = new Uri(AppDomain.CurrentDomain.BaseDirectory).LocalPath;
-            var myFolder = Path.GetDirectoryName(myPath);
+            var myFolder = Path.Combine(Path.GetDirectoryName(myPath), "runtimes", "WUTokenHelper");
 
             var is64 = Environment.Is64BitProcess;
             var subfolder = is64 ? "\\x64\\" : "\\Win32\\";
