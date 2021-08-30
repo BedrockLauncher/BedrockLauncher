@@ -58,11 +58,14 @@ namespace BedrockLauncher
 
         private void Init()
         {
+
             Panel.SetZIndex(OverlayFrame, 0);
             Panel.SetZIndex(ErrorFrame, 1);
             Panel.SetZIndex(UpdateButton, 2);
 
+            MainPage.skinsPage.InitFrameEvents(ErrorFrame);
             MainPage.skinsPage.InitFrameEvents(OverlayFrame);
+
             UpdateButton.ClickBase.Click += LauncherModel.Updater.UpdateButton_Click;
             LauncherModel.Default.InitKeyboardFocus(MainFrame);
 
