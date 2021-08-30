@@ -35,6 +35,8 @@ namespace BedrockLauncher.Core.Language
             Application.Current.Resources.MergedDictionaries.Remove(possible);
 
             LanguageDictionary dict = new LanguageDictionary(definition);
+            LanguageDictionary default_dic = new LanguageDictionary(AvaliableInternalLanguages.FirstOrDefault());
+            Application.Current.Resources.MergedDictionaries.Add(default_dic);
             Application.Current.Resources.MergedDictionaries.Add(dict);
         }
 
