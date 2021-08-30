@@ -55,7 +55,7 @@ namespace BedrockLauncher.Pages.Settings
 
             UpdateDirectoryPathTextbox();
 
-            LauncherModel.Default.Reload();
+            LauncherModel.Default.LoadConfig();
         }
 
         private void UpdateDirectoryPathTextbox()

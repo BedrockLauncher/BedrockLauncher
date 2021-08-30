@@ -130,7 +130,7 @@ namespace BedrockLauncher.Controls
         }
         private async void InitializeChromium()
         {
-            var env = await Program.GetCoreWebView2Environment();
+            var env = await Internals.GetCoreWebView2Environment();
             await Renderer.EnsureCoreWebView2Async(env);
             Renderer.CoreWebView2.Settings.IsScriptEnabled = true;
             Renderer.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;

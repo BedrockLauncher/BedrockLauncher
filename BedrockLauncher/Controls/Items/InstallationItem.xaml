@@ -13,13 +13,20 @@
         <com:InvertableBooleanToVisibilityConverter x:Key="VisibleIfTrueConverter" />
         <BitmapImage x:Key="IconPath_DesignTime" UriSource="/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png"/>
     </UserControl.Resources>
-    <Grid x:Name="InstallationEntry" Margin="0,8,0,8">
+    <Grid x:Name="InstallationEntry">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="540"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="240"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Separator Grid.Row="0" Padding="0" Margin="0" Grid.ColumnSpan="3"></Separator>
+        <Grid Grid.Row="2" Margin="0,4,0,4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -34,7 +41,7 @@
                 <TextBlock FontSize="11" Foreground="{DynamicResource SecondaryText.Foreground}" FontWeight="SemiBold" Padding="0,0,0,0" Text="{Binding VersionName}"/>
             </StackPanel>
         </Grid>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" Grid.Column="2" x:Name="ButtonPanel" Visibility="Collapsed">
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" Height="40" VerticalAlignment="Center" x:Name="ButtonPanel" Visibility="Collapsed">
             <Button x:Name="Play" Click="Play_Click" IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default}, Path=AllowEditing, Mode=OneWay}" Content="{DynamicResource InstallationsPage_PlayButton}" Style="{DynamicResource DialogButton_Green}"></Button>
             <Button x:Name="Folder" Click="Folder_Click" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" FontWeight="Bold" Style="{DynamicResource DialogButton}">
                 <Button.Content>

@@ -159,7 +159,7 @@ namespace BedrockLauncher.Downloaders
                 if (int.Parse(LocalTag.Replace(".", "")) < int.Parse(OnlineTag.Replace(".", "")))
                 {
                     System.Diagnostics.Debug.WriteLine("New version available!");
-                    ViewModels.LauncherModel.MainThread.updateButton.ShowUpdateButton();
+                    ViewModels.LauncherModel.MainThread.UpdateButton.ShowUpdateButton();
                 }
             }
             catch

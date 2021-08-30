@@ -48,26 +48,16 @@ namespace BedrockLauncher.ViewModels
         }
         public static LauncherUpdater Updater { get; set; } = new LauncherUpdater();
 
-        public void Init()
+        public LauncherModel()
         {
-            MainFrame_KeyboardNavigationMode_Default = KeyboardNavigation.GetTabNavigation(MainThread.MainFrame);
-
-            LoadVersions();
-            LoadConfig();
-
-            bool isFirstLaunch = Properties.LauncherSettings.Default.CurrentProfile == "" ||
-                Properties.LauncherSettings.Default.IsFirstLaunch ||
-                Config.profiles.Count() == 0;
-
-            // show first launch window if no profile
-            if (isFirstLaunch) SetOverlayFrame_Strict(new WelcomePage());
-            MainThread.NavigateToMainPage();
             ProgressBarStateChanged += ViewModel_ProgressBarStateChanged;
-
             ErrorScreenShow.SetHandler(this);
             DialogPrompt.SetHandler(this);
+        }
 
-            ConsoleArgumentManager.PraseArgs(Program.Arguments);
+        public void InitKeyboardFocus(Grid MainFrame)
+        {
+            LauncherModel.Default.KeyboardNavigationMode = KeyboardNavigation.GetTabNavigation(MainFrame);
         }
 
         #endregion
@@ -268,15 +258,10 @@ namespace BedrockLauncher.ViewModels
 
         #region Prompts
 
-        public event EventHandler OverlayFrameChanged;
-        protected virtual void OnOverlayFrameChanged(OverlayChangedState e)
-        {
-            EventHandler handler = OverlayFrameChanged;
-            if (handler != null) handler(this, e);
-        }
+
 
         private bool AllowedToCloseWithGameOpen { get; set; } = false;
-        private KeyboardNavigationMode MainFrame_KeyboardNavigationMode_Default { get; set; }
+        private KeyboardNavigationMode KeyboardNavigationMode { get; set; }
 
         public async void ShowPrompt_ClosingWithGameStillOpened(Action successAction)
         {
@@ -328,54 +313,53 @@ namespace BedrockLauncher.ViewModels
         public async void SetDialogFrame(object content)
         {
             bool animate = Properties.LauncherSettings.Default.AnimatePageTransitions;
+            bool isEmpty = content == null;
 
             await Application.Current.Dispatcher.InvokeAsync(() =>
             {
-                bool isEmpty = content == null;
-                var focusMode = (isEmpty ? MainFrame_KeyboardNavigationMode_Default : KeyboardNavigationMode.None);
+                var focusMode = (isEmpty ? KeyboardNavigationMode : KeyboardNavigationMode.None);
                 KeyboardNavigation.SetTabNavigation(MainThread.MainFrame, focusMode);
                 KeyboardNavigation.SetTabNavigation(MainThread.OverlayFrame, focusMode);
                 Keyboard.ClearFocus();
-
-                if (animate)
-                {
-                    if (isEmpty) PageAnimator.FrameFadeOut(MainThread.ErrorFrame, content);
-                    else PageAnimator.FrameFadeIn(MainThread.ErrorFrame, content);
-                }
-                else MainThread.ErrorFrame.Navigate(content);
             });
+
+            if (animate)
+            {
+                if (isEmpty) await PageAnimator.FrameFadeOut(MainThread.ErrorFrame, content);
+                else await PageAnimator.FrameFadeIn(MainThread.ErrorFrame, content);
+            }
+            else await PageAnimator.Navigate(MainThread.ErrorFrame, content);
         }
 
-        public async void SetOverlayFrame_Strict(object content)
+        public void SetOverlayFrame_Strict(object content)
         {
-            await Task.Run(() => SetOverlayFrame_Base(content, false));
+            SetOverlayFrame_Base(content, false);
         }
 
-        public async void SetOverlayFrame(object content)
+        public void SetOverlayFrame(object content)
         {
             bool animate = Properties.LauncherSettings.Default.AnimatePageTransitions;
-            await Task.Run(() => SetOverlayFrame_Base(content, animate));
+            SetOverlayFrame_Base(content, animate);
         }
 
 
         private async void SetOverlayFrame_Base(object content, bool animate)
         {
+            bool isEmpty = content == null;
+
             await Application.Current.Dispatcher.InvokeAsync(() =>
             {
-                bool isEmpty = content == null;
-                var focusMode = (isEmpty ? MainFrame_KeyboardNavigationMode_Default : KeyboardNavigationMode.None);
+                var focusMode = (isEmpty ? KeyboardNavigationMode : KeyboardNavigationMode.None);
                 KeyboardNavigation.SetTabNavigation(MainThread.MainFrame, focusMode);
                 Keyboard.ClearFocus();
-
-                if (animate)
-                {
-                    if (isEmpty) PageAnimator.FrameSwipe_OverlayOut(MainThread.OverlayFrame, content);
-                    else PageAnimator.FrameSwipe_OverlayIn(MainThread.OverlayFrame, content);
-                }
-                else MainThread.OverlayFrame.Navigate(content);
-
-                OnOverlayFrameChanged(new OverlayChangedState(content == null));
             });
+
+            if (animate)
+            {
+                if (isEmpty) await PageAnimator.FrameSwipe_OverlayOut(MainThread.OverlayFrame, content);
+                else await PageAnimator.FrameSwipe_OverlayIn(MainThread.OverlayFrame, content);
+            }
+            else await PageAnimator.Navigate(MainThread.OverlayFrame, content);
         }
 
 
@@ -668,19 +652,15 @@ namespace BedrockLauncher.ViewModels
 
         #region Methods
 
-        public void Reload()
-        {
-            LoadConfig();
-        }
 
-        private void LoadConfig()
+        public void LoadConfig()
         {
             Config.PropertyChanged -= (sender, e) => OnConfigUpdated(e);
             Config = MCProfilesList.Load(LauncherModel.Default.FilepathManager.GetProfilesFilePath(), Properties.LauncherSettings.Default.CurrentProfile, Properties.LauncherSettings.Default.CurrentProfile);
             Config.PropertyChanged += (sender, e) => OnConfigUpdated(e);
         }
 
-        public async void LoadVersions()
+        public async Task LoadVersions()
         {
             if (IsVersionsUpdating) return;
             await Application.Current.Dispatcher.Invoke((Func<Task>)(async () =>

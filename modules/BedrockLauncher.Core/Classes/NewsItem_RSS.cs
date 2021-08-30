@@ -14,12 +14,21 @@ namespace BedrockLauncher.Core.Classes
 
         public string GetImageUrl()
         {
-            var attributes = this.SpecificItem.Element.Elements();
+            var elements = this.SpecificItem.Element.Elements();
+            if (elements != null)
+            {
+                if (elements.ToList().Exists(x => x.Name.LocalName == "imageURL"))
+                {
+                    var result = elements.Where(x => x.Name.LocalName == "imageURL").FirstOrDefault();
+                    return result.Value;
+                }
+            }
+            var attributes = this.SpecificItem.Element.Attributes();
             if (attributes != null)
             {
-                if (attributes.ToList().Exists(x => x.Name.LocalName == "imageURL"))
+                if (attributes.ToList().Exists(x => x.Name.LocalName == "image"))
                 {
-                    var result = attributes.Where(x => x.Name.LocalName == "imageURL").FirstOrDefault();
+                    var result = attributes.Where(x => x.Name.LocalName == "image").FirstOrDefault();
                     return result.Value;
                 }
             }

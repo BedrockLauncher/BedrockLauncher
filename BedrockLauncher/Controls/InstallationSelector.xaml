@@ -9,6 +9,7 @@
              Loaded="ComboBox_Loaded"
              mc:Ignorable="d" 
              Foreground="White"
+             SelectionChanged="ComboBox_SelectionChanged"
              Style="{DynamicResource InstallationSelectorComboBoxStyle}"
              SelectedValuePath="InstallationUUID" 
              SelectedValue="{Binding Source={x:Static viewModels:LauncherModel.Default}, Path=CurrentInstallationUUID, UpdateSourceTrigger=PropertyChanged}"

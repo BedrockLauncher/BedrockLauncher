@@ -7,6 +7,7 @@ using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 using ExtensionsDotNET;
 using BedrockLauncher.Core.Classes.SkinPack;
 using BedrockLauncher.ViewModels;
+using System.Windows.Navigation;
 
 namespace BedrockLauncher.Pages.Preview
 {
@@ -58,8 +59,22 @@ namespace BedrockLauncher.Pages.Preview
             isEditMode = true;
         }
 
+        private void OverlayFrame_Navigating(object sender, NavigatingCancelEventArgs e)
+        {
+            SkinPreview.Visibility = Visibility.Collapsed;
+        }
+
+        private void OverlayFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+            if (LauncherModel.MainThread.ErrorFrame.Content == null && LauncherModel.MainThread.OverlayFrame.Content == null) SkinPreview.Visibility = Visibility.Visible;
+            else SkinPreview.Visibility = Visibility.Collapsed;
+        }
+
         private void Init()
         {
+            LauncherModel.MainThread.OverlayFrame.Navigating += OverlayFrame_Navigating;
+            LauncherModel.MainThread.OverlayFrame.Navigated += OverlayFrame_Navigated;
+
             if (isEditMode)
             {
                 InitEditSkinFormFeilds();
@@ -161,6 +176,7 @@ namespace BedrockLauncher.Pages.Preview
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            SkinPreview.Visibility = Visibility.Collapsed;
             ViewModels.LauncherModel.Default.SetOverlayFrame(null);
         }
 
@@ -173,11 +189,14 @@ namespace BedrockLauncher.Pages.Preview
 
             if (isEditMode) skinPack.EditSkin(skin_index, skin);
             else skinPack.AddSkin(skin);
+
+            SkinPreview.Visibility = Visibility.Collapsed;
             ViewModels.LauncherModel.Default.SetOverlayFrame(null);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            SkinPreview.Visibility = Visibility.Collapsed;
             ViewModels.LauncherModel.Default.SetOverlayFrame(null);
         }
 

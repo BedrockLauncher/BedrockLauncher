@@ -40,7 +40,7 @@ namespace BedrockLauncher.Pages.FirstLaunch
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            LauncherModel.Default.Reload();
+            LauncherModel.Default.LoadConfig();
             pageSwitcher.MoveToPage(3);
         }
 

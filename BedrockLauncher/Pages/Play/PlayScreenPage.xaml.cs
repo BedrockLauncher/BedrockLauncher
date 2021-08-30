@@ -52,8 +52,6 @@ namespace BedrockLauncher.Pages.Play
             InitializeComponent();
         }
 
-
-
         private string GetLatestImage()
         {
             return Images.First().Value;
@@ -67,7 +65,7 @@ namespace BedrockLauncher.Pages.Play
                 string packUri = string.Empty;
                 string currentTheme = Properties.LauncherSettings.Default.CurrentTheme;
 
-                bool isBugRock = Program.IsBugRockOfTheWeek();
+                bool isBugRock = Internals.IsBugRockOfTheWeek();
                 if (isBugRock)
                 {
                     BedrockLogo.Visibility = Visibility.Collapsed;

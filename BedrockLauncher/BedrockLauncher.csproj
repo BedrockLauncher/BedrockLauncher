@@ -200,7 +200,7 @@
       <DependentUpon>InstallationSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="Downloaders\WikiChangelogDownloader.cs" />
-    <Compile Include="Events\OverlayState.cs" />
+    <Compile Include="Internals.cs" />
     <Compile Include="Pages\News\News_MinecraftForums_Page.xaml.cs">
       <DependentUpon>News_MinecraftForums_Page.xaml</DependentUpon>
     </Compile>

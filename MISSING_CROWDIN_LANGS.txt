@@ -1,0 +1,126 @@
+Allgovian German - (swg)
+Parent Dialect:
+Three Letters Code:
+Locale Code: 
+Text Direction:
+Pural Forms: 
+---------------------
+Anglish - (enp)
+Parent Dialect:
+Three Letters Code:
+Locale Code:
+Text Direction:
+Pural Forms: 
+---------------------
+Bavarian - (bar)
+Parent Dialect:
+Three Letters Code:
+Locale Code:
+Text Direction:
+Pural Forms: 
+---------------------
+Brabantian - (brb)
+Parent Dialect:
+Three Letters Code:
+Locale Code: 
+Text Direction:
+Pural Forms: 
+---------------------
+Classical Chinese - (lzh)
+Parent Dialect:
+Three Letters Code:
+Locale Code:
+Text Direction:
+Pural Forms: 
+---------------------
+Elfdalian - (ovd)
+Parent Dialect:
+Three Letters Code:
+Locale Code:
+Text Direction:
+Pural Forms: 
+---------------------
+Innu - ?
+Parent Dialect:
+Three Letters Code:
+Locale Code:
+Text Direction:
+Pural Forms: 
+---------------------
+Interslavic - (isv)
+Parent Dialect:
+Three Letters Code:
+Locale Code:
+Text Direction:
+Pural Forms: 
+---------------------
+Lombard - (lmo)
+Parent Dialect:
+Three Letters Code:
+Locale Code:
+Text Direction:
+Pural Forms: 
+---------------------
+Nahuatl - ?
+Parent Dialect:
+Three Letters Code:
+Locale Code:
+Text Direction:
+Pural Forms: 
+---------------------
+Nuu-chah-nulth - (nuk)
+Parent Dialect:
+Three Letters Code:
+Locale Code:
+Text Direction:
+Pural Forms: 
+---------------------
+Ripuarian - (ksh)
+Parent Dialect:
+Three Letters Code:
+Locale Code:
+Text Direction:
+Pural Forms: 
+---------------------
+Russian (pre-revolutionary) - (rpr)
+Parent Dialect:
+Three Letters Code:
+Locale Code:
+Text Direction:
+Pural Forms: 
+---------------------
+Shakespearean English - (enws)
+Parent Dialect:
+Three Letters Code:
+Locale Code:
+Text Direction:
+Pural Forms: 
+---------------------
+Sicilian - (scn)
+Parent Dialect:
+Three Letters Code:
+Locale Code:
+Text Direction:
+Pural Forms: 
+---------------------
+Silesian - (szl)
+Parent Dialect:
+Three Letters Code:
+Locale Code:
+Text Direction:
+Pural Forms: 
+---------------------
+Toki Pona - (tok)
+Parent Dialect:
+Three Letters Code:
+Locale Code:
+Text Direction:
+Pural Forms: 
+---------------------
+Upper Saxon German - (sxu)
+Parent Dialect:
+Three Letters Code:
+Locale Code:
+Text Direction:
+Pural Forms: 
+---------------------

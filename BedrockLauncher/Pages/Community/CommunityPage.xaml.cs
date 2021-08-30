@@ -40,7 +40,7 @@ namespace BedrockLauncher.Pages.Community
             StreamReader streamReader = new StreamReader(resource.Stream);
             StringReader stringReader = new StringReader(streamReader.ReadToEnd());
             string html = await stringReader.ReadToEndAsync();
-            var env = await Program.GetCoreWebView2Environment();
+            var env = await Internals.GetCoreWebView2Environment();
             await Browser.EnsureCoreWebView2Async(env);
             Browser.CoreWebView2.Settings.IsScriptEnabled = true;
             Browser.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;

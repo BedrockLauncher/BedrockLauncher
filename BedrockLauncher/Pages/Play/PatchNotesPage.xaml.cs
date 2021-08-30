@@ -30,6 +30,8 @@ namespace BedrockLauncher.Pages.Play
     {
         private ChangelogDownloader downloader;
 
+        private bool Updating = false;
+
 
         public PatchNotesPage(ChangelogDownloader _downloader)
         {
@@ -48,12 +50,13 @@ namespace BedrockLauncher.Pages.Play
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            await this.Dispatcher.InvokeAsync(async () =>
+            await this.Dispatcher.InvokeAsync(() =>
             {
                 var view = CollectionViewSource.GetDefaultView(PatchNotesList.ItemsSource) as CollectionView;
                 view.Filter = Filter_PatchNotes;
-                await Task.Run(UpdateUI);
             });
+            await UpdateUI();
+
         }
 
         public bool Filter_PatchNotes(object obj)
@@ -110,26 +113,31 @@ namespace BedrockLauncher.Pages.Play
 
         private async void Page_Initialized(object sender, EventArgs e)
         {
-            await this.Dispatcher.InvokeAsync(async () =>
+            await this.Dispatcher.InvokeAsync(() =>
             {
                 this.downloader.RefreshableStateChanged += Downloader_RefreshableStateChanged;
                 this.downloader.PatchNotes.CollectionChanged += PatchNotes_CollectionChanged;
                 PatchNotesList.ItemsSource = downloader.PatchNotes;
-                await Task.Run(this.downloader.UpdateList);
+                this.downloader.UpdateList();
             });
         }
 
         private async void PatchNotes_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            await Task.Run(UpdateUI);
+            await UpdateUI();
         }
 
-        private async void UpdateUI()
+        private async Task UpdateUI()
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
-                if (PatchNotesList.Items.Count > 0 && NothingFound.Visibility != Visibility.Collapsed) NothingFound.Visibility = Visibility.Collapsed;
-                else if (PatchNotesList.Items.Count <= 0 && NothingFound.Visibility != Visibility.Visible) NothingFound.Visibility = Visibility.Visible;
+                if (!Updating)
+                {
+                    Updating = true;
+                    if (PatchNotesList.Items.Count > 0 && NothingFound.Visibility != Visibility.Collapsed) NothingFound.Visibility = Visibility.Collapsed;
+                    else if (PatchNotesList.Items.Count <= 0 && NothingFound.Visibility != Visibility.Visible) NothingFound.Visibility = Visibility.Visible;
+                    Updating = false;
+                }
             });
         }
     }

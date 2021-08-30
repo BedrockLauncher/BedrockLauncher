@@ -74,6 +74,6 @@
         </Grid>
         <Frame x:Name="OverlayFrame" com:DisableNavigation.Disable="True" Focusable="False" Margin="0" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" Panel.ZIndex="-1"/>
         <Frame x:Name="ErrorFrame" com:DisableNavigation.Disable="True" Focusable="False" Margin="0" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" Panel.ZIndex="-2"/>
-        <controls:UpdateButton Visibility="Collapsed" Margin="0,-75,5,0" Grid.ColumnSpan="2" Panel.ZIndex="-3" x:Name="updateButton" HorizontalAlignment="Right" VerticalAlignment="Top"></controls:UpdateButton>
+        <controls:UpdateButton Visibility="Collapsed" Margin="0,-75,5,0" Grid.ColumnSpan="2" Panel.ZIndex="-3" x:Name="UpdateButton" HorizontalAlignment="Right" VerticalAlignment="Top"></controls:UpdateButton>
     </Grid>
 </Window>

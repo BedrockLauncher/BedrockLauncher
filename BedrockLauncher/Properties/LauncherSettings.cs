@@ -51,8 +51,14 @@ namespace BedrockLauncher.Properties
                 else Default = new LauncherSettings();
             }
 
-
+            Default.Init();
         }
+
+        public void Init()
+        {
+            PageAnimator.SuperSmoothAnimations = _FancierPageTransitions;
+        }
+
         public void Save()
         {
             string json = JsonConvert.SerializeObject(this, Formatting.Indented);
@@ -67,8 +73,21 @@ namespace BedrockLauncher.Properties
         private bool _KeepLauncherOpen = false;
         private bool _AnimatePlayButton = false;
         private bool _AnimatePageTransitions = false;
+        private bool _FancierPageTransitions = false;
 
-
+        public bool FancierPageTransitions
+        {
+            get 
+            {
+                return _FancierPageTransitions; 
+            }
+            set 
+            { 
+                _FancierPageTransitions = value;
+                BedrockLauncher.Core.Components.PageAnimator.SuperSmoothAnimations = value;
+                OnPropertyChanged(nameof(FancierPageTransitions)); 
+            }
+        }
         public bool ShowAdvancedInstallDetails
         {
             get { return _ShowAdvancedInstallDetails; }

@@ -40,6 +40,7 @@ namespace BedrockLauncher.Controls
                     if (view.Filter == null) view.Filter = LauncherModel.Default.Filter_InstallationList;
                     view.Refresh();
                 }
+                this.SelectedValue = Properties.LauncherSettings.Default.CurrentInstallation;
             });
         }
         private async Task ReloadInstallations()
@@ -66,6 +67,12 @@ namespace BedrockLauncher.Controls
         {
             HasLoadedOnce = false;
             await this.ReloadInstallations();
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Properties.LauncherSettings.Default.CurrentInstallation = (string)this.SelectedValue;
+            Properties.LauncherSettings.Default.Save();
         }
     }
 }

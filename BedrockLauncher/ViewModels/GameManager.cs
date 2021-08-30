@@ -208,7 +208,7 @@ namespace BedrockLauncher.ViewModels
 
             try
             {
-                await UnregisterPackage(v, Path.GetFullPath(v.GameDirectory), false);
+                await UnregisterPackage(v);
                 Directory.Delete(v.GameDirectory, true);
             }
             catch (Exception ex)
@@ -239,42 +239,11 @@ namespace BedrockLauncher.ViewModels
             {
                 case "Not installed":
                     var wasCanceled = await Download(i.Version, true);
-                    if (!wasCanceled) Launch();
+                    if (!wasCanceled) Launch(p, i, KeepLauncherOpen);
                     break;
                 case "Installed":
-                    Launch();
+                    Launch(p, i, KeepLauncherOpen);
                     break;
-            }
-
-
-            async void Launch()
-            {
-                var v = i.Version;
-                try
-                {
-                    StartLaunch();
-                    await SetInstallationDataPath(p, i);
-                    string gameDir = Path.GetFullPath(v.GameDirectory);
-                    await ReRegisterPackage(v, gameDir);
-                    bool closable = await LaunchGame(v, KeepLauncherOpen);
-                    if (!closable) EndLaunch();
-                }
-                catch
-                {
-                    EndLaunch();
-                }
-
-                void StartLaunch()
-                {
-                    ViewModels.LauncherModel.Default.ShowProgressBar = true;
-                    ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isLaunching;
-                }
-
-                void EndLaunch()
-                {
-                    ViewModels.LauncherModel.Default.ShowProgressBar = false;
-                    ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
-                }
             }
         }
         public void OpenFolder(object i)
@@ -297,6 +266,56 @@ namespace BedrockLauncher.ViewModels
 
         #region Task Methods
 
+        private async void Launch(MCProfile p, BLInstallation i, bool KeepLauncherOpen)
+        {
+            var v = i.Version;
+            try
+            {
+                StartLaunch();
+                await SetInstallationDataPath(p, i);
+                await UnregisterPackages(v, true);
+                await RegisterPackage(v);
+
+
+                var pkg = await AppDiagnosticInfo.RequestInfoForPackageAsync(MINECRAFT_PACKAGE_FAMILY);
+                AppActivationResult activationResult = null;
+                if (pkg.Count > 0) activationResult = await pkg[0].LaunchAsync();
+                System.Diagnostics.Debug.WriteLine("App launch finished!");
+                if (KeepLauncherOpen && activationResult != null) GetGameProcess(activationResult);
+                if (KeepLauncherOpen == false)
+                {
+                    await Application.Current.Dispatcher.InvokeAsync(() =>
+                    {
+                        Application.Current.MainWindow.Close();
+                    });
+                    return;
+                }
+                else
+                {
+                    ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
+                    EndLaunch();
+                }
+            }
+            catch (Exception e)
+            {
+                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
+                System.Diagnostics.Debug.WriteLine("App launch failed:\n" + e.ToString());
+                ErrorScreenShow.errormsg("Error_AppLaunchFailed_Title", "Error_AppLaunchFailed", e);
+                EndLaunch();
+            }
+
+            void StartLaunch()
+            {
+                ViewModels.LauncherModel.Default.ShowProgressBar = true;
+                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isLaunching;
+            }
+
+            void EndLaunch()
+            {
+                ViewModels.LauncherModel.Default.ShowProgressBar = false;
+                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
+            }
+        }
         private async Task<bool> Download(BLVersion v, bool RunAfterwards)
         {
             System.Diagnostics.Debug.WriteLine("Download start");
@@ -380,38 +399,6 @@ namespace BedrockLauncher.ViewModels
             {
                 System.Diagnostics.Debug.WriteLine("Authentication failed:\n" + e.ToString());
                 ErrorScreenShow.errormsg("Error_AuthenticationFailed_Title", "Error_AuthenticationFailed", e);
-                throw e;
-            }
-        }
-        private async Task<bool> LaunchGame(MCVersion v, bool KeepLauncherOpen)
-        {
-            try
-            {
-                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isLaunching;
-                var pkg = await AppDiagnosticInfo.RequestInfoForPackageAsync(MINECRAFT_PACKAGE_FAMILY);
-                AppActivationResult activationResult = null;
-                if (pkg.Count > 0) activationResult = await pkg[0].LaunchAsync();
-                System.Diagnostics.Debug.WriteLine("App launch finished!");
-                if (KeepLauncherOpen && activationResult != null) GetGameProcess(activationResult);
-                if (KeepLauncherOpen == false)
-                {
-                    await Application.Current.Dispatcher.InvokeAsync(() =>
-                    {
-                        Application.Current.MainWindow.Close();
-                    });
-                    return true;
-                }
-                else
-                {
-                    ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
-                    return false;
-                }
-            }
-            catch (Exception e)
-            {
-                ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
-                System.Diagnostics.Debug.WriteLine("App launch failed:\n" + e.ToString());
-                ErrorScreenShow.errormsg("Error_AppLaunchFailed_Title", "Error_AppLaunchFailed", e);
                 throw e;
             }
         }
@@ -520,37 +507,34 @@ namespace BedrockLauncher.ViewModels
                 throw new TaskCanceledException();
             }
         }
-        private async Task UnregisterPackage(MCVersion v, string gameDir, bool reRegisterMode)
+        private async Task UnregisterPackage(BLVersion v)
+        {
+            await UnregisterPackages(v, false);
+        }
+        private async Task UnregisterPackages(BLVersion v, bool keepVersion)
         {
             foreach (var pkg in new PackageManager().FindPackages(MINECRAFT_PACKAGE_FAMILY))
             {
                 string location = GetPackagePath(pkg);
-                if (location == "" || location == gameDir)
+                if (location == v.GameDirectory && keepVersion) System.Diagnostics.Debug.WriteLine("Skipping package removal - same path: " + pkg.Id.FullName + " " + location);
+                else
                 {
-                    if (location == gameDir && reRegisterMode)
-                    {
-                        System.Diagnostics.Debug.WriteLine("Skipping package removal - same path: " + pkg.Id.FullName + " " + location);
-                    }
-                    else
-                    {
-                        System.Diagnostics.Debug.WriteLine("Removing package: " + pkg.Id.FullName);
-                        ViewModels.LauncherModel.Default.DeploymentPackageName = pkg.Id.FullName;
-                        ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isRemovingPackage;
-                        await DeploymentProgressWrapper(new PackageManager().RemovePackageAsync(pkg.Id.FullName, RemovalOptions.PreserveApplicationData | RemovalOptions.RemoveForAllUsers));
-                        System.Diagnostics.Debug.WriteLine("Removal of package done: " + pkg.Id.FullName);
-                        ViewModels.LauncherModel.Default.DeploymentPackageName = "";
-                        ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
-                    }
+                    System.Diagnostics.Debug.WriteLine("Removing package: " + pkg.Id.FullName);
+                    ViewModels.LauncherModel.Default.DeploymentPackageName = pkg.Id.FullName;
+                    ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isRemovingPackage;
+                    await DeploymentProgressWrapper(new PackageManager().RemovePackageAsync(pkg.Id.FullName, RemovalOptions.PreserveApplicationData | RemovalOptions.RemoveForAllUsers));
+                    System.Diagnostics.Debug.WriteLine("Removal of package done: " + pkg.Id.FullName);
+                    ViewModels.LauncherModel.Default.DeploymentPackageName = "";
+                    ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.None;
                 }
             }
         }
-        private async Task ReRegisterPackage(MCVersion v, string gameDir)
+        private async Task RegisterPackage(BLVersion v)
         {
             try
             {
-                await UnregisterPackage(v, gameDir, true);
                 System.Diagnostics.Debug.WriteLine("Registering package");
-                string manifestPath = Path.Combine(gameDir, "AppxManifest.xml");
+                string manifestPath = Path.Combine(v.GameDirectory, "AppxManifest.xml");
                 ViewModels.LauncherModel.Default.DeploymentPackageName = GetPackageNameFromMainifest(manifestPath);
                 ViewModels.LauncherModel.Default.CurrentState = ViewModels.LauncherModel.StateChange.isRegisteringPackage;
                 await DeploymentProgressWrapper(new PackageManager().RegisterPackageAsync(new Uri(manifestPath), null, DeploymentOptions.DevelopmentMode));

@@ -70,14 +70,12 @@
         <Grid Grid.RowSpan="3" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="55"></RowDefinition>
-                <RowDefinition Height="1"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Grid Background="{DynamicResource ListBox.Static.Background}">
                 <controls:InstallationSelector VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectionChanged="InstallationsList_SelectionChanged" ItemsSource="{Binding}" x:Name="InstallationsList" Margin="4,4,4,4" Padding="-1,7,5,3"></controls:InstallationSelector>
             </Grid>
-            <Separator Grid.Row="1" Padding="0" Margin="0"></Separator>
-            <ListView Grid.Row="2"
+            <ListView Grid.Row="1"
                   Keyboard.PreviewKeyUp="LoadedSkinPacks_PreviewKeyUp"
                   x:Name="LoadedSkinPacks" 
                   SelectionChanged="LoadedSkinPacks_SelectionChanged" 

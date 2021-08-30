@@ -40,13 +40,11 @@ namespace BedrockLauncher
 
     public partial class MainWindow : Window
     {
-        private GameTabs mainPage = new GameTabs();
+        private GameTabs MainPage = new GameTabs();
         private SettingsTabs settingsScreenPage = new SettingsTabs();
         private NewsScreenTabs newsScreenPage = new NewsScreenTabs(ViewModels.LauncherModel.Updater);
         private CommunityPage communityPage = new CommunityPage();
         private Dungeons.Pages.GameTabs dungeonsPage = new Dungeons.Pages.GameTabs();
-
-        private NoContentPage noContentPage = new NoContentPage();
 
         public MainWindow()
         {
@@ -62,12 +60,18 @@ namespace BedrockLauncher
         {
             Panel.SetZIndex(OverlayFrame, 0);
             Panel.SetZIndex(ErrorFrame, 1);
-            Panel.SetZIndex(updateButton, 2);
+            Panel.SetZIndex(UpdateButton, 2);
 
-            BedrockLauncher.Core.Language.LanguageManager.Init();
-            LauncherModel.Default.Init();
-            this.updateButton.ClickBase.Click += LauncherModel.Updater.UpdateButton_Click;
+            MainPage.skinsPage.InitFrameEvents(OverlayFrame);
+            UpdateButton.ClickBase.Click += LauncherModel.Updater.UpdateButton_Click;
+            LauncherModel.Default.InitKeyboardFocus(MainFrame);
+
+            bool isFirstLaunch = Properties.LauncherSettings.Default.CurrentProfile == "" || 
+                Properties.LauncherSettings.Default.IsFirstLaunch || 
+                LauncherModel.Default.Config.profiles.Count() == 0;
+
             ButtonManager_Base(BedrockEditionButton.Name);
+            if (isFirstLaunch) LauncherModel.Default.SetOverlayFrame_Strict(new WelcomePage());
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -176,7 +180,7 @@ namespace BedrockLauncher
             {
                 LauncherModel.Default.UpdatePageIndex(1);
                 BedrockEditionButton.Button.IsChecked = true;
-                Task.Run(() => Navigate(mainPage));
+                Task.Run(() => Navigate(MainPage));
             });
 
         }
@@ -227,7 +231,7 @@ namespace BedrockLauncher
                     {
                         Debug.WriteLine(string.Format("CantFindJavaLauncher: {0}", JavaPath));
                         Debug.WriteLine(ex);
-                        mainPage.NavigateToPlayScreen();
+                        MainPage.NavigateToPlayScreen();
                         ErrorScreenShow.errormsg("Error_CantFindJavaLauncher_Title", "Error_CantFindJavaLauncher", ex);
                     }
                 });
@@ -252,7 +256,7 @@ namespace BedrockLauncher
                     {
                         Debug.WriteLine(string.Format("CantFindExternalLauncher:\n\nPath: {0}\nArguments: {1}", LauncherPath, Arguments));
                         Debug.WriteLine(ex);
-                        mainPage.NavigateToPlayScreen();
+                        MainPage.NavigateToPlayScreen();
                         ErrorScreenShow.errormsg("Error_CantFindExternalLauncher_Title", "Error_CantFindExternalLauncher", ex);
                     }
                 });

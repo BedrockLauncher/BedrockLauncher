@@ -130,7 +130,7 @@ namespace BedrockLauncher.Pages.FirstLaunch
                 ViewModels.LauncherModel.Default.SetOverlayFrame_Strict(null);
                 Properties.LauncherSettings.Default.IsFirstLaunch = false;
                 Properties.LauncherSettings.Default.Save();
-                LauncherModel.Default.Reload();
+                LauncherModel.Default.LoadConfig();
             }
         }
     }

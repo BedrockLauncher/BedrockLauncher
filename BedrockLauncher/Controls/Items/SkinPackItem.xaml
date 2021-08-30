@@ -11,13 +11,20 @@
     <UserControl.Resources>
         <BitmapImage x:Key="CurrentIcon_DesignTime" UriSource="/BedrockLauncher.Core;component/Resources/images/packs/invalid_pack_icon.png"/>
     </UserControl.Resources>
-    <Grid Margin="0,8,0,8" Height="40">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="245"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="145"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Grid HorizontalAlignment="Left">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Separator Grid.Row="0" Padding="0" Margin="0" Grid.ColumnSpan="3"></Separator>
+        <Grid HorizontalAlignment="Left" Grid.Row="2" Margin="4,4,0,4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -32,7 +39,7 @@
                 <TextBlock FontSize="9" Foreground="#FFBEBEBE" FontWeight="SemiBold" Padding="0,0,0,0" Text="{Binding VersionName}"/>
             </StackPanel>
         </Grid>
-        <StackPanel HorizontalAlignment="Right" Grid.Column="2" Orientation="Horizontal" Name="ButtonPanel" Visibility="Hidden">
+        <StackPanel HorizontalAlignment="Right" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" Height="40" Orientation="Horizontal" Name="ButtonPanel" Visibility="Hidden">
             <Button x:Name="Folder" Click="Folder_Click" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" FontWeight="Bold" Style="{DynamicResource DialogButton}">
                 <Button.Content>
                     <Grid Width="16" Height="16">
