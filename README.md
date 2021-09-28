@@ -12,26 +12,25 @@ An unofficial **Minecraft for Windows 10** launcher that enables similar feature
 
 ## Prerequisites
 This launcher has both hardware and software prerequisite to ensure quality, performance, and stability:
-- [Hardware prerequisites](./HARDWARE_PREREQUISITES.md)
-- [Software prerequisites](./SOFTWARE_PREREQUISITES.md)
+- [Hardware prerequisites](./docs/HARDWARE_PREREQUISITES.md)
+- [Software prerequisites](./docs/SOFTWARE_PREREQUISITES.md)
 
 ## Disclaimers
 We specify disclaimers to ensure we go "told ya!" if anything happens:
-- [Disclaimers](./DISCLAIMERS.md)
+- [Disclaimers](./docs/DISCLAIMERS.md)
 
 ## Get the launcher
 Visit the official website to download the launcher
-- [Official website](https://bedrocklauncher.github.io/)
-- [Downlaods page](https://bedrocklauncher.github.io/download/)
+- [Official website](https://bedrocklauncher.github.io)
 
 ## Compiling the launcher yourself
 You can compile the launcher yourself to prototype, iterate, or just enjoy the cutting edge build:
-- [Compiling instructions](./COMPILING.md)
+- [Compiling instructions](./docs/COMPILING.md)
 
 ## Screenshots
 Have a look around the launcher before you download on the official website:
-- [Screenshots](https://bedrocklauncher.github.io/screenshots/)
+- [Screenshots](https://bedrocklauncher.github.io)
 
 ## Credits
 It's hard to keep the credits page updated on GitHub, so visit the credits page on the official website:
-- [Credits page](https://bedrocklauncher.github.io/credits/)
+- [Credits page](https://bedrocklauncher.github.io/credits) <- Seems to lead to a 404 via manual typing
