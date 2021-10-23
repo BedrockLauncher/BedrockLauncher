@@ -133,7 +133,7 @@
     <v:String x:Key="EditSkinScreen_TextureSubtitle">텍스쳐</v:String>
     <v:String x:Key="EditSkinScreen_GeometrySubtitle">GEOMETRY</v:String>
     <v:String x:Key="EditSkinScreen_TypeSubtitle">타입</v:String>
-    <v:String x:Key="EditSkinScreen_LocalizationSubtitle"></v:String>
+    <v:String x:Key="EditSkinScreen_LocalizationSubtitle">현지화 이름</v:String>
 
     <!--#endregion-->
 
@@ -142,13 +142,13 @@
     <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">설명</v:String>
     <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">GEOMETRY</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle"></v:String>
-    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle"></v:String>
-    <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle"></v:String>
+    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">현지화 이름</v:String>
+    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">직렬화 이름</v:String>
+    <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">언어 정의</v:String>
 
     <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">언어 이름</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle"></v:String>
+    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">기타 정의</v:String>
     <v:String x:Key="EditSkinPackScreen_ContentSubtitle">콘텐츠</v:String>
     <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">모듈</v:String>
 
@@ -165,7 +165,7 @@
     <v:String x:Key="EditSkinPackScreen_Header">스킨 팩 수정</v:String>
     <v:String x:Key="EditSkinPackScreen_AddHeader">스킨 팩 추가</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_Warning"></v:String>
+    <v:String x:Key="EditSkinPackScreen_Warning">* 언어 정의나 팩 아이콘을 수정하는 경우 저장 여부와 무관하게 되돌릴 수 없습니다!!!</v:String>
 
     <!--#endregion-->
 
@@ -188,6 +188,7 @@
 
     <v:String x:Key="NewsScreen_LauncherTabTitle">런처</v:String>
     <v:String x:Key="NewsScreen_OfficialTabTitle">공식</v:String>
+    <v:String x:Key="NewsScreen_MinecraftForumsTitle">마인크래프트 포럼</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">자바 / 던전스</v:String>
 
     <v:String x:Key="NewsScreen_SearchBar_Content">소식 제목</v:String>
@@ -225,64 +226,66 @@
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">런처 플레이 페이지에서 플레이 버튼 애니메이션 사용</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">마인크래프트 던전스 지원 활성화 (WIP)</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">패키지를 설치할 때 고급 정보 표시</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
     
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">마인크래프트: 베드락 에디션 설정</v:String>
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle"></v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">제작자 지원</v:String>
 
     <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">런처 업데이트</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton"></v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">제작자 지원</v:String>
 
 
     <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">실험적인 리디렉션 저장 활성화</v:String>
     <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">자바 에디션 런처 바로가기 숨기기</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">외부 런처 바로가기 표시</v:String>
     <v:String x:Key="GeneralSettingsScreen_BackupButton">저장된 데이터 백업</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton"></v:String>
+    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">고급 설정</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle"></v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle"></v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle"></v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle"></v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle"></v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">외장 런처 설정</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">경로</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">이름</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">매개변수</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">아이콘</v:String>
 
     <!--#endregion-->
 
     <!--#region AcountsSettingsPage -->
 
-    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle"></v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHub_Text"></v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text"></v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text"></v:String>
-    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text"></v:String>
-    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text"></v:String>
+    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">선택한 계정</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">인사이더 설정</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">일반 설정</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">이전 설정</v:String>
+    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">계정 관리</v:String>
+    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">계정 설정</v:String>
 
     <!--#endregion-->
 
     <!--#region AboutPage -->
 
-    <v:String x:Key="AboutPage_Title"></v:String>
-    <v:String x:Key="AboutPage_DevelopedBy_Text"></v:String>
-    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text"></v:String>
-    <v:String x:Key="AboutPage_SpecialThanks_Text"></v:String>
+    <v:String x:Key="AboutPage_Title">마인크래프트: 베드락 에디션 런처 정보</v:String>
+    <v:String x:Key="AboutPage_DevelopedBy_Text">개발자:</v:String>
+    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">포크한 기존 작업:</v:String>
+    <v:String x:Key="AboutPage_SpecialThanks_Text">특별 감사:</v:String>
 
-    <v:String x:Key="AboutPage_McMrArm_Text"></v:String>
-    <v:String x:Key="AboutPage_BsCommunity_Text"></v:String>
-    <v:String x:Key="AboutPage_Mojang_Text"></v:String>
-    <v:String x:Key="AboutPage_BsRepo_Text"></v:String>
-    <v:String x:Key="AboutPage_CurrentBuild"></v:String>
+    <v:String x:Key="AboutPage_McMrArm_Text">기존 Minecraft Windows 10 Version downloader 개발 (이 프로그램의 전신)</v:String>
+    <v:String x:Key="AboutPage_BsCommunity_Text">SkinView3D 개발, 런처에서 스킨을 잘 볼 수 있도록 해 주었음</v:String>
+    <v:String x:Key="AboutPage_Mojang_Text">Minecraft 개발!!!</v:String>
+    <v:String x:Key="AboutPage_BsRepo_Text">SkinView3D 레포지토리</v:String>
+    <v:String x:Key="AboutPage_CurrentBuild">현재 빌드: </v:String>
 
     <!--#endregion-->
 
     <!--#region AdvancedSettings -->
 
-    <v:String x:Key="AdvancedSettings_Title"></v:String>
-    <v:String x:Key="AdvancedSettings_LauncherOptions_Text"></v:String>
-    <v:String x:Key="AdvancedSettings_PathSubtitle_Text"></v:String>
-    <v:String x:Key="AdvancedSettings_RestartButton_Text"></v:String>
-    <v:String x:Key="AdvancedSettings_Notice_Text"></v:String>
-    <v:String x:Key="AdvancedSettings_PortableMode_Text"></v:String>
+    <v:String x:Key="AdvancedSettings_Title">고급 설정</v:String>
+    <v:String x:Key="AdvancedSettings_LauncherOptions_Text">런처 설정</v:String>
+    <v:String x:Key="AdvancedSettings_PathSubtitle_Text">저장소 경로</v:String>
+    <v:String x:Key="AdvancedSettings_RestartButton_Text">재시작</v:String>
+    <v:String x:Key="AdvancedSettings_Notice_Text">* 모든 설정에 대하여 런처가 재시작합니다</v:String>
+    <v:String x:Key="AdvancedSettings_PortableMode_Text">포터블 모드 활성화</v:String>
 
     <!--#endregion-->
 
@@ -292,23 +295,25 @@
 
     <!--#region FirstLaunch -->
 
-    <v:String x:Key="FirstLaunch_WelcomeTitle"></v:String>
-    <v:String x:Key="FirstLaunch_WelcomeSubTitle"></v:String>
-    <v:String x:Key="FirstLaunch_CreateProfileSubTitle"></v:String>
-    <v:String x:Key="FirstLaunch_AlmostThereTitle"></v:String>
-    <v:String x:Key="FirstLaunch_OneThingTitle"></v:String>
-    <v:String x:Key="FirstLaunch_OneThingSubtitle"></v:String>
-    <v:String x:Key="FirstLaunch_ChooseAccountTitle"></v:String>
-    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle"></v:String>
+    <v:String x:Key="FirstLaunch_WelcomeTitle">환영합니다!</v:String>
+    <v:String x:Key="FirstLaunch_WelcomeSubTitle">마인크래프트 베드락 런처를 이용하게 되신 것을 환영합니다!</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileSubTitle">첫 프로필을 만들어 보세요!</v:String>
+    <v:String x:Key="FirstLaunch_AlmostThereTitle">거의 다 되었습니다!</v:String>
+    <v:String x:Key="FirstLaunch_OneThingTitle">마지막으로...</v:String>
+    <v:String x:Key="FirstLaunch_OneThingSubtitle">이 항목들을 보고 마음에 드는지 확인해보세요.</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountTitle">인사이더 계정 선택</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* 베타를 확인하고 다운로드하는 데 쓰입니다. 선택한 계정의 Xbox Insider 허브를 선택하여 베타를 다운로드해야 합니다. 또 베타를 다운로드하기 위해 런처를 재시작하거나 Minecraft를 제거해야 할 수도 있습니다.</v:String>
 
-    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve"></v:String>
+    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">사용하기 전에 백업을 눌러 기존 저장 데이터를 설치하는 것이 좋습니다. 시작 프로그램이 원래 경로를 세이브 데이터의 재연결이 가능한 심볼 링크로 바꿉니다.
 
-    <v:String x:Key="FirstLaunch_InstallType_Header"></v:String>
-    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox"></v:String>
-    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox"></v:String>
-    <v:String x:Key="FirstLaunch_BackupCheckBox_Text"></v:String>
-    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext"></v:String>
-    <v:String x:Key="FirstLaunch_CloseButton"></v:String>
+ (걱정하지 마십시오. 이 과정 도중 데이터가 사리지지 않습니다. 백업을 하지 않은 채 플레이를 누르는 경우만 데이터가 사라지게 됩니다)</v:String>
+
+    <v:String x:Key="FirstLaunch_InstallType_Header">런처 데이터 저장/불러오기 경로:</v:String>
+    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">폴더 고정 (권장 사항)</v:String>
+    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">포터블/루트 폴더</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">현재 세이브 데이터 백업</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(권장 사항)</v:String>
+    <v:String x:Key="FirstLaunch_CloseButton">닫기</v:String>
     <v:String x:Key="FirstLaunch_BackButton">뒤로</v:String>
     <v:String x:Key="FirstLaunch_GoBackButton"></v:String>
     <v:String x:Key="FirstLaunch_CreateProfileText">프로필</v:String>
@@ -365,53 +370,53 @@
     <v:String x:Key="NewProfile_GoBackButton"></v:String>
     <v:String x:Key="NewProfile_CreateProfileText">프로필</v:String>
     <v:String x:Key="NewProfile_CreateProfileText_Error">이 이름은 이미 설정되어 있습니다</v:String>
-    <v:String x:Key="NewProfile_CreateProfileSubTitle"></v:String>
-    <v:String x:Key="NewProfile_CreateProfileButton"></v:String>
+    <v:String x:Key="NewProfile_CreateProfileSubTitle">새 프로필의 이름을 입력하세요!</v:String>
+    <v:String x:Key="NewProfile_CreateProfileButton">생성</v:String>
 
     <!--#endregion-->
 
     <!--#region Dialog -->
 
-    <v:String x:Key="Dialog_Item_Installation_Text"></v:String>
-    <v:String x:Key="Dialog_Item_SkinPack_Text"></v:String>
-    <v:String x:Key="Dialog_Item_Skin_Text"></v:String>
-    <v:String x:Key="Dialog_Item_Version_Text"></v:String>
-    <v:String x:Key="Dialog_Item_Profile_Text"></v:String>
+    <v:String x:Key="Dialog_Item_Installation_Text">설치</v:String>
+    <v:String x:Key="Dialog_Item_SkinPack_Text">스킨 팩</v:String>
+    <v:String x:Key="Dialog_Item_Skin_Text">스킨</v:String>
+    <v:String x:Key="Dialog_Item_Version_Text">버전</v:String>
+    <v:String x:Key="Dialog_Item_Profile_Text">프로필</v:String>
 
-    <v:String x:Key="Dialog_DeleteItem_Title"></v:String>
-    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve"></v:String>
+    <v:String x:Key="Dialog_DeleteItem_Title">{0} 영구 삭제</v:String>
+    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">&quot;{1}&quot;을(를) 지우시겠습니까? {0}(이)가 영원히 (아주 오래) 사라지게 됩니다!</v:String>
 
-    <v:String x:Key="Dialog_KillGame_Title"></v:String>
-    <v:String x:Key="Dialog_KillGame_Text"></v:String>
+    <v:String x:Key="Dialog_KillGame_Title">게임 강제 종료</v:String>
+    <v:String x:Key="Dialog_KillGame_Text">이 작업은 위험합니다. 더 이상 아무것도 할 수 없는 경우에만 쓰는 것을 권장드립니다. 게임을 강제 종료하시겠습니까?</v:String>
 
-    <v:String x:Key="Dialog_CloseGame_Title"></v:String>
-    <v:String x:Key="Dialog_CloseGame_Text"></v:String>
+    <v:String x:Key="Dialog_CloseGame_Title">게임이 여전히 구동 중입니다</v:String>
+    <v:String x:Key="Dialog_CloseGame_Text">정말 강제 종료하시겠습니까? (변경 사항이 저장되지 않습니다. 더 이상 아무것도 할 수 없는 경우에만 쓰는 것을 권장드립니다. 게임을 일반적인 방법으로 종료하여 주세요)</v:String>
 
-    <v:String x:Key="DialogBtn_YesToAll_Text"></v:String>
-    <v:String x:Key="DialogBtn_NoToAll_Text"></v:String>
-    <v:String x:Key="DialogBtn_Yes_Text"></v:String>
-    <v:String x:Key="DialogBtn_No_Text"></v:String>
+    <v:String x:Key="DialogBtn_YesToAll_Text">모두 예</v:String>
+    <v:String x:Key="DialogBtn_NoToAll_Text">모두 아니오</v:String>
+    <v:String x:Key="DialogBtn_Yes_Text">예</v:String>
+    <v:String x:Key="DialogBtn_No_Text">아니오</v:String>
 
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle"></v:String>
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve"></v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">일치하는 결과가 없습니다</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">검색어와 일치하는 콘텐츠를 찾지 못했습니다. 카테고리 필터가 꺼져 있는 경우, 다시 켠 뒤 검색해 보세요</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Loading_Title"></v:String>
-    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve"></v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title">불러오는 중…</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">잠시 기다려 주세요!</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Error_Title"></v:String>
-    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve"></v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Title">오류</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
 
-    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle"></v:String>
-    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve"></v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">결과 없음</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">검색어와 일치하는 항목이 없습니다</v:String>
 
     <!--#endregion-->
 
     <!--#region Internal -->
 
-    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text"></v:String>
-    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text"></v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">해당 경로에 {0}이(가) 이미 있습니다.\n바꾸시겠습니까? 아니면 기존 파일이 사라집니다.</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">{0}은(는) 경로가 아닙니다. 삭제하시겠습니까? 아니면 기존 경로에서 불러온 데이터가 사라집니다.</v:String>
 
-    <v:String x:Key="GameManager_RecoveringDataIssue_Title"></v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_Title">현재 세이브 데이터를 설치 파일로 변환</v:String>
 
     <!--#endregion-->
 
@@ -422,62 +427,62 @@
 
     <!--#region UI -->
 
-    <v:String x:Key="Installer_Title"></v:String>
+    <v:String x:Key="Installer_Title">마인크래프트 베드락 런처 설치 마법사</v:String>
 
-    <v:String x:Key="Installer_Back_Text"></v:String>
-    <v:String x:Key="Installer_Next_Text"></v:String>
-    <v:String x:Key="Installer_Cancel_Text"></v:String>
-    <v:String x:Key="Installer_Finish_Text"></v:String>
+    <v:String x:Key="Installer_Back_Text">이전</v:String>
+    <v:String x:Key="Installer_Next_Text">다음</v:String>
+    <v:String x:Key="Installer_Cancel_Text">취소</v:String>
+    <v:String x:Key="Installer_Finish_Text">마침</v:String>
 
-    <v:String x:Key="Installer_WelcomePage_Title"></v:String>
-    <v:String x:Key="Installer_WelcomePage_Info_Text"></v:String>
-    <v:String x:Key="Installer_WelcomePage_Info2_Text"></v:String>
-    <v:String x:Key="Installer_WelcomePage_Info3_Text"></v:String>
+    <v:String x:Key="Installer_WelcomePage_Title">마인크래프트 베드락 런처 설치 마법사에 오신것을 환영합니다</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info_Text">이것은 마인크래프트 베드락 런처를 당신의 컴퓨터에 설치할 것입니다.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info2_Text">계속하기 전 다른 모든 애플리케이션을 종료하는걸 추천드립니다.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info3_Text">&quot;다음&quot;을 눌러 계속하거나, &quot;취소&quot;를 눌러 설치를 종료하세요.</v:String>
 
-    <v:String x:Key="Installer_LicenseAgreement_Title"></v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Info_Text"></v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Info2_Text"></v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Accept_Text"></v:String>
-    <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text"></v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Title">사용권 계약</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info_Text">다음의 사용권 계약을 읽어주세요. 당신은 이 조건에 동의해야 합니다.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">설치를 계속하기 전 동의해주세요.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">사용권을 동의합니다.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">사용권을 동의하지 않습니다.</v:String>
 
-    <v:String x:Key="Installer_InstallType_Title"></v:String>
-    <v:String x:Key="Installer_InstallType_Info_Text"></v:String>
+    <v:String x:Key="Installer_InstallType_Title">설치 유형 선택</v:String>
+    <v:String x:Key="Installer_InstallType_Info_Text">다운로드하고 싶은 런처의 버전을 선택하세요</v:String>
 
-    <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text"></v:String>
-    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text"></v:String>
+    <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">베타 버전</v:String>
+    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">정식 버전</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_Title"></v:String>
-    <v:String x:Key="Installer_InstallLocation_Info_Text"></v:String>
-    <v:String x:Key="Installer_InstallLocation_Info2_Text"></v:String>
+    <v:String x:Key="Installer_InstallLocation_Title">설치 경로 선택</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info_Text">설치 프로그램이 마인크래프트 베드락 런처를 아래 폴더에 설치할 것입니다. 다른 폴더에 설치하려면,</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info2_Text">'탐색'을 누르고 다른 폴더를 선택하십시오.</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header"></v:String>
-    <v:String x:Key="Installer_InstallLocation_Browse_Text"></v:String>
+    <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">대상 폴더</v:String>
+    <v:String x:Key="Installer_InstallLocation_Browse_Text">탐색</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text"></v:String>
-    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text"></v:String>
-    <v:String x:Key="Installer_InstallLocation_RegisterApp_Text"></v:String>
+    <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">바탕화면에 아이콘 생성</v:String>
+    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">시작 메뉴에 추가</v:String>
+    <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">프로그램 등록</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text"></v:String>
+    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">종료 시 프로그램 시작</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_FilesInUse"></v:String>
+    <v:String x:Key="Installer_InstallationProgress_FilesInUse">아래 프로그램이 파일 중 일부를 사용하고 있습니다:</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_Title"></v:String>
-    <v:String x:Key="Installer_InstallationProgress_Info_Text"></v:String>
+    <v:String x:Key="Installer_InstallationProgress_Title">설치 중</v:String>
+    <v:String x:Key="Installer_InstallationProgress_Info_Text">설치 프로그램이 마인크래프트 베드락 런처를 설치할 때까지 기다려주십시오.</v:String>
 
 
     <!--#endregion-->
 
-    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text"></v:String>
-    <v:String x:Key="Installer_Dialog_MovingFileFailed_Text"></v:String>
-    <v:String x:Key="Installer_Dialog_FileLocked_Text"></v:String>
-    <v:String x:Key="Installer_Dialog_TryAgain_Text"></v:String>
-    <v:String x:Key="Installer_Dialog_ErrorOccured_Text"></v:String>
+    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">경로를 이동할 수 없습니다</v:String>
+    <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">파일을 이동할 수 없습니다</v:String>
+    <v:String x:Key="Installer_Dialog_FileLocked_Text">파일이 사용 중입니다</v:String>
+    <v:String x:Key="Installer_Dialog_TryAgain_Text">다시 시도하시겠습니까?</v:String>
+    <v:String x:Key="Installer_Dialog_ErrorOccured_Text">오류가 발생했습니다.</v:String>
 
     <!--#region ProgressBar -->
 
-    <v:String x:Key="Installer_ProgressBar_Downloading"></v:String>
-    <v:String x:Key="Installer_ProgressBar_Finalizing"></v:String>
-    <v:String x:Key="Installer_ProgressBar_Initalizing"></v:String>
+    <v:String x:Key="Installer_ProgressBar_Downloading">다운로드하는 중...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Finalizing">마무리하는 중...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Initalizing">초기화하는 중...</v:String>
 
 
     <!--#endregion-->
@@ -488,75 +493,75 @@
 
     <!--#region VersionEntries -->
 
-    <v:String x:Key="VersionEntries_LatestSnapshot"></v:String>
-    <v:String x:Key="VersionEntries_LatestRelease"></v:String>
-    <v:String x:Key="VersionEntries_UnnamedInstallation"></v:String>
+    <v:String x:Key="VersionEntries_LatestSnapshot">최근 베타</v:String>
+    <v:String x:Key="VersionEntries_LatestRelease">최근 정식</v:String>
+    <v:String x:Key="VersionEntries_UnnamedInstallation">&lt;이름 없는 설치 설정&gt;</v:String>
 
     <!--#endregion-->
 
     <!--#region ThemeEntries -->
 
-    <v:String x:Key="ThemeEntries_LatestUpdate"></v:String>
-    <v:String x:Key="ThemeEntries_Original"></v:String>
+    <v:String x:Key="ThemeEntries_LatestUpdate">최근 업데이트</v:String>
+    <v:String x:Key="ThemeEntries_Original">원본</v:String>
 
-    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update"></v:String>
-    <v:String x:Key="ThemeEntries_NetherUpdate"></v:String>
-    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate"></v:String>
-    <v:String x:Key="ThemeEntries_VillagePillageUpdate"></v:String>
-    <v:String x:Key="ThemeEntries_UpdateAquatic"></v:String>
-    <v:String x:Key="ThemeEntries_TechnicallyUpdated"></v:String>
-    <v:String x:Key="ThemeEntries_WorldOfColorUpdate"></v:String>
-    <v:String x:Key="ThemeEntries_ExplorationUpdate"></v:String>
-    <v:String x:Key="ThemeEntries_CombatUpdate"></v:String>
-    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate"></v:String>
-    <v:String x:Key="ThemeEntries_PocketEditionRelease"></v:String>
-    <v:String x:Key="ThemeEntries_BedrockStandard"></v:String>
-    <v:String x:Key="ThemeEntries_BedrockMaster"></v:String>
-    <v:String x:Key="ThemeEntries_EarlyLegacyConsole"></v:String>
-    <v:String x:Key="ThemeEntries_MidLegacyConsole"></v:String>
-    <v:String x:Key="ThemeEntries_LateLegacyConsole"></v:String>
-    <v:String x:Key="ThemeEntries_IndieDays"></v:String>
-    <v:String x:Key="ThemeEntries_Dungeons"></v:String>
+    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">동굴과 절벽 (파트 1)</v:String>
+    <v:String x:Key="ThemeEntries_NetherUpdate">네더 업데이트</v:String>
+    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">윙윙 꿀벌 업데이트</v:String>
+    <v:String x:Key="ThemeEntries_VillagePillageUpdate">마을과 약탈 업데이트</v:String>
+    <v:String x:Key="ThemeEntries_UpdateAquatic">수생 업데이트</v:String>
+    <v:String x:Key="ThemeEntries_TechnicallyUpdated">테크니컬 업데이트 [Java]</v:String>
+    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">색의 세계 업데이트 [Java]</v:String>
+    <v:String x:Key="ThemeEntries_ExplorationUpdate">탐험 업데이트 [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CombatUpdate">전투 업데이트 [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">고양이와 판다 [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_PocketEditionRelease">정식 출시 [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_BedrockStandard">베드락 에디션 스탠다드</v:String>
+    <v:String x:Key="ThemeEntries_BedrockMaster">베드락 에디션 마스터</v:String>
+    <v:String x:Key="ThemeEntries_EarlyLegacyConsole">레거시 콘솔 원시 시대</v:String>
+    <v:String x:Key="ThemeEntries_MidLegacyConsole">레거시 콘솔 중기 시대</v:String>
+    <v:String x:Key="ThemeEntries_LateLegacyConsole">레거시 콘솔 후기 시대</v:String>
+    <v:String x:Key="ThemeEntries_IndieDays">인디의 날</v:String>
+    <v:String x:Key="ThemeEntries_Dungeons">마인크래프트 던전스</v:String>
 
 
     <!--#endregion-->
 
     <!--#region GeneralText -->
 
-    <v:String x:Key="GeneralText_Delete"></v:String>
-    <v:String x:Key="GeneralText_Edit"></v:String>
-    <v:String x:Key="GeneralText_Duplicate"></v:String>
-    <v:String x:Key="GeneralText_Remove"></v:String>
-    <v:String x:Key="GeneralText_Cancel"></v:String>
-    <v:String x:Key="GeneralText_Update"></v:String>
-    <v:String x:Key="GeneralText_Add"></v:String>
-    <v:String x:Key="GeneralText_Save"></v:String>
-    <v:String x:Key="GeneralText_Refresh"></v:String>
-    <v:String x:Key="GeneralText_Backup"></v:String>
-    <v:String x:Key="GeneralText_Versions"></v:String>
-    <v:String x:Key="GeneralText_Browse"></v:String>
-    <v:String x:Key="GeneralText_Reset"></v:String>
-    <v:String x:Key="GeneralText_Yes"></v:String>
-    <v:String x:Key="GeneralText_No"></v:String>
-    <v:String x:Key="GeneralText_Releases"></v:String>
-    <v:String x:Key="GeneralText_Betas"></v:String>
-    <v:String x:Key="GeneralText_Export"></v:String>
-    <v:String x:Key="GeneralText_Repair"></v:String>
+    <v:String x:Key="GeneralText_Delete">삭제</v:String>
+    <v:String x:Key="GeneralText_Edit">수정</v:String>
+    <v:String x:Key="GeneralText_Duplicate">복제</v:String>
+    <v:String x:Key="GeneralText_Remove">삭제</v:String>
+    <v:String x:Key="GeneralText_Cancel">취소</v:String>
+    <v:String x:Key="GeneralText_Update">업데이트</v:String>
+    <v:String x:Key="GeneralText_Add">추가</v:String>
+    <v:String x:Key="GeneralText_Save">저장</v:String>
+    <v:String x:Key="GeneralText_Refresh">새로고침</v:String>
+    <v:String x:Key="GeneralText_Backup">백업</v:String>
+    <v:String x:Key="GeneralText_Versions">버전</v:String>
+    <v:String x:Key="GeneralText_Browse">탐색</v:String>
+    <v:String x:Key="GeneralText_Reset">초기화</v:String>
+    <v:String x:Key="GeneralText_Yes">네</v:String>
+    <v:String x:Key="GeneralText_No">아니오</v:String>
+    <v:String x:Key="GeneralText_Releases">정식</v:String>
+    <v:String x:Key="GeneralText_Betas">베타</v:String>
+    <v:String x:Key="GeneralText_Export">내보내기</v:String>
+    <v:String x:Key="GeneralText_Repair">복원</v:String>
 
-    <v:String x:Key="GeneralText_Twitter"></v:String>
-    <v:String x:Key="GeneralText_GitHub"></v:String>
-    <v:String x:Key="GeneralText_Website"></v:String>
+    <v:String x:Key="GeneralText_Twitter">트위터</v:String>
+    <v:String x:Key="GeneralText_GitHub">GitHub</v:String>
+    <v:String x:Key="GeneralText_Website">웹사이트</v:String>
 
     <!--#endregion-->
 
     <!--#region GeneralSubtitles -->
 
-    <v:String x:Key="GeneralSubtitles_Versions"></v:String>
-    <v:String x:Key="GeneralSubtitles_Browse"></v:String>
-    <v:String x:Key="GeneralSubtitles_Reset"></v:String>
-    <v:String x:Key="GeneralSubtitles_Categories"></v:String>
-    <v:String x:Key="GeneralSubtitles_Search"></v:String>
-    <v:String x:Key="GeneralSubtitles_SortBy"></v:String>
+    <v:String x:Key="GeneralSubtitles_Versions">버전</v:String>
+    <v:String x:Key="GeneralSubtitles_Browse">탐색</v:String>
+    <v:String x:Key="GeneralSubtitles_Reset">초기화</v:String>
+    <v:String x:Key="GeneralSubtitles_Categories">카테고리</v:String>
+    <v:String x:Key="GeneralSubtitles_Search">검색</v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy">정렬 기준</v:String>
 
     <!--#endregion-->
 
