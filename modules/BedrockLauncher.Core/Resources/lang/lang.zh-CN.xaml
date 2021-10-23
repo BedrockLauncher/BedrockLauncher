@@ -226,8 +226,8 @@
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">启动器播放页面上的动画播放按钮</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">启用 Minecraft Dungeons 支持 (WIP)</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">安装软件包时显示高级信息</v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">在启动器中使用更精致的页面转换动画</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">（需要启用启动器页面动画转换）</v:String>
     
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDITION 启动器设置</v:String>
