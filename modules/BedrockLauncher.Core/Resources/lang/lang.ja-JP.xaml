@@ -226,8 +226,8 @@
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">ランチャーの再生ページにある再生ボタンをアニメーション化する</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Minecraftダンジョンサポートを有効にする (WIP)</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">パッケージをインストールするときに詳細情報を表示する</v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton"></v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2"></v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
     
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT：BEDROCK EDITIONの設定</v:String>
