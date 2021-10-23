@@ -6,8 +6,8 @@
 
     <!--#region MainWindow -->
 
-    <v:String x:Key="MainWindow_Title">Minecraft Bedrock Launcher</v:String>
-    <v:String x:Key="MainWindow_Disclaimer">未经Mojang许可</v:String>
+    <v:String x:Key="MainWindow_Title">Minecraft 基岩版启动器</v:String>
+    <v:String x:Key="MainWindow_Disclaimer">未经 Mojang 同意或批准</v:String>
 
     <!--#endregion-->
     
@@ -15,7 +15,7 @@
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
     <v:String x:Key="CommunityPage_ComingSoon">即将到来！</v:String>
-    <v:String x:Key="CommunityPage_CheckBackLater">稍后在此查看是否有支持者！</v:String>
+    <v:String x:Key="CommunityPage_CheckBackLater">稍后再回来查看是否什么超棒的东西！</v:String>
 
     <!-- #endregion -->
 
@@ -29,28 +29,28 @@
     <v:String x:Key="ToolbarButtons_SwitchEdition_Text">切换到</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT：</v:String>
     <v:String x:Key="ToolbarButtons_CommunityButton_Text">社区</v:String>
-    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">配置文件</v:String>
+    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">配置</v:String>
     <v:String x:Key="ToolbarButtons_SettingsButton_Text">设置</v:String>
 
     <!--#endregion-->
 
     <!--#region UpdateButton-->
 
-    <v:String x:Key="UpdateButton_NewUpdate_Text">全新更新！</v:String>
-    <v:String x:Key="UpdateButton_Download_Text">点击立即下载！</v:String>
+    <v:String x:Key="UpdateButton_NewUpdate_Text">新更新！</v:String>
+    <v:String x:Key="UpdateButton_Download_Text">点击下载！</v:String>
 
     <!--#endregion-->
 
     <!--#region ProgressBar -->
 
-    <v:String x:Key="ProgressBar_Downloading">正在下载</v:String>
+    <v:String x:Key="ProgressBar_Downloading">下载中</v:String>
     <v:String x:Key="ProgressBar_Installing">安装中</v:String>
-    <v:String x:Key="ProgressBar_Launching">正在启动</v:String>
-    <v:String x:Key="ProgressBar_Extracting">正在解压</v:String>
-    <v:String x:Key="ProgressBar_Uninstalling">正在卸载</v:String>
+    <v:String x:Key="ProgressBar_Launching">启动中</v:String>
+    <v:String x:Key="ProgressBar_Extracting">解压中</v:String>
+    <v:String x:Key="ProgressBar_Uninstalling">卸载中</v:String>
     <v:String x:Key="ProgressBar_RegisteringPackage">正在注册包</v:String>
     <v:String x:Key="ProgressBar_RemovingPackage">正在取消注册包</v:String>
-    <v:String x:Key="ProgressBar_BackingUp">正在备份数据</v:String>
+    <v:String x:Key="ProgressBar_BackingUp">备份数据中</v:String>
 
     <!--#endregion-->
 
@@ -70,7 +70,7 @@
 
     <!--#region GameTab -->
 
-    <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
+    <v:String x:Key="GameTab_Title">MINECRAFT：基岩版</v:String>
     <v:String x:Key="GameTab_PlayButton_Text">开始游戏</v:String>
     <v:String x:Key="GameTab_PlayButton_Kill_Text">击杀</v:String>
     <v:String x:Key="GameTab_InstallationsButton_Text">安装</v:String>
@@ -84,7 +84,7 @@
     <v:String x:Key="InstallationsPage_AddButton">新建安装</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">开始游戏</v:String>
 
-    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">最后一次游玩</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">上次游玩</v:String>
     <v:String x:Key="InstallationsPage_SortBy_Name">名称</v:String>
 
     <v:String x:Key="InstallationsPage_SearchBar_Content">安装名称</v:String>
@@ -100,7 +100,7 @@
     <v:String x:Key="EditInstallationScreen_AltCreateButton">保存</v:String>
 
     <v:String x:Key="EditInstallationScreen_LatestSnapshot">最新Beta</v:String>
-    <v:String x:Key="EditInstallationScreen_LatestRelease">最新版本</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestRelease">最新发布</v:String>
 
     <v:String x:Key="EditInstallationScreen_NameSubtitle">名称</v:String>
     <v:String x:Key="EditInstallationScreen_VersionSubtitle">版本</v:String>
@@ -188,6 +188,7 @@
 
     <v:String x:Key="NewsScreen_LauncherTabTitle">启动器</v:String>
     <v:String x:Key="NewsScreen_OfficialTabTitle">官方</v:String>
+    <v:String x:Key="NewsScreen_MinecraftForumsTitle">Minecraft 论坛</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
 
     <v:String x:Key="NewsScreen_SearchBar_Content">新闻标题</v:String>
@@ -225,6 +226,8 @@
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">启动器播放页面上的动画播放按钮</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">启用 Minecraft Dungeons 支持 (WIP)</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">安装软件包时显示高级信息</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
     
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDITION 启动器设置</v:String>
