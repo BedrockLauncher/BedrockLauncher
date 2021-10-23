@@ -84,10 +84,10 @@
     <v:String x:Key="InstallationsPage_AddButton">新しいインストール</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">プレイ</v:String>
 
-    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed"></v:String>
-    <v:String x:Key="InstallationsPage_SortBy_Name"></v:String>
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">最後にプレイした</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name">名前</v:String>
 
-    <v:String x:Key="InstallationsPage_SearchBar_Content"></v:String>
+    <v:String x:Key="InstallationsPage_SearchBar_Content">インストール名</v:String>
 
     <!--#endregion-->
 
@@ -188,6 +188,7 @@
 
     <v:String x:Key="NewsScreen_LauncherTabTitle">ランチャー</v:String>
     <v:String x:Key="NewsScreen_OfficialTabTitle">公式</v:String>
+    <v:String x:Key="NewsScreen_MinecraftForumsTitle">Minecraftフォーラム</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
 
     <v:String x:Key="NewsScreen_SearchBar_Content">ニュースタイトル</v:String>
@@ -225,6 +226,8 @@
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">ランチャーの再生ページにある再生ボタンをアニメーション化する</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Minecraftダンジョンサポートを有効にする (WIP)</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">パッケージをインストールするときに詳細情報を表示する</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
     
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT：BEDROCK EDITIONの設定</v:String>
@@ -398,11 +401,11 @@
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">一致する結果はありません</v:String>
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">検索に一致するコンテンツのニュースは見つかりませんでした。 カテゴリフィルターがある場合オフにした後、オンに戻してもう一度検索してみてください</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Loading_Title"></v:String>
-    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve"></v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title">読み込んでいます...</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">お待ちください！</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Error_Title"></v:String>
-    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve"></v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Title">エラー</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">(｡•́︿•̀｡)</v:String>
 
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">検索結果はありません</v:String>
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">検索に一致するアイテムが見つかりませんでした</v:String>
@@ -559,7 +562,7 @@
     <v:String x:Key="GeneralSubtitles_Reset">リセット</v:String>
     <v:String x:Key="GeneralSubtitles_Categories">カテゴリ</v:String>
     <v:String x:Key="GeneralSubtitles_Search">検索</v:String>
-    <v:String x:Key="GeneralSubtitles_SortBy"></v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy">並び替え：</v:String>
 
     <!--#endregion-->
 
