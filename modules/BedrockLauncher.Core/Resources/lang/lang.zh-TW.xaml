@@ -188,6 +188,7 @@
 
     <v:String x:Key="NewsScreen_LauncherTabTitle">啟動器</v:String>
     <v:String x:Key="NewsScreen_OfficialTabTitle">官方</v:String>
+    <v:String x:Key="NewsScreen_MinecraftForumsTitle">Minecraft 論壇</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
 
     <v:String x:Key="NewsScreen_SearchBar_Content">新聞標題</v:String>
@@ -225,6 +226,8 @@
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">啟動器中的「遊玩」按鈕動畫</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">啟用 Minecraft Dungeons 支持 (WIP)</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">安裝軟件包時顯示進階信息</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
     
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDITION 設定</v:String>
