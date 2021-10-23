@@ -14,8 +14,8 @@
     <!-- #region CommunityPage -->
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
-    <v:String x:Key="CommunityPage_ComingSoon">Muy pronto!</v:String>
-    <v:String x:Key="CommunityPage_CheckBackLater">Regresa aquí después para also SUPER DUPER INCREÍBLE!</v:String>
+    <v:String x:Key="CommunityPage_ComingSoon">¡Muy pronto!</v:String>
+    <v:String x:Key="CommunityPage_CheckBackLater">Regresa después para ver algo SUPER DUPER INCREÍBLE!</v:String>
 
     <!-- #endregion -->
 
@@ -36,8 +36,8 @@
 
     <!--#region UpdateButton-->
 
-    <v:String x:Key="UpdateButton_NewUpdate_Text">Nueva actualización!</v:String>
-    <v:String x:Key="UpdateButton_Download_Text">Click para descargar!</v:String>
+    <v:String x:Key="UpdateButton_NewUpdate_Text">¡Nueva actualización!</v:String>
+    <v:String x:Key="UpdateButton_Download_Text">¡Click para descargar!</v:String>
 
     <!--#endregion-->
 
@@ -49,7 +49,7 @@
     <v:String x:Key="ProgressBar_Extracting">Extrayendo</v:String>
     <v:String x:Key="ProgressBar_Uninstalling">Desinstalando</v:String>
     <v:String x:Key="ProgressBar_RegisteringPackage">Registrando paquete</v:String>
-    <v:String x:Key="ProgressBar_RemovingPackage">Desregistrando paquete</v:String>
+    <v:String x:Key="ProgressBar_RemovingPackage">Des registrando paquete</v:String>
     <v:String x:Key="ProgressBar_BackingUp">Guardando datos</v:String>
 
     <!--#endregion-->
@@ -72,7 +72,7 @@
 
     <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
     <v:String x:Key="GameTab_PlayButton_Text">Jugar</v:String>
-    <v:String x:Key="GameTab_PlayButton_Kill_Text">Matar</v:String>
+    <v:String x:Key="GameTab_PlayButton_Kill_Text">Cerrar</v:String>
     <v:String x:Key="GameTab_InstallationsButton_Text">Instalaciones</v:String>
     <v:String x:Key="GameTab_SkinsButton_Text">Skins</v:String>
     <v:String x:Key="GameTab_PatchNotesButton_Text">Notas de versiones</v:String>
@@ -84,10 +84,10 @@
     <v:String x:Key="InstallationsPage_AddButton">Nueva instalación</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">Jugar</v:String>
 
-    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed"></v:String>
-    <v:String x:Key="InstallationsPage_SortBy_Name"></v:String>
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">Jugado recientemente</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name">Nombre</v:String>
 
-    <v:String x:Key="InstallationsPage_SearchBar_Content"></v:String>
+    <v:String x:Key="InstallationsPage_SearchBar_Content">Nombre de la Instalación</v:String>
 
     <!--#endregion-->
 
@@ -188,6 +188,7 @@
 
     <v:String x:Key="NewsScreen_LauncherTabTitle">Launcher</v:String>
     <v:String x:Key="NewsScreen_OfficialTabTitle">Oficial</v:String>
+    <v:String x:Key="NewsScreen_MinecraftForumsTitle">Minecraft Foros</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
 
     <v:String x:Key="NewsScreen_SearchBar_Content">Título de noticias</v:String>
@@ -225,6 +226,8 @@
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animar botón de jugar on las páginas de jugar del Launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Activar soporte de Minecraft Dungeons</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Mostrar información avanzada al instalar paquetes</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
     
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">OPCIONES DE MINECRAFT: BEDROCK EDITION</v:String>
@@ -400,11 +403,11 @@ Esto {0} será perdido para siempre! (Es muchísimo tiempo!)</v:String>
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">No pudimos encontrar noticias sobre ningún contenido que coincida con tu búsqueda. Si tienes filtros de categoría 
 desactivados, intenta volver a activar y vuelve a buscar</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Loading_Title"></v:String>
-    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve"></v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Cargando...</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">¡Espere por favor!</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Error_Title"></v:String>
-    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve"></v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Title">Error</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
 
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">No hay resultados</v:String>
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">No se encontraron elementos que coincidan con tu búsqueda</v:String>
@@ -561,7 +564,7 @@ desactivados, intenta volver a activar y vuelve a buscar</v:String>
     <v:String x:Key="GeneralSubtitles_Reset">REESTABLECER</v:String>
     <v:String x:Key="GeneralSubtitles_Categories">CATEGORÍAS</v:String>
     <v:String x:Key="GeneralSubtitles_Search">BUSCAR</v:String>
-    <v:String x:Key="GeneralSubtitles_SortBy"></v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy">ORDENADO POR</v:String>
 
     <!--#endregion-->
 
