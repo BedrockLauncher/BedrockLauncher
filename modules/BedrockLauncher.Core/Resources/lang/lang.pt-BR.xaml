@@ -84,10 +84,10 @@
     <v:String x:Key="InstallationsPage_AddButton">Nova instalação</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">Jogar</v:String>
 
-    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed"></v:String>
-    <v:String x:Key="InstallationsPage_SortBy_Name"></v:String>
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">Ultima vez Jogado</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name">Nome</v:String>
 
-    <v:String x:Key="InstallationsPage_SearchBar_Content"></v:String>
+    <v:String x:Key="InstallationsPage_SearchBar_Content">Nome da Instalação</v:String>
 
     <!--#endregion-->
 
@@ -99,7 +99,7 @@
     <v:String x:Key="EditInstallationScreen_CreateButton">Criar</v:String>
     <v:String x:Key="EditInstallationScreen_AltCreateButton">Salvar</v:String>
 
-    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Versão beta mais recente</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Beta mais recente</v:String>
     <v:String x:Key="EditInstallationScreen_LatestRelease">Versão mais recente</v:String>
 
     <v:String x:Key="EditInstallationScreen_NameSubtitle">NOME</v:String>
@@ -188,6 +188,7 @@
 
     <v:String x:Key="NewsScreen_LauncherTabTitle">Launcher</v:String>
     <v:String x:Key="NewsScreen_OfficialTabTitle">Oficial</v:String>
+    <v:String x:Key="NewsScreen_MinecraftForumsTitle">Forum do Minecraft</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
 
     <v:String x:Key="NewsScreen_SearchBar_Content">Notícias</v:String>
@@ -225,6 +226,8 @@
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animar o botão Jogar nas páginas de Play no Launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Ativar suporte do Minecraft Dungeons (WIP)</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Exibir informações avançadas ao instalar pacotes</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
     
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">DEFINIÇÕES DO MINECRAFT: BEDROCK EDITION</v:String>
@@ -333,7 +336,7 @@
 
     <!--#region Errors -->
 
-    <v:String x:Key="Error_AuthenticationFailed_Title">A autenticação falhou</v:String>
+    <v:String x:Key="Error_AuthenticationFailed_Title">Falha na Autenticação</v:String>
     <v:String x:Key="Error_AuthenticationFailed">Ocorreu um erro ao autenticar. Por favor certifique-se de que a sua conta está inscrita no programa de betas.</v:String>
 
     <v:String x:Key="Error_CantFindExternalLauncher_Title">Não foi possível trocar de launcher</v:String>
@@ -398,11 +401,11 @@
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">Sem resultados correspondentes</v:String>
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">Não conseguimos encontrar conteúdo correspondente a sua busca. Se tiver filtros de categorias destivados, tente ativá-los e pesquise novamente</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Loading_Title"></v:String>
-    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve"></v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Carregando...</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Por-favor, espere!</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Error_Title"></v:String>
-    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve"></v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Title">Erro</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
 
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Sem resultados</v:String>
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Nenhum item encontrado correspondente a sua busca</v:String>
@@ -518,7 +521,7 @@
     <v:String x:Key="ThemeEntries_EarlyLegacyConsole">Legacy Console Original</v:String>
     <v:String x:Key="ThemeEntries_MidLegacyConsole">Legacy Console Intermediário</v:String>
     <v:String x:Key="ThemeEntries_LateLegacyConsole">Último Legacy Console</v:String>
-    <v:String x:Key="ThemeEntries_IndieDays"></v:String>
+    <v:String x:Key="ThemeEntries_IndieDays">Velhos Tempos</v:String>
     <v:String x:Key="ThemeEntries_Dungeons">Minecraft Dungeons</v:String>
 
 
@@ -559,7 +562,7 @@
     <v:String x:Key="GeneralSubtitles_Reset">RESET</v:String>
     <v:String x:Key="GeneralSubtitles_Categories">Categorias</v:String>
     <v:String x:Key="GeneralSubtitles_Search">Buscar</v:String>
-    <v:String x:Key="GeneralSubtitles_SortBy"></v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy">ORDENAR POR</v:String>
 
     <!--#endregion-->
 
