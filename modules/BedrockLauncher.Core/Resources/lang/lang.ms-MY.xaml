@@ -84,10 +84,10 @@
     <v:String x:Key="InstallationsPage_AddButton">Pemasangan Baru</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">Main</v:String>
 
-    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed"></v:String>
-    <v:String x:Key="InstallationsPage_SortBy_Name"></v:String>
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">Terakhir Dimainkan</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name">Nama</v:String>
 
-    <v:String x:Key="InstallationsPage_SearchBar_Content"></v:String>
+    <v:String x:Key="InstallationsPage_SearchBar_Content">Nama pemasangan</v:String>
 
     <!--#endregion-->
 
@@ -188,6 +188,7 @@
 
     <v:String x:Key="NewsScreen_LauncherTabTitle">Pelancar</v:String>
     <v:String x:Key="NewsScreen_OfficialTabTitle">Rasmi</v:String>
+    <v:String x:Key="NewsScreen_MinecraftForumsTitle">Forum Minecraft</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
 
     <v:String x:Key="NewsScreen_SearchBar_Content">Tajuk berita</v:String>
@@ -225,6 +226,8 @@
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animasikan butang main di halaman Main di dalam Pelayan</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Aktifkan Sokongan Minecraft Dungeons (WIP)</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Tunjukkan informasi lanjut apabila memuat turun pakej</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
     
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">TETAPAN MINECRAFT: BEDROCK EDITION</v:String>
@@ -235,14 +238,14 @@
     <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Sokong Pencipta</v:String>
 
 
-    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection"></v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Dayakan pengalihan simpanan eksperimental</v:String>
     <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Sembunyikan shortcut ke pelancar Java Edition</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut"></v:String>
-    <v:String x:Key="GeneralSettingsScreen_BackupButton"></v:String>
-    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton"></v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Tunjukkan shortcut pelancar eksternal</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BackupButton">Sandarkan Simpanan Data</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Tetapan Terperinci</v:String>
 
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">TETAPAN PELANCAR EKSTERNAL</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle"></v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">LALUAN</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">NAMA</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">ARGUMEN</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">IKON</v:String>
@@ -297,17 +300,19 @@
     <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Cipta profil pertama anda!</v:String>
     <v:String x:Key="FirstLaunch_AlmostThereTitle">Hampir selesai!</v:String>
     <v:String x:Key="FirstLaunch_OneThingTitle">Satu perkara lagi...</v:String>
-    <v:String x:Key="FirstLaunch_OneThingSubtitle"></v:String>
+    <v:String x:Key="FirstLaunch_OneThingSubtitle">Cukup periksa ini untuk memastikan mereka mengikut keinginan anda.</v:String>
     <v:String x:Key="FirstLaunch_ChooseAccountTitle">Pilih sebuah Akaun Insider</v:String>
-    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle"></v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* Ini akan digunakan untuk mengesahkan dan memuat turun beta. Anda mesti menyertai beta didalam Xbox Insider Hub untuk akaun yang dipilih untuk memuat turun beta. Anda juga mungkin perlu memulakan semula pelancar atau menyahpasang Minecraft agar muat turun beta berfungsi.</v:String>
 
-    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve"></v:String>
+    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Sebelum menggunakan, sangat disarankan agar anda menekan sandaran untuk membuat pemasangan data simpan yang ada kerana pelancar akan menggantikan direktori asal dengan pautan simbolik yang membolehkan kami mengarahkan semula penyimpanan data.
 
-    <v:String x:Key="FirstLaunch_InstallType_Header"></v:String>
-    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox"></v:String>
-    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox"></v:String>
-    <v:String x:Key="FirstLaunch_BackupCheckBox_Text"></v:String>
-    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext"></v:String>
+ (Jangan bimbang, anda tidak akan kehilangan data dengan melakukan ini, anda hanya akan kehilangan data jika anda menekan main dan tidak menyandarkan pemasangan anda)</v:String>
+
+    <v:String x:Key="FirstLaunch_InstallType_Header">Simpan/Muat Data Pelancar Dari:</v:String>
+    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">Folder Tetap (Disarankan)</v:String>
+    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">Folder Mudah Alih</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Sandarkan Simpanan Data Sedia Ada</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(DISARANKAN)</v:String>
     <v:String x:Key="FirstLaunch_CloseButton">Tutup</v:String>
     <v:String x:Key="FirstLaunch_BackButton">Kembali</v:String>
     <v:String x:Key="FirstLaunch_GoBackButton"></v:String>
@@ -323,22 +328,22 @@
 
     <v:String x:Key="ErrorScreen_Title">RALAT</v:String>
     <v:String x:Key="ErrorScreen_SubTitle">Pelancar ranap</v:String>
-    <v:String x:Key="ErrorScreen_DefaultErrorMessage"></v:String>
+    <v:String x:Key="ErrorScreen_DefaultErrorMessage">Masalah yang tidak dijangka telah berlaku dan pelancarn telah terhenti. Kami memohon maaf atas kesulitan ini.</v:String>
     <v:String x:Key="ErrorScreen_CloseButton">Tutup</v:String>
-    <v:String x:Key="ErrorScreen_ViewCrash"></v:String>
+    <v:String x:Key="ErrorScreen_ViewCrash">Lihat laporan ranap</v:String>
 
     <!--#endregion-->
 
     <!--#region Errors -->
 
-    <v:String x:Key="Error_AuthenticationFailed_Title"></v:String>
-    <v:String x:Key="Error_AuthenticationFailed"></v:String>
+    <v:String x:Key="Error_AuthenticationFailed_Title">Pengesahan gagal</v:String>
+    <v:String x:Key="Error_AuthenticationFailed">Gagal untuk mengesahkan. Sila pastikan akaun anda telah melanggan ke program beta.</v:String>
 
-    <v:String x:Key="Error_CantFindExternalLauncher_Title"></v:String>
-    <v:String x:Key="Error_CantFindExternalLauncher"></v:String>
+    <v:String x:Key="Error_CantFindExternalLauncher_Title">Tidak dapat menukar pelancar</v:String>
+    <v:String x:Key="Error_CantFindExternalLauncher">Tidak dapat menukar pelancar. Pastikan anda sudah menetapkan laluan ke pelancar dengan betul.</v:String>
 
-    <v:String x:Key="Error_CantFindJavaLauncher_Title"></v:String>
-    <v:String x:Key="Error_CantFindJavaLauncher"></v:String>
+    <v:String x:Key="Error_CantFindJavaLauncher_Title">Tidak dapat menukar pelancar</v:String>
+    <v:String x:Key="Error_CantFindJavaLauncher">Tidak dapat menukar pelancar. Pastikan anda telah memasang pelancar Minecraft asli daripada Minecraft.net .</v:String>
 
     <v:String x:Key="Error_AppReregisterFailed_Title">Pendaftaran semula aplikasi gagal</v:String>
     <v:String x:Key="Error_AppReregisterFailed">Sila cuba lagi :(</v:String>
@@ -353,7 +358,7 @@
     <v:String x:Key="Error_AppExtractionFailed">Sila cuba lagi :(</v:String>
 
     <v:String x:Key="Error_CantFindPaidServerList_Title">Tidak boleh membuka tab pelayan</v:String>
-    <v:String x:Key="Error_CantFindPaidServerList"></v:String>
+    <v:String x:Key="Error_CantFindPaidServerList">Senarai Pelayan Berbayar tidak ditemui.</v:String>
 
     <v:String x:Key="Error_NotaSkinPack_Title">Tidak dapat mengimport pek skin</v:String>
     <v:String x:Key="Error_NotaSkinPack">Itu bukan pek skin lah!</v:String>
@@ -383,10 +388,10 @@
 {0} ini akan hilang selamanya! (Masa yang lama!)</v:String>
 
     <v:String x:Key="Dialog_KillGame_Title">Matikan Permainan</v:String>
-    <v:String x:Key="Dialog_KillGame_Text"></v:String>
+    <v:String x:Key="Dialog_KillGame_Text">Ini Berbahaya, dan hanya disyorkan jika anda tersekat. Adakah anda masih mahu menutup permainan?</v:String>
 
     <v:String x:Key="Dialog_CloseGame_Title">Permainan Masih Berjalan</v:String>
-    <v:String x:Key="Dialog_CloseGame_Text"></v:String>
+    <v:String x:Key="Dialog_CloseGame_Text">Adakah anda mahu memaksanya menutupnya? (tanpa menyimpan perubahan, ini hanya disarankan jika anda tersekat, sila tutup permainan secara normal)</v:String>
 
     <v:String x:Key="DialogBtn_YesToAll_Text">Ya Untuk Semua</v:String>
     <v:String x:Key="DialogBtn_NoToAll_Text">Tidak Untuk Semua</v:String>
@@ -394,25 +399,26 @@
     <v:String x:Key="DialogBtn_No_Text">Tidak</v:String>
 
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">Tiada keputusan yang sepadan</v:String>
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve"></v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">Kami tidak menemui berita apa-apa kandungan yang sesuai dengan carian anda. Sekiranya penapis kategori anda 
+dimatikan, cuba hidupkannya kembali dan cari lagi</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Loading_Title"></v:String>
-    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve"></v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Memuat...</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Sila tunggu!</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Error_Title"></v:String>
-    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve"></v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Title">Ralat</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
 
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Tiada keputusan</v:String>
-    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve"></v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Tidak menjumpai benda yang sepadan dengan pencarian anda</v:String>
 
     <!--#endregion-->
 
     <!--#region Internal -->
 
-    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text"></v:String>
-    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text"></v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">Fail {0} sudah wujud di dalam destinasi itu.\nAdakah anda mahu menggantikannya? Fail lama akan hilang sebaliknya.</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">Fail {0} adalah bukan sebuah direktori. Adakah anda mahu menghapusnya? Data daripada direktori lama akan hilang sebaliknya.</v:String>
 
-    <v:String x:Key="GameManager_RecoveringDataIssue_Title"></v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_Title">Menukar Data Simpan yang Ada ke Pemasangan</v:String>
 
     <!--#endregion-->
 
@@ -423,17 +429,17 @@
 
     <!--#region UI -->
 
-    <v:String x:Key="Installer_Title"></v:String>
+    <v:String x:Key="Installer_Title">Pemasang Perisian Pelancar Minecraft Bedrock</v:String>
 
     <v:String x:Key="Installer_Back_Text">Kembali</v:String>
     <v:String x:Key="Installer_Next_Text">Seterusnya</v:String>
     <v:String x:Key="Installer_Cancel_Text">Batal</v:String>
     <v:String x:Key="Installer_Finish_Text">Selesai</v:String>
 
-    <v:String x:Key="Installer_WelcomePage_Title"></v:String>
-    <v:String x:Key="Installer_WelcomePage_Info_Text"></v:String>
-    <v:String x:Key="Installer_WelcomePage_Info2_Text"></v:String>
-    <v:String x:Key="Installer_WelcomePage_Info3_Text"></v:String>
+    <v:String x:Key="Installer_WelcomePage_Title">Selamat Datang ke Pemasang Perisian Pelancar Minecraft Bedrock</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info_Text">Ini akan memasang Pelancar Minecraft Bedrock ke komputer anda.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info2_Text">Anda disarankan untuk menutup semua aplikasi lain sebelum meneruskan.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info3_Text">Klik Seterusnya untuk teruskan, atau Batal untuk keluar dari Pemasang Perisian.</v:String>
 
     <v:String x:Key="Installer_LicenseAgreement_Title">Perjanjian Lesen</v:String>
     <v:String x:Key="Installer_LicenseAgreement_Info_Text">Sila baca Perjanjian Lesen berikut. Anda mesti menerima terma dalam perjanjian ini</v:String>
@@ -442,25 +448,25 @@
     <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">Saya tidak bersetuju.</v:String>
 
     <v:String x:Key="Installer_InstallType_Title">Pilih Jenis Pemasangan</v:String>
-    <v:String x:Key="Installer_InstallType_Info_Text"></v:String>
+    <v:String x:Key="Installer_InstallType_Info_Text">Pilih bersi pelancar yang anda mahu muat turun</v:String>
 
     <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Versi Beta</v:String>
     <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Versi Keluaran</v:String>
 
     <v:String x:Key="Installer_InstallLocation_Title">Pilih Lokasi Pemasangan</v:String>
-    <v:String x:Key="Installer_InstallLocation_Info_Text"></v:String>
+    <v:String x:Key="Installer_InstallLocation_Info_Text">Pemasang ini akan memasang Pelancar Minecraft Bedrock kedalam folder berikut, untuk memasangnya didalam folder yang lain,</v:String>
     <v:String x:Key="Installer_InstallLocation_Info2_Text">klik Cari dan pilih folder yang lain.</v:String>
 
     <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Folder Destinasi</v:String>
     <v:String x:Key="Installer_InstallLocation_Browse_Text">CARI</v:String>
 
     <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Cipta ikon desktop</v:String>
-    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text"></v:String>
+    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Tambah ke menu Mula</v:String>
     <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">Daftar Program</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text"></v:String>
+    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">Mulakan Program setelah Keluar</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_FilesInUse"></v:String>
+    <v:String x:Key="Installer_InstallationProgress_FilesInUse">Beberapa fail sedang digunakan oleh yang berikut:</v:String>
 
     <v:String x:Key="Installer_InstallationProgress_Title">Memasang</v:String>
     <v:String x:Key="Installer_InstallationProgress_Info_Text">Sila tunggu sementara Pemasang Perisian memasang Pelancar Minecraft Bedrock pada komputer anda.</v:String>
@@ -557,7 +563,7 @@
     <v:String x:Key="GeneralSubtitles_Reset">SET SEMULA</v:String>
     <v:String x:Key="GeneralSubtitles_Categories">KATEGORI</v:String>
     <v:String x:Key="GeneralSubtitles_Search">CARI</v:String>
-    <v:String x:Key="GeneralSubtitles_SortBy"></v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy">ISIH MENGIKUT</v:String>
 
     <!--#endregion-->
 
