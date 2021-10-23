@@ -226,8 +226,8 @@
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animasikan butang main di halaman Main di dalam Pelayan</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Aktifkan Sokongan Minecraft Dungeons (WIP)</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Tunjukkan informasi lanjut apabila memuat turun pakej</v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton"></v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2"></v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
     
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">TETAPAN MINECRAFT: BEDROCK EDITION</v:String>
