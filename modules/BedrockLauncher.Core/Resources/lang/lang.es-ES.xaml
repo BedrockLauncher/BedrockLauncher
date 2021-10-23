@@ -226,8 +226,8 @@
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animar el botón de reproducción en las páginas de reproducción del launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Habilitar Soporte de Minecraft Dungeons (WIP)</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Mostrar información avanzada al instalar los paquetes</v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Usar transiciones de fanicer entre páginas en el Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requiere que las transiciones animadas de paginas estén habilitadas)</v:String>
     
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">AJUSTES DE MINECRAFT: BEDROCK EDITION</v:String>
@@ -302,7 +302,7 @@
     <v:String x:Key="FirstLaunch_OneThingTitle">Una cosa...</v:String>
     <v:String x:Key="FirstLaunch_OneThingSubtitle">Simplemente revisa estos para asegurarte de que estén como a ti te gustan.</v:String>
     <v:String x:Key="FirstLaunch_ChooseAccountTitle">Elija una cuenta Insider</v:String>
-    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* This will be used to verify and download betas. You must be opted in the Xbox Insider Hub for the selected account to download betas. You also may need to restart the launcher or uninstall Minecraft for downloading betas to work.</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* Esto se utilizará para verificar y descargar versiones betas. Debes estar inscrito en Xbox Insider Hub para que la cuenta seleccionada descargue versiones betas. También es posible que deba reiniciar el launcher o desinstalar Minecraft para que la descarga funcione.</v:String>
 
     <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Antes de usar, es altamente recomendable que presione la copia de seguridad para crear una instalación de sus datos de guardado existentes, ya que el launcher sustituye el directorio original por un enlace simbólico que nos permite redirigir los datos guardados.
 
