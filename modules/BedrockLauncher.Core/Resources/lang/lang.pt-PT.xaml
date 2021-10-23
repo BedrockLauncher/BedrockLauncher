@@ -226,8 +226,8 @@
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animar o botão de jogar nas páginas do launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Ativar suporte para Minecraft Dungeons (WIP)</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Mostrar informações avançadas ao instalar pacotes</v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton"></v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2"></v:String>
     
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">DEFINIÇÕES DO MINECRAFT: BEDROCK EDITION</v:String>
@@ -398,9 +398,8 @@
     <v:String x:Key="DialogBtn_Yes_Text">Sim</v:String>
     <v:String x:Key="DialogBtn_No_Text">Não</v:String>
 
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">No matching results</v:String>
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">We couldn't find news any content matching your search. If you have category filters 
-turned off, try turning the back on and search again</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle"></v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve"></v:String>
 
     <v:String x:Key="Dialog_ResultPanel_Loading_Title">A carregar...</v:String>
     <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Por favor, espere!</v:String>
@@ -409,7 +408,7 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
 
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Nenhum resultado</v:String>
-    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Found no items matching your search</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve"></v:String>
 
     <!--#endregion-->
 
@@ -506,23 +505,23 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="ThemeEntries_LatestUpdate">Atualização mais recente</v:String>
     <v:String x:Key="ThemeEntries_Original">Original</v:String>
 
-    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">Caves &amp; Cliffs (Part 1)</v:String>
-    <v:String x:Key="ThemeEntries_NetherUpdate">Nether Update</v:String>
-    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Buzzy Bees Update</v:String>
-    <v:String x:Key="ThemeEntries_VillagePillageUpdate">Village &amp; Pillage Update</v:String>
-    <v:String x:Key="ThemeEntries_UpdateAquatic">Update Aquatic</v:String>
-    <v:String x:Key="ThemeEntries_TechnicallyUpdated">Technically Updated [Java]</v:String>
-    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">World of Color Update [Java]</v:String>
-    <v:String x:Key="ThemeEntries_ExplorationUpdate">Exploration Update [Java]</v:String>
-    <v:String x:Key="ThemeEntries_CombatUpdate">Combat Update [Java]</v:String>
-    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">Cats &amp; Pandas [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update"></v:String>
+    <v:String x:Key="ThemeEntries_NetherUpdate"></v:String>
+    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate"></v:String>
+    <v:String x:Key="ThemeEntries_VillagePillageUpdate"></v:String>
+    <v:String x:Key="ThemeEntries_UpdateAquatic"></v:String>
+    <v:String x:Key="ThemeEntries_TechnicallyUpdated"></v:String>
+    <v:String x:Key="ThemeEntries_WorldOfColorUpdate"></v:String>
+    <v:String x:Key="ThemeEntries_ExplorationUpdate"></v:String>
+    <v:String x:Key="ThemeEntries_CombatUpdate"></v:String>
+    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate"></v:String>
     <v:String x:Key="ThemeEntries_PocketEditionRelease">Versão Oficial [Bedrock]</v:String>
-    <v:String x:Key="ThemeEntries_BedrockStandard">Bedrock Edition Standard</v:String>
-    <v:String x:Key="ThemeEntries_BedrockMaster">Bedrock Edition Master</v:String>
-    <v:String x:Key="ThemeEntries_EarlyLegacyConsole">Original Legacy Console Era</v:String>
-    <v:String x:Key="ThemeEntries_MidLegacyConsole">Mid Legacy Console Era</v:String>
-    <v:String x:Key="ThemeEntries_LateLegacyConsole">Late Legacy Console Era</v:String>
-    <v:String x:Key="ThemeEntries_IndieDays">Indie Days</v:String>
+    <v:String x:Key="ThemeEntries_BedrockStandard"></v:String>
+    <v:String x:Key="ThemeEntries_BedrockMaster"></v:String>
+    <v:String x:Key="ThemeEntries_EarlyLegacyConsole"></v:String>
+    <v:String x:Key="ThemeEntries_MidLegacyConsole"></v:String>
+    <v:String x:Key="ThemeEntries_LateLegacyConsole"></v:String>
+    <v:String x:Key="ThemeEntries_IndieDays"></v:String>
     <v:String x:Key="ThemeEntries_Dungeons">Minecraft Dungeons</v:String>
 
 
