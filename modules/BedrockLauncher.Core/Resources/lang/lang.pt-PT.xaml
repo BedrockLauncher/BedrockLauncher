@@ -2,65 +2,65 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ignore="http://www.galasoft.ch/ignore" xmlns:v="clr-namespace:System;assembly=mscorlib">
     <!--#region Main Section-->
 
-    <v:String x:Key="LanguageString">Português - Portugal</v:String>
+    <v:String x:Key="LanguageString">English - United States</v:String>
 
     <!--#region MainWindow -->
 
-    <v:String x:Key="MainWindow_Title"></v:String>
-    <v:String x:Key="MainWindow_Disclaimer">NÃO É ASSOCIADO OU APROVADO PELA MOJANG</v:String>
+    <v:String x:Key="MainWindow_Title">Minecraft Bedrock Launcher</v:String>
+    <v:String x:Key="MainWindow_Disclaimer">NOT ASSOCIATED OR APPROVED BY MOJANG</v:String>
 
     <!--#endregion-->
     
     <!-- #region CommunityPage -->
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
-    <v:String x:Key="CommunityPage_ComingSoon">Em breve!</v:String>
-    <v:String x:Key="CommunityPage_CheckBackLater">Volte aqui mais tarde para algo SUPER MEGA INCRÍVEL!</v:String>
+    <v:String x:Key="CommunityPage_ComingSoon">Coming Soon!</v:String>
+    <v:String x:Key="CommunityPage_CheckBackLater">Check back here later for something SUPER DUPER AWESOME!</v:String>
 
     <!-- #endregion -->
 
     <!--#region ToolbarButtons -->
 
-    <v:String x:Key="ToolbarButtons_NewsButton_Text">Novidades</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text"></v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text"></v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text"></v:String>
-    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Launcher Personalizado</v:String>
-    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Mudar para</v:String>
-    <v:String x:Key="ToolbarButtons_Minecraft_Text"></v:String>
-    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Comunidade</v:String>
-    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Perfil</v:String>
-    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Definições</v:String>
+    <v:String x:Key="ToolbarButtons_NewsButton_Text">News</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java Launcher</v:String>
+    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Custom Launcher</v:String>
+    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Switch to</v:String>
+    <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
+    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Community</v:String>
+    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Profile</v:String>
+    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Settings</v:String>
 
     <!--#endregion-->
 
     <!--#region UpdateButton-->
 
-    <v:String x:Key="UpdateButton_NewUpdate_Text">Nova Atualização!</v:String>
-    <v:String x:Key="UpdateButton_Download_Text">Clique para transferir!</v:String>
+    <v:String x:Key="UpdateButton_NewUpdate_Text">New Update!</v:String>
+    <v:String x:Key="UpdateButton_Download_Text">Click to download!</v:String>
 
     <!--#endregion-->
 
     <!--#region ProgressBar -->
 
-    <v:String x:Key="ProgressBar_Downloading">A transferir</v:String>
-    <v:String x:Key="ProgressBar_Installing">A instalar</v:String>
-    <v:String x:Key="ProgressBar_Launching">A finalizar</v:String>
-    <v:String x:Key="ProgressBar_Extracting">A extrair</v:String>
-    <v:String x:Key="ProgressBar_Uninstalling">A desinstalar</v:String>
-    <v:String x:Key="ProgressBar_RegisteringPackage">A registar pacote</v:String>
+    <v:String x:Key="ProgressBar_Downloading">Downloading</v:String>
+    <v:String x:Key="ProgressBar_Installing">Installing</v:String>
+    <v:String x:Key="ProgressBar_Launching">Launching</v:String>
+    <v:String x:Key="ProgressBar_Extracting">Extracting</v:String>
+    <v:String x:Key="ProgressBar_Uninstalling">Uninstalling</v:String>
+    <v:String x:Key="ProgressBar_RegisteringPackage">Registering Package</v:String>
     <v:String x:Key="ProgressBar_RemovingPackage">A cancelar registro do pacote</v:String>
-    <v:String x:Key="ProgressBar_BackingUp">A fazer cópia dos dados salvos</v:String>
+    <v:String x:Key="ProgressBar_BackingUp">Backing up Save Data</v:String>
 
     <!--#endregion-->
 
     <!--#region ProfileButton -->
 
-    <v:String x:Key="ProfileButton_ManageProfiles_Text">Gerir Perfis</v:String>
-    <v:String x:Key="ProfileButton_ProfileSettings_Text">Definições de Perfil</v:String>
-    <v:String x:Key="ProfileButton_AddProfile_Text">Adicionar Perfil</v:String>
-    <v:String x:Key="ProfileButton_RemoveProfile_Text">Eliminar Perfil</v:String>
-    <v:String x:Key="ProfileButton_ChooseAccount_Text">ESCOLHER PERFIL</v:String>
+    <v:String x:Key="ProfileButton_ManageProfiles_Text">Manage Profiles</v:String>
+    <v:String x:Key="ProfileButton_ProfileSettings_Text">Profile Settings</v:String>
+    <v:String x:Key="ProfileButton_AddProfile_Text">Add Profile</v:String>
+    <v:String x:Key="ProfileButton_RemoveProfile_Text">Remove Profile</v:String>
+    <v:String x:Key="ProfileButton_ChooseAccount_Text">CHOOSE PROFILE</v:String>
 
     <!--#endregion-->
 
@@ -70,41 +70,41 @@
 
     <!--#region GameTab -->
 
-    <v:String x:Key="GameTab_Title"></v:String>
-    <v:String x:Key="GameTab_PlayButton_Text">Jogar</v:String>
-    <v:String x:Key="GameTab_PlayButton_Kill_Text">Destruir</v:String>
-    <v:String x:Key="GameTab_InstallationsButton_Text">Instalações</v:String>
-    <v:String x:Key="GameTab_SkinsButton_Text"></v:String>
-    <v:String x:Key="GameTab_PatchNotesButton_Text">Notas de lançamento</v:String>
+    <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
+    <v:String x:Key="GameTab_PlayButton_Text">Play</v:String>
+    <v:String x:Key="GameTab_PlayButton_Kill_Text">Kill</v:String>
+    <v:String x:Key="GameTab_InstallationsButton_Text">Installations</v:String>
+    <v:String x:Key="GameTab_SkinsButton_Text">Skins</v:String>
+    <v:String x:Key="GameTab_PatchNotesButton_Text">Patch notes</v:String>
 
     <!--#endregion-->
 
     <!--#region InstallationsPage -->
 
     <v:String x:Key="InstallationsPage_AddButton">Nova</v:String>
-    <v:String x:Key="InstallationsPage_PlayButton">Jogar</v:String>
+    <v:String x:Key="InstallationsPage_PlayButton">Play</v:String>
 
-    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed"></v:String>
-    <v:String x:Key="InstallationsPage_SortBy_Name"></v:String>
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">Latest Played</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name">Name</v:String>
 
-    <v:String x:Key="InstallationsPage_SearchBar_Content"></v:String>
+    <v:String x:Key="InstallationsPage_SearchBar_Content">Installation name</v:String>
 
     <!--#endregion-->
 
     <!--#region EditInstallationScreen -->
 
-    <v:String x:Key="EditInstallationScreen_Title">Criar nova instalação</v:String>
-    <v:String x:Key="EditInstallationScreen_AltTitle">Editar instalação</v:String>
+    <v:String x:Key="EditInstallationScreen_Title">Create new installation</v:String>
+    <v:String x:Key="EditInstallationScreen_AltTitle">Edit installation</v:String>
 
-    <v:String x:Key="EditInstallationScreen_CreateButton">Criar</v:String>
-    <v:String x:Key="EditInstallationScreen_AltCreateButton">Guardar</v:String>
+    <v:String x:Key="EditInstallationScreen_CreateButton">Create</v:String>
+    <v:String x:Key="EditInstallationScreen_AltCreateButton">Save</v:String>
 
-    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Versão experimental mais recente</v:String>
-    <v:String x:Key="EditInstallationScreen_LatestRelease">Versão mais recente</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Latest beta</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestRelease">Latest release</v:String>
 
-    <v:String x:Key="EditInstallationScreen_NameSubtitle">NOME</v:String>
-    <v:String x:Key="EditInstallationScreen_VersionSubtitle">VERSÃO</v:String>
-    <v:String x:Key="EditInstallationScreen_DirectorySubtitle">DIRETÓRIO</v:String>
+    <v:String x:Key="EditInstallationScreen_NameSubtitle">NAME</v:String>
+    <v:String x:Key="EditInstallationScreen_VersionSubtitle">VERSION</v:String>
+    <v:String x:Key="EditInstallationScreen_DirectorySubtitle">DIRECTORY</v:String>
 
     <v:String x:Key="EditInstallationScreen_NameHintText">&lt;instalação sem nome&gt;</v:String>
     <v:String x:Key="EditInstallationScreen_DirectoryHintText">&lt;diretório predefinido&gt;</v:String>
@@ -113,59 +113,59 @@
 
     <!--#region PatchNotesPage -->
 
-    <v:String x:Key="PatchNotesPage_MorePatchNotes">Mais notas de lançamento</v:String>
-    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">Mais notas da versão experimental</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotes">More patch notes</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">More beta patch notes</v:String>
 
     <!--#endregion-->
 
     <!--#region SkinsPage -->
 
-    <v:String x:Key="SkinsPage_AddButton">Nova...</v:String>
-    <v:String x:Key="SkinsPage_ImportButton">Importar...</v:String>
+    <v:String x:Key="SkinsPage_AddButton">New...</v:String>
+    <v:String x:Key="SkinsPage_ImportButton">Import...</v:String>
 
     <!--#endregion-->
 
     <!--#region EditSkinScreen -->
 
-    <v:String x:Key="EditSkinScreen_Title">Editar Skin</v:String>
-    <v:String x:Key="EditSkinScreen_AltTitle">Adicionar Skin</v:String>
+    <v:String x:Key="EditSkinScreen_Title">Edit Skin</v:String>
+    <v:String x:Key="EditSkinScreen_AltTitle">Add Skin</v:String>
 
-    <v:String x:Key="EditSkinScreen_TextureSubtitle">TEXTURA</v:String>
-    <v:String x:Key="EditSkinScreen_GeometrySubtitle">GEOMETRIA</v:String>
-    <v:String x:Key="EditSkinScreen_TypeSubtitle">TIPO</v:String>
-    <v:String x:Key="EditSkinScreen_LocalizationSubtitle">NOME DE LOCALIZAÇÃO</v:String>
+    <v:String x:Key="EditSkinScreen_TextureSubtitle">TEXTURE</v:String>
+    <v:String x:Key="EditSkinScreen_GeometrySubtitle">GEOMETRY</v:String>
+    <v:String x:Key="EditSkinScreen_TypeSubtitle">TYPE</v:String>
+    <v:String x:Key="EditSkinScreen_LocalizationSubtitle">LOCALIZATION NAME</v:String>
 
     <!--#endregion-->
 
     <!--#region EditSkinPackScreen -->
 
-    <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">DESCRIÇÃO</v:String>
-    <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">GEOMETRIA</v:String>
+    <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">DESCRIPTION</v:String>
+    <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">GEOMETRY</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">NOME DE LOCALIZAÇÃO</v:String>
-    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">NOME DE SERIALIZAÇÃO</v:String>
-    <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">DEFINIÇÕES DO IDIOMA</v:String>
+    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">LOCALIZATION NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">SERIALIZATION NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">LANGUAGE DEFINITIONS</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">NOME DO IDIOMA</v:String>
+    <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">LANG NAME</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">OUTRAS DEFINIÇÕES</v:String>
-    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">CONTEÚDO</v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">MÓDULOS</v:String>
+    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">OTHER DEFINITIONS</v:String>
+    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">CONTENT</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">MODULES</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">FORMATO DA VERSÂO</v:String>
+    <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">FORMAT VERSION</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">NOME DO PACOTE</v:String>
-    <v:String x:Key="EditSkinPackScreen_HeaderUUIDSubtitle"></v:String>
-    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">VERSÂO</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">PACK NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderUUIDSubtitle">UUID</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">VERSION</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">TIPO</v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle"></v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">VERSÃO</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">TYPE</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">UUID</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">VERSION</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_Header">Editar pacote de skins</v:String>
-    <v:String x:Key="EditSkinPackScreen_AddHeader">Adicionar pacote de skins</v:String>
+    <v:String x:Key="EditSkinPackScreen_Header">Edit Skin Pack</v:String>
+    <v:String x:Key="EditSkinPackScreen_AddHeader">Add Skin Pack</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_Warning">* Por favor, note que modificar as definições do idioma e mudar o ícone do pacote são irreversíveis, independentemente de ter salvo as mudanças ou não!!!</v:String>
+    <v:String x:Key="EditSkinPackScreen_Warning">* Please note that modifying language definitions and changing the pack icon are irreversible regardless if you save your changes or not!!!</v:String>
 
     <!--#endregion-->
 
@@ -175,25 +175,26 @@
 
     <!--#region LauncherNewsPage -->
 
-    <v:String x:Key="LauncherNewsPage_Title_Text">Últimas mudanças na versão</v:String>
-    <v:String x:Key="LauncherNewsPage_Build_Text">Versão</v:String>
-    <v:String x:Key="LauncherNewsPage_Changes_Text">Mudanças:</v:String>
-    <v:String x:Key="LauncherNewsPage_CheckForUpdates">Verificar por atualizações</v:String>
-    <v:String x:Key="LauncherNewsPage_ForceUpdate">Forçar atualização</v:String>
-    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Em uso</v:String>
+    <v:String x:Key="LauncherNewsPage_Title_Text">Latest Build Changes</v:String>
+    <v:String x:Key="LauncherNewsPage_Build_Text">Build</v:String>
+    <v:String x:Key="LauncherNewsPage_Changes_Text">Changes:</v:String>
+    <v:String x:Key="LauncherNewsPage_CheckForUpdates">Check for Updates</v:String>
+    <v:String x:Key="LauncherNewsPage_ForceUpdate">Force Update</v:String>
+    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Current</v:String>
 
     <!--#endregion-->
 
     <!--#region NewsScreenPage -->
 
-    <v:String x:Key="NewsScreen_LauncherTabTitle"></v:String>
-    <v:String x:Key="NewsScreen_OfficialTabTitle">Oficial</v:String>
-    <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle"></v:String>
+    <v:String x:Key="NewsScreen_LauncherTabTitle">Launcher</v:String>
+    <v:String x:Key="NewsScreen_OfficialTabTitle">Official</v:String>
+    <v:String x:Key="NewsScreen_MinecraftForumsTitle">Minecraft Forums</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
 
-    <v:String x:Key="NewsScreen_SearchBar_Content">Título das novidades</v:String>
+    <v:String x:Key="NewsScreen_SearchBar_Content">News title</v:String>
 
-    <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox"></v:String>
-    <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox"></v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
 
     <!--#endregion-->
 
@@ -203,86 +204,88 @@
 
     <!--#region SettingsTab -->
 
-    <v:String x:Key="SettingsTab_Title">DEFINIÇÕES</v:String>
-    <v:String x:Key="SettingsTab_GeneralButton">Gerais</v:String>
-    <v:String x:Key="SettingsTab_AccountsButton">Contas</v:String>
-    <v:String x:Key="SettingsTab_AboutButton">Sobre</v:String>
-    <v:String x:Key="SettingsTab_VersionsButton">Versões</v:String>
+    <v:String x:Key="SettingsTab_Title">SETTINGS</v:String>
+    <v:String x:Key="SettingsTab_GeneralButton">General</v:String>
+    <v:String x:Key="SettingsTab_AccountsButton">Accounts</v:String>
+    <v:String x:Key="SettingsTab_AboutButton">About</v:String>
+    <v:String x:Key="SettingsTab_VersionsButton">Versions</v:String>
 
     <!--#endregion-->
 
     <!--#region GeneralSettingsScreen -->
-    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">IDIOMA</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">TEMA DO LAUNCHER</v:String>
+    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">LANGUAGE</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">LAUNCHER THEME</v:String>
 
 
-    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">DEFINIÇÕES DO LAUNCHER</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">DEFINIÇÕES DO ATALHO</v:String>
-    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Usar versão experimental do launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Manter o launcher aberto durante a execução do jogo</v:String>
-    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Fechar o launcher quando mudar de launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animar as transição de páginas no launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animar o botão de jogar nas páginas do launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport"></v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails"></v:String>
+    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">LAUNCHER SETTINGS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">SHORTCUT SETTINGS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Use beta version of the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Keep the Launcher open while games are running</v:String>
+    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Close Launcher when switching launchers</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animate transitions between pages in the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animate play button on the Play pages in the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Enable Minecraft Dungeons Support (WIP)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Show advanced information when installing packages</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
     
 
-    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">DEFINIÇÕES DO MINECRAFT: BEDROCK EDITION</v:String>
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">SUPORTE O CRIADOR</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDITION SETTINGS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">SUPPORT CREATOR</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">ATUALIZAÇÕES DO LAUNCHER</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">LAUNCHER UPDATES</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Suporte o criador</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Support creator</v:String>
 
 
-    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Ativar diretório experimental para salvar</v:String>
-    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Esconder atalho da Java Edition</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Mostrar atalho do launcher externo</v:String>
-    <v:String x:Key="GeneralSettingsScreen_BackupButton">Fazer cópia dos dados salvos</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Definições avançadas</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Enable experimental save redirection</v:String>
+    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Hide Java Edition launcher shortcut</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Show external launcher shortcut</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BackupButton">Backup Save Data</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Advanced Settings</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">DEFINIÇÕES DO LAUNCHER EXTERNO</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">DIRETÓRIO</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">NOME</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle"></v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">ÍCONE</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">EXTERNAL LAUNCHER SETTINGS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">PATH</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">NAME</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">ARGUMENTS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">ICON</v:String>
 
     <!--#endregion-->
 
     <!--#region AcountsSettingsPage -->
 
-    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">CONTA SELECIONADA</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">DEFINIÇÕES DE INSIDER</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Definições Normais</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Definições Legado</v:String>
-    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Gerir contas</v:String>
-    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">DEFINIÇÕES DA CONTA</v:String>
+    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">SELECTED ACCOUNT</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">INSIDER SETTINGS</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Normal Settings</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Legacy Settings</v:String>
+    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Manage Accounts</v:String>
+    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">ACCOUNT SETTINGS</v:String>
 
     <!--#endregion-->
 
     <!--#region AboutPage -->
 
-    <v:String x:Key="AboutPage_Title">SOBRE MINECRAFT: BEDROCK EDITION LAUNCHER</v:String>
-    <v:String x:Key="AboutPage_DevelopedBy_Text">DESENVOLVIDO POR</v:String>
-    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">RETIRADO DO TRABALHO DE</v:String>
-    <v:String x:Key="AboutPage_SpecialThanks_Text">UM AGRADECIMENTO ESPECIAL A</v:String>
+    <v:String x:Key="AboutPage_Title">ABOUT MINECRAFT: BEDROCK EDITION LAUNCHER</v:String>
+    <v:String x:Key="AboutPage_DevelopedBy_Text">DEVELOPED BY</v:String>
+    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">FORKED FROM THE WORK OF</v:String>
+    <v:String x:Key="AboutPage_SpecialThanks_Text">SPECIAL THANKS TO</v:String>
 
     <v:String x:Key="AboutPage_McMrArm_Text">Por criar o Minecraft Windows 10 Version Downloader original (de onde este trabalho se baseia)</v:String>
     <v:String x:Key="AboutPage_BsCommunity_Text">Pelo o trabalho deles no SkinView3D, que é usado para o funcionalidade do visualizamento da skin no launcher</v:String>
     <v:String x:Key="AboutPage_Mojang_Text">Pelo Minecraft!!!</v:String>
-    <v:String x:Key="AboutPage_BsRepo_Text">Repositório SkinView3D</v:String>
-    <v:String x:Key="AboutPage_CurrentBuild">Build atual: </v:String>
+    <v:String x:Key="AboutPage_BsRepo_Text">SkinView3D Repo</v:String>
+    <v:String x:Key="AboutPage_CurrentBuild">Current Build: </v:String>
 
     <!--#endregion-->
 
     <!--#region AdvancedSettings -->
 
-    <v:String x:Key="AdvancedSettings_Title">Definições avançadas</v:String>
-    <v:String x:Key="AdvancedSettings_LauncherOptions_Text">DEFINIÇÕES DO LAUNCHER</v:String>
-    <v:String x:Key="AdvancedSettings_PathSubtitle_Text">DIRETÓRIO DE ARMAZENAMENTO</v:String>
-    <v:String x:Key="AdvancedSettings_RestartButton_Text">Reiniciar</v:String>
-    <v:String x:Key="AdvancedSettings_Notice_Text">* Todas as definições vão reiniciar o launcher</v:String>
-    <v:String x:Key="AdvancedSettings_PortableMode_Text">Ativar modo móvel</v:String>
+    <v:String x:Key="AdvancedSettings_Title">Advanced Settings</v:String>
+    <v:String x:Key="AdvancedSettings_LauncherOptions_Text">LAUNCHER OPTIONS</v:String>
+    <v:String x:Key="AdvancedSettings_PathSubtitle_Text">STORAGE DIRECTORY</v:String>
+    <v:String x:Key="AdvancedSettings_RestartButton_Text">Restart</v:String>
+    <v:String x:Key="AdvancedSettings_Notice_Text">* All settings will restart the launcher</v:String>
+    <v:String x:Key="AdvancedSettings_PortableMode_Text">Enable Portable Mode</v:String>
 
     <!--#endregion-->
 
@@ -292,72 +295,72 @@
 
     <!--#region FirstLaunch -->
 
-    <v:String x:Key="FirstLaunch_WelcomeTitle">Bem-vindo!</v:String>
+    <v:String x:Key="FirstLaunch_WelcomeTitle">Welcome!</v:String>
     <v:String x:Key="FirstLaunch_WelcomeSubTitle">Bem-vindo ao Launcher do Minecraft Bedrock!</v:String>
-    <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Crie o seu primeiro perfil!</v:String>
-    <v:String x:Key="FirstLaunch_AlmostThereTitle">Quase lá!</v:String>
-    <v:String x:Key="FirstLaunch_OneThingTitle">Uma coisa...</v:String>
-    <v:String x:Key="FirstLaunch_OneThingSubtitle">Apenas verifique se eles estão do jeito que você gosta.</v:String>
-    <v:String x:Key="FirstLaunch_ChooseAccountTitle">Escolha uma conta insider</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Create your first profile!</v:String>
+    <v:String x:Key="FirstLaunch_AlmostThereTitle">Almost there!</v:String>
+    <v:String x:Key="FirstLaunch_OneThingTitle">One thing...</v:String>
+    <v:String x:Key="FirstLaunch_OneThingSubtitle">Just check over these to make sure they're just how you like it.</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountTitle">Choose an Insider Account</v:String>
     <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* Isto vai ser usado para verificar e transferir versões experimentais. Tens de estar envolvido no Xbox Insider Hub para que a conta selecionada possa transferir versões experimentais. Também poderá ser necessário reiniciar o launcher ou desinstalar o Minecraft para a transferência ser possível.</v:String>
 
     <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Antes de usar, é altamente recomendável que faça uma cópia para criar uma instalação dos seus dados salvos existentes, pois o launcher substitui o diretório original por um link simbólico que nos permite redirecionar os dados salvos. 
  
  (Não se preocupe, não erá perder os seus dados ao fazer isto, só perderá dados se clicar jogar e não tiver feito uma cópia dos seus ficheiros)</v:String>
 
-    <v:String x:Key="FirstLaunch_InstallType_Header">Guardar/Carregar data do Launcher de:</v:String>
-    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">Pasta fixa (Recomendado)</v:String>
-    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">Pasta móvel/raiz</v:String>
-    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Fazer cópia dos dados salvos</v:String>
-    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(RECOMENDADO)</v:String>
-    <v:String x:Key="FirstLaunch_CloseButton">Fechar</v:String>
-    <v:String x:Key="FirstLaunch_BackButton">Voltar</v:String>
+    <v:String x:Key="FirstLaunch_InstallType_Header">Save/Load Launcher Data From:</v:String>
+    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">Fixed Folder (Recommended)</v:String>
+    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">Portable/Root Folder</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Backup Existing Save Data</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(RECOMMENDED)</v:String>
+    <v:String x:Key="FirstLaunch_CloseButton">Close</v:String>
+    <v:String x:Key="FirstLaunch_BackButton">Back</v:String>
     <v:String x:Key="FirstLaunch_GoBackButton"></v:String>
-    <v:String x:Key="FirstLaunch_CreateProfileText">PERFIL</v:String>
-    <v:String x:Key="FirstLaunch_CreateProfileButton">Criar</v:String>
-    <v:String x:Key="FirstLaunch_NextButton">Próximo</v:String>
-    <v:String x:Key="FirstLaunch_DownloadButton">Transferir</v:String>
-    <v:String x:Key="FirstLaunch_FinishButton">Finalizar</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileText">PROFILE</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileButton">Create</v:String>
+    <v:String x:Key="FirstLaunch_NextButton">Next</v:String>
+    <v:String x:Key="FirstLaunch_DownloadButton">Download</v:String>
+    <v:String x:Key="FirstLaunch_FinishButton">Finish</v:String>
 
     <!--#endregion-->
 
     <!--#region ErrorScreen -->
 
-    <v:String x:Key="ErrorScreen_Title">ERRO</v:String>
-    <v:String x:Key="ErrorScreen_SubTitle">Erro do Launcher</v:String>
-    <v:String x:Key="ErrorScreen_DefaultErrorMessage">Ocorreu um problema inesperado e o launcher falhou. Pedimos desculpa pelo incómodo.</v:String>
-    <v:String x:Key="ErrorScreen_CloseButton">Fechar</v:String>
-    <v:String x:Key="ErrorScreen_ViewCrash">Ver relatório de erros</v:String>
+    <v:String x:Key="ErrorScreen_Title">ERROR</v:String>
+    <v:String x:Key="ErrorScreen_SubTitle">Launcher crashed</v:String>
+    <v:String x:Key="ErrorScreen_DefaultErrorMessage">An unexpected issue occurred and the launcher has crashed. We're sorry for the inconvenience.</v:String>
+    <v:String x:Key="ErrorScreen_CloseButton">Close</v:String>
+    <v:String x:Key="ErrorScreen_ViewCrash">View crash report</v:String>
 
     <!--#endregion-->
 
     <!--#region Errors -->
 
-    <v:String x:Key="Error_AuthenticationFailed_Title">A autenticação falhou</v:String>
-    <v:String x:Key="Error_AuthenticationFailed">Ocorreu um erro ao autenticar. Por favor certifique-se de que a sua conta está inscrita no programa de experimentação.</v:String>
+    <v:String x:Key="Error_AuthenticationFailed_Title">Authentication failed</v:String>
+    <v:String x:Key="Error_AuthenticationFailed">Failed to authenticate. Please make sure your account is subscribed to the beta program.</v:String>
 
-    <v:String x:Key="Error_CantFindExternalLauncher_Title">Não foi possível trocar de launcher</v:String>
-    <v:String x:Key="Error_CantFindExternalLauncher">Não foi possível encontrar launcher. Certifique-se de que tem o caminho para o launcher definido corretamente.</v:String>
+    <v:String x:Key="Error_CantFindExternalLauncher_Title">Could not switch launcher</v:String>
+    <v:String x:Key="Error_CantFindExternalLauncher">Could not switch the launcher. Be sure you have the path to the launcher set correctly.</v:String>
 
-    <v:String x:Key="Error_CantFindJavaLauncher_Title">Não foi possível trocar de launcher</v:String>
+    <v:String x:Key="Error_CantFindJavaLauncher_Title">Could not switch launcher</v:String>
     <v:String x:Key="Error_CantFindJavaLauncher">Não foi possível encontrar launcher. Certifique-se de que instalou o Minecraft launcher original em Minecraft.net.</v:String>
 
     <v:String x:Key="Error_AppReregisterFailed_Title">Não foi possível fazer novo registro na aplicação</v:String>
-    <v:String x:Key="Error_AppReregisterFailed">Por favor tente novamente :(</v:String>
+    <v:String x:Key="Error_AppReregisterFailed">Please try again :(</v:String>
 
-    <v:String x:Key="Error_AppLaunchFailed_Title">Não foi possível finalizar</v:String>
-    <v:String x:Key="Error_AppLaunchFailed">Por favor tente novamente :(</v:String>
+    <v:String x:Key="Error_AppLaunchFailed_Title">Launch failed</v:String>
+    <v:String x:Key="Error_AppLaunchFailed">Please try again :(</v:String>
 
-    <v:String x:Key="Error_AppDownloadFailed_Title">Não foi possível transferir</v:String>
-    <v:String x:Key="Error_AppDownloadFailed">Por favor tente novamente :(</v:String>
+    <v:String x:Key="Error_AppDownloadFailed_Title">Download failed</v:String>
+    <v:String x:Key="Error_AppDownloadFailed">Please try again :(</v:String>
 
-    <v:String x:Key="Error_AppExtractionFailed_Title">Não foi possível extrair</v:String>
-    <v:String x:Key="Error_AppExtractionFailed">Por favor tente novamente :(</v:String>
+    <v:String x:Key="Error_AppExtractionFailed_Title">Extraction failed</v:String>
+    <v:String x:Key="Error_AppExtractionFailed">Please try again :(</v:String>
 
-    <v:String x:Key="Error_CantFindPaidServerList_Title">Não foi possível abrir tabela dos servidores</v:String>
-    <v:String x:Key="Error_CantFindPaidServerList">Lista de servidores pagos não foi encontrada.</v:String>
+    <v:String x:Key="Error_CantFindPaidServerList_Title">Could not open servers tab</v:String>
+    <v:String x:Key="Error_CantFindPaidServerList">Paid Servers List not found.</v:String>
 
-    <v:String x:Key="Error_NotaSkinPack_Title">Incapaz de importar pacote de skins</v:String>
+    <v:String x:Key="Error_NotaSkinPack_Title">Unable to import skin pack</v:String>
     <v:String x:Key="Error_NotaSkinPack">Isso não é um pacote de skins seu tontinho!</v:String>
 
     <!--#endregion-->
@@ -365,56 +368,57 @@
     <!--#region NewProfile -->
 
     <v:String x:Key="NewProfile_GoBackButton"></v:String>
-    <v:String x:Key="NewProfile_CreateProfileText">PERFIL</v:String>
-    <v:String x:Key="NewProfile_CreateProfileText_Error">ESTE NOME JÁ ESTÁ A SER UTILIZADO</v:String>
-    <v:String x:Key="NewProfile_CreateProfileSubTitle">Insira o nome do seu novo perfil!</v:String>
-    <v:String x:Key="NewProfile_CreateProfileButton">Criar</v:String>
+    <v:String x:Key="NewProfile_CreateProfileText">PROFILE</v:String>
+    <v:String x:Key="NewProfile_CreateProfileText_Error">THIS NAME IS ALREADY TAKEN</v:String>
+    <v:String x:Key="NewProfile_CreateProfileSubTitle">Enter the name of your new profile!</v:String>
+    <v:String x:Key="NewProfile_CreateProfileButton">Create</v:String>
 
     <!--#endregion-->
 
     <!--#region Dialog -->
 
-    <v:String x:Key="Dialog_Item_Installation_Text">instalação</v:String>
-    <v:String x:Key="Dialog_Item_SkinPack_Text">pacote de skins</v:String>
-    <v:String x:Key="Dialog_Item_Skin_Text"></v:String>
-    <v:String x:Key="Dialog_Item_Version_Text">versão</v:String>
-    <v:String x:Key="Dialog_Item_Profile_Text">perfil</v:String>
+    <v:String x:Key="Dialog_Item_Installation_Text">installation</v:String>
+    <v:String x:Key="Dialog_Item_SkinPack_Text">skin pack</v:String>
+    <v:String x:Key="Dialog_Item_Skin_Text">skin</v:String>
+    <v:String x:Key="Dialog_Item_Version_Text">version</v:String>
+    <v:String x:Key="Dialog_Item_Profile_Text">profile</v:String>
 
-    <v:String x:Key="Dialog_DeleteItem_Title">Eliminar {0} permanentemente</v:String>
-    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Tens a certeza de que queres eliminar &quot;{1}&quot;?
- {0} será perdido para sempre! (É muito tempo!)</v:String>
+    <v:String x:Key="Dialog_DeleteItem_Title">Delete {0} permanently</v:String>
+    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Are you sure you want to delete &quot;{1}&quot;?
+This {0} will be lost forever! (A long time!)</v:String>
 
-    <v:String x:Key="Dialog_KillGame_Title">Destruir Jogo</v:String>
-    <v:String x:Key="Dialog_KillGame_Text">Isto é perigoso, e é apenas recomendado se ficares preso. Ainda queres fechar o jogo?</v:String>
+    <v:String x:Key="Dialog_KillGame_Title">Kill Game</v:String>
+    <v:String x:Key="Dialog_KillGame_Text">This is Dangerous, and is only recommended if you get stuck. Do you still want to close the game?</v:String>
 
-    <v:String x:Key="Dialog_CloseGame_Title">Jogo ainda está em execução</v:String>
-    <v:String x:Key="Dialog_CloseGame_Text">Gostarias de fechá-lo forçadamente? (sem salvar as mudanças, isto é apenas recomendado se ficares preso, por favor feche o jogo normalmente)</v:String>
+    <v:String x:Key="Dialog_CloseGame_Title">Game is Still Running</v:String>
+    <v:String x:Key="Dialog_CloseGame_Text">Would you like to force close it? (without saving changes, this is only recommended if you get stuck, please close the game normally)</v:String>
 
-    <v:String x:Key="DialogBtn_YesToAll_Text">Sim para todos</v:String>
-    <v:String x:Key="DialogBtn_NoToAll_Text">Não para todos</v:String>
-    <v:String x:Key="DialogBtn_Yes_Text">Sim</v:String>
-    <v:String x:Key="DialogBtn_No_Text">Não</v:String>
+    <v:String x:Key="DialogBtn_YesToAll_Text">Yes To All</v:String>
+    <v:String x:Key="DialogBtn_NoToAll_Text">No To All</v:String>
+    <v:String x:Key="DialogBtn_Yes_Text">Yes</v:String>
+    <v:String x:Key="DialogBtn_No_Text">No</v:String>
 
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle"></v:String>
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve"></v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">No matching results</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">We couldn't find news any content matching your search. If you have category filters 
+turned off, try turning the back on and search again</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Loading_Title"></v:String>
-    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve"></v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Loading...</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Please wait!</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Error_Title"></v:String>
-    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve"></v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Title">Error</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
 
-    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle"></v:String>
-    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve"></v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">No result</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Found no items matching your search</v:String>
 
     <!--#endregion-->
 
     <!--#region Internal -->
 
-    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">O ficheiro {0} já existe neste diretório.\nQueres substituí-lo? Caso contrário, o ficheiro antigo será perdido.</v:String>
-    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">O ficheiro {0} não é um diretório. Queres eliminá-lo? Caso contrário, os dados do diretório antigo serão perdidos.</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">The file {0} already exists in the destination.\nDo you want to replace it? The old file will be lost otherwise.</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">The file {0} is not a directory. Do you want to remove it? The data from the old directory will be lost otherwise.</v:String>
 
-    <v:String x:Key="GameManager_RecoveringDataIssue_Title">A converter dados salvos para a instalação</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_Title">Converting Existing Save Data to Installation</v:String>
 
     <!--#endregion-->
 
@@ -427,60 +431,60 @@
 
     <v:String x:Key="Installer_Title">Assistente de Instalação do Minecraft Bedrock Launcher</v:String>
 
-    <v:String x:Key="Installer_Back_Text">Voltar</v:String>
-    <v:String x:Key="Installer_Next_Text">Próximo</v:String>
-    <v:String x:Key="Installer_Cancel_Text">Cancelar</v:String>
-    <v:String x:Key="Installer_Finish_Text">Finalizar</v:String>
+    <v:String x:Key="Installer_Back_Text">Back</v:String>
+    <v:String x:Key="Installer_Next_Text">Next</v:String>
+    <v:String x:Key="Installer_Cancel_Text">Cancel</v:String>
+    <v:String x:Key="Installer_Finish_Text">Finish</v:String>
 
     <v:String x:Key="Installer_WelcomePage_Title">Bem-vindo ao Assistente de Instalação do Minecraft Bedrock Launcher</v:String>
     <v:String x:Key="Installer_WelcomePage_Info_Text">Isto vai instalar o Minecraft Bedrock Launcher no teu computador.</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info2_Text">É recomendado que feche todas as outras aplicações antes de continuar.</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info3_Text">Clique em Próximo para continuar, ou em Cancelar para sair do assistente.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info2_Text">It is recommended that you close all other applications before continuing.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info3_Text">Click Next to continue, or Cancel to exit Setup.</v:String>
 
-    <v:String x:Key="Installer_LicenseAgreement_Title">Licença de Uso</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Info_Text">Por favor, leia a seguinte licença de uso. Tens de aceitar os termos de</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">uso antes de continuar com a instalação.</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">Eu concordo.</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">Eu não concordo.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Title">License Agreement</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info_Text">Please read the following License Agreement. You must accept the terms of this</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">agreement before continuing with the installation.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">I accept the license.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">I don't accept the license.</v:String>
 
-    <v:String x:Key="Installer_InstallType_Title">Escolher tipo de instalação</v:String>
-    <v:String x:Key="Installer_InstallType_Info_Text">Selecione a versão do launcher que quer transferir</v:String>
+    <v:String x:Key="Installer_InstallType_Title">Choose Install Type</v:String>
+    <v:String x:Key="Installer_InstallType_Info_Text">Select which version of the launcher you want to download</v:String>
 
     <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Versão experiemental</v:String>
-    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Versão oficial</v:String>
+    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Release Version</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_Title">Escolher local de instalação</v:String>
+    <v:String x:Key="Installer_InstallLocation_Title">Choose Install Location</v:String>
     <v:String x:Key="Installer_InstallLocation_Info_Text">O assistente vai instalar o Minecraft Bedrock Launcher na seguinte pasta. Para instalar numa pasta diferente,</v:String>
-    <v:String x:Key="Installer_InstallLocation_Info2_Text">clique em Procurar e selecione outra pasta.</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info2_Text">click Browse and select another folder.</v:String>
 
     <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Pasta de destinatório</v:String>
-    <v:String x:Key="Installer_InstallLocation_Browse_Text">PROCURAR</v:String>
+    <v:String x:Key="Installer_InstallLocation_Browse_Text">BROWSE</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Criar um ícone no ambiente de trabalho</v:String>
-    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Adicionar ao menu de início</v:String>
-    <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">Registar programa</v:String>
+    <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Create a desktop icon</v:String>
+    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Add to Start menu</v:String>
+    <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">Register Program</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">Abrir programa ao fechar</v:String>
+    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">Start Program on Exit</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_FilesInUse">Alguns dos arquivos estão no momento a ser usados por:</v:String>
+    <v:String x:Key="Installer_InstallationProgress_FilesInUse">Some of the files are currently in use by the following:</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_Title">A instalar</v:String>
+    <v:String x:Key="Installer_InstallationProgress_Title">Installing</v:String>
     <v:String x:Key="Installer_InstallationProgress_Info_Text">Por favor, espere enquanto o assistente instala o Minecraft Bedrock Launcher no seu computador.</v:String>
 
 
     <!--#endregion-->
 
-    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">Não foi possível mover o diretório</v:String>
-    <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">Não foi possível mover o ficheiro</v:String>
-    <v:String x:Key="Installer_Dialog_FileLocked_Text">O ficheiro está a ser usado</v:String>
-    <v:String x:Key="Installer_Dialog_TryAgain_Text">Tentar novamente?</v:String>
-    <v:String x:Key="Installer_Dialog_ErrorOccured_Text">Ocorreu um erro.</v:String>
+    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">Unable to Move Directory</v:String>
+    <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">Unable to Move File</v:String>
+    <v:String x:Key="Installer_Dialog_FileLocked_Text">File Being Used</v:String>
+    <v:String x:Key="Installer_Dialog_TryAgain_Text">Try Again?</v:String>
+    <v:String x:Key="Installer_Dialog_ErrorOccured_Text">An error has occurred.</v:String>
 
     <!--#region ProgressBar -->
 
-    <v:String x:Key="Installer_ProgressBar_Downloading">A transferir...</v:String>
-    <v:String x:Key="Installer_ProgressBar_Finalizing">A finalizar...</v:String>
-    <v:String x:Key="Installer_ProgressBar_Initalizing">A inicializar...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Downloading">Downloading...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Finalizing">Finalizing...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Initalizing">Initializing...</v:String>
 
 
     <!--#endregion-->
@@ -491,75 +495,75 @@
 
     <!--#region VersionEntries -->
 
-    <v:String x:Key="VersionEntries_LatestSnapshot">Versão experimental mais recente</v:String>
-    <v:String x:Key="VersionEntries_LatestRelease">Versão mais recente</v:String>
-    <v:String x:Key="VersionEntries_UnnamedInstallation"></v:String>
+    <v:String x:Key="VersionEntries_LatestSnapshot">Latest Beta</v:String>
+    <v:String x:Key="VersionEntries_LatestRelease">Latest Release</v:String>
+    <v:String x:Key="VersionEntries_UnnamedInstallation">&lt;unnamed installation&gt;</v:String>
 
     <!--#endregion-->
 
     <!--#region ThemeEntries -->
 
-    <v:String x:Key="ThemeEntries_LatestUpdate">Atualização mais recente</v:String>
-    <v:String x:Key="ThemeEntries_Original"></v:String>
+    <v:String x:Key="ThemeEntries_LatestUpdate">Latest Update</v:String>
+    <v:String x:Key="ThemeEntries_Original">Original</v:String>
 
-    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update"></v:String>
-    <v:String x:Key="ThemeEntries_NetherUpdate"></v:String>
-    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate"></v:String>
-    <v:String x:Key="ThemeEntries_VillagePillageUpdate"></v:String>
-    <v:String x:Key="ThemeEntries_UpdateAquatic"></v:String>
-    <v:String x:Key="ThemeEntries_TechnicallyUpdated"></v:String>
-    <v:String x:Key="ThemeEntries_WorldOfColorUpdate"></v:String>
-    <v:String x:Key="ThemeEntries_ExplorationUpdate"></v:String>
-    <v:String x:Key="ThemeEntries_CombatUpdate"></v:String>
-    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate"></v:String>
-    <v:String x:Key="ThemeEntries_PocketEditionRelease">Versão Oficial [Bedrock]</v:String>
-    <v:String x:Key="ThemeEntries_BedrockStandard"></v:String>
-    <v:String x:Key="ThemeEntries_BedrockMaster"></v:String>
-    <v:String x:Key="ThemeEntries_EarlyLegacyConsole"></v:String>
-    <v:String x:Key="ThemeEntries_MidLegacyConsole"></v:String>
-    <v:String x:Key="ThemeEntries_LateLegacyConsole"></v:String>
-    <v:String x:Key="ThemeEntries_IndieDays"></v:String>
-    <v:String x:Key="ThemeEntries_Dungeons"></v:String>
+    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">Caves &amp; Cliffs (Part 1)</v:String>
+    <v:String x:Key="ThemeEntries_NetherUpdate">Nether Update</v:String>
+    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Buzzy Bees Update</v:String>
+    <v:String x:Key="ThemeEntries_VillagePillageUpdate">Village &amp; Pillage Update</v:String>
+    <v:String x:Key="ThemeEntries_UpdateAquatic">Update Aquatic</v:String>
+    <v:String x:Key="ThemeEntries_TechnicallyUpdated">Technically Updated [Java]</v:String>
+    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">World of Color Update [Java]</v:String>
+    <v:String x:Key="ThemeEntries_ExplorationUpdate">Exploration Update [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CombatUpdate">Combat Update [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">Cats &amp; Pandas [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_PocketEditionRelease">Official Release [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_BedrockStandard">Bedrock Edition Standard</v:String>
+    <v:String x:Key="ThemeEntries_BedrockMaster">Bedrock Edition Master</v:String>
+    <v:String x:Key="ThemeEntries_EarlyLegacyConsole">Original Legacy Console Era</v:String>
+    <v:String x:Key="ThemeEntries_MidLegacyConsole">Mid Legacy Console Era</v:String>
+    <v:String x:Key="ThemeEntries_LateLegacyConsole">Late Legacy Console Era</v:String>
+    <v:String x:Key="ThemeEntries_IndieDays">Indie Days</v:String>
+    <v:String x:Key="ThemeEntries_Dungeons">Minecraft Dungeons</v:String>
 
 
     <!--#endregion-->
 
     <!--#region GeneralText -->
 
-    <v:String x:Key="GeneralText_Delete">Eliminar</v:String>
-    <v:String x:Key="GeneralText_Edit">Editar</v:String>
-    <v:String x:Key="GeneralText_Duplicate">Duplicar</v:String>
-    <v:String x:Key="GeneralText_Remove">Remover</v:String>
-    <v:String x:Key="GeneralText_Cancel">Cancelar</v:String>
-    <v:String x:Key="GeneralText_Update">Atualizar</v:String>
-    <v:String x:Key="GeneralText_Add">Adicionar</v:String>
-    <v:String x:Key="GeneralText_Save">Salvar</v:String>
-    <v:String x:Key="GeneralText_Refresh">Atualizar</v:String>
-    <v:String x:Key="GeneralText_Backup">Fazer cópia</v:String>
-    <v:String x:Key="GeneralText_Versions">Versões</v:String>
-    <v:String x:Key="GeneralText_Browse">Procurar</v:String>
-    <v:String x:Key="GeneralText_Reset">Repor</v:String>
-    <v:String x:Key="GeneralText_Yes">Sim</v:String>
-    <v:String x:Key="GeneralText_No">Não</v:String>
-    <v:String x:Key="GeneralText_Releases">Oficiais</v:String>
-    <v:String x:Key="GeneralText_Betas">Experimentais</v:String>
-    <v:String x:Key="GeneralText_Export">Exportar</v:String>
-    <v:String x:Key="GeneralText_Repair">Reparar</v:String>
+    <v:String x:Key="GeneralText_Delete">Delete</v:String>
+    <v:String x:Key="GeneralText_Edit">Edit</v:String>
+    <v:String x:Key="GeneralText_Duplicate">Duplicate</v:String>
+    <v:String x:Key="GeneralText_Remove">Remove</v:String>
+    <v:String x:Key="GeneralText_Cancel">Cancel</v:String>
+    <v:String x:Key="GeneralText_Update">Update</v:String>
+    <v:String x:Key="GeneralText_Add">Add</v:String>
+    <v:String x:Key="GeneralText_Save">Save</v:String>
+    <v:String x:Key="GeneralText_Refresh">Refresh</v:String>
+    <v:String x:Key="GeneralText_Backup">Backup</v:String>
+    <v:String x:Key="GeneralText_Versions">Versions</v:String>
+    <v:String x:Key="GeneralText_Browse">Browse</v:String>
+    <v:String x:Key="GeneralText_Reset">Reset</v:String>
+    <v:String x:Key="GeneralText_Yes">Yes</v:String>
+    <v:String x:Key="GeneralText_No">No</v:String>
+    <v:String x:Key="GeneralText_Releases">Releases</v:String>
+    <v:String x:Key="GeneralText_Betas">Betas</v:String>
+    <v:String x:Key="GeneralText_Export">Export</v:String>
+    <v:String x:Key="GeneralText_Repair">Repair</v:String>
 
-    <v:String x:Key="GeneralText_Twitter"></v:String>
-    <v:String x:Key="GeneralText_GitHub"></v:String>
-    <v:String x:Key="GeneralText_Website"></v:String>
+    <v:String x:Key="GeneralText_Twitter">Twitter</v:String>
+    <v:String x:Key="GeneralText_GitHub">GitHub</v:String>
+    <v:String x:Key="GeneralText_Website">Website</v:String>
 
     <!--#endregion-->
 
     <!--#region GeneralSubtitles -->
 
-    <v:String x:Key="GeneralSubtitles_Versions">VERSÕES</v:String>
-    <v:String x:Key="GeneralSubtitles_Browse">PROCURAR</v:String>
-    <v:String x:Key="GeneralSubtitles_Reset">REPOR</v:String>
-    <v:String x:Key="GeneralSubtitles_Categories">CATEGORIAS</v:String>
-    <v:String x:Key="GeneralSubtitles_Search">PROCURAR</v:String>
-    <v:String x:Key="GeneralSubtitles_SortBy"></v:String>
+    <v:String x:Key="GeneralSubtitles_Versions">VERSIONS</v:String>
+    <v:String x:Key="GeneralSubtitles_Browse">BROWSE</v:String>
+    <v:String x:Key="GeneralSubtitles_Reset">RESET</v:String>
+    <v:String x:Key="GeneralSubtitles_Categories">CATEGORIES</v:String>
+    <v:String x:Key="GeneralSubtitles_Search">SEARCH</v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy">SORT BY</v:String>
 
     <!--#endregion-->
 
