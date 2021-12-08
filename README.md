@@ -33,4 +33,4 @@ Have a look around the launcher before you download on the official website:
 
 ## Credits
 It's hard to keep the credits page updated on GitHub, so visit the credits page on the official website:
-- [Credits page](https://bedrocklauncher.github.io/credits) <- Seems to lead to a 404 via manual typing
+- [Credits page](https://bedrocklauncher.github.io/credits)
