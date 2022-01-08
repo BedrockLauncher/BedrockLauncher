@@ -1,6 +1,5 @@
 ﻿using BedrockLauncher.Downloaders;
 using BedrockLauncher.ViewModels;
-using Microsoft.Web.WebView2.Core;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -104,37 +103,14 @@ namespace BedrockLauncher
 
         #region Errors
 
-        public static void Error_WebView2RuntimeMissing()
-        {
-            string link = @"https://go.microsoft.com/fwlink/p/?LinkId=2124703";
-            string message = "The WebView2 runtime can not be found. Please install the WebView2 Runtime! \r\n\r\n" +
-                link + "\r\n\r\n" +
-                "(Click 'Yes' to open the web browser to download it)";
-            string title = "Missing WebView2 Runtime";
-            var result = MessageBox.Show(message, title, MessageBoxButton.YesNo, MessageBoxImage.Error);
-            if (result == MessageBoxResult.Yes) Process.Start(link);
-            Environment.Exit(0);
-        }
         public static void Error_Unhandled(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
-            if (e.Exception is Microsoft.Web.WebView2.Core.WebView2RuntimeNotFoundException) Error_WebView2RuntimeMissing();
 
             Debug.WriteLine(e.ToString());
             string message = e.Exception.Message + Environment.NewLine + Environment.NewLine + e.ToString();
             string title = e.Exception.HResult.ToString();
 
             MessageBox.Show(message, title, MessageBoxButton.OK, MessageBoxImage.Error);
-        }
-
-        #endregion
-
-        #region Enviorment Globals
-
-        public async static Task<CoreWebView2Environment> GetCoreWebView2Environment()
-        {
-            var op = new CoreWebView2EnvironmentOptions("--disable-web-security");
-            string cache_folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "BedrockLauncher", "cache");
-            return await CoreWebView2Environment.CreateAsync(null, cache_folder, op);
         }
 
         #endregion
@@ -146,6 +122,7 @@ namespace BedrockLauncher
         public static async void OnStartup(object sender, StartupEventArgs e)
         {
             EnableDeveloperMode();
+            CefSharp.CefSharpLoader.Init();
             Init_IsBugRockOfTheWeek();
 
             LanguageManager.Init();

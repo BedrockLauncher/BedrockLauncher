@@ -1,5 +1,5 @@
-﻿//using CefSharp;
-//using CefSharp.Wpf;
+﻿using CefSharp;
+using CefSharp.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +17,6 @@ using System.Windows.Shapes;
 using System.Drawing;
 using System.IO;
 using BedrockLauncher.Core.Classes.SkinPack;
-using Microsoft.Web.WebView2.Core;
-using System.Net;
-using Newtonsoft.Json;
 
 namespace BedrockLauncher.Controls
 {
@@ -29,27 +26,26 @@ namespace BedrockLauncher.Controls
     /// </summary>
     public partial class SkinPreview : UserControl
     {
+        ChromiumWebBrowser Renderer = new ChromiumWebBrowser();
 
         #region Constants
 
-        private static string AppPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+        public const string Preview = "skinview3d://SkinView/previews/index.html";
 
-        public static Uri Preview = new Uri($"file://{AppPath}/runtimes/SkinView/previews/index.html");
-                                                    
-        private static Uri NoSkin = new Uri($"file://{AppPath}/runtimes/SkinView/previews/img/NoSkin.png");
+        private const string NoSkin = "img/NoSkin.png";
 
         #endregion
 
         #region Accesors
 
         public static readonly DependencyProperty PathProperty =
-            DependencyProperty.RegisterAttached(nameof(Path), typeof(Uri), typeof(SkinPreview), new FrameworkPropertyMetadata(NoSkin));
+            DependencyProperty.RegisterAttached(nameof(Path), typeof(string), typeof(SkinPreview), new FrameworkPropertyMetadata(Preview));
 
         public static readonly DependencyProperty TypeProperty =
             DependencyProperty.RegisterAttached(nameof(Type), typeof(MCSkinGeometry), typeof(SkinPreview), new FrameworkPropertyMetadata(MCSkinGeometry.Normal));
 
 
-        public Uri Path
+        public string Path
         {
             get
             {
@@ -99,7 +95,7 @@ namespace BedrockLauncher.Controls
 
         private MCSkinGeometry _Type = MCSkinGeometry.Normal;
 
-        private Uri _Path = NoSkin;
+        private string _Path = Preview;
 
         private bool isRenderable
         {
@@ -113,6 +109,9 @@ namespace BedrockLauncher.Controls
 
         private void Init()
         {
+            Renderer.Focusable = false;
+            Renderer.LoadingStateChanged += Renderer_LoadingStateChanged;
+            this.AddChild(Renderer);
             InitializeComponent();
             InitializeChromium();
         }
@@ -121,21 +120,18 @@ namespace BedrockLauncher.Controls
         {
             if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this)) return;
             Init();
+            this.Renderer.Address = Preview;
         }
         public SkinPreview(MCSkin Skin)
         {
-            Path = new Uri(Skin.texture_path);
-            Type = Skin.skin_type;
             Init();
+            Path = Skin.texture_path;
+            Type = Skin.skin_type;
+            this.Renderer.Address = Preview;
         }
-        private async void InitializeChromium()
+        private void InitializeChromium()
         {
-            var env = await Internals.GetCoreWebView2Environment();
-            await Renderer.EnsureCoreWebView2Async(env);
-            Renderer.CoreWebView2.Settings.IsScriptEnabled = true;
-            Renderer.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
-            Renderer.CoreWebView2.Navigate(Preview.AbsoluteUri);
-            await Renderer.ExecuteScriptAsync("document.body.style.overflow = 'hidden'");
+            Renderer.FrameLoadEnd += OnBrowserFrameLoadEnd;
         }
         public void UpdateSkin()
         {
@@ -144,46 +140,53 @@ namespace BedrockLauncher.Controls
         }
         public void UpdateSkin(MCSkin Skin)
         {
-            Path = new Uri(Skin.texture_path);
+            Path = Skin.texture_path;
             Type = Skin.skin_type;
         }
-        
+
         private async void RefreshView(bool localFile = true)
         {
-            
             try
             {
-                if (Renderer.CoreWebView2 == null) return;
-                var converted = Path.AbsoluteUri;
-                var fix = converted.Replace("'", "%27");
-                string command = ExecuteScriptFunction("setSkin", new string[] { fix, ModelType });
-                var result = await Renderer.CoreWebView2.ExecuteScriptAsync(command);
+                if (!Renderer.CanExecuteJavascriptInMainFrame)
+                {
+                    return;
+                }
+                else if (!localFile || Path == NoSkin)
+                {
+                    var result = await Renderer.EvaluateScriptAsync("setSkin", new object[] { Path, ModelType });
+                }
+                else
+                {
+                    var uri = new System.Uri(Path);
+                    var converted = uri.AbsoluteUri;
+                    var fix = converted.Replace("'", "%27").Replace("file://", "localfiles://");
+                    var result = await Renderer.EvaluateScriptAsync("setSkin", new object[] { fix, ModelType });
+                }
+
+
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex);
             }
-            
+        }
 
-            string ExecuteScriptFunction(string functionName, string[] parameters)
+        private void OnBrowserFrameLoadEnd(object sender, FrameLoadEndEventArgs args)
+        {
+            if (args.Frame.IsMain && Renderer.CanExecuteJavascriptInMainFrame)
             {
-                string script = functionName + "(";
-                for (int i = 0; i < parameters.Length; i++)
-                {
-                    script += JsonConvert.SerializeObject(parameters[i]);
-                    if (i < parameters.Length - 1)
-                    {
-                        script += ", ";
-                    }
-                }
-                script += ");";
-                return script;
+                args
+                    .Browser
+                    .MainFrame
+                    .ExecuteJavaScriptAsync(
+                    "document.body.style.overflow = 'hidden'");
             }
         }
 
-        private void Renderer_LoadingStateChanged(object sender, Microsoft.Web.WebView2.Core.CoreWebView2ContentLoadingEventArgs e)
+        private void Renderer_LoadingStateChanged(object sender, LoadingStateChangedEventArgs e)
         {
-            RefreshView();
+            if (e.IsLoading == false && isRenderable && Renderer.CanExecuteJavascriptInMainFrame) RefreshView();
         }
     }
 }
