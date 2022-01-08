@@ -81,10 +81,10 @@ namespace BedrockLauncher.Pages.Play
             {
 
                 if (SortByComboBox.SelectedItem == SortByLatestPlayed)
-                    LauncherModel.Default.Installations_SortFilter = LauncherModel.SortBy_Installation.LatestPlayed;
+                    LauncherModel.Default.Installations_SortFilter = Enums.SortBy_Installation.LatestPlayed;
 
                 if (SortByComboBox.SelectedItem == SortByName)
-                    LauncherModel.Default.Installations_SortFilter = LauncherModel.SortBy_Installation.Name;
+                    LauncherModel.Default.Installations_SortFilter = Enums.SortBy_Installation.Name;
 
                 RefreshInstallations();
             }

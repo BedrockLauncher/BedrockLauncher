@@ -28,241 +28,130 @@ using BedrockLauncher.ViewModels;
 using BedrockLauncher.Core.Classes;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using PostSharp.Patterns.Model;
+using BedrockLauncher.Enums;
 
 namespace BedrockLauncher.ViewModels
 {
-    public class LauncherModel : NotifyPropertyChangedBase, IDialogHander, ILauncherModel
+    [NotifyPropertyChanged]
+    public class LauncherModel : IDialogHander, ILauncherModel
     {
-        #region Init
-
         public static LauncherModel Default { get; set; } = new LauncherModel();
-        public static MainWindow MainThread
+
+        #region Event Handlers
+
+        public event EventHandler ConfigUpdated;
+        protected virtual void OnConfigUpdated(PropertyChangedEventArgs e)
         {
-            get
-            {
-                return App.Current.Dispatcher.Invoke(() =>
-                {
-                    return (MainWindow)App.Current.MainWindow;
-                });
-            }
+            EventHandler handler = ConfigUpdated;
+            if (e.PropertyName == nameof(Config.CurrentInstallations))
+                if (handler != null) handler(this, e);
         }
-        public static LauncherUpdater Updater { get; set; } = new LauncherUpdater();
+
+        #endregion
+
+        #region Init
 
         public LauncherModel()
         {
-            ProgressBarStateChanged += ViewModel_ProgressBarStateChanged;
             ErrorScreenShow.SetHandler(this);
             DialogPrompt.SetHandler(this);
         }
-
-        public void InitKeyboardFocus(Grid MainFrame)
+        public void Init(Grid MainFrame)
         {
-            LauncherModel.Default.KeyboardNavigationMode = KeyboardNavigation.GetTabNavigation(MainFrame);
+            KeyboardNavigationMode = KeyboardNavigation.GetTabNavigation(MainFrame);
         }
 
         #endregion
 
-        #region Other Models
-        public FilepathManager FilepathManager { get; private set; } = new FilepathManager();
-        public GameManager GameManager { get; private set; } = new GameManager();
+        #region Properties
+
+        public static LauncherUpdater Updater { get; set; } = new LauncherUpdater();
+        public LauncherState ProgressBarState { get; set; } = new LauncherState();
+        public FilepathModel FilepathManager { get; private set; } = new FilepathModel();
+        public GameModel GameManager { get; private set; } = new GameModel();
         public VersionDownloader VersionDownloader { get; private set; } = new VersionDownloader();
+
+
+        private bool AllowedToCloseWithGameOpen { get; set; } = false;
+        private KeyboardNavigationMode KeyboardNavigationMode { get; set; }
+        public int CurrentPageIndex { get; private set; } = -2;
+        public int LastPageIndex { get; private set; } = -1;
+        public int CurrentPageIndex_News { get; private set; } = -2;
+        public int LastPageIndex_News { get; private set; } = -1;
+        public int CurrentPageIndex_Play { get; private set; } = -2;
+        public int LastPageIndex_Play { get; private set; } = -1;
+        public int CurrentPageIndex_Settings { get; private set; } = -2;
+        public int LastPageIndex_Settings { get; private set; } = -1;
+        public string CurrentInstallationUUID
+        {
+            get
+            {
+                Depends.On(CurrentProfileUUID);
+                return Config.CurrentInstallationUUID;
+            }
+            set
+            {
+                Config.CurrentInstallationUUID = value;
+            }
+        }
+        public string CurrentProfileUUID
+        {
+            get
+            {
+                return Config.CurrentProfileUUID;
+            }
+            set
+            {
+                Config.CurrentProfileUUID = value;
+            }
+        }
+        public ObservableCollection<BLVersion> Versions { get; private set; } = new ObservableCollection<BLVersion>();
+        public MCProfilesList Config { get; private set; } = new MCProfilesList();
+        public SortBy_Installation Installations_SortFilter { get; set; } = SortBy_Installation.LatestPlayed;
+        public string Installations_SearchFilter { get; set; } = string.Empty;
+        public bool IsVersionsUpdating { get; set; }
 
         #endregion
 
-        #region Page Indexes
+        #region Methods
 
-        public int CurrentPageIndex { get; private set; } = -2;
-        public int LastPageIndex { get; private set; } = -1;
-
-        public int CurrentPageIndex_News { get; private set; } = -2;
-        public int LastPageIndex_News { get; private set; } = -1;
-
-        public int CurrentPageIndex_Play { get; private set; } = -2;
-        public int LastPageIndex_Play { get; private set; } = -1;
-
-        public int CurrentPageIndex_Settings { get; private set; } = -2;
-        public int LastPageIndex_Settings { get; private set; } = -1;
-
+        public void LoadConfig()
+        {
+            Config.PropertyChanged -= (sender, e) => OnConfigUpdated(e);
+            Config = MCProfilesList.Load(LauncherModel.Default.FilepathManager.GetProfilesFilePath(), Properties.LauncherSettings.Default.CurrentProfile, Properties.LauncherSettings.Default.CurrentProfile);
+            Config.PropertyChanged += (sender, e) => OnConfigUpdated(e);
+        }
+        public async Task LoadVersions()
+        {
+            if (IsVersionsUpdating) return;
+            await Application.Current.Dispatcher.Invoke((Func<Task>)(async () =>
+            {
+                IsVersionsUpdating = true;
+                await LauncherModel.Default.VersionDownloader.UpdateVersions(Versions);
+                IsVersionsUpdating = false;
+            }));
+        }
         public void UpdatePageIndex(int index)
         {
             LastPageIndex = CurrentPageIndex;
             CurrentPageIndex = index;
         }
-
         public void UpdatePlayPageIndex(int index)
         {
             LastPageIndex_Play = CurrentPageIndex_Play;
             CurrentPageIndex_Play = index;
         }
-
         public void UpdateNewsPageIndex(int index)
         {
             LastPageIndex_News = CurrentPageIndex_News;
             CurrentPageIndex_News = index;
         }
-
         public void UpdateSettingsPageIndex(int index)
         {
             LastPageIndex_Settings = CurrentPageIndex_Settings;
             CurrentPageIndex_Settings = index;
         }
-
-        #endregion
-
-        #region UI
-
-        private void ViewModel_ProgressBarStateChanged(object sender, EventArgs e)
-        {
-            Events.ProgressBarState es = e as Events.ProgressBarState;
-            if (es.isVisible) ProgressBarShowAnim();
-            else ProgressBarHideAnim();
-        }
-
-
-        private void UpdateProgressBarContent(StateChange value)
-        {
-            Application.Current.Dispatcher.Invoke(() => {
-                switch (value)
-                {
-                    case StateChange.isInitializing:
-                        MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_Downloading");
-                        break;
-                    case StateChange.isDownloading:
-                        MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_Downloading");
-                        break;
-                    case StateChange.isExtracting:
-                        MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_Extracting");
-                        break;
-                    case StateChange.isRegisteringPackage:
-                        MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_RegisteringPackage");
-                        break;
-                    case StateChange.isRemovingPackage:
-                        MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_RemovingPackage");
-                        break;
-                    case StateChange.isUninstalling:
-                        MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_Uninstalling");
-                        break;
-                    case StateChange.isLaunching:
-                        MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_Launching");
-                        break;
-                    case StateChange.isBackingUp:
-                        MainThread.progressbarcontent.SetResourceReference(TextBlock.TextProperty, "ProgressBar_BackingUp");
-                        break;
-                }
-
-            });
-        }
-        private void ProgressBarUpdate()
-        {
-            ProgressBarUpdate(_CurrentProgress, _TotalProgress);
-        }
-        private void ProgressBarUpdate(double downloadedBytes, double totalSize)
-        {
-            bool isAdvanced = Properties.LauncherSettings.Default.ShowAdvancedInstallDetails;
-            bool isIndeterminate = (CurrentState == StateChange.isInitializing || 
-                CurrentState == StateChange.isUninstalling || 
-                CurrentState == StateChange.isLaunching || 
-                (!isAdvanced ? (CurrentState == StateChange.isRemovingPackage || CurrentState == StateChange.isRegisteringPackage) : false));
-
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                if (MainThread != null)
-                {
-                    MainThread.progressSizeHack.Value = downloadedBytes;
-                    MainThread.progressSizeHack.Maximum = totalSize;
-
-                    MainThread.BedrockEditionButton.progressSizeHack.Value = downloadedBytes;
-                    MainThread.BedrockEditionButton.progressSizeHack.Maximum = totalSize;
-
-                    MainThread.ProgressBarText.Text = DisplayStatus;
-
-                    MainThread.progressSizeHack.IsIndeterminate = isIndeterminate;
-                    MainThread.BedrockEditionButton.progressSizeHack.IsIndeterminate = isIndeterminate;
-                }
-            });
-        }
-
-        private async void ProgressBarShowAnim()
-        {
-            await Application.Current.Dispatcher.InvokeAsync(() =>
-            {
-                MainThread.BedrockEditionButton.progressSizeHack.Visibility = Visibility.Visible;
-                MainThread.ProgressBarGrid.Visibility = Visibility.Visible;
-                MainThread.ProgressBarText.Visibility = Visibility.Hidden;
-                MainThread.progressbarcontent.Visibility = Visibility.Hidden;
-
-                Storyboard storyboard = new Storyboard();
-                DoubleAnimation animation = new DoubleAnimation
-                {
-                    From = 0,
-                    To = 72,
-                    Duration = new Duration(TimeSpan.FromMilliseconds(350))
-                };
-                storyboard.Children.Add(animation);
-                Storyboard.SetTargetProperty(animation, new PropertyPath(ProgressBar.HeightProperty));
-                Storyboard.SetTarget(animation, MainThread.ProgressBarGrid);
-                storyboard.Completed += new EventHandler(ShowProgressBarContent);
-                storyboard.Begin();
-            });
-        }
-        private async void ProgressBarHideAnim()
-        {
-            await Application.Current.Dispatcher.InvokeAsync(() =>
-            {
-                MainThread.BedrockEditionButton.progressSizeHack.Visibility = Visibility.Hidden;
-                MainThread.ProgressBarGrid.Visibility = Visibility.Visible;
-                MainThread.ProgressBarText.Visibility = Visibility.Hidden;
-                MainThread.progressbarcontent.Visibility = Visibility.Hidden;
-
-                Storyboard storyboard = new Storyboard();
-                DoubleAnimation animation = new DoubleAnimation
-                {
-                    From = 72,
-                    To = 0,
-                    Duration = new Duration(TimeSpan.FromMilliseconds(350))
-                };
-                storyboard.Children.Add(animation);
-                Storyboard.SetTargetProperty(animation, new PropertyPath(ProgressBar.HeightProperty));
-                Storyboard.SetTarget(animation, MainThread.ProgressBarGrid);
-                storyboard.Completed += new EventHandler(HideProgressBarContent);
-                storyboard.Begin();
-            });
-        }
-
-        private void HideProgressBarContent(object sender, EventArgs e)
-        {
-            MainThread.BedrockEditionButton.progressSizeHack.Visibility = Visibility.Hidden;
-            MainThread.ProgressBarGrid.Visibility = Visibility.Collapsed;
-            MainThread.ProgressBarText.Visibility = Visibility.Hidden;
-            MainThread.progressbarcontent.Visibility = Visibility.Hidden;
-        }
-        private void ShowProgressBarContent(object sender, EventArgs e)
-        {
-            MainThread.BedrockEditionButton.progressSizeHack.Visibility = Visibility.Visible;
-            MainThread.ProgressBarGrid.Visibility = Visibility.Visible;
-            MainThread.ProgressBarText.Visibility = Visibility.Visible;
-            MainThread.progressbarcontent.Visibility = Visibility.Visible;
-        }
-
-        public void UpdateUI()
-        {
-            OnPropertyChanged(nameof(IsGameRunning));
-            OnPropertyChanged(nameof(ShowProgressBar));
-            OnPropertyChanged(nameof(PlayButtonString));
-            OnPropertyChanged(nameof(AllowPlaying));
-            OnPropertyChanged(nameof(AllowEditing));
-        }
-
-
-        #endregion
-
-        #region Prompts
-
-
-
-        private bool AllowedToCloseWithGameOpen { get; set; } = false;
-        private KeyboardNavigationMode KeyboardNavigationMode { get; set; }
-
         public async void ShowPrompt_ClosingWithGameStillOpened(Action successAction)
         {
             await Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(async () =>
@@ -330,19 +219,15 @@ namespace BedrockLauncher.ViewModels
             }
             else await PageAnimator.Navigate(MainThread.ErrorFrame, content);
         }
-
         public void SetOverlayFrame_Strict(object content)
         {
             SetOverlayFrame_Base(content, false);
         }
-
         public void SetOverlayFrame(object content)
         {
             bool animate = Properties.LauncherSettings.Default.AnimatePageTransitions;
             SetOverlayFrame_Base(content, animate);
         }
-
-
         private async void SetOverlayFrame_Base(object content, bool animate)
         {
             bool isEmpty = content == null;
@@ -362,318 +247,9 @@ namespace BedrockLauncher.ViewModels
             else await PageAnimator.Navigate(MainThread.OverlayFrame, content);
         }
 
-
-
         #endregion
 
-        #region Enums
-        public enum StateChange
-        {
-            None,
-            isInitializing,
-            isExtracting,
-            isUninstalling,
-            isLaunching,
-            isDownloading,
-            isBackingUp,
-            isRemovingPackage,
-            isRegisteringPackage
-        }
-
-        #endregion
-
-        #region Events
-
-        public event EventHandler ProgressBarStateChanged;
-        protected virtual void OnProgressBarStateChanged(ProgressBarState e)
-        {
-            EventHandler handler = ProgressBarStateChanged;
-            if (handler != null) handler(this, e);
-        }
-
-        public event EventHandler ConfigUpdated;
-        protected virtual void OnConfigUpdated(PropertyChangedEventArgs e)
-        {
-            EventHandler handler = ConfigUpdated;
-            if (e.PropertyName == nameof(Config.CurrentInstallations))
-                if (handler != null) handler(this, e);
-        }
-
-        #endregion
-
-        #region One Way Bindings
-        public string PlayButtonString
-        {
-            get
-            {         
-                if (IsGameRunning) return App.Current.FindResource("GameTab_PlayButton_Kill_Text").ToString();
-                else return App.Current.FindResource("GameTab_PlayButton_Text").ToString();
-            }
-        }
-        public bool AllowEditing
-        {
-            get
-            {
-                return AllowPlaying && !_IsGameRunning && !ShowProgressBar;
-            }
-        }
-        public bool AllowPlaying
-        {
-            get
-            {
-                return CurrentState == StateChange.None && !ShowProgressBar;
-            }
-        }
-        public string DisplayStatus
-        {
-            get
-            {
-                switch (CurrentState)
-                {
-                    case StateChange.isInitializing:
-                        return "";
-                    case StateChange.isDownloading:
-                        return DownloadStatus;
-                    case StateChange.isExtracting:
-                        return ExtractingStatus;
-                    case StateChange.isRegisteringPackage:
-                        return DeploymentStatus;
-                    case StateChange.isRemovingPackage:
-                        return DeploymentStatus;
-                    case StateChange.isUninstalling:
-                        return "";
-                    case StateChange.isLaunching:
-                        return "";
-                    case StateChange.isBackingUp:
-                        return BackupStatus;
-                    case StateChange.None:
-                        return "";
-                    default:
-                        return "";
-                }
-            }
-        }
-        private string BackupStatus
-        {
-            get
-            {
-                return string.Format("{0} / {1}", CurrentProgress, TotalProgress);
-            }
-        }
-        private string DeploymentStatus
-        {
-            get
-            {
-                return CurrentProgress + "%" + string.Format(" [ {0} ]", DeploymentPackageName);
-            }
-        }
-        private string ExtractingStatus
-        {
-            get
-            {
-                long percent = 0;
-                if (TotalProgress != 0) percent = (100 * CurrentProgress) / TotalProgress;
-                return percent + "%";
-            }
-        }
-        private string DownloadStatus
-        {
-            get
-            {
-                return (Math.Round((double)CurrentProgress / 1024 / 1024, 2)).ToString() + " MB / " + (Math.Round((double)TotalProgress / 1024 / 1024, 2)).ToString() + " MB";
-            }
-        }
-
-        #endregion
-
-        #region Bindings
-
-        private bool _IsGameRunning = false;
-        private bool _ShowProgressBar = false;
-        private bool _AllowCancel = false;
-        private long _CurrentProgress;
-        private long _TotalProgress;
-        private StateChange _currentState = StateChange.None;
-
-        public StateChange CurrentState
-        {
-            get { return _currentState; }
-            set
-            {
-                bool IsAdvancedDetail = value == StateChange.isRegisteringPackage || value == StateChange.isRemovingPackage;
-                if (!Properties.LauncherSettings.Default.ShowAdvancedInstallDetails && IsAdvancedDetail) return;
-                else
-                {
-                    _currentState = value;
-                    OnPropertyChanged(nameof(DisplayStatus));
-                    UpdateProgressBarContent(value);
-                    ProgressBarUpdate();
-                }
-            }
-        }
-        public bool AllowCancel
-        {
-            get
-            {
-                return _AllowCancel;
-            }
-            set
-            {
-                _AllowCancel = value;
-                OnPropertyChanged(nameof(AllowCancel));
-                UpdateUI();
-            }
-        }
-        public bool IsGameRunning
-        {
-            get
-            {
-                return _IsGameRunning;
-            }
-            set
-            {
-                _IsGameRunning = value;
-                OnPropertyChanged(nameof(IsGameRunning));
-                UpdateUI();
-            }
-        }
-        public bool ShowProgressBar
-        {
-            get
-            {
-                return _ShowProgressBar;
-            }
-            set
-            {
-                _ShowProgressBar = value;
-                OnProgressBarStateChanged(new ProgressBarState(value));
-                OnPropertyChanged(nameof(ShowProgressBar));
-                UpdateUI();
-            }
-        }
-        public long CurrentProgress
-        {
-            get
-            {
-                return _CurrentProgress;
-            }
-            set
-            {
-                _CurrentProgress = value;
-                ProgressBarUpdate(_CurrentProgress, _TotalProgress);
-                OnPropertyChanged(nameof(CurrentProgress));
-                OnPropertyChanged(nameof(DisplayStatus));
-                UpdateUI();
-            }
-        }
-        public long TotalProgress
-        {
-            get
-            {
-                return _TotalProgress;
-            }
-            set
-            {
-                _TotalProgress = value;
-                OnPropertyChanged(nameof(TotalProgress));
-                OnPropertyChanged(nameof(DisplayStatus));
-                UpdateUI();
-            }
-        }
-
-        #endregion
-
-        #region Definitions
-
-        public const long DeploymentMaximum = 100;
-        public ICommand CancelCommand { get; set; }
-        public string DeploymentPackageName { get; set; }
-
-        #endregion
-
-        #region ConfigManager Porting
-
-        #region Enums
-
-        public enum SortBy_Installation : int
-        {
-            LatestPlayed,
-            Name
-        }
-
-        #endregion
-
-        #region Variables
-
-
-        public string CurrentInstallationUUID
-        {
-            get
-            {
-                return Config.CurrentInstallationUUID;
-            }
-            set
-            {
-                Config.CurrentInstallationUUID = value;
-                OnPropertyChanged(nameof(CurrentInstallationUUID));
-            }
-        }
-        public string CurrentProfileUUID
-        {
-            get
-            {
-                return Config.CurrentProfileUUID;
-            }
-            set
-            {
-                Config.CurrentProfileUUID = value;
-                OnPropertyChanged(nameof(CurrentProfileUUID));
-                OnPropertyChanged(nameof(CurrentInstallationUUID));
-            }
-        }
-
-        public ObservableCollection<BLVersion> Versions { get; private set; } = new ObservableCollection<BLVersion>();
-        public MCProfilesList Config { get; private set; } = new MCProfilesList();
-        public SortBy_Installation Installations_SortFilter { get; set; } = SortBy_Installation.LatestPlayed;
-        public string Installations_SearchFilter { get; set; } = string.Empty;
-
-        #region public bool IsVersionsUpdating
-
-        private bool _IsVersionsUpdating = false;
-        public bool IsVersionsUpdating
-        {
-            get { return _IsVersionsUpdating; }
-            set { _IsVersionsUpdating = value; OnPropertyChanged(nameof(IsVersionsUpdating)); }
-        }
-
-        #endregion
-
-        #endregion
-
-        #region Methods
-
-
-        public void LoadConfig()
-        {
-            Config.PropertyChanged -= (sender, e) => OnConfigUpdated(e);
-            Config = MCProfilesList.Load(LauncherModel.Default.FilepathManager.GetProfilesFilePath(), Properties.LauncherSettings.Default.CurrentProfile, Properties.LauncherSettings.Default.CurrentProfile);
-            Config.PropertyChanged += (sender, e) => OnConfigUpdated(e);
-        }
-
-        public async Task LoadVersions()
-        {
-            if (IsVersionsUpdating) return;
-            await Application.Current.Dispatcher.Invoke((Func<Task>)(async () =>
-            {
-                IsVersionsUpdating = true;
-                await LauncherModel.Default.VersionDownloader.UpdateVersions(Versions);
-                IsVersionsUpdating = false;
-            }));
-        }
-
-        #endregion
-
-        #region Filters/Sorting
+        #region Filters/Sorters
 
         public bool Filter_InstallationList(object obj)
         {
@@ -705,6 +281,19 @@ namespace BedrockLauncher.ViewModels
         }
 
         #endregion
+
+        #region Extensions
+
+        public static MainWindow MainThread
+        {
+            get
+            {
+                return App.Current.Dispatcher.Invoke(() =>
+                {
+                    return (MainWindow)App.Current.MainWindow;
+                });
+            }
+        }
 
         #endregion
     }

@@ -33,7 +33,6 @@ namespace BedrockLauncher.Controls.Settings
             var item = this.SelectedItem as BedrockLauncher.Core.Language.LanguageDefinition;
             if (item == null) return;
             BedrockLauncher.Core.Language.LanguageManager.SetLanguage(item.Locale);
-            ViewModels.LauncherModel.Default.UpdateUI();
         }
 
 

@@ -47,6 +47,7 @@ namespace BedrockLauncher
 
         public MainWindow()
         {
+            this.DataContext = LauncherModel.Default;
             InitializeComponent();
         }
 
@@ -66,7 +67,7 @@ namespace BedrockLauncher
             MainPage.skinsPage.InitFrameEvents(OverlayFrame);
 
             UpdateButton.ClickBase.Click += LauncherModel.Updater.UpdateButton_Click;
-            LauncherModel.Default.InitKeyboardFocus(MainFrame);
+            LauncherModel.Default.Init(MainFrame);
 
             bool isFirstLaunch = Properties.LauncherSettings.Default.CurrentProfile == "" || 
                 Properties.LauncherSettings.Default.IsFirstLaunch || 

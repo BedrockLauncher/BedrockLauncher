@@ -13,7 +13,7 @@
              Style="{DynamicResource InstallationSelectorComboBoxStyle}"
              SelectedValuePath="InstallationUUID" 
              SelectedValue="{Binding Source={x:Static viewModels:LauncherModel.Default}, Path=CurrentInstallationUUID, UpdateSourceTrigger=PropertyChanged}"
-             IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default}, Path=AllowEditing, Mode=OneWay}">
+             IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}">
     <ComboBox.ItemContainerStyle>
         <Style TargetType="{x:Type ComboBoxItem}" xmlns:c="clr-namespace:BedrockLauncher.Core.Components;assembly=BedrockLauncher.Core">
             <Setter Property="SnapsToDevicePixels" Value="True"/>

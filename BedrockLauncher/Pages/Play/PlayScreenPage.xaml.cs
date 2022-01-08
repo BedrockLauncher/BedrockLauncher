@@ -60,7 +60,6 @@ namespace BedrockLauncher.Pages.Play
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
-                LauncherModel.Default.UpdateUI();
 
                 string packUri = string.Empty;
                 string currentTheme = Properties.LauncherSettings.Default.CurrentTheme;

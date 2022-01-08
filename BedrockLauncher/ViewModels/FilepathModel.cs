@@ -9,7 +9,7 @@ using BedrockLauncher.Core.Classes;
 
 namespace BedrockLauncher.ViewModels
 {
-    public class FilepathManager
+    public class FilepathModel
     {
         #region Strings
 
@@ -96,7 +96,7 @@ namespace BedrockLauncher.ViewModels
         {
             if (InstallationsPath == string.Empty) return string.Empty;
             string[] Route = new string[] { (DevFolder ? "development_skin_packs" : "skin_packs") };
-            string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", GameManager.MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang");
+            string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", GameModel.MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang");
 
 
             if (HasSaveRedirection) return Path.Combine(Route.Prepend(InstallationsPath).ToArray());

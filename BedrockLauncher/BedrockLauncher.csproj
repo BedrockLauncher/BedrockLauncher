@@ -202,11 +202,13 @@
       <DependentUpon>InstallationSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="Downloaders\WikiChangelogDownloader.cs" />
+    <Compile Include="Enums\LauncherStateChange.cs" />
+    <Compile Include="Enums\SortBy_Installation.cs" />
     <Compile Include="Internals.cs" />
     <Compile Include="Pages\News\News_MinecraftForums_Page.xaml.cs">
       <DependentUpon>News_MinecraftForums_Page.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\FilepathManager.cs" />
+    <Compile Include="ViewModels\FilepathModel.cs" />
     <Compile Include="Pages\Community\CommunityPage.xaml.cs">
       <DependentUpon>CommunityPage.xaml</DependentUpon>
     </Compile>
@@ -221,7 +223,7 @@
     </Compile>
     <Compile Include="ViewModels\LauncherModel.cs" />
     <Compile Include="Events\GameRunningState.cs" />
-    <Compile Include="Events\ProgressBarState.cs" />
+    <Compile Include="Events\LauncherState.cs" />
     <Compile Include="Properties\LauncherSettings.cs" />
     <Compile Include="Controls\Misc\HtmlPanelPro.cs" />
     <Compile Include="Controls\Items\BlockPickerItem.xaml.cs">
@@ -288,7 +290,7 @@
       <DependentUpon>SkinPreview.xaml</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="ViewModels\GameManager.cs" />
+    <Compile Include="ViewModels\GameModel.cs" />
     <Compile Include="Methods\ConsoleArgumentManager.cs" />
     <Compile Include="Downloaders\ChangelogDownloader.cs" />
     <Compile Include="Pages\Settings\AdvancedOptionsWindow.xaml.cs">
@@ -670,6 +672,12 @@
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="PostSharp">
+      <Version>6.10.5</Version>
+    </PackageReference>
+    <PackageReference Include="PostSharp.Patterns.Model">
+      <Version>6.10.5</Version>
     </PackageReference>
     <PackageReference Include="RestSharp">
       <Version>106.12.0</Version>
