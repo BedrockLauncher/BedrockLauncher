@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 
-namespace BedrockLauncher.Controls
+namespace BedrockLauncher.Controls.Settings
 {
     /// <summary>
     /// Interaction logic for ThemeCombobox.xaml

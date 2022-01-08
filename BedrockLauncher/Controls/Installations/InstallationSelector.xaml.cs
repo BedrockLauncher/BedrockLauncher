@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BedrockLauncher.Controls
+namespace BedrockLauncher.Controls.Installations
 {
     /// <summary>
     /// Interaction logic for InstallationSelector.xaml

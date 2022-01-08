@@ -192,16 +192,13 @@
     <Compile Include="Controls\Items\LauncherUpdateItem.xaml.cs">
       <DependentUpon>LauncherUpdateItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Marquee.xaml.cs">
+    <Compile Include="Controls\Misc\Marquee.xaml.cs">
       <DependentUpon>Marquee.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Toolbar\DungeonsButton.xaml.cs">
-      <DependentUpon>DungeonsButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\UpdateButton.xaml.cs">
+    <Compile Include="Controls\Misc\UpdateButton.xaml.cs">
       <DependentUpon>UpdateButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\InstallationSelector.xaml.cs">
+    <Compile Include="Controls\Installations\InstallationSelector.xaml.cs">
       <DependentUpon>InstallationSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="Downloaders\WikiChangelogDownloader.cs" />
@@ -226,7 +223,7 @@
     <Compile Include="Events\GameRunningState.cs" />
     <Compile Include="Events\ProgressBarState.cs" />
     <Compile Include="Properties\LauncherSettings.cs" />
-    <Compile Include="Controls\HtmlPanelPro.cs" />
+    <Compile Include="Controls\Misc\HtmlPanelPro.cs" />
     <Compile Include="Controls\Items\BlockPickerItem.xaml.cs">
       <DependentUpon>BlockPickerItem.xaml</DependentUpon>
     </Compile>
@@ -251,7 +248,7 @@
     <Compile Include="Controls\Items\VersionItem.xaml.cs">
       <DependentUpon>VersionItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ThemeCombobox.xaml.cs">
+    <Compile Include="Controls\Settings\ThemeCombobox.xaml.cs">
       <DependentUpon>ThemeCombobox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Toolbar\ExternalLauncherButton.xaml.cs">
@@ -263,13 +260,13 @@
     <Compile Include="Controls\Toolbar\JavaEditionButton.xaml.cs">
       <DependentUpon>JavaEditionButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\BlockPicker.xaml.cs">
+    <Compile Include="Controls\Installations\BlockPicker.xaml.cs">
       <DependentUpon>BlockPicker.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\InsiderSelector.xaml.cs">
+    <Compile Include="Controls\Settings\InsiderSelector.xaml.cs">
       <DependentUpon>InsiderSelector.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\LanguageCombobox.xaml.cs">
+    <Compile Include="Controls\Settings\LanguageCombobox.xaml.cs">
       <DependentUpon>LanguageCombobox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Toolbar\BedrockEditionButton.xaml.cs">
@@ -287,7 +284,7 @@
     <Compile Include="Controls\Items\ProfileItem.xaml.cs">
       <DependentUpon>ProfileItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SkinPreview.xaml.cs">
+    <Compile Include="Controls\Skins\SkinPreview.xaml.cs">
       <DependentUpon>SkinPreview.xaml</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -429,15 +426,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Marquee.xaml">
+    <Page Include="Controls\Misc\Marquee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\ThemeCombobox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Toolbar\DungeonsButton.xaml">
+    <Page Include="Controls\Settings\ThemeCombobox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -453,15 +446,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\BlockPicker.xaml">
+    <Page Include="Controls\Installations\BlockPicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\InsiderSelector.xaml">
+    <Page Include="Controls\Settings\InsiderSelector.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\LanguageCombobox.xaml">
+    <Page Include="Controls\Settings\LanguageCombobox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -485,15 +478,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\SkinPreview.xaml">
+    <Page Include="Controls\Skins\SkinPreview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\UpdateButton.xaml">
+    <Page Include="Controls\Misc\UpdateButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\InstallationSelector.xaml">
+    <Page Include="Controls\Installations\InstallationSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -819,10 +812,6 @@
     <Resource Include="Resources\images\credits\mcmrarm_icon.jfif" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\modules\BedrockLauncher.Dungeons\BedrockLauncher.Dungeons.csproj">
-      <Project>{a04af51f-1e8c-44b0-9ebc-e3c7d6b3f4d3}</Project>
-      <Name>BedrockLauncher.Dungeons</Name>
-    </ProjectReference>
     <ProjectReference Include="..\modules\BedrockLauncher.Core\BedrockLauncher.Core.csproj">
       <Project>{167a048a-8140-4f8d-87c3-a03d07f964d3}</Project>
       <Name>BedrockLauncher.Core</Name>

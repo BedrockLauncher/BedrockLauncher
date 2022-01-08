@@ -26,7 +26,6 @@ namespace BedrockLauncher.Pages.Community
 
         ChromiumWebBrowser Browser = new ChromiumWebBrowser();
 
-        private string DonateURL = "https://www.paypal.com/paypalme/CarJemGenerations";
 
         public CommunityPage()
         {
@@ -62,6 +61,9 @@ namespace BedrockLauncher.Pages.Community
 
     public class BrowserRequestHandler : IRequestHandler
     {
+        private string DonateURL = "https://www.paypal.com/paypalme/CarJemGenerations";
+
+
         public bool GetAuthCredentials(IWebBrowser chromiumWebBrowser, IBrowser browser, string originUrl, bool isProxy, string host, int port, string realm, string scheme, IAuthCallback callback)
         {
             callback.Dispose();
@@ -77,7 +79,7 @@ namespace BedrockLauncher.Pages.Community
         {
             if (request.Url == "https://www.paypal.com/donate")
             {
-                System.Diagnostics.Process.Start("https://www.paypal.com/paypalme/CarJemGenerations");
+                System.Diagnostics.Process.Start(DonateURL);
                 return true;
             }
             return false;

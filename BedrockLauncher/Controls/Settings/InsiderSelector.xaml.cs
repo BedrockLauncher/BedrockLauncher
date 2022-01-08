@@ -16,7 +16,7 @@ using BedrockLauncher.Methods;
 using BedrockLauncher.Downloaders;
 using BedrockLauncher.UpdateProcessor;
 
-namespace BedrockLauncher.Controls
+namespace BedrockLauncher.Controls.Settings
 {
     /// <summary>
     /// Interaction logic for InsiderSelector.xaml
@@ -52,13 +52,13 @@ namespace BedrockLauncher.Controls
             });
         }
 
-        private void AccountsList_DropDownClosed(object sender, EventArgs e)
+        private async void AccountsList_DropDownClosed(object sender, EventArgs e)
         {
             if (AccountsList.SelectedIndex == -1) AccountsList.SelectedIndex = 0;
             else if (Win10AuthenticationManager.CurrentAccounts.Count < AccountsList.SelectedIndex) AccountsList.SelectedIndex = 0;
             Properties.LauncherSettings.Default.CurrentInsiderAccount = AccountsList.SelectedIndex;
             Properties.LauncherSettings.Default.Save();
-            ViewModels.LauncherModel.Default.LoadVersions();
+            await ViewModels.LauncherModel.Default.LoadVersions();
             RefreshProfileContextMenuItems();
         }
     }

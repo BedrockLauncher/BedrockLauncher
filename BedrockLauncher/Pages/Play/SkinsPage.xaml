@@ -4,7 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mcf="clr-namespace:BedrockLauncher.Core.Controls.McTextBlock;assembly=BedrockLauncher.Core"
-      xmlns:controls="clr-namespace:BedrockLauncher.Controls"
+      xmlns:controls="clr-namespace:BedrockLauncher.Controls.Skins"
+      xmlns:controls2="clr-namespace:BedrockLauncher.Controls.Installations"
       xmlns:classes="clr-namespace:BedrockLauncher.Core.Classes.SkinPack;assembly=BedrockLauncher.Core"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       xmlns:properties="clr-namespace:BedrockLauncher.Properties"
@@ -73,7 +74,7 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Grid Background="{DynamicResource ListBox.Static.Background}">
-                <controls:InstallationSelector VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectionChanged="InstallationsList_SelectionChanged" ItemsSource="{Binding}" x:Name="InstallationsList" Margin="4,4,4,4" Padding="-1,7,5,3"></controls:InstallationSelector>
+                <controls2:InstallationSelector VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectionChanged="InstallationsList_SelectionChanged" ItemsSource="{Binding}" x:Name="InstallationsList" Margin="4,4,4,4" Padding="-1,7,5,3"></controls2:InstallationSelector>
             </Grid>
             <ListView Grid.Row="1"
                   Keyboard.PreviewKeyUp="LoadedSkinPacks_PreviewKeyUp"

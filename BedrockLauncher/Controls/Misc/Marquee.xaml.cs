@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BedrockLauncher.Controls
+namespace BedrockLauncher.Controls.Misc
 {
     /// <summary>
     /// Interaction logic for Marquee.xaml

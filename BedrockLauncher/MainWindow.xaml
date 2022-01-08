@@ -3,7 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:properties="clr-namespace:BedrockLauncher.Properties"
-        xmlns:controls="clr-namespace:BedrockLauncher.Controls"
+        xmlns:controls="clr-namespace:BedrockLauncher.Controls.Misc"
         xmlns:methods="clr-namespace:BedrockLauncher.Methods"
         xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
         xmlns:toolbar="clr-namespace:BedrockLauncher.Controls.Toolbar"
@@ -34,7 +34,6 @@
                 <toolbar:ProfileButton IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default},Path=AllowEditing, Mode=OneWay}" x:Name="ProfileButton"></toolbar:ProfileButton>
                 <toolbar:NewsButton x:Name="NewsButton"></toolbar:NewsButton>
                 <toolbar:BedrockEditionButton x:Name="BedrockEditionButton"></toolbar:BedrockEditionButton>
-                <toolbar:DungeonsButton x:Name="DungeonsButton"  Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=EnableDungeonsSupport, Converter={StaticResource BoolToVis}}"></toolbar:DungeonsButton>
                 <toolbar:JavaEditionButton x:Name="JavaEditionButton" Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=HideJavaShortcut, Converter={StaticResource ReverseBoolToVis}, ConverterParameter=Inverted}"></toolbar:JavaEditionButton>
                 <toolbar:ExternalLauncherButton x:Name="ExternalLauncherButton" Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=ShowExternalLauncher, Converter={StaticResource BoolToVis}}"></toolbar:ExternalLauncherButton>
                 <toolbar:CommunityButton x:Name="CommunityButton"></toolbar:CommunityButton>

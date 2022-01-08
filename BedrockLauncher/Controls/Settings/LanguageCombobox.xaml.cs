@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 using BedrockLauncher.ViewModels;
 
-namespace BedrockLauncher.Controls
+namespace BedrockLauncher.Controls.Settings
 {
     /// <summary>
     /// Interaction logic for LanguageCombobox.xaml

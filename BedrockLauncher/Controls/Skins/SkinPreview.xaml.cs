@@ -18,7 +18,7 @@ using System.Drawing;
 using System.IO;
 using BedrockLauncher.Core.Classes.SkinPack;
 
-namespace BedrockLauncher.Controls
+namespace BedrockLauncher.Controls.Skins
 {
 
     /// <summary>
