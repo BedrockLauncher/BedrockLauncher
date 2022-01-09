@@ -16,8 +16,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Pages.Preview;
-using BedrockLauncher.Core.Pages.Common;
-using BedrockLauncher.Core.Classes;
+using BedrockLauncher.Pages.Common;
+using BedrockLauncher.Classes;
 using BedrockLauncher.ViewModels;
 using BedrockLauncher.Classes;
 
@@ -56,7 +56,7 @@ namespace BedrockLauncher.Controls.Items
         {
             Button button = sender as Button;
             var installation = button.DataContext as BLInstallation;
-            LauncherModel.Default.GameManager.OpenFolder(installation);
+            installation.OpenDirectory();
         }
 
         private void Play_Click(object sender, RoutedEventArgs e)
@@ -64,7 +64,7 @@ namespace BedrockLauncher.Controls.Items
             Button button = sender as Button;
             var installation = button.DataContext as BLInstallation;
             bool KeepLauncherOpen = Properties.LauncherSettings.Default.KeepLauncherOpen;
-            LauncherModel.Default.GameManager.Play(LauncherModel.Default.Config.CurrentProfile, installation, KeepLauncherOpen);
+            MainViewModel.Default.Play(MainViewModel.Default.Config.CurrentProfile, installation, KeepLauncherOpen);
         }
 
         private async void DeleteInstallationButton_Click(object sender, RoutedEventArgs e)
@@ -80,7 +80,7 @@ namespace BedrockLauncher.Controls.Items
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
 
-                LauncherModel.Default.Config.Installation_Delete(installation);
+                MainViewModel.Default.Config.Installation_Delete(installation);
             }
         }
 
@@ -104,14 +104,14 @@ namespace BedrockLauncher.Controls.Items
         {
             MenuItem button = sender as MenuItem;
             var installation = button.DataContext as BLInstallation;
-            ViewModels.LauncherModel.Default.SetOverlayFrame(new EditInstallationScreen(installation));
+            ViewModels.MainViewModel.Default.SetOverlayFrame(new EditInstallationScreen(installation));
         }
 
         private void DuplicateInstallationButton_Click(object sender, RoutedEventArgs e)
         {
             MenuItem button = sender as MenuItem;
             var installation = button.DataContext as BLInstallation;
-            LauncherModel.Default.Config.Installation_Clone(installation);
+            MainViewModel.Default.Config.Installation_Clone(installation);
         }
     }
 }

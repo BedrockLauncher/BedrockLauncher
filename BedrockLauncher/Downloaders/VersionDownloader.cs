@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using BedrockLauncher.UpdateProcessor;
 using System.Linq;
 using ExtensionsDotNET;
-using BedrockLauncher.Core.Classes;
 using BedrockLauncher.ViewModels;
 using System.Collections.ObjectModel;
 
@@ -18,9 +17,9 @@ namespace BedrockLauncher.Downloaders
         private HttpClient _client = new HttpClient();
         private Win10StoreNetwork _store_manager = new Win10StoreNetwork();
 
-        private string cacheFile => LauncherModel.Default.FilepathManager.GetVersionsFilePath();
-        private string userCacheFile => LauncherModel.Default.FilepathManager.GetUserVersionsFilePath();
-        private string technicalUserCacheFile => LauncherModel.Default.FilepathManager.GetUserVersionsTechnicalFilePath();
+        private string cacheFile => MainViewModel.Default.FilepathManager.GetVersionsFilePath();
+        private string userCacheFile => MainViewModel.Default.FilepathManager.GetUserVersionsFilePath();
+        private string technicalUserCacheFile => MainViewModel.Default.FilepathManager.GetUserVersionsTechnicalFilePath();
 
         public void EnableUserAuthorization()
         {

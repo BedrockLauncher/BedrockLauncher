@@ -1,4 +1,4 @@
-﻿using BedrockLauncher.Core.Classes.SkinPack;
+﻿using BedrockLauncher.Classes.SkinPack;
 using BedrockLauncher.Methods;
 using System.Windows;
 using System.Windows.Controls;
@@ -230,14 +230,14 @@ namespace BedrockLauncher.Pages.Preview
 
         private string GetNewPackFolder()
         {
-            string InstallationPath = LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.Config.CurrentProfileUUID, LauncherModel.Default.Config.CurrentInstallation.DirectoryName);
+            string InstallationPath = MainViewModel.Default.FilepathManager.GetInstallationsFolderPath(MainViewModel.Default.Config.CurrentProfileUUID, MainViewModel.Default.Config.CurrentInstallation.DirectoryName);
             string NewPackDirectoryName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
-            string NewPackDirectory = Path.Combine(LauncherModel.Default.FilepathManager.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
+            string NewPackDirectory = Path.Combine(MainViewModel.Default.FilepathManager.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
 
             while (Directory.Exists(NewPackDirectory))
             {
                 NewPackDirectoryName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
-                NewPackDirectory = Path.Combine(LauncherModel.Default.FilepathManager.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
+                NewPackDirectory = Path.Combine(MainViewModel.Default.FilepathManager.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
             }
 
             return NewPackDirectory;
@@ -325,18 +325,18 @@ namespace BedrockLauncher.Pages.Preview
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             if (!isEditMode) RemoveUnfinishedPack();
-            ViewModels.LauncherModel.Default.SetOverlayFrame(null);
+            ViewModels.MainViewModel.Default.SetOverlayFrame(null);
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
             SaveSkinPack();
-            ViewModels.LauncherModel.Default.SetOverlayFrame(null);
+            ViewModels.MainViewModel.Default.SetOverlayFrame(null);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModels.LauncherModel.Default.SetOverlayFrame(null);
+            ViewModels.MainViewModel.Default.SetOverlayFrame(null);
         }
 
         #endregion

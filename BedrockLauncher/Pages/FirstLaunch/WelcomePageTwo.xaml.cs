@@ -40,7 +40,7 @@ namespace BedrockLauncher.Pages.FirstLaunch
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            LauncherModel.Default.LoadConfig();
+            MainViewModel.Default.LoadConfig();
             pageSwitcher.MoveToPage(3);
         }
 
@@ -63,14 +63,14 @@ namespace BedrockLauncher.Pages.FirstLaunch
                 }
                 else
                 {
-                    StorageDirectoryTextBox.Text = LauncherModel.Default.FilepathManager.DefaultLocation;
+                    StorageDirectoryTextBox.Text = MainViewModel.Default.FilepathManager.DefaultLocation;
                 }
             }
         }
 
         private void BrowseForDirectory()
         {
-            BedrockLauncher.Core.Controls.FolderSelectDialog dialog = new BedrockLauncher.Core.Controls.FolderSelectDialog()
+            BedrockLauncher.Controls.FolderSelectDialog dialog = new BedrockLauncher.Controls.FolderSelectDialog()
             {
                 InitialDirectory = StorageDirectoryTextBox.Text
             };

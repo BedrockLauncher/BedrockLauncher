@@ -55,7 +55,7 @@ namespace BedrockLauncher.Pages.FirstLaunch
         }
         public void CreateProfile(string profileName)
         {
-            if (LauncherModel.Default.Config.Profile_Add(ProfileNameTextbox.Text))
+            if (MainViewModel.Default.Config.Profile_Add(ProfileNameTextbox.Text))
             {
                 Properties.LauncherSettings.Default.CurrentProfile = profileName;
                 Properties.LauncherSettings.Default.Save();

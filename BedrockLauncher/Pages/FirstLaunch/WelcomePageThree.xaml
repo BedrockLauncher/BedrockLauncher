@@ -8,8 +8,8 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="WelcomePageOne" Width="596" Height="254">
     <Grid Margin="0" Background="{x:Null}">
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Text="{DynamicResource FirstLaunch_CreateProfileSubTitle}" Foreground="White" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans" FontSize="24" Margin="0,30,0,0" FontWeight="Bold"/>
-        <TextBlock Text="{DynamicResource FirstLaunch_CreateProfileText}" Margin="133,0,0,18" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans" Height="16" FontWeight="Bold" FontSize="11" Width="auto"/>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Text="{DynamicResource FirstLaunch_CreateProfileSubTitle}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="24" Margin="0,30,0,0" FontWeight="Bold"/>
+        <TextBlock Text="{DynamicResource FirstLaunch_CreateProfileText}" Margin="133,0,0,18" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" Height="16" FontWeight="Bold" FontSize="11" Width="auto"/>
         <Button x:Name="CreateProfileButton" Click="CreateProfileButton_Click" HorizontalAlignment="Center" Margin="0,0,0,7" VerticalAlignment="Bottom" Width="250" Height="56" Padding="0" Style="{DynamicResource BigGreenButton}">
             <TextBlock Text="{DynamicResource NewProfile_CreateProfileButton}" Style="{DynamicResource BigGreenButton_Text}"/>
         </Button>

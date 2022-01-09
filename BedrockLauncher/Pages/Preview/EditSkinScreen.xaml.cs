@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 using ExtensionsDotNET;
-using BedrockLauncher.Core.Classes.SkinPack;
+using BedrockLauncher.Classes.SkinPack;
 using BedrockLauncher.ViewModels;
 using System.Windows.Navigation;
 
@@ -66,14 +66,14 @@ namespace BedrockLauncher.Pages.Preview
 
         private void OverlayFrame_Navigated(object sender, NavigationEventArgs e)
         {
-            if (LauncherModel.MainThread.ErrorFrame.Content == null && LauncherModel.MainThread.OverlayFrame.Content == null) SkinPreview.Visibility = Visibility.Visible;
+            if (MainViewModel.MainThread.ErrorFrame.Content == null && MainViewModel.MainThread.OverlayFrame.Content == null) SkinPreview.Visibility = Visibility.Visible;
             else SkinPreview.Visibility = Visibility.Collapsed;
         }
 
         private void Init()
         {
-            LauncherModel.MainThread.OverlayFrame.Navigating += OverlayFrame_Navigating;
-            LauncherModel.MainThread.OverlayFrame.Navigated += OverlayFrame_Navigated;
+            MainViewModel.MainThread.OverlayFrame.Navigating += OverlayFrame_Navigating;
+            MainViewModel.MainThread.OverlayFrame.Navigated += OverlayFrame_Navigated;
 
             if (isEditMode)
             {
@@ -177,7 +177,7 @@ namespace BedrockLauncher.Pages.Preview
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             SkinPreview.Visibility = Visibility.Collapsed;
-            ViewModels.LauncherModel.Default.SetOverlayFrame(null);
+            ViewModels.MainViewModel.Default.SetOverlayFrame(null);
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
@@ -191,13 +191,13 @@ namespace BedrockLauncher.Pages.Preview
             else skinPack.AddSkin(skin);
 
             SkinPreview.Visibility = Visibility.Collapsed;
-            ViewModels.LauncherModel.Default.SetOverlayFrame(null);
+            ViewModels.MainViewModel.Default.SetOverlayFrame(null);
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             SkinPreview.Visibility = Visibility.Collapsed;
-            ViewModels.LauncherModel.Default.SetOverlayFrame(null);
+            ViewModels.MainViewModel.Default.SetOverlayFrame(null);
         }
 
         #endregion

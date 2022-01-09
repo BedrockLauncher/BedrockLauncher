@@ -58,8 +58,8 @@ namespace BedrockLauncher.Pages.News
                 return;
             }
 
-            int CurrentPageIndex = ViewModels.LauncherModel.Default.CurrentPageIndex_News;
-            int LastPageIndex = ViewModels.LauncherModel.Default.LastPageIndex_News;
+            int CurrentPageIndex = ViewModels.MainViewModel.Default.CurrentPageIndex_News;
+            int LastPageIndex = ViewModels.MainViewModel.Default.LastPageIndex_News;
             if (CurrentPageIndex == LastPageIndex) return;
 
             ExpandDirection direction;
@@ -67,7 +67,7 @@ namespace BedrockLauncher.Pages.News
             if (CurrentPageIndex > LastPageIndex) direction = ExpandDirection.Right;
             else direction = ExpandDirection.Left;
 
-            await Task.Run(() => BedrockLauncher.Core.Components.PageAnimator.FrameSwipe(ContentFrame, content, direction));
+            await Task.Run(() => BedrockLauncher.Components.PageAnimator.FrameSwipe(ContentFrame, content, direction));
         }
 
         public async void ResetButtonManager(string buttonName)
@@ -121,27 +121,27 @@ namespace BedrockLauncher.Pages.News
 
         public async void NavigateToCommunityNews()
         {
-            ViewModels.LauncherModel.Default.UpdateNewsPageIndex(0);
+            ViewModels.MainViewModel.Default.UpdateNewsPageIndex(0);
             await Task.Run(() => Navigate(communityNewsPage));
             LastTabName = OfficalTab.Name;
         }
 
         public async void NavigateToJavaNews()
         {
-            ViewModels.LauncherModel.Default.UpdateNewsPageIndex(1);
+            ViewModels.MainViewModel.Default.UpdateNewsPageIndex(1);
             await Task.Run(() => Navigate(javaNewsPage));
             LastTabName = JavaTab.Name;
         }
 
         public async void NavigateToForumNews()
         {
-            ViewModels.LauncherModel.Default.UpdateNewsPageIndex(2);
+            ViewModels.MainViewModel.Default.UpdateNewsPageIndex(2);
             await Task.Run(() => Navigate(forumsNewsPage));
             LastTabName = ForumsTab.Name;
         }
         public async void NavigateToLauncherNews()
         {
-            ViewModels.LauncherModel.Default.UpdateNewsPageIndex(3);
+            ViewModels.MainViewModel.Default.UpdateNewsPageIndex(3);
             await Task.Run(() => Navigate(launcherNewsPage));
             LastTabName = LauncherTab.Name;
         }

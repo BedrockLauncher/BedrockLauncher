@@ -177,6 +177,40 @@
     <Compile Include="Classes\BLInstallation.cs" />
     <Compile Include="Classes\BLVersion.cs" />
     <Compile Include="Classes\BLProfileList.cs" />
+    <Compile Include="Classes\MCPatchNotesItem.cs" />
+    <Compile Include="Classes\MCVersion.cs" />
+    <Compile Include="Classes\MediaWiki\Continue.cs" />
+    <Compile Include="Classes\MediaWiki\Limits.cs" />
+    <Compile Include="Classes\MediaWiki\Query.cs" />
+    <Compile Include="Classes\MediaWiki\RootObject.cs" />
+    <Compile Include="Classes\MediaWiki\Val.cs" />
+    <Compile Include="Classes\NewsItem.cs" />
+    <Compile Include="Classes\NewsItem_Launcher.cs" />
+    <Compile Include="Classes\NewsItem_MinecraftRSS.cs" />
+    <Compile Include="Classes\NewsItem_RSS.cs" />
+    <Compile Include="Classes\SkinPack\MCSkin.cs" />
+    <Compile Include="Classes\SkinPack\MCSkinGeometry.cs" />
+    <Compile Include="Classes\SkinPack\MCSkinPack.cs" />
+    <Compile Include="Classes\SkinPack\MCSkinPackContent.cs" />
+    <Compile Include="Classes\SkinPack\MCSkinPackLang.cs" />
+    <Compile Include="Classes\SkinPack\MCSkinPackMainfest.cs" />
+    <Compile Include="Components\ButtonBehaviors.cs" />
+    <Compile Include="Components\ComboBoxBehaviors.cs" />
+    <Compile Include="Components\CustomDesignAttributes.cs" />
+    <Compile Include="Components\DisableNavigation.cs" />
+    <Compile Include="Components\InteractivityHelper.cs" />
+    <Compile Include="Components\InverseBooleanConverter.cs" />
+    <Compile Include="Components\InvertableBooleanToVisibilityConverter.cs" />
+    <Compile Include="Components\NotifyPropertyChangedBase.cs" />
+    <Compile Include="Components\PageAnimator.cs" />
+    <Compile Include="Components\RelayCommand.cs" />
+    <Compile Include="Components\StringToUpperConverter.cs" />
+    <Compile Include="Components\UrlToImageSourceConverter.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Controls\AltMessageBox.xaml.cs">
+      <DependentUpon>AltMessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FolderSelectDialog.cs" />
     <Compile Include="Controls\Items\DLCItem.xaml.cs">
       <DependentUpon>DLCItem.xaml</DependentUpon>
     </Compile>
@@ -192,6 +226,8 @@
     <Compile Include="Controls\Items\LauncherUpdateItem.xaml.cs">
       <DependentUpon>LauncherUpdateItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\McTextBlock\Formatting.cs" />
+    <Compile Include="Controls\McTextBlock\McTextBlock.cs" />
     <Compile Include="Controls\Misc\Marquee.xaml.cs">
       <DependentUpon>Marquee.xaml</DependentUpon>
     </Compile>
@@ -201,10 +237,36 @@
     <Compile Include="Controls\Installations\InstallationSelector.xaml.cs">
       <DependentUpon>InstallationSelector.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ResultPanel.xaml.cs">
+      <DependentUpon>ResultPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SpecialBorder.xaml.cs">
+      <DependentUpon>SpecialBorder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Downloaders\WikiChangelogDownloader.cs" />
     <Compile Include="Enums\LauncherStateChange.cs" />
     <Compile Include="Enums\SortBy_Installation.cs" />
+    <Compile Include="Handlers\BackupHandler.cs" />
+    <Compile Include="Handlers\PackageHandler.cs" />
+    <Compile Include="Interfaces\IDialogHander.cs" />
+    <Compile Include="Interfaces\ILauncherModel.cs" />
     <Compile Include="Internals.cs" />
+    <Compile Include="Language\LanguageDefinition.cs" />
+    <Compile Include="Language\LanguageDictionary.xaml.cs">
+      <DependentUpon>LanguageDictionary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Language\LanguageManager.cs" />
+    <Compile Include="Methods\MCSkinUtilities.cs" />
+    <Compile Include="Methods\SymLinkHelper.cs" />
+    <Compile Include="Pages\Common\DialogPrompt.xaml.cs">
+      <DependentUpon>DialogPrompt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\ErrorScreen.xaml.cs">
+      <DependentUpon>ErrorScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\NoContentPage.xaml.cs">
+      <DependentUpon>NoContentPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\News\News_MinecraftForums_Page.xaml.cs">
       <DependentUpon>News_MinecraftForums_Page.xaml</DependentUpon>
     </Compile>
@@ -221,9 +283,8 @@
     <Compile Include="Pages\News\News_JavaDungeons_Page.xaml.cs">
       <DependentUpon>News_JavaDungeons_Page.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\LauncherModel.cs" />
-    <Compile Include="Events\GameRunningState.cs" />
-    <Compile Include="Events\LauncherState.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\UserInterfaceHandler.cs" />
     <Compile Include="Properties\LauncherSettings.cs" />
     <Compile Include="Controls\Misc\HtmlPanelPro.cs" />
     <Compile Include="Controls\Items\BlockPickerItem.xaml.cs">
@@ -290,7 +351,6 @@
       <DependentUpon>SkinPreview.xaml</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="ViewModels\GameModel.cs" />
     <Compile Include="Methods\ConsoleArgumentManager.cs" />
     <Compile Include="Downloaders\ChangelogDownloader.cs" />
     <Compile Include="Pages\Settings\AdvancedOptionsWindow.xaml.cs">
@@ -376,6 +436,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Controls\AltMessageBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\Items\BlockPickerItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -432,7 +496,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\ResultPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\Settings\ThemeCombobox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SpecialBorder.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -491,6 +563,22 @@
     <Page Include="Controls\Installations\InstallationSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Language\LanguageDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Common\DialogPrompt.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Common\ErrorScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Common\NoContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Community\CommunityPage.xaml">
       <SubType>Designer</SubType>
@@ -608,7 +696,167 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\lang\lang.en-US.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\lang\lang.pt-BR.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\lang\lang.pt-PT.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\lang\lang.ru-RU.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\checkbox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\combobox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\contextmenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\expander.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\focus_visuals.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\frame.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\styles\item_templates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\listview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\menuitems.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\misc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\radiobutton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\richtextbox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\scrollbars.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\tabbar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\textblock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\textbox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\values\base_values.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\values\variants\ComboBox_Blank.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\values\variants\ComboBox_InstallationSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\values\variants\DialogButton_Colors_Green.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\values\variants\DialogButton_Colors_Orange.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\values\variants\DialogButton_Colors_Red.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\variants\buttons\close_buttons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\variants\buttons\dialog_buttons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\variants\buttons\empty_button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\variants\buttons\link_button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\variants\buttons\minor_dialog_button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\variants\buttons\panel_button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\variants\buttons\play_button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\variants\buttons\profile_selector_button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\variants\buttons\sidebar_button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\variants\buttons\text_box_button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\variants\buttons\toolbar_button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\variants\listview\card_listviewitem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\variants\listview\empty_listviewitem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -626,6 +874,17 @@
     <None Include="app.manifest">
       <SubType>Designer</SubType>
     </None>
+    <Resource Include="Resources\fonts\X360.ttf" />
+    <Resource Include="Resources\fonts\WINGDNG3.TTF" />
+    <Resource Include="Resources\fonts\NotoSans-Regular.ttf" />
+    <Resource Include="Resources\fonts\NotoSans-Italic.ttf" />
+    <Resource Include="Resources\fonts\NotoSans-BoldItalic.ttf" />
+    <Resource Include="Resources\fonts\NotoSans-Bold.ttf" />
+    <Resource Include="Resources\fonts\MinecraftTen.ttf" />
+    <Resource Include="Resources\fonts\MinecraftSeven.ttf" />
+    <Resource Include="Resources\fonts\MinecraftFive-Regular.ttf" />
+    <Resource Include="Resources\fonts\MinecraftFive-Bold.ttf" />
+    <Resource Include="Resources\fonts\Minecraft.ttf" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
@@ -914,7 +1173,33 @@
     <Resource Include="Resources\images\bg\play_screen\1.17_caves_and_cliffs_part_1.jpg" />
     <Resource Include="Resources\images\bg\play_screen\other_early_console_era.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\images\packs\dev_pack_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\packs\invalid_pack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\packs\invalid_pack_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\packs\pack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\packs\pack_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\ui\panels\MainPagePlayButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\ui\panels\MainPagePlayButtonFocusOver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\ui\panels\MainPagePlayButtonOver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\ui\panels\MainPagePlayButtonPressed.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>if $(ConfigurationName) == Publish (

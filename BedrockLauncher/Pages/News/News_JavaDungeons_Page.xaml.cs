@@ -20,7 +20,7 @@ using System.Net;
 using System.Net.Http;
 using System.Collections.ObjectModel;
 using ExtensionsDotNET;
-using BedrockLauncher.Core.Classes;
+using BedrockLauncher.Classes;
 
 namespace BedrockLauncher.Pages.News
 {
@@ -97,14 +97,14 @@ namespace BedrockLauncher.Pages.News
             {
                 OfficalNewsFeed.Items.Clear();
                 NothingFound.Visibility = Visibility.Visible;
-                NothingFound.PanelType = Core.Controls.ResultPanelType.Loading;
+                NothingFound.PanelType = Controls.ResultPanelType.Loading;
             });
 
             if (ForceUpdate) await UpdateJSONContent();
 
             await Dispatcher.InvokeAsync(() => {
                 foreach (var item in FeedItems.Where(x => OfficalNewsFeed_FeedFilter(x))) OfficalNewsFeed.Items.Add(item);
-                if (OfficalNewsFeed.Items.Count == 0) NothingFound.PanelType = Core.Controls.ResultPanelType.NoNews;
+                if (OfficalNewsFeed.Items.Count == 0) NothingFound.PanelType = Controls.ResultPanelType.NoNews;
                 else NothingFound.Visibility = Visibility.Collapsed;
             });
         }

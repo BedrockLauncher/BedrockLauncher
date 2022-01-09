@@ -46,12 +46,12 @@ namespace BedrockLauncher.Pages.Settings
 
         private void CheckForUpdatesButton_Click(object sender, RoutedEventArgs e)
         {
-            LauncherModel.Updater.CheckForUpdates();
+            MainViewModel.Updater.CheckForUpdates();
         }
 
         private void ForceUpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            LauncherModel.Updater.UpdateButton_Click(sender, e);
+            MainViewModel.Updater.UpdateButton_Click(sender, e);
         }
     }
 }

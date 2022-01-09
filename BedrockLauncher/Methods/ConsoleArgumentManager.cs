@@ -90,7 +90,7 @@ namespace BedrockLauncher.Methods
             int count = args.Length - 1;
             if (index + 2 <= count)
             {
-                var profiles = ViewModels.LauncherModel.Default.Config.profiles;
+                var profiles = ViewModels.MainViewModel.Default.Config.profiles;
                 string profileName = args[index + 1];
                 string installationName = args[index + 2];
 
@@ -108,7 +108,7 @@ namespace BedrockLauncher.Methods
                     bool c = Properties.LauncherSettings.Default.KeepLauncherOpen;
                     if (KeepOpenOnLaunch) c = true;
                     else if (CloseOnLaunch) c = false;   
-                    ViewModels.LauncherModel.Default.GameManager.Play(p, i, c, false);
+                    ViewModels.MainViewModel.Default.Play(p, i, c, false);
                     return true;
                 }
             }

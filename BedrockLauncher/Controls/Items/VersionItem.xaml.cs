@@ -14,8 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BedrockLauncher.Core.Pages.Common;
-using BedrockLauncher.Core.Classes;
+using BedrockLauncher.Pages.Common;
+using BedrockLauncher.Classes;
 using BedrockLauncher.ViewModels;
 using BedrockLauncher.Classes;
 
@@ -59,7 +59,7 @@ namespace BedrockLauncher.Controls.Items
         {
             Button button = sender as Button;
             var version = button.DataContext as BLVersion;
-            LauncherModel.Default.GameManager.OpenFolder(version);
+            version.OpenDirectory();
         }
 
         private async void Delete_Click(object sender, RoutedEventArgs e)
@@ -75,7 +75,7 @@ namespace BedrockLauncher.Controls.Items
 
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                LauncherModel.Default.GameManager.Remove(version);
+                MainViewModel.Default.RemoveVersion(version);
                 GetParent().RefreshVersionsList();
             }
         }
@@ -95,7 +95,7 @@ namespace BedrockLauncher.Controls.Items
         {
             Button button = sender as Button;
             var version = button.DataContext as BLVersion;
-            LauncherModel.Default.GameManager.Repair(version);
+            MainViewModel.Default.RepairVersion(version);
         }
 
         private void ContextMenu_Closed(object sender, RoutedEventArgs e)

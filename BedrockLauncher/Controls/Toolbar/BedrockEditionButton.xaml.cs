@@ -27,12 +27,12 @@ namespace BedrockLauncher.Controls.Toolbar
         public BedrockEditionButton()
         {
             InitializeComponent();
-            this.DataContext = ViewModels.LauncherModel.Default;
+            this.DataContext = ViewModels.MainViewModel.Default;
         }
 
         private void SideBarButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModels.LauncherModel.MainThread.ButtonManager_Base(this.Name);
+            ViewModels.MainViewModel.MainThread.ButtonManager_Base(this.Name);
         }
 
         private void Button_CheckedChanged(object sender, RoutedEventArgs e)

@@ -41,7 +41,7 @@ namespace BedrockLauncher.Pages.Settings
 
         private void BackupButton_Click(object sender, RoutedEventArgs e)
         {
-            LauncherModel.Default.GameManager.Backup();
+            Handlers.BackupHandler.BackupOriginalSaveData();
         }
 
         private void AdvancedSettingsButton_Click(object sender, RoutedEventArgs e)
@@ -82,7 +82,7 @@ namespace BedrockLauncher.Pages.Settings
             };
             if (dialog.ShowDialog().Value)
             {
-                string fileToUse = LauncherModel.Default.FilepathManager.AddImageToIconCache(dialog.FileName);
+                string fileToUse = MainViewModel.Default.FilepathManager.AddImageToIconCache(dialog.FileName);
                 Properties.LauncherSettings.Default.ExternalLauncherIconPath = fileToUse;
                 Properties.LauncherSettings.Default.Save();
             }

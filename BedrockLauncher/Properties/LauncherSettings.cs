@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using BedrockLauncher.Classes;
 using BedrockLauncher.Methods;
 using System.ComponentModel;
-using BedrockLauncher.Core.Components;
+using BedrockLauncher.Components;
 using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Properties
@@ -42,9 +42,9 @@ namespace BedrockLauncher.Properties
             }
             else
             {
-                if (File.Exists(LauncherModel.Default.FilepathManager.GetSettingsFilePath()))
+                if (File.Exists(MainViewModel.Default.FilepathManager.GetSettingsFilePath()))
                 {
-                    json = File.ReadAllText(LauncherModel.Default.FilepathManager.GetSettingsFilePath());
+                    json = File.ReadAllText(MainViewModel.Default.FilepathManager.GetSettingsFilePath());
                     try { Default = JsonConvert.DeserializeObject<LauncherSettings>(json, JsonSerializerSettings); }
                     catch { Default = new LauncherSettings(); }
                 }
@@ -62,7 +62,7 @@ namespace BedrockLauncher.Properties
         public void Save()
         {
             string json = JsonConvert.SerializeObject(this, Formatting.Indented);
-            File.WriteAllText(LauncherModel.Default.FilepathManager.GetSettingsFilePath(), json);
+            File.WriteAllText(MainViewModel.Default.FilepathManager.GetSettingsFilePath(), json);
         }
 
         #region Launcher Settings
@@ -84,7 +84,7 @@ namespace BedrockLauncher.Properties
             set 
             { 
                 _FancierPageTransitions = value;
-                BedrockLauncher.Core.Components.PageAnimator.SuperSmoothAnimations = value;
+                BedrockLauncher.Components.PageAnimator.SuperSmoothAnimations = value;
                 OnPropertyChanged(nameof(FancierPageTransitions)); 
             }
         }

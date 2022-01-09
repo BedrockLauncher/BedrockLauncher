@@ -31,7 +31,7 @@ namespace BedrockLauncher.Controls.Toolbar
 
         private async void SideBarButton_Click(object sender, RoutedEventArgs e)
         {
-            await Task.Run(ViewModels.LauncherModel.MainThread.NavigateToExternalLauncher);
+            await Task.Run(ViewModels.MainViewModel.MainThread.NavigateToExternalLauncher);
             await this.Dispatcher.InvokeAsync(() => { this.Button.IsChecked = false; });
         }
     }

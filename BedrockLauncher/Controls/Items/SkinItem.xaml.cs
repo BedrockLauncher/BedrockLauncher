@@ -15,8 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Pages.Preview;
-using BedrockLauncher.Core.Pages.Common;
-using BedrockLauncher.Core.Classes.SkinPack;
+using BedrockLauncher.Pages.Common;
+using BedrockLauncher.Classes.SkinPack;
 
 namespace BedrockLauncher.Controls.Items
 {
@@ -60,7 +60,7 @@ namespace BedrockLauncher.Controls.Items
 
             Keyboard.ClearFocus();
 
-            ViewModels.LauncherModel.Default.SetOverlayFrame(new EditSkinScreen(skinPack, skin, index));
+            ViewModels.MainViewModel.Default.SetOverlayFrame(new EditSkinScreen(skinPack, skin, index));
         }
 
         private async void DeleteSkinButton_Click(object sender, RoutedEventArgs e)

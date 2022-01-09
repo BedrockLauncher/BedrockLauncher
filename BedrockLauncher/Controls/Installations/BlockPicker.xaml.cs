@@ -106,7 +106,7 @@ namespace BedrockLauncher.Controls
         {
             var resource_data = Properties.Resources._BlockOrder;
             var list = resource_data.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
-            for (int i = 0; i < list.Count; i++) list[i] = LauncherModel.Default.FilepathManager.PrefabedIconRootPath + list[i];
+            for (int i = 0; i < list.Count; i++) list[i] = MainViewModel.Default.FilepathManager.PrefabedIconRootPath + list[i];
             BlockList = list;
         }
 
@@ -121,7 +121,7 @@ namespace BedrockLauncher.Controls
             if (btn.Tag is string)
             {
                 string path = btn.Tag.ToString();
-                if (LauncherModel.Default.FilepathManager.RemoveImageFromIconCache(path))
+                if (MainViewModel.Default.FilepathManager.RemoveImageFromIconCache(path))
                 {
                     GenerateListItems();
                 }
@@ -155,7 +155,7 @@ namespace BedrockLauncher.Controls
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string fileToImport = ofd.FileName;
-                string fileToUse = LauncherModel.Default.FilepathManager.AddImageToIconCache(fileToImport);
+                string fileToUse = MainViewModel.Default.FilepathManager.AddImageToIconCache(fileToImport);
                 if (fileToUse != string.Empty) SetIcon(fileToUse);
             }
         }
@@ -246,7 +246,7 @@ namespace BedrockLauncher.Controls
         private void GenerateCustomIconList()
         {
             //Default Icons
-            string[] files = Directory.GetFiles(LauncherModel.Default.FilepathManager.GetCacheFolderPath(), "*.png");
+            string[] files = Directory.GetFiles(MainViewModel.Default.FilepathManager.GetCacheFolderPath(), "*.png");
             int item_count = files.Length;
 
             if (item_count == 0) return;
@@ -309,7 +309,7 @@ namespace BedrockLauncher.Controls
             BitmapImage bmp = new BitmapImage();
             bmp.BeginInit();
             bmp.CacheOption = BitmapCacheOption.OnLoad;
-            bmp.UriSource = new Uri(System.IO.Path.Combine(LauncherModel.Default.FilepathManager.GetCacheFolderPath(), path), UriKind.Absolute);
+            bmp.UriSource = new Uri(System.IO.Path.Combine(MainViewModel.Default.FilepathManager.GetCacheFolderPath(), path), UriKind.Absolute);
             bmp.EndInit();
 
             img.Source = bmp;

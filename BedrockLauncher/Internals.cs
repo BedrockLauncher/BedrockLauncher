@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using BedrockLauncher.Core.Language;
+using BedrockLauncher.Language;
 using BedrockLauncher.Methods;
 
 namespace BedrockLauncher
@@ -126,8 +126,8 @@ namespace BedrockLauncher
             Init_IsBugRockOfTheWeek();
 
             LanguageManager.Init();
-            LauncherModel.Default.LoadConfig();
-            await LauncherModel.Default.LoadVersions();
+            MainViewModel.Default.LoadConfig();
+            await MainViewModel.Default.LoadVersions();
 
             Debug.WriteLine("Application Pre-Initalization Finished!");
             ConsoleArgumentManager.PraseArgs(e.Args);

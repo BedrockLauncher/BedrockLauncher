@@ -5,8 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BedrockLauncher.Core.Classes;
-using BedrockLauncher.Core.Components;
+using BedrockLauncher.Classes;
+using BedrockLauncher.Components;
 using ExtensionsDotNET;
 using Newtonsoft.Json;
 

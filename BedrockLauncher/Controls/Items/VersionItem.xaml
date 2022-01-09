@@ -30,7 +30,7 @@
             </StackPanel>
         </Grid>
         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Column="2" x:Name="ButtonPanel" Visibility="Collapsed">
-            <Button x:Name="Repair" Click="Repair_Click" IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Content="{DynamicResource GeneralText_Repair}" Style="{DynamicResource DialogButton_Orange}"></Button>
+            <Button x:Name="Repair" Click="Repair_Click" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Content="{DynamicResource GeneralText_Repair}" Style="{DynamicResource DialogButton_Orange}"></Button>
             <Button x:Name="Folder" Click="Folder_Click" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" FontWeight="Bold" Style="{DynamicResource DialogButton}">
                 <Button.Content>
                     <Grid Width="16" Height="16">
@@ -44,7 +44,7 @@
                 </Button.Content>
                 <Button.ContextMenu>
                     <ContextMenu Closed="ContextMenu_Closed" Style="{DynamicResource NoCheckboxContextMenu}">
-                        <MenuItem Header="{DynamicResource GeneralText_Remove}" IsEnabled="{Binding Source={x:Static viewModels:LauncherModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="Remove" Click="Delete_Click"></MenuItem>
+                        <MenuItem Header="{DynamicResource GeneralText_Remove}" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="Remove" Click="Delete_Click"></MenuItem>
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>

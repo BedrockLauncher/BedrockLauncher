@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BedrockLauncher.Core.Classes;
+using System.Xml.Linq;
+using BedrockLauncher.Classes;
 using BedrockLauncher.ViewModels;
 using Newtonsoft.Json;
 
@@ -23,7 +25,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                return Path.GetFullPath(LauncherModel.Default.FilepathManager.CurrentLocation + "\\versions\\Minecraft-" + UUID);
+                return Path.GetFullPath(MainViewModel.Default.FilepathManager.CurrentLocation + "\\versions\\Minecraft-" + UUID);
             }
         }
         public bool IsInstalled
@@ -102,6 +104,42 @@ namespace BedrockLauncher.Classes
                 return IsInstalled ? "Installed" : "Not installed";
             }
         }
+
+        public string ManifestPath
+        {
+            get
+            {
+                return Path.Combine(GameDirectory, "AppxManifest.xml");
+            }
+        }
+
+        public string GetPackageNameFromMainifest()
+        {
+            try
+            {
+                string manifestXml = File.ReadAllText(ManifestPath);
+                XDocument XMLDoc = XDocument.Parse(manifestXml);
+                var Descendants = XMLDoc.Descendants();
+                XElement Identity = Descendants.Where(x => x.Name.LocalName == "Identity").FirstOrDefault();
+                string Name = Identity.Attribute("Name").Value;
+                string Version = Identity.Attribute("Version").Value;
+                string ProcessorArchitecture = Identity.Attribute("ProcessorArchitecture").Value;
+                return String.Join("_", Name, Version, ProcessorArchitecture);
+            }
+            catch
+            {
+                return "???";
+            }
+        }
+
+        public void OpenDirectory()
+        {
+            string Directory = Path.GetFullPath(GameDirectory);
+            if (!System.IO.Directory.Exists(Directory)) System.IO.Directory.CreateDirectory(Directory);
+            Process.Start("explorer.exe", Directory);
+        }
+
+
 
         public void UpdateInstallStatus()
         {

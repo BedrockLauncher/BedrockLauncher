@@ -8,15 +8,15 @@ using System.Net;
 using Newtonsoft.Json;
 using System.IO;
 using BedrockLauncher.Classes;
-using BedrockLauncher.Core.Classes.MediaWiki;
+using BedrockLauncher.Classes.MediaWiki;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using HtmlAgilityPack;
 using System.Text.RegularExpressions;
-using BedrockLauncher.Core.Components;
+using BedrockLauncher.Components;
 using ExtensionsDotNET;
 using BedrockLauncher.Methods;
-using BedrockLauncher.Core.Classes;
+using BedrockLauncher.Classes;
 
 namespace BedrockLauncher.Downloaders
 {

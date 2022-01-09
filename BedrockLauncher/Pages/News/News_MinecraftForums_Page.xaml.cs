@@ -18,10 +18,10 @@ using System.Diagnostics;
 using BedrockLauncher.Controls.Items;
 using System.Net;
 using System.Net.Http;
-using BedrockLauncher.Core.Classes;
+using BedrockLauncher.Classes;
 using System.Collections.ObjectModel;
 using RestSharp;
-using BedrockLauncher.Core.Pages.Common;
+using BedrockLauncher.Pages.Common;
 using ExtensionsDotNET.HTTP2;
 
 namespace BedrockLauncher.Pages.News
@@ -55,7 +55,7 @@ namespace BedrockLauncher.Pages.News
             {
                 await Dispatcher.InvokeAsync(() =>
                 {
-                    NothingFound.PanelType = Core.Controls.ResultPanelType.Loading;
+                    NothingFound.PanelType = Controls.ResultPanelType.Loading;
                     NothingFound.Visibility = Visibility.Visible;
                     FeedItems.Clear();
                 });
@@ -80,7 +80,7 @@ namespace BedrockLauncher.Pages.News
             {
                 await Dispatcher.InvokeAsync(() =>
                 {
-                    NothingFound.PanelType = Core.Controls.ResultPanelType.Error;
+                    NothingFound.PanelType = Controls.ResultPanelType.Error;
                     NothingFound.Visibility = Visibility.Visible;
                 });
             }

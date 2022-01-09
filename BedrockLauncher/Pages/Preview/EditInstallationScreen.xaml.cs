@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Classes;
-using BedrockLauncher.Core.Classes;
+using BedrockLauncher.Classes;
 using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Pages.Preview
@@ -68,7 +68,7 @@ namespace BedrockLauncher.Pages.Preview
         {
             Versions.Clear();
             InstallationVersionSelect.ItemsSource = null;
-            foreach (var entry in LauncherModel.Default.Versions) Versions.Add(BLVersion.Convert(entry));
+            foreach (var entry in MainViewModel.Default.Versions) Versions.Add(BLVersion.Convert(entry));
             GetManualComboBoxEntries();
             InstallationVersionSelect.ItemsSource = Versions;
             var view = CollectionViewSource.GetDefaultView(InstallationVersionSelect.ItemsSource) as CollectionView;
@@ -92,7 +92,7 @@ namespace BedrockLauncher.Pages.Preview
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModels.LauncherModel.Default.SetOverlayFrame(null);
+            ViewModels.MainViewModel.Default.SetOverlayFrame(null);
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
@@ -103,14 +103,14 @@ namespace BedrockLauncher.Pages.Preview
 
         private void UpdateInstallation()
         {
-            LauncherModel.Default.Config.Installation_Edit(SelectedUUID, InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationDirectoryField.Text, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
-            LauncherModel.Default.SetOverlayFrame(null);
+            MainViewModel.Default.Config.Installation_Edit(SelectedUUID, InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationDirectoryField.Text, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
+            MainViewModel.Default.SetOverlayFrame(null);
         }
 
         private void CreateInstallation()
         {
-            LauncherModel.Default.Config.Installation_Create(InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationDirectoryField.Text, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
-            LauncherModel.Default.SetOverlayFrame(null);
+            MainViewModel.Default.Config.Installation_Create(InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationDirectoryField.Text, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
+            MainViewModel.Default.SetOverlayFrame(null);
         }
 
         private void InstallationDirectoryField_TextChanged(object sender, TextChangedEventArgs e)
@@ -134,7 +134,7 @@ namespace BedrockLauncher.Pages.Preview
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModels.LauncherModel.Default.SetOverlayFrame(null);
+            ViewModels.MainViewModel.Default.SetOverlayFrame(null);
         }
     }
 }

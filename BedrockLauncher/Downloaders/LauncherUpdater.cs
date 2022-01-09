@@ -10,11 +10,12 @@ using System.Windows.Controls;
 using System.Collections.Generic;
 using BedrockLauncher.Methods;
 using Newtonsoft.Json;
-using BedrockLauncher.Core;
+using BedrockLauncher;
 using System.Runtime.InteropServices;
 using BedrockLauncher.ViewModels;
 using System.Linq;
 using System.Threading;
+using BedrockLauncher.Core;
 
 namespace BedrockLauncher.Downloaders
 {
@@ -159,7 +160,7 @@ namespace BedrockLauncher.Downloaders
                 if (int.Parse(LocalTag.Replace(".", "")) < int.Parse(OnlineTag.Replace(".", "")))
                 {
                     System.Diagnostics.Debug.WriteLine("New version available!");
-                    ViewModels.LauncherModel.MainThread.UpdateButton.ShowUpdateButton();
+                    ViewModels.MainViewModel.MainThread.UpdateButton.ShowUpdateButton();
                 }
             }
             catch
@@ -217,7 +218,7 @@ namespace BedrockLauncher.Downloaders
                         {
                             string silent = "--silent";
                             string beta = isLatestBeta() ? "--beta" : "";
-                            string path = "--path=\"" + LauncherModel.Default.FilepathManager.ExecutableDirectory + "\"";
+                            string path = "--path=\"" + MainViewModel.Default.FilepathManager.ExecutableDirectory + "\"";
 
                             return string.Join(" ", silent, beta, path);
                         }

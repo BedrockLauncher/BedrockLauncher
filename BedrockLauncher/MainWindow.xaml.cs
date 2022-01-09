@@ -31,7 +31,7 @@ using BedrockLauncher.Pages.Settings;
 using BedrockLauncher.Pages.Play;
 using BedrockLauncher.Pages.News;
 using BedrockLauncher.Pages.Preview;
-using BedrockLauncher.Core.Pages.Common;
+using BedrockLauncher.Pages.Common;
 using BedrockLauncher.Pages.Community;
 
 namespace BedrockLauncher
@@ -42,12 +42,12 @@ namespace BedrockLauncher
     {
         private GameTabs MainPage = new GameTabs();
         private SettingsTabs settingsScreenPage = new SettingsTabs();
-        private NewsScreenTabs newsScreenPage = new NewsScreenTabs(ViewModels.LauncherModel.Updater);
+        private NewsScreenTabs newsScreenPage = new NewsScreenTabs(ViewModels.MainViewModel.Updater);
         private CommunityPage communityPage = new CommunityPage();
 
         public MainWindow()
         {
-            this.DataContext = LauncherModel.Default;
+            this.DataContext = MainViewModel.Default;
             InitializeComponent();
         }
 
@@ -66,15 +66,15 @@ namespace BedrockLauncher
             MainPage.skinsPage.InitFrameEvents(ErrorFrame);
             MainPage.skinsPage.InitFrameEvents(OverlayFrame);
 
-            UpdateButton.ClickBase.Click += LauncherModel.Updater.UpdateButton_Click;
-            LauncherModel.Default.Init(MainFrame);
+            UpdateButton.ClickBase.Click += MainViewModel.Updater.UpdateButton_Click;
+            MainViewModel.Default.Init(MainFrame);
 
             bool isFirstLaunch = Properties.LauncherSettings.Default.CurrentProfile == "" || 
                 Properties.LauncherSettings.Default.IsFirstLaunch || 
-                LauncherModel.Default.Config.profiles.Count() == 0;
+                MainViewModel.Default.Config.profiles.Count() == 0;
 
             ButtonManager_Base(BedrockEditionButton.Name);
-            if (isFirstLaunch) LauncherModel.Default.SetOverlayFrame_Strict(new WelcomePage());
+            if (isFirstLaunch) MainViewModel.Default.SetOverlayFrame_Strict(new WelcomePage());
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -84,12 +84,12 @@ namespace BedrockLauncher
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            ViewModels.LauncherModel.Default.AttemptClose(sender, e);
+            ViewModels.MainViewModel.Default.AttemptClose(sender, e);
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            LauncherModel.Default.GameManager.Cancel();
+            MainViewModel.Default.PackageManager.CancelTask();
         }
 
         #region Navigation
@@ -103,8 +103,8 @@ namespace BedrockLauncher
                 await MainWindowFrame.Dispatcher.InvokeAsync(() => MainWindowFrame.Navigate(content));
                 return;
             }
-            int CurrentPageIndex = ViewModels.LauncherModel.Default.CurrentPageIndex;
-            int LastPageIndex = ViewModels.LauncherModel.Default.LastPageIndex;
+            int CurrentPageIndex = ViewModels.MainViewModel.Default.CurrentPageIndex;
+            int LastPageIndex = ViewModels.MainViewModel.Default.LastPageIndex;
             if (CurrentPageIndex == LastPageIndex) return;
 
             ExpandDirection direction;
@@ -112,7 +112,7 @@ namespace BedrockLauncher
             if (CurrentPageIndex > LastPageIndex) direction = ExpandDirection.Down;
             else direction = ExpandDirection.Up;
 
-            await Task.Run(() => BedrockLauncher.Core.Components.PageAnimator.FrameSwipe(MainWindowFrame, content, direction));
+            await Task.Run(() => BedrockLauncher.Components.PageAnimator.FrameSwipe(MainWindowFrame, content, direction));
         }
 
         public async void ResetButtonManager(string buttonName)
@@ -169,7 +169,7 @@ namespace BedrockLauncher
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
-                LauncherModel.Default.UpdatePageIndex(0);
+                MainViewModel.Default.UpdatePageIndex(0);
                 NewsButton.Button.IsChecked = true;
                 Task.Run(() => Navigate(newsScreenPage));
             });
@@ -179,7 +179,7 @@ namespace BedrockLauncher
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
-                LauncherModel.Default.UpdatePageIndex(1);
+                MainViewModel.Default.UpdatePageIndex(1);
                 BedrockEditionButton.Button.IsChecked = true;
                 Task.Run(() => Navigate(MainPage));
             });
@@ -189,7 +189,7 @@ namespace BedrockLauncher
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
-                LauncherModel.Default.UpdatePageIndex(3);
+                MainViewModel.Default.UpdatePageIndex(3);
                 CommunityButton.Button.IsChecked = true;
                 Task.Run(() => Navigate(communityPage));
             });
@@ -198,7 +198,7 @@ namespace BedrockLauncher
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
-                LauncherModel.Default.UpdatePageIndex(4);
+                MainViewModel.Default.UpdatePageIndex(4);
                 SettingsButton.Button.IsChecked = true;
                 Task.Run(() => Navigate(settingsScreenPage));
             });
@@ -260,9 +260,9 @@ namespace BedrockLauncher
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
-                if (Properties.LauncherSettings.Default.CloseLauncherOnSwitch && LauncherModel.Default.GameManager.GameProcess != null)
+                if (Properties.LauncherSettings.Default.CloseLauncherOnSwitch && MainViewModel.Default.PackageManager.isGameRunning)
                 {
-                    Task.Run(() => LauncherModel.Default.ShowPrompt_ClosingWithGameStillOpened(action));
+                    Task.Run(() => MainViewModel.Default.ShowPrompt_ClosingWithGameStillOpened(action));
                 }
                 else action.Invoke();
             });
@@ -272,7 +272,7 @@ namespace BedrockLauncher
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
-                LauncherModel.Default.SetOverlayFrame(new AddProfilePage());
+                MainViewModel.Default.SetOverlayFrame(new AddProfilePage());
             });
 
         }

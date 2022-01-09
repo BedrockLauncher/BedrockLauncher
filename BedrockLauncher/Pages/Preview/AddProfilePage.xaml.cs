@@ -29,7 +29,7 @@ namespace BedrockLauncher.Pages.Preview
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModels.LauncherModel.Default.SetOverlayFrame(null);
+            ViewModels.MainViewModel.Default.SetOverlayFrame(null);
         }
 
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
@@ -46,11 +46,11 @@ namespace BedrockLauncher.Pages.Preview
         }
         public void CreateProfile(string profileName)
         {
-            if (LauncherModel.Default.Config.Profile_Add(profileName))
+            if (MainViewModel.Default.Config.Profile_Add(profileName))
             {
                 Properties.LauncherSettings.Default.CurrentProfile = profileName;
                 Properties.LauncherSettings.Default.Save();
-                ViewModels.LauncherModel.Default.SetOverlayFrame(null);
+                ViewModels.MainViewModel.Default.SetOverlayFrame(null);
             }
             else
             {

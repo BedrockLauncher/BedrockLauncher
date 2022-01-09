@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using BedrockLauncher.Core.Interfaces;
-using BedrockLauncher.Core.Classes;
+using BedrockLauncher.Interfaces;
+using BedrockLauncher.Classes;
 
 namespace BedrockLauncher.ViewModels
 {
@@ -87,8 +87,8 @@ namespace BedrockLauncher.ViewModels
         }
         public string GetInstallationsFolderPath(string profileName, string installationDirectory)
         {
-            if (!LauncherModel.Default.Config.profiles.ContainsKey(profileName)) return string.Empty;
-            var profile = LauncherModel.Default.Config.profiles[profileName];
+            if (!MainViewModel.Default.Config.profiles.ContainsKey(profileName)) return string.Empty;
+            var profile = MainViewModel.Default.Config.profiles[profileName];
             string InstallationsPath = Path.Combine(profile.ProfilePath, installationDirectory);
             return Path.Combine(CurrentLocation, InstallationsFolderName, InstallationsPath, PackageDataFolderName);
         }
@@ -96,7 +96,7 @@ namespace BedrockLauncher.ViewModels
         {
             if (InstallationsPath == string.Empty) return string.Empty;
             string[] Route = new string[] { (DevFolder ? "development_skin_packs" : "skin_packs") };
-            string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", GameModel.MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang");
+            string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", Constants.MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang");
 
 
             if (HasSaveRedirection) return Path.Combine(Route.Prepend(InstallationsPath).ToArray());

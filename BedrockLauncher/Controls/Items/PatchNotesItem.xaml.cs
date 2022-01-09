@@ -17,7 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Pages.Preview;
-using BedrockLauncher.Core.Classes;
+using BedrockLauncher.Classes;
 
 namespace BedrockLauncher.Controls.Items
 {
@@ -41,7 +41,7 @@ namespace BedrockLauncher.Controls.Items
         public static void LoadChangelog(MCPatchNotesItem item)
         {
             string header_title = string.Format("{0} {1}", (item.isBeta ? "Beta" : "Release"), item.Version);
-            ViewModels.LauncherModel.Default.SetOverlayFrame(new ChangelogPreviewPage(item.Content, header_title, item.Url));
+            ViewModels.MainViewModel.Default.SetOverlayFrame(new ChangelogPreviewPage(item.Content, header_title, item.Url));
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using BedrockLauncher.Classes;
 using BedrockLauncher.Methods;
-using BedrockLauncher.Core.Classes;
+using BedrockLauncher.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -95,12 +95,12 @@ namespace BedrockLauncher.Pages.Play
         }
         private void MainPlayButton_Click(object sender, RoutedEventArgs e)
         {
-            if (LauncherModel.Default.GameManager.GameProcess != null) LauncherModel.Default.GameManager.KillGame();
+            if (MainViewModel.Default.PackageManager.isGameRunning) MainViewModel.Default.KillGame();
             else
             {
                 var i = InstallationsList.SelectedItem as BLInstallation;
                 bool KeepLauncherOpen = Properties.LauncherSettings.Default.KeepLauncherOpen;
-                LauncherModel.Default.GameManager.Play(ViewModels.LauncherModel.Default.Config.CurrentProfile, i, KeepLauncherOpen);
+                MainViewModel.Default.Play(ViewModels.MainViewModel.Default.Config.CurrentProfile, i, KeepLauncherOpen);
             }
         }
     }

@@ -36,8 +36,8 @@ namespace BedrockLauncher.Pages.Play
                 await MainPageFrame.Dispatcher.InvokeAsync(() => MainPageFrame.Navigate(content));
                 return;
             }
-            int CurrentPageIndex = ViewModels.LauncherModel.Default.CurrentPageIndex_Play;
-            int LastPageIndex = ViewModels.LauncherModel.Default.LastPageIndex_Play;
+            int CurrentPageIndex = ViewModels.MainViewModel.Default.CurrentPageIndex_Play;
+            int LastPageIndex = ViewModels.MainViewModel.Default.LastPageIndex_Play;
             if (CurrentPageIndex == LastPageIndex) return;
 
             ExpandDirection direction;
@@ -45,7 +45,7 @@ namespace BedrockLauncher.Pages.Play
             if (CurrentPageIndex > LastPageIndex) direction = ExpandDirection.Right;
             else direction = ExpandDirection.Left;
 
-            await Task.Run(() => BedrockLauncher.Core.Components.PageAnimator.FrameSwipe(MainPageFrame, content, direction));
+            await Task.Run(() => BedrockLauncher.Components.PageAnimator.FrameSwipe(MainPageFrame, content, direction));
         }
 
 
@@ -101,26 +101,26 @@ namespace BedrockLauncher.Pages.Play
 
         public void NavigateToPlayScreen()
         {
-            ViewModels.LauncherModel.Default.UpdatePlayPageIndex(0);
+            ViewModels.MainViewModel.Default.UpdatePlayPageIndex(0);
             PlayButton.IsChecked = true;
             Task.Run(() => Navigate(playScreenPage));
 
         }
         public void NavigateToInstallationsPage()
         {
-            ViewModels.LauncherModel.Default.UpdatePlayPageIndex(1);
+            ViewModels.MainViewModel.Default.UpdatePlayPageIndex(1);
             InstallationsButton.IsChecked = true;
             Task.Run(() => Navigate(installationsScreen));
         }
         public void NavigateToSkinsPage()
         {
-            ViewModels.LauncherModel.Default.UpdatePlayPageIndex(2);
+            ViewModels.MainViewModel.Default.UpdatePlayPageIndex(2);
             SkinsButton.IsChecked = true;
             Task.Run(() => Navigate(skinsPage));
         }
         public void NavigateToPatchNotes()
         {
-            ViewModels.LauncherModel.Default.UpdatePlayPageIndex(3);
+            ViewModels.MainViewModel.Default.UpdatePlayPageIndex(3);
             PatchNotesButton.IsChecked = true;
             Task.Run(() => Navigate(patchNotesPage));
         }

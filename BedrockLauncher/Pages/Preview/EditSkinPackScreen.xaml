@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BedrockLauncher.Pages"
-      xmlns:main="clr-namespace:BedrockLauncher.Core.Components;assembly=BedrockLauncher.Core"
+      xmlns:main="clr-namespace:BedrockLauncher.Components"
       xmlns:v="clr-namespace:System;assembly=mscorlib"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       xmlns:controls="clr-namespace:BedrockLauncher.Controls"
@@ -59,7 +59,7 @@
                             </Grid.ColumnDefinitions>
                             <TextBox Text="{Binding Path=HeaderUUID, ElementName=Page}" x:Name="HeaderUUIDTextbox"></TextBox>
                             <Button Grid.Column="1" x:Name="HeaderUUIDRefreshButton" Click="HeaderUUIDRefreshButton_Click" HorizontalAlignment="Center" Style="{DynamicResource TextBoxButton}">
-                                <TextBlock FontWeight="Regular" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Wingdings 3" FontSize="16" Text="Q"></TextBlock>
+                                <TextBlock FontWeight="Regular" FontFamily="/BedrockLauncher;component/Resources/fonts/#Wingdings 3" FontSize="16" Text="Q"></TextBlock>
                             </Button>
                         </Grid>
                     </ContentControl>
@@ -108,7 +108,7 @@
                                             </Grid.ColumnDefinitions>
                                             <TextBox Text="{Binding Path=ModuleUUID, ElementName=Page}" Height="32" x:Name="ModuleUUIDTextbox" HorizontalAlignment="Stretch"></TextBox>
                                             <Button Grid.Column="1" x:Name="ModuleUUIDRefreshButton" Click="ModuleUUIDRefreshButton_Click" HorizontalAlignment="Center" Style="{StaticResource TextBoxButton}">
-                                                <TextBlock FontWeight="Regular" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Wingdings 3" FontSize="16" Text="Q"></TextBlock>
+                                                <TextBlock FontWeight="Regular" FontFamily="/BedrockLauncher;component/Resources/fonts/#Wingdings 3" FontSize="16" Text="Q"></TextBlock>
                                             </Button>
                                         </Grid>
                                     </ContentControl>

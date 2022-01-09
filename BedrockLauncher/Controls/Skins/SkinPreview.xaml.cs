@@ -16,7 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing;
 using System.IO;
-using BedrockLauncher.Core.Classes.SkinPack;
+using BedrockLauncher.Classes.SkinPack;
 
 namespace BedrockLauncher.Controls.Skins
 {

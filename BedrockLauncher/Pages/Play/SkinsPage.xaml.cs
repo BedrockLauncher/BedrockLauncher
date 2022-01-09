@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BedrockLauncher.Core.Classes.SkinPack;
+using BedrockLauncher.Classes.SkinPack;
 using BedrockLauncher.Methods;
 using System.IO;
 using System.Data;
@@ -21,10 +21,9 @@ using Microsoft.Win32;
 using Path = System.IO.Path;
 using System.IO.Compression;
 using BedrockLauncher.Pages.Preview;
-using BedrockLauncher.Core.Pages.Common;
+using BedrockLauncher.Pages.Common;
 using ExtensionsDotNET;
 using BedrockLauncher.Classes;
-using BedrockLauncher.Core.Classes;
 using BedrockLauncher.ViewModels;
 using System.Collections.ObjectModel;
 
@@ -54,7 +53,7 @@ namespace BedrockLauncher.Pages.Play
 
         private void OverlayFrame_Navigated(object sender, NavigationEventArgs e)
         {
-            if (LauncherModel.MainThread.ErrorFrame.Content == null && LauncherModel.MainThread.OverlayFrame.Content == null) SkinPreviewPanel.Visibility = Visibility.Visible;
+            if (MainViewModel.MainThread.ErrorFrame.Content == null && MainViewModel.MainThread.OverlayFrame.Content == null) SkinPreviewPanel.Visibility = Visibility.Visible;
             else SkinPreviewPanel.Visibility = Visibility.Collapsed;
         }
 
@@ -93,13 +92,13 @@ namespace BedrockLauncher.Pages.Play
             {
                 SkinPacks.Clear();
 
-                var installation = LauncherModel.Default.Config.CurrentInstallation;
+                var installation = MainViewModel.Default.Config.CurrentInstallation;
 
                 if (installation == null) return;
 
-                string InstallationPath = LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.Config.CurrentProfileUUID, installation.DirectoryName);
-                string normal_folder = LauncherModel.Default.FilepathManager.GetSkinPacksFolderPath(InstallationPath, false);
-                string dev_folder = LauncherModel.Default.FilepathManager.GetSkinPacksFolderPath(InstallationPath, true);
+                string InstallationPath = MainViewModel.Default.FilepathManager.GetInstallationsFolderPath(MainViewModel.Default.Config.CurrentProfileUUID, installation.DirectoryName);
+                string normal_folder = MainViewModel.Default.FilepathManager.GetSkinPacksFolderPath(InstallationPath, false);
+                string dev_folder = MainViewModel.Default.FilepathManager.GetSkinPacksFolderPath(InstallationPath, true);
 
                 if (Directory.Exists(normal_folder)) AddPacks(normal_folder);
                 if (Directory.Exists(dev_folder)) AddPacks(dev_folder);
@@ -195,7 +194,7 @@ namespace BedrockLauncher.Pages.Play
         private void AddSkinButton_Click(object sender, RoutedEventArgs e)
         {
             var skinPack = LoadedSkinPacks.SelectedItem as MCSkinPack;
-            ViewModels.LauncherModel.Default.SetOverlayFrame(new EditSkinScreen(skinPack));
+            ViewModels.MainViewModel.Default.SetOverlayFrame(new EditSkinScreen(skinPack));
         }
         private void ImportSkinPackButton_Click(object sender, RoutedEventArgs e)
         {
@@ -211,14 +210,14 @@ namespace BedrockLauncher.Pages.Play
                     if (file.Entries.ToList().Exists(x => x.FullName == "skins.json"))
                     {
                         file.Dispose();
-                        string InstallationPath = LauncherModel.Default.FilepathManager.GetInstallationsFolderPath(LauncherModel.Default.Config.CurrentProfileUUID, LauncherModel.Default.Config.CurrentInstallation.DirectoryName);
+                        string InstallationPath = MainViewModel.Default.FilepathManager.GetInstallationsFolderPath(MainViewModel.Default.Config.CurrentProfileUUID, MainViewModel.Default.Config.CurrentInstallation.DirectoryName);
                         string NewPackDirectoryName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
-                        string NewPackDirectory = Path.Combine(LauncherModel.Default.FilepathManager.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
+                        string NewPackDirectory = Path.Combine(MainViewModel.Default.FilepathManager.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
 
                         while (Directory.Exists(NewPackDirectory))
                         {
                             NewPackDirectoryName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
-                            NewPackDirectory = Path.Combine(LauncherModel.Default.FilepathManager.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
+                            NewPackDirectory = Path.Combine(MainViewModel.Default.FilepathManager.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
                         }
 
                         ZipFile.ExtractToDirectory(dialog.FileName, NewPackDirectory);
@@ -239,7 +238,7 @@ namespace BedrockLauncher.Pages.Play
         }
         private void NewSkinPackButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModels.LauncherModel.Default.SetOverlayFrame(new EditSkinPackScreen());
+            ViewModels.MainViewModel.Default.SetOverlayFrame(new EditSkinPackScreen());
         }
         private void SkinPreviewList_PreviewKeyUp(object sender, KeyEventArgs e)
         {

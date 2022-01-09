@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using BedrockLauncher.Core.Classes;
+using BedrockLauncher.Classes;
 using Newtonsoft.Json;
 using BedrockLauncher.ViewModels;
 using System.ComponentModel;
 using System.IO;
-using BedrockLauncher.Core.Components;
+using BedrockLauncher.Components;
+using System.Diagnostics;
 
 namespace BedrockLauncher.Classes
 {
@@ -33,7 +34,7 @@ namespace BedrockLauncher.Classes
             get
             {
 
-                if (IsCustomIcon) return Path.Combine(LauncherModel.Default.FilepathManager.GetCacheFolderPath(), IconPath);
+                if (IsCustomIcon) return Path.Combine(MainViewModel.Default.FilepathManager.GetCacheFolderPath(), IconPath);
                 else return @"/BedrockLauncher;component/Resources/images/installation_icons/" + IconPath;
             }
         }
@@ -69,16 +70,16 @@ namespace BedrockLauncher.Classes
             {
                 if (VersioningMode != VersioningMode.None)
                 {
-                    var latest_beta = LauncherModel.Default.Versions.ToList().FirstOrDefault(x => x.IsBeta == true);
-                    var latest_release = LauncherModel.Default.Versions.ToList().FirstOrDefault(x => x.IsBeta == false);
+                    var latest_beta = MainViewModel.Default.Versions.ToList().FirstOrDefault(x => x.IsBeta == true);
+                    var latest_release = MainViewModel.Default.Versions.ToList().FirstOrDefault(x => x.IsBeta == false);
 
                     if (VersioningMode == VersioningMode.LatestBeta && latest_beta != null) return BLVersion.Convert(latest_beta);
                     else if (VersioningMode == VersioningMode.LatestRelease && latest_release != null) return BLVersion.Convert(latest_release);
                     else return null;
                 }
-                else if (LauncherModel.Default.Versions.ToList().Exists(x => x.UUID == VersionUUID))
+                else if (MainViewModel.Default.Versions.ToList().Exists(x => x.UUID == VersionUUID))
                 {
-                    return BLVersion.Convert(LauncherModel.Default.Versions.ToList().Where(x => x.UUID == VersionUUID).FirstOrDefault());
+                    return BLVersion.Convert(MainViewModel.Default.Versions.ToList().Where(x => x.UUID == VersionUUID).FirstOrDefault());
                 }
                 return null;
             }
@@ -121,6 +122,14 @@ namespace BedrockLauncher.Classes
             if (!string.IsNullOrEmpty(newName)) clone.DisplayName = newName;
             return clone;
         }
+
+        public void OpenDirectory()
+        {
+            string Directory = MainViewModel.Default.FilepathManager.GetInstallationsFolderPath(MainViewModel.Default.Config.CurrentProfileUUID, DirectoryName_Full);
+            if (!System.IO.Directory.Exists(Directory)) System.IO.Directory.CreateDirectory(Directory);
+            Process.Start("explorer.exe", Directory);
+        }
+
     }
 
     public enum VersioningMode : int

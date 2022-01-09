@@ -26,14 +26,14 @@ namespace BedrockLauncher.Pages.Play
             InitializeComponent();
             ShowBetasCheckBox.Click += (sender, e) => RefreshInstallations();
             ShowReleasesCheckBox.Click += (sender, e) => RefreshInstallations();
-            LauncherModel.Default.ConfigUpdated += InstallationsUpdate;
+            MainViewModel.Default.ConfigUpdated += InstallationsUpdate;
         }
         public async void RefreshInstallations()
         {
             await this.Dispatcher.InvokeAsync(() =>
             {
                 var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
-                LauncherModel.Default.Sort_InstallationList(ref view);
+                MainViewModel.Default.Sort_InstallationList(ref view);
                 view.Refresh();
                 if (InstallationsList.Items.Count > 0 && NothingFound.Visibility != Visibility.Collapsed) NothingFound.Visibility = Visibility.Collapsed;
                 else if (InstallationsList.Items.Count <= 0 && NothingFound.Visibility != Visibility.Visible) NothingFound.Visibility = Visibility.Visible;
@@ -41,7 +41,7 @@ namespace BedrockLauncher.Pages.Play
         }
         private void NewInstallationButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModels.LauncherModel.Default.SetOverlayFrame(new EditInstallationScreen());
+            ViewModels.MainViewModel.Default.SetOverlayFrame(new EditInstallationScreen());
         }
         private async void PageHost_Loaded(object sender, RoutedEventArgs e)
         {
@@ -54,9 +54,9 @@ namespace BedrockLauncher.Pages.Play
                 if (!HasLoadedOnce)
                 {
                     InstallationsList.ItemsSource = null;
-                    InstallationsList.ItemsSource = LauncherModel.Default.Config.CurrentInstallations;
+                    InstallationsList.ItemsSource = MainViewModel.Default.Config.CurrentInstallations;
                     var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
-                    view.Filter = LauncherModel.Default.Filter_InstallationList;
+                    view.Filter = MainViewModel.Default.Filter_InstallationList;
                     HasLoadedOnce = true;
                 }
                 this.RefreshInstallations();
@@ -71,7 +71,7 @@ namespace BedrockLauncher.Pages.Play
         {
             if (HasLoadedOnce)
             {
-                LauncherModel.Default.Installations_SearchFilter = SearchBox.Text;
+                MainViewModel.Default.Installations_SearchFilter = SearchBox.Text;
                 RefreshInstallations();
             }
         }
@@ -81,10 +81,10 @@ namespace BedrockLauncher.Pages.Play
             {
 
                 if (SortByComboBox.SelectedItem == SortByLatestPlayed)
-                    LauncherModel.Default.Installations_SortFilter = Enums.SortBy_Installation.LatestPlayed;
+                    MainViewModel.Default.Installations_SortFilter = Enums.SortBy_Installation.LatestPlayed;
 
                 if (SortByComboBox.SelectedItem == SortByName)
-                    LauncherModel.Default.Installations_SortFilter = Enums.SortBy_Installation.Name;
+                    MainViewModel.Default.Installations_SortFilter = Enums.SortBy_Installation.Name;
 
                 RefreshInstallations();
             }

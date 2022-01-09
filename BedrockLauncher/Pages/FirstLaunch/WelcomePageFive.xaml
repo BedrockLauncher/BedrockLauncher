@@ -10,8 +10,8 @@
     <Grid Margin="0" Background="{x:Null}">
         <Border Background="#FF313131" Height="1" VerticalAlignment="Bottom" Margin="0,0,0,55" />
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
-            <TextBlock Visibility="Visible" HorizontalAlignment="Center"  Text="{DynamicResource FirstLaunch_AlmostThereTitle}" Foreground="White" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans" FontSize="24" Margin="0,30,0,0" FontWeight="Bold"/>
-            <TextBlock HorizontalAlignment="Center" TextAlignment="Center" Text="{DynamicResource FirstLaunch_BeforeStartingToUse}" Foreground="White" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans" FontSize="14" Margin="28.5,15,28.5,20" TextWrapping="Wrap"/>
+            <TextBlock Visibility="Visible" HorizontalAlignment="Center"  Text="{DynamicResource FirstLaunch_AlmostThereTitle}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="24" Margin="0,30,0,0" FontWeight="Bold"/>
+            <TextBlock HorizontalAlignment="Center" TextAlignment="Center" Text="{DynamicResource FirstLaunch_BeforeStartingToUse}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Margin="28.5,15,28.5,20" TextWrapping="Wrap"/>
         </StackPanel>
         <CheckBox x:Name="BackupCheckbox" VerticalAlignment="Bottom" Margin="0,0,0,15" IsChecked="True" HorizontalAlignment="Center" Foreground="White">
             <StackPanel VerticalAlignment="Center" Margin="0,-8,0,0">

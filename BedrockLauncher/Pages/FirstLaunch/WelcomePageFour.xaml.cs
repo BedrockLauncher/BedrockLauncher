@@ -36,7 +36,7 @@ namespace BedrockLauncher.Pages.FirstLaunch
         private async void NextButton_Click(object sender, RoutedEventArgs e)
         {
             pageSwitcher.MoveToPage(5);
-            await ViewModels.LauncherModel.Default.LoadVersions();
+            await ViewModels.MainViewModel.Default.LoadVersions();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

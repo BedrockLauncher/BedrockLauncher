@@ -39,8 +39,8 @@ namespace BedrockLauncher.Pages.Settings
                 return;
             }
 
-            int CurrentPageIndex = ViewModels.LauncherModel.Default.CurrentPageIndex_Settings;
-            int LastPageIndex = ViewModels.LauncherModel.Default.LastPageIndex_Settings;
+            int CurrentPageIndex = ViewModels.MainViewModel.Default.CurrentPageIndex_Settings;
+            int LastPageIndex = ViewModels.MainViewModel.Default.LastPageIndex_Settings;
             if (CurrentPageIndex == LastPageIndex) return;
 
             ExpandDirection direction;
@@ -48,7 +48,7 @@ namespace BedrockLauncher.Pages.Settings
             if (CurrentPageIndex > LastPageIndex) direction = ExpandDirection.Right;
             else direction = ExpandDirection.Left;
 
-            await Task.Run(() => BedrockLauncher.Core.Components.PageAnimator.FrameSwipe(SettingsScreenFrame, content, direction));
+            await Task.Run(() => BedrockLauncher.Components.PageAnimator.FrameSwipe(SettingsScreenFrame, content, direction));
         }
 
         #region Navigation
@@ -101,24 +101,24 @@ namespace BedrockLauncher.Pages.Settings
 
         public void NavigateToGeneralPage()
         {
-            ViewModels.LauncherModel.Default.UpdateSettingsPageIndex(0);
+            ViewModels.MainViewModel.Default.UpdateSettingsPageIndex(0);
             Task.Run(() => Navigate(generalSettingsPage));
         }
         public void NavigateToVersionsPage()
         {
-            ViewModels.LauncherModel.Default.UpdateSettingsPageIndex(1);
+            ViewModels.MainViewModel.Default.UpdateSettingsPageIndex(1);
             Task.Run(() => Navigate(versionsSettingsPage));
         }
 
         public void NavigateToAccountsPage()
         {
-            ViewModels.LauncherModel.Default.UpdateSettingsPageIndex(2);
+            ViewModels.MainViewModel.Default.UpdateSettingsPageIndex(2);
             Task.Run(() => Navigate(accountsSettingsPage));
         }
 
         public void NavigateToAboutPage()
         {
-            ViewModels.LauncherModel.Default.UpdateSettingsPageIndex(3);
+            ViewModels.MainViewModel.Default.UpdateSettingsPageIndex(3);
             Task.Run(() => Navigate(aboutPage));
         }
 

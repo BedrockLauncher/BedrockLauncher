@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Classes;
 using BedrockLauncher.Controls.Toolbar;
-using BedrockLauncher.Core.Classes;
+using BedrockLauncher.Classes;
 using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Controls.Items
@@ -44,7 +44,7 @@ namespace BedrockLauncher.Controls.Items
 
         private void SwitchProfile()
         {
-            LauncherModel.Default.Config.Profile_Switch(_ProfileName);
+            MainViewModel.Default.Config.Profile_Switch(_ProfileName);
             SelectorParent.ProfileContextMenu.IsOpen = false;
         }
 
