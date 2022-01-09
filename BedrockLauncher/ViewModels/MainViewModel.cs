@@ -24,7 +24,6 @@ using BedrockLauncher.Pages.Common;
 using BedrockLauncher.Interfaces;
 using BedrockLauncher.Downloaders;
 using BedrockLauncher.ViewModels;
-using BedrockLauncher.Classes;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using PostSharp.Patterns.Model;
@@ -66,23 +65,15 @@ namespace BedrockLauncher.ViewModels
 
         #region Properties
 
-        public static LauncherUpdater Updater { get; set; } = new LauncherUpdater();
-        public UserInterfaceHandler ProgressBarState { get; set; } = new UserInterfaceHandler();
-        public FilepathModel FilepathManager { get; private set; } = new FilepathModel();
+        public static UpdateHandler Updater { get; set; } = new UpdateHandler();
+        public UserInterfaceModel ProgressBarState { get; set; } = new UserInterfaceModel();
+        public PathHandler FilePaths { get; private set; } = new PathHandler();
         public PackageHandler PackageManager { get; set; } = new PackageHandler();
 
 
 
         private bool AllowedToCloseWithGameOpen { get; set; } = false;
         private KeyboardNavigationMode KeyboardNavigationMode { get; set; }
-        public int CurrentPageIndex { get; private set; } = -2;
-        public int LastPageIndex { get; private set; } = -1;
-        public int CurrentPageIndex_News { get; private set; } = -2;
-        public int LastPageIndex_News { get; private set; } = -1;
-        public int CurrentPageIndex_Play { get; private set; } = -2;
-        public int LastPageIndex_Play { get; private set; } = -1;
-        public int CurrentPageIndex_Settings { get; private set; } = -2;
-        public int LastPageIndex_Settings { get; private set; } = -1;
         public string CurrentInstallationUUID
         {
             get
@@ -129,28 +120,8 @@ namespace BedrockLauncher.ViewModels
         public void LoadConfig()
         {
             Config.PropertyChanged -= (sender, e) => OnConfigUpdated(e);
-            Config = MCProfilesList.Load(MainViewModel.Default.FilepathManager.GetProfilesFilePath(), Properties.LauncherSettings.Default.CurrentProfile, Properties.LauncherSettings.Default.CurrentProfile);
+            Config = MCProfilesList.Load(MainViewModel.Default.FilePaths.GetProfilesFilePath(), Properties.LauncherSettings.Default.CurrentProfile, Properties.LauncherSettings.Default.CurrentProfile);
             Config.PropertyChanged += (sender, e) => OnConfigUpdated(e);
-        }
-        public void UpdatePageIndex(int index)
-        {
-            LastPageIndex = CurrentPageIndex;
-            CurrentPageIndex = index;
-        }
-        public void UpdatePlayPageIndex(int index)
-        {
-            LastPageIndex_Play = CurrentPageIndex_Play;
-            CurrentPageIndex_Play = index;
-        }
-        public void UpdateNewsPageIndex(int index)
-        {
-            LastPageIndex_News = CurrentPageIndex_News;
-            CurrentPageIndex_News = index;
-        }
-        public void UpdateSettingsPageIndex(int index)
-        {
-            LastPageIndex_Settings = CurrentPageIndex_Settings;
-            CurrentPageIndex_Settings = index;
         }
         public void AttemptClose(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -208,12 +179,12 @@ namespace BedrockLauncher.ViewModels
 
             }));
         }
-        public async void SetDialogFrame(object content)
+        public void SetDialogFrame(object content)
         {
             bool animate = Properties.LauncherSettings.Default.AnimatePageTransitions;
             bool isEmpty = content == null;
 
-            await Application.Current.Dispatcher.InvokeAsync(() =>
+            Application.Current.Dispatcher.Invoke(() =>
             {
                 var focusMode = (isEmpty ? KeyboardNavigationMode : KeyboardNavigationMode.None);
                 KeyboardNavigation.SetTabNavigation(MainThread.MainFrame, focusMode);
@@ -223,16 +194,16 @@ namespace BedrockLauncher.ViewModels
 
             if (animate)
             {
-                if (isEmpty) await PageAnimator.FrameFadeOut(MainThread.ErrorFrame, content);
-                else await PageAnimator.FrameFadeIn(MainThread.ErrorFrame, content);
+                if (isEmpty) PageAnimator.FrameFadeOut(MainThread.ErrorFrame, content);
+                else PageAnimator.FrameFadeIn(MainThread.ErrorFrame, content);
             }
-            else await PageAnimator.Navigate(MainThread.ErrorFrame, content);
+            else PageAnimator.Navigate(MainThread.ErrorFrame, content);
         }
-        private async void SetOverlayFrame_Base(object content, bool animate)
+        private void SetOverlayFrame_Base(object content, bool animate)
         {
             bool isEmpty = content == null;
 
-            await Application.Current.Dispatcher.InvokeAsync(() =>
+            Application.Current.Dispatcher.Invoke(() =>
             {
                 var focusMode = (isEmpty ? KeyboardNavigationMode : KeyboardNavigationMode.None);
                 KeyboardNavigation.SetTabNavigation(MainThread.MainFrame, focusMode);
@@ -241,10 +212,10 @@ namespace BedrockLauncher.ViewModels
 
             if (animate)
             {
-                if (isEmpty) await PageAnimator.FrameSwipe_OverlayOut(MainThread.OverlayFrame, content);
-                else await PageAnimator.FrameSwipe_OverlayIn(MainThread.OverlayFrame, content);
+                if (isEmpty) PageAnimator.FrameSwipe_OverlayOut(MainThread.OverlayFrame, content);
+                else PageAnimator.FrameSwipe_OverlayIn(MainThread.OverlayFrame, content);
             }
-            else await PageAnimator.Navigate(MainThread.OverlayFrame, content);
+            else PageAnimator.Navigate(MainThread.OverlayFrame, content);
         }
         public async void KillGame() => await PackageManager.ClosePackage();
         public async void RepairVersion(BLVersion v) => await PackageManager.DownloadAndExtractPackage(v);
@@ -264,7 +235,7 @@ namespace BedrockLauncher.ViewModels
 
             bool wasCanceled = false;
             if (i.Version.DisplayInstallStatus == "Not installed") await PackageManager.DownloadAndExtractPackage(i.Version);
-            if (!wasCanceled) await PackageManager.LaunchPackage(i.Version, MainViewModel.Default.FilepathManager.GetInstallationsFolderPath(p.Name, i.DirectoryName_Full), KeepLauncherOpen);
+            if (!wasCanceled) await PackageManager.LaunchPackage(i.Version, MainViewModel.Default.FilePaths.GetInstallationsFolderPath(p.Name, i.DirectoryName_Full), KeepLauncherOpen);
         }
 
         #endregion

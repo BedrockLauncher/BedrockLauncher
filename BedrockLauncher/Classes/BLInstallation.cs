@@ -11,6 +11,7 @@ using System.ComponentModel;
 using System.IO;
 using BedrockLauncher.Components;
 using System.Diagnostics;
+using BedrockLauncher.Enums;
 
 namespace BedrockLauncher.Classes
 {
@@ -34,7 +35,7 @@ namespace BedrockLauncher.Classes
             get
             {
 
-                if (IsCustomIcon) return Path.Combine(MainViewModel.Default.FilepathManager.GetCacheFolderPath(), IconPath);
+                if (IsCustomIcon) return Path.Combine(MainViewModel.Default.FilePaths.GetCacheFolderPath(), IconPath);
                 else return @"/BedrockLauncher;component/Resources/images/installation_icons/" + IconPath;
             }
         }
@@ -125,17 +126,11 @@ namespace BedrockLauncher.Classes
 
         public void OpenDirectory()
         {
-            string Directory = MainViewModel.Default.FilepathManager.GetInstallationsFolderPath(MainViewModel.Default.Config.CurrentProfileUUID, DirectoryName_Full);
+            string Directory = MainViewModel.Default.FilePaths.GetInstallationsFolderPath(MainViewModel.Default.Config.CurrentProfileUUID, DirectoryName_Full);
             if (!System.IO.Directory.Exists(Directory)) System.IO.Directory.CreateDirectory(Directory);
             Process.Start("explorer.exe", Directory);
         }
 
     }
 
-    public enum VersioningMode : int
-    {
-        LatestBeta,
-        LatestRelease,
-        None
-    }
 }

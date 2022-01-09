@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Downloaders;
+using BedrockLauncher.Handlers;
 using MdXaml;
 
 namespace BedrockLauncher.Pages.News
@@ -24,14 +25,14 @@ namespace BedrockLauncher.Pages.News
     public partial class News_Launcher_Page : Page
     {
 
-        private LauncherUpdater updater;
+        private UpdateHandler updater;
 
         public News_Launcher_Page()
         {
             InitializeComponent();
         }
 
-        public News_Launcher_Page(LauncherUpdater updater)
+        public News_Launcher_Page(UpdateHandler updater)
         {
             InitializeComponent();
             this.updater = updater;

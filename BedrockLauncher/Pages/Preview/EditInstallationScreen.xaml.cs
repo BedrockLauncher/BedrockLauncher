@@ -14,7 +14,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Classes;
-using BedrockLauncher.Classes;
 using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Pages.Preview

@@ -129,15 +129,15 @@ namespace BedrockLauncher.Components
 
         #region No Animation
 
-        public static async Task Navigate(Frame frame, object content)
+        public static void Navigate(Frame frame, object content)
         {
-            await frame.Dispatcher.InvokeAsync(() => frame.Navigate(content));
+             frame.Dispatcher.Invoke(() => frame.Navigate(content));
         }
 
         #endregion
 
         #region Fade Animations
-        public static async Task FrameFadeIn(Frame frame, object content)
+        public static void FrameFadeIn(Frame frame, object content)
         {
             frame.Opacity = 0;
             frame.Navigate(content);
@@ -148,7 +148,7 @@ namespace BedrockLauncher.Components
             Storyboard.SetTarget(animation, frame);
             storyboard.Begin();
         }
-        public static async Task FrameFadeOut(Frame frame, object content)
+        public static void FrameFadeOut(Frame frame, object content)
         {
             Storyboard storyboard = new Storyboard();
             DoubleAnimation animation = GetFadeAnimation(new Duration(TimeSpan.FromMilliseconds(GetFadeSpeed())), false);
@@ -161,27 +161,27 @@ namespace BedrockLauncher.Components
         #endregion
 
         #region Swipe Animations
-        public static async Task FrameSwipe_OverlayIn(Frame frame, object content)
+        public static void FrameSwipe_OverlayIn(Frame frame, object content)
         {
-            var storyboard = await FrameSwipe_Base(frame, content, ExpandDirection.Up, true, true);
-            await frame.Dispatcher.InvokeAsync(() => frame.Navigate(content));
-            await storyboard.Dispatcher.InvokeAsync(() => storyboard.Begin());
+            var storyboard = FrameSwipe_Base(frame, content, ExpandDirection.Up, true, true);
+            frame.Dispatcher.Invoke(() => frame.Navigate(content));
+            storyboard.Dispatcher.InvokeAsync(() => storyboard.Begin());
         }
-        public static async Task FrameSwipe_OverlayOut(Frame frame, object content)
+        public static void FrameSwipe_OverlayOut(Frame frame, object content)
         {
-            var storyboard = await FrameSwipe_Base(frame, await frame.Dispatcher.InvokeAsync(() => frame.Content), ExpandDirection.Up, true, false);
+            var storyboard = FrameSwipe_Base(frame, frame.Dispatcher.Invoke(() => frame.Content), ExpandDirection.Up, true, false);
             storyboard.Completed += (sender, e) => frame.Navigate(content);
-            await storyboard.Dispatcher.InvokeAsync(() => storyboard.Begin());
+            storyboard.Dispatcher.InvokeAsync(() => storyboard.Begin());
         }
-        public static async Task FrameSwipe(Frame frame, object content, ExpandDirection direction)
+        public static void FrameSwipe(Frame frame, object content, ExpandDirection direction)
         {
-            await frame.Dispatcher.InvokeAsync(() => frame.Navigate(content));
-            var storyboard = await FrameSwipe_Base(frame, content, direction, true, true);
-            await storyboard.Dispatcher.InvokeAsync(() => storyboard.Begin());
+            frame.Dispatcher.InvokeAsync(() => frame.Navigate(content));
+            var storyboard = FrameSwipe_Base(frame, content, direction, true, true);
+            storyboard.Dispatcher.InvokeAsync(() => storyboard.Begin());
         }
-        public static async Task<Storyboard> FrameSwipe_Base(Frame frame, object content, ExpandDirection direction, bool useFade, bool fadeIn)
+        public static Storyboard FrameSwipe_Base(Frame frame, object content, ExpandDirection direction, bool useFade, bool fadeIn)
         {
-            return await Application.Current.Dispatcher.InvokeAsync(() =>
+            return Application.Current.Dispatcher.Invoke(() =>
             {
                 AnimationArgs animationArgs = new AnimationArgs();
 

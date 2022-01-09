@@ -9,6 +9,7 @@ using BedrockLauncher.Classes;
 using BedrockLauncher.Components;
 using ExtensionsDotNET;
 using Newtonsoft.Json;
+using BedrockLauncher.Enums;
 
 namespace BedrockLauncher.Classes
 {

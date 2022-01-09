@@ -1,6 +1,5 @@
 ﻿using BedrockLauncher.Classes;
 using BedrockLauncher.Methods;
-using BedrockLauncher.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;

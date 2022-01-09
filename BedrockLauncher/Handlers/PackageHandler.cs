@@ -1,5 +1,4 @@
 ﻿using BedrockLauncher.Classes;
-using BedrockLauncher.Classes;
 using BedrockLauncher.Classes.SkinPack;
 using BedrockLauncher.Components;
 using BedrockLauncher.Methods;
@@ -357,7 +356,7 @@ namespace BedrockLauncher.Handlers
             {
                 DebugLog("Deployment progress: " + p.state + " " + p.percentage + "%");
                 if (Properties.LauncherSettings.Default.ShowAdvancedInstallDetails)
-                    UpdateProgressBar(progress: Convert.ToInt64(p.percentage), totalProgress: UserInterfaceHandler.DeploymentMaximum);
+                    UpdateProgressBar(progress: Convert.ToInt64(p.percentage), totalProgress: UserInterfaceModel.DeploymentMaximum);
 
             };
             t.Completed += (v, p) =>

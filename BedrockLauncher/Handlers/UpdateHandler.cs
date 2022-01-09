@@ -17,9 +17,9 @@ using System.Linq;
 using System.Threading;
 using BedrockLauncher.Core;
 
-namespace BedrockLauncher.Downloaders
+namespace BedrockLauncher.Handlers
 {
-    public class LauncherUpdater
+    public class UpdateHandler
     {
         #region Definitions
 
@@ -76,7 +76,7 @@ namespace BedrockLauncher.Downloaders
 
         #region Init
 
-        public LauncherUpdater()
+        public UpdateHandler()
         {
             CheckForUpdates();
         }
@@ -218,7 +218,7 @@ namespace BedrockLauncher.Downloaders
                         {
                             string silent = "--silent";
                             string beta = isLatestBeta() ? "--beta" : "";
-                            string path = "--path=\"" + MainViewModel.Default.FilepathManager.ExecutableDirectory + "\"";
+                            string path = "--path=\"" + MainViewModel.Default.FilePaths.ExecutableDirectory + "\"";
 
                             return string.Join(" ", silent, beta, path);
                         }

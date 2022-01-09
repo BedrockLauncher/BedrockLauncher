@@ -57,7 +57,7 @@ namespace BedrockLauncher.Handlers
                         recoveryName = string.Format("{0} ({1})", name, i);
                         recoveryDir = string.Format("{0}_{1}", dir, i);
                     }
-                    directoryPath = Path.Combine(MainViewModel.Default.FilepathManager.GetInstallationsFolderPath(MainViewModel.Default.Config.CurrentProfileUUID, recoveryDir));
+                    directoryPath = Path.Combine(MainViewModel.Default.FilePaths.GetInstallationsFolderPath(MainViewModel.Default.Config.CurrentProfileUUID, recoveryDir));
                     if (!Directory.Exists(directoryPath)) break;
                     i++;
                 }

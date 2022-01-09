@@ -1,4 +1,5 @@
-﻿using BedrockLauncher.Methods;
+﻿using BedrockLauncher.Interfaces;
+using BedrockLauncher.Methods;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BedrockLauncher.Components;
 
 namespace BedrockLauncher.Pages.Settings
 {
@@ -23,32 +25,13 @@ namespace BedrockLauncher.Pages.Settings
         public AccountsSettingsPage accountsSettingsPage = new AccountsSettingsPage();
         public VersionsPage versionsSettingsPage = new VersionsPage();
         public AboutPage aboutPage = new AboutPage();
+
+        private Navigator Navigator { get; set; } = new Navigator();
+
         public SettingsTabs()
         {
             InitializeComponent();
             ButtonManager_Base(GeneralButton.Name);
-        }
-
-        private async void Navigate(object content)
-        {
-            bool animate = Properties.LauncherSettings.Default.AnimatePageTransitions;
-
-            if (!animate)
-            {
-                await SettingsScreenFrame.Dispatcher.InvokeAsync(() => SettingsScreenFrame.Navigate(content));
-                return;
-            }
-
-            int CurrentPageIndex = ViewModels.MainViewModel.Default.CurrentPageIndex_Settings;
-            int LastPageIndex = ViewModels.MainViewModel.Default.LastPageIndex_Settings;
-            if (CurrentPageIndex == LastPageIndex) return;
-
-            ExpandDirection direction;
-
-            if (CurrentPageIndex > LastPageIndex) direction = ExpandDirection.Right;
-            else direction = ExpandDirection.Left;
-
-            await Task.Run(() => BedrockLauncher.Components.PageAnimator.FrameSwipe(SettingsScreenFrame, content, direction));
         }
 
         #region Navigation
@@ -77,9 +60,9 @@ namespace BedrockLauncher.Pages.Settings
 
         }
 
-        public async void ButtonManager(object sender, RoutedEventArgs e)
+        public void ButtonManager(object sender, RoutedEventArgs e)
         {
-            await this.Dispatcher.InvokeAsync(() =>
+            this.Dispatcher.Invoke(() =>
             {
                 var toggleButton = sender as ToggleButton;
                 string name = toggleButton.Name;
@@ -101,25 +84,25 @@ namespace BedrockLauncher.Pages.Settings
 
         public void NavigateToGeneralPage()
         {
-            ViewModels.MainViewModel.Default.UpdateSettingsPageIndex(0);
-            Task.Run(() => Navigate(generalSettingsPage));
+            Navigator.UpdatePageIndex(0);
+            Task.Run(() => Navigator.Navigate(SettingsScreenFrame,generalSettingsPage));
         }
         public void NavigateToVersionsPage()
         {
-            ViewModels.MainViewModel.Default.UpdateSettingsPageIndex(1);
-            Task.Run(() => Navigate(versionsSettingsPage));
+            Navigator.UpdatePageIndex(1);
+            Task.Run(() => Navigator.Navigate(SettingsScreenFrame,versionsSettingsPage));
         }
 
         public void NavigateToAccountsPage()
         {
-            ViewModels.MainViewModel.Default.UpdateSettingsPageIndex(2);
-            Task.Run(() => Navigate(accountsSettingsPage));
+            Navigator.UpdatePageIndex(2);
+            Task.Run(() => Navigator.Navigate(SettingsScreenFrame,accountsSettingsPage));
         }
 
         public void NavigateToAboutPage()
         {
-            ViewModels.MainViewModel.Default.UpdateSettingsPageIndex(3);
-            Task.Run(() => Navigate(aboutPage));
+            Navigator.UpdatePageIndex(3);
+            Task.Run(() => Navigator.Navigate(SettingsScreenFrame,aboutPage));
         }
 
         #endregion

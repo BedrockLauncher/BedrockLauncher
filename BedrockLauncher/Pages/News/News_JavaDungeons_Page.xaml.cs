@@ -20,7 +20,6 @@ using System.Net;
 using System.Net.Http;
 using System.Collections.ObjectModel;
 using ExtensionsDotNET;
-using BedrockLauncher.Classes;
 
 namespace BedrockLauncher.Pages.News
 {

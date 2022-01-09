@@ -13,7 +13,7 @@ using BedrockLauncher.Enums;
 namespace BedrockLauncher.ViewModels
 {
     [NotifyPropertyChanged]
-    public class UserInterfaceHandler
+    public class UserInterfaceModel
     {
 
 

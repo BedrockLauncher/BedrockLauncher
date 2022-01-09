@@ -246,6 +246,7 @@
     <Compile Include="Downloaders\WikiChangelogDownloader.cs" />
     <Compile Include="Enums\LauncherStateChange.cs" />
     <Compile Include="Enums\SortBy_Installation.cs" />
+    <Compile Include="Enums\VersioningMode.cs" />
     <Compile Include="Handlers\BackupHandler.cs" />
     <Compile Include="Handlers\PackageHandler.cs" />
     <Compile Include="Interfaces\IDialogHander.cs" />
@@ -270,7 +271,7 @@
     <Compile Include="Pages\News\News_MinecraftForums_Page.xaml.cs">
       <DependentUpon>News_MinecraftForums_Page.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\FilepathModel.cs" />
+    <Compile Include="Handlers\PathHandler.cs" />
     <Compile Include="Pages\Community\CommunityPage.xaml.cs">
       <DependentUpon>CommunityPage.xaml</DependentUpon>
     </Compile>
@@ -284,7 +285,7 @@
       <DependentUpon>News_JavaDungeons_Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\UserInterfaceHandler.cs" />
+    <Compile Include="ViewModels\UserInterfaceModel.cs" />
     <Compile Include="Properties\LauncherSettings.cs" />
     <Compile Include="Controls\Misc\HtmlPanelPro.cs" />
     <Compile Include="Controls\Items\BlockPickerItem.xaml.cs">
@@ -430,7 +431,7 @@
     <Compile Include="Pages\Settings\SettingsTabs.xaml.cs">
       <DependentUpon>SettingsTabs.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Downloaders\LauncherUpdater.cs" />
+    <Compile Include="Handlers\UpdateHandler.cs" />
     <Compile Include="Downloaders\VersionDownloader.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -874,6 +875,7 @@
     <None Include="app.manifest">
       <SubType>Designer</SubType>
     </None>
+    <Compile Include="Components\Navigator.cs" />
     <Resource Include="Resources\fonts\X360.ttf" />
     <Resource Include="Resources\fonts\WINGDNG3.TTF" />
     <Resource Include="Resources\fonts\NotoSans-Regular.ttf" />

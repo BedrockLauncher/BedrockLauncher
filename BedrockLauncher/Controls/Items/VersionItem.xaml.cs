@@ -17,7 +17,6 @@ using System.Windows.Shapes;
 using BedrockLauncher.Pages.Common;
 using BedrockLauncher.Classes;
 using BedrockLauncher.ViewModels;
-using BedrockLauncher.Classes;
 
 namespace BedrockLauncher.Controls.Items
 {

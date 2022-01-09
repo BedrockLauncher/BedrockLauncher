@@ -82,7 +82,7 @@ namespace BedrockLauncher.Pages.Settings
             };
             if (dialog.ShowDialog().Value)
             {
-                string fileToUse = MainViewModel.Default.FilepathManager.AddImageToIconCache(dialog.FileName);
+                string fileToUse = MainViewModel.Default.FilePaths.AddImageToIconCache(dialog.FileName);
                 Properties.LauncherSettings.Default.ExternalLauncherIconPath = fileToUse;
                 Properties.LauncherSettings.Default.Save();
             }

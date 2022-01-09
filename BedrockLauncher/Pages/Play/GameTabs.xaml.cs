@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Media.Animation;
 using BedrockLauncher.Classes;
 using BedrockLauncher.Downloaders;
+using BedrockLauncher.Components;
 using BedrockLauncher.Methods;
 
 namespace BedrockLauncher.Pages.Play
@@ -22,30 +23,11 @@ namespace BedrockLauncher.Pages.Play
         public SkinsPage skinsPage = new SkinsPage();
         public PatchNotesPage patchNotesPage = new PatchNotesPage(PatchNotesDownloader);
 
+        private Navigator Navigator { get; set; } = new Navigator();
+
         public GameTabs()
         {
             InitializeComponent();
-        }
-
-        private async void Navigate(object content)
-        {
-            bool animate = Properties.LauncherSettings.Default.AnimatePageTransitions;
-
-            if (!animate)
-            {
-                await MainPageFrame.Dispatcher.InvokeAsync(() => MainPageFrame.Navigate(content));
-                return;
-            }
-            int CurrentPageIndex = ViewModels.MainViewModel.Default.CurrentPageIndex_Play;
-            int LastPageIndex = ViewModels.MainViewModel.Default.LastPageIndex_Play;
-            if (CurrentPageIndex == LastPageIndex) return;
-
-            ExpandDirection direction;
-
-            if (CurrentPageIndex > LastPageIndex) direction = ExpandDirection.Right;
-            else direction = ExpandDirection.Left;
-
-            await Task.Run(() => BedrockLauncher.Components.PageAnimator.FrameSwipe(MainPageFrame, content, direction));
         }
 
 
@@ -76,9 +58,9 @@ namespace BedrockLauncher.Pages.Play
 
         }
 
-        public async void ButtonManager2(object sender, RoutedEventArgs e)
+        public void ButtonManager2(object sender, RoutedEventArgs e)
         {
-            await this.Dispatcher.InvokeAsync(() =>
+            this.Dispatcher.Invoke(() =>
             {
                 var toggleButton = sender as ToggleButton;
                 string name = toggleButton.Name;
@@ -101,28 +83,28 @@ namespace BedrockLauncher.Pages.Play
 
         public void NavigateToPlayScreen()
         {
-            ViewModels.MainViewModel.Default.UpdatePlayPageIndex(0);
+            Navigator.UpdatePageIndex(0);
             PlayButton.IsChecked = true;
-            Task.Run(() => Navigate(playScreenPage));
+            Task.Run(() => Navigator.Navigate(MainPageFrame, playScreenPage));
 
         }
         public void NavigateToInstallationsPage()
         {
-            ViewModels.MainViewModel.Default.UpdatePlayPageIndex(1);
+            Navigator.UpdatePageIndex(1);
             InstallationsButton.IsChecked = true;
-            Task.Run(() => Navigate(installationsScreen));
+            Task.Run(() => Navigator.Navigate(MainPageFrame, installationsScreen));
         }
         public void NavigateToSkinsPage()
         {
-            ViewModels.MainViewModel.Default.UpdatePlayPageIndex(2);
+            Navigator.UpdatePageIndex(2);
             SkinsButton.IsChecked = true;
-            Task.Run(() => Navigate(skinsPage));
+            Task.Run(() => Navigator.Navigate(MainPageFrame, skinsPage));
         }
         public void NavigateToPatchNotes()
         {
-            ViewModels.MainViewModel.Default.UpdatePlayPageIndex(3);
+            Navigator.UpdatePageIndex(3);
             PatchNotesButton.IsChecked = true;
-            Task.Run(() => Navigate(patchNotesPage));
+            Task.Run(() => Navigator.Navigate(MainPageFrame, patchNotesPage));
         }
 
         #endregion

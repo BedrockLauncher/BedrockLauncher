@@ -18,7 +18,6 @@ using BedrockLauncher.Classes;
 using System.Diagnostics;
 using BedrockLauncher.Controls.Items;
 using BedrockLauncher.Downloaders;
-using BedrockLauncher.Classes;
 using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Pages.Play

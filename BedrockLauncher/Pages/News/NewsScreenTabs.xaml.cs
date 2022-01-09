@@ -17,7 +17,8 @@ using CodeHollow.FeedReader;
 using BedrockLauncher.Classes;
 using System.Diagnostics;
 using System.Windows.Controls.Primitives;
-using BedrockLauncher.Downloaders;
+using BedrockLauncher.Handlers;
+using BedrockLauncher.Components;
 
 namespace BedrockLauncher.Pages.News
 {
@@ -30,9 +31,11 @@ namespace BedrockLauncher.Pages.News
         private News_MinecraftForums_Page forumsNewsPage = new News_MinecraftForums_Page();
         private News_Launcher_Page launcherNewsPage;
 
+        private Navigator Navigator { get; set; } = new Navigator();
+
         private string LastTabName;
 
-        public NewsScreenTabs(LauncherUpdater updater)
+        public NewsScreenTabs(UpdateHandler updater)
         {
             InitializeComponent();
             LastTabName = OfficalTab.Name;
@@ -48,31 +51,9 @@ namespace BedrockLauncher.Pages.News
 
         #region Navigation
 
-        private async void Navigate(object content)
+        public void ResetButtonManager(string buttonName)
         {
-            bool animate = Properties.LauncherSettings.Default.AnimatePageTransitions;
-
-            if (!animate)
-            {
-                await ContentFrame.Dispatcher.InvokeAsync(() => ContentFrame.Navigate(content));
-                return;
-            }
-
-            int CurrentPageIndex = ViewModels.MainViewModel.Default.CurrentPageIndex_News;
-            int LastPageIndex = ViewModels.MainViewModel.Default.LastPageIndex_News;
-            if (CurrentPageIndex == LastPageIndex) return;
-
-            ExpandDirection direction;
-
-            if (CurrentPageIndex > LastPageIndex) direction = ExpandDirection.Right;
-            else direction = ExpandDirection.Left;
-
-            await Task.Run(() => BedrockLauncher.Components.PageAnimator.FrameSwipe(ContentFrame, content, direction));
-        }
-
-        public async void ResetButtonManager(string buttonName)
-        {
-            await this.Dispatcher.InvokeAsync(() =>
+            this.Dispatcher.Invoke(() =>
             {
                 // just all buttons list
                 // ya i know this is really bad, i need to learn mvvm instead of doing this shit
@@ -94,9 +75,9 @@ namespace BedrockLauncher.Pages.News
 
         }
 
-        public async void ButtonManager(object sender, RoutedEventArgs e)
+        public void ButtonManager(object sender, RoutedEventArgs e)
         {
-            await this.Dispatcher.InvokeAsync(() =>
+            this.Dispatcher.Invoke(() =>
             {
                 var toggleButton = sender as ToggleButton;
                 string name = toggleButton.Name;
@@ -104,9 +85,9 @@ namespace BedrockLauncher.Pages.News
             });
         }
 
-        public async void ButtonManager_Base(string senderName)
+        public void ButtonManager_Base(string senderName)
         {
-            await this.Dispatcher.InvokeAsync(() =>
+            this.Dispatcher.Invoke(() =>
             {
                 ResetButtonManager(senderName);
 
@@ -119,30 +100,30 @@ namespace BedrockLauncher.Pages.News
 
 
 
-        public async void NavigateToCommunityNews()
+        public void NavigateToCommunityNews()
         {
-            ViewModels.MainViewModel.Default.UpdateNewsPageIndex(0);
-            await Task.Run(() => Navigate(communityNewsPage));
+            Navigator.UpdatePageIndex(0);
+            Task.Run(() => Navigator.Navigate(ContentFrame, communityNewsPage));
             LastTabName = OfficalTab.Name;
         }
 
-        public async void NavigateToJavaNews()
+        public void NavigateToJavaNews()
         {
-            ViewModels.MainViewModel.Default.UpdateNewsPageIndex(1);
-            await Task.Run(() => Navigate(javaNewsPage));
+            Navigator.UpdatePageIndex(1);
+            Task.Run(() => Navigator.Navigate(ContentFrame, javaNewsPage));
             LastTabName = JavaTab.Name;
         }
 
-        public async void NavigateToForumNews()
+        public void NavigateToForumNews()
         {
-            ViewModels.MainViewModel.Default.UpdateNewsPageIndex(2);
-            await Task.Run(() => Navigate(forumsNewsPage));
+            Navigator.UpdatePageIndex(2);
+            Task.Run(() => Navigator.Navigate(ContentFrame, forumsNewsPage));
             LastTabName = ForumsTab.Name;
         }
-        public async void NavigateToLauncherNews()
+        public void NavigateToLauncherNews()
         {
-            ViewModels.MainViewModel.Default.UpdateNewsPageIndex(3);
-            await Task.Run(() => Navigate(launcherNewsPage));
+            Navigator.UpdatePageIndex(3);
+            Task.Run(() => Navigator.Navigate(ContentFrame, launcherNewsPage));
             LastTabName = LauncherTab.Name;
         }
 

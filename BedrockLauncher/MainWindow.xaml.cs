@@ -33,6 +33,7 @@ using BedrockLauncher.Pages.News;
 using BedrockLauncher.Pages.Preview;
 using BedrockLauncher.Pages.Common;
 using BedrockLauncher.Pages.Community;
+using BedrockLauncher.Components;
 
 namespace BedrockLauncher
 {
@@ -44,6 +45,8 @@ namespace BedrockLauncher
         private SettingsTabs settingsScreenPage = new SettingsTabs();
         private NewsScreenTabs newsScreenPage = new NewsScreenTabs(ViewModels.MainViewModel.Updater);
         private CommunityPage communityPage = new CommunityPage();
+
+        private Navigator Navigator { get; set; } = new Navigator(true);
 
         public MainWindow()
         {
@@ -84,7 +87,7 @@ namespace BedrockLauncher
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            ViewModels.MainViewModel.Default.AttemptClose(sender, e);
+            MainViewModel.Default.AttemptClose(sender, e);
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -94,30 +97,9 @@ namespace BedrockLauncher
 
         #region Navigation
 
-        private async void Navigate(object content)
+        public void ResetButtonManager(string buttonName)
         {
-            bool animate = Properties.LauncherSettings.Default.AnimatePageTransitions;
-
-            if (!animate)
-            {
-                await MainWindowFrame.Dispatcher.InvokeAsync(() => MainWindowFrame.Navigate(content));
-                return;
-            }
-            int CurrentPageIndex = ViewModels.MainViewModel.Default.CurrentPageIndex;
-            int LastPageIndex = ViewModels.MainViewModel.Default.LastPageIndex;
-            if (CurrentPageIndex == LastPageIndex) return;
-
-            ExpandDirection direction;
-
-            if (CurrentPageIndex > LastPageIndex) direction = ExpandDirection.Down;
-            else direction = ExpandDirection.Up;
-
-            await Task.Run(() => BedrockLauncher.Components.PageAnimator.FrameSwipe(MainWindowFrame, content, direction));
-        }
-
-        public async void ResetButtonManager(string buttonName)
-        {
-            await this.Dispatcher.InvokeAsync(() =>
+            this.Dispatcher.Invoke(() =>
             {
                 // just all buttons list
                 // ya i know this is really bad, i need to learn mvvm instead of doing this shit
@@ -140,18 +122,18 @@ namespace BedrockLauncher
             });
 
         }
-        public async void ButtonManager(object sender, RoutedEventArgs e)
+        public void ButtonManager(object sender, RoutedEventArgs e)
         {
-            await this.Dispatcher.InvokeAsync(() =>
+            this.Dispatcher.Invoke(() =>
             {
                 var toggleButton = sender as ToggleButton;
                 string name = toggleButton.Name;
                 Task.Run(() => ButtonManager_Base(name));
             });
         }
-        public async void ButtonManager_Base(string senderName)
+        public void ButtonManager_Base(string senderName)
         {
-            await this.Dispatcher.InvokeAsync(() =>
+            this.Dispatcher.Invoke(() =>
             {
                 ResetButtonManager(senderName);
 
@@ -165,42 +147,42 @@ namespace BedrockLauncher
 
         }
 
-        public async void NavigateToNewsPage()
+        public void NavigateToNewsPage()
         {
-            await this.Dispatcher.InvokeAsync(() =>
+            this.Dispatcher.Invoke(() =>
             {
-                MainViewModel.Default.UpdatePageIndex(0);
+                Navigator.UpdatePageIndex(0);
                 NewsButton.Button.IsChecked = true;
-                Task.Run(() => Navigate(newsScreenPage));
+                Task.Run(() => Navigator.Navigate(MainWindowFrame, newsScreenPage));
             });
 
         }
-        public async void NavigateToMainPage()
+        public void NavigateToMainPage()
         {
-            await this.Dispatcher.InvokeAsync(() =>
+            this.Dispatcher.Invoke(() =>
             {
-                MainViewModel.Default.UpdatePageIndex(1);
+                Navigator.UpdatePageIndex(1);
                 BedrockEditionButton.Button.IsChecked = true;
-                Task.Run(() => Navigate(MainPage));
+                Task.Run(() => Navigator.Navigate(MainWindowFrame, MainPage));
             });
 
         }
-        public async void NavigateToCommunityScreen()
+        public void NavigateToCommunityScreen()
         {
-            await this.Dispatcher.InvokeAsync(() =>
+            this.Dispatcher.Invoke(() =>
             {
-                MainViewModel.Default.UpdatePageIndex(3);
+                Navigator.UpdatePageIndex(3);
                 CommunityButton.Button.IsChecked = true;
-                Task.Run(() => Navigate(communityPage));
+                Task.Run(() => Navigator.Navigate(MainWindowFrame, communityPage));
             });
         }
-        public async void NavigateToSettings()
+        public void NavigateToSettings()
         {
-            await this.Dispatcher.InvokeAsync(() =>
+            this.Dispatcher.Invoke(() =>
             {
-                MainViewModel.Default.UpdatePageIndex(4);
+                Navigator.UpdatePageIndex(4);
                 SettingsButton.Button.IsChecked = true;
-                Task.Run(() => Navigate(settingsScreenPage));
+                Task.Run(() => Navigator.Navigate(MainWindowFrame, settingsScreenPage));
             });
 
         }
@@ -268,9 +250,9 @@ namespace BedrockLauncher
             });
 
         }
-        public async void NavigateToNewProfilePage()
+        public void NavigateToNewProfilePage()
         {
-            await this.Dispatcher.InvokeAsync(() =>
+            this.Dispatcher.Invoke(() =>
             {
                 MainViewModel.Default.SetOverlayFrame(new AddProfilePage());
             });

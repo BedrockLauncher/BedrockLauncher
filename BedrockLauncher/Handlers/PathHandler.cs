@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.IO;
 using BedrockLauncher.Interfaces;
 using BedrockLauncher.Classes;
+using BedrockLauncher.ViewModels;
 
-namespace BedrockLauncher.ViewModels
+namespace BedrockLauncher.Handlers
 {
-    public class FilepathModel
+    public class PathHandler
     {
         #region Strings
 

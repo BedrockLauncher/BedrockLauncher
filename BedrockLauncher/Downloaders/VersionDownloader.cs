@@ -17,9 +17,9 @@ namespace BedrockLauncher.Downloaders
         private HttpClient _client = new HttpClient();
         private Win10StoreNetwork _store_manager = new Win10StoreNetwork();
 
-        private string cacheFile => MainViewModel.Default.FilepathManager.GetVersionsFilePath();
-        private string userCacheFile => MainViewModel.Default.FilepathManager.GetUserVersionsFilePath();
-        private string technicalUserCacheFile => MainViewModel.Default.FilepathManager.GetUserVersionsTechnicalFilePath();
+        private string cacheFile => MainViewModel.Default.FilePaths.GetVersionsFilePath();
+        private string userCacheFile => MainViewModel.Default.FilePaths.GetUserVersionsFilePath();
+        private string technicalUserCacheFile => MainViewModel.Default.FilePaths.GetUserVersionsTechnicalFilePath();
 
         public void EnableUserAuthorization()
         {

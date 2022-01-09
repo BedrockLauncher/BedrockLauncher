@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Classes;
 using BedrockLauncher.Controls.Toolbar;
-using BedrockLauncher.Classes;
 using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Controls.Items

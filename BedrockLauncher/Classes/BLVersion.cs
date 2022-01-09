@@ -25,7 +25,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                return Path.GetFullPath(MainViewModel.Default.FilepathManager.CurrentLocation + "\\versions\\Minecraft-" + UUID);
+                return Path.GetFullPath(MainViewModel.Default.FilePaths.CurrentLocation + "\\versions\\Minecraft-" + UUID);
             }
         }
         public bool IsInstalled

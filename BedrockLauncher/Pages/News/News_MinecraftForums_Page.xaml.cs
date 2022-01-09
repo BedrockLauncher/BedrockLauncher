@@ -18,7 +18,6 @@ using System.Diagnostics;
 using BedrockLauncher.Controls.Items;
 using System.Net;
 using System.Net.Http;
-using BedrockLauncher.Classes;
 using System.Collections.ObjectModel;
 using RestSharp;
 using BedrockLauncher.Pages.Common;
