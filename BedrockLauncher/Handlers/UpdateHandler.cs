@@ -160,7 +160,7 @@ namespace BedrockLauncher.Handlers
                 if (int.Parse(LocalTag.Replace(".", "")) < int.Parse(OnlineTag.Replace(".", "")))
                 {
                     System.Diagnostics.Debug.WriteLine("New version available!");
-                    ViewModels.MainViewModel.MainThread.UpdateButton.ShowUpdateButton();
+                    ViewModels.MainViewModel.Default.UpdateButton.ShowUpdateButton();
                 }
             }
             catch

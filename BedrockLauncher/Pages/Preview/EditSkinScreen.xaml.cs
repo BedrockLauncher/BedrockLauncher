@@ -66,14 +66,14 @@ namespace BedrockLauncher.Pages.Preview
 
         private void OverlayFrame_Navigated(object sender, NavigationEventArgs e)
         {
-            if (MainViewModel.MainThread.ErrorFrame.Content == null && MainViewModel.MainThread.OverlayFrame.Content == null) SkinPreview.Visibility = Visibility.Visible;
+            if (MainViewModel.Default.ErrorFrame.Content == null && MainViewModel.Default.OverlayFrame.Content == null) SkinPreview.Visibility = Visibility.Visible;
             else SkinPreview.Visibility = Visibility.Collapsed;
         }
 
         private void Init()
         {
-            MainViewModel.MainThread.OverlayFrame.Navigating += OverlayFrame_Navigating;
-            MainViewModel.MainThread.OverlayFrame.Navigated += OverlayFrame_Navigated;
+            MainViewModel.Default.OverlayFrame.Navigating += OverlayFrame_Navigating;
+            MainViewModel.Default.OverlayFrame.Navigated += OverlayFrame_Navigated;
 
             if (isEditMode)
             {

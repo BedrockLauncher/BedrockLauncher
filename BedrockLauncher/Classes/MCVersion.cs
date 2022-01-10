@@ -21,10 +21,11 @@ using System.Windows.Data;
 using BedrockLauncher.Components;
 using System.Text.RegularExpressions;
 using BedrockLauncher.Interfaces;
+using PostSharp.Patterns.Model;
 
 namespace BedrockLauncher.Classes
 {
-    public class MCVersion : NotifyPropertyChangedBase
+    public class MCVersion
     {
         public MCVersion(string uuid, string name, bool isBeta)
         {

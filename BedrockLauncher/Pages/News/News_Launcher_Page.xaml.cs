@@ -26,6 +26,7 @@ namespace BedrockLauncher.Pages.News
     {
 
         private UpdateHandler updater;
+        private bool HasPreloaded = false;
 
         public News_Launcher_Page()
         {
@@ -38,9 +39,13 @@ namespace BedrockLauncher.Pages.News
             this.updater = updater;
         }
 
-        private async void Page_Loaded(object sender, EventArgs e)
+        private void Page_Loaded(object sender, EventArgs e)
         {
-            await Task.Run(RefreshData);
+            if (!HasPreloaded)
+            {
+                Task.Run(RefreshData);
+                HasPreloaded = true;
+            }
         }
 
         private async void RefreshData()

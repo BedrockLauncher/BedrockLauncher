@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BedrockLauncher.Handlers;
 using BedrockLauncher.Methods;
 using BedrockLauncher.ViewModels;
 
@@ -24,11 +25,12 @@ namespace BedrockLauncher.Pages.Settings
         public VersionsPage()
         {
             InitializeComponent();
+            this.DataContext = MainViewModel.Default;
         }
 
-        public async void RefreshVersionsList()
+        public void RefreshVersionsList()
         {
-            await this.Dispatcher.InvokeAsync(() =>
+            this.Dispatcher.Invoke(() =>
             {
                 var view = CollectionViewSource.GetDefaultView(VersionsList.ItemsSource) as CollectionView;
                 view.Refresh();
@@ -45,23 +47,22 @@ namespace BedrockLauncher.Pages.Settings
             RefreshVersionsList();
         }
 
-        private async void PageHost_Loaded(object sender, RoutedEventArgs e)
+        private void PageHost_Loaded(object sender, RoutedEventArgs e)
         {
-            await this.Dispatcher.InvokeAsync(() =>
+            this.Dispatcher.Invoke(() =>
             {
                 if (!HasLoadedOnce)
                 {
-                    VersionsList.ItemsSource = MainViewModel.Default.Versions;
                     var view = CollectionViewSource.GetDefaultView(VersionsList.ItemsSource) as CollectionView;
-                    view.Filter = MainViewModel.Default.Filter_VersionList;
+                    view.Filter = FilterSortingHandler.Filter_VersionList;
                     HasLoadedOnce = true;
                 }
             });
         }
 
-        private async void RefreshButton_Click(object sender, RoutedEventArgs e)
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
-            await Task.Run(ViewModels.MainViewModel.Default.LoadVersions);
+            Task.Run(ViewModels.MainViewModel.Default.LoadVersions);
         }
     }
 }

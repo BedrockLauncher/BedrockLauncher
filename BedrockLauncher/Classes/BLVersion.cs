@@ -9,9 +9,12 @@ using System.Xml.Linq;
 using BedrockLauncher.Classes;
 using BedrockLauncher.ViewModels;
 using Newtonsoft.Json;
+using PostSharp.Patterns.Model;
 
 namespace BedrockLauncher.Classes
 {
+
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.ExcludeExplicitProperties)]    //84 Lines
     public class BLVersion : MCVersion
     {
         public BLVersion(string uuid, string name, bool isBeta) : base(uuid, name, isBeta) { }
@@ -25,6 +28,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
+                Depends.On(UUID);
                 return Path.GetFullPath(MainViewModel.Default.FilePaths.CurrentLocation + "\\versions\\Minecraft-" + UUID);
             }
         }
@@ -32,6 +36,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
+                Depends.On(GameDirectory);
                 return Directory.Exists(GameDirectory);
             }
         }
@@ -39,6 +44,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
+                Depends.On(IsBeta, Name);
                 return Name + (IsBeta ? " (Beta)" : "");
             }
         }
@@ -46,13 +52,14 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                GetInstallSize();
+                Depends.On(RequireSizeRecalculation);
+                Task.Run(GetInstallSize);
                 return _StoredInstallationSize;
             }
         }
 
         private string _StoredInstallationSize = "N/A";
-        private bool RequireSizeRecalculation = true;
+        private bool RequireSizeRecalculation { get; set; } = true;
 
         private async void GetInstallSize()
         {
@@ -85,14 +92,13 @@ namespace BedrockLauncher.Classes
                 _StoredInstallationSize = "N/A";
                 RequireSizeRecalculation = false;
             }
-            OnPropertyChanged(nameof(InstallationSize));
-
         }
 
         public string IconPath
         {
             get
             {
+                Depends.On(IsBeta);
                 return IsBeta ? @"/BedrockLauncher;component/Resources/images/icons/ico/crafting_table_block_icon.ico" : @"/BedrockLauncher;component/Resources/images/icons/ico/grass_block_icon.ico";
             }
         }
@@ -101,6 +107,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
+                Depends.On(IsInstalled);
                 return IsInstalled ? "Installed" : "Not installed";
             }
         }
@@ -109,6 +116,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
+                Depends.On(GameDirectory);
                 return Path.Combine(GameDirectory, "AppxManifest.xml");
             }
         }
@@ -143,7 +151,6 @@ namespace BedrockLauncher.Classes
 
         public void UpdateInstallStatus()
         {
-            OnPropertyChanged(nameof(IsInstalled));
             RequireSizeRecalculation = true;
         }
     }

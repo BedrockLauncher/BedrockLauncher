@@ -5,11 +5,16 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       xmlns:common="clr-namespace:BedrockLauncher.Controls"
-      xmlns:p="clr-namespace:BedrockLauncher.Properties"
+      xmlns:conv="clr-namespace:BedrockLauncher.Components"
+      xmlns:downloaders="clr-namespace:BedrockLauncher.Downloaders"
       xmlns:c="clr-namespace:BedrockLauncher.Classes"
+      d:DataContext="{d:DesignInstance Type=downloaders:ChangelogDownloader}"
       mc:Ignorable="d" 
       d:DesignHeight="525" d:DesignWidth="828"
       Title="PatchNotesPage" x:Name="Page" Loaded="Page_Loaded"  Background="#FF282828" Initialized="Page_Initialized">
+    <Page.Resources>
+        <conv:IntToVisibilityConverter x:Key="IntToVisibilityConverter"/>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"></RowDefinition>
@@ -28,7 +33,7 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="6">
                     <StackPanel VerticalAlignment="Center" Margin="0,0,10,0">
-                        <Button Margin="0,1" FontSize="14" x:Name="UpdateButton" HorizontalAlignment="Right" Click="Button_Click" Content="{DynamicResource GeneralText_Refresh}" Style="{DynamicResource LinkButton}"></Button>
+                        <Button IsEnabled="{Binding IsRefreshable}" Margin="0,1" FontSize="14" x:Name="UpdateButton" HorizontalAlignment="Right" Click="Button_Click" Content="{DynamicResource GeneralText_Refresh}" Style="{DynamicResource LinkButton}"></Button>
                         <Button Margin="0,1" FontSize="14" x:Name="MorePatchNotes" HorizontalAlignment="Right" Click="MorePatchNotes_Click" Content="{DynamicResource PatchNotesPage_MorePatchNotes}" Style="{DynamicResource LinkButton}"></Button>
                         <Button Margin="0,1" FontSize="14" x:Name="MoreBetaPatchNotes" HorizontalAlignment="Right" Click="MoreBetaPatchNotes_Click" Content="{DynamicResource PatchNotesPage_MorePatchNotesBeta}" Style="{DynamicResource LinkButton}"></Button>
                     </StackPanel>
@@ -39,14 +44,14 @@
                     <StackPanel>
                         <Label Foreground="White" Content="{DynamicResource GeneralSubtitles_Versions}" Margin="0,10,0,0" FontWeight="Bold" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
                         <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="Auto" Orientation="Horizontal" Margin="0,-10,0,0">
-                            <CheckBox x:Name="ReleasesCheckBox" Click="RefreshList" IsChecked="True" Content="{DynamicResource ResourceKey=GeneralText_Releases}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
-                            <CheckBox x:Name="BetasCheckBox" Click="RefreshList" IsChecked="True" Content="{DynamicResource ResourceKey=GeneralText_Betas}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
+                            <CheckBox x:Name="ReleasesCheckBox" Click="RefreshList" IsThreeState="False" IsChecked="{Binding ShowReleases}" Content="{DynamicResource ResourceKey=GeneralText_Releases}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
+                            <CheckBox x:Name="BetasCheckBox" Click="RefreshList" IsThreeState="False" IsChecked="{Binding ShowBetas}" Content="{DynamicResource ResourceKey=GeneralText_Betas}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
             </Grid>
         </Border>
-        <ListView Grid.Row="1" x:Name="PatchNotesList" Keyboard.PreviewKeyUp="PatchNotesList_KeyUp" ItemContainerStyle="{DynamicResource CardListViewItem}">
+        <ListView Grid.Row="1" x:Name="PatchNotesList" SourceUpdated="PatchNotesList_SourceUpdated" Keyboard.PreviewKeyUp="PatchNotesList_KeyUp" ItemsSource="{Binding PatchNotes}" ItemContainerStyle="{DynamicResource CardListViewItem}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center" MaxWidth="{Binding ElementName=PatchNotesList, Path=ActualWidth}"></WrapPanel>
@@ -58,6 +63,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <common:ResultPanel PanelType="NoContent" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="Collapsed"></common:ResultPanel>
+        <common:ResultPanel PanelType="NoContent" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="{Binding ElementName=PatchNotesList, Path=Items.Count, Converter={StaticResource IntToVisibilityConverter}}"></common:ResultPanel>
     </Grid>
 </Page>

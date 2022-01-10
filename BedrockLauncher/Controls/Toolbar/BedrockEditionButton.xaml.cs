@@ -15,13 +15,14 @@ using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 using System.Windows.Controls.Primitives;
 using BedrockLauncher.Classes;
+using BedrockLauncher.Components;
 
 namespace BedrockLauncher.Controls.Toolbar
 {
     /// <summary>
     /// Interaction logic for BedrockEditionButton.xaml
     /// </summary>
-    public partial class BedrockEditionButton : Grid
+    public partial class BedrockEditionButton : ToolbarButtonBase
     {
 
         public BedrockEditionButton()
@@ -32,7 +33,8 @@ namespace BedrockLauncher.Controls.Toolbar
 
         private void SideBarButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModels.MainViewModel.MainThread.ButtonManager_Base(this.Name);
+            ToolbarButtonBase_Click(this, e);
+            //ViewModels.MainViewModel.MainThread.ButtonManager_Base(this.Name);
         }
 
         private void Button_CheckedChanged(object sender, RoutedEventArgs e)

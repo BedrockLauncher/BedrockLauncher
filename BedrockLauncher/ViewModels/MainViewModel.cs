@@ -29,16 +29,21 @@ using System.ComponentModel;
 using PostSharp.Patterns.Model;
 using BedrockLauncher.Enums;
 using BedrockLauncher.Handlers;
+using System.Windows.Threading;
+using BedrockLauncher.Extensions;
+using BedrockLauncher.UpdateProcessor;
 
 namespace BedrockLauncher.ViewModels
 {
-    [NotifyPropertyChanged]
+
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.ExcludeExplicitProperties)]    //119 Lines
     public class MainViewModel : IDialogHander, ILauncherModel
     {
         public static MainViewModel Default { get; set; } = new MainViewModel();
 
         #region Event Handlers
 
+        /*
         public event EventHandler ConfigUpdated;
         protected virtual void OnConfigUpdated(PropertyChangedEventArgs e)
         {
@@ -46,6 +51,7 @@ namespace BedrockLauncher.ViewModels
             if (e.PropertyName == nameof(Config.CurrentInstallations))
                 if (handler != null) handler(this, e);
         }
+        */
 
         #endregion
 
@@ -69,65 +75,39 @@ namespace BedrockLauncher.ViewModels
         public UserInterfaceModel ProgressBarState { get; set; } = new UserInterfaceModel();
         public PathHandler FilePaths { get; private set; } = new PathHandler();
         public PackageHandler PackageManager { get; set; } = new PackageHandler();
-
+        public MCProfilesList Config { get; private set; } = new MCProfilesList();
+        public ObservableCollection<BLVersion> Versions { get; private set; } = new ObservableCollection<BLVersion>();
 
 
         private bool AllowedToCloseWithGameOpen { get; set; } = false;
+        public bool IsVersionsUpdating { get; private set; }
         private KeyboardNavigationMode KeyboardNavigationMode { get; set; }
-        public string CurrentInstallationUUID
-        {
-            get
-            {
-                Depends.On(CurrentProfileUUID);
-                return Config.CurrentInstallationUUID;
-            }
-            set
-            {
-                Config.CurrentInstallationUUID = value;
-            }
-        }
-        public string CurrentProfileUUID
-        {
-            get
-            {
-                return Config.CurrentProfileUUID;
-            }
-            set
-            {
-                Config.CurrentProfileUUID = value;
-            }
-        }
-        public ObservableCollection<BLVersion> Versions { get; private set; } = new ObservableCollection<BLVersion>();
-        public MCProfilesList Config { get; private set; } = new MCProfilesList();
-        public SortBy_Installation Installations_SortFilter { get; set; } = SortBy_Installation.LatestPlayed;
-        public string Installations_SearchFilter { get; set; } = string.Empty;
-        public bool IsVersionsUpdating { get; set; }
+
 
         #endregion
 
         #region Methods
 
-        public async Task LoadVersions()
+        public void LoadVersions()
         {
+
             if (IsVersionsUpdating) return;
-            await Application.Current.Dispatcher.Invoke((Func<Task>)(async () =>
+            Application.Current.Dispatcher.Invoke(() =>
             {
                 IsVersionsUpdating = true;
-                await MainViewModel.Default.PackageManager.VersionDownloader.UpdateVersions(Versions);
+                new WaitingScreen().ShowDialogUntilTaskCompletion(MainViewModel.Default.PackageManager.VersionDownloader.UpdateVersions(Versions));
                 IsVersionsUpdating = false;
-            }));
+            });
         }
         public void LoadConfig()
         {
-            Config.PropertyChanged -= (sender, e) => OnConfigUpdated(e);
             Config = MCProfilesList.Load(MainViewModel.Default.FilePaths.GetProfilesFilePath(), Properties.LauncherSettings.Default.CurrentProfile, Properties.LauncherSettings.Default.CurrentProfile);
-            Config.PropertyChanged += (sender, e) => OnConfigUpdated(e);
         }
         public void AttemptClose(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Action action = new Action(() =>
             {
-                MainThread.Close();
+                MainWindow.Close();
             });
 
             if (Properties.LauncherSettings.Default.KeepLauncherOpen && MainViewModel.Default.PackageManager.isGameRunning)
@@ -156,8 +136,8 @@ namespace BedrockLauncher.ViewModels
         {
             await Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(async () =>
             {
-                var title = MainThread.FindResource("Dialog_CloseGame_Title") as string;
-                var content = MainThread.FindResource("Dialog_CloseGame_Text") as string;
+                var title = Application.Current.FindResource("Dialog_CloseGame_Title") as string;
+                var content = Application.Current.FindResource("Dialog_CloseGame_Text") as string;
 
                 var result = await DialogPrompt.ShowDialog_YesNoCancel(title, content);
 
@@ -187,17 +167,17 @@ namespace BedrockLauncher.ViewModels
             Application.Current.Dispatcher.Invoke(() =>
             {
                 var focusMode = (isEmpty ? KeyboardNavigationMode : KeyboardNavigationMode.None);
-                KeyboardNavigation.SetTabNavigation(MainThread.MainFrame, focusMode);
-                KeyboardNavigation.SetTabNavigation(MainThread.OverlayFrame, focusMode);
+                KeyboardNavigation.SetTabNavigation(MainWindow.MainFrame, focusMode);
+                KeyboardNavigation.SetTabNavigation(MainWindow.OverlayFrame, focusMode);
                 Keyboard.ClearFocus();
             });
 
             if (animate)
             {
-                if (isEmpty) PageAnimator.FrameFadeOut(MainThread.ErrorFrame, content);
-                else PageAnimator.FrameFadeIn(MainThread.ErrorFrame, content);
+                if (isEmpty) PageAnimator.FrameFadeOut(MainWindow.ErrorFrame, content);
+                else PageAnimator.FrameFadeIn(MainWindow.ErrorFrame, content);
             }
-            else PageAnimator.Navigate(MainThread.ErrorFrame, content);
+            else PageAnimator.Navigate(MainWindow.ErrorFrame, content);
         }
         private void SetOverlayFrame_Base(object content, bool animate)
         {
@@ -206,16 +186,16 @@ namespace BedrockLauncher.ViewModels
             Application.Current.Dispatcher.Invoke(() =>
             {
                 var focusMode = (isEmpty ? KeyboardNavigationMode : KeyboardNavigationMode.None);
-                KeyboardNavigation.SetTabNavigation(MainThread.MainFrame, focusMode);
+                KeyboardNavigation.SetTabNavigation(MainWindow.MainFrame, focusMode);
                 Keyboard.ClearFocus();
             });
 
             if (animate)
             {
-                if (isEmpty) PageAnimator.FrameSwipe_OverlayOut(MainThread.OverlayFrame, content);
-                else PageAnimator.FrameSwipe_OverlayIn(MainThread.OverlayFrame, content);
+                if (isEmpty) PageAnimator.FrameSwipe_OverlayOut(MainWindow.OverlayFrame, content);
+                else PageAnimator.FrameSwipe_OverlayIn(MainWindow.OverlayFrame, content);
             }
-            else PageAnimator.Navigate(MainThread.OverlayFrame, content);
+            else PageAnimator.Navigate(MainWindow.OverlayFrame, content);
         }
         public async void KillGame() => await PackageManager.ClosePackage();
         public async void RepairVersion(BLVersion v) => await PackageManager.DownloadAndExtractPackage(v);
@@ -242,48 +222,31 @@ namespace BedrockLauncher.ViewModels
 
         #region Filters/Sorters
 
-        public bool Filter_InstallationList(object obj)
-        {
-            BLInstallation v = obj as BLInstallation;
-            if (v == null) return false;
-            else if (!Properties.LauncherSettings.Default.ShowBetas && v.IsBeta) return false;
-            else if (!Properties.LauncherSettings.Default.ShowReleases && !v.IsBeta) return false;
-            else if (!v.DisplayName.Contains(Installations_SearchFilter)) return false;
-            else return true;
-        }
-        public void Sort_InstallationList(ref CollectionView view)
-        {
-            view.SortDescriptions.Clear();
-            if (Installations_SortFilter == SortBy_Installation.LatestPlayed) view.SortDescriptions.Add(new System.ComponentModel.SortDescription("LastPlayedT", System.ComponentModel.ListSortDirection.Descending));
-            if (Installations_SortFilter == SortBy_Installation.Name) view.SortDescriptions.Add(new System.ComponentModel.SortDescription("DisplayName", System.ComponentModel.ListSortDirection.Ascending));
-        }
-        public bool Filter_VersionList(object obj)
-        {
-            BLVersion v = BLVersion.Convert(obj as MCVersion);
 
-            if (v != null && v.IsInstalled)
-            {
-                if (!Properties.LauncherSettings.Default.ShowBetas && v.IsBeta) return false;
-                else if (!Properties.LauncherSettings.Default.ShowReleases && !v.IsBeta) return false;
-                else return true;
-            }
-            else return false;
-
-        }
 
         #endregion
 
         #region Extensions
 
-        public static MainWindow MainThread
+        public Frame ErrorFrame
         {
-            get
-            {
-                return App.Current.Dispatcher.Invoke(() =>
-                {
-                    return (MainWindow)App.Current.MainWindow;
-                });
-            }
+            get { Depends.On(MainWindow); return MainWindow.ErrorFrame; }
+        }
+
+        public Frame OverlayFrame
+        {
+            get { Depends.On(MainWindow); return MainWindow.OverlayFrame; }
+        }
+        
+        public Controls.Misc.UpdateButton UpdateButton
+        {
+            get { Depends.On(MainWindow); return MainWindow.UpdateButton; }
+        }
+
+        [SafeForDependencyAnalysis]
+        private MainWindow MainWindow
+        {
+            get => App.Current.Dispatcher.Invoke(() => (MainWindow)App.Current.MainWindow);
         }
 
         #endregion

@@ -33,10 +33,10 @@ namespace BedrockLauncher.Pages.FirstLaunch
             pageSwitcher.MoveToPage(3);
         }
 
-        private async void NextButton_Click(object sender, RoutedEventArgs e)
+        private void NextButton_Click(object sender, RoutedEventArgs e)
         {
             pageSwitcher.MoveToPage(5);
-            await ViewModels.MainViewModel.Default.LoadVersions();
+            ViewModels.MainViewModel.Default.LoadVersions();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

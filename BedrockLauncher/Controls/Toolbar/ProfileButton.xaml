@@ -1,4 +1,4 @@
-﻿<Grid x:Class="BedrockLauncher.Controls.Toolbar.ProfileButton"
+﻿<local:ToolbarButtonBase x:Class="BedrockLauncher.Controls.Toolbar.ProfileButton"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,7 @@
              xmlns:classes="clr-namespace:BedrockLauncher.Classes"
              xmlns:controls="clr-namespace:BedrockLauncher.Controls"
              xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
-             xmlns:local="clr-namespace:BedrockLauncher.Controls"
+             xmlns:local="clr-namespace:BedrockLauncher.Controls.Toolbar"
              mc:Ignorable="d" 
              Height="59" Margin="1,0,0,0" VerticalAlignment="Top" Style="{DynamicResource DisabledStyle}">
     <ToggleButton IsThreeState="False" x:Name="SourceButton" Style="{StaticResource SideBarButtonStyle}" Click="SourceButton_Click" FontWeight="Normal" VerticalAlignment="Stretch" Checked="SourceButton_Checked" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="True" IsChecked="False">
@@ -32,5 +32,5 @@
             </Grid>
         </ToggleButton.Content>
     </ToggleButton>
-    <Image IsHitTestVisible="False" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True" Source="/BedrockLauncher;component/Resources/images/icons/mojang-icon.png" MinWidth="30" MinHeight="30" HorizontalAlignment="Left" VerticalAlignment="Center" Width="30" Height="30" Margin="14,0,0,3"/>
-</Grid>
+    <Image IsHitTestVisible="False" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True" Source="/BedrockLauncher;component/Resources/images/icons/ms-icon.png" MinWidth="30" MinHeight="30" HorizontalAlignment="Left" VerticalAlignment="Center" Width="30" Height="30" Margin="14,0,0,3"/>
+</local:ToolbarButtonBase>

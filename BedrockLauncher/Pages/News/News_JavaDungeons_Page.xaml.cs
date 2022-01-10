@@ -30,15 +30,16 @@ namespace BedrockLauncher.Pages.News
     {
         private const string JSON_Feed = @"https://launchercontent.mojang.com/news.json";
         private ObservableCollection<NewsItem> FeedItems { get; set; } = new ObservableCollection<NewsItem>();
+        private bool hasPreloaded = false;
 
         public News_JavaDungeons_Page()
         {
             InitializeComponent();
         }
 
-        private async void RefreshButton_Click(object sender, RoutedEventArgs e)
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
-            await Task.Run(() => UpdateContent(true));
+             Task.Run(() => UpdateContent(true));
         }
 
         public async Task UpdateJSONContent()
@@ -73,9 +74,13 @@ namespace BedrockLauncher.Pages.News
             });
         }
 
-        private async void Page_Loaded(object sender, EventArgs e)
+        private void Page_Loaded(object sender, EventArgs e)
         {
-            await Task.Run(() => RefreshButton_Click(sender, null));
+            if (!hasPreloaded)
+            {
+                Task.Run(() => UpdateContent(true));
+                hasPreloaded = true;
+            }
         }
 
         private void OfficalNewsFeed_KeyUp(object sender, KeyEventArgs e)

@@ -13,6 +13,7 @@ using Windows.Security.Cryptography;
 using Windows.Security.Credentials;
 using System.IO;
 using Windows.System;
+using System.Collections.ObjectModel;
 
 namespace BedrockLauncher.UpdateProcessor
 {
@@ -69,7 +70,7 @@ namespace BedrockLauncher.UpdateProcessor
                 results.Add(account);
             }
 
-            CurrentAccounts = results;
+            CurrentAccounts.AddRange(results);
         }
 
         public static string GetWUToken(int SelectedUserIndex)

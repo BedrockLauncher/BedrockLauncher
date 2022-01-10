@@ -9,7 +9,7 @@
       xmlns:common="clr-namespace:BedrockLauncher.Controls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="CommunityNewsPage" Initialized="Page_Loaded">
+      Title="CommunityNewsPage" Loaded="Page_Loaded">
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>

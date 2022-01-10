@@ -52,13 +52,12 @@ namespace BedrockLauncher.Controls.Settings
             });
         }
 
-        private async void AccountsList_DropDownClosed(object sender, EventArgs e)
+        private void AccountsList_DropDownClosed(object sender, EventArgs e)
         {
             if (AccountsList.SelectedIndex == -1) AccountsList.SelectedIndex = 0;
             else if (Win10AuthenticationManager.CurrentAccounts.Count < AccountsList.SelectedIndex) AccountsList.SelectedIndex = 0;
             Properties.LauncherSettings.Default.CurrentInsiderAccount = AccountsList.SelectedIndex;
             Properties.LauncherSettings.Default.Save();
-            await ViewModels.MainViewModel.Default.LoadVersions();
             RefreshProfileContextMenuItems();
         }
     }

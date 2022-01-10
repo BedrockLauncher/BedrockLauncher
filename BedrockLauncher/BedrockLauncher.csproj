@@ -176,8 +176,10 @@
     <Compile Include="Classes\DLC.cs" />
     <Compile Include="Classes\BLInstallation.cs" />
     <Compile Include="Classes\BLVersion.cs" />
-    <Compile Include="Classes\BLProfileList.cs" />
+    <Compile Include="Classes\MCProfilesList.cs" />
     <Compile Include="Classes\MCPatchNotesItem.cs" />
+    <Compile Include="Classes\MCProfile.cs" />
+    <Compile Include="Classes\MCProfileExtensions.cs" />
     <Compile Include="Classes\MCVersion.cs" />
     <Compile Include="Classes\MediaWiki\Continue.cs" />
     <Compile Include="Classes\MediaWiki\Limits.cs" />
@@ -199,12 +201,14 @@
     <Compile Include="Components\CustomDesignAttributes.cs" />
     <Compile Include="Components\DisableNavigation.cs" />
     <Compile Include="Components\InteractivityHelper.cs" />
+    <Compile Include="Components\IntToVisibilityConverter.cs" />
     <Compile Include="Components\InverseBooleanConverter.cs" />
     <Compile Include="Components\InvertableBooleanToVisibilityConverter.cs" />
     <Compile Include="Components\NotifyPropertyChangedBase.cs" />
     <Compile Include="Components\PageAnimator.cs" />
     <Compile Include="Components\RelayCommand.cs" />
     <Compile Include="Components\StringToUpperConverter.cs" />
+    <Compile Include="Controls\Toolbar\ToolbarButtonBase.cs" />
     <Compile Include="Components\UrlToImageSourceConverter.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Controls\AltMessageBox.xaml.cs">
@@ -247,7 +251,9 @@
     <Compile Include="Enums\LauncherStateChange.cs" />
     <Compile Include="Enums\SortBy_Installation.cs" />
     <Compile Include="Enums\VersioningMode.cs" />
+    <Compile Include="Extensions\WindowExtensions.cs" />
     <Compile Include="Handlers\BackupHandler.cs" />
+    <Compile Include="Handlers\FilterSortingHandler.cs" />
     <Compile Include="Handlers\PackageHandler.cs" />
     <Compile Include="Interfaces\IDialogHander.cs" />
     <Compile Include="Interfaces\ILauncherModel.cs" />
@@ -267,6 +273,9 @@
     </Compile>
     <Compile Include="Pages\Common\NoContentPage.xaml.cs">
       <DependentUpon>NoContentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\WaitingScreen.xaml.cs">
+      <DependentUpon>WaitingScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\News\News_MinecraftForums_Page.xaml.cs">
       <DependentUpon>News_MinecraftForums_Page.xaml</DependentUpon>
@@ -580,6 +589,10 @@
     <Page Include="Pages\Common\NoContentPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Common\WaitingScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Community\CommunityPage.xaml">
       <SubType>Designer</SubType>

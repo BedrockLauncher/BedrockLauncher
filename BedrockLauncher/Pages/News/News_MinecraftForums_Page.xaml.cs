@@ -34,6 +34,7 @@ namespace BedrockLauncher.Pages.News
         private const string RSS_Feed = "https://www.minecraftforum.net/news.rss";
 
         private ObservableCollection<NewsItem> FeedItems { get; set; } = new ObservableCollection<NewsItem>();
+        private bool hasPreloaded = false;
 
 
         public News_MinecraftForums_Page()
@@ -86,9 +87,13 @@ namespace BedrockLauncher.Pages.News
 
         }
 
-        private async void Page_Loaded(object sender, EventArgs e)
+        private void Page_Loaded(object sender, EventArgs e)
         {
-            await Task.Run(UpdateRSSContent);
+            if (!hasPreloaded)
+            {
+                Task.Run(UpdateRSSContent);
+                hasPreloaded = true;
+            }
         }
 
         private void OfficalNewsFeed_KeyUp(object sender, KeyEventArgs e)

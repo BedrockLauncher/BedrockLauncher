@@ -10,21 +10,26 @@ using BedrockLauncher.Components;
 using ExtensionsDotNET;
 using Newtonsoft.Json;
 using BedrockLauncher.Enums;
+using PostSharp.Patterns.Model;
 
 namespace BedrockLauncher.Classes
 {
-    public class MCProfilesList : NotifyPropertyChangedBase
+
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.ExcludeExplicitProperties)]    //224 Lines
+    public class MCProfilesList
     {
         public int Version = 2;
-        [JsonIgnore] public string FilePath { get; private set; } = string.Empty;
         public Dictionary<string, MCProfile> profiles { get; set; } = new Dictionary<string, MCProfile>();
 
         #region Runtime Values
-
-        [JsonIgnore] private string _CurrentProfileUUID  = string.Empty;
-        [JsonIgnore] private string _CurrentInstallationUUID  = string.Empty;
-
-        [JsonIgnore] public string CurrentProfileUUID
+        [JsonIgnore]
+        public string FilePath { get; private set; } = string.Empty;
+        [JsonIgnore] 
+        private string _CurrentProfileUUID  = string.Empty;
+        [JsonIgnore] 
+        private string _CurrentInstallationUUID  = string.Empty;
+        [JsonIgnore] 
+        public string CurrentProfileUUID
         {
             get
             {
@@ -34,14 +39,10 @@ namespace BedrockLauncher.Classes
             {
                 _CurrentProfileUUID = value;
                 MCProfileExtensions.SetCurrentProfile(value);
-                OnPropertyChanged(nameof(CurrentProfileUUID));
-                OnPropertyChanged(nameof(CurrentProfile));
-                OnPropertyChanged(nameof(CurrentInstallations));
-                OnPropertyChanged(nameof(CurrentInstallationUUID));
-                OnPropertyChanged(nameof(CurrentInstallation));
             }
         }
-        [JsonIgnore] public string CurrentInstallationUUID
+        [JsonIgnore] 
+        public string CurrentInstallationUUID
         {
             get
             {
@@ -51,27 +52,28 @@ namespace BedrockLauncher.Classes
             {
                 _CurrentInstallationUUID = value;
                 MCProfileExtensions.SetCurrentInstallation(value);
-                OnPropertyChanged(nameof(CurrentInstallationUUID));
-                OnPropertyChanged(nameof(CurrentInstallation));
             }
         }
-        [JsonIgnore] public MCProfile CurrentProfile
+        [JsonIgnore] 
+        public MCProfile CurrentProfile
         {
             get
             {
+                Depends.On(CurrentProfileUUID);
                 if (profiles.ContainsKey(CurrentProfileUUID)) return profiles[CurrentProfileUUID];
                 else return null;
             }
             set
             {
                 if (profiles.ContainsKey(CurrentProfileUUID)) profiles[CurrentProfileUUID] = value;
-                OnPropertyChanged(nameof(CurrentProfile));
             }
         }
-        [JsonIgnore] public BLInstallation CurrentInstallation
+        [JsonIgnore] 
+        public BLInstallation CurrentInstallation
         {
             get
             {
+                Depends.On(CurrentProfile, CurrentInstallations, CurrentInstallationUUID);
                 if (CurrentProfile == null) return null;
                 else if (CurrentInstallations == null) return null;
                 else if (CurrentInstallations.Any(x => x.InstallationUUID == CurrentInstallationUUID))
@@ -88,13 +90,14 @@ namespace BedrockLauncher.Classes
                     CurrentInstallations[index] = value;
                 }
                 else return;
-                OnPropertyChanged(nameof(CurrentInstallation));
             }
         }
-        [JsonIgnore] public ObservableCollection<BLInstallation> CurrentInstallations
+        [JsonIgnore] 
+        public ObservableCollection<BLInstallation> CurrentInstallations
         {
             get
             {
+                Depends.On(CurrentProfile);
                 if (CurrentProfile == null) return null;
                 else if (CurrentProfile.Installations == null) return null;
                 else return CurrentProfile.Installations;
@@ -104,7 +107,6 @@ namespace BedrockLauncher.Classes
                 if (CurrentProfile == null) return;
                 else if (CurrentProfile.Installations == null) return;
                 else CurrentProfile.Installations = value;
-                OnPropertyChanged(nameof(CurrentInstallations));
             }
         }
 
@@ -163,23 +165,23 @@ namespace BedrockLauncher.Classes
             {
                 DisplayName = "Latest Release",
                 DirectoryName = "Latest Release",
-                VersionUUID = "latest_release",
+                VersionUUID = Constants.LATEST_RELEASE_UUID,
                 VersioningMode = VersioningMode.LatestRelease,
                 IconPath = "Grass_Block.png",
                 IsCustomIcon = false,
                 ReadOnly = true,
-                InstallationUUID = "latest_release"
+                InstallationUUID = Constants.LATEST_RELEASE_UUID
             };
             BLInstallation latest_beta = new BLInstallation()
             {
                 DisplayName = "Latest Beta",
                 DirectoryName = "Latest Beta",
-                VersionUUID = "latest_beta",
+                VersionUUID = Constants.LATEST_BETA_UUID,
                 VersioningMode = VersioningMode.LatestBeta,
                 IconPath = "Crafting_Table.png",
                 IsCustomIcon = false,
                 ReadOnly = true,
-                InstallationUUID = "latest_beta"
+                InstallationUUID = Constants.LATEST_BETA_UUID
             };
 
 
@@ -326,46 +328,6 @@ namespace BedrockLauncher.Classes
         }
 
         #endregion
-    }
-    public class MCProfile
-    {
-        public string Name { get; set; }
-        public string ProfilePath { get; set; }
-        public ObservableCollection<BLInstallation> Installations { get; set; } = new ObservableCollection<BLInstallation>();
-
-        public MCProfile() { }
-        public MCProfile(string name, string path)
-        {
-            Name = name;
-            ProfilePath = path;
-        }
-    }
-    public static class MCProfileExtensions
-    {
-        public static void GetVersionParams(MCVersion version, out VersioningMode versioningMode, out string version_uuid)
-        {
-            version_uuid = "latest_release";
-            versioningMode = VersioningMode.LatestRelease;
-
-            if (version != null)
-            {
-                if (version.UUID == "latest_beta") versioningMode = VersioningMode.LatestBeta;
-                else if (version.UUID == "latest_release") versioningMode = VersioningMode.LatestRelease;
-                else versioningMode = VersioningMode.None;
-
-                version_uuid = version.UUID;
-            }
-        }
-        public static void SetCurrentProfile(string profileUUID)
-        {
-            Properties.LauncherSettings.Default.CurrentProfile = profileUUID;
-            Properties.LauncherSettings.Default.Save();
-        }
-        public static void SetCurrentInstallation(string installationUUID)
-        {
-            Properties.LauncherSettings.Default.CurrentInstallation = installationUUID;
-            Properties.LauncherSettings.Default.Save();
-        }
     }
 
 }

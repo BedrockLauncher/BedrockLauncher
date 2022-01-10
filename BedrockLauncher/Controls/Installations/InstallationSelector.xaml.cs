@@ -1,4 +1,5 @@
-﻿using BedrockLauncher.ViewModels;
+﻿using BedrockLauncher.Handlers;
+using BedrockLauncher.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,7 +28,7 @@ namespace BedrockLauncher.Controls.Installations
         public InstallationSelector()
         {
             InitializeComponent();
-            MainViewModel.Default.ConfigUpdated += InstallationsUpdate;
+            this.DataContext = MainViewModel.Default;
         }
         public async void RefreshInstallations()
         {
@@ -36,8 +37,8 @@ namespace BedrockLauncher.Controls.Installations
                 var view = CollectionViewSource.GetDefaultView(this.ItemsSource) as CollectionView;
                 if (view != null)
                 {
-                    MainViewModel.Default.Sort_InstallationList(ref view);
-                    if (view.Filter == null) view.Filter = MainViewModel.Default.Filter_InstallationList;
+                    FilterSortingHandler.Sort_InstallationList(ref view);
+                    if (view.Filter == null) view.Filter = FilterSortingHandler.Filter_InstallationList;
                     view.Refresh();
                 }
                 this.SelectedValue = Properties.LauncherSettings.Default.CurrentInstallation;
@@ -49,10 +50,8 @@ namespace BedrockLauncher.Controls.Installations
             {
                 if (!HasLoadedOnce)
                 {
-                    this.ItemsSource = null;
-                    this.ItemsSource = MainViewModel.Default.Config.CurrentInstallations;
                     var view = CollectionViewSource.GetDefaultView(this.ItemsSource) as CollectionView;
-                    if (view != null) view.Filter = MainViewModel.Default.Filter_InstallationList;
+                    if (view != null) view.Filter = FilterSortingHandler.Filter_InstallationList;
                     HasLoadedOnce = true;
                     this.SelectedIndex = 0;
                 }
@@ -63,16 +62,17 @@ namespace BedrockLauncher.Controls.Installations
         {
             await this.ReloadInstallations();
         }
-        private async void InstallationsUpdate(object sender, EventArgs e)
-        {
-            HasLoadedOnce = false;
-            await this.ReloadInstallations();
-        }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Properties.LauncherSettings.Default.CurrentInstallation = (string)this.SelectedValue;
             Properties.LauncherSettings.Default.Save();
+        }
+
+        private async void ComboBox_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+            HasLoadedOnce = false;
+            await this.ReloadInstallations();
         }
     }
 }

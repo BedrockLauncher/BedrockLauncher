@@ -15,78 +15,54 @@ using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Classes;
 using BedrockLauncher.ViewModels;
+using System.Collections.ObjectModel;
+using PostSharp.Patterns.Model;
 
 namespace BedrockLauncher.Pages.Preview
 {
     /// <summary>
     /// Interaction logic for EditInstallationScreen.xaml
     /// </summary>
+    /// 
+
+    [NotifyPropertyChanged(ExcludeExplicitProperties=Constants.ExcludeExplicitProperties)]
+    public class EditInstallationsPageModel
+    {
+        public string SelectedVersionUUID { get; set; } = string.Empty;
+        public string SelectedUUID { get; set; } = string.Empty;
+        public string InstallationName { get; set; } = string.Empty;
+        public string InstallationDirectory { get; set; } = string.Empty;
+    }
+
+
     public partial class EditInstallationScreen : Page
     {
-        private List<BLVersion> Versions { get; set; } = new List<BLVersion>();
 
         private bool IsEditMode = false;
 
-        private string SelectedUUID = string.Empty;
+        public EditInstallationsPageModel ViewModel { get; set; } = new EditInstallationsPageModel();
 
-        public EditInstallationScreen()
-        {
-            InitializeComponent();
-            UpdateVersionsComboBox();
-        }
 
-        public EditInstallationScreen(BLInstallation i)
+        public EditInstallationScreen(BLInstallation i = null)
         {
+            this.DataContext = ViewModel;
             InitializeComponent();
-            UpdateVersionsComboBox();
-            UpdateEditingFields(i);
+            if (i != null) UpdateEditingFields(i);
         }
 
         private void UpdateEditingFields(BLInstallation i)
         {
             IsEditMode = true;
-            InstallationVersionSelect.SelectedItem = Versions.Where(x => x.UUID == i.VersionUUID).FirstOrDefault();
-            InstallationNameField.Text = i.DisplayName;
-            InstallationDirectoryField.Text = i.DirectoryName;
+
+            ViewModel.SelectedVersionUUID = i.VersionUUID;
+            ViewModel.InstallationName = i.DisplayName;
+            ViewModel.InstallationDirectory = i.DirectoryName;
+            ViewModel.SelectedUUID = i.InstallationUUID;
+
             InstallationIconSelect.Init(i.IconPath_Full, i.IsCustomIcon);
-            SelectedUUID = i.InstallationUUID;
 
             Header.SetResourceReference(TextBlock.TextProperty, "EditInstallationScreen_AltTitle");
             CreateButton.SetResourceReference(Button.ContentProperty, "EditInstallationScreen_AltCreateButton");
-        }
-
-
-        private void GetManualComboBoxEntries()
-        {
-            BLVersion latest_release = new BLVersion("latest_release", Application.Current.Resources["EditInstallationScreen_LatestRelease"].ToString(), false);
-            BLVersion latest_beta = new BLVersion("latest_beta", Application.Current.Resources["EditInstallationScreen_LatestSnapshot"].ToString(), true);
-            Versions.InsertRange(0, new List<BLVersion>() { latest_release, latest_beta });
-        }
-
-        private void UpdateVersionsComboBox()
-        {
-            Versions.Clear();
-            InstallationVersionSelect.ItemsSource = null;
-            foreach (var entry in MainViewModel.Default.Versions) Versions.Add(BLVersion.Convert(entry));
-            GetManualComboBoxEntries();
-            InstallationVersionSelect.ItemsSource = Versions;
-            var view = CollectionViewSource.GetDefaultView(InstallationVersionSelect.ItemsSource) as CollectionView;
-            view.Filter = Filter_VersionList;
-            InstallationVersionSelect.SelectedIndex = 0;
-        }
-
-        public bool Filter_VersionList(object obj)
-        {
-            BLVersion v = BLVersion.Convert(obj as MCVersion);
-
-            if (v != null)
-            {
-                if (!Properties.LauncherSettings.Default.ShowBetas && v.IsBeta) return false;
-                else if (!Properties.LauncherSettings.Default.ShowReleases && !v.IsBeta) return false;
-                else return true;
-            }
-            else return false;
-
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -100,15 +76,20 @@ namespace BedrockLauncher.Pages.Preview
             else CreateInstallation();
         }
 
+        private MCVersion GetVersion(string uuid)
+        {
+            return MainViewModel.Default.Versions.Where(x => x.UUID == uuid).FirstOrDefault();
+        }
+
         private void UpdateInstallation()
         {
-            MainViewModel.Default.Config.Installation_Edit(SelectedUUID, InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationDirectoryField.Text, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
+            MainViewModel.Default.Config.Installation_Edit(ViewModel.SelectedUUID, ViewModel.InstallationName, GetVersion(ViewModel.SelectedVersionUUID), ViewModel.InstallationDirectory, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
             MainViewModel.Default.SetOverlayFrame(null);
         }
 
         private void CreateInstallation()
         {
-            MainViewModel.Default.Config.Installation_Create(InstallationNameField.Text, Versions[InstallationVersionSelect.SelectedIndex], InstallationDirectoryField.Text, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
+            MainViewModel.Default.Config.Installation_Create(ViewModel.InstallationName, GetVersion(ViewModel.SelectedVersionUUID), ViewModel.InstallationDirectory, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
             MainViewModel.Default.SetOverlayFrame(null);
         }
 
@@ -134,6 +115,11 @@ namespace BedrockLauncher.Pages.Preview
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             ViewModels.MainViewModel.Default.SetOverlayFrame(null);
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

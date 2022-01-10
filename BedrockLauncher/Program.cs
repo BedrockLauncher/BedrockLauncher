@@ -14,6 +14,7 @@ namespace BedrockLauncher
             Debug.WriteLine("Application Starting...");
 
             var application = new App();
+            application.ShutdownMode = System.Windows.ShutdownMode.OnExplicitShutdown;
             application.DispatcherUnhandledException += Internals.Error_Unhandled;
             application.Startup += Internals.OnStartup;
             application.InitializeComponent();

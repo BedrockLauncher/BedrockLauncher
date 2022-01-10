@@ -53,7 +53,7 @@ namespace BedrockLauncher.Pages.Play
 
         private void OverlayFrame_Navigated(object sender, NavigationEventArgs e)
         {
-            if (MainViewModel.MainThread.ErrorFrame.Content == null && MainViewModel.MainThread.OverlayFrame.Content == null) SkinPreviewPanel.Visibility = Visibility.Visible;
+            if (MainViewModel.Default.ErrorFrame.Content == null && MainViewModel.Default.OverlayFrame.Content == null) SkinPreviewPanel.Visibility = Visibility.Visible;
             else SkinPreviewPanel.Visibility = Visibility.Collapsed;
         }
 
@@ -68,9 +68,9 @@ namespace BedrockLauncher.Pages.Play
 
         }
 
-        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            await this.Dispatcher.InvokeAsync(() =>
+            this.Dispatcher.Invoke(() =>
             {
                 if (!HasLoadedOnce)
                 {
@@ -86,9 +86,9 @@ namespace BedrockLauncher.Pages.Play
         #endregion
 
         #region UI
-        public async void ReloadSkinPacks()
+        public void ReloadSkinPacks()
         {
-            await this.Dispatcher.InvokeAsync(() =>
+            this.Dispatcher.Invoke(() =>
             {
                 SkinPacks.Clear();
 
@@ -125,9 +125,9 @@ namespace BedrockLauncher.Pages.Play
                 }
             });
         }
-        private async void ReloadSkins()
+        private void ReloadSkins()
         {
-            await this.Dispatcher.InvokeAsync(() =>
+            this.Dispatcher.Invoke(() =>
             {
                 if (!this.IsInitialized) return;
                 Skins.Clear();
@@ -166,26 +166,26 @@ namespace BedrockLauncher.Pages.Play
 
         #region Selections
 
-        private async void LoadedSkinPacks_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void LoadedSkinPacks_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            await this.Dispatcher.InvokeAsync(() =>
+            this.Dispatcher.Invoke(() =>
             {
                 ReloadSkins();
                 UpdateCurrentSkin();
                 UpdateAddSkinButton();
             });
         }
-        private async void SkinPreviewList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void SkinPreviewList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            await this.Dispatcher.InvokeAsync(() =>
+            this.Dispatcher.Invoke(() =>
             {
                 UpdateCurrentSkin();
                 UpdateAddSkinButton();
             });
         }
-        private async void InstallationsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void InstallationsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            await Task.Run(ReloadSkinPacks);
+            Task.Run(ReloadSkinPacks);
         }
 
         #endregion

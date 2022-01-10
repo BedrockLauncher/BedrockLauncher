@@ -9,7 +9,7 @@
       x:Class="BedrockLauncher.Pages.Settings.AccountsSettingsPage"
       mc:Ignorable="d" 
       d:DesignHeight="828" d:DesignWidth="525"
-      Title="AccountsSettingsPage" Initialized="Page_Initialized" MinWidth="828" MinHeight="525">
+      Title="AccountsSettingsPage" Loaded="Page_Initialized" MinWidth="828" MinHeight="525">
     <Grid Background="#333333">
         <StackPanel Margin="42,42,42,0">
             <Separator></Separator>

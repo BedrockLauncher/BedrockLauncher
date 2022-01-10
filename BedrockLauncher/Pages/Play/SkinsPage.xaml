@@ -10,6 +10,7 @@
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       xmlns:properties="clr-namespace:BedrockLauncher.Properties"
       xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
+      d:DataContext="{d:DesignInstance Type=viewModels:MainViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SkinsPage" Initialized="Page_Initialized" Loaded="Page_Loaded" x:Name="SkinsPageHost">
@@ -74,7 +75,7 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Grid Background="{DynamicResource ListBox.Static.Background}">
-                <controls2:InstallationSelector VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectionChanged="InstallationsList_SelectionChanged" ItemsSource="{Binding}" x:Name="InstallationsList" Margin="4,4,4,4" Padding="-1,7,5,3"></controls2:InstallationSelector>
+                <controls2:InstallationSelector VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectionChanged="InstallationsList_SelectionChanged" x:Name="InstallationsList" Margin="4,4,4,4" Padding="-1,7,5,3"></controls2:InstallationSelector>
             </Grid>
             <ListView Grid.Row="1"
                   Keyboard.PreviewKeyUp="LoadedSkinPacks_PreviewKeyUp"

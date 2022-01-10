@@ -12,7 +12,8 @@ using BedrockLauncher.Enums;
 
 namespace BedrockLauncher.ViewModels
 {
-    [NotifyPropertyChanged]
+
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.ExcludeExplicitProperties)]    //102 Lines
     public class UserInterfaceModel
     {
 
@@ -99,10 +100,7 @@ namespace BedrockLauncher.ViewModels
         {
             get
             {
-                Depends.On(ProgressBar_CurrentState);
-                Depends.On(ProgressBar_CurrentProgress);
-                Depends.On(ProgressBar_TotalProgress);
-                Depends.On(DeploymentPackageName);
+                Depends.On(ProgressBar_CurrentState, ProgressBar_CurrentProgress, ProgressBar_TotalProgress, DeploymentPackageName);
 
                 switch (ProgressBar_CurrentState)
                 {
@@ -165,9 +163,7 @@ namespace BedrockLauncher.ViewModels
         {
             get
             {
-                Depends.On(AllowPlaying);
-                Depends.On(IsGameRunning);
-                Depends.On(ProgressBar_Show);
+                Depends.On(AllowPlaying, IsGameRunning, ProgressBar_Show);
                 return AllowPlaying && !IsGameRunning && !ProgressBar_Show;
             }
         }
@@ -175,8 +171,7 @@ namespace BedrockLauncher.ViewModels
         {
             get
             {
-                Depends.On(ProgressBar_CurrentState);
-                Depends.On(ProgressBar_Show);
+                Depends.On(ProgressBar_CurrentState, ProgressBar_Show);
                 return ProgressBar_CurrentState == LauncherStateChange.None && !ProgressBar_Show;
             }
         }

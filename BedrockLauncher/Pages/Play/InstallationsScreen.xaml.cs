@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BedrockLauncher.Handlers;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Pages.Preview;
 using BedrockLauncher.ViewModels;
@@ -24,16 +25,21 @@ namespace BedrockLauncher.Pages.Play
         public InstallationsScreen()
         {
             InitializeComponent();
+            this.DataContext = MainViewModel.Default;
             ShowBetasCheckBox.Click += (sender, e) => RefreshInstallations();
             ShowReleasesCheckBox.Click += (sender, e) => RefreshInstallations();
-            MainViewModel.Default.ConfigUpdated += InstallationsUpdate;
         }
-        public async void RefreshInstallations()
+        public void RefreshInstallations()
         {
-            await this.Dispatcher.InvokeAsync(() =>
+            this.Dispatcher.Invoke(() =>
             {
                 var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
-                MainViewModel.Default.Sort_InstallationList(ref view);
+                if (!HasLoadedOnce)
+                {
+                    view.Filter = FilterSortingHandler.Filter_InstallationList;
+                    HasLoadedOnce = true;
+                }
+                FilterSortingHandler.Sort_InstallationList(ref view);
                 view.Refresh();
                 if (InstallationsList.Items.Count > 0 && NothingFound.Visibility != Visibility.Collapsed) NothingFound.Visibility = Visibility.Collapsed;
                 else if (InstallationsList.Items.Count <= 0 && NothingFound.Visibility != Visibility.Visible) NothingFound.Visibility = Visibility.Visible;
@@ -41,38 +47,19 @@ namespace BedrockLauncher.Pages.Play
         }
         private void NewInstallationButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModels.MainViewModel.Default.SetOverlayFrame(new EditInstallationScreen());
+            MainViewModel.Default.SetOverlayFrame(new EditInstallationScreen());
         }
-        private async void PageHost_Loaded(object sender, RoutedEventArgs e)
+        private void PageHost_Loaded(object sender, RoutedEventArgs e)
         {
-            await this.ReloadInstallations();
+            this.RefreshInstallations();
         }
-        private async Task ReloadInstallations()
-        {
-            await this.Dispatcher.InvokeAsync(() =>
-            {
-                if (!HasLoadedOnce)
-                {
-                    InstallationsList.ItemsSource = null;
-                    InstallationsList.ItemsSource = MainViewModel.Default.Config.CurrentInstallations;
-                    var view = CollectionViewSource.GetDefaultView(InstallationsList.ItemsSource) as CollectionView;
-                    view.Filter = MainViewModel.Default.Filter_InstallationList;
-                    HasLoadedOnce = true;
-                }
-                this.RefreshInstallations();
-            });
-        }
-        private async void InstallationsUpdate(object sender, EventArgs e)
-        {
-            HasLoadedOnce = false;
-            await this.ReloadInstallations();
-        }
+
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (HasLoadedOnce)
             {
-                MainViewModel.Default.Installations_SearchFilter = SearchBox.Text;
-                RefreshInstallations();
+                FilterSortingHandler.Installations_SearchFilter = SearchBox.Text;
+                this.RefreshInstallations();
             }
         }
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -81,13 +68,19 @@ namespace BedrockLauncher.Pages.Play
             {
 
                 if (SortByComboBox.SelectedItem == SortByLatestPlayed)
-                    MainViewModel.Default.Installations_SortFilter = Enums.SortBy_Installation.LatestPlayed;
+                    FilterSortingHandler.Installations_SortFilter = Enums.SortBy_Installation.LatestPlayed;
 
                 if (SortByComboBox.SelectedItem == SortByName)
-                    MainViewModel.Default.Installations_SortFilter = Enums.SortBy_Installation.Name;
+                    FilterSortingHandler.Installations_SortFilter = Enums.SortBy_Installation.Name;
 
-                RefreshInstallations();
+                this.RefreshInstallations();
             }
+        }
+
+        private void InstallationsList_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+            HasLoadedOnce = false;
+            this.RefreshInstallations();
         }
     }
 }

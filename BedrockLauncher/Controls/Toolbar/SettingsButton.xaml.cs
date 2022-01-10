@@ -21,7 +21,7 @@ namespace BedrockLauncher.Controls.Toolbar
     /// <summary>
     /// Interaction logic for SideBarButton.xaml
     /// </summary>
-    public partial class SettingsButton : Grid
+    public partial class SettingsButton : ToolbarButtonBase
     {
 
         public SettingsButton()
@@ -31,7 +31,8 @@ namespace BedrockLauncher.Controls.Toolbar
 
         private void SideBarButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModels.MainViewModel.MainThread.ButtonManager_Base(this.Name);
+            ToolbarButtonBase_Click(this, e);
+            //ViewModels.MainViewModel.MainThread.ButtonManager_Base(this.Name);
         }
     }
 }

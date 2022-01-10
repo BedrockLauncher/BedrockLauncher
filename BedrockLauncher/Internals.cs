@@ -119,15 +119,16 @@ namespace BedrockLauncher
 
         #endregion
 
-        public static async void OnStartup(object sender, StartupEventArgs e)
+        public static void OnStartup(object sender, StartupEventArgs e)
         {
+            Debug.WriteLine("Application Pre-Initalization Started!");
             EnableDeveloperMode();
             CefSharp.CefSharpLoader.Init();
             Init_IsBugRockOfTheWeek();
 
             LanguageManager.Init();
             MainViewModel.Default.LoadConfig();
-            await MainViewModel.Default.LoadVersions();
+            MainViewModel.Default.LoadVersions();
 
             Debug.WriteLine("Application Pre-Initalization Finished!");
             ConsoleArgumentManager.PraseArgs(e.Args);

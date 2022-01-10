@@ -32,14 +32,14 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel x:Name="buttonStackPanel" Grid.Column="0" Background="{DynamicResource Background.Primary}" HorizontalAlignment="Left">
-                <toolbar:ProfileButton IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default},Path=ProgressBarState.AllowEditing, Mode=OneWay}" x:Name="ProfileButton"></toolbar:ProfileButton>
-                <toolbar:NewsButton x:Name="NewsButton"></toolbar:NewsButton>
-                <toolbar:BedrockEditionButton x:Name="BedrockEditionButton"></toolbar:BedrockEditionButton>
-                <toolbar:JavaEditionButton x:Name="JavaEditionButton" Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=HideJavaShortcut, Converter={StaticResource ReverseBoolToVis}, ConverterParameter=Inverted}"></toolbar:JavaEditionButton>
-                <toolbar:ExternalLauncherButton x:Name="ExternalLauncherButton" Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=ShowExternalLauncher, Converter={StaticResource BoolToVis}}"></toolbar:ExternalLauncherButton>
-                <toolbar:CommunityButton x:Name="CommunityButton"></toolbar:CommunityButton>
+                <toolbar:ProfileButton IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default},Path=ProgressBarState.AllowEditing, Mode=OneWay}" x:Name="ProfileButton" Click="ProfileButton_Click"></toolbar:ProfileButton>
+                <toolbar:NewsButton x:Name="NewsButton" Click="NewsButton_Click"></toolbar:NewsButton>
+                <toolbar:BedrockEditionButton x:Name="BedrockEditionButton" Click="BedrockEditionButton_Click"></toolbar:BedrockEditionButton>
+                <toolbar:JavaEditionButton x:Name="JavaEditionButton" Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=HideJavaShortcut, Converter={StaticResource ReverseBoolToVis}, ConverterParameter=Inverted}" Click="JavaEditionButton_Click"></toolbar:JavaEditionButton>
+                <toolbar:ExternalLauncherButton x:Name="ExternalLauncherButton" Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=ShowExternalLauncher, Converter={StaticResource BoolToVis}}" Click="ExternalLauncherButton_Click"></toolbar:ExternalLauncherButton>
+                <toolbar:CommunityButton x:Name="CommunityButton" Click="CommunityButton_Click"></toolbar:CommunityButton>
             </StackPanel>
-            <toolbar:SettingsButton x:Name="SettingsButton"></toolbar:SettingsButton>
+            <toolbar:SettingsButton x:Name="SettingsButton" Click="SettingsButton_Click"></toolbar:SettingsButton>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>

@@ -9,6 +9,7 @@ using System.Linq;
 using ExtensionsDotNET;
 using BedrockLauncher.ViewModels;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace BedrockLauncher.Downloaders
 {
@@ -20,6 +21,16 @@ namespace BedrockLauncher.Downloaders
         private string cacheFile => MainViewModel.Default.FilePaths.GetVersionsFilePath();
         private string userCacheFile => MainViewModel.Default.FilePaths.GetUserVersionsFilePath();
         private string technicalUserCacheFile => MainViewModel.Default.FilePaths.GetUserVersionsTechnicalFilePath();
+
+
+        private string latestReleaseUUID = string.Empty;
+        private string latestBetaUUID = string.Empty;
+        private string GetUpdateIdentity(string uuid)
+        {
+            if (uuid == Constants.LATEST_BETA_UUID) return latestBetaUUID;
+            else if (uuid == Constants.LATEST_RELEASE_UUID) return latestReleaseUUID;
+            else return uuid;
+        }
 
         public void EnableUserAuthorization()
         {
@@ -72,8 +83,9 @@ namespace BedrockLauncher.Downloaders
                 }
             }
         }
-        public async Task Download(string versionName, string updateIdentity, int revisionNumber, string destination, DownloadProgress progress, CancellationToken cancellationToken)
+        public async Task Download(string versionName, string uuid, int revisionNumber, string destination, DownloadProgress progress, CancellationToken cancellationToken)
         {
+            var updateIdentity = GetUpdateIdentity(uuid);
             string link = await _store_manager.getDownloadLink(updateIdentity, revisionNumber, true);
             if (link == null)
                 throw new ArgumentException(string.Format("Bad updateIdentity for {0}", versionName));
@@ -105,6 +117,7 @@ namespace BedrockLauncher.Downloaders
             LoadFromUserCache(versions);
             await LoadFromAPI(versions);
             await LoadFromAPI_Technical();
+            LoadDefaults(versions);
         }
 
         public Win10VersionDBManager.Win10VersionJsonDb LoadFromUserCache(ObservableCollection<BLVersion> versions)
@@ -168,6 +181,18 @@ namespace BedrockLauncher.Downloaders
                 System.Diagnostics.Debug.WriteLine("Version list technical cache load failed:\n" + e.ToString());
                 return new Win10VersionDBManager.Win10VersionTextDb();
             }
+        }
+
+        private void LoadDefaults(ObservableCollection<BLVersion> versions)
+        {
+            this.latestReleaseUUID = versions.First(x => x.IsBeta == false)?.UUID ?? string.Empty;
+            this.latestBetaUUID = versions.First(x => x.IsBeta == true)?.UUID ?? string.Empty;
+
+            var latest_beta = new BLVersion(Constants.LATEST_BETA_UUID, Application.Current.Resources["EditInstallationScreen_LatestSnapshot"].ToString(), true);
+            var latest_release = new BLVersion(Constants.LATEST_RELEASE_UUID, Application.Current.Resources["EditInstallationScreen_LatestRelease"].ToString(), false);
+
+            versions.Insert(0, latest_beta);
+            versions.Insert(0, latest_release);
         }
 
         public async Task LoadFromAPI_Technical()

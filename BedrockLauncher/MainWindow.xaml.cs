@@ -34,6 +34,7 @@ using BedrockLauncher.Pages.Preview;
 using BedrockLauncher.Pages.Common;
 using BedrockLauncher.Pages.Community;
 using BedrockLauncher.Components;
+using BedrockLauncher.Controls.Toolbar;
 
 namespace BedrockLauncher
 {
@@ -61,6 +62,7 @@ namespace BedrockLauncher
 
         private void Init()
         {
+            Application.Current.ShutdownMode = System.Windows.ShutdownMode.OnLastWindowClose;
 
             Panel.SetZIndex(OverlayFrame, 0);
             Panel.SetZIndex(ErrorFrame, 1);
@@ -72,8 +74,8 @@ namespace BedrockLauncher
             UpdateButton.ClickBase.Click += MainViewModel.Updater.UpdateButton_Click;
             MainViewModel.Default.Init(MainFrame);
 
-            bool isFirstLaunch = Properties.LauncherSettings.Default.CurrentProfile == "" || 
-                Properties.LauncherSettings.Default.IsFirstLaunch || 
+            bool isFirstLaunch = Properties.LauncherSettings.Default.CurrentProfile == "" ||
+                Properties.LauncherSettings.Default.IsFirstLaunch ||
                 MainViewModel.Default.Config.profiles.Count() == 0;
 
             ButtonManager_Base(BedrockEditionButton.Name);
@@ -257,6 +259,45 @@ namespace BedrockLauncher
                 MainViewModel.Default.SetOverlayFrame(new AddProfilePage());
             });
 
+        }
+
+        #endregion
+
+        #region Toolbar Button Events
+
+        private void BedrockEditionButton_Click(object sender, EventArgs e)
+        {
+            if (sender != null && sender is ToolbarButtonBase) ButtonManager_Base((sender as ToolbarButtonBase).Name);
+        }
+
+        private void NewsButton_Click(object sender, EventArgs e)
+        {
+            if (sender != null && sender is ToolbarButtonBase) ButtonManager_Base((sender as ToolbarButtonBase).Name);
+        }
+
+        private void ProfileButton_Click(object sender, EventArgs e)
+        {
+            NavigateToNewProfilePage();
+        }
+
+        private void JavaEditionButton_Click(object sender, EventArgs e)
+        {
+            NavigateToJavaLauncher();
+        }
+
+        private void ExternalLauncherButton_Click(object sender, EventArgs e)
+        {
+            NavigateToExternalLauncher();
+        }
+
+        private void CommunityButton_Click(object sender, EventArgs e)
+        {
+            if (sender != null && sender is ToolbarButtonBase) ButtonManager_Base((sender as ToolbarButtonBase).Name);
+        }
+
+        private void SettingsButton_Click(object sender, EventArgs e)
+        {
+            if (sender != null && sender is ToolbarButtonBase) ButtonManager_Base((sender as ToolbarButtonBase).Name);
         }
 
         #endregion

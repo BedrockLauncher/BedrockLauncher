@@ -21,7 +21,7 @@ namespace BedrockLauncher.Controls.Toolbar
     /// <summary>
     /// Interaction logic for ServersButton.xaml
     /// </summary>
-    public partial class CommunityButton : Grid
+    public partial class CommunityButton : ToolbarButtonBase
     {
 
         public CommunityButton()
@@ -31,7 +31,9 @@ namespace BedrockLauncher.Controls.Toolbar
 
         private void SideBarButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModels.MainViewModel.MainThread.ButtonManager_Base(this.Name);
+            ToolbarButtonBase_Click(this, e);
+            //ViewModels.MainViewModel.MainThread.ButtonManager_Base(this.Name);
+
         }
     }
 }

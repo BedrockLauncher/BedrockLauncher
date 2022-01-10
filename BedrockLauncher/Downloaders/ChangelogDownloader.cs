@@ -16,48 +16,22 @@ using System.Text.RegularExpressions;
 using BedrockLauncher.Components;
 using ExtensionsDotNET;
 using BedrockLauncher.Methods;
+using PostSharp.Patterns.Model;
 
 namespace BedrockLauncher.Downloaders
 {
-    public class ChangelogDownloader : NotifyPropertyChangedBase
+
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.ExcludeExplicitProperties)]    //196 Lines
+    public class ChangelogDownloader
     {
-
-        #region Events
-
-        public event EventHandler RefreshableStateChanged;
-        public class RefreshableStateArgs : EventArgs
-        {
-            public static new RefreshableStateArgs Empty => new RefreshableStateArgs();
-        }
-        public void OnRefreshableStateChanged(object sender, RefreshableStateArgs e)
-        {
-            EventHandler handler = RefreshableStateChanged;
-            if (handler != null)
-            {
-                handler(sender, e);
-            }
-        }
-
-        #endregion
 
         private const string HTMLStyle = "<style>body { color: white; } a { color: green; } img { height: auto; max-width: 100%; }</style>";
         private const string HTMLHeader = "<head>{0}{1}</head>";
         private const string HTMLFormat = "<!DOCTYPE html><html>{0}<body>{1}</body></html>";
 
-        private bool _IsRefreshable = true;
-        public bool IsRefreshable
-        {
-            get
-            {
-                return _IsRefreshable;
-            }
-            set
-            {
-                _IsRefreshable = value;
-                OnPropertyChanged(nameof(IsRefreshable));
-                OnRefreshableStateChanged(this, RefreshableStateArgs.Empty);
-            }
-        }
+        public bool ShowBetas { get; set; } = true;
+        public bool ShowReleases { get; set; } = true;
+        public bool IsRefreshable { get; set; } = true;
         public ObservableCollection<MCPatchNotesItem> PatchNotes { get; set; } = new ObservableCollection<MCPatchNotesItem>();
         public class FeedbackParams
         {

@@ -10,10 +10,13 @@ using BedrockLauncher.Methods;
 using System.ComponentModel;
 using BedrockLauncher.Components;
 using BedrockLauncher.ViewModels;
+using PostSharp.Patterns.Model;
 
 namespace BedrockLauncher.Properties
 {
-    public class LauncherSettings : NotifyPropertyChangedBase
+
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.ExcludeExplicitProperties)]    //99 Lines
+    public class LauncherSettings
     {
         public static LauncherSettings Default { get; private set; } = new LauncherSettings();
         private static JsonSerializerSettings JsonSerializerSettings
@@ -67,12 +70,7 @@ namespace BedrockLauncher.Properties
 
         #region Launcher Settings
 
-        private string _CurrentTheme = "LatestUpdate";
-        private bool _ShowAdvancedInstallDetails = false;
-        private bool _UseBetaBuilds = false;
-        private bool _KeepLauncherOpen = false;
-        private bool _AnimatePlayButton = false;
-        private bool _AnimatePageTransitions = false;
+
         private bool _FancierPageTransitions = false;
 
         public bool FancierPageTransitions
@@ -85,97 +83,44 @@ namespace BedrockLauncher.Properties
             { 
                 _FancierPageTransitions = value;
                 BedrockLauncher.Components.PageAnimator.SuperSmoothAnimations = value;
-                OnPropertyChanged(nameof(FancierPageTransitions)); 
             }
         }
-        public bool ShowAdvancedInstallDetails
-        {
-            get { return _ShowAdvancedInstallDetails; }
-            set { _ShowAdvancedInstallDetails = value; OnPropertyChanged(nameof(ShowAdvancedInstallDetails)); }
-        }
+        public bool ShowAdvancedInstallDetails { get; set; } = false;
 
-        public string CurrentTheme
-        {
-            get { return _CurrentTheme; }
-            set { _CurrentTheme = value; OnPropertyChanged(nameof(CurrentTheme)); }
-        }
-        public bool KeepLauncherOpen
-        {
-            get { return _KeepLauncherOpen; }
-            set { _KeepLauncherOpen = value; OnPropertyChanged(nameof(KeepLauncherOpen)); }
-        }
-        public bool UseBetaBuilds
-        {
-            get { return _UseBetaBuilds; }
-            set { _UseBetaBuilds = value; OnPropertyChanged(nameof(UseBetaBuilds)); }
-        }
+        public string CurrentTheme { get; set; } = "LatestUpdate";
+        public bool KeepLauncherOpen { get; set; } = false;
+        public bool UseBetaBuilds { get; set; } = false;
 
-        public bool AnimatePlayButton
-        {
-            get { return _AnimatePlayButton; }
-            set { _AnimatePlayButton = value; OnPropertyChanged(nameof(AnimatePlayButton)); }
-        }
+        public bool AnimatePlayButton { get; set; } = false;
 
-        public bool AnimatePageTransitions
-        {
-            get { return _AnimatePageTransitions; }
-            set { _AnimatePageTransitions = value; OnPropertyChanged(nameof(AnimatePageTransitions)); }
-        }
+        public bool AnimatePageTransitions{ get; set; } = false;
 
         #endregion
 
         #region Advanced Settings
 
-        private bool _PortableMode = false;
-        private string _FixedDirectory = "";
 
-        public bool PortableMode
-        {
-            get { return _PortableMode; }
-            set { _PortableMode = value; OnPropertyChanged(nameof(PortableMode)); }
-        }
-        public string FixedDirectory
-        {
-            get { return _FixedDirectory; }
-            set { _FixedDirectory = value; OnPropertyChanged(nameof(FixedDirectory)); }
-        }
+        public bool PortableMode { get; set; } = false;
+        public string FixedDirectory { get; set; } = "";
 
         #endregion
 
         #region Status Storage
 
         private bool _ShowBetas = true;
-        private string _CurrentInstallation = string.Empty;
-        private bool _IsFirstLaunch = true;
-        private string _CurrentProfile = "";
         private bool _ShowReleases = true;
-        private int _CurrentInsiderAccount = 0;
 
-        public bool IsFirstLaunch
-        {
-            get { return _IsFirstLaunch; }
-            set { _IsFirstLaunch = value; OnPropertyChanged(nameof(IsFirstLaunch)); }
-        }
+        public bool IsFirstLaunch { get; set; } = true;
 
-        public string CurrentInstallation
-        {
-            get { return _CurrentInstallation; }
-            set { _CurrentInstallation = value; OnPropertyChanged(nameof(CurrentInstallation)); }
-        }
+        public string CurrentInstallation { get; set; } = string.Empty;
 
-        public string CurrentProfile
-        {
-            get { return _CurrentProfile; }
-            set { _CurrentProfile = value; OnPropertyChanged(nameof(CurrentProfile)); }
-        }
+        public string CurrentProfile { get; set; } = "";
         public bool ShowReleases
         {
             get { return _ShowReleases; }
             set 
             {
                 if (!(_ShowBetas == false && value == false)) _ShowReleases = value;
-                OnPropertyChanged(nameof(ShowReleases));
-                OnPropertyChanged(nameof(ShowBetas));
             }
         }
         public bool ShowBetas
@@ -184,69 +129,22 @@ namespace BedrockLauncher.Properties
             set 
             {
                 if (!(_ShowReleases == false && value == false)) _ShowBetas = value;
-                OnPropertyChanged(nameof(ShowBetas));
-                OnPropertyChanged(nameof(ShowReleases));
             }
         }
-        public int CurrentInsiderAccount
-        {
-            get { return _CurrentInsiderAccount; }
-            set { _CurrentInsiderAccount = value; OnPropertyChanged(nameof(CurrentInsiderAccount)); }
-        }
+        public int CurrentInsiderAccount { get; set; } = 0;
 
         #endregion
 
         #region Shortcut Settings
 
-        private bool _HideJavaShortcut = false;
-        private bool _ShowExternalLauncher = false;
-        private string _ExternalLauncherPath = "";
-        private string _ExternalLauncherName = "";
-        private string _ExternalLauncherIconPath = "";
-        private bool _CloseLauncherOnSwitch = true;
-        private bool _EnableDungeonsSupport = false;
-        private string _ExternalLauncherArguments = "";
-
-        public bool HideJavaShortcut
-        {
-            get { return _HideJavaShortcut; }
-            set { _HideJavaShortcut = value; OnPropertyChanged(nameof(HideJavaShortcut)); }
-        }
-        public bool ShowExternalLauncher
-        {
-            get { return _ShowExternalLauncher; }
-            set { _ShowExternalLauncher = value; OnPropertyChanged(nameof(ShowExternalLauncher)); }
-        }
-        public string ExternalLauncherName
-        {
-            get { return _ExternalLauncherName; }
-            set { _ExternalLauncherName = value; OnPropertyChanged(nameof(ExternalLauncherName)); }
-        }
-        public string ExternalLauncherPath
-        {
-            get { return _ExternalLauncherPath; }
-            set { _ExternalLauncherPath = value; OnPropertyChanged(nameof(ExternalLauncherPath)); }
-        }
-        public string ExternalLauncherArguments
-        {
-            get { return _ExternalLauncherArguments; }
-            set { _ExternalLauncherArguments = value; OnPropertyChanged(nameof(ExternalLauncherArguments)); }
-        }
-        public string ExternalLauncherIconPath
-        {
-            get { return _ExternalLauncherIconPath; }
-            set { _ExternalLauncherIconPath = value; OnPropertyChanged(nameof(ExternalLauncherIconPath)); }
-        }
-        public bool CloseLauncherOnSwitch
-        {
-            get { return _CloseLauncherOnSwitch; }
-            set { _CloseLauncherOnSwitch = value; OnPropertyChanged(nameof(CloseLauncherOnSwitch)); }
-        }
-        public bool EnableDungeonsSupport
-        {
-            get { return _EnableDungeonsSupport; }
-            set { _EnableDungeonsSupport = value; OnPropertyChanged(nameof(EnableDungeonsSupport)); }
-        }
+        public bool HideJavaShortcut { get; set; } = false;
+        public bool ShowExternalLauncher { get; set; } = false;
+        public string ExternalLauncherName { get; set; } = "";
+        public string ExternalLauncherPath { get; set; } = "";
+        public string ExternalLauncherArguments { get; set; } = "";
+        public string ExternalLauncherIconPath { get; set; } = "";
+        public bool CloseLauncherOnSwitch { get; set; } = true;
+        public bool EnableDungeonsSupport { get; set; } = false;
 
         #endregion
 

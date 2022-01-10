@@ -12,10 +12,13 @@ using System.IO;
 using BedrockLauncher.Components;
 using System.Diagnostics;
 using BedrockLauncher.Enums;
+using PostSharp.Patterns.Model;
 
 namespace BedrockLauncher.Classes
 {
-    public class BLInstallation : NotifyPropertyChangedBase
+
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.ExcludeExplicitProperties)]    //88 Lines
+    public class BLInstallation
     {
         public string DisplayName { get; set; }
         public string VersionUUID { get; set; }
@@ -34,7 +37,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-
+                Depends.On(IsCustomIcon, IconPath);
                 if (IsCustomIcon) return Path.Combine(MainViewModel.Default.FilePaths.GetCacheFolderPath(), IconPath);
                 else return @"/BedrockLauncher;component/Resources/images/installation_icons/" + IconPath;
             }
@@ -44,8 +47,9 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                if (VersionUUID == "latest_release" && ReadOnly) return Application.Current.FindResource("VersionEntries_LatestRelease").ToString();
-                else if (VersionUUID == "latest_beta" && ReadOnly) return Application.Current.FindResource("VersionEntries_LatestSnapshot").ToString();
+                Depends.On(VersionUUID, DisplayName);
+                if (VersionUUID == Constants.LATEST_RELEASE_UUID && ReadOnly) return Application.Current.FindResource("VersionEntries_LatestRelease").ToString();
+                else if (VersionUUID == Constants.LATEST_BETA_UUID && ReadOnly) return Application.Current.FindResource("VersionEntries_LatestSnapshot").ToString();
                 else if (string.IsNullOrWhiteSpace(DisplayName)) return Application.Current.FindResource("VersionEntries_UnnamedInstallation").ToString();
                 else return DisplayName;
             }
@@ -55,6 +59,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
+                Depends.On(DirectoryName, DisplayName);
                 if (string.IsNullOrEmpty(DirectoryName))
                 {
                     char[] invalidFileNameChars = System.IO.Path.GetInvalidFileNameChars();
@@ -64,15 +69,16 @@ namespace BedrockLauncher.Classes
                 else return DirectoryName;
             }
         }
-        [JsonIgnore]
+        [JsonIgnore, SafeForDependencyAnalysis]
         public BLVersion Version
         {
             get
             {
+                Depends.On(VersioningMode, VersionUUID);
                 if (VersioningMode != VersioningMode.None)
                 {
-                    var latest_beta = MainViewModel.Default.Versions.ToList().FirstOrDefault(x => x.IsBeta == true);
-                    var latest_release = MainViewModel.Default.Versions.ToList().FirstOrDefault(x => x.IsBeta == false);
+                    var latest_beta = MainViewModel.Default.Versions.ToList().FirstOrDefault(x => x.IsBeta == true && x.UUID != Constants.LATEST_BETA_UUID);
+                    var latest_release = MainViewModel.Default.Versions.ToList().FirstOrDefault(x => x.IsBeta == false && x.UUID != Constants.LATEST_RELEASE_UUID) ;
 
                     if (VersioningMode == VersioningMode.LatestBeta && latest_beta != null) return BLVersion.Convert(latest_beta);
                     else if (VersioningMode == VersioningMode.LatestRelease && latest_release != null) return BLVersion.Convert(latest_release);
@@ -90,6 +96,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
+                Depends.On(VersionUUID, VersioningMode);
                 if (VersioningMode == VersioningMode.LatestBeta) return true;
                 else return Version?.IsBeta ?? false;
             }
@@ -99,6 +106,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
+                Depends.On(VersionUUID, VersioningMode);
                 string version = Version?.Name ?? "???";
                 if (VersioningMode == VersioningMode.LatestBeta) return Application.Current.FindResource("VersionEntries_LatestSnapshot").ToString();
                 else if (VersioningMode == VersioningMode.LatestRelease) return Application.Current.FindResource("VersionEntries_LatestRelease").ToString();
@@ -110,6 +118,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
+                Depends.On(LastPlayed);
                 return LastPlayed.ToString("s");
             }
         }

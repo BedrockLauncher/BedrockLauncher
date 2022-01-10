@@ -44,9 +44,9 @@ namespace BedrockLauncher.Pages.News
 
 
 
-        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            await Task.Run(() => ButtonManager_Base(LastTabName));
+             Task.Run(() => ButtonManager_Base(LastTabName));
         }
 
         #region Navigation

@@ -21,7 +21,7 @@ namespace BedrockLauncher.Controls.Toolbar
     /// <summary>
     /// Interaction logic for JavaEditionButton.xaml
     /// </summary>
-    public partial class ExternalLauncherButton : Grid
+    public partial class ExternalLauncherButton : ToolbarButtonBase
     {
 
         public ExternalLauncherButton()
@@ -31,7 +31,8 @@ namespace BedrockLauncher.Controls.Toolbar
 
         private async void SideBarButton_Click(object sender, RoutedEventArgs e)
         {
-            await Task.Run(ViewModels.MainViewModel.MainThread.NavigateToExternalLauncher);
+            ToolbarButtonBase_Click(this, e);
+            //await Task.Run(ViewModels.MainViewModel.MainThread.NavigateToExternalLauncher);
             await this.Dispatcher.InvokeAsync(() => { this.Button.IsChecked = false; });
         }
     }

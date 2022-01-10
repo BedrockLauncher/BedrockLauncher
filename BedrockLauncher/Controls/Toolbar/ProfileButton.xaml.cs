@@ -25,7 +25,7 @@ namespace BedrockLauncher.Controls.Toolbar
     /// <summary>
     /// Interaction logic for ProfileContextMenu.xaml
     /// </summary>
-    public partial class ProfileButton : Grid
+    public partial class ProfileButton : ToolbarButtonBase
     {
         private List<ProfileItem> OtherAccountControls { get; set; } = new List<ProfileItem>();
 
@@ -94,7 +94,8 @@ namespace BedrockLauncher.Controls.Toolbar
 
         private void AddProfileButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModels.MainViewModel.MainThread.NavigateToNewProfilePage();
+                ToolbarButtonBase_Click(this, e);
+                //ViewModels.MainViewModel.MainThread.NavigateToNewProfilePage();
         }
 
         private async void RemoveProfileButton_Click(object sender, RoutedEventArgs e)

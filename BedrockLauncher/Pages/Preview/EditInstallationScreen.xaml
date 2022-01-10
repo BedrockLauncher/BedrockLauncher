@@ -3,10 +3,15 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:BedrockLauncher"
+      xmlns:local="clr-namespace:BedrockLauncher.Pages.Preview"
       xmlns:controls="clr-namespace:BedrockLauncher.Controls"
+      xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
+      xmlns:classes="clr-namespace:BedrockLauncher.Classes"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800"
+      d:DataContext="{d:DesignInstance Type=local:EditInstallationsPageModel}"
+      Loaded="Page_Loaded"
+      x:Name="Host"
       Title="AddInstallationScreen" Width="Auto" Height="Auto" Foreground="{x:Null}" Background="{DynamicResource Background.Dialog}" SnapsToDevicePixels="True">
     <Grid>
         <Grid.RowDefinitions>
@@ -32,17 +37,17 @@
                     <controls:BlockPicker x:Name="InstallationIconSelect" VerticalAlignment="Center" HorizontalAlignment="Center"></controls:BlockPicker>
                     <StackPanel Width="330" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch">
                         <TextBlock Margin="0,28,0,5" Text="{DynamicResource EditInstallationScreen_NameSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-                        <TextBox Height="32" Tag="{DynamicResource EditInstallationScreen_NameHintText}" Width="330" x:Name="InstallationNameField" AcceptsReturn="False" SpellCheck.IsEnabled="False"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Text=""></TextBox>
+                        <TextBox Text="{Binding InstallationName, Mode=TwoWay}" Height="32" Tag="{DynamicResource EditInstallationScreen_NameHintText}" Width="330" x:Name="InstallationNameField" AcceptsReturn="False" SpellCheck.IsEnabled="False"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left"></TextBox>
                         <TextBlock Margin="0,28,0,5" Text="{DynamicResource EditInstallationScreen_VersionSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-                        <ComboBox Height="32" x:Name="InstallationVersionSelect" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource GenericComboBoxStyle}" Foreground="White" Padding="13,0,0,0" SelectedIndex="1" FontSize="14">
+                        <ComboBox Height="32" x:Name="InstallationVersionSelect" ItemsSource="{Binding Versions, Source={x:Static viewModels:MainViewModel.Default}}" SelectedValue="{Binding SelectedVersionUUID, Mode=TwoWay}" SelectedValuePath="UUID" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource GenericComboBoxStyle}" Foreground="White" Padding="13,0,0,0" SelectedIndex="1" FontSize="14">
                             <ComboBox.ItemTemplate>
-                                <DataTemplate>
+                                <DataTemplate DataType="{x:Type classes:BLVersion}">
                                     <TextBlock Style="{DynamicResource CommonTextblock}" Text="{Binding DisplayName}"></TextBlock>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
                         <TextBlock Margin="0,28,0,5" Text="{DynamicResource EditInstallationScreen_DirectorySubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-                        <TextBox Height="32" Tag="{DynamicResource EditInstallationScreen_DirectoryHintText}" Width="330" x:Name="InstallationDirectoryField" TextChanged="InstallationDirectoryField_TextChanged" AcceptsReturn="False" SpellCheck.IsEnabled="False"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Text="" TextInput="InstallationDirectoryField_TextInput"></TextBox>
+                        <TextBox Height="32" Tag="{DynamicResource EditInstallationScreen_DirectoryHintText}" Width="330" x:Name="InstallationDirectoryField" TextChanged="InstallationDirectoryField_TextChanged" AcceptsReturn="False" SpellCheck.IsEnabled="False"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Text="{Binding InstallationDirectory, Mode=TwoWay}" TextInput="InstallationDirectoryField_TextInput"></TextBox>
                     </StackPanel>
                 </StackPanel>
 
