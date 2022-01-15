@@ -2,7 +2,7 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ignore="http://www.galasoft.ch/ignore" xmlns:v="clr-namespace:System;assembly=mscorlib">
     <!--#region Main Section-->
 
-    <v:String x:Key="LanguageString">LOLCAT - Kingdom of Cats</v:String>
+    <v:String x:Key="LanguageString">English - United States</v:String>
 
     <!--#region MainWindow -->
 
@@ -43,7 +43,7 @@
 
     <!--#region ProgressBar -->
 
-    <v:String x:Key="ProgressBar_Downloading">Dwnlodin</v:String>
+    <v:String x:Key="ProgressBar_Downloading">Downloading</v:String>
     <v:String x:Key="ProgressBar_Installing">Installing</v:String>
     <v:String x:Key="ProgressBar_Launching">Launching</v:String>
     <v:String x:Key="ProgressBar_Extracting">Extracting</v:String>
@@ -71,21 +71,21 @@
     <!--#region GameTab -->
 
     <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
-    <v:String x:Key="GameTab_PlayButton_Text">Pley</v:String>
+    <v:String x:Key="GameTab_PlayButton_Text">Play</v:String>
     <v:String x:Key="GameTab_PlayButton_Kill_Text">Kill</v:String>
     <v:String x:Key="GameTab_InstallationsButton_Text">Installations</v:String>
-    <v:String x:Key="GameTab_SkinsButton_Text">Furz</v:String>
+    <v:String x:Key="GameTab_SkinsButton_Text">Skins</v:String>
     <v:String x:Key="GameTab_PatchNotesButton_Text">Patch notes</v:String>
 
     <!--#endregion-->
 
     <!--#region InstallationsPage -->
 
-    <v:String x:Key="InstallationsPage_AddButton">Mew instaladionz</v:String>
-    <v:String x:Key="InstallationsPage_PlayButton">Pley</v:String>
+    <v:String x:Key="InstallationsPage_AddButton">New installation</v:String>
+    <v:String x:Key="InstallationsPage_PlayButton">Play</v:String>
 
-    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">Latest Pleid</v:String>
-    <v:String x:Key="InstallationsPage_SortBy_Name">Naem</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">Latest Played</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name">Name</v:String>
 
     <v:String x:Key="InstallationsPage_SearchBar_Content">Installation name</v:String>
 
@@ -93,20 +93,20 @@
 
     <!--#region EditInstallationScreen -->
 
-    <v:String x:Key="EditInstallationScreen_Title">Creat nwe instalashun</v:String>
-    <v:String x:Key="EditInstallationScreen_AltTitle">Edetit instalashun</v:String>
+    <v:String x:Key="EditInstallationScreen_Title">Create new installation</v:String>
+    <v:String x:Key="EditInstallationScreen_AltTitle">Edit installation</v:String>
 
-    <v:String x:Key="EditInstallationScreen_CreateButton">Craet</v:String>
-    <v:String x:Key="EditInstallationScreen_AltCreateButton">Saev</v:String>
+    <v:String x:Key="EditInstallationScreen_CreateButton">Create</v:String>
+    <v:String x:Key="EditInstallationScreen_AltCreateButton">Save</v:String>
 
     <v:String x:Key="EditInstallationScreen_LatestSnapshot">Latest beta</v:String>
-    <v:String x:Key="EditInstallationScreen_LatestRelease">latest releez</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestRelease">Latest release</v:String>
 
-    <v:String x:Key="EditInstallationScreen_NameSubtitle">NAEM</v:String>
-    <v:String x:Key="EditInstallationScreen_VersionSubtitle">VERSHUN</v:String>
-    <v:String x:Key="EditInstallationScreen_DirectorySubtitle">DIREKTRY</v:String>
+    <v:String x:Key="EditInstallationScreen_NameSubtitle">NAME</v:String>
+    <v:String x:Key="EditInstallationScreen_VersionSubtitle">VERSION</v:String>
+    <v:String x:Key="EditInstallationScreen_DirectorySubtitle">DIRECTORY</v:String>
 
-    <v:String x:Key="EditInstallationScreen_NameHintText">installashun wit no neim</v:String>
+    <v:String x:Key="EditInstallationScreen_NameHintText">&lt;unnamed installation&gt;</v:String>
     <v:String x:Key="EditInstallationScreen_DirectoryHintText">&lt;default path&gt;</v:String>
 
     <!--#endregion-->
@@ -204,33 +204,33 @@
 
     <!--#region SettingsTab -->
 
-    <v:String x:Key="SettingsTab_Title">SETTINZ</v:String>
-    <v:String x:Key="SettingsTab_GeneralButton">Generul</v:String>
-    <v:String x:Key="SettingsTab_AccountsButton">Acuwntz</v:String>
-    <v:String x:Key="SettingsTab_AboutButton">Aboot eet</v:String>
+    <v:String x:Key="SettingsTab_Title">SETTINGS</v:String>
+    <v:String x:Key="SettingsTab_GeneralButton">General</v:String>
+    <v:String x:Key="SettingsTab_AccountsButton">Accounts</v:String>
+    <v:String x:Key="SettingsTab_AboutButton">About</v:String>
     <v:String x:Key="SettingsTab_VersionsButton">Versions</v:String>
 
     <!--#endregion-->
 
     <!--#region GeneralSettingsScreen -->
-    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">WAT U RE SPEEK</v:String>
+    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">LANGUAGE</v:String>
     <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">LAUNCHER THEME</v:String>
 
 
-    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">LAUNCHR SETINZ</v:String>
+    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">LAUNCHER SETTINGS</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">SHORTCUT SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Uze beta verzhunz of teh Launchr</v:String>
-    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Keep teh Launchr opn wen gaimz r runnin</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Use beta version of the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Keep the Launcher open while games are running</v:String>
     <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Close Launcher when switching launchers</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animait tranzishins betvin paegs in da Launchr</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animait pley buton on da Pley paegs in da Launchr</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animate transitions between pages in the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animate play button on the Play pages in the Launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Enable Minecraft Dungeons Support (WIP)</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Show advanced information when installing packages</v:String>
     <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
     
 
-    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINCERAFT: BEDWOK EDITION SETTINZ</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDITION SETTINGS</v:String>
     <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">SUPPORT CREATOR</v:String>
 
     <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">LAUNCHER UPDATES</v:String>
@@ -258,7 +258,7 @@
     <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">INSIDER SETTINGS</v:String>
     <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Normal Settings</v:String>
     <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Legacy Settings</v:String>
-    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Mnage acuwntz</v:String>
+    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Manage Accounts</v:String>
     <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">ACCOUNT SETTINGS</v:String>
 
     <!--#endregion-->
@@ -268,7 +268,7 @@
     <v:String x:Key="AboutPage_Title">ABOUT MINECRAFT: BEDROCK EDITION LAUNCHER</v:String>
     <v:String x:Key="AboutPage_DevelopedBy_Text">DEVELOPED BY</v:String>
     <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">FORKED FROM THE WORK OF</v:String>
-    <v:String x:Key="AboutPage_SpecialThanks_Text">BIG thank u to</v:String>
+    <v:String x:Key="AboutPage_SpecialThanks_Text">SPECIAL THANKS TO</v:String>
 
     <v:String x:Key="AboutPage_McMrArm_Text">For creating the original Minecraft Windows 10 Version downloader (which this work derives from)</v:String>
     <v:String x:Key="AboutPage_BsCommunity_Text">For their work on SkinView3D, which is used for the skin viewing functionality in the launcher</v:String>
@@ -377,13 +377,13 @@
 
     <!--#region Dialog -->
 
-    <v:String x:Key="Dialog_Item_Installation_Text">instalashun</v:String>
+    <v:String x:Key="Dialog_Item_Installation_Text">installation</v:String>
     <v:String x:Key="Dialog_Item_SkinPack_Text">skin pack</v:String>
     <v:String x:Key="Dialog_Item_Skin_Text">skin</v:String>
-    <v:String x:Key="Dialog_Item_Version_Text">vershun</v:String>
+    <v:String x:Key="Dialog_Item_Version_Text">version</v:String>
     <v:String x:Key="Dialog_Item_Profile_Text">profile</v:String>
 
-    <v:String x:Key="Dialog_DeleteItem_Title">U suer u wanna delet {0}</v:String>
+    <v:String x:Key="Dialog_DeleteItem_Title">Delete {0} permanently</v:String>
     <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Are you sure you want to delete &quot;{1}&quot;?
 This {0} will be lost forever! (A long time!)</v:String>
 
