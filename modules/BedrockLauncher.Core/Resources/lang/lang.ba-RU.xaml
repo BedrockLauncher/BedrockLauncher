@@ -2,11 +2,11 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ignore="http://www.galasoft.ch/ignore" xmlns:v="clr-namespace:System;assembly=mscorlib">
     <!--#region Main Section-->
 
-    <v:String x:Key="LanguageString">Башҡортса - Рәсәй</v:String>
+    <v:String x:Key="LanguageString">English - United States</v:String>
 
     <!--#region MainWindow -->
 
-    <v:String x:Key="MainWindow_Title">Minecraft Bedrock лаунчеры</v:String>
+    <v:String x:Key="MainWindow_Title">Minecraft Bedrock Launcher</v:String>
     <v:String x:Key="MainWindow_Disclaimer">NOT ASSOCIATED OR APPROVED BY MOJANG</v:String>
 
     <!--#endregion-->
@@ -14,23 +14,23 @@
     <!-- #region CommunityPage -->
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
-    <v:String x:Key="CommunityPage_ComingSoon">Тиҙҙән!</v:String>
+    <v:String x:Key="CommunityPage_ComingSoon">Coming Soon!</v:String>
     <v:String x:Key="CommunityPage_CheckBackLater">Check back here later for something SUPER DUPER AWESOME!</v:String>
 
     <!-- #endregion -->
 
     <!--#region ToolbarButtons -->
 
-    <v:String x:Key="ToolbarButtons_NewsButton_Text">Яңылыҡтар</v:String>
+    <v:String x:Key="ToolbarButtons_NewsButton_Text">News</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java лаунчеры</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java Launcher</v:String>
     <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Custom Launcher</v:String>
     <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Switch to</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
     <v:String x:Key="ToolbarButtons_CommunityButton_Text">Community</v:String>
-    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Хисап яҙма</v:String>
-    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Көйләүҙәр</v:String>
+    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Profile</v:String>
+    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Settings</v:String>
 
     <!--#endregion-->
 
@@ -71,10 +71,10 @@
     <!--#region GameTab -->
 
     <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
-    <v:String x:Key="GameTab_PlayButton_Text">Уйнарға</v:String>
-    <v:String x:Key="GameTab_PlayButton_Kill_Text">Сығырға</v:String>
+    <v:String x:Key="GameTab_PlayButton_Text">Play</v:String>
+    <v:String x:Key="GameTab_PlayButton_Kill_Text">Kill</v:String>
     <v:String x:Key="GameTab_InstallationsButton_Text">Installations</v:String>
-    <v:String x:Key="GameTab_SkinsButton_Text">Скин</v:String>
+    <v:String x:Key="GameTab_SkinsButton_Text">Skins</v:String>
     <v:String x:Key="GameTab_PatchNotesButton_Text">Patch notes</v:String>
 
     <!--#endregion-->
@@ -82,7 +82,7 @@
     <!--#region InstallationsPage -->
 
     <v:String x:Key="InstallationsPage_AddButton">New installation</v:String>
-    <v:String x:Key="InstallationsPage_PlayButton">Уйнарға</v:String>
+    <v:String x:Key="InstallationsPage_PlayButton">Play</v:String>
 
     <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">Latest Played</v:String>
     <v:String x:Key="InstallationsPage_SortBy_Name">Name</v:String>
@@ -96,17 +96,17 @@
     <v:String x:Key="EditInstallationScreen_Title">Create new installation</v:String>
     <v:String x:Key="EditInstallationScreen_AltTitle">Edit installation</v:String>
 
-    <v:String x:Key="EditInstallationScreen_CreateButton">Булдырырға</v:String>
-    <v:String x:Key="EditInstallationScreen_AltCreateButton">Һаҡларға</v:String>
+    <v:String x:Key="EditInstallationScreen_CreateButton">Create</v:String>
+    <v:String x:Key="EditInstallationScreen_AltCreateButton">Save</v:String>
 
     <v:String x:Key="EditInstallationScreen_LatestSnapshot">Latest beta</v:String>
     <v:String x:Key="EditInstallationScreen_LatestRelease">Latest release</v:String>
 
-    <v:String x:Key="EditInstallationScreen_NameSubtitle">ИСЕМ</v:String>
-    <v:String x:Key="EditInstallationScreen_VersionSubtitle">ВЕРСИЯ</v:String>
+    <v:String x:Key="EditInstallationScreen_NameSubtitle">NAME</v:String>
+    <v:String x:Key="EditInstallationScreen_VersionSubtitle">VERSION</v:String>
     <v:String x:Key="EditInstallationScreen_DirectorySubtitle">DIRECTORY</v:String>
 
-    <v:String x:Key="EditInstallationScreen_NameHintText">&lt;исемһеҙ&gt;</v:String>
+    <v:String x:Key="EditInstallationScreen_NameHintText">&lt;unnamed installation&gt;</v:String>
     <v:String x:Key="EditInstallationScreen_DirectoryHintText">&lt;default path&gt;</v:String>
 
     <!--#endregion-->
@@ -120,7 +120,7 @@
 
     <!--#region SkinsPage -->
 
-    <v:String x:Key="SkinsPage_AddButton">Яңы...</v:String>
+    <v:String x:Key="SkinsPage_AddButton">New...</v:String>
     <v:String x:Key="SkinsPage_ImportButton">Import...</v:String>
 
     <!--#endregion-->
@@ -128,9 +128,9 @@
     <!--#region EditSkinScreen -->
 
     <v:String x:Key="EditSkinScreen_Title">Edit Skin</v:String>
-    <v:String x:Key="EditSkinScreen_AltTitle">Скинды өҫтәргә</v:String>
+    <v:String x:Key="EditSkinScreen_AltTitle">Add Skin</v:String>
 
-    <v:String x:Key="EditSkinScreen_TextureSubtitle">ТЕКСТУРА</v:String>
+    <v:String x:Key="EditSkinScreen_TextureSubtitle">TEXTURE</v:String>
     <v:String x:Key="EditSkinScreen_GeometrySubtitle">GEOMETRY</v:String>
     <v:String x:Key="EditSkinScreen_TypeSubtitle">TYPE</v:String>
     <v:String x:Key="EditSkinScreen_LocalizationSubtitle">LOCALIZATION NAME</v:String>
@@ -149,18 +149,18 @@
     <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">LANG NAME</v:String>
 
     <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">OTHER DEFINITIONS</v:String>
-    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">КОНТЕНТ</v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">МОДУЛЬҘАР</v:String>
+    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">CONTENT</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">MODULES</v:String>
 
     <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">FORMAT VERSION</v:String>
 
     <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">PACK NAME</v:String>
     <v:String x:Key="EditSkinPackScreen_HeaderUUIDSubtitle">UUID</v:String>
-    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">ВЕРСИЯ</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">VERSION</v:String>
 
     <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">TYPE</v:String>
     <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">UUID</v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">ВЕРСИЯ</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">VERSION</v:String>
 
     <v:String x:Key="EditSkinPackScreen_Header">Edit Skin Pack</v:String>
     <v:String x:Key="EditSkinPackScreen_AddHeader">Add Skin Pack</v:String>
@@ -180,7 +180,7 @@
     <v:String x:Key="LauncherNewsPage_Changes_Text">Changes:</v:String>
     <v:String x:Key="LauncherNewsPage_CheckForUpdates">Check for Updates</v:String>
     <v:String x:Key="LauncherNewsPage_ForceUpdate">Force Update</v:String>
-    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Әлеге</v:String>
+    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Current</v:String>
 
     <!--#endregion-->
 
@@ -205,15 +205,15 @@
     <!--#region SettingsTab -->
 
     <v:String x:Key="SettingsTab_Title">SETTINGS</v:String>
-    <v:String x:Key="SettingsTab_GeneralButton">Баш</v:String>
+    <v:String x:Key="SettingsTab_GeneralButton">General</v:String>
     <v:String x:Key="SettingsTab_AccountsButton">Accounts</v:String>
-    <v:String x:Key="SettingsTab_AboutButton">Лаунчер тураһында</v:String>
+    <v:String x:Key="SettingsTab_AboutButton">About</v:String>
     <v:String x:Key="SettingsTab_VersionsButton">Versions</v:String>
 
     <!--#endregion-->
 
     <!--#region GeneralSettingsScreen -->
-    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">ТЕЛ</v:String>
+    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">LANGUAGE</v:String>
     <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">LAUNCHER THEME</v:String>
 
 
@@ -245,8 +245,8 @@
     <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Advanced Settings</v:String>
 
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">EXTERNAL LAUNCHER SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">ЮЛ</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">ИСЕМ</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">PATH</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">NAME</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">ARGUMENTS</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">ICON</v:String>
 
@@ -295,7 +295,7 @@
 
     <!--#region FirstLaunch -->
 
-    <v:String x:Key="FirstLaunch_WelcomeTitle">Рәхим итегеҙ!</v:String>
+    <v:String x:Key="FirstLaunch_WelcomeTitle">Welcome!</v:String>
     <v:String x:Key="FirstLaunch_WelcomeSubTitle">Welcome to Minecraft Bedrock Launcher!</v:String>
     <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Create your first profile!</v:String>
     <v:String x:Key="FirstLaunch_AlmostThereTitle">Almost there!</v:String>
@@ -313,23 +313,23 @@
     <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">Portable/Root Folder</v:String>
     <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Backup Existing Save Data</v:String>
     <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(RECOMMENDED)</v:String>
-    <v:String x:Key="FirstLaunch_CloseButton">Ябырға</v:String>
-    <v:String x:Key="FirstLaunch_BackButton">Артҡа</v:String>
+    <v:String x:Key="FirstLaunch_CloseButton">Close</v:String>
+    <v:String x:Key="FirstLaunch_BackButton">Back</v:String>
     <v:String x:Key="FirstLaunch_GoBackButton"></v:String>
-    <v:String x:Key="FirstLaunch_CreateProfileText">ХИСАП ЯҘМА</v:String>
-    <v:String x:Key="FirstLaunch_CreateProfileButton">Булдырырға</v:String>
-    <v:String x:Key="FirstLaunch_NextButton">Киләһе</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileText">PROFILE</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileButton">Create</v:String>
+    <v:String x:Key="FirstLaunch_NextButton">Next</v:String>
     <v:String x:Key="FirstLaunch_DownloadButton">Download</v:String>
-    <v:String x:Key="FirstLaunch_FinishButton">Тамамларға</v:String>
+    <v:String x:Key="FirstLaunch_FinishButton">Finish</v:String>
 
     <!--#endregion-->
 
     <!--#region ErrorScreen -->
 
-    <v:String x:Key="ErrorScreen_Title">ХАТА</v:String>
+    <v:String x:Key="ErrorScreen_Title">ERROR</v:String>
     <v:String x:Key="ErrorScreen_SubTitle">Launcher crashed</v:String>
     <v:String x:Key="ErrorScreen_DefaultErrorMessage">An unexpected issue occurred and the launcher has crashed. We're sorry for the inconvenience.</v:String>
-    <v:String x:Key="ErrorScreen_CloseButton">Ябырға</v:String>
+    <v:String x:Key="ErrorScreen_CloseButton">Close</v:String>
     <v:String x:Key="ErrorScreen_ViewCrash">View crash report</v:String>
 
     <!--#endregion-->
@@ -368,10 +368,10 @@
     <!--#region NewProfile -->
 
     <v:String x:Key="NewProfile_GoBackButton"></v:String>
-    <v:String x:Key="NewProfile_CreateProfileText">ХИСАП ЯҘМА</v:String>
+    <v:String x:Key="NewProfile_CreateProfileText">PROFILE</v:String>
     <v:String x:Key="NewProfile_CreateProfileText_Error">THIS NAME IS ALREADY TAKEN</v:String>
     <v:String x:Key="NewProfile_CreateProfileSubTitle">Enter the name of your new profile!</v:String>
-    <v:String x:Key="NewProfile_CreateProfileButton">Булдырырға</v:String>
+    <v:String x:Key="NewProfile_CreateProfileButton">Create</v:String>
 
     <!--#endregion-->
 
@@ -379,9 +379,9 @@
 
     <v:String x:Key="Dialog_Item_Installation_Text">installation</v:String>
     <v:String x:Key="Dialog_Item_SkinPack_Text">skin pack</v:String>
-    <v:String x:Key="Dialog_Item_Skin_Text">скин</v:String>
-    <v:String x:Key="Dialog_Item_Version_Text">версия</v:String>
-    <v:String x:Key="Dialog_Item_Profile_Text">хисап яҙма</v:String>
+    <v:String x:Key="Dialog_Item_Skin_Text">skin</v:String>
+    <v:String x:Key="Dialog_Item_Version_Text">version</v:String>
+    <v:String x:Key="Dialog_Item_Profile_Text">profile</v:String>
 
     <v:String x:Key="Dialog_DeleteItem_Title">Delete {0} permanently</v:String>
     <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Are you sure you want to delete &quot;{1}&quot;?
@@ -395,8 +395,8 @@ This {0} will be lost forever! (A long time!)</v:String>
 
     <v:String x:Key="DialogBtn_YesToAll_Text">Yes To All</v:String>
     <v:String x:Key="DialogBtn_NoToAll_Text">No To All</v:String>
-    <v:String x:Key="DialogBtn_Yes_Text">Эйе</v:String>
-    <v:String x:Key="DialogBtn_No_Text">Юҡ</v:String>
+    <v:String x:Key="DialogBtn_Yes_Text">Yes</v:String>
+    <v:String x:Key="DialogBtn_No_Text">No</v:String>
 
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">No matching results</v:String>
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">We couldn't find news any content matching your search. If you have category filters 
@@ -431,10 +431,10 @@ turned off, try turning the back on and search again</v:String>
 
     <v:String x:Key="Installer_Title">Minecraft Bedrock Launcher Setup Wizard</v:String>
 
-    <v:String x:Key="Installer_Back_Text">Артҡа</v:String>
-    <v:String x:Key="Installer_Next_Text">Киләһе</v:String>
-    <v:String x:Key="Installer_Cancel_Text">Бөтөрөргә</v:String>
-    <v:String x:Key="Installer_Finish_Text">Тамамларға</v:String>
+    <v:String x:Key="Installer_Back_Text">Back</v:String>
+    <v:String x:Key="Installer_Next_Text">Next</v:String>
+    <v:String x:Key="Installer_Cancel_Text">Cancel</v:String>
+    <v:String x:Key="Installer_Finish_Text">Finish</v:String>
 
     <v:String x:Key="Installer_WelcomePage_Title">Welcome to the Minecraft Bedrock Launcher Setup Wizard</v:String>
     <v:String x:Key="Installer_WelcomePage_Info_Text">This will install Minecraft Bedrock Launcher on your computer.</v:String>
@@ -530,21 +530,21 @@ turned off, try turning the back on and search again</v:String>
 
     <!--#region GeneralText -->
 
-    <v:String x:Key="GeneralText_Delete">Юйырға</v:String>
-    <v:String x:Key="GeneralText_Edit">Үҙгәртергә</v:String>
+    <v:String x:Key="GeneralText_Delete">Delete</v:String>
+    <v:String x:Key="GeneralText_Edit">Edit</v:String>
     <v:String x:Key="GeneralText_Duplicate">Duplicate</v:String>
-    <v:String x:Key="GeneralText_Remove">Юйырға</v:String>
-    <v:String x:Key="GeneralText_Cancel">Бөтөрөргә</v:String>
+    <v:String x:Key="GeneralText_Remove">Remove</v:String>
+    <v:String x:Key="GeneralText_Cancel">Cancel</v:String>
     <v:String x:Key="GeneralText_Update">Update</v:String>
-    <v:String x:Key="GeneralText_Add">Өҫтәргә</v:String>
-    <v:String x:Key="GeneralText_Save">Һаҡларға</v:String>
+    <v:String x:Key="GeneralText_Add">Add</v:String>
+    <v:String x:Key="GeneralText_Save">Save</v:String>
     <v:String x:Key="GeneralText_Refresh">Refresh</v:String>
     <v:String x:Key="GeneralText_Backup">Backup</v:String>
-    <v:String x:Key="GeneralText_Versions">Версиялар</v:String>
+    <v:String x:Key="GeneralText_Versions">Versions</v:String>
     <v:String x:Key="GeneralText_Browse">Browse</v:String>
     <v:String x:Key="GeneralText_Reset">Reset</v:String>
-    <v:String x:Key="GeneralText_Yes">Эйе</v:String>
-    <v:String x:Key="GeneralText_No">Юҡ</v:String>
+    <v:String x:Key="GeneralText_Yes">Yes</v:String>
+    <v:String x:Key="GeneralText_No">No</v:String>
     <v:String x:Key="GeneralText_Releases">Releases</v:String>
     <v:String x:Key="GeneralText_Betas">Betas</v:String>
     <v:String x:Key="GeneralText_Export">Export</v:String>
@@ -552,7 +552,7 @@ turned off, try turning the back on and search again</v:String>
 
     <v:String x:Key="GeneralText_Twitter">Twitter</v:String>
     <v:String x:Key="GeneralText_GitHub">GitHub</v:String>
-    <v:String x:Key="GeneralText_Website">Сайт</v:String>
+    <v:String x:Key="GeneralText_Website">Website</v:String>
 
     <!--#endregion-->
 
