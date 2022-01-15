@@ -6,14 +6,20 @@
       xmlns:mcf="clr-namespace:BedrockLauncher.Controls.McTextBlock"
       xmlns:controls="clr-namespace:BedrockLauncher.Controls.Skins"
       xmlns:controls2="clr-namespace:BedrockLauncher.Controls.Installations"
+      xmlns:conv="clr-namespace:BedrockLauncher.Converters"
       xmlns:classes="clr-namespace:BedrockLauncher.Classes.SkinPack"
+      xmlns:local="clr-namespace:BedrockLauncher.Pages.Play"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       xmlns:properties="clr-namespace:BedrockLauncher.Properties"
       xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
-      d:DataContext="{d:DesignInstance Type=viewModels:MainViewModel}"
+      d:DataContext="{d:DesignInstance Type=local:SkinsPageViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SkinsPage" Initialized="Page_Initialized" Loaded="Page_Loaded" x:Name="SkinsPageHost">
+    <Page.Resources>
+        <conv:NullToBoolConverter x:Key="NullToBoolConverter"/>
+        <CollectionViewSource x:Key="InstallationsSource3" Source="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=Config.CurrentInstallations}" />
+    </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" MinWidth="350"></ColumnDefinition>
@@ -75,22 +81,24 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Grid Background="{DynamicResource ListBox.Static.Background}">
-                <controls2:InstallationSelector VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectionChanged="InstallationsList_SelectionChanged" x:Name="InstallationsList" Margin="4,4,4,4" Padding="-1,7,5,3"></controls2:InstallationSelector>
+                <controls2:InstallationSelector ItemsSource="{Binding Source={StaticResource InstallationsSource3}, IsAsync=True}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectionChanged="InstallationsList_SelectionChanged" x:Name="InstallationsList" Margin="4,4,4,4" Padding="-1,7,5,3"></controls2:InstallationSelector>
             </Grid>
             <ListView Grid.Row="1"
                   Keyboard.PreviewKeyUp="LoadedSkinPacks_PreviewKeyUp"
                   x:Name="LoadedSkinPacks" 
                   SelectionChanged="LoadedSkinPacks_SelectionChanged" 
                   HorizontalContentAlignment="Stretch" 
+                  ItemsSource="{Binding SkinPacks}"
+                  SelectedItem="{Binding CurrentSkinPack}"
                   ItemTemplate="{StaticResource SkinPackItemTemplate}">
             </ListView>
         </Grid>
 
         <Grid Grid.Column="2" Grid.Row="1" Background="#212121"></Grid>
-        <controls:SkinPreview x:Name="SkinPreviewPanel" Grid.Column="2" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></controls:SkinPreview>
+        <controls:SkinPreview Path="{Binding CurrentSkinPath}" Type="{Binding CurrentSkinType}" x:Name="SkinPreviewPanel" Grid.Column="2" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></controls:SkinPreview>
         <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource Seperator.Background}" Grid.Column="2" Grid.Row="0">
             <Grid Background="#FF303030">
-                <mcf:McTextBlock Foreground="White" x:Name="CurrentSkinNameTextBlock" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center"></mcf:McTextBlock>
+                <mcf:McTextBlock Foreground="White" x:Name="CurrentSkinNameTextBlock" VerticalAlignment="Center" Text="{Binding CurrentSkinName}" HorizontalAlignment="Stretch" TextAlignment="Center"></mcf:McTextBlock>
             </Grid>
         </Border>
         <Grid Margin="0,0,0,0" Grid.Column="2" Grid.Row="2">
@@ -98,14 +106,23 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="50"/>
             </Grid.ColumnDefinitions>
-            <ListView BorderThickness="0,1,0,0" Keyboard.PreviewKeyUp="SkinPreviewList_PreviewKeyUp" BorderBrush="{DynamicResource Seperator.Background}" SelectionChanged="SkinPreviewList_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Visible" Background="Black" x:Name="SkinPreviewList" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" ItemTemplate="{StaticResource SkinItemTemplate}">
+            <ListView BorderThickness="0,1,0,0" 
+                      Keyboard.PreviewKeyUp="SkinPreviewList_PreviewKeyUp" 
+                      ItemsSource="{Binding Skins}"
+                      SelectedItem="{Binding CurrentSkin}"
+                      BorderBrush="{DynamicResource Seperator.Background}" 
+                      SelectionChanged="SkinPreviewList_SelectionChanged" 
+                      ScrollViewer.HorizontalScrollBarVisibility="Visible" 
+                      Background="Black" x:Name="SkinPreviewList" 
+                      VerticalContentAlignment="Center" HorizontalAlignment="Stretch" 
+                      HorizontalContentAlignment="Left" ItemTemplate="{StaticResource SkinItemTemplate}">
                 <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel Orientation="Horizontal"></VirtualizingStackPanel>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
         </ListView>
-            <Button Grid.Column="2" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="5" Margin="0" Style="{DynamicResource DialogButton_Green}" Name="AddSkinButton" Click="AddSkinButton_Click">
+            <Button IsEnabled="{Binding ElementName=LoadedSkinPacks, Path=SelectedItem, Converter={StaticResource NullToBoolConverter}}" Grid.Column="2" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="5" Margin="0" Style="{DynamicResource DialogButton_Green}" Name="AddSkinButton" Click="AddSkinButton_Click">
                 <Button.Content>
                     <Image Stretch="Uniform" Margin="0" Source="{DynamicResource PlusIcon}"></Image>
                 </Button.Content>

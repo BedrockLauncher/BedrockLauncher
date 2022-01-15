@@ -1,16 +1,17 @@
-﻿using System;
+﻿using BedrockLauncher.Controls.Misc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace BedrockLauncher.Extensions
 {
     public static class WindowExtensions
     {
-        public static bool? ShowDialogUntilTaskCompletion(this Window window,
-            Task task, int minDurationMsec = 500)
+        public static bool? ShowDialogUntilTaskCompletion(this Window window, Task task, int minDurationMsec = 500)
         {
             if (window == null) throw new ArgumentNullException(nameof(window));
             if (task == null) throw new ArgumentNullException(nameof(task));

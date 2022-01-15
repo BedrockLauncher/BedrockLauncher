@@ -86,7 +86,7 @@ namespace BedrockLauncher.Pages.Settings
                 Properties.LauncherSettings.Default.ExternalLauncherIconPath = fileToUse;
                 Properties.LauncherSettings.Default.Save();
             }
-        }
+        }   
 
         private void ResetExternalLauncherIcon_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -98,5 +98,6 @@ namespace BedrockLauncher.Pages.Settings
         {
             Properties.LauncherSettings.Default.Save();
         }
+
     }
 }

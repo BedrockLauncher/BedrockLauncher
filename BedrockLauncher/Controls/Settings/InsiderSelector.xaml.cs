@@ -28,37 +28,28 @@ namespace BedrockLauncher.Controls.Settings
             InitializeComponent();
         }
 
-        public void RefreshProfileContextMenuItems()
+        private void ReloadList(bool save = false)
         {
-            var _userAccountsFetch = new Task(() =>
+            if (save)
             {
-                Win10AuthenticationManager.GetWUUsers();
-            });
-            Task.Run(async () =>
-            {
-                _userAccountsFetch.Start();
-                await _userAccountsFetch;
-                await Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(() =>
-                {
-                    AccountsList.ItemsSource = null;
-                    AccountsList.ItemsSource = Win10AuthenticationManager.CurrentAccounts;
+                int newIndex = AccountsList.SelectedIndex;
+                if (newIndex <= -1) newIndex = 0;
+                Properties.LauncherSettings.Default.CurrentInsiderAccountIndex = newIndex;
+                Properties.LauncherSettings.Default.Save();
+            }
 
-                    if (Win10AuthenticationManager.CurrentAccounts.Count < Properties.LauncherSettings.Default.CurrentInsiderAccount)
-                    {
-                        AccountsList.SelectedIndex = 0;
-                    }
-                    else AccountsList.SelectedIndex = Properties.LauncherSettings.Default.CurrentInsiderAccount;
-                }));
-            });
+            Win10AuthenticationManager.Default.GetWUUsers();
+            AccountsList.SelectedIndex = Properties.LauncherSettings.Default.CurrentInsiderAccountIndex;
         }
 
         private void AccountsList_DropDownClosed(object sender, EventArgs e)
         {
-            if (AccountsList.SelectedIndex == -1) AccountsList.SelectedIndex = 0;
-            else if (Win10AuthenticationManager.CurrentAccounts.Count < AccountsList.SelectedIndex) AccountsList.SelectedIndex = 0;
-            Properties.LauncherSettings.Default.CurrentInsiderAccount = AccountsList.SelectedIndex;
-            Properties.LauncherSettings.Default.Save();
-            RefreshProfileContextMenuItems();
+            ReloadList(true);
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            ReloadList();
         }
     }
 }

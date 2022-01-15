@@ -20,6 +20,8 @@ using System.Net;
 using System.Net.Http;
 using System.Collections.ObjectModel;
 using ExtensionsDotNET;
+using BedrockLauncher.ViewModels;
+using BedrockLauncher.Handlers;
 
 namespace BedrockLauncher.Pages.News
 {
@@ -28,59 +30,19 @@ namespace BedrockLauncher.Pages.News
     /// </summary>
     public partial class News_JavaDungeons_Page : Page
     {
-        private const string JSON_Feed = @"https://launchercontent.mojang.com/news.json";
-        private ObservableCollection<NewsItem> FeedItems { get; set; } = new ObservableCollection<NewsItem>();
         private bool hasPreloaded = false;
+
+
 
         public News_JavaDungeons_Page()
         {
+            this.DataContext = NewsViewModel.Default;
             InitializeComponent();
         }
 
         private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
-             Task.Run(() => UpdateContent(true));
-        }
-
-        public async Task UpdateJSONContent()
-        {
-            await Dispatcher.InvokeAsync(() =>
-            {
-                this.FeedItems.Clear();
-            });
-
-            LauncherNewsFeed result = null;
-            using (var httpClient = new HttpClient())
-            {
-                try
-                {
-                    var json = await httpClient.GetStringAsync(JSON_Feed);
-                    result = Newtonsoft.Json.JsonConvert.DeserializeObject<LauncherNewsFeed>(json);
-                }
-                catch
-                {
-                    result = new LauncherNewsFeed();
-                }
-
-            }
-            if (result == null) result = new LauncherNewsFeed();
-            if (result.entries == null) result.entries = new List<NewsItem_Launcher>();
-
-            await Dispatcher.InvokeAsync(() => {
-                foreach (NewsItem_Launcher item in result.entries)
-                {
-                    if (item.newsType != null && item.newsType.Contains("News page")) FeedItems.Add(item);
-                }
-            });
-        }
-
-        private void Page_Loaded(object sender, EventArgs e)
-        {
-            if (!hasPreloaded)
-            {
-                Task.Run(() => UpdateContent(true));
-                hasPreloaded = true;
-            }
+            Task.Run(Downloaders.NewsDownloader.UpdateOfficalFeed);
         }
 
         private void OfficalNewsFeed_KeyUp(object sender, KeyEventArgs e)
@@ -95,57 +57,48 @@ namespace BedrockLauncher.Pages.News
             }
         }
 
-        private async void UpdateContent(bool ForceUpdate)
+        private void UpdateContent()
         {
-            await Dispatcher.InvokeAsync(() =>
+            Dispatcher.Invoke(() =>
             {
-                OfficalNewsFeed.Items.Clear();
                 NothingFound.Visibility = Visibility.Visible;
                 NothingFound.PanelType = Controls.ResultPanelType.Loading;
             });
 
-            if (ForceUpdate) await UpdateJSONContent();
-
-            await Dispatcher.InvokeAsync(() => {
-                foreach (var item in FeedItems.Where(x => OfficalNewsFeed_FeedFilter(x))) OfficalNewsFeed.Items.Add(item);
+            Dispatcher.Invoke(() => 
+            {
+                Handlers.FilterSortingHandler.Refresh(OfficalNewsFeed.ItemsSource);
                 if (OfficalNewsFeed.Items.Count == 0) NothingFound.PanelType = Controls.ResultPanelType.NoNews;
                 else NothingFound.Visibility = Visibility.Collapsed;
             });
         }
 
-        private bool OfficalNewsFeed_FeedFilter(object obj)
-        {
-            if (!(obj is NewsItem_Launcher)) return false;
-            else
-            {
-                var item = (obj as NewsItem_Launcher);
-                if (item.newsType != null && item.newsType.Contains("News page"))
-                {
-                    if (item.category == "Minecraft: Java Edition" && ShowJavaContent.IsChecked.Value) return ContainsText(item);
-                    else if (item.category == "Minecraft Dungeons" && ShowDungeonsContent.IsChecked.Value) return ContainsText(item);
-                    else return false;
-                }
-                else return false;
-            }
 
-            bool ContainsText(NewsItem_Launcher _item)
-            {
-                string searchParam = SearchBox.Text;
-                if (string.IsNullOrEmpty(searchParam) || _item.title.Contains(searchParam, StringComparison.OrdinalIgnoreCase)) return true;
-                else return false;
-            }
-        }
 
-        private async void CheckBox_CheckChanged(object sender, RoutedEventArgs e)
+        private void CheckBox_CheckChanged(object sender, RoutedEventArgs e)
         {
             if (!this.IsInitialized) return;
-            await Task.Run(() => UpdateContent(false));
+            UpdateContent();
         }
 
-        private async void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!this.IsInitialized) return;
-            await Task.Run(() => UpdateContent(false));
+            UpdateContent();
+        }
+
+        private void CollectionViewSource_Filter(object sender, FilterEventArgs e)
+        {
+            e.Accepted = FilterSortingHandler.Filter_OfficalNewsFeed(e.Item);
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (!hasPreloaded)
+            {
+                Task.Run(Downloaders.NewsDownloader.UpdateOfficalFeed);
+                hasPreloaded = true;
+            }
         }
     }
 }

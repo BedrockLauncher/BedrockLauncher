@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BedrockLauncher.UpdateProcessor;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -42,7 +43,7 @@ namespace BedrockLauncher.Pages.Settings
 
         private void Page_Initialized(object sender, RoutedEventArgs e)
         {
-            AccountPicker.RefreshProfileContextMenuItems();
+
         }
     }
 }

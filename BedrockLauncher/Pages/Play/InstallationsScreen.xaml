@@ -6,6 +6,9 @@
       xmlns:p="clr-namespace:BedrockLauncher.Properties"
       xmlns:common="clr-namespace:BedrockLauncher.Controls"
       xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
+      xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+      xmlns:handlers="clr-namespace:BedrockLauncher.Handlers"
+      xmlns:conv="clr-namespace:BedrockLauncher.Converters"
       xmlns:classes2="clr-namespace:BedrockLauncher.Classes"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       d:DataContext="{d:DesignInstance Type=viewModels:MainViewModel}"
@@ -13,6 +16,10 @@
       x:Name="PageHost"
       d:DesignHeight="608" d:DesignWidth="828"
       Title="InstallationsScreen" Loaded="PageHost_Loaded">
+    <Page.Resources>
+        <conv:IntToVisibilityConverter x:Key="IntToVisibilityConverter"/>
+        <CollectionViewSource x:Key="InstallationsSource4" Source="{Binding Config.CurrentInstallations}" Filter="CollectionViewSource_Filter"></CollectionViewSource>
+    </Page.Resources>
     <Grid Margin="0" Background="#FF303030" Style="{DynamicResource DisabledStyle}">
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
@@ -74,7 +81,7 @@
             <Grid Width="{Binding ElementName=InstallationsList, Path=ActualWidth}" Margin="10">
                 <Button x:Name="NewInstallationButton" Content="{DynamicResource InstallationsPage_AddButton}" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Height="30" Width="Auto" Click="NewInstallationButton_Click" HorizontalAlignment="Left" Foreground="White" Style="{DynamicResource DialogButton}"/>
             </Grid>
-            <ListView x:Name="InstallationsList" ItemsSource="{Binding Config.CurrentInstallations}" SourceUpdated="InstallationsList_SourceUpdated" SelectionMode="Single" Grid.Row="1" HorizontalContentAlignment="Center" HorizontalAlignment="Center">
+            <ListView x:Name="InstallationsList" ItemsSource="{Binding Source={StaticResource InstallationsSource4}, IsAsync=True}" SourceUpdated="InstallationsList_SourceUpdated" SelectionMode="Single" Grid.Row="1" HorizontalContentAlignment="Center" HorizontalAlignment="Center">
                 <ListView.ItemTemplate>
                     <DataTemplate DataType="{x:Type classes2:BLInstallation}">
                         <Grid Focusable="False" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
@@ -94,7 +101,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <common:ResultPanel PanelType="NoContent" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="Collapsed"></common:ResultPanel>
+            <common:ResultPanel PanelType="NoContent" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="{Binding ElementName=InstallationsList, Path=Items.Count, Converter={StaticResource IntToVisibilityConverter}}"></common:ResultPanel>
         </Grid>
     </Grid>
 </Page>

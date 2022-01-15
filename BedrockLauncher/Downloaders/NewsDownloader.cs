@@ -1,0 +1,128 @@
+﻿using BedrockLauncher.Classes;
+using BedrockLauncher.ViewModels;
+using CodeHollow.FeedReader;
+using ExtensionsDotNET.HTTP2;
+using MdXaml;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Documents;
+using System.Windows.Media;
+
+namespace BedrockLauncher.Downloaders
+{
+    public static class NewsDownloader
+    {
+        private const string OfficalFeed_RSS = @"https://launchercontent.mojang.com/news.json";
+
+        public static async Task UpdateOfficalFeed()
+        {
+            await Application.Current.Dispatcher.InvokeAsync(() =>
+            {
+                NewsViewModel.Default.FeedItemsOffical.Clear();
+            });
+
+            LauncherNewsFeed result = null;
+            using (var httpClient = new HttpClient())
+            {
+                try
+                {
+                    var json = await httpClient.GetStringAsync(OfficalFeed_RSS);
+                    result = Newtonsoft.Json.JsonConvert.DeserializeObject<LauncherNewsFeed>(json);
+                }
+                catch
+                {
+                    result = new LauncherNewsFeed();
+                }
+
+            }
+            if (result == null) result = new LauncherNewsFeed();
+            if (result.entries == null) result.entries = new List<NewsItem_Launcher>();
+
+            await Application.Current.Dispatcher.InvokeAsync(() => {
+                foreach (NewsItem_Launcher item in result.entries)
+                {
+                    if (item.newsType != null && item.newsType.Contains("News page")) NewsViewModel.Default.FeedItemsOffical.Add(item);
+                }
+            });
+        }
+        public static async Task UpdateLauncherFeed()
+        {
+            await Application.Current.Dispatcher.InvokeAsync(() =>
+            {
+                NewsViewModel.Default.LauncherNewsItems.Clear();
+                bool isFirstItem = true;
+                string latest_name = Application.Current.FindResource("LauncherNewsPage_Title_Text").ToString();
+                foreach (var item in MainViewModel.Updater.Notes)
+                {
+                    bool isBeta = item.url.Contains(BedrockLauncher.Core.GithubAPI.BETA_URL);
+                    if (isFirstItem)
+                    {
+                        GenerateEntry(latest_name, item, isBeta, true);
+                        isFirstItem = false;
+                    }
+                    else GenerateEntry(item.name, item, isBeta);
+                }
+
+                void GenerateEntry(string name, BedrockLauncher.Core.UpdateNote item, bool isBeta, bool isLatest = false)
+                {
+                    string body = item.body;
+                    string tag = item.tag_name;
+
+                    LauncherPatchNoteItem launcherUpdateItem = new LauncherPatchNoteItem();
+
+                    body = body.Replace("\r\n", "\r\n\r\n");
+
+                    Markdown engine = new Markdown();
+                    engine.DocumentStyle = Application.Current.FindResource("FlowDocument_Style") as Style;
+                    engine.NormalParagraphStyle = Application.Current.FindResource("FlowDocument_Style_Paragrath") as Style;
+                    engine.CodeStyle = Application.Current.FindResource("FlowDocument_CodeBlock") as Style;
+                    engine.CodeBlockStyle = Application.Current.FindResource("FlowDocument_CodeBlock") as Style;
+                    FlowDocument document = engine.Transform(body);
+                    string documentString = new TextRange(document.ContentStart, document.ContentEnd).Text;
+
+                    if (isLatest) launcherUpdateItem.buildTitle_Foreground = Brushes.Goldenrod;
+                    else if (isBeta) launcherUpdateItem.buildTitle_Foreground = Brushes.Gold;
+                    else launcherUpdateItem.buildTitle_Foreground = Brushes.White;
+
+                    if (tag == BedrockLauncher.Core.Properties.Settings.Default.Version) launcherUpdateItem.CurrentBox_Visibility = Visibility.Visible;
+
+                    launcherUpdateItem.buildTitle = name;
+                    launcherUpdateItem.buildVersion = string.Format("v{0}{1}", tag, (isBeta ? " (Beta)" : ""));
+                    launcherUpdateItem.buildChanges = documentString;
+                    launcherUpdateItem.buildDate = item.published_at.ToString();
+
+                    NewsViewModel.Default.LauncherNewsItems.Add(launcherUpdateItem);
+                }
+            });
+        }
+        public static async Task UpdateRSSFeed(RSSViewModel viewModel)
+        {
+            await Application.Current.Dispatcher.InvokeAsync(async () =>
+            {
+                try
+                {
+                    viewModel.FeedItems.Clear();
+                    string rss = string.Empty;
+                    using (var httpClient = new HttpClient(new Http2Handler())) rss = await httpClient.GetStringAsync(viewModel.RSS_URL);
+                    Feed feed = FeedReader.ReadFromString(rss);
+                    foreach (FeedItem item in feed.Items)
+                    {
+                        var new_item = Activator.CreateInstance(viewModel.RSSType, item);
+                        if (new_item.GetType().IsSubclassOf(typeof(NewsItem))) viewModel.FeedItems.Add((NewsItem)new_item);
+                    }
+                }
+                catch
+                {
+
+                }
+            });
+
+        }
+
+    }
+}

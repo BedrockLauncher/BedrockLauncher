@@ -2,17 +2,14 @@
 using System.Windows;
 using System.Windows.Data;
 
-namespace BedrockLauncher.Components
+namespace BedrockLauncher.Converters
 {
-    public class IntToVisibilityConverter : IValueConverter
+    public class NullToBoolConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (value is int && (int)value != 0)
-            {
-                return Visibility.Collapsed;
-            }
-            return Visibility.Visible;
+            if (value == null) return false;
+            else return true;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

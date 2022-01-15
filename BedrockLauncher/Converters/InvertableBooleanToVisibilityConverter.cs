@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace BedrockLauncher.Components
+namespace BedrockLauncher.Converters
 {
     [ValueConversion(typeof(bool), typeof(Visibility))]
     public class InvertableBooleanToVisibilityConverter : IValueConverter

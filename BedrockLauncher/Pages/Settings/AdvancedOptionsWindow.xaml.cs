@@ -54,8 +54,6 @@ namespace BedrockLauncher.Pages.Settings
             RestartNeeded = true;
 
             UpdateDirectoryPathTextbox();
-
-            MainViewModel.Default.LoadConfig();
         }
 
         private void UpdateDirectoryPathTextbox()

@@ -7,10 +7,16 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using BedrockLauncher.Classes;
 
-namespace BedrockLauncher.Methods
+namespace BedrockLauncher.Handlers
 {
-    public class ConsoleArgumentManager
+    public class StartupArgsHandler
     {
+
+        #region Public Accessors
+        private static string[] StartupArgs = new string[0];
+        public static void SetStartupArgs(string[] args) => StartupArgs = args;
+        public static void RunStartupArgs() => PraseArgs(StartupArgs);
+        #endregion
 
         #region Messages
         private const string HELP_ARG = "--help";
@@ -35,7 +41,7 @@ namespace BedrockLauncher.Methods
         private static bool CloseOnLaunch { get; set; } = false;
         private static bool KeepOpenOnLaunch { get; set; } = false;
 
-        public static void PraseArgs(string[] args)
+        private static void PraseArgs(string[] args)
         {
             if (args == null) return;
 

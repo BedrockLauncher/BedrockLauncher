@@ -14,6 +14,7 @@
              VerticalContentAlignment="Stretch" FocusVisualStyle="{DynamicResource BlankFocusVisual}"
              Style="{DynamicResource EmptyButton}"
              d:DataContext="{d:DesignInstance c:NewsItem_RSS}"
+             Width="512" Height="256" 
              d:DesignHeight="365" d:DesignWidth="365">
     <Button.Resources>
         <http2:ImageSourceConverterHTTP2 x:Key="ImageSourceConverter"></http2:ImageSourceConverterHTTP2>

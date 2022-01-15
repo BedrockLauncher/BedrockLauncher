@@ -97,5 +97,33 @@ namespace BedrockLauncher.Properties {
                 return ResourceManager.GetString("_BlockOrder", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
+        ///
+        ///&lt;html lang=&quot;en&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+        ///&lt;head&gt;
+        ///    &lt;meta charset=&quot;utf-8&quot; /&gt;
+        ///    &lt;title&gt;&lt;/title&gt;
+        ///    &lt;style&gt;
+        ///        .body {
+        ///            background-color: #262626;
+        ///        }
+        ///
+        ///        .cssload-thecube {
+        ///            width: 73px;
+        ///            height: 73px;
+        ///            margin: 0 auto;
+        ///            margin-top: 49px;
+        ///            position: relative;
+        ///            transform: rotateZ(0deg);
+        ///            -o-transform: rotateZ(0deg);
+        ///            -ms-transform: rotateZ(0deg); [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Loader {
+            get {
+                return ResourceManager.GetString("Loader", resourceCulture);
+            }
+        }
     }
 }

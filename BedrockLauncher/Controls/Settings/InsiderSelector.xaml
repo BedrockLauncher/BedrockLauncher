@@ -3,11 +3,24 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:prop="clr-namespace:BedrockLauncher.Properties"
+      xmlns:auth="clr-namespace:BedrockLauncher.UpdateProcessor;assembly=BedrockLauncher.UpdateProcessor"
       mc:Ignorable="d" 
-      Width="330" Height="59">
-    <ComboBox Name="AccountsList" DropDownClosed="AccountsList_DropDownClosed" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,0" Foreground="White" Padding="10,7,5,3" FontSize="14" Style="{DynamicResource GenericComboBoxStyle}" ItemContainerStyle="{DynamicResource GenericComboBoxItemStyle}" VerticalContentAlignment="Stretch">
+      Width="330" Height="59" Loaded="Grid_Loaded">
+    <ComboBox Name="AccountsList" 
+              ItemsSource="{Binding Source={x:Static auth:Win10AuthenticationManager.Default}, Path=CurrentAccounts}"
+              DropDownClosed="AccountsList_DropDownClosed" 
+              VerticalAlignment="Stretch" 
+              HorizontalAlignment="Stretch" 
+              Margin="0,0,0,0" 
+              Foreground="White" 
+              Padding="10,7,5,3" 
+              FontSize="14" 
+              Style="{DynamicResource GenericComboBoxStyle}" 
+              ItemContainerStyle="{DynamicResource GenericComboBoxItemStyle}" 
+              VerticalContentAlignment="Stretch">
         <ComboBox.ItemTemplate>
-            <DataTemplate>
+            <DataTemplate DataType="">
                 <Grid Height="45" MinWidth="179">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="40"></ColumnDefinition>

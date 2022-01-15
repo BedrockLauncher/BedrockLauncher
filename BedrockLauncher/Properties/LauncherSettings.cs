@@ -82,7 +82,7 @@ namespace BedrockLauncher.Properties
             set 
             { 
                 _FancierPageTransitions = value;
-                BedrockLauncher.Components.PageAnimator.SuperSmoothAnimations = value;
+                PageAnimator.SuperSmoothAnimations = value;
             }
         }
         public bool ShowAdvancedInstallDetails { get; set; } = false;
@@ -93,7 +93,7 @@ namespace BedrockLauncher.Properties
 
         public bool AnimatePlayButton { get; set; } = false;
 
-        public bool AnimatePageTransitions{ get; set; } = false;
+        public bool AnimatePageTransitions { get; set; } = false;
 
         #endregion
 
@@ -111,6 +111,10 @@ namespace BedrockLauncher.Properties
         private bool _ShowReleases = true;
 
         public bool IsFirstLaunch { get; set; } = true;
+        public bool GetIsFirstLaunch(int LoadedConfigCount)
+        {
+            return CurrentProfile == "" || IsFirstLaunch || LoadedConfigCount == 0;
+        }
 
         public string CurrentInstallation { get; set; } = string.Empty;
 
@@ -131,7 +135,7 @@ namespace BedrockLauncher.Properties
                 if (!(_ShowReleases == false && value == false)) _ShowBetas = value;
             }
         }
-        public int CurrentInsiderAccount { get; set; } = 0;
+        public int CurrentInsiderAccountIndex { get; set; } = 0;
 
         #endregion
 

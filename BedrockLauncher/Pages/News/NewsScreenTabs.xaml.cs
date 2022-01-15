@@ -26,20 +26,20 @@ namespace BedrockLauncher.Pages.News
     {
 
 
-        private News_Minecraft_Page communityNewsPage = new News_Minecraft_Page();
+        private News_RSS_Page communityNewsPage = new News_RSS_Page(ViewModels.RSSViewModel.MinecraftCommunity);
         private News_JavaDungeons_Page javaNewsPage = new News_JavaDungeons_Page();
-        private News_MinecraftForums_Page forumsNewsPage = new News_MinecraftForums_Page();
+        private News_RSS_Page forumsNewsPage = new News_RSS_Page(ViewModels.RSSViewModel.MinecraftForums);
         private News_Launcher_Page launcherNewsPage;
 
         private Navigator Navigator { get; set; } = new Navigator();
 
         private string LastTabName;
 
-        public NewsScreenTabs(UpdateHandler updater)
+        public NewsScreenTabs()
         {
             InitializeComponent();
             LastTabName = OfficalTab.Name;
-            launcherNewsPage = new News_Launcher_Page(updater);
+            launcherNewsPage = new News_Launcher_Page();
         }
 
 

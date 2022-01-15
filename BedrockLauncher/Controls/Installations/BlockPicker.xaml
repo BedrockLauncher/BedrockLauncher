@@ -15,7 +15,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <ToggleButton Checked="DropdownButton_Checked" Unchecked="DropdownButton_Unchecked" x:Name="DropdownButton" Width="85" Padding="0" IsChecked="False" Height="65" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,10,0,10" Style="{DynamicResource PanelButtonToggle}">
+        <ToggleButton IsEnabled="False" Checked="DropdownButton_Checked" Unchecked="DropdownButton_Unchecked" x:Name="DropdownButton" Width="85" Padding="0" IsChecked="False" Height="65" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,10,0,10" Style="{DynamicResource PanelButtonToggle}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>

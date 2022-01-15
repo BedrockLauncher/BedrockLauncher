@@ -6,7 +6,7 @@
       xmlns:p="clr-namespace:BedrockLauncher.Properties"
       xmlns:classes="clr-namespace:BedrockLauncher.Classes"
       xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
-      xmlns:converters="clr-namespace:BedrockLauncher.Components"
+      xmlns:converters="clr-namespace:BedrockLauncher.Converters"
       xmlns:local="clr-namespace:BedrockLauncher"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       mc:Ignorable="d" 
@@ -16,6 +16,7 @@
     <Page.Resources>
         <converters:InvertableBooleanToVisibilityConverter x:Key="VisibleIfTrueConverter" />
         <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"></converters:InverseBooleanConverter>
+        <CollectionViewSource x:Key="VersionsSource" Source="{Binding Path=Versions}" Filter="CollectionViewSource_Filter"></CollectionViewSource>
     </Page.Resources>
     <Grid Margin="0" Background="#FF303030" Style="{DynamicResource DisabledStyle}">
         <Grid.RowDefinitions>
@@ -39,6 +40,6 @@
             </Grid>
         </Border>
         <Button VerticalAlignment="Center" Margin="10,10" FontSize="14" x:Name="RefreshButton" IsEnabled="{Binding IsVersionsUpdating, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource InverseBooleanConverter}}" HorizontalAlignment="Right" Click="RefreshButton_Click" Content="{DynamicResource GeneralText_Refresh}" Style="{DynamicResource LinkButton}"></Button>
-        <ListView x:Name="VersionsList" ItemsSource="{Binding Versions}" SelectionMode="Single" Grid.Row="1" HorizontalContentAlignment="Center" ItemTemplate="{StaticResource VersionItemTemplate}"/>
+        <ListView x:Name="VersionsList" ItemsSource="{Binding Source={StaticResource VersionsSource}, IsAsync=True}" SelectionMode="Single" Grid.Row="1" HorizontalContentAlignment="Center" ItemTemplate="{StaticResource VersionItemTemplate}"/>
     </Grid>
 </Page>

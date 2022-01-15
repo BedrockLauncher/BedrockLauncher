@@ -31,6 +31,7 @@ using BedrockLauncher.Enums;
 using BedrockLauncher.Handlers;
 using System.Windows.Threading;
 using BedrockLauncher.Extensions;
+using ExtensionsDotNET;
 using BedrockLauncher.UpdateProcessor;
 
 namespace BedrockLauncher.ViewModels
@@ -41,30 +42,12 @@ namespace BedrockLauncher.ViewModels
     {
         public static MainViewModel Default { get; set; } = new MainViewModel();
 
-        #region Event Handlers
-
-        /*
-        public event EventHandler ConfigUpdated;
-        protected virtual void OnConfigUpdated(PropertyChangedEventArgs e)
-        {
-            EventHandler handler = ConfigUpdated;
-            if (e.PropertyName == nameof(Config.CurrentInstallations))
-                if (handler != null) handler(this, e);
-        }
-        */
-
-        #endregion
-
         #region Init
 
         public MainViewModel()
         {
             ErrorScreenShow.SetHandler(this);
             DialogPrompt.SetHandler(this);
-        }
-        public void Init(Grid MainFrame)
-        {
-            KeyboardNavigationMode = KeyboardNavigation.GetTabNavigation(MainFrame);
         }
 
         #endregion
@@ -81,58 +64,120 @@ namespace BedrockLauncher.ViewModels
 
         private bool AllowedToCloseWithGameOpen { get; set; } = false;
         public bool IsVersionsUpdating { get; private set; }
-        private KeyboardNavigationMode KeyboardNavigationMode { get; set; }
+        public KeyboardNavigationMode MainFrame_TabNavigationMode { get; set; } = KeyboardNavigationMode.Continue;
 
 
         #endregion
 
         #region Methods
 
-        public void LoadVersions()
+        public async Task LoadVersions(bool onLoad = false)
         {
-
-            if (IsVersionsUpdating) return;
-            Application.Current.Dispatcher.Invoke(() =>
+            await Application.Current.Dispatcher.Invoke(async () =>
             {
+                if (IsVersionsUpdating) return;
                 IsVersionsUpdating = true;
-                new WaitingScreen().ShowDialogUntilTaskCompletion(MainViewModel.Default.PackageManager.VersionDownloader.UpdateVersions(Versions));
+
+                VersionDownloader.VersionUpdateOptions options = new VersionDownloader.VersionUpdateOptions();
+                if (onLoad && Debugger.IsAttached && !Constants.DebugOptions.UpdateVersionsOnLoad) options.CacheOnly = true;
+
+                await PackageManager.VersionDownloader.UpdateVersions(Versions, options);
+
                 IsVersionsUpdating = false;
             });
+
         }
         public void LoadConfig()
         {
-            Config = MCProfilesList.Load(MainViewModel.Default.FilePaths.GetProfilesFilePath(), Properties.LauncherSettings.Default.CurrentProfile, Properties.LauncherSettings.Default.CurrentProfile);
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                Config = MCProfilesList.Load(FilePaths.GetProfilesFilePath(), Properties.LauncherSettings.Default.CurrentProfile, Properties.LauncherSettings.Default.CurrentProfile);
+            });
         }
+        public async void KillGame() => await PackageManager.ClosePackage();
+        public async void RepairVersion(BLVersion v) => await PackageManager.DownloadAndExtractPackage(v);
+        public async void RemoveVersion(BLVersion v) => await PackageManager.RemovePackage(v);
+        public async void Play(MCProfile p, BLInstallation i, bool KeepLauncherOpen, bool Save = true)
+        {
+            if (i == null) return;
+
+            i.LastPlayed = DateTime.Now;
+            MainViewModel.Default.Config.Installation_UpdateLP(i);
+
+            if (Save)
+            {
+                Properties.LauncherSettings.Default.CurrentInstallation = i.InstallationUUID;
+                Properties.LauncherSettings.Default.Save();
+            }
+
+            bool wasCanceled = false;
+            if (i.Version.DisplayInstallStatus == "Not installed") await PackageManager.DownloadAndExtractPackage(i.Version);
+            if (!wasCanceled) await PackageManager.LaunchPackage(i.Version, MainViewModel.Default.FilePaths.GetInstallationsFolderPath(p.Name, i.DirectoryName_Full), KeepLauncherOpen);
+        }
+
+        #endregion
+
+        #region Dialog
+
         public void AttemptClose(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Action action = new Action(() =>
+            Action action = new Action(() => MainWindow.Close());
+
+            bool doNotClose = Properties.LauncherSettings.Default.KeepLauncherOpen && 
+                MainViewModel.Default.PackageManager.isGameRunning && !AllowedToCloseWithGameOpen;
+
+            if (doNotClose) { e.Cancel = true; ShowGameCloseDialog(action); }
+            else e.Cancel = false;
+        }
+        public async Task ShowWaitingDialog(Func<Task> action)
+        {
+            await Application.Current.Dispatcher.Invoke(async () =>
             {
-                MainWindow.Close();
+                SetDialogFrame(new WaitingPage());
+                await action();
+                SetDialogFrame(null);
             });
 
-            if (Properties.LauncherSettings.Default.KeepLauncherOpen && MainViewModel.Default.PackageManager.isGameRunning)
-            {
-                if (!AllowedToCloseWithGameOpen)
-                {
-                    e.Cancel = true;
-                    ShowPrompt_ClosingWithGameStillOpened(action);
-                }
-            }
-            else
-            {
-                e.Cancel = false;
-            }
+
+
         }
-        public void SetOverlayFrame_Strict(object content)
+        public void SetOverlayFrame(object _content, bool _isStrict = false)
         {
-            SetOverlayFrame_Base(content, false);
+            bool _animate = (_isStrict ? false : Properties.LauncherSettings.Default.AnimatePageTransitions);
+            SetOverlayFrame_Base(_content, _animate);
+
+            void SetOverlayFrame_Base(object content, bool animate)
+            {
+                bool isEmpty = content == null;
+
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    var focusMode = (isEmpty ? MainFrame_TabNavigationMode : KeyboardNavigationMode.None);
+                    KeyboardNavigation.SetTabNavigation(MainWindow.MainFrame, focusMode);
+                    Keyboard.ClearFocus();
+                });
+
+                if (animate && !isEmpty) PageAnimator.FrameSwipe_OverlayIn(MainWindow.OverlayFrame, content);
+                else PageAnimator.Navigate(MainWindow.OverlayFrame, content);
+            }
         }
-        public void SetOverlayFrame(object content)
+        public void SetDialogFrame(object content)
         {
             bool animate = Properties.LauncherSettings.Default.AnimatePageTransitions;
-            SetOverlayFrame_Base(content, animate);
+            bool isEmpty = content == null;
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                var focusMode = (isEmpty ? MainFrame_TabNavigationMode : KeyboardNavigationMode.None);
+                KeyboardNavigation.SetTabNavigation(MainWindow.MainFrame, focusMode);
+                KeyboardNavigation.SetTabNavigation(MainWindow.OverlayFrame, focusMode);
+                Keyboard.ClearFocus();
+            });
+
+            if (animate && !isEmpty) PageAnimator.FrameFadeIn(MainWindow.ErrorFrame, content);
+            else PageAnimator.Navigate(MainWindow.ErrorFrame, content);
         }
-        public async void ShowPrompt_ClosingWithGameStillOpened(Action successAction)
+        public async void ShowGameCloseDialog(Action successAction)
         {
             await Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(async () =>
             {
@@ -158,64 +203,6 @@ namespace BedrockLauncher.ViewModels
                 }
 
             }));
-        }
-        public void SetDialogFrame(object content)
-        {
-            bool animate = Properties.LauncherSettings.Default.AnimatePageTransitions;
-            bool isEmpty = content == null;
-
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                var focusMode = (isEmpty ? KeyboardNavigationMode : KeyboardNavigationMode.None);
-                KeyboardNavigation.SetTabNavigation(MainWindow.MainFrame, focusMode);
-                KeyboardNavigation.SetTabNavigation(MainWindow.OverlayFrame, focusMode);
-                Keyboard.ClearFocus();
-            });
-
-            if (animate)
-            {
-                if (isEmpty) PageAnimator.FrameFadeOut(MainWindow.ErrorFrame, content);
-                else PageAnimator.FrameFadeIn(MainWindow.ErrorFrame, content);
-            }
-            else PageAnimator.Navigate(MainWindow.ErrorFrame, content);
-        }
-        private void SetOverlayFrame_Base(object content, bool animate)
-        {
-            bool isEmpty = content == null;
-
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                var focusMode = (isEmpty ? KeyboardNavigationMode : KeyboardNavigationMode.None);
-                KeyboardNavigation.SetTabNavigation(MainWindow.MainFrame, focusMode);
-                Keyboard.ClearFocus();
-            });
-
-            if (animate)
-            {
-                if (isEmpty) PageAnimator.FrameSwipe_OverlayOut(MainWindow.OverlayFrame, content);
-                else PageAnimator.FrameSwipe_OverlayIn(MainWindow.OverlayFrame, content);
-            }
-            else PageAnimator.Navigate(MainWindow.OverlayFrame, content);
-        }
-        public async void KillGame() => await PackageManager.ClosePackage();
-        public async void RepairVersion(BLVersion v) => await PackageManager.DownloadAndExtractPackage(v);
-        public async void RemoveVersion(BLVersion v) => await PackageManager.RemovePackage(v);
-        public async void Play(MCProfile p, BLInstallation i, bool KeepLauncherOpen, bool Save = true)
-        {
-            if (i == null) return;
-
-            i.LastPlayed = DateTime.Now;
-            MainViewModel.Default.Config.Installation_UpdateLP(i);
-
-            if (Save)
-            {
-                Properties.LauncherSettings.Default.CurrentInstallation = i.InstallationUUID;
-                Properties.LauncherSettings.Default.Save();
-            }
-
-            bool wasCanceled = false;
-            if (i.Version.DisplayInstallStatus == "Not installed") await PackageManager.DownloadAndExtractPackage(i.Version);
-            if (!wasCanceled) await PackageManager.LaunchPackage(i.Version, MainViewModel.Default.FilePaths.GetInstallationsFolderPath(p.Name, i.DirectoryName_Full), KeepLauncherOpen);
         }
 
         #endregion

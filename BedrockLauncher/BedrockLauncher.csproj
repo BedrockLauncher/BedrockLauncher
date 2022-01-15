@@ -112,7 +112,7 @@
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <OutputPath>bin\Release\</OutputPath>
@@ -176,6 +176,7 @@
     <Compile Include="Classes\DLC.cs" />
     <Compile Include="Classes\BLInstallation.cs" />
     <Compile Include="Classes\BLVersion.cs" />
+    <Compile Include="Classes\LauncherPatchNoteItem.cs" />
     <Compile Include="Classes\MCProfilesList.cs" />
     <Compile Include="Classes\MCPatchNotesItem.cs" />
     <Compile Include="Classes\MCProfile.cs" />
@@ -201,15 +202,18 @@
     <Compile Include="Components\CustomDesignAttributes.cs" />
     <Compile Include="Components\DisableNavigation.cs" />
     <Compile Include="Components\InteractivityHelper.cs" />
-    <Compile Include="Components\IntToVisibilityConverter.cs" />
-    <Compile Include="Components\InverseBooleanConverter.cs" />
-    <Compile Include="Components\InvertableBooleanToVisibilityConverter.cs" />
+    <Compile Include="Controls\Misc\LoaderIcon.xaml.cs">
+      <DependentUpon>LoaderIcon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\IntToVisibilityConverter.cs" />
+    <Compile Include="Converters\InverseBooleanConverter.cs" />
+    <Compile Include="Converters\InvertableBooleanToVisibilityConverter.cs" />
     <Compile Include="Components\NotifyPropertyChangedBase.cs" />
     <Compile Include="Components\PageAnimator.cs" />
     <Compile Include="Components\RelayCommand.cs" />
-    <Compile Include="Components\StringToUpperConverter.cs" />
+    <Compile Include="Converters\StringToUpperConverter.cs" />
     <Compile Include="Controls\Toolbar\ToolbarButtonBase.cs" />
-    <Compile Include="Components\UrlToImageSourceConverter.cs" />
+    <Compile Include="Converters\UrlToImageSourceConverter.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Controls\AltMessageBox.xaml.cs">
       <DependentUpon>AltMessageBox.xaml</DependentUpon>
@@ -247,17 +251,19 @@
     <Compile Include="Controls\SpecialBorder.xaml.cs">
       <DependentUpon>SpecialBorder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\NullToBoolConverter.cs" />
+    <Compile Include="Downloaders\NewsDownloader.cs" />
     <Compile Include="Downloaders\WikiChangelogDownloader.cs" />
     <Compile Include="Enums\LauncherStateChange.cs" />
-    <Compile Include="Enums\SortBy_Installation.cs" />
+    <Compile Include="Enums\InstallationSort.cs" />
     <Compile Include="Enums\VersioningMode.cs" />
     <Compile Include="Extensions\WindowExtensions.cs" />
     <Compile Include="Handlers\BackupHandler.cs" />
     <Compile Include="Handlers\FilterSortingHandler.cs" />
     <Compile Include="Handlers\PackageHandler.cs" />
+    <Compile Include="Handlers\RuntimeHandler.cs" />
     <Compile Include="Interfaces\IDialogHander.cs" />
     <Compile Include="Interfaces\ILauncherModel.cs" />
-    <Compile Include="Internals.cs" />
     <Compile Include="Language\LanguageDefinition.cs" />
     <Compile Include="Language\LanguageDictionary.xaml.cs">
       <DependentUpon>LanguageDictionary.xaml</DependentUpon>
@@ -268,6 +274,9 @@
     <Compile Include="Pages\Common\DialogPrompt.xaml.cs">
       <DependentUpon>DialogPrompt.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Common\WaitingPage.xaml.cs">
+      <DependentUpon>WaitingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Common\ErrorScreen.xaml.cs">
       <DependentUpon>ErrorScreen.xaml</DependentUpon>
     </Compile>
@@ -276,9 +285,6 @@
     </Compile>
     <Compile Include="Pages\Common\WaitingScreen.xaml.cs">
       <DependentUpon>WaitingScreen.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\News\News_MinecraftForums_Page.xaml.cs">
-      <DependentUpon>News_MinecraftForums_Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="Handlers\PathHandler.cs" />
     <Compile Include="Pages\Community\CommunityPage.xaml.cs">
@@ -294,6 +300,8 @@
       <DependentUpon>News_JavaDungeons_Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\NewsViewModel.cs" />
+    <Compile Include="ViewModels\RSSViewModel.cs" />
     <Compile Include="ViewModels\UserInterfaceModel.cs" />
     <Compile Include="Properties\LauncherSettings.cs" />
     <Compile Include="Controls\Misc\HtmlPanelPro.cs" />
@@ -361,13 +369,13 @@
       <DependentUpon>SkinPreview.xaml</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="Methods\ConsoleArgumentManager.cs" />
+    <Compile Include="Handlers\StartupArgsHandler.cs" />
     <Compile Include="Downloaders\ChangelogDownloader.cs" />
     <Compile Include="Pages\Settings\AdvancedOptionsWindow.xaml.cs">
       <DependentUpon>AdvancedOptionsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\News\News_Minecraft_Page.xaml.cs">
-      <DependentUpon>News_Minecraft_Page.xaml</DependentUpon>
+    <Compile Include="Pages\News\News_RSS_Page.xaml.cs">
+      <DependentUpon>News_RSS_Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Preview\EditSkinPackScreen.xaml.cs">
       <DependentUpon>EditSkinPackScreen.xaml</DependentUpon>
@@ -502,6 +510,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Misc\LoaderIcon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Misc\Marquee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -582,6 +594,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Pages\Common\WaitingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\Common\ErrorScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -606,15 +622,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\News\News_MinecraftForums_Page.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Pages\Settings\AdvancedOptionsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\News\News_Minecraft_Page.xaml">
+    <Page Include="Pages\News\News_RSS_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -968,6 +980,9 @@
     <PackageReference Include="System.Runtime">
       <Version>4.3.1</Version>
     </PackageReference>
+    <PackageReference Include="VirtualizingWrapPanel">
+      <Version>1.5.7</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\icons\ico\icon.ico" />
@@ -1214,6 +1229,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\ui\panels\MainPagePlayButtonPressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\Web\Loader.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

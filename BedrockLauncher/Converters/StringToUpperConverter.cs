@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Globalization;
 using System.Windows.Data;
 
-namespace BedrockLauncher.Components
+namespace BedrockLauncher.Converters
 {
     public class StringToUpperConverter : IValueConverter
     {

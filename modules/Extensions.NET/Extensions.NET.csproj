@@ -71,6 +71,7 @@
     <Compile Include="FileExtensions.cs" />
     <Compile Include="HTTP2\Http2Handler.cs" />
     <Compile Include="HTTP2\ImageSourceConverterHTTP2.cs" />
+    <Compile Include="InteropExtensions.cs" />
     <Compile Include="ObservableDictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringExtensions.cs" />

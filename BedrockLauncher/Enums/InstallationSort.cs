@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BedrockLauncher.Enums
 {
-    public enum SortBy_Installation : int
+    public enum InstallationSort : int
     {
         LatestPlayed,
         Name

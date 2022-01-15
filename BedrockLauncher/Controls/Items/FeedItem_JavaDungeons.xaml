@@ -15,6 +15,7 @@
              BorderThickness="0"
              Width="400"
              HorizontalContentAlignment="Stretch"
+             MaxHeight="335"
              VerticalContentAlignment="Stretch">
     <Button.Resources>
         <wincontrols:BooleanToVisibilityConverter x:Key="BoolToVis"></wincontrols:BooleanToVisibilityConverter>
@@ -32,11 +33,11 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto" MaxHeight="250"/>
                     <RowDefinition/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image Grid.Column="0" Grid.Row="0" RenderOptions.BitmapScalingMode="NearestNeighbor" Width="{DynamicResource BorderSizeDouble}" Height="{DynamicResource BorderSizeDouble}" Stretch="Uniform">
+                <Image Grid.Column="0" Grid.Row="0" ClipToBounds="True" RenderOptions.BitmapScalingMode="NearestNeighbor" Width="{DynamicResource BorderSizeDouble}" Height="{DynamicResource BorderSizeDouble}" Stretch="Uniform">
                     <Image.Source>
                         <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/panels/CardBorder.png" SourceRect="0 0 7 7"></CroppedBitmap>
                     </Image.Source>

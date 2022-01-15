@@ -78,7 +78,7 @@ namespace BedrockLauncher.Handlers
 
         public UpdateHandler()
         {
-            CheckForUpdates();
+
         }
 
         #endregion
@@ -93,8 +93,9 @@ namespace BedrockLauncher.Handlers
             });
 
         }
-        public async Task<bool> CheckForUpdatesAsync()
+        public async Task<bool> CheckForUpdatesAsync(bool onLoad = false)
         {
+            if (onLoad && Debugger.IsAttached && !Constants.DebugOptions.CheckForUpdatesOnLoad) return false;
             System.Diagnostics.Debug.WriteLine("Checking for updates");
             try
             {

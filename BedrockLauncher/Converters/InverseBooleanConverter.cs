@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace BedrockLauncher.Components
+namespace BedrockLauncher.Converters
 {
     [ValueConversion(typeof(bool?), typeof(bool))]
     public class InverseBooleanConverter : IValueConverter

@@ -63,7 +63,7 @@ namespace BedrockLauncher.Pages.Play
                 string packUri = string.Empty;
                 string currentTheme = Properties.LauncherSettings.Default.CurrentTheme;
 
-                bool isBugRock = Internals.IsBugRockOfTheWeek();
+                bool isBugRock = Handlers.RuntimeHandler.IsBugRockOfTheWeek();
                 if (isBugRock)
                 {
                     BedrockLogo.Visibility = Visibility.Collapsed;

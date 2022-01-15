@@ -87,6 +87,7 @@
                             <Setter Property="FontWeight" Value="Bold"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" TargetName="contentPresenter" Value="0.5"/>
                             <Setter Property="Background" TargetName="border" Value="{DynamicResource PanelButton.Disabled.Background}"/>
                             <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource PanelButton.Disabled.Border}"/>
                             <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{DynamicResource PanelButton.Disabled.Foreground}"/>

@@ -23,44 +23,16 @@ namespace BedrockLauncher.Controls.Installations
     /// </summary>
     public partial class InstallationSelector : ComboBox
     {
-        private bool HasLoadedOnce = false;
 
         public InstallationSelector()
         {
+            DataContext = MainViewModel.Default;
             InitializeComponent();
-            this.DataContext = MainViewModel.Default;
+            
         }
-        public async void RefreshInstallations()
+        private void ComboBox_Loaded(object sender, RoutedEventArgs e)
         {
-            await this.Dispatcher.InvokeAsync(() =>
-            {
-                var view = CollectionViewSource.GetDefaultView(this.ItemsSource) as CollectionView;
-                if (view != null)
-                {
-                    FilterSortingHandler.Sort_InstallationList(ref view);
-                    if (view.Filter == null) view.Filter = FilterSortingHandler.Filter_InstallationList;
-                    view.Refresh();
-                }
-                this.SelectedValue = Properties.LauncherSettings.Default.CurrentInstallation;
-            });
-        }
-        private async Task ReloadInstallations()
-        {
-            await this.Dispatcher.InvokeAsync(() =>
-            {
-                if (!HasLoadedOnce)
-                {
-                    var view = CollectionViewSource.GetDefaultView(this.ItemsSource) as CollectionView;
-                    if (view != null) view.Filter = FilterSortingHandler.Filter_InstallationList;
-                    HasLoadedOnce = true;
-                    this.SelectedIndex = 0;
-                }
-                this.RefreshInstallations();
-            });
-        }
-        private async void ComboBox_Loaded(object sender, RoutedEventArgs e)
-        {
-            await this.ReloadInstallations();
+            FilterSortingHandler.Sort_InstallationList(ItemsSource);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -69,10 +41,14 @@ namespace BedrockLauncher.Controls.Installations
             Properties.LauncherSettings.Default.Save();
         }
 
-        private async void ComboBox_SourceUpdated(object sender, DataTransferEventArgs e)
+        private void ComboBox_SourceUpdated(object sender, DataTransferEventArgs e)
         {
-            HasLoadedOnce = false;
-            await this.ReloadInstallations();
+            FilterSortingHandler.Sort_InstallationList(ItemsSource);
+        }
+
+        private void CollectionViewSource_Filter(object sender, FilterEventArgs e)
+        {
+            e.Accepted = FilterSortingHandler.Filter_InstallationList(e.Item);
         }
     }
 }

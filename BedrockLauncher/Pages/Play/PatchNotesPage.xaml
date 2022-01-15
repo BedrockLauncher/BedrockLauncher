@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       xmlns:common="clr-namespace:BedrockLauncher.Controls"
-      xmlns:conv="clr-namespace:BedrockLauncher.Components"
+      xmlns:conv="clr-namespace:BedrockLauncher.Converters"
+      xmlns:vwp="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
       xmlns:downloaders="clr-namespace:BedrockLauncher.Downloaders"
       xmlns:c="clr-namespace:BedrockLauncher.Classes"
       d:DataContext="{d:DesignInstance Type=downloaders:ChangelogDownloader}"
@@ -54,7 +55,7 @@
         <ListView Grid.Row="1" x:Name="PatchNotesList" SourceUpdated="PatchNotesList_SourceUpdated" Keyboard.PreviewKeyUp="PatchNotesList_KeyUp" ItemsSource="{Binding PatchNotes}" ItemContainerStyle="{DynamicResource CardListViewItem}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel HorizontalAlignment="Center" MaxWidth="{Binding ElementName=PatchNotesList, Path=ActualWidth}"></WrapPanel>
+                    <vwp:VirtualizingWrapPanel ItemSize="270,270" Orientation="Vertical"/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>

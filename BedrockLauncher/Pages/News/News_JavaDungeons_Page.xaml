@@ -7,9 +7,15 @@
       xmlns:c="clr-namespace:BedrockLauncher.Classes"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       xmlns:common="clr-namespace:BedrockLauncher.Controls"
+      xmlns:viewModel="clr-namespace:BedrockLauncher.ViewModels"
+      xmlns:vwp="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      d:DataContext="{d:DesignInstance Type=viewModel:NewsViewModel}"
       Title="CommunityNewsPage" Loaded="Page_Loaded">
+    <Page.Resources>
+        <CollectionViewSource x:Key="NewsFeed" Source="{Binding FeedItemsOffical}" Filter="CollectionViewSource_Filter"/>
+    </Page.Resources>
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
@@ -38,7 +44,7 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <Image Width="20" Margin="5,0,0,0" Height="20" Source="{DynamicResource SearchIcon}" ></Image>
-                                <TextBox Grid.Column="1" Style="{DynamicResource BlankTextBox}" x:Name="SearchBox" Tag="{DynamicResource NewsScreen_SearchBar_Content}" TextChanged="SearchBox_TextChanged"></TextBox>
+                                <TextBox Grid.Column="1" Style="{DynamicResource BlankTextBox}" Text="{Binding Offical_SearchBoxText}" x:Name="SearchBox" Tag="{DynamicResource NewsScreen_SearchBar_Content}" TextChanged="SearchBox_TextChanged"></TextBox>
                             </Grid>
                         </ContentControl>
                     </StackPanel>
@@ -47,17 +53,16 @@
                 <StackPanel Grid.Row="1" Grid.Column="2" Margin="5,0" VerticalAlignment="Center">
                     <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_Categories}" Margin="5,2,0,10" FontWeight="Bold" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
                     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Orientation="Horizontal" Margin="0,0,10,10">
-                        <CheckBox x:Name="ShowJavaContent" Checked="CheckBox_CheckChanged" Unchecked="CheckBox_CheckChanged" IsChecked="True" Content="{DynamicResource ResourceKey=NewsScreen_JavaNDungeons_JavaCheckbox}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
-                        <CheckBox x:Name="ShowDungeonsContent" Checked="CheckBox_CheckChanged" Unchecked="CheckBox_CheckChanged" IsChecked="True" Content="{DynamicResource ResourceKey=NewsScreen_JavaNDungeons_DungeonsCheckbox}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
+                        <CheckBox x:Name="ShowJavaContent" Checked="CheckBox_CheckChanged" Unchecked="CheckBox_CheckChanged" IsChecked="{Binding Offical_ShowJavaContent}" Content="{DynamicResource ResourceKey=NewsScreen_JavaNDungeons_JavaCheckbox}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
+                        <CheckBox x:Name="ShowDungeonsContent" Checked="CheckBox_CheckChanged" Unchecked="CheckBox_CheckChanged" IsChecked="{Binding Offical_ShowDungeonsContent}" Content="{DynamicResource ResourceKey=NewsScreen_JavaNDungeons_DungeonsCheckbox}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
                     </StackPanel>
                 </StackPanel>
             </Grid>
         </Border>
-        <ListView x:Name="OfficalNewsFeed" ItemsSource="{Binding FeedItems}" Grid.Row="1" Keyboard.PreviewKeyUp="OfficalNewsFeed_KeyUp" ItemContainerStyle="{DynamicResource CardListViewItemVertical}">
+        <ListView x:Name="OfficalNewsFeed" ItemsSource="{Binding Source={StaticResource NewsFeed}, IsAsync=True}" Grid.Row="1" Keyboard.PreviewKeyUp="OfficalNewsFeed_KeyUp" ItemContainerStyle="{DynamicResource CardListViewItemVertical}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel IsItemsHost="True" MaxWidth="{Binding ElementName=OfficalNewsFeed, Path=ActualWidth}"
-                        HorizontalAlignment="Center"/>
+                    <vwp:VirtualizingWrapPanel ItemSize="410,335" StretchItems="False" Orientation="Vertical"/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>

@@ -28,5 +28,46 @@ namespace ExtensionsDotNET
             thread.Start();
             return tcs.Task;
         }
+
+        public static Task StartSTATask(Task task)
+        {
+            var tcs = new TaskCompletionSource<int>();
+            var thread = new Thread(() =>
+            {
+                try
+                {
+                    task.Start();
+                    task.Wait();
+                    tcs.SetResult(1);
+                }
+                catch (Exception e)
+                {
+                    tcs.SetException(e);
+                }
+            });
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+            return tcs.Task;
+        }
+
+        public static Task StartSTATask(Action action)
+        {
+            var tcs = new TaskCompletionSource<int>();
+            var thread = new Thread(() =>
+            {
+                try
+                {
+                    action();
+                    tcs.SetResult(1);
+                }
+                catch (Exception e)
+                {
+                    tcs.SetException(e);
+                }
+            });
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+            return tcs.Task;
+        }
     }
 }

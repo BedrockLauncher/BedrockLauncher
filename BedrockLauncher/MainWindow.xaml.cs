@@ -35,6 +35,7 @@ using BedrockLauncher.Pages.Common;
 using BedrockLauncher.Pages.Community;
 using BedrockLauncher.Components;
 using BedrockLauncher.Controls.Toolbar;
+using BedrockLauncher.Handlers;
 
 namespace BedrockLauncher
 {
@@ -44,7 +45,7 @@ namespace BedrockLauncher
     {
         private GameTabs MainPage = new GameTabs();
         private SettingsTabs settingsScreenPage = new SettingsTabs();
-        private NewsScreenTabs newsScreenPage = new NewsScreenTabs(ViewModels.MainViewModel.Updater);
+        private NewsScreenTabs newsScreenPage = new NewsScreenTabs();
         private CommunityPage communityPage = new CommunityPage();
 
         private Navigator Navigator { get; set; } = new Navigator(true);
@@ -55,31 +56,21 @@ namespace BedrockLauncher
             InitializeComponent();
         }
 
-        private void Window_Initialized(object sender, EventArgs e)
+        private async void Window_Initialized(object sender, EventArgs e)
         {
-            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime) Init();
-        }
-
-        private void Init()
-        {
-            Application.Current.ShutdownMode = System.Windows.ShutdownMode.OnLastWindowClose;
-
             Panel.SetZIndex(OverlayFrame, 0);
             Panel.SetZIndex(ErrorFrame, 1);
             Panel.SetZIndex(UpdateButton, 2);
 
-            MainPage.skinsPage.InitFrameEvents(ErrorFrame);
-            MainPage.skinsPage.InitFrameEvents(OverlayFrame);
+            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
+            {
+                await Program.OnApplicationLoaded();
+                this.NavigateToMainPage();
+                StartupArgsHandler.RunStartupArgs();
 
-            UpdateButton.ClickBase.Click += MainViewModel.Updater.UpdateButton_Click;
-            MainViewModel.Default.Init(MainFrame);
-
-            bool isFirstLaunch = Properties.LauncherSettings.Default.CurrentProfile == "" ||
-                Properties.LauncherSettings.Default.IsFirstLaunch ||
-                MainViewModel.Default.Config.profiles.Count() == 0;
-
-            ButtonManager_Base(BedrockEditionButton.Name);
-            if (isFirstLaunch) MainViewModel.Default.SetOverlayFrame_Strict(new WelcomePage());
+                bool isFirstLaunch = Properties.LauncherSettings.Default.GetIsFirstLaunch(MainViewModel.Default.Config.profiles.Count());
+                if (isFirstLaunch) MainViewModel.Default.SetOverlayFrame(new WelcomePage(), true);
+            }
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -246,7 +237,7 @@ namespace BedrockLauncher
             {
                 if (Properties.LauncherSettings.Default.CloseLauncherOnSwitch && MainViewModel.Default.PackageManager.isGameRunning)
                 {
-                    Task.Run(() => MainViewModel.Default.ShowPrompt_ClosingWithGameStillOpened(action));
+                    Task.Run(() => MainViewModel.Default.ShowGameCloseDialog(action));
                 }
                 else action.Invoke();
             });

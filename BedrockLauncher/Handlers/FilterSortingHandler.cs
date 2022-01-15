@@ -3,17 +3,49 @@ using BedrockLauncher.Classes;
 using BedrockLauncher.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using PostSharp.Patterns.Model;
+using BedrockLauncher.ViewModels;
+using ExtensionsDotNET;
 
 namespace BedrockLauncher.Handlers
 {
-    public static class FilterSortingHandler
+    public class FilterSortingHandler
     {
-        public static string Installations_SearchFilter { get; set; } = string.Empty;
-        public static SortBy_Installation Installations_SortFilter { get; set; } = SortBy_Installation.LatestPlayed;
+        public static InstallationSort InstallationsSortMode { get; set; } = InstallationSort.LatestPlayed;
+        public static SortDescription GetInstallationSortDescriptor()
+        {
+            switch (InstallationsSortMode)
+            {
+                case InstallationSort.LatestPlayed:
+                    return new SortDescription("LastPlayedT", ListSortDirection.Descending);
+                case InstallationSort.Name:
+                    return new SortDescription("DisplayName", ListSortDirection.Ascending);
+                default:
+                    return new SortDescription("LastPlayedT", ListSortDirection.Descending);
+            }
+        }
+        public static string InstallationsSearchFilter { get; set; } = string.Empty;
+
+        public static void Refresh(object itemSource)
+        {
+            var view = CollectionViewSource.GetDefaultView(itemSource) as CollectionView;
+            if (view != null) view.Refresh();
+        }
+        public static void Sort_InstallationList(object itemSource)
+        {
+            var view = CollectionViewSource.GetDefaultView(itemSource) as CollectionView;
+            if (view != null)
+            {
+                view.SortDescriptions.Clear();
+                view.SortDescriptions.Add(GetInstallationSortDescriptor());
+                view.Refresh();
+            }
+        }
 
         public static bool Filter_InstallationList(object obj)
         {
@@ -21,14 +53,8 @@ namespace BedrockLauncher.Handlers
             if (v == null) return false;
             else if (!Properties.LauncherSettings.Default.ShowBetas && v.IsBeta) return false;
             else if (!Properties.LauncherSettings.Default.ShowReleases && !v.IsBeta) return false;
-            else if (!v.DisplayName.Contains(Installations_SearchFilter)) return false;
+            else if (!v.DisplayName.Contains(InstallationsSearchFilter)) return false;
             else return true;
-        }
-        public static void Sort_InstallationList(ref CollectionView view)
-        {
-            view.SortDescriptions.Clear();
-            if (Installations_SortFilter == SortBy_Installation.LatestPlayed) view.SortDescriptions.Add(new System.ComponentModel.SortDescription("LastPlayedT", System.ComponentModel.ListSortDirection.Descending));
-            if (Installations_SortFilter == SortBy_Installation.Name) view.SortDescriptions.Add(new System.ComponentModel.SortDescription("DisplayName", System.ComponentModel.ListSortDirection.Ascending));
         }
         public static bool Filter_VersionList(object obj)
         {
@@ -36,12 +62,35 @@ namespace BedrockLauncher.Handlers
 
             if (v != null && v.IsInstalled)
             {
-                if (!Properties.LauncherSettings.Default.ShowBetas && v.IsBeta) return false;
-                else if (!Properties.LauncherSettings.Default.ShowReleases && !v.IsBeta) return false;
-                else return true;
+                if (Properties.LauncherSettings.Default.ShowBetas && v.IsBeta) return true;
+                else if (Properties.LauncherSettings.Default.ShowReleases && !v.IsBeta) return true;
+                else return false;
             }
             else return false;
 
+        }
+
+        public static bool Filter_OfficalNewsFeed(object obj)
+        {
+            if (!(obj is NewsItem_Launcher)) return false;
+            else
+            {
+                var item = (obj as NewsItem_Launcher);
+                if (item.newsType != null && item.newsType.Contains("News page"))
+                {
+                    if (item.category == "Minecraft: Java Edition" && NewsViewModel.Default.Offical_ShowJavaContent) return ContainsText(item);
+                    else if (item.category == "Minecraft Dungeons" && NewsViewModel.Default.Offical_ShowDungeonsContent) return ContainsText(item);
+                    else return false;
+                }
+                else return false;
+            }
+
+            bool ContainsText(NewsItem_Launcher _item)
+            {
+                string searchParam = NewsViewModel.Default.Offical_SearchBoxText;
+                if (string.IsNullOrEmpty(searchParam) || _item.title.Contains(searchParam, StringComparison.OrdinalIgnoreCase)) return true;
+                else return false;
+            }
         }
     }
 }

@@ -24,6 +24,7 @@ namespace BedrockLauncher.Downloaders
     [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.ExcludeExplicitProperties)]    //196 Lines
     public class ChangelogDownloader
     {
+        private const string BedrockPatchNotes_JSON = @"https://launchercontent.mojang.com/bedrockPatchNotes.json";
 
         private const string HTMLStyle = "<style>body { color: white; } a { color: green; } img { height: auto; max-width: 100%; }</style>";
         private const string HTMLHeader = "<head>{0}{1}</head>";
@@ -41,7 +42,7 @@ namespace BedrockLauncher.Downloaders
             public string trimnum;
         }
 
-        public static bool GetBedrockOfTheWeekStatus()
+        public static async Task<bool> GetBedrockOfTheWeekStatus()
         {
             HtmlWeb web = new HtmlWeb();
             DateTime lastBeta = DateTime.MinValue;
@@ -57,7 +58,7 @@ namespace BedrockLauncher.Downloaders
             IEnumerable<HtmlNode> vers = new List<HtmlNode>();
 
             string furl = base_url + branch._suburl + string.Format("?page={0}", 1);
-            try { tree = web.Load(furl); }
+            try { tree = await web.LoadFromWebAsync(furl); }
             catch { return false; }
 
             vers = NodeSearch(tree.DocumentNode, (x => x.HasClass("article-list-link")));
@@ -165,7 +166,7 @@ namespace BedrockLauncher.Downloaders
                 PatchNotes.Sort((a, b) => { return b.Version.CompareTo(a.Version); });
             });
         }
-        public void DownloadFeedbackPatchNotes()
+        public async Task DownloadFeedbackPatchNotes()
         {
             ClearPatchList();
 
@@ -201,7 +202,7 @@ namespace BedrockLauncher.Downloaders
                 while (!isFinished)
                 {
                     furl = base_url + branch._suburl + string.Format("?page={0}#articles", currentPage);
-                    try { tree = web.Load(furl); }
+                    try { tree = await web.LoadFromWebAsync(furl); }
                     catch { isFinished = true; continue; }
 
                     vers = NodeSearch(tree.DocumentNode, (x => x.HasClass("article-list-link")));
@@ -220,7 +221,7 @@ namespace BedrockLauncher.Downloaders
                             string item_url = base_url + link.GetAttributeValue("href", string.Empty);
                             try
                             {
-                                var current_result = web.Load(item_url);
+                                var current_result = await web.LoadFromWebAsync(item_url);
                                 //var stylesheets = GetStylesheets(current_result);
                                 var content = OptimizeFeedbackPage(current_result, base_url);
                                 bool isBeta = branch._branch == "beta";

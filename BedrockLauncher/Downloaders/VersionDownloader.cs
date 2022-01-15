@@ -34,7 +34,14 @@ namespace BedrockLauncher.Downloaders
 
         public void EnableUserAuthorization()
         {
-            _store_manager.setMSAUserToken(Win10AuthenticationManager.GetWUToken(Properties.LauncherSettings.Default.CurrentInsiderAccount));
+            try
+            {
+                _store_manager.setMSAUserToken(Win10AuthenticationManager.GetWUToken(Properties.LauncherSettings.Default.CurrentInsiderAccountIndex));
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error while Authenticating UserToken for Version Fetching:\n" + ex);
+            }
         }
         public void PraseDB(ObservableCollection<BLVersion> list, Win10VersionDBManager.Win10VersionJsonDb db)
         {
@@ -93,30 +100,18 @@ namespace BedrockLauncher.Downloaders
             await DownloadFile(link, destination, progress, cancellationToken);
         }
 
-
-        private int SetMSAUserToken()
+        public async Task UpdateVersions(ObservableCollection<BLVersion> versions, VersionUpdateOptions options = null)
         {
-            try
-            {
-                _store_manager.setMSAUserToken(Win10AuthenticationManager.GetWUToken(Properties.LauncherSettings.Default.CurrentInsiderAccount));
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine("Error while Authenticating UserToken for Version Fetching:\n" + ex);
-            }
-            return 1;
-        }
+            if (options == null) options = VersionUpdateOptions.Default;
 
-        public async Task UpdateVersions(ObservableCollection<BLVersion> versions)
-        {
-            await ThreadingExtensions.StartSTATask<int>(() => SetMSAUserToken());
+            await ThreadingExtensions.StartSTATask(EnableUserAuthorization);
             versions.Clear();
 
             LoadFromLocalCache(versions);
-            await LoadFromURL(versions);
+            if (!options.CacheOnly) await LoadFromURL(versions);
             LoadFromUserCache(versions);
-            await LoadFromAPI(versions);
-            await LoadFromAPI_Technical();
+            if (!options.CacheOnly) await LoadFromAPI(versions);
+            if (!options.CacheOnly) await LoadFromAPI_Technical();
             LoadDefaults(versions);
         }
 
@@ -259,5 +254,12 @@ namespace BedrockLauncher.Downloaders
         }
 
         public delegate void DownloadProgress(long current, long? total);
+
+        public class VersionUpdateOptions
+        {
+            public static readonly VersionUpdateOptions Default = new VersionUpdateOptions();
+
+            public bool CacheOnly { get; set; } = false;
+        }
     }
 }

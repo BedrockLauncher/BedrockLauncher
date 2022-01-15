@@ -48,6 +48,11 @@ namespace BedrockLauncher.Pages.Preview
             this.DataContext = ViewModel;
             InitializeComponent();
             if (i != null) UpdateEditingFields(i);
+            else UpdateAddingFields();
+        }
+        private void UpdateAddingFields()
+        {
+            InstallationIconSelect.Init();
         }
 
         private void UpdateEditingFields(BLInstallation i)
@@ -59,7 +64,7 @@ namespace BedrockLauncher.Pages.Preview
             ViewModel.InstallationDirectory = i.DirectoryName;
             ViewModel.SelectedUUID = i.InstallationUUID;
 
-            InstallationIconSelect.Init(i.IconPath_Full, i.IsCustomIcon);
+            InstallationIconSelect.Init(i);
 
             Header.SetResourceReference(TextBlock.TextProperty, "EditInstallationScreen_AltTitle");
             CreateButton.SetResourceReference(Button.ContentProperty, "EditInstallationScreen_AltCreateButton");

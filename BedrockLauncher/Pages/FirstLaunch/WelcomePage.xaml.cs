@@ -127,10 +127,10 @@ namespace BedrockLauncher.Pages.FirstLaunch
             void Page6(bool _backup)
             {
                 if (_backup) Handlers.BackupHandler.BackupOriginalSaveData();
-                ViewModels.MainViewModel.Default.SetOverlayFrame_Strict(null);
+                Task.Run(Program.OnApplicationRefresh);
+                ViewModels.MainViewModel.Default.SetOverlayFrame(null, true);
                 Properties.LauncherSettings.Default.IsFirstLaunch = false;
                 Properties.LauncherSettings.Default.Save();
-                MainViewModel.Default.LoadConfig();
             }
         }
     }

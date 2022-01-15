@@ -35,49 +35,43 @@ namespace BedrockLauncher.Controls.Skins
         private const string NoSkin = "img/NoSkin.png";
 
         #endregion
-
-        #region Accesors
+        #region Properties
 
         public static readonly DependencyProperty PathProperty =
-            DependencyProperty.RegisterAttached(nameof(Path), typeof(string), typeof(SkinPreview), new FrameworkPropertyMetadata(Preview));
+            DependencyProperty.Register(nameof(Path), typeof(string), typeof(SkinPreview), new FrameworkPropertyMetadata(Preview, new PropertyChangedCallback(OnSkinParamsChanged)));
 
         public static readonly DependencyProperty TypeProperty =
-            DependencyProperty.RegisterAttached(nameof(Type), typeof(MCSkinGeometry), typeof(SkinPreview), new FrameworkPropertyMetadata(MCSkinGeometry.Normal));
+            DependencyProperty.Register(nameof(Type), typeof(MCSkinGeometry), typeof(SkinPreview), new FrameworkPropertyMetadata(MCSkinGeometry.Normal, new PropertyChangedCallback(OnSkinParamsChanged)));
 
 
         public string Path
         {
-            get
-            {
-                return _Path;
-            }
-            set
-            {
-                SetValue(PathProperty, value);
-                _Path = value;
-                RefreshView();
-            }
+            get { return (string)GetValue(PathProperty); }
+            set { SetValue(PathProperty, value); }
         }
         public MCSkinGeometry Type
         {
-            get
-            {
-                return _Type;
-            }
-            set
-            {
-                SetValue(TypeProperty, value);
-                _Type = value;
-                RefreshView();
-            }
+            get { return (MCSkinGeometry)GetValue(TypeProperty); }
+            set { SetValue(TypeProperty, value); }
         }
+
+        private static void OnSkinParamsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            SkinPreview view = d as SkinPreview;
+            view.OnSkinParamsChanged(e);
+        }
+        private void OnSkinParamsChanged(DependencyPropertyChangedEventArgs e) => RefreshView();
+
+        #endregion
+
+        #region Accesors
 
         private string ModelType
         {
             get
             {
                 string type;
-                switch (_Type)
+                switch (Type)
                 {
                     case MCSkinGeometry.Normal:
                         type = "default";
@@ -92,11 +86,6 @@ namespace BedrockLauncher.Controls.Skins
                 return type;
             }
         }
-
-        private MCSkinGeometry _Type = MCSkinGeometry.Normal;
-
-        private string _Path = Preview;
-
         private bool isRenderable
         {
             get
@@ -133,6 +122,7 @@ namespace BedrockLauncher.Controls.Skins
         {
             Renderer.FrameLoadEnd += OnBrowserFrameLoadEnd;
         }
+
         public void UpdateSkin()
         {
             Path = NoSkin;
@@ -146,30 +136,32 @@ namespace BedrockLauncher.Controls.Skins
 
         private async void RefreshView(bool localFile = true)
         {
-            try
-            {
-                if (!Renderer.CanExecuteJavascriptInMainFrame)
+            await this.Dispatcher.Invoke(async () => {
+                try
                 {
-                    return;
-                }
-                else if (!localFile || Path == NoSkin)
-                {
-                    var result = await Renderer.EvaluateScriptAsync("setSkin", new object[] { Path, ModelType });
-                }
-                else
-                {
-                    var uri = new System.Uri(Path);
-                    var converted = uri.AbsoluteUri;
-                    var fix = converted.Replace("'", "%27").Replace("file://", "localfiles://");
-                    var result = await Renderer.EvaluateScriptAsync("setSkin", new object[] { fix, ModelType });
-                }
+                    if (!Renderer.CanExecuteJavascriptInMainFrame)
+                    {
+                        return;
+                    }
+                    else if (!localFile || Path == NoSkin)
+                    {
+                        var result = await Renderer.EvaluateScriptAsync("setSkin", new object[] { Path, ModelType });
+                    }
+                    else
+                    {
+                        var uri = new System.Uri(Path);
+                        var converted = uri.AbsoluteUri;
+                        var fix = converted.Replace("'", "%27").Replace("file://", "localfiles://");
+                        var result = await Renderer.EvaluateScriptAsync("setSkin", new object[] { fix, ModelType });
+                    }
 
 
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex);
-            }
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex);
+                }
+            });
         }
 
         private void OnBrowserFrameLoadEnd(object sender, FrameLoadEndEventArgs args)
@@ -186,7 +178,10 @@ namespace BedrockLauncher.Controls.Skins
 
         private void Renderer_LoadingStateChanged(object sender, LoadingStateChangedEventArgs e)
         {
-            if (e.IsLoading == false && isRenderable && Renderer.CanExecuteJavascriptInMainFrame) RefreshView();
+            this.Dispatcher.Invoke(() =>
+            {
+                if (e.IsLoading == false && isRenderable && Renderer.CanExecuteJavascriptInMainFrame) RefreshView();
+            });
         }
     }
 }

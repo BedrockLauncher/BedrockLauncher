@@ -1,4 +1,5 @@
 ﻿using BedrockLauncher.Methods;
+using BedrockLauncher.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,7 +89,7 @@ namespace BedrockLauncher.Controls.Misc
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            HideAdvancementButton();
+            MainViewModel.Updater.UpdateButton_Click(sender, e);
         }
     }
 }

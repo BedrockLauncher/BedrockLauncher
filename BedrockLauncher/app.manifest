@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <assembly manifestVersion="1.0" xmlns="urn:schemas-microsoft-com:asm.v1">
   <assemblyIdentity version="1.0.0.0" name="MyApplication.app" />
-  <trustInfo xmlns="urn:schemas-microsoft-com:asm.v2">
+  <!--<trustInfo xmlns="urn:schemas-microsoft-com:asm.v2">
     <security>
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
         <requestedExecutionLevel level="requireAdministrator" uiAccess="false" />
@@ -11,7 +11,7 @@
         <PermissionSet class="System.Security.PermissionSet" version="1" ID="Custom" SameSite="site" Unrestricted="true" />
       </applicationRequestMinimum>
     </security>
-  </trustInfo>
+  </trustInfo>-->
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
     <application>
       <!-- Windows 10 -->

@@ -20,7 +20,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Style="{DynamicResource EmptyButton}" x:Name="ClickBase">
+            <Button Style="{DynamicResource EmptyButton}" x:Name="ClickBase" Click="Button_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/BedrockLauncher;component/Resources/images/icons/ico/package.ico" Margin="3" HorizontalAlignment="Left" Height="42" Width="42"/>
                     <TextBlock LineHeight="20" RenderOptions.BitmapScalingMode="NearestNeighbor" FontSize="16" TextOptions.TextRenderingMode="Aliased" TextOptions.TextFormattingMode="Ideal" Margin="2,6,0,0" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Rus">

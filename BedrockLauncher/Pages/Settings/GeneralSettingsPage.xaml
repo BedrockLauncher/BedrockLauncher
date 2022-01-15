@@ -8,7 +8,7 @@
       xmlns:methods="clr-namespace:BedrockLauncher.Methods"
       xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
       xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
-      xmlns:com="clr-namespace:BedrockLauncher.Components"
+      xmlns:com="clr-namespace:BedrockLauncher.Converters"
       xmlns:con="clr-namespace:BedrockLauncher.Controls"
       x:Class="BedrockLauncher.Pages.Settings.GeneralSettingsPage"
       mc:Ignorable="d" 

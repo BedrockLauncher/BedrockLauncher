@@ -8,6 +8,7 @@
         xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
         xmlns:toolbar="clr-namespace:BedrockLauncher.Controls.Toolbar"
         xmlns:com="clr-namespace:BedrockLauncher.Components"
+        xmlns:conv="clr-namespace:BedrockLauncher.Converters"
         xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
         x:Class="BedrockLauncher.MainWindow"
         d:DataContext="{d:DesignInstance Type=viewModels:MainViewModel}"
@@ -23,10 +24,10 @@
         Closing="Window_Closing">
     <Window.Resources>
         <wincontrols:BooleanToVisibilityConverter x:Key="BoolToVis"></wincontrols:BooleanToVisibilityConverter>
-        <com:InvertableBooleanToVisibilityConverter x:Key="ReverseBoolToVis"></com:InvertableBooleanToVisibilityConverter>
+        <conv:InvertableBooleanToVisibilityConverter x:Key="ReverseBoolToVis"></conv:InvertableBooleanToVisibilityConverter>
     </Window.Resources>
     <Grid Margin="0,0,0,0" Background="{DynamicResource Background.Primary}">
-        <Grid x:Name="MainFrame">
+        <Grid x:Name="MainFrame" KeyboardNavigation.TabNavigation="{Binding MainFrame_TabNavigationMode, Mode=OneWay}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="180"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>

@@ -26,41 +26,72 @@ using ExtensionsDotNET;
 using BedrockLauncher.Classes;
 using BedrockLauncher.ViewModels;
 using System.Collections.ObjectModel;
+using PostSharp.Patterns.Model;
 
 namespace BedrockLauncher.Pages.Play
 {
     /// <summary>
     /// Interaction logic for SkinsPage.xaml
     /// </summary>
+    /// 
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.ExcludeExplicitProperties)]
+    public class SkinsPageViewModel
+    {
+        public MCSkinPack CurrentSkinPack { get; set; }
+        public MCSkin CurrentSkin { get; set; }
+        public string CurrentSkinName
+        {
+            get
+            {
+                Depends.On(CurrentSkinPack);
+                Depends.On(CurrentSkin);
+                return CurrentSkinPack != null && CurrentSkin != null ? CurrentSkinPack.GetLocalizedSkinName(CurrentSkin.localization_name) : "NULL";
+            }
+        }
+        public string CurrentSkinPath
+        {
+            get
+            {
+                Depends.On(CurrentSkinPack);
+                Depends.On(CurrentSkin);
+                return CurrentSkin != null ? CurrentSkin.texture_path : string.Empty;
+            }
+        }
+        public MCSkinGeometry CurrentSkinType
+        {
+            get
+            {
+                Depends.On(CurrentSkinPack);
+                Depends.On(CurrentSkin);
+                return CurrentSkin != null ? CurrentSkin.skin_type : MCSkinGeometry.Normal;
+            }
+        }
+
+        public ObservableCollection<MCSkinPack> SkinPacks { get; set; } = new ObservableCollection<MCSkinPack>();
+        public ObservableCollection<MCSkin> Skins
+        {
+            get
+            {
+                Depends.On(CurrentSkinPack);
+                if (CurrentSkinPack != null) return CurrentSkinPack.Content.skins;
+                else return new ObservableCollection<MCSkin>(); 
+            }
+        }
+    }
+
+
     public partial class SkinsPage : Page
     {
         private bool HasLoadedOnce = false;
-        public ObservableCollection<MCSkinPack> SkinPacks { get; set; } = new ObservableCollection<MCSkinPack>();
-        public ObservableCollection<MCSkin> Skins { get; set; } = new ObservableCollection<MCSkin>();
 
+        public SkinsPageViewModel ViewModel { get; set; } = new SkinsPageViewModel();
 
         #region Init
 
         public SkinsPage()
         {
+            this.DataContext = ViewModel;
             InitializeComponent();
-        }
-
-        private void OverlayFrame_Navigating(object sender, NavigatingCancelEventArgs e)
-        {
-            SkinPreviewPanel.Visibility = Visibility.Collapsed;
-        }
-
-        private void OverlayFrame_Navigated(object sender, NavigationEventArgs e)
-        {
-            if (MainViewModel.Default.ErrorFrame.Content == null && MainViewModel.Default.OverlayFrame.Content == null) SkinPreviewPanel.Visibility = Visibility.Visible;
-            else SkinPreviewPanel.Visibility = Visibility.Collapsed;
-        }
-
-        public void InitFrameEvents(Frame frame)
-        {
-            frame.Navigating += OverlayFrame_Navigating;
-            frame.Navigated += OverlayFrame_Navigated;
         }
 
         private void Page_Initialized(object sender, EventArgs e)
@@ -72,12 +103,7 @@ namespace BedrockLauncher.Pages.Play
         {
             this.Dispatcher.Invoke(() =>
             {
-                if (!HasLoadedOnce)
-                {
-                    LoadedSkinPacks.ItemsSource = SkinPacks;
-                    SkinPreviewList.ItemsSource = Skins;
-                    HasLoadedOnce = true;
-                }
+                if (!HasLoadedOnce) HasLoadedOnce = true;
                 ReloadSkinPacks();
             });
         }
@@ -90,7 +116,7 @@ namespace BedrockLauncher.Pages.Play
         {
             this.Dispatcher.Invoke(() =>
             {
-                SkinPacks.Clear();
+                ViewModel.SkinPacks.Clear();
 
                 var installation = MainViewModel.Default.Config.CurrentInstallation;
 
@@ -103,8 +129,6 @@ namespace BedrockLauncher.Pages.Play
                 if (Directory.Exists(normal_folder)) AddPacks(normal_folder);
                 if (Directory.Exists(dev_folder)) AddPacks(dev_folder);
 
-                UpdateAddSkinButton();
-
                 void AddPacks(string _SourceFolder)
                 {
                     var SourceFolder = new DirectoryInfo(_SourceFolder);
@@ -116,7 +140,7 @@ namespace BedrockLauncher.Pages.Play
                             var result = MCSkinPack.ValidatePack(PossiblePack.FullName);
                             if (result != null)
                             {
-                                SkinPacks.Add(result);
+                                ViewModel.SkinPacks.Add(result);
                             }
                         }
 
@@ -125,63 +149,17 @@ namespace BedrockLauncher.Pages.Play
                 }
             });
         }
-        private void ReloadSkins()
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                if (!this.IsInitialized) return;
-                Skins.Clear();
-                var selected_item = LoadedSkinPacks.SelectedItem as MCSkinPack;
-                if (selected_item != null)
-                {
-                    foreach (var skin in selected_item.Content.skins)
-                    {
-                        Skins.Add(skin);
-                    }
-                }
-            });
-        }
-        private void UpdateAddSkinButton()
-        {
-            var selected_item = LoadedSkinPacks.SelectedItem as MCSkinPack;
-            AddSkinButton.IsEnabled = selected_item != null;
-        }
-        private void UpdateCurrentSkin()
-        {
-            var selected_skin = SkinPreviewList.SelectedItem as MCSkin;
-            var selected_item = LoadedSkinPacks.SelectedItem as MCSkinPack;
-
-            if (selected_skin != null && selected_item != null)
-            {
-                CurrentSkinNameTextBlock.Text = selected_item.GetLocalizedSkinName(selected_skin.localization_name);
-                SkinPreviewPanel.UpdateSkin(selected_skin);
-            }
-            else
-            {
-                CurrentSkinNameTextBlock.Text = "NULL";
-                SkinPreviewPanel.UpdateSkin();
-            }
-        }
         #endregion
 
         #region Selections
 
         private void LoadedSkinPacks_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.Dispatcher.Invoke(() =>
-            {
-                ReloadSkins();
-                UpdateCurrentSkin();
-                UpdateAddSkinButton();
-            });
+
         }
         private void SkinPreviewList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.Dispatcher.Invoke(() =>
-            {
-                UpdateCurrentSkin();
-                UpdateAddSkinButton();
-            });
+
         }
         private void InstallationsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -249,10 +227,7 @@ namespace BedrockLauncher.Pages.Play
             DataTemplate dt = lbi.ContentTemplate;
             SkinItem item = (dt.FindName("ItemControl", cp)) as SkinItem;
 
-            if (item != null && SkinPreviewList.IsKeyboardFocusWithin)
-            {
-                item.OpenContextMenu();
-            }
+            if (item != null && SkinPreviewList.IsKeyboardFocusWithin) item.OpenContextMenu();
         }
         private void LoadedSkinPacks_PreviewKeyUp(object sender, KeyEventArgs e)
         {

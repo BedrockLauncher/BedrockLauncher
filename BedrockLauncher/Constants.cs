@@ -15,5 +15,14 @@ namespace BedrockLauncher
 
         public static readonly string LATEST_BETA_UUID = "latest_beta";
         public static readonly string LATEST_RELEASE_UUID = "latest_release";
+
+        public static class DebugOptions
+        {
+            public static bool UpdateVersionsOnLoad { get; internal set; } = false;
+            public static bool CheckForUpdatesOnLoad { get; internal set; } = false;
+        }
     }
+
+
+
 }

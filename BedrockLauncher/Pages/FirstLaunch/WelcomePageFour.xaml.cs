@@ -1,4 +1,5 @@
 ﻿using BedrockLauncher.Methods;
+using BedrockLauncher.UpdateProcessor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,12 +37,11 @@ namespace BedrockLauncher.Pages.FirstLaunch
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
             pageSwitcher.MoveToPage(5);
-            ViewModels.MainViewModel.Default.LoadVersions();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            AccountPicker.RefreshProfileContextMenuItems();
+
         }
     }
 }

@@ -20,6 +20,7 @@ using System.IO;
 using BedrockLauncher.Controls.Items;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
 using BedrockLauncher.ViewModels;
+using BedrockLauncher.Classes;
 
 namespace BedrockLauncher.Controls
 {
@@ -89,18 +90,38 @@ namespace BedrockLauncher.Controls
         public BlockPicker()
         {
             InitializeComponent();
-            GetBlockList();
-
-            SetIconData(BlockList.Where(x => x.Contains("furnace.png")).FirstOrDefault());
-
-            GenerateListItems();
-            UpdateDropdownArrow();
         }
-        public void Init(string value, bool isCustom)
+        public void Init(BLInstallation i = null)
         {
-            IsIconCustom = isCustom;
-            SetIconData(value);
+            Task.Run(() => InitAsync(i));
         }
+
+
+        public async Task InitAsync(BLInstallation i = null)
+        {
+            await Task.Run(() =>
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    GetBlockList();
+
+                    SetIconData(BlockList.Where(x => x.Contains("furnace.png")).FirstOrDefault());
+
+                    GenerateListItems();
+                    UpdateDropdownArrow();
+
+                    if (i != null)
+                    {
+                        IsIconCustom = i.IsCustomIcon;
+                        SetIconData(i.IconPath_Full);
+                    }
+
+                    DropdownButton.IsEnabled = true;
+                });
+            });
+        }
+
+
 
         public void GetBlockList()
         {

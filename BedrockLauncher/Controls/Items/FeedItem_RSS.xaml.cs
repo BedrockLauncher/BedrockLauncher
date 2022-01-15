@@ -27,15 +27,10 @@ namespace BedrockLauncher.Controls.Items
             InitializeComponent();
         }
 
-        public static void LoadArticle(NewsItem item)
-        {
-            Process.Start(new ProcessStartInfo(item.Link));
-        }
-
         private void FeedItemEntry_Click(object sender, RoutedEventArgs e)
         {
             NewsItem item = this.DataContext as NewsItem;
-            LoadArticle(item);
+            item.OpenLink();
         }
     }
 }
