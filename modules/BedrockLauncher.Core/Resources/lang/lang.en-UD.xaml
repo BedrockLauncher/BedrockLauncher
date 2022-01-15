@@ -2,65 +2,65 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ignore="http://www.galasoft.ch/ignore" xmlns:v="clr-namespace:System;assembly=mscorlib">
     <!--#region Main Section-->
 
-    <v:String x:Key="LanguageString">uʍoᗡ ǝpᴉsd∩ - ɥsᴉꞁᵷuƎ</v:String>
+    <v:String x:Key="LanguageString">English - United States</v:String>
 
     <!--#region MainWindow -->
 
-    <v:String x:Key="MainWindow_Title">ɹǝɥɔunɐꞀ ʞɔoɹpǝᗺ ʇɟɐɹɔǝuᴉW</v:String>
-    <v:String x:Key="MainWindow_Disclaimer">⅁NⱯՐOW ⅄ᗺ ᗡƎɅOᴚԀԀⱯ ᴚO ᗡƎ⟘ⱯIƆOSSⱯ ⟘ON</v:String>
+    <v:String x:Key="MainWindow_Title">Minecraft Bedrock Launcher</v:String>
+    <v:String x:Key="MainWindow_Disclaimer">NOT ASSOCIATED OR APPROVED BY MOJANG</v:String>
 
     <!--#endregion-->
     
     <!-- #region CommunityPage -->
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
-    <v:String x:Key="CommunityPage_ComingSoon">¡uooS ᵷuᴉɯoƆ</v:String>
-    <v:String x:Key="CommunityPage_CheckBackLater">¡ƎWOSƎMⱯ ᴚƎԀ∩ᗡ ᴚƎԀ∩S ᵷuᴉɥʇǝɯos ɹoɟ ɹǝʇɐꞁ ǝɹǝɥ ʞɔɐq ʞɔǝɥƆ</v:String>
+    <v:String x:Key="CommunityPage_ComingSoon">Coming Soon!</v:String>
+    <v:String x:Key="CommunityPage_CheckBackLater">Check back here later for something SUPER DUPER AWESOME!</v:String>
 
     <!-- #endregion -->
 
     <!--#region ToolbarButtons -->
 
-    <v:String x:Key="ToolbarButtons_NewsButton_Text">sʍǝN</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">uoᴉʇᴉpƎ ʞɔoɹpǝᗺ</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">uoᴉʇᴉpƎ ɐʌɐՐ</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">ɹǝɥɔunɐꞀ ɐʌɐՐ</v:String>
-    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">ɹǝɥɔunɐꞀ ɯoʇsnƆ</v:String>
-    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">oʇ ɥɔʇᴉʍS</v:String>
-    <v:String x:Key="ToolbarButtons_Minecraft_Text">:⟘ℲⱯᴚƆƎNIW</v:String>
-    <v:String x:Key="ToolbarButtons_CommunityButton_Text">ʎʇᴉunɯɯoƆ</v:String>
-    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">ǝꞁᴉɟoɹԀ</v:String>
-    <v:String x:Key="ToolbarButtons_SettingsButton_Text">sᵷuᴉʇʇǝS</v:String>
+    <v:String x:Key="ToolbarButtons_NewsButton_Text">News</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java Launcher</v:String>
+    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Custom Launcher</v:String>
+    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Switch to</v:String>
+    <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
+    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Community</v:String>
+    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Profile</v:String>
+    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Settings</v:String>
 
     <!--#endregion-->
 
     <!--#region UpdateButton-->
 
-    <v:String x:Key="UpdateButton_NewUpdate_Text">¡ǝʇɐpd∩ ʍǝN</v:String>
-    <v:String x:Key="UpdateButton_Download_Text">¡pɐoꞁuʍop oʇ ʞɔᴉꞁƆ</v:String>
+    <v:String x:Key="UpdateButton_NewUpdate_Text">New Update!</v:String>
+    <v:String x:Key="UpdateButton_Download_Text">Click to download!</v:String>
 
     <!--#endregion-->
 
     <!--#region ProgressBar -->
 
-    <v:String x:Key="ProgressBar_Downloading">ᵷuᴉpɐoꞁuʍoᗡ</v:String>
-    <v:String x:Key="ProgressBar_Installing">ᵷuᴉꞁꞁɐʇsuI</v:String>
-    <v:String x:Key="ProgressBar_Launching">ᵷuᴉɥɔunɐꞀ</v:String>
-    <v:String x:Key="ProgressBar_Extracting">ᵷuᴉʇɔɐɹʇxƎ</v:String>
-    <v:String x:Key="ProgressBar_Uninstalling">ᵷuᴉꞁꞁɐʇsuᴉu∩</v:String>
-    <v:String x:Key="ProgressBar_RegisteringPackage">ǝᵷɐʞɔɐԀ ᵷuᴉɹǝʇsᴉᵷǝᴚ</v:String>
-    <v:String x:Key="ProgressBar_RemovingPackage">ǝᵷɐʞɔɐԀ ᵷuᴉɹǝʇsᴉᵷǝɹu∩</v:String>
-    <v:String x:Key="ProgressBar_BackingUp">ɐʇɐᗡ ǝʌɐS dn ᵷuᴉʞɔɐᗺ</v:String>
+    <v:String x:Key="ProgressBar_Downloading">Downloading</v:String>
+    <v:String x:Key="ProgressBar_Installing">Installing</v:String>
+    <v:String x:Key="ProgressBar_Launching">Launching</v:String>
+    <v:String x:Key="ProgressBar_Extracting">Extracting</v:String>
+    <v:String x:Key="ProgressBar_Uninstalling">Uninstalling</v:String>
+    <v:String x:Key="ProgressBar_RegisteringPackage">Registering Package</v:String>
+    <v:String x:Key="ProgressBar_RemovingPackage">Unregistering Package</v:String>
+    <v:String x:Key="ProgressBar_BackingUp">Backing up Save Data</v:String>
 
     <!--#endregion-->
 
     <!--#region ProfileButton -->
 
-    <v:String x:Key="ProfileButton_ManageProfiles_Text">sǝꞁᴉɟoɹԀ ǝᵷɐuɐW</v:String>
-    <v:String x:Key="ProfileButton_ProfileSettings_Text">sᵷuᴉʇʇǝS ǝꞁᴉɟoɹԀ</v:String>
-    <v:String x:Key="ProfileButton_AddProfile_Text">ǝꞁᴉɟoɹԀ ppⱯ</v:String>
-    <v:String x:Key="ProfileButton_RemoveProfile_Text">ǝꞁᴉɟoɹԀ ǝʌoɯǝᴚ</v:String>
-    <v:String x:Key="ProfileButton_ChooseAccount_Text">ƎꞀIℲOᴚԀ ƎSOOHƆ</v:String>
+    <v:String x:Key="ProfileButton_ManageProfiles_Text">Manage Profiles</v:String>
+    <v:String x:Key="ProfileButton_ProfileSettings_Text">Profile Settings</v:String>
+    <v:String x:Key="ProfileButton_AddProfile_Text">Add Profile</v:String>
+    <v:String x:Key="ProfileButton_RemoveProfile_Text">Remove Profile</v:String>
+    <v:String x:Key="ProfileButton_ChooseAccount_Text">CHOOSE PROFILE</v:String>
 
     <!--#endregion-->
 
@@ -70,102 +70,102 @@
 
     <!--#region GameTab -->
 
-    <v:String x:Key="GameTab_Title">NOI⟘IᗡƎ ꞰƆOᴚᗡƎᗺ :⟘ℲⱯᴚƆƎNIW</v:String>
-    <v:String x:Key="GameTab_PlayButton_Text">ʎɐꞁԀ</v:String>
-    <v:String x:Key="GameTab_PlayButton_Kill_Text">ꞁꞁᴉꞰ</v:String>
-    <v:String x:Key="GameTab_InstallationsButton_Text">suoᴉʇɐꞁꞁɐʇsuI</v:String>
-    <v:String x:Key="GameTab_SkinsButton_Text">suᴉʞS</v:String>
-    <v:String x:Key="GameTab_PatchNotesButton_Text">sǝʇou ɥɔʇɐԀ</v:String>
+    <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
+    <v:String x:Key="GameTab_PlayButton_Text">Play</v:String>
+    <v:String x:Key="GameTab_PlayButton_Kill_Text">Kill</v:String>
+    <v:String x:Key="GameTab_InstallationsButton_Text">Installations</v:String>
+    <v:String x:Key="GameTab_SkinsButton_Text">Skins</v:String>
+    <v:String x:Key="GameTab_PatchNotesButton_Text">Patch notes</v:String>
 
     <!--#endregion-->
 
     <!--#region InstallationsPage -->
 
-    <v:String x:Key="InstallationsPage_AddButton">uoᴉʇɐꞁꞁɐʇsuᴉ ʍǝN</v:String>
-    <v:String x:Key="InstallationsPage_PlayButton">ʎɐꞁԀ</v:String>
+    <v:String x:Key="InstallationsPage_AddButton">New installation</v:String>
+    <v:String x:Key="InstallationsPage_PlayButton">Play</v:String>
 
-    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">pǝʎɐꞁԀ ʇsǝʇɐꞀ</v:String>
-    <v:String x:Key="InstallationsPage_SortBy_Name">ǝɯɐN</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">Latest Played</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name">Name</v:String>
 
-    <v:String x:Key="InstallationsPage_SearchBar_Content">ǝɯɐu uoᴉʇɐllɐʇsuI</v:String>
+    <v:String x:Key="InstallationsPage_SearchBar_Content">Installation name</v:String>
 
     <!--#endregion-->
 
     <!--#region EditInstallationScreen -->
 
-    <v:String x:Key="EditInstallationScreen_Title">uoᴉʇɐllɐʇsuᴉ ʍǝu ǝʇɐǝɹƆ</v:String>
-    <v:String x:Key="EditInstallationScreen_AltTitle">uoᴉʇɐllɐʇsuᴉ ʇᴉpƎ</v:String>
+    <v:String x:Key="EditInstallationScreen_Title">Create new installation</v:String>
+    <v:String x:Key="EditInstallationScreen_AltTitle">Edit installation</v:String>
 
-    <v:String x:Key="EditInstallationScreen_CreateButton">ǝʇɐǝɹƆ</v:String>
-    <v:String x:Key="EditInstallationScreen_AltCreateButton">ǝʌɐS</v:String>
+    <v:String x:Key="EditInstallationScreen_CreateButton">Create</v:String>
+    <v:String x:Key="EditInstallationScreen_AltCreateButton">Save</v:String>
 
-    <v:String x:Key="EditInstallationScreen_LatestSnapshot">ɐʇǝq ʇsǝʇɐꞀ</v:String>
-    <v:String x:Key="EditInstallationScreen_LatestRelease">ǝsɐǝꞁǝɹ ʇsǝʇɐꞀ</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Latest beta</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestRelease">Latest release</v:String>
 
-    <v:String x:Key="EditInstallationScreen_NameSubtitle">ƎWⱯN</v:String>
-    <v:String x:Key="EditInstallationScreen_VersionSubtitle">NOISᴚƎɅ</v:String>
-    <v:String x:Key="EditInstallationScreen_DirectorySubtitle">⅄ᴚO⟘ƆƎᴚIᗡ</v:String>
+    <v:String x:Key="EditInstallationScreen_NameSubtitle">NAME</v:String>
+    <v:String x:Key="EditInstallationScreen_VersionSubtitle">VERSION</v:String>
+    <v:String x:Key="EditInstallationScreen_DirectorySubtitle">DIRECTORY</v:String>
 
-    <v:String x:Key="EditInstallationScreen_NameHintText">&lt;uoᴉʇɐꞁꞁɐʇsuᴉ pǝɯɐuun&gt;</v:String>
+    <v:String x:Key="EditInstallationScreen_NameHintText">&lt;unnamed installation&gt;</v:String>
     <v:String x:Key="EditInstallationScreen_DirectoryHintText">&lt;default path&gt;</v:String>
 
     <!--#endregion-->
 
     <!--#region PatchNotesPage -->
 
-    <v:String x:Key="PatchNotesPage_MorePatchNotes">sǝʇou ɥɔʇɐd ǝɹoW</v:String>
-    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">sǝʇou ɥɔʇɐd ɐʇǝq ǝɹoW</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotes">More patch notes</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">More beta patch notes</v:String>
 
     <!--#endregion-->
 
     <!--#region SkinsPage -->
 
-    <v:String x:Key="SkinsPage_AddButton">˙˙˙ʍǝN</v:String>
-    <v:String x:Key="SkinsPage_ImportButton">˙˙˙ʇɹodɯI</v:String>
+    <v:String x:Key="SkinsPage_AddButton">New...</v:String>
+    <v:String x:Key="SkinsPage_ImportButton">Import...</v:String>
 
     <!--#endregion-->
 
     <!--#region EditSkinScreen -->
 
-    <v:String x:Key="EditSkinScreen_Title">uᴉʞS ʇᴉpƎ</v:String>
-    <v:String x:Key="EditSkinScreen_AltTitle">uᴉʞS ppⱯ</v:String>
+    <v:String x:Key="EditSkinScreen_Title">Edit Skin</v:String>
+    <v:String x:Key="EditSkinScreen_AltTitle">Add Skin</v:String>
 
-    <v:String x:Key="EditSkinScreen_TextureSubtitle">Ǝᴚ∩⟘XƎ⟘</v:String>
-    <v:String x:Key="EditSkinScreen_GeometrySubtitle">⅄ᴚ⟘ƎWOƎ⅁</v:String>
-    <v:String x:Key="EditSkinScreen_TypeSubtitle">ƎԀ⅄⟘</v:String>
-    <v:String x:Key="EditSkinScreen_LocalizationSubtitle">ƎWⱯN NOI⟘ⱯZIꞀⱯƆOꞀ</v:String>
+    <v:String x:Key="EditSkinScreen_TextureSubtitle">TEXTURE</v:String>
+    <v:String x:Key="EditSkinScreen_GeometrySubtitle">GEOMETRY</v:String>
+    <v:String x:Key="EditSkinScreen_TypeSubtitle">TYPE</v:String>
+    <v:String x:Key="EditSkinScreen_LocalizationSubtitle">LOCALIZATION NAME</v:String>
 
     <!--#endregion-->
 
     <!--#region EditSkinPackScreen -->
 
-    <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">NOI⟘ԀIᴚƆSƎᗡ</v:String>
-    <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">⅄ᴚ⟘ƎWOƎ⅁</v:String>
+    <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">DESCRIPTION</v:String>
+    <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">GEOMETRY</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">ƎWⱯN NOI⟘ⱯZIꞀⱯƆOꞀ</v:String>
-    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">ƎWⱯN NOI⟘ⱯZIꞀⱯIᴚƎS</v:String>
-    <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">SNOI⟘INIℲƎᗡ Ǝ⅁Ɐ∩⅁NⱯꞀ</v:String>
+    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">LOCALIZATION NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">SERIALIZATION NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">LANGUAGE DEFINITIONS</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">ƎWⱯN ⅁NⱯꞀ</v:String>
+    <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">LANG NAME</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">SNOI⟘INIℲƎᗡ ᴚƎH⟘O</v:String>
-    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">⟘NƎ⟘NOƆ</v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">SƎꞀ∩ᗡOW</v:String>
+    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">OTHER DEFINITIONS</v:String>
+    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">CONTENT</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">MODULES</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">NOISᴚƎɅ ⟘ⱯWᴚOℲ</v:String>
+    <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">FORMAT VERSION</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">ƎWⱯN ꞰƆⱯԀ</v:String>
-    <v:String x:Key="EditSkinPackScreen_HeaderUUIDSubtitle">ᗡI∩∩</v:String>
-    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">NOISᴚƎɅ</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">PACK NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderUUIDSubtitle">UUID</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">VERSION</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">ƎԀ⅄⟘</v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">ᗡI∩∩</v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">NOISᴚƎɅ</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">TYPE</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">UUID</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">VERSION</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_Header">ʞɔɐԀ uᴉʞS ʇᴉpƎ</v:String>
-    <v:String x:Key="EditSkinPackScreen_AddHeader">ʞɔɐԀ uᴉʞS ppⱯ</v:String>
+    <v:String x:Key="EditSkinPackScreen_Header">Edit Skin Pack</v:String>
+    <v:String x:Key="EditSkinPackScreen_AddHeader">Add Skin Pack</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_Warning">¡¡¡ʇou ɹo sǝᵷuɐɥɔ ɹnoʎ ǝʌɐs noʎ ɟᴉ ssǝꞁpɹɐᵷǝɹ ǝꞁqᴉsɹǝʌǝɹɹᴉ ǝɹɐ uoɔᴉ ʞɔɐd ǝɥʇ ᵷuᴉᵷuɐɥɔ puɐ suoᴉʇᴉuᴉɟǝp ǝᵷɐnᵷuɐꞁ ᵷuᴉʎɟᴉpoɯ ʇɐɥʇ ǝʇou ǝsɐǝꞁԀ *</v:String>
+    <v:String x:Key="EditSkinPackScreen_Warning">* Please note that modifying language definitions and changing the pack icon are irreversible regardless if you save your changes or not!!!</v:String>
 
     <!--#endregion-->
 
@@ -175,26 +175,26 @@
 
     <!--#region LauncherNewsPage -->
 
-    <v:String x:Key="LauncherNewsPage_Title_Text">sǝᵷuɐɥƆ pꞁᴉnᗺ ʇsǝʇɐꞀ</v:String>
-    <v:String x:Key="LauncherNewsPage_Build_Text">pꞁᴉnᗺ</v:String>
-    <v:String x:Key="LauncherNewsPage_Changes_Text">:sǝᵷuɐɥƆ</v:String>
-    <v:String x:Key="LauncherNewsPage_CheckForUpdates">sǝʇɐpd∩ ɹoɟ ʞɔǝɥƆ</v:String>
-    <v:String x:Key="LauncherNewsPage_ForceUpdate">ǝʇɐpd∩ ǝɔɹoℲ</v:String>
-    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">ʇuǝɹɹnƆ</v:String>
+    <v:String x:Key="LauncherNewsPage_Title_Text">Latest Build Changes</v:String>
+    <v:String x:Key="LauncherNewsPage_Build_Text">Build</v:String>
+    <v:String x:Key="LauncherNewsPage_Changes_Text">Changes:</v:String>
+    <v:String x:Key="LauncherNewsPage_CheckForUpdates">Check for Updates</v:String>
+    <v:String x:Key="LauncherNewsPage_ForceUpdate">Force Update</v:String>
+    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Current</v:String>
 
     <!--#endregion-->
 
     <!--#region NewsScreenPage -->
 
-    <v:String x:Key="NewsScreen_LauncherTabTitle">ɹǝɥɔunɐꞀ</v:String>
-    <v:String x:Key="NewsScreen_OfficialTabTitle">ꞁɐᴉɔᴉɟɟO</v:String>
-    <v:String x:Key="NewsScreen_MinecraftForumsTitle">sɯnɹoℲ ʇɟɐɹɔǝuᴉW</v:String>
-    <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">suoǝᵷunᗡ / ɐʌɐՐ</v:String>
+    <v:String x:Key="NewsScreen_LauncherTabTitle">Launcher</v:String>
+    <v:String x:Key="NewsScreen_OfficialTabTitle">Official</v:String>
+    <v:String x:Key="NewsScreen_MinecraftForumsTitle">Minecraft Forums</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
 
-    <v:String x:Key="NewsScreen_SearchBar_Content">ǝꞁʇᴉʇ sʍǝN</v:String>
+    <v:String x:Key="NewsScreen_SearchBar_Content">News title</v:String>
 
-    <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">uoᴉʇᴉpƎ ɐʌɐՐ :ʇɟɐɹɔǝuᴉW</v:String>
-    <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">suoǝᵷunᗡ ʇɟɐɹɔǝuᴉW</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
 
     <!--#endregion-->
 
@@ -204,88 +204,88 @@
 
     <!--#region SettingsTab -->
 
-    <v:String x:Key="SettingsTab_Title">S⅁NI⟘⟘ƎS</v:String>
-    <v:String x:Key="SettingsTab_GeneralButton">ꞁɐɹǝuǝ⅁</v:String>
-    <v:String x:Key="SettingsTab_AccountsButton">sʇunoɔɔⱯ</v:String>
-    <v:String x:Key="SettingsTab_AboutButton">ʇnoqⱯ</v:String>
-    <v:String x:Key="SettingsTab_VersionsButton">suoᴉsɹǝɅ</v:String>
+    <v:String x:Key="SettingsTab_Title">SETTINGS</v:String>
+    <v:String x:Key="SettingsTab_GeneralButton">General</v:String>
+    <v:String x:Key="SettingsTab_AccountsButton">Accounts</v:String>
+    <v:String x:Key="SettingsTab_AboutButton">About</v:String>
+    <v:String x:Key="SettingsTab_VersionsButton">Versions</v:String>
 
     <!--#endregion-->
 
     <!--#region GeneralSettingsScreen -->
-    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">Ǝ⅁Ɐ∩⅁NⱯꞀ</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">ƎWƎH⟘ ᴚƎHƆN∩ⱯꞀ</v:String>
+    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">LANGUAGE</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">LAUNCHER THEME</v:String>
 
 
-    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">S⅁NI⟘⟘ƎS ᴚƎHƆN∩ⱯꞀ</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">S⅁NI⟘⟘ƎS ⟘∩Ɔ⟘ᴚOHS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">ɹǝɥɔunɐꞀ ǝɥʇ ɟo uoᴉsɹǝʌ ɐʇǝq ǝs∩</v:String>
-    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">ᵷuᴉuunɹ ǝɹɐ sǝɯɐᵷ ǝꞁᴉɥʍ uǝdo ɹǝɥɔunɐꞀ ǝɥʇ dǝǝꞰ</v:String>
-    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">sɹǝɥɔunɐꞁ ᵷuᴉɥɔʇᴉʍs uǝɥʍ ɹǝɥɔunɐꞀ ǝsoꞁƆ</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">ɹǝɥɔunɐꞀ ǝɥʇ uᴉ sǝᵷɐd uǝǝʍʇǝq suoᴉʇᴉsuɐɹʇ ǝʇɐɯᴉuⱯ</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">ɹǝɥɔunɐꞀ ǝɥʇ uᴉ sǝᵷɐd ʎɐꞁԀ ǝɥʇ uo uoʇʇnq ʎɐꞁd ǝʇɐɯᴉuⱯ</v:String>
-    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">(ԀIM) ʇɹoddnS suoǝᵷunᗡ ʇɟɐɹɔǝuᴉW ǝꞁqɐuƎ</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">sǝᵷɐʞɔɐd ᵷuᴉꞁꞁɐʇsuᴉ uǝɥʍ uoᴉʇɐɯɹoɟuᴉ pǝɔuɐʌpɐ ʍoɥS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">ɹǝɥɔunɐꞀ ǝɥʇ uᴉ sǝᵷɐd uǝǝʍʇǝq suoᴉʇᴉsuɐɹʇ ɹǝɔᴉuɐɟ ǝs∩</v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(pǝꞁqɐuǝ ǝq oʇ suoᴉʇᴉsuɐɹʇ ǝᵷɐd pǝʇɐɯᴉuɐ sǝɹᴉnbǝɹ)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">LAUNCHER SETTINGS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">SHORTCUT SETTINGS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Use beta version of the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Keep the Launcher open while games are running</v:String>
+    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Close Launcher when switching launchers</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animate transitions between pages in the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animate play button on the Play pages in the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Enable Minecraft Dungeons Support (WIP)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Show advanced information when installing packages</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
     
 
-    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">S⅁NI⟘⟘ƎS NOI⟘IᗡƎ ꞰƆOᴚᗡƎᗺ :⟘ℲⱯᴚƆƎNIW</v:String>
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">ᴚO⟘ⱯƎᴚƆ ⟘ᴚOԀԀ∩S</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDITION SETTINGS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">SUPPORT CREATOR</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">SƎ⟘ⱯᗡԀ∩ ᴚƎHƆN∩ⱯꞀ</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">LAUNCHER UPDATES</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">ɹoʇɐǝɹɔ ʇɹoddnS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Support creator</v:String>
 
 
-    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">uoᴉʇɔǝɹᴉpǝɹ ǝʌɐs ꞁɐʇuǝɯᴉɹǝdxǝ ǝꞁqɐuƎ</v:String>
-    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">ʇnɔʇɹoɥs ɹǝɥɔunɐꞁ uoᴉʇᴉpƎ ɐʌɐՐ ǝpᴉH</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">ʇnɔʇɹoɥs ɹǝɥɔunɐꞁ ꞁɐuɹǝʇxǝ ʍoɥS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_BackupButton">ɐʇɐᗡ ǝʌɐS dnʞɔɐᗺ</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">sᵷuᴉʇʇǝS pǝɔuɐʌpⱯ</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Enable experimental save redirection</v:String>
+    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Hide Java Edition launcher shortcut</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Show external launcher shortcut</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BackupButton">Backup Save Data</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Advanced Settings</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">S⅁NI⟘⟘ƎS ᴚƎHƆN∩ⱯꞀ ꞀⱯNᴚƎ⟘XƎ</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">H⟘ⱯԀ</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">ƎWⱯN</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">S⟘NƎW∩⅁ᴚⱯ</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">NOƆI</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">EXTERNAL LAUNCHER SETTINGS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">PATH</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">NAME</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">ARGUMENTS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">ICON</v:String>
 
     <!--#endregion-->
 
     <!--#region AcountsSettingsPage -->
 
-    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">⟘N∩OƆƆⱯ ᗡƎ⟘ƆƎꞀƎS</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">S⅁NI⟘⟘ƎS ᴚƎᗡISNI</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">sᵷuᴉʇʇǝS ꞁɐɯɹoN</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">sᵷuᴉʇʇǝS ʎɔɐᵷǝꞀ</v:String>
-    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">sʇunoɔɔⱯ ǝᵷɐuɐW</v:String>
-    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">S⅁NI⟘⟘ƎS ⟘N∩OƆƆⱯ</v:String>
+    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">SELECTED ACCOUNT</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">INSIDER SETTINGS</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Normal Settings</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Legacy Settings</v:String>
+    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Manage Accounts</v:String>
+    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">ACCOUNT SETTINGS</v:String>
 
     <!--#endregion-->
 
     <!--#region AboutPage -->
 
-    <v:String x:Key="AboutPage_Title">ᴚƎHƆN∩ⱯꞀ NOI⟘IᗡƎ ꞰƆOᴚᗡƎᗺ :⟘ℲⱯᴚƆƎNIW ⟘∩OᗺⱯ</v:String>
-    <v:String x:Key="AboutPage_DevelopedBy_Text">⅄ᗺ ᗡƎԀOꞀƎɅƎᗡ</v:String>
-    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">ℲO ꞰᴚOM ƎH⟘ WOᴚℲ ᗡƎꞰᴚOℲ</v:String>
-    <v:String x:Key="AboutPage_SpecialThanks_Text">O⟘ SꞰNⱯH⟘ ꞀⱯIƆƎԀS</v:String>
+    <v:String x:Key="AboutPage_Title">ABOUT MINECRAFT: BEDROCK EDITION LAUNCHER</v:String>
+    <v:String x:Key="AboutPage_DevelopedBy_Text">DEVELOPED BY</v:String>
+    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">FORKED FROM THE WORK OF</v:String>
+    <v:String x:Key="AboutPage_SpecialThanks_Text">SPECIAL THANKS TO</v:String>
 
-    <v:String x:Key="AboutPage_McMrArm_Text">(ɯoɹɟ sǝʌᴉɹǝp ʞɹoʍ sᴉɥʇ ɥɔᴉɥʍ) ɹǝpɐoꞁuʍop uoᴉsɹǝɅ 0⥝ sʍopuᴉM ʇɟɐɹɔǝuᴉW ꞁɐuᴉᵷᴉɹo ǝɥʇ ᵷuᴉʇɐǝɹɔ ɹoℲ</v:String>
-    <v:String x:Key="AboutPage_BsCommunity_Text">ɹǝɥɔunɐꞁ ǝɥʇ uᴉ ʎʇᴉꞁɐuoᴉʇɔunɟ ᵷuᴉʍǝᴉʌ uᴉʞs ǝɥʇ ɹoɟ pǝsn sᴉ ɥɔᴉɥʍ 'ᗡƐʍǝᴉɅuᴉʞS uo ʞɹoʍ ɹᴉǝɥʇ ɹoℲ</v:String>
-    <v:String x:Key="AboutPage_Mojang_Text">¡¡¡ʇɟɐɹɔǝuᴉW ɹoℲ</v:String>
-    <v:String x:Key="AboutPage_BsRepo_Text">odǝᴚ ᗡƐʍǝᴉɅuᴉʞS</v:String>
-    <v:String x:Key="AboutPage_CurrentBuild">:pꞁᴉnᗺ ʇuǝɹɹnƆ </v:String>
+    <v:String x:Key="AboutPage_McMrArm_Text">For creating the original Minecraft Windows 10 Version downloader (which this work derives from)</v:String>
+    <v:String x:Key="AboutPage_BsCommunity_Text">For their work on SkinView3D, which is used for the skin viewing functionality in the launcher</v:String>
+    <v:String x:Key="AboutPage_Mojang_Text">For Minecraft!!!</v:String>
+    <v:String x:Key="AboutPage_BsRepo_Text">SkinView3D Repo</v:String>
+    <v:String x:Key="AboutPage_CurrentBuild">Current Build: </v:String>
 
     <!--#endregion-->
 
     <!--#region AdvancedSettings -->
 
-    <v:String x:Key="AdvancedSettings_Title">sᵷuᴉʇʇǝS pǝɔuɐʌpⱯ</v:String>
-    <v:String x:Key="AdvancedSettings_LauncherOptions_Text">SNOI⟘ԀO ᴚƎHƆN∩ⱯꞀ</v:String>
-    <v:String x:Key="AdvancedSettings_PathSubtitle_Text">⅄ᴚO⟘ƆƎᴚIᗡ Ǝ⅁ⱯᴚO⟘S</v:String>
-    <v:String x:Key="AdvancedSettings_RestartButton_Text">ʇɹɐʇsǝᴚ</v:String>
-    <v:String x:Key="AdvancedSettings_Notice_Text">ɹǝɥɔunɐꞁ ǝɥʇ ʇɹɐʇsǝɹ ꞁꞁᴉʍ sᵷuᴉʇʇǝs ꞁꞁⱯ *</v:String>
-    <v:String x:Key="AdvancedSettings_PortableMode_Text">ǝpoW ǝꞁqɐʇɹoԀ ǝꞁqɐuƎ</v:String>
+    <v:String x:Key="AdvancedSettings_Title">Advanced Settings</v:String>
+    <v:String x:Key="AdvancedSettings_LauncherOptions_Text">LAUNCHER OPTIONS</v:String>
+    <v:String x:Key="AdvancedSettings_PathSubtitle_Text">STORAGE DIRECTORY</v:String>
+    <v:String x:Key="AdvancedSettings_RestartButton_Text">Restart</v:String>
+    <v:String x:Key="AdvancedSettings_Notice_Text">* All settings will restart the launcher</v:String>
+    <v:String x:Key="AdvancedSettings_PortableMode_Text">Enable Portable Mode</v:String>
 
     <!--#endregion-->
 
@@ -295,130 +295,130 @@
 
     <!--#region FirstLaunch -->
 
-    <v:String x:Key="FirstLaunch_WelcomeTitle">¡ǝɯoɔꞁǝM</v:String>
-    <v:String x:Key="FirstLaunch_WelcomeSubTitle">¡ɹǝɥɔunɐꞀ ʞɔoɹpǝᗺ ʇɟɐɹɔǝuᴉW oʇ ǝɯoɔꞁǝM</v:String>
-    <v:String x:Key="FirstLaunch_CreateProfileSubTitle">¡ǝꞁᴉɟoɹd ʇsɹᴉɟ ɹnoʎ ǝʇɐǝɹƆ</v:String>
-    <v:String x:Key="FirstLaunch_AlmostThereTitle">¡ǝɹǝɥʇ ʇsoɯꞁⱯ</v:String>
-    <v:String x:Key="FirstLaunch_OneThingTitle">˙˙˙ᵷuᴉɥʇ ǝuO</v:String>
-    <v:String x:Key="FirstLaunch_OneThingSubtitle">˙ʇᴉ ǝʞᴉꞁ noʎ ʍoɥ ʇsnɾ ǝɹ,ʎǝɥʇ ǝɹns ǝʞɐɯ oʇ ǝsǝɥʇ ɹǝʌo ʞɔǝɥɔ ʇsnՐ</v:String>
-    <v:String x:Key="FirstLaunch_ChooseAccountTitle">ʇunoɔɔⱯ ɹǝpᴉsuI uɐ ǝsooɥƆ</v:String>
-    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">˙ʞɹoʍ oʇ sɐʇǝq ᵷuᴉpɐoꞁuʍop ɹoɟ ʇɟɐɹɔǝuᴉW ꞁꞁɐʇsuᴉun ɹo ɹǝɥɔunɐꞁ ǝɥʇ ʇɹɐʇsǝɹ oʇ pǝǝu ʎɐɯ osꞁɐ no⅄ ˙sɐʇǝq pɐoꞁuʍop oʇ ʇunoɔɔɐ pǝʇɔǝꞁǝs ǝɥʇ ɹoɟ qnH ɹǝpᴉsuI xoqX ǝɥʇ uᴉ pǝʇdo ǝq ʇsnɯ no⅄ ˙sɐʇǝq pɐoꞁuʍop puɐ ʎɟᴉɹǝʌ oʇ pǝsn ǝq ꞁꞁᴉʍ sᴉɥ⟘ *</v:String>
+    <v:String x:Key="FirstLaunch_WelcomeTitle">Welcome!</v:String>
+    <v:String x:Key="FirstLaunch_WelcomeSubTitle">Welcome to Minecraft Bedrock Launcher!</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Create your first profile!</v:String>
+    <v:String x:Key="FirstLaunch_AlmostThereTitle">Almost there!</v:String>
+    <v:String x:Key="FirstLaunch_OneThingTitle">One thing...</v:String>
+    <v:String x:Key="FirstLaunch_OneThingSubtitle">Just check over these to make sure they're just how you like it.</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountTitle">Choose an Insider Account</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* This will be used to verify and download betas. You must be opted in the Xbox Insider Hub for the selected account to download betas. You also may need to restart the launcher or uninstall Minecraft for downloading betas to work.</v:String>
 
-    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve"> (dn ɟɟnʇs ɹnoʎ pǝʞɔɐq ʇ,uǝʌɐɥ puɐ ʎɐꞁd ssǝɹd noʎ ɟᴉ ɐʇɐp ǝsoꞁ ʎꞁuo ꞁꞁᴉʍ noʎ 'sᴉɥʇ ᵷuᴉop ʎq ɐʇɐp ɹnoʎ ǝsoꞁ ʇou ꞁꞁᴉʍ noʎ 'ʎɹɹoʍ ʇ,uoᗡ)
+    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Before using, it is highly recommended that you press backup to create an installation of your existing save data as the launcher does replace the original directory with a symbolic link which allows us to redirect save data.
 
-˙ɐʇɐp ǝʌɐs ʇɔǝɹᴉpǝɹ oʇ sn sʍoꞁꞁɐ ɥɔᴉɥʍ ʞuᴉꞁ ɔᴉꞁoqɯʎs ɐ ɥʇᴉʍ ʎɹoʇɔǝɹᴉp ꞁɐuᴉᵷᴉɹo ǝɥʇ ǝɔɐꞁdǝɹ sǝop ɹǝɥɔunɐꞁ ǝɥʇ sɐ ɐʇɐp ǝʌɐs ᵷuᴉʇsᴉxǝ ɹnoʎ ɟo uoᴉʇɐꞁꞁɐʇsuᴉ uɐ ǝʇɐǝɹɔ oʇ dnʞɔɐq ssǝɹd noʎ ʇɐɥʇ pǝpuǝɯɯoɔǝɹ ʎꞁɥᵷᴉɥ sᴉ ʇᴉ 'ᵷuᴉsn ǝɹoɟǝᗺ</v:String>
+ (Don't worry, you will not lose your data by doing this, you will only lose data if you press play and haven't backed your stuff up)</v:String>
 
-    <v:String x:Key="FirstLaunch_InstallType_Header">:ɯoɹℲ ɐʇɐᗡ ɹǝɥɔunɐꞀ pɐoꞀ/ǝʌɐS</v:String>
-    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">(pǝpuǝɯɯoɔǝᴚ) ɹǝpꞁoℲ pǝxᴉℲ</v:String>
-    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">ɹǝpꞁoℲ ʇooᴚ/ǝꞁqɐʇɹoԀ</v:String>
-    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">ɐʇɐᗡ ǝʌɐS ᵷuᴉʇsᴉxƎ dnʞɔɐᗺ</v:String>
-    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(ᗡƎᗡNƎWWOƆƎᴚ)</v:String>
-    <v:String x:Key="FirstLaunch_CloseButton">ǝsolƆ</v:String>
-    <v:String x:Key="FirstLaunch_BackButton">ʞɔɐᗺ</v:String>
+    <v:String x:Key="FirstLaunch_InstallType_Header">Save/Load Launcher Data From:</v:String>
+    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">Fixed Folder (Recommended)</v:String>
+    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">Portable/Root Folder</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Backup Existing Save Data</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(RECOMMENDED)</v:String>
+    <v:String x:Key="FirstLaunch_CloseButton">Close</v:String>
+    <v:String x:Key="FirstLaunch_BackButton">Back</v:String>
     <v:String x:Key="FirstLaunch_GoBackButton"></v:String>
-    <v:String x:Key="FirstLaunch_CreateProfileText">ƎꞀIℲOᴚԀ</v:String>
-    <v:String x:Key="FirstLaunch_CreateProfileButton">ǝʇɐǝɹƆ</v:String>
-    <v:String x:Key="FirstLaunch_NextButton">ʇxǝN</v:String>
-    <v:String x:Key="FirstLaunch_DownloadButton">pɐoꞁuʍoᗡ</v:String>
-    <v:String x:Key="FirstLaunch_FinishButton">ɥsᴉuᴉℲ</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileText">PROFILE</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileButton">Create</v:String>
+    <v:String x:Key="FirstLaunch_NextButton">Next</v:String>
+    <v:String x:Key="FirstLaunch_DownloadButton">Download</v:String>
+    <v:String x:Key="FirstLaunch_FinishButton">Finish</v:String>
 
     <!--#endregion-->
 
     <!--#region ErrorScreen -->
 
-    <v:String x:Key="ErrorScreen_Title">ᴚOᴚᴚƎ</v:String>
-    <v:String x:Key="ErrorScreen_SubTitle">pǝɥsɐɹɔ ɹǝɥɔunɐꞀ</v:String>
-    <v:String x:Key="ErrorScreen_DefaultErrorMessage">˙ǝɔuǝᴉuǝʌuoɔuᴉ ǝɥʇ ɹoɟ ʎɹɹos ǝɹ,ǝM ˙pǝɥsɐɹɔ sɐɥ ɹǝɥɔunɐꞁ ǝɥʇ puɐ pǝɹɹnɔɔo ǝnssᴉ pǝʇɔǝdxǝun uⱯ</v:String>
-    <v:String x:Key="ErrorScreen_CloseButton">ǝsolƆ</v:String>
-    <v:String x:Key="ErrorScreen_ViewCrash">ʇɹodǝɹ ɥsɐɹɔ ʍǝᴉɅ</v:String>
+    <v:String x:Key="ErrorScreen_Title">ERROR</v:String>
+    <v:String x:Key="ErrorScreen_SubTitle">Launcher crashed</v:String>
+    <v:String x:Key="ErrorScreen_DefaultErrorMessage">An unexpected issue occurred and the launcher has crashed. We're sorry for the inconvenience.</v:String>
+    <v:String x:Key="ErrorScreen_CloseButton">Close</v:String>
+    <v:String x:Key="ErrorScreen_ViewCrash">View crash report</v:String>
 
     <!--#endregion-->
 
     <!--#region Errors -->
 
-    <v:String x:Key="Error_AuthenticationFailed_Title">pǝꞁᴉɐɟ uoᴉʇɐɔᴉʇuǝɥʇnⱯ</v:String>
-    <v:String x:Key="Error_AuthenticationFailed">˙ɯɐɹᵷoɹd ɐʇǝq ǝɥʇ oʇ pǝqᴉɹɔsqns sᴉ ʇunoɔɔɐ ɹnoʎ ǝɹns ǝʞɐɯ ǝsɐǝꞁԀ ˙ǝʇɐɔᴉʇuǝɥʇnɐ oʇ pǝꞁᴉɐℲ</v:String>
+    <v:String x:Key="Error_AuthenticationFailed_Title">Authentication failed</v:String>
+    <v:String x:Key="Error_AuthenticationFailed">Failed to authenticate. Please make sure your account is subscribed to the beta program.</v:String>
 
-    <v:String x:Key="Error_CantFindExternalLauncher_Title">ɹǝɥɔunɐꞁ ɥɔʇᴉʍs ʇou pꞁnoƆ</v:String>
-    <v:String x:Key="Error_CantFindExternalLauncher">˙ʎꞁʇɔǝɹɹoɔ ʇǝs ɹǝɥɔunɐꞁ ǝɥʇ oʇ ɥʇɐd ǝɥʇ ǝʌɐɥ noʎ ǝɹns ǝᗺ ˙ɹǝɥɔunɐꞁ ǝɥʇ ɥɔʇᴉʍs ʇou pꞁnoƆ</v:String>
+    <v:String x:Key="Error_CantFindExternalLauncher_Title">Could not switch launcher</v:String>
+    <v:String x:Key="Error_CantFindExternalLauncher">Could not switch the launcher. Be sure you have the path to the launcher set correctly.</v:String>
 
-    <v:String x:Key="Error_CantFindJavaLauncher_Title">ɹǝɥɔunɐꞁ ɥɔʇᴉʍs ʇou pꞁnoƆ</v:String>
-    <v:String x:Key="Error_CantFindJavaLauncher">˙ Minecraft.net ɯoɹɟ ɹǝɥɔunɐꞁ ʇɟɐɹɔǝuᴉW ꞁɐuᴉᵷᴉɹo pǝꞁꞁɐʇsuᴉ ǝʌɐɥ noʎ ǝɹns ǝᗺ ˙ɹǝɥɔunɐꞁ puᴉɟ ʇou pꞁnoƆ</v:String>
+    <v:String x:Key="Error_CantFindJavaLauncher_Title">Could not switch launcher</v:String>
+    <v:String x:Key="Error_CantFindJavaLauncher">Could not find launcher. Be sure you have installed original Minecraft launcher from Minecraft.net .</v:String>
 
-    <v:String x:Key="Error_AppReregisterFailed_Title">pǝꞁᴉɐɟ ɹǝʇsᴉᵷǝɹ-ǝɹ ddⱯ</v:String>
-    <v:String x:Key="Error_AppReregisterFailed">): uᴉɐᵷɐ ʎɹʇ ǝsɐǝꞁԀ</v:String>
+    <v:String x:Key="Error_AppReregisterFailed_Title">App re-register failed</v:String>
+    <v:String x:Key="Error_AppReregisterFailed">Please try again :(</v:String>
 
-    <v:String x:Key="Error_AppLaunchFailed_Title">pǝꞁᴉɐɟ ɥɔunɐꞀ</v:String>
-    <v:String x:Key="Error_AppLaunchFailed">): uᴉɐᵷɐ ʎɹʇ ǝsɐǝꞁԀ</v:String>
+    <v:String x:Key="Error_AppLaunchFailed_Title">Launch failed</v:String>
+    <v:String x:Key="Error_AppLaunchFailed">Please try again :(</v:String>
 
-    <v:String x:Key="Error_AppDownloadFailed_Title">pǝꞁᴉɐɟ pɐoꞁuʍoᗡ</v:String>
-    <v:String x:Key="Error_AppDownloadFailed">): uᴉɐᵷɐ ʎɹʇ ǝsɐǝꞁԀ</v:String>
+    <v:String x:Key="Error_AppDownloadFailed_Title">Download failed</v:String>
+    <v:String x:Key="Error_AppDownloadFailed">Please try again :(</v:String>
 
-    <v:String x:Key="Error_AppExtractionFailed_Title">pǝꞁᴉɐɟ uoᴉʇɔɐɹʇxƎ</v:String>
-    <v:String x:Key="Error_AppExtractionFailed">): uᴉɐᵷɐ ʎɹʇ ǝsɐǝꞁԀ</v:String>
+    <v:String x:Key="Error_AppExtractionFailed_Title">Extraction failed</v:String>
+    <v:String x:Key="Error_AppExtractionFailed">Please try again :(</v:String>
 
-    <v:String x:Key="Error_CantFindPaidServerList_Title">qɐʇ sɹǝʌɹǝs uǝdo ʇou pꞁnoƆ</v:String>
-    <v:String x:Key="Error_CantFindPaidServerList">˙punoɟ ʇou ʇsᴉꞀ sɹǝʌɹǝS pᴉɐԀ</v:String>
+    <v:String x:Key="Error_CantFindPaidServerList_Title">Could not open servers tab</v:String>
+    <v:String x:Key="Error_CantFindPaidServerList">Paid Servers List not found.</v:String>
 
-    <v:String x:Key="Error_NotaSkinPack_Title">ʞɔɐd uᴉʞs ʇɹodɯᴉ oʇ ǝꞁqɐu∩</v:String>
-    <v:String x:Key="Error_NotaSkinPack">¡ʎꞁꞁᴉs ʞɔɐd uᴉʞs ɐ ʇou s,ʇɐɥ⟘</v:String>
+    <v:String x:Key="Error_NotaSkinPack_Title">Unable to import skin pack</v:String>
+    <v:String x:Key="Error_NotaSkinPack">That's not a skin pack silly!</v:String>
 
     <!--#endregion-->
 
     <!--#region NewProfile -->
 
     <v:String x:Key="NewProfile_GoBackButton"></v:String>
-    <v:String x:Key="NewProfile_CreateProfileText">ƎꞀIℲOᴚԀ</v:String>
-    <v:String x:Key="NewProfile_CreateProfileText_Error">NƎꞰⱯ⟘ ⅄ᗡⱯƎᴚꞀⱯ SI ƎWⱯN SIH⟘</v:String>
-    <v:String x:Key="NewProfile_CreateProfileSubTitle">¡ǝꞁᴉɟoɹd ʍǝu ɹnoʎ ɟo ǝɯɐu ǝɥʇ ɹǝʇuƎ</v:String>
-    <v:String x:Key="NewProfile_CreateProfileButton">ǝʇɐǝɹƆ</v:String>
+    <v:String x:Key="NewProfile_CreateProfileText">PROFILE</v:String>
+    <v:String x:Key="NewProfile_CreateProfileText_Error">THIS NAME IS ALREADY TAKEN</v:String>
+    <v:String x:Key="NewProfile_CreateProfileSubTitle">Enter the name of your new profile!</v:String>
+    <v:String x:Key="NewProfile_CreateProfileButton">Create</v:String>
 
     <!--#endregion-->
 
     <!--#region Dialog -->
 
-    <v:String x:Key="Dialog_Item_Installation_Text">uoᴉʇɐꞁꞁɐʇsuᴉ</v:String>
-    <v:String x:Key="Dialog_Item_SkinPack_Text">ʞɔɐd uᴉʞs</v:String>
-    <v:String x:Key="Dialog_Item_Skin_Text">uᴉʞs</v:String>
-    <v:String x:Key="Dialog_Item_Version_Text">uoᴉsɹǝʌ</v:String>
-    <v:String x:Key="Dialog_Item_Profile_Text">ǝꞁᴉɟoɹd</v:String>
+    <v:String x:Key="Dialog_Item_Installation_Text">installation</v:String>
+    <v:String x:Key="Dialog_Item_SkinPack_Text">skin pack</v:String>
+    <v:String x:Key="Dialog_Item_Skin_Text">skin</v:String>
+    <v:String x:Key="Dialog_Item_Version_Text">version</v:String>
+    <v:String x:Key="Dialog_Item_Profile_Text">profile</v:String>
 
-    <v:String x:Key="Dialog_DeleteItem_Title">ʎꞁʇuǝuɐɯɹǝd {0} ǝʇǝꞁǝᗡ</v:String>
-    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">(¡ǝɯᴉʇ ᵷuoꞁ Ɐ) ¡ɹǝʌǝɹoɟ ʇsoꞁ ǝq ꞁꞁᴉʍ {0} sᴉɥ⟘
-¿,,{1},, ǝʇǝꞁǝp oʇ ʇuɐʍ noʎ ǝɹns noʎ ǝɹⱯ</v:String>
+    <v:String x:Key="Dialog_DeleteItem_Title">Delete {0} permanently</v:String>
+    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Are you sure you want to delete &quot;{1}&quot;?
+This {0} will be lost forever! (A long time!)</v:String>
 
-    <v:String x:Key="Dialog_KillGame_Title">ǝɯɐ⅁ ꞁꞁᴉꞰ</v:String>
-    <v:String x:Key="Dialog_KillGame_Text">¿ǝɯɐᵷ ǝɥʇ ǝsoꞁɔ oʇ ʇuɐʍ ꞁꞁᴉʇs noʎ oᗡ ˙ʞɔnʇs ʇǝᵷ noʎ ɟᴉ pǝpuǝɯɯoɔǝɹ ʎꞁuo sᴉ puɐ 'snoɹǝᵷuɐᗡ sᴉ sᴉɥ⟘</v:String>
+    <v:String x:Key="Dialog_KillGame_Title">Kill Game</v:String>
+    <v:String x:Key="Dialog_KillGame_Text">This is Dangerous, and is only recommended if you get stuck. Do you still want to close the game?</v:String>
 
-    <v:String x:Key="Dialog_CloseGame_Title">ᵷuᴉuunᴚ ꞁꞁᴉʇS sᴉ ǝɯɐ⅁</v:String>
-    <v:String x:Key="Dialog_CloseGame_Text">(ʎꞁꞁɐɯɹou ǝɯɐᵷ ǝɥʇ ǝsoꞁɔ ǝsɐǝꞁd 'ʞɔnʇs ʇǝᵷ noʎ ɟᴉ pǝpuǝɯɯoɔǝɹ ʎꞁuo sᴉ sᴉɥʇ 'sǝᵷuɐɥɔ ᵷuᴉʌɐs ʇnoɥʇᴉʍ) ¿ʇᴉ ǝsoꞁɔ ǝɔɹoɟ oʇ ǝʞᴉꞁ noʎ pꞁnoM</v:String>
+    <v:String x:Key="Dialog_CloseGame_Title">Game is Still Running</v:String>
+    <v:String x:Key="Dialog_CloseGame_Text">Would you like to force close it? (without saving changes, this is only recommended if you get stuck, please close the game normally)</v:String>
 
-    <v:String x:Key="DialogBtn_YesToAll_Text">ꞁꞁⱯ o⟘ sǝ⅄</v:String>
-    <v:String x:Key="DialogBtn_NoToAll_Text">ꞁꞁⱯ o⟘ oN</v:String>
-    <v:String x:Key="DialogBtn_Yes_Text">sǝ⅄</v:String>
-    <v:String x:Key="DialogBtn_No_Text">oN</v:String>
+    <v:String x:Key="DialogBtn_YesToAll_Text">Yes To All</v:String>
+    <v:String x:Key="DialogBtn_NoToAll_Text">No To All</v:String>
+    <v:String x:Key="DialogBtn_Yes_Text">Yes</v:String>
+    <v:String x:Key="DialogBtn_No_Text">No</v:String>
 
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">sʇꞁnsǝɹ ᵷuᴉɥɔʇɐɯ oN</v:String>
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">uᴉɐᵷɐ ɥɔɹɐǝs puɐ uo ʞɔɐq ǝɥʇ ᵷuᴉuɹnʇ ʎɹʇ 'ɟɟo pǝuɹnʇ 
-sɹǝʇꞁᴉɟ ʎɹoᵷǝʇɐɔ ǝʌɐɥ noʎ ɟI ˙ɥɔɹɐǝs ɹnoʎ ᵷuᴉɥɔʇɐɯ ʇuǝʇuoɔ ʎuɐ sʍǝu puᴉɟ ʇ,upꞁnoɔ ǝM</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">No matching results</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">We couldn't find news any content matching your search. If you have category filters 
+turned off, try turning the back on and search again</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Loading_Title">˙˙˙ᵷuᴉpɐoꞀ</v:String>
-    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">¡ʇᴉɐʍ ǝsɐǝꞁԀ</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Loading...</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Please wait!</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Error_Title">ɹoɹɹƎ</v:String>
-    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">):</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Title">Error</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
 
-    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">ʇꞁnsǝɹ oN</v:String>
-    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">ɥɔɹɐǝs ɹnoʎ ᵷuᴉɥɔʇɐɯ sɯǝʇᴉ ou punoℲ</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">No result</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Found no items matching your search</v:String>
 
     <!--#endregion-->
 
     <!--#region Internal -->
 
-    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">˙ǝsᴉʍɹǝɥʇo ʇsoꞁ ǝq ꞁꞁᴉʍ ǝꞁᴉɟ pꞁo ǝɥ⟘ ¿ʇᴉ ǝɔɐꞁdǝɹ oʇ ʇuɐʍ noʎ oᗡ\n˙uoᴉʇɐuᴉʇsǝp ǝɥʇ uᴉ sʇsᴉxǝ ʎpɐǝɹꞁɐ {0} ǝꞁᴉɟ ǝɥ⟘</v:String>
-    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">˙ǝsᴉʍɹǝɥʇo ʇsoꞁ ǝq ꞁꞁᴉʍ ʎɹoʇɔǝɹᴉp pꞁo ǝɥʇ ɯoɹɟ ɐʇɐp ǝɥ⟘ ¿ʇᴉ ǝʌoɯǝɹ oʇ ʇuɐʍ noʎ oᗡ ˙ʎɹoʇɔǝɹᴉp ɐ ʇou sᴉ {0} ǝꞁᴉɟ ǝɥ⟘</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">The file {0} already exists in the destination.\nDo you want to replace it? The old file will be lost otherwise.</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">The file {0} is not a directory. Do you want to remove it? The data from the old directory will be lost otherwise.</v:String>
 
-    <v:String x:Key="GameManager_RecoveringDataIssue_Title">uoᴉʇɐꞁꞁɐʇsuI oʇ ɐʇɐᗡ ǝʌɐS ᵷuᴉʇsᴉxƎ ᵷuᴉʇɹǝʌuoƆ</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_Title">Converting Existing Save Data to Installation</v:String>
 
     <!--#endregion-->
 
@@ -429,62 +429,62 @@ sɹǝʇꞁᴉɟ ʎɹoᵷǝʇɐɔ ǝʌɐɥ noʎ ɟI ˙ɥɔɹɐǝs ɹnoʎ ᵷuᴉ�
 
     <!--#region UI -->
 
-    <v:String x:Key="Installer_Title">pɹɐzᴉM dnʇǝS ɹǝɥɔunɐꞀ ʞɔoɹpǝᗺ ʇɟɐɹɔǝuᴉW</v:String>
+    <v:String x:Key="Installer_Title">Minecraft Bedrock Launcher Setup Wizard</v:String>
 
-    <v:String x:Key="Installer_Back_Text">ʞɔɐᗺ</v:String>
-    <v:String x:Key="Installer_Next_Text">ʇxǝN</v:String>
-    <v:String x:Key="Installer_Cancel_Text">lǝɔuɐƆ</v:String>
-    <v:String x:Key="Installer_Finish_Text">ɥsᴉuᴉℲ</v:String>
+    <v:String x:Key="Installer_Back_Text">Back</v:String>
+    <v:String x:Key="Installer_Next_Text">Next</v:String>
+    <v:String x:Key="Installer_Cancel_Text">Cancel</v:String>
+    <v:String x:Key="Installer_Finish_Text">Finish</v:String>
 
-    <v:String x:Key="Installer_WelcomePage_Title">pɹɐzᴉM dnʇǝS ɹǝɥɔunɐꞀ ʞɔoɹpǝᗺ ʇɟɐɹɔǝuᴉW ǝɥʇ oʇ ǝɯoɔꞁǝM</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info_Text">˙ɹǝʇndɯoɔ ɹnoʎ uo ɹǝɥɔunɐꞀ ʞɔoɹpǝᗺ ʇɟɐɹɔǝuᴉW ꞁꞁɐʇsuᴉ ꞁꞁᴉʍ sᴉɥ⟘</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info2_Text">˙ᵷuᴉnuᴉʇuoɔ ǝɹoɟǝq suoᴉʇɐɔᴉꞁddɐ ɹǝɥʇo ꞁꞁɐ ǝsoꞁɔ noʎ ʇɐɥʇ pǝpuǝɯɯoɔǝɹ sᴉ ʇI</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info3_Text">˙dnʇǝS ʇᴉxǝ oʇ ꞁǝɔuɐƆ ɹo 'ǝnuᴉʇuoɔ oʇ ʇxǝN ʞɔᴉꞁƆ</v:String>
+    <v:String x:Key="Installer_WelcomePage_Title">Welcome to the Minecraft Bedrock Launcher Setup Wizard</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info_Text">This will install Minecraft Bedrock Launcher on your computer.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info2_Text">It is recommended that you close all other applications before continuing.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info3_Text">Click Next to continue, or Cancel to exit Setup.</v:String>
 
-    <v:String x:Key="Installer_LicenseAgreement_Title">ʇuǝɯǝǝɹᵷⱯ ǝsuǝɔᴉꞀ</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Info_Text">sᴉɥʇ ɟo sɯɹǝʇ ǝɥʇ ʇdǝɔɔɐ ʇsnɯ no⅄ ˙ʇuǝɯǝǝɹƃ∀ ǝsuǝɔᴉ˥ ƃuᴉʍolloɟ ǝɥʇ pɐǝɹ ǝsɐǝlԀ</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">˙uoᴉʇɐꞁꞁɐʇsuᴉ ǝɥʇ ɥʇᴉʍ ᵷuᴉnuᴉʇuoɔ ǝɹoɟǝq ʇuǝɯǝǝɹᵷɐ</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">˙ǝsuǝɔᴉꞁ ǝɥʇ ʇdǝɔɔɐ I</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">˙ǝsuǝɔᴉꞁ ǝɥʇ ʇdǝɔɔɐ ʇ,uop I</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Title">License Agreement</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info_Text">Please read the following License Agreement. You must accept the terms of this</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">agreement before continuing with the installation.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">I accept the license.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">I don't accept the license.</v:String>
 
-    <v:String x:Key="Installer_InstallType_Title">ǝdʎ⟘ ꞁꞁɐʇsuI ǝsooɥƆ</v:String>
-    <v:String x:Key="Installer_InstallType_Info_Text">pɐoꞁuʍop oʇ ʇuɐʍ noʎ ɹǝɥɔunɐꞁ ǝɥʇ ɟo uoᴉsɹǝʌ ɥɔᴉɥʍ ʇɔǝꞁǝS</v:String>
+    <v:String x:Key="Installer_InstallType_Title">Choose Install Type</v:String>
+    <v:String x:Key="Installer_InstallType_Info_Text">Select which version of the launcher you want to download</v:String>
 
-    <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">uoᴉsɹǝɅ ɐʇǝᗺ</v:String>
-    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">uoᴉsɹǝɅ ǝsɐǝꞁǝᴚ</v:String>
+    <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Beta Version</v:String>
+    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Release Version</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_Title">uoᴉʇɐɔoꞀ ꞁꞁɐʇsuI ǝsooɥƆ</v:String>
-    <v:String x:Key="Installer_InstallLocation_Info_Text">'ɹǝpꞁoɟ ʇuǝɹǝɟɟᴉp ɐ uᴉ ꞁꞁɐʇsuᴉ o⟘ ˙ɹǝpꞁoɟ ᵷuᴉʍoꞁꞁoɟ ǝɥʇ uᴉ ɹǝɥɔunɐꞀ ʞɔoɹpǝᗺ ʇɟɐɹɔǝuᴉW ꞁꞁɐʇsuᴉ ꞁꞁᴉʍ dnʇǝS</v:String>
-    <v:String x:Key="Installer_InstallLocation_Info2_Text">˙ɹǝpꞁoɟ ɹǝɥʇouɐ ʇɔǝꞁǝs puɐ ǝsʍoɹᗺ ʞɔᴉꞁɔ</v:String>
+    <v:String x:Key="Installer_InstallLocation_Title">Choose Install Location</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info_Text">Setup will install Minecraft Bedrock Launcher in the following folder. To install in a different folder,</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info2_Text">click Browse and select another folder.</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">ɹǝpꞁoℲ uoᴉʇɐuᴉʇsǝᗡ</v:String>
-    <v:String x:Key="Installer_InstallLocation_Browse_Text">ƎSMOᴚᗺ</v:String>
+    <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Destination Folder</v:String>
+    <v:String x:Key="Installer_InstallLocation_Browse_Text">BROWSE</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">uoɔᴉ doʇʞsǝp ɐ ǝʇɐǝɹƆ</v:String>
-    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">nuǝɯ ʇɹɐʇS oʇ ppⱯ</v:String>
-    <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">ɯɐɹᵷoɹԀ ɹǝʇsᴉᵷǝᴚ</v:String>
+    <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Create a desktop icon</v:String>
+    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Add to Start menu</v:String>
+    <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">Register Program</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">ʇᴉxƎ uo ɯɐɹᵷoɹԀ ʇɹɐʇS</v:String>
+    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">Start Program on Exit</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_FilesInUse">:ᵷuᴉʍoꞁꞁoɟ ǝɥʇ ʎq ǝsn uᴉ ʎꞁʇuǝɹɹnɔ ǝɹɐ sǝꞁᴉɟ ǝɥʇ ɟo ǝɯoS</v:String>
+    <v:String x:Key="Installer_InstallationProgress_FilesInUse">Some of the files are currently in use by the following:</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_Title">ᵷuᴉꞁꞁɐʇsuI</v:String>
-    <v:String x:Key="Installer_InstallationProgress_Info_Text">˙ɹǝʇndɯoɔ ɹnoʎ uo ɹǝɥɔunɐꞀ ʞɔoɹpǝᗺ ʇɟɐɹɔǝuᴉW sꞁꞁɐʇsuᴉ dnʇǝS ǝꞁᴉɥʍ ʇᴉɐʍ ǝsɐǝꞁԀ</v:String>
+    <v:String x:Key="Installer_InstallationProgress_Title">Installing</v:String>
+    <v:String x:Key="Installer_InstallationProgress_Info_Text">Please wait while Setup installs Minecraft Bedrock Launcher on your computer.</v:String>
 
 
     <!--#endregion-->
 
-    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">ʎɹoʇɔǝɹᴉᗡ ǝʌoW oʇ ǝꞁqɐu∩</v:String>
-    <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">ǝꞁᴉℲ ǝʌoW oʇ ǝꞁqɐu∩</v:String>
-    <v:String x:Key="Installer_Dialog_FileLocked_Text">pǝs∩ ᵷuᴉǝᗺ ǝꞁᴉℲ</v:String>
-    <v:String x:Key="Installer_Dialog_TryAgain_Text">¿uᴉɐᵷⱯ ʎɹ⟘</v:String>
-    <v:String x:Key="Installer_Dialog_ErrorOccured_Text">˙pǝɹɹnɔɔo sɐɥ ɹoɹɹǝ uⱯ</v:String>
+    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">Unable to Move Directory</v:String>
+    <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">Unable to Move File</v:String>
+    <v:String x:Key="Installer_Dialog_FileLocked_Text">File Being Used</v:String>
+    <v:String x:Key="Installer_Dialog_TryAgain_Text">Try Again?</v:String>
+    <v:String x:Key="Installer_Dialog_ErrorOccured_Text">An error has occurred.</v:String>
 
     <!--#region ProgressBar -->
 
-    <v:String x:Key="Installer_ProgressBar_Downloading">˙˙˙ᵷuᴉpɐoꞁuʍoᗡ</v:String>
-    <v:String x:Key="Installer_ProgressBar_Finalizing">˙˙˙ᵷuᴉzᴉꞁɐuᴉℲ</v:String>
-    <v:String x:Key="Installer_ProgressBar_Initalizing">˙˙˙ᵷuᴉzᴉꞁɐᴉʇᴉuI</v:String>
+    <v:String x:Key="Installer_ProgressBar_Downloading">Downloading...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Finalizing">Finalizing...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Initalizing">Initializing...</v:String>
 
 
     <!--#endregion-->
@@ -495,75 +495,75 @@ sɹǝʇꞁᴉɟ ʎɹoᵷǝʇɐɔ ǝʌɐɥ noʎ ɟI ˙ɥɔɹɐǝs ɹnoʎ ᵷuᴉ�
 
     <!--#region VersionEntries -->
 
-    <v:String x:Key="VersionEntries_LatestSnapshot">ɐʇǝᗺ ʇsǝʇɐꞀ</v:String>
-    <v:String x:Key="VersionEntries_LatestRelease">ǝsɐǝꞁǝᴚ ʇsǝʇɐꞀ</v:String>
-    <v:String x:Key="VersionEntries_UnnamedInstallation">&lt;uoᴉʇɐꞁꞁɐʇsuᴉ pǝɯɐuun&gt;</v:String>
+    <v:String x:Key="VersionEntries_LatestSnapshot">Latest Beta</v:String>
+    <v:String x:Key="VersionEntries_LatestRelease">Latest Release</v:String>
+    <v:String x:Key="VersionEntries_UnnamedInstallation">&lt;unnamed installation&gt;</v:String>
 
     <!--#endregion-->
 
     <!--#region ThemeEntries -->
 
-    <v:String x:Key="ThemeEntries_LatestUpdate">ǝʇɐpd∩ ʇsǝʇɐꞀ</v:String>
-    <v:String x:Key="ThemeEntries_Original">ꞁɐuᴉᵷᴉɹO</v:String>
+    <v:String x:Key="ThemeEntries_LatestUpdate">Latest Update</v:String>
+    <v:String x:Key="ThemeEntries_Original">Original</v:String>
 
-    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">(⥝ ʇɹɐԀ) sɟɟᴉꞁƆ ⅋ sǝʌɐƆ</v:String>
-    <v:String x:Key="ThemeEntries_NetherUpdate">ǝʇɐpd∩ ɹǝɥʇǝN</v:String>
-    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">ǝʇɐpd∩ sǝǝᗺ ʎzznᗺ</v:String>
-    <v:String x:Key="ThemeEntries_VillagePillageUpdate">ǝʇɐpd∩ ǝᵷɐꞁꞁᴉԀ ⅋ ǝᵷɐꞁꞁᴉɅ</v:String>
-    <v:String x:Key="ThemeEntries_UpdateAquatic">ɔᴉʇɐnbⱯ ǝʇɐpd∩</v:String>
-    <v:String x:Key="ThemeEntries_TechnicallyUpdated">[Java] pǝʇɐpd∩ ʎꞁꞁɐɔᴉuɥɔǝ⟘</v:String>
-    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">[Java] ǝʇɐpd∩ ɹoꞁoƆ ɟo pꞁɹoM</v:String>
-    <v:String x:Key="ThemeEntries_ExplorationUpdate">[Java] ǝʇɐpd∩ uoᴉʇɐɹoꞁdxƎ</v:String>
-    <v:String x:Key="ThemeEntries_CombatUpdate">[Java] ǝʇɐpd∩ ʇɐqɯoƆ</v:String>
-    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">[Bedrock] sɐpuɐԀ ⅋ sʇɐƆ</v:String>
-    <v:String x:Key="ThemeEntries_PocketEditionRelease">[Bedrock] ǝsɐǝꞁǝᴚ ꞁɐᴉɔᴉɟɟO</v:String>
-    <v:String x:Key="ThemeEntries_BedrockStandard">pɹɐpuɐʇS uoᴉʇᴉpƎ ʞɔoɹpǝᗺ</v:String>
-    <v:String x:Key="ThemeEntries_BedrockMaster">ɹǝʇsɐW uoᴉʇᴉpƎ ʞɔoɹpǝᗺ</v:String>
-    <v:String x:Key="ThemeEntries_EarlyLegacyConsole">ɐɹƎ ǝꞁosuoƆ ʎɔɐᵷǝꞀ ꞁɐuᴉᵷᴉɹO</v:String>
-    <v:String x:Key="ThemeEntries_MidLegacyConsole">ɐɹƎ ǝꞁosuoƆ ʎɔɐᵷǝꞀ pᴉW</v:String>
-    <v:String x:Key="ThemeEntries_LateLegacyConsole">ɐɹƎ ǝꞁosuoƆ ʎɔɐᵷǝꞀ ǝʇɐꞀ</v:String>
-    <v:String x:Key="ThemeEntries_IndieDays">sʎɐᗡ ǝᴉpuI</v:String>
-    <v:String x:Key="ThemeEntries_Dungeons">suoǝᵷunᗡ ʇɟɐɹɔǝuᴉW</v:String>
+    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">Caves &amp; Cliffs (Part 1)</v:String>
+    <v:String x:Key="ThemeEntries_NetherUpdate">Nether Update</v:String>
+    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Buzzy Bees Update</v:String>
+    <v:String x:Key="ThemeEntries_VillagePillageUpdate">Village &amp; Pillage Update</v:String>
+    <v:String x:Key="ThemeEntries_UpdateAquatic">Update Aquatic</v:String>
+    <v:String x:Key="ThemeEntries_TechnicallyUpdated">Technically Updated [Java]</v:String>
+    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">World of Color Update [Java]</v:String>
+    <v:String x:Key="ThemeEntries_ExplorationUpdate">Exploration Update [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CombatUpdate">Combat Update [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">Cats &amp; Pandas [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_PocketEditionRelease">Official Release [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_BedrockStandard">Bedrock Edition Standard</v:String>
+    <v:String x:Key="ThemeEntries_BedrockMaster">Bedrock Edition Master</v:String>
+    <v:String x:Key="ThemeEntries_EarlyLegacyConsole">Original Legacy Console Era</v:String>
+    <v:String x:Key="ThemeEntries_MidLegacyConsole">Mid Legacy Console Era</v:String>
+    <v:String x:Key="ThemeEntries_LateLegacyConsole">Late Legacy Console Era</v:String>
+    <v:String x:Key="ThemeEntries_IndieDays">Indie Days</v:String>
+    <v:String x:Key="ThemeEntries_Dungeons">Minecraft Dungeons</v:String>
 
 
     <!--#endregion-->
 
     <!--#region GeneralText -->
 
-    <v:String x:Key="GeneralText_Delete">ǝʇǝꞁǝᗡ</v:String>
-    <v:String x:Key="GeneralText_Edit">ʇᴉpƎ</v:String>
-    <v:String x:Key="GeneralText_Duplicate">ǝʇɐɔᴉꞁdnᗡ</v:String>
-    <v:String x:Key="GeneralText_Remove">ǝʌoɯǝᴚ</v:String>
-    <v:String x:Key="GeneralText_Cancel">lǝɔuɐƆ</v:String>
-    <v:String x:Key="GeneralText_Update">ǝʇɐpd∩</v:String>
-    <v:String x:Key="GeneralText_Add">ppⱯ</v:String>
-    <v:String x:Key="GeneralText_Save">ǝʌɐS</v:String>
-    <v:String x:Key="GeneralText_Refresh">ɥsǝɹɟǝᴚ</v:String>
-    <v:String x:Key="GeneralText_Backup">dnʞɔɐᗺ</v:String>
-    <v:String x:Key="GeneralText_Versions">suoᴉsɹǝɅ</v:String>
-    <v:String x:Key="GeneralText_Browse">ǝsʍoɹᗺ</v:String>
-    <v:String x:Key="GeneralText_Reset">ʇǝsǝᴚ</v:String>
-    <v:String x:Key="GeneralText_Yes">sǝ⅄</v:String>
-    <v:String x:Key="GeneralText_No">oN</v:String>
-    <v:String x:Key="GeneralText_Releases">sǝsɐǝꞁǝᴚ</v:String>
-    <v:String x:Key="GeneralText_Betas">sɐʇǝᗺ</v:String>
-    <v:String x:Key="GeneralText_Export">ʇɹodxƎ</v:String>
-    <v:String x:Key="GeneralText_Repair">ɹᴉɐdǝᴚ</v:String>
+    <v:String x:Key="GeneralText_Delete">Delete</v:String>
+    <v:String x:Key="GeneralText_Edit">Edit</v:String>
+    <v:String x:Key="GeneralText_Duplicate">Duplicate</v:String>
+    <v:String x:Key="GeneralText_Remove">Remove</v:String>
+    <v:String x:Key="GeneralText_Cancel">Cancel</v:String>
+    <v:String x:Key="GeneralText_Update">Update</v:String>
+    <v:String x:Key="GeneralText_Add">Add</v:String>
+    <v:String x:Key="GeneralText_Save">Save</v:String>
+    <v:String x:Key="GeneralText_Refresh">Refresh</v:String>
+    <v:String x:Key="GeneralText_Backup">Backup</v:String>
+    <v:String x:Key="GeneralText_Versions">Versions</v:String>
+    <v:String x:Key="GeneralText_Browse">Browse</v:String>
+    <v:String x:Key="GeneralText_Reset">Reset</v:String>
+    <v:String x:Key="GeneralText_Yes">Yes</v:String>
+    <v:String x:Key="GeneralText_No">No</v:String>
+    <v:String x:Key="GeneralText_Releases">Releases</v:String>
+    <v:String x:Key="GeneralText_Betas">Betas</v:String>
+    <v:String x:Key="GeneralText_Export">Export</v:String>
+    <v:String x:Key="GeneralText_Repair">Repair</v:String>
 
-    <v:String x:Key="GeneralText_Twitter">ɹǝʇʇᴉʍ⟘</v:String>
-    <v:String x:Key="GeneralText_GitHub">qnHʇᴉ⅁</v:String>
-    <v:String x:Key="GeneralText_Website">ǝʇᴉsqǝM</v:String>
+    <v:String x:Key="GeneralText_Twitter">Twitter</v:String>
+    <v:String x:Key="GeneralText_GitHub">GitHub</v:String>
+    <v:String x:Key="GeneralText_Website">Website</v:String>
 
     <!--#endregion-->
 
     <!--#region GeneralSubtitles -->
 
-    <v:String x:Key="GeneralSubtitles_Versions">SNOISᴚƎɅ</v:String>
-    <v:String x:Key="GeneralSubtitles_Browse">ƎSMOᴚᗺ</v:String>
-    <v:String x:Key="GeneralSubtitles_Reset">⟘ƎSƎᴚ</v:String>
-    <v:String x:Key="GeneralSubtitles_Categories">SƎIᴚO⅁Ǝ⟘ⱯƆ</v:String>
-    <v:String x:Key="GeneralSubtitles_Search">HƆᴚⱯƎS</v:String>
-    <v:String x:Key="GeneralSubtitles_SortBy">⅄ᗺ ⟘ᴚOS</v:String>
+    <v:String x:Key="GeneralSubtitles_Versions">VERSIONS</v:String>
+    <v:String x:Key="GeneralSubtitles_Browse">BROWSE</v:String>
+    <v:String x:Key="GeneralSubtitles_Reset">RESET</v:String>
+    <v:String x:Key="GeneralSubtitles_Categories">CATEGORIES</v:String>
+    <v:String x:Key="GeneralSubtitles_Search">SEARCH</v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy">SORT BY</v:String>
 
     <!--#endregion-->
 
