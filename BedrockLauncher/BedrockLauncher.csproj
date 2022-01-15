@@ -264,11 +264,6 @@
     <Compile Include="Handlers\RuntimeHandler.cs" />
     <Compile Include="Interfaces\IDialogHander.cs" />
     <Compile Include="Interfaces\ILauncherModel.cs" />
-    <Compile Include="Language\LanguageDefinition.cs" />
-    <Compile Include="Language\LanguageDictionary.xaml.cs">
-      <DependentUpon>LanguageDictionary.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Language\LanguageManager.cs" />
     <Compile Include="Methods\MCSkinUtilities.cs" />
     <Compile Include="Methods\SymLinkHelper.cs" />
     <Compile Include="Pages\Common\DialogPrompt.xaml.cs">
@@ -586,10 +581,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Language\LanguageDictionary.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Pages\Common\DialogPrompt.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -721,22 +712,6 @@
     <Page Include="Pages\Settings\SettingsTabs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\lang\lang.en-US.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\lang\lang.pt-BR.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\lang\lang.pt-PT.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\lang\lang.ru-RU.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\styles\button.xaml">
       <Generator>MSBuild:Compile</Generator>

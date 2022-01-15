@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace BedrockLauncher.Language
+namespace BedrockLauncher.Core.Language
 {
     public class LanguageDefinition
     {

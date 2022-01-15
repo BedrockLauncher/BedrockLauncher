@@ -20,7 +20,6 @@ using Microsoft.Identity.Client.Desktop;
 using System.DirectoryServices.AccountManagement;
 using System.Security.Principal;
 using System.Web.Security;
-using ExtensionsDotNET;
 using BedrockLauncher.UpdateProcessor.Auth;
 
 namespace BedrockLauncher.UpdateProcessor

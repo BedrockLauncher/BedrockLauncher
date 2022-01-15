@@ -11,7 +11,7 @@ using System.Collections;
 using Path = System.IO.Path;
 using System.Resources;
 
-namespace BedrockLauncher.Language
+namespace BedrockLauncher.Core.Language
 {
     public static class LanguageManager
     {

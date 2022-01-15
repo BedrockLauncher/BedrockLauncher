@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using BedrockLauncher.Language;
+using BedrockLauncher.Core.Language;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Handlers;
 using BedrockLauncher.CefSharp;
@@ -25,16 +25,15 @@ namespace BedrockLauncher
         [STAThread]
         public static void Main()
         {
-            UpdateProcessor.Win10AuthenticationManager.GetWUUsersNew();
-            //RuntimeHandler.StartLogging();
-            //RuntimeHandler.ValidateOSArchitecture();
-            //Debug.WriteLine("Application Starting...");
+            RuntimeHandler.StartLogging();
+            RuntimeHandler.ValidateOSArchitecture();
+            Debug.WriteLine("Application Starting...");
             
-            //var application = new App();
-            //application.DispatcherUnhandledException += RuntimeHandler.OnDispatcherUnhandledException;
-            //application.Startup += OnApplicationInitalizing;
-            //application.InitializeComponent();
-            //application.Run();
+            var application = new App();
+            application.DispatcherUnhandledException += RuntimeHandler.OnDispatcherUnhandledException;
+            application.Startup += OnApplicationInitalizing;
+            application.InitializeComponent();
+            application.Run();
         }
         public static void OnApplicationInitalizing(object sender, StartupEventArgs e)
         {

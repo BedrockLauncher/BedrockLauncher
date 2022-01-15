@@ -36,7 +36,7 @@ namespace BedrockLauncher.Downloaders
         {
             try
             {
-                _store_manager.setMSAUserToken(Win10AuthenticationManager.GetWUToken(Properties.LauncherSettings.Default.CurrentInsiderAccountIndex));
+                _store_manager.setMSAUserToken(Win10AuthenticationManager.Default.GetWUToken(Properties.LauncherSettings.Default.CurrentInsiderAccountIndex));
             }
             catch (Exception ex)
             {

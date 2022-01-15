@@ -36,7 +36,6 @@
     <CsWinRTIncludes>TokenBrokerInternal</CsWinRTIncludes>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
@@ -52,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auth\WUTokenHelper.cs" />
+    <Compile Include="InteropExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Win10StoreManager.cs" />
     <Compile Include="Win10StoreNetwork.cs" />
@@ -92,12 +92,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Extensions.NET\Extensions.NET.csproj">
-      <Project>{6718749f-4346-4e5e-85df-d47faf22c9b6}</Project>
-      <Name>Extensions.NET</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
