@@ -22,11 +22,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publisher", "modules\Publis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localizer", "modules\Localizer\Localizer.csproj", "{8DFF755D-2569-4F15-B3ED-4B4FF3F9B141}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrockLauncher.UpdateProcessor", "modules\BedrockLauncher.UpdateProcessor\BedrockLauncher.UpdateProcessor.csproj", "{8D88D5FF-5132-4605-851D-2E020EA6483B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "modules\BedrockLauncher.UpdateProcessor\Core.csproj", "{8D88D5FF-5132-4605-851D-2E020EA6483B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WUTokenHelper", "modules\BedrockLauncher.UpdateProcessor\WUTokenHelper\WUTokenHelper.vcxproj", "{B7336BA7-1E83-43D8-BD0E-3D44C6E3D4E7}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TokenBroker", "modules\BedrockLauncher.UpdateProcessor\WUTokenHelper\WUTokenHelper.vcxproj", "{B7336BA7-1E83-43D8-BD0E-3D44C6E3D4E7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BedrockLauncher.UpdateProcessor", "BedrockLauncher.UpdateProcessor", "{F068AFAD-2F3A-4818-BF78-8BC1016ED7CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{25A7C91E-529D-41E5-A7D0-4EBC727E2DE4}"
+	ProjectSection(SolutionItems) = preProject
+		crowdin.yml = crowdin.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,8 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BedrockLauncher.Controls.Items"
+             xmlns:classes="clr-namespace:BedrockLauncher.Classes"
              xmlns:methods="clr-namespace:BedrockLauncher.Methods"
              xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
+             d:DataContext="{d:DesignInstance Type=classes:BLVersion}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid x:Name="InstallationEntry" Margin="0,8,0,8">
@@ -26,11 +28,12 @@
             </Image>
             <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0">
                 <TextBlock FontSize="16" Foreground="{DynamicResource PrimaryText.Foreground}" FontWeight="DemiBold" Padding="0,0,0,0" Text="{Binding DisplayName}"/>
-                <TextBlock FontSize="11" Foreground="{DynamicResource SecondaryText.Foreground}" FontWeight="SemiBold" Padding="0,0,0,0" Text="{Binding InstallationSize}"/>
+                <TextBlock FontSize="11" Foreground="{DynamicResource SecondaryText.Foreground}" FontWeight="SemiBold" Padding="0,0,0,0" Text="{Binding UUID}"/>
+                <TextBlock FontSize="11" Foreground="{DynamicResource SecondaryText.Foreground}" Visibility="Collapsed" FontWeight="SemiBold" Padding="0,0,0,0" Text="{Binding InstallationSize}"/>
             </StackPanel>
         </Grid>
         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Column="2" x:Name="ButtonPanel" Visibility="Collapsed">
-            <Button x:Name="Repair" Click="Repair_Click" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Content="{DynamicResource GeneralText_Repair}" Style="{DynamicResource DialogButton_Orange}"></Button>
+            <Button x:Name="Repair" Click="Repair_Click" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=InterfaceState.AllowEditing, Mode=OneWay}" Content="{DynamicResource GeneralText_Repair}" Style="{DynamicResource DialogButton_Orange}"></Button>
             <Button x:Name="Folder" Click="Folder_Click" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" FontWeight="Bold" Style="{DynamicResource DialogButton}">
                 <Button.Content>
                     <Grid Width="16" Height="16">
@@ -44,7 +47,7 @@
                 </Button.Content>
                 <Button.ContextMenu>
                     <ContextMenu Closed="ContextMenu_Closed" Style="{DynamicResource NoCheckboxContextMenu}">
-                        <MenuItem Header="{DynamicResource GeneralText_Remove}" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="Remove" Click="Delete_Click"></MenuItem>
+                        <MenuItem Header="{DynamicResource GeneralText_Remove}" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=InterfaceState.AllowEditing, Mode=OneWay}" Name="Remove" Click="Delete_Click"></MenuItem>
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>

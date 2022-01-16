@@ -6,7 +6,7 @@
              xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
              xmlns:local="clr-namespace:BedrockLauncher.Controls.Items"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             xmlns:classes="clr-namespace:BedrockLauncher.Classes"
+             xmlns:classes="clr-namespace:BedrockLauncher.Classes.Launcher"
              xmlns:controls="clr-namespace:BedrockLauncher.Controls"
              x:Name="FeedItemEntry"
              mc:Ignorable="d" 

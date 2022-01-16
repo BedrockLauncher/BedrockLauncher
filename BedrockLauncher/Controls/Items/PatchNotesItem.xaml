@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:BedrockLauncher.Controls.Items"
              xmlns:classes="clr-namespace:BedrockLauncher.Classes"
              x:Name="FeedItemEntry"
-             d:DataContext="{d:DesignInstance Type=classes:MCPatchNotesItem, IsDesignTimeCreatable=False}"
+             d:DataContext="{d:DesignInstance Type=classes:PatchNote, IsDesignTimeCreatable=False}"
              mc:Ignorable="d" 
              Focusable="False"
              Width="256" Height="256" Click="FeedItemButton_Click" Style="{DynamicResource EmptyButton}" BorderThickness="0">

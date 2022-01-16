@@ -11,7 +11,7 @@ using System.Linq;
 using System.Globalization;
 using System.Collections;
 
-namespace BedrockLauncher.CefSharp
+namespace BedrockLauncher.Components.CefSharp
 {
     public class ResourceSchemeHandlerFactory : ISchemeHandlerFactory
     {

@@ -8,7 +8,7 @@
       xmlns:conv="clr-namespace:BedrockLauncher.Converters"
       xmlns:vwp="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
       xmlns:downloaders="clr-namespace:BedrockLauncher.Downloaders"
-      xmlns:c="clr-namespace:BedrockLauncher.Classes"
+      xmlns:c="clr-namespace:BedrockLauncher.Classes.Launcher"
       d:DataContext="{d:DesignInstance Type=downloaders:ChangelogDownloader}"
       mc:Ignorable="d" 
       d:DesignHeight="525" d:DesignWidth="828"
@@ -59,7 +59,7 @@
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
-                <DataTemplate DataType="{x:Type c:MCPatchNotesItem}">
+                <DataTemplate DataType="{x:Type c:PatchNote}">
                     <i:PatchNotesItem DataContext="{Binding .}"></i:PatchNotesItem>
                 </DataTemplate>
             </ListView.ItemTemplate>

@@ -9,7 +9,7 @@ using System.Windows;
 using TriggerBase = Microsoft.Xaml.Behaviors.TriggerBase;
 using TriggerCollection = Microsoft.Xaml.Behaviors.TriggerCollection;
 
-namespace BedrockLauncher.Components
+namespace BedrockLauncher.Components.Wpf
 {
     /// <summary>
     /// <see cref="FrameworkTemplate"/> for InteractivityElements instance

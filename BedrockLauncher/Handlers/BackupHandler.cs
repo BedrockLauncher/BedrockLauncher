@@ -16,7 +16,7 @@ namespace BedrockLauncher.Handlers
     {
         public static void BackupOriginalSaveData()
         {
-            UpdateProgressBar(show: true, state: LauncherStateChange.isBackingUp);
+            MainViewModel.Default.InterfaceState.UpdateProgressBar(show: true, state: LauncherStateChange.isBackingUp);
 
             try
             {
@@ -40,7 +40,7 @@ namespace BedrockLauncher.Handlers
             }
             catch (Exception ex) { ErrorScreenShow.exceptionmsg(ex); }
 
-            UpdateProgressBar(show: false, state: LauncherStateChange.None);
+            MainViewModel.Default.InterfaceState.UpdateProgressBar(show: false, state: LauncherStateChange.None);
 
             Tuple<string, string> GenerateStrings(string name = "Recovery Data", string dir = "RecoveryData")
             {
@@ -72,7 +72,7 @@ namespace BedrockLauncher.Handlers
             {
                 int Total = Directory.GetFiles(from, "*", SearchOption.AllDirectories).Length;
 
-                UpdateProgressBar(totalProgress: Total, progress: 0);
+                MainViewModel.Default.InterfaceState.UpdateProgressBar(totalProgress: Total, progress: 0);
 
                 RestoreCopy_Step(from, to);
             }
@@ -83,7 +83,7 @@ namespace BedrockLauncher.Handlers
                 {
                     string ft = Path.Combine(to, Path.GetFileName(f));
                     File.Copy(f, ft);
-                    MainViewModel.Default.ProgressBarState.ProgressBar_CurrentProgress += 1;
+                    MainViewModel.Default.InterfaceState.ProgressBar_CurrentProgress += 1;
                 }
                 foreach (var f in Directory.EnumerateDirectories(from))
                 {
@@ -93,15 +93,7 @@ namespace BedrockLauncher.Handlers
                 }
             }
         }
-        private static void UpdateProgressBar(string deploymentPackageName = null, LauncherStateChange? state = null, long? progress = null, long? totalProgress = null, bool? show = null, bool? isGameRunning = null)
-        {
-            if (deploymentPackageName != null) MainViewModel.Default.ProgressBarState.DeploymentPackageName = deploymentPackageName;
-            if (state != null) MainViewModel.Default.ProgressBarState.ProgressBar_CurrentState = state.Value;
-            if (progress != null) MainViewModel.Default.ProgressBarState.ProgressBar_CurrentProgress = progress.Value;
-            if (totalProgress != null) MainViewModel.Default.ProgressBarState.ProgressBar_TotalProgress = totalProgress.Value;
-            if (show != null) MainViewModel.Default.ProgressBarState.ProgressBar_Show = show.Value;
-            if (isGameRunning != null) MainViewModel.Default.ProgressBarState.IsGameRunning = isGameRunning.Value;
-        }
+
 
     }
 }

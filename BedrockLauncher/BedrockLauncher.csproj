@@ -18,6 +18,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <CefSharpTargetDir>runtimes\CefSharp</CefSharpTargetDir>
     <CefSharpAnyCpuSupport>true</CefSharpAnyCpuSupport>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -168,40 +169,39 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CefSharp\FileSchemeHandler.cs" />
-    <Compile Include="CefSharp\GlobalSchemeHandlerFactory.cs" />
-    <Compile Include="CefSharp\CefSharpLoader.cs" />
-    <Compile Include="CefSharp\ResourceSchemeHandler.cs" />
-    <Compile Include="CefSharp\SkinViewResourceSchemeHandler.cs" />
-    <Compile Include="Classes\DLC.cs" />
+    <Compile Include="Components\CefSharp\FileSchemeHandler.cs" />
+    <Compile Include="Components\CefSharp\GlobalSchemeHandlerFactory.cs" />
+    <Compile Include="Components\CefSharp\CefSharpLoader.cs" />
+    <Compile Include="Components\CefSharp\ResourceSchemeHandler.cs" />
+    <Compile Include="Components\CefSharp\SkinViewResourceSchemeHandler.cs" />
+    <Compile Include="Classes\Launcher\DLC.cs" />
     <Compile Include="Classes\BLInstallation.cs" />
     <Compile Include="Classes\BLVersion.cs" />
-    <Compile Include="Classes\LauncherPatchNoteItem.cs" />
+    <Compile Include="Classes\Launcher\AppPatchNote.cs" />
     <Compile Include="Classes\MCProfilesList.cs" />
-    <Compile Include="Classes\MCPatchNotesItem.cs" />
+    <Compile Include="Classes\Launcher\PatchNote.cs" />
     <Compile Include="Classes\MCProfile.cs" />
-    <Compile Include="Classes\MCProfileExtensions.cs" />
     <Compile Include="Classes\MCVersion.cs" />
     <Compile Include="Classes\MediaWiki\Continue.cs" />
     <Compile Include="Classes\MediaWiki\Limits.cs" />
     <Compile Include="Classes\MediaWiki\Query.cs" />
     <Compile Include="Classes\MediaWiki\RootObject.cs" />
     <Compile Include="Classes\MediaWiki\Val.cs" />
-    <Compile Include="Classes\NewsItem.cs" />
-    <Compile Include="Classes\NewsItem_Launcher.cs" />
-    <Compile Include="Classes\NewsItem_MinecraftRSS.cs" />
-    <Compile Include="Classes\NewsItem_RSS.cs" />
+    <Compile Include="Classes\Launcher\NewsItem.cs" />
+    <Compile Include="Classes\Launcher\NewsItem_Launcher.cs" />
+    <Compile Include="Classes\Launcher\NewsItem_MinecraftRSS.cs" />
+    <Compile Include="Classes\Launcher\NewsItem_RSS.cs" />
     <Compile Include="Classes\SkinPack\MCSkin.cs" />
     <Compile Include="Classes\SkinPack\MCSkinGeometry.cs" />
     <Compile Include="Classes\SkinPack\MCSkinPack.cs" />
     <Compile Include="Classes\SkinPack\MCSkinPackContent.cs" />
     <Compile Include="Classes\SkinPack\MCSkinPackLang.cs" />
     <Compile Include="Classes\SkinPack\MCSkinPackMainfest.cs" />
-    <Compile Include="Components\ButtonBehaviors.cs" />
-    <Compile Include="Components\ComboBoxBehaviors.cs" />
-    <Compile Include="Components\CustomDesignAttributes.cs" />
-    <Compile Include="Components\DisableNavigation.cs" />
-    <Compile Include="Components\InteractivityHelper.cs" />
+    <Compile Include="Components\Wpf\ButtonBehaviors.cs" />
+    <Compile Include="Components\Wpf\ComboBoxBehaviors.cs" />
+    <Compile Include="Components\Wpf\CustomDesignAttributes.cs" />
+    <Compile Include="Components\Wpf\DisableNavigation.cs" />
+    <Compile Include="Components\Wpf\InteractivityHelper.cs" />
     <Compile Include="Controls\Misc\LoaderIcon.xaml.cs">
       <DependentUpon>LoaderIcon.xaml</DependentUpon>
     </Compile>
@@ -210,7 +210,7 @@
     <Compile Include="Converters\InvertableBooleanToVisibilityConverter.cs" />
     <Compile Include="Components\NotifyPropertyChangedBase.cs" />
     <Compile Include="Components\PageAnimator.cs" />
-    <Compile Include="Components\RelayCommand.cs" />
+    <Compile Include="Components\Wpf\RelayCommand.cs" />
     <Compile Include="Converters\StringToUpperConverter.cs" />
     <Compile Include="Controls\Toolbar\ToolbarButtonBase.cs" />
     <Compile Include="Converters\UrlToImageSourceConverter.cs" />
@@ -1088,9 +1088,9 @@
       <Project>{167a048a-8140-4f8d-87c3-a03d07f964d3}</Project>
       <Name>BedrockLauncher.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\modules\BedrockLauncher.UpdateProcessor\BedrockLauncher.UpdateProcessor.csproj">
+    <ProjectReference Include="..\modules\BedrockLauncher.UpdateProcessor\Core.csproj">
       <Project>{8d88d5ff-5132-4605-851d-2e020ea6483b}</Project>
-      <Name>BedrockLauncher.UpdateProcessor</Name>
+      <Name>Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\modules\Extensions.NET\Extensions.NET.csproj">
       <Project>{6718749f-4346-4e5e-85df-d47faf22c9b6}</Project>
@@ -1207,6 +1207,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Pages\Web\Loader.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\user_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

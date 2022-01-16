@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BedrockLauncher.Classes
+namespace BedrockLauncher.Classes.Launcher
 {
-    public class MCPatchNotesItem
+    public class PatchNote
     {
         public const string FallbackImageURL = @"/BedrockLauncher;component/resources/images/packs/pack_icon.png";
         public const string FallbackImageURL_Dev = @"/BedrockLauncher;component/resources/images/packs/dev_pack_icon.png";
@@ -20,7 +20,7 @@ namespace BedrockLauncher.Classes
         public string Description { get; set; } = string.Empty;
         public string PublishingDateString { get; set; } = string.Empty;
 
-        public MCPatchNotesItem()
+        public PatchNote()
         {
 
         }

@@ -1,4 +1,4 @@
-﻿using BedrockLauncher.Classes;
+﻿using BedrockLauncher.Classes.Launcher;
 using CodeHollow.FeedReader;
 using ExtensionsDotNET.HTTP2;
 using PostSharp.Patterns.Model;
@@ -13,7 +13,7 @@ using System.Windows;
 
 namespace BedrockLauncher.ViewModels
 {
-    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.ExcludeExplicitProperties)]
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.DebugOptions.ExcludeExplicitProperties)]
     public class RSSViewModel
     {
         public static RSSViewModel MinecraftForums { get; set; } = new RSSViewModel(ForumsFeed_RSS, typeof(NewsItem_RSS));

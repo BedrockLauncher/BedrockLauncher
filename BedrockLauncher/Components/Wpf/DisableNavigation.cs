@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace BedrockLauncher.Components
+namespace BedrockLauncher.Components.Wpf
 {
     public static class DisableNavigation
     {

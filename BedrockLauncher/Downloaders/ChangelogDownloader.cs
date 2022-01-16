@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Net;
 using Newtonsoft.Json;
 using System.IO;
-using BedrockLauncher.Classes;
+using BedrockLauncher.Classes.Launcher;
 using BedrockLauncher.Classes.MediaWiki;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
@@ -21,7 +21,7 @@ using PostSharp.Patterns.Model;
 namespace BedrockLauncher.Downloaders
 {
 
-    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.ExcludeExplicitProperties)]    //196 Lines
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.DebugOptions.ExcludeExplicitProperties)]    //196 Lines
     public class ChangelogDownloader
     {
         private const string BedrockPatchNotes_JSON = @"https://launchercontent.mojang.com/bedrockPatchNotes.json";
@@ -33,7 +33,7 @@ namespace BedrockLauncher.Downloaders
         public bool ShowBetas { get; set; } = true;
         public bool ShowReleases { get; set; } = true;
         public bool IsRefreshable { get; set; } = true;
-        public ObservableCollection<MCPatchNotesItem> PatchNotes { get; set; } = new ObservableCollection<MCPatchNotesItem>();
+        public ObservableCollection<PatchNote> PatchNotes { get; set; } = new ObservableCollection<PatchNote>();
         public class FeedbackParams
         {
             public string _branch;
@@ -155,9 +155,9 @@ namespace BedrockLauncher.Downloaders
                 var value = node.GetAttributeValue("src", "null");
                 if (value != "null") return value;
             }
-            return (isBeta ? MCPatchNotesItem.FallbackImageURL_Dev : MCPatchNotesItem.FallbackImageURL);
+            return (isBeta ? PatchNote.FallbackImageURL_Dev : PatchNote.FallbackImageURL);
         }
-        private void AddPatch(MCPatchNotesItem patch)
+        private void AddPatch(PatchNote patch)
         {
             if (App.Current == null) return;
             App.Current.Dispatcher.BeginInvoke((Action)delegate ()
@@ -228,7 +228,7 @@ namespace BedrockLauncher.Downloaders
 
                                 if (content != null)
                                 {
-                                    MCPatchNotesItem item = new MCPatchNotesItem()
+                                    PatchNote item = new PatchNote()
                                     {
                                         Version = GetVersion(text),
                                         isBeta = isBeta,

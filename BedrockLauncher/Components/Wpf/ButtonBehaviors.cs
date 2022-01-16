@@ -8,7 +8,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using BedrockLauncher.Components;
 
-namespace BedrockLauncher.Components
+namespace BedrockLauncher.Components.Wpf
 {
     public static class ButtonBehaviors
     {

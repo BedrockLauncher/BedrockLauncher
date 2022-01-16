@@ -25,7 +25,7 @@ namespace BedrockLauncher.Pages.Preview
     /// </summary>
     /// 
 
-    [NotifyPropertyChanged(ExcludeExplicitProperties=Constants.ExcludeExplicitProperties)]
+    [NotifyPropertyChanged(ExcludeExplicitProperties=Constants.DebugOptions.ExcludeExplicitProperties)]
     public class EditInstallationsPageModel
     {
         public string SelectedVersionUUID { get; set; } = string.Empty;

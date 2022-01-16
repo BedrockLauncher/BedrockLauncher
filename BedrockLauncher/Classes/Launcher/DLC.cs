@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace BedrockLauncher.Classes
+namespace BedrockLauncher.Classes.Launcher
 {
     public class DLC
     {

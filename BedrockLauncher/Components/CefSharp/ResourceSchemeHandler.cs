@@ -11,18 +11,18 @@ using System.Linq;
 using System.Globalization;
 using System.Collections;
 
-namespace BedrockLauncher.CefSharp
+namespace BedrockLauncher.Components.CefSharp
 {
-    public class SkinViewResourceSchemeHandler : ResourceHandler
+    public class ResourceSchemeHandler : ResourceHandler
     {
         public override CefReturnValue ProcessRequestAsync(IRequest request, ICallback callback)
         {
-            var names = typeof(SkinView3D.Class).Assembly.GetManifestResourceNames();
+            var names = this.GetType().Assembly.GetManifestResourceNames();
             Uri u = new Uri(request.Url);
             string resourceName = string.Format("{0}{1}", u.Authority, u.AbsolutePath).ToLower();
-            string resourcePath = @"/SkinView3D;component/" + resourceName;
+            string resourcePath = @"/BedrockLauncher;component/" + resourceName;
 
-            var assembly = typeof(SkinView3D.Class).Assembly;
+            var assembly = Assembly.GetExecutingAssembly();
             var rm = new ResourceManager(assembly.GetName().Name + ".g", assembly);
             var resources = rm.GetResourceSet(CultureInfo.CurrentCulture, true, true);
             var resourceDictionary = resources.Cast<DictionaryEntry>().ToDictionary(r => r.Key.ToString(), r => r.Value.ToString());

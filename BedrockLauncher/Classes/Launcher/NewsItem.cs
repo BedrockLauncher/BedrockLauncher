@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BedrockLauncher.Classes
+namespace BedrockLauncher.Classes.Launcher
 {
     public class NewsItem
     {

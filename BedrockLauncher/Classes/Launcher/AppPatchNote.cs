@@ -7,9 +7,9 @@ using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Media;
 
-namespace BedrockLauncher.Classes
+namespace BedrockLauncher.Classes.Launcher
 {
-    public class LauncherPatchNoteItem
+    public class AppPatchNote
     {
         public string buildTitle { get; set; } = "BuildTitle";
         public string buildVersion { get; set; } = "v0.0.0";

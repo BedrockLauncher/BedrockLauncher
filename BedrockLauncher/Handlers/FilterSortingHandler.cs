@@ -1,4 +1,4 @@
-﻿
+﻿using BedrockLauncher.Classes.Launcher;
 using BedrockLauncher.Classes;
 using BedrockLauncher.Enums;
 using System;
@@ -80,6 +80,7 @@ namespace BedrockLauncher.Handlers
                 {
                     if (item.category == "Minecraft: Java Edition" && NewsViewModel.Default.Offical_ShowJavaContent) return ContainsText(item);
                     else if (item.category == "Minecraft Dungeons" && NewsViewModel.Default.Offical_ShowDungeonsContent) return ContainsText(item);
+                    else if (item.category == "Minecraft for Windows" && NewsViewModel.Default.Offical_ShowBedrockContent) return ContainsText(item);
                     else return false;
                 }
                 else return false;

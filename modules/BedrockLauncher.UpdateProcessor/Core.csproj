@@ -62,45 +62,57 @@
     <Compile Include="Auth\WUAccount.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Identity.Client">
-      <Version>4.40.0</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Identity.Client.Desktop">
-      <Version>4.40.0</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Identity.Client.Extensions.Msal">
-      <Version>2.19.3</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Windows.SDK.Contracts">
-      <Version>10.0.19041.1</Version>
-    </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>
     </PackageReference>
-    <PackageReference Include="PInvoke.Windows.Core">
-      <Version>0.7.104</Version>
-    </PackageReference>
     <PackageReference Include="Semver">
       <Version>2.0.6</Version>
-    </PackageReference>
-    <PackageReference Include="System.Runtime.WindowsRuntime">
-      <Version>4.7.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Runtime.WindowsRuntime.UI.Xaml">
-      <Version>4.7.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Runtimes\WUTokenHelper\Win32\Windows.Internal.Security.Authentication.Web.winmd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Runtimes\WUTokenHelper\Win32\WUTokenHelper.exp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Runtimes\WUTokenHelper\Win32\WUTokenHelper.lib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Runtimes\WUTokenHelper\x64\Windows.Internal.Security.Authentication.Web.winmd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Runtimes\WUTokenHelper\x64\WUTokenHelper.exp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Runtimes\WUTokenHelper\x64\WUTokenHelper.lib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Runtimes\WUTokenHelper\Win32\WUTokenHelper.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Runtimes\WUTokenHelper\Win32\WUTokenHelper.pdb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Runtimes\WUTokenHelper\x64\WUTokenHelper.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Runtimes\WUTokenHelper\x64\WUTokenHelper.pdb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>:: cd "$(ProjectDir)WUTokenHelper"
-:: "$(DevEnvDir)devenv" "$(SolutionPath)" /Build "Release" /Project "WUTokenHelper.vcxproj" /ProjectConfig "Release|Win32"
-:: "$(DevEnvDir)devenv" "$(SolutionPath)" /Build "Release" /Project "WUTokenHelper.vcxproj" /ProjectConfig "Release|x64"
-:: cd "$(ProjectDir)runtime\WUTokenHelper"
-:: rmdir "Win32" /s /q
-:: rmdir "x64" /s /q
-:: xcopy "$(ProjectDir)WUTokenHelper\bin\Release" "$(ProjectDir)runtime\WUTokenHelper" /E /I</PreBuildEvent>
+    <PreBuildEvent>cd "$(ProjectDir)WUTokenHelper"
+"$(DevEnvDir)devenv" "$(SolutionPath)" /Build "Release" /Project "WUTokenHelper.vcxproj" /ProjectConfig "Release|Win32"
+cd "$(ProjectDir)Runtimes\WUTokenHelper"
+rmdir "Win32" /s /q
+rmdir "x64" /s /q
+xcopy "$(ProjectDir)WUTokenHelper\bin\Release" "$(ProjectDir)Runtimes\WUTokenHelper" /E /I /Q</PreBuildEvent>
   </PropertyGroup>
 </Project>

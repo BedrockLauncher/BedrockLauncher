@@ -19,6 +19,6 @@
     </ToggleButton>
     <Image Style="{StaticResource SideBarButtonIcon}" Source="/BedrockLauncher;component/Resources/images/icons/bedrock_grass_icon.png"/>
     <Grid x:Name="Progressbar">
-        <ProgressBar Value="{Binding ProgressBarState.ProgressBar_CurrentProgress}" IsIndeterminate="{Binding ProgressBarState.ProgressBar_IsIndeterminate}" Maximum="{Binding ProgressBarState.ProgressBar_TotalProgress}" x:Name="progressSizeHack" Visibility="{Binding ProgressBarState.BedrockEditionButton_progressSizeHack}" Height="5" VerticalAlignment="Bottom" Foreground="#FF008542" Background="Black" BorderBrush="Black" Minimum="0"/>
+        <ProgressBar Value="{Binding InterfaceState.ProgressBar_CurrentProgress}" IsIndeterminate="{Binding InterfaceState.ProgressBar_IsIndeterminate}" Maximum="{Binding InterfaceState.ProgressBar_TotalProgress}" x:Name="progressSizeHack" Visibility="{Binding InterfaceState.BedrockEditionButton_progressSizeHack}" Height="5" VerticalAlignment="Bottom" Foreground="#FF008542" Background="Black" BorderBrush="Black" Minimum="0"/>
     </Grid>
 </local:ToolbarButtonBase>

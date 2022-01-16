@@ -15,7 +15,7 @@ using PostSharp.Patterns.Model;
 namespace BedrockLauncher.Classes
 {
 
-    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.ExcludeExplicitProperties)]    //224 Lines
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.DebugOptions.ExcludeExplicitProperties)]    //224 Lines
     public class MCProfilesList
     {
         public int Version = 2;
@@ -38,7 +38,7 @@ namespace BedrockLauncher.Classes
             set
             {
                 _CurrentProfileUUID = value;
-                MCProfileExtensions.SetCurrentProfile(value);
+                SetCurrentProfile(value);
             }
         }
         [JsonIgnore] 
@@ -51,7 +51,7 @@ namespace BedrockLauncher.Classes
             set
             {
                 _CurrentInstallationUUID = value;
-                MCProfileExtensions.SetCurrentInstallation(value);
+                SetCurrentInstallation(value);
             }
         }
         [JsonIgnore] 
@@ -277,7 +277,7 @@ namespace BedrockLauncher.Classes
             if (CurrentProfile == null) return;
             if (CurrentInstallations == null) return;
 
-            MCProfileExtensions.GetVersionParams(version, out VersioningMode versioningMode, out string version_uuid);
+            GetVersionParams(version, out VersioningMode versioningMode, out string version_uuid);
             BLInstallation new_installation = new BLInstallation()
             {
                 DisplayName = name,
@@ -295,7 +295,7 @@ namespace BedrockLauncher.Classes
             if (CurrentProfile == null) return;
             if (CurrentInstallations == null) return;
 
-            MCProfileExtensions.GetVersionParams(version, out VersioningMode versioningMode, out string version_uuid);
+            GetVersionParams(version, out VersioningMode versioningMode, out string version_uuid);
             BLInstallation new_installation = new BLInstallation()
             {
                 DisplayName = name,
@@ -325,6 +325,35 @@ namespace BedrockLauncher.Classes
             if (installation == null) return;
             installation.LastPlayed = DateTime.Now;
             Save();
+        }
+
+        #endregion
+
+        #region Extensions
+
+        public static void GetVersionParams(MCVersion version, out VersioningMode versioningMode, out string version_uuid)
+        {
+            version_uuid = Constants.LATEST_RELEASE_UUID;
+            versioningMode = VersioningMode.LatestRelease;
+
+            if (version != null)
+            {
+                if (version.UUID == Constants.LATEST_BETA_UUID) versioningMode = VersioningMode.LatestBeta;
+                else if (version.UUID == Constants.LATEST_RELEASE_UUID) versioningMode = VersioningMode.LatestRelease;
+                else versioningMode = VersioningMode.None;
+
+                version_uuid = version.UUID;
+            }
+        }
+        public static void SetCurrentProfile(string profileUUID)
+        {
+            Properties.LauncherSettings.Default.CurrentProfile = profileUUID;
+            Properties.LauncherSettings.Default.Save();
+        }
+        public static void SetCurrentInstallation(string installationUUID)
+        {
+            Properties.LauncherSettings.Default.CurrentInstallation = installationUUID;
+            Properties.LauncherSettings.Default.Save();
         }
 
         #endregion

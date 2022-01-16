@@ -1,6 +1,6 @@
 ﻿using BedrockLauncher.Classes;
 using BedrockLauncher.Classes.SkinPack;
-using BedrockLauncher.Components;
+using BedrockLauncher.Components.Wpf;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Pages.Common;
 using BedrockLauncher.Downloaders;
@@ -51,7 +51,7 @@ namespace BedrockLauncher.Handlers
             bool wasCanceled = false;
 
             CancelSource = new CancellationTokenSource();
-            UpdateProgressBar(show: true);
+            MainViewModel.Default.InterfaceState.UpdateProgressBar(show: true);
             UpdateProgressBarCanceling(true, new RelayCommand((o) => CancelTask()));
 
             try
@@ -70,10 +70,10 @@ namespace BedrockLauncher.Handlers
                 wasCanceled = true;
             }
 
-            if (wasCanceled) UpdateProgressBar(show: false, state: LauncherStateChange.None);
+            if (wasCanceled) MainViewModel.Default.InterfaceState.UpdateProgressBar(show: false, state: LauncherStateChange.None);
             UpdateProgressBarCanceling(false, null);
             CancelSource = null;
-            v.UpdateInstallStatus();
+            v.UpdateFolderSize();
 
             return wasCanceled;
         }
@@ -156,7 +156,7 @@ namespace BedrockLauncher.Handlers
         {
             try
             {
-                UpdateProgressBar(state: LauncherStateChange.isLaunching, show: true);
+                MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.isLaunching, show: true);
                 bool success = await PreparePackage(v, dirPath);
                 if (success)
                 {
@@ -166,13 +166,13 @@ namespace BedrockLauncher.Handlers
                     DebugLog("App launch finished!");
                     if (KeepLauncherOpen && activationResult != null) UpdatePackageHandle(activationResult);
                     if (KeepLauncherOpen == false) await Application.Current.Dispatcher.InvokeAsync(() => Application.Current.MainWindow.Close());
-                    else UpdateProgressBar(state: LauncherStateChange.None, show: false);
+                    else MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.None, show: false);
                 }
             }
             catch (Exception e)
             {
                 SetError(e, "App launch failed", "Error_AppLaunchFailed_Title", "Error_AppLaunchFailed");
-                UpdateProgressBar(state: LauncherStateChange.None, show: false);
+                MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.None, show: false);
             }
 
 
@@ -183,7 +183,7 @@ namespace BedrockLauncher.Handlers
                     var result = app.AppResourceGroupInfo.GetProcessDiagnosticInfos();
                     if (result != null && result.Count > 0) return;
 
-                    UpdateProgressBar(isGameRunning: true);
+                    MainViewModel.Default.InterfaceState.UpdateProgressBar(isGameRunning: true);
 
                     var ProcessId = (int)result.First().ProcessId;
                     GameHandle = Process.GetProcessById(ProcessId);
@@ -202,7 +202,7 @@ namespace BedrockLauncher.Handlers
                 Process p = sender as Process;
                 p.Exited -= OnPackageExit;
                 GameHandle = null;
-                UpdateProgressBar(isGameRunning: false);
+                MainViewModel.Default.InterfaceState.UpdateProgressBar(isGameRunning: false);
             }
         }
         public async Task ClosePackage()
@@ -236,26 +236,26 @@ namespace BedrockLauncher.Handlers
                         throw new TaskCanceledException();
                     }
                 }
-                UpdateProgressBar(state: LauncherStateChange.isInitializing);
+                MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.isInitializing);
                 await VersionDownloader.Download(v.DisplayName, v.UUID, 1, dlPath, (x, y) => DownloadProgressWrapper(x, y), cancelSource.Token);
                 DebugLog("Download complete");
-                UpdateProgressBar(state: LauncherStateChange.None);
+                MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.None);
             }
             catch (TaskCanceledException e)
             {
-                UpdateProgressBar(state: LauncherStateChange.None);
+                MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.None);
                 throw e;
             }
             catch (Exception e)
             {
-                UpdateProgressBar(state: LauncherStateChange.None);
+                MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.None);
                 SetError(e, "Download failed", "Error_AppDownloadFailed_Title", "Error_AppDownloadFailed");
                 throw e;
             }
         }
         public async Task RemovePackage(BLVersion v)
         {
-            UpdateProgressBar(show: true, state: LauncherStateChange.isUninstalling);
+            MainViewModel.Default.InterfaceState.UpdateProgressBar(show: true, state: LauncherStateChange.isUninstalling);
 
             try
             {
@@ -264,17 +264,17 @@ namespace BedrockLauncher.Handlers
             }
             catch (Exception ex) { ErrorScreenShow.exceptionmsg(ex); }
 
-            v.UpdateInstallStatus();
-            UpdateProgressBar(show: false, state: LauncherStateChange.None);
+            v.UpdateFolderSize();
+            MainViewModel.Default.InterfaceState.UpdateProgressBar(show: false, state: LauncherStateChange.None);
         }
         public async Task RegisterPackage(BLVersion v)
         {
             try
             {
                 DebugLog("Registering package");
-                UpdateProgressBar(deploymentPackageName: v.GetPackageNameFromMainifest(), state: LauncherStateChange.isRegisteringPackage);
+                MainViewModel.Default.InterfaceState.UpdateProgressBar(deploymentPackageName: v.GetPackageNameFromMainifest(), state: LauncherStateChange.isRegisteringPackage);
                 await DeploymentProgressWrapper(new PackageManager().RegisterPackageAsync(new Uri(v.ManifestPath), null, DeploymentOptions.DevelopmentMode));
-                UpdateProgressBar(deploymentPackageName: "", state: LauncherStateChange.None);
+                MainViewModel.Default.InterfaceState.UpdateProgressBar(deploymentPackageName: "", state: LauncherStateChange.None);
                 DebugLog("App re-register done!");
             }
             catch (Exception e)
@@ -289,12 +289,12 @@ namespace BedrockLauncher.Handlers
             try
             {
                 DebugLog("Extraction started");
-                UpdateProgressBar(progress: 0, state: LauncherStateChange.isExtracting);
+                MainViewModel.Default.InterfaceState.UpdateProgressBar(progress: 0, state: LauncherStateChange.isExtracting);
 
                 if (Directory.Exists(v.GameDirectory)) Directory.Delete(v.GameDirectory, true);
 
                 var progress = new Progress<ZipProgress>();
-                progress.ProgressChanged += (s, z) => UpdateProgressBar(progress: z.Processed, totalProgress: z.Total);
+                progress.ProgressChanged += (s, z) => MainViewModel.Default.InterfaceState.UpdateProgressBar(progress: z.Processed, totalProgress: z.Total);
                 await Task.Run(() => new ZipArchive(File.OpenRead(dlPath)).ExtractToDirectory(v.GameDirectory, progress, cancelSource));
 
                 File.Delete(Path.Combine(v.GameDirectory, "AppxSignature.p7x"));
@@ -310,7 +310,7 @@ namespace BedrockLauncher.Handlers
             catch (Exception e)
             {
                 SetError(e, "Extraction failed", "Error_AppExtractionFailed_Title", "Error_AppExtractionFailed");
-                UpdateProgressBar(state: LauncherStateChange.None);
+                MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.None);
                 throw new TaskCanceledException();
             }
         }
@@ -327,9 +327,9 @@ namespace BedrockLauncher.Handlers
 
                 DebugLog("Removing package: " + pkg.Id.FullName);
 
-                UpdateProgressBar(deploymentPackageName: pkg.Id.FullName, state: LauncherStateChange.isRemovingPackage);
+                MainViewModel.Default.InterfaceState.UpdateProgressBar(deploymentPackageName: pkg.Id.FullName, state: LauncherStateChange.isRemovingPackage);
                 await DeploymentProgressWrapper(new PackageManager().RemovePackageAsync(pkg.Id.FullName, RemovalOptions.PreserveApplicationData | RemovalOptions.RemoveForAllUsers));
-                UpdateProgressBar(deploymentPackageName: "", state: LauncherStateChange.None);
+                MainViewModel.Default.InterfaceState.UpdateProgressBar(deploymentPackageName: "", state: LauncherStateChange.None);
 
                 DebugLog("Removal of package done: " + pkg.Id.FullName);
             }
@@ -356,7 +356,7 @@ namespace BedrockLauncher.Handlers
             {
                 DebugLog("Deployment progress: " + p.state + " " + p.percentage + "%");
                 if (Properties.LauncherSettings.Default.ShowAdvancedInstallDetails)
-                    UpdateProgressBar(progress: Convert.ToInt64(p.percentage), totalProgress: UserInterfaceModel.DeploymentMaximum);
+                    MainViewModel.Default.InterfaceState.UpdateProgressBar(progress: Convert.ToInt64(p.percentage), totalProgress: UserInterfaceModel.DeploymentMaximum);
 
             };
             t.Completed += (v, p) =>
@@ -376,26 +376,17 @@ namespace BedrockLauncher.Handlers
         }
         protected void DownloadProgressWrapper(long current, long? total)
         {
-            if (MainViewModel.Default.ProgressBarState.ProgressBar_CurrentState == LauncherStateChange.isInitializing)
+            if (MainViewModel.Default.InterfaceState.ProgressBar_CurrentState == LauncherStateChange.isInitializing)
             {
                 DebugLog("Actual download started");
-                UpdateProgressBar(state: LauncherStateChange.isDownloading, totalProgress: total, progress: current);
+                MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.isDownloading, totalProgress: total, progress: current);
             }
-            UpdateProgressBar(state: LauncherStateChange.isDownloading, totalProgress: total, progress: current);
-        }
-        protected void UpdateProgressBar(string deploymentPackageName = null, LauncherStateChange? state = null, long? progress = null, long? totalProgress = null, bool? show = null, bool? isGameRunning = null)
-        {
-            if (deploymentPackageName != null) MainViewModel.Default.ProgressBarState.DeploymentPackageName = deploymentPackageName;
-            if (state != null) MainViewModel.Default.ProgressBarState.ProgressBar_CurrentState = state.Value;
-            if (progress != null) MainViewModel.Default.ProgressBarState.ProgressBar_CurrentProgress = progress.Value;
-            if (totalProgress != null) MainViewModel.Default.ProgressBarState.ProgressBar_TotalProgress = totalProgress.Value;
-            if (show != null) MainViewModel.Default.ProgressBarState.ProgressBar_Show = show.Value;
-            if (isGameRunning != null) MainViewModel.Default.ProgressBarState.IsGameRunning = isGameRunning.Value;
+            MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.isDownloading, totalProgress: total, progress: current);
         }
         protected void UpdateProgressBarCanceling(bool allowCancel, ICommand cancelCommand)
         {
-            MainViewModel.Default.ProgressBarState.AllowCancel = allowCancel;
-            MainViewModel.Default.ProgressBarState.CancelCommand = cancelCommand;
+            MainViewModel.Default.InterfaceState.AllowCancel = allowCancel;
+            MainViewModel.Default.InterfaceState.CancelCommand = cancelCommand;
         }
         protected void SetError(Exception e, string debugMessage, string dialogTitle, string dialogText)
         {

@@ -6,37 +6,46 @@ using System.Threading.Tasks;
 using CodeHollow.FeedReader;
 using CodeHollow.FeedReader.Feeds;
 
-namespace BedrockLauncher.Classes
+namespace BedrockLauncher.Classes.Launcher
 {
-    public class NewsItem_RSS : NewsItem
+    public class NewsItem_MinecraftRSS : NewsItem
     {
         private const string FallbackImageURL = @"/BedrockLauncher;component/resources/images/packs/invalid_pack.png";
 
         public string GetImageUrl()
         {
-            var elements = this.SpecificItem.Element.Elements();
-            if (elements != null)
-            {
-                if (elements.ToList().Exists(x => x.Name.LocalName == "imageURL"))
-                {
-                    var result = elements.Where(x => x.Name.LocalName == "imageURL").FirstOrDefault();
-                    return result.Value;
-                }
-            }
-            var attributes = this.SpecificItem.Element.Attributes();
+            var attributes = this.SpecificItem.Element.Elements();
             if (attributes != null)
             {
-                if (attributes.ToList().Exists(x => x.Name.LocalName == "image"))
+                if (attributes.ToList().Exists(x => x.Name.LocalName == "imageURL"))
                 {
-                    var result = attributes.Where(x => x.Name.LocalName == "image").FirstOrDefault();
-                    return result.Value;
+                    var result = attributes.Where(x => x.Name.LocalName == "imageURL").FirstOrDefault();
+                    return @"https://www.minecraft.net/" + result.Value;
                 }
             }
 
             return FallbackImageURL;
         }
 
-        public NewsItem_RSS(FeedItem item) : base()
+        public string PrimaryTag
+        {
+            get
+            {
+                var attributes = this.SpecificItem.Element.Elements();
+                if (attributes != null)
+                {
+                    if (attributes.ToList().Exists(x => x.Name.LocalName == "primaryTag"))
+                    {
+                        var result = attributes.Where(x => x.Name.LocalName == "primaryTag").FirstOrDefault();
+                        return result.Value;
+                    }
+                }
+
+                return "NULL";
+            }
+        }
+
+        public NewsItem_MinecraftRSS(FeedItem item) : base()
         {
             this.Author = item.Author;
             this.Categories = item.Categories;
@@ -53,7 +62,7 @@ namespace BedrockLauncher.Classes
         public override string ImageUrl { get => GetImageUrl(); }
         public override double ImageWidth { get => 190; }
         public override double ImageHeight { get => 190; }
-        public override string Tag { get => "RSS"; }
+        public override string Tag { get => PrimaryTag; }
         public override string Date { get => PublishingDateString; }
         public override string Title { get; }
         public override string Link { get; }

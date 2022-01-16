@@ -13,12 +13,9 @@ using BedrockLauncher.Enums;
 namespace BedrockLauncher.ViewModels
 {
 
-    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.ExcludeExplicitProperties)]    //102 Lines
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.DebugOptions.ExcludeExplicitProperties)]    //102 Lines
     public class UserInterfaceModel
     {
-
-
-
         private bool _ShowProgressBar = false;
         private LauncherStateChange _currentState = LauncherStateChange.None;
         public const long DeploymentMaximum = 100;
@@ -89,11 +86,8 @@ namespace BedrockLauncher.ViewModels
             {
                 _ShowProgressBar = value;
 
-                if (_ShowProgressBar) ShowProgressBarContent();
-                else HideProgressBarContent();
-
-                //if (_ShowProgressBar) ProgressBarShowAnim();
-                //else ProgressBarHideAnim();
+                if (_ShowProgressBar) ProgressBarShowAnim();
+                else ProgressBarHideAnim();
             }
         }
         public string ProgressBar_DisplayStatus
@@ -182,17 +176,6 @@ namespace BedrockLauncher.ViewModels
         public Visibility MainThread_progressbarcontent { get; set; } = Visibility.Hidden;
 
 
-        /*
-        private static MainWindow MainThread
-        {
-            get
-            {
-                return App.Current.Dispatcher.Invoke(() =>
-                {
-                    return (MainWindow)App.Current.MainWindow;
-                });
-            }
-        }
         private async void ProgressBarShowAnim()
         {
             await Application.Current.Dispatcher.InvokeAsync(() =>
@@ -211,7 +194,7 @@ namespace BedrockLauncher.ViewModels
                 };
                 storyboard.Children.Add(animation);
                 Storyboard.SetTargetProperty(animation, new System.Windows.PropertyPath(ProgressBar.HeightProperty));
-                Storyboard.SetTarget(animation, MainThread.ProgressBarGrid);
+                Storyboard.SetTarget(animation, MainViewModel.Default.ProgressBarGrid);
                 storyboard.Completed += new EventHandler((s, e) => ShowProgressBarContent());
                 storyboard.Begin();
             });
@@ -234,12 +217,12 @@ namespace BedrockLauncher.ViewModels
                 };
                 storyboard.Children.Add(animation);
                 Storyboard.SetTargetProperty(animation, new System.Windows.PropertyPath(ProgressBar.HeightProperty));
-                Storyboard.SetTarget(animation, MainThread.ProgressBarGrid);
+                Storyboard.SetTarget(animation, MainViewModel.Default.ProgressBarGrid);
                 storyboard.Completed += new EventHandler((s, e) => HideProgressBarContent());
                 storyboard.Begin();
             });
         }
-        */
+        
 
         private void HideProgressBarContent()
         {
@@ -254,6 +237,16 @@ namespace BedrockLauncher.ViewModels
             MainThread_ProgressBarGrid = Visibility.Visible;
             MainThread_ProgressBarText = Visibility.Visible;
             MainThread_progressbarcontent = Visibility.Visible;
+        }
+
+        public void UpdateProgressBar(string deploymentPackageName = null, LauncherStateChange? state = null, long? progress = null, long? totalProgress = null, bool? show = null, bool? isGameRunning = null)
+        {
+            if (deploymentPackageName != null) DeploymentPackageName = deploymentPackageName;
+            if (state != null) ProgressBar_CurrentState = state.Value;
+            if (progress != null) ProgressBar_CurrentProgress = progress.Value;
+            if (totalProgress != null) ProgressBar_TotalProgress = totalProgress.Value;
+            if (show != null) ProgressBar_Show = show.Value;
+            if (isGameRunning != null) IsGameRunning = isGameRunning.Value;
         }
     }
 }

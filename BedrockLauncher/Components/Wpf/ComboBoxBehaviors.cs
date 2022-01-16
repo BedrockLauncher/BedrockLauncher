@@ -8,7 +8,7 @@ using System.Windows.Input;
 using BedrockLauncher.Components;
 using System.Windows.Controls;
 
-namespace BedrockLauncher.Components
+namespace BedrockLauncher.Components.Wpf
 {
     public static class ComboBoxBehaviors
     {

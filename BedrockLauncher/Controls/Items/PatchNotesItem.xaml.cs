@@ -1,4 +1,4 @@
-﻿using BedrockLauncher.Classes;
+﻿using BedrockLauncher.Classes.Launcher;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Pages;
 using System;
@@ -33,11 +33,11 @@ namespace BedrockLauncher.Controls.Items
         private void FeedItemButton_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            MCPatchNotesItem item = button.DataContext as MCPatchNotesItem;
+            PatchNote item = button.DataContext as PatchNote;
             LoadChangelog(item);
         }
 
-        public static void LoadChangelog(MCPatchNotesItem item)
+        public static void LoadChangelog(PatchNote item)
         {
             string header_title = string.Format("{0} {1}", (item.isBeta ? "Beta" : "Release"), item.Version);
             ViewModels.MainViewModel.Default.SetOverlayFrame(new ChangelogPreviewPage(item.Content, header_title, item.Url));

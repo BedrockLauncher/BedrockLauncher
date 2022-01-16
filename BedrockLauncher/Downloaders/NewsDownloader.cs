@@ -1,4 +1,4 @@
-﻿using BedrockLauncher.Classes;
+﻿using BedrockLauncher.Classes.Launcher;
 using BedrockLauncher.ViewModels;
 using CodeHollow.FeedReader;
 using ExtensionsDotNET.HTTP2;
@@ -73,7 +73,7 @@ namespace BedrockLauncher.Downloaders
                     string body = item.body;
                     string tag = item.tag_name;
 
-                    LauncherPatchNoteItem launcherUpdateItem = new LauncherPatchNoteItem();
+                    AppPatchNote launcherUpdateItem = new AppPatchNote();
 
                     body = body.Replace("\r\n", "\r\n\r\n");
 

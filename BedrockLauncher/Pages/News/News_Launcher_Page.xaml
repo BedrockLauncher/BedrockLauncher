@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:viewModel="clr-namespace:BedrockLauncher.ViewModels"
-      xmlns:classes="clr-namespace:BedrockLauncher.Classes"
+      xmlns:classes="clr-namespace:BedrockLauncher.Classes.Launcher"
       xmlns:controls="clr-namespace:BedrockLauncher.Controls.Items"
       mc:Ignorable="d" 
       d:DataContext="{d:DesignInstance Type=viewModel:NewsViewModel}"
@@ -35,7 +35,7 @@
                 </Style>
             </ListView.Resources>
             <ListView.ItemTemplate>
-                <DataTemplate DataType="{x:Type classes:LauncherPatchNoteItem}">
+                <DataTemplate DataType="{x:Type classes:AppPatchNote}">
                     <controls:LauncherUpdateItem DataContext="{Binding .}" Padding="0,5"></controls:LauncherUpdateItem>
                 </DataTemplate>
             </ListView.ItemTemplate>

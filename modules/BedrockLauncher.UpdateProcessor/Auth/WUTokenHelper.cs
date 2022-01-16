@@ -13,14 +13,8 @@ namespace BedrockLauncher.UpdateProcessor.Auth
         static WUTokenHelper() { Init(); }
         private static void Init()
         {
-            var myPath = new Uri(AppDomain.CurrentDomain.BaseDirectory).LocalPath;
-            var myFolder = Path.Combine(Path.GetDirectoryName(myPath), "runtime", "WUTokenHelper");
-
-            var is64 = Environment.Is64BitProcess;
-            var subfolder = is64 ? "\\x64\\" : "\\Win32\\";
-            var path = myFolder + subfolder + "WUTokenHelper.dll";
-
-            InteropExtensions.LoadLibrary(path);
+            string dllImport = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Runtimes", "WUTokenHelper", Environment.Is64BitProcess ? "x64" : "Win32", "WUTokenHelper.dll");
+            InteropExtensions.LoadLibrary(dllImport);
         }
 
 

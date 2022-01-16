@@ -32,7 +32,7 @@ namespace BedrockLauncher.Controls.Skins
 
         public const string Preview = "skinview3d://SkinView/previews/index.html";
 
-        private const string NoSkin = "img/NoSkin.png";
+        private const string NoSkin = "skinview3d://SkinView/previews/img/NoSkin.png";
 
         #endregion
         #region Properties
@@ -136,23 +136,26 @@ namespace BedrockLauncher.Controls.Skins
 
         private async void RefreshView(bool localFile = true)
         {
-            await this.Dispatcher.Invoke(async () => {
+            await this.Dispatcher.InvokeAsync(async () => {
                 try
                 {
                     if (!Renderer.CanExecuteJavascriptInMainFrame)
                     {
                         return;
                     }
-                    else if (!localFile || Path == NoSkin)
+                    else if (!localFile || Path == NoSkin || Path == string.Empty)
                     {
-                        var result = await Renderer.EvaluateScriptAsync("setSkin", new object[] { Path, ModelType });
+                        var result = await Renderer.EvaluateScriptAsync("setSkin", new object[] { NoSkin, ModelType });
                     }
                     else
                     {
-                        var uri = new System.Uri(Path);
-                        var converted = uri.AbsoluteUri;
-                        var fix = converted.Replace("'", "%27").Replace("file://", "localfiles://");
-                        var result = await Renderer.EvaluateScriptAsync("setSkin", new object[] { fix, ModelType });
+                        
+                        if (System.Uri.TryCreate(Path, UriKind.RelativeOrAbsolute, out Uri uri))
+                        {
+                            var converted = uri.AbsoluteUri;
+                            var fix = converted.Replace("'", "%27").Replace("file://", "localfiles://");
+                            var result = await Renderer.EvaluateScriptAsync("setSkin", new object[] { fix, ModelType });
+                        }
                     }
 
 

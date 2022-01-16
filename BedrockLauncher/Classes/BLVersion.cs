@@ -14,7 +14,7 @@ using PostSharp.Patterns.Model;
 namespace BedrockLauncher.Classes
 {
 
-    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.ExcludeExplicitProperties)]    //84 Lines
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.DebugOptions.ExcludeExplicitProperties)]    //84 Lines
     public class BLVersion : MCVersion
     {
         public BLVersion(string uuid, string name, bool isBeta) : base(uuid, name, isBeta) { }
@@ -53,45 +53,53 @@ namespace BedrockLauncher.Classes
             get
             {
                 Depends.On(RequireSizeRecalculation);
-                Task.Run(GetInstallSize);
+                if (Constants.DebugOptions.CalculateVersionSizes) Task.Run(GetInstallSize);
+                else _RequireSizeRecalculation = false;
                 return _StoredInstallationSize;
             }
         }
 
-        private string _StoredInstallationSize = "N/A";
-        private bool RequireSizeRecalculation { get; set; } = true;
-
-        private async void GetInstallSize()
+        private bool RequireSizeRecalculation
         {
-            if (!RequireSizeRecalculation)
-            {
-                return;
-            }
+            get => _RequireSizeRecalculation;
+            set => _RequireSizeRecalculation = value;
+        }
+        private bool _RequireSizeRecalculation = false;
+        private string _StoredInstallationSize = "N/A";
 
-            if (Directory.Exists(Path.GetFullPath(GameDirectory)))
+        private async Task GetInstallSize()
+        {
+            await Task.Run(() =>
             {
-                DirectoryInfo dirInfo = new DirectoryInfo(Path.GetFullPath(GameDirectory));
-                long dirSize = await Task.Run(() => dirInfo.EnumerateFiles("*", SearchOption.AllDirectories).Sum(file => file.Length));
-
-                string[] sizes = { "B", "KB", "MB", "GB", "TB" };
-                int order = 0;
-                double len = dirSize;
-                while (len >= 1024 && order < sizes.Length - 1)
+                if (!_RequireSizeRecalculation)
                 {
-                    order++;
-                    len = len / 1024;
+                    return;
                 }
 
-                // Adjust the format string to your preferences. For example "{0:0.#}{1}" would
-                // show a single decimal place, and no space.
-                _StoredInstallationSize = String.Format("{0:0.##} {1}", len, sizes[order]);
-                RequireSizeRecalculation = false;
-            }
-            else
-            {
-                _StoredInstallationSize = "N/A";
-                RequireSizeRecalculation = false;
-            }
+                if (IsInstalled)
+                {
+                    DirectoryInfo dirInfo = new DirectoryInfo(Path.GetFullPath(GameDirectory));
+                    var dirSize = dirInfo.GetFiles("*", SearchOption.AllDirectories).Sum(file => file.Length);
+                    string[] sizes = { "B", "KB", "MB", "GB", "TB" };
+                    int order = 0;
+                    double len = dirSize;
+                    while (len >= 1024 && order < sizes.Length - 1)
+                    {
+                        order++;
+                        len = len / 1024;
+                    }
+
+                    // Adjust the format string to your preferences. For example "{0:0.#}{1}" would
+                    // show a single decimal place, and no space.
+                    _StoredInstallationSize = String.Format("{0:0.##} {1}", len, sizes[order]);
+                    _RequireSizeRecalculation = false;
+                }
+                else
+                {
+                    _StoredInstallationSize = "N/A";
+                    _RequireSizeRecalculation = false;
+                }
+            });
         }
 
         public string IconPath
@@ -147,9 +155,7 @@ namespace BedrockLauncher.Classes
             Process.Start("explorer.exe", Directory);
         }
 
-
-
-        public void UpdateInstallStatus()
+        public void UpdateFolderSize()
         {
             RequireSizeRecalculation = true;
         }

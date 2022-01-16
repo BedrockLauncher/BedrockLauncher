@@ -12,7 +12,7 @@ using System.Globalization;
 using System.Collections;
 using System.Web;
 
-namespace BedrockLauncher.CefSharp
+namespace BedrockLauncher.Components.CefSharp
 {
     public class FileSchemeHandler : ResourceHandler
     {

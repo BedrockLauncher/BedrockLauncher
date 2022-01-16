@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:f="clr-namespace:CodeHollow.FeedReader;assembly=CodeHollow.FeedReader"
-      xmlns:c="clr-namespace:BedrockLauncher.Classes"
+      xmlns:c="clr-namespace:BedrockLauncher.Classes.Launcher"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       xmlns:common="clr-namespace:BedrockLauncher.Controls"
       xmlns:viewModel="clr-namespace:BedrockLauncher.ViewModels"
@@ -22,10 +22,10 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
-        <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource Seperator.Background}">
-            <Grid Background="#FF303030">
+        <Border Background="#FF303030" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource Seperator.Background}">
+            <Grid Background="#FF303030" Margin="30,0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition MinWidth="240"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
@@ -54,6 +54,7 @@
                     <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_Categories}" Margin="5,2,0,10" FontWeight="Bold" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
                     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Orientation="Horizontal" Margin="0,0,10,10">
                         <CheckBox x:Name="ShowJavaContent" Checked="CheckBox_CheckChanged" Unchecked="CheckBox_CheckChanged" IsChecked="{Binding Offical_ShowJavaContent}" Content="{DynamicResource ResourceKey=NewsScreen_JavaNDungeons_JavaCheckbox}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
+                        <CheckBox x:Name="ShowBedrockContent" Checked="CheckBox_CheckChanged" Unchecked="CheckBox_CheckChanged" IsChecked="{Binding Offical_ShowBedrockContent}" Content="{DynamicResource ResourceKey=NewsScreen_JavaNDungeons_BedrockCheckbox}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
                         <CheckBox x:Name="ShowDungeonsContent" Checked="CheckBox_CheckChanged" Unchecked="CheckBox_CheckChanged" IsChecked="{Binding Offical_ShowDungeonsContent}" Content="{DynamicResource ResourceKey=NewsScreen_JavaNDungeons_DungeonsCheckbox}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
                     </StackPanel>
                 </StackPanel>
@@ -62,7 +63,7 @@
         <ListView x:Name="OfficalNewsFeed" ItemsSource="{Binding Source={StaticResource NewsFeed}, IsAsync=True}" Grid.Row="1" Keyboard.PreviewKeyUp="OfficalNewsFeed_KeyUp" ItemContainerStyle="{DynamicResource CardListViewItemVertical}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <vwp:VirtualizingWrapPanel ItemSize="410,335" StretchItems="False" Orientation="Vertical"/>
+                    <WrapPanel MaxWidth="{Binding ElementName=OfficalNewsFeed, Path=ActualWidth}" HorizontalAlignment="Center" />
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>

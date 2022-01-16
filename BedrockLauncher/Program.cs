@@ -13,10 +13,9 @@ using System.Windows;
 using BedrockLauncher.Core.Language;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Handlers;
-using BedrockLauncher.CefSharp;
+using BedrockLauncher.Components.CefSharp;
 using BedrockLauncher.Pages.Common;
 using ExtensionsDotNET;
-using Microsoft.Identity.Client.Utils.Windows;
 
 namespace BedrockLauncher
 {

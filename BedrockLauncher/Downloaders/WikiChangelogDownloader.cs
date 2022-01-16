@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Net;
 using Newtonsoft.Json;
 using System.IO;
-using BedrockLauncher.Classes;
+using BedrockLauncher.Classes.Launcher;
 using BedrockLauncher.Classes.MediaWiki;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
@@ -37,7 +37,7 @@ namespace BedrockLauncher.Downloaders
             "format=json",
             "cmcontinue="
         };
-        public ObservableCollection<MCPatchNotesItem> PatchNotes { get; set; } = new ObservableCollection<MCPatchNotesItem>();
+        public ObservableCollection<PatchNote> PatchNotes { get; set; } = new ObservableCollection<PatchNote>();
 
         private string GetResult(string url)
         {
@@ -57,7 +57,7 @@ namespace BedrockLauncher.Downloaders
                 PatchNotes.Clear();
             });
         }
-        private void AddPatch(MCPatchNotesItem patch)
+        private void AddPatch(PatchNote patch)
         {
             if (App.Current == null) return;
             App.Current.Dispatcher.BeginInvoke((Action)delegate ()
@@ -99,12 +99,12 @@ namespace BedrockLauncher.Downloaders
 
             //Sub-Functions
 
-            MCPatchNotesItem GetPatchNotesItem(string title, HtmlWeb _web)
+            PatchNote GetPatchNotesItem(string title, HtmlWeb _web)
             {
                 string url = MCWiki + title;
                 HtmlNode node = GetPatchNotesNode(url, _web);
 
-                MCPatchNotesItem item = new MCPatchNotesItem()
+                PatchNote item = new PatchNote()
                 {
                     Url = url,
                     isBeta = GetPatchNotesBetaState(title),
@@ -147,10 +147,10 @@ namespace BedrockLauncher.Downloaders
                 if (image_tag != null)
                 {
                     var image = image_tag.Descendants("img").FirstOrDefault();
-                    if (image != null) return image.GetAttributeValue("src", MCPatchNotesItem.FallbackImageURL);
+                    if (image != null) return image.GetAttributeValue("src", PatchNote.FallbackImageURL);
                 }
 
-                return MCPatchNotesItem.FallbackImageURL;
+                return PatchNote.FallbackImageURL;
             }
 
             HtmlNode GetPatchNotesNode(string url, HtmlWeb _web)

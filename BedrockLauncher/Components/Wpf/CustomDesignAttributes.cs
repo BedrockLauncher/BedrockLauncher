@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace BedrockLauncher.Components
+namespace BedrockLauncher.Components.Wpf
 {
     public static class CustomDesignAttributes
     {

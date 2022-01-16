@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CodeHollow.FeedReader;
 
-namespace BedrockLauncher.Classes
+namespace BedrockLauncher.Classes.Launcher
 {
 
     public class LauncherNewsFeed

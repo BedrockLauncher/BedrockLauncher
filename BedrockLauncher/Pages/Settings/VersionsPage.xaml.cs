@@ -20,6 +20,7 @@ namespace BedrockLauncher.Pages.Settings
 {
     public partial class VersionsPage : Page
     {
+        private bool hasInitalized = false;
         public VersionsPage()
         {
             this.DataContext = MainViewModel.Default;
@@ -43,7 +44,11 @@ namespace BedrockLauncher.Pages.Settings
 
         private void PageHost_Loaded(object sender, RoutedEventArgs e)
         {
-
+            if (!hasInitalized)
+            {
+                foreach (var ver in MainViewModel.Default.Versions) ver.UpdateFolderSize();
+                hasInitalized = true;
+            }
         }
 
         private void RefreshButton_Click(object sender, RoutedEventArgs e)

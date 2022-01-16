@@ -77,14 +77,14 @@ namespace BedrockLauncher.Core.Language
         public LanguageDefinition(string _locale)
         {
             this.Locale = _locale;
-            this.Path = $"/BedrockLauncher;component/Resources/lang/lang.{_locale}.xaml";
+            this.Path = $"/BedrockLauncher.Core;component/Resources/lang/lang.{_locale}.xaml";
             this.IsExternal = false;
             if (TryGetName(this.Path, this.IsExternal, out string _name)) this.Name = _name;
         }
         public LanguageDefinition()
         {
             this.Locale = "en-US";
-            this.Path = $"/BedrockLauncher;component/Resources/lang/lang.en-US.xaml";
+            this.Path = $"/BedrockLauncher.Core;component/Resources/lang/lang.en-US.xaml";
             this.IsExternal = false;
             if(TryGetName(this.Path, this.IsExternal, out string _name)) this.Name = _name;
         }

@@ -17,9 +17,9 @@
              Style="{DynamicResource InstallationSelectorComboBoxStyle}"
              SelectedValuePath="InstallationUUID"       
              SelectedValue="{Binding Config.CurrentInstallationUUID, UpdateSourceTrigger=PropertyChanged}"
-             IsEnabled="{Binding ProgressBarState.AllowEditing, Mode=OneWay}">
+             IsEnabled="{Binding InterfaceState.AllowEditing, Mode=OneWay}">
     <ComboBox.ItemContainerStyle>
-        <Style TargetType="{x:Type ComboBoxItem}" xmlns:c="clr-namespace:BedrockLauncher.Components">
+        <Style TargetType="{x:Type ComboBoxItem}" xmlns:c="clr-namespace:BedrockLauncher.Components.Wpf">
             <Setter Property="SnapsToDevicePixels" Value="True"/>
             <Setter Property="Padding" Value="0,5,0,5"/>
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

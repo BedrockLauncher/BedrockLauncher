@@ -37,7 +37,7 @@ using BedrockLauncher.UpdateProcessor;
 namespace BedrockLauncher.ViewModels
 {
 
-    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.ExcludeExplicitProperties)]    //119 Lines
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.DebugOptions.ExcludeExplicitProperties)]    //119 Lines
     public class MainViewModel : IDialogHander, ILauncherModel
     {
         public static MainViewModel Default { get; set; } = new MainViewModel();
@@ -55,7 +55,7 @@ namespace BedrockLauncher.ViewModels
         #region Properties
 
         public static UpdateHandler Updater { get; set; } = new UpdateHandler();
-        public UserInterfaceModel ProgressBarState { get; set; } = new UserInterfaceModel();
+        public UserInterfaceModel InterfaceState { get; set; } = new UserInterfaceModel();
         public PathHandler FilePaths { get; private set; } = new PathHandler();
         public PackageHandler PackageManager { get; set; } = new PackageHandler();
         public MCProfilesList Config { get; private set; } = new MCProfilesList();
@@ -228,6 +228,10 @@ namespace BedrockLauncher.ViewModels
         public Controls.Misc.UpdateButton UpdateButton
         {
             get { Depends.On(MainWindow); return MainWindow.UpdateButton; }
+        }
+        public DependencyObject ProgressBarGrid
+        {
+            get { Depends.On(MainWindow); return MainWindow.ProgressBarGrid; }
         }
 
         [SafeForDependencyAnalysis]

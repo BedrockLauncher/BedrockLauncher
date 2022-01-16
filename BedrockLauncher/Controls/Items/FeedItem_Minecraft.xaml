@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:c="clr-namespace:BedrockLauncher.Classes"
+             xmlns:c="clr-namespace:BedrockLauncher.Classes.Launcher"
              xmlns:http2="clr-namespace:ExtensionsDotNET.HTTP2;assembly=ExtensionsDotNET"
              xmlns:local="clr-namespace:BedrockLauncher.Controls.Items"
              x:Name="FeedItemEntry"
@@ -11,30 +11,39 @@
              Focusable="False"
              Padding="0"
              Click="FeedItemEntry_Click"
+             HorizontalContentAlignment="Stretch"
              VerticalContentAlignment="Stretch" FocusVisualStyle="{DynamicResource BlankFocusVisual}"
              Style="{DynamicResource EmptyButton}"
              d:DataContext="{d:DesignInstance c:NewsItem_MinecraftRSS}"
-             d:DesignHeight="365" d:DesignWidth="365">
+             d:DesignHeight="240" d:DesignWidth="400">
     <Button.Resources>
         <http2:ImageSourceConverterHTTP2 x:Key="ImageSourceConverter"></http2:ImageSourceConverterHTTP2>
     </Button.Resources>
     <Grid x:Name="MainGrid" Focusable="False" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
-            <RowDefinition MaxHeight="{Binding ImageHeight}"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="180"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition MaxWidth="{Binding ImageWidth}"/>
-            <ColumnDefinition Width="{Binding ImageWidth}"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Image Source="{Binding ImageUrl, Converter={StaticResource ImageSourceConverter}, IsAsync=True}" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
-
-        <TextBlock Background="{Binding Background, ElementName=MainGrid}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" FontWeight="Normal" FontSize="20" Padding="15,15" TextWrapping="Wrap" Text="{Binding Title}" Foreground="White"></TextBlock>
-        <DockPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" x:Name="Tb" Margin="15,15,15,15">
+        <Image Source="{Binding ImageUrl, Converter={StaticResource ImageSourceConverter}, IsAsync=True}" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch"></Image>
+        <TextBlock Background="{Binding Background, ElementName=MainGrid}" 
+                   VerticalAlignment="Center" 
+                   Grid.Column="1"
+                   FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" 
+                   FontWeight="Normal" 
+                   FontSize="20" Margin="15" 
+                   TextWrapping="Wrap" 
+                   Text="{Binding Title}" 
+                   Foreground="White">
+        </TextBlock>
+        <DockPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" x:Name="Tb" Margin="15">
             <TextBlock Padding="4,2" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Grid.Row="3" Text="{Binding Tag}" Foreground="White" Background="#333333"></TextBlock>
-            <TextBlock Margin="10,0,10,0" TextAlignment="Right" VerticalAlignment="Center" TextWrapping="Wrap" Grid.Row="3" Text="{Binding Date}" Foreground="#CCCCCC"></TextBlock>
+            <TextBlock TextAlignment="Right" VerticalAlignment="Center" TextWrapping="Wrap" Grid.Row="3" Text="{Binding Date}" Foreground="#CCCCCC"></TextBlock>
         </DockPanel>
     </Grid>
 </Button>

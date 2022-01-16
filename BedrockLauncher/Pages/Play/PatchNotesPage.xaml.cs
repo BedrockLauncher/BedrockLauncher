@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
 using CodeHollow.FeedReader;
-using BedrockLauncher.Classes;
+using BedrockLauncher.Classes.Launcher;
 using System.Diagnostics;
 using BedrockLauncher.Controls.Items;
 using BedrockLauncher.Downloaders;
@@ -60,7 +60,7 @@ namespace BedrockLauncher.Pages.Play
 
         public bool Filter_PatchNotes(object obj)
         {
-            MCPatchNotesItem v = obj as MCPatchNotesItem;
+            PatchNote v = obj as PatchNote;
 
             if (v != null)
             {
@@ -87,7 +87,7 @@ namespace BedrockLauncher.Pages.Play
             {
                 if (PatchNotesList.SelectedItem != null)
                 {
-                    var item = PatchNotesList.SelectedItem as MCPatchNotesItem;
+                    var item = PatchNotesList.SelectedItem as PatchNote;
                     PatchNotesItem.LoadChangelog(item);
                 }
             }

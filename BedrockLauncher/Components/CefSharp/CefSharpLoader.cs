@@ -14,7 +14,7 @@ using System.Runtime.CompilerServices;
 using BedrockLauncher.Downloaders;
 using System.Runtime.InteropServices;
 
-namespace BedrockLauncher.CefSharp
+namespace BedrockLauncher.Components.CefSharp
 {
     public static class CefSharpLoader
     {
@@ -27,9 +27,8 @@ namespace BedrockLauncher.CefSharp
             var settings = new CefSettings();
 
             // Set BrowserSubProcessPath based on app bitness at runtime
-            settings.BrowserSubprocessPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase,
-                                                   Environment.Is64BitProcess ? "x64" : "x86",
-                                                   "CefSharp.BrowserSubprocess.exe");
+            settings.BrowserSubprocessPath = Path.Combine(GetCefPath(), "CefSharp.BrowserSubprocess.exe");
+            settings.CachePath = Path.Combine(GetCefPath(), "Cache");
 
             settings.LogSeverity = LogSeverity.Disable;
 
@@ -64,7 +63,12 @@ namespace BedrockLauncher.CefSharp
             // Make sure you set performDependencyCheck false
             Cef.Initialize(settings, performDependencyCheck: false, browserProcessHandler: null);
         }
-        
+
+        private static string GetCefPath()
+        {
+            return Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Runtimes", "CefSharp", Environment.Is64BitProcess ? "x64" : "x86");
+        }
+
         public static Assembly Resolver(object sender, ResolveEventArgs args)
         {
             // Will attempt to load missing assembly from either x86 or x64 subdir
@@ -72,13 +76,9 @@ namespace BedrockLauncher.CefSharp
             if (args.Name.StartsWith("CefSharp"))
             {
                 string assemblyName = args.Name.Split(new[] { ',' }, 2)[0] + ".dll";
-                string archSpecificPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase,
-                                                       Environment.Is64BitProcess ? "x64" : "x86",
-                                                       assemblyName);
+                string archSpecificPath = Path.Combine(GetCefPath(), assemblyName);
 
-                return File.Exists(archSpecificPath)
-                           ? Assembly.LoadFile(archSpecificPath)
-                           : null;
+                return File.Exists(archSpecificPath) ? Assembly.LoadFile(archSpecificPath) : null;
             }
 
 

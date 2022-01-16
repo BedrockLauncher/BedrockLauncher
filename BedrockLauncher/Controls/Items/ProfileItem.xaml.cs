@@ -37,6 +37,7 @@ namespace BedrockLauncher.Controls.Items
             this.SelectorParent = _selectorParent;
             this.Tag = profile.Value;
             this.ProfileName.Text = profile.Key;
+            this.ProfileType.Text = "Profile";
             _ProfileName = profile.Key;
             if (Properties.LauncherSettings.Default.CurrentProfile == profile.Key) SelectedMark.Visibility = Visibility.Visible;
         }

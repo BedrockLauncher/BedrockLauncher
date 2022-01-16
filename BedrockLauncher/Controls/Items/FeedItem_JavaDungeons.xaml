@@ -14,8 +14,8 @@
              Style="{DynamicResource EmptyButton}"
              BorderThickness="0"
              Width="400"
+             MaxHeight="500"
              HorizontalContentAlignment="Stretch"
-             MaxHeight="335"
              VerticalContentAlignment="Stretch">
     <Button.Resources>
         <wincontrols:BooleanToVisibilityConverter x:Key="BoolToVis"></wincontrols:BooleanToVisibilityConverter>
@@ -23,61 +23,7 @@
     <StackPanel x:Name="MainGrid" Focusable="False" VerticalAlignment="Top" HorizontalAlignment="Stretch">
         <Image Source="{Binding ImageUrl}" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
         <Grid Background="{Binding Background, ElementName=MainGrid}">
-            <Grid Visibility="{Binding cardBorder, Converter={StaticResource BoolToVis}}">
-                <Grid.Resources>
-                    <sys:Double x:Key="BorderSizeDouble">21</sys:Double>
-                </Grid.Resources>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" MaxHeight="250"/>
-                    <RowDefinition/>
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Image Grid.Column="0" Grid.Row="0" ClipToBounds="True" RenderOptions.BitmapScalingMode="NearestNeighbor" Width="{DynamicResource BorderSizeDouble}" Height="{DynamicResource BorderSizeDouble}" Stretch="Uniform">
-                    <Image.Source>
-                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/panels/CardBorder.png" SourceRect="0 0 7 7"></CroppedBitmap>
-                    </Image.Source>
-                </Image>
-                <Image Grid.Column="0" Grid.Row="1" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="Fill">
-                    <Image.Source>
-                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/panels/CardBorder.png" SourceRect="0 7 7 46"></CroppedBitmap>
-                    </Image.Source>
-                </Image>
-                <Image Grid.Column="0" Grid.Row="2" RenderOptions.BitmapScalingMode="NearestNeighbor" Width="{DynamicResource BorderSizeDouble}" Height="{DynamicResource BorderSizeDouble}" Stretch="Uniform">
-                    <Image.Source>
-                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/panels/CardBorder.png" SourceRect="0 53 7 7"></CroppedBitmap>
-                    </Image.Source>
-                </Image>
-                <Image Grid.Column="2" Grid.Row="1" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="Fill">
-                    <Image.Source>
-                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/panels/CardBorder.png" SourceRect="53 7 7 46"></CroppedBitmap>
-                    </Image.Source>
-                </Image>
-                <Image Grid.Column="2" Grid.Row="2"  RenderOptions.BitmapScalingMode="NearestNeighbor" Width="{DynamicResource BorderSizeDouble}" Height="{DynamicResource BorderSizeDouble}" Stretch="Uniform">
-                    <Image.Source>
-                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/panels/CardBorder.png" SourceRect="53 53 7 7"></CroppedBitmap>
-                    </Image.Source>
-                </Image>
-                <Image Grid.Column="1" Grid.Row="0" RenderOptions.BitmapScalingMode="NearestNeighbor" Height="{DynamicResource BorderSizeDouble}" Stretch="Fill">
-                    <Image.Source>
-                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/panels/CardBorder.png" SourceRect="7 0 46 7"></CroppedBitmap>
-                    </Image.Source>
-                </Image>
-                <Image Grid.Column="2" Grid.Row="0"  RenderOptions.BitmapScalingMode="NearestNeighbor" Width="{DynamicResource BorderSizeDouble}" Height="{DynamicResource BorderSizeDouble}" Stretch="Uniform">
-                    <Image.Source>
-                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/panels/CardBorder.png" SourceRect="53 0 7 7"></CroppedBitmap>
-                    </Image.Source>
-                </Image>
-                <Image Grid.Column="1" Grid.Row="2" RenderOptions.BitmapScalingMode="NearestNeighbor" Height="{DynamicResource BorderSizeDouble}" Stretch="Fill">
-                    <Image.Source>
-                        <CroppedBitmap Source="/BedrockLauncher;component/Resources/images/panels/CardBorder.png" SourceRect="7 53 46 7"></CroppedBitmap>
-                    </Image.Source>
-                </Image>
-            </Grid>
+            <Border Margin="3" BorderThickness="1" BorderBrush="White" Visibility="{Binding cardBorder, Converter={StaticResource BoolToVis}}"/>
             <StackPanel Margin="28" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <TextBlock VerticalAlignment="Center" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" FontWeight="Normal" FontSize="20" Padding="0,0" TextWrapping="Wrap" Text="{Binding Title}" Foreground="White"></TextBlock>
                 <DockPanel VerticalAlignment="Bottom" x:Name="Tb" Margin="0,15,0,0">
