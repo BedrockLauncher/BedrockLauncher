@@ -16,7 +16,11 @@ namespace BedrockLauncher
 
         public static class Debugging
         {
+            //IMPORTANT FOR DATA BINDING: DO NOT TOUCH (leave at false)
+            //NOTE: More than 1000 lines will require paying for PostSharp
             public const bool ExcludeExplicitProperties = false;
+
+            //TODO: Fix performance issues
             public static bool CalculateVersionSizes { get; internal set; } = false;
             public static bool UpdateVersionsOnLoad { get; internal set; } = true;
             public static bool CheckForUpdatesOnLoad { get; internal set; } = true;
