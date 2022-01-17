@@ -28,8 +28,8 @@
             </Image>
             <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0">
                 <TextBlock FontSize="16" Foreground="{DynamicResource PrimaryText.Foreground}" FontWeight="DemiBold" Padding="0,0,0,0" Text="{Binding DisplayName}"/>
-                <TextBlock FontSize="11" Foreground="{DynamicResource SecondaryText.Foreground}" FontWeight="SemiBold" Padding="0,0,0,0" Text="{Binding UUID}"/>
-                <TextBlock FontSize="11" Foreground="{DynamicResource SecondaryText.Foreground}" Visibility="Collapsed" FontWeight="SemiBold" Padding="0,0,0,0" Text="{Binding InstallationSize}"/>
+                <TextBlock FontSize="11" Foreground="{DynamicResource SecondaryText.Foreground}" Visibility="Collapsed" FontWeight="SemiBold" Padding="0,0,0,0" Text="{Binding UUID}"/>
+                <TextBlock FontSize="11" Foreground="{DynamicResource SecondaryText.Foreground}" Visibility="Visible" FontWeight="SemiBold" Padding="0,0,0,0" Text="{Binding InstallationSize}"/>
             </StackPanel>
         </Grid>
         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Column="2" x:Name="ButtonPanel" Visibility="Collapsed">

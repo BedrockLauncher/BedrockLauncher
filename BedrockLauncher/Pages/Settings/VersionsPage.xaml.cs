@@ -51,9 +51,10 @@ namespace BedrockLauncher.Pages.Settings
             }
         }
 
-        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        private async void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
-            Task.Run(Program.OnApplicationRefresh);
+            await Task.Run(Program.OnApplicationRefresh);
+            foreach (var ver in MainViewModel.Default.Versions) ver.UpdateFolderSize();
         }
 
         private void CollectionViewSource_Filter(object sender, FilterEventArgs e)

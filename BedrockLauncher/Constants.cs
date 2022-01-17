@@ -21,7 +21,7 @@ namespace BedrockLauncher
             public const bool ExcludeExplicitProperties = false;
 
             //TODO: Fix performance issues
-            public static bool CalculateVersionSizes { get; internal set; } = false;
+            public static bool CalculateVersionSizes { get; internal set; } = true;
             public static bool UpdateVersionsOnLoad { get; internal set; } = true;
             public static bool CheckForUpdatesOnLoad { get; internal set; } = true;
 

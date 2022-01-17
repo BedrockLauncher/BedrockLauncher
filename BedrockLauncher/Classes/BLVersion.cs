@@ -78,8 +78,11 @@ namespace BedrockLauncher.Classes
 
                 if (IsInstalled)
                 {
-                    DirectoryInfo dirInfo = new DirectoryInfo(Path.GetFullPath(GameDirectory));
-                    var dirSize = dirInfo.GetFiles("*", SearchOption.AllDirectories).Sum(file => file.Length);
+                    //DirectoryInfo dirInfo = new DirectoryInfo(Path.GetFullPath(GameDirectory));
+                    //var dirSize = dirInfo.GetFiles("*", SearchOption.AllDirectories).Sum(file => file.Length);
+                    var dirSize = GetDirectorySize(Path.GetFullPath(GameDirectory));
+
+
                     string[] sizes = { "B", "KB", "MB", "GB", "TB" };
                     int order = 0;
                     double len = dirSize;
@@ -100,6 +103,13 @@ namespace BedrockLauncher.Classes
                     _RequireSizeRecalculation = false;
                 }
             });
+
+            ulong GetDirectorySize(string dir)
+            {
+                dynamic fso = Activator.CreateInstance(Type.GetTypeFromProgID("Scripting.FileSystemObject"));
+                dynamic fldr = fso.GetFolder(dir);
+                return (ulong)fldr.size;
+            }
         }
 
         public string IconPath
