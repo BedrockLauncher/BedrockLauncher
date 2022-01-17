@@ -85,7 +85,7 @@ namespace BedrockLauncher
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            MainViewModel.Default.PackageManager.CancelTask();
+            MainViewModel.Default.PackageManager.Cancel();
         }
 
         #region Navigation
@@ -236,9 +236,7 @@ namespace BedrockLauncher
             await this.Dispatcher.InvokeAsync(() =>
             {
                 if (Properties.LauncherSettings.Default.CloseLauncherOnSwitch && MainViewModel.Default.PackageManager.isGameRunning)
-                {
-                    Task.Run(() => MainViewModel.Default.ShowGameCloseDialog(action));
-                }
+                    Task.Run(() => MainViewModel.Default.LauncherCanNotCloseDialog(action));
                 else action.Invoke();
             });
 

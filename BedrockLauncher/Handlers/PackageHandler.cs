@@ -26,72 +26,252 @@ using ZipProgress = ExtensionsDotNET.ZipFileExtensions.ZipProgress;
 using BedrockLauncher.Enums;
 using System.Windows.Input;
 using BedrockLauncher.ViewModels;
+using BedrockLauncher.Exceptions;
 
 namespace BedrockLauncher.Handlers
 {
     public class PackageHandler
     {
-        public VersionDownloader VersionDownloader { get; private set; } = new VersionDownloader();
         private CancellationTokenSource CancelSource = new CancellationTokenSource();
         private readonly Task UserAuthorizationTask;
         private volatile int UserAuthorizationTaskStarted;
 
-        public PackageHandler()
-        {
-            UserAuthorizationTask = new Task(VersionDownloader.EnableUserAuthorization);
-        }
-
+        public PackageHandler() => UserAuthorizationTask = new Task(VersionDownloader.EnableUserAuthorization);
+        public VersionDownloader VersionDownloader { get; private set; } = new VersionDownloader();
         public Process GameHandle { get; private set; } = null;
         public bool isGameRunning { get => GameHandle != null; }
 
+        #region Public Methods
 
-        public async Task<bool> DownloadAndExtractPackage(BLVersion v)
+        public async Task LaunchPackage(BLVersion v, string dirPath, bool KeepLauncherOpen)
         {
-            DebugLog("Download start");
-            bool wasCanceled = false;
-
-            CancelSource = new CancellationTokenSource();
-            MainViewModel.Default.InterfaceState.UpdateProgressBar(show: true);
-            UpdateProgressBarCanceling(true, new RelayCommand((o) => CancelTask()));
-
             try
             {
+                SetTaskState(true);
+
+                if (!v.IsInstalled) await DownloadAndExtractPackage(v);
+
+                await RedirectSaveData(dirPath);
+                await UnregisterPackage(v, true);
+                await RegisterPackage(v);
+
+                MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.isLaunching);
+
+                var pkg = await AppDiagnosticInfo.RequestInfoForPackageAsync(Constants.MINECRAFT_PACKAGE_FAMILY);
+                AppActivationResult activationResult = null;
+                if (pkg.Count > 0) activationResult = await pkg[0].LaunchAsync();
+                DebugLog("App launch finished!");
+                if (KeepLauncherOpen && activationResult != null) await UpdatePackageHandle(activationResult);
+                if (KeepLauncherOpen == false) await Application.Current.Dispatcher.InvokeAsync(() => Application.Current.MainWindow.Close());
+
+                SetTaskState(false);
+            }
+            catch (PackageManagerException e)
+            {
+                SetException(e);
+            }
+            catch (Exception e)
+            {
+                SetException(new AppLaunchFailedException(e));
+            }
+        }
+        public async Task ClosePackage()
+        {
+            if (GameHandle != null)
+            {
+                var title = Application.Current.FindResource("Dialog_KillGame_Title") as string;
+                var content = Application.Current.FindResource("Dialog_KillGame_Text") as string;
+
+                var result = await DialogPrompt.ShowDialog_YesNo(title, content);
+
+                if (result == System.Windows.Forms.DialogResult.Yes) GameHandle.Kill();
+            }
+        }
+        public async Task RemovePackage(BLVersion v)
+        {
+            try
+            {
+                SetTaskState(true);
+
+                await UnregisterPackage(v);
+                Directory.Delete(v.GameDirectory, true);
+                v.UpdateFolderSize();
+
+                SetTaskState(false);
+            }
+            catch (PackageManagerException e)
+            {
+                SetException(e);
+            }
+            catch (Exception ex) 
+            {
+                SetException(new PackageRemovalFailedException(ex));
+            }
+        }
+        public async Task DownloadPackage(BLVersion v)
+        {
+            try
+            {
+                SetTaskState(true);
+                await DownloadAndExtractPackage(v);
+                SetTaskState(false);
+            }
+            catch (PackageManagerException e)
+            {
+                SetException(e);
+            }
+            catch (Exception e)
+            {
+                SetException(new PackageDownloadAndExtractFailedException(e));
+            }
+        }
+        public void Cancel()
+        {
+            if (CancelSource != null && !CancelSource.IsCancellationRequested) CancelSource.Cancel();
+        }
+
+        #endregion
+
+        #region Private Throwable Methods
+
+        private async Task DownloadAndExtractPackage(BLVersion v)
+        {
+            try
+            {
+                DebugLog("Download start");
+                SetCancelation(true);
+
                 string dlPath = "Minecraft-" + v.Name + ".Appx";
                 await DownloadPackage(v, dlPath, CancelSource);
                 await ExtractPackage(v, dlPath, CancelSource);
+
+                SetCancelation(false);
+                CancelSource = null;
+                v.UpdateFolderSize();
             }
-            catch (TaskCanceledException)
+            catch (PackageManagerException e)
             {
-                wasCanceled = true;
+                throw e;
             }
             catch (Exception ex)
             {
-                ErrorScreenShow.exceptionmsg(ex);
-                wasCanceled = true;
+                throw ex;
             }
 
-            if (wasCanceled) MainViewModel.Default.InterfaceState.UpdateProgressBar(show: false, state: LauncherStateChange.None);
-            UpdateProgressBarCanceling(false, null);
-            CancelSource = null;
-            v.UpdateFolderSize();
-
-            return wasCanceled;
         }
-        public async Task<bool> PreparePackage(BLVersion v, string dirPath)
+        private async Task DownloadPackage(BLVersion v, string dlPath, CancellationTokenSource cancelSource)
         {
             try
             {
-                await Task.Run(() => RedirectSaveData(dirPath));
-                await UnregisterPackage(v, true);
-                await RegisterPackage(v);
-                return true;
+                if (v.IsBeta) await AuthenticateBetaUser();
+                MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.isDownloading);
+                await VersionDownloader.Download(v.DisplayName, v.UUID, 1, dlPath, (x, y) => DownloadProgressWrapper(x, y), cancelSource.Token);
+                DebugLog("Download complete");
+                MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.None);
             }
-            catch
+            catch (PackageManagerException e)
             {
-                return false;
+                throw e;
+            }
+            catch (TaskCanceledException e)
+            {
+                throw new PackageDownloadCanceledException(e);
+            }
+            catch (Exception e)
+            {
+                throw new PackageDownloadFailedException(e);
+            }
+        }
+        private async Task RegisterPackage(BLVersion v)
+        {
+            try
+            {
+                DebugLog("Registering package");
+                MainViewModel.Default.InterfaceState.UpdateProgressBar(deploymentPackageName: v.GetPackageNameFromMainifest(), state: LauncherStateChange.isRegisteringPackage);
+                await DeploymentProgressWrapper(new PackageManager().RegisterPackageAsync(new Uri(v.ManifestPath), null, DeploymentOptions.DevelopmentMode));
+                MainViewModel.Default.InterfaceState.UpdateProgressBar(deploymentPackageName: "", state: LauncherStateChange.None);
+                DebugLog("App re-register done!");
+            }
+            catch (PackageManagerException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
+            {
+                throw new PackageRegistrationFailedException(e);
             }
 
-            void RedirectSaveData(string InstallationsFolderPath)
+        }
+        private async Task ExtractPackage(BLVersion v, string dlPath, CancellationTokenSource cancelSource)
+        {
+            try
+            {
+                DebugLog("Extraction started");
+                MainViewModel.Default.InterfaceState.UpdateProgressBar(progress: 0, state: LauncherStateChange.isExtracting);
+
+                if (Directory.Exists(v.GameDirectory)) Directory.Delete(v.GameDirectory, true);
+
+                var progress = new Progress<ZipProgress>();
+                progress.ProgressChanged += (s, z) => MainViewModel.Default.InterfaceState.UpdateProgressBar(progress: z.Processed, totalProgress: z.Total);
+                await Task.Run(() => new ZipArchive(File.OpenRead(dlPath)).ExtractToDirectory(v.GameDirectory, progress, cancelSource));
+
+                File.Delete(Path.Combine(v.GameDirectory, "AppxSignature.p7x"));
+                File.Delete(dlPath);
+
+                DebugLog("Extracted successfully");
+            }
+            catch (PackageManagerException e)
+            {
+                throw e;
+            }
+            catch (TaskCanceledException e)
+            {
+                Directory.Delete(v.GameDirectory, true);
+                throw new PackageExtractionCanceledException(e);
+            }
+            catch (Exception e)
+            {
+                throw new PackageExtractionFailedException(e);
+            }
+        }
+        private async Task UnregisterPackage(BLVersion v, bool keepVersion = false)
+        {
+            try
+            {
+                foreach (var pkg in new PackageManager().FindPackages(Constants.MINECRAFT_PACKAGE_FAMILY))
+                {
+                    string location;
+
+                    try { location = pkg.InstalledLocation.Path; }
+                    catch (FileNotFoundException) { location = string.Empty; }
+
+                    if (location == v.GameDirectory && keepVersion)
+                    {
+                        DebugLog("Skipping package removal - same path: " + pkg.Id.FullName + " " + location);
+                        continue;
+                    }
+
+                    DebugLog("Removing package: " + pkg.Id.FullName);
+
+                    MainViewModel.Default.InterfaceState.UpdateProgressBar(deploymentPackageName: pkg.Id.FullName, state: LauncherStateChange.isRemovingPackage);
+                    await DeploymentProgressWrapper(new PackageManager().RemovePackageAsync(pkg.Id.FullName, RemovalOptions.PreserveApplicationData | RemovalOptions.RemoveForAllUsers));
+                    MainViewModel.Default.InterfaceState.UpdateProgressBar(deploymentPackageName: "", state: LauncherStateChange.None);
+
+                    DebugLog("Removal of package done: " + pkg.Id.FullName);
+                }
+            }
+            catch (PackageManagerException e)
+            {
+                throw e;
+            }
+            catch (Exception ex)
+            {
+                throw new PackageDeregistrationFailedException(ex);
+            }
+        }
+        private async Task RedirectSaveData(string InstallationsFolderPath)
+        {
+            await Task.Run(() =>
             {
                 try
                 {
@@ -105,7 +285,15 @@ namespace BedrockLauncher.Handlers
                     if (Directory.Exists(PackageFolder))
                     {
                         var dir = new DirectoryInfo(PackageFolder);
-                        if (!dir.IsSymbolicLink()) dir.MoveTo(PackageBakFolder);
+                        bool isSymbolic = dir.IsSymbolicLink();
+
+                        if (!isSymbolic)
+                        {
+                            int i = 1;
+                            var finalString = PackageBakFolder;
+                            while (Directory.Exists(finalString)) finalString = $"{PackageBakFolder}.{i++}";
+                            dir.MoveTo(finalString);
+                        }
                         else dir.Delete(true);
                     }
 
@@ -145,38 +333,38 @@ namespace BedrockLauncher.Handlers
                     needed_rules.ForEach(x => profileSecurity.AddAccessRule(x));
                     profileDir.SetAccessControl(profileSecurity);
                 }
-                catch (Exception e)
+                catch (PackageManagerException e)
                 {
-                    ErrorScreenShow.exceptionmsg(e);
                     throw e;
                 }
-            }
+                catch (Exception e)
+                {
+                    throw new SaveRedirectionFailedException(e);
+                }
+            });
+
         }
-        public async Task LaunchPackage(BLVersion v, string dirPath, bool KeepLauncherOpen)
+        private async Task AuthenticateBetaUser()
         {
             try
             {
-                MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.isLaunching, show: true);
-                bool success = await PreparePackage(v, dirPath);
-                if (success)
-                {
-                    var pkg = await AppDiagnosticInfo.RequestInfoForPackageAsync(Constants.MINECRAFT_PACKAGE_FAMILY);
-                    AppActivationResult activationResult = null;
-                    if (pkg.Count > 0) activationResult = await pkg[0].LaunchAsync();
-                    DebugLog("App launch finished!");
-                    if (KeepLauncherOpen && activationResult != null) UpdatePackageHandle(activationResult);
-                    if (KeepLauncherOpen == false) await Application.Current.Dispatcher.InvokeAsync(() => Application.Current.MainWindow.Close());
-                    else MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.None, show: false);
-                }
+                if (Interlocked.CompareExchange(ref UserAuthorizationTaskStarted, 1, 0) == 0) UserAuthorizationTask.Start();
+                DebugLog("Waiting for authentication");
+                await UserAuthorizationTask;
+                DebugLog("Authentication complete");
+            }
+            catch (PackageManagerException e)
+            {
+                throw e;
             }
             catch (Exception e)
             {
-                SetError(e, "App launch failed", "Error_AppLaunchFailed_Title", "Error_AppLaunchFailed");
-                MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.None, show: false);
+                throw new BetaAuthenticationFailedException(e);
             }
-
-
-            void UpdatePackageHandle(AppActivationResult app)
+        }
+        private async Task UpdatePackageHandle(AppActivationResult app)
+        {
+            await Task.Run(() =>
             {
                 try
                 {
@@ -190,12 +378,16 @@ namespace BedrockLauncher.Handlers
                     GameHandle.EnableRaisingEvents = true;
                     GameHandle.Exited += OnPackageExit;
                 }
+                catch (PackageManagerException e)
+                {
+                    throw e;
+                }
                 catch (Exception ex)
                 {
-                    DebugLog(ex.ToString());
-                    throw ex;
+                    throw new PackageProcessHookFailedException(ex);
                 }
-            }
+            });
+
 
             void OnPackageExit(object sender, EventArgs e)
             {
@@ -205,147 +397,8 @@ namespace BedrockLauncher.Handlers
                 MainViewModel.Default.InterfaceState.UpdateProgressBar(isGameRunning: false);
             }
         }
-        public async Task ClosePackage()
-        {
-            if (GameHandle != null)
-            {
-                var title = Application.Current.FindResource("Dialog_KillGame_Title") as string;
-                var content = Application.Current.FindResource("Dialog_KillGame_Text") as string;
 
-                var result = await DialogPrompt.ShowDialog_YesNo(title, content);
-
-                if (result == System.Windows.Forms.DialogResult.Yes) GameHandle.Kill();
-            }
-        }
-        public async Task DownloadPackage(BLVersion v, string dlPath, CancellationTokenSource cancelSource)
-        {
-            try
-            {
-                if (v.IsBeta)
-                {
-                    if (Interlocked.CompareExchange(ref UserAuthorizationTaskStarted, 1, 0) == 0) UserAuthorizationTask.Start();
-                    DebugLog("Waiting for authentication");
-                    try
-                    {
-                        await UserAuthorizationTask;
-                        DebugLog("Authentication complete");
-                    }
-                    catch (Exception e)
-                    {
-                        SetError(e, "Authentication failed", "Error_AuthenticationFailed_Title", "Error_AuthenticationFailed");
-                        throw new TaskCanceledException();
-                    }
-                }
-                MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.isInitializing);
-                await VersionDownloader.Download(v.DisplayName, v.UUID, 1, dlPath, (x, y) => DownloadProgressWrapper(x, y), cancelSource.Token);
-                DebugLog("Download complete");
-                MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.None);
-            }
-            catch (TaskCanceledException e)
-            {
-                MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.None);
-                throw e;
-            }
-            catch (Exception e)
-            {
-                MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.None);
-                SetError(e, "Download failed", "Error_AppDownloadFailed_Title", "Error_AppDownloadFailed");
-                throw e;
-            }
-        }
-        public async Task RemovePackage(BLVersion v)
-        {
-            MainViewModel.Default.InterfaceState.UpdateProgressBar(show: true, state: LauncherStateChange.isUninstalling);
-
-            try
-            {
-                await UnregisterPackage(v);
-                Directory.Delete(v.GameDirectory, true);
-            }
-            catch (Exception ex) { ErrorScreenShow.exceptionmsg(ex); }
-
-            v.UpdateFolderSize();
-            MainViewModel.Default.InterfaceState.UpdateProgressBar(show: false, state: LauncherStateChange.None);
-        }
-        public async Task RegisterPackage(BLVersion v)
-        {
-            try
-            {
-                DebugLog("Registering package");
-                MainViewModel.Default.InterfaceState.UpdateProgressBar(deploymentPackageName: v.GetPackageNameFromMainifest(), state: LauncherStateChange.isRegisteringPackage);
-                await DeploymentProgressWrapper(new PackageManager().RegisterPackageAsync(new Uri(v.ManifestPath), null, DeploymentOptions.DevelopmentMode));
-                MainViewModel.Default.InterfaceState.UpdateProgressBar(deploymentPackageName: "", state: LauncherStateChange.None);
-                DebugLog("App re-register done!");
-            }
-            catch (Exception e)
-            {
-                SetError(e, "App re-register failed", "Error_AppReregisterFailed_Title", "Error_AppReregisterFailed");
-                throw e;
-            }
-
-        }
-        public async Task ExtractPackage(BLVersion v, string dlPath, CancellationTokenSource cancelSource)
-        {
-            try
-            {
-                DebugLog("Extraction started");
-                MainViewModel.Default.InterfaceState.UpdateProgressBar(progress: 0, state: LauncherStateChange.isExtracting);
-
-                if (Directory.Exists(v.GameDirectory)) Directory.Delete(v.GameDirectory, true);
-
-                var progress = new Progress<ZipProgress>();
-                progress.ProgressChanged += (s, z) => MainViewModel.Default.InterfaceState.UpdateProgressBar(progress: z.Processed, totalProgress: z.Total);
-                await Task.Run(() => new ZipArchive(File.OpenRead(dlPath)).ExtractToDirectory(v.GameDirectory, progress, cancelSource));
-
-                File.Delete(Path.Combine(v.GameDirectory, "AppxSignature.p7x"));
-                File.Delete(dlPath);
-
-                DebugLog("Extracted successfully");
-            }
-            catch (TaskCanceledException e)
-            {
-                Directory.Delete(v.GameDirectory, true);
-                throw e;
-            }
-            catch (Exception e)
-            {
-                SetError(e, "Extraction failed", "Error_AppExtractionFailed_Title", "Error_AppExtractionFailed");
-                MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.None);
-                throw new TaskCanceledException();
-            }
-        }
-        public async Task UnregisterPackage(BLVersion v, bool keepVersion = false)
-        {
-            foreach (var pkg in new PackageManager().FindPackages(Constants.MINECRAFT_PACKAGE_FAMILY))
-            {
-                string location = GetPackagePath(pkg);
-                if (location == v.GameDirectory && keepVersion)
-                {
-                    DebugLog("Skipping package removal - same path: " + pkg.Id.FullName + " " + location);
-                    continue;
-                }
-
-                DebugLog("Removing package: " + pkg.Id.FullName);
-
-                MainViewModel.Default.InterfaceState.UpdateProgressBar(deploymentPackageName: pkg.Id.FullName, state: LauncherStateChange.isRemovingPackage);
-                await DeploymentProgressWrapper(new PackageManager().RemovePackageAsync(pkg.Id.FullName, RemovalOptions.PreserveApplicationData | RemovalOptions.RemoveForAllUsers));
-                MainViewModel.Default.InterfaceState.UpdateProgressBar(deploymentPackageName: "", state: LauncherStateChange.None);
-
-                DebugLog("Removal of package done: " + pkg.Id.FullName);
-            }
-
-            string GetPackagePath(Package pkg)
-            {
-                try { return pkg.InstalledLocation.Path; }
-                catch (FileNotFoundException) { return ""; }
-            }
-        }
-
-        public void CancelTask()
-        {
-            if (CancelSource != null && !CancelSource.IsCancellationRequested) CancelSource.Cancel();
-        }
-
+        #endregion
 
         #region Extensions
 
@@ -383,22 +436,66 @@ namespace BedrockLauncher.Handlers
             }
             MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.isDownloading, totalProgress: total, progress: current);
         }
-        protected void UpdateProgressBarCanceling(bool allowCancel, ICommand cancelCommand)
+        protected void SetTaskState(bool activationState)
         {
-            MainViewModel.Default.InterfaceState.AllowCancel = allowCancel;
-            MainViewModel.Default.InterfaceState.CancelCommand = cancelCommand;
+            bool show = activationState ? true : false;
+            LauncherStateChange state = activationState ? LauncherStateChange.isInitializing : LauncherStateChange.None;
+
+            MainViewModel.Default.InterfaceState.UpdateProgressBar(show: show, state: state);
         }
-        protected void SetError(Exception e, string debugMessage, string dialogTitle, string dialogText)
+        protected void SetCancelation(bool cancelState)
         {
-            DebugLog(debugMessage + ":\n" + e.ToString());
-            ErrorScreenShow.errormsg(dialogTitle, dialogText, e);
+            if (cancelState) CancelSource = new CancellationTokenSource();
+            MainViewModel.Default.InterfaceState.AllowCancel = cancelState ? true : false;
+            MainViewModel.Default.InterfaceState.CancelCommand = cancelState ? new RelayCommand((o) => Cancel()) : null;
+        }
+        protected void SetException(Exception e)
+        {
+            if (e.GetType() == typeof(PackageExtractionFailedException)) SetError(e, "Extraction failed", "Error_AppExtractionFailed_Title", "Error_AppExtractionFailed");
+            else if (e.GetType() == typeof(PackageDownloadFailedException)) SetError(e, "Download failed", "Error_AppDownloadFailed_Title", "Error_AppDownloadFailed");
+            else if (e.GetType() == typeof(BetaAuthenticationFailedException)) SetError(e, "Authentication failed", "Error_AuthenticationFailed_Title", "Error_AuthenticationFailed");
+            else if (e.GetType() == typeof(AppLaunchFailedException)) SetError(e, "App launch failed", "Error_AppLaunchFailed_Title", "Error_AppLaunchFailed");
+            else if (e.GetType() == typeof(PackageRegistrationFailedException)) SetError(e, "App registeration failed", "Error_AppReregisterFailed_Title", "Error_AppReregisterFailed");
+            else if (e.GetType() == typeof(PackageRemovalFailedException)) SetError(e, "App uninstall failed", "Error_AppUninstallFailed_Title", "Error_AppUninstallFailed");
+            else if (e.GetType() == typeof(SaveRedirectionFailedException)) SetError(e, "Save redirection failed", "Error_SaveDirectoryRedirectionFailed_Title", "Error_SaveDirectoryRedirectionFailed");
+            else if (e.GetType() == typeof(PackageDeregistrationFailedException)) SetError(e, "App deregisteration failed", "Error_AppDeregisteringFailed_Title", "Error_AppDeregisteringFailed");
+
+            else if (e.GetType() == typeof(PackageDownloadAndExtractFailedException)) SetGenericError(e);
+            else if (e.GetType() == typeof(PackageProcessHookFailedException)) SetGenericError(e);
+
+            else if (e.GetType() == typeof(PackageExtractionCanceledException)) CancelAction();
+            else if (e.GetType() == typeof(PackageDownloadCanceledException)) CancelAction();
+
+            else SetGenericError(e);
+
+            void CancelAction()
+            {
+                SetCancelation(false);
+                SetTaskState(false);
+            }
+
+            void SetGenericError(Exception ex)
+            {
+                ErrorScreenShow.exceptionmsg(ex);
+                SetTaskState(false);
+            }
+
+            void SetError(Exception ex2, string debugMessage, string dialogTitle, string dialogText)
+            {
+                Debug.WriteLine(debugMessage + ":\n" + ex2.ToString());
+                ErrorScreenShow.errormsg(dialogTitle, dialogText, ex2);
+                SetTaskState(false);
+            }
         }
         protected void DebugLog(string message)
         {
-            System.Diagnostics.Debug.WriteLine(message);
+            Debug.WriteLine(message);
         }
 
         #endregion
+
+
+
 
 
     }

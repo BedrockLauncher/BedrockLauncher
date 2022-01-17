@@ -17,7 +17,7 @@ using PostSharp.Patterns.Model;
 namespace BedrockLauncher.Classes
 {
 
-    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.DebugOptions.ExcludeExplicitProperties)]    //88 Lines
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]    //88 Lines
     public class BLInstallation
     {
         public string DisplayName { get; set; }

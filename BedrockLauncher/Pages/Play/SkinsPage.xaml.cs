@@ -34,7 +34,7 @@ namespace BedrockLauncher.Pages.Play
     /// Interaction logic for SkinsPage.xaml
     /// </summary>
     /// 
-    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.DebugOptions.ExcludeExplicitProperties)]
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]
     public class SkinsPageViewModel
     {
         public MCSkinPack CurrentSkinPack { get; set; }

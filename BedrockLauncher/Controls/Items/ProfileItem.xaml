@@ -17,11 +17,11 @@
                     <ColumnDefinition Width="0"></ColumnDefinition>
                     <ColumnDefinition Width="20" MinWidth="20"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <StackPanel>
+                <StackPanel Margin="15,0">
                     <TextBlock x:Name="ProfileName" Text="Default Profile" FontWeight="Normal" LineStackingStrategy="BlockLineHeight"  VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="NoWrap"/>
-                    <TextBlock x:Name="ProfileType" Text="Profile Type" FontSize="10" FontWeight="Normal" Foreground="{DynamicResource SecondaryText.Foreground}" LineStackingStrategy="BlockLineHeight"  VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="NoWrap"/>
+                    <TextBlock x:Name="ProfileType" Text="{DynamicResource ToolbarButtons_ProfileButton_ProfileType_Text}" FontSize="12" FontWeight="Normal" Foreground="{DynamicResource SecondaryText.Foreground}" LineStackingStrategy="BlockLineHeight"  VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="NoWrap"/>
                 </StackPanel>
-                <TextBlock Grid.Column="2" Text="✔" x:Name="SelectedMark" Visibility="Hidden"></TextBlock>
+                <TextBlock Grid.Column="2" Text="✔" VerticalAlignment="Center" x:Name="SelectedMark" Visibility="Hidden"></TextBlock>
             </Grid>
         </ToggleButton.Content>
     </ToggleButton>

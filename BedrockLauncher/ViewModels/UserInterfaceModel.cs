@@ -13,7 +13,7 @@ using BedrockLauncher.Enums;
 namespace BedrockLauncher.ViewModels
 {
 
-    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.DebugOptions.ExcludeExplicitProperties)]    //102 Lines
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]    //102 Lines
     public class UserInterfaceModel
     {
         private bool _ShowProgressBar = false;

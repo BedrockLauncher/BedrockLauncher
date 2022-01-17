@@ -15,7 +15,7 @@ using PostSharp.Patterns.Model;
 namespace BedrockLauncher.Properties
 {
 
-    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.DebugOptions.ExcludeExplicitProperties)]    //99 Lines
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]    //99 Lines
     public class LauncherSettings
     {
         public static LauncherSettings Default { get; private set; } = new LauncherSettings();

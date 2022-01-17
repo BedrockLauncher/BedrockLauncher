@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Controls;
 using BedrockLauncher.Interfaces;
+using CefSharp;
+using CefSharp.Wpf;
 
 namespace BedrockLauncher.Pages.Common
 {
@@ -13,9 +15,13 @@ namespace BedrockLauncher.Pages.Common
 
         public IDialogHander Handler { get; private set; }
 
+        ChromiumWebBrowser Browser = new ChromiumWebBrowser();
+
+
         public WaitingPage()
         {
             InitializeComponent();
+            InitializeChromium();
             Init();
         }
 
@@ -23,7 +29,27 @@ namespace BedrockLauncher.Pages.Common
         {
             InitializeComponent();
             Handler = _hander;
+            InitializeChromium();
             Init();
+        }
+        private void InitializeChromium()
+        {
+            BrowserHost.Child = Browser;
+            BedrockLauncher.Components.CefSharp.CefSharpLoader.InitBrowser(ref Browser);
+            Browser.VerticalAlignment = VerticalAlignment.Stretch;
+            Browser.HorizontalAlignment = HorizontalAlignment.Stretch;
+            Browser.Focusable = false;
+            Browser.ZoomLevelIncrement = 0;
+            Browser.Address = "resources://Pages/Web/Loader.html";
+            Browser.LoadingStateChanged += Browser_LoadingStateChanged;
+        }
+
+        private void Browser_LoadingStateChanged(object sender, LoadingStateChangedEventArgs e)
+        {
+            if (!e.IsLoading)
+            {
+
+            }
         }
 
 

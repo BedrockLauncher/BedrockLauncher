@@ -13,7 +13,7 @@ using System.Windows;
 
 namespace BedrockLauncher.ViewModels
 {
-    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.DebugOptions.ExcludeExplicitProperties)]
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]
     public class RSSViewModel
     {
         public static RSSViewModel MinecraftForums { get; set; } = new RSSViewModel(ForumsFeed_RSS, typeof(NewsItem_RSS));

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BedrockLauncher.ViewModels
 {
-    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.DebugOptions.ExcludeExplicitProperties)]
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]
     public class NewsViewModel
     {
         public static NewsViewModel Default { get; set; } = new NewsViewModel();

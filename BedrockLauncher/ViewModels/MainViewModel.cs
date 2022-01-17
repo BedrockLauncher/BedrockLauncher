@@ -37,7 +37,7 @@ using BedrockLauncher.UpdateProcessor;
 namespace BedrockLauncher.ViewModels
 {
 
-    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.DebugOptions.ExcludeExplicitProperties)]    //119 Lines
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]    //119 Lines
     public class MainViewModel : IDialogHander, ILauncherModel
     {
         public static MainViewModel Default { get; set; } = new MainViewModel();
@@ -79,7 +79,7 @@ namespace BedrockLauncher.ViewModels
                 IsVersionsUpdating = true;
 
                 VersionDownloader.VersionUpdateOptions options = new VersionDownloader.VersionUpdateOptions();
-                if (onLoad && Debugger.IsAttached && !Constants.DebugOptions.UpdateVersionsOnLoad) options.CacheOnly = true;
+                if (onLoad && Debugger.IsAttached && !Constants.Debugging.UpdateVersionsOnLoad) options.CacheOnly = true;
 
                 await PackageManager.VersionDownloader.UpdateVersions(Versions, options);
 
@@ -95,7 +95,7 @@ namespace BedrockLauncher.ViewModels
             });
         }
         public async void KillGame() => await PackageManager.ClosePackage();
-        public async void RepairVersion(BLVersion v) => await PackageManager.DownloadAndExtractPackage(v);
+        public async void RepairVersion(BLVersion v) => await PackageManager.DownloadPackage(v);
         public async void RemoveVersion(BLVersion v) => await PackageManager.RemovePackage(v);
         public async void Play(MCProfile p, BLInstallation i, bool KeepLauncherOpen, bool Save = true)
         {
@@ -109,10 +109,8 @@ namespace BedrockLauncher.ViewModels
                 Properties.LauncherSettings.Default.CurrentInstallation = i.InstallationUUID;
                 Properties.LauncherSettings.Default.Save();
             }
-
-            bool wasCanceled = false;
-            if (i.Version.DisplayInstallStatus == "Not installed") await PackageManager.DownloadAndExtractPackage(i.Version);
-            if (!wasCanceled) await PackageManager.LaunchPackage(i.Version, MainViewModel.Default.FilePaths.GetInstallationsFolderPath(p.Name, i.DirectoryName_Full), KeepLauncherOpen);
+            
+            await PackageManager.LaunchPackage(i.Version, MainViewModel.Default.FilePaths.GetInstallationsFolderPath(p.Name, i.DirectoryName_Full), KeepLauncherOpen);
         }
 
         #endregion
@@ -126,20 +124,8 @@ namespace BedrockLauncher.ViewModels
             bool doNotClose = Properties.LauncherSettings.Default.KeepLauncherOpen && 
                 MainViewModel.Default.PackageManager.isGameRunning && !AllowedToCloseWithGameOpen;
 
-            if (doNotClose) { e.Cancel = true; ShowGameCloseDialog(action); }
+            if (doNotClose) { e.Cancel = true; LauncherCanNotCloseDialog(action); }
             else e.Cancel = false;
-        }
-        public async Task ShowWaitingDialog(Func<Task> action)
-        {
-            await Application.Current.Dispatcher.Invoke(async () =>
-            {
-                SetDialogFrame(new WaitingPage());
-                await action();
-                SetDialogFrame(null);
-            });
-
-
-
         }
         public void SetOverlayFrame(object _content, bool _isStrict = false)
         {
@@ -177,7 +163,16 @@ namespace BedrockLauncher.ViewModels
             if (animate && !isEmpty) PageAnimator.FrameFadeIn(MainWindow.ErrorFrame, content);
             else PageAnimator.Navigate(MainWindow.ErrorFrame, content);
         }
-        public async void ShowGameCloseDialog(Action successAction)
+        public async Task ShowWaitingDialog(Func<Task> action)
+        {
+            await Application.Current.Dispatcher.Invoke(async () =>
+            {
+                SetDialogFrame(new WaitingPage());
+                await action();
+                SetDialogFrame(null);
+            });
+        }
+        public async void LauncherCanNotCloseDialog(Action successAction)
         {
             await Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(async () =>
             {

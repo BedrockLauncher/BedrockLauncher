@@ -26,6 +26,7 @@ namespace BedrockLauncher
         {
             RuntimeHandler.StartLogging();
             RuntimeHandler.ValidateOSArchitecture();
+            CefSharpLoader.Init();
             Debug.WriteLine("Application Starting...");
             
             var application = new App();
@@ -38,7 +39,6 @@ namespace BedrockLauncher
         {
             Debug.WriteLine("Application Initalization Started!");
             StartupArgsHandler.SetStartupArgs(e.Args);
-            CefSharpLoader.Init();
             RuntimeHandler.EnableDeveloperMode();
             Debug.WriteLine("Application Initalization Finished!");
         }

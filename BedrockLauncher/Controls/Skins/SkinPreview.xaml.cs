@@ -121,6 +121,7 @@ namespace BedrockLauncher.Controls.Skins
         private void InitializeChromium()
         {
             Renderer.FrameLoadEnd += OnBrowserFrameLoadEnd;
+            BedrockLauncher.Components.CefSharp.CefSharpLoader.InitBrowser(ref Renderer);
         }
 
         public void UpdateSkin()

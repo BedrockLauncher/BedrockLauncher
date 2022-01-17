@@ -41,6 +41,7 @@ namespace BedrockLauncher.Pages.Community
         private void InitializeChromium()
         {
             BrowserHost.Child = Browser;
+            BedrockLauncher.Components.CefSharp.CefSharpLoader.InitBrowser(ref Browser);
             Browser.VerticalAlignment = VerticalAlignment.Stretch;
             Browser.HorizontalAlignment = HorizontalAlignment.Stretch;
             Browser.Focusable = false;

@@ -7,8 +7,6 @@ using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.IO;
 using System.Collections.ObjectModel;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.DirectoryServices.AccountManagement;
 using System.Security.Principal;
 using System.Web.Security;
 using BedrockLauncher.UpdateProcessor.Auth;

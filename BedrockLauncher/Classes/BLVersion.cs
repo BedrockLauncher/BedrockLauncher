@@ -14,7 +14,7 @@ using PostSharp.Patterns.Model;
 namespace BedrockLauncher.Classes
 {
 
-    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.DebugOptions.ExcludeExplicitProperties)]    //84 Lines
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]    //84 Lines
     public class BLVersion : MCVersion
     {
         public BLVersion(string uuid, string name, bool isBeta) : base(uuid, name, isBeta) { }
@@ -53,7 +53,7 @@ namespace BedrockLauncher.Classes
             get
             {
                 Depends.On(RequireSizeRecalculation);
-                if (Constants.DebugOptions.CalculateVersionSizes) Task.Run(GetInstallSize);
+                if (Constants.Debugging.CalculateVersionSizes) Task.Run(GetInstallSize);
                 else _RequireSizeRecalculation = false;
                 return _StoredInstallationSize;
             }

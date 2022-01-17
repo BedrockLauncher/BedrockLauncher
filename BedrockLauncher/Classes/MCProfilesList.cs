@@ -15,7 +15,7 @@ using PostSharp.Patterns.Model;
 namespace BedrockLauncher.Classes
 {
 
-    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.DebugOptions.ExcludeExplicitProperties)]    //224 Lines
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]    //224 Lines
     public class MCProfilesList
     {
         public int Version = 2;

@@ -95,7 +95,7 @@ namespace BedrockLauncher.Handlers
         }
         public async Task<bool> CheckForUpdatesAsync(bool onLoad = false)
         {
-            if (onLoad && Debugger.IsAttached && !Constants.DebugOptions.CheckForUpdatesOnLoad) return false;
+            if (onLoad && Debugger.IsAttached && !Constants.Debugging.CheckForUpdatesOnLoad) return false;
             System.Diagnostics.Debug.WriteLine("Checking for updates");
             try
             {

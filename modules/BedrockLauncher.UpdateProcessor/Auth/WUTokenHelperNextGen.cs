@@ -10,31 +10,8 @@ using System.Threading.Tasks;
 
 namespace BedrockLauncher.UpdateProcessor.Auth
 {
-    public class WUTokenHelper
+    internal class WUTokenHelperNextGen
     {
-        private const string DLLName = "TokenBroker.dll";
-        static WUTokenHelper() { Init(); }
-        private static void Init()
-        {
-            string dllImport = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Runtimes", "WUTokenHelper", Environment.Is64BitProcess ? "x64" : "Win32", DLLName);
-            InteropExtensions.LoadLibrary(dllImport);
-        }
-
-
-        [DllImport(DLLName, CallingConvention = CallingConvention.StdCall)]
-        public static extern int GetWUToken(int userIndex, [MarshalAs(UnmanagedType.LPWStr)] out string token);
-
-        [DllImport(DLLName, CallingConvention = CallingConvention.StdCall)]
-        public static extern int GetTotalWUAccounts();
-
-        [DllImport(DLLName, CallingConvention = CallingConvention.Cdecl)]
-        [return: MarshalAs(UnmanagedType.BStr)]
-        public static extern string GetWUAccountUserName(int userIndex);
-
-        [DllImport(DLLName, CallingConvention = CallingConvention.Cdecl)]
-        [return: MarshalAs(UnmanagedType.BStr)]
-        public static extern string GetWUProviderName(int userIndex);
-
         /*
          * PROTOCODE
          * Requires:
@@ -42,6 +19,7 @@ namespace BedrockLauncher.UpdateProcessor.Auth
          * - Mirosoft.Windows.SDK.Contracts
          * - System.Runtime
          * - Windows.Internal.Security.Authentication.Web
+         * - System.Runtime.InteropServices.WindowsRuntime
          * 
         public static int GetTotalWUAccounts()
         {
@@ -70,5 +48,6 @@ namespace BedrockLauncher.UpdateProcessor.Auth
             else throw new NotImplementedException();
         }
         */
+
     }
 }

@@ -21,7 +21,7 @@ using PostSharp.Patterns.Model;
 namespace BedrockLauncher.Downloaders
 {
 
-    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.DebugOptions.ExcludeExplicitProperties)]    //196 Lines
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]    //196 Lines
     public class ChangelogDownloader
     {
         private const string BedrockPatchNotes_JSON = @"https://launchercontent.mojang.com/bedrockPatchNotes.json";

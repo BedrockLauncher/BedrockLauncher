@@ -347,14 +347,23 @@
     <v:String x:Key="Error_CantFindJavaLauncher_Title">Could not switch launcher</v:String>
     <v:String x:Key="Error_CantFindJavaLauncher">Could not find launcher. Be sure you have installed original Minecraft launcher from Minecraft.net .</v:String>
 
-    <v:String x:Key="Error_AppReregisterFailed_Title">App re-register failed</v:String>
+    <v:String x:Key="Error_AppReregisterFailed_Title">App registration failed</v:String>
     <v:String x:Key="Error_AppReregisterFailed">Please try again :(</v:String>
+
+    <v:String x:Key="Error_AppDeregisteringFailed_Title">App de-registration failed</v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed">Please try again :(</v:String>
 
     <v:String x:Key="Error_AppLaunchFailed_Title">Launch failed</v:String>
     <v:String x:Key="Error_AppLaunchFailed">Please try again :(</v:String>
 
     <v:String x:Key="Error_AppDownloadFailed_Title">Download failed</v:String>
     <v:String x:Key="Error_AppDownloadFailed">Please try again :(</v:String>
+
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">Save redirection failed</v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed">Please try again :(</v:String>
+
+    <v:String x:Key="Error_AppUninstallFailed_Title">Uninstall failed</v:String>
+    <v:String x:Key="Error_AppUninstallFailed">Please try again :(</v:String>
 
     <v:String x:Key="Error_AppExtractionFailed_Title">Extraction failed</v:String>
     <v:String x:Key="Error_AppExtractionFailed">Please try again :(</v:String>
