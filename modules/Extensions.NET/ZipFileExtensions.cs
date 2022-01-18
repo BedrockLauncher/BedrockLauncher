@@ -7,7 +7,7 @@ using System.IO.Compression;
 using System.IO;
 using System.Threading;
 
-namespace ExtensionsDotNET
+namespace Extensions
 {
     public static class ZipFileExtensions
     {

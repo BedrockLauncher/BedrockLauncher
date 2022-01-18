@@ -18,6 +18,7 @@ using BedrockLauncher.Methods;
 using BedrockLauncher.Pages.Preview;
 using BedrockLauncher.Pages.Common;
 using BedrockLauncher.Classes;
+using BedrockLauncher.UI.Pages.Common;
 using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Controls.Items

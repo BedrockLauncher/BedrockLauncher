@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Threading;
 
-namespace ExtensionsDotNET
+namespace Extensions
 {
     public static class FileExtensions
     {

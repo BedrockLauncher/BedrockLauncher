@@ -69,7 +69,19 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\Items\PatchNotesItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Misc\ResultPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\GameTabs.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\PatchNotesPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -82,9 +94,21 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="Classes\DungeonsMod.cs" />
+    <Compile Include="Classes\Launcher\PatchNote.cs" />
+    <Compile Include="Controls\Items\PatchNotesItem.xaml.cs">
+      <DependentUpon>PatchNotesItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Misc\ResultPanel.xaml.cs">
+      <DependentUpon>ResultPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\IntToVisibilityConverter.cs" />
+    <Compile Include="Downloaders\ChangelogDownloader.cs" />
     <Compile Include="Methods\GameManager.cs" />
     <Compile Include="Pages\GameTabs.xaml.cs">
       <DependentUpon>GameTabs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PatchNotesPage.xaml.cs">
+      <DependentUpon>PatchNotesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PlayPage.xaml.cs">
       <DependentUpon>PlayPage.xaml</DependentUpon>
@@ -120,9 +144,13 @@
       <Project>{167a048a-8140-4f8d-87c3-a03d07f964d3}</Project>
       <Name>BedrockLauncher.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Extensions.NET\Extensions.NET.csproj">
+    <ProjectReference Include="..\BedrockLauncher.UI\BedrockLauncher.UI.csproj">
+      <Project>{46d8ec75-2f00-4551-9f3d-10c8522c9b3d}</Project>
+      <Name>BedrockLauncher.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Extensions.NET\Extensions.csproj">
       <Project>{6718749f-4346-4e5e-85df-d47faf22c9b6}</Project>
-      <Name>Extensions.NET</Name>
+      <Name>Extensions</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -132,8 +160,20 @@
     <Resource Include="Resources\images\ui\bg\PlayScreen.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack">
+      <Version>1.11.40</Version>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="PostSharp">
+      <Version>6.10.5</Version>
+    </PackageReference>
+    <PackageReference Include="PostSharp.Patterns.Model">
+      <Version>6.10.5</Version>
+    </PackageReference>
+    <PackageReference Include="VirtualizingWrapPanel">
+      <Version>1.5.7</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

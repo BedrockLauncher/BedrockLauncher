@@ -9,7 +9,7 @@
              xmlns:local="clr-namespace:BedrockLauncher.Controls"
              mc:Ignorable="d" 
              Height="45" Margin="1,0,0,0" VerticalAlignment="Top" MouseUp="Grid_MouseUp">
-    <ToggleButton Click="SourceButton_Click" x:Name="SourceButton" Height="Auto" VerticalAlignment="Stretch" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="0,0,0,0" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Stretch" Focusable="False" IsChecked="True" Style="{DynamicResource ProfileSelectorStyle}">
+    <ToggleButton Click="SourceButton_Click" x:Name="SourceButton" Height="Auto" VerticalAlignment="Stretch" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="0,0,0,0" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Stretch" Focusable="False" IsChecked="True" Style="{DynamicResource ProfileSelectorStyle}">
         <ToggleButton.Content>
             <Grid Margin="38,0,0,0">
                 <Grid.ColumnDefinitions>
@@ -27,7 +27,7 @@
     </ToggleButton>
     <Border CornerRadius="15" IsHitTestVisible="False" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" VerticalAlignment="Center" Width="30" Height="30" Margin="5,0,0,0">
         <Border.Background>
-            <ImageBrush Stretch="Fill" ImageSource="/BedrockLauncher;component/Resources/images/icons/user_icon.png"/>
+            <ImageBrush Stretch="Fill" ImageSource="/BedrockLauncher;component/resources/images/icons/user_icon.png"/>
         </Border.Background>
     </Border>
 </Grid>

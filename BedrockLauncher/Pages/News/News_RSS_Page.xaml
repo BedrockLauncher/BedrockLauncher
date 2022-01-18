@@ -8,7 +8,7 @@
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
       xmlns:vwp="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
-      xmlns:common="clr-namespace:BedrockLauncher.Controls"
+      xmlns:common="clr-namespace:BedrockLauncher.Controls.Misc"
       mc:Ignorable="d" 
       d:DataContext="{d:DesignInstance Type=viewModels:RSSViewModel}"
       d:DesignHeight="450" d:DesignWidth="800"

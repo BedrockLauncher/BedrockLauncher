@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:com="clr-namespace:BedrockLauncher.Components"
              xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
@@ -11,7 +10,7 @@
              xmlns:classes="clr-namespace:BedrockLauncher.Classes"
              d:DataContext="{d:DesignInstance classes:BLInstallation, IsDesignTimeCreatable=True}">
     <Grid.Resources>
-        <BitmapImage x:Key="IconPath_DesignTime" UriSource="/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png"/>
+        <BitmapImage x:Key="IconPath_DesignTime" UriSource="/BedrockLauncher;component/resources/images/installation_icons/Furnace.png"/>
     </Grid.Resources>
     <TextBlock FontSize="12" Foreground="{DynamicResource PrimaryText.Foreground}" FontWeight="SemiBold" Padding="45,0,0,0" Text="{Binding DisplayName_Full}"/>
     <TextBlock FontSize="10" Foreground="{DynamicResource SecondaryText.Foreground}" Padding="45,20,0,0" FontWeight="Normal" Text="{Binding VersionName}"/>

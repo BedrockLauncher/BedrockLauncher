@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExtensionsDotNET
+namespace Extensions
 {
     public static class CollectionExtensions
     {

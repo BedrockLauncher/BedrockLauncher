@@ -11,6 +11,7 @@ using System.ComponentModel;
 using BedrockLauncher.Components;
 using BedrockLauncher.ViewModels;
 using PostSharp.Patterns.Model;
+using BedrockLauncher.UI.Components;
 
 namespace BedrockLauncher.Properties
 {

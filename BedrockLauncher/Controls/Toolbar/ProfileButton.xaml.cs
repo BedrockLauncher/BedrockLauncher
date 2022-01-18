@@ -19,6 +19,7 @@ using BedrockLauncher.Controls.Items;
 using BedrockLauncher.Pages;
 using BedrockLauncher.Pages.Common;
 using BedrockLauncher.ViewModels;
+using BedrockLauncher.UI.Pages.Common;
 
 namespace BedrockLauncher.Controls.Toolbar
 {

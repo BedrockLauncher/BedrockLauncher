@@ -1,10 +1,9 @@
 ﻿using BedrockLauncher.Classes;
 using BedrockLauncher.Classes.SkinPack;
-using BedrockLauncher.Components.Wpf;
 using BedrockLauncher.Methods;
 using BedrockLauncher.Pages.Common;
 using BedrockLauncher.Downloaders;
-using ExtensionsDotNET;
+using Extensions;
 using SymbolicLinkSupport;
 using System;
 using System.Collections.Generic;
@@ -22,11 +21,13 @@ using Windows.ApplicationModel;
 using Windows.Foundation;
 using Windows.Management.Deployment;
 using Windows.System;
-using ZipProgress = ExtensionsDotNET.ZipFileExtensions.ZipProgress;
+using ZipProgress = Extensions.ZipFileExtensions.ZipProgress;
 using BedrockLauncher.Enums;
 using System.Windows.Input;
 using BedrockLauncher.ViewModels;
 using BedrockLauncher.Exceptions;
+using BedrockLauncher.UI.Pages.Common;
+using BedrockLauncher.UI.Components;
 
 namespace BedrockLauncher.Handlers
 {

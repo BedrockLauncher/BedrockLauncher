@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:c="clr-namespace:BedrockLauncher.Classes.Launcher"
-             xmlns:http2="clr-namespace:ExtensionsDotNET.HTTP2;assembly=ExtensionsDotNET"
+             xmlns:http2="clr-namespace:Extensions.HTTP2;assembly=ExtensionsDotNET"
              xmlns:local="clr-namespace:BedrockLauncher.Controls.Items"
              x:Name="FeedItemEntry"
              mc:Ignorable="d" 
@@ -32,7 +32,7 @@
 
         <Image Source="{Binding ImageUrl}" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
 
-        <TextBlock Background="{Binding Background, ElementName=MainGrid}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" FontWeight="Normal" FontSize="20" Padding="15,15" TextWrapping="Wrap" Text="{Binding Title}" Foreground="White"></TextBlock>
+        <TextBlock Background="{Binding Background, ElementName=MainGrid}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Minecraft Ten" FontWeight="Normal" FontSize="20" Padding="15,15" TextWrapping="Wrap" Text="{Binding Title}" Foreground="White"></TextBlock>
         <DockPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" x:Name="Tb" Margin="15,15,15,15">
             <TextBlock Padding="4,2" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Grid.Row="3" Text="{Binding Tag}" Foreground="White" Background="#333333"></TextBlock>
             <TextBlock Margin="10,0,10,0" TextAlignment="Right" VerticalAlignment="Center" TextWrapping="Wrap" Grid.Row="3" Text="{Binding Date}" Foreground="#CCCCCC"></TextBlock>

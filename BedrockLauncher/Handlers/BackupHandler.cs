@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Windows.Management.Core;
+using BedrockLauncher.UI.Pages.Common;
 
 namespace BedrockLauncher.Handlers
 {

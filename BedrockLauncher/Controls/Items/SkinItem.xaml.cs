@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using BedrockLauncher.Pages.Preview;
 using BedrockLauncher.Pages.Common;
 using BedrockLauncher.Classes.SkinPack;
+using BedrockLauncher.UI.Pages.Common;
 
 namespace BedrockLauncher.Controls.Items
 {

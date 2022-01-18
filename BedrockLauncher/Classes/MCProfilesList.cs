@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BedrockLauncher.Classes;
 using BedrockLauncher.Components;
-using ExtensionsDotNET;
+using Extensions;
 using Newtonsoft.Json;
 using BedrockLauncher.Enums;
 using PostSharp.Patterns.Model;

@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Media.Animation;
-using BedrockLauncher.Core.Pages.Common;
+using BedrockLauncher.UI.Pages.Common;
 
 namespace BedrockLauncher.Dungeons.Pages
 {
@@ -25,8 +25,7 @@ namespace BedrockLauncher.Dungeons.Pages
         public PlayPage playPage = new PlayPage();
         public InstallationPage installationPage = new InstallationPage();
         public ModsPage modsPage = new ModsPage();
-
-        public NoContentPage noContentPage = new NoContentPage();
+        public PatchNotesPage patchNotesPage = new PatchNotesPage(new Downloaders.ChangelogDownloader());
 
         public GameTabs()
         {
@@ -51,7 +50,7 @@ namespace BedrockLauncher.Dungeons.Pages
             if (CurrentPageIndex > LastPageIndex) direction = ExpandDirection.Right;
             else direction = ExpandDirection.Left;
 
-            await Task.Run(() => BedrockLauncher.Core.Components.PageAnimator.FrameSwipe(MainPageFrame, content, direction));
+            await Task.Run(() => BedrockLauncher.UI.Components.PageAnimator.FrameSwipe(MainPageFrame, content, direction));
         }
 
 
@@ -128,7 +127,7 @@ namespace BedrockLauncher.Dungeons.Pages
         {
             UpdatePlayPageIndex(3);
             PatchNotesButton.IsChecked = true;
-            Task.Run(() => Navigate(noContentPage));
+            Task.Run(() => Navigate(patchNotesPage));
         }
 
         #endregion

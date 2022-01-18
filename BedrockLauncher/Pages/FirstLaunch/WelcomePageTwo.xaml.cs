@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.ViewModels;
+using BedrockLauncher.UI.Controls.Misc;
 
 namespace BedrockLauncher.Pages.FirstLaunch
 {
@@ -69,7 +70,7 @@ namespace BedrockLauncher.Pages.FirstLaunch
 
         private void BrowseForDirectory()
         {
-            BedrockLauncher.Controls.FolderSelectDialog dialog = new BedrockLauncher.Controls.FolderSelectDialog()
+            FolderSelectDialog dialog = new FolderSelectDialog()
             {
                 InitialDirectory = StorageDirectoryTextBox.Text
             };

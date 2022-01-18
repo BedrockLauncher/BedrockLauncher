@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using BedrockLauncher.UpdateProcessor;
 using System.Linq;
-using ExtensionsDotNET;
+using Extensions;
 using BedrockLauncher.ViewModels;
 using System.Collections.ObjectModel;
 using System.Windows;

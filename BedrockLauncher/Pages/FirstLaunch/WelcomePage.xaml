@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:com="clr-namespace:BedrockLauncher.Components.Wpf"
+      xmlns:com="clr-namespace:Extensions.WPF.Behaviours;assembly=ExtensionsDotNET"
       xmlns:local="clr-namespace:BedrockLauncher"
       mc:Ignorable="d" 
       d:DesignHeight="639" d:DesignWidth="1016"
@@ -12,11 +12,11 @@
         <ImageBrush ImageSource="/BedrockLauncher;component/resources/images/bg/firstlaunchbackground.jpg" Stretch="UniformToFill"/>
     </Page.Background>
     <Grid Margin="0" Background="#7F000000">
-        <TextBlock Foreground="white" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="11" FontWeight="Bold" Text="{DynamicResource MainWindow_Disclaimer}" Margin="20,20" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        <TextBlock Foreground="white" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="11" FontWeight="Bold" Text="{DynamicResource MainWindow_Disclaimer}" Margin="20,20" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
         <Border x:Name="WelcomeBorder" CornerRadius="2" Background="#FF262626" Width="600" Height="258" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <Border x:Name="WelcomeBorder2" CornerRadius="2" Background="#FF262626" Width="600" Height="258" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Grid SnapsToDevicePixels="True">
-                <Frame com:DisableNavigation.Disable="True" x:Name="WelcomePageFrame" Margin="2,2,2,2" NavigationUIVisibility="Hidden" Source="/BedrockLauncher;component/Pages/FirstLaunch/WelcomePageOne.xaml"/>
+                <Frame com:DisableNavigation.Disable="True" x:Name="WelcomePageFrame" Margin="2,2,2,2" NavigationUIVisibility="Hidden" Source="/BedrockLauncher.UI;component/Pages/FirstLaunch/WelcomePageOne.xaml"/>
             </Grid>
         </Border>
     </Grid>

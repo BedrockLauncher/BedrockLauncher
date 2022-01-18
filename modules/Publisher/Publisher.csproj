@@ -80,9 +80,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\modules\Extensions.NET\Extensions.NET.csproj">
+    <ProjectReference Include="..\Extensions.NET\Extensions.csproj">
       <Project>{6718749f-4346-4e5e-85df-d47faf22c9b6}</Project>
-      <Name>Extensions.NET</Name>
+      <Name>Extensions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

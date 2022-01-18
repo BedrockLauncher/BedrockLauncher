@@ -14,7 +14,7 @@ using Newtonsoft.Json.Linq;
 using HtmlAgilityPack;
 using System.Text.RegularExpressions;
 using BedrockLauncher.Components;
-using ExtensionsDotNET;
+using Extensions;
 using BedrockLauncher.Methods;
 
 namespace BedrockLauncher.Downloaders

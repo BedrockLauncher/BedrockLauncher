@@ -36,6 +36,8 @@ using BedrockLauncher.Pages.Community;
 using BedrockLauncher.Components;
 using BedrockLauncher.Controls.Toolbar;
 using BedrockLauncher.Handlers;
+using BedrockLauncher.UI.Pages.Common;
+using BedrockLauncher.UI.Components;
 
 namespace BedrockLauncher
 {
@@ -47,6 +49,7 @@ namespace BedrockLauncher
         private SettingsTabs settingsScreenPage = new SettingsTabs();
         private NewsScreenTabs newsScreenPage = new NewsScreenTabs();
         private CommunityPage communityPage = new CommunityPage();
+        private Dungeons.Pages.GameTabs dungeonsPage = new Dungeons.Pages.GameTabs();
 
         private Navigator Navigator { get; set; } = new Navigator(true);
 
@@ -102,6 +105,7 @@ namespace BedrockLauncher
                 CommunityButton.Button,
                 NewsButton.Button,
                 BedrockEditionButton.Button,
+                DungeonsButton.Button,
                 JavaEditionButton.Button,
                 SettingsButton.Button,
             };
@@ -131,6 +135,7 @@ namespace BedrockLauncher
                 ResetButtonManager(senderName);
 
                 if (senderName == BedrockEditionButton.Name) NavigateToMainPage();
+                else if (senderName == DungeonsButton.Name) NavigateToDungeons();
                 else if (senderName == NewsButton.Name) NavigateToNewsPage();
                 else if (senderName == JavaEditionButton.Name) NavigateToJavaLauncher();
                 else if (senderName == ExternalLauncherButton.Name) NavigateToExternalLauncher();
@@ -157,6 +162,16 @@ namespace BedrockLauncher
                 Navigator.UpdatePageIndex(1);
                 BedrockEditionButton.Button.IsChecked = true;
                 Task.Run(() => Navigator.Navigate(MainWindowFrame, MainPage));
+            });
+
+        }
+        public async void NavigateToDungeons()
+        {
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                Navigator.UpdatePageIndex(2);
+                DungeonsButton.Button.IsChecked = true;
+                Task.Run(() => Navigator.Navigate(MainWindowFrame, dungeonsPage));
             });
 
         }
@@ -279,6 +294,11 @@ namespace BedrockLauncher
             NavigateToExternalLauncher();
         }
 
+        private void DungeonsButton_Click(object sender, EventArgs e)
+        {
+            if (sender != null && sender is ToolbarButtonBase) ButtonManager_Base((sender as ToolbarButtonBase).Name);
+        }
+
         private void CommunityButton_Click(object sender, EventArgs e)
         {
             if (sender != null && sender is ToolbarButtonBase) ButtonManager_Base((sender as ToolbarButtonBase).Name);
@@ -290,5 +310,7 @@ namespace BedrockLauncher
         }
 
         #endregion
+
+
     }
 }

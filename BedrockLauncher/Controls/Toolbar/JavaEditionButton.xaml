@@ -15,5 +15,5 @@
         </ToggleButton.ToolTip>
         <TextBlock LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,5"><Run FontSize="11" Text="{DynamicResource ToolbarButtons_SwitchEdition_Text}"/><LineBreak/><Run FontSize="14" Text="{DynamicResource ToolbarButtons_MinecraftJavaLauncher_Text}"/></TextBlock>
     </ToggleButton>
-    <Image Style="{StaticResource SideBarButtonIcon}" Source="/BedrockLauncher;component/Resources/images/icons/grass_icon.png"/>
+    <Image Style="{StaticResource SideBarButtonIcon}" Source="/BedrockLauncher;component/resources/images/icons/grass_icon.png"/>
 </local:ToolbarButtonBase>

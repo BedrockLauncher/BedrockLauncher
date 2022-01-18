@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using PostSharp.Patterns.Model;
 using BedrockLauncher.ViewModels;
-using ExtensionsDotNET;
+using Extensions;
 
 namespace BedrockLauncher.Handlers
 {

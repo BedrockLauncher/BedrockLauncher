@@ -32,7 +32,7 @@ namespace Publisher
             {
                 if (folder.Name != "data" && folder.Name != "cache")
                 {
-                    ExtensionsDotNET.DirectoryExtensions.Copy(folder.FullName, Path.Combine(outbuildPath, folder.Name));
+                    Extensions.DirectoryExtensions.Copy(folder.FullName, Path.Combine(outbuildPath, folder.Name));
                 }
             }
 

@@ -22,11 +22,12 @@ using Path = System.IO.Path;
 using System.IO.Compression;
 using BedrockLauncher.Pages.Preview;
 using BedrockLauncher.Pages.Common;
-using ExtensionsDotNET;
+using Extensions;
 using BedrockLauncher.Classes;
 using BedrockLauncher.ViewModels;
 using System.Collections.ObjectModel;
 using PostSharp.Patterns.Model;
+using BedrockLauncher.UI.Pages.Common;
 
 namespace BedrockLauncher.Pages.Play
 {

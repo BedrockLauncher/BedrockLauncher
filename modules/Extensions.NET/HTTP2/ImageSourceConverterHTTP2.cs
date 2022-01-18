@@ -1,4 +1,4 @@
-﻿using ExtensionsDotNET;
+﻿using Extensions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +15,7 @@ using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace ExtensionsDotNET.HTTP2
+namespace Extensions.HTTP2
 {
 
     public class ImageSourceConverterHTTP2 : IValueConverter

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace ExtensionsDotNET
+namespace Extensions
 {
     public static class DirectoryExtensions
     {

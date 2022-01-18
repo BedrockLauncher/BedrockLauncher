@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExtensionsDotNET
+namespace Extensions
 {
 	/// <summary>
 	/// Provides a dictionary for use with data binding.

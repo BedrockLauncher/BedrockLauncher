@@ -19,6 +19,7 @@ using System.Diagnostics;
 using System.Windows.Controls.Primitives;
 using BedrockLauncher.Handlers;
 using BedrockLauncher.Components;
+using BedrockLauncher.UI.Components;
 
 namespace BedrockLauncher.Pages.News
 {

@@ -31,8 +31,12 @@ using BedrockLauncher.Enums;
 using BedrockLauncher.Handlers;
 using System.Windows.Threading;
 using BedrockLauncher.Extensions;
-using ExtensionsDotNET;
+using Extensions;
 using BedrockLauncher.UpdateProcessor;
+using BedrockLauncher.Core.Pages.Common;
+using BedrockLauncher.UI.Pages.Common;
+using BedrockLauncher.UI.Interfaces;
+using BedrockLauncher.UI.Components;
 
 namespace BedrockLauncher.ViewModels
 {

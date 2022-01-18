@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BedrockLauncher.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="60" d:DesignWidth="300"
              Panel.ZIndex="1000"
              RenderOptions.BitmapScalingMode="NearestNeighbor"
              Margin="0,0,0,0"
@@ -22,8 +22,8 @@
             </Grid.ColumnDefinitions>
             <Button Style="{DynamicResource EmptyButton}" x:Name="ClickBase" Click="Button_Click">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="/BedrockLauncher;component/Resources/images/icons/ico/package.ico" Margin="3" HorizontalAlignment="Left" Height="42" Width="42"/>
-                    <TextBlock LineHeight="20" RenderOptions.BitmapScalingMode="NearestNeighbor" FontSize="16" TextOptions.TextRenderingMode="Aliased" TextOptions.TextFormattingMode="Ideal" Margin="2,6,0,0" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Rus">
+                    <Image Source="/BedrockLauncher;component/resources/images/icons/ico/package.ico" Margin="3" HorizontalAlignment="Left" Height="42" Width="42"/>
+                    <TextBlock LineHeight="20" RenderOptions.BitmapScalingMode="NearestNeighbor" FontSize="16" TextOptions.TextRenderingMode="Aliased" TextOptions.TextFormattingMode="Ideal" Margin="2,6,0,0" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Minecraft Rus">
                         <Run Text="{DynamicResource UpdateButton_NewUpdate_Text}" Foreground="Yellow"/>
                         <LineBreak/>
                         <Run Text="{DynamicResource UpdateButton_Download_Text}" Foreground="White"/>

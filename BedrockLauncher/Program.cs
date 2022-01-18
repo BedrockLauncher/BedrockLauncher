@@ -15,7 +15,7 @@ using BedrockLauncher.Methods;
 using BedrockLauncher.Handlers;
 using BedrockLauncher.Components.CefSharp;
 using BedrockLauncher.Pages.Common;
-using ExtensionsDotNET;
+using Extensions;
 
 namespace BedrockLauncher
 {

@@ -1,0 +1,28 @@
+﻿<Button x:Class="BedrockLauncher.Dungeons.Controls.Items.PatchNotesItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BedrockLauncher.Dungeons.Controls.Items"
+             xmlns:classes="clr-namespace:BedrockLauncher.Dungeons.Classes.Launcher"
+             x:Name="FeedItemEntry"
+             d:DataContext="{d:DesignInstance Type=classes:PatchNote}"
+             mc:Ignorable="d" 
+             Focusable="False"
+             Click="FeedItemButton_Click" Style="{DynamicResource EmptyButton}" BorderThickness="0" Background="Transparent">
+    <Button.Resources>
+        <BitmapImage x:Key="FallbackImage" UriSource="/BedrockLauncher.Dungeons;component/Resources/images/ui/icons/dungeons_icon.png"/>
+    </Button.Resources>
+    <Grid VerticalAlignment="Stretch" Width="256" Height="356"  HorizontalAlignment="Stretch" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="256"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Image VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Source="{Binding ImageUrl, FallbackValue={StaticResource FallbackImage}}" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="Uniform"></Image>
+        <TextBlock Grid.Row="1" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontWeight="Black" FontSize="18" Margin="5,5" TextWrapping="Wrap" Text="{Binding title}" Foreground="White"></TextBlock>
+    </Grid>
+</Button>

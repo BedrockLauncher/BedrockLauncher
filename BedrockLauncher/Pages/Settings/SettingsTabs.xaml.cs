@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Components;
+using BedrockLauncher.UI.Components;
 
 namespace BedrockLauncher.Pages.Settings
 {

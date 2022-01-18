@@ -12,7 +12,7 @@
              d:DataContext="{d:DesignInstance classes:BLInstallation, IsDesignTimeCreatable=False}">
     <UserControl.Resources>
         <conv:InvertableBooleanToVisibilityConverter x:Key="VisibleIfTrueConverter" />
-        <BitmapImage x:Key="IconPath_DesignTime" UriSource="/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png"/>
+        <BitmapImage x:Key="IconPath_DesignTime" UriSource="/BedrockLauncher;component/resources/images/installation_icons/Furnace.png"/>
     </UserControl.Resources>
     <Grid x:Name="InstallationEntry">
         <Grid.ColumnDefinitions>

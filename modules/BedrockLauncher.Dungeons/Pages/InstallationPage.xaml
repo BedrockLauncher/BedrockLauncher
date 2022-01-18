@@ -3,34 +3,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:bl="clr-namespace:BedrockLauncher.Core.Language;assembly=BedrockLauncher.Core"
-             xmlns:com="clr-namespace:BedrockLauncher.Core.Components;assembly=BedrockLauncher.Core"
+             xmlns:conv="clr-namespace:Extensions.WPF.Converters;assembly=ExtensionsDotNET"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:properties="clr-namespace:BedrockLauncher.Dungeons.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="{DynamicResource Background.Secondary}">
     <Page.Resources>
         <ResourceDictionary>
-            <com:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+            <conv:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
             <ResourceDictionary.MergedDictionaries>
                 <bl:LanguageDictionary Source="/BedrockLauncher.Core;component/Resources/lang/lang.en-US.xaml"></bl:LanguageDictionary>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/values/base_values.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/icons.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/misc.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/contextmenu.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/button.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/checkbox.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/combobox.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/menuitems.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/listview.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/textbox.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/textblock.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/frame.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/scrollbars.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/tabbar.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/expander.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/richtextbox.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/radiobutton.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/focus_visuals.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/values/base_values.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/icons.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/misc.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/contextmenu.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/button.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/checkbox.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/combobox.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/menuitems.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/listview.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/textbox.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/textblock.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/frame.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/scrollbars.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/tabbar.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/expander.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/richtextbox.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/radiobutton.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/focus_visuals.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>

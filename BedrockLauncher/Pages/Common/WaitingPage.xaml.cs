@@ -4,8 +4,9 @@ using System.Windows.Controls;
 using BedrockLauncher.Interfaces;
 using CefSharp;
 using CefSharp.Wpf;
+using BedrockLauncher.UI.Interfaces;
 
-namespace BedrockLauncher.Pages.Common
+namespace BedrockLauncher.Core.Pages.Common
 {
     /// <summary>
     /// Логика взаимодействия для ErrorScreen.xaml

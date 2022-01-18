@@ -7,7 +7,7 @@
         xmlns:methods="clr-namespace:BedrockLauncher.Methods"
         xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
         xmlns:toolbar="clr-namespace:BedrockLauncher.Controls.Toolbar"
-        xmlns:com="clr-namespace:BedrockLauncher.Components.Wpf"
+        xmlns:com="clr-namespace:Extensions.WPF.Behaviours;assembly=ExtensionsDotNET"
         xmlns:conv="clr-namespace:BedrockLauncher.Converters"
         xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
         x:Class="BedrockLauncher.MainWindow"
@@ -36,6 +36,7 @@
                 <toolbar:ProfileButton IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default},Path=InterfaceState.AllowEditing, Mode=OneWay}" x:Name="ProfileButton" Click="ProfileButton_Click"></toolbar:ProfileButton>
                 <toolbar:NewsButton x:Name="NewsButton" Click="NewsButton_Click"></toolbar:NewsButton>
                 <toolbar:BedrockEditionButton x:Name="BedrockEditionButton" Click="BedrockEditionButton_Click"></toolbar:BedrockEditionButton>
+                <toolbar:DungeonsButton x:Name="DungeonsButton" Click="DungeonsButton_Click" Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=EnableDungeonsSupport, Converter={StaticResource BoolToVis}}"></toolbar:DungeonsButton>
                 <toolbar:JavaEditionButton x:Name="JavaEditionButton" Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=HideJavaShortcut, Converter={StaticResource ReverseBoolToVis}, ConverterParameter=Inverted}" Click="JavaEditionButton_Click"></toolbar:JavaEditionButton>
                 <toolbar:ExternalLauncherButton x:Name="ExternalLauncherButton" Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=ShowExternalLauncher, Converter={StaticResource BoolToVis}}" Click="ExternalLauncherButton_Click"></toolbar:ExternalLauncherButton>
                 <toolbar:CommunityButton x:Name="CommunityButton" Click="CommunityButton_Click"></toolbar:CommunityButton>
@@ -67,8 +68,8 @@
                     </Grid>
 
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock x:Name="progressbarcontent" Visibility="{Binding InterfaceState.MainThread_progressbarcontent}" SnapsToDevicePixels="True" Margin="26,-15,0,0" FontSize="12" Text="{Binding InterfaceState.ProgressBar_Content}"  HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
-                        <TextBlock SnapsToDevicePixels="True" Margin="+3,-15,0,0" FontSize="12" x:Name="ProgressBarText" Visibility="{Binding InterfaceState.MainThread_ProgressBarText}" Text="{Binding InterfaceState.ProgressBar_DisplayStatus}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
+                        <TextBlock x:Name="progressbarcontent" Visibility="{Binding InterfaceState.MainThread_progressbarcontent}" SnapsToDevicePixels="True" Margin="26,-15,0,0" FontSize="12" Text="{Binding InterfaceState.ProgressBar_Content}"  HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans"/>
+                        <TextBlock SnapsToDevicePixels="True" Margin="+3,-15,0,0" FontSize="12" x:Name="ProgressBarText" Visibility="{Binding InterfaceState.MainThread_ProgressBarText}" Text="{Binding InterfaceState.ProgressBar_DisplayStatus}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans"/>
                     </StackPanel>
                 </Grid>
             </Grid>

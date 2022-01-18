@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ExtensionsDotNET
+namespace Extensions
 {
     public static class ThreadingExtensions
     {

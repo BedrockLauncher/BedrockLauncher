@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BedrockLauncher"
-      xmlns:com="clr-namespace:BedrockLauncher.Components.Wpf"
+      xmlns:com="clr-namespace:Extensions.WPF.Attributes;assembly=ExtensionsDotNET"
       xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
       xmlns:controls="clr-namespace:BedrockLauncher.Controls"
       xmlns:core="clr-namespace:BedrockLauncher.Core.Properties;assembly=BedrockLauncher.Core"
@@ -195,7 +195,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
-            <TextBlock FontWeight="Bold" Margin="0,10,0,5"  FontSize="20" Text="{DynamicResource AboutPage_Title}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            <TextBlock FontWeight="Bold" Margin="0,10,0,5"  FontSize="20" Text="{DynamicResource AboutPage_Title}" Foreground="White" FontFamily="/BedrockLauncher.UI;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             <Separator Margin="0,10"></Separator>
         </StackPanel>
         <ScrollViewer Margin="0,0,0,0" Padding="20,0" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  com:CustomDesignAttributes.VerticalScrollTo="10000">
@@ -206,16 +206,16 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <StackPanel Margin="5">
-                        <TextBlock FontWeight="Bold" Margin="0,15,0,15"  FontSize="20" Text="{DynamicResource AboutPage_DevelopedBy_Text}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                        <TextBlock FontWeight="Bold" Margin="0,15,0,15"  FontSize="20" Text="{DynamicResource AboutPage_DevelopedBy_Text}" Foreground="White" FontFamily="/BedrockLauncher.UI;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                         <ContentPresenter Content="{StaticResource CJMention}"></ContentPresenter>
                     </StackPanel>
                     <StackPanel Grid.Column="1" Margin="5">
-                        <TextBlock FontWeight="Bold" Margin="0,15,0,15"  FontSize="20" Text="{DynamicResource AboutPage_OriginallyDevelopedBy_Text}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                        <TextBlock FontWeight="Bold" Margin="0,15,0,15"  FontSize="20" Text="{DynamicResource AboutPage_OriginallyDevelopedBy_Text}" Foreground="White" FontFamily="/BedrockLauncher.UI;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                         <ContentPresenter Content="{StaticResource XlynxXMention}"></ContentPresenter>
                     </StackPanel>
                 </Grid>
                 <StackPanel Grid.ColumnSpan="2">
-                    <TextBlock FontWeight="Bold" Margin="0,15,0,15"  FontSize="20" Text="{DynamicResource AboutPage_SpecialThanks_Text}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    <TextBlock FontWeight="Bold" Margin="0,15,0,15"  FontSize="20" Text="{DynamicResource AboutPage_SpecialThanks_Text}" Foreground="White" FontFamily="/BedrockLauncher.UI;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>

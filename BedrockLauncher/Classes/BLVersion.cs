@@ -117,7 +117,7 @@ namespace BedrockLauncher.Classes
             get
             {
                 Depends.On(IsBeta);
-                return IsBeta ? @"/BedrockLauncher;component/Resources/images/icons/ico/crafting_table_block_icon.ico" : @"/BedrockLauncher;component/Resources/images/icons/ico/grass_block_icon.ico";
+                return IsBeta ? @"/BedrockLauncher;component/resources/images/icons/ico/crafting_table_block_icon.ico" : @"/BedrockLauncher;component/resources/images/icons/ico/grass_block_icon.ico";
             }
         }
 

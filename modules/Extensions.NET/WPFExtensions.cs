@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Threading;
 using System.IO.Compression;
 
-namespace ExtensionsDotNET
+namespace Extensions
 {
     public static class WPFExtensions
     {

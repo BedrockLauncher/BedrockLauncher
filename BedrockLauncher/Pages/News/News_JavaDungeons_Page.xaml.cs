@@ -20,7 +20,7 @@ using BedrockLauncher.Controls.Items;
 using System.Net;
 using System.Net.Http;
 using System.Collections.ObjectModel;
-using ExtensionsDotNET;
+using Extensions;
 using BedrockLauncher.ViewModels;
 using BedrockLauncher.Handlers;
 
@@ -63,13 +63,13 @@ namespace BedrockLauncher.Pages.News
             Dispatcher.Invoke(() =>
             {
                 NothingFound.Visibility = Visibility.Visible;
-                NothingFound.PanelType = Controls.ResultPanelType.Loading;
+                NothingFound.PanelType = Controls.Misc.ResultPanelType.Loading;
             });
 
             Dispatcher.Invoke(() => 
             {
                 Handlers.FilterSortingHandler.Refresh(OfficalNewsFeed.ItemsSource);
-                if (OfficalNewsFeed.Items.Count == 0) NothingFound.PanelType = Controls.ResultPanelType.NoNews;
+                if (OfficalNewsFeed.Items.Count == 0) NothingFound.PanelType = Controls.Misc.ResultPanelType.NoNews;
                 else NothingFound.Visibility = Visibility.Collapsed;
             });
         }

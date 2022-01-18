@@ -1,7 +1,7 @@
 ﻿using BedrockLauncher.Classes.Launcher;
 using BedrockLauncher.ViewModels;
 using CodeHollow.FeedReader;
-using ExtensionsDotNET.HTTP2;
+using Extensions.HTTP2;
 using MdXaml;
 using System;
 using System.Collections.Generic;

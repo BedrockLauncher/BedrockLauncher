@@ -11,6 +11,7 @@ using BedrockLauncher.Classes;
 using BedrockLauncher.Downloaders;
 using BedrockLauncher.Components;
 using BedrockLauncher.Methods;
+using BedrockLauncher.UI.Components;
 
 namespace BedrockLauncher.Pages.Play
 {

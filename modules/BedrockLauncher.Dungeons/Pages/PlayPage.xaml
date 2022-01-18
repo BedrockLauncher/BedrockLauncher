@@ -13,24 +13,24 @@
             <sys:Double x:Key="MaxLogoHeight">100</sys:Double>
             <ResourceDictionary.MergedDictionaries>
                 <bl:LanguageDictionary Source="/BedrockLauncher.Core;component/Resources/lang/lang.en-US.xaml"></bl:LanguageDictionary>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/values/base_values.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/icons.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/misc.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/contextmenu.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/button.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/checkbox.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/combobox.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/menuitems.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/listview.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/textbox.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/textblock.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/frame.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/scrollbars.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/tabbar.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/expander.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/richtextbox.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/radiobutton.xaml"/>
-                <ResourceDictionary Source="/BedrockLauncher.Core;component/Resources/styles/focus_visuals.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/values/base_values.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/icons.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/misc.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/contextmenu.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/button.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/checkbox.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/combobox.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/menuitems.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/listview.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/textbox.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/textblock.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/frame.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/scrollbars.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/tabbar.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/expander.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/richtextbox.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/radiobutton.xaml"/>
+                <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/focus_visuals.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>

@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BedrockLauncher.Controls.Items"
-             xmlns:mcf="clr-namespace:BedrockLauncher.Controls.McTextBlock"
+             xmlns:mcf="clr-namespace:BedrockLauncher.UI.Controls.McTextBlock;assembly=BedrockLauncher.UI"
              xmlns:classes="clr-namespace:BedrockLauncher.Classes.SkinPack"
              d:DataContext="{d:DesignInstance classes:MCSkinPack, IsDesignTimeCreatable=False}"
              mc:Ignorable="d">

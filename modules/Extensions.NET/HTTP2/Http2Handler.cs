@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExtensionsDotNET.HTTP2
+namespace Extensions.HTTP2
 {
     public class Http2Handler : WinHttpHandler
     {

@@ -13,8 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BedrockLauncher.Methods;
-using BedrockLauncher.Controls;
+using BedrockLauncher.Controls.Misc;
 using BedrockLauncher.ViewModels;
+using BedrockLauncher.UI.Controls.Misc;
 
 namespace BedrockLauncher.Pages.Settings
 {

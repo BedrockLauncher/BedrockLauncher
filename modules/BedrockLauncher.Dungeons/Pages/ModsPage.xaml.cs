@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
-using BedrockLauncher.Core.Pages.Common;
+using BedrockLauncher.UI.Pages.Common;
 using System.Diagnostics;
 
 namespace BedrockLauncher.Dungeons.Pages
@@ -42,7 +42,7 @@ namespace BedrockLauncher.Dungeons.Pages
             }
             catch (Exception ex)
             {
-                BedrockLauncher.Core.Pages.Common.ErrorScreenShow.exceptionmsg(ex);
+                BedrockLauncher.UI.Pages.Common.ErrorScreenShow.exceptionmsg(ex);
             }
 
         }
@@ -102,7 +102,7 @@ namespace BedrockLauncher.Dungeons.Pages
             }
             catch (Exception ex)
             {
-                BedrockLauncher.Core.Pages.Common.ErrorScreenShow.exceptionmsg(ex);
+                BedrockLauncher.UI.Pages.Common.ErrorScreenShow.exceptionmsg(ex);
             }
         }
 
