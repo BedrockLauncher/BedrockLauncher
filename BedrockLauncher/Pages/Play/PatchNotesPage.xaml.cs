@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BedrockLauncher.Methods;
+using BedrockLauncher.Extensions;
 using CodeHollow.FeedReader;
 using BedrockLauncher.Classes.Launcher;
 using System.Diagnostics;

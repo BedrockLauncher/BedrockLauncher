@@ -1,4 +1,4 @@
-﻿using BedrockLauncher.Methods;
+﻿using BedrockLauncher.Extensions;
 using BedrockLauncher.UpdateProcessor;
 using System;
 using System.Collections.Generic;

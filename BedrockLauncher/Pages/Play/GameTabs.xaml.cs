@@ -10,7 +10,7 @@ using System.Windows.Media.Animation;
 using BedrockLauncher.Classes;
 using BedrockLauncher.Downloaders;
 using BedrockLauncher.Components;
-using BedrockLauncher.Methods;
+using BedrockLauncher.Extensions;
 using BedrockLauncher.UI.Components;
 
 namespace BedrockLauncher.Pages.Play

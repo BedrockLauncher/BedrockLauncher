@@ -1,6 +1,6 @@
 ﻿using BedrockLauncher.Classes;
 using BedrockLauncher.Classes.SkinPack;
-using BedrockLauncher.Methods;
+using BedrockLauncher.Extensions;
 using BedrockLauncher.Pages.Common;
 using BedrockLauncher.Downloaders;
 using Extensions;

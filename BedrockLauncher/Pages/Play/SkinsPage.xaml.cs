@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Classes.SkinPack;
-using BedrockLauncher.Methods;
+using BedrockLauncher.Extensions;
 using System.IO;
 using System.Data;
 using BedrockLauncher.Controls.Items;

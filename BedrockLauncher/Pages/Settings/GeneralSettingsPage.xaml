@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:properties="clr-namespace:BedrockLauncher.Properties"
       xmlns:controls="clr-namespace:BedrockLauncher.Controls.Settings"
-      xmlns:methods="clr-namespace:BedrockLauncher.Methods"
+      xmlns:methods="clr-namespace:BedrockLauncher.Extensions"
       xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
       xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
       xmlns:com="clr-namespace:BedrockLauncher.Converters"

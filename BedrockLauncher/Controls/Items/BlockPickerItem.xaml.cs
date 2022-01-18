@@ -18,7 +18,7 @@ namespace BedrockLauncher.Controls.Items
     /// <summary>
     /// Interaction logic for BlockPickerItem.xaml
     /// </summary>
-    public partial class BlockPickerItem : Grid
+    public partial class BlockPickerItem : ListViewItem
     {
         public bool IsCustomImage { get; set; }
 
@@ -71,6 +71,22 @@ namespace BedrockLauncher.Controls.Items
         private void MainButton_MouseLeave(object sender, MouseEventArgs e)
         {
             HideCrossButton();
+        }
+    }
+
+
+    public partial class BlockPickerBlankItem : ListViewItem
+    {
+        public BlockPickerBlankItem() : base()
+        {
+            this.Focusable = false;
+            KeyboardNavigation.SetAcceptsReturn(this, false);
+            KeyboardNavigation.SetIsTabStop(this, false);
+            KeyboardNavigation.SetDirectionalNavigation(this, KeyboardNavigationMode.None);
+            KeyboardNavigation.SetControlTabNavigation(this, KeyboardNavigationMode.None);
+            KeyboardNavigation.SetDirectionalNavigation(this, KeyboardNavigationMode.None);
+            KeyboardNavigation.SetTabNavigation(this, KeyboardNavigationMode.None);
+
         }
     }
 }

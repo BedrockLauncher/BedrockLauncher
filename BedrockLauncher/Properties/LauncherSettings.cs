@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BedrockLauncher.Classes;
-using BedrockLauncher.Methods;
+using BedrockLauncher.Extensions;
 using System.ComponentModel;
 using BedrockLauncher.Components;
 using BedrockLauncher.ViewModels;
@@ -61,6 +61,7 @@ namespace BedrockLauncher.Properties
         public void Init()
         {
             PageAnimator.SuperSmoothAnimations = _FancierPageTransitions;
+            Navigator.AnimatePageTransitions = _AnimatePageTransitions;
         }
 
         public void Save()
@@ -69,32 +70,54 @@ namespace BedrockLauncher.Properties
             File.WriteAllText(MainViewModel.Default.FilePaths.GetSettingsFilePath(), json);
         }
 
-        #region Launcher Settings
-
+        #region Launcher Animation Settings
 
         private bool _FancierPageTransitions = false;
-
         public bool FancierPageTransitions
         {
-            get 
+            get
             {
-                return _FancierPageTransitions; 
+                return _FancierPageTransitions;
             }
-            set 
-            { 
+            set
+            {
                 _FancierPageTransitions = value;
                 PageAnimator.SuperSmoothAnimations = value;
             }
         }
+
+        private bool _AnimatePageTransitions = false;
+        public bool AnimatePageTransitions
+        {
+            get
+            {
+                return _AnimatePageTransitions;
+            }
+            set
+            {
+                _AnimatePageTransitions = value;
+                Navigator.AnimatePageTransitions = value;
+            }
+        }
+
+        public bool AnimatePlayButton { get; set; } = false;
+
+        #endregion
+
+        #region Launcher Settings
+
+
+
+
+
+
         public bool ShowAdvancedInstallDetails { get; set; } = false;
 
         public string CurrentTheme { get; set; } = "LatestUpdate";
         public bool KeepLauncherOpen { get; set; } = false;
         public bool UseBetaBuilds { get; set; } = false;
 
-        public bool AnimatePlayButton { get; set; } = false;
 
-        public bool AnimatePageTransitions { get; set; } = false;
 
         #endregion
 

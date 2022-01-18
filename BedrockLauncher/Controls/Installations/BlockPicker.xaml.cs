@@ -151,7 +151,7 @@ namespace BedrockLauncher.Controls
 
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
-            Button btn = (sender as Button);
+            BlockPickerItem btn = (sender as BlockPickerItem);
 
             if (btn.Tag is int)
             {
@@ -227,10 +227,10 @@ namespace BedrockLauncher.Controls
         }
         private void GenerateListItems()
         {
-            DropdownItemPanel.Children.Clear();
+            DropdownItemPanel.Items.Clear();
             foreach (var btn in Buttons)
             {
-                btn.MainButton.Click -= Btn_Click;
+                btn.PreviewMouseLeftButtonDown -= Btn_Click;
                 btn.CrossButton.Click -= CrossBtn_Click;
             }
             Buttons.Clear();
@@ -240,28 +240,20 @@ namespace BedrockLauncher.Controls
         }
         private void GenerateDefaultIconList()
         {
-            //Default Icons
-            int item_index = -1;
-            int columns = 11;
-            int item_count = BlockList.Count;
-            int rows = GetIdealItemRowCount(columns - 1, item_count + 1);
 
-            for (int x = 0; x < rows; x++)
+            int columns = 10;
+            int remaining_spaces = BlockList.Count / columns;
+
+            for (int block = 0; block < BlockList.Count; block++)
             {
-                StackPanel stackPanel = new StackPanel();
-                stackPanel.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1C1C1C"));
-                stackPanel.Orientation = Orientation.Horizontal;
-                for (int y = 0; y < columns; y++)
-                {
-                    if (item_count > item_index)
-                    {
-                        var blockButton = CreateDefaultBlockButton(item_index);
-                        Buttons.Add(blockButton);
-                        stackPanel.Children.Add(blockButton);
-                        item_index++;
-                    }
-                }
-                DropdownItemPanel.Children.Add(stackPanel);
+                var blockButton = CreateDefaultBlockButton(block);
+                Buttons.Add(blockButton);
+                DropdownItemPanel.Items.Add(blockButton);
+            }
+
+            for (int i = 0; i < remaining_spaces; i++)
+            {
+                DropdownItemPanel.Items.Add(new BlockPickerBlankItem());
             }
         }
         private void GenerateCustomIconList()
@@ -272,29 +264,12 @@ namespace BedrockLauncher.Controls
 
             if (item_count == 0) return;
 
-            int item_index = 0;
-            int columns = 11;
-            int rows = GetIdealItemRowCount(columns - 1, item_count);
-
-
-            for (int x = 0; x < rows; x++)
+            foreach (var block in files)
             {
-                StackPanel stackPanel = new StackPanel();
-                stackPanel.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1C1C1C"));
-                stackPanel.Orientation = Orientation.Horizontal;
-                for (int y = 0; y < columns; y++)
-                {
-                    if (item_count > item_index)
-                    {
-                        var blockButton = CreateCustomBlockButton(files[item_index]);
-                        Buttons.Add(blockButton);
-                        stackPanel.Children.Add(blockButton);
-                        item_index++;
-                    }
-                }
-                DropdownItemPanel.Children.Add(stackPanel);
+                var blockButton = CreateCustomBlockButton(block);
+                Buttons.Add(blockButton);
+                DropdownItemPanel.Items.Add(blockButton);
             }
-
 
         }
         private int GetIdealItemRowCount(int cols, int size)
@@ -316,7 +291,7 @@ namespace BedrockLauncher.Controls
         {
             BlockPickerItem btn = CreateBaseBlockButton();
             int img_width_height = 50;
-            btn.MainButton.Tag = path;
+            btn.Host.Tag = path;
             btn.CrossButton.Tag = path;
             btn.IsCustomImage = true;
 
@@ -334,7 +309,7 @@ namespace BedrockLauncher.Controls
             bmp.EndInit();
 
             img.Source = bmp;
-            btn.MainButton.Content = img;
+            btn.Host.Content = img;
 
             return btn;
         }
@@ -342,7 +317,7 @@ namespace BedrockLauncher.Controls
         {
             BlockPickerItem btn = CreateBaseBlockButton();
             int img_width_height = (index == -1 ? 30 : 50);
-            btn.MainButton.Tag = index;
+            btn.Host.Tag = index;
             btn.CrossButton.Tag = index;
 
             Image img = new Image();
@@ -355,14 +330,14 @@ namespace BedrockLauncher.Controls
             if (index == -1)
             {
                 img.Source = Application.Current.Resources["PlusIcon"] as DrawingImage;
-                btn.MainButton.Content = img;
+                btn.Host.Content = img;
             }
             else
             {
                 string packUri = BlockList.ElementAtOrDefault(index) ?? BlockList[0];
                 var bmp = new BitmapImage(new Uri(packUri, UriKind.Relative));
                 img.Source = bmp;
-                btn.MainButton.Content = img;
+                btn.Host.Content = img;
             }
 
             return btn;
@@ -370,7 +345,7 @@ namespace BedrockLauncher.Controls
         private BlockPickerItem CreateBaseBlockButton()
         {
             BlockPickerItem btn = new BlockPickerItem();
-            btn.MainButton.Click += Btn_Click;
+            btn.PreviewMouseLeftButtonDown += Btn_Click;
             btn.CrossButton.Click += CrossBtn_Click;
             return btn;
         }

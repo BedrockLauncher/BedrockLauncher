@@ -26,9 +26,8 @@ namespace BedrockLauncher.Controls.Installations
 
         public InstallationSelector()
         {
-            DataContext = MainViewModel.Default;
             InitializeComponent();
-            
+            DataContext = MainViewModel.Default;
         }
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)
         {
@@ -37,8 +36,7 @@ namespace BedrockLauncher.Controls.Installations
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Properties.LauncherSettings.Default.CurrentInstallation = (string)this.SelectedValue;
-            Properties.LauncherSettings.Default.Save();
+
         }
 
         private void ComboBox_SourceUpdated(object sender, DataTransferEventArgs e)

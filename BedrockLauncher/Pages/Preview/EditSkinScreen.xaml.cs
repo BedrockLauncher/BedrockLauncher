@@ -1,5 +1,5 @@
 ﻿
-using BedrockLauncher.Methods;
+using BedrockLauncher.Extensions;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;

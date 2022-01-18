@@ -14,9 +14,10 @@
              Foreground="White"
              SelectionChanged="ComboBox_SelectionChanged"
              SourceUpdated="ComboBox_SourceUpdated"
+             IsSynchronizedWithCurrentItem="True"
              Style="{DynamicResource InstallationSelectorComboBoxStyle}"
+             SelectedValue="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=Config.CurrentInstallationUUID}"
              SelectedValuePath="InstallationUUID"       
-             SelectedValue="{Binding Config.CurrentInstallationUUID, UpdateSourceTrigger=PropertyChanged}"
              IsEnabled="{Binding InterfaceState.AllowEditing, Mode=OneWay}">
     <ComboBox.ItemContainerStyle>
         <Style TargetType="{x:Type ComboBoxItem}" xmlns:c="clr-namespace:BedrockLauncher.UI.Components;assembly=BedrockLauncher.UI">

@@ -9,9 +9,9 @@ using System.Drawing;
 using System.Windows.Media.Imaging;
 using System.Drawing.Imaging;
 
-namespace BedrockLauncher.Methods
+namespace BedrockLauncher.Extensions
 {
-    public static class MCSkinUtilites
+    public static class MCSkinExtensions
     {
         public static void DrawHead(int scale, bool legacy, Graphics g, System.Drawing.Bitmap skin, bool HatLayer = false)
         {

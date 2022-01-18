@@ -6,7 +6,7 @@ using System.Linq;
 using System;
 using Microsoft.Win32;
 using System.IO;
-using BedrockLauncher.Methods;
+using BedrockLauncher.Extensions;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using BedrockLauncher.Classes;

@@ -1,5 +1,5 @@
 ﻿using BedrockLauncher.Classes.Launcher;
-using BedrockLauncher.Methods;
+using BedrockLauncher.Extensions;
 using BedrockLauncher.Pages;
 using System;
 using System.Collections.Generic;
@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Pages.Preview;
+using BedrockLauncher.UI.Pages.Preview;
 
 namespace BedrockLauncher.Controls.Items
 {

@@ -4,7 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:properties="clr-namespace:BedrockLauncher.Properties"
         xmlns:controls="clr-namespace:BedrockLauncher.Controls.Misc"
-        xmlns:methods="clr-namespace:BedrockLauncher.Methods"
+        xmlns:methods="clr-namespace:BedrockLauncher.Extensions"
         xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
         xmlns:toolbar="clr-namespace:BedrockLauncher.Controls.Toolbar"
         xmlns:com="clr-namespace:Extensions.WPF.Behaviours;assembly=ExtensionsDotNET"

@@ -21,7 +21,7 @@ using Windows.Foundation;
 using Windows.Management.Core;
 using Windows.Management.Deployment;
 using Windows.System;
-using BedrockLauncher.Methods;
+using BedrockLauncher.Extensions;
 using BedrockLauncher.Classes;
 using System.Windows.Media.Animation;
 using BedrockLauncher.Pages;

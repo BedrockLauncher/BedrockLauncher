@@ -4,9 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrockLauncher", "BedrockLauncher\BedrockLauncher.csproj", "{9FEBCF6C-14EF-49E9-B57D-FCBC3BA4BC77}"
-	ProjectSection(ProjectDependencies) = postProject
-		{4BC35DC2-02A8-47E6-8823-76C696CB2E7E} = {4BC35DC2-02A8-47E6-8823-76C696CB2E7E}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrockLauncher.Uninstaller", "modules\BedrockLauncher.Uninstaller\BedrockLauncher.Uninstaller.csproj", "{3232778B-1A3B-4D31-88A1-7A43B8B66723}"
 EndProject

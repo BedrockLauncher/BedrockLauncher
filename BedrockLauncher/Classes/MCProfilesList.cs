@@ -25,20 +25,17 @@ namespace BedrockLauncher.Classes
         [JsonIgnore]
         public string FilePath { get; private set; } = string.Empty;
         [JsonIgnore] 
-        private string _CurrentProfileUUID  = string.Empty;
-        [JsonIgnore] 
-        private string _CurrentInstallationUUID  = string.Empty;
-        [JsonIgnore] 
         public string CurrentProfileUUID
         {
             get
             {
-                return _CurrentProfileUUID;
+                Depends.On(Properties.LauncherSettings.Default.CurrentProfile);
+                return Properties.LauncherSettings.Default.CurrentProfile;
             }
             set
             {
-                _CurrentProfileUUID = value;
-                SetCurrentProfile(value);
+                Properties.LauncherSettings.Default.CurrentProfile = value;
+                Properties.LauncherSettings.Default.Save();
             }
         }
         [JsonIgnore] 
@@ -46,12 +43,13 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                return _CurrentInstallationUUID;
+                Depends.On(Properties.LauncherSettings.Default.CurrentInstallation);
+                return Properties.LauncherSettings.Default.CurrentInstallation;
             }
             set
             {
-                _CurrentInstallationUUID = value;
-                SetCurrentInstallation(value);
+                Properties.LauncherSettings.Default.CurrentInstallation = value;
+                Properties.LauncherSettings.Default.Save();
             }
         }
         [JsonIgnore] 
@@ -344,16 +342,6 @@ namespace BedrockLauncher.Classes
 
                 version_uuid = version.UUID;
             }
-        }
-        public static void SetCurrentProfile(string profileUUID)
-        {
-            Properties.LauncherSettings.Default.CurrentProfile = profileUUID;
-            Properties.LauncherSettings.Default.Save();
-        }
-        public static void SetCurrentInstallation(string installationUUID)
-        {
-            Properties.LauncherSettings.Default.CurrentInstallation = installationUUID;
-            Properties.LauncherSettings.Default.Save();
         }
 
         #endregion

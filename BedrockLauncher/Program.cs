@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using BedrockLauncher.Core.Language;
-using BedrockLauncher.Methods;
+using BedrockLauncher.Extensions;
 using BedrockLauncher.Handlers;
 using BedrockLauncher.Components.CefSharp;
 using BedrockLauncher.Pages.Common;

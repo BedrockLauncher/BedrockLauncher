@@ -8,7 +8,7 @@ using System.IO;
 using System.Drawing;
 using System.Windows.Media.Imaging;
 using System.Drawing.Imaging;
-using BedrockLauncher.Methods;
+using BedrockLauncher.Extensions;
 
 namespace BedrockLauncher.Classes.SkinPack
 {
@@ -80,20 +80,20 @@ namespace BedrockLauncher.Classes.SkinPack
                 {
                     g.FillRectangle(Brushes.Transparent, new Rectangle(0, 0, preview.Width, preview.Height));
 
-                    MCSkinUtilites.DrawHead(scale, isLegacy, g, skin, false);
-                    MCSkinUtilites.DrawBody(scale, isLegacy, g, skin, false);
-                    MCSkinUtilites.DrawArmL(scale, isLegacy, isSlim, g, skin, false);
-                    MCSkinUtilites.DrawArmR(scale, isLegacy, isSlim, g, skin, false);
-                    MCSkinUtilites.DrawLegL(scale, isLegacy, g, skin, false);
-                    MCSkinUtilites.DrawLegR(scale, isLegacy, g, skin, false);
+                    MCSkinExtensions.DrawHead(scale, isLegacy, g, skin, false);
+                    MCSkinExtensions.DrawBody(scale, isLegacy, g, skin, false);
+                    MCSkinExtensions.DrawArmL(scale, isLegacy, isSlim, g, skin, false);
+                    MCSkinExtensions.DrawArmR(scale, isLegacy, isSlim, g, skin, false);
+                    MCSkinExtensions.DrawLegL(scale, isLegacy, g, skin, false);
+                    MCSkinExtensions.DrawLegR(scale, isLegacy, g, skin, false);
 
 
-                    MCSkinUtilites.DrawHead(scale, isLegacy, g, skin, true);
-                    MCSkinUtilites.DrawBody(scale, isLegacy, g, skin, true);
-                    MCSkinUtilites.DrawArmL(scale, isLegacy, isSlim, g, skin, true);
-                    MCSkinUtilites.DrawArmR(scale, isLegacy, isSlim, g, skin, true);
-                    MCSkinUtilites.DrawLegL(scale, isLegacy, g, skin, true);
-                    MCSkinUtilites.DrawLegR(scale, isLegacy, g, skin, true);
+                    MCSkinExtensions.DrawHead(scale, isLegacy, g, skin, true);
+                    MCSkinExtensions.DrawBody(scale, isLegacy, g, skin, true);
+                    MCSkinExtensions.DrawArmL(scale, isLegacy, isSlim, g, skin, true);
+                    MCSkinExtensions.DrawArmR(scale, isLegacy, isSlim, g, skin, true);
+                    MCSkinExtensions.DrawLegL(scale, isLegacy, g, skin, true);
+                    MCSkinExtensions.DrawLegR(scale, isLegacy, g, skin, true);
 
 
                 }

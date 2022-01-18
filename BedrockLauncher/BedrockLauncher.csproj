@@ -246,7 +246,6 @@
     </Compile>
     <Compile Include="Converters\NullToBoolConverter.cs" />
     <Compile Include="Downloaders\NewsDownloader.cs" />
-    <Compile Include="Downloaders\WikiChangelogDownloader.cs" />
     <Compile Include="Enums\LauncherStateChange.cs" />
     <Compile Include="Enums\InstallationSort.cs" />
     <Compile Include="Enums\VersioningMode.cs" />
@@ -269,7 +268,7 @@
     <Compile Include="Handlers\PackageHandler.cs" />
     <Compile Include="Handlers\RuntimeHandler.cs" />
     <Compile Include="Interfaces\ILauncherModel.cs" />
-    <Compile Include="Methods\MCSkinUtilities.cs" />
+    <Compile Include="Extensions\MCSkinExtensions.cs" />
     <Compile Include="Handlers\PathHandler.cs" />
     <Compile Include="Pages\Common\WaitingPage.xaml.cs">
       <DependentUpon>WaitingPage.xaml</DependentUpon>
@@ -295,7 +294,6 @@
     <Compile Include="ViewModels\RSSViewModel.cs" />
     <Compile Include="ViewModels\UserInterfaceModel.cs" />
     <Compile Include="Properties\LauncherSettings.cs" />
-    <Compile Include="Controls\Misc\HtmlPanelPro.cs" />
     <Compile Include="Controls\Items\BlockPickerItem.xaml.cs">
       <DependentUpon>BlockPickerItem.xaml</DependentUpon>
     </Compile>
@@ -372,9 +370,6 @@
     </Compile>
     <Compile Include="Pages\News\News_Launcher_Page.xaml.cs">
       <DependentUpon>News_Launcher_Page.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Preview\ChangelogPreviewScreen.xaml.cs">
-      <DependentUpon>ChangelogPreviewScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Preview\EditSkinScreen.xaml.cs">
       <DependentUpon>EditSkinScreen.xaml</DependentUpon>
@@ -620,10 +615,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Preview\ChangelogPreviewScreen.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Pages\Preview\EditSkinScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -739,7 +730,7 @@
       <Version>1.2.1</Version>
     </PackageReference>
     <PackageReference Include="HtmlAgilityPack">
-      <Version>1.11.33</Version>
+      <Version>1.11.40</Version>
     </PackageReference>
     <PackageReference Include="HtmlRenderer.WPF">
       <Version>1.5.0.6</Version>

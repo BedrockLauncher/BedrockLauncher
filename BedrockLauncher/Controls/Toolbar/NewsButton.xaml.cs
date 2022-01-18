@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
 using BedrockLauncher.Classes;
-using BedrockLauncher.Methods;
+using BedrockLauncher.Extensions;
 
 namespace BedrockLauncher.Controls.Toolbar
 {

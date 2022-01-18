@@ -55,7 +55,7 @@
         <ListView Grid.Row="1" x:Name="PatchNotesList" SourceUpdated="PatchNotesList_SourceUpdated" Keyboard.PreviewKeyUp="PatchNotesList_KeyUp" ItemsSource="{Binding PatchNotes}" ItemContainerStyle="{DynamicResource CardListViewItem}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <vwp:VirtualizingWrapPanel ItemSize="270,270" Orientation="Vertical"/>
+                    <vwp:VirtualizingWrapPanel Orientation="Vertical"/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>

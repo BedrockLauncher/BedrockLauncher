@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using BedrockLauncher.Dungeons.Classes.Launcher;
+using BedrockLauncher.UI.ViewModels;
+using BedrockLauncher.UI.Pages.Preview;
 
 namespace BedrockLauncher.Dungeons.Controls.Items
 {
@@ -35,8 +37,7 @@ namespace BedrockLauncher.Dungeons.Controls.Items
 
         public static void LoadChangelog(PatchNote item)
         {
-            //string header_title = string.Format("{0} {1}", (item.isBeta ? "Beta" : "Release"), item.Version);
-            //MainViewModel.Default.SetOverlayFrame(new ChangelogPreviewPage(item.Content, header_title, item.Url));
+            MainViewModel.Handler.SetOverlayFrame(new ChangelogPreviewPage(item.body, item.title));
         }
     }
 }

@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:w="clr-namespace:System.Windows.Converters;assembly=WindowsBase"
              xmlns:local="clr-namespace:BedrockLauncher.Controls"
+             xmlns:vwp="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
              mc:Ignorable="d"
              d:DesignHeight="850" d:DesignWidth="1000" MinWidth="760">
     <UserControl.Resources>
@@ -34,7 +35,25 @@
         <StackPanel Grid.Row="1" Margin="10,0" Visibility="{Binding Path=IsChecked,ElementName=DropdownButton, Converter={StaticResource VisibleIfTrueConverter}}" x:Name="DropdownContent">
             <Polygon VerticalAlignment="Bottom" HorizontalAlignment="Center" Points="10,0 20,10, 0,10" Stroke="#1C1C1C" Fill="#1C1C1C" />
             <Border CornerRadius="3" Background="#1C1C1C">
-                <StackPanel x:Name="DropdownItemPanel" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,15"></StackPanel>
+                <ListView x:Name="DropdownItemPanel"  BorderThickness="0" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,15">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="10"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.Resources>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Setter Property="Focusable" Value="True"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                        <ContentPresenter Content="{TemplateBinding Content}"/>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListView.Resources>
+                </ListView>
             </Border>
         </StackPanel>
 

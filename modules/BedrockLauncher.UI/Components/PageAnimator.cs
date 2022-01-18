@@ -54,32 +54,35 @@ namespace BedrockLauncher.UI.Components
             args.CurrentContent.MaxHeight = args.stored_max_height;
         }
 
-        private static IEasingFunction GetSwipeAnimationEasingFunction()
+        private static IEasingFunction GetSwipeAnimationEasingFunction(bool isOverlay)
         {
-
             if (SuperSmoothAnimations) return new QuarticEase() { EasingMode = EasingMode.EaseOut };
+            else if (isOverlay) return new QuarticEase() { EasingMode = EasingMode.EaseOut };
             else return null;
         }
 
-        private static int GetFadeSpeed()
+        private static int GetFadeSpeed(bool isOverlay)
         {
             if (SuperSmoothAnimations) return 500;
+            else if (isOverlay) return 350;
             else return 200;
         }
 
-        private static int GetSwipeSpeed()
+        private static int GetSwipeSpeed(bool isOverlay)
         {
             if (SuperSmoothAnimations) return 1000;
+            else if (isOverlay) return 500;
             else return 175;
         }
 
-        private static int GetSwipeSize()
+        private static int GetSwipeSize(bool isOverlay)
         {
             if (SuperSmoothAnimations) return 200;
-            else return 150;
+            else if (isOverlay) return 150;
+            return 200;
         }
 
-        private static ThicknessAnimation GetSwipeAnimation(AnimationArgs animationArgs, double size, Duration duration, ExpandDirection direction)
+        private static ThicknessAnimation GetSwipeAnimation(AnimationArgs animationArgs, double size, Duration duration, ExpandDirection direction, bool isOverlay)
         {
             ThicknessAnimation animation0 = new ThicknessAnimation();
 
@@ -105,7 +108,7 @@ namespace BedrockLauncher.UI.Components
                 ResetPageValues(animationArgs);
             };
             animation0.Duration = duration;
-            animation0.EasingFunction = GetSwipeAnimationEasingFunction();
+            animation0.EasingFunction = GetSwipeAnimationEasingFunction(isOverlay);
             return animation0;
         }
         private static DoubleAnimation GetFadeAnimation(Duration duration, bool fadeIn)
@@ -136,22 +139,39 @@ namespace BedrockLauncher.UI.Components
 
         #endregion
 
+        #region Dialog
+
+        public static void FrameSet_Overlay(Frame frame, object content, bool animate)
+        {
+            bool isEmpty = content == null;
+
+            if (animate && !isEmpty) FrameSwipe_PageIn(frame, content, true);
+            else Navigate(frame, content);
+        }
+
+        public static void FrameSet_Dialog(Frame frame, object content)
+        {
+            Navigate(frame, content);
+        }
+
+        #endregion
+
         #region Fade Animations
-        public static void FrameFadeIn(Frame frame, object content)
+        public static void FrameFadeIn(Frame frame, object content, bool isOverlay)
         {
             frame.Opacity = 0;
             frame.Navigate(content);
             Storyboard storyboard = new Storyboard();
-            DoubleAnimation animation = GetFadeAnimation(new Duration(TimeSpan.FromMilliseconds(GetFadeSpeed())), true);
+            DoubleAnimation animation = GetFadeAnimation(new Duration(TimeSpan.FromMilliseconds(GetFadeSpeed(isOverlay))), true);
             storyboard.Children.Add(animation);
             Storyboard.SetTargetProperty(animation, new PropertyPath(Frame.OpacityProperty));
             Storyboard.SetTarget(animation, frame);
             storyboard.Begin();
         }
-        public static void FrameFadeOut(Frame frame, object content)
+        public static void FrameFadeOut(Frame frame, object content, bool isOverlay)
         {
             Storyboard storyboard = new Storyboard();
-            DoubleAnimation animation = GetFadeAnimation(new Duration(TimeSpan.FromMilliseconds(GetFadeSpeed())), false);
+            DoubleAnimation animation = GetFadeAnimation(new Duration(TimeSpan.FromMilliseconds(GetFadeSpeed(isOverlay))), false);
             storyboard.Children.Add(animation);
             Storyboard.SetTargetProperty(animation, new PropertyPath(Frame.OpacityProperty));
             Storyboard.SetTarget(animation, frame);
@@ -161,25 +181,25 @@ namespace BedrockLauncher.UI.Components
         #endregion
 
         #region Swipe Animations
-        public static void FrameSwipe_OverlayIn(Frame frame, object content)
+        public static void FrameSwipe_PageIn(Frame frame, object content, bool isOverlay)
         {
-            var storyboard = FrameSwipe_Base(frame, content, ExpandDirection.Up, true, true);
+            var storyboard = FrameSwipe_Base(frame, content, ExpandDirection.Up, true, true, isOverlay);
             frame.Dispatcher.Invoke(() => frame.Navigate(content));
             storyboard.Dispatcher.InvokeAsync(() => storyboard.Begin());
         }
-        public static void FrameSwipe_OverlayOut(Frame frame, object content)
+        public static void FrameSwipe_PageOut(Frame frame, object content, bool isOverlay)
         {
-            var storyboard = FrameSwipe_Base(frame, frame.Dispatcher.Invoke(() => frame.Content), ExpandDirection.Up, true, false);
+            var storyboard = FrameSwipe_Base(frame, frame.Dispatcher.Invoke(() => frame.Content), ExpandDirection.Up, true, false, isOverlay);
             storyboard.Completed += (sender, e) => frame.Navigate(content);
             storyboard.Dispatcher.InvokeAsync(() => storyboard.Begin());
         }
-        public static void FrameSwipe(Frame frame, object content, ExpandDirection direction)
+        public static void FrameSwipe(Frame frame, object content, ExpandDirection direction, bool isOverlay = false)
         {
             frame.Dispatcher.InvokeAsync(() => frame.Navigate(content));
-            var storyboard = FrameSwipe_Base(frame, content, direction, true, true);
+            var storyboard = FrameSwipe_Base(frame, content, direction, true, true, isOverlay);
             storyboard.Dispatcher.InvokeAsync(() => storyboard.Begin());
         }
-        public static Storyboard FrameSwipe_Base(Frame frame, object content, ExpandDirection direction, bool useFade, bool fadeIn)
+        public static Storyboard FrameSwipe_Base(Frame frame, object content, ExpandDirection direction, bool useFade, bool fadeIn, bool isOverlay)
         {
             return Application.Current.Dispatcher.Invoke(() =>
             {
@@ -190,7 +210,7 @@ namespace BedrockLauncher.UI.Components
                 SetPageValuesForAnimation(animationArgs);
 
                 Storyboard storyboard = new Storyboard();
-                Duration duration = new Duration(TimeSpan.FromMilliseconds(GetSwipeSpeed()));
+                Duration duration = new Duration(TimeSpan.FromMilliseconds(GetSwipeSpeed(isOverlay)));
 
                 if (useFade)
                 {
@@ -200,7 +220,7 @@ namespace BedrockLauncher.UI.Components
                     Storyboard.SetTarget(fadeAnim, frame);
                 }
 
-                var swipeAnim = GetSwipeAnimation(animationArgs, GetSwipeSize(), duration, direction);
+                var swipeAnim = GetSwipeAnimation(animationArgs, GetSwipeSize(isOverlay), duration, direction, isOverlay);
                 storyboard.Children.Add(swipeAnim);
                 Storyboard.SetTargetProperty(swipeAnim, new PropertyPath(Frame.MarginProperty));
                 Storyboard.SetTarget(swipeAnim, frame);

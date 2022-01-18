@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using BedrockLauncher.Classes;
 using System.Windows;
 using System.Windows.Input;
-using BedrockLauncher.Methods;
+using BedrockLauncher.Extensions;
 using System.Windows.Controls;
 using BedrockLauncher.Pages;
 using BedrockLauncher.Pages.Community;
@@ -30,7 +30,6 @@ using PostSharp.Patterns.Model;
 using BedrockLauncher.Enums;
 using BedrockLauncher.Handlers;
 using System.Windows.Threading;
-using BedrockLauncher.Extensions;
 using Extensions;
 using BedrockLauncher.UpdateProcessor;
 using BedrockLauncher.Core.Pages.Common;
@@ -52,6 +51,7 @@ namespace BedrockLauncher.ViewModels
         {
             ErrorScreenShow.SetHandler(this);
             DialogPrompt.SetHandler(this);
+            UI.ViewModels.MainViewModel.SetHandler(this);
         }
 
         #endregion
@@ -147,13 +147,11 @@ namespace BedrockLauncher.ViewModels
                     Keyboard.ClearFocus();
                 });
 
-                if (animate && !isEmpty) PageAnimator.FrameSwipe_OverlayIn(MainWindow.OverlayFrame, content);
-                else PageAnimator.Navigate(MainWindow.OverlayFrame, content);
+                PageAnimator.FrameSet_Overlay(OverlayFrame, content, animate);
             }
         }
         public void SetDialogFrame(object content)
         {
-            bool animate = Properties.LauncherSettings.Default.AnimatePageTransitions;
             bool isEmpty = content == null;
 
             Application.Current.Dispatcher.Invoke(() =>
@@ -164,8 +162,7 @@ namespace BedrockLauncher.ViewModels
                 Keyboard.ClearFocus();
             });
 
-            if (animate && !isEmpty) PageAnimator.FrameFadeIn(MainWindow.ErrorFrame, content);
-            else PageAnimator.Navigate(MainWindow.ErrorFrame, content);
+            PageAnimator.FrameSet_Dialog(ErrorFrame, content);
         }
         public async Task ShowWaitingDialog(Func<Task> action)
         {

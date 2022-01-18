@@ -18,7 +18,6 @@
       Title="SkinsPage" Initialized="Page_Initialized" Loaded="Page_Loaded" x:Name="SkinsPageHost">
     <Page.Resources>
         <conv:NullToBoolConverter x:Key="NullToBoolConverter"/>
-        <CollectionViewSource x:Key="InstallationsSource3" Source="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=Config.CurrentInstallations}" />
     </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -81,7 +80,14 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Grid Background="{DynamicResource ListBox.Static.Background}">
-                <controls2:InstallationSelector ItemsSource="{Binding Source={StaticResource InstallationsSource3}, IsAsync=True}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SelectionChanged="InstallationsList_SelectionChanged" x:Name="InstallationsList" Margin="4,4,4,4" Padding="-1,7,5,3"></controls2:InstallationSelector>
+                <controls2:InstallationSelector ItemsSource="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=Config.CurrentInstallations}"
+                                                VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
+                                                SelectionChanged="InstallationsList_SelectionChanged" 
+                                                IsSynchronizedWithCurrentItem="True"
+                                                SelectedValue="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=Config.CurrentInstallationUUID, UpdateSourceTrigger=PropertyChanged}"
+                                                SelectedValuePath="InstallationUUID"   
+                                                x:Name="InstallationsList" Margin="4,4,4,4" Padding="-1,7,5,3">
+                </controls2:InstallationSelector>
             </Grid>
             <ListView Grid.Row="1"
                   Keyboard.PreviewKeyUp="LoadedSkinPacks_PreviewKeyUp"

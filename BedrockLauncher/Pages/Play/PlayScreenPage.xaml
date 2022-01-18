@@ -14,7 +14,6 @@
       d:DesignHeight="608" d:DesignWidth="828"
       Title="PlayScreenPage">
     <Page.Resources>
-        <CollectionViewSource x:Key="InstallationsSource2" Source="{Binding Config.CurrentInstallations}"></CollectionViewSource>
         <sys:Double x:Key="MaxLogoHeight">100</sys:Double>
     </Page.Resources>
     <Grid>
@@ -130,7 +129,16 @@
             <Button IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default},Path=InterfaceState.AllowPlaying, Mode=OneWay}" x:Name="MainPlayButton" Click="MainPlayButton_Click" HorizontalAlignment="Center" Margin="286,-8,286,0" VerticalAlignment="Top" Width="250" Height="56" Padding="0" Style="{DynamicResource BigGreenButton}">
                 <TextBlock x:Name="PlayButtonText" Style="{DynamicResource BigGreenButton_Text}" Text="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=InterfaceState.PlayButtonString, Mode=OneWay}"/>
             </Button>
-            <controls:InstallationSelector x:Name="InstallationsList" ItemsSource="{Binding Source={StaticResource InstallationsSource2}, IsAsync=True}" HorizontalAlignment="Left" Margin="4,4,0,4" VerticalAlignment="Top" Width="250" Height="50" Padding="-1,7,5,3"></controls:InstallationSelector>
+            <controls:InstallationSelector x:Name="InstallationsList" 
+                                           ItemsSource="{Binding Config.CurrentInstallations}" 
+                                           HorizontalAlignment="Left" Margin="4,4,0,4" 
+                                           VerticalAlignment="Top" Width="250" Height="50"
+                                           IsSynchronizedWithCurrentItem="True"
+                                           SelectedItem=""
+                                           SelectedValue="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=Config.CurrentInstallationUUID, UpdateSourceTrigger=PropertyChanged}"
+                                           SelectedValuePath="InstallationUUID"   
+                                           Padding="-1,7,5,3">
+            </controls:InstallationSelector>
         </Grid>
     </Grid>
 

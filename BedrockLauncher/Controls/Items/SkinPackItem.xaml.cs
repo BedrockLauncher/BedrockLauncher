@@ -1,4 +1,4 @@
-﻿using BedrockLauncher.Methods;
+﻿using BedrockLauncher.Extensions;
 using BedrockLauncher.Pages;
 using Microsoft.Win32;
 using System;
