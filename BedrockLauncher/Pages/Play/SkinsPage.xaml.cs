@@ -16,7 +16,7 @@ using BedrockLauncher.Classes.SkinPack;
 using BedrockLauncher.Extensions;
 using System.IO;
 using System.Data;
-using BedrockLauncher.Controls.Items;
+using BedrockLauncher.Controls.Items.Skins;
 using Microsoft.Win32;
 using Path = System.IO.Path;
 using System.IO.Compression;

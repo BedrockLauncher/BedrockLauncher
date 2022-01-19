@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:classes="clr-namespace:BedrockLauncher.Classes"
-             xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
+             xmlns:i="clr-namespace:BedrockLauncher.Controls.Items.Launcher"
              xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
              xmlns:handlers="clr-namespace:BedrockLauncher.Handlers"

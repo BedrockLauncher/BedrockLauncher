@@ -3,7 +3,8 @@
                     xmlns:classes="clr-namespace:BedrockLauncher.Classes"
                     xmlns:classes2="clr-namespace:BedrockLauncher.Classes"
                     xmlns:skinClasses="clr-namespace:BedrockLauncher.Classes.SkinPack"
-                    xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
+                    xmlns:i="clr-namespace:BedrockLauncher.Controls.Items.Launcher"
+                    xmlns:si="clr-namespace:BedrockLauncher.Controls.Items.Skins"
                     xmlns:v="clr-namespace:System;assembly=mscorlib">
     <DataTemplate x:Key="VersionItemTemplate" DataType="{x:Type classes2:BLVersion}">
         <i:VersionItem x:Name="ItemControl" DataContext="{Binding }" Tag="{Binding ElementName=PageHost}"></i:VersionItem>
@@ -21,7 +22,7 @@
     </DataTemplate>
 
     <DataTemplate x:Key="SkinPackItemTemplate" DataType="{x:Type skinClasses:MCSkinPack}">
-        <i:SkinPackItem x:Name="ItemControl" Tag="{Binding ElementName=SkinsPageHost}"  DataContext="{Binding }"/>
+        <si:SkinPackItem x:Name="ItemControl" Tag="{Binding ElementName=SkinsPageHost}"  DataContext="{Binding }"/>
         <DataTemplate.Triggers>
             <DataTrigger  Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver}" Value="True">
                 <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>
@@ -36,7 +37,7 @@
     </DataTemplate>
 
     <DataTemplate x:Key="SkinItemTemplate" DataType="{x:Type skinClasses:MCSkin}">
-        <i:SkinItem x:Name="ItemControl" Tag="{Binding ElementName=SkinsPageHost}"  DataContext="{Binding }"/>
+        <si:SkinItem x:Name="ItemControl" Tag="{Binding ElementName=SkinsPageHost}"  DataContext="{Binding }"/>
     </DataTemplate>
 
     <DataTemplate x:Key="LocalizationItemTemplate" DataType="{x:Type v:String}">

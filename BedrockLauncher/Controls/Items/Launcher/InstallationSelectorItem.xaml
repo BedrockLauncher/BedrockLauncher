@@ -1,0 +1,22 @@
+﻿<Grid x:Class="BedrockLauncher.Controls.Items.Launcher.InstallationSelectorItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d"
+             x:Name="Host"
+             xmlns:classes="clr-namespace:BedrockLauncher.Classes"
+             d:DataContext="{d:DesignInstance classes:BLInstallation, IsDesignTimeCreatable=True}">
+    <Grid.Resources>
+        <BitmapImage x:Key="IconPath_DesignTime" UriSource="/BedrockLauncher;component/resources/images/installation_icons/Furnace.png"/>
+    </Grid.Resources>
+    <TextBlock FontSize="12" Foreground="{DynamicResource PrimaryText.Foreground}" FontWeight="SemiBold" Padding="45,0,0,0" Text="{Binding DisplayName_Full}"/>
+    <TextBlock FontSize="10" Foreground="{DynamicResource SecondaryText.Foreground}" Padding="45,20,0,0" FontWeight="Normal" Text="{Binding VersionName}"/>
+    <Image RenderOptions.BitmapScalingMode="HighQuality" Source="{Binding IconPath_Full, FallbackValue={StaticResource IconPath_DesignTime}, TargetNullValue={StaticResource IconPath_DesignTime}}" HorizontalAlignment="Left" Width="32" Height="32" Margin="5,1,0,0">
+        <Image.OpacityMask>
+            <ImageBrush ImageSource="{Binding IconPath_Full, FallbackValue={StaticResource IconPath_DesignTime}, TargetNullValue={StaticResource IconPath_DesignTime}}"/>
+        </Image.OpacityMask>
+    </Image>
+</Grid>

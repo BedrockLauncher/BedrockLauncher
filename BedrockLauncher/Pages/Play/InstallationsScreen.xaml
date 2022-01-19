@@ -10,7 +10,7 @@
       xmlns:handlers="clr-namespace:BedrockLauncher.Handlers"
       xmlns:conv="clr-namespace:BedrockLauncher.Converters"
       xmlns:classes2="clr-namespace:BedrockLauncher.Classes"
-      xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
+      xmlns:i="clr-namespace:BedrockLauncher.Controls.Items.Launcher"
       d:DataContext="{d:DesignInstance Type=viewModels:MainViewModel}"
       mc:Ignorable="d" 
       x:Name="PageHost"

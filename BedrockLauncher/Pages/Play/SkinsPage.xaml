@@ -9,7 +9,7 @@
       xmlns:conv="clr-namespace:BedrockLauncher.Converters"
       xmlns:classes="clr-namespace:BedrockLauncher.Classes.SkinPack"
       xmlns:local="clr-namespace:BedrockLauncher.Pages.Play"
-      xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
+      xmlns:i="clr-namespace:BedrockLauncher.Controls.Items.Skins"
       xmlns:properties="clr-namespace:BedrockLauncher.Properties"
       xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
       d:DataContext="{d:DesignInstance Type=local:SkinsPageViewModel}"

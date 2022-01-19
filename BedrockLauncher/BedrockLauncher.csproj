@@ -214,20 +214,20 @@
     <Compile Include="Controls\Misc\AltMessageBox.xaml.cs">
       <DependentUpon>AltMessageBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Items\DLCItem.xaml.cs">
+    <Compile Include="Controls\Items\Launcher\DLCItem.xaml.cs">
       <DependentUpon>DLCItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Items\FeedItem_JavaDungeons.xaml.cs">
-      <DependentUpon>FeedItem_JavaDungeons.xaml</DependentUpon>
+    <Compile Include="Controls\Items\News\FeedItem_Offical.xaml.cs">
+      <DependentUpon>FeedItem_Offical.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Items\FeedItem_RSS.xaml.cs">
+    <Compile Include="Controls\Items\News\FeedItem_RSS.xaml.cs">
       <DependentUpon>FeedItem_RSS.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Items\InstallationSelectorItem.xaml.cs">
+    <Compile Include="Controls\Items\Launcher\InstallationSelectorItem.xaml.cs">
       <DependentUpon>InstallationSelectorItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Items\LauncherUpdateItem.xaml.cs">
-      <DependentUpon>LauncherUpdateItem.xaml</DependentUpon>
+    <Compile Include="Controls\Items\News\FeedItem_Launcher.xaml.cs">
+      <DependentUpon>FeedItem_Launcher.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Misc\Marquee.xaml.cs">
       <DependentUpon>Marquee.xaml</DependentUpon>
@@ -285,8 +285,8 @@
     <Compile Include="Pages\FirstLaunch\WelcomePageFour.xaml.cs">
       <DependentUpon>WelcomePageFour.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\News\News_JavaDungeons_Page.xaml.cs">
-      <DependentUpon>News_JavaDungeons_Page.xaml</DependentUpon>
+    <Compile Include="Pages\News\OfficalNewsPage.xaml.cs">
+      <DependentUpon>OfficalNewsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -294,28 +294,28 @@
     <Compile Include="ViewModels\RSSViewModel.cs" />
     <Compile Include="ViewModels\UserInterfaceModel.cs" />
     <Compile Include="Properties\LauncherSettings.cs" />
-    <Compile Include="Controls\Items\BlockPickerItem.xaml.cs">
+    <Compile Include="Controls\Items\Launcher\BlockPickerItem.xaml.cs">
       <DependentUpon>BlockPickerItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Items\InstallationItem.xaml.cs">
+    <Compile Include="Controls\Items\Launcher\InstallationItem.xaml.cs">
       <DependentUpon>InstallationItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Items\LocalizationItem.xaml.cs">
+    <Compile Include="Controls\Items\Launcher\LocalizationItem.xaml.cs">
       <DependentUpon>LocalizationItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Items\PatchNotesItem.xaml.cs">
-      <DependentUpon>PatchNotesItem.xaml</DependentUpon>
+    <Compile Include="Controls\Items\News\FeedItem_PatchNotes.xaml.cs">
+      <DependentUpon>FeedItem_PatchNotes.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Items\FeedItem_Minecraft.xaml.cs">
+    <Compile Include="Controls\Items\News\FeedItem_Minecraft.xaml.cs">
       <DependentUpon>FeedItem_Minecraft.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Items\SkinItem.xaml.cs">
+    <Compile Include="Controls\Items\Skins\SkinItem.xaml.cs">
       <DependentUpon>SkinItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Items\SkinPackItem.xaml.cs">
+    <Compile Include="Controls\Items\Skins\SkinPackItem.xaml.cs">
       <DependentUpon>SkinPackItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Items\VersionItem.xaml.cs">
+    <Compile Include="Controls\Items\Launcher\VersionItem.xaml.cs">
       <DependentUpon>VersionItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Settings\ThemeCombobox.xaml.cs">
@@ -351,7 +351,7 @@
     <Compile Include="Controls\Toolbar\ProfileButton.xaml.cs">
       <DependentUpon>ProfileButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Items\ProfileItem.xaml.cs">
+    <Compile Include="Controls\Items\Launcher\ProfileItem.xaml.cs">
       <DependentUpon>ProfileItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Skins\SkinPreview.xaml.cs">
@@ -362,14 +362,14 @@
     <Compile Include="Pages\Settings\AdvancedOptionsWindow.xaml.cs">
       <DependentUpon>AdvancedOptionsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\News\News_RSS_Page.xaml.cs">
-      <DependentUpon>News_RSS_Page.xaml</DependentUpon>
+    <Compile Include="Pages\News\RSSNewsPage.xaml.cs">
+      <DependentUpon>RSSNewsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Preview\EditSkinPackScreen.xaml.cs">
       <DependentUpon>EditSkinPackScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\News\News_Launcher_Page.xaml.cs">
-      <DependentUpon>News_Launcher_Page.xaml</DependentUpon>
+    <Compile Include="Pages\News\LauncherNewsPage.xaml.cs">
+      <DependentUpon>LauncherNewsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Preview\EditSkinScreen.xaml.cs">
       <DependentUpon>EditSkinScreen.xaml</DependentUpon>
@@ -443,55 +443,55 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Items\BlockPickerItem.xaml">
+    <Page Include="Controls\Items\Launcher\BlockPickerItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Items\DLCItem.xaml">
+    <Page Include="Controls\Items\Launcher\DLCItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Items\FeedItem_JavaDungeons.xaml">
+    <Page Include="Controls\Items\News\FeedItem_Offical.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Items\FeedItem_RSS.xaml">
+    <Page Include="Controls\Items\News\FeedItem_RSS.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Items\InstallationItem.xaml">
+    <Page Include="Controls\Items\Launcher\InstallationItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Items\InstallationSelectorItem.xaml">
+    <Page Include="Controls\Items\Launcher\InstallationSelectorItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Items\LauncherUpdateItem.xaml">
+    <Page Include="Controls\Items\News\FeedItem_Launcher.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Items\LocalizationItem.xaml">
+    <Page Include="Controls\Items\Launcher\LocalizationItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Items\PatchNotesItem.xaml">
+    <Page Include="Controls\Items\News\FeedItem_PatchNotes.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Items\FeedItem_Minecraft.xaml">
+    <Page Include="Controls\Items\News\FeedItem_Minecraft.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Items\SkinItem.xaml">
+    <Page Include="Controls\Items\Skins\SkinItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Items\SkinPackItem.xaml">
+    <Page Include="Controls\Items\Skins\SkinPackItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Items\VersionItem.xaml">
+    <Page Include="Controls\Items\Launcher\VersionItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -559,7 +559,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Items\ProfileItem.xaml">
+    <Page Include="Controls\Items\Launcher\ProfileItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -591,7 +591,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\News\News_JavaDungeons_Page.xaml">
+    <Page Include="Pages\News\OfficalNewsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -599,7 +599,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\News\News_RSS_Page.xaml">
+    <Page Include="Pages\News\RSSNewsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -611,7 +611,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\News\News_Launcher_Page.xaml">
+    <Page Include="Pages\News\LauncherNewsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

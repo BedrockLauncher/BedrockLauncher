@@ -23,8 +23,6 @@ namespace BedrockLauncher.UI.Components
            public Page CurrentContent { get; set; }
         }
 
-        public static bool SuperSmoothAnimations = false;
-
         #region General Methods
 
         private static void StorePageValues(AnimationArgs args)
@@ -56,29 +54,25 @@ namespace BedrockLauncher.UI.Components
 
         private static IEasingFunction GetSwipeAnimationEasingFunction(bool isOverlay)
         {
-            if (SuperSmoothAnimations) return new QuarticEase() { EasingMode = EasingMode.EaseOut };
-            else if (isOverlay) return new QuarticEase() { EasingMode = EasingMode.EaseOut };
+            if (isOverlay) return new QuarticEase() { EasingMode = EasingMode.EaseOut };
             else return null;
         }
 
         private static int GetFadeSpeed(bool isOverlay)
         {
-            if (SuperSmoothAnimations) return 500;
-            else if (isOverlay) return 350;
+            if (isOverlay) return 350;
             else return 200;
         }
 
         private static int GetSwipeSpeed(bool isOverlay)
         {
-            if (SuperSmoothAnimations) return 1000;
-            else if (isOverlay) return 500;
+            if (isOverlay) return 500;
             else return 175;
         }
 
         private static int GetSwipeSize(bool isOverlay)
         {
-            if (SuperSmoothAnimations) return 200;
-            else if (isOverlay) return 150;
+            if (isOverlay) return 150;
             return 200;
         }
 

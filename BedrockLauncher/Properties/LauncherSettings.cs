@@ -60,7 +60,6 @@ namespace BedrockLauncher.Properties
 
         public void Init()
         {
-            PageAnimator.SuperSmoothAnimations = _FancierPageTransitions;
             Navigator.AnimatePageTransitions = _AnimatePageTransitions;
         }
 
@@ -71,20 +70,6 @@ namespace BedrockLauncher.Properties
         }
 
         #region Launcher Animation Settings
-
-        private bool _FancierPageTransitions = false;
-        public bool FancierPageTransitions
-        {
-            get
-            {
-                return _FancierPageTransitions;
-            }
-            set
-            {
-                _FancierPageTransitions = value;
-                PageAnimator.SuperSmoothAnimations = value;
-            }
-        }
 
         private bool _AnimatePageTransitions = false;
         public bool AnimatePageTransitions
