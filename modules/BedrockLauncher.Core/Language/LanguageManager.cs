@@ -41,6 +41,7 @@ namespace BedrockLauncher.Core.Language
             Application.Current.Resources.MergedDictionaries.Add(default_dic);
             Application.Current.Resources.MergedDictionaries.Add(dict);
         }
+
         public static bool TryGetResource(string name, out string contents)
         {
             try
@@ -48,10 +49,31 @@ namespace BedrockLauncher.Core.Language
                 var currentLang = GetResourceDictonaries().Where(x => x.Locale == Core.Properties.Settings.Default.Language).FirstOrDefault();
                 var currentLocale = currentLang.Locale.Replace("-", "_");
 
+                contents = GetResource(name, currentLang);
+                return true;
+
+            }
+            catch
+            {
+                try
+                {
+                    contents = GetResource(name, LanguageDefinition.Default);
+                    return true;
+                }
+                catch
+                {
+                    contents = string.Empty;
+                    return false;
+                }
+            }
+
+            string GetResource(string _name, LanguageDefinition currentLang)
+            {
+                var currentLocale = currentLang.Locale.Replace("-", "_");
 
                 if (!currentLang.IsExternal)
                 {
-                    string resourceName = $"{currentLocale}.{name}";
+                    string resourceName = $"{currentLocale}.{_name}";
                     var names = Assembly.GetExecutingAssembly().GetManifestResourceNames();
                     if (names.ToList().Exists(x => x.EndsWith(resourceName)))
                     {
@@ -59,24 +81,16 @@ namespace BedrockLauncher.Core.Language
                         using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourcePath))
                         using (StreamReader reader = new StreamReader(stream))
                         {
-                            contents = reader.ReadToEnd();
-                            return true;
+                            return reader.ReadToEnd();
                         }
                     }
+                    else throw new Exception($"Can not find the following resource: \"{resourceName}\"");
                 }
                 else
                 {
-                    //var directory = Path.Combine(Path.GetDirectoryName(currentLang.Path), currentLang.Locale);
-                    //var resourcePath = new Uri(Path.Combine(directory, name), currentLang.IsExternal ? UriKind.Absolute : UriKind.Relative);
+                    var directory = Path.Combine(Path.GetDirectoryName(currentLang.Path), currentLang.Locale);
+                    return File.ReadAllText(Path.Combine(directory, _name));
                 }
-                contents = string.Empty;
-                return false;
-
-            }
-            catch
-            {
-                contents = string.Empty;
-                return false;
             }
         }
 
