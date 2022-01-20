@@ -109,8 +109,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>cd "$(ProjectDir)WUTokenHelper"
-"$(DevEnvDir)devenv" "$(SolutionPath)" /Build "Release" /Project "WUTokenHelper.vcxproj" /ProjectConfig "Release|Win32"
+    <PreBuildEvent>:: cd "$(ProjectDir)WUTokenHelper"
+:: "$(DevEnvDir)devenv" "$(SolutionPath)" /Build "Release" /Project "WUTokenHelper.vcxproj" /ProjectConfig "Release|Win32"
 cd "$(ProjectDir)Runtimes\WUTokenHelper"
 rmdir "Win32" /s /q
 rmdir "x64" /s /q
