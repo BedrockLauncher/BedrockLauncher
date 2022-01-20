@@ -15,7 +15,7 @@
         <TextBlock Foreground="white" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="11" FontWeight="Bold" Text="{DynamicResource MainWindow_Disclaimer}" Margin="20,20" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
         <Border CornerRadius="2" Background="#FF262626" Width="600" Height="258" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Grid SnapsToDevicePixels="True">
-                <Frame com:DisableNavigation.Disable="True" x:Name="WelcomePageFrame" Margin="2,2,2,2" NavigationUIVisibility="Hidden" Source="/BedrockLauncher.UI;component/Pages/FirstLaunch/WelcomePageOne.xaml"/>
+                <Frame com:DisableNavigation.Disable="True" x:Name="WelcomePageFrame" Margin="2,2,2,2" NavigationUIVisibility="Hidden" Source="/Pages/FirstLaunch/WelcomePageOne.xaml"/>
             </Grid>
         </Border>
     </Grid>
