@@ -72,10 +72,10 @@ namespace BedrockLauncher.Handlers
 
         public static bool Filter_OfficalNewsFeed(object obj)
         {
-            if (!(obj is NewsItem_Launcher)) return false;
+            if (!(obj is NewsItem_Offical)) return false;
             else
             {
-                var item = (obj as NewsItem_Launcher);
+                var item = (obj as NewsItem_Offical);
                 if (item.newsType != null && item.newsType.Contains("News page"))
                 {
                     if (item.category == "Minecraft: Java Edition" && NewsViewModel.Default.Offical_ShowJavaContent) return ContainsText(item);
@@ -86,7 +86,7 @@ namespace BedrockLauncher.Handlers
                 else return false;
             }
 
-            bool ContainsText(NewsItem_Launcher _item)
+            bool ContainsText(NewsItem_Offical _item)
             {
                 string searchParam = NewsViewModel.Default.Offical_SearchBoxText;
                 if (string.IsNullOrEmpty(searchParam) || _item.title.Contains(searchParam, StringComparison.OrdinalIgnoreCase)) return true;

@@ -5,13 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BedrockLauncher.Controls.Items.News"
              xmlns:classes="clr-namespace:BedrockLauncher.Classes.Launcher"
+             xmlns:converters="clr-namespace:Extensions.WPF.Converters;assembly=ExtensionsDotNET"
+             xmlns:http2="clr-namespace:Extensions.Http2;assembly=ExtensionsDotNET"
              x:Name="FeedItemEntry"
              d:DataContext="{d:DesignInstance Type=classes:PatchNote}"
              mc:Ignorable="d" 
              Focusable="False"
              Width="256" Height="256" Click="FeedItemButton_Click" Style="{DynamicResource EmptyButton}" BorderThickness="0">
     <Button.Resources>
-        <BitmapImage x:Key="FallbackImage" UriSource="/BedrockLauncher;component/resources/images/packs/pack_icon.png"/>
+        <BitmapImage x:Key="FallbackImage" UriSource="/BedrockLauncher;component/resources/images/packs/invalid_pack_icon.png"/>
     </Button.Resources>
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="256" Height="256" Background="Transparent">
         <Grid.RowDefinitions>
@@ -24,7 +26,7 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Image Grid.ColumnSpan="2" Grid.Row="0" Source="{Binding ImageUrl, FallbackValue={StaticResource FallbackImage}}" Stretch="UniformToFill"></Image>
+        <Image x:Name="RealImage" Grid.ColumnSpan="2" Grid.Row="0" Stretch="UniformToFill" Source="{Binding ImageUrl, TargetNullValue={StaticResource FallbackImage}, FallbackValue={StaticResource FallbackImage}}"/>
         <TextBlock Grid.ColumnSpan="2" Grid.Row="1" FontWeight="Black" FontSize="25" Margin="5,5,0,0" TextWrapping="Wrap" Text="{Binding Version}" Foreground="White"></TextBlock>
         <TextBlock Visibility="Collapsed" Grid.Row="2" Grid.Column="1" Padding="0,0" Margin="5,5,0,0" HorizontalAlignment="Right" TextAlignment="Right" VerticalAlignment="Bottom" TextWrapping="Wrap" Text="{Binding PublishingDateString}" Foreground="Gray"></TextBlock>
         <TextBlock Grid.Row="2" Grid.Column="0" Padding="2,2" Margin="5,5,5,5" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Bottom" TextWrapping="Wrap" Text="{Binding Tag}" Foreground="White" Background="DimGray"></TextBlock>

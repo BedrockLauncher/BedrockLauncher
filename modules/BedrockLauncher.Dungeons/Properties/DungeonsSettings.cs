@@ -68,17 +68,14 @@ namespace BedrockLauncher.Dungeons.Properties
 
         #region Shortcut Settings
 
-        //private bool _IsWindowsStoreVariant = false;
+        private Enums.GameVariant _GameVariant = Enums.GameVariant.Launcher;
         private string _InstallLocation = string.Empty;
         private string _ModsLocation = string.Empty;
 
-        public bool IsWindowsStoreVariant
+        public Enums.GameVariant GameVariant
         {
-            //get { return _IsWindowsStoreVariant; }
-            //set { _IsWindowsStoreVariant = value; OnPropertyChanged(nameof(IsWindowsStoreVariant)); }
-
-            get { return false; }
-            set { OnPropertyChanged(nameof(IsWindowsStoreVariant)); }
+            get { return _GameVariant; }
+            set { _GameVariant = value; OnPropertyChanged(nameof(GameVariant)); }
         }
 
         public string ModsLocation

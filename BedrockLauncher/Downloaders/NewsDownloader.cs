@@ -1,7 +1,7 @@
 ﻿using BedrockLauncher.Classes.Launcher;
 using BedrockLauncher.ViewModels;
 using CodeHollow.FeedReader;
-using Extensions.HTTP2;
+using Extensions.Http2;
 using MdXaml;
 using System;
 using System.Collections.Generic;
@@ -17,44 +17,45 @@ namespace BedrockLauncher.Downloaders
 {
     public static class NewsDownloader
     {
+
         private const string OfficalFeed_RSS = @"https://launchercontent.mojang.com/news.json";
 
-        public static async Task UpdateOfficalFeed()
+        public static async Task UpdateOfficalFeed(NewsViewModel viewModel)
         {
             await Application.Current.Dispatcher.InvokeAsync(() =>
             {
-                NewsViewModel.Default.FeedItemsOffical.Clear();
+                viewModel.FeedItemsOffical.Clear();
             });
 
-            LauncherNewsFeed result = null;
+            NewsFeed_Offical result = null;
             using (var httpClient = new HttpClient())
             {
                 try
                 {
                     var json = await httpClient.GetStringAsync(OfficalFeed_RSS);
-                    result = Newtonsoft.Json.JsonConvert.DeserializeObject<LauncherNewsFeed>(json);
+                    result = Newtonsoft.Json.JsonConvert.DeserializeObject<NewsFeed_Offical>(json);
                 }
                 catch
                 {
-                    result = new LauncherNewsFeed();
+                    result = new NewsFeed_Offical();
                 }
 
             }
-            if (result == null) result = new LauncherNewsFeed();
-            if (result.entries == null) result.entries = new List<NewsItem_Launcher>();
+            if (result == null) result = new NewsFeed_Offical();
+            if (result.entries == null) result.entries = new List<NewsItem_Offical>();
 
             await Application.Current.Dispatcher.InvokeAsync(() => {
-                foreach (NewsItem_Launcher item in result.entries)
+                foreach (NewsItem_Offical item in result.entries)
                 {
-                    if (item.newsType != null && item.newsType.Contains("News page")) NewsViewModel.Default.FeedItemsOffical.Add(item);
+                    if (item.newsType != null && item.newsType.Contains("News page")) viewModel.FeedItemsOffical.Add(item);
                 }
             });
         }
-        public static async Task UpdateLauncherFeed()
+        public static async Task UpdateLauncherFeed(NewsViewModel viewModel)
         {
             await Application.Current.Dispatcher.InvokeAsync(() =>
             {
-                NewsViewModel.Default.LauncherNewsItems.Clear();
+                viewModel.LauncherNewsItems.Clear();
                 bool isFirstItem = true;
                 string latest_name = Application.Current.FindResource("LauncherNewsPage_Title_Text").ToString();
                 foreach (var item in MainViewModel.Updater.Notes)
@@ -96,7 +97,7 @@ namespace BedrockLauncher.Downloaders
                     launcherUpdateItem.buildChanges = documentString;
                     launcherUpdateItem.buildDate = item.published_at.ToString();
 
-                    NewsViewModel.Default.LauncherNewsItems.Add(launcherUpdateItem);
+                    viewModel.LauncherNewsItems.Add(launcherUpdateItem);
                 }
             });
         }
@@ -112,8 +113,8 @@ namespace BedrockLauncher.Downloaders
                     Feed feed = FeedReader.ReadFromString(rss);
                     foreach (FeedItem item in feed.Items)
                     {
-                        var new_item = Activator.CreateInstance(viewModel.RSSType, item);
-                        if (new_item.GetType().IsSubclassOf(typeof(NewsItem))) viewModel.FeedItems.Add((NewsItem)new_item);
+                        var new_item = new NewsItem_RSS(item, viewModel.RSSType);
+                        viewModel.FeedItems.Add(new_item);
                     }
                 }
                 catch

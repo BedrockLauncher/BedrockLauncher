@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mcf="clr-namespace:BedrockLauncher.UI.Controls.McTextBlock;assembly=BedrockLauncher.UI"
       xmlns:controls="clr-namespace:BedrockLauncher.Controls.Skins"
-      xmlns:controls2="clr-namespace:BedrockLauncher.Controls.Installations"
-      xmlns:conv="clr-namespace:BedrockLauncher.Converters"
+      xmlns:controls2="clr-namespace:BedrockLauncher.Controls.Config"
+      xmlns:conv="clr-namespace:Extensions.WPF.Converters;assembly=ExtensionsDotNET"
       xmlns:classes="clr-namespace:BedrockLauncher.Classes.SkinPack"
       xmlns:local="clr-namespace:BedrockLauncher.Pages.Play"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items.Skins"
@@ -17,7 +17,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SkinsPage" Initialized="Page_Initialized" Loaded="Page_Loaded" x:Name="SkinsPageHost">
     <Page.Resources>
-        <conv:NullToBoolConverter x:Key="NullToBoolConverter"/>
+        <conv:NullToBoolConverter x:Key="NullToBoolConverter" True="False" False="True"/>
     </Page.Resources>
     <Grid>
         <Grid.ColumnDefinitions>

@@ -34,7 +34,7 @@
         <Grid Grid.Row="2">
             <ScrollViewer Grid.Column="1" HorizontalAlignment="Stretch">
                 <StackPanel>
-                    <controls:BlockPicker x:Name="InstallationIconSelect" VerticalAlignment="Center" HorizontalAlignment="Center"></controls:BlockPicker>
+                    <controls:InstallationBlockPicker x:Name="InstallationIconSelect" VerticalAlignment="Center" HorizontalAlignment="Center"></controls:InstallationBlockPicker>
                     <StackPanel Width="330" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch">
                         <TextBlock Margin="0,28,0,5" Text="{DynamicResource EditInstallationScreen_NameSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                         <TextBox Text="{Binding InstallationName, Mode=TwoWay}" Height="32" Tag="{DynamicResource EditInstallationScreen_NameHintText}" Width="330" x:Name="InstallationNameField" AcceptsReturn="False" SpellCheck.IsEnabled="False"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left"></TextBox>

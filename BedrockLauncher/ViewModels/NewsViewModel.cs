@@ -20,7 +20,7 @@ namespace BedrockLauncher.ViewModels
         public bool Offical_ShowBedrockContent { get; set; } = true;
         public string Offical_SearchBoxText { get; set; } = string.Empty;
 
-        public ObservableCollection<NewsItem_Launcher> FeedItemsOffical { get; set; } = new ObservableCollection<NewsItem_Launcher>();
+        public ObservableCollection<NewsItem_Offical> FeedItemsOffical { get; set; } = new ObservableCollection<NewsItem_Offical>();
         public ObservableCollection<AppPatchNote> LauncherNewsItems { get; set; } = new ObservableCollection<AppPatchNote>();
 
     }

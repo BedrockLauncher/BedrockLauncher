@@ -1,0 +1,132 @@
+﻿<Grid x:Class="BedrockLauncher.Controls.Various.SpecialBorder"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BedrockLauncher.Controls"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Name="Self"
+             mc:Ignorable="d" 
+             DataContext="{Binding RelativeSource={RelativeSource Self}}"
+             d:DesignHeight="20" d:DesignWidth="20">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{Binding BorderSize}"/>
+                <RowDefinition Height="{Binding BorderSize}"/>
+                <RowDefinition Height="{Binding BorderSize}"/>
+                <RowDefinition Height="{Binding BorderSize}"/>
+                <RowDefinition Height="{Binding BorderSize}"/>
+                <RowDefinition Height="{Binding BorderSize}"/>
+            </Grid.RowDefinitions>
+            <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="1" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="3" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="5" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="1" Grid.RowSpan="3" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="1" Grid.RowSpan="1" Fill="{Binding BorderColor}"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{Binding BorderSize}"/>
+                <RowDefinition Height="{Binding BorderSize}"/>
+                <RowDefinition Height="{Binding BorderSize}"/>
+                <RowDefinition Height="{Binding BorderSize}"/>
+                <RowDefinition Height="{Binding BorderSize}"/>
+                <RowDefinition Height="{Binding BorderSize}"/>
+            </Grid.RowDefinitions>
+            <Rectangle Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="1" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1" Grid.RowSpan="5" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="3" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="1" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="1" Grid.RowSpan="3" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="1" Grid.RowSpan="1" Fill="{Binding BorderColor}"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{Binding BorderSize}"/>
+                <RowDefinition Height="{Binding BorderSize}"/>
+                <RowDefinition Height="{Binding BorderSize}"/>
+                <RowDefinition Height="{Binding BorderSize}"/>
+                <RowDefinition Height="{Binding BorderSize}"/>
+                <RowDefinition Height="{Binding BorderSize}"/>
+            </Grid.RowDefinitions>
+            <Rectangle Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="3" Grid.RowSpan="1" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="1" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="5" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="3" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Grid.RowSpan="1" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="1" Grid.RowSpan="3" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="1" Grid.RowSpan="1" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Fill="{Binding BorderColor}"/>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+                <ColumnDefinition Width="{Binding BorderSize}"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{Binding BorderSize}"/>
+                <RowDefinition Height="{Binding BorderSize}"/>
+                <RowDefinition Height="{Binding BorderSize}"/>
+                <RowDefinition Height="{Binding BorderSize}"/>
+                <RowDefinition Height="{Binding BorderSize}"/>
+                <RowDefinition Height="{Binding BorderSize}"/>
+            </Grid.RowDefinitions>
+            <Rectangle Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Grid.RowSpan="1" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="1" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="1" Grid.RowSpan="3" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="5" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="3" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" Grid.RowSpan="1" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="1" Grid.RowSpan="1" Fill="{Binding BorderColor}"/>
+            <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Fill="{Binding BorderColor}"/>
+        </Grid>
+        <Rectangle Grid.Row="1" Grid.Column="0" Width="{Binding BorderSize}" Fill="{Binding BorderColor}" VerticalAlignment="Stretch" HorizontalAlignment="Left"></Rectangle>
+        <Rectangle Grid.Row="0" Grid.Column="1" Height="{Binding BorderSize}" Fill="{Binding BorderColor}" VerticalAlignment="Top" HorizontalAlignment="Stretch"></Rectangle>
+        <Rectangle Grid.Row="2" Grid.Column="1" Height="{Binding BorderSize}" Fill="{Binding BorderColor}" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"></Rectangle>
+        <Rectangle Grid.Row="1" Grid.Column="2" Width="{Binding BorderSize}" Fill="{Binding BorderColor}" VerticalAlignment="Stretch" HorizontalAlignment="Right"></Rectangle>
+    </Grid>
+</Grid>

@@ -44,7 +44,7 @@ namespace BedrockLauncher.Pages.News
 
         private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
-            Task.Run(Downloaders.NewsDownloader.UpdateOfficalFeed);
+            Task.Run(() => Downloaders.NewsDownloader.UpdateOfficalFeed(ViewModels.NewsViewModel.Default));
         }
 
         private void OfficalNewsFeed_KeyUp(object sender, KeyEventArgs e)
@@ -53,7 +53,7 @@ namespace BedrockLauncher.Pages.News
             {
                 if (OfficalNewsFeed.SelectedItem != null)
                 {
-                    var item = OfficalNewsFeed.SelectedItem as NewsItem_Launcher;
+                    var item = OfficalNewsFeed.SelectedItem as NewsItem_Offical;
                     FeedItem_Offical.LoadArticle(item);
                 }
             }
@@ -64,13 +64,13 @@ namespace BedrockLauncher.Pages.News
             Dispatcher.Invoke(() =>
             {
                 NothingFound.Visibility = Visibility.Visible;
-                NothingFound.PanelType = Controls.Misc.ResultPanelType.Loading;
+                NothingFound.PanelType = Controls.Various.ResultPanelType.Loading;
             });
 
             Dispatcher.Invoke(() => 
             {
                 Handlers.FilterSortingHandler.Refresh(OfficalNewsFeed.ItemsSource);
-                if (OfficalNewsFeed.Items.Count == 0) NothingFound.PanelType = Controls.Misc.ResultPanelType.NoNews;
+                if (OfficalNewsFeed.Items.Count == 0) NothingFound.PanelType = Controls.Various.ResultPanelType.NoNews;
                 else NothingFound.Visibility = Visibility.Collapsed;
             });
         }
@@ -98,7 +98,7 @@ namespace BedrockLauncher.Pages.News
         {
             if (!hasPreloaded)
             {
-                Task.Run(Downloaders.NewsDownloader.UpdateOfficalFeed);
+                Task.Run(() => Downloaders.NewsDownloader.UpdateOfficalFeed(ViewModels.NewsViewModel.Default));
                 hasPreloaded = true;
             }
         }

@@ -170,6 +170,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Launcher\NewsFeed_Offical.cs" />
     <Compile Include="Components\CefSharp\FileSchemeHandler.cs" />
     <Compile Include="Components\CefSharp\GlobalSchemeHandlerFactory.cs" />
     <Compile Include="Components\CefSharp\CefSharpLoader.cs" />
@@ -189,8 +190,7 @@
     <Compile Include="Classes\MediaWiki\RootObject.cs" />
     <Compile Include="Classes\MediaWiki\Val.cs" />
     <Compile Include="Classes\Launcher\NewsItem.cs" />
-    <Compile Include="Classes\Launcher\NewsItem_Launcher.cs" />
-    <Compile Include="Classes\Launcher\NewsItem_MinecraftRSS.cs" />
+    <Compile Include="Classes\Launcher\NewsItem_Offical.cs" />
     <Compile Include="Classes\Launcher\NewsItem_RSS.cs" />
     <Compile Include="Classes\SkinPack\MCSkin.cs" />
     <Compile Include="Classes\SkinPack\MCSkinGeometry.cs" />
@@ -198,21 +198,16 @@
     <Compile Include="Classes\SkinPack\MCSkinPackContent.cs" />
     <Compile Include="Classes\SkinPack\MCSkinPackLang.cs" />
     <Compile Include="Classes\SkinPack\MCSkinPackMainfest.cs" />
-    <Compile Include="Controls\Misc\LoaderIcon.xaml.cs">
+    <Compile Include="Controls\Various\LoaderIcon.xaml.cs">
       <DependentUpon>LoaderIcon.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Toolbar\DungeonsButton.xaml.cs">
       <DependentUpon>DungeonsButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Converters\IntToVisibilityConverter.cs" />
-    <Compile Include="Converters\InverseBooleanConverter.cs" />
-    <Compile Include="Converters\InvertableBooleanToVisibilityConverter.cs" />
-    <Compile Include="Converters\StringToUpperConverter.cs" />
     <Compile Include="Controls\Toolbar\ToolbarButtonBase.cs" />
-    <Compile Include="Converters\UrlToImageSourceConverter.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Controls\Misc\AltMessageBox.xaml.cs">
-      <DependentUpon>AltMessageBox.xaml</DependentUpon>
+    <Compile Include="Controls\Common\MessageBoxEX.xaml.cs">
+      <DependentUpon>MessageBoxEX.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Items\Launcher\DLCItem.xaml.cs">
       <DependentUpon>DLCItem.xaml</DependentUpon>
@@ -229,25 +224,25 @@
     <Compile Include="Controls\Items\News\FeedItem_Launcher.xaml.cs">
       <DependentUpon>FeedItem_Launcher.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Misc\Marquee.xaml.cs">
+    <Compile Include="Controls\Common\Marquee.xaml.cs">
       <DependentUpon>Marquee.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Misc\UpdateButton.xaml.cs">
+    <Compile Include="Controls\Various\UpdateButton.xaml.cs">
       <DependentUpon>UpdateButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Installations\InstallationSelector.xaml.cs">
+    <Compile Include="Controls\Config\InstallationSelector.xaml.cs">
       <DependentUpon>InstallationSelector.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Misc\ResultPanel.xaml.cs">
+    <Compile Include="Controls\Various\ResultPanel.xaml.cs">
       <DependentUpon>ResultPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Misc\SpecialBorder.xaml.cs">
+    <Compile Include="Controls\Various\SpecialBorder.xaml.cs">
       <DependentUpon>SpecialBorder.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Converters\NullToBoolConverter.cs" />
     <Compile Include="Downloaders\NewsDownloader.cs" />
     <Compile Include="Enums\LauncherStateChange.cs" />
     <Compile Include="Enums\InstallationSort.cs" />
+    <Compile Include="Enums\RSSType.cs" />
     <Compile Include="Enums\VersioningMode.cs" />
     <Compile Include="Exceptions\AppLaunchFailedException.cs" />
     <Compile Include="Exceptions\BetaAuthenticationFailedException.cs" />
@@ -262,12 +257,10 @@
     <Compile Include="Exceptions\PackageRegistrationFailedException.cs" />
     <Compile Include="Exceptions\PackageRemovalFailedException.cs" />
     <Compile Include="Exceptions\SaveRedirectionFailedException.cs" />
-    <Compile Include="Extensions\WindowExtensions.cs" />
     <Compile Include="Handlers\BackupHandler.cs" />
     <Compile Include="Handlers\FilterSortingHandler.cs" />
     <Compile Include="Handlers\PackageHandler.cs" />
     <Compile Include="Handlers\RuntimeHandler.cs" />
-    <Compile Include="Interfaces\ILauncherModel.cs" />
     <Compile Include="Extensions\MCSkinExtensions.cs" />
     <Compile Include="Handlers\PathHandler.cs" />
     <Compile Include="Pages\Common\WaitingPage.xaml.cs">
@@ -306,9 +299,6 @@
     <Compile Include="Controls\Items\News\FeedItem_PatchNotes.xaml.cs">
       <DependentUpon>FeedItem_PatchNotes.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Items\News\FeedItem_Minecraft.xaml.cs">
-      <DependentUpon>FeedItem_Minecraft.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\Items\Skins\SkinItem.xaml.cs">
       <DependentUpon>SkinItem.xaml</DependentUpon>
     </Compile>
@@ -318,7 +308,7 @@
     <Compile Include="Controls\Items\Launcher\VersionItem.xaml.cs">
       <DependentUpon>VersionItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Settings\ThemeCombobox.xaml.cs">
+    <Compile Include="Controls\Config\ThemeCombobox.xaml.cs">
       <DependentUpon>ThemeCombobox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Toolbar\ExternalLauncherButton.xaml.cs">
@@ -330,13 +320,13 @@
     <Compile Include="Controls\Toolbar\JavaEditionButton.xaml.cs">
       <DependentUpon>JavaEditionButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Installations\BlockPicker.xaml.cs">
-      <DependentUpon>BlockPicker.xaml</DependentUpon>
+    <Compile Include="Controls\Config\InstallationBlockPicker.xaml.cs">
+      <DependentUpon>InstallationBlockPicker.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Settings\InsiderSelector.xaml.cs">
-      <DependentUpon>InsiderSelector.xaml</DependentUpon>
+    <Compile Include="Controls\Config\InsiderCombobox.xaml.cs">
+      <DependentUpon>InsiderCombobox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Settings\LanguageCombobox.xaml.cs">
+    <Compile Include="Controls\Config\LanguageCombobox.xaml.cs">
       <DependentUpon>LanguageCombobox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Toolbar\BedrockEditionButton.xaml.cs">
@@ -439,7 +429,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Controls\Misc\AltMessageBox.xaml">
+    <Page Include="Controls\Common\MessageBoxEX.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -479,10 +469,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Items\News\FeedItem_Minecraft.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\Items\Skins\SkinItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -495,23 +481,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Misc\LoaderIcon.xaml">
+    <Page Include="Controls\Various\LoaderIcon.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Misc\Marquee.xaml">
+    <Page Include="Controls\Common\Marquee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Misc\ResultPanel.xaml">
+    <Page Include="Controls\Various\ResultPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Settings\ThemeCombobox.xaml">
+    <Page Include="Controls\Config\ThemeCombobox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Misc\SpecialBorder.xaml">
+    <Page Include="Controls\Various\SpecialBorder.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -531,15 +517,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Installations\BlockPicker.xaml">
+    <Page Include="Controls\Config\InstallationBlockPicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Settings\InsiderSelector.xaml">
+    <Page Include="Controls\Config\InsiderCombobox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Settings\LanguageCombobox.xaml">
+    <Page Include="Controls\Config\LanguageCombobox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -567,11 +553,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Misc\UpdateButton.xaml">
+    <Page Include="Controls\Various\UpdateButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Installations\InstallationSelector.xaml">
+    <Page Include="Controls\Config\InstallationSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

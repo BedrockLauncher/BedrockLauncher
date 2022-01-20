@@ -10,6 +10,8 @@ using System.Windows;
 using System.Collections;
 using Path = System.IO.Path;
 using System.Resources;
+using System.Net;
+using System.Windows.Resources;
 
 namespace BedrockLauncher.Core.Language
 {
@@ -38,6 +40,44 @@ namespace BedrockLauncher.Core.Language
             LanguageDictionary default_dic = new LanguageDictionary(AvaliableInternalLanguages.FirstOrDefault());
             Application.Current.Resources.MergedDictionaries.Add(default_dic);
             Application.Current.Resources.MergedDictionaries.Add(dict);
+        }
+        public static bool TryGetResource(string name, out string contents)
+        {
+            try
+            {
+                var currentLang = GetResourceDictonaries().Where(x => x.Locale == Core.Properties.Settings.Default.Language).FirstOrDefault();
+                var currentLocale = currentLang.Locale.Replace("-", "_");
+
+
+                if (!currentLang.IsExternal)
+                {
+                    string resourceName = $"{currentLocale}.{name}";
+                    var names = Assembly.GetExecutingAssembly().GetManifestResourceNames();
+                    if (names.ToList().Exists(x => x.EndsWith(resourceName)))
+                    {
+                        string resourcePath = names.ToList().FirstOrDefault(x => x.EndsWith(resourceName));
+                        using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourcePath))
+                        using (StreamReader reader = new StreamReader(stream))
+                        {
+                            contents = reader.ReadToEnd();
+                            return true;
+                        }
+                    }
+                }
+                else
+                {
+                    //var directory = Path.Combine(Path.GetDirectoryName(currentLang.Path), currentLang.Locale);
+                    //var resourcePath = new Uri(Path.Combine(directory, name), currentLang.IsExternal ? UriKind.Absolute : UriKind.Relative);
+                }
+                contents = string.Empty;
+                return false;
+
+            }
+            catch
+            {
+                contents = string.Empty;
+                return false;
+            }
         }
 
 

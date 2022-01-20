@@ -107,6 +107,9 @@
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <EmbeddedResource Include="Resources\lang\en-US\Dungeons_LauncherInstructions.md" />
+    <EmbeddedResource Include="Resources\lang\en-US\Dungeons_SteamInstructions.md" />
+    <EmbeddedResource Include="Resources\lang\en-US\Dungeons_StoreInstructions.md" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CodeHollow.FeedReader">

@@ -11,70 +11,79 @@ namespace BedrockLauncher.Dungeons.Methods
 {
     public static class GameManager
     {
-        #region Paths (Windows Store)
-
-        public static string GetDungeonsContentFolder_Store()
+        
+        public static string GetOurDungeonsPath()
         {
-            return string.Empty;
+            return Properties.DungeonSettings.Default.InstallLocation;
         }
-        public static string GetDungeonsExeFolder_Store()
+        public static string GetDungeonsLocalFolder()
         {
-            return string.Empty;
-        }
-        public static string GetDungeonsLaunchCode_Store()
-        {
-            return string.Empty;
-        }
-        public static string GetDungeonsLocalFolder_Store()
-        {
-            string NormalDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Dungeons");
-            string StoreDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", "Microsoft.Lovika_8wekyb3d8bbwe", "LocalCache", "Local", "Dungeons");
-            if (Directory.Exists(NormalDirectory)) return NormalDirectory;
-            else return StoreDirectory;
-        }
+            switch (Properties.DungeonSettings.Default.GameVariant)
+            {
+                case Enums.GameVariant.Launcher:
+                    return Launcher();
+                case Enums.GameVariant.Store:
+                    return Store();
+                case Enums.GameVariant.Steam:
+                    return Steam();
+                default:
+                    throw new NotImplementedException();
+            }
 
-        public static string GetOurDungeonsModFolder_Store()
-        {
-            return string.Empty;
+            string Launcher()
+            {
+                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Dungeons");
+            }
+
+            string Store()
+            {
+                string NormalDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Dungeons");
+                string StoreDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", "Microsoft.Lovika_8wekyb3d8bbwe", "LocalCache", "Local", "Dungeons");
+                if (Directory.Exists(NormalDirectory)) return NormalDirectory;
+                else return StoreDirectory;
+            }
+
+            string Steam()
+            {
+                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Dungeons");
+            }
         }
-
-        public static string GetDungeonsSaveDataFolder_Store()
+        public static string GetDungeonsContentFolder()
         {
-            return GetDungeonsLocalFolder_Store();
-        }
-
-        #endregion
-
-        #region Paths (Windows 7/10 Launcher)
-
-        public static string GetDungeonsContentFolder_Launcher()
-        {
-            string installFolder = GetDungeonsExeFolder_Launcher();
+            string installFolder = GetOurDungeonsPath();
             string pathToFolder = @"Dungeons\Content";
             return Path.Combine(installFolder, pathToFolder);
         }
-        public static string GetDungeonsExeFolder_Launcher()
+        public static string GetDungeonsSaveDataFolder()
         {
-            string defaultFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"Mojang\products​");
-            string installFolder = Properties.DungeonSettings.Default.InstallLocation;
-            string pathToFolder = @"dungeons\dungeons";
+            switch (Properties.DungeonSettings.Default.GameVariant)
+            {
+                case Enums.GameVariant.Launcher:
+                    return Launcher();
+                case Enums.GameVariant.Store:
+                    return WindowsStore();
+                case Enums.GameVariant.Steam:
+                    return Steam();
+                default:
+                    throw new NotImplementedException();
+            }
 
-            if (installFolder == string.Empty) return Path.Combine(defaultFolder, pathToFolder);
-            else return Path.Combine(installFolder, pathToFolder);
-        }
-        public static string GetDungeonsLaunchCode_Launcher()
-        {
-            if (Dungeons.Properties.DungeonSettings.Default.IsWindowsStoreVariant) return string.Empty;
+            string Launcher()
+            {
+                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Saved Games", "Mojang Studios", "Dungeons");
+            }
 
-            string installFolder = GetDungeonsExeFolder_Launcher();
-            string pathToExe = @"Dungeons.exe";
-            return Path.Combine(installFolder, pathToExe);
+            string WindowsStore()
+            {
+                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", "Microsoft.Lovika_8wekyb3d8bbwe", "LocalCache", "Local", "Dungeons");
+            }
+
+            string Steam()
+            {
+                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Saved Games", "Mojang Studios", "Dungeons");
+            }
         }
-        public static string GetDungeonsLocalFolder_Launcher()
-        {
-            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Dungeons");
-        }
-        public static string GetOurDungeonsModFolder_Launcher()
+        public static string GetOurDungeonsModFolder()
         {
             if (Properties.DungeonSettings.Default.ModsLocation == string.Empty)
             {
@@ -86,136 +95,36 @@ namespace BedrockLauncher.Dungeons.Methods
             }
             else return Properties.DungeonSettings.Default.ModsLocation;
         }
-        public static string GetDungeonsSaveDataFolder_Launcher()
+
+
+        public static void InstallStorePatch(bool updateMode)
         {
-            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), @"Saved Games\Mojang Studios\Dungeons");
-        }
+            string scriptURL = "https://dokucraft.co.uk/stash/resources/docs/DungeonsInstallScript.ps1";
 
-        #endregion
+            string args = updateMode ? " -update" : string.Empty;
 
-        #region Paths (Global)
-
-        public static string GetDungeonsLaunchCode()
-        {
-            if (Properties.DungeonSettings.Default.IsWindowsStoreVariant) return GetDungeonsContentFolder_Store();
-            else return GetDungeonsContentFolder_Launcher();
-        }
-
-        public static string GetDungeonsLocalFolder()
-        {
-            if (Properties.DungeonSettings.Default.IsWindowsStoreVariant) return GetDungeonsLocalFolder_Store();
-            else return GetDungeonsLocalFolder_Launcher();
-        }
-
-        public static string GetDungeonsContentFolder()
-        {
-            if (Properties.DungeonSettings.Default.IsWindowsStoreVariant) return GetDungeonsContentFolder_Store();
-            else return GetDungeonsContentFolder_Launcher();
-        }
-
-        public static string GetDungeonsSaveDataFolder()
-        {
-            if (Properties.DungeonSettings.Default.IsWindowsStoreVariant) return GetDungeonsSaveDataFolder_Store();
-            else return GetDungeonsSaveDataFolder_Launcher();
-        }
-
-        public static string GetOurDungeonsModFolder()
-        {
-            if (Properties.DungeonSettings.Default.IsWindowsStoreVariant) return GetOurDungeonsModFolder_Store();
-            else return GetOurDungeonsModFolder_Launcher();
-        }
-
-        #endregion
-
-        #region Actions (Windows Store)
-
-        public static void InstallModManagement_Store()
-        {
             string powershell_Command = "Set-ExecutionPolicy -Scope Process Bypass;" +
                 "mkdir C:\\mcdtemp;" +
-                "Invoke-WebRequest -Uri \"https://cdn.discordapp.com/attachments/715508829458006077/790882159187591168/installscript.ps1\" -OutFile C:\\mcdtemp\\winstore.ps1;" +
-                "C:\\mcdtemp\\winstore.ps1;" +
+                "Invoke-WebRequest -Uri \"" + scriptURL + "\" -OutFile C:\\mcdtemp\\winstore.ps1;" +
+                $"C:\\mcdtemp\\winstore.ps1{args};" +
                 "read-host \"Press ENTER to continue...\"";
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = @"powershell.exe";
-            startInfo.Arguments = powershell_Command;
-            Process.Start(startInfo);
+            RunPowershell(powershell_Command);
         }
-
-        public static void RepairDungeons_Store()
-        {
-            Process.Start("ms-windows-store://DownloadsAndUpdates/");
-        }
-
-        public static void RemoveModManagement_Store()
-        {
-            try
-            {
-                string ModsFolder = Path.Combine(GetDungeonsContentFolder(), "Paks", "~mods");
-                Directory.Delete(ModsFolder, true);
-            }
-            catch (Exception ex)
-            {
-                ErrorScreenShow.exceptionmsg(ex);
-            }
-        }
-
-        #endregion
-
-        #region Actions (Windows 7/10 Launcher)
-
-        public static void InstallModManagement_Launcher()
-        {
-            try
-            {
-                string ModsFolder = Path.Combine(GetDungeonsContentFolder(), "Paks", "~mods");
-                string OurFolder = GetOurDungeonsModFolder();
-                Directory.CreateDirectory(OurFolder);
-                Extensions.SymLinkHelper.CreateSymbolicLink(ModsFolder, OurFolder, Extensions.SymLinkHelper.SymbolicLinkType.Directory);
-            }
-            catch (Exception ex)
-            {
-                ErrorScreenShow.exceptionmsg(ex);
-            }
-        }
-
-        public static void RepairDungeons_Launcher()
-        {
-            try
-            {
-                // Trying to find and open Java launcher shortcut
-                string JavaPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu) + @"\Programs\Minecraft Launcher\Minecraft Launcher";
-                Process.Start(JavaPath);
-            }
-            catch
-            {
-                ErrorScreenShow.errormsg("Error_CantFindJavaLauncher_Title", "Error_CantFindJavaLauncher");
-            }
-        }
-
-        public static void RemoveModManagement_Launcher()
-        {
-            try
-            {
-                string ModsFolder = Path.Combine(GetDungeonsContentFolder(), "Paks", "~mods");
-                Directory.Delete(ModsFolder, true);
-            }
-            catch (Exception ex)
-            {
-                ErrorScreenShow.exceptionmsg(ex);
-            }
-        }
-
-        #endregion
-
-        #region Actions (Global)
-
         public static void LaunchDungeons()
         {
             try
             {
-                string path = GetDungeonsLaunchCode();
-                Process.Start(path);
+                switch (Properties.DungeonSettings.Default.GameVariant)
+                {
+                    case Enums.GameVariant.Launcher: Launcher(); break;
+                    case Enums.GameVariant.Store: Store(); break;
+                    case Enums.GameVariant.Steam: Steam(); break;
+                    default: throw new NotImplementedException();
+                }
+
+                void Store() => RunPowershell("explorer.exe shell:AppsFolder/$(Get-AppxPackage Lovika | Expand-Property -Property PackageName)!Game");
+                void Steam() => Process.Start("steam://rungameid//1672970");
+                void Launcher() => Process.Start(Path.Combine(GetOurDungeonsPath(), "Dungeons.exe"));
             }
             catch (Exception ex)
             {
@@ -223,7 +132,6 @@ namespace BedrockLauncher.Dungeons.Methods
             }
 
         }
-
         public static void OpenConfigFolder()
         {
             try
@@ -237,7 +145,6 @@ namespace BedrockLauncher.Dungeons.Methods
             }
 
         }
-
         public static void OpenContentFolder()
         {
             try
@@ -251,7 +158,6 @@ namespace BedrockLauncher.Dungeons.Methods
             }
 
         }
-
         public static void OpenSaveDataFolder()
         {
             try
@@ -265,25 +171,81 @@ namespace BedrockLauncher.Dungeons.Methods
             }
 
         }
-
         public static void RepairDungeons()
         {
-            if (Properties.DungeonSettings.Default.IsWindowsStoreVariant) RepairDungeons_Store();
-            else RepairDungeons_Launcher();
-        }
+            switch (Properties.DungeonSettings.Default.GameVariant)
+            {
+                case Enums.GameVariant.Launcher:
+                    Launcher();
+                    break;
+                case Enums.GameVariant.Store:
+                    Store();
+                    break;
+                case Enums.GameVariant.Steam:
+                    Steam();
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
 
+            void Store()
+            {
+                Process.Start("ms-windows-store://DownloadsAndUpdates/");
+            }
+
+            void Launcher()
+            {
+                try
+                {
+                    // Trying to find and open Java launcher shortcut
+                    string DungeonsPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu) + @"\Programs\Minecraft Launcher\Minecraft Launcher";
+                    Process.Start(DungeonsPath);
+                }
+                catch
+                {
+                    ErrorScreenShow.errormsg("Error_CantFindJavaLauncher_Title", "Error_CantFindJavaLauncher");
+                }
+            }
+
+            void Steam()
+            {
+                Process.Start("steam://open/games");
+            }
+        }
         public static void InstallModManagement()
         {
-            if (Properties.DungeonSettings.Default.IsWindowsStoreVariant) InstallModManagement_Store();
-            else InstallModManagement_Launcher();
+            try
+            {
+                string ModsFolder = Path.Combine(GetDungeonsContentFolder(), "Paks", "~mods");
+                string OurFolder = GetOurDungeonsModFolder();
+                Directory.CreateDirectory(OurFolder);
+                Extensions.SymLinkHelper.CreateSymbolicLink(ModsFolder, OurFolder, Extensions.SymLinkHelper.SymbolicLinkType.Directory);
+            }
+            catch (Exception ex)
+            {
+                ErrorScreenShow.exceptionmsg(ex);
+            }
         }
-
         public static void RemoveModManagement()
         {
-            if (Properties.DungeonSettings.Default.IsWindowsStoreVariant) RemoveModManagement_Store();
-            else RemoveModManagement_Launcher();
+            try
+            {
+                string ModsFolder = Path.Combine(GetDungeonsContentFolder(), "Paks", "~mods");
+                Directory.Delete(ModsFolder, true);
+            }
+            catch (Exception ex)
+            {
+                ErrorScreenShow.exceptionmsg(ex);
+            }
         }
 
-        #endregion
+
+        private static void RunPowershell(string commands)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = @"powershell.exe";
+            startInfo.Arguments = commands;
+            Process.Start(startInfo);
+        }
     }
 }

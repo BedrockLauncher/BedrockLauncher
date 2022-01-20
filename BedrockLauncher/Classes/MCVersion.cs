@@ -20,7 +20,6 @@ using System.Threading;
 using System.Windows.Data;
 using BedrockLauncher.Components;
 using System.Text.RegularExpressions;
-using BedrockLauncher.Interfaces;
 using PostSharp.Patterns.Model;
 
 namespace BedrockLauncher.Classes

@@ -61,6 +61,7 @@
     <Compile Include="Controls\Misc\FolderSelectDialog.cs" />
     <Compile Include="Controls\Misc\HtmlPanelPro.cs" />
     <Compile Include="Interfaces\IDialogHander.cs" />
+    <Compile Include="Interfaces\ILauncherModel.cs" />
     <Compile Include="Pages\Common\DialogPrompt.xaml.cs">
       <DependentUpon>DialogPrompt.xaml</DependentUpon>
     </Compile>
@@ -224,6 +225,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\styles\values\variants\DialogButton_Colors_Orange.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\styles\values\variants\DialogButton_Colors_Blue.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

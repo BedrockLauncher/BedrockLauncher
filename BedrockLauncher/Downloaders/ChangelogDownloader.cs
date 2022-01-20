@@ -146,7 +146,7 @@ namespace BedrockLauncher.Downloaders
                 var value = node.GetAttributeValue("src", "null");
                 if (value != "null") return value;
             }
-            return (isBeta ? PatchNote.FallbackImageURL_Dev : PatchNote.FallbackImageURL);
+            return null;
         }
         private void AddPatch(PatchNote patch)
         {
@@ -159,6 +159,8 @@ namespace BedrockLauncher.Downloaders
         }
         public async Task DownloadFeedbackPatchNotes()
         {
+            int imageLimit = 15;
+
             ClearPatchList();
 
             HtmlWeb web = new HtmlWeb();
@@ -182,7 +184,7 @@ namespace BedrockLauncher.Downloaders
 
             foreach (var branch in checklist)
             {
-
+                int itemsLoaded = 0;
                 bool isFinished = false;
                 int currentPage = 1;
 
@@ -219,12 +221,14 @@ namespace BedrockLauncher.Downloaders
 
                                 if (content != null)
                                 {
+                                    itemsLoaded++;
+                                    string img = (itemsLoaded >= imageLimit ? string.Empty : GetPatchNotesCoverImage(content, isBeta));
                                     PatchNote item = new PatchNote()
                                     {
                                         Version = GetVersion(text),
                                         isBeta = isBeta,
                                         Url = item_url,
-                                        ImageUrl = GetPatchNotesCoverImage(content, isBeta),
+                                        ImageUrl = img,
                                         PublishingDateString = GetPublishedDate(current_result).ToString(),
                                         Content = content.InnerHtml,
                                     };
@@ -404,10 +408,10 @@ namespace BedrockLauncher.Downloaders
                 if (image_tag != null)
                 {
                     var image = image_tag.Descendants("img").FirstOrDefault();
-                    if (image != null) return image.GetAttributeValue("src", PatchNote.FallbackImageURL);
+                    if (image != null) return image.GetAttributeValue("src", "");
                 }
 
-                return PatchNote.FallbackImageURL;
+                return "";
             }
 
             HtmlNode GetPatchNotesNode(string url, HtmlWeb _web)

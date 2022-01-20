@@ -4,11 +4,11 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:p="clr-namespace:BedrockLauncher.Properties"
-      xmlns:common="clr-namespace:BedrockLauncher.Controls.Misc"
+      xmlns:common="clr-namespace:BedrockLauncher.Controls.Various"
       xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
       xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
       xmlns:handlers="clr-namespace:BedrockLauncher.Handlers"
-      xmlns:conv="clr-namespace:BedrockLauncher.Converters"
+      xmlns:conv="clr-namespace:Extensions.WPF.Converters;assembly=ExtensionsDotNET"
       xmlns:classes2="clr-namespace:BedrockLauncher.Classes"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items.Launcher"
       d:DataContext="{d:DesignInstance Type=viewModels:MainViewModel}"
@@ -17,7 +17,7 @@
       d:DesignHeight="608" d:DesignWidth="828"
       Title="InstallationsScreen" Loaded="PageHost_Loaded">
     <Page.Resources>
-        <conv:IntToVisibilityConverter x:Key="IntToVisibilityConverter"/>
+        <conv:EmptyItemCountConverter x:Key="IntToVisibilityConverter"/>
         <CollectionViewSource x:Key="InstallationsSource4" Source="{Binding Config.CurrentInstallations}" Filter="CollectionViewSource_Filter"></CollectionViewSource>
     </Page.Resources>
     <Grid Margin="0" Background="#FF303030" Style="{DynamicResource DisabledStyle}">

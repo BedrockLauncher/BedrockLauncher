@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BedrockLauncher.Extensions;
-using BedrockLauncher.Controls.Misc;
+using BedrockLauncher.Controls.Various;
 using BedrockLauncher.ViewModels;
 using BedrockLauncher.UI.Controls.Misc;
 

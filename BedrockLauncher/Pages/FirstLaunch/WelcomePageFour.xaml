@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BedrockLauncher"
-      xmlns:controls="clr-namespace:BedrockLauncher.Controls.Settings"
+      xmlns:controls="clr-namespace:BedrockLauncher.Controls.Config"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Loaded="Page_Loaded"
@@ -13,7 +13,7 @@
         <Border Background="#FF313131" Height="1" VerticalAlignment="Bottom" Margin="0,0,0,55" />
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
             <TextBlock Visibility="Visible" HorizontalAlignment="Center"  Text="{DynamicResource FirstLaunch_ChooseAccountTitle}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="24" Margin="0,30,0,0" FontWeight="Bold"/>
-            <controls:InsiderSelector x:Name="AccountPicker" Margin="28.5,15,28.5,10"></controls:InsiderSelector>
+            <controls:InsiderCombobox x:Name="AccountPicker" Margin="28.5,15,28.5,10"></controls:InsiderCombobox>
             <TextBlock HorizontalAlignment="Center" TextAlignment="Center" Text="{DynamicResource FirstLaunch_ChooseAccountSubtitle}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="10" Margin="28.5,5,28.5,20" TextWrapping="Wrap"/>
         </StackPanel>
         <StackPanel Margin="0,0,8,8" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" ScrollViewer.VerticalScrollBarVisibility="Disabled">

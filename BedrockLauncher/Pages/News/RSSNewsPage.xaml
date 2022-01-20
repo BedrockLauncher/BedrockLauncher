@@ -4,17 +4,17 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:c="clr-namespace:BedrockLauncher.Classes.Launcher"
-      xmlns:conv="clr-namespace:BedrockLauncher.Converters"
+      xmlns:conv="clr-namespace:Extensions.WPF.Converters;assembly=ExtensionsDotNET"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items.News"
       xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
       xmlns:vwp="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
-      xmlns:common="clr-namespace:BedrockLauncher.Controls.Misc"
+      xmlns:common="clr-namespace:BedrockLauncher.Controls.Various"
       mc:Ignorable="d" 
       d:DataContext="{d:DesignInstance Type=viewModels:RSSViewModel}"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RSSNewsPage" Loaded="Page_Loaded">
     <Page.Resources>
-        <conv:IntToVisibilityConverter x:Key="IntToVisibilityConverter"/>
+        <conv:EmptyItemCountConverter x:Key="IntToVisibilityConverter"/>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -25,12 +25,12 @@
             <ListView x:Name="OfficalNewsFeed" Keyboard.PreviewKeyUp="OfficalNewsFeed_KeyUp" ItemsSource="{Binding FeedItems}" ItemContainerStyle="{DynamicResource CardListViewItem}">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <vwp:VirtualizingWrapPanel ItemSize="400,240" StretchItems="False" Orientation="Vertical"/>
+                        <vwp:VirtualizingWrapPanel StretchItems="False" Orientation="Vertical"/>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
-                    <DataTemplate DataType="{x:Type c:NewsItem_MinecraftRSS}">
-                        <i:FeedItem_Minecraft VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  DataContext="{Binding .}"></i:FeedItem_Minecraft>
+                    <DataTemplate DataType="{x:Type c:NewsItem}">
+                        <i:FeedItem_RSS VerticalAlignment="Stretch" HorizontalAlignment="Stretch" DataContext="{Binding .}"></i:FeedItem_RSS>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

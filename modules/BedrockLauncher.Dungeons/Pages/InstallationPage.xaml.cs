@@ -60,6 +60,7 @@ namespace BedrockLauncher.Dungeons.Pages
         private void RadioButton_Click(object sender, RoutedEventArgs e)
         {
             Properties.DungeonSettings.Default.Save();
+            if (InstructionsTab.IsSelected) UpdateInstructions();
         }
 
         private void ResetDirectoryButton_Click(object sender, RoutedEventArgs e)
@@ -92,6 +93,37 @@ namespace BedrockLauncher.Dungeons.Pages
         private void OpenContentButton_Click(object sender, RoutedEventArgs e)
         {
             GameManager.OpenContentFolder();
+        }
+
+        private void InstallStorePatch_Click(object sender, RoutedEventArgs e)
+        {
+            GameManager.InstallStorePatch(false);
+        }
+
+        private void UpdateStorePatch_Click(object sender, RoutedEventArgs e)
+        {
+            GameManager.InstallStorePatch(true);
+        }
+
+        private void TabItem_Selected(object sender, RoutedEventArgs e)
+        {
+            UpdateInstructions();
+        }
+
+        private void UpdateInstructions()
+        {
+            string documentation;
+            switch (Properties.DungeonSettings.Default.GameVariant)
+            {
+                case Enums.GameVariant.Launcher: documentation = "Dungeons_LauncherInstructions.md"; break;
+                case Enums.GameVariant.Store: documentation = "Dungeons_StoreInstructions.md"; break;
+                case Enums.GameVariant.Steam: documentation = "Dungeons_SteamInstructions.md"; break;
+                default: throw new NotImplementedException();
+            }
+
+            if (BedrockLauncher.Core.Language.LanguageManager.TryGetResource(documentation, out string contents))
+                Markdownview.Markdown = contents;
+
         }
     }
 }

@@ -6,7 +6,7 @@
       xmlns:f="clr-namespace:CodeHollow.FeedReader;assembly=CodeHollow.FeedReader"
       xmlns:c="clr-namespace:BedrockLauncher.Classes.Launcher"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items.News"
-      xmlns:common="clr-namespace:BedrockLauncher.Controls.Misc"
+      xmlns:common="clr-namespace:BedrockLauncher.Controls.Various"
       xmlns:viewModel="clr-namespace:BedrockLauncher.ViewModels"
       xmlns:vwp="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
       mc:Ignorable="d" 
@@ -67,7 +67,7 @@
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
-                <DataTemplate DataType="{x:Type c:NewsItem_Launcher}">
+                <DataTemplate DataType="{x:Type c:NewsItem_Offical}">
                     <i:FeedItem_Offical DataContext="{Binding .}"></i:FeedItem_Offical>
                 </DataTemplate>
             </ListView.ItemTemplate>

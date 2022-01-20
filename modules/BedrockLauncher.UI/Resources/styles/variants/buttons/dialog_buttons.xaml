@@ -62,6 +62,12 @@
         </Style.Resources>
     </Style>
 
+    <Style x:Key="DialogButton_Blue" TargetType="{x:Type Button}" BasedOn="{StaticResource DialogButton}">
+        <Style.Resources>
+            <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/values/variants/DialogButton_Colors_Blue.xaml"/>
+        </Style.Resources>
+    </Style>
+
     <Style x:Key="DialogButton_Orange" TargetType="{x:Type Button}" BasedOn="{StaticResource DialogButton}">
         <Style.Resources>
             <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/values/variants/DialogButton_Colors_Orange.xaml"/>

@@ -21,7 +21,6 @@ using BedrockLauncher.Pages.FirstLaunch;
 using System.Windows.Media.Animation;
 using BedrockLauncher.Components;
 using BedrockLauncher.Pages.Common;
-using BedrockLauncher.Interfaces;
 using BedrockLauncher.Downloaders;
 using BedrockLauncher.ViewModels;
 using System.Collections.ObjectModel;
@@ -221,7 +220,7 @@ namespace BedrockLauncher.ViewModels
             get { Depends.On(MainWindow); return MainWindow.OverlayFrame; }
         }
         
-        public Controls.Misc.UpdateButton UpdateButton
+        public Controls.Various.UpdateButton UpdateButton
         {
             get { Depends.On(MainWindow); return MainWindow.UpdateButton; }
         }

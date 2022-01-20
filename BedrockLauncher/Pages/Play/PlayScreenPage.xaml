@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:controls="clr-namespace:BedrockLauncher.Controls.Installations"
+      xmlns:controls="clr-namespace:BedrockLauncher.Controls.Config"
       xmlns:properties="clr-namespace:BedrockLauncher.Properties"
       xmlns:classes="clr-namespace:BedrockLauncher.Classes"
       xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"

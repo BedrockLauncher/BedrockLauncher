@@ -52,7 +52,9 @@ namespace BedrockLauncher.UI.Pages.Preview
             InitializeComponent();
 
             HTML = OptimizeHTML(html);
-            Header.Text = header;
+            NonLinkHeader.Text = header;
+            NonLinkSourceButton.Visibility = Visibility.Visible;
+            SourceButton.Visibility = Visibility.Collapsed;
         }
 
         private void Renderer_ImageLoad(object sender, TheArtOfDev.HtmlRenderer.WPF.RoutedEvenArgs<TheArtOfDev.HtmlRenderer.Core.Entities.HtmlImageLoadEventArgs> args)

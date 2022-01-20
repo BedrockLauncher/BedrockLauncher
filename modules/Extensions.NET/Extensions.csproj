@@ -7,7 +7,7 @@
     <ProjectGuid>{6718749F-4346-4E5E-85DF-D47FAF22C9B6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExtensionsDotNET</RootNamespace>
+    <RootNamespace>Extensions</RootNamespace>
     <AssemblyName>ExtensionsDotNET</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -69,8 +69,8 @@
     <Compile Include="CollectionExtensions.cs" />
     <Compile Include="DirectoryExtensions.cs" />
     <Compile Include="FileExtensions.cs" />
-    <Compile Include="HTTP2\Http2Handler.cs" />
-    <Compile Include="HTTP2\ImageSourceConverterHTTP2.cs" />
+    <Compile Include="Http2\Http2Handler.cs" />
+    <Compile Include="Http2\ImageSourceConverterHttp2.cs" />
     <Compile Include="InteropExtensions.cs" />
     <Compile Include="ObservableDictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,9 +80,20 @@
     <Compile Include="WPFExtensions.cs" />
     <Compile Include="WPF\Attributes\CustomDesignAttributes.cs" />
     <Compile Include="WPF\Behaviours\DisableNavigation.cs" />
-    <Compile Include="WPF\Converters\InverseBooleanConverter.cs" />
-    <Compile Include="WPF\Converters\InvertableBooleanToVisibilityConverter.cs" />
+    <Compile Include="WPF\Converters\BooleanConverter.cs" />
+    <Compile Include="WPF\Converters\BooleanConverterBase.cs" />
+    <Compile Include="WPF\Converters\BooleanToBitmapImageConverter.cs" />
+    <Compile Include="WPF\Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="WPF\Converters\EmptyItemCountConverter.cs" />
+    <Compile Include="WPF\Converters\NullConverterBase.cs" />
+    <Compile Include="WPF\Converters\NullToBoolConverter.cs" />
+    <Compile Include="WPF\Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="WPF\Converters\ItemCountConverterBase.cs" />
+    <Compile Include="WPF\Converters\RadioBoolToIntConverter.cs" />
+    <Compile Include="WPF\Converters\StringToUpperConverter.cs" />
+    <Compile Include="WPF\Converters\UrlToImageSourceConverter.cs" />
     <Compile Include="WPF\NotifyPropertyChangedBase.cs" />
+    <Compile Include="WPF\WindowExtensions.cs" />
     <Compile Include="ZipFileExtensions.cs" />
   </ItemGroup>
   <ItemGroup>

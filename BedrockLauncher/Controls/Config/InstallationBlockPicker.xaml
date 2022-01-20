@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="BedrockLauncher.Controls.InstallationBlockPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:w="clr-namespace:System.Windows.Converters;assembly=WindowsBase"
+             xmlns:local="clr-namespace:BedrockLauncher.Controls"
+             xmlns:vwp="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
+             mc:Ignorable="d"
+             d:DesignHeight="850" d:DesignWidth="1000" MinWidth="760">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="VisibleIfTrueConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ToggleButton IsEnabled="False" Checked="DropdownButton_Checked" Unchecked="DropdownButton_Unchecked" x:Name="DropdownButton" Width="85" Padding="0" IsChecked="False" Height="65" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,10,0,10" Style="{DynamicResource PanelButtonToggle}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Image RenderOptions.BitmapScalingMode="HighQuality" x:Name="SelectedBlockIcon" Source="/BedrockLauncher;component/Resources/images/installation_icons/Furnace.png" Height="42" Width="42"></Image>
+                <Grid Grid.Column="1" Margin="10,0,0,0">
+                    <Path x:Name="Arrow" Width="11" VerticalAlignment="Center" Margin="0" HorizontalAlignment="Center" Fill="white" Data="F1 M 0,0 L 2.667,2.66665 L 5.3334,0 L 5.3334,-1.78168 L 2.6667,0.88501 L0,-1.78168 L0,0 Z">
+                        <Path.RenderTransform>
+                            <ScaleTransform x:Name="ArrowScale" ScaleX="2" ScaleY="2"></ScaleTransform>
+                        </Path.RenderTransform>
+                    </Path>
+                </Grid>
+            </Grid>
+        </ToggleButton>
+        <StackPanel Grid.Row="1" Margin="10,0" Visibility="{Binding Path=IsChecked,ElementName=DropdownButton, Converter={StaticResource VisibleIfTrueConverter}}" x:Name="DropdownContent">
+            <Polygon VerticalAlignment="Bottom" HorizontalAlignment="Center" Points="10,0 20,10, 0,10" Stroke="#1C1C1C" Fill="#1C1C1C" />
+            <Border CornerRadius="3" Background="#1C1C1C">
+                <ListView x:Name="DropdownItemPanel"  BorderThickness="0" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,15">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="10"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.Resources>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Setter Property="Focusable" Value="True"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                        <ContentPresenter Content="{TemplateBinding Content}"/>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListView.Resources>
+                </ListView>
+            </Border>
+        </StackPanel>
+
+
+    </Grid>
+</UserControl>

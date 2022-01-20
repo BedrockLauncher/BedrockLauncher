@@ -37,7 +37,7 @@ namespace BedrockLauncher.Pages.News
         {
             if (!HasPreloaded)
             {
-                Task.Run(Downloaders.NewsDownloader.UpdateLauncherFeed);
+                Task.Run(() => Downloaders.NewsDownloader.UpdateLauncherFeed(ViewModels.NewsViewModel.Default));
                 HasPreloaded = true;
             }
         }
@@ -60,7 +60,7 @@ namespace BedrockLauncher.Pages.News
 
         private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
-            Task.Run(Downloaders.NewsDownloader.UpdateLauncherFeed);
+            Task.Run(() => Downloaders.NewsDownloader.UpdateLauncherFeed(ViewModels.NewsViewModel.Default));
         }
     }
 }

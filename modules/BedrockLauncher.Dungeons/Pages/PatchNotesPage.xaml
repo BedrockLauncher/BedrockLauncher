@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:i="clr-namespace:BedrockLauncher.Dungeons.Controls.Items"
       xmlns:common="clr-namespace:BedrockLauncher.Dungeons.Controls.Misc"
-      xmlns:conv="clr-namespace:BedrockLauncher.Dungeons.Converters"
+      xmlns:conv="clr-namespace:Extensions.WPF.Converters;assembly=ExtensionsDotNET"
       xmlns:vwp="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
       xmlns:downloaders="clr-namespace:BedrockLauncher.Dungeons.Downloaders"
       xmlns:c="clr-namespace:BedrockLauncher.Dungeons.Classes.Launcher"
@@ -14,7 +14,7 @@
       d:DesignHeight="525" d:DesignWidth="828"
       Title="PatchNotesPage" x:Name="Page" Loaded="Page_Loaded"  Background="#FF282828" Initialized="Page_Initialized">
     <Page.Resources>
-        <conv:IntToVisibilityConverter x:Key="IntToVisibilityConverter"/>
+        <conv:EmptyItemCountConverter x:Key="IntToVisibilityConverter"/>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>

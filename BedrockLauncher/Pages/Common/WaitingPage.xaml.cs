@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using BedrockLauncher.Interfaces;
 using CefSharp;
 using CefSharp.Wpf;
 using BedrockLauncher.UI.Interfaces;
