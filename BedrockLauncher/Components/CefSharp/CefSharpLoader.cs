@@ -24,7 +24,7 @@ namespace BedrockLauncher.Components.CefSharp
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static void Init()
         {
-            AppDomain.CurrentDomain.AssemblyResolve += Resolver;
+            //AppDomain.CurrentDomain.AssemblyResolve += Resolver;
             
             var settings = InitSettings();
 
@@ -60,7 +60,7 @@ namespace BedrockLauncher.Components.CefSharp
             settings.CachePath = Path.Combine(GetCefPath(), "Cache");
 
             /// Set BrowserSubProcessPath based on app bitness at runtime
-            settings.BrowserSubprocessPath = Path.Combine(GetCefPath(), "CefSharp.BrowserSubprocess.exe");
+            //settings.BrowserSubprocessPath = Path.Combine(GetCefPath(), "CefSharp.BrowserSubprocess.exe");
 
             #region Command Line Args
 
@@ -205,7 +205,7 @@ namespace BedrockLauncher.Components.CefSharp
         }
         private static string GetCefPath()
         {
-            return Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Runtimes", "CefSharp", Environment.Is64BitProcess ? "x64" : "x86");
+            return Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Runtimes", Environment.Is64BitProcess ? "win-x64" : "win-x86", "native");
         }
         private static Assembly Resolver(object sender, ResolveEventArgs args)
         {

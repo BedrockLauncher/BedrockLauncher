@@ -75,11 +75,12 @@ namespace BedrockLauncher.Classes.SkinPack
             {
                 try
                 {
-                    var parser = new FileIniDataParser();
+                    var parser = new IniDataParser();
                     string filePath = Path.Combine(this.Directory, langFile + ".lang");
                     if (File.Exists(filePath))
                     {
-                        IniData data = parser.ReadFile(filePath);
+                        var iniStrings = File.ReadAllText(filePath);
+                        IniData data = parser.Parse(iniStrings);
                         this.Values.Add(langFile, data);
                     }
                 }

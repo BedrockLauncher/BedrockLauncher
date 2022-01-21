@@ -1,114 +1,84 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CCABEF67-F4BF-4087-9291-62EE5E316934}</ProjectGuid>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SkinView3D</RootNamespace>
-    <AssemblyName>SkinView3D</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <PropertyGroup>
     <RunPostBuildEvent>Always</RunPostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x64\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>bin\x64\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Publish|AnyCPU'">
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Publish|x64'">
     <OutputPath>bin\x64\Publish\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Publish|x86'">
     <OutputPath>bin\x86\Publish\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <None Remove="Runtimes\SkinView\bundles\skinview3d.bundle.js" />
+    <None Remove="Runtimes\SkinView\bundles\skinview3d.bundle.js.map" />
+    <None Remove="Runtimes\SkinView\libs\animation.d.ts" />
+    <None Remove="Runtimes\SkinView\libs\animation.js" />
+    <None Remove="Runtimes\SkinView\libs\animation.js.map" />
+    <None Remove="Runtimes\SkinView\libs\fxaa.d.ts" />
+    <None Remove="Runtimes\SkinView\libs\fxaa.js" />
+    <None Remove="Runtimes\SkinView\libs\fxaa.js.map" />
+    <None Remove="Runtimes\SkinView\libs\model.d.ts" />
+    <None Remove="Runtimes\SkinView\libs\model.js" />
+    <None Remove="Runtimes\SkinView\libs\model.js.map" />
+    <None Remove="Runtimes\SkinView\libs\orbit_controls.d.ts" />
+    <None Remove="Runtimes\SkinView\libs\orbit_controls.js" />
+    <None Remove="Runtimes\SkinView\libs\orbit_controls.js.map" />
+    <None Remove="Runtimes\SkinView\libs\skinview3d.d.ts" />
+    <None Remove="Runtimes\SkinView\libs\skinview3d.js" />
+    <None Remove="Runtimes\SkinView\libs\skinview3d.js.map" />
+    <None Remove="Runtimes\SkinView\libs\viewer.d.ts" />
+    <None Remove="Runtimes\SkinView\libs\viewer.js" />
+    <None Remove="Runtimes\SkinView\libs\viewer.js.map" />
+    <None Remove="Runtimes\SkinView\previews\img\NoSkin.png" />
+    <None Remove="Runtimes\SkinView\previews\index.html" />
+    <None Remove="Runtimes\SkinView\previews\stylesheet.css" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Runtimes\SkinView\bundles\skinview3d.bundle.js" />
+    <EmbeddedResource Include="Runtimes\SkinView\bundles\skinview3d.bundle.js.map" />
+    <EmbeddedResource Include="Runtimes\SkinView\libs\animation.d.ts" />
+    <EmbeddedResource Include="Runtimes\SkinView\libs\animation.js" />
+    <EmbeddedResource Include="Runtimes\SkinView\libs\animation.js.map" />
+    <EmbeddedResource Include="Runtimes\SkinView\libs\fxaa.d.ts" />
+    <EmbeddedResource Include="Runtimes\SkinView\libs\fxaa.js" />
+    <EmbeddedResource Include="Runtimes\SkinView\libs\fxaa.js.map" />
+    <EmbeddedResource Include="Runtimes\SkinView\libs\model.d.ts" />
+    <EmbeddedResource Include="Runtimes\SkinView\libs\model.js" />
+    <EmbeddedResource Include="Runtimes\SkinView\libs\model.js.map" />
+    <EmbeddedResource Include="Runtimes\SkinView\libs\orbit_controls.d.ts" />
+    <EmbeddedResource Include="Runtimes\SkinView\libs\orbit_controls.js" />
+    <EmbeddedResource Include="Runtimes\SkinView\libs\orbit_controls.js.map" />
+    <EmbeddedResource Include="Runtimes\SkinView\libs\skinview3d.d.ts" />
+    <EmbeddedResource Include="Runtimes\SkinView\libs\skinview3d.js" />
+    <EmbeddedResource Include="Runtimes\SkinView\libs\skinview3d.js.map" />
+    <EmbeddedResource Include="Runtimes\SkinView\libs\viewer.d.ts" />
+    <EmbeddedResource Include="Runtimes\SkinView\libs\viewer.js" />
+    <EmbeddedResource Include="Runtimes\SkinView\libs\viewer.js.map" />
+    <EmbeddedResource Include="Runtimes\SkinView\previews\img\NoSkin.png" />
+    <EmbeddedResource Include="Runtimes\SkinView\previews\index.html" />
+    <EmbeddedResource Include="Runtimes\SkinView\previews\stylesheet.css" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Runtimes\SkinView\bundles\skinview3d.bundle.js" />
@@ -141,23 +111,17 @@
     <Resource Include="Runtimes\SkinView\src\skinview3d.ts" />
     <Resource Include="Runtimes\SkinView\src\viewer.ts" />
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.261602">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
   <PropertyGroup>
-    <PreBuildEvent>npm config set loglevel error
-if "$(ConfigurationName)" == "Publish" (
-cd "$(ProjectDir)/Runtimes/SkinView"
+    <PreBuildEvent>::npm config set loglevel error
 npm install
-cd "$(ProjectDir)/Runtimes/SkinView"
-npm run build
-)
-else (
-cd "$(ProjectDir)/Runtimes/SkinView"
-npm run build
-)</PreBuildEvent>
+npm run build</PreBuildEvent>
   </PropertyGroup>
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
+  <PropertyGroup />
 </Project>

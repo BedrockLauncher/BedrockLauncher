@@ -364,8 +364,6 @@ namespace BedrockLauncher.Controls
                 case false:
                     ArrowScale.ScaleY = 2.0;
                     break;
-                default:
-                    break;
             }
 
         }

@@ -30,9 +30,9 @@ namespace BedrockLauncher.Controls.Skins
 
         #region Constants
 
-        public const string Preview = "skinview3d://previews/index.html";
+        public const string Preview = "skinview3d://SkinView/previews/index.html";
 
-        private const string NoSkin = "skinview3d://previews/img/NoSkin.png";
+        private const string NoSkin = "skinview3d://SkinView/previews/img/NoSkin.png";
 
         #endregion
         #region Properties

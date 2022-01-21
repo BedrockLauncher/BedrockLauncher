@@ -121,7 +121,7 @@ namespace BedrockLauncher.Classes.SkinPack
 
             var data = GetData();
             if (data == null) return GetAvaliable();
-            if (!data.Global.ContainsKey(keyName)) return GetAvaliable();
+            if (!data.Global.Contains(keyName)) return GetAvaliable();
             return data.Global[keyName];
 
 
@@ -137,13 +137,13 @@ namespace BedrockLauncher.Classes.SkinPack
                     if (Texts.Values.ContainsKey(DefaultLang)) Avaliable_Lang = Texts.Values.Keys.FirstOrDefault(x => x == DefaultLang);
                     else Avaliable_Lang = Texts.Values.Keys.FirstOrDefault();
 
-                    if (Texts.Values[Avaliable_Lang].Global.ContainsKey(keyName)) return Texts.Values[Avaliable_Lang].Global[keyName];
+                    if (Texts.Values[Avaliable_Lang].Global.Contains(keyName)) return Texts.Values[Avaliable_Lang].Global[keyName];
                 }
                 return localization_name;
             }
 
 
-            IniParser.Model.IniData GetData()
+            IniParser.IniData GetData()
             {
                 if (Lang == null)
                 {

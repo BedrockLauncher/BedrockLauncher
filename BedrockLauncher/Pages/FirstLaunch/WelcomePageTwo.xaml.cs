@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.ViewModels;
 using BedrockLauncher.UI.Controls.Misc;
+using FolderBrowserEx;
 
 namespace BedrockLauncher.Pages.FirstLaunch
 {
@@ -70,13 +71,13 @@ namespace BedrockLauncher.Pages.FirstLaunch
 
         private void BrowseForDirectory()
         {
-            FolderSelectDialog dialog = new FolderSelectDialog()
+            FolderBrowserDialog dialog = new FolderBrowserDialog()
             {
-                InitialDirectory = StorageDirectoryTextBox.Text
+                InitialFolder = StorageDirectoryTextBox.Text
             };
-            if (dialog.ShowDialog(new WindowInteropHelper(Application.Current.MainWindow).Handle))
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                Properties.LauncherSettings.Default.FixedDirectory = dialog.FileName;
+                Properties.LauncherSettings.Default.FixedDirectory = dialog.SelectedFolder;
                 Properties.LauncherSettings.Default.Save();
             }
         }

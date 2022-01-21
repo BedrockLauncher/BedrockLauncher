@@ -1,4 +1,0 @@
-﻿<local:Versions xmlns:local="clr-namespace:BedrockLauncher.Classes">
-    <local:MCVersion Name="1.9.0.15" IsBeta="False" />
-    <local:MCVersion Name="1.10.0.4" IsBeta="True" />
-</local:Versions>
