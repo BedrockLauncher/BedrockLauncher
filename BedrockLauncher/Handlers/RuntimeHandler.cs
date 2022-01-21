@@ -100,7 +100,8 @@ namespace BedrockLauncher.Handlers
         public static void StartLogging()
         {
             if (File.Exists("Log.txt")) { File.Delete("Log.txt"); }
-            Debug.Listeners.Add(new TextWriterTraceListener("Log.txt"));
+            //TODO: Reimplement Logging
+            //Debug..Add(new TextWriterTraceListener("Log.txt"));
             Debug.AutoFlush = true;
         }
     }

@@ -1,0 +1,36 @@
+﻿<ComboBox x:Class="BedrockLauncher.Controls.Config.ThemeCombobox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             VerticalContentAlignment="Center"
+             d:DesignHeight="330" d:DesignWidth="32"
+             Width="330" Height="32" 
+             DropDownClosed="ThemeCombobox_DropDownClosed"  
+             Initialized="ThemeCombobox_Initialized"
+             Style="{DynamicResource GenericComboBoxStyle}" ItemContainerStyle="{DynamicResource GenericComboBoxItemStyle}"
+             Padding="15,0"
+             SelectedIndex="0"
+             FontSize="14">
+    <ComboBoxItem VerticalContentAlignment="Center"  Tag="LatestUpdate" Foreground="Yellow" Content="{DynamicResource ThemeEntries_LatestUpdate}"/>
+    <ComboBoxItem  VerticalContentAlignment="Center" Tag="CavesAndCliffsPart1Update" Content="{DynamicResource ThemeEntries_CavesAndCliffsPart1Update}"/>
+    <ComboBoxItem  VerticalContentAlignment="Center" Tag="NetherUpdate" Content="{DynamicResource ThemeEntries_NetherUpdate}"/>
+    <ComboBoxItem  VerticalContentAlignment="Center" Tag="BuzzyBeesUpdate" Content="{DynamicResource ThemeEntries_BuzzyBeesUpdate}"/>
+    <ComboBoxItem  VerticalContentAlignment="Center" Tag="VillagePillageUpdate" Content="{DynamicResource ThemeEntries_VillagePillageUpdate}"/>
+    <ComboBoxItem  VerticalContentAlignment="Center" Tag="UpdateAquatic" Content="{DynamicResource ThemeEntries_UpdateAquatic}"/>
+    <ComboBoxItem  VerticalContentAlignment="Center" Tag="TechnicallyUpdated" Content="{DynamicResource ThemeEntries_TechnicallyUpdated}"/>
+    <ComboBoxItem  VerticalContentAlignment="Center" Tag="WorldOfColorUpdate" Content="{DynamicResource ThemeEntries_WorldOfColorUpdate}"/>
+    <ComboBoxItem  VerticalContentAlignment="Center" Tag="ExplorationUpdate" Content="{DynamicResource ThemeEntries_ExplorationUpdate}"/>
+    <ComboBoxItem  VerticalContentAlignment="Center" Tag="CombatUpdate" Content="{DynamicResource ThemeEntries_CombatUpdate}"/>
+    <ComboBoxItem  VerticalContentAlignment="Center" Tag="CatsAndPandasUpdate" Content="{DynamicResource ThemeEntries_CatsAndPandasUpdate}"/>
+    <ComboBoxItem  VerticalContentAlignment="Center" Tag="PocketEditionRelease" Content="{DynamicResource ThemeEntries_PocketEditionRelease}"/>
+    <ComboBoxItem  VerticalContentAlignment="Center" Tag="BedrockStandard" Content="{DynamicResource ThemeEntries_BedrockStandard}"/>
+    <ComboBoxItem  VerticalContentAlignment="Center" Tag="BedrockMaster" Content="{DynamicResource ThemeEntries_BedrockMaster}"/>
+    <ComboBoxItem  VerticalContentAlignment="Center" Tag="EarlyLegacyConsole" Content="{DynamicResource ThemeEntries_EarlyLegacyConsole}"/>
+    <ComboBoxItem  VerticalContentAlignment="Center" Tag="MidLegacyConsole" Content="{DynamicResource ThemeEntries_MidLegacyConsole}"/>
+    <ComboBoxItem  VerticalContentAlignment="Center" Tag="LateLegacyConsole" Content="{DynamicResource ThemeEntries_LateLegacyConsole}"/>
+    <ComboBoxItem  VerticalContentAlignment="Center" Tag="IndieDays" Content="{DynamicResource ThemeEntries_IndieDays}"/>
+    <ComboBoxItem  VerticalContentAlignment="Center" Tag="Dungeons" Content="{DynamicResource ThemeEntries_Dungeons}"/>
+    <ComboBoxItem  VerticalContentAlignment="Center" Tag="Original" Content="{DynamicResource ThemeEntries_Original}"/>
+</ComboBox>

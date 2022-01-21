@@ -1,0 +1,25 @@
+﻿<Page x:Class="BedrockLauncher.Core.Pages.Common.WaitingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BedrockLauncher"
+      xmlns:misc="clr-namespace:BedrockLauncher.Controls.Various"
+      mc:Ignorable="d" 
+      d:DesignHeight="639" d:DesignWidth="800"
+      Title="ErrorScreen" Width="Auto" Height="Auto" MinWidth="1016" MinHeight="639" Foreground="{x:Null}" SnapsToDevicePixels="True">
+    <Page.Background>
+        <ImageBrush ImageSource="/BedrockLauncher;component/resources/images/bg/firstlaunchbackground.jpg" Stretch="UniformToFill"/>
+    </Page.Background>
+    <Grid Margin="0" Background="#7F000000">
+        <TextBlock Foreground="white" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="11" FontWeight="Bold" Text="{DynamicResource MainWindow_Disclaimer}" Margin="20,20" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        <Border x:Name="WelcomeBorder" CornerRadius="2" Background="Transparent" Width="600" Height="258" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Border x:Name="WelcomeBorder2" CornerRadius="2" Background="Transparent" Width="600" Height="258" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel SnapsToDevicePixels="True" VerticalAlignment="Center">
+                <misc:LoaderIcon Width="150" Height="150" Margin="0,0,0,20" Visibility="Collapsed"></misc:LoaderIcon>
+                <Border Width="150" Height="150" Margin="0,0,0,20" x:Name="BrowserHost"></Border>
+                <TextBlock Text="LOADING..." HorizontalAlignment="Center" Foreground="White" FontSize="40" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Minecraft Ten" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

@@ -109,7 +109,7 @@ namespace BedrockLauncher.Downloaders
                 {
                     viewModel.FeedItems.Clear();
                     string rss = string.Empty;
-                    using (var httpClient = new HttpClient(new Http2Handler())) rss = await httpClient.GetStringAsync(viewModel.RSS_URL);
+                    using (var httpClient = new HttpClient()) rss = await httpClient.GetStringAsync(viewModel.RSS_URL);
                     Feed feed = FeedReader.ReadFromString(rss);
                     foreach (FeedItem item in feed.Items)
                     {

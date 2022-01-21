@@ -25,7 +25,7 @@ namespace BedrockLauncher.Components.CefSharp
         public static void Init()
         {
             AppDomain.CurrentDomain.AssemblyResolve += Resolver;
-
+            
             var settings = InitSettings();
 
             RegisterScheme(ref settings, ResourceSchemeHandlerFactory.SchemeName, new ResourceSchemeHandlerFactory());

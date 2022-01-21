@@ -1,0 +1,44 @@
+﻿<Page x:Class="BedrockLauncher.Pages.News.LauncherNewsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:viewModel="clr-namespace:BedrockLauncher.ViewModels"
+      xmlns:classes="clr-namespace:BedrockLauncher.Classes.Launcher"
+      xmlns:controls="clr-namespace:BedrockLauncher.Controls.Items.News"
+      mc:Ignorable="d" 
+      d:DataContext="{d:DesignInstance Type=viewModel:NewsViewModel}"
+      d:DesignHeight="450" d:DesignWidth="800" Loaded="Page_Loaded"
+      Title="LauncherNewsPage">
+    <Grid Background="#FF333333">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Button Margin="0,1" FontSize="14" x:Name="RefreshButton" HorizontalAlignment="Right" Click="RefreshButton_Click" Content="{DynamicResource GeneralText_Refresh}" Style="{DynamicResource LinkButton}"></Button>
+            <Button Margin="0,1" FontSize="14" x:Name="CheckForUpdatesButton" HorizontalAlignment="Right" Click="CheckForUpdatesButton_Click" Content="{DynamicResource LauncherNewsPage_CheckForUpdates}" Style="{DynamicResource LinkButton}"></Button>
+            <Button Margin="0,1" FontSize="14" x:Name="ForceUpdateButton" HorizontalAlignment="Right" Click="ForceUpdateButton_Click" Content="{DynamicResource LauncherNewsPage_ForceUpdate}" Style="{DynamicResource LinkButton}"></Button>
+        </StackPanel>
+        <ListView Grid.Row="1" x:Name="UpdatesList" ItemsSource="{Binding LauncherNewsItems}" HorizontalContentAlignment="Stretch" Padding="20">
+            <ListView.Resources>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.Resources>
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="{x:Type classes:AppPatchNote}">
+                    <controls:FeedItem_Launcher DataContext="{Binding .}" Padding="0,5"></controls:FeedItem_Launcher>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

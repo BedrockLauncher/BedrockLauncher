@@ -10,7 +10,6 @@ using System.Windows.Resources;
 using System.Linq;
 using System.Globalization;
 using System.Collections;
-using System.Web;
 
 namespace BedrockLauncher.Components.CefSharp
 {
@@ -36,7 +35,9 @@ namespace BedrockLauncher.Components.CefSharp
                         if (File.Exists(filePath))
                         {
                             Stream stream = File.OpenRead(filePath);
-                            string mimeType = MimeMapping.GetMimeMapping(filePath);
+                            //TODO: Fix
+                            //string mimeType = MimeTypes.GetMimeType(filePath);
+                            string mimeType = string.Empty;
 
                             // Reset the stream position to 0 so the stream can be copied into the underlying unmanaged buffer
                             stream.Position = 0;

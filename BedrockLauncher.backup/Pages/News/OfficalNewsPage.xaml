@@ -1,0 +1,82 @@
+﻿<Page x:Class="BedrockLauncher.Pages.News.OfficalNewsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:f="clr-namespace:CodeHollow.FeedReader;assembly=CodeHollow.FeedReader"
+      xmlns:c="clr-namespace:BedrockLauncher.Classes.Launcher"
+      xmlns:i="clr-namespace:BedrockLauncher.Controls.Items.News"
+      xmlns:common="clr-namespace:BedrockLauncher.Controls.Various"
+      xmlns:viewModel="clr-namespace:BedrockLauncher.ViewModels"
+      xmlns:vwp="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      d:DataContext="{d:DesignInstance Type=viewModel:NewsViewModel}"
+      Title="CommunityNewsPage" Loaded="Page_Loaded">
+    <Page.Resources>
+        <CollectionViewSource x:Key="NewsFeed" Source="{Binding FeedItemsOffical}" Filter="CollectionViewSource_Filter"/>
+    </Page.Resources>
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border Background="#FF303030" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource Seperator.Background}">
+            <Grid Background="#FF303030" Margin="30,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition MinWidth="240"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="1" Grid.Column="0" Margin="10,0,10,10" VerticalAlignment="Center">
+                    <StackPanel>
+                        <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_Search}" Margin="0,0,0,2" FontWeight="Bold" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+                        <ContentControl Style="{DynamicResource TextboxLikeFrame}" Height="30">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Image Width="20" Margin="5,0,0,0" Height="20" Source="{DynamicResource SearchIcon}" ></Image>
+                                <TextBox Grid.Column="1" Style="{DynamicResource BlankTextBox}" Text="{Binding Offical_SearchBoxText}" x:Name="SearchBox" Tag="{DynamicResource NewsScreen_SearchBar_Content}" TextChanged="SearchBox_TextChanged"></TextBox>
+                            </Grid>
+                        </ContentControl>
+                    </StackPanel>
+                </Grid>
+                <Separator Grid.Row="1" Grid.Column="1" Width="1" Height="35" VerticalAlignment="Center"/>
+                <StackPanel Grid.Row="1" Grid.Column="2" Margin="5,0" VerticalAlignment="Center">
+                    <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_Categories}" Margin="5,2,0,10" FontWeight="Bold" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+                    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Orientation="Horizontal" Margin="0,0,10,10">
+                        <CheckBox x:Name="ShowJavaContent" Checked="CheckBox_CheckChanged" Unchecked="CheckBox_CheckChanged" IsChecked="{Binding Offical_ShowJavaContent}" Content="{DynamicResource ResourceKey=NewsScreen_JavaNDungeons_JavaCheckbox}" Foreground="White" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
+                        <CheckBox x:Name="ShowBedrockContent" Checked="CheckBox_CheckChanged" Unchecked="CheckBox_CheckChanged" IsChecked="{Binding Offical_ShowBedrockContent}" Content="{DynamicResource ResourceKey=NewsScreen_JavaNDungeons_BedrockCheckbox}" Foreground="White" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
+                        <CheckBox x:Name="ShowDungeonsContent" Checked="CheckBox_CheckChanged" Unchecked="CheckBox_CheckChanged" IsChecked="{Binding Offical_ShowDungeonsContent}" Content="{DynamicResource ResourceKey=NewsScreen_JavaNDungeons_DungeonsCheckbox}" Foreground="White" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"></CheckBox>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <ListView x:Name="OfficalNewsFeed" ItemsSource="{Binding Source={StaticResource NewsFeed}, IsAsync=True}" Grid.Row="1" Keyboard.PreviewKeyUp="OfficalNewsFeed_KeyUp" ItemContainerStyle="{DynamicResource CardListViewItemVertical}">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel MaxWidth="{Binding ElementName=OfficalNewsFeed, Path=ActualWidth}" HorizontalAlignment="Center" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="{x:Type c:NewsItem_Offical}">
+                    <i:FeedItem_Offical DataContext="{Binding .}"></i:FeedItem_Offical>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <common:ResultPanel PanelType="NoNews" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="Collapsed"></common:ResultPanel>
+        <Border Grid.Row="2" BorderBrush="{DynamicResource Seperator.Background}" BorderThickness="0,1,0,0">
+            <Grid Background="#FF303030">
+                <Button Margin="0,1" FontSize="14" x:Name="RefreshButton" HorizontalAlignment="Right" Click="RefreshButton_Click" Content="{DynamicResource GeneralText_Refresh}" Style="{DynamicResource LinkButton}"></Button>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

@@ -1,0 +1,50 @@
+﻿<Page x:Class="BedrockLauncher.Pages.Settings.SettingsTabs"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BedrockLauncher"
+      xmlns:com="clr-namespace:Extensions.WPF.Behaviours;assembly=ExtensionsDotNET"
+      Loaded="Page_Loaded"
+      mc:Ignorable="d"
+      Title="{DynamicResource SettingsTab_Title}" Foreground="{x:Null}" Background="#FF303030">
+    <Grid Background="{DynamicResource Background.Secondary}"  ClipToBounds="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border VerticalAlignment="Top" Height="84" Panel.ZIndex="1"
+            BorderBrush="Transparent"
+            BorderThickness="0,0,0,0"
+            CornerRadius="0">
+            <Grid Background="{DynamicResource Background.Primary}">
+                <Label Foreground="White" Content="{DynamicResource SettingsTab_Title}" Margin="14,27,600,0" Style="{DynamicResource TabTitle}"/>
+                <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Orientation="Horizontal" Margin="5,49,0,0">
+                    <ToggleButton x:Name="GeneralButton" Width="Auto" Click="ButtonManager" Content="{DynamicResource SettingsTab_GeneralButton}" Style="{DynamicResource ToolbarButton}" IsChecked="True">
+                        <ToggleButton.ToolTip>
+                            <ToolTip Content="{DynamicResource SettingsTab_GeneralButton}"/>
+                        </ToggleButton.ToolTip>
+                    </ToggleButton>
+                    <ToggleButton x:Name="VersionsButton" Width="Auto" Click="ButtonManager" Content="{DynamicResource SettingsTab_VersionsButton}" Style="{DynamicResource ToolbarButton}">
+                        <ToggleButton.ToolTip>
+                            <ToolTip Content="{DynamicResource SettingsTab_VersionsButton}"/>
+                        </ToggleButton.ToolTip>
+                    </ToggleButton>
+                    <ToggleButton x:Name="AccountsButton" Width="Auto" Click="ButtonManager" Content="{DynamicResource SettingsTab_AccountsButton}" Style="{DynamicResource ToolbarButton}">
+                        <ToggleButton.ToolTip>
+                            <ToolTip Content="{DynamicResource SettingsTab_AccountsButton}"/>
+                        </ToggleButton.ToolTip>
+                    </ToggleButton>
+                    <ToggleButton x:Name="AboutButton" Width="Auto" Click="ButtonManager" Content="{DynamicResource SettingsTab_AboutButton}" Style="{DynamicResource ToolbarButton}">
+                        <ToggleButton.ToolTip>
+                            <ToolTip Content="{DynamicResource SettingsTab_AboutButton}"/>
+                        </ToggleButton.ToolTip>
+                    </ToggleButton>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1" Background="{DynamicResource Background.Tertiary}"></Grid>
+        <Frame x:Name="SettingsScreenFrame"  ClipToBounds="True" com:DisableNavigation.Disable="True" Focusable="False" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+    </Grid>
+
+</Page>

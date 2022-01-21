@@ -1,0 +1,26 @@
+﻿<ListViewItem x:Class="BedrockLauncher.Controls.Items.Launcher.BlockPickerItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BedrockLauncher.Controls.Items.Launcher"
+             mc:Ignorable="d" 
+             Height="65" Width="60" 
+             Style="{StaticResource PanelListViewItem}"
+             GotFocus="MainButton_GotFocus"
+             LostFocus="MainButton_LostFocus"
+             MouseEnter="MainButton_MouseEnter"
+             MouseLeave="MainButton_MouseLeave">
+    <Grid>
+        <ContentPresenter x:Name="Host" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></ContentPresenter>
+        <Button Style="{DynamicResource CloseButton}" 
+            Name="CrossButton" 
+            Visibility="Collapsed" 
+            Width="15" 
+            Height="15" 
+            VerticalAlignment="Top" 
+            HorizontalAlignment="Right"
+            MouseEnter="MainButton_MouseEnter"
+            MouseLeave="MainButton_MouseLeave"></Button>
+    </Grid>
+</ListViewItem>

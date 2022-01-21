@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="BedrockLauncher.Controls.Items.Skins.SkinPackItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BedrockLauncher.Controls.Items"
+             xmlns:mcf="clr-namespace:BedrockLauncher.UI.Controls.McTextBlock;assembly=BedrockLauncher.UI"
+             xmlns:classes="clr-namespace:BedrockLauncher.Classes.SkinPack"
+             d:DataContext="{d:DesignInstance classes:MCSkinPack, IsDesignTimeCreatable=False}"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <BitmapImage x:Key="CurrentIcon_DesignTime" UriSource="/BedrockLauncher;component/Resources/images/packs/invalid_pack_icon.png"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="245"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="145"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Separator Grid.Row="0" Padding="0" Margin="0" Grid.ColumnSpan="3"></Separator>
+        <Grid HorizontalAlignment="Left" Grid.Row="2" Margin="4,4,0,4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Source="{Binding CurrentIcon, TargetNullValue={StaticResource CurrentIcon_DesignTime}}" Grid.Column="0" HorizontalAlignment="Left" Width="30" Height="30" Margin="0,0,0,0">
+                <Image.OpacityMask>
+                    <ImageBrush ImageSource="{Binding CurrentIcon, TargetNullValue={StaticResource CurrentIcon_DesignTime}}"/>
+                </Image.OpacityMask>
+            </Image>
+            <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0">
+                <mcf:McTextBlock FontSize="14" Foreground="#FFFFFFF1" FontWeight="DemiBold" Text="{Binding DisplayName}"/>
+                <TextBlock FontSize="9" Foreground="#FFBEBEBE" FontWeight="SemiBold" Padding="0,0,0,0" Text="{Binding VersionName}"/>
+            </StackPanel>
+        </Grid>
+        <StackPanel HorizontalAlignment="Right" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" Height="40" Orientation="Horizontal" Name="ButtonPanel" Visibility="Hidden">
+            <Button x:Name="Folder" Click="Folder_Click" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" FontWeight="Bold" Style="{DynamicResource DialogButton}">
+                <Button.Content>
+                    <Grid Width="16" Height="16">
+                        <Path Stretch="Uniform" Fill="White" StrokeThickness="0" Data="{DynamicResource FolderIcon}"/>
+                    </Grid>
+                </Button.Content>
+            </Button>
+            <Button Style="{DynamicResource DialogButton}" Foreground="White" Name="MoreButton" Click="MoreButton_Click">
+                <Button.Content>
+                    <Image Width="16" Height="16" Source="{DynamicResource Expandable}" Stretch="None"/>
+                </Button.Content>
+                <Button.ContextMenu>
+                    <ContextMenu Closed="ContextMenu_Closed" Style="{DynamicResource NoCheckboxContextMenu}">
+                        <MenuItem Header="{DynamicResource GeneralText_Edit}" Name="EditSkinPackButton" Click="EditSkinPackButton_Click"></MenuItem>
+                        <MenuItem Header="{DynamicResource GeneralText_Delete}" Name="DeleteSkinPackButton" Click="DeleteSkinPackButton_Click"></MenuItem>
+                        <Separator></Separator>
+                        <MenuItem Header="{DynamicResource GeneralText_Export}" Name="ExportSkinPackButton" Click="ExportSkinPackButton_Click"></MenuItem>
+                    </ContextMenu>
+                </Button.ContextMenu>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

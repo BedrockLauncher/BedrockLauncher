@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="BedrockLauncher.Controls.Various.LoaderIcon"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BedrockLauncher.Controls.Various"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             d:DataContext="{d:DesignInstance Type=local:LoaderIcon}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <sys:Double x:Key="CanvasWidth">120</sys:Double>
+        <sys:Double x:Key="CubeWidth">60</sys:Double>
+        <sys:Double x:Key="CubeDropPoint">-65</sys:Double>
+        <sys:Double x:Key="CubeWidthNeg">-60</sys:Double>
+        <Style x:Key="ShrinkingCube" TargetType="{x:Type Grid}">
+            <Setter Property="Height" Value="{StaticResource CanvasWidth}"/>
+            <Setter Property="Width" Value="{StaticResource CanvasWidth}"/>
+            <Setter Property="Canvas.Left" Value="0"/>
+            <Setter Property="Canvas.Top" Value="0"/>
+            <Setter Property="Opacity" Value="0"/>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard RepeatBehavior="Forever" Duration="0:0:1.3">
+                            <DoubleAnimation BeginTime="0:0:0.8" From="0" To="1" Duration="0:0:0.0" Storyboard.TargetProperty="(Opacity)" AutoReverse="False" />
+                            <DoubleAnimation BeginTime="0:0:1.0" From="0" To="{StaticResource CubeWidthNeg}" Duration="0:0:0.2" Storyboard.TargetProperty="(Canvas.Left)" AutoReverse="False" />
+                            <DoubleAnimation BeginTime="0:0:1.0" From="0" To="{StaticResource CubeWidth}" Duration="0:0:0.2" Storyboard.TargetProperty="(Canvas.Top)" AutoReverse="False" />
+                            <DoubleAnimation BeginTime="0:0:1.2" From="1" To="0" Duration="0:0:0.1" Storyboard.TargetProperty="(Opacity)" AutoReverse="False" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="GridDrop1" TargetType="{x:Type Grid}">
+            <Setter Property="Height" Value="{StaticResource CubeWidth}"/>
+            <Setter Property="Width" Value="{StaticResource CubeWidth}"/>
+            <Setter Property="Canvas.Left" Value="{StaticResource CubeWidth}"/>
+            <Setter Property="Canvas.Top" Value="{StaticResource CubeDropPoint}"/>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard RepeatBehavior="Forever" Duration="0:0:1.3">
+                            <DoubleAnimation BeginTime="0:0:0.0" From="{StaticResource CubeDropPoint}" To="{StaticResource CubeWidth}" Duration="0:0:0.2" Storyboard.TargetProperty="(Canvas.Top)" AutoReverse="False" />
+                            <DoubleAnimation BeginTime="0:0:0.8" From="1" To="0" Duration="0:0:0.0" Storyboard.TargetProperty="(Opacity)" AutoReverse="False" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="GridDrop2" TargetType="{x:Type Grid}">
+            <Setter Property="Height" Value="{StaticResource CubeWidth}"/>
+            <Setter Property="Width" Value="{StaticResource CubeWidth}"/>
+            <Setter Property="Canvas.Left" Value="0"/>
+            <Setter Property="Canvas.Top" Value="{StaticResource CubeDropPoint}"/>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard RepeatBehavior="Forever" Duration="0:0:1.3">
+                            <DoubleAnimation BeginTime="0:0:0.3" From="{StaticResource CubeDropPoint}" To="0" Duration="0:0:0.3" Storyboard.TargetProperty="(Canvas.Top)" AutoReverse="False" />
+                            <DoubleAnimation BeginTime="0:0:0.8" From="1" To="0" Duration="0:0:0.0" Storyboard.TargetProperty="(Opacity)" AutoReverse="False" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="GridDrop3" TargetType="{x:Type Grid}">
+            <Setter Property="Height" Value="{StaticResource CubeWidth}"/>
+            <Setter Property="Width" Value="{StaticResource CubeWidth}"/>
+            <Setter Property="Canvas.Left" Value="{StaticResource CubeWidth}"/>
+            <Setter Property="Canvas.Top" Value="{StaticResource CubeDropPoint}"/>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard RepeatBehavior="Forever" Duration="0:0:1.3">
+                            <DoubleAnimation BeginTime="0:0:0.4" From="{StaticResource CubeDropPoint}" To="0" Duration="0:0:0.3" Storyboard.TargetProperty="(Canvas.Top)" AutoReverse="False" />
+                            <DoubleAnimation BeginTime="0:0:0.8" From="1" To="0" Duration="0:0:0.0" Storyboard.TargetProperty="(Opacity)" AutoReverse="False" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Canvas Width="{StaticResource CanvasWidth}" Height="{StaticResource CanvasWidth}" ClipToBounds="True">
+            <Grid Background="White" Style="{StaticResource ShrinkingCube}"/>
+            <Grid Background="White" Height="{StaticResource CubeWidth}" Width="{StaticResource CubeWidth}" Canvas.Left="0" Canvas.Top="{StaticResource CubeWidth}"/>
+            <Grid Background="White" Style="{StaticResource GridDrop1}"/>
+            <Grid Background="White" Style="{StaticResource GridDrop2}"/>
+            <Grid Background="White" Style="{StaticResource GridDrop3}"/>
+        </Canvas>
+    </Grid>
+</UserControl>
