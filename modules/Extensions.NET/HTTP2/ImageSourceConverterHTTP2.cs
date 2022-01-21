@@ -38,7 +38,7 @@ namespace Extensions.Http2
                 {
                     var imageSource = new BitmapImage();
                     imageSource.BeginInit();
-                    imageSource.CacheOption = BitmapCacheOption.OnDemand;
+                    imageSource.CacheOption = BitmapCacheOption.OnLoad;
                     imageSource.StreamSource = ms;
                     imageSource.EndInit();
                     return imageSource as ImageSource;

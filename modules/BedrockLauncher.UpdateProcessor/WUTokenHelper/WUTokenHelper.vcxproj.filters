@@ -28,9 +28,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="readme.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Midl Include="TokenBrokerInternal.idl">
       <Filter>Source Files</Filter>
     </Midl>

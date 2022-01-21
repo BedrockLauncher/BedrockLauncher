@@ -21,30 +21,7 @@ namespace BedrockLauncher.Pages.Play
     public partial class PlayScreenPage : Page
     {
 
-        private const string ImagePathPrefix = @"pack://application:,,,/BedrockLauncher;component/resources/images/bg/play_screen/";
 
-        public Dictionary<string, string> Images = new Dictionary<string, string>()
-        {
-            { "CavesAndCliffsPart1Update", ImagePathPrefix + "1.17_caves_and_cliffs_part_1.jpg" },
-            { "NetherUpdate",              ImagePathPrefix + "1.16_nether_update.jpg" },
-            { "BuzzyBeesUpdate",           ImagePathPrefix + "1.15_buzzy_bees_update.jpg" },
-            { "VillagePillageUpdate",      ImagePathPrefix + "1.14_village_pillage_update.jpg" },
-            { "UpdateAquatic",             ImagePathPrefix + "1.13_update_aquatic.jpg" },
-            { "TechnicallyUpdated",        ImagePathPrefix + "1.13_technically_updated_java.jpg" },
-            { "WorldOfColorUpdate",        ImagePathPrefix + "1.12_world_of_color_update_java.jpg" },
-            { "ExplorationUpdate",         ImagePathPrefix + "1.11_exploration_update_java.jpg" },
-            { "CombatUpdate",              ImagePathPrefix + "1.09_combat_update_java.jpg" },
-            { "CatsAndPandasUpdate",       ImagePathPrefix + "1.08_cats_and_pandas.jpg" },
-            { "PocketEditionRelease",      ImagePathPrefix + "1.0_pocket_edition.jpg" },
-            { "BedrockStandard",           ImagePathPrefix + "bedrock_standard.jpg" },
-            { "BedrockMaster",             ImagePathPrefix + "bedrock_master.jpg" },
-            { "EarlyLegacyConsole",        ImagePathPrefix + "other_early_console_era.jpg" },
-            { "MidLegacyConsole",          ImagePathPrefix + "other_mid_legacy_console.jpg" },
-            { "LateLegacyConsole",         ImagePathPrefix + "other_late_legacy_console.jpg" },
-            { "IndieDays",                 ImagePathPrefix + "other_indie_days.jpg" },
-            { "Dungeons",                  ImagePathPrefix + "other_dungeons.jpg" },
-            { "Original",                  ImagePathPrefix + "original_image.jpg" }
-        };
 
         public PlayScreenPage()
         {
@@ -53,7 +30,7 @@ namespace BedrockLauncher.Pages.Play
 
         private string GetLatestImage()
         {
-            return Images.First().Value;
+            return Constants.Themes.First().Value;
         }
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
@@ -83,8 +60,8 @@ namespace BedrockLauncher.Pages.Play
                         packUri = GetLatestImage();
                         break;
                     default:
-                        if (Images.ContainsKey(currentTheme)) packUri = Images.Where(x => x.Key == currentTheme).FirstOrDefault().Value;
-                        else packUri = Images.Where(x => x.Key == "Original").FirstOrDefault().Value;
+                        if (Constants.Themes.ContainsKey(currentTheme)) packUri = Constants.Themes.Where(x => x.Key == currentTheme).FirstOrDefault().Value;
+                        else packUri = Constants.Themes.Where(x => x.Key == "Original").FirstOrDefault().Value;
                         break;
                 }
 

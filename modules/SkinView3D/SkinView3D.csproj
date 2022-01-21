@@ -134,17 +134,18 @@
     <Resource Include="Runtimes\SkinView\previews\img\NoSkin.png" />
     <Resource Include="Runtimes\SkinView\previews\index.html" />
     <Resource Include="Runtimes\SkinView\previews\stylesheet.css" />
-    <Content Include="Runtimes\SkinView\src\animation.ts" />
-    <Content Include="Runtimes\SkinView\src\fxaa.ts" />
-    <Content Include="Runtimes\SkinView\src\model.ts" />
-    <Content Include="Runtimes\SkinView\src\orbit_controls.ts" />
-    <Content Include="Runtimes\SkinView\src\skinview3d.ts" />
-    <Content Include="Runtimes\SkinView\src\viewer.ts" />
+    <Resource Include="Runtimes\SkinView\src\animation.ts" />
+    <Resource Include="Runtimes\SkinView\src\fxaa.ts" />
+    <Resource Include="Runtimes\SkinView\src\model.ts" />
+    <Resource Include="Runtimes\SkinView\src\orbit_controls.ts" />
+    <Resource Include="Runtimes\SkinView\src\skinview3d.ts" />
+    <Resource Include="Runtimes\SkinView\src\viewer.ts" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>if "$(ConfigurationName)" == "Publish" (
+    <PreBuildEvent>npm config set loglevel error
+if "$(ConfigurationName)" == "Publish" (
 cd "$(ProjectDir)/Runtimes/SkinView"
 npm install
 cd "$(ProjectDir)/Runtimes/SkinView"

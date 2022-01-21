@@ -16,23 +16,9 @@ using BedrockLauncher.Extensions;
 using BedrockLauncher.Classes;
 using BedrockLauncher.ViewModels;
 using System.Collections.ObjectModel;
-using PostSharp.Patterns.Model;
 
 namespace BedrockLauncher.Pages.Preview
 {
-    /// <summary>
-    /// Interaction logic for EditInstallationScreen.xaml
-    /// </summary>
-    /// 
-
-    [NotifyPropertyChanged(ExcludeExplicitProperties=Constants.Debugging.ExcludeExplicitProperties)]
-    public class EditInstallationsPageModel
-    {
-        public string SelectedVersionUUID { get; set; } = string.Empty;
-        public string SelectedUUID { get; set; } = string.Empty;
-        public string InstallationName { get; set; } = string.Empty;
-        public string InstallationDirectory { get; set; } = string.Empty;
-    }
 
 
     public partial class EditInstallationScreen : Page
@@ -40,7 +26,7 @@ namespace BedrockLauncher.Pages.Preview
 
         private bool IsEditMode = false;
 
-        public EditInstallationsPageModel ViewModel { get; set; } = new EditInstallationsPageModel();
+        public EditInstallationsPageViewModel ViewModel { get; set; } = new EditInstallationsPageViewModel();
 
 
         public EditInstallationScreen(BLInstallation i = null)

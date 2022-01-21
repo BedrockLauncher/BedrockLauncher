@@ -19,7 +19,7 @@ namespace BedrockLauncher.Components.CefSharp
         {
             var names = typeof(SkinView3D.Class).Assembly.GetManifestResourceNames();
             Uri u = new Uri(request.Url);
-            string resourceName = string.Format("{0}{1}", u.Authority, u.AbsolutePath).ToLower();
+            string resourceName = string.Format("Runtimes/SkinView/{0}{1}", u.Authority, u.AbsolutePath).ToLower();
             string resourcePath = @"/SkinView3D;component/" + resourceName;
 
             var assembly = typeof(SkinView3D.Class).Assembly;
