@@ -31,7 +31,7 @@ using BedrockLauncher.UI.Components;
 
 namespace BedrockLauncher.Handlers
 {
-    public class PackageHandler
+    public class PackageHandler : IDisposable
     {
         private CancellationTokenSource CancelSource = new CancellationTokenSource();
         private readonly Task UserAuthorizationTask;
@@ -156,7 +156,7 @@ namespace BedrockLauncher.Handlers
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception("DownloadAndExtractPackage Failed", ex);
             }
 
         }
@@ -491,6 +491,18 @@ namespace BedrockLauncher.Handlers
         protected void DebugLog(string message)
         {
             Debug.WriteLine(message);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            CancelSource?.Dispose();
+            UserAuthorizationTask?.Dispose();
         }
 
         #endregion

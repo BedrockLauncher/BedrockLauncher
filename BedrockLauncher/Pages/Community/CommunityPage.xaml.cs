@@ -21,7 +21,7 @@ namespace BedrockLauncher.Pages.Community
     /// <summary>
     /// Interaction logic for Community.xaml
     /// </summary>
-    public partial class CommunityPage : Page
+    public partial class CommunityPage : Page, IDisposable
     {
 
         ChromiumWebBrowser Browser = new ChromiumWebBrowser();
@@ -57,6 +57,17 @@ namespace BedrockLauncher.Pages.Community
             {
 
             }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            Browser?.Dispose();
         }
     }
 

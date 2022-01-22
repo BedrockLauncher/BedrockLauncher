@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Runtime.InteropServices.ComTypes;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Threading;
@@ -57,7 +58,7 @@ namespace Extensions
 
         public static bool IsFileInUse(string fileFullPath, bool throwIfNotExists)
         {
-            if (System.IO.File.Exists(fileFullPath))
+            if (File.Exists(fileFullPath))
             {
                 try
                 {
@@ -90,7 +91,7 @@ namespace Extensions
         struct RM_UNIQUE_PROCESS
         {
             public int dwProcessId;
-            public System.Runtime.InteropServices.ComTypes.FILETIME ProcessStartTime;
+            public FILETIME ProcessStartTime;
         }
 
         const int RmRebootReasonNone = 0;

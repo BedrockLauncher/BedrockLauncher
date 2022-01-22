@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -232,11 +233,11 @@ namespace Extensions
 			return ((ICollection<KeyValuePair<TKey, TValue>>)dictionary).GetEnumerator();
 		}
 
-		public System.Collections.IEnumerator GetEnumerator()
-		{
-			return ((ICollection<KeyValuePair<TKey, TValue>>)dictionary).GetEnumerator();
-		}
+		IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
 
-		#endregion
-	}
+        #endregion
+    }
 }

@@ -312,22 +312,13 @@ namespace BedrockLauncher.UpdateProcessor
         private async Task<string> doHttpRequest(string url, string data) 
         {
             string ret = string.Empty;
-            var httpRequest = (HttpWebRequest)WebRequest.Create(url);
-            httpRequest.ContentType = "application/soap+xml; charset=utf-8";
-            httpRequest.UserAgent = "Windows-Update-Agent/10.0.10011.16384 Client-Protocol/1.81";
-            httpRequest.Method = "POST";
-            httpRequest.ContentLength = data.Length;
 
-            using (var dataStream = httpRequest.GetRequestStream())
-            {
-                using (StreamWriter writer = new StreamWriter(dataStream))
-                {
-                    writer.Write(data, 0, data.Length);
-                }
-            }
-
-            var httpResponse =  (HttpWebResponse)await httpRequest.GetResponseAsync();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) ret = streamReader.ReadToEnd();
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/soap+xml; charset=utf-8");
+            client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Length", data.Length.ToString());
+            client.DefaultRequestHeaders.UserAgent.TryParseAdd("Windows-Update-Agent/10.0.10011.16384 Client-Protocol/1.81");
+            var response = await client.PostAsync(url, new StringContent(data, Encoding.UTF8));
+            using (var streamReader = new StreamReader(response.Content.ReadAsStream())) ret = streamReader.ReadToEnd();
             return ret;
         }
         private void maybeThrowSOAPFault(XDocument doc)

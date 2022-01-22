@@ -24,7 +24,7 @@ namespace BedrockLauncher.Controls.Skins
     /// <summary>
     /// Interaction logic for SkinPreview.xaml
     /// </summary>
-    public partial class SkinPreview : UserControl
+    public partial class SkinPreview : UserControl, IDisposable
     {
         ChromiumWebBrowser Renderer = new ChromiumWebBrowser();
 
@@ -186,6 +186,17 @@ namespace BedrockLauncher.Controls.Skins
             {
                 if (e.IsLoading == false && isRenderable && Renderer.CanExecuteJavascriptInMainFrame) RefreshView();
             });
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            Renderer?.Dispose();
         }
     }
 }

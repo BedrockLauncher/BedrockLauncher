@@ -10,7 +10,7 @@ namespace BedrockLauncher.Core.Pages.Common
     /// <summary>
     /// Логика взаимодействия для ErrorScreen.xaml
     /// </summary>
-    public partial class WaitingPage : Page
+    public partial class WaitingPage : Page, IDisposable
     {
 
         public IDialogHander Handler { get; private set; }
@@ -67,6 +67,17 @@ namespace BedrockLauncher.Core.Pages.Common
         private void ErrorScreenViewCrashButton_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("notepad.exe", $@"{Environment.CurrentDirectory}\Log.txt");
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            Browser?.Dispose();
         }
     }
 }

@@ -51,7 +51,7 @@ namespace BedrockLauncher.Handlers
                 string message = "Cant enable developer mode for X64 machine Error: " + r;
                 System.Diagnostics.Debug.WriteLine(message);
                 MessageBox.Show(message + r);
-                throw r;
+                throw new Exception(message, r);
             }
         }
         public static void ValidateOSArchitecture()

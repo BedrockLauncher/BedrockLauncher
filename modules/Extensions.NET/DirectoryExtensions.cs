@@ -24,7 +24,6 @@ namespace Extensions
             // Copy each file into the new directory.
             foreach (FileInfo fi in source.GetFiles())
             {
-                System.Diagnostics.Debug.WriteLine(string.Format(@"Copying {0}\{1}", target.FullName, fi.Name));
                 fi.CopyTo(Path.Combine(target.FullName, fi.Name), true);
             }
 

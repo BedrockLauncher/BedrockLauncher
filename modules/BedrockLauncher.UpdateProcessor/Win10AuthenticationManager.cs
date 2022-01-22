@@ -8,7 +8,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Collections.ObjectModel;
 using System.Security.Principal;
-using System.Web.Security;
 using BedrockLauncher.UpdateProcessor.Auth;
 
 namespace BedrockLauncher.UpdateProcessor

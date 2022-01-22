@@ -43,7 +43,7 @@ namespace BedrockLauncher
 {
     //TODO: (Later On) Community Content / Personal Donations Section
 
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IDisposable
     {
         private GameTabs MainPage = new GameTabs();
         private SettingsTabs settingsScreenPage = new SettingsTabs();
@@ -307,6 +307,17 @@ namespace BedrockLauncher
         private void SettingsButton_Click(object sender, EventArgs e)
         {
             if (sender != null && sender is ToolbarButtonBase) ButtonManager_Base((sender as ToolbarButtonBase).Name);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            communityPage?.Dispose();
         }
 
         #endregion

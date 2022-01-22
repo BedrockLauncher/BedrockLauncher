@@ -13,7 +13,7 @@ using System.Windows;
 
 namespace BedrockLauncher.Downloaders
 {
-    public class VersionDownloader
+    public class VersionDownloader : IDisposable
     {
         private HttpClient _client = new HttpClient();
         private Win10StoreNetwork _store_manager = new Win10StoreNetwork();
@@ -251,6 +251,17 @@ namespace BedrockLauncher.Downloaders
                 System.Diagnostics.Debug.WriteLine("Version list download failed:\n" + e.ToString());
             }
 
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            _client?.Dispose();
         }
 
         public delegate void DownloadProgress(long current, long? total);

@@ -57,7 +57,7 @@ namespace BedrockLauncher.UI.Pages.Preview
             SourceButton.Visibility = Visibility.Collapsed;
         }
 
-        private void Renderer_ImageLoad(object sender, TheArtOfDev.HtmlRenderer.WPF.RoutedEvenArgs<TheArtOfDev.HtmlRenderer.Core.Entities.HtmlImageLoadEventArgs> args)
+        private void Renderer_ImageLoad(object sender, TheArtOfDev.HtmlRenderer.WPF.RoutedEventArgs<TheArtOfDev.HtmlRenderer.Core.Entities.HtmlImageLoadEventArgs> args)
         {
 
         }

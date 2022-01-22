@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0-windows10.0.20348.0</TargetFramework>
+    <TargetFramework>net6.0-windows10.0.17763.0</TargetFramework>
 	<BeautyLibsDir>runtimes</BeautyLibsDir>
 	<DisableBeauty>False</DisableBeauty>
 	<OutputType>WinExe</OutputType>
@@ -88,6 +88,7 @@
     <PackageReference Include="CodeHollow.FeedReader" Version="1.2.4" />
     <PackageReference Include="FolderBrowserEx" Version="1.0.1" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.40" />
+    <PackageReference Include="HtmlRenderer.Core.NetStandard2" Version="1.5.1" />
     <PackageReference Include="ini-parser-netcore" Version="3.0.0" />
     <PackageReference Include="MdXaml" Version="1.12.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
