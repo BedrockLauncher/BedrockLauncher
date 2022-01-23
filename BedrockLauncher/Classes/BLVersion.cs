@@ -36,7 +36,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                Depends.On(GameDirectory);
+                Depends.On(GameDirectory, RequireSizeRecalculation);
                 return Directory.Exists(GameDirectory);
             }
         }

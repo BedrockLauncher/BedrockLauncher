@@ -75,8 +75,8 @@ namespace BedrockLauncher.Controls.Items.Launcher
 
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                MainViewModel.Default.RemoveVersion(version);
-                //await GetParent().RefreshVersionsList();
+                await Task.Run(() => MainViewModel.Default.RemoveVersion(version));
+                await Task.Run(Program.OnApplicationRefresh);
             }
         }
 
