@@ -21,20 +21,39 @@ using System.Windows.Data;
 using BedrockLauncher.Components;
 using System.Text.RegularExpressions;
 using PostSharp.Patterns.Model;
+using BedrockLauncher.UpdateProcessor.Classes;
 
 namespace BedrockLauncher.Classes
 {
     public class MCVersion
     {
-        public MCVersion(string uuid, string name, bool isBeta)
+        public MCVersion(string uuid, string name, bool isBeta, string architecture)
         {
             this.UUID = uuid.ToLower();
             this.Name = name;
             this.IsBeta = isBeta;
+            this.Architecture = architecture;
         }
 
         public string UUID { get; set; }
         public string Name { get; set; }
+        public string Architecture { get; set; }
         public bool IsBeta { get; set; }
+
+
+        public int Compare(MCVersion y)
+        {
+            try
+            {
+                var a = MinecraftVersion.Parse(this.Name);
+                var b = MinecraftVersion.Parse(y.Name);
+                return b.CompareTo(a);
+            }
+            catch
+            {
+                return y.Name.CompareTo(this.Name);
+            }
+
+        }
     }
 }

@@ -15,10 +15,12 @@ namespace BedrockLauncher.Handlers
 
         public string UserDataFileName { get => "user_profile.json"; }
         public string SettingsFileName { get => "settings.json"; }
-        public string VersionCacheFileName { get => "versions.json"; }
-        public string UserVersionCacheFileName { get => "local_versions.json"; }
-        public string TechnicalUserVersionCacheFileName { get => "technical_local_versions.txt"; }
+        public string WinStoreVersionsDBFileName { get => "winstore_versions.json"; }
+        public string WinStoreVersionsTechnicalDBFileName { get => "winstore_technical_versions.txt"; }
+        public string CommunityVersionsDBFileName { get => "community_versions.json"; }
+        public string CommunityVersionsTechnicalDBFileName { get => "community_technical_versions.txt"; }
         public string AppDataFolderName { get => ".minecraft_bedrock"; }
+
         public string InstallationsFolderName { get => "installations"; }
         public string PackageDataFolderName { get => "packageData"; }
         public string IconCacheFolderName { get => "icon_cache"; }
@@ -63,17 +65,21 @@ namespace BedrockLauncher.Handlers
         {
             return Path.Combine(ExecutableDataDirectory, SettingsFileName);
         }
-        public string GetUserVersionsFilePath()
+        public string GetCommunityVersionsDBFile()
         {
-            return Path.Combine(CurrentLocation, UserVersionCacheFileName);
+            return Path.Combine(CurrentLocation, CommunityVersionsDBFileName);
         }
-        public string GetUserVersionsTechnicalFilePath()
+        public string GetCommunityVersionsTechnicalDBFile()
         {
-            return Path.Combine(CurrentLocation, TechnicalUserVersionCacheFileName);
+            return Path.Combine(CurrentLocation, CommunityVersionsTechnicalDBFileName);
         }
-        public string GetVersionsFilePath()
+        public string GetWinStoreVersionsTechnicalDBFile()
         {
-            return Path.Combine(CurrentLocation, VersionCacheFileName);
+            return Path.Combine(CurrentLocation, WinStoreVersionsTechnicalDBFileName);
+        }
+        public string GetWinStoreVersionsDBFile()
+        {
+            return Path.Combine(CurrentLocation, WinStoreVersionsDBFileName);
         }
         public string GetProfilesFilePath()
         {

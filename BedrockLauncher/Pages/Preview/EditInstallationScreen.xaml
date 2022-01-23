@@ -9,10 +9,13 @@
       xmlns:classes="clr-namespace:BedrockLauncher.Classes"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800"
-      d:DataContext="{d:DesignInstance Type=local:EditInstallationsPageViewModel}"
+      d:DataContext="{d:DesignInstance Type=viewModels:EditInstallationsPageViewModel}"
       Loaded="Page_Loaded"
       x:Name="Host"
       Title="AddInstallationScreen" Width="Auto" Height="Auto" Foreground="{x:Null}" Background="{DynamicResource Background.Dialog}" SnapsToDevicePixels="True">
+    <Page.Resources>
+        <CollectionViewSource x:Key="Versions" Source="{Binding Versions, Source={x:Static viewModels:MainViewModel.Default}}" Filter="CollectionViewSource_Filter"/>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"></RowDefinition>
@@ -39,7 +42,7 @@
                         <TextBlock Margin="0,28,0,5" Text="{DynamicResource EditInstallationScreen_NameSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                         <TextBox Text="{Binding InstallationName, Mode=TwoWay}" Height="32" Tag="{DynamicResource EditInstallationScreen_NameHintText}" Width="330" x:Name="InstallationNameField" AcceptsReturn="False" SpellCheck.IsEnabled="False"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left"></TextBox>
                         <TextBlock Margin="0,28,0,5" Text="{DynamicResource EditInstallationScreen_VersionSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-                        <ComboBox Height="32" x:Name="InstallationVersionSelect" ItemsSource="{Binding Versions, Source={x:Static viewModels:MainViewModel.Default}}" SelectedValue="{Binding SelectedVersionUUID, Mode=TwoWay}" SelectedValuePath="UUID" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource GenericComboBoxStyle}" Foreground="White" Padding="13,0,0,0" SelectedIndex="1" FontSize="14">
+                        <ComboBox Height="32" x:Name="InstallationVersionSelect" ItemsSource="{Binding Source={StaticResource Versions}, IsAsync=True}" SelectedValue="{Binding SelectedVersionUUID, Mode=TwoWay}" SelectedValuePath="UUID" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource GenericComboBoxStyle}" Foreground="White" Padding="13,0,0,0" SelectedIndex="1" FontSize="14">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate DataType="{x:Type classes:BLVersion}">
                                     <TextBlock Style="{DynamicResource CommonTextblock}" Text="{Binding DisplayName}"></TextBlock>

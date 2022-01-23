@@ -28,16 +28,17 @@ using BedrockLauncher.ViewModels;
 using BedrockLauncher.Exceptions;
 using BedrockLauncher.UI.Pages.Common;
 using BedrockLauncher.UI.Components;
+using BedrockLauncher.UpdateProcessor;
+using BedrockLauncher.UpdateProcessor.Authentication;
+using BedrockLauncher.UpdateProcessor.Handlers;
 
 namespace BedrockLauncher.Handlers
 {
     public class PackageHandler : IDisposable
     {
         private CancellationTokenSource CancelSource = new CancellationTokenSource();
-        private readonly Task UserAuthorizationTask;
-        private volatile int UserAuthorizationTaskStarted;
+        private StoreNetwork StoreNetwork = new StoreNetwork();
 
-        public PackageHandler() => UserAuthorizationTask = new Task(VersionDownloader.EnableUserAuthorization);
         public VersionDownloader VersionDownloader { get; private set; } = new VersionDownloader();
         public Process GameHandle { get; private set; } = null;
         public bool isGameRunning { get => GameHandle != null; }
@@ -166,7 +167,7 @@ namespace BedrockLauncher.Handlers
             {
                 if (v.IsBeta) await AuthenticateBetaUser();
                 MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.isDownloading);
-                await VersionDownloader.Download(v.DisplayName, v.UUID, 1, dlPath, (x, y) => DownloadProgressWrapper(x, y), cancelSource.Token);
+                await VersionDownloader.DownloadVersion(v.DisplayName, v.UUID, 1, dlPath, (x, y) => DownloadProgressWrapper(x, y), cancelSource.Token);
                 DebugLog("Download complete");
                 MainViewModel.Default.InterfaceState.UpdateProgressBar(state: LauncherStateChange.None);
             }
@@ -349,10 +350,9 @@ namespace BedrockLauncher.Handlers
         {
             try
             {
-                if (Interlocked.CompareExchange(ref UserAuthorizationTaskStarted, 1, 0) == 0) UserAuthorizationTask.Start();
-                DebugLog("Waiting for authentication");
-                await UserAuthorizationTask;
-                DebugLog("Authentication complete");
+                var userIndex = Properties.LauncherSettings.Default.CurrentInsiderAccountIndex;
+                var token = await Task.Run(() => AuthenticationManager.Default.GetWUToken(userIndex));
+                StoreNetwork.setMSAUserToken(token);
             }
             catch (PackageManagerException e)
             {
@@ -360,9 +360,11 @@ namespace BedrockLauncher.Handlers
             }
             catch (Exception e)
             {
+                System.Diagnostics.Debug.WriteLine("Error while Authenticating UserToken for Version Fetching:\n" + e);
                 throw new BetaAuthenticationFailedException(e);
             }
         }
+
         private async Task UpdatePackageHandle(AppActivationResult app)
         {
             await Task.Run(() =>
@@ -493,16 +495,15 @@ namespace BedrockLauncher.Handlers
             Debug.WriteLine(message);
         }
 
+
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
         protected virtual void Dispose(bool disposing)
         {
             CancelSource?.Dispose();
-            UserAuthorizationTask?.Dispose();
         }
 
         #endregion

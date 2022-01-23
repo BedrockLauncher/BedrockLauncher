@@ -37,5 +37,24 @@ namespace Extensions
             var index = source.Skip(start).FindIndex(predicate);
             return index == -1 ? -1 : index + start;
         }
+
+
+        public static bool Exists<T>(this ObservableCollection<T> coll, Predicate<T> match)
+        {
+            return coll.ToList().Exists(match);
+        }
+
+
+        public static int RemoveAll<T>(this ObservableCollection<T> coll, Func<T, bool> condition)
+        {
+            var itemsToRemove = coll.Where(condition).ToList();
+
+            foreach (var itemToRemove in itemsToRemove)
+            {
+                coll.Remove(itemToRemove);
+            }
+
+            return itemsToRemove.Count;
+        }
     }
 }

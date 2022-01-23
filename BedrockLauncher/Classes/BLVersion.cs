@@ -17,7 +17,7 @@ namespace BedrockLauncher.Classes
     [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]    //84 Lines
     public class BLVersion : MCVersion
     {
-        public BLVersion(string uuid, string name, bool isBeta) : base(uuid, name, isBeta) { }
+        public BLVersion(string uuid, string name, bool isBeta, string arch) : base(uuid, name, isBeta, arch) { }
 
         public static BLVersion Convert(MCVersion obj)
         {
@@ -44,8 +44,8 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                Depends.On(IsBeta, Name);
-                return Name + (IsBeta ? " (Beta)" : "");
+                Depends.On(IsBeta, Name, Architecture);
+                return Name + (IsBeta ? " (Beta)" : "") + (Constants.CurrentArchitecture != Architecture ? $" [{Architecture}]" : "");
             }
         }
         public string InstallationSize

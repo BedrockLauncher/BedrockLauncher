@@ -112,5 +112,14 @@ namespace BedrockLauncher.Pages.Preview
         {
 
         }
+
+        private void CollectionViewSource_Filter(object sender, FilterEventArgs e)
+        {
+            if (e.Item is MCVersion)
+            {
+                var version = (e.Item as MCVersion);
+                e.Accepted = version.Architecture == Constants.CurrentArchitecture;
+            }
+        }
     }
 }

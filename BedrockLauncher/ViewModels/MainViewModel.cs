@@ -81,10 +81,7 @@ namespace BedrockLauncher.ViewModels
                 if (IsVersionsUpdating) return;
                 IsVersionsUpdating = true;
 
-                VersionDownloader.VersionUpdateOptions options = new VersionDownloader.VersionUpdateOptions();
-                if (onLoad && Debugger.IsAttached && !Constants.Debugging.UpdateVersionsOnLoad) options.CacheOnly = true;
-
-                await PackageManager.VersionDownloader.UpdateVersions(Versions, options);
+                await PackageManager.VersionDownloader.UpdateVersions(Versions, onLoad);
 
                 IsVersionsUpdating = false;
             });

@@ -576,6 +576,7 @@ rmdir "$(MSBuildProjectDirectory)\bin\$(Configuration)\" /s /q
     <EnforceCodeStyleInBuild>False</EnforceCodeStyleInBuild>
     <BaseOutputPath>bin\</BaseOutputPath>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <WarningLevel>2</WarningLevel>

@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using BedrockLauncher.Extensions;
 using BedrockLauncher.Downloaders;
 using BedrockLauncher.UpdateProcessor;
+using BedrockLauncher.UpdateProcessor.Authentication;
 
 namespace BedrockLauncher.Controls.Config
 {
@@ -38,7 +39,7 @@ namespace BedrockLauncher.Controls.Config
                 Properties.LauncherSettings.Default.Save();
             }
 
-            Win10AuthenticationManager.Default.GetWUUsers();
+            AuthenticationManager.Default.GetWUUsers();
             AccountsList.SelectedIndex = Properties.LauncherSettings.Default.CurrentInsiderAccountIndex;
         }
 

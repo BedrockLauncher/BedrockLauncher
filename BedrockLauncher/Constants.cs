@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -40,6 +41,18 @@ namespace BedrockLauncher
             { "Original",                  ThemesPathPrefix + "original_image.jpg" }
         };
 
+        public static string CurrentArchitecture
+        {
+            get
+            {
+                var currentArchitecture = RuntimeInformation.ProcessArchitecture;
+                if (currentArchitecture == Architecture.Arm || currentArchitecture == Architecture.Arm64) return "arm";
+                else if (currentArchitecture == Architecture.X86) return "x86";
+                else if (currentArchitecture == Architecture.X64) return "x64";
+                else return "null";
+            }
+        }
+
         public static class Debugging
         {
             //IMPORTANT FOR DATA BINDING: DO NOT TOUCH (leave at false)
@@ -48,7 +61,7 @@ namespace BedrockLauncher
 
             //TODO: Fix performance issues
             public static bool CalculateVersionSizes { get; internal set; } = true;
-            public static bool UpdateVersionsOnLoad { get; internal set; } = true;
+            public static bool RetriveNewVersionsOnLoad { get; internal set; } = true;
             public static bool CheckForUpdatesOnLoad { get; internal set; } = true;
 
 
