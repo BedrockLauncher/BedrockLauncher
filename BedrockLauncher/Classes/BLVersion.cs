@@ -45,7 +45,7 @@ namespace BedrockLauncher.Classes
             get
             {
                 Depends.On(IsBeta, Name, Architecture);
-                return Name + (IsBeta ? " (Beta)" : "") + (Constants.CurrentArchitecture != Architecture ? $" [{Architecture}]" : "");
+                return Name + (IsBeta ? " (Beta)" : "") + (!Constants.CurrentArchitecture.Equals(Architecture) ? $" [{Architecture}]" : "");
             }
         }
         public string InstallationSize

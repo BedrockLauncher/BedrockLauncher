@@ -242,7 +242,7 @@ namespace BedrockLauncher.Downloaders
                             }
                             catch (Exception ex)
                             {
-                                System.Diagnostics.Debug.WriteLine(ex);
+                                System.Diagnostics.Trace.WriteLine(ex);
                             }
 
 
@@ -277,7 +277,7 @@ namespace BedrockLauncher.Downloaders
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex);
+                System.Diagnostics.Trace.WriteLine(ex);
                 IsRefreshable = true;
             }
         }
@@ -357,7 +357,7 @@ namespace BedrockLauncher.Downloaders
 
                     if (ListRequestData.@continue != null) cmcontinue = ListRequestData.@continue.cmcontinue;
                 }
-                catch (Exception ex) { System.Diagnostics.Debug.WriteLine(ex); }
+                catch (Exception ex) { System.Diagnostics.Trace.WriteLine(ex); }
 
                 if (first_request) first_request = false;
             }

@@ -68,6 +68,9 @@
     <None Update="app.manifest">
       <SubType>Designer</SubType>
     </None>
+    <None Update="nlog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
@@ -94,6 +97,7 @@
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="MimeMapping" Version="1.0.1.37" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="NLog" Version="4.7.13" />
     <PackageReference Include="nulastudio.NetCoreBeauty" Version="1.2.9.3" />
     <PackageReference Include="PostSharp.Patterns.Model" Version="6.10.5" />
     <PackageReference Include="RestSharp">
@@ -106,6 +110,7 @@
     <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.261602">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="6.0.0" />
     <PackageReference Include="VirtualizingWrapPanel" Version="1.5.7" />
   </ItemGroup>
   <ItemGroup>
@@ -563,16 +568,8 @@
     <Page Remove="Controls\Various\LoadingAnimation.xaml" />
     <Page Remove="Data\Versions.xaml" />
   </ItemGroup>
+  <PropertyGroup />
   <PropertyGroup>
-    <PreBuildEvent>if $(Configuration) == Publish (
-rmdir "$(MSBuildProjectDirectory)\bin\$(Configuration)\" /s /q
-)</PreBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PostBuildEvent>if $(Configuration) == Publish (
-"$(SolutionDir)solution_binaries\publisher\publisher.exe" "$(MSBuildProjectDirectory)\bin\$(Configuration)\"
-)
-</PostBuildEvent>
     <EnforceCodeStyleInBuild>False</EnforceCodeStyleInBuild>
     <BaseOutputPath>bin\</BaseOutputPath>
     <PlatformTarget>AnyCPU</PlatformTarget>

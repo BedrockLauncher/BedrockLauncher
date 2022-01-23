@@ -17,6 +17,7 @@ using System.Runtime.InteropServices;
 using System.Collections.Generic;
 using static BedrockLauncher.UpdateProcessor.Handlers.VersionManager;
 using BedrockLauncher.UpdateProcessor.Handlers;
+using System.Text.RegularExpressions;
 
 namespace BedrockLauncher.Downloaders
 {
@@ -58,7 +59,10 @@ namespace BedrockLauncher.Downloaders
 
             //Add Versions to ObservableCollection, then Sort them
             foreach (var entry in VersionDB.GetVersions())
-                versions.Add(new BLVersion(entry.GetUUID().ToString(), entry.GetVersion(), entry.GetIsBeta(), entry.GetArchitecture()));
+            {
+                versions.Add(new BLVersion(entry.GetUUID().ToString(), GetRealVersion(entry.GetVersion()), entry.GetIsBeta(), entry.GetArchitecture()));
+            }
+                
             versions.Sort((x, y) => x.Compare(y));
 
 
@@ -71,6 +75,14 @@ namespace BedrockLauncher.Downloaders
 
             versions.Insert(0, latest_beta);
             versions.Insert(0, latest_release);
+
+            string GetRealVersion(string versionS)
+            {
+                if (MinecraftVersion.TryParse(versionS, out MinecraftVersion version)) return version.ToRealString();
+                else return new Version(0, 0, 0, 0).ToString();
+            }
         }
+
+
     }
 }

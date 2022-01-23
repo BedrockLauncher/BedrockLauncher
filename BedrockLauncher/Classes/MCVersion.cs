@@ -40,13 +40,12 @@ namespace BedrockLauncher.Classes
         public string Architecture { get; set; }
         public bool IsBeta { get; set; }
 
-
         public int Compare(MCVersion y)
         {
             try
             {
-                var a = MinecraftVersion.Parse(this.Name);
-                var b = MinecraftVersion.Parse(y.Name);
+                var a = Version.Parse(this.Name);
+                var b = Version.Parse(y.Name);
                 return b.CompareTo(a);
             }
             catch

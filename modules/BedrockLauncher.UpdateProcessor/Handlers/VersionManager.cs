@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -30,10 +31,9 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
 
         private HttpClient HttpClient = new HttpClient();
         private StoreNetwork StoreNetwork = new StoreNetwork();
-        private Dictionary<Guid, IVersionInfo> Versions = new Dictionary<Guid, IVersionInfo>();
+        private List<IVersionInfo> Versions = new List<IVersionInfo>();
 
-        public List<IVersionInfo> GetVersions() => Versions.Values.ToList();
-
+        public List<IVersionInfo> GetVersions() => Versions.ToList();
         public void Init(int _userTokenIndex, string _winstoreDBFile, string _winstoreDBTechnicalFile, string _communityDBFile, string _communityDBTechnicalFile)
         {
             UserTokenIndex = _userTokenIndex;
@@ -48,7 +48,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             string link = await StoreNetwork.getDownloadLink(updateIdentity, revisionNumber, true);
             if (link == null)
                 throw new ArgumentException(string.Format("Bad updateIdentity for {0}", versionName));
-            System.Diagnostics.Debug.WriteLine("Resolved download link: " + link);
+            Trace.WriteLine("Resolved download link: " + link);
 
             using (var resp = await HttpClient.GetAsync(link, HttpCompletionOption.ResponseHeadersRead, cancellationToken))
             {
@@ -98,61 +98,124 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
 
         private async Task UpdateDBFromURL(IVersionDb db, string filePath, string url)
         {
-            var resp = await HttpClient.GetAsync(url);
-            resp.EnsureSuccessStatusCode();
-            var data = await resp.Content.ReadAsStringAsync();
-            db.PraseRaw(data, GetVersionArches());
-            db.Save(filePath);
-            InsertVersionsFromDB(db);
+            try
+            {
+                var resp = await HttpClient.GetAsync(url);
+                resp.EnsureSuccessStatusCode();
+                var data = await resp.Content.ReadAsStringAsync();
+                db.PraseRaw(data, GetVersionArches());
+                db.Save(filePath);
+                InsertVersionsFromDB(db);
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine("UpdateDBFromURL Failed!");
+                Trace.WriteLine("File: " + filePath);
+                Trace.WriteLine("Url: " + url);
+                Trace.WriteLine(ex);
+            }
         }
         private async Task UpdateDBFromStore(IVersionDb db, string filePath)
         {
-            await UpdateDB(true);
-            await UpdateDB(false);
-            db.Save(filePath);
-            InsertVersionsFromDB(db);
+            try
+            {
+                await UpdateDB(true);
+                await UpdateDB(false);
+                db.Save(filePath);
+                InsertVersionsFromDB(db);
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine("UpdateDBFromStore Failed!");
+                Trace.WriteLine("File: " + filePath);
+                Trace.WriteLine(ex);
+            }
+
 
             async Task UpdateDB(bool isBeta)
             {
-                var config = await StoreNetwork.fetchConfigLastChanged();
-                var cookie = await StoreNetwork.fetchCookie(config, isBeta);
-                var knownVersions = db.GetVersions().ConvertAll(x => x.GetUUID().ToString());
-                var results = await StoreManager.CheckForVersions(StoreNetwork, cookie, knownVersions, isBeta);
-                db.AddVersion(results, isBeta);
+                try
+                {
+                    var config = await StoreNetwork.fetchConfigLastChanged();
+                    var cookie = await StoreNetwork.fetchCookie(config, isBeta);
+                    var knownVersions = db.GetVersions().ConvertAll(x => x.GetUUID().ToString());
+                    var results = await StoreManager.CheckForVersions(StoreNetwork, cookie, knownVersions, isBeta);
+                    db.AddVersion(results, isBeta);
+                }
+                catch (Exception ex)
+                {
+                    Trace.WriteLine("UpdateDBFromStore.UpdateDB Failed!");
+                    Trace.WriteLine("File: " + filePath);
+                    Trace.WriteLine("isBeta: " + isBeta);
+                    Trace.WriteLine(ex);
+                }
+
             }
         }
         private VersionJsonDb LoadJsonDBVersions(string filePath)
         {
-            VersionJsonDb db = new VersionJsonDb();
-            db.ReadJson(filePath, GetVersionArches());
-            db.WriteJson(filePath);
-            InsertVersionsFromDB(db);
-            return db;
+            try
+            {
+                VersionJsonDb db = new VersionJsonDb();
+                db.ReadJson(filePath, GetVersionArches());
+                db.WriteJson(filePath);
+                InsertVersionsFromDB(db);
+                return db;
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine("LoadJsonDBVersions Failed! Generating Blank VersionJsonDb");
+                Trace.WriteLine("File: " + filePath);
+                Trace.WriteLine(ex);
+                return new VersionJsonDb();
+            }
+
         }
         private VersionTextDb LoadTextDBVersions(string filePath)
         {
-            VersionTextDb db = new VersionTextDb();
-            db.ReadFile(filePath);
-            InsertVersionsFromDB(db);
-            return db;
+            try
+            {
+                VersionTextDb db = new VersionTextDb();
+                db.ReadFile(filePath);
+                InsertVersionsFromDB(db);
+                return db;
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine("LoadTextDBVersions Failed! Generating Blank VersionTextDb");
+                Trace.WriteLine("File: " + filePath);
+                Trace.WriteLine(ex);
+                return new VersionTextDb();
+            }
+
         }
 
         private void InsertVersionsFromDB(IVersionDb db)
         {
             foreach (var version in db.GetVersions())
             {
-                if (!Versions.ContainsKey(version.GetUUID()))
-                    Versions.Add(version.GetUUID(), version);
+                if (!MinecraftVersion.TryParse(version.GetVersion(), out MinecraftVersion ver)) continue;
+                if (Versions.Exists(x => x.GetUUID() == version.GetUUID())) continue;
+                if (Versions.Exists(x => x.GetVersion() == version.GetVersion() && x.GetArchitecture() == version.GetArchitecture())) continue;
+                if (ver.Revision == 0) Versions.Add(version);
             }
         }
         private async Task EnableUserAuthorization()
         {
-            var token = await Task.Run(() => AuthenticationManager.Default.GetWUToken(UserTokenIndex));
-            StoreNetwork.setMSAUserToken(token);
+            try
+            {
+                var token = await Task.Run(() => AuthenticationManager.Default.GetWUToken(UserTokenIndex));
+                StoreNetwork.setMSAUserToken(token);
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine(ex.ToString());
+            }
+
         }
         private Dictionary<Guid, string> GetVersionArches()
         {
-            return Versions.ToDictionary(x => x.Key, x => x.Value.GetArchitecture());
+            return Versions.ToDictionary(x => x.GetUUID(), x => x.GetArchitecture());
         }
     }
 }

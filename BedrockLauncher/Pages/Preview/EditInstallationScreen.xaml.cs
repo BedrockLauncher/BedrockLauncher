@@ -118,8 +118,10 @@ namespace BedrockLauncher.Pages.Preview
             if (e.Item is MCVersion)
             {
                 var version = (e.Item as MCVersion);
-                e.Accepted = version.Architecture == Constants.CurrentArchitecture;
+                if (version.Architecture.Equals(Constants.CurrentArchitecture)) e.Accepted = true;
+                else e.Accepted = false;
             }
+            else e.Accepted = false;
         }
     }
 }

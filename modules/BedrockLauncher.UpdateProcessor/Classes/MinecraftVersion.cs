@@ -112,5 +112,40 @@ namespace BedrockLauncher.UpdateProcessor.Classes
             }
             else return new MinecraftVersion(0, 0, 0, 0);
         }
+
+        public string ToRealString()
+        {
+            int major;
+            int minor;
+            int patch;
+            int revision;
+
+            int major_i = Convert.ToInt32(Major);
+            int minor_i = Convert.ToInt32(Minor);
+            int patch_i = Convert.ToInt32(Patch);
+
+            if (major_i == 0 && minor_i < 1000)
+            {
+                major = major_i;
+                minor = minor_i / 10;
+                patch = minor_i % 10;
+                revision = patch_i;
+            }
+            else if (major_i == 0)
+            {
+                major = major_i;
+                minor = minor_i / 100;
+                patch = minor_i % 100;
+                revision = patch_i;
+            }
+            else
+            {
+                major = major_i;
+                minor = minor_i;
+                patch = patch_i / 100;
+                revision = patch_i % 100;
+            }
+            return $"{major}.{minor}.{patch}.{revision}";
+        }
     }
 }

@@ -61,7 +61,7 @@ namespace BedrockLauncher.Components.CefSharp
                         catch (Exception ex)
                         {
                             callback.Cancel();
-                            System.Diagnostics.Debug.WriteLine(ex);
+                            System.Diagnostics.Trace.WriteLine(ex);
                         }
 
                     }
@@ -70,7 +70,7 @@ namespace BedrockLauncher.Components.CefSharp
             else
             {
                 callback.Cancel();
-                System.Diagnostics.Debug.WriteLine($"SKINVIEWRESOURCESCHEMEHANDLER: Could not find \'{resourceName}\'!");
+                System.Diagnostics.Trace.WriteLine($"SKINVIEWRESOURCESCHEMEHANDLER: Could not find \'{resourceName}\'!");
             }
 
             return CefReturnValue.ContinueAsync;

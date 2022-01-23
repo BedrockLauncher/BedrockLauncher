@@ -139,7 +139,7 @@ namespace BedrockLauncher.Handlers
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex);
+                System.Diagnostics.Trace.WriteLine(ex);
                 return false;
             }
         }
@@ -155,7 +155,7 @@ namespace BedrockLauncher.Handlers
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex);
+                System.Diagnostics.Trace.WriteLine(ex);
                 return string.Empty;
             }
         }

@@ -11,6 +11,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using BedrockLauncher.Classes;
 using System.Windows.Input;
+using BedrockLauncher.Handlers;
 
 namespace BedrockLauncher
 {
@@ -21,7 +22,7 @@ namespace BedrockLauncher
     {
         public App() : base()
         {
-
+            this.DispatcherUnhandledException += RuntimeHandler.OnDispatcherUnhandledException;
         }
     }
 }

@@ -59,7 +59,7 @@ namespace BedrockLauncher.Controls.Items.Launcher
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex);
+                System.Diagnostics.Trace.WriteLine(ex);
             }
             GetParent().UpdateLocalizationList();
         }

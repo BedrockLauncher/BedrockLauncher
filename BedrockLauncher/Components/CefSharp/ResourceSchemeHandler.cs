@@ -62,7 +62,7 @@ namespace BedrockLauncher.Components.CefSharp
                         catch (Exception ex)
                         {
                             callback.Cancel();
-                            System.Diagnostics.Debug.WriteLine(ex);
+                            System.Diagnostics.Trace.WriteLine(ex);
                         }
 
                     }

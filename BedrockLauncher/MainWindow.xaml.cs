@@ -210,8 +210,8 @@ namespace BedrockLauncher
                     }
                     catch (Exception ex)
                     {
-                        Debug.WriteLine(string.Format("CantFindJavaLauncher: {0}", JavaPath));
-                        Debug.WriteLine(ex);
+                        Trace.WriteLine(string.Format("CantFindJavaLauncher: {0}", JavaPath));
+                        Trace.WriteLine(ex);
                         MainPage.NavigateToPlayScreen();
                         ErrorScreenShow.errormsg("Error_CantFindJavaLauncher_Title", "Error_CantFindJavaLauncher", ex);
                     }
@@ -235,8 +235,8 @@ namespace BedrockLauncher
                     }
                     catch (Exception ex)
                     {
-                        Debug.WriteLine(string.Format("CantFindExternalLauncher:\n\nPath: {0}\nArguments: {1}", LauncherPath, Arguments));
-                        Debug.WriteLine(ex);
+                        Trace.WriteLine(string.Format("CantFindExternalLauncher:\n\nPath: {0}\nArguments: {1}", LauncherPath, Arguments));
+                        Trace.WriteLine(ex);
                         MainPage.NavigateToPlayScreen();
                         ErrorScreenShow.errormsg("Error_CantFindExternalLauncher_Title", "Error_CantFindExternalLauncher", ex);
                     }

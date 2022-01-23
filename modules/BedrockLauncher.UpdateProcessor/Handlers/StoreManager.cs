@@ -19,12 +19,12 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             }
             catch (SOAPError e) 
             {
-                System.Diagnostics.Debug.WriteLine(string.Format("SOAP ERROR: {0}", e.code));
+                System.Diagnostics.Trace.WriteLine(string.Format("SOAP ERROR: {0}", e.code));
                 return new List<UpdateInfo>();
             }
             catch (Exception e)
             {
-                System.Diagnostics.Debug.WriteLine(string.Format("Win10 version check failed: {0}", e.ToString()));
+                System.Diagnostics.Trace.WriteLine(string.Format("Win10 version check failed: {0}", e.ToString()));
                 return new List<UpdateInfo>();
             }
             bool hasAnyNewVersions = false;
@@ -50,7 +50,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
 
                     string mergedString = e.serverId + " " + e.updateId + " " + e.packageMoniker;
                     if (knownVersions.Exists(x => x == e.updateId)) continue;
-                    if (verbose) System.Diagnostics.Debug.WriteLine(string.Format("New UWP version: {0}", mergedString));
+                    if (verbose) System.Diagnostics.Trace.WriteLine(string.Format("New UWP version: {0}", mergedString));
                     hasAnyNewVersions = true;
                     knownVersions.Add(mergedString);
                     newUpdates.Add(e);

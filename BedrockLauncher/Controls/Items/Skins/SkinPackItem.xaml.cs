@@ -142,7 +142,7 @@ namespace BedrockLauncher.Controls.Items.Skins
                 }
                 catch (Exception ex)
                 {
-                    System.Diagnostics.Debug.WriteLine(ex);
+                    System.Diagnostics.Trace.WriteLine(ex);
                 }
                 GetParent().ReloadSkinPacks();
             }

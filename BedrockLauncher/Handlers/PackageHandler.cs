@@ -360,7 +360,7 @@ namespace BedrockLauncher.Handlers
             }
             catch (Exception e)
             {
-                System.Diagnostics.Debug.WriteLine("Error while Authenticating UserToken for Version Fetching:\n" + e);
+                System.Diagnostics.Trace.WriteLine("Error while Authenticating UserToken for Version Fetching:\n" + e);
                 throw new BetaAuthenticationFailedException(e);
             }
         }
@@ -485,14 +485,14 @@ namespace BedrockLauncher.Handlers
 
             void SetError(Exception ex2, string debugMessage, string dialogTitle, string dialogText)
             {
-                Debug.WriteLine(debugMessage + ":\n" + ex2.ToString());
+                Trace.WriteLine(debugMessage + ":\n" + ex2.ToString());
                 ErrorScreenShow.errormsg(dialogTitle, dialogText, ex2);
                 SetTaskState(false);
             }
         }
         protected void DebugLog(string message)
         {
-            Debug.WriteLine(message);
+            Trace.WriteLine(message);
         }
 
 

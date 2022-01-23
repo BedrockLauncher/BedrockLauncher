@@ -163,7 +163,7 @@ namespace BedrockLauncher.Controls.Skins
                 }
                 catch (Exception ex)
                 {
-                    System.Diagnostics.Debug.WriteLine(ex);
+                    System.Diagnostics.Trace.WriteLine(ex);
                 }
             });
         }

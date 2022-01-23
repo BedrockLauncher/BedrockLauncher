@@ -31,7 +31,7 @@ namespace BedrockLauncher.Handlers
                 {
                     var dirData = GenerateStrings();
                     if (!Directory.Exists(dirData.Item2)) Directory.CreateDirectory(dirData.Item2);
-                    System.Diagnostics.Debug.WriteLine("Moving backup Minecraft data to: " + dirData.Item2);
+                    System.Diagnostics.Trace.WriteLine("Moving backup Minecraft data to: " + dirData.Item2);
 
                     RestoreCopy(dataPath, dirData.Item2);
 

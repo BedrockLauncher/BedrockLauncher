@@ -97,7 +97,7 @@ namespace BedrockLauncher.Handlers
         public async Task<bool> CheckForUpdatesAsync(bool onLoad = false)
         {
             if (onLoad && Debugger.IsAttached && !Constants.Debugging.CheckForUpdatesOnLoad) return false;
-            System.Diagnostics.Debug.WriteLine("Checking for updates");
+            System.Diagnostics.Trace.WriteLine("Checking for updates");
             try
             {
                 ReleaseNotes.Clear();
@@ -109,7 +109,7 @@ namespace BedrockLauncher.Handlers
             }
             catch (Exception err)
             {
-                System.Diagnostics.Debug.WriteLine("Check for updates failed\nError:" + err.Message);
+                System.Diagnostics.Trace.WriteLine("Check for updates failed\nError:" + err.Message);
                 return false;
             }
         }
@@ -133,7 +133,7 @@ namespace BedrockLauncher.Handlers
         #region Button
         public void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("Trying to update");
+            System.Diagnostics.Trace.WriteLine("Trying to update");
             StartUpdate();
         }
 
@@ -143,15 +143,15 @@ namespace BedrockLauncher.Handlers
         {
             string OnlineTag = GetLatestTag();
             string LocalTag = BedrockLauncher.Core.Properties.Settings.Default.Version;
-            System.Diagnostics.Debug.WriteLine("Current tag: " + LocalTag);
-            System.Diagnostics.Debug.WriteLine("Latest tag: " + OnlineTag);
+            System.Diagnostics.Trace.WriteLine("Current tag: " + LocalTag);
+            System.Diagnostics.Trace.WriteLine("Latest tag: " + OnlineTag);
 
             try
             {
                 // if current tag < than latest tag
                 if (int.Parse(LocalTag.Replace(".", "")) < int.Parse(OnlineTag.Replace(".", "")))
                 {
-                    System.Diagnostics.Debug.WriteLine("New version available!");
+                    System.Diagnostics.Trace.WriteLine("New version available!");
                     ViewModels.MainViewModel.Default.UpdateButton.ShowUpdateButton();
                 }
             }
@@ -203,7 +203,7 @@ namespace BedrockLauncher.Handlers
             }
             catch (Exception err)
             {
-                System.Diagnostics.Debug.WriteLine("Installer launch failed\nError: " + err);
+                System.Diagnostics.Trace.WriteLine("Installer launch failed\nError: " + err);
             }
         }
 
