@@ -58,8 +58,7 @@ namespace BedrockLauncher.Handlers
         }
         public static bool Filter_VersionList(object obj)
         {
-            BLVersion v = BLVersion.Convert(obj as MCVersion);
-
+            MCVersion v = (obj as MCVersion);
             if (v != null && v.IsInstalled)
             {
                 if (Properties.LauncherSettings.Default.ShowBetas && v.IsBeta) return true;

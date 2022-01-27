@@ -44,7 +44,7 @@
                         <TextBlock Margin="0,28,0,5" Text="{DynamicResource EditInstallationScreen_VersionSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                         <ComboBox Height="32" x:Name="InstallationVersionSelect" ItemsSource="{Binding Source={StaticResource Versions}, IsAsync=True}" SelectedValue="{Binding SelectedVersionUUID, Mode=TwoWay}" SelectedValuePath="UUID" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource GenericComboBoxStyle}" Foreground="White" Padding="13,0,0,0" SelectedIndex="1" FontSize="14">
                             <ComboBox.ItemTemplate>
-                                <DataTemplate DataType="{x:Type classes:BLVersion}">
+                                <DataTemplate DataType="{x:Type classes:MCVersion}">
                                     <TextBlock Style="{DynamicResource CommonTextblock}" Text="{Binding DisplayName}"></TextBlock>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>

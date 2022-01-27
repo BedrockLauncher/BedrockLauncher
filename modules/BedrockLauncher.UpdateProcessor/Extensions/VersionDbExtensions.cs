@@ -11,13 +11,18 @@ namespace BedrockLauncher.UpdateProcessor.Extensions
 {
     public class VersionDbExtensions
     {
-        public const string FallbackArch = "???";
+        public static string FallbackArch => "???";
         public static string GetVersionArch(string packageMoniker)
         {
             Regex regex = new Regex(@"(Microsoft\.MinecraftUWP_([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)_(.*)__8wekyb3d8bbwe.*)");
             Match match = regex.Match(packageMoniker);
             if (match == null) return FallbackArch;
             return match.Groups[6].Value;
+        }
+        public static bool DoesVerionArchMatch(string sourceArch, string targetArch)
+        {
+            bool result = sourceArch.Equals(targetArch);
+            return result; 
         }
     }
 }

@@ -17,7 +17,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
 {
     public class VersionManager
     {
-        public delegate void DownloadProgress(long current, long? total);
+        public delegate void DownloadProgress(long current, long total);
 
         private int UserTokenIndex = 0;
 
@@ -53,22 +53,46 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             using (var resp = await HttpClient.GetAsync(link, HttpCompletionOption.ResponseHeadersRead, cancellationToken))
             {
                 using (var inStream = await resp.Content.ReadAsStreamAsync())
-                using (var outStream = new FileStream(destination, FileMode.Create))
                 {
-                    long? totalSize = resp.Content.Headers.ContentLength;
-                    progress(0, totalSize);
-                    long transferred = 0;
-                    byte[] buf = new byte[1024 * 1024];
-                    while (true)
+                    using (var outStream = new FileStream(destination, FileMode.Create))
                     {
-                        int n = await inStream.ReadAsync(buf, 0, buf.Length, cancellationToken);
-                        if (n == 0)
-                            break;
-                        await outStream.WriteAsync(buf, 0, n, cancellationToken);
-                        transferred += n;
-                        progress(transferred, totalSize);
+                        long totalSize = resp.Content.Headers.ContentLength.Value;
+                        progress(0, totalSize);
+                        long transferred = 0;
+                        byte[] buf = new byte[1024 * 1024];
+
+                        Task task = null;
+                        CancellationTokenSource ts = new CancellationTokenSource();
+
+                        while (true)
+                        {
+                            int n = await inStream.ReadAsync(buf, 0, buf.Length, cancellationToken);
+                            if (n == 0)
+                                break;
+                            await outStream.WriteAsync(buf, 0, n, cancellationToken);
+                            transferred += n;
+                            UpdateProgress(ref task, ref ts, transferred, totalSize);
+
+                        }
                     }
                 }
+            }
+
+            void UpdateProgress(ref Task task, ref CancellationTokenSource ts, long transferred, long totalSize)
+            {
+                if (task != null)
+                {
+                    if (!task.IsCompleted) ts.Cancel();
+                    task = null;
+                    ts = new CancellationTokenSource();
+                }
+                if (task == null)
+                {
+                    task = new Task(() => progress(transferred, totalSize), ts.Token);
+                }
+
+
+                task.Start();
             }
         }
         public async Task LoadVersions(bool getNewVersions)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BedrockLauncher.Enums
 {
-    public enum LauncherStateChange
+    public enum LauncherState
     {
         None,
         isInitializing,
@@ -16,6 +16,7 @@ namespace BedrockLauncher.Enums
         isDownloading,
         isBackingUp,
         isRemovingPackage,
-        isRegisteringPackage
+        isRegisteringPackage,
+        isCanceling
     }
 }

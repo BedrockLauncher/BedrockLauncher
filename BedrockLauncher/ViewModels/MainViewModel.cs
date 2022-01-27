@@ -58,11 +58,11 @@ namespace BedrockLauncher.ViewModels
         #region Properties
 
         public static UpdateHandler Updater { get; set; } = new UpdateHandler();
-        public UserInterfaceModel InterfaceState { get; set; } = new UserInterfaceModel();
+        public ProgressBarModel ProgressBarState { get; set; } = new ProgressBarModel();
         public PathHandler FilePaths { get; private set; } = new PathHandler();
         public PackageHandler PackageManager { get; set; } = new PackageHandler();
         public MCProfilesList Config { get; private set; } = new MCProfilesList();
-        public ObservableCollection<BLVersion> Versions { get; private set; } = new ObservableCollection<BLVersion>();
+        public ObservableCollection<MCVersion> Versions { get; private set; } = new ObservableCollection<MCVersion>();
 
 
         private bool AllowedToCloseWithGameOpen { get; set; } = false;
@@ -95,8 +95,8 @@ namespace BedrockLauncher.ViewModels
             });
         }
         public async void KillGame() => await PackageManager.ClosePackage();
-        public async void RepairVersion(BLVersion v) => await PackageManager.DownloadPackage(v);
-        public async void RemoveVersion(BLVersion v) => await PackageManager.RemovePackage(v);
+        public async void RepairVersion(MCVersion v) => await PackageManager.DownloadPackage(v);
+        public async void RemoveVersion(MCVersion v) => await PackageManager.RemovePackage(v);
         public async void Play(MCProfile p, BLInstallation i, bool KeepLauncherOpen, bool Save = true)
         {
             if (i == null) return;

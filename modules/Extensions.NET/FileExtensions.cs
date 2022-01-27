@@ -13,6 +13,7 @@ namespace Extensions
 {
     public static class FileExtensions
     {
+
         public static string GetAvaliableFileName(string fileName, string directory, string format = "_{0}")
         {
             int i = 0;
@@ -55,6 +56,8 @@ namespace Extensions
                 progress.Report(totalRead);
             }
         }
+
+
 
         public static bool IsFileInUse(string fileFullPath, bool throwIfNotExists)
         {

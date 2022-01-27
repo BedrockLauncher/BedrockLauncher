@@ -15,84 +15,93 @@ namespace BedrockLauncher.Handlers
 {
     public static class BackupHandler
     {
-        public static void BackupOriginalSaveData()
+        public static async Task BackupOriginalSaveData()
         {
-            MainViewModel.Default.InterfaceState.UpdateProgressBar(show: true, state: LauncherStateChange.isBackingUp);
-
-            try
+            await Task.Run(() =>
             {
-                var data = ApplicationDataManager.CreateForPackageFamily(Constants.MINECRAFT_PACKAGE_FAMILY);
-                string dataPath;
+                MainViewModel.Default.ProgressBarState.SetProgressBarVisibility(true);
+                MainViewModel.Default.ProgressBarState.SetProgressBarState(LauncherState.isBackingUp);
 
-                try { dataPath = Path.Combine(data.LocalFolder.Path, "games", "com.mojang"); }
-                catch { dataPath = string.Empty; }
-
-                if (dataPath != string.Empty)
+                try
                 {
-                    var dirData = GenerateStrings();
-                    if (!Directory.Exists(dirData.Item2)) Directory.CreateDirectory(dirData.Item2);
-                    System.Diagnostics.Trace.WriteLine("Moving backup Minecraft data to: " + dirData.Item2);
+                    var data = ApplicationDataManager.CreateForPackageFamily(Constants.MINECRAFT_PACKAGE_FAMILY);
+                    string dataPath;
 
-                    RestoreCopy(dataPath, dirData.Item2);
+                    try { dataPath = Path.Combine(data.LocalFolder.Path, "games", "com.mojang"); }
+                    catch { dataPath = string.Empty; }
 
-
-                    Application.Current.Dispatcher.Invoke(() => MainViewModel.Default.Config.Installation_Create(dirData.Item1, null, dirData.Item2));
-                }
-            }
-            catch (Exception ex) { ErrorScreenShow.exceptionmsg(ex); }
-
-            MainViewModel.Default.InterfaceState.UpdateProgressBar(show: false, state: LauncherStateChange.None);
-
-            Tuple<string, string> GenerateStrings(string name = "Recovery Data", string dir = "RecoveryData")
-            {
-                string recoveryName = name;
-                string recoveryDir = dir;
-                string directoryPath = string.Empty;
-                int i = 1;
-
-
-                while (i < 100)
-                {
-                    if (i != 1)
+                    if (dataPath != string.Empty)
                     {
-                        recoveryName = string.Format("{0} ({1})", name, i);
-                        recoveryDir = string.Format("{0}_{1}", dir, i);
+                        var dirData = GenerateStrings();
+                        if (!Directory.Exists(dirData.Item2)) Directory.CreateDirectory(dirData.Item2);
+                        System.Diagnostics.Trace.WriteLine("Moving backup Minecraft data to: " + dirData.Item2);
+
+                        RestoreCopy(dataPath, dirData.Item2);
+
+
+                        Application.Current.Dispatcher.Invoke(() => MainViewModel.Default.Config.Installation_Create(dirData.Item1, null, dirData.Item2));
                     }
-                    directoryPath = Path.Combine(MainViewModel.Default.FilePaths.GetInstallationsFolderPath(MainViewModel.Default.Config.CurrentProfileUUID, recoveryDir));
-                    if (!Directory.Exists(directoryPath)) break;
-                    i++;
                 }
+                catch (Exception ex) { ErrorScreenShow.exceptionmsg(ex); }
 
-                if (i >= 100) throw new Exception("Too many backups made");
+                MainViewModel.Default.ProgressBarState.ResetProgressBarProgress();
+                MainViewModel.Default.ProgressBarState.SetProgressBarState(LauncherState.None);
+                MainViewModel.Default.ProgressBarState.SetProgressBarVisibility(false);
 
-                return new Tuple<string, string>(recoveryName, directoryPath);
-
-            }
-
-            void RestoreCopy(string from, string to)
-            {
-                int Total = Directory.GetFiles(from, "*", SearchOption.AllDirectories).Length;
-
-                MainViewModel.Default.InterfaceState.UpdateProgressBar(totalProgress: Total, progress: 0);
-
-                RestoreCopy_Step(from, to);
-            }
-
-            void RestoreCopy_Step(string from, string to)
-            {
-                foreach (var f in Directory.EnumerateFiles(from))
+                Tuple<string, string> GenerateStrings(string name = "Recovery Data", string dir = "RecoveryData")
                 {
-                    string ft = Path.Combine(to, Path.GetFileName(f));
-                    File.Copy(f, ft);
-                    MainViewModel.Default.InterfaceState.ProgressBar_CurrentProgress += 1;
+                    string recoveryName = name;
+                    string recoveryDir = dir;
+                    string directoryPath = string.Empty;
+                    int i = 1;
+
+
+                    while (i < 100)
+                    {
+                        if (i != 1)
+                        {
+                            recoveryName = string.Format("{0} ({1})", name, i);
+                            recoveryDir = string.Format("{0}_{1}", dir, i);
+                        }
+                        directoryPath = Path.Combine(MainViewModel.Default.FilePaths.GetInstallationsFolderPath(MainViewModel.Default.Config.CurrentProfileUUID, recoveryDir));
+                        if (!Directory.Exists(directoryPath)) break;
+                        i++;
+                    }
+
+                    if (i >= 100) throw new Exception("Too many backups made");
+
+                    return new Tuple<string, string>(recoveryName, directoryPath);
+
                 }
-                foreach (var f in Directory.EnumerateDirectories(from))
+
+                void RestoreCopy(string from, string to)
                 {
-                    string tp = Path.Combine(to, Path.GetFileName(f));
-                    Directory.CreateDirectory(tp);
-                    RestoreCopy_Step(f, tp);
+                    int Total = Directory.GetFiles(from, "*", SearchOption.AllDirectories).Length;
+                    int Current = 0;
+
+                    MainViewModel.Default.ProgressBarState.SetProgressBarProgress(totalProgress: Total, currentProgress: Current);
+
+                    RestoreCopy_Step(from, to, Current, Total);
                 }
-            }
+
+                void RestoreCopy_Step(string from, string to, int Total, int Current)
+                {
+                    foreach (var f in Directory.EnumerateFiles(from))
+                    {
+                        string ft = Path.Combine(to, Path.GetFileName(f));
+                        File.Copy(f, ft);
+                        Current += 1;
+                        MainViewModel.Default.ProgressBarState.SetProgressBarProgress(totalProgress: Total, currentProgress: Current);
+                    }
+                    foreach (var f in Directory.EnumerateDirectories(from))
+                    {
+                        string tp = Path.Combine(to, Path.GetFileName(f));
+                        Directory.CreateDirectory(tp);
+                        RestoreCopy_Step(f, tp, Current, Total);
+                    }
+                }
+            });
+
         }
 
 

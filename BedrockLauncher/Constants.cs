@@ -15,6 +15,8 @@ namespace BedrockLauncher
         public static readonly string LATEST_BETA_UUID = "latest_beta";
         public static readonly string LATEST_RELEASE_UUID = "latest_release";
 
+        public static readonly string BETA_VERSION_ICONPATH = @"/BedrockLauncher;component/resources/images/icons/ico/crafting_table_block_icon.ico";
+        public static readonly string RELEASE_VERSION_ICONPATH = @"/BedrockLauncher;component/resources/images/icons/ico/grass_block_icon.ico";
 
         private const string ThemesPathPrefix = @"pack://application:,,,/BedrockLauncher;component/resources/images/bg/play_screen/";
 
