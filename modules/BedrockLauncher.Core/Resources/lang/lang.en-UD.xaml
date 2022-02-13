@@ -79,10 +79,10 @@
     <v:String x:Key="Dungeons_InstallationPage_PathsTab">sɥʇɐԀ</v:String>
     <v:String x:Key="Dungeons_InstallationPage_GeneralTab">ꞁɐɹǝuǝ⅁</v:String>
     <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Insʇɐןן Sʇoɹǝ Ԁɐʇɔɥ</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">ɥɔʇɐԀ ǝɹoʇS ǝʇɐpd∩</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">ʞuı˥ ɔıןoqɯʎS ןןɐʇsuıu∩</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">ɥɔʇɐԀ ǝɹoʇS ǝʇɐpd</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">ʞuı˥ ɔıןoqɯʎS ןןɐʇsuıu</v:String>
     <v:String x:Key="Dungeons_InstallationPage_InstallModManager">ʞuı˥ ɔıןoqɯʎS ןןɐʇsuI</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">ǝɯɐƃ ǝʇɐpd∩/ɹıɐdǝᴚ</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">ǝɯɐƃ ǝʇɐpd∩/ɹıɐdǝ</v:String>
 
 
     <!--#endregion-->
@@ -367,11 +367,11 @@
     <v:String x:Key="Error_CantFindJavaLauncher_Title">ɹǝɥɔunɐꞁ ɥɔʇᴉʍs ʇou pꞁnoƆ</v:String>
     <v:String x:Key="Error_CantFindJavaLauncher">˙ Minecraft.net ɯoɹɟ ɹǝɥɔunɐꞁ ʇɟɐɹɔǝuᴉW ꞁɐuᴉᵷᴉɹo pǝꞁꞁɐʇsuᴉ ǝʌɐɥ noʎ ǝɹns ǝᗺ ˙ɹǝɥɔunɐꞁ puᴉɟ ʇou pꞁnoƆ</v:String>
 
-    <v:String x:Key="Error_AppReregisterFailed_Title">pǝןıɐɟ uoıʇɐɹʇsıƃǝɹ dd∀</v:String>
+    <v:String x:Key="Error_AppReregisterFailed_Title">pǝןıɐɟ uoıʇɐɹʇsıƃǝɹ dd</v:String>
     <v:String x:Key="Error_AppReregisterFailed">): uᴉɐᵷɐ ʎɹʇ ǝsɐǝꞁԀ</v:String>
 
-    <v:String x:Key="Error_AppDeregisteringFailed_Title">pǝןıɐɟ uoıʇɐɹʇsıƃǝɹ-ǝp dd∀</v:String>
-    <v:String x:Key="Error_AppDeregisteringFailed">): uıɐƃɐ ʎɹʇ ǝsɐǝןԀ</v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed_Title">pǝןıɐɟ uoıʇɐɹʇsıƃǝɹ-ǝp dd</v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed">): uıɐƃɐ ʎɹʇ ǝsɐǝן</v:String>
 
     <v:String x:Key="Error_AppLaunchFailed_Title">pǝꞁᴉɐɟ ɥɔunɐꞀ</v:String>
     <v:String x:Key="Error_AppLaunchFailed">): uᴉɐᵷɐ ʎɹʇ ǝsɐǝꞁԀ</v:String>
@@ -380,10 +380,10 @@
     <v:String x:Key="Error_AppDownloadFailed">): uᴉɐᵷɐ ʎɹʇ ǝsɐǝꞁԀ</v:String>
 
     <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">pǝןıɐɟ uoıʇɔǝɹıpǝɹ ǝʌɐS</v:String>
-    <v:String x:Key="Error_SaveDirectoryRedirectionFailed">): uıɐƃɐ ʎɹʇ ǝsɐǝןԀ</v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed">): uıɐƃɐ ʎɹʇ ǝsɐǝן</v:String>
 
-    <v:String x:Key="Error_AppUninstallFailed_Title">pǝןıɐɟ ןןɐʇsuıu∩</v:String>
-    <v:String x:Key="Error_AppUninstallFailed">): uıɐƃɐ ʎɹʇ ǝsɐǝןԀ</v:String>
+    <v:String x:Key="Error_AppUninstallFailed_Title">pǝןıɐɟ ןןɐʇsuıu</v:String>
+    <v:String x:Key="Error_AppUninstallFailed">): uıɐƃɐ ʎɹʇ ǝsɐǝן</v:String>
 
     <v:String x:Key="Error_AppExtractionFailed_Title">pǝꞁᴉɐɟ uoᴉʇɔɐɹʇxƎ</v:String>
     <v:String x:Key="Error_AppExtractionFailed">): uᴉɐᵷɐ ʎɹʇ ǝsɐǝꞁԀ</v:String>
