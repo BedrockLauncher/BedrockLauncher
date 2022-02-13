@@ -1,0 +1,603 @@
+﻿<?xml version="1.0"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ignore="http://www.galasoft.ch/ignore" xmlns:v="clr-namespace:System;assembly=mscorlib">
+    <!--#region Main Section-->
+
+    <v:String x:Key="LanguageString">Беларуская - Беларусь </v:String>
+
+    <!--#region MainWindow -->
+
+    <v:String x:Key="MainWindow_Title">Лаунчер Minecraft Bedrock</v:String>
+    <v:String x:Key="MainWindow_Disclaimer">НЕ ЗВЯЗАНЫ АБО НЕ АДОБРАНЫ MOJANG</v:String>
+
+    <!--#endregion-->
+    
+    <!-- #region CommunityPage -->
+
+    <v:String x:Key="CommunityPage_SupportText"></v:String>
+    <v:String x:Key="CommunityPage_ComingSoon">Будзе скора!</v:String>
+    <v:String x:Key="CommunityPage_CheckBackLater">Зазірні сюды пазней, каб даведацца пра нешта СУПЕР-ДЗІУНАЕ!</v:String>
+
+    <!-- #endregion -->
+
+    <!--#region ToolbarButtons -->
+
+    <v:String x:Key="ToolbarButtons_NewsButton_Text">Навіны</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Лаунчер Java</v:String>
+    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Кастамны лаунче</v:String>
+    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Пераключыцца на</v:String>
+    <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
+    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Супольнасць</v:String>
+    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Профіль</v:String>
+    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Налады</v:String>
+
+    <!--#endregion-->
+
+    <!--#region UpdateButton-->
+
+    <v:String x:Key="UpdateButton_NewUpdate_Text">Новае абнаўленне!</v:String>
+    <v:String x:Key="UpdateButton_Download_Text">Націсні, каб спампаваць!</v:String>
+
+    <!--#endregion-->
+
+    <!--#region ProgressBar -->
+
+    <v:String x:Key="ProgressBar_Downloading">Спампаванне</v:String>
+    <v:String x:Key="ProgressBar_Installing">Ўсталёўка</v:String>
+    <v:String x:Key="ProgressBar_Launching">Запуск</v:String>
+    <v:String x:Key="ProgressBar_Extracting">Выманне</v:String>
+    <v:String x:Key="ProgressBar_Uninstalling">Выдаленне</v:String>
+    <v:String x:Key="ProgressBar_RegisteringPackage">Рэгістрацыя пакета</v:String>
+    <v:String x:Key="ProgressBar_RemovingPackage">Адмена рэгістрацыі пакета</v:String>
+    <v:String x:Key="ProgressBar_BackingUp">Рэзервовае капіраванне захаваных дадзены</v:String>
+
+    <!--#endregion-->
+
+    <!--#region ProfileButton -->
+
+    <v:String x:Key="ProfileButton_ManageProfiles_Text">Кіраванне профілямі</v:String>
+    <v:String x:Key="ProfileButton_ProfileSettings_Text">Налады профілю</v:String>
+    <v:String x:Key="ProfileButton_AddProfile_Text">Дадаць профіль</v:String>
+    <v:String x:Key="ProfileButton_RemoveProfile_Text">Выдаліць профіль</v:String>
+    <v:String x:Key="ProfileButton_ChooseAccount_Text">ВЫБЕРЫ ПРОФІЛЬ</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+    
+    <!-- #region Dungeons Section -->
+
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant">GAME VARIANT</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Windows Launcher</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Steam</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Microsoft Store</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Default path&gt;</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">INSTALL LOCATION</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">SYMBOLIC MODS FOLDER LOCATION</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Instructions</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_PathsTab">Paths</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GeneralTab">General</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Install Store Patch</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Update Store Patch</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Uninstall Symbolic Link</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Install  Symbolic Link</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Repair/Update Game</v:String>
+
+
+    <!--#endregion-->
+
+    <!--#region Game Section -->
+
+    <!--#region GameTab -->
+
+    <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
+    <v:String x:Key="GameTab_PlayButton_Text">Гуляць</v:String>
+    <v:String x:Key="GameTab_PlayButton_Kill_Text">Спыніць</v:String>
+    <v:String x:Key="GameTab_InstallationsButton_Text">Усталёўкі</v:String>
+    <v:String x:Key="GameTab_SkinsButton_Text">Скіны</v:String>
+    <v:String x:Key="GameTab_PatchNotesButton_Text">Спіс змен</v:String>
+
+    <!--#endregion-->
+
+    <!--#region InstallationsPage -->
+
+    <v:String x:Key="InstallationsPage_AddButton">Новая ўсталёўка</v:String>
+    <v:String x:Key="InstallationsPage_PlayButton">Гуляць</v:String>
+
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">Згуляна ў апошні раз</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name">Назве</v:String>
+
+    <v:String x:Key="InstallationsPage_SearchBar_Content">Імя ўсталёўкі</v:String>
+
+    <!--#endregion-->
+
+    <!--#region EditInstallationScreen -->
+
+    <v:String x:Key="EditInstallationScreen_Title">Стварыць новую ўсталёўк</v:String>
+    <v:String x:Key="EditInstallationScreen_AltTitle">Рэдагаваць ўсталёўк</v:String>
+
+    <v:String x:Key="EditInstallationScreen_CreateButton">Стварыць</v:String>
+    <v:String x:Key="EditInstallationScreen_AltCreateButton">Захаваць</v:String>
+
+    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Апошняя бэта</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestRelease">Апошні рэліз</v:String>
+
+    <v:String x:Key="EditInstallationScreen_NameSubtitle">НАЗВА</v:String>
+    <v:String x:Key="EditInstallationScreen_VersionSubtitle">ВЕРСІ</v:String>
+    <v:String x:Key="EditInstallationScreen_DirectorySubtitle">КАТАЛОГ</v:String>
+
+    <v:String x:Key="EditInstallationScreen_NameHintText">&lt;неназваная ўсталёўка&gt;</v:String>
+    <v:String x:Key="EditInstallationScreen_DirectoryHintText">&lt;шлях па змаўчанні&gt;</v:String>
+
+    <!--#endregion-->
+
+    <!--#region PatchNotesPage -->
+
+    <v:String x:Key="PatchNotesPage_MorePatchNotes">Боль</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">Больш (бэта)</v:String>
+
+    <!--#endregion-->
+
+    <!--#region SkinsPage -->
+
+    <v:String x:Key="SkinsPage_AddButton">Новы... </v:String>
+    <v:String x:Key="SkinsPage_ImportButton">Імпартаваць...</v:String>
+
+    <!--#endregion-->
+
+    <!--#region EditSkinScreen -->
+
+    <v:String x:Key="EditSkinScreen_Title">Рэдагаваць скін</v:String>
+    <v:String x:Key="EditSkinScreen_AltTitle">Дадаць скін</v:String>
+
+    <v:String x:Key="EditSkinScreen_TextureSubtitle">ТЭКСТУРА</v:String>
+    <v:String x:Key="EditSkinScreen_GeometrySubtitle">ГЕАМЕТРЫ</v:String>
+    <v:String x:Key="EditSkinScreen_TypeSubtitle">ТЫ</v:String>
+    <v:String x:Key="EditSkinScreen_LocalizationSubtitle">НАЗВА ЛАКАЛІЗАЦЫ</v:String>
+
+    <!--#endregion-->
+
+    <!--#region EditSkinPackScreen -->
+
+    <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">АПІСАННЕ</v:String>
+    <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">ГЕАМЕТРЫ</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">НАЗВА У ЛАКАЛІЗАЦЫ</v:String>
+    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">НАЗВА СЕРЫЯЛІЗАЦЫ</v:String>
+    <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">АЗНАЧЭННІ МОВЫ</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">НАЗВА МОВЫ</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">ІНШЫЯ АЗНАЧЭНН</v:String>
+    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">ЗМЕСТ</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">МОДУЛ</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">ВЕРСІЯ ФАРМАТУ</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">НАЗВА ПАКЕТА</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderUUIDSubtitle">UUID</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">ВЕРСІ</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">ТЫ</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">UUID</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">ВЕРСІ</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_Header">Рэдагаваць набор скіноў</v:String>
+    <v:String x:Key="EditSkinPackScreen_AddHeader">Дадаць набор скіноў</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_Warning">* Звярні ўвагу, што рэдагаванне азначэнняў мовы і змяненне значка пакета незваротныя, незалежна ад таго, захоўваеш ты змены ці не!!! </v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region News Section -->
+
+    <!--#region LauncherNewsPage -->
+
+    <v:String x:Key="LauncherNewsPage_Title_Text">Апошнія змены зборкі</v:String>
+    <v:String x:Key="LauncherNewsPage_Build_Text">Зборка</v:String>
+    <v:String x:Key="LauncherNewsPage_Changes_Text">Змены:</v:String>
+    <v:String x:Key="LauncherNewsPage_CheckForUpdates">Праверыць абнаўленні</v:String>
+    <v:String x:Key="LauncherNewsPage_ForceUpdate">Прымусовае абнаўленне</v:String>
+    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Бягучая</v:String>
+
+    <!--#endregion-->
+
+    <!--#region NewsScreenPage -->
+
+    <v:String x:Key="NewsScreen_LauncherTabTitle">Лаунче</v:String>
+    <v:String x:Key="NewsScreen_OfficialTabTitle">Афіцыйны</v:String>
+    <v:String x:Key="NewsScreen_MinecraftForumsTitle">Minecraft Forums</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
+
+    <v:String x:Key="NewsScreen_SearchBar_Content">Загаловак</v:String>
+
+    <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_BedrockCheckbox">Minecraft for Windows</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Settings Section -->
+
+    <!--#region SettingsTab -->
+
+    <v:String x:Key="SettingsTab_Title">НАЛАДЫ</v:String>
+    <v:String x:Key="SettingsTab_GeneralButton">Агульныя</v:String>
+    <v:String x:Key="SettingsTab_AccountsButton">Уліковыя запісы</v:String>
+    <v:String x:Key="SettingsTab_AboutButton">Інфармацыя</v:String>
+    <v:String x:Key="SettingsTab_VersionsButton">Версіі</v:String>
+
+    <!--#endregion-->
+
+    <!--#region GeneralSettingsScreen -->
+    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">МОВА</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">СТЫЛЬ ЛАУНЧАРА</v:String>
+
+
+    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">НАЛАДЫ ЛАУНЧАРА</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">НАЛАДЫ ЯРЛЫКОУ</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Выкарыстоўваць бэта-версію лаунчера</v:String>
+    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Пакідаць лаунчер адкрытым, пакуль запушчаны гульні</v:String>
+    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Зачыніць лаунчер пры яго змене</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Анімацыя пераходаў паміж старонкамі лаунчера</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Анімацыя кнопкі гульні на старонках лаунчера</v:String>
+    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Уключыць падтрымку Minecraft Dungeons (нясконч.)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Паказваць дадатковую інфармацыю пры ўсталяванні пакетаў</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
+    
+
+    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">НАЛАДЫ MINECRAFT: BEDROCK EDITION</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">ПАДТРЫМАЦЬ СТВАРАЛЬНІКА</v:String>
+
+    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">АБНАУЛЕННІ ЛАУНЧЕРА</v:String>
+
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Падтрымаць стваральніка</v:String>
+
+
+    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Уключыць эксперыментальнае перанакіраванне захавання</v:String>
+    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Схаваць ярлык лаунчера Java Edition</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Паказаць ярлык знешняга лаунчера</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BackupButton">Рэзервовае капіраванне захаваных дадзены</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Пашырыныя налады</v:String>
+
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">НАЛАДЫ ЗНЕШНЯГА ЛАУНЧЕРА</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">ШЛЯХ</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">НАЗВА</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">АРГУМЕНТЫ</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">ЗНАЧО</v:String>
+
+    <!--#endregion-->
+
+    <!--#region AcountsSettingsPage -->
+
+    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">АБРАНЫ УЛІКОВЫ ЗАПІС</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">НАЛАДЫ XBOX INSIDER</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Звычайныя налады</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Састарэлыя налады</v:String>
+    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Кіраванне ўліковымі запісамі</v:String>
+    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">НАЛАДЫ УЛІКОВАГА ЗАПІСУ</v:String>
+
+    <!--#endregion-->
+
+    <!--#region AboutPage -->
+
+    <v:String x:Key="AboutPage_Title">АБ ЛАУНЧЕРЕ MINECRAFT: BEDROCK EDITION</v:String>
+    <v:String x:Key="AboutPage_DevelopedBy_Text">РАСПРАЦАВАНЫ</v:String>
+    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">Заснавана ад работы</v:String>
+    <v:String x:Key="AboutPage_SpecialThanks_Text">АСАБЛИВАЯ ПАДЗЯКА</v:String>
+
+    <v:String x:Key="AboutPage_McMrArm_Text">За стварэнне арыгінальнага загрузніка Minecraft Windows 10 Version (з чаго вынікае гэтая распрацоўка)</v:String>
+    <v:String x:Key="AboutPage_BsCommunity_Text">За іх працу над SkinView3D, якая выкарыстоўваецца для прагляду скіна ў лаунчере</v:String>
+    <v:String x:Key="AboutPage_Mojang_Text">За Minecraft!!!</v:String>
+    <v:String x:Key="AboutPage_BsRepo_Text">Рэпазітар SkinView3D</v:String>
+    <v:String x:Key="AboutPage_CurrentBuild">Бягучая зборка: </v:String>
+
+    <!--#endregion-->
+
+    <!--#region AdvancedSettings -->
+
+    <v:String x:Key="AdvancedSettings_Title">Пашырыныя налады</v:String>
+    <v:String x:Key="AdvancedSettings_LauncherOptions_Text">НАЛАДЫ ЛАУНЧАРА</v:String>
+    <v:String x:Key="AdvancedSettings_PathSubtitle_Text">КАТАЛОГ ЗАХОУВАНН</v:String>
+    <v:String x:Key="AdvancedSettings_RestartButton_Text">Перазапусціць</v:String>
+    <v:String x:Key="AdvancedSettings_Notice_Text">* Усе налады патрабуюць перазапуску лаунчера</v:String>
+    <v:String x:Key="AdvancedSettings_PortableMode_Text">Уключыць партатыўны рэжым</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Dialog Section -->
+
+    <!--#region FirstLaunch -->
+
+    <v:String x:Key="FirstLaunch_WelcomeTitle">Вітаем!</v:String>
+    <v:String x:Key="FirstLaunch_WelcomeSubTitle">Вітаем у лаунчере Minecraft Bedrock!</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Ствары свой першы профіль!</v:String>
+    <v:String x:Key="FirstLaunch_AlmostThereTitle">Амаль гатова!</v:String>
+    <v:String x:Key="FirstLaunch_OneThingTitle">Яшчэ адзін момант...</v:String>
+    <v:String x:Key="FirstLaunch_OneThingSubtitle">Правер наступныя налады, каб пераканацца, што яны табе падабаюцца.</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountTitle">Выберы акаўнт Xbox Insider</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* Гэта будзе выкарыстоўвацца для праверкі і загрузкі бэта-версій. Ты павіннен выбраць у Xbox Insider Hub абраны уліковы запіс для загрузкі бэта-версій. Табе таксама можа спатрэбіцца перазагрузіць лаунчер альбо выдаліць Minecraft, каб загрузіць бэта-версію.</v:String>
+
+    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Перад выкарыстаннем настойліва рэкамендуецца стварыць рэзервовае капіяванне існуючых дадзеных, бо лаунчер замяняе зыходны каталог захавання дадзеных.
+
+ (Не хвалюйся, пры гэтым ты не страціш свае дадзеныя, ты страціш дадзеныя толькі ў тым выпадку, калі не зробіш іх копію)</v:String>
+
+    <v:String x:Key="FirstLaunch_InstallType_Header">Захаваць/Загрузіць дадзеныя лаунчера з:</v:String>
+    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">Фіксаваная папка (рэкамендуецца)</v:String>
+    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">Партатыўная/каранёвая папка</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Стварыць копію існуючых дадзены</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(РЭКАМЕНДУЕЦЦА)</v:String>
+    <v:String x:Key="FirstLaunch_CloseButton">Закрыць</v:String>
+    <v:String x:Key="FirstLaunch_BackButton">Назад</v:String>
+    <v:String x:Key="FirstLaunch_GoBackButton"></v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileText">ПРОФІЛЬ</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileButton">Стварыць</v:String>
+    <v:String x:Key="FirstLaunch_NextButton">Далей</v:String>
+    <v:String x:Key="FirstLaunch_DownloadButton">Спампаваць</v:String>
+    <v:String x:Key="FirstLaunch_FinishButton">Гатова</v:String>
+
+    <!--#endregion-->
+
+    <!--#region ErrorScreen -->
+
+    <v:String x:Key="ErrorScreen_Title">ПАМЫЛКА</v:String>
+    <v:String x:Key="ErrorScreen_SubTitle">Лаунчер аварыйна закрыўся</v:String>
+    <v:String x:Key="ErrorScreen_DefaultErrorMessage">Адбылася нечаканая праблема, і лаунчер пацярпел няўдачу. Прабач за нязручнасці!</v:String>
+    <v:String x:Key="ErrorScreen_CloseButton">Закрыць</v:String>
+    <v:String x:Key="ErrorScreen_ViewCrash">Праглядзець справаздачу аб падзенні</v:String>
+
+    <!--#endregion-->
+
+    <!--#region Errors -->
+
+    <v:String x:Key="Error_AuthenticationFailed_Title">Памылка аўтэнтыфікацыі</v:String>
+    <v:String x:Key="Error_AuthenticationFailed">Не атрымалася прайсці аўтэнтыфікацыю. Пераканайся, што твой уліковы запіс падпісаны на бэта-праграму.</v:String>
+
+    <v:String x:Key="Error_CantFindExternalLauncher_Title">Не атрымалася пераключыць лаунче</v:String>
+    <v:String x:Key="Error_CantFindExternalLauncher">Не атрымалася пераключыць лаунчер. Пераканайся, што шлях да лаунчера ўсталяваны правільна.</v:String>
+
+    <v:String x:Key="Error_CantFindJavaLauncher_Title">Не атрымалася пераключыць лаунче</v:String>
+    <v:String x:Key="Error_CantFindJavaLauncher">Не атрымалася знайсці лаунчер. Пераканайся, што ты ўсталявал арыгінальны лаунчер Minecraft з Minecraft.net .</v:String>
+
+    <v:String x:Key="Error_AppReregisterFailed_Title">App registration failed</v:String>
+    <v:String x:Key="Error_AppReregisterFailed">Будзь ласка, паспрабуй яшчэ раз :(</v:String>
+
+    <v:String x:Key="Error_AppDeregisteringFailed_Title">App de-registration failed</v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed">Please try again :(</v:String>
+
+    <v:String x:Key="Error_AppLaunchFailed_Title">Не атрымалася запусціць</v:String>
+    <v:String x:Key="Error_AppLaunchFailed">Будзь ласка, паспрабуй яшчэ раз :(</v:String>
+
+    <v:String x:Key="Error_AppDownloadFailed_Title">Не атрымалася спампаваць</v:String>
+    <v:String x:Key="Error_AppDownloadFailed">Будзь ласка, паспрабуй яшчэ раз :(</v:String>
+
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">Save redirection failed</v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed">Please try again :(</v:String>
+
+    <v:String x:Key="Error_AppUninstallFailed_Title">Uninstall failed</v:String>
+    <v:String x:Key="Error_AppUninstallFailed">Please try again :(</v:String>
+
+    <v:String x:Key="Error_AppExtractionFailed_Title">Не атрымалася распакаваць</v:String>
+    <v:String x:Key="Error_AppExtractionFailed">Будзь ласка, паспрабуй яшчэ раз :(</v:String>
+
+    <v:String x:Key="Error_CantFindPaidServerList_Title">Не атрымалася адкрыць укладку сервераў</v:String>
+    <v:String x:Key="Error_CantFindPaidServerList">Спіс платных сервераў не знойдзены.</v:String>
+
+    <v:String x:Key="Error_NotaSkinPack_Title">Немагчыма імпартаваць набор скіноў</v:String>
+    <v:String x:Key="Error_NotaSkinPack">Гэта не набор скіноў!</v:String>
+
+    <!--#endregion-->
+
+    <!--#region NewProfile -->
+
+    <v:String x:Key="NewProfile_GoBackButton"></v:String>
+    <v:String x:Key="NewProfile_CreateProfileText">ПРОФІЛЬ</v:String>
+    <v:String x:Key="NewProfile_CreateProfileText_Error">ГЭТА ІМЯ УЖО ВЫКАРЫСТОЎВАЕЦЦА</v:String>
+    <v:String x:Key="NewProfile_CreateProfileSubTitle">Увядзі назву новага профілю!</v:String>
+    <v:String x:Key="NewProfile_CreateProfileButton">Стварыць</v:String>
+
+    <!--#endregion-->
+
+    <!--#region Dialog -->
+
+    <v:String x:Key="Dialog_Item_Installation_Text">усталёўка</v:String>
+    <v:String x:Key="Dialog_Item_SkinPack_Text">набор скіноў</v:String>
+    <v:String x:Key="Dialog_Item_Skin_Text">скін</v:String>
+    <v:String x:Key="Dialog_Item_Version_Text">версія</v:String>
+    <v:String x:Key="Dialog_Item_Profile_Text">профіль</v:String>
+
+    <v:String x:Key="Dialog_DeleteItem_Title">Выдаліць {0} назаўсёды</v:String>
+    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Ты ўпэўнены, што хочаш выдаліць &quot;{1}&quot;?
+Гэта {0} будзе назаўжды страчана! (Зусім, зусім!)</v:String>
+
+    <v:String x:Key="Dialog_KillGame_Title">Закрыць гульню</v:String>
+    <v:String x:Key="Dialog_KillGame_Text">Гэта небяспечна і рэкамендуецца толькі ў тым выпадку, калі ты затрымаліся. Усё яшчэ хочаш закрыць гульню?</v:String>
+
+    <v:String x:Key="Dialog_CloseGame_Title">Гульня ўсё яшчэ запушчана</v:String>
+    <v:String x:Key="Dialog_CloseGame_Text">Хочаш прымусова яе закрыць? (без захавання зменаў, рэкамендуецца толькі ў тым выпадку, калі гульня завісла)</v:String>
+
+    <v:String x:Key="DialogBtn_YesToAll_Text">Так для ўсі</v:String>
+    <v:String x:Key="DialogBtn_NoToAll_Text">Не для ўсі</v:String>
+    <v:String x:Key="DialogBtn_Yes_Text">Так</v:String>
+    <v:String x:Key="DialogBtn_No_Text">Не</v:String>
+
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">Няма адпаведных рэзультатаў</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">Нам не ўдалося знайсці тое, што б адпавядала твайму пошуку. Калі твае фільтры катэгорый 
+выключаны, паспрабуй ўключыць іх і зноў шукаць</v:String>
+
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Загрузка...</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Будзь ласка, пачакай!</v:String>
+
+    <v:String x:Key="Dialog_ResultPanel_Error_Title">Памылка</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
+
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Няма рэзультатаў</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Па твайму запросу нічога не знойдзена</v:String>
+
+    <!--#endregion-->
+
+    <!--#region Internal -->
+
+    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">Файл {0} ужо існуе ў месцы прызначэння.\n Ты хочаш яго замяніць? У гэтым выпадку стары файл будзе страчаны.</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">Файл {0} не з'яўляецца каталогам. Ты хочаш выдаліць яго? У гэтым выпадку дадзеныя са старога каталога будуць страчаны.</v:String>
+
+    <v:String x:Key="GameManager_RecoveringDataIssue_Title">Пераўтварэнне існуючых захаваных дадзеных у ўсталёўк</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Installer Section -->
+
+
+    <!--#region UI -->
+
+    <v:String x:Key="Installer_Title">Праграма ўсталёўкі лаунчера Minecraft Bedrock</v:String>
+
+    <v:String x:Key="Installer_Back_Text">Назад</v:String>
+    <v:String x:Key="Installer_Next_Text">Далей</v:String>
+    <v:String x:Key="Installer_Cancel_Text">Скасаваць</v:String>
+    <v:String x:Key="Installer_Finish_Text">Гатова</v:String>
+
+    <v:String x:Key="Installer_WelcomePage_Title">Віншуем у праграме ўсталёўкі лаунчера Minecraft Bedrock</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info_Text">Гэта ўсталюе лаунчер Minecraft Bedrock на твой камп'ютар.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info2_Text">Перш чым працягваць, рэкамендуецца закрыць усе астатнія праграмы.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info3_Text">Націсні Далей каб працягнуць, ці Адмена - каб выйсці з праграмы ўсталявання.</v:String>
+
+    <v:String x:Key="Installer_LicenseAgreement_Title">Ліцэнзійнае пагадненне</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info_Text">Азнаёмся з наступным ліцэнзійным пагадненнем. Ты павіннен прыняць умовы гэтага</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">пагаднення, перш чым працягнуць усталёўку.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">Я прымаю.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">Я не прымаю.</v:String>
+
+    <v:String x:Key="Installer_InstallType_Title">Абяры тып ўсталёўкі</v:String>
+    <v:String x:Key="Installer_InstallType_Info_Text">Выберы, якую версію лаунчера ты хочаш спампаваць</v:String>
+
+    <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Бэта-версія</v:String>
+    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Рэлізная-версія</v:String>
+
+    <v:String x:Key="Installer_InstallLocation_Title">Выберы месца ўсталявання</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info_Text">Лаунчер Minecraft Bedrock будзе ўсталяваны у наступную папку. Каб усталяваць у іншую папку,</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info2_Text">націсні Агляд і абяры іншую папку.</v:String>
+
+    <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Папка прызначэння</v:String>
+    <v:String x:Key="Installer_InstallLocation_Browse_Text">АГЛЯД</v:String>
+
+    <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Стварыць значок на працоўным стале</v:String>
+    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Дадаць у меню Пуск</v:String>
+    <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">Рэгістрацыя праграмы</v:String>
+
+    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">Запусціць па завяршэнні ўсталёўкі</v:String>
+
+    <v:String x:Key="Installer_InstallationProgress_FilesInUse">Некаторыя файлы зараз выкарыстоўваюцца наступнымі працэсамі:</v:String>
+
+    <v:String x:Key="Installer_InstallationProgress_Title">Усталёўка</v:String>
+    <v:String x:Key="Installer_InstallationProgress_Info_Text">Пачакай, пакуль лаунчер Minecraft Bedrock усталёўваецца на твой камп'ютар.</v:String>
+
+
+    <!--#endregion-->
+
+    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">Не атрымалася перамясціць каталог</v:String>
+    <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">Немагчыма перамясціць файл</v:String>
+    <v:String x:Key="Installer_Dialog_FileLocked_Text">Файл які выкарыстоўваецца</v:String>
+    <v:String x:Key="Installer_Dialog_TryAgain_Text">Паспрабаваць яшчэ раз?</v:String>
+    <v:String x:Key="Installer_Dialog_ErrorOccured_Text">Адбылася памылка.</v:String>
+
+    <!--#region ProgressBar -->
+
+    <v:String x:Key="Installer_ProgressBar_Downloading">Спампаванне...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Finalizing">Завяршэнне...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Initalizing">Ініцыялізацыя...</v:String>
+
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region General Section -->
+
+    <!--#region VersionEntries -->
+
+    <v:String x:Key="VersionEntries_LatestSnapshot">Апошняя бэта</v:String>
+    <v:String x:Key="VersionEntries_LatestRelease">Апошні рэліз</v:String>
+    <v:String x:Key="VersionEntries_UnnamedInstallation">&lt;неназваная ўсталёўка&gt;</v:String>
+
+    <!--#endregion-->
+
+    <!--#region ThemeEntries -->
+
+    <v:String x:Key="ThemeEntries_LatestUpdate">Апошняе абнаўленне</v:String>
+    <v:String x:Key="ThemeEntries_Original">Арыгінал</v:String>
+
+    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">Абнаўленне &quot;Пячоры і Скалы&quot; (Частка 1)</v:String>
+    <v:String x:Key="ThemeEntries_NetherUpdate">Абнаўленне &quot;Пустоты&quot;</v:String>
+    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Абнаўленне &quot;Шумныя пчолы&quot;</v:String>
+    <v:String x:Key="ThemeEntries_VillagePillageUpdate">Абнаўленне &quot;Вёскі і рабавання&quot;</v:String>
+    <v:String x:Key="ThemeEntries_UpdateAquatic">Абнаўленне &quot;Мора&quot;</v:String>
+    <v:String x:Key="ThemeEntries_TechnicallyUpdated">Тэхнічнае абнаўленне [Java]</v:String>
+    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">Абнаўленне &quot;Мір колеру&quot; [Java]</v:String>
+    <v:String x:Key="ThemeEntries_ExplorationUpdate">Абнаўленне &quot;Даследавання&quot; [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CombatUpdate">Абнаўленне &quot;Боя&quot; [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">Абнаўленне &quot;Кошкі і панды&quot; [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_PocketEditionRelease">Афіцыйны рэліз [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_BedrockStandard">Bedrock Edition Standard</v:String>
+    <v:String x:Key="ThemeEntries_BedrockMaster">Bedrock Edition Master</v:String>
+    <v:String x:Key="ThemeEntries_EarlyLegacyConsole">Перыяд ранніх версій Legacy Console</v:String>
+    <v:String x:Key="ThemeEntries_MidLegacyConsole">Перыяд сярэдніх версій Legacy Console</v:String>
+    <v:String x:Key="ThemeEntries_LateLegacyConsole">Перыяд апошніх версій Legacy Console</v:String>
+    <v:String x:Key="ThemeEntries_IndieDays">Перыяд Indie</v:String>
+    <v:String x:Key="ThemeEntries_Dungeons">Minecraft Dungeons</v:String>
+
+
+    <!--#endregion-->
+
+    <!--#region GeneralText -->
+
+    <v:String x:Key="GeneralText_Delete">Выдаліць</v:String>
+    <v:String x:Key="GeneralText_Edit">Рэдагаваць</v:String>
+    <v:String x:Key="GeneralText_Duplicate">Дубляваць</v:String>
+    <v:String x:Key="GeneralText_Remove">Выдаліць</v:String>
+    <v:String x:Key="GeneralText_Cancel">Скасаваць</v:String>
+    <v:String x:Key="GeneralText_Update">Абнавіць</v:String>
+    <v:String x:Key="GeneralText_Add">Дадаць</v:String>
+    <v:String x:Key="GeneralText_Save">Захаваць</v:String>
+    <v:String x:Key="GeneralText_Refresh">Абнавіць</v:String>
+    <v:String x:Key="GeneralText_Backup">Рэзервовая копія</v:String>
+    <v:String x:Key="GeneralText_Versions">Версіі</v:String>
+    <v:String x:Key="GeneralText_Browse">Агляд</v:String>
+    <v:String x:Key="GeneralText_Reset">Скінуць</v:String>
+    <v:String x:Key="GeneralText_Yes">Так</v:String>
+    <v:String x:Key="GeneralText_No">Не</v:String>
+    <v:String x:Key="GeneralText_Releases">Рэлізы</v:String>
+    <v:String x:Key="GeneralText_Betas">Бэта</v:String>
+    <v:String x:Key="GeneralText_Export">Экспартаваць</v:String>
+    <v:String x:Key="GeneralText_Repair">Выправіць</v:String>
+
+    <v:String x:Key="GeneralText_Twitter">Twitter</v:String>
+    <v:String x:Key="GeneralText_GitHub">GitHub</v:String>
+    <v:String x:Key="GeneralText_Website">Сай</v:String>
+
+    <!--#endregion-->
+
+    <!--#region GeneralSubtitles -->
+
+    <v:String x:Key="GeneralSubtitles_Versions">ВЕРСІ</v:String>
+    <v:String x:Key="GeneralSubtitles_Browse">АГЛЯД</v:String>
+    <v:String x:Key="GeneralSubtitles_Reset">СКІД</v:String>
+    <v:String x:Key="GeneralSubtitles_Categories">КАТЭГОРЫ</v:String>
+    <v:String x:Key="GeneralSubtitles_Search">ПОШУ</v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy">САРТАВАЦЬ ПА</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+</ResourceDictionary>
