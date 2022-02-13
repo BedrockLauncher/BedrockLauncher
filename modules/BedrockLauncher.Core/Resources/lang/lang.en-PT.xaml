@@ -2,19 +2,19 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ignore="http://www.galasoft.ch/ignore" xmlns:v="clr-namespace:System;assembly=mscorlib">
     <!--#region Main Section-->
 
-    <v:String x:Key="LanguageString">English - United States</v:String>
+    <v:String x:Key="LanguageString">Pirate English - Tortuga</v:String>
 
     <!--#region MainWindow -->
 
     <v:String x:Key="MainWindow_Title">Minecraft Bedrock Launcher</v:String>
-    <v:String x:Key="MainWindow_Disclaimer">NOT ASSOCIATED OR APPROVED BY MOJANG</v:String>
+    <v:String x:Key="MainWindow_Disclaimer">NOT A MOJANG SHIP MATEY</v:String>
 
     <!--#endregion-->
     
     <!-- #region CommunityPage -->
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
-    <v:String x:Key="CommunityPage_ComingSoon">Coming Soon!</v:String>
+    <v:String x:Key="CommunityPage_ComingSoon">Comin' Soon!</v:String>
     <v:String x:Key="CommunityPage_CheckBackLater">Check back here later for something SUPER DUPER AWESOME!</v:String>
 
     <!-- #endregion -->
@@ -63,6 +63,27 @@
     <v:String x:Key="ProfileButton_ChooseAccount_Text">CHOOSE PROFILE</v:String>
 
     <!--#endregion-->
+
+    <!--#endregion-->
+    
+    <!-- #region Dungeons Section -->
+
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant">GAME VARIANT</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Windows Launcher</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Steam</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Microsoft Store</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Default path&gt;</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">INSTALL LOCATION</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">SYMBOLIC MODS FOLDER LOCATION</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Instructions</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_PathsTab">Paths</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GeneralTab">General</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Install Store Patch</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Update Store Patch</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Uninstall Symbolic Link</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Install  Symbolic Link</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Repair/Update Game</v:String>
+
 
     <!--#endregion-->
 
@@ -195,6 +216,7 @@
 
     <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_BedrockCheckbox">Minecraft for Windows</v:String>
 
     <!--#endregion-->
 
@@ -314,7 +336,7 @@
     <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Backup Existing Save Data</v:String>
     <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(RECOMMENDED)</v:String>
     <v:String x:Key="FirstLaunch_CloseButton">Close</v:String>
-    <v:String x:Key="FirstLaunch_BackButton">Back</v:String>
+    <v:String x:Key="FirstLaunch_BackButton">Round Back Whence Ye Came</v:String>
     <v:String x:Key="FirstLaunch_GoBackButton"></v:String>
     <v:String x:Key="FirstLaunch_CreateProfileText">PROFILE</v:String>
     <v:String x:Key="FirstLaunch_CreateProfileButton">Create</v:String>
@@ -345,14 +367,23 @@
     <v:String x:Key="Error_CantFindJavaLauncher_Title">Could not switch launcher</v:String>
     <v:String x:Key="Error_CantFindJavaLauncher">Could not find launcher. Be sure you have installed original Minecraft launcher from Minecraft.net .</v:String>
 
-    <v:String x:Key="Error_AppReregisterFailed_Title">App re-register failed</v:String>
+    <v:String x:Key="Error_AppReregisterFailed_Title">App registration failed</v:String>
     <v:String x:Key="Error_AppReregisterFailed">Please try again :(</v:String>
+
+    <v:String x:Key="Error_AppDeregisteringFailed_Title">App de-registration failed</v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed">Please try again :(</v:String>
 
     <v:String x:Key="Error_AppLaunchFailed_Title">Launch failed</v:String>
     <v:String x:Key="Error_AppLaunchFailed">Please try again :(</v:String>
 
     <v:String x:Key="Error_AppDownloadFailed_Title">Download failed</v:String>
     <v:String x:Key="Error_AppDownloadFailed">Please try again :(</v:String>
+
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">Save redirection failed</v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed">Please try again :(</v:String>
+
+    <v:String x:Key="Error_AppUninstallFailed_Title">Uninstall failed</v:String>
+    <v:String x:Key="Error_AppUninstallFailed">Please try again :(</v:String>
 
     <v:String x:Key="Error_AppExtractionFailed_Title">Extraction failed</v:String>
     <v:String x:Key="Error_AppExtractionFailed">Please try again :(</v:String>
@@ -431,7 +462,7 @@ turned off, try turning the back on and search again</v:String>
 
     <v:String x:Key="Installer_Title">Minecraft Bedrock Launcher Setup Wizard</v:String>
 
-    <v:String x:Key="Installer_Back_Text">Back</v:String>
+    <v:String x:Key="Installer_Back_Text">Round Back Whence Ye Came</v:String>
     <v:String x:Key="Installer_Next_Text">Next</v:String>
     <v:String x:Key="Installer_Cancel_Text">Cancel</v:String>
     <v:String x:Key="Installer_Finish_Text">Finish</v:String>
