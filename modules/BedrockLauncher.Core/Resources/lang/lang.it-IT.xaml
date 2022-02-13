@@ -423,7 +423,7 @@ Questo {0} andrà perso per sempre! (Molto tempo!)</v:String>
     <v:String x:Key="Dialog_KillGame_Text">Questo è pericoloso, ed è solo consigliato se resti bloccato. Vuoi ancora chiudere il gioco?</v:String>
 
     <v:String x:Key="Dialog_CloseGame_Title">Il Gioco è Ancora in Esecuzione</v:String>
-    <v:String x:Key="Dialog_CloseGame_Text">Would you like to force close it? (without saving changes, this is only recommended if you get stuck, please close the game normally)</v:String>
+    <v:String x:Key="Dialog_CloseGame_Text">Vuoi forzare la chiusura? (senza salvare le modifiche, questo è consigliato solo se sei bloccato, chiudi il gioco normalmente)</v:String>
 
     <v:String x:Key="DialogBtn_YesToAll_Text">Si a tutti</v:String>
     <v:String x:Key="DialogBtn_NoToAll_Text">No a tutti</v:String>
@@ -482,22 +482,22 @@ Questo {0} andrà perso per sempre! (Molto tempo!)</v:String>
     <v:String x:Key="Installer_InstallType_Info_Text">Seleziona la versione del launcher che desideri scaricare</v:String>
 
     <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Versione beta</v:String>
-    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Release Version</v:String>
+    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Versione finale</v:String>
 
     <v:String x:Key="Installer_InstallLocation_Title">Scegli il percorso di installazione</v:String>
     <v:String x:Key="Installer_InstallLocation_Info_Text">Il programma di installazione installerà il launcher di Minecraft Bedrock nella seguente cartella. Per installarlo in una cartella differente,</v:String>
     <v:String x:Key="Installer_InstallLocation_Info2_Text">clicca 'Sfoglia' e seleziona un'altra cartella.</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Destination Folder</v:String>
+    <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Cartella di destinazione</v:String>
     <v:String x:Key="Installer_InstallLocation_Browse_Text">SFOGLIA</v:String>
 
     <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Crea un'icona sul desktop</v:String>
-    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Add to Start menu</v:String>
+    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Aggiungi al menu iniziale</v:String>
     <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">Register Program</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">Start Program on Exit</v:String>
+    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">Avvia il programma all'uscita</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_FilesInUse">Some of the files are currently in use by the following:</v:String>
+    <v:String x:Key="Installer_InstallationProgress_FilesInUse">Alcuni dei file sono attualmente in uso dai seguenti:</v:String>
 
     <v:String x:Key="Installer_InstallationProgress_Title">Installazione</v:String>
     <v:String x:Key="Installer_InstallationProgress_Info_Text">Please wait while Setup installs Minecraft Bedrock Launcher on your computer.</v:String>
@@ -505,17 +505,17 @@ Questo {0} andrà perso per sempre! (Molto tempo!)</v:String>
 
     <!--#endregion-->
 
-    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">Unable to Move Directory</v:String>
-    <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">Unable to Move File</v:String>
-    <v:String x:Key="Installer_Dialog_FileLocked_Text">File Being Used</v:String>
+    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">Impossibile spostare la cartella di gioco</v:String>
+    <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">Impossibile spostare il file</v:String>
+    <v:String x:Key="Installer_Dialog_FileLocked_Text">File in uso</v:String>
     <v:String x:Key="Installer_Dialog_TryAgain_Text">Riprovare?</v:String>
-    <v:String x:Key="Installer_Dialog_ErrorOccured_Text">An error has occurred.</v:String>
+    <v:String x:Key="Installer_Dialog_ErrorOccured_Text">Si è verificato un errore.</v:String>
 
     <!--#region ProgressBar -->
 
     <v:String x:Key="Installer_ProgressBar_Downloading">Download in corso...</v:String>
-    <v:String x:Key="Installer_ProgressBar_Finalizing">Finalizing...</v:String>
-    <v:String x:Key="Installer_ProgressBar_Initalizing">Initializing...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Finalizing">Finalizzazione...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Initalizing">Inizializzazione...</v:String>
 
 
     <!--#endregion-->
@@ -594,7 +594,7 @@ Questo {0} andrà perso per sempre! (Molto tempo!)</v:String>
     <v:String x:Key="GeneralSubtitles_Reset">RIPRISTINA</v:String>
     <v:String x:Key="GeneralSubtitles_Categories">CATEGORIE</v:String>
     <v:String x:Key="GeneralSubtitles_Search">CERCA</v:String>
-    <v:String x:Key="GeneralSubtitles_SortBy">SORT BY</v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy">ORDINA PER</v:String>
 
     <!--#endregion-->
 
