@@ -14,7 +14,7 @@
     <!-- #region CommunityPage -->
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
-    <v:String x:Key="CommunityPage_ComingSoon">¡Próççimamente!</v:String>
+    <v:String x:Key="CommunityPage_ComingSoon"></v:String>
     <v:String x:Key="CommunityPage_CheckBackLater">Rebiça luego pa argo ÇUPÊH MARABIYOÇO!</v:String>
 
     <!-- #endregion -->
@@ -36,8 +36,8 @@
 
     <!--#region UpdateButton-->
 
-    <v:String x:Key="UpdateButton_NewUpdate_Text">¡Nueba Âttualiçaçión!</v:String>
-    <v:String x:Key="UpdateButton_Download_Text">¡Âh Click pa dêccargâh!</v:String>
+    <v:String x:Key="UpdateButton_NewUpdate_Text"></v:String>
+    <v:String x:Key="UpdateButton_Download_Text"></v:String>
 
     <!--#endregion-->
 
@@ -169,7 +169,7 @@
 
     <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">NOMBRÊH DEL IDIOMA</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">OTRÂ DEFINIÇIONÊ</v:String>
+    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">OTRÂ DEFINIÇION</v:String>
     <v:String x:Key="EditSkinPackScreen_ContentSubtitle">CONTENÍO</v:String>
     <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">MODULÔ</v:String>
 
@@ -226,7 +226,7 @@
 
     <!--#region SettingsTab -->
 
-    <v:String x:Key="SettingsTab_Title">AHÛTTÊ</v:String>
+    <v:String x:Key="SettingsTab_Title">AHÛTT</v:String>
     <v:String x:Key="SettingsTab_GeneralButton">Henerâh</v:String>
     <v:String x:Key="SettingsTab_AccountsButton">Cuentâ</v:String>
     <v:String x:Key="SettingsTab_AboutButton">Açerca de</v:String>
@@ -276,12 +276,12 @@
 
     <!--#region AcountsSettingsPage -->
 
-    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">CUENTA ÇELÊÇÇIONÁ</v:String>
+    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">CUENTA ÇELÊÇÇION</v:String>
     <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">AHÛTTÊ INÇIDÊH</v:String>
     <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Ahûttê Normalê</v:String>
     <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Ahûttê Legaçionalê</v:String>
     <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Hêttionâh Cuentâ</v:String>
-    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">AHÛTTÊ DE CUENTÂ</v:String>
+    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">AHÛTTÊ DE CUENT</v:String>
 
     <!--#endregion-->
 
@@ -294,7 +294,7 @@
 
     <v:String x:Key="AboutPage_McMrArm_Text">Por creâh er dêccargadôh de berçionê de Minecrâtt Windows 10 (de la que deriba êtte trabaho)</v:String>
     <v:String x:Key="AboutPage_BsCommunity_Text">Por çu trabaho en SkimBiew3D, er cuâ êh uçao en la funçión de biçualiçâh âppêttô en er lançadôh</v:String>
-    <v:String x:Key="AboutPage_Mojang_Text">¡¡¡Pôh Minecrâtt!!!</v:String>
+    <v:String x:Key="AboutPage_Mojang_Text"></v:String>
     <v:String x:Key="AboutPage_BsRepo_Text">MôttradorÂppêttô3D Repo</v:String>
     <v:String x:Key="AboutPage_CurrentBuild">Berçión âttuâh: </v:String>
 
@@ -317,10 +317,10 @@
 
     <!--#region FirstLaunch -->
 
-    <v:String x:Key="FirstLaunch_WelcomeTitle">¡Biembenío!</v:String>
-    <v:String x:Key="FirstLaunch_WelcomeSubTitle">¡Biembenío ar Lançadôh de Minecrâtt Ediçión Bedrôh!</v:String>
-    <v:String x:Key="FirstLaunch_CreateProfileSubTitle">¡Crea tu primêh perfîh!</v:String>
-    <v:String x:Key="FirstLaunch_AlmostThereTitle">¡Caçi lîtto!</v:String>
+    <v:String x:Key="FirstLaunch_WelcomeTitle"></v:String>
+    <v:String x:Key="FirstLaunch_WelcomeSubTitle"></v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileSubTitle"></v:String>
+    <v:String x:Key="FirstLaunch_AlmostThereTitle"></v:String>
     <v:String x:Key="FirstLaunch_OneThingTitle">Una coça...</v:String>
     <v:String x:Key="FirstLaunch_OneThingSubtitle">Çimplemente rebiça êttô pa açegurarte de que êttén como a ti te gûttan.</v:String>
     <v:String x:Key="FirstLaunch_ChooseAccountTitle">Eliha una cuenta Inçidêh</v:String>
