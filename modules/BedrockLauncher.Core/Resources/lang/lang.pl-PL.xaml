@@ -28,7 +28,7 @@
     <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Własny Launcher</v:String>
     <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Przełącz na</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
-    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Społeczność</v:String>
+    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Społecznoś</v:String>
     <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Profil</v:String>
     <v:String x:Key="ToolbarButtons_SettingsButton_Text">Ustawienia</v:String>
 
@@ -170,7 +170,7 @@
     <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">NAZWA JĘZYKA</v:String>
 
     <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">INNE DEFINICJE</v:String>
-    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">ZAWARTOŚĆ</v:String>
+    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">ZAWARTOŚ</v:String>
     <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">MODUŁY</v:String>
 
     <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">WERSJA FORMATU</v:String>
@@ -478,7 +478,7 @@
     <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">Nie akceptuję umowy.</v:String>
 
     <v:String x:Key="Installer_InstallType_Title">Wybierz typ instalacji</v:String>
-    <v:String x:Key="Installer_InstallType_Info_Text">Wybierz wersję launchera, która chcesz pobrać</v:String>
+    <v:String x:Key="Installer_InstallType_Info_Text">Wybierz wersję launchera, która chcesz pobra</v:String>
 
     <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Wersja Beta</v:String>
     <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Oficjalne wydanie</v:String>
@@ -560,10 +560,10 @@
 
     <!--#region GeneralText -->
 
-    <v:String x:Key="GeneralText_Delete">Usuń</v:String>
+    <v:String x:Key="GeneralText_Delete">Usu</v:String>
     <v:String x:Key="GeneralText_Edit">Edytuj</v:String>
     <v:String x:Key="GeneralText_Duplicate">Duplikuj</v:String>
-    <v:String x:Key="GeneralText_Remove">Usuń</v:String>
+    <v:String x:Key="GeneralText_Remove">Usu</v:String>
     <v:String x:Key="GeneralText_Cancel">Anuluj</v:String>
     <v:String x:Key="GeneralText_Update">Aktualizuj</v:String>
     <v:String x:Key="GeneralText_Add">Dodaj</v:String>
