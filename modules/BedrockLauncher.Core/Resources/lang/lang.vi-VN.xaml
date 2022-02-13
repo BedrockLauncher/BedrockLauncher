@@ -2,7 +2,7 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ignore="http://www.galasoft.ch/ignore" xmlns:v="clr-namespace:System;assembly=mscorlib">
     <!--#region Main Section-->
 
-    <v:String x:Key="LanguageString">English - United States</v:String>
+    <v:String x:Key="LanguageString">Tiếng Anh - Hoa Kỳ</v:String>
 
     <!--#region MainWindow -->
 
@@ -63,6 +63,27 @@
     <v:String x:Key="ProfileButton_ChooseAccount_Text">CHOOSE PROFILE</v:String>
 
     <!--#endregion-->
+
+    <!--#endregion-->
+    
+    <!-- #region Dungeons Section -->
+
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant">GAME VARIANT</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Windows Launcher</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Steam</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Microsoft Store</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Default path&gt;</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">INSTALL LOCATION</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">SYMBOLIC MODS FOLDER LOCATION</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Instructions</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_PathsTab">Paths</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GeneralTab">General</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Install Store Patch</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Update Store Patch</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Uninstall Symbolic Link</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Install  Symbolic Link</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Repair/Update Game</v:String>
+
 
     <!--#endregion-->
 
@@ -195,6 +216,7 @@
 
     <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_BedrockCheckbox">Minecraft for Windows</v:String>
 
     <!--#endregion-->
 
@@ -314,13 +336,13 @@
     <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Backup Existing Save Data</v:String>
     <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(RECOMMENDED)</v:String>
     <v:String x:Key="FirstLaunch_CloseButton">Close</v:String>
-    <v:String x:Key="FirstLaunch_BackButton">Back</v:String>
+    <v:String x:Key="FirstLaunch_BackButton">Quay lại</v:String>
     <v:String x:Key="FirstLaunch_GoBackButton"></v:String>
     <v:String x:Key="FirstLaunch_CreateProfileText">PROFILE</v:String>
     <v:String x:Key="FirstLaunch_CreateProfileButton">Create</v:String>
-    <v:String x:Key="FirstLaunch_NextButton">Next</v:String>
+    <v:String x:Key="FirstLaunch_NextButton">Tiếp</v:String>
     <v:String x:Key="FirstLaunch_DownloadButton">Download</v:String>
-    <v:String x:Key="FirstLaunch_FinishButton">Finish</v:String>
+    <v:String x:Key="FirstLaunch_FinishButton">Hoàn tất</v:String>
 
     <!--#endregion-->
 
@@ -345,14 +367,23 @@
     <v:String x:Key="Error_CantFindJavaLauncher_Title">Could not switch launcher</v:String>
     <v:String x:Key="Error_CantFindJavaLauncher">Could not find launcher. Be sure you have installed original Minecraft launcher from Minecraft.net .</v:String>
 
-    <v:String x:Key="Error_AppReregisterFailed_Title">App re-register failed</v:String>
+    <v:String x:Key="Error_AppReregisterFailed_Title">App registration failed</v:String>
     <v:String x:Key="Error_AppReregisterFailed">Please try again :(</v:String>
+
+    <v:String x:Key="Error_AppDeregisteringFailed_Title">App de-registration failed</v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed">Please try again :(</v:String>
 
     <v:String x:Key="Error_AppLaunchFailed_Title">Launch failed</v:String>
     <v:String x:Key="Error_AppLaunchFailed">Please try again :(</v:String>
 
     <v:String x:Key="Error_AppDownloadFailed_Title">Download failed</v:String>
     <v:String x:Key="Error_AppDownloadFailed">Please try again :(</v:String>
+
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">Save redirection failed</v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed">Please try again :(</v:String>
+
+    <v:String x:Key="Error_AppUninstallFailed_Title">Uninstall failed</v:String>
+    <v:String x:Key="Error_AppUninstallFailed">Please try again :(</v:String>
 
     <v:String x:Key="Error_AppExtractionFailed_Title">Extraction failed</v:String>
     <v:String x:Key="Error_AppExtractionFailed">Please try again :(</v:String>
@@ -429,25 +460,25 @@ turned off, try turning the back on and search again</v:String>
 
     <!--#region UI -->
 
-    <v:String x:Key="Installer_Title">Minecraft Bedrock Launcher Setup Wizard</v:String>
+    <v:String x:Key="Installer_Title">Trình thiết lập Minecraft Bedrock</v:String>
 
-    <v:String x:Key="Installer_Back_Text">Back</v:String>
-    <v:String x:Key="Installer_Next_Text">Next</v:String>
-    <v:String x:Key="Installer_Cancel_Text">Cancel</v:String>
-    <v:String x:Key="Installer_Finish_Text">Finish</v:String>
+    <v:String x:Key="Installer_Back_Text">Quay lại</v:String>
+    <v:String x:Key="Installer_Next_Text">Tiếp</v:String>
+    <v:String x:Key="Installer_Cancel_Text">Hủy</v:String>
+    <v:String x:Key="Installer_Finish_Text">Hoàn tất</v:String>
 
-    <v:String x:Key="Installer_WelcomePage_Title">Welcome to the Minecraft Bedrock Launcher Setup Wizard</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info_Text">This will install Minecraft Bedrock Launcher on your computer.</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info2_Text">It is recommended that you close all other applications before continuing.</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info3_Text">Click Next to continue, or Cancel to exit Setup.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Title">Chào mừng đến với phần mềm cài đặt bản Minecraft Bedrock</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info_Text">Phần mêm này sẽ tải Minecraft Bedrock trên máy của bạn.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info2_Text">Chúng tôi khuyên bạn nên đóng các ứng dụng khác trước khi bắt đầu.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info3_Text">Nhấn Tiếp theo để tiếp tục hoặc Hủy bỏ để thoát cài đặt.</v:String>
 
-    <v:String x:Key="Installer_LicenseAgreement_Title">License Agreement</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Title">Thỏa thuận cấp phép</v:String>
     <v:String x:Key="Installer_LicenseAgreement_Info_Text">Please read the following License Agreement. You must accept the terms of this</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">agreement before continuing with the installation.</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">I accept the license.</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">I don't accept the license.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">sự đồng ý trước khi bắt đầu việc tải xuống.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">Tôi chấp nhận với giấy phép.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">Tôi không chấp nhận giấy phép.</v:String>
 
-    <v:String x:Key="Installer_InstallType_Title">Choose Install Type</v:String>
+    <v:String x:Key="Installer_InstallType_Title">Hãy chọn cách để tải</v:String>
     <v:String x:Key="Installer_InstallType_Info_Text">Select which version of the launcher you want to download</v:String>
 
     <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Beta Version</v:String>
@@ -534,7 +565,7 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="GeneralText_Edit">Edit</v:String>
     <v:String x:Key="GeneralText_Duplicate">Duplicate</v:String>
     <v:String x:Key="GeneralText_Remove">Remove</v:String>
-    <v:String x:Key="GeneralText_Cancel">Cancel</v:String>
+    <v:String x:Key="GeneralText_Cancel">Hủy</v:String>
     <v:String x:Key="GeneralText_Update">Update</v:String>
     <v:String x:Key="GeneralText_Add">Add</v:String>
     <v:String x:Key="GeneralText_Save">Save</v:String>
