@@ -77,7 +77,7 @@
     <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">SYMBOLIC MODS FOLDER LOCATION</v:String>
     <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Pokyny</v:String>
     <v:String x:Key="Dungeons_InstallationPage_PathsTab">Umiestnenia</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GeneralTab">Všeobecné</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GeneralTab">Všeobecn</v:String>
     <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Install Store Patch</v:String>
     <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Update Store Patch</v:String>
     <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Uninstall Symbolic Link</v:String>
@@ -105,7 +105,7 @@
     <v:String x:Key="InstallationsPage_AddButton">Nová inštalácia</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">Hraj</v:String>
 
-    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">Naposledy hrané</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">Naposledy hran</v:String>
     <v:String x:Key="InstallationsPage_SortBy_Name">Názov</v:String>
 
     <v:String x:Key="InstallationsPage_SearchBar_Content">Mená inštalácie</v:String>
