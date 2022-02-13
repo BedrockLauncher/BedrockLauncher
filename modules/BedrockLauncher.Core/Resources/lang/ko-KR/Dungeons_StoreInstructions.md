@@ -1,41 +1,41 @@
-﻿# 파트 1 - Powershell 스크립트
-Windows Store 버전의 Minecraft Dungeons는 기본적으로 파일 및 폴더의 수정이 막혀 있습니다. 문제를 우회하려면 아래 절차를 따르십시오.
+﻿# Part 1 - The Powershell Script
+The Windows Store version of Minecraft Dungeons normally won't let you modify its files/folders. To get around this issue, follow these steps:
 
-## 준비 사항:
-- 안티바이러스(백신) 소프트웨어를 잠시 끄십시오. 대부분이 알 수 없는 스크립트의 실행을 감지하고 이를 차단할 것입니다.
-- 비트디펜더를 사용하는 경우, 꺼져 있는 경우에도 스크립트를 망가뜨리므로 계속하기 전 프로그램을 삭제해야 합니다.
-- 최소한 10GB의 여유 공간이 있어야 합니다.
-- 게임이 최신 상태인지 확인하십시오. 확인하려면 Win + R을 누르고, `ms-windows-store://DownloadsAndUpdates/`를 입력한 뒤 Enter 키를 누르십시오. 이후 열리는 창에서 우측 상단 구석의 "업데이트 다운로드"를 누르십시오.
-- [Visual C++ Redist](https://aka.ms/vs/16/release/vc_redist.x64.exe)를 설치하십시오. 이미 설치되어 있다고 생각하더라도 설치 프로그램을 실행해 보십시오. 작동하지 않는 이전 버전이 설치되어 있을 수 있습니다.
+## Prerequisites:
+- Temporarily disable any antivirus software. Most will detect that an unknown script is being run and try to stop it.
+- If you use Bitdefender, you need to uninstall it before continuing, as it breaks the script even when turned off.
+- Make sure you have at least 10 GBs of space free.
+- Make sure your game is up to date. To do this, press Win + R, enter `ms-windows-store://DownloadsAndUpdates/` and press enter. Then, press "Get updates" in the top right corner of the window that opens.
+- Install [Visual C++ Redist](https://aka.ms/vs/16/release/vc_redist.x64.exe). Even if you think you have it installed, try the installer. You may have an older version that won't work.
 
-## Bedrock 런처에서:
-1. 게임 유형이 `Microsoft 스토어`로 설정되어 있는지 확인
-3. `스토어 패치 설치` 클릭
+## In the Bedrock Launcher:
+1. Make Sure your game variant is set to `Microsoft Store`
+3. Click on `Install Store Patch`
 
-## Powershell 창에서:
+## In the Powershell Window:
 
-3. 폴더를 설정하라고 요청을 받았을 것입니다. 게임을 이동하고자 하는 빈 폴더를 선택합니다. Program Files나 OneDrive 내의 폴더를 선택하지 마십시오, 문제가 발생할 수 있습니다.
-4. 게임이 한 번 실행될 것입니다. 이 경우 게임을 종료하지 마십시오. 문제가 발생한 경우, 아래의 문제 해결 부분을 확인하십시오.
-5. `~mods` 폴더가 나타날 것입니다. 여기가 모드를 까는 곳입니다.
-7. 모드가 적용된 게임은 일반 게임을 실행하는 법과 같은 방법으로 실행하면 됩니다. 시작 메뉴, Windows Store, Xbox 앱, 그 외 아무 방법으로든 평소에 하던 그대로 실행할 수 있습니다. 게임 폴더 내 .exe 파일을 통해 게임을 실행하려고 하지 마십시오.
+3. You will be asked to select a folder. Choose an empty folder where you want the game to be moved to. Do not choose a folder in Program Files or One Drive, it will break things.
+4. The game will open at one point. Do not close it when this happens. If you run into any issues, make sure to check the Troubleshooting section below.
+5. A `~mods` folder will appear. This is where you place your mods.
+7. Launching the modded game is just like launching the regular game. You can do it from the start menu, Windows Store, Xbox app, and so on, just like you normally do. Do NOT try to launch it by running the .exe files in the game folder.
 
-## 문제 해결:
-- 게임에 패치를 적용하는 도중 문제가 발생한 경우, 아래와 같이 하면 도움이 될 수 있습니다.
-- 패치 도중 게임이 실행되지 않았으며 패치가 작동하지 않는 경우, 패치 프로그램을 실행하기 전 게임을 먼저 수동으로 실행해 보십시오. 게임이 저절로 종료되거나 패치가 완료될 때까지 게임을 켜고 계십시오.
-- 게임의 소유권을 증명할 수 없다는 내용의 오류가 나오는 경우, .exe 파일을 통해 게임을 실행한 적이 있을 것입니다. 그러지 마십시오. 시작 메뉴, Windows Store, Xbox 앱에서 게임을 실행하십시오. 그랬는데도 같은 오류가 발생하면, 기본 게임을 다시 설치한 뒤 패치하기 전 최소 1번 로그인 하십시오. (게임을 실행하고 캐릭터를 선택)
+## Troubleshooting:
+- If you run into any issues while/after patching the game, some of these things might help you.
+- If the game didn't open at all while patching and the patching didn't work, try opening the game manually before running the patcher. Keep the game open until it either closes by itself or the patcher finishes.
+- If you get an error saying it can't verify your ownership of the game, you must have launched the game using the .exe file. Don't do that. Run the game from the start menu, Windows Store, or Xbox app. If you did, but still get this error, reinstall the regular game and log in at least once (open the game and select a character) before patching it.
 
-# 파트 2 - Bedrock 런처 설치
-1. `Dungeons.exe`를 포함하는 폴더로 설치 경로 지정. 선택하는 폴더가 `~mods` 폴더의 상위 폴더 내에 있어야 합니다
-2. 심볼릭 모드 폴더로 사용하고자 하는 폴더 선택 (선택하는 폴더가 `~mods` 폴더와 같은 경로에 있지 않아야 합니다)
-3. `심볼릭 링크 설치` 클릭
-4. 게임의 모드 폴더가 심볼릭 모드 폴더와 동기화됨
+# Part 2 - The Bedrock Launcher Setup
+1. Set the install location to the folder containing `Dungeons.exe`. It should be in a parent folder of the `~mods` folder from earlier
+2. Select where you want your symbolic mods folder to be (it should not be in the same location as `~mods` folder from earlier)
+3. Click on `Install Symbolic Link`
+4. Your game's mod folder should now be paired with your symbolic mods folder
 
-# 업데이트 방법
-1. `심볼릭 링크 제거` 클릭
-2. `스토어 패치 업데이트` 클릭
-3. 필요한 경우 파트 1의 3단계에서 6단계를 반복
-4. 파트 2의 1단계에서 4단계를 반복
-5. 완료
+# How to Update
+1. Click on `Uninstall Symbolic Link`
+2. Click on `Update Store Patch`
+3. Repeat Steps 3 through 6 of Part 1 if nessisary
+4. Repeat Steps 1 through 4 of Part 2
+5. Done
 
 
 
