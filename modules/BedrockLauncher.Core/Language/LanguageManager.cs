@@ -51,8 +51,15 @@ namespace BedrockLauncher.Core.Language
                 string resourceName = assembly.GetManifestResourceNames().Single(str => str.EndsWith("AvaliableLanguages.txt"));
 
                 using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-                using (StreamReader reader = new StreamReader(stream)) Langs.Add(reader.ReadLine());
-                
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    string result = reader.ReadToEnd();
+                    foreach (var text in result.Split("\r\n"))
+                        Langs.Add(text);
+                }
+
+
+
             }
             catch (Exception ex)
             {
