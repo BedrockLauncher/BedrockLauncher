@@ -1,0 +1,602 @@
+﻿<?xml version="1.0"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ignore="http://www.galasoft.ch/ignore" xmlns:v="clr-namespace:System;assembly=mscorlib">
+    <!--#region Main Section-->
+
+    <v:String x:Key="LanguageString">انگلیسی - آمریکا</v:String>
+
+    <!--#region MainWindow -->
+
+    <v:String x:Key="MainWindow_Title">لانچر بدراک ماینکرفت</v:String>
+    <v:String x:Key="MainWindow_Disclaimer">به Mojang وابسته یا توسط آنان تایید نشده است</v:String>
+
+    <!--#endregion-->
+    
+    <!-- #region CommunityPage -->
+
+    <v:String x:Key="CommunityPage_SupportText"></v:String>
+    <v:String x:Key="CommunityPage_ComingSoon">به زودی!</v:String>
+    <v:String x:Key="CommunityPage_CheckBackLater">اینجا را بعدا سری بزنید برای یک چیز خیلی خیلی عالی!</v:String>
+
+    <!-- #endregion -->
+
+    <!--#region ToolbarButtons -->
+
+    <v:String x:Key="ToolbarButtons_NewsButton_Text">اخبار</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">نسخه بدراک</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">نسخه جاوا</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">لانچر جاوا</v:String>
+    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">لانچر سفارشی</v:String>
+    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">سویچ کن به</v:String>
+    <v:String x:Key="ToolbarButtons_Minecraft_Text">ماینکرفت:</v:String>
+    <v:String x:Key="ToolbarButtons_CommunityButton_Text">جامعه</v:String>
+    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">نمایه</v:String>
+    <v:String x:Key="ToolbarButtons_SettingsButton_Text">تنظیمات</v:String>
+
+    <!--#endregion-->
+
+    <!--#region UpdateButton-->
+
+    <v:String x:Key="UpdateButton_NewUpdate_Text">به روز رسانی جدید!</v:String>
+    <v:String x:Key="UpdateButton_Download_Text">برای دانلود کلیک کنید!</v:String>
+
+    <!--#endregion-->
+
+    <!--#region ProgressBar -->
+
+    <v:String x:Key="ProgressBar_Downloading">درحال دانلود</v:String>
+    <v:String x:Key="ProgressBar_Installing">درحال نصب</v:String>
+    <v:String x:Key="ProgressBar_Launching">درحال لانچ کردن</v:String>
+    <v:String x:Key="ProgressBar_Extracting">درحال استخراج</v:String>
+    <v:String x:Key="ProgressBar_Uninstalling">درحال حذف برنامه</v:String>
+    <v:String x:Key="ProgressBar_RegisteringPackage">درحال رجیستر کردن بسته</v:String>
+    <v:String x:Key="ProgressBar_RemovingPackage">درحال غیر رجیستر کردن بسته</v:String>
+    <v:String x:Key="ProgressBar_BackingUp">در حال پشتیبان‌گیری از داده‌ها</v:String>
+
+    <!--#endregion-->
+
+    <!--#region ProfileButton -->
+
+    <v:String x:Key="ProfileButton_ManageProfiles_Text">مدیریت نمایه ها</v:String>
+    <v:String x:Key="ProfileButton_ProfileSettings_Text">تنظیمات نمایه</v:String>
+    <v:String x:Key="ProfileButton_AddProfile_Text">افزودن نمایه</v:String>
+    <v:String x:Key="ProfileButton_RemoveProfile_Text">حذف نمایه</v:String>
+    <v:String x:Key="ProfileButton_ChooseAccount_Text">انتخاب نمایه</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+    
+    <!-- #region Dungeons Section -->
+
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant">GAME VARIANT</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Windows Launcher</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Steam</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Microsoft Store</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Default path&gt;</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">INSTALL LOCATION</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">SYMBOLIC MODS FOLDER LOCATION</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Instructions</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_PathsTab">Paths</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GeneralTab">General</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Install Store Patch</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Update Store Patch</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Uninstall Symbolic Link</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Install  Symbolic Link</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Repair/Update Game</v:String>
+
+
+    <!--#endregion-->
+
+    <!--#region Game Section -->
+
+    <!--#region GameTab -->
+
+    <v:String x:Key="GameTab_Title">بدراک لانچر ماینکرفت</v:String>
+    <v:String x:Key="GameTab_PlayButton_Text">شروع بازی</v:String>
+    <v:String x:Key="GameTab_PlayButton_Kill_Text">پایان بده</v:String>
+    <v:String x:Key="GameTab_InstallationsButton_Text">نصب شده ها</v:String>
+    <v:String x:Key="GameTab_SkinsButton_Text">اسکین ها</v:String>
+    <v:String x:Key="GameTab_PatchNotesButton_Text">یادداشت های تغییرات</v:String>
+
+    <!--#endregion-->
+
+    <!--#region InstallationsPage -->
+
+    <v:String x:Key="InstallationsPage_AddButton">نصب جدید</v:String>
+    <v:String x:Key="InstallationsPage_PlayButton">شروع بازی</v:String>
+
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">جدیدترین بازی شده</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name">نام</v:String>
+
+    <v:String x:Key="InstallationsPage_SearchBar_Content">نام نصب</v:String>
+
+    <!--#endregion-->
+
+    <!--#region EditInstallationScreen -->
+
+    <v:String x:Key="EditInstallationScreen_Title">یک نصب جدید ایجاد کن</v:String>
+    <v:String x:Key="EditInstallationScreen_AltTitle">ویرایش نصب</v:String>
+
+    <v:String x:Key="EditInstallationScreen_CreateButton">ایجاد</v:String>
+    <v:String x:Key="EditInstallationScreen_AltCreateButton">ذخیره</v:String>
+
+    <v:String x:Key="EditInstallationScreen_LatestSnapshot">آخرین بتا</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestRelease">آخرین نسخه</v:String>
+
+    <v:String x:Key="EditInstallationScreen_NameSubtitle">نام</v:String>
+    <v:String x:Key="EditInstallationScreen_VersionSubtitle">نسخه</v:String>
+    <v:String x:Key="EditInstallationScreen_DirectorySubtitle">محل</v:String>
+
+    <v:String x:Key="EditInstallationScreen_NameHintText">&lt;نصب بی نام&gt;</v:String>
+    <v:String x:Key="EditInstallationScreen_DirectoryHintText">&lt;محل نصب پیشفرض&gt;</v:String>
+
+    <!--#endregion-->
+
+    <!--#region PatchNotesPage -->
+
+    <v:String x:Key="PatchNotesPage_MorePatchNotes">یادداشت های تغییرات بیشتر</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">یادداشت های تغییرات بیشتر بتا</v:String>
+
+    <!--#endregion-->
+
+    <!--#region SkinsPage -->
+
+    <v:String x:Key="SkinsPage_AddButton">جدید...</v:String>
+    <v:String x:Key="SkinsPage_ImportButton">وارد کن...</v:String>
+
+    <!--#endregion-->
+
+    <!--#region EditSkinScreen -->
+
+    <v:String x:Key="EditSkinScreen_Title">اسکین را ویرایش کن</v:String>
+    <v:String x:Key="EditSkinScreen_AltTitle">اسکین اضافه کن</v:String>
+
+    <v:String x:Key="EditSkinScreen_TextureSubtitle">تکسچر</v:String>
+    <v:String x:Key="EditSkinScreen_GeometrySubtitle">ژئومتری</v:String>
+    <v:String x:Key="EditSkinScreen_TypeSubtitle">نوع</v:String>
+    <v:String x:Key="EditSkinScreen_LocalizationSubtitle">نام بومی سازی</v:String>
+
+    <!--#endregion-->
+
+    <!--#region EditSkinPackScreen -->
+
+    <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">توضیحات</v:String>
+    <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">ژئومتری</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">نام بومی سازی</v:String>
+    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">نام سریال سازی</v:String>
+    <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">تعاریف زبان</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">نام زبان</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">تعاریف دیگر</v:String>
+    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">محتوی</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">ماژول ها</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">نسخه فرمت</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">نام بسته</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderUUIDSubtitle">شماره شناسایی یکتا</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">نسخه</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">نوع</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">شماره شناسایی یکتا</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">نسخه</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_Header">ویرایش اسکین پک</v:String>
+    <v:String x:Key="EditSkinPackScreen_AddHeader">اضافه کردن اسکین پک</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_Warning">*لطفا به خاطر داشته باشید که ویرایش تعاریف زبانی و تغییر نماد پک غیر قابل بازگشت هست, حتی اگر تغییراتتان را ذخیره نکنید!!!</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region News Section -->
+
+    <!--#region LauncherNewsPage -->
+
+    <v:String x:Key="LauncherNewsPage_Title_Text">تغییرات آخرین نسخه</v:String>
+    <v:String x:Key="LauncherNewsPage_Build_Text">نسخه</v:String>
+    <v:String x:Key="LauncherNewsPage_Changes_Text">تغییرات:</v:String>
+    <v:String x:Key="LauncherNewsPage_CheckForUpdates">بررسی برای بروزرسانی</v:String>
+    <v:String x:Key="LauncherNewsPage_ForceUpdate">بروز رسانی اجباری</v:String>
+    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">فعلی</v:String>
+
+    <!--#endregion-->
+
+    <!--#region NewsScreenPage -->
+
+    <v:String x:Key="NewsScreen_LauncherTabTitle">لانچر</v:String>
+    <v:String x:Key="NewsScreen_OfficialTabTitle">رسمی</v:String>
+    <v:String x:Key="NewsScreen_MinecraftForumsTitle">Minecraft Forums</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">جاوا / دانجنز</v:String>
+
+    <v:String x:Key="NewsScreen_SearchBar_Content">عنوان جدید</v:String>
+
+    <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">ماینکرفت نسخه جاوا</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">ماینکرفت دانجنز</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_BedrockCheckbox">Minecraft for Windows</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Settings Section -->
+
+    <!--#region SettingsTab -->
+
+    <v:String x:Key="SettingsTab_Title">تنظیمات</v:String>
+    <v:String x:Key="SettingsTab_GeneralButton">کلی</v:String>
+    <v:String x:Key="SettingsTab_AccountsButton">حساب های کاربری</v:String>
+    <v:String x:Key="SettingsTab_AboutButton">درباره</v:String>
+    <v:String x:Key="SettingsTab_VersionsButton">نسخه ها</v:String>
+
+    <!--#endregion-->
+
+    <!--#region GeneralSettingsScreen -->
+    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">زبان</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">تم زبان</v:String>
+
+
+    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">تنظیمات لانچر</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">تنظیمات میانبر</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">نسخه بتای لانچر را استفاده کن</v:String>
+    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">لانچر را هنگامی که بازی درحال اجرا است باز نگه دار</v:String>
+    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">لانچر را وقتی به لانچر دیگری انتقال یافتی ببند</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">انیمیشن بین صفحه ها در لانچر</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">انیمیشن دکمه شروع بازی در صفحه های شروع بازی در لانچر</v:String>
+    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">پشتیبانی از لانچر ماینکرفت دانجنز (ناقص)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">اطلاعات بیشتر در هنگام نصب پکیج ها</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
+    
+
+    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">تنظیمات ماینکرفت: نسخه بدراک</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">پشتیبانی از سازنده</v:String>
+
+    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">بروزرسانی های لانچر</v:String>
+
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">پشتیبانی از سازنده</v:String>
+
+
+    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">فعال سازی تغییر مکان محل ذخیره سازی</v:String>
+    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">میانبر لانچر جاوا را نشان نده</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">میانبر لانچر خارجی را نشان بده</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BackupButton">در حال پشتیبان‌گیری از ذخیره ها</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">تنظیمات پیشرفته</v:String>
+
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">تنظیمات لانچر خارجی</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">محل</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">نام</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">بحی</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">نماد</v:String>
+
+    <!--#endregion-->
+
+    <!--#region AcountsSettingsPage -->
+
+    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">حساب کاربری انتخاب شده</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">تنظیمات Insider</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">تنظیمات عادی</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">تنظیمات Legacy</v:String>
+    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">مدیریت حساب‌های کاربری</v:String>
+    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">تنظیمات حساب کاربری</v:String>
+
+    <!--#endregion-->
+
+    <!--#region AboutPage -->
+
+    <v:String x:Key="AboutPage_Title">درباره ماینکرفت: لانچر نسخه بدراک</v:String>
+    <v:String x:Key="AboutPage_DevelopedBy_Text">توسعه داده شده توسط</v:String>
+    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">با الهام از کار</v:String>
+    <v:String x:Key="AboutPage_SpecialThanks_Text">با تشکر ویژه از</v:String>
+
+    <v:String x:Key="AboutPage_McMrArm_Text">برای ساخت دانلود کننده اولیه ماینکرفت ویندوز 10 (که این برنامه از آن بهره میبرد)</v:String>
+    <v:String x:Key="AboutPage_BsCommunity_Text">برای کارشان روی SkinView3D, که برای دیدن اسکین در لانچر استفاده شده است</v:String>
+    <v:String x:Key="AboutPage_Mojang_Text">برای ماینکرفت!!!</v:String>
+    <v:String x:Key="AboutPage_BsRepo_Text">SkinView3D repo</v:String>
+    <v:String x:Key="AboutPage_CurrentBuild">نسخه کنونی: </v:String>
+
+    <!--#endregion-->
+
+    <!--#region AdvancedSettings -->
+
+    <v:String x:Key="AdvancedSettings_Title">تنظیمات پیشرفته</v:String>
+    <v:String x:Key="AdvancedSettings_LauncherOptions_Text">تنظیمات لانچر</v:String>
+    <v:String x:Key="AdvancedSettings_PathSubtitle_Text">محل ذخیره سازی</v:String>
+    <v:String x:Key="AdvancedSettings_RestartButton_Text">راه اندازی مجدد</v:String>
+    <v:String x:Key="AdvancedSettings_Notice_Text">* تمام تنظیمات لانچر را دوباره راه اندازی خواهد کرد</v:String>
+    <v:String x:Key="AdvancedSettings_PortableMode_Text">فعال سازی حالت قابل انتقال</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Dialog Section -->
+
+    <!--#region FirstLaunch -->
+
+    <v:String x:Key="FirstLaunch_WelcomeTitle">خوش آمدید!</v:String>
+    <v:String x:Key="FirstLaunch_WelcomeSubTitle">به لانچر بدراک ماینکرفت خوش آمدید!</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileSubTitle">اولین نمایه خودتان را ایجاد کنید!</v:String>
+    <v:String x:Key="FirstLaunch_AlmostThereTitle">تقریبا تمومه!</v:String>
+    <v:String x:Key="FirstLaunch_OneThingTitle">یه چیز دیگه...</v:String>
+    <v:String x:Key="FirstLaunch_OneThingSubtitle">فقط اینها را بررسی کنید تا مطمعن شوید همه چیز همانطوری است که میخواهید.</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountTitle">یک حساب کاربری Insider انتخاب کنید</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* این برای تایید و دانلود نسخه های بتا استفاده میشود. شما باید در Xbox Insider Hub حساب خود را وارد بتا کرده باشید. شاید لازم باشد برای دانلود بتا ها ماینکرفت را حذف و نصب کنید و لانچر را دوباره راه اندازی کنید.</v:String>
+
+    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">قبل از استفاده شدیدا توصیه میشود که با کلیک روی پشتیبان گیری که نصب از داده های ذخیره شده کنونی خود یک پشتیبانی بگیرید. چون لانچر محل نصب اصلی را با یک لینک نمادین جایگزین میکند که به ما اجازه میدهد تا داده های ذخیره شده را جا به جا کنیم.
+
+(نگران نباشید, داده های شما با این کار از بین نمیرود, شما وقتی داده های خودتان را از دست میدهید که روی دکمه شروع بازی کلیک کرده و پشتیبان گیری نکرده باشید)</v:String>
+
+    <v:String x:Key="FirstLaunch_InstallType_Header">ذخیره/بارگیری اطلاعات لانچر از:</v:String>
+    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">پوشه ثابت (پیشنهاد میشود)</v:String>
+    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">پوشه قابل انتقال/ریشه</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">پشتیبان گیری از داده های ذخیره شده کنونی</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(پیشنهاد میشود)</v:String>
+    <v:String x:Key="FirstLaunch_CloseButton">ببند</v:String>
+    <v:String x:Key="FirstLaunch_BackButton">برگشت</v:String>
+    <v:String x:Key="FirstLaunch_GoBackButton"></v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileText">نمایه</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileButton">ایجاد</v:String>
+    <v:String x:Key="FirstLaunch_NextButton">بعدی</v:String>
+    <v:String x:Key="FirstLaunch_DownloadButton">دانلود</v:String>
+    <v:String x:Key="FirstLaunch_FinishButton">پایان</v:String>
+
+    <!--#endregion-->
+
+    <!--#region ErrorScreen -->
+
+    <v:String x:Key="ErrorScreen_Title">خطا</v:String>
+    <v:String x:Key="ErrorScreen_SubTitle">مشکلی برای لانچر پیش آمد</v:String>
+    <v:String x:Key="ErrorScreen_DefaultErrorMessage">یک مشکل نامعلوم پیش آمد و لانچر بسته شد. متاسفیم.</v:String>
+    <v:String x:Key="ErrorScreen_CloseButton">ببند</v:String>
+    <v:String x:Key="ErrorScreen_ViewCrash">ارسال گزارش مشکل</v:String>
+
+    <!--#endregion-->
+
+    <!--#region Errors -->
+
+    <v:String x:Key="Error_AuthenticationFailed_Title">تایید اعتبار ناموفق بود</v:String>
+    <v:String x:Key="Error_AuthenticationFailed">تایید اعتبار ناموفق بود. لطفا مطمئن شوید حساب کاربری Insider شما وارد بتا شده است.</v:String>
+
+    <v:String x:Key="Error_CantFindExternalLauncher_Title">سوییچ کردن لانچر ناموفق بود</v:String>
+    <v:String x:Key="Error_CantFindExternalLauncher">سوییچ کردن لانچر ناموفق بود. مطمئن شوید که مسیر انتخاب شده به لانچر صحیح است.</v:String>
+
+    <v:String x:Key="Error_CantFindJavaLauncher_Title">سوییچ کردن لانچر ناموفق بود</v:String>
+    <v:String x:Key="Error_CantFindJavaLauncher">پیدا کردن لانچر ناموفق بود. مطمئن شوید که شما لانچر رسمی ماینکرفت را از Minecraft.net دریافت کرده اید.</v:String>
+
+    <v:String x:Key="Error_AppReregisterFailed_Title">App registration failed</v:String>
+    <v:String x:Key="Error_AppReregisterFailed">لطفا دوباره سعی کنید :(</v:String>
+
+    <v:String x:Key="Error_AppDeregisteringFailed_Title">App de-registration failed</v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed">Please try again :(</v:String>
+
+    <v:String x:Key="Error_AppLaunchFailed_Title">لانچ کردن با شکست مواجه شد</v:String>
+    <v:String x:Key="Error_AppLaunchFailed">لطفا دوباره سعی کنید :(</v:String>
+
+    <v:String x:Key="Error_AppDownloadFailed_Title">دانلود با شکست مواجه شد</v:String>
+    <v:String x:Key="Error_AppDownloadFailed">لطفا دوباره سعی کنید :(</v:String>
+
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">Save redirection failed</v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed">Please try again :(</v:String>
+
+    <v:String x:Key="Error_AppUninstallFailed_Title">Uninstall failed</v:String>
+    <v:String x:Key="Error_AppUninstallFailed">Please try again :(</v:String>
+
+    <v:String x:Key="Error_AppExtractionFailed_Title">استخراج با مشکل مواجه شد</v:String>
+    <v:String x:Key="Error_AppExtractionFailed">لطفا دوباره سعی کنید :(</v:String>
+
+    <v:String x:Key="Error_CantFindPaidServerList_Title">باز کردن بخش سرور ها با شکست مواجه شد</v:String>
+    <v:String x:Key="Error_CantFindPaidServerList">لیست سرور های پولی پیدا نشد.</v:String>
+
+    <v:String x:Key="Error_NotaSkinPack_Title">باز کردن بسته اسکین با شکست مواجه شد</v:String>
+    <v:String x:Key="Error_NotaSkinPack">این یک بسته اسکین نیست دیوانه!</v:String>
+
+    <!--#endregion-->
+
+    <!--#region NewProfile -->
+
+    <v:String x:Key="NewProfile_GoBackButton"></v:String>
+    <v:String x:Key="NewProfile_CreateProfileText">نمایه</v:String>
+    <v:String x:Key="NewProfile_CreateProfileText_Error">نام قبلا رزرو شده</v:String>
+    <v:String x:Key="NewProfile_CreateProfileSubTitle">نام نمایه جدیدتان را وارد کنید!</v:String>
+    <v:String x:Key="NewProfile_CreateProfileButton">ایجاد</v:String>
+
+    <!--#endregion-->
+
+    <!--#region Dialog -->
+
+    <v:String x:Key="Dialog_Item_Installation_Text">نصب شده</v:String>
+    <v:String x:Key="Dialog_Item_SkinPack_Text">بسته اسکین</v:String>
+    <v:String x:Key="Dialog_Item_Skin_Text">اسکین</v:String>
+    <v:String x:Key="Dialog_Item_Version_Text">نسخه</v:String>
+    <v:String x:Key="Dialog_Item_Profile_Text">نمایه</v:String>
+
+    <v:String x:Key="Dialog_DeleteItem_Title">برای همیشه {0} را حذف کن</v:String>
+    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">آیا مطمئنید میخواهید &quot;{1}&quot; را پاک کنید؟
+این {0} برای همیشه پاک خواهد شد! (زمان بسیار زیاد!)</v:String>
+
+    <v:String x:Key="Dialog_KillGame_Title">بازی را خاطمه بده</v:String>
+    <v:String x:Key="Dialog_KillGame_Text">این کار خطرناک است, و فقط زمانی پیشنهاد میشود که شما گرفتار شده اید. آیا هنوز میخواهید بازی را خاطمه دهید?</v:String>
+
+    <v:String x:Key="Dialog_CloseGame_Title">بازی هنور درحال اجراست</v:String>
+    <v:String x:Key="Dialog_CloseGame_Text">آیا میخواهید با زور آن را ببندید؟ (بدون ذخیره تغییرات, این فقط زمانی پیشنهاد میشود که شما گرفتار شده اید, لطفا بازی را به صورت معمولی ببندید)</v:String>
+
+    <v:String x:Key="DialogBtn_YesToAll_Text">بله به همه</v:String>
+    <v:String x:Key="DialogBtn_NoToAll_Text">خیر به همه</v:String>
+    <v:String x:Key="DialogBtn_Yes_Text">بله</v:String>
+    <v:String x:Key="DialogBtn_No_Text">خیر</v:String>
+
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">هیچ نتیجه ی مرتبطی یافت نشد</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">ما هیچ محتوایی مطابق با جستجوی شما پیدا نکردیم. اگر فیلتر دسته بندی خاموش است, دوباره تلاش کنید</v:String>
+
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title">درحال بارگذاری...</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">لطفا صبر کنید!</v:String>
+
+    <v:String x:Key="Dialog_ResultPanel_Error_Title">خطا</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
+
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">بدون نتیجه</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">هیچ موردی مطابق جست و جوی شما پیدا نشد</v:String>
+
+    <!--#endregion-->
+
+    <!--#region Internal -->
+
+    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">فایل {0} از قبل در مسیر وجود دارد.\nآیا میخواهید آن را جایگزین کنید؟ فایل قبل پاک خواهد شد.</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">فایل {0} یک مسیر نیست. آیا میخواهید آن را پاک کنید؟ اطلاعات مسیر قبلی پاک خواهد شد.</v:String>
+
+    <v:String x:Key="GameManager_RecoveringDataIssue_Title">تبدیل اطلاعات ذخیره شده کنونی به نصب</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Installer Section -->
+
+
+    <!--#region UI -->
+
+    <v:String x:Key="Installer_Title">نصب کننده بدراک لانچر ماینکرفت</v:String>
+
+    <v:String x:Key="Installer_Back_Text">برگشت</v:String>
+    <v:String x:Key="Installer_Next_Text">بعدی</v:String>
+    <v:String x:Key="Installer_Cancel_Text">لغو</v:String>
+    <v:String x:Key="Installer_Finish_Text">پایان</v:String>
+
+    <v:String x:Key="Installer_WelcomePage_Title">به نصب کننده بدراک لانچر ماینکرفت خوش آمدید</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info_Text">این نرم افزار بدراک لانچر ماینکرفت را بر روی کامپیوتر شما نصب خواهد کرد.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info2_Text">بهتر است قبل از نصب تمام نرم افزار های دیگر را ببندید.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info3_Text">برای ادامه دادن کلیک کنید, یا برای خروج لغو کنید.</v:String>
+
+    <v:String x:Key="Installer_LicenseAgreement_Title">توافق نامه</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info_Text">لطفا توافق نامه مقابل را بخوانید. شما باید آنها را قبول کنید</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">قبول کردن قبل از ادامه نصب.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">من مجوز را قبول میکنم.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">من مجوز را قبول نمیکنم.</v:String>
+
+    <v:String x:Key="Installer_InstallType_Title">نوع نصب را انتخاب کنید</v:String>
+    <v:String x:Key="Installer_InstallType_Info_Text">انتخاب کنید چه نسخه ای از لانچر را میخواهید نصب کنید</v:String>
+
+    <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">نسخه بتا</v:String>
+    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">نسخه غیر بتا</v:String>
+
+    <v:String x:Key="Installer_InstallLocation_Title">محل نصب را انتخاب کنید</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info_Text">برپاساز لانچر بدراک ماینکرفت را در پوشه زیر نصب خواهد کرد. برای نصب در پوشه دیگر,</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info2_Text">روی &quot;جستجو&quot; کلیک کرده و پوشه دیگری را انتخاب کنید.</v:String>
+
+    <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">پوشه مورد نظر</v:String>
+    <v:String x:Key="Installer_InstallLocation_Browse_Text">مرور</v:String>
+
+    <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">یک نماد روی دسکتاپ ایجاد شود</v:String>
+    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">به منوی استارت اضافه شود</v:String>
+    <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">برنامه رجیستر و ثبت شود</v:String>
+
+    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">برنامه هنگام خروج باز شود</v:String>
+
+    <v:String x:Key="Installer_InstallationProgress_FilesInUse">بعضی از فایل ها توسط چیزی در حال استفاده هستند:</v:String>
+
+    <v:String x:Key="Installer_InstallationProgress_Title">در حال نصب</v:String>
+    <v:String x:Key="Installer_InstallationProgress_Info_Text">لطفا منتظر بمانید تا برپا کننده نرم افزار بدراک لانچر ماینکرفت را روی کامپیوتر شما نصب کند.</v:String>
+
+
+    <!--#endregion-->
+
+    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">انتقال به مسیر مشخص شده ناموفق بود</v:String>
+    <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">نمیتوان فایل را انتقال داد</v:String>
+    <v:String x:Key="Installer_Dialog_FileLocked_Text">فایل درحال استفاده است</v:String>
+    <v:String x:Key="Installer_Dialog_TryAgain_Text">دوباره تلاش کن?</v:String>
+    <v:String x:Key="Installer_Dialog_ErrorOccured_Text">خطایی رخ داده است.</v:String>
+
+    <!--#region ProgressBar -->
+
+    <v:String x:Key="Installer_ProgressBar_Downloading">در حال دانلود...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Finalizing">در حال نهایی سازی...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Initalizing">در حال راه‌اندازی...</v:String>
+
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region General Section -->
+
+    <!--#region VersionEntries -->
+
+    <v:String x:Key="VersionEntries_LatestSnapshot">آخرین بتا</v:String>
+    <v:String x:Key="VersionEntries_LatestRelease">آخرین نسخه</v:String>
+    <v:String x:Key="VersionEntries_UnnamedInstallation">&lt;نصب بی نام&gt;</v:String>
+
+    <!--#endregion-->
+
+    <!--#region ThemeEntries -->
+
+    <v:String x:Key="ThemeEntries_LatestUpdate">آخرین بروزرسانی</v:String>
+    <v:String x:Key="ThemeEntries_Original">اصلی</v:String>
+
+    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">کیوز اند کلیفز (پارت 1)</v:String>
+    <v:String x:Key="ThemeEntries_NetherUpdate">ندر آپدیت</v:String>
+    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">آپدیت بازی بیز</v:String>
+    <v:String x:Key="ThemeEntries_VillagePillageUpdate">آپدیت ویلج و پیلج</v:String>
+    <v:String x:Key="ThemeEntries_UpdateAquatic">آپدیت اکواتیک</v:String>
+    <v:String x:Key="ThemeEntries_TechnicallyUpdated">تکنیکلی آپدیتد [Java]</v:String>
+    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">آپدیت ورلد آو کالر [Java]</v:String>
+    <v:String x:Key="ThemeEntries_ExplorationUpdate">آپدیت اکسپلوریشن [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CombatUpdate">آپدیت کامبت [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">گربه ها و پاندا ها [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_PocketEditionRelease">رهانش رسمی [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_BedrockStandard">نسخه بدراک استاندارد</v:String>
+    <v:String x:Key="ThemeEntries_BedrockMaster">نسخه بدراک مستر</v:String>
+    <v:String x:Key="ThemeEntries_EarlyLegacyConsole">دوران اصلی میراث کنسول</v:String>
+    <v:String x:Key="ThemeEntries_MidLegacyConsole">اواسط دوران اصلی میراث کنسول</v:String>
+    <v:String x:Key="ThemeEntries_LateLegacyConsole">اواخر دوران اصلی میراث کنسول</v:String>
+    <v:String x:Key="ThemeEntries_IndieDays">روزهای اول</v:String>
+    <v:String x:Key="ThemeEntries_Dungeons">ماینکرفت دانجنز</v:String>
+
+
+    <!--#endregion-->
+
+    <!--#region GeneralText -->
+
+    <v:String x:Key="GeneralText_Delete">حذف</v:String>
+    <v:String x:Key="GeneralText_Edit">ويرايش</v:String>
+    <v:String x:Key="GeneralText_Duplicate">تکراری</v:String>
+    <v:String x:Key="GeneralText_Remove">حذف</v:String>
+    <v:String x:Key="GeneralText_Cancel">لغو</v:String>
+    <v:String x:Key="GeneralText_Update">به‌روز رسانی</v:String>
+    <v:String x:Key="GeneralText_Add">ﺍﻓﺰﻭﺩﻥ</v:String>
+    <v:String x:Key="GeneralText_Save">ذخیره</v:String>
+    <v:String x:Key="GeneralText_Refresh">بارگذاری مجدد</v:String>
+    <v:String x:Key="GeneralText_Backup">پشتیبان‌گیری</v:String>
+    <v:String x:Key="GeneralText_Versions">نسخه ها</v:String>
+    <v:String x:Key="GeneralText_Browse">مرور</v:String>
+    <v:String x:Key="GeneralText_Reset">بازنشانی</v:String>
+    <v:String x:Key="GeneralText_Yes">آری</v:String>
+    <v:String x:Key="GeneralText_No">خیر</v:String>
+    <v:String x:Key="GeneralText_Releases">نسخه‌های منتشر شده</v:String>
+    <v:String x:Key="GeneralText_Betas">نسخه های بتا</v:String>
+    <v:String x:Key="GeneralText_Export">خروجی گرفتن</v:String>
+    <v:String x:Key="GeneralText_Repair">بازسازی</v:String>
+
+    <v:String x:Key="GeneralText_Twitter">توییتر</v:String>
+    <v:String x:Key="GeneralText_GitHub">GitHub</v:String>
+    <v:String x:Key="GeneralText_Website">وبسایت</v:String>
+
+    <!--#endregion-->
+
+    <!--#region GeneralSubtitles -->
+
+    <v:String x:Key="GeneralSubtitles_Versions">نسخه ها</v:String>
+    <v:String x:Key="GeneralSubtitles_Browse">مرور</v:String>
+    <v:String x:Key="GeneralSubtitles_Reset">بازنشانی</v:String>
+    <v:String x:Key="GeneralSubtitles_Categories">دسته بندی ها</v:String>
+    <v:String x:Key="GeneralSubtitles_Search">جست و جو</v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy">مرتب کن با</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+</ResourceDictionary>
