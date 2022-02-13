@@ -1,25 +1,25 @@
 ﻿# Part 1 - The Powershell Script
-The Windows Store version of Minecraft Dungeons normally won't let you modify its files/folders. To get around this issue, follow these steps:
+Normalmente la versione di Minecraft: Dungeons del Windows Store non ti permetterà di modificare i suoi file e le sue cartelle. Per aggirare questo problema, segui questi passaggi:
 
-## Prerequisites:
-- Temporarily disable any antivirus software. Most will detect that an unknown script is being run and try to stop it.
-- If you use Bitdefender, you need to uninstall it before continuing, as it breaks the script even when turned off.
-- Make sure you have at least 10 GBs of space free.
-- Make sure your game is up to date. To do this, press Win + R, enter `ms-windows-store://DownloadsAndUpdates/` and press enter. Then, press "Get updates" in the top right corner of the window that opens.
-- Install [Visual C++ Redist](https://aka.ms/vs/16/release/vc_redist.x64.exe). Even if you think you have it installed, try the installer. You may have an older version that won't work.
+## Prerequisiti:
+- Disattivare temporaneamente qualsiasi software antivirus. La maggior parte rileverà che uno script sconosciuto è in esecuzione e tenterà di fermarlo.
+- Se utilizzi Bitdefender, è necessario disinstallarlo prima di continuare, in quanto rompe lo script anche quando disattivato.
+- Assicurati di avere almeno 10 GB di spazio libero.
+- Assicurati che il tuo gioco sia aggiornato. Per fare questo, premi Win + R, inserisci `ms-windows-store://DownloadsAndUpdates/` e premi invio. Poi, premi "Ricevi aggiornamenti" nell'angolo in alto a destra della finestra che si apre.
+- Installa [Visual C++ Redist](https://aka.ms/vs/16/release/vc_redist.x64.exe). Anche se pensi di averlo installato, prova il programma di installazione. Potresti avere una versione precedente che non funzionerà.
 
-## In the Bedrock Launcher:
-1. Make Sure your game variant is set to `Microsoft Store`
+## Nel Launcher di Bedrock:
+1. Assicurati che la tua variante di gioco sia impostata su `Microsoft Store`
 3. Click on `Install Store Patch`
 
 ## In the Powershell Window:
 
-3. You will be asked to select a folder. Choose an empty folder where you want the game to be moved to. Do not choose a folder in Program Files or One Drive, it will break things.
-4. The game will open at one point. Do not close it when this happens. If you run into any issues, make sure to check the Troubleshooting section below.
-5. A `~mods` folder will appear. This is where you place your mods.
-7. Launching the modded game is just like launching the regular game. You can do it from the start menu, Windows Store, Xbox app, and so on, just like you normally do. Do NOT try to launch it by running the .exe files in the game folder.
+3. Ti verrà chiesto di selezionare una cartella. Scegli una cartella vuota in cui vuoi che il gioco venga spostato. Non scegliere una cartella in File di programma o One Drive, potrebbe rompere qualcosa.
+4. Il gioco si aprirà ad un certo punto. Non chiuderla quando ciò accade. In caso di problemi, assicurati di controllare la sezione Risoluzione dei problemi qui sotto.
+5. Apparirà una cartella `~mods`. Qui è dove inserirai le tue mod.
+7. Avviare il gioco moddato è come avviare il gioco regolare. Puoi farlo dal menu di avvio, dal Windows Store, dall'app Xbox e così via, proprio come faresti normalmente. Non provare a avviarlo eseguendo i file .exe nella cartella di gioco.
 
-## Troubleshooting:
+## Risoluzione dei problemi:
 - If you run into any issues while/after patching the game, some of these things might help you.
 - If the game didn't open at all while patching and the patching didn't work, try opening the game manually before running the patcher. Keep the game open until it either closes by itself or the patcher finishes.
 - If you get an error saying it can't verify your ownership of the game, you must have launched the game using the .exe file. Don't do that. Run the game from the start menu, Windows Store, or Xbox app. If you did, but still get this error, reinstall the regular game and log in at least once (open the game and select a character) before patching it.
