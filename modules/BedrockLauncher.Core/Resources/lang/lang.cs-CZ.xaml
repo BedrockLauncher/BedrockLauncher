@@ -56,7 +56,7 @@
 
     <!--#region ProfileButton -->
 
-    <v:String x:Key="ProfileButton_ManageProfiles_Text">Správa Profilů</v:String>
+    <v:String x:Key="ProfileButton_ManageProfiles_Text">Správa Profil</v:String>
     <v:String x:Key="ProfileButton_ProfileSettings_Text">Natavení Profilu</v:String>
     <v:String x:Key="ProfileButton_AddProfile_Text">Přidat Profil</v:String>
     <v:String x:Key="ProfileButton_RemoveProfile_Text">Odstranit Profil</v:String>
@@ -105,7 +105,7 @@
     <v:String x:Key="InstallationsPage_AddButton">Nová instalace</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">Hrát</v:String>
 
-    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">Naposledy Hrané</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">Naposledy Hran</v:String>
     <v:String x:Key="InstallationsPage_SortBy_Name">Jméno</v:String>
 
     <v:String x:Key="InstallationsPage_SearchBar_Content">Název instalace</v:String>
@@ -183,8 +183,8 @@
     <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">UUID</v:String>
     <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">VERZE</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_Header">Upravit Balíček Skinů</v:String>
-    <v:String x:Key="EditSkinPackScreen_AddHeader">Přidat Balíček Skinů</v:String>
+    <v:String x:Key="EditSkinPackScreen_Header">Upravit Balíček Skin</v:String>
+    <v:String x:Key="EditSkinPackScreen_AddHeader">Přidat Balíček Skin</v:String>
 
     <v:String x:Key="EditSkinPackScreen_Warning">* Vezměte prosím na vědomí, že změna definic jazyka a změna ikony balíčku jsou nevratné bez ohledu na to, zda vaše změny uložíte nebo neuložíte!!!</v:String>
 
@@ -227,7 +227,7 @@
     <!--#region SettingsTab -->
 
     <v:String x:Key="SettingsTab_Title">NASTAVENÍ</v:String>
-    <v:String x:Key="SettingsTab_GeneralButton">Obecné</v:String>
+    <v:String x:Key="SettingsTab_GeneralButton">Obecn</v:String>
     <v:String x:Key="SettingsTab_AccountsButton">Účty</v:String>
     <v:String x:Key="SettingsTab_AboutButton">O aplikaci</v:String>
     <v:String x:Key="SettingsTab_VersionsButton">Verze</v:String>
@@ -243,11 +243,11 @@
     <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">NASTAVENÍ ZKRATEK</v:String>
     <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Použít beta verzi spouštěče</v:String>
     <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Ponechat Spouštěč otevřený, když jsou hry spuštěny</v:String>
-    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Zavřít Spouštěč při přepínání spouštěčů</v:String>
+    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Zavřít Spouštěč při přepínání spouštěč</v:String>
     <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animovat přechody mezi stránkami ve Spouštěči</v:String>
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animovat tlačítko hrát na stránkách Hrát ve Spouštěči</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Povolit Podporu Minecraft Dungeons (nedokončeno)</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Zobrazit rozšířené informace při instalaci balíčků</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Zobrazit rozšířené informace při instalaci balíčk</v:String>
     <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Animovat přechody mezi stránkami ve Spouštěči</v:String>
     <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(vyžaduje povolené animované přechody stránek)</v:String>
     
@@ -304,7 +304,7 @@
 
     <v:String x:Key="AdvancedSettings_Title">Pokročilá Nastavení</v:String>
     <v:String x:Key="AdvancedSettings_LauncherOptions_Text">MOŽNOSTI SPOUŠTĚČE</v:String>
-    <v:String x:Key="AdvancedSettings_PathSubtitle_Text">ADRESA ÚLOŽIŠTĚ</v:String>
+    <v:String x:Key="AdvancedSettings_PathSubtitle_Text">ADRESA ÚLOŽIŠT</v:String>
     <v:String x:Key="AdvancedSettings_RestartButton_Text">Restartovat</v:String>
     <v:String x:Key="AdvancedSettings_Notice_Text">* Všechna nastavení restartují spouštěč</v:String>
     <v:String x:Key="AdvancedSettings_PortableMode_Text">Povolit Přenosný Režim</v:String>
@@ -388,7 +388,7 @@
     <v:String x:Key="Error_AppExtractionFailed_Title">Extrahování se nezdařilo</v:String>
     <v:String x:Key="Error_AppExtractionFailed">Prosím, zkuste to znovu :(</v:String>
 
-    <v:String x:Key="Error_CantFindPaidServerList_Title">Nelze otevřít záložku serverů</v:String>
+    <v:String x:Key="Error_CantFindPaidServerList_Title">Nelze otevřít záložku server</v:String>
     <v:String x:Key="Error_CantFindPaidServerList">Seznam placených serverů nebyl nalezen.</v:String>
 
     <v:String x:Key="Error_NotaSkinPack_Title">Balíček skinů nelze importovat</v:String>
@@ -409,7 +409,7 @@
     <!--#region Dialog -->
 
     <v:String x:Key="Dialog_Item_Installation_Text">instalace</v:String>
-    <v:String x:Key="Dialog_Item_SkinPack_Text">balíček skinů</v:String>
+    <v:String x:Key="Dialog_Item_SkinPack_Text">balíček skin</v:String>
     <v:String x:Key="Dialog_Item_Skin_Text">skin</v:String>
     <v:String x:Key="Dialog_Item_Version_Text">verze</v:String>
     <v:String x:Key="Dialog_Item_Profile_Text">profil</v:String>
