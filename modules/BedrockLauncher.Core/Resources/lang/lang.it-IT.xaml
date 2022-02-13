@@ -6,7 +6,7 @@
 
     <!--#region MainWindow -->
 
-    <v:String x:Key="MainWindow_Title">Minecraft Bedrock Launcher</v:String>
+    <v:String x:Key="MainWindow_Title">Launcher di Minecraft Bedrock</v:String>
     <v:String x:Key="MainWindow_Disclaimer">NON ASSOCIATO O APPROVATO DA MOJANG</v:String>
 
     <!--#endregion-->
@@ -22,9 +22,9 @@
     <!--#region ToolbarButtons -->
 
     <v:String x:Key="ToolbarButtons_NewsButton_Text">Notizie</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Edizione Bedrock</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Edizione Java</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Launcher di Java</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Launcher della Java Edition</v:String>
     <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Launcher Personalizzato</v:String>
     <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Passa a</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
@@ -68,21 +68,21 @@
     
     <!-- #region Dungeons Section -->
 
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant">GAME VARIANT</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Windows Launcher</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant">VARIANTE DEL GIOCO</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Launcher di Windows</v:String>
     <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Steam</v:String>
     <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Microsoft Store</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Default path&gt;</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Percorso predefinito&gt;</v:String>
     <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">INSTALL LOCATION</v:String>
     <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">SYMBOLIC MODS FOLDER LOCATION</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Instructions</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_PathsTab">Paths</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GeneralTab">General</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Istruzioni</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_PathsTab">Percorsi</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GeneralTab">Generale</v:String>
     <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Install Store Patch</v:String>
     <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Update Store Patch</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Uninstall Symbolic Link</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Install  Symbolic Link</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Repair/Update Game</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Disinstalla il collegamento simbolico</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Installa il collegamento simbolico</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Ripara/Aggiorna il gioco</v:String>
 
 
     <!--#endregion-->
@@ -128,7 +128,7 @@
     <v:String x:Key="EditInstallationScreen_DirectorySubtitle">DIRECTORY</v:String>
 
     <v:String x:Key="EditInstallationScreen_NameHintText">&lt;installazione senza nome&gt;</v:String>
-    <v:String x:Key="EditInstallationScreen_DirectoryHintText">&lt;percorso di default&gt;</v:String>
+    <v:String x:Key="EditInstallationScreen_DirectoryHintText">&lt;percorso predefinito&gt;</v:String>
 
     <!--#endregion-->
 
@@ -214,9 +214,9 @@
 
     <v:String x:Key="NewsScreen_SearchBar_Content">Titolo delle Notizie</v:String>
 
-    <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Edizione Java</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
-    <v:String x:Key="NewsScreen_JavaNDungeons_BedrockCheckbox">Minecraft for Windows</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_BedrockCheckbox">Minecraft per Windows</v:String>
 
     <!--#endregion-->
 
@@ -246,13 +246,13 @@
     <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Chiudi il Launcher quandi si cambiano i launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Anima le transizioni tra le pagine del launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Anima il tasto gioca nelle pagine Gioca nel Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Abilita il supporto di Minecraft Dungeons (WIP)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Abilita il supporto per Minecraft Dungeons (WIP)</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Mostra informazioni avanzate quando si installano i pacchetti</v:String>
     <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
     
 
-    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">IMPOSTAZIONI DI MINECRAFT: EDIZIONE BEDROCK</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">IMPOSTAZIONI DI MINECRAFT: BEDROCK EDITION</v:String>
     <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">SUPPORTA IL CREATORE</v:String>
 
     <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">AGGIORNAMENTI DEL LAUNCHER</v:String>
@@ -287,12 +287,13 @@
 
     <!--#region AboutPage -->
 
-    <v:String x:Key="AboutPage_Title">INFORMAZIONI SUL MINECRAFT: BEDROCK EDITION LAUNCHER</v:String>
+    <v:String x:Key="AboutPage_Title">INFORMAZIONI SUL LAUNCHER DI MINECRAFT: BEDROCK EDITION</v:String>
     <v:String x:Key="AboutPage_DevelopedBy_Text">SVILUPPATO DA</v:String>
     <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">BIFORCUTO DAL LAVORO DI</v:String>
     <v:String x:Key="AboutPage_SpecialThanks_Text">RINGRAZIAMENTI SPECIALI A</v:String>
 
-    <v:String x:Key="AboutPage_McMrArm_Text">Per creare il downloader della versione Minecraft Windows 10 originale (da cui deriva questo lavoro)</v:String>
+    <v:String x:Key="AboutPage_McMrArm_Text">Per creare il downloader della versione originale 
+di Minecraft per Windows 10 (da cui deriva questo lavoro)</v:String>
     <v:String x:Key="AboutPage_BsCommunity_Text">Per il loro lavoro su SkinView3D, usato per la visualizzazione della pelle nel launcher</v:String>
     <v:String x:Key="AboutPage_Mojang_Text">Per Minecraft!!!</v:String>
     <v:String x:Key="AboutPage_BsRepo_Text">Repo SkinView3D</v:String>
@@ -318,7 +319,7 @@
     <!--#region FirstLaunch -->
 
     <v:String x:Key="FirstLaunch_WelcomeTitle">Benvenuto/a!</v:String>
-    <v:String x:Key="FirstLaunch_WelcomeSubTitle">Benvenuto sul Minecraft Bedrock Launcher!</v:String>
+    <v:String x:Key="FirstLaunch_WelcomeSubTitle">Launcher di Minecraft Bedrock: primi passi</v:String>
     <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Crea il tuo primo profilo!</v:String>
     <v:String x:Key="FirstLaunch_AlmostThereTitle">Ci sei quasi!</v:String>
     <v:String x:Key="FirstLaunch_OneThingTitle">Una cosa...</v:String>
@@ -371,7 +372,7 @@
     <v:String x:Key="Error_AppReregisterFailed">Per favore riprova :(</v:String>
 
     <v:String x:Key="Error_AppDeregisteringFailed_Title">App de-registration failed</v:String>
-    <v:String x:Key="Error_AppDeregisteringFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed">Riprova :(</v:String>
 
     <v:String x:Key="Error_AppLaunchFailed_Title">Avvio non riuscito</v:String>
     <v:String x:Key="Error_AppLaunchFailed">Per favore riprova :(</v:String>
@@ -380,10 +381,10 @@
     <v:String x:Key="Error_AppDownloadFailed">Per favore riprova :(</v:String>
 
     <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">Save redirection failed</v:String>
-    <v:String x:Key="Error_SaveDirectoryRedirectionFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed">Riprova :(</v:String>
 
-    <v:String x:Key="Error_AppUninstallFailed_Title">Uninstall failed</v:String>
-    <v:String x:Key="Error_AppUninstallFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppUninstallFailed_Title">Disinstallazione non riuscita</v:String>
+    <v:String x:Key="Error_AppUninstallFailed">Riprova :(</v:String>
 
     <v:String x:Key="Error_AppExtractionFailed_Title">Estrazione fallita</v:String>
     <v:String x:Key="Error_AppExtractionFailed">Per favore riprova :(</v:String>
@@ -430,8 +431,7 @@ Questo {0} andrà perso per sempre! (Molto tempo!)</v:String>
     <v:String x:Key="DialogBtn_No_Text">No</v:String>
 
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">Nessun risultato corrispondente</v:String>
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">We couldn't find news any content matching your search. If you have category filters 
-turned off, try turning the back on and search again</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">Non siamo riusciti a trovare notizie che corrispondano alla tua ricerca. Se hai i filtri di categoria disattivati, prova a riattivarli e cercare di nuovo</v:String>
 
     <v:String x:Key="Dialog_ResultPanel_Loading_Title">Caricamento...</v:String>
     <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Attendi!</v:String>
@@ -446,10 +446,10 @@ turned off, try turning the back on and search again</v:String>
 
     <!--#region Internal -->
 
-    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">The file {0} already exists in the destination.\nDo you want to replace it? The old file will be lost otherwise.</v:String>
-    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">The file {0} is not a directory. Do you want to remove it? The data from the old directory will be lost otherwise.</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">Il file {0} è già presente nella destinazione.\nVuoi sostituirlo? Altrimenti il vecchio file andrà perso.</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">Il file {0} non è una cartella di gioco. Vuoi rimuoverlo? I dati dalla vecchia cartella di gioco andranno persi altrimenti.</v:String>
 
-    <v:String x:Key="GameManager_RecoveringDataIssue_Title">Converting Existing Save Data to Installation</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_Title">Conversione dei dati di salvataggio esistenti in installazione</v:String>
 
     <!--#endregion-->
 
@@ -467,16 +467,16 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="Installer_Cancel_Text">Annulla</v:String>
     <v:String x:Key="Installer_Finish_Text">Termina</v:String>
 
-    <v:String x:Key="Installer_WelcomePage_Title">Benvenuto/a nel Wizard di installazione del launcher di Minecraft Bedrock</v:String>
-    <v:String x:Key="Installer_WelcomePage_Info_Text">Installerà il launcher di Minecraft Bedrock sul tuo computer.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Title">Configurazione guidata del launcher di Minecraft Bedrock</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info_Text">Questo programma installerà il launcher di Minecraft Bedrock sul tuo computer.</v:String>
     <v:String x:Key="Installer_WelcomePage_Info2_Text">È consigliato chiudere tutte le altre applicazioni prima di continuare.</v:String>
     <v:String x:Key="Installer_WelcomePage_Info3_Text">Clicca 'Avanti' per continuare, o 'Annulla' per uscire dall'installazione.</v:String>
 
     <v:String x:Key="Installer_LicenseAgreement_Title">Accordo di licenza</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Info_Text">Please read the following License Agreement. You must accept the terms of this</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">agreement before continuing with the installation.</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">I accept the license.</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">I don't accept the license.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info_Text">Si prega di leggere il seguente contratto di licenza. È necessario accettare i termini di questo</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">contratto prima di poter continuare con l'installazione.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">Accetto la licenza.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">Non accetto la licenza.</v:String>
 
     <v:String x:Key="Installer_InstallType_Title">Scegli il tipo di installazione</v:String>
     <v:String x:Key="Installer_InstallType_Info_Text">Seleziona la versione del launcher che desideri scaricare</v:String>
