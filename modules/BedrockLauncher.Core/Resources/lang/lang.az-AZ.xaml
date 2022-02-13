@@ -60,7 +60,7 @@
     <v:String x:Key="ProfileButton_ProfileSettings_Text">Profil tənzimləmələri</v:String>
     <v:String x:Key="ProfileButton_AddProfile_Text">Profil əlavə et</v:String>
     <v:String x:Key="ProfileButton_RemoveProfile_Text">Profil çıxart</v:String>
-    <v:String x:Key="ProfileButton_ChooseAccount_Text">PROFİL SEÇ</v:String>
+    <v:String x:Key="ProfileButton_ChooseAccount_Text">PROFİL SE</v:String>
 
     <!--#endregion-->
 
@@ -121,7 +121,7 @@
     <v:String x:Key="EditInstallationScreen_AltCreateButton">Saxla</v:String>
 
     <v:String x:Key="EditInstallationScreen_LatestSnapshot">Son beta</v:String>
-    <v:String x:Key="EditInstallationScreen_LatestRelease">Son buraxılış</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestRelease">Son buraxılı</v:String>
 
     <v:String x:Key="EditInstallationScreen_NameSubtitle">AD</v:String>
     <v:String x:Key="EditInstallationScreen_VersionSubtitle">VERSİYA</v:String>
