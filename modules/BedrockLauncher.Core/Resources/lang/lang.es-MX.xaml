@@ -14,7 +14,7 @@
     <!-- #region CommunityPage -->
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
-    <v:String x:Key="CommunityPage_ComingSoon">¡Muy pronto!</v:String>
+    <v:String x:Key="CommunityPage_ComingSoon"></v:String>
     <v:String x:Key="CommunityPage_CheckBackLater">Regresa después para ver algo SUPER DUPER INCREÍBLE!</v:String>
 
     <!-- #endregion -->
@@ -36,8 +36,8 @@
 
     <!--#region UpdateButton-->
 
-    <v:String x:Key="UpdateButton_NewUpdate_Text">¡Nueva actualización!</v:String>
-    <v:String x:Key="UpdateButton_Download_Text">¡Click para descargar!</v:String>
+    <v:String x:Key="UpdateButton_NewUpdate_Text"></v:String>
+    <v:String x:Key="UpdateButton_Download_Text"></v:String>
 
     <!--#endregion-->
 
@@ -393,7 +393,7 @@ Debes optar en el Xbox Insider Hub por la cuenta seleccionada para descargar bet
     <v:String x:Key="Error_CantFindPaidServerList">Lista de servidores pagados no encontrada.</v:String>
 
     <v:String x:Key="Error_NotaSkinPack_Title">No se puede importar el pack de skin</v:String>
-    <v:String x:Key="Error_NotaSkinPack">¡Eso no es un pack de skin tontito!</v:String>
+    <v:String x:Key="Error_NotaSkinPack"></v:String>
 
     <!--#endregion-->
 
@@ -402,7 +402,7 @@ Debes optar en el Xbox Insider Hub por la cuenta seleccionada para descargar bet
     <v:String x:Key="NewProfile_GoBackButton"></v:String>
     <v:String x:Key="NewProfile_CreateProfileText">PERFIL</v:String>
     <v:String x:Key="NewProfile_CreateProfileText_Error">ESTE NOMBRE YA FUE TOMADO</v:String>
-    <v:String x:Key="NewProfile_CreateProfileSubTitle">¡Introduce el nombre de tu nuevo perfil!</v:String>
+    <v:String x:Key="NewProfile_CreateProfileSubTitle"></v:String>
     <v:String x:Key="NewProfile_CreateProfileButton">Crear</v:String>
 
     <!--#endregion-->
@@ -423,7 +423,7 @@ Esto {0} será perdido para siempre! (Es muchísimo tiempo!)</v:String>
     <v:String x:Key="Dialog_KillGame_Text">Esto es peligroso y solo se recomienda si te quedas atascado. ¿Todavía quieres cerrar la partida?</v:String>
 
     <v:String x:Key="Dialog_CloseGame_Title">El juego sigue ejecutándose</v:String>
-    <v:String x:Key="Dialog_CloseGame_Text">¿Te gustaría forzar a cerrarla? (sin guardar los cambios, esto solo se recomienda si te atascas, por favor cierra el juego normalmente)</v:String>
+    <v:String x:Key="Dialog_CloseGame_Text"></v:String>
 
     <v:String x:Key="DialogBtn_YesToAll_Text">Sí a todo</v:String>
     <v:String x:Key="DialogBtn_NoToAll_Text">No a todo</v:String>
@@ -435,7 +435,7 @@ Esto {0} será perdido para siempre! (Es muchísimo tiempo!)</v:String>
 desactivados, intenta volver a activar y vuelve a buscar</v:String>
 
     <v:String x:Key="Dialog_ResultPanel_Loading_Title">Cargando...</v:String>
-    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">¡Espere por favor!</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve"></v:String>
 
     <v:String x:Key="Dialog_ResultPanel_Error_Title">Error</v:String>
     <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
