@@ -40,6 +40,7 @@ namespace BedrockLauncher.Handlers
     {
         private CancellationTokenSource CancelSource = new CancellationTokenSource();
         private StoreNetwork StoreNetwork = new StoreNetwork();
+        private PackageManager PM = new PackageManager();
 
         public VersionDownloader VersionDownloader { get; private set; } = new VersionDownloader();
         public Process GameHandle { get; private set; } = null;
@@ -214,7 +215,7 @@ namespace BedrockLauncher.Handlers
                 Trace.WriteLine("Registering package");
                 MainViewModel.Default.ProgressBarState.SetProgressBarText(v.GetPackageNameFromMainifest());
                 MainViewModel.Default.ProgressBarState.SetProgressBarState(LauncherState.isRegisteringPackage);
-                await DeploymentProgressWrapper(new PackageManager().RegisterPackageAsync(new Uri(v.ManifestPath), null, DeploymentOptions.DevelopmentMode));
+                await DeploymentProgressWrapper(PM.RegisterPackageAsync(new Uri(v.ManifestPath), null, Constants.PackageDeploymentOptions));
                 Trace.WriteLine("App re-register done!");
             }
             catch (PackageManagerException e)
@@ -280,7 +281,7 @@ namespace BedrockLauncher.Handlers
         {
             try
             {
-                foreach (var pkg in new PackageManager().FindPackages(Constants.MINECRAFT_PACKAGE_FAMILY))
+                foreach (var pkg in PM.FindPackages(Constants.MINECRAFT_PACKAGE_FAMILY))
                 {
                     string location;
 
@@ -297,7 +298,7 @@ namespace BedrockLauncher.Handlers
 
                     MainViewModel.Default.ProgressBarState.SetProgressBarText(pkg.Id.FullName);
                     MainViewModel.Default.ProgressBarState.SetProgressBarState(LauncherState.isRemovingPackage);
-                    await DeploymentProgressWrapper(new PackageManager().RemovePackageAsync(pkg.Id.FullName, RemovalOptions.PreserveApplicationData | RemovalOptions.RemoveForAllUsers));
+                    await DeploymentProgressWrapper(PM.RemovePackageAsync(pkg.Id.FullName, Constants.PackageRemovalOptions));
                     Trace.WriteLine("Removal of package done: " + pkg.Id.FullName);
                 }
             }
@@ -452,12 +453,7 @@ namespace BedrockLauncher.Handlers
         protected async Task DeploymentProgressWrapper(IAsyncOperationWithProgress<DeploymentResult, DeploymentProgress> t)
         {
             TaskCompletionSource<int> src = new TaskCompletionSource<int>();
-            t.Progress += (v, p) =>
-            {
-                Trace.WriteLine("Deployment progress: " + p.state + " " + p.percentage + "%");
-                MainViewModel.Default.ProgressBarState.SetProgressBarProgress(currentProgress: Convert.ToInt64(p.percentage), totalProgress: 100);
-
-            };
+            t.Progress += (v, p) => MainViewModel.Default.ProgressBarState.SetProgressBarProgress(currentProgress: Convert.ToInt64(p.percentage), totalProgress: 100);
             t.Completed += (v, p) =>
             {
                 MainViewModel.Default.ProgressBarState.ResetProgressBarProgress();
@@ -475,7 +471,6 @@ namespace BedrockLauncher.Handlers
             };
             await src.Task;
         }
-
         protected void ProgressWrapper(long current, long total, string text = null)
         {
             MainViewModel.Default.ProgressBarState.SetProgressBarProgress(current, total);

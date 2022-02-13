@@ -30,20 +30,20 @@ namespace BedrockLauncher.Classes
         public string Name { get; set; }
         public string Architecture { get; set; }
         public bool IsBeta { get; set; }
+        public bool IsInstalled
+        {
+            get
+            {
+                Depends.On(GameDirectory, RequireSizeRecalculation);
+                return File.Exists(ManifestPath);
+            }
+        }
         public string GameDirectory
         {
             get
             {
                 Depends.On(UUID);
                 return Path.GetFullPath(MainViewModel.Default.FilePaths.CurrentLocation + "\\versions\\Minecraft-" + UUID);
-            }
-        }
-        public bool IsInstalled
-        {
-            get
-            {
-                Depends.On(GameDirectory, RequireSizeRecalculation);
-                return Directory.Exists(GameDirectory) && File.Exists(ManifestPath);
             }
         }
         public string DisplayName
@@ -70,14 +70,6 @@ namespace BedrockLauncher.Classes
             {
                 Depends.On(IsBeta);
                 return IsBeta ? Constants.BETA_VERSION_ICONPATH : Constants.RELEASE_VERSION_ICONPATH;
-            }
-        }
-        public string DisplayInstallStatus
-        {
-            get
-            {
-                Depends.On(IsInstalled);
-                return IsInstalled ? "Installed" : "Not installed";
             }
         }
         public string ManifestPath

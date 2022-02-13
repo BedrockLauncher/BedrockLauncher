@@ -63,15 +63,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
-  <PropertyGroup>
-    <PreBuildEvent>cd "$(MSBuildProjectDirectory)\Runtimes\WUTokenHelper"
-rmdir "Win32" /s /q
-rmdir "x64" /s /q
-xcopy "$(MSBuildProjectDirectory)\WUTokenHelper\bin\Release" "$(MSBuildProjectDirectory)\Runtimes\WUTokenHelper" /E /I /Q</PreBuildEvent>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
@@ -79,4 +75,7 @@ xcopy "$(MSBuildProjectDirectory)\WUTokenHelper\bin\Release" "$(MSBuildProjectDi
   <ItemGroup>
     <ProjectReference Include="..\Extensions.NET\Extensions.csproj" />
   </ItemGroup>
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="cd &quot;$(MSBuildProjectDirectory)\Runtimes\WUTokenHelper&quot;&#xD;&#xA;rmdir &quot;Win32&quot; /s /q&#xD;&#xA;rmdir &quot;x64&quot; /s /q&#xD;&#xA;xcopy &quot;$(MSBuildProjectDirectory)\WUTokenHelper\bin\Release&quot; &quot;$(MSBuildProjectDirectory)\Runtimes\WUTokenHelper&quot; /E /I /Q" />
+  </Target>
 </Project>

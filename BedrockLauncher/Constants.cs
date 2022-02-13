@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Management.Deployment;
 
 namespace BedrockLauncher
 {
@@ -52,6 +53,28 @@ namespace BedrockLauncher
                 else if (currentArchitecture == Architecture.X86) return "x86";
                 else if (currentArchitecture == Architecture.X64) return "x64";
                 else return "null";
+            }
+        }
+
+        public static RemovalOptions PackageRemovalOptions
+        {
+            get
+            {
+                RemovalOptions options = new RemovalOptions();
+                options |= RemovalOptions.PreserveApplicationData;
+                options |= RemovalOptions.RemoveForAllUsers;
+                return options;
+            }
+        }
+
+        public static DeploymentOptions PackageDeploymentOptions
+        {
+            get
+            {
+                DeploymentOptions options = new DeploymentOptions();
+                options |= DeploymentOptions.DevelopmentMode;
+                options |= DeploymentOptions.ForceTargetApplicationShutdown;
+                return options;
             }
         }
 
