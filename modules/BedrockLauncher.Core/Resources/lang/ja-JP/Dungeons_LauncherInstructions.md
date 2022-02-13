@@ -1,13 +1,13 @@
-﻿# セットアップ
-1. Minecraft ランチャーで Minecraft ダンジョンをクリックし、 `installations` を選択します。
-2. 2つのボタンの上にフォルダパスが表示されます。 それをコピーして、 `\dungeons\dungeons` に追加します。
-3. Bedrock Launcherで、インストール場所をこのパスに設定します。
-4. Symbolic modsフォルダを配置する場所を選択します（ゲームのインストールフォルダ内に配置しないでください）。
-5. `Install Symbolic Link`を押します。
-6. これで、ゲームmodフォルダーがsymbolic modsフォルダーとpairedになります。
+﻿# Setup
+1. In your Minecraft Launcher, click Minecraft Dungeons and select `Installations`
+2. You will see a folder path above two buttons, copy it and append `\dungeons\dungeons` to it
+3. In the Bedrock Launcher, set the install location to this path
+4. Select where you want your symbolic mods folder to be (it should not be placed within your game's installation folder)
+5. Click on `Install Symbolic Link`
+6. Your game's mod folder should now be paired with your symbolic mods folder
 
-# 更新する方法
-1. BedrockLauncherで `Uninstall Symbolic Link` をクリックします。
-2. Minecraftランチャーを介してゲームを更新する。
-3. BedrockLauncherで `Install Symbolic Link` をクリックします。
-4. 完了。
+# How to Update
+1. Click on `Uninstall Symbolic Link` in the Bedrock Launcher
+2. Update the Game through the Minecraft Launcher
+3. Click on `Install Symbolic Link` in the Bedrock Launcher
+4. Done
