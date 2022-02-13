@@ -410,7 +410,7 @@
 
     <v:String x:Key="Dialog_Item_Installation_Text">kurulum</v:String>
     <v:String x:Key="Dialog_Item_SkinPack_Text">dış görünüş paketi</v:String>
-    <v:String x:Key="Dialog_Item_Skin_Text">dış görünüş</v:String>
+    <v:String x:Key="Dialog_Item_Skin_Text">dış görünü</v:String>
     <v:String x:Key="Dialog_Item_Version_Text">sürüm</v:String>
     <v:String x:Key="Dialog_Item_Profile_Text">profil</v:String>
 
