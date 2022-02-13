@@ -69,7 +69,7 @@
     <!-- #region Dungeons Section -->
 
     <v:String x:Key="Dungeons_InstallationPage_GameVariant">ВАРИАНТ ИГРЫ</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Windows Лаунчер</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Windows Лаунче</v:String>
     <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Steam</v:String>
     <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Microsoft Store</v:String>
     <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Стандартный путь&gt;</v:String>
@@ -80,9 +80,9 @@
     <v:String x:Key="Dungeons_InstallationPage_GeneralTab">Основные</v:String>
     <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Установить патч магазина</v:String>
     <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Обновить патч магазина</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Удалить символическую ссылку</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Скачать символическую ссылку</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Починить/Обновить Игру</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Удалить символическую ссылк</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Скачать символическую ссылк</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Починить/Обновить Игр</v:String>
 
 
     <!--#endregion-->
