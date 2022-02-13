@@ -124,7 +124,7 @@
     <v:String x:Key="EditInstallationScreen_LatestRelease">Апошні рэліз</v:String>
 
     <v:String x:Key="EditInstallationScreen_NameSubtitle">НАЗВА</v:String>
-    <v:String x:Key="EditInstallationScreen_VersionSubtitle">ВЕРСІ</v:String>
+    <v:String x:Key="EditInstallationScreen_VersionSubtitle">ВЕРС</v:String>
     <v:String x:Key="EditInstallationScreen_DirectorySubtitle">КАТАЛОГ</v:String>
 
     <v:String x:Key="EditInstallationScreen_NameHintText">&lt;неназваная ўсталёўка&gt;</v:String>
@@ -177,11 +177,11 @@
 
     <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">НАЗВА ПАКЕТА</v:String>
     <v:String x:Key="EditSkinPackScreen_HeaderUUIDSubtitle">UUID</v:String>
-    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">ВЕРСІ</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">ВЕРС</v:String>
 
     <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">ТЫ</v:String>
     <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">UUID</v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">ВЕРСІ</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">ВЕРС</v:String>
 
     <v:String x:Key="EditSkinPackScreen_Header">Рэдагаваць набор скіноў</v:String>
     <v:String x:Key="EditSkinPackScreen_AddHeader">Дадаць набор скіноў</v:String>
@@ -589,7 +589,7 @@
 
     <!--#region GeneralSubtitles -->
 
-    <v:String x:Key="GeneralSubtitles_Versions">ВЕРСІ</v:String>
+    <v:String x:Key="GeneralSubtitles_Versions">ВЕРС</v:String>
     <v:String x:Key="GeneralSubtitles_Browse">АГЛЯД</v:String>
     <v:String x:Key="GeneralSubtitles_Reset">СКІД</v:String>
     <v:String x:Key="GeneralSubtitles_Categories">КАТЭГОРЫ</v:String>
