@@ -1,0 +1,602 @@
+﻿<?xml version="1.0"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ignore="http://www.galasoft.ch/ignore" xmlns:v="clr-namespace:System;assembly=mscorlib">
+    <!--#region Main Section-->
+
+    <v:String x:Key="LanguageString">Čeština - Česko</v:String>
+
+    <!--#region MainWindow -->
+
+    <v:String x:Key="MainWindow_Title">Minecraft Bedrock Spouštěč</v:String>
+    <v:String x:Key="MainWindow_Disclaimer">NEPŘIDRUŽENÉ NEBO SCHVÁLENÉ MOJANGEM</v:String>
+
+    <!--#endregion-->
+    
+    <!-- #region CommunityPage -->
+
+    <v:String x:Key="CommunityPage_SupportText"></v:String>
+    <v:String x:Key="CommunityPage_ComingSoon">Již brzy!</v:String>
+    <v:String x:Key="CommunityPage_CheckBackLater">Podívejte se sem později na něco SUPER DUPER ÚŽASNÉHO!</v:String>
+
+    <!-- #endregion -->
+
+    <!--#region ToolbarButtons -->
+
+    <v:String x:Key="ToolbarButtons_NewsButton_Text">Novinky</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java Spouštěč</v:String>
+    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Vlastní Spouštěč</v:String>
+    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Přepnout na</v:String>
+    <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
+    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Komunita</v:String>
+    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Profil</v:String>
+    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Nastavení</v:String>
+
+    <!--#endregion-->
+
+    <!--#region UpdateButton-->
+
+    <v:String x:Key="UpdateButton_NewUpdate_Text">Nová Aktualizace!</v:String>
+    <v:String x:Key="UpdateButton_Download_Text">Stáhnout kliknutím!</v:String>
+
+    <!--#endregion-->
+
+    <!--#region ProgressBar -->
+
+    <v:String x:Key="ProgressBar_Downloading">Stahování</v:String>
+    <v:String x:Key="ProgressBar_Installing">Probíhá instalace</v:String>
+    <v:String x:Key="ProgressBar_Launching">Spouštění</v:String>
+    <v:String x:Key="ProgressBar_Extracting">Probíhá Rozbalování</v:String>
+    <v:String x:Key="ProgressBar_Uninstalling">Probíhá Odinstalace</v:String>
+    <v:String x:Key="ProgressBar_RegisteringPackage">Registrace Balíčku</v:String>
+    <v:String x:Key="ProgressBar_RemovingPackage">Zrušení Registrace Balíčku</v:String>
+    <v:String x:Key="ProgressBar_BackingUp">Zálohování Dat Ukládání</v:String>
+
+    <!--#endregion-->
+
+    <!--#region ProfileButton -->
+
+    <v:String x:Key="ProfileButton_ManageProfiles_Text">Správa Profilů</v:String>
+    <v:String x:Key="ProfileButton_ProfileSettings_Text">Natavení Profilu</v:String>
+    <v:String x:Key="ProfileButton_AddProfile_Text">Přidat Profil</v:String>
+    <v:String x:Key="ProfileButton_RemoveProfile_Text">Odstranit Profil</v:String>
+    <v:String x:Key="ProfileButton_ChooseAccount_Text">VYBERTE PROFIL</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+    
+    <!-- #region Dungeons Section -->
+
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant">GAME VARIANT</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Windows Launcher</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Steam</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Microsoft Store</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Default path&gt;</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">INSTALL LOCATION</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">SYMBOLIC MODS FOLDER LOCATION</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Instructions</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_PathsTab">Paths</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GeneralTab">General</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Install Store Patch</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Update Store Patch</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Uninstall Symbolic Link</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Install  Symbolic Link</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Repair/Update Game</v:String>
+
+
+    <!--#endregion-->
+
+    <!--#region Game Section -->
+
+    <!--#region GameTab -->
+
+    <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDICE</v:String>
+    <v:String x:Key="GameTab_PlayButton_Text">Hrát</v:String>
+    <v:String x:Key="GameTab_PlayButton_Kill_Text">Ukončit</v:String>
+    <v:String x:Key="GameTab_InstallationsButton_Text">Instalace</v:String>
+    <v:String x:Key="GameTab_SkinsButton_Text">Vzhledy</v:String>
+    <v:String x:Key="GameTab_PatchNotesButton_Text">Poznámky k opravě</v:String>
+
+    <!--#endregion-->
+
+    <!--#region InstallationsPage -->
+
+    <v:String x:Key="InstallationsPage_AddButton">Nová instalace</v:String>
+    <v:String x:Key="InstallationsPage_PlayButton">Hrát</v:String>
+
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">Naposledy Hrané</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name">Jméno</v:String>
+
+    <v:String x:Key="InstallationsPage_SearchBar_Content">Název instalace</v:String>
+
+    <!--#endregion-->
+
+    <!--#region EditInstallationScreen -->
+
+    <v:String x:Key="EditInstallationScreen_Title">Vytvořit novou instalaci</v:String>
+    <v:String x:Key="EditInstallationScreen_AltTitle">Upravit instalaci</v:String>
+
+    <v:String x:Key="EditInstallationScreen_CreateButton">Vytvořit</v:String>
+    <v:String x:Key="EditInstallationScreen_AltCreateButton">Uložit</v:String>
+
+    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Nejnovější beta</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestRelease">Nejnovější vydání</v:String>
+
+    <v:String x:Key="EditInstallationScreen_NameSubtitle">JMÉNO</v:String>
+    <v:String x:Key="EditInstallationScreen_VersionSubtitle">VERZE</v:String>
+    <v:String x:Key="EditInstallationScreen_DirectorySubtitle">ADRESÁŘ</v:String>
+
+    <v:String x:Key="EditInstallationScreen_NameHintText">&lt;nepojmenovaná instalace&gt;</v:String>
+    <v:String x:Key="EditInstallationScreen_DirectoryHintText">&lt;výchozí cesta&gt;</v:String>
+
+    <!--#endregion-->
+
+    <!--#region PatchNotesPage -->
+
+    <v:String x:Key="PatchNotesPage_MorePatchNotes">Další poznámky k opravě</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">Další poznámky k beta verzi</v:String>
+
+    <!--#endregion-->
+
+    <!--#region SkinsPage -->
+
+    <v:String x:Key="SkinsPage_AddButton">Nový...</v:String>
+    <v:String x:Key="SkinsPage_ImportButton">Importování...</v:String>
+
+    <!--#endregion-->
+
+    <!--#region EditSkinScreen -->
+
+    <v:String x:Key="EditSkinScreen_Title">Upravit skin</v:String>
+    <v:String x:Key="EditSkinScreen_AltTitle">Přidat skin</v:String>
+
+    <v:String x:Key="EditSkinScreen_TextureSubtitle">TEXTURA</v:String>
+    <v:String x:Key="EditSkinScreen_GeometrySubtitle">GEOMETRIE</v:String>
+    <v:String x:Key="EditSkinScreen_TypeSubtitle">TYP</v:String>
+    <v:String x:Key="EditSkinScreen_LocalizationSubtitle">NÁZEV LOKALIZACE</v:String>
+
+    <!--#endregion-->
+
+    <!--#region EditSkinPackScreen -->
+
+    <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">POPIS</v:String>
+    <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">GEOMETRIE</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">NÁZEV LOKALIZACE</v:String>
+    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">NÁZEV SERIALIZACE</v:String>
+    <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">JAZYKOVÉ DEFINICE</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">NÁZEV LANG</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">OSTATNÍ DEFINICE</v:String>
+    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">OBSAH</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">MODULY</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">FORMÁTOVÁ VERZE</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">NÁZEV BALÍČKU</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderUUIDSubtitle">UUID</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">VERZE</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">TYP</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">UUID</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">VERZE</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_Header">Upravit Balíček Skinů</v:String>
+    <v:String x:Key="EditSkinPackScreen_AddHeader">Přidat Balíček Skinů</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_Warning">* Vezměte prosím na vědomí, že změna definic jazyka a změna ikony balíčku jsou nevratné bez ohledu na to, zda vaše změny uložíte nebo neuložíte!!!</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region News Section -->
+
+    <!--#region LauncherNewsPage -->
+
+    <v:String x:Key="LauncherNewsPage_Title_Text">Nejnovější změny sestavení</v:String>
+    <v:String x:Key="LauncherNewsPage_Build_Text">Sestavení</v:String>
+    <v:String x:Key="LauncherNewsPage_Changes_Text">Změny:</v:String>
+    <v:String x:Key="LauncherNewsPage_CheckForUpdates">Zkontrolovat Aktualizace</v:String>
+    <v:String x:Key="LauncherNewsPage_ForceUpdate">Vynutit Aktualizaci</v:String>
+    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Aktuální</v:String>
+
+    <!--#endregion-->
+
+    <!--#region NewsScreenPage -->
+
+    <v:String x:Key="NewsScreen_LauncherTabTitle">Spouštěč</v:String>
+    <v:String x:Key="NewsScreen_OfficialTabTitle">Oficiální</v:String>
+    <v:String x:Key="NewsScreen_MinecraftForumsTitle">Minecraft Fóra</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
+
+    <v:String x:Key="NewsScreen_SearchBar_Content">Nadpis zprávy</v:String>
+
+    <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_BedrockCheckbox">Minecraft for Windows</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Settings Section -->
+
+    <!--#region SettingsTab -->
+
+    <v:String x:Key="SettingsTab_Title">NASTAVENÍ</v:String>
+    <v:String x:Key="SettingsTab_GeneralButton">Obecné</v:String>
+    <v:String x:Key="SettingsTab_AccountsButton">Účty</v:String>
+    <v:String x:Key="SettingsTab_AboutButton">O aplikaci</v:String>
+    <v:String x:Key="SettingsTab_VersionsButton">Verze</v:String>
+
+    <!--#endregion-->
+
+    <!--#region GeneralSettingsScreen -->
+    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">JAZYK</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">TÉMA SPOUŠŤĚČE</v:String>
+
+
+    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">NASTAVENÍ SPOUŠTĚČE</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">NASTAVENÍ ZKRATEK</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Použít beta verzi spouštěče</v:String>
+    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Ponechat Spouštěč otevřený, když jsou hry spuštěny</v:String>
+    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Zavřít Spouštěč při přepínání spouštěčů</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animovat přechody mezi stránkami ve Spouštěči</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animovat tlačítko hrát na stránkách Hrát ve Spouštěči</v:String>
+    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Povolit Podporu Minecraft Dungeons (nedokončeno)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Zobrazit rozšířené informace při instalaci balíčků</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Animovat přechody mezi stránkami ve Spouštěči</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(vyžaduje povolené animované přechody stránek)</v:String>
+    
+
+    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDITION NASTAVENÍ</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">PODPOŘIT TVŮRCE</v:String>
+
+    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">AKTUALIZACE SPOUŠTĚČE</v:String>
+
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Podpořit tvůrce</v:String>
+
+
+    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Povolit experimentální přesměrování uložení</v:String>
+    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Skrýt zástupce spouštěče Java Edice</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Zobrazit zástupce externího spouštěče</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BackupButton">Zálohovat Data Uložení</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Pokročilá Nastavení</v:String>
+
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">VNĚJŠÍ NASTAVENÍ SPOUŠTĚČE</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">CESTA</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">JMÉNO</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">ARGUMENTY</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">IKONA</v:String>
+
+    <!--#endregion-->
+
+    <!--#region AcountsSettingsPage -->
+
+    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">ZVOLENÝ ÚČET</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">NASTAVENÍ INSIDERU</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Normální Nastavení</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Starší Nastavení</v:String>
+    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Spravovat Účty</v:String>
+    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">NASTAVENÍ ÚČTU</v:String>
+
+    <!--#endregion-->
+
+    <!--#region AboutPage -->
+
+    <v:String x:Key="AboutPage_Title">O SPOUŠTĚČI MINECRAFT: BEDROCK EDITION</v:String>
+    <v:String x:Key="AboutPage_DevelopedBy_Text">VYTVÁŘÍ</v:String>
+    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">FORKOVÁNO Z PRÁCE</v:String>
+    <v:String x:Key="AboutPage_SpecialThanks_Text">ZVLÁŠTNÍ PODĚKOVÁNÍ</v:String>
+
+    <v:String x:Key="AboutPage_McMrArm_Text">Za vytvoření originálního Minecraft Windows 10 Verze stahovače (ze kterého tato práce vychází)</v:String>
+    <v:String x:Key="AboutPage_BsCommunity_Text">Za jejich práci na SkinView3D, který je použit pro funkci prohlížení skinů ve spouštěči</v:String>
+    <v:String x:Key="AboutPage_Mojang_Text">Za Minecraft!!!</v:String>
+    <v:String x:Key="AboutPage_BsRepo_Text">Repozitář SkinView3D</v:String>
+    <v:String x:Key="AboutPage_CurrentBuild">Aktuální Sestavení: </v:String>
+
+    <!--#endregion-->
+
+    <!--#region AdvancedSettings -->
+
+    <v:String x:Key="AdvancedSettings_Title">Pokročilá Nastavení</v:String>
+    <v:String x:Key="AdvancedSettings_LauncherOptions_Text">MOŽNOSTI SPOUŠTĚČE</v:String>
+    <v:String x:Key="AdvancedSettings_PathSubtitle_Text">ADRESA ÚLOŽIŠTĚ</v:String>
+    <v:String x:Key="AdvancedSettings_RestartButton_Text">Restartovat</v:String>
+    <v:String x:Key="AdvancedSettings_Notice_Text">* Všechna nastavení restartují spouštěč</v:String>
+    <v:String x:Key="AdvancedSettings_PortableMode_Text">Povolit Přenosný Režim</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Dialog Section -->
+
+    <!--#region FirstLaunch -->
+
+    <v:String x:Key="FirstLaunch_WelcomeTitle">Vítejte!</v:String>
+    <v:String x:Key="FirstLaunch_WelcomeSubTitle">Vítejte v Minecraft Bedrock Spouštěči!</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Vytvořte svůj první profil!</v:String>
+    <v:String x:Key="FirstLaunch_AlmostThereTitle">Téměř hotovo!</v:String>
+    <v:String x:Key="FirstLaunch_OneThingTitle">Jedna maličkost...</v:String>
+    <v:String x:Key="FirstLaunch_OneThingSubtitle">Jen se podívejte a ujistěte, že jsou tak, jak je chcete.</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountTitle">Vyberte Insider Účet</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* Toto bude použito k ověření a stežení beta verzí. Musíte být zapsáni v Xbox Insider Hub pro vybraný účet, aby se mohly stáhnout beta verze. Možná budete muset restartovat spouštěč nabo odinstalovat Minecraft, aby stahování beta verzí fungovalo.</v:String>
+
+    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Před použitím, je velmi doporučeno zvolit zálohu, abyste vytvořili instalaci vašich existujících úložných dat, protože spouštěč nahradí původní adresář symbolickým odkazem, který nám umožňuje přesměrovat úložná data.
+
+ (Nemějte obavy, tím neztratíte svá data, data ztratíte pouze pokud stisknete tlačítko hrát a nezálohujete své věci)</v:String>
+
+    <v:String x:Key="FirstLaunch_InstallType_Header">Uložit/Načíst Data Spouštěče Z:</v:String>
+    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">Pevná Složka (Doporučeno)</v:String>
+    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">Přenosná/Kořenová Složka</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Zálohovat Existující Úložná Data</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(DOPORUČENÉ)</v:String>
+    <v:String x:Key="FirstLaunch_CloseButton">Zavřít</v:String>
+    <v:String x:Key="FirstLaunch_BackButton">Zpět</v:String>
+    <v:String x:Key="FirstLaunch_GoBackButton"></v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileText">PROFIL</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileButton">Vytvořit</v:String>
+    <v:String x:Key="FirstLaunch_NextButton">Další</v:String>
+    <v:String x:Key="FirstLaunch_DownloadButton">Stáhnout</v:String>
+    <v:String x:Key="FirstLaunch_FinishButton">Dokončit</v:String>
+
+    <!--#endregion-->
+
+    <!--#region ErrorScreen -->
+
+    <v:String x:Key="ErrorScreen_Title">CHYBA</v:String>
+    <v:String x:Key="ErrorScreen_SubTitle">Spouštěč spadl</v:String>
+    <v:String x:Key="ErrorScreen_DefaultErrorMessage">Došlo k neočekávanému problému a spouštěč se zhroutil. Omlouváme se za nepříjemnosti.</v:String>
+    <v:String x:Key="ErrorScreen_CloseButton">Zavřít</v:String>
+    <v:String x:Key="ErrorScreen_ViewCrash">Zobrazit záznam o selhání</v:String>
+
+    <!--#endregion-->
+
+    <!--#region Errors -->
+
+    <v:String x:Key="Error_AuthenticationFailed_Title">Ověřování selhalo</v:String>
+    <v:String x:Key="Error_AuthenticationFailed">Ověření se nezdařilo. Ujistěte se prosím, že je váš účet přihlášený k beta programu.</v:String>
+
+    <v:String x:Key="Error_CantFindExternalLauncher_Title">Nelze přepnout spouštěč</v:String>
+    <v:String x:Key="Error_CantFindExternalLauncher">Nelze přepnout spouštěč. Ujistěte se, že máte správně nastavenou cestu k spouštěči.</v:String>
+
+    <v:String x:Key="Error_CantFindJavaLauncher_Title">Nelze přepnout spouštěč</v:String>
+    <v:String x:Key="Error_CantFindJavaLauncher">Nelze najít spouštěč. Ujistěte se, že jste nainstalovali originální Minecraft spouštěč z Minecraft.net .</v:String>
+
+    <v:String x:Key="Error_AppReregisterFailed_Title">App registration failed</v:String>
+    <v:String x:Key="Error_AppReregisterFailed">Prosím, zkuste to znovu :(</v:String>
+
+    <v:String x:Key="Error_AppDeregisteringFailed_Title">App de-registration failed</v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed">Please try again :(</v:String>
+
+    <v:String x:Key="Error_AppLaunchFailed_Title">Spuštění se nezdařilo</v:String>
+    <v:String x:Key="Error_AppLaunchFailed">Prosím, zkuste to znovu :(</v:String>
+
+    <v:String x:Key="Error_AppDownloadFailed_Title">Stahování se nezdařilo</v:String>
+    <v:String x:Key="Error_AppDownloadFailed">Prosím, zkuste to znovu :(</v:String>
+
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">Save redirection failed</v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed">Please try again :(</v:String>
+
+    <v:String x:Key="Error_AppUninstallFailed_Title">Uninstall failed</v:String>
+    <v:String x:Key="Error_AppUninstallFailed">Please try again :(</v:String>
+
+    <v:String x:Key="Error_AppExtractionFailed_Title">Extrahování se nezdařilo</v:String>
+    <v:String x:Key="Error_AppExtractionFailed">Prosím, zkuste to znovu :(</v:String>
+
+    <v:String x:Key="Error_CantFindPaidServerList_Title">Nelze otevřít záložku serverů</v:String>
+    <v:String x:Key="Error_CantFindPaidServerList">Seznam placených serverů nebyl nalezen.</v:String>
+
+    <v:String x:Key="Error_NotaSkinPack_Title">Balíček skinů nelze importovat</v:String>
+    <v:String x:Key="Error_NotaSkinPack">Toto není balíček skinů!</v:String>
+
+    <!--#endregion-->
+
+    <!--#region NewProfile -->
+
+    <v:String x:Key="NewProfile_GoBackButton"></v:String>
+    <v:String x:Key="NewProfile_CreateProfileText">PROFIL</v:String>
+    <v:String x:Key="NewProfile_CreateProfileText_Error">TOTO JMÉNO JE JIŽ POUŽÍVÁNO</v:String>
+    <v:String x:Key="NewProfile_CreateProfileSubTitle">Zadejte název vašeho nového profilu!</v:String>
+    <v:String x:Key="NewProfile_CreateProfileButton">Vytvořit</v:String>
+
+    <!--#endregion-->
+
+    <!--#region Dialog -->
+
+    <v:String x:Key="Dialog_Item_Installation_Text">instalace</v:String>
+    <v:String x:Key="Dialog_Item_SkinPack_Text">balíček skinů</v:String>
+    <v:String x:Key="Dialog_Item_Skin_Text">skin</v:String>
+    <v:String x:Key="Dialog_Item_Version_Text">verze</v:String>
+    <v:String x:Key="Dialog_Item_Profile_Text">profil</v:String>
+
+    <v:String x:Key="Dialog_DeleteItem_Title">Smazat {0} trvale</v:String>
+    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Opravdu chcete odstranit &quot;{1}&quot;? Tento {0} bude navždy ztracen! (Což je dlouho!)</v:String>
+
+    <v:String x:Key="Dialog_KillGame_Title">Ukončit Hru</v:String>
+    <v:String x:Key="Dialog_KillGame_Text">Tohle je Nebezpečné a doporučujeme pouze pokud se zaseknete. Chcete stále zavřít hru?</v:String>
+
+    <v:String x:Key="Dialog_CloseGame_Title">Hra Stále Běží</v:String>
+    <v:String x:Key="Dialog_CloseGame_Text">Chcete vynutit zavření? (bez uložení změn, doporučujeme to pouze pokud se zaseknete, prosím, zavřete hru normálně)</v:String>
+
+    <v:String x:Key="DialogBtn_YesToAll_Text">Ano Pro Všechny</v:String>
+    <v:String x:Key="DialogBtn_NoToAll_Text">Ne Pro Všechny</v:String>
+    <v:String x:Key="DialogBtn_Yes_Text">Ano</v:String>
+    <v:String x:Key="DialogBtn_No_Text">Ne</v:String>
+
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">Žádné odpovídající výsledky</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">Nemohli jsme najít novinky odpovídající vašemu hledání. Pokud máte 
+filtry kategorií, zkuste je znovu zapnout a vyhledávat</v:String>
+
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Načítání...</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Čekejte prosím!</v:String>
+
+    <v:String x:Key="Dialog_ResultPanel_Error_Title">Chyba</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
+
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Žádný výsledek</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Nebyly nalezeny žádné položky odpovídající vašemu hledání</v:String>
+
+    <!--#endregion-->
+
+    <!--#region Internal -->
+
+    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">Soubor {0} již existuje v destinaci.\nChcete jej nahradit? Starý soubor bude v opačném případě ztracen.</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">Soubor {0} není adresář. Chcete jej odstranit? Data ze starého adresáře budou v opačném případě ztracena.</v:String>
+
+    <v:String x:Key="GameManager_RecoveringDataIssue_Title">Konvertuji Existující Úložná Data na Instalaci</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Installer Section -->
+
+
+    <!--#region UI -->
+
+    <v:String x:Key="Installer_Title">Průvodce nastavením pro Minecraft Bedrock Spouštěč</v:String>
+
+    <v:String x:Key="Installer_Back_Text">Zpět</v:String>
+    <v:String x:Key="Installer_Next_Text">Další</v:String>
+    <v:String x:Key="Installer_Cancel_Text">Zrušit</v:String>
+    <v:String x:Key="Installer_Finish_Text">Dokončit</v:String>
+
+    <v:String x:Key="Installer_WelcomePage_Title">Vítejte v Průvodci nastavením Minecraft Bedrock Spouštěče</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info_Text">Tímto nainstalujete Minecraft Bedrock Spouštěč na váš počítač.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info2_Text">Před pokračováním je doporučeno zavřít všechny ostatní aplikace.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info3_Text">Pokračujte klepnutím na tlačítko Další, nebo ukončete průvodce instalací tlačítkem Zrušit.</v:String>
+
+    <v:String x:Key="Installer_LicenseAgreement_Title">Licenční Smlouva</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info_Text">Přečtěte si prosím následující Licenční Smlouvu. Podmínky této smlouvy musíte přijmout</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">souhlaste před pokračováním v instalaci.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">Přijímám licenci.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">Nepřijímám licenci.</v:String>
+
+    <v:String x:Key="Installer_InstallType_Title">Zvolte Typ Instalace</v:String>
+    <v:String x:Key="Installer_InstallType_Info_Text">Vyberte verzi spouštěče, kterou chcete stáhnout</v:String>
+
+    <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Beta Verze</v:String>
+    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Verze Vydání</v:String>
+
+    <v:String x:Key="Installer_InstallLocation_Title">Zvolte Umístění Instalace</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info_Text">Instalátor nainstaluje Minecraft Bedrock Spouštěč do následující složky. Pro instalaci do jiné složky,</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info2_Text">klikněte na Procházet a vyberte jinou složku.</v:String>
+
+    <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Cílová Složka</v:String>
+    <v:String x:Key="Installer_InstallLocation_Browse_Text">PROCHÁZET</v:String>
+
+    <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Vytvořit ikonu na ploše</v:String>
+    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Přidat do nabídky Start</v:String>
+    <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">Zaregistrovat Program</v:String>
+
+    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">Spustit Program při Ukončení</v:String>
+
+    <v:String x:Key="Installer_InstallationProgress_FilesInUse">Některé ze souborů jsou v současné době používány následujícími programy:</v:String>
+
+    <v:String x:Key="Installer_InstallationProgress_Title">Probíhá instalace</v:String>
+    <v:String x:Key="Installer_InstallationProgress_Info_Text">Čekejte prosím, dokud Průvodce instalací nedokončí instalaci Minecraft Bedrock Spouštěče na Váš počítač.</v:String>
+
+
+    <!--#endregion-->
+
+    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">Složku Nelze Přesunout</v:String>
+    <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">Soubor Nelze Přesunout</v:String>
+    <v:String x:Key="Installer_Dialog_FileLocked_Text">Soubor Je Používán</v:String>
+    <v:String x:Key="Installer_Dialog_TryAgain_Text">Zkusit Znovu?</v:String>
+    <v:String x:Key="Installer_Dialog_ErrorOccured_Text">Došlo k chybě.</v:String>
+
+    <!--#region ProgressBar -->
+
+    <v:String x:Key="Installer_ProgressBar_Downloading">Stahování...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Finalizing">Dokončování...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Initalizing">Inicializace...</v:String>
+
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region General Section -->
+
+    <!--#region VersionEntries -->
+
+    <v:String x:Key="VersionEntries_LatestSnapshot">Nejnovější Beta</v:String>
+    <v:String x:Key="VersionEntries_LatestRelease">Nejnovější Vydání</v:String>
+    <v:String x:Key="VersionEntries_UnnamedInstallation">&lt;nepojmenovaná instalace&gt;</v:String>
+
+    <!--#endregion-->
+
+    <!--#region ThemeEntries -->
+
+    <v:String x:Key="ThemeEntries_LatestUpdate">Poslední Aktualizace</v:String>
+    <v:String x:Key="ThemeEntries_Original">Originál</v:String>
+
+    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">Caves &amp; Cliffs (Part 1)</v:String>
+    <v:String x:Key="ThemeEntries_NetherUpdate">Nether Update</v:String>
+    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Buzzy Bees Update</v:String>
+    <v:String x:Key="ThemeEntries_VillagePillageUpdate">Village &amp; Pillage Update</v:String>
+    <v:String x:Key="ThemeEntries_UpdateAquatic">Update Aquatic</v:String>
+    <v:String x:Key="ThemeEntries_TechnicallyUpdated">Technically Updated [Java]</v:String>
+    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">World of Color Update [Java]</v:String>
+    <v:String x:Key="ThemeEntries_ExplorationUpdate">Exploration Update [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CombatUpdate">Combat Update [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">Cats &amp; Pandas [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_PocketEditionRelease">Official Release [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_BedrockStandard">Standard Bedrock Edition</v:String>
+    <v:String x:Key="ThemeEntries_BedrockMaster">Mistr Bedrock Edition</v:String>
+    <v:String x:Key="ThemeEntries_EarlyLegacyConsole">Éra Původních Starých Konzolí</v:String>
+    <v:String x:Key="ThemeEntries_MidLegacyConsole">Střední Éra Starých Konzolí</v:String>
+    <v:String x:Key="ThemeEntries_LateLegacyConsole">Pozdní Éra Starých Konzolí</v:String>
+    <v:String x:Key="ThemeEntries_IndieDays">Dny Indie Vývoje</v:String>
+    <v:String x:Key="ThemeEntries_Dungeons">Minecraft Dungeons</v:String>
+
+
+    <!--#endregion-->
+
+    <!--#region GeneralText -->
+
+    <v:String x:Key="GeneralText_Delete">Smazat</v:String>
+    <v:String x:Key="GeneralText_Edit">Upravit</v:String>
+    <v:String x:Key="GeneralText_Duplicate">Duplikovat</v:String>
+    <v:String x:Key="GeneralText_Remove">Odstranit</v:String>
+    <v:String x:Key="GeneralText_Cancel">Zrušit</v:String>
+    <v:String x:Key="GeneralText_Update">Aktualizovat</v:String>
+    <v:String x:Key="GeneralText_Add">Přidat</v:String>
+    <v:String x:Key="GeneralText_Save">Uložit</v:String>
+    <v:String x:Key="GeneralText_Refresh">Obnovit</v:String>
+    <v:String x:Key="GeneralText_Backup">Zálohovat</v:String>
+    <v:String x:Key="GeneralText_Versions">Verze</v:String>
+    <v:String x:Key="GeneralText_Browse">Procházet</v:String>
+    <v:String x:Key="GeneralText_Reset">Resetovat</v:String>
+    <v:String x:Key="GeneralText_Yes">Ano</v:String>
+    <v:String x:Key="GeneralText_No">Ne</v:String>
+    <v:String x:Key="GeneralText_Releases">Vydání</v:String>
+    <v:String x:Key="GeneralText_Betas">Beta verze</v:String>
+    <v:String x:Key="GeneralText_Export">Exportovat</v:String>
+    <v:String x:Key="GeneralText_Repair">Opravit</v:String>
+
+    <v:String x:Key="GeneralText_Twitter">Twitter</v:String>
+    <v:String x:Key="GeneralText_GitHub">GitHub</v:String>
+    <v:String x:Key="GeneralText_Website">Webová stránka</v:String>
+
+    <!--#endregion-->
+
+    <!--#region GeneralSubtitles -->
+
+    <v:String x:Key="GeneralSubtitles_Versions">VERZE</v:String>
+    <v:String x:Key="GeneralSubtitles_Browse">PROCHÁZET</v:String>
+    <v:String x:Key="GeneralSubtitles_Reset">RESETOVAT</v:String>
+    <v:String x:Key="GeneralSubtitles_Categories">KATEGORIE</v:String>
+    <v:String x:Key="GeneralSubtitles_Search">HLEDAT</v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy">SEŘADIT PODLE</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+</ResourceDictionary>
