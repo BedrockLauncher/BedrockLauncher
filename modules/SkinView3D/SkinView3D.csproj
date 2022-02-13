@@ -31,26 +31,13 @@
     <Optimize>true</Optimize>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Runtimes\SkinView\node_modules\**" />
+    <EmbeddedResource Remove="Runtimes\SkinView\node_modules\**" />
+    <None Remove="Runtimes\SkinView\node_modules\**" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Runtimes\SkinView\bundles\skinview3d.bundle.js" />
     <None Remove="Runtimes\SkinView\bundles\skinview3d.bundle.js.map" />
-    <None Remove="Runtimes\SkinView\libs\animation.d.ts" />
-    <None Remove="Runtimes\SkinView\libs\animation.js" />
-    <None Remove="Runtimes\SkinView\libs\animation.js.map" />
-    <None Remove="Runtimes\SkinView\libs\fxaa.d.ts" />
-    <None Remove="Runtimes\SkinView\libs\fxaa.js" />
-    <None Remove="Runtimes\SkinView\libs\fxaa.js.map" />
-    <None Remove="Runtimes\SkinView\libs\model.d.ts" />
-    <None Remove="Runtimes\SkinView\libs\model.js" />
-    <None Remove="Runtimes\SkinView\libs\model.js.map" />
-    <None Remove="Runtimes\SkinView\libs\orbit_controls.d.ts" />
-    <None Remove="Runtimes\SkinView\libs\orbit_controls.js" />
-    <None Remove="Runtimes\SkinView\libs\orbit_controls.js.map" />
-    <None Remove="Runtimes\SkinView\libs\skinview3d.d.ts" />
-    <None Remove="Runtimes\SkinView\libs\skinview3d.js" />
-    <None Remove="Runtimes\SkinView\libs\skinview3d.js.map" />
-    <None Remove="Runtimes\SkinView\libs\viewer.d.ts" />
-    <None Remove="Runtimes\SkinView\libs\viewer.js" />
-    <None Remove="Runtimes\SkinView\libs\viewer.js.map" />
     <None Remove="Runtimes\SkinView\previews\img\NoSkin.png" />
     <None Remove="Runtimes\SkinView\previews\index.html" />
     <None Remove="Runtimes\SkinView\previews\stylesheet.css" />
@@ -58,24 +45,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Runtimes\SkinView\bundles\skinview3d.bundle.js" />
     <EmbeddedResource Include="Runtimes\SkinView\bundles\skinview3d.bundle.js.map" />
-    <EmbeddedResource Include="Runtimes\SkinView\libs\animation.d.ts" />
-    <EmbeddedResource Include="Runtimes\SkinView\libs\animation.js" />
-    <EmbeddedResource Include="Runtimes\SkinView\libs\animation.js.map" />
-    <EmbeddedResource Include="Runtimes\SkinView\libs\fxaa.d.ts" />
-    <EmbeddedResource Include="Runtimes\SkinView\libs\fxaa.js" />
-    <EmbeddedResource Include="Runtimes\SkinView\libs\fxaa.js.map" />
-    <EmbeddedResource Include="Runtimes\SkinView\libs\model.d.ts" />
-    <EmbeddedResource Include="Runtimes\SkinView\libs\model.js" />
-    <EmbeddedResource Include="Runtimes\SkinView\libs\model.js.map" />
-    <EmbeddedResource Include="Runtimes\SkinView\libs\orbit_controls.d.ts" />
-    <EmbeddedResource Include="Runtimes\SkinView\libs\orbit_controls.js" />
-    <EmbeddedResource Include="Runtimes\SkinView\libs\orbit_controls.js.map" />
-    <EmbeddedResource Include="Runtimes\SkinView\libs\skinview3d.d.ts" />
-    <EmbeddedResource Include="Runtimes\SkinView\libs\skinview3d.js" />
-    <EmbeddedResource Include="Runtimes\SkinView\libs\skinview3d.js.map" />
-    <EmbeddedResource Include="Runtimes\SkinView\libs\viewer.d.ts" />
-    <EmbeddedResource Include="Runtimes\SkinView\libs\viewer.js" />
-    <EmbeddedResource Include="Runtimes\SkinView\libs\viewer.js.map" />
     <EmbeddedResource Include="Runtimes\SkinView\previews\img\NoSkin.png" />
     <EmbeddedResource Include="Runtimes\SkinView\previews\index.html" />
     <EmbeddedResource Include="Runtimes\SkinView\previews\stylesheet.css" />
@@ -83,24 +52,6 @@
   <ItemGroup>
     <Resource Include="Runtimes\SkinView\bundles\skinview3d.bundle.js" />
     <Resource Include="Runtimes\SkinView\bundles\skinview3d.bundle.js.map" />
-    <Resource Include="Runtimes\SkinView\libs\animation.d.ts" />
-    <Resource Include="Runtimes\SkinView\libs\animation.js" />
-    <Resource Include="Runtimes\SkinView\libs\animation.js.map" />
-    <Resource Include="Runtimes\SkinView\libs\fxaa.d.ts" />
-    <Resource Include="Runtimes\SkinView\libs\fxaa.js" />
-    <Resource Include="Runtimes\SkinView\libs\fxaa.js.map" />
-    <Resource Include="Runtimes\SkinView\libs\model.d.ts" />
-    <Resource Include="Runtimes\SkinView\libs\model.js" />
-    <Resource Include="Runtimes\SkinView\libs\model.js.map" />
-    <Resource Include="Runtimes\SkinView\libs\orbit_controls.d.ts" />
-    <Resource Include="Runtimes\SkinView\libs\orbit_controls.js" />
-    <Resource Include="Runtimes\SkinView\libs\orbit_controls.js.map" />
-    <Resource Include="Runtimes\SkinView\libs\skinview3d.d.ts" />
-    <Resource Include="Runtimes\SkinView\libs\skinview3d.js" />
-    <Resource Include="Runtimes\SkinView\libs\skinview3d.js.map" />
-    <Resource Include="Runtimes\SkinView\libs\viewer.d.ts" />
-    <Resource Include="Runtimes\SkinView\libs\viewer.js" />
-    <Resource Include="Runtimes\SkinView\libs\viewer.js.map" />
     <Resource Include="Runtimes\SkinView\previews\img\NoSkin.png" />
     <Resource Include="Runtimes\SkinView\previews\index.html" />
     <Resource Include="Runtimes\SkinView\previews\stylesheet.css" />
@@ -120,8 +71,8 @@
   </ItemGroup>
   <PropertyGroup>
     <PreBuildEvent>::npm config set loglevel error
-npm install
-npm run build</PreBuildEvent>
+cd "$(MSBuildThisFileDirectory)Runtimes\SkinView"
+npm run pipeline</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup />
 </Project>
