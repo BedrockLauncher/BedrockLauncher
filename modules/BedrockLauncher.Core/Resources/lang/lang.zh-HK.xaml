@@ -6,7 +6,7 @@
 
     <!--#region MainWindow -->
 
-    <v:String x:Key="MainWindow_Title">我的世界：基岩版 啓動器</v:String>
+    <v:String x:Key="MainWindow_Title">我的世界：基岩版 啓動</v:String>
     <v:String x:Key="MainWindow_Disclaimer">NOT ASSOCIATED OR APPROVED BY MOJANG</v:String>
 
     <!--#endregion-->
@@ -14,36 +14,36 @@
     <!-- #region CommunityPage -->
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
-    <v:String x:Key="CommunityPage_ComingSoon">即將推出！</v:String>
+    <v:String x:Key="CommunityPage_ComingSoon">即將推出</v:String>
     <v:String x:Key="CommunityPage_CheckBackLater">Check back here later for something SUPER DUPER AWESOME!</v:String>
 
     <!-- #endregion -->
 
     <!--#region ToolbarButtons -->
 
-    <v:String x:Key="ToolbarButtons_NewsButton_Text">消息</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">基岩版</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java 版</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java 版啓動器</v:String>
-    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">自定義啓動器</v:String>
+    <v:String x:Key="ToolbarButtons_NewsButton_Text">消</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">基岩</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java </v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java 版啓動</v:String>
+    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">自定義啓動</v:String>
     <v:String x:Key="ToolbarButtons_SwitchEdition_Text">切換至</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
     <v:String x:Key="ToolbarButtons_CommunityButton_Text">社群</v:String>
     <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">賬戶</v:String>
-    <v:String x:Key="ToolbarButtons_SettingsButton_Text">設定</v:String>
+    <v:String x:Key="ToolbarButtons_SettingsButton_Text">設</v:String>
 
     <!--#endregion-->
 
     <!--#region UpdateButton-->
 
-    <v:String x:Key="UpdateButton_NewUpdate_Text">新更新！</v:String>
-    <v:String x:Key="UpdateButton_Download_Text">點擊此處下載！</v:String>
+    <v:String x:Key="UpdateButton_NewUpdate_Text">新更新</v:String>
+    <v:String x:Key="UpdateButton_Download_Text">點擊此處下載</v:String>
 
     <!--#endregion-->
 
     <!--#region ProgressBar -->
 
-    <v:String x:Key="ProgressBar_Downloading">正在下載</v:String>
+    <v:String x:Key="ProgressBar_Downloading">正在下</v:String>
     <v:String x:Key="ProgressBar_Installing">正在安裝</v:String>
     <v:String x:Key="ProgressBar_Launching">正在開啓</v:String>
     <v:String x:Key="ProgressBar_Extracting">正在解壓</v:String>
@@ -57,7 +57,7 @@
     <!--#region ProfileButton -->
 
     <v:String x:Key="ProfileButton_ManageProfiles_Text">管理賬戶</v:String>
-    <v:String x:Key="ProfileButton_ProfileSettings_Text">賬戶設定</v:String>
+    <v:String x:Key="ProfileButton_ProfileSettings_Text">賬戶設</v:String>
     <v:String x:Key="ProfileButton_AddProfile_Text">新增賬戶</v:String>
     <v:String x:Key="ProfileButton_RemoveProfile_Text">移除賬戶</v:String>
     <v:String x:Key="ProfileButton_ChooseAccount_Text">選擇賬戶</v:String>
@@ -91,18 +91,18 @@
 
     <!--#region GameTab -->
 
-    <v:String x:Key="GameTab_Title">MINECRAFT: 基岩版</v:String>
+    <v:String x:Key="GameTab_Title">MINECRAFT: 基岩</v:String>
     <v:String x:Key="GameTab_PlayButton_Text">開始遊戲</v:String>
     <v:String x:Key="GameTab_PlayButton_Kill_Text">終止</v:String>
-    <v:String x:Key="GameTab_InstallationsButton_Text">安裝檔案</v:String>
-    <v:String x:Key="GameTab_SkinsButton_Text">外觀</v:String>
+    <v:String x:Key="GameTab_InstallationsButton_Text">安裝檔</v:String>
+    <v:String x:Key="GameTab_SkinsButton_Text">外</v:String>
     <v:String x:Key="GameTab_PatchNotesButton_Text">更新内容</v:String>
 
     <!--#endregion-->
 
     <!--#region InstallationsPage -->
 
-    <v:String x:Key="InstallationsPage_AddButton">新安裝檔案</v:String>
+    <v:String x:Key="InstallationsPage_AddButton">新安裝檔</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">開始遊戲</v:String>
 
     <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">最近一次遊戲</v:String>
@@ -115,7 +115,7 @@
     <!--#region EditInstallationScreen -->
 
     <v:String x:Key="EditInstallationScreen_Title">建立新的安裝檔</v:String>
-    <v:String x:Key="EditInstallationScreen_AltTitle">編輯已安裝檔案</v:String>
+    <v:String x:Key="EditInstallationScreen_AltTitle">編輯已安裝檔</v:String>
 
     <v:String x:Key="EditInstallationScreen_CreateButton">建立</v:String>
     <v:String x:Key="EditInstallationScreen_AltCreateButton">儲存</v:String>
@@ -209,7 +209,7 @@
 
     <v:String x:Key="NewsScreen_LauncherTabTitle">Launcher</v:String>
     <v:String x:Key="NewsScreen_OfficialTabTitle">Official</v:String>
-    <v:String x:Key="NewsScreen_MinecraftForumsTitle">Minecraft 論壇</v:String>
+    <v:String x:Key="NewsScreen_MinecraftForumsTitle">Minecraft 論</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
 
     <v:String x:Key="NewsScreen_SearchBar_Content">News title</v:String>
@@ -235,15 +235,15 @@
     <!--#endregion-->
 
     <!--#region GeneralSettingsScreen -->
-    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">語言</v:String>
+    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">語</v:String>
     <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">啓動器主題</v:String>
 
 
-    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">啓動器設定</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">捷徑設定</v:String>
-    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">使用測試版啓動器</v:String>
+    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">啓動器設</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">捷徑設</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">使用測試版啓動</v:String>
     <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">在遊戲進行時仍保持啓動器開啓</v:String>
-    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">當切換啓動器時關閉啓動器</v:String>
+    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">當切換啓動器時關閉啓動</v:String>
     <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">啓動器中的頁面轉場動畫</v:String>
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">啓用啓動器中「開始遊戲」按鈕的動畫效果</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Enable Minecraft Dungeons Support (WIP)</v:String>
@@ -317,7 +317,7 @@
 
     <!--#region FirstLaunch -->
 
-    <v:String x:Key="FirstLaunch_WelcomeTitle">歡迎！</v:String>
+    <v:String x:Key="FirstLaunch_WelcomeTitle">歡迎</v:String>
     <v:String x:Key="FirstLaunch_WelcomeSubTitle">Welcome to Minecraft Bedrock Launcher!</v:String>
     <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Create your first profile!</v:String>
     <v:String x:Key="FirstLaunch_AlmostThereTitle">Almost there!</v:String>
