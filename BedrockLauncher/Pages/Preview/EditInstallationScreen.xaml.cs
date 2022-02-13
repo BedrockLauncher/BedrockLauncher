@@ -16,6 +16,7 @@ using BedrockLauncher.Extensions;
 using BedrockLauncher.Classes;
 using BedrockLauncher.ViewModels;
 using System.Collections.ObjectModel;
+using BedrockLauncher.UpdateProcessor.Extensions;
 
 namespace BedrockLauncher.Pages.Preview
 {
@@ -111,6 +112,17 @@ namespace BedrockLauncher.Pages.Preview
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void CollectionViewSource_Filter(object sender, FilterEventArgs e)
+        {
+            if (e.Item is MCVersion)
+            {
+                var version = (e.Item as MCVersion);
+                if (VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, version.Architecture)) e.Accepted = true;
+                else e.Accepted = false;
+            }
+            else e.Accepted = false;
         }
     }
 }

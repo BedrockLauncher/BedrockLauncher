@@ -58,14 +58,14 @@ namespace BedrockLauncher.Controls.Items.Launcher
         private void Folder_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            var version = button.DataContext as BLVersion;
+            var version = button.DataContext as MCVersion;
             version.OpenDirectory();
         }
 
         private async void Delete_Click(object sender, RoutedEventArgs e)
         {
             MenuItem button = sender as MenuItem;
-            var version = button.DataContext as BLVersion;
+            var version = button.DataContext as MCVersion;
 
             var title = this.FindResource("Dialog_DeleteItem_Title") as string;
             var content = this.FindResource("Dialog_DeleteItem_Text") as string;
@@ -75,8 +75,8 @@ namespace BedrockLauncher.Controls.Items.Launcher
 
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                MainViewModel.Default.RemoveVersion(version);
-                //await GetParent().RefreshVersionsList();
+                await Task.Run(() => MainViewModel.Default.RemoveVersion(version));
+                await Task.Run(Program.OnApplicationRefresh);
             }
         }
 
@@ -94,7 +94,7 @@ namespace BedrockLauncher.Controls.Items.Launcher
         private void Repair_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            var version = button.DataContext as BLVersion;
+            var version = button.DataContext as MCVersion;
             MainViewModel.Default.RepairVersion(version);
         }
 

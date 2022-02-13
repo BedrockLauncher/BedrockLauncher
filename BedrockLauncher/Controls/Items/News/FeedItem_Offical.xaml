@@ -7,7 +7,6 @@
              xmlns:classes="clr-namespace:BedrockLauncher.Classes.Launcher"
              xmlns:local="clr-namespace:BedrockLauncher.Controls.Items.News"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             xmlns:http2="clr-namespace:Extensions.Http2;assembly=ExtensionsDotNET"
              x:Name="FeedItemEntry" mc:Ignorable="d" d:DataContext="{d:DesignInstance classes:NewsItem_Offical}"
              Focusable="False" Padding="0" Click="FeedItemEntry_Click"
              Style="{DynamicResource EmptyButton}" BorderThickness="0" Width="400"
@@ -15,14 +14,13 @@
     <Button.Resources>
         <wincontrols:BooleanToVisibilityConverter x:Key="BoolToVis"></wincontrols:BooleanToVisibilityConverter>
         <BitmapImage x:Key="FallbackImage" UriSource="/Resources/images/packs/invalid_pack_icon.png"/>
-        <http2:ImageSourceConverterHttp2 x:Key="ImageSourceConverter"></http2:ImageSourceConverterHttp2>
     </Button.Resources>
     <Grid x:Name="MainGrid" Focusable="False" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition MaxHeight="1000"/>
             <RowDefinition MinHeight="116"/>
         </Grid.RowDefinitions>
-        <Image Source="{Binding ImageUrl, IsAsync=True, FallbackValue={StaticResource FallbackImage}, Converter={StaticResource ImageSourceConverter}}" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Image Source="{Binding ImageUrl, FallbackValue={StaticResource FallbackImage}}" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         <Grid Background="{Binding Background, ElementName=MainGrid}" Grid.Row="1">
             <Border Margin="3" BorderThickness="1" BorderBrush="White" Visibility="{Binding cardBorder, Converter={StaticResource BoolToVis}}"/>
             <StackPanel Margin="28" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">

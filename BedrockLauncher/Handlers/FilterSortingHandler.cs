@@ -22,11 +22,11 @@ namespace BedrockLauncher.Handlers
             switch (InstallationsSortMode)
             {
                 case InstallationSort.LatestPlayed:
-                    return new SortDescription("LastPlayedT", ListSortDirection.Descending);
+                    return new SortDescription(nameof(BLInstallation.LastPlayedT), ListSortDirection.Descending);
                 case InstallationSort.Name:
-                    return new SortDescription("DisplayName", ListSortDirection.Ascending);
+                    return new SortDescription(nameof(BLInstallation.DisplayName), ListSortDirection.Ascending);
                 default:
-                    return new SortDescription("LastPlayedT", ListSortDirection.Descending);
+                    return new SortDescription(nameof(BLInstallation.LastPlayedT), ListSortDirection.Descending);
             }
         }
         public static string InstallationsSearchFilter { get; set; } = string.Empty;
@@ -58,8 +58,7 @@ namespace BedrockLauncher.Handlers
         }
         public static bool Filter_VersionList(object obj)
         {
-            BLVersion v = BLVersion.Convert(obj as MCVersion);
-
+            MCVersion v = (obj as MCVersion);
             if (v != null && v.IsInstalled)
             {
                 if (Properties.LauncherSettings.Default.ShowBetas && v.IsBeta) return true;

@@ -368,7 +368,7 @@ namespace BedrockLauncher.Pages.Preview
                 }
                 catch (Exception ex)
                 {
-                    System.Diagnostics.Debug.WriteLine(ex);
+                    System.Diagnostics.Trace.WriteLine(ex);
                 }
 
             }

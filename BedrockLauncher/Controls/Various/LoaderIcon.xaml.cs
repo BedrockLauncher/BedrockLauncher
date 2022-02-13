@@ -35,7 +35,7 @@ namespace BedrockLauncher.Controls.Various
 
         private double CalculateActualWidth()
         {
-            if (this.ActualWidth == double.NaN || this.ActualWidth == 0) return 1;
+            if (double.IsNaN(this.ActualWidth) || this.ActualWidth == 0) return 1;
             else return this.ActualWidth;
         }
 

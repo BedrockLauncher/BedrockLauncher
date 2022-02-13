@@ -68,7 +68,7 @@ namespace BedrockLauncher.Dungeons.Downloaders
                 }
                 catch (Exception ex)
                 {
-                    System.Diagnostics.Debug.WriteLine(ex);
+                    System.Diagnostics.Trace.WriteLine(ex);
                     IsRefreshable = true;
                 }
             });

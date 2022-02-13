@@ -5,7 +5,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:c="clr-namespace:BedrockLauncher.Classes.Launcher"
-             xmlns:http2="clr-namespace:Extensions.Http2;assembly=ExtensionsDotNET"
              xmlns:local="clr-namespace:BedrockLauncher.Controls.Items.News"
              x:Name="FeedItemEntry" mc:Ignorable="d" Focusable="False" Padding="0" Click="FeedItemEntry_Click"
              VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" FocusVisualStyle="{DynamicResource BlankFocusVisual}"
@@ -16,7 +15,6 @@
         <sys:Double x:Key="TagHeight">50</sys:Double>
         <sys:Double x:Key="TitleWidth">150</sys:Double>
         <BitmapImage x:Key="FallbackImage" UriSource="/Resources/images/packs/invalid_pack_icon.png"/>
-        <http2:ImageSourceConverterHttp2 x:Key="ImageSourceConverter"></http2:ImageSourceConverterHttp2>
     </Button.Resources>
     <Grid x:Name="MainGrid" Focusable="False" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
@@ -28,7 +26,7 @@
             <ColumnDefinition MinWidth="{StaticResource TitleWidth}" MaxWidth="{StaticResource TitleWidth}"/>
         </Grid.ColumnDefinitions>
 
-        <Image Source="{Binding ImageUrl, IsAsync=True, FallbackValue={StaticResource FallbackImage}, Converter={StaticResource ImageSourceConverter}}" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
+        <Image Source="{Binding ImageUrl, IsAsync=True, FallbackValue={StaticResource FallbackImage}}" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
 
         <TextBlock Background="{Binding Background, ElementName=MainGrid}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Minecraft Ten" FontWeight="Normal" FontSize="15" Padding="15,15" TextWrapping="Wrap" Text="{Binding Title}" Foreground="White"></TextBlock>
         <DockPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" x:Name="Tb" Margin="15,15,15,15">

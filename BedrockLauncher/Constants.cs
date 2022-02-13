@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Management.Deployment;
 
 namespace BedrockLauncher
 {
@@ -14,6 +16,8 @@ namespace BedrockLauncher
         public static readonly string LATEST_BETA_UUID = "latest_beta";
         public static readonly string LATEST_RELEASE_UUID = "latest_release";
 
+        public static readonly string BETA_VERSION_ICONPATH = @"/BedrockLauncher;component/resources/images/icons/ico/crafting_table_block_icon.ico";
+        public static readonly string RELEASE_VERSION_ICONPATH = @"/BedrockLauncher;component/resources/images/icons/ico/grass_block_icon.ico";
 
         private const string ThemesPathPrefix = @"pack://application:,,,/BedrockLauncher;component/resources/images/bg/play_screen/";
 
@@ -40,6 +44,39 @@ namespace BedrockLauncher
             { "Original",                  ThemesPathPrefix + "original_image.jpg" }
         };
 
+        public static string CurrentArchitecture
+        {
+            get
+            {
+                var currentArchitecture = RuntimeInformation.ProcessArchitecture;
+                if (currentArchitecture == Architecture.Arm || currentArchitecture == Architecture.Arm64) return "arm";
+                else if (currentArchitecture == Architecture.X86) return "x86";
+                else if (currentArchitecture == Architecture.X64) return "x64";
+                else return "null";
+            }
+        }
+
+        public static RemovalOptions PackageRemovalOptions
+        {
+            get
+            {
+                RemovalOptions options = new RemovalOptions();
+                options |= RemovalOptions.RemoveForAllUsers;
+                return options;
+            }
+        }
+
+        public static DeploymentOptions PackageDeploymentOptions
+        {
+            get
+            {
+                DeploymentOptions options = new DeploymentOptions();
+                options |= DeploymentOptions.DevelopmentMode;
+                options |= DeploymentOptions.ForceTargetApplicationShutdown;
+                return options;
+            }
+        }
+
         public static class Debugging
         {
             //IMPORTANT FOR DATA BINDING: DO NOT TOUCH (leave at false)
@@ -48,7 +85,7 @@ namespace BedrockLauncher
 
             //TODO: Fix performance issues
             public static bool CalculateVersionSizes { get; internal set; } = true;
-            public static bool UpdateVersionsOnLoad { get; internal set; } = true;
+            public static bool RetriveNewVersionsOnLoad { get; internal set; } = true;
             public static bool CheckForUpdatesOnLoad { get; internal set; } = true;
 
 

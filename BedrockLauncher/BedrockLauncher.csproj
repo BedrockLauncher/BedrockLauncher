@@ -1,25 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9FEBCF6C-14EF-49E9-B57D-FCBC3BA4BC77}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>BedrockLauncher</RootNamespace>
-    <AssemblyName>BedrockLauncher</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
+    <TargetFramework>net6.0-windows10.0.17763.0</TargetFramework>
+	<BeautyLibsDir>runtimes</BeautyLibsDir>
+	<DisableBeauty>False</DisableBeauty>
+	<OutputType>WinExe</OutputType>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-    <TargetFrameworkProfile />
-    <CefSharpTargetDir>runtimes\CefSharp</CefSharpTargetDir>
-    <CefSharpAnyCpuSupport>true</CefSharpAnyCpuSupport>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -34,27 +19,11 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-  </PropertyGroup>
-  <PropertyGroup />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>BedrockLauncher.Program</StartupObject>
@@ -78,9 +47,6 @@
     <ManifestKeyFile>BedrockLauncher.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
@@ -93,608 +59,17 @@
   <PropertyGroup>
     <RunPostBuildEvent>Always</RunPostBuildEvent>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Publish|x64'">
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Publish|AnyCPU'">
     <OutputPath>bin\Publish\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework">
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="PresentationFramework.Aero2" />
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.IO.Compression" />
-    <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.Net" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="WindowsFormsIntegration" />
-  </ItemGroup>
-  <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Compile Include="Classes\Launcher\NewsFeed_Offical.cs" />
-    <Compile Include="Components\CefSharp\FileSchemeHandler.cs" />
-    <Compile Include="Components\CefSharp\GlobalSchemeHandlerFactory.cs" />
-    <Compile Include="Components\CefSharp\CefSharpLoader.cs" />
-    <Compile Include="Components\CefSharp\ResourceSchemeHandler.cs" />
-    <Compile Include="Components\CefSharp\SkinViewResourceSchemeHandler.cs" />
-    <Compile Include="Classes\Launcher\DLC.cs" />
-    <Compile Include="Classes\BLInstallation.cs" />
-    <Compile Include="Classes\BLVersion.cs" />
-    <Compile Include="Classes\Launcher\AppPatchNote.cs" />
-    <Compile Include="Classes\MCProfilesList.cs" />
-    <Compile Include="Classes\Launcher\PatchNote.cs" />
-    <Compile Include="Classes\MCProfile.cs" />
-    <Compile Include="Classes\MCVersion.cs" />
-    <Compile Include="Classes\MediaWiki\Continue.cs" />
-    <Compile Include="Classes\MediaWiki\Limits.cs" />
-    <Compile Include="Classes\MediaWiki\Query.cs" />
-    <Compile Include="Classes\MediaWiki\RootObject.cs" />
-    <Compile Include="Classes\MediaWiki\Val.cs" />
-    <Compile Include="Classes\Launcher\NewsItem.cs" />
-    <Compile Include="Classes\Launcher\NewsItem_Offical.cs" />
-    <Compile Include="Classes\Launcher\NewsItem_RSS.cs" />
-    <Compile Include="Classes\SkinPack\MCSkin.cs" />
-    <Compile Include="Classes\SkinPack\MCSkinGeometry.cs" />
-    <Compile Include="Classes\SkinPack\MCSkinPack.cs" />
-    <Compile Include="Classes\SkinPack\MCSkinPackContent.cs" />
-    <Compile Include="Classes\SkinPack\MCSkinPackLang.cs" />
-    <Compile Include="Classes\SkinPack\MCSkinPackMainfest.cs" />
-    <Compile Include="Controls\Various\LoaderIcon.xaml.cs">
-      <DependentUpon>LoaderIcon.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Toolbar\DungeonsButton.xaml.cs">
-      <DependentUpon>DungeonsButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Toolbar\ToolbarButtonBase.cs" />
-    <Compile Include="Constants.cs" />
-    <Compile Include="Controls\Common\MessageBoxEX.xaml.cs">
-      <DependentUpon>MessageBoxEX.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\Launcher\DLCItem.xaml.cs">
-      <DependentUpon>DLCItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\News\FeedItem_Offical.xaml.cs">
-      <DependentUpon>FeedItem_Offical.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\News\FeedItem_RSS.xaml.cs">
-      <DependentUpon>FeedItem_RSS.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\Launcher\InstallationSelectorItem.xaml.cs">
-      <DependentUpon>InstallationSelectorItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\News\FeedItem_Launcher.xaml.cs">
-      <DependentUpon>FeedItem_Launcher.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Common\Marquee.xaml.cs">
-      <DependentUpon>Marquee.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Various\UpdateButton.xaml.cs">
-      <DependentUpon>UpdateButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Config\InstallationSelector.xaml.cs">
-      <DependentUpon>InstallationSelector.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Various\ResultPanel.xaml.cs">
-      <DependentUpon>ResultPanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Various\SpecialBorder.xaml.cs">
-      <DependentUpon>SpecialBorder.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Downloaders\NewsDownloader.cs" />
-    <Compile Include="Enums\LauncherStateChange.cs" />
-    <Compile Include="Enums\InstallationSort.cs" />
-    <Compile Include="Enums\RSSType.cs" />
-    <Compile Include="Enums\VersioningMode.cs" />
-    <Compile Include="Exceptions\AppLaunchFailedException.cs" />
-    <Compile Include="Exceptions\BetaAuthenticationFailedException.cs" />
-    <Compile Include="Exceptions\PackageDeregistrationFailedException.cs" />
-    <Compile Include="Exceptions\PackageDownloadAndExtractFailedException.cs" />
-    <Compile Include="Exceptions\PackageDownloadCanceledException.cs" />
-    <Compile Include="Exceptions\PackageDownloadFailedException.cs" />
-    <Compile Include="Exceptions\PackageExtractionCanceledException.cs" />
-    <Compile Include="Exceptions\PackageExtractionFailedException.cs" />
-    <Compile Include="Exceptions\PackageManagerException.cs" />
-    <Compile Include="Exceptions\PackageProcessHookFailedException.cs" />
-    <Compile Include="Exceptions\PackageRegistrationFailedException.cs" />
-    <Compile Include="Exceptions\PackageRemovalFailedException.cs" />
-    <Compile Include="Exceptions\SaveRedirectionFailedException.cs" />
-    <Compile Include="Handlers\BackupHandler.cs" />
-    <Compile Include="Handlers\FilterSortingHandler.cs" />
-    <Compile Include="Handlers\PackageHandler.cs" />
-    <Compile Include="Handlers\RuntimeHandler.cs" />
-    <Compile Include="Extensions\MCSkinExtensions.cs" />
-    <Compile Include="Handlers\PathHandler.cs" />
-    <Compile Include="Pages\Common\WaitingPage.xaml.cs">
-      <DependentUpon>WaitingPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Common\WaitingScreen.xaml.cs">
-      <DependentUpon>WaitingScreen.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Community\CommunityPage.xaml.cs">
-      <DependentUpon>CommunityPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\FirstLaunch\WelcomePageFive.xaml.cs">
-      <DependentUpon>WelcomePageFive.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\FirstLaunch\WelcomePageFour.xaml.cs">
-      <DependentUpon>WelcomePageFour.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\News\OfficalNewsPage.xaml.cs">
-      <DependentUpon>OfficalNewsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\SkinsPageViewModel.cs" />
-    <Compile Include="ViewModels\EditInstallationsPageViewModel.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\NewsViewModel.cs" />
-    <Compile Include="ViewModels\RSSViewModel.cs" />
-    <Compile Include="ViewModels\UserInterfaceModel.cs" />
-    <Compile Include="Properties\LauncherSettings.cs" />
-    <Compile Include="Controls\Items\Launcher\BlockPickerItem.xaml.cs">
-      <DependentUpon>BlockPickerItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\Launcher\InstallationItem.xaml.cs">
-      <DependentUpon>InstallationItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\Launcher\LocalizationItem.xaml.cs">
-      <DependentUpon>LocalizationItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\News\FeedItem_PatchNotes.xaml.cs">
-      <DependentUpon>FeedItem_PatchNotes.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\Skins\SkinItem.xaml.cs">
-      <DependentUpon>SkinItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\Skins\SkinPackItem.xaml.cs">
-      <DependentUpon>SkinPackItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\Launcher\VersionItem.xaml.cs">
-      <DependentUpon>VersionItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Config\ThemeCombobox.xaml.cs">
-      <DependentUpon>ThemeCombobox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Toolbar\ExternalLauncherButton.xaml.cs">
-      <DependentUpon>ExternalLauncherButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Toolbar\CommunityButton.xaml.cs">
-      <DependentUpon>CommunityButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Toolbar\JavaEditionButton.xaml.cs">
-      <DependentUpon>JavaEditionButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Config\InstallationBlockPicker.xaml.cs">
-      <DependentUpon>InstallationBlockPicker.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Config\InsiderCombobox.xaml.cs">
-      <DependentUpon>InsiderCombobox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Config\LanguageCombobox.xaml.cs">
-      <DependentUpon>LanguageCombobox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Toolbar\BedrockEditionButton.xaml.cs">
-      <DependentUpon>BedrockEditionButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Toolbar\NewsButton.xaml.cs">
-      <DependentUpon>NewsButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Toolbar\SettingsButton.xaml.cs">
-      <DependentUpon>SettingsButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Toolbar\ProfileButton.xaml.cs">
-      <DependentUpon>ProfileButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\Launcher\ProfileItem.xaml.cs">
-      <DependentUpon>ProfileItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Skins\SkinPreview.xaml.cs">
-      <DependentUpon>SkinPreview.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Handlers\StartupArgsHandler.cs" />
-    <Compile Include="Downloaders\ChangelogDownloader.cs" />
-    <Compile Include="Pages\Settings\AdvancedOptionsWindow.xaml.cs">
-      <DependentUpon>AdvancedOptionsWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\News\RSSNewsPage.xaml.cs">
-      <DependentUpon>RSSNewsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Preview\EditSkinPackScreen.xaml.cs">
-      <DependentUpon>EditSkinPackScreen.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\News\LauncherNewsPage.xaml.cs">
-      <DependentUpon>LauncherNewsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Preview\EditSkinScreen.xaml.cs">
-      <DependentUpon>EditSkinScreen.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\FirstLaunch\WelcomePage.xaml.cs">
-      <DependentUpon>WelcomePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\FirstLaunch\WelcomePageThree.xaml.cs">
-      <DependentUpon>WelcomePageThree.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\FirstLaunch\WelcomePageTwo.xaml.cs">
-      <DependentUpon>WelcomePageTwo.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\FirstLaunch\WelcomePageOne.xaml.cs">
-      <DependentUpon>WelcomePageOne.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Preview\EditInstallationScreen.xaml.cs">
-      <DependentUpon>EditInstallationScreen.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Play\PatchNotesPage.xaml.cs">
-      <DependentUpon>PatchNotesPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Settings\VersionsPage.xaml.cs">
-      <DependentUpon>VersionsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Play\InstallationsScreen.xaml.cs">
-      <DependentUpon>InstallationsScreen.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\News\NewsScreenTabs.xaml.cs">
-      <DependentUpon>NewsScreenTabs.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Preview\AddProfilePage.xaml.cs">
-      <DependentUpon>AddProfilePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Settings\AboutPage.xaml.cs">
-      <DependentUpon>AboutPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Settings\AccountsSettingsPage.xaml.cs">
-      <DependentUpon>AccountsSettingsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Settings\GeneralSettingsPage.xaml.cs">
-      <DependentUpon>GeneralSettingsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Play\GameTabs.xaml.cs">
-      <DependentUpon>GameTabs.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Play\PlayScreenPage.xaml.cs">
-      <DependentUpon>PlayScreenPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Play\SkinsPage.xaml.cs">
-      <DependentUpon>SkinsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Settings\SettingsTabs.xaml.cs">
-      <DependentUpon>SettingsTabs.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Handlers\UpdateHandler.cs" />
-    <Compile Include="Downloaders\VersionDownloader.cs" />
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="Controls\Common\MessageBoxEX.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Items\Launcher\BlockPickerItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Items\Launcher\DLCItem.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Items\News\FeedItem_Offical.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Items\News\FeedItem_RSS.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Items\Launcher\InstallationItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Items\Launcher\InstallationSelectorItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Items\News\FeedItem_Launcher.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Items\Launcher\LocalizationItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Items\News\FeedItem_PatchNotes.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Items\Skins\SkinItem.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Items\Skins\SkinPackItem.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Items\Launcher\VersionItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Various\LoaderIcon.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Common\Marquee.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Various\ResultPanel.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Config\ThemeCombobox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Various\SpecialBorder.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Toolbar\DungeonsButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Toolbar\ExternalLauncherButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Toolbar\CommunityButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Toolbar\JavaEditionButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Config\InstallationBlockPicker.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Config\InsiderCombobox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Config\LanguageCombobox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Toolbar\BedrockEditionButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Toolbar\NewsButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Toolbar\SettingsButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Toolbar\ProfileButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Items\Launcher\ProfileItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Skins\SkinPreview.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Various\UpdateButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Config\InstallationSelector.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Common\WaitingPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Common\WaitingScreen.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Community\CommunityPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\FirstLaunch\WelcomePageFive.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\News\OfficalNewsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Settings\AdvancedOptionsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\News\RSSNewsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Preview\EditSkinPackScreen.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\FirstLaunch\WelcomePageFour.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\News\LauncherNewsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Preview\EditSkinScreen.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\FirstLaunch\WelcomePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\FirstLaunch\WelcomePageThree.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\FirstLaunch\WelcomePageTwo.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\FirstLaunch\WelcomePageOne.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Preview\EditInstallationScreen.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Play\PatchNotesPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Settings\VersionsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Play\InstallationsScreen.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\News\NewsScreenTabs.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Preview\AddProfilePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Settings\AboutPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Settings\AccountsSettingsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Settings\GeneralSettingsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Play\GameTabs.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Play\PlayScreenPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Play\SkinsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Settings\SettingsTabs.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\styles\item_templates.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <None Include="App.config" />
-    <None Include="app.manifest">
-      <SubType>Designer</SubType>
+    <None Update="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="nlog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -710,93 +85,42 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="CefSharp.Wpf">
-      <Version>96.0.180</Version>
-    </PackageReference>
-    <PackageReference Include="CodeHollow.FeedReader">
-      <Version>1.2.1</Version>
-    </PackageReference>
-    <PackageReference Include="HtmlAgilityPack">
-      <Version>1.11.40</Version>
-    </PackageReference>
-    <PackageReference Include="HtmlRenderer.WPF">
-      <Version>1.5.0.6</Version>
-    </PackageReference>
-    <PackageReference Include="ini-parser">
-      <Version>2.5.2</Version>
-    </PackageReference>
-    <PackageReference Include="MdXaml">
-      <Version>1.12.0</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Windows.CppWinRT">
-      <Version>2.0.210505.3</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Windows.SDK.Contracts">
-      <Version>10.0.19041.1</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf">
-      <Version>1.1.39</Version>
-    </PackageReference>
-    <PackageReference Include="MSFT.ParallelExtensionsExtras">
-      <Version>1.2.0</Version>
-    </PackageReference>
-    <PackageReference Include="Newtonsoft.Json">
-      <Version>13.0.1</Version>
-    </PackageReference>
-    <PackageReference Include="PostSharp">
-      <Version>6.10.5</Version>
-    </PackageReference>
-    <PackageReference Include="PostSharp.Patterns.Model">
-      <Version>6.10.5</Version>
-    </PackageReference>
+    <PackageReference Include="CefSharp.Common" Version="97.1.12" />
+    <PackageReference Include="CefSharp.Common.NETCore" Version="97.1.12" />
+    <PackageReference Include="CefSharp.Wpf.NETCore" Version="97.1.12" />
+    <PackageReference Include="CodeHollow.FeedReader" Version="1.2.4" />
+    <PackageReference Include="FolderBrowserEx" Version="1.0.1" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.40" />
+    <PackageReference Include="HtmlRenderer.Core.NetStandard2" Version="1.5.1" />
+    <PackageReference Include="ini-parser-netcore" Version="3.0.0" />
+    <PackageReference Include="MdXaml" Version="1.12.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="MimeMapping" Version="1.0.1.37" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="NLog" Version="4.7.13" />
+    <PackageReference Include="nulastudio.NetCoreBeauty" Version="1.2.9.3" />
+    <PackageReference Include="PostSharp.Patterns.Model" Version="6.10.5" />
     <PackageReference Include="RestSharp">
-      <Version>106.12.0</Version>
-    </PackageReference>
-    <PackageReference Include="semver">
-      <Version>2.0.6</Version>
+      <Version>107.1.1</Version>
     </PackageReference>
     <PackageReference Include="SymbolicLinkSupport">
       <Version>1.2.0</Version>
     </PackageReference>
-    <PackageReference Include="System.Net.Http.WinHttpHandler">
-      <Version>5.0.0</Version>
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.261602">
+      <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="System.Runtime">
-      <Version>4.3.1</Version>
-    </PackageReference>
-    <PackageReference Include="VirtualizingWrapPanel">
-      <Version>1.5.7</Version>
-    </PackageReference>
+    <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="6.0.0" />
+    <PackageReference Include="VirtualizingWrapPanel" Version="1.5.7" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\modules\BedrockLauncher.Core\BedrockLauncher.Core.csproj">
-      <Project>{167a048a-8140-4f8d-87c3-a03d07f964d3}</Project>
-      <Name>BedrockLauncher.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\modules\BedrockLauncher.Dungeons\BedrockLauncher.Dungeons.csproj">
-      <Project>{a04af51f-1e8c-44b0-9ebc-e3c7d6b3f4d3}</Project>
-      <Name>BedrockLauncher.Dungeons</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\modules\BedrockLauncher.UI\BedrockLauncher.UI.csproj">
-      <Project>{46D8EC75-2F00-4551-9F3D-10C8522C9B3D}</Project>
-      <Name>BedrockLauncher.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\modules\BedrockLauncher.UpdateProcessor\Core.csproj">
-      <Project>{8d88d5ff-5132-4605-851d-2e020ea6483b}</Project>
-      <Name>Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\modules\Extensions.NET\Extensions.csproj">
-      <Project>{6718749f-4346-4e5e-85df-d47faf22c9b6}</Project>
-      <Name>Extensions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\modules\SkinView3D\SkinView3D.csproj">
-      <Project>{ccabef67-f4bf-4087-9291-62ee5e316934}</Project>
-      <Name>SkinView3D</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\modules\BedrockLauncher.Uninstaller\BedrockLauncher.Uninstaller.csproj">
-      <Project>{3232778b-1a3b-4d31-88a1-7a43b8b66723}</Project>
-      <Name>BedrockLauncher.Uninstaller</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\modules\BedrockLauncher.Core\BedrockLauncher.Core.csproj" />
+    <ProjectReference Include="..\modules\BedrockLauncher.Dungeons\BedrockLauncher.Dungeons.csproj" />
+    <ProjectReference Include="..\modules\BedrockLauncher.UI\BedrockLauncher.UI.csproj" />
+    <ProjectReference Include="..\modules\BedrockLauncher.UpdateProcessor\Core.csproj" />
+    <ProjectReference Include="..\modules\Extensions.NET\Extensions.csproj" />
+    <ProjectReference Include="..\modules\SkinView3D\SkinView3D.csproj" />
+    <ProjectReference Include="..\modules\BedrockLauncher.Uninstaller\BedrockLauncher.Uninstaller.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Pages\Web\Donate.html" />
@@ -1239,16 +563,31 @@
   <ItemGroup>
     <Resource Include="Resources\images\panels\CardBorder.png" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Remove="Controls\Various\LoadingAnimation.xaml.cs" />
+    <Page Remove="Controls\Various\LoadingAnimation.xaml" />
+    <Page Remove="Data\Versions.xaml" />
+  </ItemGroup>
+  <PropertyGroup />
   <PropertyGroup>
-    <PreBuildEvent>if $(ConfigurationName) == Publish (
-rmdir "$(ProjectDir)$(OutDir)\" /s /q
-)</PreBuildEvent>
+    <EnforceCodeStyleInBuild>False</EnforceCodeStyleInBuild>
+    <BaseOutputPath>bin\</BaseOutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+    <IsPublishable>False</IsPublishable>
+    <Company />
+    <PackageId>BedrockLauncher</PackageId>
+    <Authors>CarJem Generations</Authors>
+    <Copyright>2022 © CarJem Generations</Copyright>
+    <AnalysisLevel>latest</AnalysisLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == Publish (
-"$(SolutionDir)\solution_binaries\publisher\publisher.exe" "$(ProjectDir)$(OutDir)\"
-)
-</PostBuildEvent>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>0</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
 </Project>

@@ -24,15 +24,15 @@ namespace BedrockLauncher.Controls.Skins
     /// <summary>
     /// Interaction logic for SkinPreview.xaml
     /// </summary>
-    public partial class SkinPreview : UserControl
+    public partial class SkinPreview : UserControl, IDisposable
     {
         ChromiumWebBrowser Renderer = new ChromiumWebBrowser();
 
         #region Constants
 
-        public const string Preview = "skinview3d://previews/index.html";
+        public const string Preview = "skinview3d://SkinView/previews/index.html";
 
-        private const string NoSkin = "skinview3d://previews/img/NoSkin.png";
+        private const string NoSkin = "skinview3d://SkinView/previews/img/NoSkin.png";
 
         #endregion
         #region Properties
@@ -163,7 +163,7 @@ namespace BedrockLauncher.Controls.Skins
                 }
                 catch (Exception ex)
                 {
-                    System.Diagnostics.Debug.WriteLine(ex);
+                    System.Diagnostics.Trace.WriteLine(ex);
                 }
             });
         }
@@ -186,6 +186,17 @@ namespace BedrockLauncher.Controls.Skins
             {
                 if (e.IsLoading == false && isRenderable && Renderer.CanExecuteJavascriptInMainFrame) RefreshView();
             });
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            Renderer?.Dispose();
         }
     }
 }

@@ -1,0 +1,587 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows10.0.19041</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <CefSharpTargetDir>runtimes\CefSharp</CefSharpTargetDir>
+    <CefSharpAnyCpuSupport>true</CefSharpAnyCpuSupport>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>BedrockLauncher.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\images\icons\ico\launcher_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>C12BAB0D8397D937265B99E7577F9696AFDF57C2</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>BedrockLauncher.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Publish|x64'">
+    <Optimize>true</Optimize>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Publish|AnyCPU'">
+    <OutputPath>bin\Publish\</OutputPath>
+    <Optimize>true</Optimize>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationFramework.Aero2" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CefSharp.Wpf">
+      <Version>97.1.12</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.Windows.CppWinRT">
+      <Version>2.0.220110.5</Version>
+    </PackageReference>
+    <PackageReference Include="MSFT.ParallelExtensionsExtras">
+      <Version>1.2.0</Version>
+    </PackageReference>
+    <PackageReference Include="PostSharp.Patterns.Model" Version="6.10.5" />
+    <PackageReference Include="RestSharp">
+      <Version>107.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="SymbolicLinkSupport">
+      <Version>1.2.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.261602">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.0" />
+    <PackageReference Include="VirtualizingWrapPanel" Version="1.5.7" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\modules\BedrockLauncher.Core\BedrockLauncher.Core.csproj" />
+    <ProjectReference Include="..\modules\BedrockLauncher.Dungeons\BedrockLauncher.Dungeons.csproj" />
+    <ProjectReference Include="..\modules\BedrockLauncher.UI\BedrockLauncher.UI.csproj" />
+    <ProjectReference Include="..\modules\BedrockLauncher.UpdateProcessor\Core.csproj" />
+    <ProjectReference Include="..\modules\Extensions.NET\Extensions.csproj" />
+    <ProjectReference Include="..\modules\SkinView3D\SkinView3D.csproj" />
+    <ProjectReference Include="..\modules\BedrockLauncher.Uninstaller\BedrockLauncher.Uninstaller.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\Web\Donate.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pages\Web\Loader.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\_BlockOrder.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\_BlockOrder_Offical.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Acacia_Log.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Acacia_Planks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Andesite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Bedrock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Birch_Leaves.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Birch_Log.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Birch_Planks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Block_of_Coal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Block_of_Diamond.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Block_of_Emerald.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Block_of_Gold.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Block_of_Iron.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Block_of_Redstone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Bookshelf.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Bricks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Cake.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Chest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Clay.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Coal_Ore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Cobblestone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Crafting_Table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Creeper_Head.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Crimson_Planks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Crimson_Stem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Dark_Oak_Log.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Dark_Oak_Planks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Diamond_Ore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Diorite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Dirt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Emerald_Ore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Enchanting_Table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\End_Stone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Farmland.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Furnace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Glass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Glowstone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Gold_Ore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Granite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Grass_Block.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Gravel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Ice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Iron_Ore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Jungle_Leaves.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Jungle_Log.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Jungle_Planks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Lapis_Lazuli_Ore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Lectern_Book.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Light_Blue_Glazed_Terracotta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Lit_Furnace.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Mycelium.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Nether_Bricks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Nether_Quartz_Ore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Nether_Wart_Block.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Netherrack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Oak_Leaves.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Oak_Log.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Oak_Planks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Obsidian.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Orange_Glazed_Terracotta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Podzol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Pumpkin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Red_Sand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Red_Sandstone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Redstone_Ore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Sand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Sandstone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Skeleton_Skull.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Snow_Block.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Snowy_Grass_Block.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Soul_Sand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Spruce_Leaves.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Spruce_Log.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Spruce_Planks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Stone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Terracotta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\TNT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Warped_Planks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Warped_Stem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Warped_Wart_Block.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\Water.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\White_Glazed_Terracotta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\installation_icons\White_Wool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\credits\bs_community_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\credits\carjem_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\credits\mcmrarm_icon.jfif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\credits\microsoft_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\credits\mojang_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\credits\xbox_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\credits\xlynxx.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\firstlaunchbackground.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\firstlaunchbackground_legacy.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\play_screen\1.0_pocket_edition.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\play_screen\1.08_cats_and_pandas.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\play_screen\1.09_combat_update_java.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\play_screen\1.11_exploration_update_java.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\play_screen\1.12_world_of_color_update_java.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\play_screen\1.13_technically_updated_java.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\play_screen\1.13_update_aquatic.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\play_screen\1.14_village_pillage_update.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\play_screen\1.15_buzzy_bees_update.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\play_screen\1.16_nether_update.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\play_screen\1.17_caves_and_cliffs_part_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\play_screen\bedrock_master.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\play_screen\bedrock_standard.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\play_screen\original_image.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\play_screen\other_dungeons.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\play_screen\other_early_console_era.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\play_screen\other_indie_days.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\play_screen\other_late_legacy_console.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\play_screen\other_mid_legacy_console.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\bg\stone_texture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\bedrock_grass_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\bedrock_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\dungeons_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\external.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\grass_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\ico\bedrock_block_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\ico\crafting_table_block_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\ico\grass_block_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\ico\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\ico\launcher_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\ico\package.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\ico\uninstaller_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\mojang-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\ms-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\news_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\servers_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\settings_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\icons\user_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\logo\BedrockEdition.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\logo\BugrockEdition.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\logo\BugrockOfTheWeek.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\logo\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\logo\OfTheWeek.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\logo\subtitle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\logo\title.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\packs\dev_pack_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\packs\invalid_pack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\packs\invalid_pack_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\packs\pack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\packs\pack_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\panels\advancement_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\panels\CardBorder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Controls\Various\LoadingAnimation.xaml.cs" />
+    <Page Remove="Controls\Various\LoadingAnimation.xaml" />
+    <Page Remove="Data\Versions.xaml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <PreBuildEvent>if $(MSBuildConfigurationName) == Publish (
+rmdir "$(MSBuildProjectDirectory)$(TargetFileName)\" /s /q
+)</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Publish (
+"$(SolutionDir)\solution_binaries\publisher\publisher.exe" "$(ProjectDir)$(OutDir)\"
+)
+</PostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+</Project>

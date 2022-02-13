@@ -19,30 +19,29 @@ namespace BedrockLauncher.Components.CefSharp
         {
             var names = typeof(SkinView3D.Class).Assembly.GetManifestResourceNames();
             Uri u = new Uri(request.Url);
-            string resourceName = string.Format("Runtimes/SkinView/{0}{1}", u.Authority, u.AbsolutePath).ToLower();
-            string resourcePath = @"/SkinView3D;component/" + resourceName;
 
+            string resourceName = string.Format("Runtimes/{0}{1}", u.Authority, u.AbsolutePath).ToLower();
+            string resourceManifestName = $"SkinView3D.{resourceName.Replace("/", ".")}";
             var assembly = typeof(SkinView3D.Class).Assembly;
-            var rm = new ResourceManager(assembly.GetName().Name + ".g", assembly);
-            var resources = rm.GetResourceSet(CultureInfo.CurrentCulture, true, true);
-            var resourceDictionary = resources.Cast<DictionaryEntry>().ToDictionary(r => r.Key.ToString(), r => r.Value.ToString());
-            bool validResource = resourceDictionary.ContainsKey(resourceName);
+            var resources = assembly.GetManifestResourceNames();
+            bool validResource = resources.ToList().Exists(x => x.Equals(resourceManifestName, StringComparison.InvariantCultureIgnoreCase));
 
             if (validResource)
             {
                 Task.Run(() =>
                 {
+                    string resourcePath = resources.ToList().Where(x => x.Equals(resourceManifestName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
                     using (callback)
                     {
                         try
                         {
 
-                            StreamResourceInfo sri = Application.GetResourceStream(new Uri(resourcePath, UriKind.Relative));
+                            var sri = assembly.GetManifestResourceInfo(resourcePath);
 
                             if (sri != null)
                             {
-                                Stream stream = sri.Stream;
-                                string mimeType = sri.ContentType;
+                                Stream stream = assembly.GetManifestResourceStream(resourcePath);
+                                string mimeType = MimeMapping.MimeUtility.GetMimeMapping(resourcePath);
 
                                 // Reset the stream position to 0 so the stream can be copied into the underlying unmanaged buffer
                                 stream.Position = 0;
@@ -62,15 +61,17 @@ namespace BedrockLauncher.Components.CefSharp
                         catch (Exception ex)
                         {
                             callback.Cancel();
-                            System.Diagnostics.Debug.WriteLine(ex);
+                            System.Diagnostics.Trace.WriteLine(ex);
                         }
 
                     }
                 });
             }
-            else callback.Cancel();
-
-            rm.ReleaseAllResources();
+            else
+            {
+                callback.Cancel();
+                System.Diagnostics.Trace.WriteLine($"SKINVIEWRESOURCESCHEMEHANDLER: Could not find \'{resourceName}\'!");
+            }
 
             return CefReturnValue.ContinueAsync;
         }

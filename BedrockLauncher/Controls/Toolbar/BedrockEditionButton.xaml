@@ -6,11 +6,14 @@
              xmlns:p="clr-namespace:BedrockLauncher.Properties"
              xmlns:classes="clr-namespace:BedrockLauncher.Classes"
              xmlns:models="clr-namespace:BedrockLauncher.ViewModels"
+             xmlns:beh="clr-namespace:Extensions.WPF.Behaviours;assembly=ExtensionsDotNET"
              xmlns:controls="clr-namespace:BedrockLauncher.Controls"
              xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
              xmlns:local="clr-namespace:BedrockLauncher.Controls.Toolbar"
              d:DataContext="{d:DesignInstance Type=models:MainViewModel}"
              mc:Ignorable="d" Height="59" Margin="1,0,0,0" VerticalAlignment="Top">
+    <local:ToolbarButtonBase.Resources>
+    </local:ToolbarButtonBase.Resources>
     <ToggleButton x:Name="Button" Checked="Button_CheckedChanged" Unchecked="Button_CheckedChanged" Click="SideBarButton_Click" Style="{StaticResource SideBarButtonStyle}">
         <ToggleButton.ToolTip>
             <ToolTip Content="{DynamicResource ToolbarButtons_MinecraftEdition_Text}"/>
@@ -19,6 +22,6 @@
     </ToggleButton>
     <Image Style="{StaticResource SideBarButtonIcon}" Source="/BedrockLauncher;component/resources/images/icons/bedrock_grass_icon.png"/>
     <Grid x:Name="Progressbar">
-        <ProgressBar Value="{Binding InterfaceState.ProgressBar_CurrentProgress}" IsIndeterminate="{Binding InterfaceState.ProgressBar_IsIndeterminate}" Maximum="{Binding InterfaceState.ProgressBar_TotalProgress}" x:Name="progressSizeHack" Visibility="{Binding InterfaceState.BedrockEditionButton_progressSizeHack}" Height="5" VerticalAlignment="Bottom" Foreground="#FF008542" Background="Black" BorderBrush="Black" Minimum="0"/>
+        <ProgressBar beh:ProgressBarSmoother.SmoothValue="{Binding ProgressBarState.CurrentProgress}" IsIndeterminate="{Binding ProgressBarState.IsIndeterminate}" Maximum="{Binding ProgressBarState.TotalProgress}" x:Name="progressSizeHack" Visibility="{Binding ProgressBarState.Anim_MiniVisibility}" Height="5" VerticalAlignment="Bottom" Foreground="#FF008542" Background="Black" BorderBrush="Black" Minimum="0"/>
     </Grid>
 </local:ToolbarButtonBase>

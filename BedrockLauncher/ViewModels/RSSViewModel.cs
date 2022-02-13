@@ -1,7 +1,6 @@
 ﻿using BedrockLauncher.Classes.Launcher;
 using BedrockLauncher.Enums;
 using CodeHollow.FeedReader;
-using Extensions.Http2;
 using PostSharp.Patterns.Model;
 using System;
 using System.Collections.Generic;
