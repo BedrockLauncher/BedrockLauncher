@@ -20,9 +20,10 @@
     <OutputPath>bin\x86\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\lang\en-US\Dungeons_LauncherInstructions.md" />
-    <EmbeddedResource Include="Resources\lang\en-US\Dungeons_SteamInstructions.md" />
-    <EmbeddedResource Include="Resources\lang\en-US\Dungeons_StoreInstructions.md" />
+    <None Remove="Resources\lang\.ext\**\*.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\lang\.ext\**\*.*" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
@@ -45,5 +46,21 @@
   </ItemGroup>
   <ItemGroup>
     <Page Remove="Resources\lang\lang.default.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\lang\.root\AvaliableLanguages.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 </Project>

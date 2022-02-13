@@ -22,15 +22,45 @@ namespace BedrockLauncher.Core.Language
         {
             get
             {
-                return new List<LanguageDefinition>
+
+                var languages = new List<LanguageDefinition>();
+                foreach (var lang in GetAvaliableInternalLanguages())
                 {
-                    new LanguageDefinition("en-US"),
-                    new LanguageDefinition("pt-PT"),
-                    new LanguageDefinition("ru-RU"),
-                    new LanguageDefinition("pt-BR")
-                };
+                    try
+                    {
+                        var def = new LanguageDefinition(lang);
+                        languages.Add(def);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.Error.WriteLine(ex);
+                    }
+                }
+                return languages;
             }
         }
+
+
+
+        private static List<string> GetAvaliableInternalLanguages()
+        {
+            List<string> Langs = new List<string>();
+            try
+            {
+                var assembly = Assembly.GetExecutingAssembly();
+                string resourceName = assembly.GetManifestResourceNames().Single(str => str.EndsWith("AvaliableLanguages.txt"));
+
+                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+                using (StreamReader reader = new StreamReader(stream)) Langs.Add(reader.ReadLine());
+                
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine(ex);
+            }
+            return Langs;
+        }
+
         private static void LanguageChange(LanguageDefinition definition)
         {
             var possible = Application.Current.Resources.MergedDictionaries.Where(x => x is LanguageDictionary).FirstOrDefault();
@@ -70,10 +100,11 @@ namespace BedrockLauncher.Core.Language
             string GetResource(string _name, LanguageDefinition currentLang)
             {
                 var currentLocale = currentLang.Locale.Replace("-", "_");
+                string ext = "_ext";
 
                 if (!currentLang.IsExternal)
                 {
-                    string resourceName = $"{currentLocale}.{_name}";
+                    string resourceName = $"{ext}.{currentLocale}.{_name}";
                     var names = Assembly.GetExecutingAssembly().GetManifestResourceNames();
                     if (names.ToList().Exists(x => x.EndsWith(resourceName)))
                     {

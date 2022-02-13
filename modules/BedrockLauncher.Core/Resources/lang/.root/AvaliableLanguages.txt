@@ -1,0 +1,4 @@
+﻿en-US
+pt-PT
+ru-RU
+pt-BR
