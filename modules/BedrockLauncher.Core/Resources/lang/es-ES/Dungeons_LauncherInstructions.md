@@ -1,13 +1,13 @@
 ﻿# Instalación
-1. En tu Minecraft Launcher, haz clic en Minecraft Dungeons y selecciona `Instalaciones`
-2. Verá una ruta de carpeta encima de dos botones, cópiela y agréguele `\dungeons\dungeons`
-3. En Bedrock Launcher, establezca la ubicación de instalación en esta ruta
-4. Seleccione dónde desea que esté su carpeta de mods simbólicos (no debe colocarse dentro de la carpeta de instalación del juego)
-5. Haz clic en `Instalar Enlace Simbólico`
-6. La carpeta de mods del juego ahora debe emparejarse con la carpeta de mods simbólicos
+1. En tu lanzador de Minecraft, haz clic en Minecraft Dungeons y selecciona `Installations`
+2. Verás una ruta de carpeta por encima de dos botones, cópiala y añádele `\dungeons\dungeons`
+3. En el lanzador de Bedrock, establece la ubicación de instalación a esta ruta
+4. Selecciona dónde quieres que esté tu carpeta de mods simbólica (no debe colocarse dentro de la carpeta de instalación del juego)
+5. Haz clic en `Install Symbolic Link`
+6. La carpeta de mods del juego ahora debería estar emparejada con la carpeta de mods simbólica
 
 # Cómo actualizar
-1. Haga clic en `Desinstalar Enlace Simbólico` en el lanzador Bedrock
+1. Haz clic en `Uninstall Symbolic Link` en el lanzador de Bedrock
 2. Actualiza el juego a través del lanzador de Minecraft
-3. Haga clic en `Desinstalar Enlace Simbólico` en el lanzador Bedrock
+3. Haz clic en `Install Symbolic Link` en el lanzador de Bedrock
 4. Listo
