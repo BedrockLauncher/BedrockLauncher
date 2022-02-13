@@ -1,0 +1,603 @@
+﻿<?xml version="1.0"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ignore="http://www.galasoft.ch/ignore" xmlns:v="clr-namespace:System;assembly=mscorlib">
+    <!--#region Main Section-->
+
+    <v:String x:Key="LanguageString">Bahasa Melayu - Malaysia</v:String>
+
+    <!--#region MainWindow -->
+
+    <v:String x:Key="MainWindow_Title">Pelancar Minecraft Bedrock</v:String>
+    <v:String x:Key="MainWindow_Disclaimer">TIDAK BERKAITAN DENGAN ATAU DILULUSKAN OLEH PIHAK MOJANG</v:String>
+
+    <!--#endregion-->
+    
+    <!-- #region CommunityPage -->
+
+    <v:String x:Key="CommunityPage_SupportText"></v:String>
+    <v:String x:Key="CommunityPage_ComingSoon">Akan Datang!</v:String>
+    <v:String x:Key="CommunityPage_CheckBackLater">Datang kembali ke sini kemudian untuk sesuatu yang SUNGGUH LUAR BIASA!</v:String>
+
+    <!-- #endregion -->
+
+    <!--#region ToolbarButtons -->
+
+    <v:String x:Key="ToolbarButtons_NewsButton_Text">Berita</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Edisi Bedrock</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Edisi Java</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Pelancar Java</v:String>
+    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Pelancar Khas</v:String>
+    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Beralih ke</v:String>
+    <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
+    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Komuniti</v:String>
+    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Profil</v:String>
+    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Tetapan</v:String>
+
+    <!--#endregion-->
+
+    <!--#region UpdateButton-->
+
+    <v:String x:Key="UpdateButton_NewUpdate_Text">Kemas Kini Baru!</v:String>
+    <v:String x:Key="UpdateButton_Download_Text">Klik untuk muat turun!</v:String>
+
+    <!--#endregion-->
+
+    <!--#region ProgressBar -->
+
+    <v:String x:Key="ProgressBar_Downloading">Memuat Turun</v:String>
+    <v:String x:Key="ProgressBar_Installing">Memasang</v:String>
+    <v:String x:Key="ProgressBar_Launching">Melancar</v:String>
+    <v:String x:Key="ProgressBar_Extracting">Mengekstrak</v:String>
+    <v:String x:Key="ProgressBar_Uninstalling">Menyahpasang</v:String>
+    <v:String x:Key="ProgressBar_RegisteringPackage">Mendaftarkan Pakej</v:String>
+    <v:String x:Key="ProgressBar_RemovingPackage">Menyahdaftarkan Pakej</v:String>
+    <v:String x:Key="ProgressBar_BackingUp">Menyandarkan Simpanan Data</v:String>
+
+    <!--#endregion-->
+
+    <!--#region ProfileButton -->
+
+    <v:String x:Key="ProfileButton_ManageProfiles_Text">Uruskan Profil</v:String>
+    <v:String x:Key="ProfileButton_ProfileSettings_Text">Tetapan Profil</v:String>
+    <v:String x:Key="ProfileButton_AddProfile_Text">Tambah Profil</v:String>
+    <v:String x:Key="ProfileButton_RemoveProfile_Text">Hapus Profil</v:String>
+    <v:String x:Key="ProfileButton_ChooseAccount_Text">PILIH PROFIL</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+    
+    <!-- #region Dungeons Section -->
+
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant">GAME VARIANT</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Windows Launcher</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Steam</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Microsoft Store</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Default path&gt;</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">INSTALL LOCATION</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">SYMBOLIC MODS FOLDER LOCATION</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Instructions</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_PathsTab">Paths</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GeneralTab">General</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Install Store Patch</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Update Store Patch</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Uninstall Symbolic Link</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Install  Symbolic Link</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Repair/Update Game</v:String>
+
+
+    <!--#endregion-->
+
+    <!--#region Game Section -->
+
+    <!--#region GameTab -->
+
+    <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
+    <v:String x:Key="GameTab_PlayButton_Text">Main</v:String>
+    <v:String x:Key="GameTab_PlayButton_Kill_Text">Matikan</v:String>
+    <v:String x:Key="GameTab_InstallationsButton_Text">Pemasangan</v:String>
+    <v:String x:Key="GameTab_SkinsButton_Text">Skin</v:String>
+    <v:String x:Key="GameTab_PatchNotesButton_Text">Nota Tampalan</v:String>
+
+    <!--#endregion-->
+
+    <!--#region InstallationsPage -->
+
+    <v:String x:Key="InstallationsPage_AddButton">Pemasangan Baru</v:String>
+    <v:String x:Key="InstallationsPage_PlayButton">Main</v:String>
+
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">Terakhir Dimainkan</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name">Nama</v:String>
+
+    <v:String x:Key="InstallationsPage_SearchBar_Content">Nama pemasangan</v:String>
+
+    <!--#endregion-->
+
+    <!--#region EditInstallationScreen -->
+
+    <v:String x:Key="EditInstallationScreen_Title">Cipta pemasangan yang baru</v:String>
+    <v:String x:Key="EditInstallationScreen_AltTitle">Sunting pemasangan</v:String>
+
+    <v:String x:Key="EditInstallationScreen_CreateButton">Cipta</v:String>
+    <v:String x:Key="EditInstallationScreen_AltCreateButton">Simpan</v:String>
+
+    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Beta terkini</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestRelease">Keluaran terkini</v:String>
+
+    <v:String x:Key="EditInstallationScreen_NameSubtitle">NAMA</v:String>
+    <v:String x:Key="EditInstallationScreen_VersionSubtitle">VERSI</v:String>
+    <v:String x:Key="EditInstallationScreen_DirectorySubtitle">DIREKTORI</v:String>
+
+    <v:String x:Key="EditInstallationScreen_NameHintText">&lt;unnamed installation&gt;</v:String>
+    <v:String x:Key="EditInstallationScreen_DirectoryHintText">&lt;default path&gt;</v:String>
+
+    <!--#endregion-->
+
+    <!--#region PatchNotesPage -->
+
+    <v:String x:Key="PatchNotesPage_MorePatchNotes">Lebih banyak nota tampalan</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">Lebih banyak nota tampalan beta</v:String>
+
+    <!--#endregion-->
+
+    <!--#region SkinsPage -->
+
+    <v:String x:Key="SkinsPage_AddButton">Baru...</v:String>
+    <v:String x:Key="SkinsPage_ImportButton">Import...</v:String>
+
+    <!--#endregion-->
+
+    <!--#region EditSkinScreen -->
+
+    <v:String x:Key="EditSkinScreen_Title">Sunting Skin</v:String>
+    <v:String x:Key="EditSkinScreen_AltTitle">Tambah Skin</v:String>
+
+    <v:String x:Key="EditSkinScreen_TextureSubtitle">TEKSTUR</v:String>
+    <v:String x:Key="EditSkinScreen_GeometrySubtitle">GEOMETRI</v:String>
+    <v:String x:Key="EditSkinScreen_TypeSubtitle">JENIS</v:String>
+    <v:String x:Key="EditSkinScreen_LocalizationSubtitle">NAMA LOKALISASI</v:String>
+
+    <!--#endregion-->
+
+    <!--#region EditSkinPackScreen -->
+
+    <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">PENERANGAN</v:String>
+    <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">GEOMETRI</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">NAMA LOKALISASI</v:String>
+    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">NAMA SERIALISASI</v:String>
+    <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">DEFINISI BAHASA</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">NAMA BAHASA</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">LAIN-LAIN DEFINISI</v:String>
+    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">KANDUNGAN</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">MODUL</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">VERSI FORMAT</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">NAMA PEK</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderUUIDSubtitle">UUID</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">VERSI</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">JENIS</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">UUID</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">VERSI</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_Header">Sunting Pek Skin</v:String>
+    <v:String x:Key="EditSkinPackScreen_AddHeader">Tambah Pek Skin</v:String>
+
+    <v:String x:Key="EditSkinPackScreen_Warning">* Harap maklum bahawa mengubah definisi bahasa dan menukar ikon pek tidak dapat dipulihkan tanpa mengira sama ada anda telah menyimpan perubahan itu atau tidak!!!</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region News Section -->
+
+    <!--#region LauncherNewsPage -->
+
+    <v:String x:Key="LauncherNewsPage_Title_Text">Perubahan dalam Build Terkini</v:String>
+    <v:String x:Key="LauncherNewsPage_Build_Text">Build</v:String>
+    <v:String x:Key="LauncherNewsPage_Changes_Text">Perubahan:</v:String>
+    <v:String x:Key="LauncherNewsPage_CheckForUpdates">Semak untuk Kemas Kini</v:String>
+    <v:String x:Key="LauncherNewsPage_ForceUpdate">Kemas Kini secara Paksa</v:String>
+    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Semasa</v:String>
+
+    <!--#endregion-->
+
+    <!--#region NewsScreenPage -->
+
+    <v:String x:Key="NewsScreen_LauncherTabTitle">Pelancar</v:String>
+    <v:String x:Key="NewsScreen_OfficialTabTitle">Rasmi</v:String>
+    <v:String x:Key="NewsScreen_MinecraftForumsTitle">Forum Minecraft</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
+
+    <v:String x:Key="NewsScreen_SearchBar_Content">Tajuk berita</v:String>
+
+    <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_BedrockCheckbox">Minecraft untuk Windows</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Settings Section -->
+
+    <!--#region SettingsTab -->
+
+    <v:String x:Key="SettingsTab_Title">TETAPAN</v:String>
+    <v:String x:Key="SettingsTab_GeneralButton">Umum</v:String>
+    <v:String x:Key="SettingsTab_AccountsButton">Akaun</v:String>
+    <v:String x:Key="SettingsTab_AboutButton">Tentang</v:String>
+    <v:String x:Key="SettingsTab_VersionsButton">Versi</v:String>
+
+    <!--#endregion-->
+
+    <!--#region GeneralSettingsScreen -->
+    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">BAHASA</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">TEMA PELANCAR</v:String>
+
+
+    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">TETAPAN PELANCAR</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">TETAPAN SHORTCUT</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Gunakan versi beta Pelancar</v:String>
+    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Kekalkan Pelancar terbuka saat permainan dijalankan</v:String>
+    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Tutup Pelancar apabila menukar pelancar</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animasikan peralihan diantara halaman di dalam Pelayan</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animasikan butang main di halaman Main di dalam Pelayan</v:String>
+    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Aktifkan Sokongan Minecraft Dungeons (WIP)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Tunjukkan informasi lanjut apabila memuat turun pakej</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Gunakan peralihan yang lebih mewah antara halaman didalam Pelancar</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(memerlukan halaman beranimasi didayakan)</v:String>
+    
+
+    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">TETAPAN MINECRAFT: BEDROCK EDITION</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">SOKONG PENCIPTA</v:String>
+
+    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">KEMAS KINI PELANCAR</v:String>
+
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Sokong Pencipta</v:String>
+
+
+    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Dayakan pengalihan simpanan eksperimental</v:String>
+    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Sembunyikan shortcut ke pelancar Java Edition</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Tunjukkan shortcut pelancar eksternal</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BackupButton">Sandarkan Simpanan Data</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Tetapan Terperinci</v:String>
+
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">TETAPAN PELANCAR EKSTERNAL</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">LALUAN</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">NAMA</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">ARGUMEN</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">IKON</v:String>
+
+    <!--#endregion-->
+
+    <!--#region AcountsSettingsPage -->
+
+    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">AKAUN YANG DIPILIH</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">TETAPAN INSIDER</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Tetapan Biasa</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Tetapan Legasi</v:String>
+    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Urus Akaun</v:String>
+    <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">TETAPAN AKAUN</v:String>
+
+    <!--#endregion-->
+
+    <!--#region AboutPage -->
+
+    <v:String x:Key="AboutPage_Title">TENTANG PELANCAR MINECRAFT: BEDROCK EDITION</v:String>
+    <v:String x:Key="AboutPage_DevelopedBy_Text">DIBANGUNKAN OLEH</v:String>
+    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">DICABANG DARIPADA KERJA OLEH</v:String>
+    <v:String x:Key="AboutPage_SpecialThanks_Text">TERIMA KASIH KEPADA</v:String>
+
+    <v:String x:Key="AboutPage_McMrArm_Text">Untuk membuat pemuat turun versi Minecraft Windows 10 (dimana kerja ini berasal)</v:String>
+    <v:String x:Key="AboutPage_BsCommunity_Text">Untuk pembuatan SkinView3D, yang digunakan untuk fungsi melihat skin di dalam pelancar</v:String>
+    <v:String x:Key="AboutPage_Mojang_Text">Untuk Minecraft!!!</v:String>
+    <v:String x:Key="AboutPage_BsRepo_Text">SkinView3D Repo</v:String>
+    <v:String x:Key="AboutPage_CurrentBuild">Build Terkini: </v:String>
+
+    <!--#endregion-->
+
+    <!--#region AdvancedSettings -->
+
+    <v:String x:Key="AdvancedSettings_Title">Tetapan Lanjut</v:String>
+    <v:String x:Key="AdvancedSettings_LauncherOptions_Text">TETAPAN PELANCAR</v:String>
+    <v:String x:Key="AdvancedSettings_PathSubtitle_Text">DIREKTORI STORAN</v:String>
+    <v:String x:Key="AdvancedSettings_RestartButton_Text">Mula Semula</v:String>
+    <v:String x:Key="AdvancedSettings_Notice_Text">* Semua tetapan akan memulakan semula pelancar</v:String>
+    <v:String x:Key="AdvancedSettings_PortableMode_Text">Aktifkan Mod Mudah Alih</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Dialog Section -->
+
+    <!--#region FirstLaunch -->
+
+    <v:String x:Key="FirstLaunch_WelcomeTitle">Selamat Datang!</v:String>
+    <v:String x:Key="FirstLaunch_WelcomeSubTitle">Selamat Datang ke Pelancar Minecraft Bedrock!</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Cipta profil pertama anda!</v:String>
+    <v:String x:Key="FirstLaunch_AlmostThereTitle">Hampir selesai!</v:String>
+    <v:String x:Key="FirstLaunch_OneThingTitle">Satu perkara lagi...</v:String>
+    <v:String x:Key="FirstLaunch_OneThingSubtitle">Cukup periksa ini untuk memastikan mereka mengikut keinginan anda.</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountTitle">Pilih sebuah Akaun Insider</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* Ini akan digunakan untuk mengesahkan dan memuat turun beta. Anda mesti menyertai beta didalam Xbox Insider Hub untuk akaun yang dipilih untuk memuat turun beta. Anda juga mungkin perlu memulakan semula pelancar atau menyahpasang Minecraft agar muat turun beta berfungsi.</v:String>
+
+    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Sebelum menggunakan, sangat disarankan agar anda menekan sandaran untuk membuat pemasangan data simpan yang ada kerana pelancar akan menggantikan direktori asal dengan pautan simbolik yang membolehkan kami mengarahkan semula penyimpanan data.
+
+ (Jangan bimbang, anda tidak akan kehilangan data dengan melakukan ini, anda hanya akan kehilangan data jika anda menekan main dan tidak menyandarkan pemasangan anda)</v:String>
+
+    <v:String x:Key="FirstLaunch_InstallType_Header">Simpan/Muat Data Pelancar Dari:</v:String>
+    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">Folder Tetap (Disarankan)</v:String>
+    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">Folder Mudah Alih</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Sandarkan Simpanan Data Sedia Ada</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(DISARANKAN)</v:String>
+    <v:String x:Key="FirstLaunch_CloseButton">Tutup</v:String>
+    <v:String x:Key="FirstLaunch_BackButton">Kembali</v:String>
+    <v:String x:Key="FirstLaunch_GoBackButton"></v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileText">PROFIL</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileButton">Cipta</v:String>
+    <v:String x:Key="FirstLaunch_NextButton">Seterusnya</v:String>
+    <v:String x:Key="FirstLaunch_DownloadButton">Muat turun</v:String>
+    <v:String x:Key="FirstLaunch_FinishButton">Selesai</v:String>
+
+    <!--#endregion-->
+
+    <!--#region ErrorScreen -->
+
+    <v:String x:Key="ErrorScreen_Title">RALAT</v:String>
+    <v:String x:Key="ErrorScreen_SubTitle">Pelancar ranap</v:String>
+    <v:String x:Key="ErrorScreen_DefaultErrorMessage">Masalah yang tidak dijangka telah berlaku dan pelancarn telah terhenti. Kami memohon maaf atas kesulitan ini.</v:String>
+    <v:String x:Key="ErrorScreen_CloseButton">Tutup</v:String>
+    <v:String x:Key="ErrorScreen_ViewCrash">Lihat laporan ranap</v:String>
+
+    <!--#endregion-->
+
+    <!--#region Errors -->
+
+    <v:String x:Key="Error_AuthenticationFailed_Title">Pengesahan gagal</v:String>
+    <v:String x:Key="Error_AuthenticationFailed">Gagal untuk mengesahkan. Sila pastikan akaun anda telah melanggan ke program beta.</v:String>
+
+    <v:String x:Key="Error_CantFindExternalLauncher_Title">Tidak dapat menukar pelancar</v:String>
+    <v:String x:Key="Error_CantFindExternalLauncher">Tidak dapat menukar pelancar. Pastikan anda sudah menetapkan laluan ke pelancar dengan betul.</v:String>
+
+    <v:String x:Key="Error_CantFindJavaLauncher_Title">Tidak dapat menukar pelancar</v:String>
+    <v:String x:Key="Error_CantFindJavaLauncher">Tidak dapat menukar pelancar. Pastikan anda telah memasang pelancar Minecraft asli daripada Minecraft.net .</v:String>
+
+    <v:String x:Key="Error_AppReregisterFailed_Title">Pendaftaran aplikasi gagal</v:String>
+    <v:String x:Key="Error_AppReregisterFailed">Sila cuba lagi :(</v:String>
+
+    <v:String x:Key="Error_AppDeregisteringFailed_Title">Penyahdaftaran aplikasi gagal</v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed">Sila cuba lagi :(</v:String>
+
+    <v:String x:Key="Error_AppLaunchFailed_Title">Pelancaran gagal</v:String>
+    <v:String x:Key="Error_AppLaunchFailed">Sila cuba lagi :(</v:String>
+
+    <v:String x:Key="Error_AppDownloadFailed_Title">Muat turun gagal</v:String>
+    <v:String x:Key="Error_AppDownloadFailed">Sila cuba lagi :(</v:String>
+
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">Save redirection failed</v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed">Sila cuba lagi :(</v:String>
+
+    <v:String x:Key="Error_AppUninstallFailed_Title">Nyahpasang gagal</v:String>
+    <v:String x:Key="Error_AppUninstallFailed">Sila cuba lagi :(</v:String>
+
+    <v:String x:Key="Error_AppExtractionFailed_Title">Pengekstrakan gagal</v:String>
+    <v:String x:Key="Error_AppExtractionFailed">Sila cuba lagi :(</v:String>
+
+    <v:String x:Key="Error_CantFindPaidServerList_Title">Tidak boleh membuka tab pelayan</v:String>
+    <v:String x:Key="Error_CantFindPaidServerList">Senarai Pelayan Berbayar tidak ditemui.</v:String>
+
+    <v:String x:Key="Error_NotaSkinPack_Title">Tidak dapat mengimport pek skin</v:String>
+    <v:String x:Key="Error_NotaSkinPack">Itu bukan pek skin lah!</v:String>
+
+    <!--#endregion-->
+
+    <!--#region NewProfile -->
+
+    <v:String x:Key="NewProfile_GoBackButton"></v:String>
+    <v:String x:Key="NewProfile_CreateProfileText">PROFIL</v:String>
+    <v:String x:Key="NewProfile_CreateProfileText_Error">NAMA INI SUDAH DIAMBIL</v:String>
+    <v:String x:Key="NewProfile_CreateProfileSubTitle">Masukkan nama profil baru anda!</v:String>
+    <v:String x:Key="NewProfile_CreateProfileButton">Cipta</v:String>
+
+    <!--#endregion-->
+
+    <!--#region Dialog -->
+
+    <v:String x:Key="Dialog_Item_Installation_Text">pemasangan</v:String>
+    <v:String x:Key="Dialog_Item_SkinPack_Text">pek skin</v:String>
+    <v:String x:Key="Dialog_Item_Skin_Text">skin</v:String>
+    <v:String x:Key="Dialog_Item_Version_Text">versi</v:String>
+    <v:String x:Key="Dialog_Item_Profile_Text">profil</v:String>
+
+    <v:String x:Key="Dialog_DeleteItem_Title">Padam {0} secara kekal</v:String>
+    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Adakah anda pasti untuk memadam &quot;{1}&quot;?
+{0} ini akan hilang selamanya! (Masa yang lama!)</v:String>
+
+    <v:String x:Key="Dialog_KillGame_Title">Matikan Permainan</v:String>
+    <v:String x:Key="Dialog_KillGame_Text">Ini Berbahaya, dan hanya disyorkan jika anda tersekat. Adakah anda masih mahu menutup permainan?</v:String>
+
+    <v:String x:Key="Dialog_CloseGame_Title">Permainan Masih Berjalan</v:String>
+    <v:String x:Key="Dialog_CloseGame_Text">Adakah anda mahu memaksanya menutupnya? (tanpa menyimpan perubahan, ini hanya disarankan jika anda tersekat, sila tutup permainan secara normal)</v:String>
+
+    <v:String x:Key="DialogBtn_YesToAll_Text">Ya Untuk Semua</v:String>
+    <v:String x:Key="DialogBtn_NoToAll_Text">Tidak Untuk Semua</v:String>
+    <v:String x:Key="DialogBtn_Yes_Text">Ya</v:String>
+    <v:String x:Key="DialogBtn_No_Text">Tidak</v:String>
+
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">Tiada keputusan yang sepadan</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">Kami tidak menemui berita apa-apa kandungan yang sesuai dengan carian anda. Sekiranya penapis kategori anda 
+dimatikan, cuba hidupkannya kembali dan cari lagi</v:String>
+
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Memuat...</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Sila tunggu!</v:String>
+
+    <v:String x:Key="Dialog_ResultPanel_Error_Title">Ralat</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
+
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Tiada keputusan</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Tidak menjumpai benda yang sepadan dengan pencarian anda</v:String>
+
+    <!--#endregion-->
+
+    <!--#region Internal -->
+
+    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">Fail {0} sudah wujud di dalam destinasi itu.\nAdakah anda mahu menggantikannya? Fail lama akan hilang sebaliknya.</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">Fail {0} adalah bukan sebuah direktori. Adakah anda mahu menghapusnya? Data daripada direktori lama akan hilang sebaliknya.</v:String>
+
+    <v:String x:Key="GameManager_RecoveringDataIssue_Title">Menukar Data Simpan yang Ada ke Pemasangan</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Installer Section -->
+
+
+    <!--#region UI -->
+
+    <v:String x:Key="Installer_Title">Pemasang Perisian Pelancar Minecraft Bedrock</v:String>
+
+    <v:String x:Key="Installer_Back_Text">Kembali</v:String>
+    <v:String x:Key="Installer_Next_Text">Seterusnya</v:String>
+    <v:String x:Key="Installer_Cancel_Text">Batal</v:String>
+    <v:String x:Key="Installer_Finish_Text">Selesai</v:String>
+
+    <v:String x:Key="Installer_WelcomePage_Title">Selamat Datang ke Pemasang Perisian Pelancar Minecraft Bedrock</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info_Text">Ini akan memasang Pelancar Minecraft Bedrock ke komputer anda.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info2_Text">Anda disarankan untuk menutup semua aplikasi lain sebelum meneruskan.</v:String>
+    <v:String x:Key="Installer_WelcomePage_Info3_Text">Klik Seterusnya untuk teruskan, atau Batal untuk keluar dari Pemasang Perisian.</v:String>
+
+    <v:String x:Key="Installer_LicenseAgreement_Title">Perjanjian Lesen</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info_Text">Sila baca Perjanjian Lesen berikut. Anda mesti menerima terma dalam perjanjian ini</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">sebelum meneruskan pemasangan.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">Saya terima Lesen.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">Saya tidak bersetuju.</v:String>
+
+    <v:String x:Key="Installer_InstallType_Title">Pilih Jenis Pemasangan</v:String>
+    <v:String x:Key="Installer_InstallType_Info_Text">Pilih bersi pelancar yang anda mahu muat turun</v:String>
+
+    <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Versi Beta</v:String>
+    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Versi Keluaran</v:String>
+
+    <v:String x:Key="Installer_InstallLocation_Title">Pilih Lokasi Pemasangan</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info_Text">Pemasang ini akan memasang Pelancar Minecraft Bedrock kedalam folder berikut, untuk memasangnya didalam folder yang lain,</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info2_Text">klik Cari dan pilih folder yang lain.</v:String>
+
+    <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Folder Destinasi</v:String>
+    <v:String x:Key="Installer_InstallLocation_Browse_Text">CARI</v:String>
+
+    <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Cipta ikon desktop</v:String>
+    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Tambah ke menu Mula</v:String>
+    <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">Daftar Program</v:String>
+
+    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">Mulakan Program setelah Keluar</v:String>
+
+    <v:String x:Key="Installer_InstallationProgress_FilesInUse">Beberapa fail sedang digunakan oleh yang berikut:</v:String>
+
+    <v:String x:Key="Installer_InstallationProgress_Title">Memasang</v:String>
+    <v:String x:Key="Installer_InstallationProgress_Info_Text">Sila tunggu sementara Pemasang Perisian memasang Pelancar Minecraft Bedrock pada komputer anda.</v:String>
+
+
+    <!--#endregion-->
+
+    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">Tidak dapat Memindahkan Direktori</v:String>
+    <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">Tidak dapat Mengalihkan Fail</v:String>
+    <v:String x:Key="Installer_Dialog_FileLocked_Text">Fail Sedang Digunakan</v:String>
+    <v:String x:Key="Installer_Dialog_TryAgain_Text">Cuba Lagi?</v:String>
+    <v:String x:Key="Installer_Dialog_ErrorOccured_Text">Sebuah ralat telah terjadi.</v:String>
+
+    <!--#region ProgressBar -->
+
+    <v:String x:Key="Installer_ProgressBar_Downloading">Memuat Turun...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Finalizing">Menyelesaikan...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Initalizing">Memulakan...</v:String>
+
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region General Section -->
+
+    <!--#region VersionEntries -->
+
+    <v:String x:Key="VersionEntries_LatestSnapshot">Beta Terkini</v:String>
+    <v:String x:Key="VersionEntries_LatestRelease">Keluaran Terkini</v:String>
+    <v:String x:Key="VersionEntries_UnnamedInstallation">&lt;unnamed installation&gt;</v:String>
+
+    <!--#endregion-->
+
+    <!--#region ThemeEntries -->
+
+    <v:String x:Key="ThemeEntries_LatestUpdate">Update Terkini</v:String>
+    <v:String x:Key="ThemeEntries_Original">Asal</v:String>
+
+    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">Caves &amp; Cliffs (Part 1)</v:String>
+    <v:String x:Key="ThemeEntries_NetherUpdate">Nether Update</v:String>
+    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Buzzy Bees Update</v:String>
+    <v:String x:Key="ThemeEntries_VillagePillageUpdate">Village &amp; Pillage Update</v:String>
+    <v:String x:Key="ThemeEntries_UpdateAquatic">Update Aquatic</v:String>
+    <v:String x:Key="ThemeEntries_TechnicallyUpdated">Technically Updated [Java]</v:String>
+    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">World of Color Update [Java]</v:String>
+    <v:String x:Key="ThemeEntries_ExplorationUpdate">Exploration Update [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CombatUpdate">Combat Update [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">Cats &amp; Pandas [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_PocketEditionRelease">Keluaran Rasmi [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_BedrockStandard">Bedrock Edition Standard</v:String>
+    <v:String x:Key="ThemeEntries_BedrockMaster">Bedrock Edition Master</v:String>
+    <v:String x:Key="ThemeEntries_EarlyLegacyConsole">Era Asal Legacy Console</v:String>
+    <v:String x:Key="ThemeEntries_MidLegacyConsole">Era Pertengahan Legacy Console</v:String>
+    <v:String x:Key="ThemeEntries_LateLegacyConsole">Era Penghujung Legacy Console</v:String>
+    <v:String x:Key="ThemeEntries_IndieDays">Zaman Indie</v:String>
+    <v:String x:Key="ThemeEntries_Dungeons">Minecraft Dungeons</v:String>
+
+
+    <!--#endregion-->
+
+    <!--#region GeneralText -->
+
+    <v:String x:Key="GeneralText_Delete">Padam</v:String>
+    <v:String x:Key="GeneralText_Edit">Sunting</v:String>
+    <v:String x:Key="GeneralText_Duplicate">Salin</v:String>
+    <v:String x:Key="GeneralText_Remove">Hapus</v:String>
+    <v:String x:Key="GeneralText_Cancel">Batal</v:String>
+    <v:String x:Key="GeneralText_Update">Kemas kini</v:String>
+    <v:String x:Key="GeneralText_Add">Tambah</v:String>
+    <v:String x:Key="GeneralText_Save">Simpan</v:String>
+    <v:String x:Key="GeneralText_Refresh">Muat Semula</v:String>
+    <v:String x:Key="GeneralText_Backup">Sandarkan</v:String>
+    <v:String x:Key="GeneralText_Versions">Versi</v:String>
+    <v:String x:Key="GeneralText_Browse">Cari</v:String>
+    <v:String x:Key="GeneralText_Reset">Set semula</v:String>
+    <v:String x:Key="GeneralText_Yes">Ya</v:String>
+    <v:String x:Key="GeneralText_No">Tidak</v:String>
+    <v:String x:Key="GeneralText_Releases">Keluaran</v:String>
+    <v:String x:Key="GeneralText_Betas">Beta</v:String>
+    <v:String x:Key="GeneralText_Export">Eksport</v:String>
+    <v:String x:Key="GeneralText_Repair">Baiki</v:String>
+
+    <v:String x:Key="GeneralText_Twitter">Twitter</v:String>
+    <v:String x:Key="GeneralText_GitHub">GitHub</v:String>
+    <v:String x:Key="GeneralText_Website">Laman Sesawang</v:String>
+
+    <!--#endregion-->
+
+    <!--#region GeneralSubtitles -->
+
+    <v:String x:Key="GeneralSubtitles_Versions">VERSI</v:String>
+    <v:String x:Key="GeneralSubtitles_Browse">CARI</v:String>
+    <v:String x:Key="GeneralSubtitles_Reset">MUAT SEMULA</v:String>
+    <v:String x:Key="GeneralSubtitles_Categories">KATEGORI</v:String>
+    <v:String x:Key="GeneralSubtitles_Search">CARI</v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy">ISIH MENGIKUT</v:String>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+</ResourceDictionary>
