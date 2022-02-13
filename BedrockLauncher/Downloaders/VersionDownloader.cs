@@ -92,8 +92,8 @@ namespace BedrockLauncher.Downloaders
         {
             if (versioningMode != VersioningMode.None)
             {
-                var latest_beta = MainViewModel.Default.Versions.ToList().FirstOrDefault(x => x.IsBeta == true && x.UUID == Constants.LATEST_BETA_UUID);
-                var latest_release = MainViewModel.Default.Versions.ToList().FirstOrDefault(x => x.IsBeta == false && x.UUID == Constants.LATEST_RELEASE_UUID);
+                var latest_beta = MainViewModel.Default.Versions.ToList().FirstOrDefault(x => x.IsBeta == true && x.UUID != Constants.LATEST_BETA_UUID);
+                var latest_release = MainViewModel.Default.Versions.ToList().FirstOrDefault(x => x.IsBeta == false && x.UUID != Constants.LATEST_RELEASE_UUID);
 
                 if (versioningMode == VersioningMode.LatestBeta && latest_beta != null) return latest_beta;
                 else if (versioningMode == VersioningMode.LatestRelease && latest_release != null) return latest_release;

@@ -61,7 +61,6 @@ namespace BedrockLauncher
             get
             {
                 RemovalOptions options = new RemovalOptions();
-                options |= RemovalOptions.PreserveApplicationData;
                 options |= RemovalOptions.RemoveForAllUsers;
                 return options;
             }
