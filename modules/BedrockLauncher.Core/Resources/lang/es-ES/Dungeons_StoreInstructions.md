@@ -1,14 +1,14 @@
-﻿# Part 1 - The Powershell Script
-The Windows Store version of Minecraft Dungeons normally won't let you modify its files/folders. To get around this issue, follow these steps:
+﻿# Parte 1 - El script de Powershell
+La versión de Windows Store de Minecraft Dungeons normalmente no te permite modificar sus archivos/carpetas. Para evitar ese problema, sigue estos pasos:
 
-## Prerequisites:
-- Temporarily disable any antivirus software. Most will detect that an unknown script is being run and try to stop it.
-- If you use Bitdefender, you need to uninstall it before continuing, as it breaks the script even when turned off.
-- Make sure you have at least 10 GBs of space free.
-- Make sure your game is up to date. To do this, press Win + R, enter `ms-windows-store://DownloadsAndUpdates/` and press enter. Then, press "Get updates" in the top right corner of the window that opens.
-- Install [Visual C++ Redist](https://aka.ms/vs/16/release/vc_redist.x64.exe). Even if you think you have it installed, try the installer. You may have an older version that won't work.
+## Prerrequisitos:
+- Deshabilita temporalmente o elimina tu antivirus. La mayoría detectará que se está ejecutando un script desconocido e intentará detenerlo.
+- Si usas Bitdefender, necesitas desinstalarlo antes de continuar, ya que rompe el script incluso cuando está apagado.
+- Asegúrate de tener al menos 10 GB de espacio libre.
+- Asegúrate de que tu juego está actualizado. Para ello, haz Win + R, pon`ms-windows-store://DownloadsAndUpdates/` y pulsa Enter. Después, dale a "Obtener actualizaciones" en la esquina superior derecha de la ventana que se abrirá.
+- Instala [Visual C++ Redist](https://aka.ms/vs/16/release/vc_redist.x64.exe). Incluso si crees que lo tienes instalado, pruebe a usar el instalador. Podrías tener una versión anterior que no funcione.
 
-## In the Bedrock Launcher:
+## En el lanzador de Bedrock:
 1. Make Sure your game variant is set to `Microsoft Store`
 3. Click on `Install Store Patch`
 
