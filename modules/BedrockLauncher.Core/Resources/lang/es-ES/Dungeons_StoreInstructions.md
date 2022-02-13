@@ -1,11 +1,11 @@
-﻿# Parte 1 - El script Powershell
-La versión de Windows Store de Minecraft Dungeons normalmente no le permitirá modificar sus archivos/carpetas. Para evitar ese problema, siga estos pasos:
+﻿# Parte 1 - El script de Powershell
+La versión de Windows Store de Minecraft Dungeons normalmente no te permite modificar sus archivos/carpetas. Para evitar ese problema, sigue estos pasos:
 
 ## Prerrequisitos:
-- Deshabilita temporalmente o elimina tu software de antivirus. La mayoría detectará que se está ejecutando un script desconocido e intenta detenerlo.
-- Si utiliza Bitdefender, necesita desinstalarlo antes de continuar, ya que rompe el script incluso cuando está apagado.
-- Asegúrese de tener al menos 10 GB de espacio libre.
-- Asegúrate de que tu juego está actualizado. Para ello, presiona Win + R, ingresa `ms-windows-store://DownloadsAndUpdates/` y pulsa Enter. Luego, presione "Obtener actualizaciones" en la esquina superior derecha de la ventana que se abre.
+- Deshabilita temporalmente o elimina tu antivirus. La mayoría detectará que se está ejecutando un script desconocido e intentará detenerlo.
+- Si usas Bitdefender, necesitas desinstalarlo antes de continuar, ya que rompe el script incluso cuando está apagado.
+- Asegúrate de tener al menos 10 GB de espacio libre.
+- Asegúrate de que tu juego está actualizado. Para ello, haz Win + R, pon`ms-windows-store://DownloadsAndUpdates/` y pulsa Enter. Después, dale a "Obtener actualizaciones" en la esquina superior derecha de la ventana que se abrirá.
 - Instala [Visual C++ Redist](https://aka.ms/vs/16/release/vc_redist.x64.exe). Incluso si cree que lo tiene instalado, pruebe con el instalador. Quizás tenga una versión anterior que no funcione.
 
 ## En el Bedrock Launcher:
