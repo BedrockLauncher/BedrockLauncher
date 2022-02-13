@@ -1,41 +1,41 @@
-﻿# Parte 1 - El script de Powershell
-La versión de Windows Store de Minecraft Dungeons normalmente no te permite modificar sus archivos/carpetas. Para evitar ese problema, sigue estos pasos:
+﻿# Part 1 - The Powershell Script
+The Windows Store version of Minecraft Dungeons normally won't let you modify its files/folders. To get around this issue, follow these steps:
 
-## Prerrequisitos:
-- Deshabilita temporalmente o elimina tu antivirus. La mayoría detectará que se está ejecutando un script desconocido e intentará detenerlo.
-- Si usas Bitdefender, necesitas desinstalarlo antes de continuar, ya que rompe el script incluso cuando está apagado.
-- Asegúrate de tener al menos 10 GB de espacio libre.
-- Asegúrate de que tu juego está actualizado. Para ello, haz Win + R, pon`ms-windows-store://DownloadsAndUpdates/` y pulsa Enter. Después, dale a "Obtener actualizaciones" en la esquina superior derecha de la ventana que se abrirá.
-- Instala [Visual C++ Redist](https://aka.ms/vs/16/release/vc_redist.x64.exe). Incluso si cree que lo tiene instalado, pruebe con el instalador. Quizás tenga una versión anterior que no funcione.
+## Prerequisites:
+- Temporarily disable any antivirus software. Most will detect that an unknown script is being run and try to stop it.
+- If you use Bitdefender, you need to uninstall it before continuing, as it breaks the script even when turned off.
+- Make sure you have at least 10 GBs of space free.
+- Make sure your game is up to date. To do this, press Win + R, enter `ms-windows-store://DownloadsAndUpdates/` and press enter. Then, press "Get updates" in the top right corner of the window that opens.
+- Install [Visual C++ Redist](https://aka.ms/vs/16/release/vc_redist.x64.exe). Even if you think you have it installed, try the installer. You may have an older version that won't work.
 
-## En el Bedrock Launcher:
-1. Asegúrese de que su variante de juego está establecida en `Microsoft Store`
-3. Haga clic en `Instalar Parche de Tienda`
+## In the Bedrock Launcher:
+1. Make Sure your game variant is set to `Microsoft Store`
+3. Click on `Install Store Patch`
 
-## En la ventana de Powershell:
+## In the Powershell Window:
 
-3. Se le pedirá que seleccione una carpeta. Elige una carpeta vacía a la que quieres mover el juego. No elijas una carpeta en los Archivos del Programa o en OneDrive, va a romper las cosas.
-4. El juego se abrirá en un punto. No lo cierres cuando esto suceda. Si encuentras algún problema, asegúrate de revisar la sección de Solución de Problemas a continuación.
-5. Una carpeta llamada `~mods` aparecerá. Aquí es donde usted coloca sus mods.
-7. Lanzar el juego con mods es igual que lanzar el juego normal. Puede hacerlo desde el menú de inicio, Windows Store, la aplicación Xbox, etc., como lo hace normalmente. NO intente lanzarlo ejecutando los archivos .exe en la carpeta del juego.
+3. You will be asked to select a folder. Choose an empty folder where you want the game to be moved to. Do not choose a folder in Program Files or One Drive, it will break things.
+4. The game will open at one point. Do not close it when this happens. If you run into any issues, make sure to check the Troubleshooting section below.
+5. A `~mods` folder will appear. This is where you place your mods.
+7. Launching the modded game is just like launching the regular game. You can do it from the start menu, Windows Store, Xbox app, and so on, just like you normally do. Do NOT try to launch it by running the .exe files in the game folder.
 
-## Solución de Problemas:
-- Si te encuentras con algún problema durante o después de parchear el juego, algunas de estas cosas podrían ayudarte.
-- Si el juego no se abrió mientras el parche no funcionaba y el parche no funcionó, intente abrir el juego manualmente antes de ejecutar el parche. Mantenga el juego abierto hasta que se cierre por sí mismo o el parche termine.
-- Si recibes un error diciendo que no puede verificar tu propiedad del juego, debes haber iniciado el juego usando el archivo .exe. No lo hagas. Ejecuta el juego desde el menú de inicio, Windows Store o la aplicación Xbox. Si lo hiciste, pero todavía obtienes este error, reinstala el juego regular e inicia sesión al menos una vez (abre el juego y selecciona un personaje) antes de parchearlo.
+## Troubleshooting:
+- If you run into any issues while/after patching the game, some of these things might help you.
+- If the game didn't open at all while patching and the patching didn't work, try opening the game manually before running the patcher. Keep the game open until it either closes by itself or the patcher finishes.
+- If you get an error saying it can't verify your ownership of the game, you must have launched the game using the .exe file. Don't do that. Run the game from the start menu, Windows Store, or Xbox app. If you did, but still get this error, reinstall the regular game and log in at least once (open the game and select a character) before patching it.
 
-# Parte 2 - Configuración del Bedrock Launcher
-1. Establezca la ubicación de instalación en la carpeta que contiene `Dungeons.exe`. Debería estar en una carpeta padre de la carpeta anterior a `~mods`
-2. Seleccione dónde desea que esté su carpeta de mods simbólicos (no debe colocarse dentro de su carpeta `Dungeons\Content\Techns\~mods` de antes)
-3. Haz clic en `Instalar Enlace Simbólico`
-4. La carpeta de mods del juego ahora debe emparejarse con la carpeta de mods simbólicos
+# Part 2 - The Bedrock Launcher Setup
+1. Set the install location to the folder containing `Dungeons.exe`. It should be in a parent folder of the `~mods` folder from earlier
+2. Select where you want your symbolic mods folder to be (it should not be in the same location as `~mods` folder from earlier)
+3. Click on `Install Symbolic Link`
+4. Your game's mod folder should now be paired with your symbolic mods folder
 
-# Cómo actualizar
-1. Haz clic en `Instalar Enlace Simbólico`
-2. Haga clic en `Actualizar Parche de Tienda`
-3. Repetir pasos del 3 al 6 de la parte 1 si es necesario
-4. Repetir pasos de 1 a 4 de la Parte 2
-5. Listo
+# How to Update
+1. Click on `Uninstall Symbolic Link`
+2. Click on `Update Store Patch`
+3. Repeat Steps 3 through 6 of Part 1 if nessisary
+4. Repeat Steps 1 through 4 of Part 2
+5. Done
 
 
 
