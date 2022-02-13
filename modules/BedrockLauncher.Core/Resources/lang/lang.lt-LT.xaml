@@ -65,6 +65,27 @@
     <!--#endregion-->
 
     <!--#endregion-->
+    
+    <!-- #region Dungeons Section -->
+
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant">GAME VARIANT</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Windows Launcher</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Steam</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Microsoft Store</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Default path&gt;</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">INSTALL LOCATION</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">SYMBOLIC MODS FOLDER LOCATION</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Instructions</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_PathsTab">Paths</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GeneralTab">General</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Install Store Patch</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Update Store Patch</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Uninstall Symbolic Link</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Install  Symbolic Link</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Repair/Update Game</v:String>
+
+
+    <!--#endregion-->
 
     <!--#region Game Section -->
 
@@ -83,6 +104,11 @@
 
     <v:String x:Key="InstallationsPage_AddButton">New installation</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">Play</v:String>
+
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">Latest Played</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name">Name</v:String>
+
+    <v:String x:Key="InstallationsPage_SearchBar_Content">Installation name</v:String>
 
     <!--#endregion-->
 
@@ -183,12 +209,14 @@
 
     <v:String x:Key="NewsScreen_LauncherTabTitle">Launcher</v:String>
     <v:String x:Key="NewsScreen_OfficialTabTitle">Official</v:String>
+    <v:String x:Key="NewsScreen_MinecraftForumsTitle">Minecraft Forums</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
 
     <v:String x:Key="NewsScreen_SearchBar_Content">News title</v:String>
 
     <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_BedrockCheckbox">Minecraft for Windows</v:String>
 
     <!--#endregion-->
 
@@ -220,6 +248,8 @@
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animate play button on the Play pages in the Launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Enable Minecraft Dungeons Support (WIP)</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Show advanced information when installing packages</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
     
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDITION SETTINGS</v:String>
@@ -337,14 +367,23 @@
     <v:String x:Key="Error_CantFindJavaLauncher_Title">Could not switch launcher</v:String>
     <v:String x:Key="Error_CantFindJavaLauncher">Could not find launcher. Be sure you have installed original Minecraft launcher from Minecraft.net .</v:String>
 
-    <v:String x:Key="Error_AppReregisterFailed_Title">App re-register failed</v:String>
+    <v:String x:Key="Error_AppReregisterFailed_Title">App registration failed</v:String>
     <v:String x:Key="Error_AppReregisterFailed">Please try again :(</v:String>
+
+    <v:String x:Key="Error_AppDeregisteringFailed_Title">App de-registration failed</v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed">Please try again :(</v:String>
 
     <v:String x:Key="Error_AppLaunchFailed_Title">Launch failed</v:String>
     <v:String x:Key="Error_AppLaunchFailed">Please try again :(</v:String>
 
     <v:String x:Key="Error_AppDownloadFailed_Title">Download failed</v:String>
     <v:String x:Key="Error_AppDownloadFailed">Please try again :(</v:String>
+
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">Save redirection failed</v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed">Please try again :(</v:String>
+
+    <v:String x:Key="Error_AppUninstallFailed_Title">Uninstall failed</v:String>
+    <v:String x:Key="Error_AppUninstallFailed">Please try again :(</v:String>
 
     <v:String x:Key="Error_AppExtractionFailed_Title">Extraction failed</v:String>
     <v:String x:Key="Error_AppExtractionFailed">Please try again :(</v:String>
@@ -555,6 +594,7 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="GeneralSubtitles_Reset">RESET</v:String>
     <v:String x:Key="GeneralSubtitles_Categories">CATEGORIES</v:String>
     <v:String x:Key="GeneralSubtitles_Search">SEARCH</v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy">SORT BY</v:String>
 
     <!--#endregion-->
 
