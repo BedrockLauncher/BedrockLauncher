@@ -6,7 +6,7 @@
 
     <!--#region MainWindow -->
 
-    <v:String x:Key="MainWindow_Title">Minecraft Bedrock Launcher</v:String>
+    <v:String x:Key="MainWindow_Title">Launcher do Minecraft Bedrock</v:String>
     <v:String x:Key="MainWindow_Disclaimer">NÃO É ASSOCIADO OU APROVADO PELA MOJANG</v:String>
 
     <!--#endregion-->
@@ -22,9 +22,9 @@
     <!--#region ToolbarButtons -->
 
     <v:String x:Key="ToolbarButtons_NewsButton_Text">Novidades</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java Launcher</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Versão Bedrock</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Versão Java</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Launcher Java</v:String>
     <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Launcher Personalizado</v:String>
     <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Mudar para</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
@@ -65,12 +65,33 @@
     <!--#endregion-->
 
     <!--#endregion-->
+    
+    <!-- #region Dungeons Section -->
+
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant">VARIANTE DE JOGO</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Inicializador do Windows</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Vapor</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Loja da Microsoft</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Caminho Padrão&gt;</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">LOCAL DE INSTALAÇÃO</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">LOCALIZAÇÃO DA PASTA DE MODS SIMBÓLICOS</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Instruções</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_PathsTab">Caminhos</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GeneralTab">Geral</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Instalar Atualização de Loja</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Atualizar Atualização de Loja</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Desinstalar Link Simbólico</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Instalar Link Simbólico</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Reparar/Atualizar Jogo</v:String>
+
+
+    <!--#endregion-->
 
     <!--#region Game Section -->
 
     <!--#region GameTab -->
 
-    <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
+    <v:String x:Key="GameTab_Title">MINECRAFT: VERSÃO BEDROCK</v:String>
     <v:String x:Key="GameTab_PlayButton_Text">Jogar</v:String>
     <v:String x:Key="GameTab_PlayButton_Kill_Text">Fechar</v:String>
     <v:String x:Key="GameTab_InstallationsButton_Text">Instalações</v:String>
@@ -84,10 +105,10 @@
     <v:String x:Key="InstallationsPage_AddButton">Nova...</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">Jogar</v:String>
 
-    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">Latest Played</v:String>
-    <v:String x:Key="InstallationsPage_SortBy_Name">Name</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">Ultima vez Jogado</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name">Nome</v:String>
 
-    <v:String x:Key="InstallationsPage_SearchBar_Content">Installation name</v:String>
+    <v:String x:Key="InstallationsPage_SearchBar_Content">Nome da Instalação</v:String>
 
     <!--#endregion-->
 
@@ -180,7 +201,7 @@
     <v:String x:Key="LauncherNewsPage_Changes_Text">Mudanças:</v:String>
     <v:String x:Key="LauncherNewsPage_CheckForUpdates">Verificar atualizações</v:String>
     <v:String x:Key="LauncherNewsPage_ForceUpdate">Forçar atualização</v:String>
-    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Current</v:String>
+    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Atual</v:String>
 
     <!--#endregion-->
 
@@ -188,13 +209,14 @@
 
     <v:String x:Key="NewsScreen_LauncherTabTitle">Launcher</v:String>
     <v:String x:Key="NewsScreen_OfficialTabTitle">Oficial</v:String>
-    <v:String x:Key="NewsScreen_MinecraftForumsTitle">Minecraft Forums</v:String>
+    <v:String x:Key="NewsScreen_MinecraftForumsTitle">Forum do Minecraft</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
 
-    <v:String x:Key="NewsScreen_SearchBar_Content">News title</v:String>
+    <v:String x:Key="NewsScreen_SearchBar_Content">Notícias</v:String>
 
-    <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Versão Java</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_BedrockCheckbox">Minecraft para Windows</v:String>
 
     <!--#endregion-->
 
@@ -218,16 +240,16 @@
 
 
     <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">DEFINIÇÕES DO LAUNCHER</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">SHORTCUT SETTINGS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">Configurações de Atalho</v:String>
     <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Usar versão experimental do launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Manter o launcher aberto durante a execução do jogo</v:String>
     <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Fechar o launcher quando mudar de launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animate transitions between pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animate play button on the Play pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Enable Minecraft Dungeons Support (WIP)</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Show advanced information when installing packages</v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animar transições entre páginas no launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animar o botão Jogar nas páginas de Play no Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Ativar suporte do Minecraft Dungeons (WIP)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Exibir informações avançadas ao instalar pacotes</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use transições animadas mais elaboradas entre as páginas</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requer transições de página animadas para ser ativado)</v:String>
     
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">DEFINIÇÕES DO MINECRAFT: BEDROCK EDITION</v:String>
@@ -247,7 +269,7 @@
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">LAUNCHER EXTERNO</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">DIRETÓRIO</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">NOME</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">ARGUMENTS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">ARGUMENTOS</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">ÍCONE</v:String>
 
     <!--#endregion-->
@@ -348,11 +370,20 @@
     <v:String x:Key="Error_AppReregisterFailed_Title">Não foi possível fazer novo registro na aplicação</v:String>
     <v:String x:Key="Error_AppReregisterFailed">Por favor tente novamente :(</v:String>
 
+    <v:String x:Key="Error_AppDeregisteringFailed_Title">Falha ao de-registrar aplicação</v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed">Por favor, tente novamente :(</v:String>
+
     <v:String x:Key="Error_AppLaunchFailed_Title">Não foi possível finalizar</v:String>
     <v:String x:Key="Error_AppLaunchFailed">Por favor tente novamente :(</v:String>
 
     <v:String x:Key="Error_AppDownloadFailed_Title">Não foi possível transferir</v:String>
     <v:String x:Key="Error_AppDownloadFailed">Por favor tente novamente :(</v:String>
+
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">Falha ao salvar redirecionamento</v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed">Por favor, tente novamente :(</v:String>
+
+    <v:String x:Key="Error_AppUninstallFailed_Title">Falha ao desinstalar</v:String>
+    <v:String x:Key="Error_AppUninstallFailed">Por favor, tente novamente :(</v:String>
 
     <v:String x:Key="Error_AppExtractionFailed_Title">Não foi possível extrair</v:String>
     <v:String x:Key="Error_AppExtractionFailed">Por favor tente novamente :(</v:String>
@@ -393,23 +424,22 @@
     <v:String x:Key="Dialog_CloseGame_Title">Jogo ainda está em execução</v:String>
     <v:String x:Key="Dialog_CloseGame_Text">Gostaria de forçar o fechamento do jogo?? (sem salvar as mudanças, isto é apenas recomendado se ele travar, por favor feche o jogo normalmente)</v:String>
 
-    <v:String x:Key="DialogBtn_YesToAll_Text">Yes To All</v:String>
-    <v:String x:Key="DialogBtn_NoToAll_Text">No To All</v:String>
-    <v:String x:Key="DialogBtn_Yes_Text">Yes</v:String>
-    <v:String x:Key="DialogBtn_No_Text">No</v:String>
+    <v:String x:Key="DialogBtn_YesToAll_Text">Sim para todos</v:String>
+    <v:String x:Key="DialogBtn_NoToAll_Text">Não para todos</v:String>
+    <v:String x:Key="DialogBtn_Yes_Text">Sim</v:String>
+    <v:String x:Key="DialogBtn_No_Text">Não</v:String>
 
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">No matching results</v:String>
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">We couldn't find news any content matching your search. If you have category filters 
-turned off, try turning the back on and search again</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">Sem resultados correspondentes</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">Não conseguimos encontrar conteúdo correspondente a sua busca. Se tiver filtros de categorias destivados, tente ativá-los e pesquise novamente</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Loading...</v:String>
-    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Please wait!</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Carregando...</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Por-favor, espere!</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Error_Title">Error</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Title">Erro</v:String>
     <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
 
-    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">No result</v:String>
-    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Found no items matching your search</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Sem resultados</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Nenhum item encontrado correspondente a sua busca</v:String>
 
     <!--#endregion-->
 
@@ -466,7 +496,7 @@ turned off, try turning the back on and search again</v:String>
 
     <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">Abrir programa ao fechar</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_FilesInUse">Some of the files are currently in use by the following:</v:String>
+    <v:String x:Key="Installer_InstallationProgress_FilesInUse">Alguns dos arquivos estão no momento em uso pelos seguintes:</v:String>
 
     <v:String x:Key="Installer_InstallationProgress_Title">Instalando</v:String>
     <v:String x:Key="Installer_InstallationProgress_Info_Text">Por favor, espere enquanto o assistente instala o Minecraft Bedrock Launcher no seu computador.</v:String>
@@ -497,7 +527,7 @@ turned off, try turning the back on and search again</v:String>
 
     <v:String x:Key="VersionEntries_LatestSnapshot">Versão beta mais recente</v:String>
     <v:String x:Key="VersionEntries_LatestRelease">Versão mais recente</v:String>
-    <v:String x:Key="VersionEntries_UnnamedInstallation">&lt;unnamed installation&gt;</v:String>
+    <v:String x:Key="VersionEntries_UnnamedInstallation">Instalação sem nome</v:String>
 
     <!--#endregion-->
 
@@ -506,7 +536,7 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="ThemeEntries_LatestUpdate">Atualização mais recente</v:String>
     <v:String x:Key="ThemeEntries_Original">Original</v:String>
 
-    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">Caves &amp; Cliffs (Part 1)</v:String>
+    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">Caves &amp; Cliffs (Parte 1)</v:String>
     <v:String x:Key="ThemeEntries_NetherUpdate">Nether Update</v:String>
     <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Buzzy Bees Update</v:String>
     <v:String x:Key="ThemeEntries_VillagePillageUpdate">Village &amp; Pillage Update</v:String>
@@ -514,15 +544,15 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="ThemeEntries_TechnicallyUpdated">Technically Updated [Java]</v:String>
     <v:String x:Key="ThemeEntries_WorldOfColorUpdate">World of Color Update [Java]</v:String>
     <v:String x:Key="ThemeEntries_ExplorationUpdate">Exploration Update [Java]</v:String>
-    <v:String x:Key="ThemeEntries_CombatUpdate">Combat Update [Java]</v:String>
-    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">Cats &amp; Pandas [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_CombatUpdate">Atualização de Combate [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">Gatos e Pandas [Bedrock]</v:String>
     <v:String x:Key="ThemeEntries_PocketEditionRelease">Versão Oficial [Bedrock]</v:String>
-    <v:String x:Key="ThemeEntries_BedrockStandard">Bedrock Edition Standard</v:String>
-    <v:String x:Key="ThemeEntries_BedrockMaster">Bedrock Edition Master</v:String>
-    <v:String x:Key="ThemeEntries_EarlyLegacyConsole">Original Legacy Console Era</v:String>
-    <v:String x:Key="ThemeEntries_MidLegacyConsole">Mid Legacy Console Era</v:String>
-    <v:String x:Key="ThemeEntries_LateLegacyConsole">Late Legacy Console Era</v:String>
-    <v:String x:Key="ThemeEntries_IndieDays">Indie Days</v:String>
+    <v:String x:Key="ThemeEntries_BedrockStandard">Versão Bedrock Padrão</v:String>
+    <v:String x:Key="ThemeEntries_BedrockMaster">Versão Bedrock Master</v:String>
+    <v:String x:Key="ThemeEntries_EarlyLegacyConsole">Legacy Console Original</v:String>
+    <v:String x:Key="ThemeEntries_MidLegacyConsole">Legacy Console Intermediário</v:String>
+    <v:String x:Key="ThemeEntries_LateLegacyConsole">Último Legacy Console</v:String>
+    <v:String x:Key="ThemeEntries_IndieDays">Velhos Tempos</v:String>
     <v:String x:Key="ThemeEntries_Dungeons">Minecraft Dungeons</v:String>
 
 
@@ -552,7 +582,7 @@ turned off, try turning the back on and search again</v:String>
 
     <v:String x:Key="GeneralText_Twitter">Twitter</v:String>
     <v:String x:Key="GeneralText_GitHub">GitHub</v:String>
-    <v:String x:Key="GeneralText_Website">Website</v:String>
+    <v:String x:Key="GeneralText_Website">Site</v:String>
 
     <!--#endregion-->
 
@@ -561,9 +591,9 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="GeneralSubtitles_Versions">VERSÕES</v:String>
     <v:String x:Key="GeneralSubtitles_Browse">PROCURAR</v:String>
     <v:String x:Key="GeneralSubtitles_Reset">REPOR</v:String>
-    <v:String x:Key="GeneralSubtitles_Categories">CATEGORIES</v:String>
-    <v:String x:Key="GeneralSubtitles_Search">SEARCH</v:String>
-    <v:String x:Key="GeneralSubtitles_SortBy">SORT BY</v:String>
+    <v:String x:Key="GeneralSubtitles_Categories">CATEGORIAS</v:String>
+    <v:String x:Key="GeneralSubtitles_Search">PESQUISA</v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy">ORDENAR POR</v:String>
 
     <!--#endregion-->
 
