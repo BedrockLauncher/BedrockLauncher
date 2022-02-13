@@ -21,7 +21,7 @@
 
     <!--#region ToolbarButtons -->
 
-    <v:String x:Key="ToolbarButtons_NewsButton_Text">Яңылыҡтар</v:String>
+    <v:String x:Key="ToolbarButtons_NewsButton_Text">Яңылыҡта</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java лаунчеры</v:String>
@@ -30,7 +30,7 @@
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
     <v:String x:Key="ToolbarButtons_CommunityButton_Text">Community</v:String>
     <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Хисап яҙма</v:String>
-    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Көйләүҙәр</v:String>
+    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Көйләүҙә</v:String>
 
     <!--#endregion-->
 
@@ -124,7 +124,7 @@
     <v:String x:Key="EditInstallationScreen_LatestRelease">Latest release</v:String>
 
     <v:String x:Key="EditInstallationScreen_NameSubtitle">ИСЕМ</v:String>
-    <v:String x:Key="EditInstallationScreen_VersionSubtitle">ВЕРСИЯ</v:String>
+    <v:String x:Key="EditInstallationScreen_VersionSubtitle">ВЕРСИ</v:String>
     <v:String x:Key="EditInstallationScreen_DirectorySubtitle">DIRECTORY</v:String>
 
     <v:String x:Key="EditInstallationScreen_NameHintText">&lt;исемһеҙ&gt;</v:String>
@@ -171,17 +171,17 @@
 
     <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">OTHER DEFINITIONS</v:String>
     <v:String x:Key="EditSkinPackScreen_ContentSubtitle">КОНТЕНТ</v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">МОДУЛЬҘАР</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">МОДУЛЬҘА</v:String>
 
     <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">FORMAT VERSION</v:String>
 
     <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">PACK NAME</v:String>
     <v:String x:Key="EditSkinPackScreen_HeaderUUIDSubtitle">UUID</v:String>
-    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">ВЕРСИЯ</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">ВЕРСИ</v:String>
 
     <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">TYPE</v:String>
     <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">UUID</v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">ВЕРСИЯ</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">ВЕРСИ</v:String>
 
     <v:String x:Key="EditSkinPackScreen_Header">Edit Skin Pack</v:String>
     <v:String x:Key="EditSkinPackScreen_AddHeader">Add Skin Pack</v:String>
@@ -227,10 +227,10 @@
     <!--#region SettingsTab -->
 
     <v:String x:Key="SettingsTab_Title">SETTINGS</v:String>
-    <v:String x:Key="SettingsTab_GeneralButton">Баш</v:String>
+    <v:String x:Key="SettingsTab_GeneralButton">Ба</v:String>
     <v:String x:Key="SettingsTab_AccountsButton">Accounts</v:String>
     <v:String x:Key="SettingsTab_AboutButton">Лаунчер тураһында</v:String>
-    <v:String x:Key="SettingsTab_VersionsButton">Версиялар</v:String>
+    <v:String x:Key="SettingsTab_VersionsButton">Версияла</v:String>
 
     <!--#endregion-->
 
@@ -571,7 +571,7 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="GeneralText_Save">Һаҡларға</v:String>
     <v:String x:Key="GeneralText_Refresh">Refresh</v:String>
     <v:String x:Key="GeneralText_Backup">Backup</v:String>
-    <v:String x:Key="GeneralText_Versions">Версиялар</v:String>
+    <v:String x:Key="GeneralText_Versions">Версияла</v:String>
     <v:String x:Key="GeneralText_Browse">Browse</v:String>
     <v:String x:Key="GeneralText_Reset">Reset</v:String>
     <v:String x:Key="GeneralText_Yes">Эйе</v:String>
@@ -583,7 +583,7 @@ turned off, try turning the back on and search again</v:String>
 
     <v:String x:Key="GeneralText_Twitter">Twitter</v:String>
     <v:String x:Key="GeneralText_GitHub">GitHub</v:String>
-    <v:String x:Key="GeneralText_Website">Сайт</v:String>
+    <v:String x:Key="GeneralText_Website">Сай</v:String>
 
     <!--#endregion-->
 
