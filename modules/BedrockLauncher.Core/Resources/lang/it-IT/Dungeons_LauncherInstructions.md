@@ -1,13 +1,13 @@
 ﻿# Setup
 1. In your Minecraft Launcher, click Minecraft Dungeons and select `Installations`
 2. You will see a folder path above two buttons, copy it and append `\dungeons\dungeons` to it
-3. Nel Launcher di Bedrock, imposta la posizione di installazione su questo percorso
-4. Seleziona dove vuoi che sia la cartella delle mod simboliche (non dovrebbe essere inserita nella cartella di installazione del gioco)
-5. Fai clic su `installa collegamento simbolico`
-6. La cartella delle mod di gioco dovrebbe ora essere abbinata alla tua cartella delle mod simbolica
+3. In the Bedrock Launcher, set the install location to this path
+4. Select where you want your symbolic mods folder to be (it should not be placed within your game's installation folder)
+5. Click on `Install Symbolic Link`
+6. Your game's mod folder should now be paired with your symbolic mods folder
 
-# Come aggiornare
-1. Fai clic su `disinstalla collegamento simbolico` nel Launcher di Bedrock
-2. Aggiorna il gioco attraverso il launcher di Minecraft
-3. Fai clic su `installa collegamento simbolico` nel Launcher di Bedrock
-4. Fatto
+# How to Update
+1. Click on `Uninstall Symbolic Link` in the Bedrock Launcher
+2. Update the Game through the Minecraft Launcher
+3. Click on `Install Symbolic Link` in the Bedrock Launcher
+4. Done
