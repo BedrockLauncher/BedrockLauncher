@@ -14,7 +14,7 @@
     <!-- #region CommunityPage -->
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
-    <v:String x:Key="CommunityPage_ComingSoon">¡Pronto!</v:String>
+    <v:String x:Key="CommunityPage_ComingSoon"></v:String>
     <v:String x:Key="CommunityPage_CheckBackLater">¡Vuelve más tarde para ver algo SUPER MARAVILLOSO!</v:String>
 
     <!-- #endregion -->
@@ -36,8 +36,8 @@
 
     <!--#region UpdateButton-->
 
-    <v:String x:Key="UpdateButton_NewUpdate_Text">¡Nueva Actualización!</v:String>
-    <v:String x:Key="UpdateButton_Download_Text">¡Haz clic para descargar!</v:String>
+    <v:String x:Key="UpdateButton_NewUpdate_Text"></v:String>
+    <v:String x:Key="UpdateButton_Download_Text"></v:String>
 
     <!--#endregion-->
 
@@ -294,7 +294,7 @@
 
     <v:String x:Key="AboutPage_McMrArm_Text">Por crear el descargador de versiones de Minecraft Windows 10 (del cual deriva este trabajo)</v:String>
     <v:String x:Key="AboutPage_BsCommunity_Text">Por su trabajo en SkinView3D, usado para visualizar aspectos en el lanzador</v:String>
-    <v:String x:Key="AboutPage_Mojang_Text">¡¡¡POR MINECRAFT!!!</v:String>
+    <v:String x:Key="AboutPage_Mojang_Text"></v:String>
     <v:String x:Key="AboutPage_BsRepo_Text">Repo de SkinView3D</v:String>
     <v:String x:Key="AboutPage_CurrentBuild">Versión actual: </v:String>
 
@@ -317,10 +317,10 @@
 
     <!--#region FirstLaunch -->
 
-    <v:String x:Key="FirstLaunch_WelcomeTitle">¡Bienvenido!</v:String>
-    <v:String x:Key="FirstLaunch_WelcomeSubTitle">¡Bienvenido al lanzador de Minecraft Bedrock!</v:String>
-    <v:String x:Key="FirstLaunch_CreateProfileSubTitle">¡Crea tu primer perfil!</v:String>
-    <v:String x:Key="FirstLaunch_AlmostThereTitle">¡Ya queda poco!</v:String>
+    <v:String x:Key="FirstLaunch_WelcomeTitle"></v:String>
+    <v:String x:Key="FirstLaunch_WelcomeSubTitle"></v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileSubTitle"></v:String>
+    <v:String x:Key="FirstLaunch_AlmostThereTitle"></v:String>
     <v:String x:Key="FirstLaunch_OneThingTitle">Una cosa...</v:String>
     <v:String x:Key="FirstLaunch_OneThingSubtitle">Simplemente revisa estos para asegurarte de que estén como a ti te gustan.</v:String>
     <v:String x:Key="FirstLaunch_ChooseAccountTitle">Elija una cuenta Insider</v:String>
@@ -368,16 +368,16 @@
     <v:String x:Key="Error_CantFindJavaLauncher">No se pudo encontrar el lanzador. Asegúrate de que has instalado el lanzador original de Minecraft desde Minecraft.net .</v:String>
 
     <v:String x:Key="Error_AppReregisterFailed_Title">Registro de la aplicación fallido</v:String>
-    <v:String x:Key="Error_AppReregisterFailed">Por favor, inténtalo de nuevo :(</v:String>
+    <v:String x:Key="Error_AppReregisterFailed"></v:String>
 
     <v:String x:Key="Error_AppDeregisteringFailed_Title">Dada de baja de la aplicación fallida</v:String>
     <v:String x:Key="Error_AppDeregisteringFailed">Por favor, inténtalo de nuevo :(</v:String>
 
     <v:String x:Key="Error_AppLaunchFailed_Title">Inicio fallido</v:String>
-    <v:String x:Key="Error_AppLaunchFailed">Por favor, inténtalo de nuevo :(</v:String>
+    <v:String x:Key="Error_AppLaunchFailed"></v:String>
 
     <v:String x:Key="Error_AppDownloadFailed_Title">Descarga fallida</v:String>
-    <v:String x:Key="Error_AppDownloadFailed">Por favor, inténtalo de nuevo :(</v:String>
+    <v:String x:Key="Error_AppDownloadFailed"></v:String>
 
     <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">Error al guardar redirección</v:String>
     <v:String x:Key="Error_SaveDirectoryRedirectionFailed">Por favor, inténtalo de nuevo :(</v:String>
@@ -386,13 +386,13 @@
     <v:String x:Key="Error_AppUninstallFailed">Por favor, inténtalo de nuevo :(</v:String>
 
     <v:String x:Key="Error_AppExtractionFailed_Title">Extracción fallida</v:String>
-    <v:String x:Key="Error_AppExtractionFailed">Por favor, inténtalo de nuevo :(</v:String>
+    <v:String x:Key="Error_AppExtractionFailed"></v:String>
 
     <v:String x:Key="Error_CantFindPaidServerList_Title">No se pudo abrir la pestaña de servidores</v:String>
     <v:String x:Key="Error_CantFindPaidServerList">Lista de servidores de pago no encontrada.</v:String>
 
     <v:String x:Key="Error_NotaSkinPack_Title">No se pudo importar el paquete de aspectos</v:String>
-    <v:String x:Key="Error_NotaSkinPack">¡Eso no es un paquete de aspectos, tonto!</v:String>
+    <v:String x:Key="Error_NotaSkinPack"></v:String>
 
     <!--#endregion-->
 
@@ -401,7 +401,7 @@
     <v:String x:Key="NewProfile_GoBackButton"></v:String>
     <v:String x:Key="NewProfile_CreateProfileText">PERFIL</v:String>
     <v:String x:Key="NewProfile_CreateProfileText_Error">ESTE NOMBRE YA ESTÁ EN USO</v:String>
-    <v:String x:Key="NewProfile_CreateProfileSubTitle">¡Introduce el nombre de tu nuevo perfil!</v:String>
+    <v:String x:Key="NewProfile_CreateProfileSubTitle"></v:String>
     <v:String x:Key="NewProfile_CreateProfileButton">Crear</v:String>
 
     <!--#endregion-->
@@ -415,14 +415,13 @@
     <v:String x:Key="Dialog_Item_Profile_Text">perfil</v:String>
 
     <v:String x:Key="Dialog_DeleteItem_Title">Borrar {0} permanentemente</v:String>
-    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">¿Estás seguro de que quieres borrar &quot;{1}&quot;?
-¡{0} se perderá para siempre! (¡Mucho tiempo!)</v:String>
+    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve"></v:String>
 
     <v:String x:Key="Dialog_KillGame_Title">Forzar cierre del juego</v:String>
     <v:String x:Key="Dialog_KillGame_Text">Esto es peligroso y solo se recomienda si te quedas atascado. ¿Quieres cerrar el juego?</v:String>
 
     <v:String x:Key="Dialog_CloseGame_Title">El juego está ejecutándose</v:String>
-    <v:String x:Key="Dialog_CloseGame_Text">¿Te gustaría forzar el cierre? (sin guardar los cambios, esto solo se recomienda si te atascas, por favor cierra el juego normalmente)</v:String>
+    <v:String x:Key="Dialog_CloseGame_Text"></v:String>
 
     <v:String x:Key="DialogBtn_YesToAll_Text">Si a todo</v:String>
     <v:String x:Key="DialogBtn_NoToAll_Text">No a todo</v:String>
@@ -508,7 +507,7 @@ de categoría desactivados, intenta activarlos y busca de nuevo</v:String>
     <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">No se pudo mover el directorio</v:String>
     <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">No se pudo mover el archivo</v:String>
     <v:String x:Key="Installer_Dialog_FileLocked_Text">El archivo está en uso</v:String>
-    <v:String x:Key="Installer_Dialog_TryAgain_Text">¿Intentarlo de nuevo?</v:String>
+    <v:String x:Key="Installer_Dialog_TryAgain_Text"></v:String>
     <v:String x:Key="Installer_Dialog_ErrorOccured_Text">Se ha producido un error.</v:String>
 
     <!--#region ProgressBar -->
