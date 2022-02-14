@@ -1,13 +1,13 @@
-﻿# Setup
-1. In your Minecraft Launcher, click Minecraft Dungeons and select `Installations`
-2. You will see a folder path above two buttons, copy it and append `\dungeons\dungeons` to it
-3. In the Bedrock Launcher, set the install location to this path
-4. Select where you want your symbolic mods folder to be (it should not be placed within your game's installation folder)
-5. Click on `Install Symbolic Link`
-6. Your game's mod folder should now be paired with your symbolic mods folder
+﻿# Määritys
+1. Paina Minecraft Dungeonsia Minecraft Launcherissasi ja valitse `Installations`/`Asennukset`
+2. Tulet näkemään kansiopolun kahden painikkeen yläpuolella, kopioi se ja lisää `\dungeons\dungeons` siihen
+3. Aseta tämä polku Bedrock Launcherissa olemaan asennussijainti
+4. Valitse missä haluat symbolisen modikansiosi olevan (sitä ei pitäisi laittaa pelisi asennuskansion sisälle)
+5. Paina `Asenna symbolinen linkki`
+6. Pelisi modikansion pitäisi olla nyt yhdistetty symbolisen modikansiosi kanssa
 
-# How to Update
-1. Click on `Uninstall Symbolic Link` in the Bedrock Launcher
-2. Update the Game through the Minecraft Launcher
-3. Click on `Install Symbolic Link` in the Bedrock Launcher
-4. Done
+# Kuinka päivittää
+1. Paina `Poista symbolinen linkki` Bedrock Launcherissa
+2. Päivitä peli Minecraft Launcherin kautta
+3. Paina `Asenna symbolinen linkki` Bedrock Launcherissa
+4. Valmis
