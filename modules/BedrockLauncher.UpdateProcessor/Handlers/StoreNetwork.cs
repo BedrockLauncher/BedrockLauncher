@@ -11,7 +11,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using BedrockLauncher.UpdateProcessor.Classes;
-
+using BedrockLauncher.UpdateProcessor.Enums;
 using Xml = BedrockLauncher.UpdateProcessor.Extensions.NetworkExtensions;
 
 namespace BedrockLauncher.UpdateProcessor.Handlers
@@ -27,6 +27,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
         private static XNamespace NAMESPACE_WU_SERVICE = "http://www.microsoft.com/SoftwareDistribution/Server/ClientWebService";
 
         private static string MINECRAFT_APP_ID = "d25480ca-36aa-46e6-b76b-39608d49558c";
+        private static string MINECRAFT_PREVIEW_APP_ID = "188f32fc-5eaa-45a8-9f78-7dde4322d131";
         private static string PRIMARY_URL = "https://fe3.delivery.mp.microsoft.com/ClientWebService/client.asmx";
         private static string SECURED_URL = "https://fe3.delivery.mp.microsoft.com/ClientWebService/client.asmx/secured";
 
@@ -36,7 +37,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
         {
             UserToken = token;
         }
-        public void buildCommonHeader(ref XDocument doc, ref XElement header, string url, string actionName, bool useMSAToken) 
+        public void buildCommonHeader(ref XDocument doc, ref XElement header, string url, string actionName, VersionType versionType) 
         {
             var action = Xml.CreateElement(NAMESPACE_ADDRESSING + "Action", actionName);
             header.Add(action);
@@ -62,7 +63,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
 
             if (UserToken != null && UserToken.Length > 0)
             {
-                if (useMSAToken)
+                if (versionType == VersionType.Beta)
                 {
                     var msaToken = Xml.CreateElement("TicketType");
                     ticketsToken.Add(msaToken);
@@ -79,7 +80,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             aadToken.Add(Xml.CreateAttribute("Version", "1.0"));
             aadToken.Add(Xml.CreateAttribute("Policy", "MBI_SSL"));          
         }
-        public string buildGetConfigRequest(bool useMSAToken = true) 
+        public string buildGetConfigRequest(VersionType versionType = VersionType.Release) 
         {
             XDocument doc = new XDocument();
             var envelope = Xml.CreateElement(NAMESPACE_SOAP + "Envelope");
@@ -88,7 +89,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             var header = Xml.CreateElement(NAMESPACE_SOAP + "Header");
             envelope.Add(header);
 
-            buildCommonHeader(ref doc, ref header, PRIMARY_URL, "http://www.microsoft.com/SoftwareDistribution/Server/ClientWebService/GetConfig", useMSAToken);
+            buildCommonHeader(ref doc, ref header, PRIMARY_URL, "http://www.microsoft.com/SoftwareDistribution/Server/ClientWebService/GetConfig", versionType);
 
             var body = Xml.CreateElement(NAMESPACE_SOAP + "Body");
             envelope.Add(body);
@@ -100,7 +101,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
 
             return doc.ToString();
         }
-        public string buildCookieRequest(string configLastChanged, bool useMSAToken) 
+        public string buildCookieRequest(string configLastChanged, VersionType versionType) 
         {
             DateTime now = DateTime.UtcNow;
             XDocument doc = new XDocument();
@@ -110,7 +111,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             var header = Xml.CreateElement(NAMESPACE_SOAP + "Header");
             envelope.Add(header);
 
-            buildCommonHeader(ref doc, ref header, PRIMARY_URL, "http://www.microsoft.com/SoftwareDistribution/Server/ClientWebService/GetCookie", useMSAToken);
+            buildCommonHeader(ref doc, ref header, PRIMARY_URL, "http://www.microsoft.com/SoftwareDistribution/Server/ClientWebService/GetCookie", versionType);
 
             var body = Xml.CreateElement(NAMESPACE_SOAP + "Body");
             envelope.Add(body);
@@ -124,8 +125,11 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
 
             return doc.ToString();
         }
-        public string buildSyncRequest(CookieData cookieData, bool useMSAToken) 
+        public string buildSyncRequest(CookieData cookieData, VersionType versionType) 
         {
+
+            var id = versionType == VersionType.Preview ? MINECRAFT_PREVIEW_APP_ID : MINECRAFT_APP_ID;
+
             XDocument doc = new XDocument();
             var envelope = Xml.CreateElement(NAMESPACE_SOAP + "Envelope");
             doc.Add(envelope);
@@ -133,7 +137,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             var header = Xml.CreateElement(NAMESPACE_SOAP + "Header");
             envelope.Add(header);
 
-            buildCommonHeader(ref doc, ref header, PRIMARY_URL, "http://www.microsoft.com/SoftwareDistribution/Server/ClientWebService/SyncUpdates", useMSAToken);
+            buildCommonHeader(ref doc, ref header, PRIMARY_URL, "http://www.microsoft.com/SoftwareDistribution/Server/ClientWebService/SyncUpdates", versionType);
 
             var body = Xml.CreateElement(NAMESPACE_SOAP + "Body");
             envelope.Add(body);
@@ -157,7 +161,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             parameters.Add(filterAppCategoryIds);
             var filterAppCatId = Xml.CreateElement(NAMESPACE_WU_SERVICE + "CategoryIdentifier");
             filterAppCategoryIds.Add(filterAppCatId);
-            filterAppCatId.Add(Xml.CreateElement(NAMESPACE_WU_SERVICE + "Id", MINECRAFT_APP_ID));
+            filterAppCatId.Add(Xml.CreateElement(NAMESPACE_WU_SERVICE + "Id", id));
             parameters.Add(Xml.CreateElement(NAMESPACE_WU_SERVICE + "TreatAppCategoryIdsAsInstalled", "true"));
             parameters.Add(Xml.CreateElement(NAMESPACE_WU_SERVICE + "AlsoPerformRegularSync", "false"));
             parameters.Add(Xml.CreateElement(NAMESPACE_WU_SERVICE + "ComputerSpec", ""));
@@ -186,7 +190,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
 
             return doc.ToString();
         }
-        public string buildDownloadLinkRequest(string updateId, int revisionNumber, bool useMSAToken) 
+        public string buildDownloadLinkRequest(string updateId, int revisionNumber, VersionType versionType) 
         {
             XDocument doc = new XDocument();
             var envelope = Xml.CreateElement(NAMESPACE_SOAP + "Envelope");
@@ -195,7 +199,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             var header = Xml.CreateElement(NAMESPACE_SOAP + "Header");
             envelope.Add(header);
 
-            buildCommonHeader(ref doc, ref header, SECURED_URL, "http://www.microsoft.com/SoftwareDistribution/Server/ClientWebService/GetExtendedUpdateInfo2", useMSAToken);
+            buildCommonHeader(ref doc, ref header, SECURED_URL, "http://www.microsoft.com/SoftwareDistribution/Server/ClientWebService/GetExtendedUpdateInfo2", versionType);
 
             var body = Xml.CreateElement(NAMESPACE_SOAP + "Body");
             envelope.Add(body);
@@ -287,9 +291,9 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             var res = Xml.first_node_or_throw(resp, NAMESPACE_WU_SERVICE + "GetConfigResult");
             return Xml.first_node_or_throw(res, NAMESPACE_WU_SERVICE + "LastChange").Value;
         }
-        public async Task<CookieData> fetchCookie(string configLastChanged, bool useMSAToken)
+        public async Task<CookieData> fetchCookie(string configLastChanged, VersionType versionType)
         {
-            string request = buildCookieRequest(configLastChanged, useMSAToken);
+            string request = buildCookieRequest(configLastChanged, versionType);
             string ret = await doHttpRequest(PRIMARY_URL, request);
             XDocument doc = XDocument.Parse(ret);
             var envelope = Xml.first_node_or_throw(doc.Root, NAMESPACE_SOAP + "Envelope");
@@ -302,9 +306,9 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             data.expiration = Xml.first_node_or_throw(res, NAMESPACE_WU_SERVICE + "Expiration").Value;
             return data;
         }
-        public async Task<SyncResult> syncVersion(CookieData cookie, bool useMSAToken)
+        public async Task<SyncResult> syncVersion(CookieData cookie, VersionType versionType)
         {
-            string request = buildSyncRequest(cookie, useMSAToken);
+            string request = buildSyncRequest(cookie, versionType);
             string ret = await doHttpRequest(PRIMARY_URL, request);
             XDocument doc = XDocument.Parse(ret);
 
@@ -339,11 +343,11 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             }
 
         }
-        public async Task<DownloadLinkResult> getDownloadLinks(string updateIdentity, int revisionNumber, bool useMSAToken)
+        public async Task<DownloadLinkResult> getDownloadLinks(string updateIdentity, int revisionNumber, VersionType versionType)
         {
             try
             {
-                string request = buildDownloadLinkRequest(updateIdentity, revisionNumber, useMSAToken);
+                string request = buildDownloadLinkRequest(updateIdentity, revisionNumber, versionType);
                 string ret = await doHttpRequest(SECURED_URL, request);
                 XDocument doc = XDocument.Parse(ret);
                 var envelope = Xml.first_node_or_throw(doc.Root, NAMESPACE_SOAP + "Envelope");
@@ -367,9 +371,9 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             }
 
         }
-        public async Task<string> getDownloadLink(string updateIdentity, int revisionNumber, bool useMSAToken)
+        public async Task<string> getDownloadLink(string updateIdentity, int revisionNumber, VersionType versionType)
         {
-            var result = await getDownloadLinks(updateIdentity, revisionNumber, useMSAToken);
+            var result = await getDownloadLinks(updateIdentity, revisionNumber, versionType);
             foreach (var s in result.files)
             {
                 if (s.url.StartsWith("http://tlu.dl.delivery.mp.microsoft.com/")) return s.url;

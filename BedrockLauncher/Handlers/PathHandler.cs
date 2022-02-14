@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using BedrockLauncher.Classes;
 using BedrockLauncher.ViewModels;
+using BedrockLauncher.UpdateProcessor.Enums;
 
 namespace BedrockLauncher.Handlers
 {
@@ -98,11 +99,11 @@ namespace BedrockLauncher.Handlers
             string InstallationsPath = Path.Combine(profile.ProfilePath, installationDirectory);
             return Path.Combine(CurrentLocation, InstallationsFolderName, InstallationsPath, PackageDataFolderName);
         }
-        public string GetSkinPacksFolderPath(string InstallationsPath, bool DevFolder = false, bool HasSaveRedirection = true)
+        public string GetSkinPacksFolderPath(string InstallationsPath, VersionType type, bool DevFolder = false, bool HasSaveRedirection = true)
         {
             if (InstallationsPath == string.Empty) return string.Empty;
             string[] Route = new string[] { (DevFolder ? "development_skin_packs" : "skin_packs") };
-            string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", Constants.MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang");
+            string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", Constants.GetPackageFamily(type), "LocalState", "games", "com.mojang");
 
 
             if (HasSaveRedirection) return Path.Combine(Route.Prepend(InstallationsPath).ToArray());

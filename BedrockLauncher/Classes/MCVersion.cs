@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using BedrockLauncher.Classes;
+using BedrockLauncher.UpdateProcessor.Enums;
 using BedrockLauncher.UpdateProcessor.Extensions;
 using BedrockLauncher.ViewModels;
 using Newtonsoft.Json;
@@ -18,18 +19,25 @@ namespace BedrockLauncher.Classes
     [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]
     public class MCVersion
     {
-        public MCVersion(string uuid, string name, bool isBeta, string architecture)
+        public MCVersion(string uuid, string name, VersionType type, string architecture)
         {
             this.UUID = uuid.ToLower();
             this.Name = name;
-            this.IsBeta = isBeta;
+            this.Type = type;
             this.Architecture = architecture;
         }
 
         public string UUID { get; set; }
         public string Name { get; set; }
         public string Architecture { get; set; }
-        public bool IsBeta { get; set; }
+        public bool IsBeta
+        {
+            get
+            {
+                return Type == VersionType.Beta || Type == VersionType.Preview;
+            }
+        }
+        public VersionType Type { get; set; }
         public bool IsInstalled
         {
             get
@@ -50,8 +58,8 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                Depends.On(IsBeta, Name, Architecture);
-                return Name + (IsBeta ? " (Beta)" : "") + (!VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, Architecture) ? $" [{Architecture}]" : "");
+                Depends.On(Type, Name, Architecture);
+                return Name + (Type == VersionType.Beta ? " (Beta)" : Type == VersionType.Preview ? " (Preview)" : "") + (!VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, Architecture) ? $" [{Architecture}]" : "");
             }
         }
         public string InstallationSize
@@ -117,7 +125,7 @@ namespace BedrockLauncher.Classes
 
             ulong GetDirectorySize(string dir)
             {
-                dynamic fso = Activator.CreateInstance(Type.GetTypeFromProgID("Scripting.FileSystemObject"));
+                dynamic fso = Activator.CreateInstance(System.Type.GetTypeFromProgID("Scripting.FileSystemObject"));
                 dynamic fldr = fso.GetFolder(dir);
                 return (ulong)fldr.size;
             }

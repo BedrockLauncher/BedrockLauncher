@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BedrockLauncher.UpdateProcessor.Enums;
 
 using BedrockLauncher.UpdateProcessor.Classes;
 
@@ -10,12 +11,12 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
 {
     public static class StoreManager
     {
-        public async static Task<List<UpdateInfo>> CheckForVersions(StoreNetwork net, CookieData cookie, List<string> knownVersions, bool isBeta, bool verbose = false)
+        public async static Task<List<UpdateInfo>> CheckForVersions(StoreNetwork net, CookieData cookie, List<string> knownVersions, VersionType versionType, bool verbose = false)
         {
             SyncResult res = new SyncResult();
             try
             {
-                res = await net.syncVersion(cookie, isBeta);
+                res = await net.syncVersion(cookie, versionType);
             }
             catch (SOAPError e) 
             {
@@ -32,13 +33,13 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             foreach (var e in res.newUpdates) 
             {
                 if (e.packageMoniker == null) continue;
-                if (e.packageMoniker.StartsWith("Microsoft.MinecraftUWP_")) 
+                if (e.packageMoniker.StartsWith("Microsoft.MinecraftUWP_") || e.packageMoniker.StartsWith("Microsoft.MinecraftWindowsBeta_")) 
                 {
                     bool verified = false;
 
                     try
                     {
-                        var result = await net.getDownloadLink(e.updateId, 1, isBeta);
+                        var result = await net.getDownloadLink(e.updateId, 1, versionType);
                         if (result != null) verified = true;
                     }
                     catch

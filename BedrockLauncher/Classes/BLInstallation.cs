@@ -13,6 +13,7 @@ using BedrockLauncher.Components;
 using System.Diagnostics;
 using BedrockLauncher.Enums;
 using PostSharp.Patterns.Model;
+using BedrockLauncher.UpdateProcessor.Enums;
 
 namespace BedrockLauncher.Classes
 {
@@ -107,6 +108,14 @@ namespace BedrockLauncher.Classes
             {
                 Depends.On(LastPlayed);
                 return LastPlayed.ToString("s");
+            }
+        }
+
+        public VersionType VersionType
+        {
+            get
+            {
+                return Version?.Type ?? VersionType.Release;
             }
         }
 

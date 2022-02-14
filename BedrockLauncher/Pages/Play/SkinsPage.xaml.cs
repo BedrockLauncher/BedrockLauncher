@@ -74,8 +74,8 @@ namespace BedrockLauncher.Pages.Play
                 if (installation == null) return;
 
                 string InstallationPath = MainViewModel.Default.FilePaths.GetInstallationsFolderPath(MainViewModel.Default.Config.CurrentProfileUUID, installation.DirectoryName);
-                string normal_folder = MainViewModel.Default.FilePaths.GetSkinPacksFolderPath(InstallationPath, false);
-                string dev_folder = MainViewModel.Default.FilePaths.GetSkinPacksFolderPath(InstallationPath, true);
+                string normal_folder = MainViewModel.Default.FilePaths.GetSkinPacksFolderPath(InstallationPath, installation.VersionType);
+                string dev_folder = MainViewModel.Default.FilePaths.GetSkinPacksFolderPath(InstallationPath, installation.VersionType);
 
                 if (Directory.Exists(normal_folder)) AddPacks(normal_folder);
                 if (Directory.Exists(dev_folder)) AddPacks(dev_folder);
@@ -141,12 +141,12 @@ namespace BedrockLauncher.Pages.Play
                         file.Dispose();
                         string InstallationPath = MainViewModel.Default.FilePaths.GetInstallationsFolderPath(MainViewModel.Default.Config.CurrentProfileUUID, MainViewModel.Default.Config.CurrentInstallation.DirectoryName);
                         string NewPackDirectoryName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
-                        string NewPackDirectory = Path.Combine(MainViewModel.Default.FilePaths.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
+                        string NewPackDirectory = Path.Combine(MainViewModel.Default.FilePaths.GetSkinPacksFolderPath(InstallationPath, MainViewModel.Default.Config.CurrentInstallation.VersionType), NewPackDirectoryName);
 
                         while (Directory.Exists(NewPackDirectory))
                         {
                             NewPackDirectoryName = Path.GetFileNameWithoutExtension(Path.GetRandomFileName());
-                            NewPackDirectory = Path.Combine(MainViewModel.Default.FilePaths.GetSkinPacksFolderPath(InstallationPath, false), NewPackDirectoryName);
+                            NewPackDirectory = Path.Combine(MainViewModel.Default.FilePaths.GetSkinPacksFolderPath(InstallationPath, MainViewModel.Default.Config.CurrentInstallation.VersionType), NewPackDirectoryName);
                         }
 
                         ZipFile.ExtractToDirectory(dialog.FileName, NewPackDirectory);

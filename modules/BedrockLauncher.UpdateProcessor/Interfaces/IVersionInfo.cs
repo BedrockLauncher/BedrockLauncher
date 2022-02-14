@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BedrockLauncher.UpdateProcessor.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace BedrockLauncher.UpdateProcessor.Interfaces
         public string GetVersion();
         public Guid GetUUID();
         public string GetArchitecture();
+        public VersionType GetVersionType();
         public bool GetIsBeta();
     }
 }

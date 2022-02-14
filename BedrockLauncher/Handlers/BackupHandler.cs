@@ -10,12 +10,22 @@ using System.Threading.Tasks;
 using System.Windows;
 using Windows.Management.Core;
 using BedrockLauncher.UI.Pages.Common;
+using BedrockLauncher.UpdateProcessor.Enums;
 
 namespace BedrockLauncher.Handlers
 {
     public static class BackupHandler
     {
         public static async Task BackupOriginalSaveData()
+        {
+            await Task.Run(async () =>
+            {
+                await BackupData(VersionType.Release);
+                await BackupData(VersionType.Preview);
+            });
+        }
+
+        public static async Task BackupData(VersionType type)
         {
             await Task.Run(() =>
             {
@@ -24,7 +34,7 @@ namespace BedrockLauncher.Handlers
 
                 try
                 {
-                    var data = ApplicationDataManager.CreateForPackageFamily(Constants.MINECRAFT_PACKAGE_FAMILY);
+                    var data = ApplicationDataManager.CreateForPackageFamily(Constants.GetPackageFamily(type));
                     string dataPath;
 
                     try { dataPath = Path.Combine(data.LocalFolder.Path, "games", "com.mojang"); }

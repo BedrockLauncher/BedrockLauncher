@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using BedrockLauncher.UpdateProcessor.Authentication;
 using BedrockLauncher.UpdateProcessor.Classes;
 using BedrockLauncher.UpdateProcessor.Databases;
+using BedrockLauncher.UpdateProcessor.Enums;
 using BedrockLauncher.UpdateProcessor.Interfaces;
 using Extensions;
 
@@ -43,9 +44,9 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             communityDBTechnicalFile = _communityDBTechnicalFile;
         }
 
-        public async Task DownloadVersion(string versionName, string updateIdentity, int revisionNumber, string destination, DownloadProgress progress, CancellationToken cancellationToken)
+        public async Task DownloadVersion(string versionName, string updateIdentity, int revisionNumber, string destination, DownloadProgress progress, CancellationToken cancellationToken, VersionType type)
         {
-            string link = await StoreNetwork.getDownloadLink(updateIdentity, revisionNumber, true);
+            string link = await StoreNetwork.getDownloadLink(updateIdentity, revisionNumber, type);
             if (link == null)
                 throw new ArgumentException(string.Format("Bad updateIdentity for {0}", versionName));
             Trace.WriteLine("Resolved download link: " + link);
@@ -143,8 +144,9 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
         {
             try
             {
-                await UpdateDB(true);
-                await UpdateDB(false);
+                await UpdateDB(VersionType.Beta);
+                await UpdateDB(VersionType.Release);
+                await UpdateDB(VersionType.Preview);
                 db.Save(filePath);
                 InsertVersionsFromDB(db);
             }
@@ -156,21 +158,21 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             }
 
 
-            async Task UpdateDB(bool isBeta)
+            async Task UpdateDB(VersionType type)
             {
                 try
                 {
                     var config = await StoreNetwork.fetchConfigLastChanged();
-                    var cookie = await StoreNetwork.fetchCookie(config, isBeta);
+                    var cookie = await StoreNetwork.fetchCookie(config, type);
                     var knownVersions = db.GetVersions().ConvertAll(x => x.GetUUID().ToString());
-                    var results = await StoreManager.CheckForVersions(StoreNetwork, cookie, knownVersions, isBeta);
-                    db.AddVersion(results, isBeta);
+                    var results = await StoreManager.CheckForVersions(StoreNetwork, cookie, knownVersions, type);
+                    db.AddVersion(results, type);
                 }
                 catch (Exception ex)
                 {
                     Trace.WriteLine("UpdateDBFromStore.UpdateDB Failed!");
                     Trace.WriteLine("File: " + filePath);
-                    Trace.WriteLine("isBeta: " + isBeta);
+                    Trace.WriteLine("isBeta: " + type);
                     Trace.WriteLine(ex);
                 }
 

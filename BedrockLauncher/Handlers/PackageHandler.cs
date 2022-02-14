@@ -33,6 +33,7 @@ using BedrockLauncher.UpdateProcessor.Authentication;
 using BedrockLauncher.UpdateProcessor.Handlers;
 using BedrockLauncher.Classes.Launcher;
 using Windows.System.Diagnostics;
+using BedrockLauncher.UpdateProcessor.Enums;
 
 namespace BedrockLauncher.Handlers
 {
@@ -56,13 +57,13 @@ namespace BedrockLauncher.Handlers
 
                 if (!v.IsInstalled) await DownloadAndExtractPackage(v);
 
-                await RedirectSaveData(dirPath);
+                await RedirectSaveData(dirPath, v.Type);
                 await UnregisterPackage(v, true);
                 await RegisterPackage(v);
 
                 MainViewModel.Default.ProgressBarState.SetProgressBarState(LauncherState.isLaunching);
 
-                var pkg = await AppDiagnosticInfo.RequestInfoForPackageAsync(Constants.MINECRAFT_PACKAGE_FAMILY);
+                var pkg = await AppDiagnosticInfo.RequestInfoForPackageAsync(Constants.GetPackageFamily(v.Type));
                 AppActivationResult activationResult = null;
                 if (pkg.Count > 0) activationResult = await pkg[0].LaunchAsync();
                 Trace.WriteLine("App launch finished!");
@@ -185,7 +186,7 @@ namespace BedrockLauncher.Handlers
                 if (v.IsBeta) await AuthenticateBetaUser();
                 MainViewModel.Default.ProgressBarState.SetProgressBarState(LauncherState.isDownloading);
                 Trace.WriteLine("Download starting");
-                await VersionDownloader.DownloadVersion(v.DisplayName, v.UUID, 1, dlPath, (x, y) => ProgressWrapper(x, y), cancelSource.Token);
+                await VersionDownloader.DownloadVersion(v.DisplayName, v.UUID, 1, dlPath, (x, y) => ProgressWrapper(x, y), cancelSource.Token, v.Type);
                 Trace.WriteLine("Download complete");
             }
             catch (PackageManagerException e)
@@ -281,7 +282,7 @@ namespace BedrockLauncher.Handlers
         {
             try
             {
-                foreach (var pkg in PM.FindPackages(Constants.MINECRAFT_PACKAGE_FAMILY))
+                foreach (var pkg in PM.FindPackages(Constants.GetPackageFamily(v.Type)))
                 {
                     string location;
 
@@ -317,7 +318,7 @@ namespace BedrockLauncher.Handlers
                 ResetTask();
             }
         }
-        private async Task RedirectSaveData(string InstallationsFolderPath)
+        private async Task RedirectSaveData(string InstallationsFolderPath, VersionType type)
         {
             await Task.Run(() =>
             {
@@ -325,9 +326,9 @@ namespace BedrockLauncher.Handlers
                 {
                     string localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
-                    string LocalStateFolder = Path.Combine(localAppData, "Packages", Constants.MINECRAFT_PACKAGE_FAMILY, "LocalState");
-                    string PackageFolder = Path.Combine(localAppData, "Packages", Constants.MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang");
-                    string PackageBakFolder = Path.Combine(localAppData, "Packages", Constants.MINECRAFT_PACKAGE_FAMILY, "LocalState", "games", "com.mojang.default");
+                    string LocalStateFolder = Path.Combine(localAppData, "Packages", Constants.GetPackageFamily(type), "LocalState");
+                    string PackageFolder = Path.Combine(localAppData, "Packages", Constants.GetPackageFamily(type), "LocalState", "games", "com.mojang");
+                    string PackageBakFolder = Path.Combine(localAppData, "Packages", Constants.GetPackageFamily(type), "LocalState", "games", "com.mojang.default");
                     string ProfileFolder = Path.GetFullPath(InstallationsFolderPath);
 
                     if (Directory.Exists(PackageFolder))

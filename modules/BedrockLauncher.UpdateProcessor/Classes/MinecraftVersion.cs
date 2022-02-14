@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BedrockLauncher.UpdateProcessor.Enums;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -94,9 +95,9 @@ namespace BedrockLauncher.UpdateProcessor.Classes
             ver = new MinecraftVersion(major, minor, patch, revision);
             return true;
         }
-        public static MinecraftVersion ConvertVersion(string packageMonker)
+        public static MinecraftVersion ConvertVersion(string packageMonker, VersionType type)
         {
-            Regex regex = new Regex(@"(Microsoft\.MinecraftUWP_([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)_(.*)__8wekyb3d8bbwe.*)");
+            Regex regex = Extensions.VersionDbExtensions.GetRegex(type);
             Match match;
             match = regex.Match(packageMonker);
             if (match == null) return new MinecraftVersion(0, 0, 0, 0);

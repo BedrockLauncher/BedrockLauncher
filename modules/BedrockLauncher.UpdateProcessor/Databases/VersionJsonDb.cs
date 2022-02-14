@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using BedrockLauncher.UpdateProcessor.Extensions;
 using BedrockLauncher.UpdateProcessor.Interfaces;
 using BedrockLauncher.UpdateProcessor.Handlers;
+using BedrockLauncher.UpdateProcessor.Enums;
 
 namespace BedrockLauncher.UpdateProcessor.Databases
 {
@@ -52,14 +53,14 @@ namespace BedrockLauncher.UpdateProcessor.Databases
             {
                 string name = o[0].Value<string>();
                 string uuid = o[1].Value<string>();
-                bool isBeta = o[2].Value<int>() == 1;
+                int type = o[2].Value<int>();
                 string arch = o.Count() >= 4 ? o[3].Value<string>() : VersionDbExtensions.FallbackArch;
-                var v = new VersionInfoJson(name, uuid, isBeta, arch);
+                var v = new VersionInfoJson(name, uuid, (VersionType)type, arch);
 
                 if (arch == VersionDbExtensions.FallbackArch && architectures != null)
                 {
                     if (architectures.ContainsKey(v.uuid))
-                        v = new VersionInfoJson(name, uuid, isBeta, architectures[v.uuid]);
+                        v = new VersionInfoJson(name, uuid, (VersionType)type, architectures[v.uuid]);
                 }
 
 
@@ -74,15 +75,15 @@ namespace BedrockLauncher.UpdateProcessor.Databases
 
         #region IVersionDb Implements
 
-        public void AddVersion(List<UpdateInfo> u, bool isBeta)
+        public void AddVersion(List<UpdateInfo> u, VersionType type)
         {
             if (u == null || u.Count == 0) return;
 
             foreach (var v in u)
             {
-                string version = MinecraftVersion.ConvertVersion(v.packageMoniker).ToString();
-                string arch = VersionDbExtensions.GetVersionArch(v.packageMoniker);
-                var info = new VersionInfoJson(version, v.updateId, isBeta, arch);
+                string version = MinecraftVersion.ConvertVersion(v.packageMoniker, type).ToString();
+                string arch = VersionDbExtensions.GetVersionArch(v.packageMoniker, type);
+                var info = new VersionInfoJson(version, v.updateId, type, arch);
 
                 if (!list.Exists(x => x.uuid == info.uuid)) list.Add(info);
             }
@@ -92,7 +93,15 @@ namespace BedrockLauncher.UpdateProcessor.Databases
 
         public void Save(string filePath)
         {
-
+            string outlist = string.Empty;
+            foreach (var ver in list)
+            {
+                string entry = $"[\"{ver.version}\", \"{ver.uuid}\", {(int)ver.type}, \"{ver.architecture}\"]";
+                if (list.Count != list.IndexOf(ver) + 1) entry += ", " + Environment.NewLine;
+                outlist += entry;
+            }
+            string output = $"[{outlist}]";
+            File.WriteAllText(filePath, output);
         }
 
         public List<IVersionInfo> GetVersions()

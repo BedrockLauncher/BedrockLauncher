@@ -1,5 +1,6 @@
 ﻿using BedrockLauncher.UpdateProcessor.Interfaces;
 using System;
+using BedrockLauncher.UpdateProcessor.Enums;
 
 namespace BedrockLauncher.UpdateProcessor.Classes
 {
@@ -11,17 +12,17 @@ namespace BedrockLauncher.UpdateProcessor.Classes
 
         public string version;
         public string architecture;
-        public bool isBeta;
+        public VersionType type;
 
-        public VersionInfoTxt(string _uuid, string _packageMoniker, string _serverId, string _architexture, bool _isBeta)
+        public VersionInfoTxt(string _uuid, string _packageMoniker, string _serverId, string _architexture, VersionType _type)
         {
             if (!Guid.TryParse(_uuid, out uuid)) uuid = Guid.Empty;
             packageMoniker = _packageMoniker;
             serverId = _serverId;
 
-            version = MinecraftVersion.ConvertVersion(_packageMoniker).ToString();
+            version = MinecraftVersion.ConvertVersion(_packageMoniker, _type).ToString();
             architecture = _architexture;
-            isBeta = _isBeta;
+            type = _type;
         }
 
         public string GetArchitecture()
@@ -29,9 +30,14 @@ namespace BedrockLauncher.UpdateProcessor.Classes
             return architecture;
         }
 
+        public VersionType GetVersionType()
+        {
+            return type;
+        }
+
         public bool GetIsBeta()
         {
-            return isBeta;
+            return type == VersionType.Beta;
         }
 
         public Guid GetUUID()

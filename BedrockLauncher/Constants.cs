@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BedrockLauncher.UpdateProcessor.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -10,14 +11,20 @@ namespace BedrockLauncher
 {
     public static class Constants
     {
-        public static readonly string MINECRAFT_EXE_NAME = "Minecraft.Windows";
-        public static readonly string MINECRAFT_PACKAGE_FAMILY = "Microsoft.MinecraftUWP_8wekyb3d8bbwe";
+
+        private static readonly string MINECRAFT_PACKAGE_FAMILY = "Microsoft.MinecraftUWP_8wekyb3d8bbwe";
+        private static readonly string MINECRAFT_PREVIEW_PACKAGE_FAMILY = "MinecraftWindowsBeta_8wekyb3d8bbwe";
 
         public static readonly string LATEST_BETA_UUID = "latest_beta";
         public static readonly string LATEST_RELEASE_UUID = "latest_release";
 
         public static readonly string BETA_VERSION_ICONPATH = @"/BedrockLauncher;component/resources/images/icons/ico/crafting_table_block_icon.ico";
         public static readonly string RELEASE_VERSION_ICONPATH = @"/BedrockLauncher;component/resources/images/icons/ico/grass_block_icon.ico";
+
+        internal static string GetPackageFamily(VersionType type)
+        {
+            return type == VersionType.Preview ? MINECRAFT_PREVIEW_PACKAGE_FAMILY : MINECRAFT_PACKAGE_FAMILY;
+        }
 
         private const string ThemesPathPrefix = @"pack://application:,,,/BedrockLauncher;component/resources/images/bg/play_screen/";
 

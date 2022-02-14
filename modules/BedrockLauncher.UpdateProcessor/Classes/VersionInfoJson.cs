@@ -1,6 +1,7 @@
 ﻿using BedrockLauncher.UpdateProcessor.Interfaces;
 using System;
 using System.Collections.Generic;
+using BedrockLauncher.UpdateProcessor.Enums;
 
 namespace BedrockLauncher.UpdateProcessor.Classes
 {
@@ -9,14 +10,14 @@ namespace BedrockLauncher.UpdateProcessor.Classes
     
         public string version;
         public Guid uuid;
-        public bool isBeta;
+        public VersionType type;
         public string architecture;
 
-        public VersionInfoJson(string _version, string _uuid, bool _isBeta, string _architexture)
+        public VersionInfoJson(string _version, string _uuid, VersionType _type, string _architexture)
         {
             if (!Guid.TryParse(_uuid, out uuid)) uuid = Guid.Empty;
             version = _version;
-            isBeta = _isBeta;
+            type = _type;
             architecture = _architexture;
         }
 
@@ -35,9 +36,14 @@ namespace BedrockLauncher.UpdateProcessor.Classes
             return version;
         }
 
+        public VersionType GetVersionType()
+        {
+            return type;
+        }
+
         public bool GetIsBeta()
         {
-            return isBeta;
+            return type == VersionType.Beta;
         }
 
         public int Compare(VersionInfoJson x, VersionInfoJson y)
