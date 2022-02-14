@@ -30,7 +30,7 @@ The Windows Store version of Minecraft Dungeons normally won't let you modify it
 3. Click on `Install Symbolic Link`
 4. Your game's mod folder should now be paired with your symbolic mods folder
 
-# How to Update
+# Как обновить
 1. Click on `Uninstall Symbolic Link`
 2. Click on `Update Store Patch`
 3. Repeat Steps 3 through 6 of Part 1 if nessisary
