@@ -1,13 +1,13 @@
-﻿# Setup
-1. In your Minecraft Launcher, click Minecraft Dungeons and select `Installations`
-2. You will see a folder path above two buttons, copy it and append `\dungeons\dungeons` to it
-3. In the Bedrock Launcher, set the install location to this path
-4. Select where you want your symbolic mods folder to be (it should not be placed within your game's installation folder)
-5. Click on `Install Symbolic Link`
-6. Your game's mod folder should now be paired with your symbolic mods folder
+﻿# 配置的安装
+1. 在你的Minecraft Launcher中，单击Minecraft Dungeons并选择`配置`
+2. 你将看到一个位于两个按钮上方的文件夹路径，将其复制并在其末尾追加`\dungeons\dungeons`
+3. 在Bedrock Launcher中，将安装位置设置为此路径
+4. 选择你所希望的用于符号链接的模组文件夹的位置（它不应放置在游戏本体的安装文件夹中）
+5. 点击`安装符号链接`
+6. 你的游戏的模组文件夹现在应该已与你的符号链接模组文件夹配对
 
-# How to Update
-1. Click on `Uninstall Symbolic Link` in the Bedrock Launcher
-2. Update the Game through the Minecraft Launcher
-3. Click on `Install Symbolic Link` in the Bedrock Launcher
-4. Done
+# 如何更新
+1. 在Bedrock Launcher中点击`卸载符号链接`
+2. 通过Minecraft Launcher更新游戏
+3. 在Bedrock Launcher中点击`安装符号链接`
+4. 完成
