@@ -390,10 +390,10 @@ di Minecraft per Windows 10 (da cui deriva questo lavoro)</v:String>
     <v:String x:Key="Error_AppExtractionFailed">Per favore riprova :(</v:String>
 
     <v:String x:Key="Error_CantFindPaidServerList_Title">Impossibile aprire la scheda dei server</v:String>
-    <v:String x:Key="Error_CantFindPaidServerList">Lista dei Server a Pagamento non trovata.</v:String>
+    <v:String x:Key="Error_CantFindPaidServerList">Lista dei server a pagamento non trovata.</v:String>
 
     <v:String x:Key="Error_NotaSkinPack_Title">Impossibile importare pacchetto skin</v:String>
-    <v:String x:Key="Error_NotaSkinPack">Non è un pacchetto skin sciocco!</v:String>
+    <v:String x:Key="Error_NotaSkinPack">Sciocco, non è un pacchetto skin!</v:String>
 
     <!--#endregion-->
 
@@ -526,8 +526,8 @@ Questo {0} andrà perso per sempre! (Molto tempo!)</v:String>
 
     <!--#region VersionEntries -->
 
-    <v:String x:Key="VersionEntries_LatestSnapshot">Ultima Beta</v:String>
-    <v:String x:Key="VersionEntries_LatestRelease">Ultima Versione</v:String>
+    <v:String x:Key="VersionEntries_LatestSnapshot">Ultima beta</v:String>
+    <v:String x:Key="VersionEntries_LatestRelease">Ultima versione</v:String>
     <v:String x:Key="VersionEntries_UnnamedInstallation">&lt;installazione senza nome&gt;</v:String>
 
     <!--#endregion-->
@@ -541,19 +541,19 @@ Questo {0} andrà perso per sempre! (Molto tempo!)</v:String>
     <v:String x:Key="ThemeEntries_NetherUpdate">Nether Update</v:String>
     <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Buzzy Bees Update</v:String>
     <v:String x:Key="ThemeEntries_VillagePillageUpdate">Village &amp; Pillage Update</v:String>
-    <v:String x:Key="ThemeEntries_UpdateAquatic">Update Aquatic</v:String>
+    <v:String x:Key="ThemeEntries_UpdateAquatic">Aggiornamento acquatico</v:String>
     <v:String x:Key="ThemeEntries_TechnicallyUpdated">Technically Updated [Java]</v:String>
     <v:String x:Key="ThemeEntries_WorldOfColorUpdate">World of Color Update [Java]</v:String>
     <v:String x:Key="ThemeEntries_ExplorationUpdate">Exploration Update [Java]</v:String>
     <v:String x:Key="ThemeEntries_CombatUpdate">Combat Update [Java]</v:String>
     <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">Cats &amp; Pandas [Bedrock]</v:String>
-    <v:String x:Key="ThemeEntries_PocketEditionRelease">Rilascio Ufficiale [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_PocketEditionRelease">Prima pubblicazione [Bedrock]</v:String>
     <v:String x:Key="ThemeEntries_BedrockStandard">Bedrock Edition Standard</v:String>
     <v:String x:Key="ThemeEntries_BedrockMaster">Bedrock Edition Master</v:String>
-    <v:String x:Key="ThemeEntries_EarlyLegacyConsole">Era Originale Legacy Console</v:String>
-    <v:String x:Key="ThemeEntries_MidLegacyConsole">Era Di Mezzo Legacy Console</v:String>
-    <v:String x:Key="ThemeEntries_LateLegacyConsole">Era Tarda Legacy Console</v:String>
-    <v:String x:Key="ThemeEntries_IndieDays">Giorni Indie</v:String>
+    <v:String x:Key="ThemeEntries_EarlyLegacyConsole">Vecchie versioni per console - I tempi delle origini</v:String>
+    <v:String x:Key="ThemeEntries_MidLegacyConsole">Vecchie versioni per console - Età media</v:String>
+    <v:String x:Key="ThemeEntries_LateLegacyConsole">Vecchie versioni per console - Età tarda</v:String>
+    <v:String x:Key="ThemeEntries_IndieDays">Giorni da indie</v:String>
     <v:String x:Key="ThemeEntries_Dungeons">Minecraft Dungeons</v:String>
 
 
@@ -566,24 +566,24 @@ Questo {0} andrà perso per sempre! (Molto tempo!)</v:String>
     <v:String x:Key="GeneralText_Duplicate">Duplica</v:String>
     <v:String x:Key="GeneralText_Remove">Rimuovi</v:String>
     <v:String x:Key="GeneralText_Cancel">Annulla</v:String>
-    <v:String x:Key="GeneralText_Update">Aggiornamento</v:String>
+    <v:String x:Key="GeneralText_Update">Aggiorna</v:String>
     <v:String x:Key="GeneralText_Add">Aggiungi</v:String>
     <v:String x:Key="GeneralText_Save">Salva</v:String>
-    <v:String x:Key="GeneralText_Refresh">Aggiorna</v:String>
-    <v:String x:Key="GeneralText_Backup">Backup</v:String>
+    <v:String x:Key="GeneralText_Refresh">Ricarica</v:String>
+    <v:String x:Key="GeneralText_Backup">Fai un back-up</v:String>
     <v:String x:Key="GeneralText_Versions">Versioni</v:String>
     <v:String x:Key="GeneralText_Browse">Sfoglia</v:String>
     <v:String x:Key="GeneralText_Reset">Ripristina</v:String>
-    <v:String x:Key="GeneralText_Yes">Si</v:String>
+    <v:String x:Key="GeneralText_Yes">Sì</v:String>
     <v:String x:Key="GeneralText_No">No</v:String>
-    <v:String x:Key="GeneralText_Releases">Release</v:String>
+    <v:String x:Key="GeneralText_Releases">Versioni finali</v:String>
     <v:String x:Key="GeneralText_Betas">Beta</v:String>
     <v:String x:Key="GeneralText_Export">Esporta</v:String>
     <v:String x:Key="GeneralText_Repair">Ripara</v:String>
 
     <v:String x:Key="GeneralText_Twitter">Twitter</v:String>
     <v:String x:Key="GeneralText_GitHub">GitHub</v:String>
-    <v:String x:Key="GeneralText_Website">Sito Web</v:String>
+    <v:String x:Key="GeneralText_Website">Sito web</v:String>
 
     <!--#endregion-->
 
