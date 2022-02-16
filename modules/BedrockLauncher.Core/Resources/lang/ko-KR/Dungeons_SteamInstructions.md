@@ -1,12 +1,12 @@
-﻿# Setup
-1. In your Steam library, right-click Minecraft Dungeons and select `Manage > Browse local files`
-2. In Bedrock Launcher, set this folder to be the install location
-3. Select where you want your symbolic mods folder to be (it should not be placed within your `Dungeons\Content\Paks\~mods` folder from earlier)
-4. Click on `Install Symbolic Link`
-5. Your game's mod folder should now be paired with your symbolic mods folder
+﻿# 설치
+1. Steam 라이브러리에서, Minecraft Dungeons를 우클릭하고 `관리 > 로컬 파일 보기` 선택
+2. Bedrock 런처에서, 해당 폴더를 설치 경로로 지정
+3. 심볼릭 모드 폴더로 사용하고자 하는 폴더 선택 (선택하는 폴더가 `Dungeons\Content\Paks\~mods` 폴더 내에 있지 않아야 합니다)
+4. `심볼릭 링크 설치` 클릭
+5. 게임의 모드 폴더가 심볼릭 모드 폴더와 동기화됨
 
-# How to Update
-1. Click on `Uninstall Symbolic Link` in the Bedrock Launcher
-2. Update the Game Through Steam
-3. Click on `Install Symbolic Link` in the Bedrock Launcher
-4. Done
+# 업데이트 방법
+1. Bedrock 런처 내 `심볼릭 링크 제거` 클릭
+2. Steam으로 게임 업데이트
+3. Bedrock 런처 내 `심볼릭 링크 설치` 클릭
+4. 완료
