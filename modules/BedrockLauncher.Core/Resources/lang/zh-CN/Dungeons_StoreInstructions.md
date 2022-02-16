@@ -1,41 +1,41 @@
-﻿# Part 1 - The Powershell Script
-The Windows Store version of Minecraft Dungeons normally won't let you modify its files/folders. To get around this issue, follow these steps:
+﻿# 第一部分 - Powershell脚本
+通常来说，Windows Store版本的Minecraft Dungeons不允许你修改其文件或文件夹。 要解决这个问题，请执行以下步骤：
 
-## Prerequisites:
-- Temporarily disable any antivirus software. Most will detect that an unknown script is being run and try to stop it.
-- If you use Bitdefender, you need to uninstall it before continuing, as it breaks the script even when turned off.
-- Make sure you have at least 10 GBs of space free.
-- Make sure your game is up to date. To do this, press Win + R, enter `ms-windows-store://DownloadsAndUpdates/` and press enter. Then, press "Get updates" in the top right corner of the window that opens.
-- Install [Visual C++ Redist](https://aka.ms/vs/16/release/vc_redist.x64.exe). Even if you think you have it installed, try the installer. You may have an older version that won't work.
+## 准备工作：
+- 请暂时禁用任何杀毒软件。 当侦测到一个未知的脚本在运行时，绝大多数杀毒软件会尝试去阻止该脚本的运行。
+- 如果你使用的杀毒软件是Bitdefender，则需要在继续后续步骤之前将其卸载，因为即使将其关闭它也会中断脚本的运行。
+- 请确保你至少有10 GB的可用空间。
+- 请确保你的游戏是最新版本。 为了确保这一点，请按Win + R，输入`ms-windows-store://DownloadsAndUpdates/`，并按Enter。 然后，在打开的窗口中按右上角的“获取更新”。
+- 安装[Visual C++ Redist](https://aka.ms/vs/16/release/vc_redist.x64.exe)。 即使你认为你已安装有该软件，也请再次尝试执行一次安装程序。 因为你可能装有一个在本指导中不适用的旧版本。
 
-## In the Bedrock Launcher:
-1. Make Sure your game variant is set to `Microsoft Store`
-3. Click on `Install Store Patch`
+## 在Bedrock Launcher中：
+1. 请确保你的游戏变体已设置为`Microsoft Store`
+3. 点击`安装商店补丁`
 
-## In the Powershell Window:
+## 在Powershell窗口中：
 
-3. You will be asked to select a folder. Choose an empty folder where you want the game to be moved to. Do not choose a folder in Program Files or One Drive, it will break things.
-4. The game will open at one point. Do not close it when this happens. If you run into any issues, make sure to check the Troubleshooting section below.
-5. A `~mods` folder will appear. This is where you place your mods.
-7. Launching the modded game is just like launching the regular game. You can do it from the start menu, Windows Store, Xbox app, and so on, just like you normally do. Do NOT try to launch it by running the .exe files in the game folder.
+3. 系统将要求你选择一个文件夹。 请选择一个空文件夹，以便将游戏移动至该文件夹。 请勿选择Program Files或One Drive中的文件夹，否则一些文件将遭到破坏。
+4. 游戏将在某一时刻打开。 当发生这种情况时请勿关闭游戏。 如果你遇到任何问题，请务必检查下面的故障排除段落。
+5. 一个`~mods`文件夹将会出现 这是便是你放置模组的地方。
+7. 启动模组修改过的游戏和启动常规游戏一样。 你可以像往常一样从开始菜单、Windows应用商店、Xbox应用中等方式执行此操作。 请**勿**尝试通过运行游戏文件夹中的.exe文件来启动它。
 
-## Troubleshooting:
-- If you run into any issues while/after patching the game, some of these things might help you.
-- If the game didn't open at all while patching and the patching didn't work, try opening the game manually before running the patcher. Keep the game open until it either closes by itself or the patcher finishes.
-- If you get an error saying it can't verify your ownership of the game, you must have launched the game using the .exe file. Don't do that. Run the game from the start menu, Windows Store, or Xbox app. If you did, but still get this error, reinstall the regular game and log in at least once (open the game and select a character) before patching it.
+## 故障排除：
+- 如果你在对游戏打补丁时或之后遇到任何问题，这里一些内容可能会对你有所帮助。
+- 如果在打补丁时游戏根本没有打开并且补丁也没有成功打在游戏上，请在运行补丁程序之前尝试手动打开游戏。 请保持游戏打开，直到它自行关闭或补丁程序完成运行。
+- 如果你得到一个显示无法验证你对游戏所有权的错误消息，则你一定是使用.exe文件启动了游戏。 请勿如此操作。 请从开始菜单、Windows应用商店或Xbox应用运行游戏。 如果你这样做了，但仍然出现此错误，请重新安装常规游戏并至少登录一次（打开游戏并选择一个角色），然后再对其打补丁。
 
-# Part 2 - The Bedrock Launcher Setup
-1. Set the install location to the folder containing `Dungeons.exe`. It should be in a parent folder of the `~mods` folder from earlier
-2. Select where you want your symbolic mods folder to be (it should not be in the same location as `~mods` folder from earlier)
-3. Click on `Install Symbolic Link`
-4. Your game's mod folder should now be paired with your symbolic mods folder
+# 第二部分 - Bedrock Launcher中配置的安装
+1. 将安装位置设置为包含`Dungeons.exe`的文件夹。 该文件应该位于之前`~mods`文件夹的父文件夹中
+2. 选择你所希望的用于符号链接的模组文件夹所在的位置（它不应与之前的`~mods`文件夹位于同一位置）
+3. 点击`安装符号链接`
+4. 你的游戏的模组文件夹现在应该已与你的符号链接模组文件夹配对
 
-# How to Update
-1. Click on `Uninstall Symbolic Link`
-2. Click on `Update Store Patch`
-3. Repeat Steps 3 through 6 of Part 1 if nessisary
-4. Repeat Steps 1 through 4 of Part 2
-5. Done
+# 如何更新
+1. 点击`卸载符号链接`
+2. 点击`更新商店补丁`
+3. 如有必要，请重复第一部分的步骤3至6
+4. 重复第二部分的步骤1至4
+5. 完成
 
 
 
