@@ -9,18 +9,18 @@ La versión de Windows Store de Minecraft Dungeons normalmente no te permite mod
 - Instala [Visual C++ Redist](https://aka.ms/vs/16/release/vc_redist.x64.exe). Incluso si crees que lo tienes instalado, pruebe a usar el instalador. Podrías tener una versión anterior que no funcione.
 
 ## En el lanzador de Bedrock:
-1. Make Sure your game variant is set to `Microsoft Store`
-3. Click on `Install Store Patch`
+1. Asegúrate de que la variante de tu juego está establecida como `Microsoft Store`
+3. Haz clic en `Instalar Parche de Tienda`
 
-## In the Powershell Window:
+## En la ventana de Powershell:
 
-3. You will be asked to select a folder. Choose an empty folder where you want the game to be moved to. Do not choose a folder in Program Files or One Drive, it will break things.
-4. The game will open at one point. Do not close it when this happens. If you run into any issues, make sure to check the Troubleshooting section below.
-5. A `~mods` folder will appear. This is where you place your mods.
-7. Launching the modded game is just like launching the regular game. You can do it from the start menu, Windows Store, Xbox app, and so on, just like you normally do. Do NOT try to launch it by running the .exe files in the game folder.
+3. Se te pedirá que elijas una carpeta. Elige una carpeta vacía a la que quieras mover el juego. No elijas una carpeta en los Archivos del Programa o en OneDrive, eso rompe cosas.
+4. El juego se abrirá en algún momento. No lo cierres cuando ocurra esto. Si te encuentras algún problema, asegúrate de revisar la sección de Solución de Problemas a continuación.
+5. Una carpeta llamada `~mods` aparecerá. Aquí es donde pones tus mods.
+7. Lanzar el juego con mods es igual que lanzar el juego normal. Puedes hacerlo desde el menú de inicio, Windows Store, la aplicación de Xbox, etc., como haces normalmente. NO intente lanzarlo ejecutando los archivos .exe en la carpeta del juego.
 
-## Troubleshooting:
-- If you run into any issues while/after patching the game, some of these things might help you.
+## Solución de Problemas:
+- Si te encuentras con algún problema durante o después de parchear el juego, algunas de estas cosas podrían ayudarte.
 - If the game didn't open at all while patching and the patching didn't work, try opening the game manually before running the patcher. Keep the game open until it either closes by itself or the patcher finishes.
 - If you get an error saying it can't verify your ownership of the game, you must have launched the game using the .exe file. Don't do that. Run the game from the start menu, Windows Store, or Xbox app. If you did, but still get this error, reinstall the regular game and log in at least once (open the game and select a character) before patching it.
 
