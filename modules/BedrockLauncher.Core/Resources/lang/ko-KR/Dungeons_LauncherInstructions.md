@@ -1,13 +1,13 @@
-﻿# Setup
-1. In your Minecraft Launcher, click Minecraft Dungeons and select `Installations`
-2. You will see a folder path above two buttons, copy it and append `\dungeons\dungeons` to it
-3. In the Bedrock Launcher, set the install location to this path
-4. Select where you want your symbolic mods folder to be (it should not be placed within your game's installation folder)
-5. Click on `Install Symbolic Link`
-6. Your game's mod folder should now be paired with your symbolic mods folder
+﻿# 설치
+1. Minecraft 런처에서, Minecraft Dungeons를 클릭하고 `설치` 선택
+2. 두 버튼 위에 폴더 경로가 보이면, 복사하고 뒤에 `\dungeons\dungeons` 덧붙이기
+3. Bedrock 런처에서, 해당 위치를 설치 경로로 지정
+4. 심볼릭 모드 폴더로 사용하고자 하는 폴더 선택 (선택하는 폴더가 게임의 설치 폴더 내에 있지 않아야 합니다)
+5. `심볼릭 링크 설치` 클릭
+6. 게임의 모드 폴더가 심볼릭 모드 폴더와 동기화됨
 
-# How to Update
-1. Click on `Uninstall Symbolic Link` in the Bedrock Launcher
-2. Update the Game through the Minecraft Launcher
-3. Click on `Install Symbolic Link` in the Bedrock Launcher
-4. Done
+# 업데이트 방법
+1. Bedrock 런처 내 `심볼릭 링크 제거` 클릭
+2. Minecraft 런처로 게임 업데이트
+3. Bedrock 런처 내 `심볼릭 링크 설치` 클릭
+4. 완료
