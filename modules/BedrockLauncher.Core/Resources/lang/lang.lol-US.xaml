@@ -6,7 +6,7 @@
 
     <!--#region MainWindow -->
 
-    <v:String x:Key="MainWindow_Title">Minecraft Bedrock Launcher</v:String>
+    <v:String x:Key="MainWindow_Title">Dinecraft DedRock Danucher</v:String>
     <v:String x:Key="MainWindow_Disclaimer">NOT ASSOCIATED OR APPROVED BY MOJANG</v:String>
 
     <!--#endregion-->
@@ -14,50 +14,50 @@
     <!-- #region CommunityPage -->
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
-    <v:String x:Key="CommunityPage_ComingSoon">Coming Soon!</v:String>
-    <v:String x:Key="CommunityPage_CheckBackLater">Check back here later for something SUPER DUPER AWESOME!</v:String>
+    <v:String x:Key="CommunityPage_ComingSoon">Ya need to wait lad!</v:String>
+    <v:String x:Key="CommunityPage_CheckBackLater">Somethin'  BLOCK BREAKIN' comin'  soooon</v:String>
 
     <!-- #endregion -->
 
     <!--#region ToolbarButtons -->
 
-    <v:String x:Key="ToolbarButtons_NewsButton_Text">News</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java Launcher</v:String>
-    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Custom Launcher</v:String>
-    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Switch to</v:String>
-    <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
-    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Community</v:String>
-    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">Profile</v:String>
-    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Settings</v:String>
+    <v:String x:Key="ToolbarButtons_NewsButton_Text">Fax</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Unbreakable Block Game Edition</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Bava Edition</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Bava Launcher</v:String>
+    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Yer Launcher</v:String>
+    <v:String x:Key="ToolbarButtons_SwitchEdition_Text">What ye waana play</v:String>
+    <v:String x:Key="ToolbarButtons_Minecraft_Text">BLOCK GAME:</v:String>
+    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Social Hub</v:String>
+    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">You</v:String>
+    <v:String x:Key="ToolbarButtons_SettingsButton_Text">Technical Side</v:String>
 
     <!--#endregion-->
 
     <!--#region UpdateButton-->
 
-    <v:String x:Key="UpdateButton_NewUpdate_Text">New Update!</v:String>
-    <v:String x:Key="UpdateButton_Download_Text">Click to download!</v:String>
+    <v:String x:Key="UpdateButton_NewUpdate_Text">Oldn't Update!</v:String>
+    <v:String x:Key="UpdateButton_Download_Text">Just click it ez!</v:String>
 
     <!--#endregion-->
 
     <!--#region ProgressBar -->
 
     <v:String x:Key="ProgressBar_Downloading">Dwnlodin</v:String>
-    <v:String x:Key="ProgressBar_Installing">Installing</v:String>
-    <v:String x:Key="ProgressBar_Launching">Launching</v:String>
+    <v:String x:Key="ProgressBar_Installing">Doing the final thing</v:String>
+    <v:String x:Key="ProgressBar_Launching">Launching Block Game</v:String>
     <v:String x:Key="ProgressBar_Extracting">Extracting</v:String>
-    <v:String x:Key="ProgressBar_Uninstalling">Uninstalling</v:String>
+    <v:String x:Key="ProgressBar_Uninstalling">Getting rid of it</v:String>
     <v:String x:Key="ProgressBar_RegisteringPackage">Registering Package</v:String>
     <v:String x:Key="ProgressBar_RemovingPackage">Unregistering Package</v:String>
-    <v:String x:Key="ProgressBar_BackingUp">Backing up Save Data</v:String>
+    <v:String x:Key="ProgressBar_BackingUp">Backing up yer data</v:String>
 
     <!--#endregion-->
 
     <!--#region ProfileButton -->
 
-    <v:String x:Key="ProfileButton_ManageProfiles_Text">Manage Profiles</v:String>
-    <v:String x:Key="ProfileButton_ProfileSettings_Text">Profile Settings</v:String>
+    <v:String x:Key="ProfileButton_ManageProfiles_Text">Manage yer profile</v:String>
+    <v:String x:Key="ProfileButton_ProfileSettings_Text">Yer profile settings</v:String>
     <v:String x:Key="ProfileButton_AddProfile_Text">Add Profile</v:String>
     <v:String x:Key="ProfileButton_RemoveProfile_Text">Remove Profile</v:String>
     <v:String x:Key="ProfileButton_ChooseAccount_Text">CHOOSE PROFILE</v:String>
