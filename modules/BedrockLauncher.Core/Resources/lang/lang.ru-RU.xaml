@@ -7,7 +7,7 @@
     <!--#region MainWindow -->
 
     <v:String x:Key="MainWindow_Title">Лаунчер Minecraft Bedrock</v:String>
-    <v:String x:Key="MainWindow_Disclaimer">НЕ СВЯЗАНО С ИЛИ ОДОБРЕНО MOJANG</v:String>
+    <v:String x:Key="MainWindow_Disclaimer">НЕ СВЯЗАНО И НЕ ОДОБРЕНО MOJANG</v:String>
 
     <!--#endregion-->
     
@@ -69,7 +69,7 @@
     <!-- #region Dungeons Section -->
 
     <v:String x:Key="Dungeons_InstallationPage_GameVariant">ВАРИАНТ ИГРЫ</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Windows Лаунчер</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Лаунчер для Windows</v:String>
     <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Steam</v:String>
     <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Microsoft Store</v:String>
     <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Стандартный путь&gt;</v:String>
@@ -367,7 +367,7 @@
     <v:String x:Key="Error_CantFindJavaLauncher_Title">Не удалось переключить лаунче</v:String>
     <v:String x:Key="Error_CantFindJavaLauncher">Не удалось найти лаунчер. Убедись, что у тебя установлен оригинальный лаунчер Minecraft с Minecraft.net.</v:String>
 
-    <v:String x:Key="Error_AppReregisterFailed_Title">Перерегистрация приложения не удалась</v:String>
+    <v:String x:Key="Error_AppReregisterFailed_Title">Не удалось зарегистрировать приложение</v:String>
     <v:String x:Key="Error_AppReregisterFailed">Повтори попытку :(</v:String>
 
     <v:String x:Key="Error_AppDeregisteringFailed_Title">Не удалось перерегистрировать приложение</v:String>
