@@ -6,7 +6,7 @@
 
     <!--#region MainWindow -->
 
-    <v:String x:Key="MainWindow_Title">Dinecraft DedRock Danucher</v:String>
+    <v:String x:Key="MainWindow_Title">Unbreakable Block Game Launcher</v:String>
     <v:String x:Key="MainWindow_Disclaimer">NOT ASSOCIATED OR APPROVED BY MOJANG</v:String>
 
     <!--#endregion-->
@@ -22,13 +22,13 @@
     <!--#region ToolbarButtons -->
 
     <v:String x:Key="ToolbarButtons_NewsButton_Text">Fax</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Unbreakable Block Game Edition</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Unbreakable Edition</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Bava Edition</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Bava Launcher</v:String>
     <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Yer Launcher</v:String>
     <v:String x:Key="ToolbarButtons_SwitchEdition_Text">What ye waana play</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">BLOCK GAME:</v:String>
-    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Social Hub</v:String>
+    <v:String x:Key="ToolbarButtons_CommunityButton_Text">Gud people</v:String>
     <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">You</v:String>
     <v:String x:Key="ToolbarButtons_SettingsButton_Text">Technical Side</v:String>
 
@@ -44,12 +44,12 @@
     <!--#region ProgressBar -->
 
     <v:String x:Key="ProgressBar_Downloading">Dwnlodin</v:String>
-    <v:String x:Key="ProgressBar_Installing">Doing the final thing</v:String>
-    <v:String x:Key="ProgressBar_Launching">Launching Block Game</v:String>
-    <v:String x:Key="ProgressBar_Extracting">Extracting</v:String>
+    <v:String x:Key="ProgressBar_Installing">Installin'</v:String>
+    <v:String x:Key="ProgressBar_Launching">Launchin'</v:String>
+    <v:String x:Key="ProgressBar_Extracting">Extractin'</v:String>
     <v:String x:Key="ProgressBar_Uninstalling">Getting rid of it</v:String>
-    <v:String x:Key="ProgressBar_RegisteringPackage">Registering Package</v:String>
-    <v:String x:Key="ProgressBar_RemovingPackage">Unregistering Package</v:String>
+    <v:String x:Key="ProgressBar_RegisteringPackage">Registerin' Package</v:String>
+    <v:String x:Key="ProgressBar_RemovingPackage">Unregisterin' Package</v:String>
     <v:String x:Key="ProgressBar_BackingUp">Backing up yer data</v:String>
 
     <!--#endregion-->
@@ -58,9 +58,9 @@
 
     <v:String x:Key="ProfileButton_ManageProfiles_Text">Manage yer profile</v:String>
     <v:String x:Key="ProfileButton_ProfileSettings_Text">Yer profile settings</v:String>
-    <v:String x:Key="ProfileButton_AddProfile_Text">Add Profile</v:String>
+    <v:String x:Key="ProfileButton_AddProfile_Text">Add Profil</v:String>
     <v:String x:Key="ProfileButton_RemoveProfile_Text">Remove Profile</v:String>
-    <v:String x:Key="ProfileButton_ChooseAccount_Text">CHOOSE PROFILE</v:String>
+    <v:String x:Key="ProfileButton_ChooseAccount_Text">CHOOSE YER PROFILE</v:String>
 
     <!--#endregion-->
 
@@ -69,13 +69,13 @@
     <!-- #region Dungeons Section -->
 
     <v:String x:Key="Dungeons_InstallationPage_GameVariant">GAME VARIANT</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Windows Launcher</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Steam</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Microsoft Store</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Windowz Launcha</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Steeeeam</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Micro-Soft Store</v:String>
     <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Default path&gt;</v:String>
     <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">INSTALL LOCATION</v:String>
     <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">SYMBOLIC MODS FOLDER LOCATION</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Instructions</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Guide and related stuff</v:String>
     <v:String x:Key="Dungeons_InstallationPage_PathsTab">Paths</v:String>
     <v:String x:Key="Dungeons_InstallationPage_GeneralTab">General</v:String>
     <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Install Store Patch</v:String>
@@ -91,9 +91,9 @@
 
     <!--#region GameTab -->
 
-    <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
+    <v:String x:Key="GameTab_Title">BLOCK GAME: UNBREAKABLE EDITION</v:String>
     <v:String x:Key="GameTab_PlayButton_Text">Pley</v:String>
-    <v:String x:Key="GameTab_PlayButton_Kill_Text">Kil</v:String>
+    <v:String x:Key="GameTab_PlayButton_Kill_Text">Stab</v:String>
     <v:String x:Key="GameTab_InstallationsButton_Text">Instaladionz</v:String>
     <v:String x:Key="GameTab_SkinsButton_Text">Furz</v:String>
     <v:String x:Key="GameTab_PatchNotesButton_Text">Patch notes</v:String>
@@ -120,7 +120,7 @@
     <v:String x:Key="EditInstallationScreen_CreateButton">Craet</v:String>
     <v:String x:Key="EditInstallationScreen_AltCreateButton">Saev</v:String>
 
-    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Latest beta</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Newest Block Game beta</v:String>
     <v:String x:Key="EditInstallationScreen_LatestRelease">latest releez</v:String>
 
     <v:String x:Key="EditInstallationScreen_NameSubtitle">NAEM</v:String>
@@ -134,34 +134,34 @@
 
     <!--#region PatchNotesPage -->
 
-    <v:String x:Key="PatchNotesPage_MorePatchNotes">More patch notes</v:String>
-    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">More beta patch notes</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotes">Moer Pach Nots</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">Mor Btea Pach Nots</v:String>
 
     <!--#endregion-->
 
     <!--#region SkinsPage -->
 
-    <v:String x:Key="SkinsPage_AddButton">New...</v:String>
-    <v:String x:Key="SkinsPage_ImportButton">Import...</v:String>
+    <v:String x:Key="SkinsPage_AddButton">Nwe...</v:String>
+    <v:String x:Key="SkinsPage_ImportButton">Pimport...</v:String>
 
     <!--#endregion-->
 
     <!--#region EditSkinScreen -->
 
-    <v:String x:Key="EditSkinScreen_Title">Edit Skin</v:String>
-    <v:String x:Key="EditSkinScreen_AltTitle">Add Skin</v:String>
+    <v:String x:Key="EditSkinScreen_Title">Edit yer skin</v:String>
+    <v:String x:Key="EditSkinScreen_AltTitle">Add furz</v:String>
 
-    <v:String x:Key="EditSkinScreen_TextureSubtitle">TEXTURE</v:String>
-    <v:String x:Key="EditSkinScreen_GeometrySubtitle">GEOMETRY</v:String>
-    <v:String x:Key="EditSkinScreen_TypeSubtitle">TYPE</v:String>
+    <v:String x:Key="EditSkinScreen_TextureSubtitle">TEXTR</v:String>
+    <v:String x:Key="EditSkinScreen_GeometrySubtitle">GOMETY</v:String>
+    <v:String x:Key="EditSkinScreen_TypeSubtitle">TYP</v:String>
     <v:String x:Key="EditSkinScreen_LocalizationSubtitle">LOCALIZATION NAME</v:String>
 
     <!--#endregion-->
 
     <!--#region EditSkinPackScreen -->
 
-    <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">DESCRIPTION</v:String>
-    <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">GEOMETRY</v:String>
+    <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">DEPSRICTON</v:String>
+    <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">GOMETY</v:String>
 
     <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">LOCALIZATION NAME</v:String>
     <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">SERIALIZATION NAME</v:String>
