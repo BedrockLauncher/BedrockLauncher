@@ -207,21 +207,6 @@ namespace BedrockLauncher.Components.CefSharp
         {
             return Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "Runtimes", Environment.Is64BitProcess ? "win-x64" : "win-x86", "native");
         }
-        private static Assembly Resolver(object sender, ResolveEventArgs args)
-        {
-            // Will attempt to load missing assembly from either x86 or x64 subdir
-            // Required by CefSharp to load the unmanaged dependencies when running using AnyCPU
-            if (args.Name.StartsWith("CefSharp"))
-            {
-                string assemblyName = args.Name.Split(new[] { ',' }, 2)[0] + ".dll";
-                string archSpecificPath = Path.Combine(GetCefPath(), assemblyName);
-
-                return File.Exists(archSpecificPath) ? Assembly.LoadFile(archSpecificPath) : null;
-            }
-
-
-            return null;
-        }
         private static IBrowserSettings GetBrowserSettings()
         {
             BrowserSettings settings = new BrowserSettings();
