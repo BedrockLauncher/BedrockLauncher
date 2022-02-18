@@ -68,6 +68,9 @@
     <None Update="app.manifest">
       <SubType>Designer</SubType>
     </None>
+    <None Update="Directory.Build.props">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
     <None Update="nlog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -85,7 +88,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="CefSharp.Common" Version="97.1.12" />
     <PackageReference Include="CefSharp.Common.NETCore" Version="97.1.12" />
     <PackageReference Include="CefSharp.Wpf.NETCore" Version="97.1.12" />
     <PackageReference Include="CodeHollow.FeedReader" Version="1.2.4" />
