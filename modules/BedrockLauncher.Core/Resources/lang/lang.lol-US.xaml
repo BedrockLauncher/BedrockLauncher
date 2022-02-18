@@ -6,7 +6,7 @@
 
     <!--#region MainWindow -->
 
-    <v:String x:Key="MainWindow_Title">Unbreakable Block Game Launcher</v:String>
+    <v:String x:Key="MainWindow_Title">Unbweakabl Blok Game Launcha</v:String>
     <v:String x:Key="MainWindow_Disclaimer">NOT ASSOCIATED OR APPROVED BY MOJANG</v:String>
 
     <!--#endregion-->
