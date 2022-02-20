@@ -24,7 +24,7 @@ namespace BedrockLauncher.Core.Language
             {
 
                 var languages = new List<LanguageDefinition>();
-                foreach (var lang in GetAvaliableInternalLanguages())
+                foreach (var lang in AvaliableLanuages.GetAll())
                 {
                     try
                     {
@@ -38,34 +38,6 @@ namespace BedrockLauncher.Core.Language
                 }
                 return languages;
             }
-        }
-
-
-
-        private static List<string> GetAvaliableInternalLanguages()
-        {
-            List<string> Langs = new List<string>();
-            try
-            {
-                var assembly = Assembly.GetExecutingAssembly();
-                string resourceName = assembly.GetManifestResourceNames().Single(str => str.EndsWith("AvaliableLanguages.txt"));
-
-                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    string result = reader.ReadToEnd();
-                    foreach (var text in result.Split("\r\n"))
-                        Langs.Add(text);
-                }
-
-
-
-            }
-            catch (Exception ex)
-            {
-                Console.Error.WriteLine(ex);
-            }
-            return Langs;
         }
 
         private static void LanguageChange(LanguageDefinition definition)
