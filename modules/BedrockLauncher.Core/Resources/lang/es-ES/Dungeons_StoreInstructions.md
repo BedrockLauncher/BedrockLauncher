@@ -21,7 +21,7 @@ La versión de Windows Store de Minecraft Dungeons normalmente no te permite mod
 
 ## Solución de Problemas:
 - Si te encuentras con algún problema durante o después de parchear el juego, algunas de estas cosas podrían ayudarte.
-- If the game didn't open at all while patching and the patching didn't work, try opening the game manually before running the patcher. Keep the game open until it either closes by itself or the patcher finishes.
+- Si el juego no se abrió mientras se aplicaba el parche y este no funcionó, intenta abrir el juego manualmente antes de ejecutar el parche. Keep the game open until it either closes by itself or the patcher finishes.
 - If you get an error saying it can't verify your ownership of the game, you must have launched the game using the .exe file. Don't do that. Run the game from the start menu, Windows Store, or Xbox app. If you did, but still get this error, reinstall the regular game and log in at least once (open the game and select a character) before patching it.
 
 # Part 2 - The Bedrock Launcher Setup
