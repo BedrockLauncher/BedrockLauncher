@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Extensions.System.Runtime.InteropServices
+namespace JemExtensions.System.Runtime.InteropServices
 {
     public static class OperatingSystem
     {

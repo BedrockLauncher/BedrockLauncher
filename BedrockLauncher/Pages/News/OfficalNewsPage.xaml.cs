@@ -20,7 +20,7 @@ using BedrockLauncher.Controls.Items;
 using System.Net;
 using System.Net.Http;
 using System.Collections.ObjectModel;
-using Extensions;
+using JemExtensions;
 using BedrockLauncher.ViewModels;
 using BedrockLauncher.Handlers;
 using BedrockLauncher.Controls.Items.News;

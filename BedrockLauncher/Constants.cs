@@ -26,6 +26,10 @@ namespace BedrockLauncher
             return type == VersionType.Preview ? MINECRAFT_PREVIEW_PACKAGE_FAMILY : MINECRAFT_PACKAGE_FAMILY;
         }
 
+
+        public const string ElevationExePath = "BedrockLauncher.Elevated.exe";
+
+
         private const string ThemesPathPrefix = @"pack://application:,,,/BedrockLauncher;component/resources/images/bg/play_screen/";
 
         public static Dictionary<string, string> Themes = new Dictionary<string, string>()
@@ -83,6 +87,7 @@ namespace BedrockLauncher
                 return options;
             }
         }
+
 
         public static class Debugging
         {

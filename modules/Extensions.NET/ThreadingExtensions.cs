@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Runtime.Versioning;
 using System.Runtime.InteropServices;
 
-namespace Extensions
+namespace JemExtensions
 {
     public static class ThreadingExtensions
     {

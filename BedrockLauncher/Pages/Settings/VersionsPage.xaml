@@ -6,7 +6,7 @@
       xmlns:p="clr-namespace:BedrockLauncher.Properties"
       xmlns:classes="clr-namespace:BedrockLauncher.Classes"
       xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
-      xmlns:converters="clr-namespace:Extensions.WPF.Converters;assembly=ExtensionsDotNET"
+      xmlns:converters="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
       xmlns:local="clr-namespace:BedrockLauncher"
       mc:Ignorable="d" 
       d:DataContext="{d:DesignInstance Type=viewModels:MainViewModel}"

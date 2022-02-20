@@ -6,7 +6,7 @@
              xmlns:p="clr-namespace:BedrockLauncher.Properties"
              xmlns:classes="clr-namespace:BedrockLauncher.Classes"
              xmlns:models="clr-namespace:BedrockLauncher.ViewModels"
-             xmlns:beh="clr-namespace:Extensions.WPF.Behaviours;assembly=ExtensionsDotNET"
+             xmlns:beh="clr-namespace:JemExtensions.WPF.Behaviours;assembly=JemExtensions"
              xmlns:controls="clr-namespace:BedrockLauncher.Controls"
              xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
              xmlns:local="clr-namespace:BedrockLauncher.Controls.Toolbar"

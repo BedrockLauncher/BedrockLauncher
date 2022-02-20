@@ -21,7 +21,7 @@ namespace BedrockLauncher.Components.CefSharp
             Uri u = new Uri(request.Url);
 
             string resourceName = string.Format("Runtimes/{0}{1}", u.Authority, u.AbsolutePath).ToLower();
-            string resourceManifestName = $"SkinView3D.{resourceName.Replace("/", ".")}";
+            string resourceManifestName = $"BedrockLauncher.SkinView3D.{resourceName.Replace("/", ".")}";
             var assembly = typeof(SkinView3D.Class).Assembly;
             var resources = assembly.GetManifestResourceNames();
             bool validResource = resources.ToList().Exists(x => x.Equals(resourceManifestName, StringComparison.InvariantCultureIgnoreCase));

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BedrockLauncher.Controls.Items.News"
              xmlns:classes="clr-namespace:BedrockLauncher.Classes.Launcher"
-             xmlns:converters="clr-namespace:Extensions.WPF.Converters;assembly=ExtensionsDotNET"
+             xmlns:converters="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
              x:Name="FeedItemEntry"
              d:DataContext="{d:DesignInstance Type=classes:PatchNote}"
              mc:Ignorable="d" 

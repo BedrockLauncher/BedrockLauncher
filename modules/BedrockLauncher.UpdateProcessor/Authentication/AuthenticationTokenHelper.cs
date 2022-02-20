@@ -12,11 +12,18 @@ namespace BedrockLauncher.UpdateProcessor.Authentication
 {
     public class AuthenticationTokenHelper
     {
-        private const string DLLName = "TokenBroker.dll";
+        private const string DLLName = "BedrockLauncher.TokenBroker.dll";
+        private const string RuntimesDirName = "Runtimes";
+        private static string GetEnv()
+        {
+            return Environment.Is64BitProcess ? "win-x64" : "win-x86";
+        }
+
+
         static AuthenticationTokenHelper() { Init(); }
         private static void Init()
         {
-            string dllImport = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Runtimes", "WUTokenHelper", Environment.Is64BitProcess ? "x64" : "Win32", DLLName);
+            string dllImport = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, RuntimesDirName, GetEnv(), DLLName);
             InteropExtensions.LoadLibrary(dllImport);
         }
 

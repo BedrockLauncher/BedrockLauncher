@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:bl="clr-namespace:BedrockLauncher.Core.Language;assembly=BedrockLauncher.Core"
-             xmlns:conv="clr-namespace:Extensions.WPF.Converters;assembly=ExtensionsDotNET"
+             xmlns:conv="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:md="clr-namespace:MdXaml;assembly=MdXaml"
              xmlns:properties="clr-namespace:BedrockLauncher.Dungeons.Properties"

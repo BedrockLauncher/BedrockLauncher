@@ -22,7 +22,7 @@ using Path = System.IO.Path;
 using System.IO.Compression;
 using BedrockLauncher.Pages.Preview;
 using BedrockLauncher.Pages.Common;
-using Extensions;
+using JemExtensions;
 using BedrockLauncher.Classes;
 using BedrockLauncher.ViewModels;
 using BedrockLauncher.UI.Pages.Common;
@@ -75,12 +75,12 @@ namespace BedrockLauncher.Pages.Play
 
                 string InstallationPath = MainViewModel.Default.FilePaths.GetInstallationsFolderPath(MainViewModel.Default.Config.CurrentProfileUUID, installation.DirectoryName);
                 string normal_folder = MainViewModel.Default.FilePaths.GetSkinPacksFolderPath(InstallationPath, installation.VersionType);
-                string dev_folder = MainViewModel.Default.FilePaths.GetSkinPacksFolderPath(InstallationPath, installation.VersionType);
+                string dev_folder = MainViewModel.Default.FilePaths.GetSkinPacksFolderPath(InstallationPath, installation.VersionType, true);
 
-                if (Directory.Exists(normal_folder)) AddPacks(normal_folder);
-                if (Directory.Exists(dev_folder)) AddPacks(dev_folder);
+                if (Directory.Exists(normal_folder)) AddPacks(normal_folder, false);
+                if (Directory.Exists(dev_folder)) AddPacks(dev_folder, true);
 
-                void AddPacks(string _SourceFolder)
+                void AddPacks(string _SourceFolder, bool isDev)
                 {
                     var SourceFolder = new DirectoryInfo(_SourceFolder);
                     var FoundFolders = SourceFolder.GetDirectories();
@@ -88,7 +88,7 @@ namespace BedrockLauncher.Pages.Play
                     {
                         if (PossiblePack.GetFiles().ToList().Exists(x => x.Name == "manifest.json"))
                         {
-                            var result = MCSkinPack.ValidatePack(PossiblePack.FullName);
+                            var result = MCSkinPack.ValidatePack(PossiblePack.FullName, isDev);
                             if (result != null)
                             {
                                 ViewModel.SkinPacks.Add(result);

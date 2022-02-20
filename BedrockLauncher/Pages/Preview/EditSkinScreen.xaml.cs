@@ -4,7 +4,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
-using Extensions;
+using JemExtensions;
 using BedrockLauncher.Classes.SkinPack;
 using BedrockLauncher.ViewModels;
 using System.Windows.Navigation;

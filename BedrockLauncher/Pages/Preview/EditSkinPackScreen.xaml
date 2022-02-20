@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BedrockLauncher.Pages.Preview"
-      xmlns:main="clr-namespace:Extensions.WPF.Attributes;assembly=ExtensionsDotNET"
+      xmlns:main="clr-namespace:JemExtensions.WPF.Attributes;assembly=JemExtensions"
       xmlns:v="clr-namespace:System;assembly=mscorlib"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items"
       xmlns:controls="clr-namespace:BedrockLauncher.Controls"

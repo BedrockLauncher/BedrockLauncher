@@ -7,7 +7,7 @@ using System.Windows.Data;
 using System.Windows.Media.Imaging;
 using System.Globalization;
 
-namespace Extensions.WPF.Converters
+namespace JemExtensions.WPF.Converters
 {
     public class UrlToImageSourceConverter : IValueConverter
     {

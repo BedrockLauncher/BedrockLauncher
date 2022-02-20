@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 
-namespace Extensions.WPF.Behaviours
+namespace JemExtensions.WPF.Behaviours
 {
     public class ProgressBarSmoother
     {

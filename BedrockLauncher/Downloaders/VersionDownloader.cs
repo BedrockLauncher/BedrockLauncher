@@ -8,7 +8,7 @@ using BedrockLauncher.UpdateProcessor;
 using BedrockLauncher.UpdateProcessor.Databases;
 using BedrockLauncher.UpdateProcessor.Classes;
 using System.Linq;
-using Extensions;
+using JemExtensions;
 using BedrockLauncher.ViewModels;
 using System.Collections.ObjectModel;
 using System.Windows;

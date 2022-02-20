@@ -16,7 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BedrockLauncher.Core\BedrockLauncher.Core.csproj" />
     <ProjectReference Include="..\BedrockLauncher.UI\BedrockLauncher.UI.csproj" />
-    <ProjectReference Include="..\Extensions.NET\Extensions.csproj" />
+    <ProjectReference Include="..\Extensions.NET\JemExtensions.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\ui\logo\DungeonsLogo.png" />

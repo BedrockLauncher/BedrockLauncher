@@ -11,7 +11,7 @@ using System.Windows.Media;
 
 using System.ComponentModel;
 
-namespace Extensions.WPF
+namespace JemExtensions.WPF
 {
     public class NotifyPropertyChangedBase : INotifyPropertyChanged
     {

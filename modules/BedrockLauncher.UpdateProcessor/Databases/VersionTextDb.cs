@@ -7,7 +7,7 @@ using BedrockLauncher.UpdateProcessor.Enums;
 using BedrockLauncher.UpdateProcessor.Extensions;
 using BedrockLauncher.UpdateProcessor.Handlers;
 using BedrockLauncher.UpdateProcessor.Interfaces;
-using Extensions;
+using JemExtensions;
 
 namespace BedrockLauncher.UpdateProcessor.Databases
 {

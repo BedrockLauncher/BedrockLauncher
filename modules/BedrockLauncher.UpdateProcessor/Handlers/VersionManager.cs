@@ -12,7 +12,7 @@ using BedrockLauncher.UpdateProcessor.Classes;
 using BedrockLauncher.UpdateProcessor.Databases;
 using BedrockLauncher.UpdateProcessor.Enums;
 using BedrockLauncher.UpdateProcessor.Interfaces;
-using Extensions;
+using JemExtensions;
 
 namespace BedrockLauncher.UpdateProcessor.Handlers
 {

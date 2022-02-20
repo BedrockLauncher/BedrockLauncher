@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Threading;
 
-namespace Extensions
+namespace JemExtensions
 {
     public static class FileExtensions
     {

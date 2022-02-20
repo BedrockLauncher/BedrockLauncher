@@ -7,7 +7,7 @@ using System.IO.Compression;
 using System.IO;
 using System.Threading;
 
-namespace Extensions
+namespace JemExtensions
 {
     public static class ZipFileExtensions
     {

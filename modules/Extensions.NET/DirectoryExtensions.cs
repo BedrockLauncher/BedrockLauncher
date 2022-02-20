@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace Extensions
+namespace JemExtensions
 {
     public static class DirectoryExtensions
     {

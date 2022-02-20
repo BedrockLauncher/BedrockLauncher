@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Data;
 
-namespace Extensions.WPF.Converters
+namespace JemExtensions.WPF.Converters
 {
     public sealed class EmptyItemCountConverter : ItemCountConverterBase<Visibility>
     {

@@ -1,0 +1,14 @@
+<Project>
+	<Target Name="BuildFunction" AfterTargets="Build">
+		<MSBuild Condition="'$(Platform)'=='x64'" Projects="$(MSBuildProjectFile)" Properties="Platform=x86;PlatFormTarget=x86" RunEachTargetSeparately="true" />
+	</Target>
+	<Target Name="CleanAll" AfterTargets="Clean">
+		<MSBuild Condition="'$(Platform)'=='x64'" Projects="$(MSBuildProjectFile)" Targets="Clean" Properties="Platform=x86;PlatFormTarget=x86" RunEachTargetSeparately="true" />
+	</Target>
+	<Target Name="Cleanup" AfterTargets="Clean">
+		<!-- Remove bin folder -->
+		<RemoveDir Directories="$(ProjectDir)$(BaseOutputPath)" />
+		<!-- Remove obj folder -->
+		<!-- <RemoveDir Directories="$(ProjectDir)$(BaseIntermediateOutputPath)" /> -->
+	</Target>
+</Project>

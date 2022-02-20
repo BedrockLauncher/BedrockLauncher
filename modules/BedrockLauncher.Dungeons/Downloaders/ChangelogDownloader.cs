@@ -12,7 +12,7 @@ using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using HtmlAgilityPack;
 using System.Text.RegularExpressions;
-using Extensions;
+using JemExtensions;
 using PostSharp.Patterns.Model;
 using System.Windows;
 

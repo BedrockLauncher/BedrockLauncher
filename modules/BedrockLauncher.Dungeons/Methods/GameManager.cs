@@ -219,7 +219,7 @@ namespace BedrockLauncher.Dungeons.Methods
                 string ModsFolder = Path.Combine(GetDungeonsContentFolder(), "Paks", "~mods");
                 string OurFolder = GetOurDungeonsModFolder();
                 Directory.CreateDirectory(OurFolder);
-                Extensions.SymLinkHelper.CreateSymbolicLink(ModsFolder, OurFolder, Extensions.SymLinkHelper.SymbolicLinkType.Directory);
+                JemExtensions.SymLinkHelper.CreateSymbolicLink(ModsFolder, OurFolder, JemExtensions.SymLinkHelper.SymbolicLinkType.Directory);
             }
             catch (Exception ex)
             {

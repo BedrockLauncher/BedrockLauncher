@@ -161,13 +161,13 @@ namespace BedrockLauncher.Classes.SkinPack
             return GetLocalizedString(localization_name, keyName, Lang);
         }
 
-        public static MCSkinPack ValidatePack(string Directory)
+        public static MCSkinPack ValidatePack(string Directory, bool isDev)
         {
             try 
             {
                 string json = File.ReadAllText(Path.Combine(Directory, "manifest.json"));
                 MCSkinPackMainfest mainfest = JsonConvert.DeserializeObject<MCSkinPackMainfest>(json);
-                return new MCSkinPack(Directory, mainfest);
+                return new MCSkinPack(Directory, mainfest, isDev);
             }
             catch
             {

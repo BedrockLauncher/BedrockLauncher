@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:bl="clr-namespace:BedrockLauncher.Core.Language;assembly=BedrockLauncher.Core"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:behaviors="clr-namespace:Extensions.WPF.Behaviours;assembly=ExtensionsDotNET"
+      xmlns:behaviors="clr-namespace:JemExtensions.WPF.Behaviours;assembly=JemExtensions"
       mc:Ignorable="d" Foreground="{x:Null}" Background="#FF303030" Loaded="Page_Loaded">
     <Page.Resources>
         <ResourceDictionary>

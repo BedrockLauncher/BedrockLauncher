@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Extensions
+namespace JemExtensions
 {
 	/// <summary>
 	/// Provides a dictionary for use with data binding.

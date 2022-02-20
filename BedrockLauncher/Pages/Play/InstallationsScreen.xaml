@@ -8,7 +8,7 @@
       xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
       xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
       xmlns:handlers="clr-namespace:BedrockLauncher.Handlers"
-      xmlns:conv="clr-namespace:Extensions.WPF.Converters;assembly=ExtensionsDotNET"
+      xmlns:conv="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
       xmlns:classes2="clr-namespace:BedrockLauncher.Classes"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items.Launcher"
       d:DataContext="{d:DesignInstance Type=viewModels:MainViewModel}"

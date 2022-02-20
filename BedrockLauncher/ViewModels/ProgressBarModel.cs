@@ -9,8 +9,8 @@ using System.Windows.Input;
 using System.Windows.Media.Animation;
 using PostSharp.Patterns.Model;
 using BedrockLauncher.Enums;
-using Extensions;
-using S = Extensions.SpecialExtensions;
+using JemExtensions;
+using S = JemExtensions.SpecialExtensions;
 using System.ComponentModel;
 
 namespace BedrockLauncher.ViewModels
