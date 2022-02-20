@@ -48,9 +48,6 @@
     <Page Remove="Resources\lang\lang.default.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\lang\.root\AvaliableLanguages.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
