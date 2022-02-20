@@ -13,7 +13,7 @@ namespace BedrockLauncher
     {
 
         private static readonly string MINECRAFT_PACKAGE_FAMILY = "Microsoft.MinecraftUWP_8wekyb3d8bbwe";
-        private static readonly string MINECRAFT_PREVIEW_PACKAGE_FAMILY = "MinecraftWindowsBeta_8wekyb3d8bbwe";
+        private static readonly string MINECRAFT_PREVIEW_PACKAGE_FAMILY = "Microsoft.MinecraftWindowsBeta_8wekyb3d8bbwe";
 
         public static readonly string LATEST_BETA_UUID = "latest_beta";
         public static readonly string LATEST_RELEASE_UUID = "latest_release";
@@ -59,8 +59,8 @@ namespace BedrockLauncher
         {
             get
             {
-                var currentArchitecture = RuntimeInformation.ProcessArchitecture;
-                if (currentArchitecture == Architecture.Arm || currentArchitecture == Architecture.Arm64) return "arm";
+                var currentArchitecture = RuntimeInformation.OSArchitecture;
+                if (currentArchitecture == Architecture.Arm64) return "arm";
                 else if (currentArchitecture == Architecture.X86) return "x86";
                 else if (currentArchitecture == Architecture.X64) return "x64";
                 else return "null";
