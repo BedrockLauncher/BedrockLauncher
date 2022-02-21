@@ -2,7 +2,7 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ignore="http://www.galasoft.ch/ignore" xmlns:v="clr-namespace:System;assembly=mscorlib">
     <!--#region Main Section-->
 
-    <v:String x:Key="LanguageString">Inglese - Stati Uniti</v:String>
+    <v:String x:Key="LanguageString">Italiano - Italia</v:String>
 
     <!--#region MainWindow -->
 
@@ -14,8 +14,8 @@
     <!-- #region CommunityPage -->
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
-    <v:String x:Key="CommunityPage_ComingSoon">Presto in arrivo!</v:String>
-    <v:String x:Key="CommunityPage_CheckBackLater">Controlla qui più tardi per qualcosa di SUPER DUPER FANTASTICO!</v:String>
+    <v:String x:Key="CommunityPage_ComingSoon">Prossimamente!</v:String>
+    <v:String x:Key="CommunityPage_CheckBackLater">Ritorna qui più tardi per qualcosa di STRASUPERFANTASTICO!</v:String>
 
     <!-- #endregion -->
 
@@ -25,7 +25,7 @@
     <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
     <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Launcher della Java Edition</v:String>
-    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Launcher Personalizzato</v:String>
+    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Launcher personalizzato</v:String>
     <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Passa a</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
     <v:String x:Key="ToolbarButtons_CommunityButton_Text">Community</v:String>
@@ -36,7 +36,7 @@
 
     <!--#region UpdateButton-->
 
-    <v:String x:Key="UpdateButton_NewUpdate_Text">Nuovo Aggiornamento!</v:String>
+    <v:String x:Key="UpdateButton_NewUpdate_Text">Nuovo aggiornamento!</v:String>
     <v:String x:Key="UpdateButton_Download_Text">Clicca per scaricare!</v:String>
 
     <!--#endregion-->
@@ -48,18 +48,18 @@
     <v:String x:Key="ProgressBar_Launching">Avvio in corso</v:String>
     <v:String x:Key="ProgressBar_Extracting">Estrazione</v:String>
     <v:String x:Key="ProgressBar_Uninstalling">Disinstallazione</v:String>
-    <v:String x:Key="ProgressBar_RegisteringPackage">Registrando Pacchetto</v:String>
-    <v:String x:Key="ProgressBar_RemovingPackage">Cancellazione Registrazione del Pacchetto</v:String>
-    <v:String x:Key="ProgressBar_BackingUp">Backup dei Dati di Salvataggio in corso</v:String>
+    <v:String x:Key="ProgressBar_RegisteringPackage">Registrazione pacchetto in corso</v:String>
+    <v:String x:Key="ProgressBar_RemovingPackage">Annullamento registrazione del pacchetto in corso</v:String>
+    <v:String x:Key="ProgressBar_BackingUp">Back-up dei dati di salvataggio in corso</v:String>
 
     <!--#endregion-->
 
     <!--#region ProfileButton -->
 
-    <v:String x:Key="ProfileButton_ManageProfiles_Text">Gestisci Profili</v:String>
-    <v:String x:Key="ProfileButton_ProfileSettings_Text">Impostazioni del Profilo</v:String>
-    <v:String x:Key="ProfileButton_AddProfile_Text">Aggiungi Profilo</v:String>
-    <v:String x:Key="ProfileButton_RemoveProfile_Text">Rimuovi Profilo</v:String>
+    <v:String x:Key="ProfileButton_ManageProfiles_Text">Gestisci profili</v:String>
+    <v:String x:Key="ProfileButton_ProfileSettings_Text">Impostazioni del profilo</v:String>
+    <v:String x:Key="ProfileButton_AddProfile_Text">Aggiungi profilo</v:String>
+    <v:String x:Key="ProfileButton_RemoveProfile_Text">Rimuovi profilo</v:String>
     <v:String x:Key="ProfileButton_ChooseAccount_Text">SCEGLI IL PROFILO</v:String>
 
     <!--#endregion-->
@@ -148,8 +148,8 @@
 
     <!--#region EditSkinScreen -->
 
-    <v:String x:Key="EditSkinScreen_Title">Modifica Skin</v:String>
-    <v:String x:Key="EditSkinScreen_AltTitle">Aggiungi Skin</v:String>
+    <v:String x:Key="EditSkinScreen_Title">Modifica skin</v:String>
+    <v:String x:Key="EditSkinScreen_AltTitle">Aggiungi skin</v:String>
 
     <v:String x:Key="EditSkinScreen_TextureSubtitle">TEXTURE</v:String>
     <v:String x:Key="EditSkinScreen_GeometrySubtitle">GEOMETRIA</v:String>
@@ -183,10 +183,10 @@
     <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">UUID</v:String>
     <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">VERSIONE</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_Header">Modifica Pacchetto Skin</v:String>
+    <v:String x:Key="EditSkinPackScreen_Header">Modifica pacchetto skin</v:String>
     <v:String x:Key="EditSkinPackScreen_AddHeader">Aggiungi Pacchetto Skin</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_Warning">* Per favore nota che modificando le definizioni del linguaggio e modificando l'icona del pacchetto sono irreversibili sia se salvi i tuoi cambiamenti o no!!!</v:String>
+    <v:String x:Key="EditSkinPackScreen_Warning">* Per favore tieni presente che la modifica delle definizioni del linguaggio e la modifica dell'icona del pacchetto sono azioni irreversibili anche se non salvi le tue modifiche!!!</v:String>
 
     <!--#endregion-->
 
@@ -196,12 +196,12 @@
 
     <!--#region LauncherNewsPage -->
 
-    <v:String x:Key="LauncherNewsPage_Title_Text">Cambiamenti dell'Ultima Versione</v:String>
+    <v:String x:Key="LauncherNewsPage_Title_Text">Cambiamenti dell'ultima versione</v:String>
     <v:String x:Key="LauncherNewsPage_Build_Text">Versione</v:String>
     <v:String x:Key="LauncherNewsPage_Changes_Text">Cambiamenti:</v:String>
-    <v:String x:Key="LauncherNewsPage_CheckForUpdates">Cerca Aggiornamenti</v:String>
-    <v:String x:Key="LauncherNewsPage_ForceUpdate">Forza Aggiornamento</v:String>
-    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Corrente</v:String>
+    <v:String x:Key="LauncherNewsPage_CheckForUpdates">Controlla aggiornamenti</v:String>
+    <v:String x:Key="LauncherNewsPage_ForceUpdate">Forza aggiornamento</v:String>
+    <v:String x:Key="LauncherNewsPage_CurrentBuild_Text">Attuale</v:String>
 
     <!--#endregion-->
 
@@ -212,7 +212,7 @@
     <v:String x:Key="NewsScreen_MinecraftForumsTitle">Minecraft Forums</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
 
-    <v:String x:Key="NewsScreen_SearchBar_Content">Titolo delle Notizie</v:String>
+    <v:String x:Key="NewsScreen_SearchBar_Content">Titolo delle notizie</v:String>
 
     <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
@@ -243,9 +243,9 @@
     <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">IMPOSTAZIONI DEL COLLEGAMENTO</v:String>
     <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Usa la versione beta del Launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Mantieni aperto il Launcher mentre i giochi sono in esecuzione</v:String>
-    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Chiudi il Launcher quandi si cambiano i launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Chiudi il launcher quando si cambia launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Anima le transizioni tra le pagine del launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Anima il tasto gioca nelle pagine Gioca nel Launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Anima il tasto gioca nelle pagine Gioca nel launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Abilita il supporto per Minecraft Dungeons (WIP)</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Mostra informazioni avanzate quando si installano i pacchetti</v:String>
     <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
@@ -263,8 +263,8 @@
     <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Abilita la direzione di salvataggio sperimentale</v:String>
     <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Nascondi il collegamento del launcher Edizione Java</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Mostra il collegamento del launcher esterno</v:String>
-    <v:String x:Key="GeneralSettingsScreen_BackupButton">Backup dei Dati di Salvataggio</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Impostazioni Avanzate</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BackupButton">Back-up dei dati di salvataggio</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Impostazioni avanzate</v:String>
 
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">IMPOSTAZIONI DEI LAUNCHER ESTERNI</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">PERCORSO</v:String>
@@ -278,9 +278,9 @@
 
     <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">ACCOUNT SELEZIONATO</v:String>
     <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">IMPOSTAZIONI INSIDER</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Impostazioni Normali</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Impostazioni Legacy</v:String>
-    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Gestisci Account</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Impostazioni normali</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Impostazioni obsolete</v:String>
+    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Gestisci account</v:String>
     <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">IMPOSTAZIONI ACCOUNT</v:String>
 
     <!--#endregion-->
@@ -289,12 +289,12 @@
 
     <v:String x:Key="AboutPage_Title">INFORMAZIONI SUL LAUNCHER DI MINECRAFT: BEDROCK EDITION</v:String>
     <v:String x:Key="AboutPage_DevelopedBy_Text">SVILUPPATO DA</v:String>
-    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">BIFORCUTO DAL LAVORO DI</v:String>
+    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">UNA FORK DEL LAVORO DI</v:String>
     <v:String x:Key="AboutPage_SpecialThanks_Text">RINGRAZIAMENTI SPECIALI A</v:String>
 
     <v:String x:Key="AboutPage_McMrArm_Text">Per creare il downloader della versione originale 
 di Minecraft per Windows 10 (da cui deriva questo lavoro)</v:String>
-    <v:String x:Key="AboutPage_BsCommunity_Text">Per il loro lavoro su SkinView3D, usato per la visualizzazione della pelle nel launcher</v:String>
+    <v:String x:Key="AboutPage_BsCommunity_Text">Per il loro lavoro su SkinView3D, usato per la visualizzazione delle skin nel launcher</v:String>
     <v:String x:Key="AboutPage_Mojang_Text">Per Minecraft!!!</v:String>
     <v:String x:Key="AboutPage_BsRepo_Text">Repo SkinView3D</v:String>
     <v:String x:Key="AboutPage_CurrentBuild">Build corrente: </v:String>
@@ -323,18 +323,18 @@ di Minecraft per Windows 10 (da cui deriva questo lavoro)</v:String>
     <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Crea il tuo primo profilo!</v:String>
     <v:String x:Key="FirstLaunch_AlmostThereTitle">Ci sei quasi!</v:String>
     <v:String x:Key="FirstLaunch_OneThingTitle">Una cosa...</v:String>
-    <v:String x:Key="FirstLaunch_OneThingSubtitle">Controllali per assicurarti che siano come ti piacciono.</v:String>
+    <v:String x:Key="FirstLaunch_OneThingSubtitle">Controlla queste impostazioni per assicurarti che siano proprio come piacciono a te.</v:String>
     <v:String x:Key="FirstLaunch_ChooseAccountTitle">Scegli un account Insider</v:String>
     <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* Sarà usato per verificare e scaricare le beta. Devi essere all'interno di Xbox Insider Hub con l'account selezionato per scaricare le beta. Potresti dover riavviare il launcher o disinstallare Minecraft per poter riuscire a scaricare le beta.</v:String>
 
-    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Prima di usarlo, è altamente consigliato che premi backup per creare un installazione dei tuoi dati di salvataggio esistente in quanto il launcher sostituisce la directory originale con un link simbolico che ci permette di redirigere i dati di salvataggio.
+    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Prima di usarlo, è vivamente consigliato che tu prema &quot;Fai un back-up&quot; per creare un installazione dei tuoi dati di salvataggio esistenti, in quanto il launcher sostituisce la cartella originale con un link simbolico che ci permette di reindirizzare i dati di salvataggio.
 
- (Non ti preoccupare, non perderai dati facendo questo, perderai dati solo se premi gioca e non hai fatto il backup delle tue cose)</v:String>
+ (Non ti preoccupare, non perderai dati facendo questo, perderai dati solo se premerai &quot;gioca&quot; senza aver fatto il back-up delle tue cose)</v:String>
 
-    <v:String x:Key="FirstLaunch_InstallType_Header">Salva/Carica i Dati del Laucher Da:</v:String>
-    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">Cartella Fissa (Consigliato)</v:String>
-    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">Cartella Portatile/Root</v:String>
-    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Backup dei Dati di Salvataggio Esistenti</v:String>
+    <v:String x:Key="FirstLaunch_InstallType_Header">Salva/Carica i dati del launcher da:</v:String>
+    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">Cartella fissa (consigliato)</v:String>
+    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">Cartella portatile/radice</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Fai un back-up dei dati di salvataggio esistenti</v:String>
     <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(CONSIGLIATO)</v:String>
     <v:String x:Key="FirstLaunch_CloseButton">Chiudi</v:String>
     <v:String x:Key="FirstLaunch_BackButton">Indietro</v:String>
@@ -500,7 +500,7 @@ Questo {0} andrà perso per sempre! (Molto tempo!)</v:String>
     <v:String x:Key="Installer_InstallationProgress_FilesInUse">Alcuni dei file sono attualmente in uso dai seguenti:</v:String>
 
     <v:String x:Key="Installer_InstallationProgress_Title">Installazione</v:String>
-    <v:String x:Key="Installer_InstallationProgress_Info_Text">Please wait while Setup installs Minecraft Bedrock Launcher on your computer.</v:String>
+    <v:String x:Key="Installer_InstallationProgress_Info_Text">Attendi il completamento dell'installazione del launcher di Minecraft Bedrock nel computer.</v:String>
 
 
     <!--#endregion-->
