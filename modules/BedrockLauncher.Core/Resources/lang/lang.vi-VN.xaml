@@ -7,24 +7,24 @@
     <!--#region MainWindow -->
 
     <v:String x:Key="MainWindow_Title">Minecraft Bedrock Launcher</v:String>
-    <v:String x:Key="MainWindow_Disclaimer">NOT ASSOCIATED OR APPROVED BY MOJANG</v:String>
+    <v:String x:Key="MainWindow_Disclaimer">KHÔNG ĐƯỢC MOJANG LIÊN KẾT HOẶC PHÊ DUYỆT</v:String>
 
     <!--#endregion-->
     
     <!-- #region CommunityPage -->
 
     <v:String x:Key="CommunityPage_SupportText"></v:String>
-    <v:String x:Key="CommunityPage_ComingSoon">Coming Soon!</v:String>
-    <v:String x:Key="CommunityPage_CheckBackLater">Check back here later for something SUPER DUPER AWESOME!</v:String>
+    <v:String x:Key="CommunityPage_ComingSoon">Sắp có!</v:String>
+    <v:String x:Key="CommunityPage_CheckBackLater">Hãy kiểm tra lại sau để biết thứ gì đó SIÊU &quot;COMBO&quot; - TUYỆT VỜI!</v:String>
 
     <!-- #endregion -->
 
     <!--#region ToolbarButtons -->
 
-    <v:String x:Key="ToolbarButtons_NewsButton_Text">News</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Bedrock Edition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java Edition</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java Launcher</v:String>
+    <v:String x:Key="ToolbarButtons_NewsButton_Text">Tin tức mới</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">Phiên bản Bedrock</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Phiên bản Java</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Trình khởi chạy Java</v:String>
     <v:String x:Key="ToolbarButtons_CustomLauncher_Text">Custom Launcher</v:String>
     <v:String x:Key="ToolbarButtons_SwitchEdition_Text">Switch to</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
