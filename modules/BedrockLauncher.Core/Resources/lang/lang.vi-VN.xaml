@@ -48,19 +48,19 @@
     <v:String x:Key="ProgressBar_Launching">Đang khởi động</v:String>
     <v:String x:Key="ProgressBar_Extracting">Đang giải nén</v:String>
     <v:String x:Key="ProgressBar_Uninstalling">Đang gỡ cài đặt</v:String>
-    <v:String x:Key="ProgressBar_RegisteringPackage">Registering Package</v:String>
-    <v:String x:Key="ProgressBar_RemovingPackage">Unregistering Package</v:String>
-    <v:String x:Key="ProgressBar_BackingUp">Backing up Save Data</v:String>
+    <v:String x:Key="ProgressBar_RegisteringPackage">Đăng ký gói</v:String>
+    <v:String x:Key="ProgressBar_RemovingPackage">Hủy đăng ký gói</v:String>
+    <v:String x:Key="ProgressBar_BackingUp">Đang sao lưu dữ liệu</v:String>
 
     <!--#endregion-->
 
     <!--#region ProfileButton -->
 
-    <v:String x:Key="ProfileButton_ManageProfiles_Text">Manage Profiles</v:String>
-    <v:String x:Key="ProfileButton_ProfileSettings_Text">Profile Settings</v:String>
-    <v:String x:Key="ProfileButton_AddProfile_Text">Add Profile</v:String>
-    <v:String x:Key="ProfileButton_RemoveProfile_Text">Remove Profile</v:String>
-    <v:String x:Key="ProfileButton_ChooseAccount_Text">CHOOSE PROFILE</v:String>
+    <v:String x:Key="ProfileButton_ManageProfiles_Text">Quản lý hồ sơ</v:String>
+    <v:String x:Key="ProfileButton_ProfileSettings_Text">Cài đặt hồ sơ</v:String>
+    <v:String x:Key="ProfileButton_AddProfile_Text">Thêm Hồ sơ</v:String>
+    <v:String x:Key="ProfileButton_RemoveProfile_Text">Xoá khỏi hồ sơ</v:String>
+    <v:String x:Key="ProfileButton_ChooseAccount_Text">CHỌN HỒ SƠ</v:String>
 
     <!--#endregion-->
 
@@ -68,16 +68,16 @@
     
     <!-- #region Dungeons Section -->
 
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant">GAME VARIANT</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Windows Launcher</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant">BIẾN ĐỔI TRÒ CHƠI</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Trình khởi chạy Windows</v:String>
     <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Steam</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Microsoft Store</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Default path&gt;</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">INSTALL LOCATION</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">SYMBOLIC MODS FOLDER LOCATION</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Instructions</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_PathsTab">Paths</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GeneralTab">General</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Cửa hàng Microsoft</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;đường dẫn mặc định&gt;</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">CÀI ĐẶT VỊ TRÍ</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">VỊ TRÍ THƯ MỤC CHẾ ĐỘ BIỂU TƯỢNG</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Hướng dẫn</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_PathsTab">Đường dẫn</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GeneralTab">Thể loại</v:String>
     <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Install Store Patch</v:String>
     <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Update Store Patch</v:String>
     <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Uninstall Symbolic Link</v:String>
@@ -338,7 +338,7 @@
     <v:String x:Key="FirstLaunch_CloseButton">Đóng</v:String>
     <v:String x:Key="FirstLaunch_BackButton">Quay lại</v:String>
     <v:String x:Key="FirstLaunch_GoBackButton"></v:String>
-    <v:String x:Key="FirstLaunch_CreateProfileText">PROFILE</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileText">HỒ SƠ</v:String>
     <v:String x:Key="FirstLaunch_CreateProfileButton">Tạo</v:String>
     <v:String x:Key="FirstLaunch_NextButton">Tiếp</v:String>
     <v:String x:Key="FirstLaunch_DownloadButton">Tải Về</v:String>
@@ -358,7 +358,7 @@
 
     <!--#region Errors -->
 
-    <v:String x:Key="Error_AuthenticationFailed_Title">Authentication failed</v:String>
+    <v:String x:Key="Error_AuthenticationFailed_Title">Xác nhận thất bại</v:String>
     <v:String x:Key="Error_AuthenticationFailed">Failed to authenticate. Please make sure your account is subscribed to the beta program.</v:String>
 
     <v:String x:Key="Error_CantFindExternalLauncher_Title">Could not switch launcher</v:String>
@@ -371,22 +371,22 @@
     <v:String x:Key="Error_AppReregisterFailed">Please try again :(</v:String>
 
     <v:String x:Key="Error_AppDeregisteringFailed_Title">App de-registration failed</v:String>
-    <v:String x:Key="Error_AppDeregisteringFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed">Vui lòng thử lại sau :(</v:String>
 
-    <v:String x:Key="Error_AppLaunchFailed_Title">Launch failed</v:String>
-    <v:String x:Key="Error_AppLaunchFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppLaunchFailed_Title">Khởi động thất bại</v:String>
+    <v:String x:Key="Error_AppLaunchFailed">Vui lòng thử lại sau :(</v:String>
 
-    <v:String x:Key="Error_AppDownloadFailed_Title">Download failed</v:String>
-    <v:String x:Key="Error_AppDownloadFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppDownloadFailed_Title">Tải xuống thất bại</v:String>
+    <v:String x:Key="Error_AppDownloadFailed">Vui lòng thử lại sau :(</v:String>
 
     <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">Save redirection failed</v:String>
-    <v:String x:Key="Error_SaveDirectoryRedirectionFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed">Vui lòng thử lại sau :(</v:String>
 
-    <v:String x:Key="Error_AppUninstallFailed_Title">Uninstall failed</v:String>
-    <v:String x:Key="Error_AppUninstallFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppUninstallFailed_Title">Gỡ cài đặt thất bại</v:String>
+    <v:String x:Key="Error_AppUninstallFailed">Vui lòng thử lại sau :(</v:String>
 
-    <v:String x:Key="Error_AppExtractionFailed_Title">Extraction failed</v:String>
-    <v:String x:Key="Error_AppExtractionFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppExtractionFailed_Title">Giải nén thất bại</v:String>
+    <v:String x:Key="Error_AppExtractionFailed">Vui lòng thử lại sau :(</v:String>
 
     <v:String x:Key="Error_CantFindPaidServerList_Title">Could not open servers tab</v:String>
     <v:String x:Key="Error_CantFindPaidServerList">Paid Servers List not found.</v:String>
@@ -424,22 +424,22 @@ This {0} will be lost forever! (A long time!)</v:String>
     <v:String x:Key="Dialog_CloseGame_Title">Game is Still Running</v:String>
     <v:String x:Key="Dialog_CloseGame_Text">Would you like to force close it? (without saving changes, this is only recommended if you get stuck, please close the game normally)</v:String>
 
-    <v:String x:Key="DialogBtn_YesToAll_Text">Yes To All</v:String>
-    <v:String x:Key="DialogBtn_NoToAll_Text">No To All</v:String>
-    <v:String x:Key="DialogBtn_Yes_Text">Yes</v:String>
-    <v:String x:Key="DialogBtn_No_Text">No</v:String>
+    <v:String x:Key="DialogBtn_YesToAll_Text">Có Cho Tất cả</v:String>
+    <v:String x:Key="DialogBtn_NoToAll_Text">Không cho Tất cả</v:String>
+    <v:String x:Key="DialogBtn_Yes_Text">Có</v:String>
+    <v:String x:Key="DialogBtn_No_Text">Không</v:String>
 
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">No matching results</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">Không có kế quả tìm kiếm</v:String>
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">We couldn't find news any content matching your search. If you have category filters 
 turned off, try turning the back on and search again</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Loading...</v:String>
-    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Please wait!</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Title">Đang tải...</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Vui lòng chờ!</v:String>
 
-    <v:String x:Key="Dialog_ResultPanel_Error_Title">Error</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Title">Lỗi</v:String>
     <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
 
-    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">No result</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Không có kết quả</v:String>
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Found no items matching your search</v:String>
 
     <!--#endregion-->
@@ -489,33 +489,33 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="Installer_InstallLocation_Info2_Text">click Browse and select another folder.</v:String>
 
     <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Destination Folder</v:String>
-    <v:String x:Key="Installer_InstallLocation_Browse_Text">BROWSE</v:String>
+    <v:String x:Key="Installer_InstallLocation_Browse_Text">DUYỆT</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Create a desktop icon</v:String>
-    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Add to Start menu</v:String>
-    <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">Register Program</v:String>
+    <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Tạo biểu tượng trên màn hình</v:String>
+    <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Thêm vào Start Menu</v:String>
+    <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">Đăng ký chương trình</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">Start Program on Exit</v:String>
+    <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">Bắt đầu chương trình khi thoát</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_FilesInUse">Some of the files are currently in use by the following:</v:String>
+    <v:String x:Key="Installer_InstallationProgress_FilesInUse">Một số tệp hiện đang được sử dụng bởi:</v:String>
 
-    <v:String x:Key="Installer_InstallationProgress_Title">Installing</v:String>
-    <v:String x:Key="Installer_InstallationProgress_Info_Text">Please wait while Setup installs Minecraft Bedrock Launcher on your computer.</v:String>
+    <v:String x:Key="Installer_InstallationProgress_Title">Đang cài đặt</v:String>
+    <v:String x:Key="Installer_InstallationProgress_Info_Text">Vui lòng đợi trong khi trình cài đặt Minecraft Bedrock đang thực hiện trên máy tính của bạn.</v:String>
 
 
     <!--#endregion-->
 
-    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">Unable to Move Directory</v:String>
-    <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">Unable to Move File</v:String>
-    <v:String x:Key="Installer_Dialog_FileLocked_Text">File Being Used</v:String>
-    <v:String x:Key="Installer_Dialog_TryAgain_Text">Try Again?</v:String>
-    <v:String x:Key="Installer_Dialog_ErrorOccured_Text">An error has occurred.</v:String>
+    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">Không thể di chuyển thư mục</v:String>
+    <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">Không thể di chuyển tệp</v:String>
+    <v:String x:Key="Installer_Dialog_FileLocked_Text">Tệp đang được sử dụng</v:String>
+    <v:String x:Key="Installer_Dialog_TryAgain_Text">Thử lần nữa?</v:String>
+    <v:String x:Key="Installer_Dialog_ErrorOccured_Text">Có lỗi đã xảy ra.</v:String>
 
     <!--#region ProgressBar -->
 
-    <v:String x:Key="Installer_ProgressBar_Downloading">Downloading...</v:String>
-    <v:String x:Key="Installer_ProgressBar_Finalizing">Finalizing...</v:String>
-    <v:String x:Key="Installer_ProgressBar_Initalizing">Initializing...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Downloading">Đang tải xuống...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Finalizing">Đang hoàn thiện...</v:String>
+    <v:String x:Key="Installer_ProgressBar_Initalizing">Đang khởi tạo...</v:String>
 
 
     <!--#endregion-->
@@ -539,21 +539,21 @@ turned off, try turning the back on and search again</v:String>
 
     <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">Caves &amp; Cliffs (Part 1)</v:String>
     <v:String x:Key="ThemeEntries_NetherUpdate">Nether Update</v:String>
-    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Buzzy Bees Update</v:String>
-    <v:String x:Key="ThemeEntries_VillagePillageUpdate">Village &amp; Pillage Update</v:String>
-    <v:String x:Key="ThemeEntries_UpdateAquatic">Update Aquatic</v:String>
-    <v:String x:Key="ThemeEntries_TechnicallyUpdated">Technically Updated [Java]</v:String>
-    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">World of Color Update [Java]</v:String>
-    <v:String x:Key="ThemeEntries_ExplorationUpdate">Exploration Update [Java]</v:String>
-    <v:String x:Key="ThemeEntries_CombatUpdate">Combat Update [Java]</v:String>
-    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">Cats &amp; Pandas [Bedrock]</v:String>
-    <v:String x:Key="ThemeEntries_PocketEditionRelease">Official Release [Bedrock]</v:String>
-    <v:String x:Key="ThemeEntries_BedrockStandard">Bedrock Edition Standard</v:String>
-    <v:String x:Key="ThemeEntries_BedrockMaster">Bedrock Edition Master</v:String>
-    <v:String x:Key="ThemeEntries_EarlyLegacyConsole">Original Legacy Console Era</v:String>
-    <v:String x:Key="ThemeEntries_MidLegacyConsole">Mid Legacy Console Era</v:String>
-    <v:String x:Key="ThemeEntries_LateLegacyConsole">Late Legacy Console Era</v:String>
-    <v:String x:Key="ThemeEntries_IndieDays">Indie Days</v:String>
+    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Cập nhật Buzzy Bees</v:String>
+    <v:String x:Key="ThemeEntries_VillagePillageUpdate">Cập nhật Village &amp; Pillage</v:String>
+    <v:String x:Key="ThemeEntries_UpdateAquatic">Cập nhật Biome Nước</v:String>
+    <v:String x:Key="ThemeEntries_TechnicallyUpdated">Cập nhật mặt kỹ thuật [Java]</v:String>
+    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">Cập nhật thế giới màu sắc [Java]</v:String>
+    <v:String x:Key="ThemeEntries_ExplorationUpdate">Cập nhật Khám phá [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CombatUpdate">Cập nhật chiến đấu [Java]</v:String>
+    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">Mèo và gấu trúc [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_PocketEditionRelease">Bản phát hành chính thức [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_BedrockStandard">Bedrock Edition Tiêu chuẩn</v:String>
+    <v:String x:Key="ThemeEntries_BedrockMaster">Bedrock Edition Bậc thầy</v:String>
+    <v:String x:Key="ThemeEntries_EarlyLegacyConsole">Bảng điều khiển kế thừa ban đầu</v:String>
+    <v:String x:Key="ThemeEntries_MidLegacyConsole">Bảng điều khiển kế thừa giữa</v:String>
+    <v:String x:Key="ThemeEntries_LateLegacyConsole">Bảng điều khiển kế thừa muộn</v:String>
+    <v:String x:Key="ThemeEntries_IndieDays">Ngày độc lập</v:String>
     <v:String x:Key="ThemeEntries_Dungeons">Minecraft Dungeons</v:String>
 
 
@@ -561,24 +561,24 @@ turned off, try turning the back on and search again</v:String>
 
     <!--#region GeneralText -->
 
-    <v:String x:Key="GeneralText_Delete">Delete</v:String>
-    <v:String x:Key="GeneralText_Edit">Edit</v:String>
-    <v:String x:Key="GeneralText_Duplicate">Duplicate</v:String>
-    <v:String x:Key="GeneralText_Remove">Remove</v:String>
+    <v:String x:Key="GeneralText_Delete">Xóa</v:String>
+    <v:String x:Key="GeneralText_Edit">Chỉnh sửa</v:String>
+    <v:String x:Key="GeneralText_Duplicate">Tạo bản sao</v:String>
+    <v:String x:Key="GeneralText_Remove">Loại bỏ</v:String>
     <v:String x:Key="GeneralText_Cancel">Hủy</v:String>
-    <v:String x:Key="GeneralText_Update">Update</v:String>
-    <v:String x:Key="GeneralText_Add">Add</v:String>
-    <v:String x:Key="GeneralText_Save">Save</v:String>
-    <v:String x:Key="GeneralText_Refresh">Refresh</v:String>
-    <v:String x:Key="GeneralText_Backup">Backup</v:String>
-    <v:String x:Key="GeneralText_Versions">Versions</v:String>
-    <v:String x:Key="GeneralText_Browse">Browse</v:String>
-    <v:String x:Key="GeneralText_Reset">Reset</v:String>
-    <v:String x:Key="GeneralText_Yes">Yes</v:String>
-    <v:String x:Key="GeneralText_No">No</v:String>
-    <v:String x:Key="GeneralText_Releases">Releases</v:String>
-    <v:String x:Key="GeneralText_Betas">Betas</v:String>
-    <v:String x:Key="GeneralText_Export">Export</v:String>
+    <v:String x:Key="GeneralText_Update">Cập nhật</v:String>
+    <v:String x:Key="GeneralText_Add">Thêm</v:String>
+    <v:String x:Key="GeneralText_Save">Lưu</v:String>
+    <v:String x:Key="GeneralText_Refresh">Làm mới</v:String>
+    <v:String x:Key="GeneralText_Backup">Sao lưu</v:String>
+    <v:String x:Key="GeneralText_Versions">Phiên bản</v:String>
+    <v:String x:Key="GeneralText_Browse">Duyệt</v:String>
+    <v:String x:Key="GeneralText_Reset">Thiết lập lại</v:String>
+    <v:String x:Key="GeneralText_Yes">Có</v:String>
+    <v:String x:Key="GeneralText_No">Không</v:String>
+    <v:String x:Key="GeneralText_Releases">Bản phát hành</v:String>
+    <v:String x:Key="GeneralText_Betas">Bản Beta</v:String>
+    <v:String x:Key="GeneralText_Export">Xuất Tệp</v:String>
     <v:String x:Key="GeneralText_Repair">Sửa chữa</v:String>
 
     <v:String x:Key="GeneralText_Twitter">Twitter</v:String>
@@ -590,11 +590,11 @@ turned off, try turning the back on and search again</v:String>
     <!--#region GeneralSubtitles -->
 
     <v:String x:Key="GeneralSubtitles_Versions">PHIÊN BẢN</v:String>
-    <v:String x:Key="GeneralSubtitles_Browse">BROWSE</v:String>
-    <v:String x:Key="GeneralSubtitles_Reset">RESET</v:String>
-    <v:String x:Key="GeneralSubtitles_Categories">CATEGORIES</v:String>
-    <v:String x:Key="GeneralSubtitles_Search">SEARCH</v:String>
-    <v:String x:Key="GeneralSubtitles_SortBy">SORT BY</v:String>
+    <v:String x:Key="GeneralSubtitles_Browse">DUYỆT</v:String>
+    <v:String x:Key="GeneralSubtitles_Reset">THIẾT LẬP LẠI</v:String>
+    <v:String x:Key="GeneralSubtitles_Categories">THỂ LOẠI</v:String>
+    <v:String x:Key="GeneralSubtitles_Search">TÌM KIẾM</v:String>
+    <v:String x:Key="GeneralSubtitles_SortBy">SẮP XẾP THEO</v:String>
 
     <!--#endregion-->
 
