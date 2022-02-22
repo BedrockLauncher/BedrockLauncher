@@ -13,18 +13,18 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
         
       - name: Setup nuget
         uses: nuget/setup-nuget@v1
+
+      - name: Setup msbuild
+        uses: microsoft/setup-msbuild@v1.1
 
       - name: Restore dependencies
         run: nuget restore
 
       - name: Build
-        run: dotnet build --no-restore --output ./build
+        run: msbuild "BedrockLauncher.sln" /p:OutputPath="build"
 
       - name: Archive build
         uses: actions/upload-artifact@v2
