@@ -24,7 +24,7 @@ jobs:
         run: nuget restore BedrockLauncher.sln
 
       - name: Build
-        run: msbuild "BedrockLauncher.sln" /p:OutputPath="build"
+        run: msbuild "BedrockLauncher.sln"
 
       - name: Archive build
         uses: actions/upload-artifact@v2
