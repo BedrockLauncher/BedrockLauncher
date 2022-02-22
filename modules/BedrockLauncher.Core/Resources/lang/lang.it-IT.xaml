@@ -248,8 +248,8 @@
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Anima il tasto gioca nelle pagine Gioca nel launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Abilita il supporto per Minecraft Dungeons (WIP)</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Mostra informazioni avanzate quando si installano i pacchetti</v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Usa transizioni più graziose tra le pagine del launcher</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(è necessario che le transizioni animate tra le pagine siano abilitate)</v:String>
     
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">IMPOSTAZIONI DI MINECRAFT: BEDROCK EDITION</v:String>
