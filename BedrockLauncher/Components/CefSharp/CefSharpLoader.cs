@@ -8,8 +8,10 @@ using Microsoft.Win32;
 using System.IO;
 using BedrockLauncher.Extensions;
 using System.Reflection;
+#if ENABLE_CEFSHARP
 using CefSharp;
 using CefSharp.Wpf;
+#endif
 using System.Runtime.CompilerServices;
 using BedrockLauncher.Downloaders;
 using System.Runtime.InteropServices;
@@ -24,8 +26,9 @@ namespace BedrockLauncher.Components.CefSharp
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static void Init()
         {
+#if ENABLE_CEFSHARP
             //AppDomain.CurrentDomain.AssemblyResolve += Resolver;
-            
+
             var settings = InitSettings();
 
             RegisterScheme(ref settings, ResourceSchemeHandlerFactory.SchemeName, new ResourceSchemeHandlerFactory());
@@ -34,11 +37,14 @@ namespace BedrockLauncher.Components.CefSharp
 
             // Make sure you set performDependencyCheck false
             Cef.Initialize(settings, performDependencyCheck: false, browserProcessHandler: null);
+#endif
         }
+#if ENABLE_CEFSHARP
         public static void InitBrowser(ref ChromiumWebBrowser browser)
         {
             browser.BrowserSettings = GetBrowserSettings();
         }
+
 
         private static void RegisterScheme(ref CefSettings settings, string SchemeName, ISchemeHandlerFactory SchemeHandlerFactory)
         {
@@ -62,92 +68,92 @@ namespace BedrockLauncher.Components.CefSharp
             /// Set BrowserSubProcessPath based on app bitness at runtime
             //settings.BrowserSubprocessPath = Path.Combine(GetCefPath(), "CefSharp.BrowserSubprocess.exe");
 
-            #region Command Line Args
+        #region Command Line Args
 
             //Chromium Command Line args
             //http://peter.sh/experiments/chromium-command-line-switches/
             //NOTE: Not all relevant in relation to `CefSharp`, use for reference purposes only.
 
-            #region External File Access
+        #region External File Access
 
             /// External File Access
             settings.CefCommandLineArgs.Add("allow-universal-access-from-files");
             settings.CefCommandLineArgs.Add("allow-file-access-from-files");
 
-            #endregion
+        #endregion
 
-            #region Renderer
+        #region Renderer
 
             //settings.CefCommandLineArgs.Add("renderer-process-limit", "1");
             //settings.CefCommandLineArgs.Add("renderer-startup-dialog", "1");
 
-            #endregion
+        #endregion
 
-            #region WebRTC
+        #region WebRTC
 
             ///Enable WebRTC
             //settings.CefCommandLineArgs.Add("enable-media-stream", "1"); 
 
-            #endregion
+        #endregion
 
-            #region Proxy Server
+        #region Proxy Server
 
 
             ///Don't use a proxy server, always make direct connections. Overrides any other proxy server flags that are passed.
             settings.CefCommandLineArgs.Add("no-proxy-server", "1"); 
 
-            #endregion
+        #endregion
 
-            #region Debug Plugin Loading 
+        #region Debug Plugin Loading 
 
             ///Dumps extra logging about plugin loading to the log file.
             //settings.CefCommandLineArgs.Add("debug-plugin-loading", "1"); 
 
-            #endregion
+        #endregion
 
-            #region Plugins Discovery
+        #region Plugins Discovery
 
             ///Disable discovering third-party plugins. Effectively loading only ones shipped with the browser plus third-party ones as specified by --extra-plugin-dir and --load-plugin switches
             settings.CefCommandLineArgs.Add("disable-plugins-discovery", "1"); 
 
-            #endregion
+        #endregion
 
-            #region System Flash
+        #region System Flash
 
             ///Automatically discovered and load a system-wide installation of Pepper Flash.
             //settings.CefCommandLineArgs.Add("enable-system-flash", "1"); 
 
-            #endregion
+        #endregion
 
-            #region Insecure Content
+        #region Insecure Content
 
             ///By default, an https page cannot run JavaScript, CSS or plugins from http URLs. This provides an override to get the old insecure behavior. Only available in 47 and above.
             //settings.CefCommandLineArgs.Add("allow-running-insecure-content", "1"); 
 
-            #endregion
+        #endregion
 
-            #region Logging
+        #region Logging
 
             ///Enable Logging for the Renderer process (will open with a cmd prompt and output debug messages - use in conjunction with setting LogSeverity = LogSeverity.Verbose;)
             //settings.CefCommandLineArgs.Add("enable-logging", "1"); 
 
-            #endregion
+        #endregion
 
-            #region Extensions
+        #region Extensions
 
             ///Extension support can be disabled
             settings.CefCommandLineArgs.Add("disable-extensions", "1"); 
 
-            #endregion
+        #endregion
 
-            #region PDF Extension
+        #region PDF Extension
 
             ///The PDF extension specifically can be disabled
             settings.CefCommandLineArgs.Add("disable-pdf-extension", "1");
 
-            #endregion
+        #endregion
 
-            #region Flash
+        #region Flash
 
             ///Load the pepper flash player that comes with Google Chrome - may be possible to load these values from the registry and query the dll for it's version info (Step 2 not strictly required it seems)
 
@@ -157,9 +163,9 @@ namespace BedrockLauncher.Components.CefSharp
             ///Load a specific pepper flash version (Step 2 of 2)
             //settings.CefCommandLineArgs.Add("ppapi-flash-version", "20.0.0.228"); 
 
-            #endregion
+        #endregion
 
-            #region GPU / OSR
+        #region GPU / OSR
 
             ///NOTE: For OSR best performance you should run with GPU disabled:
             /// `--disable-gpu --disable-gpu-compositing --enable-begin-frame-scheduling`
@@ -188,17 +194,17 @@ namespace BedrockLauncher.Components.CefSharp
             //settings.CefCommandLineArgs.Add("enable-gpu", "1");
             //settings.CefCommandLineArgs.Add("enable-webgl", "1");
 
-            #endregion
+        #endregion
 
-            #region DirectWrite
+        #region DirectWrite
 
             ///Disables the DirectWrite font rendering system on windows.
             ///Possibly useful when experiencing blury fonts.
             //settings.CefCommandLineArgs.Add("disable-direct-write", "1");
 
-            #endregion
+        #endregion
 
-            #endregion
+        #endregion
 
             return settings;
 
@@ -213,5 +219,6 @@ namespace BedrockLauncher.Components.CefSharp
             settings.WindowlessFrameRate = 60;
             return settings;
         }
+#endif
     }
 }

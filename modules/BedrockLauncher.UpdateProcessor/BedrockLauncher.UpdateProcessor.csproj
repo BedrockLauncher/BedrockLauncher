@@ -43,6 +43,6 @@
     <ProjectReference Include="..\Extensions.NET\JemExtensions.csproj" />
   </ItemGroup>
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="cd &quot;$(MSBuildProjectDirectory)\Runtimes&quot;&#xD;&#xA;rmdir &quot;win-x86&quot; /s /q&#xD;&#xA;xcopy &quot;$(MSBuildProjectDirectory)\..\BedrockLauncher.TokenBroker\bin\Release\Win32&quot; &quot;$(MSBuildProjectDirectory)\Runtimes\win-x86&quot; /E /I /Q&#xD;&#xA;rmdir &quot;win-x64&quot; /s /q&#xD;&#xA;xcopy &quot;$(MSBuildProjectDirectory)\..\BedrockLauncher.TokenBroker\bin\Release\x64&quot; &quot;$(MSBuildProjectDirectory)\Runtimes\win-x64&quot; /E /I /Q" />
+    <Exec Command="set x86Runtimes=&quot;$(ProjectDir)Runtimes\win-x86\&quot;&#xD;&#xA;set x64Runtimes=&quot;$(ProjectDir)Runtimes\win-x64\&quot;&#xD;&#xA;set x86Path=&quot;$(SolutionDir)modules\BedrockLauncher.TokenBroker\bin\Release\Win32\&quot;&#xD;&#xA;set x64Path=&quot;$(SolutionDir)modules\BedrockLauncher.TokenBroker\bin\Release\x64\&quot;&#xD;&#xA;&#xD;&#xA;if exist %25x86Runtimes%25\NUL xcopy %25x86Path%25 %25x86Runtimes%25  /C /E /I /Q&#xD;&#xA;if exist %25x64Runtimes%25\NUL xcopy %25x64Path%25 %25x64Runtimes%25 /C /E /I /Q&#xD;&#xA;&#xD;&#xA;" />
   </Target>
 </Project>

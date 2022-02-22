@@ -25,7 +25,6 @@
     <CLToolExe>clang-cl.exe</CLToolExe>
     <CLToolPath>C:\Program Files\LLVM\bin</CLToolPath>
   </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup>
     <CppWinRTBuildVersion Condition="'$(CppWinRTBuildVersion)'==''">2.3.4.5</CppWinRTBuildVersion>
     <CmakePlatform>$(Platform)</CmakePlatform>
