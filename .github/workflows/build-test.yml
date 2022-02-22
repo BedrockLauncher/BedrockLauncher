@@ -1,0 +1,32 @@
+name: Build Test
+
+on:
+  push:
+    branches: ["master", "workflow-test"] # workflow-test is here temporarily
+  pull_request:
+    types: [opened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore --output ./build
+
+      - name: Archive build
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: build
