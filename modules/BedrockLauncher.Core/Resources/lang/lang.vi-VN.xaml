@@ -80,8 +80,8 @@
     <v:String x:Key="Dungeons_InstallationPage_GeneralTab">Thể loại</v:String>
     <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Install Store Patch</v:String>
     <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Update Store Patch</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Uninstall Symbolic Link</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Install  Symbolic Link</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Gỡ cài đặt Liên kết tượng trưng</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Cài đặt liên kết tượng trưng</v:String>
     <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Repair/Update Game</v:String>
 
 
@@ -94,7 +94,7 @@
     <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
     <v:String x:Key="GameTab_PlayButton_Text">Chơi</v:String>
     <v:String x:Key="GameTab_PlayButton_Kill_Text">Giết</v:String>
-    <v:String x:Key="GameTab_InstallationsButton_Text">Installations</v:String>
+    <v:String x:Key="GameTab_InstallationsButton_Text">Cài đặt</v:String>
     <v:String x:Key="GameTab_SkinsButton_Text">Skins</v:String>
     <v:String x:Key="GameTab_PatchNotesButton_Text">Thông tin cập nhật</v:String>
 
@@ -102,26 +102,26 @@
 
     <!--#region InstallationsPage -->
 
-    <v:String x:Key="InstallationsPage_AddButton">New installation</v:String>
+    <v:String x:Key="InstallationsPage_AddButton">Cài đặt mới</v:String>
     <v:String x:Key="InstallationsPage_PlayButton">Chơi</v:String>
 
-    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">Latest Played</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">Chơi gần đây nhất</v:String>
     <v:String x:Key="InstallationsPage_SortBy_Name">Tên</v:String>
 
-    <v:String x:Key="InstallationsPage_SearchBar_Content">Installation name</v:String>
+    <v:String x:Key="InstallationsPage_SearchBar_Content">Tên cài đặt</v:String>
 
     <!--#endregion-->
 
     <!--#region EditInstallationScreen -->
 
-    <v:String x:Key="EditInstallationScreen_Title">Create new installation</v:String>
-    <v:String x:Key="EditInstallationScreen_AltTitle">Edit installation</v:String>
+    <v:String x:Key="EditInstallationScreen_Title">Tạo cài đặt mới</v:String>
+    <v:String x:Key="EditInstallationScreen_AltTitle">Chỉnh sửa cài đặt</v:String>
 
     <v:String x:Key="EditInstallationScreen_CreateButton">Tạo</v:String>
     <v:String x:Key="EditInstallationScreen_AltCreateButton">Lưu</v:String>
 
-    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Latest beta</v:String>
-    <v:String x:Key="EditInstallationScreen_LatestRelease">Latest release</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestSnapshot">Bản beta mới nhất</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestRelease">Bản phát hành mới nhất</v:String>
 
     <v:String x:Key="EditInstallationScreen_NameSubtitle">TÊN</v:String>
     <v:String x:Key="EditInstallationScreen_VersionSubtitle">PHIÊN BẢN</v:String>
