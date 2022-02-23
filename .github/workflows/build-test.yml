@@ -2,7 +2,7 @@ name: Build Test
 
 on:
   push:
-    branches: ["workflow-test"] # workflow-test is here temporarily, make master later
+    branches: '*'
   pull_request:
     types: [opened]
 
