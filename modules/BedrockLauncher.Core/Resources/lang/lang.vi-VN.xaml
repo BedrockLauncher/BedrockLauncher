@@ -92,8 +92,8 @@
     <!--#region GameTab -->
 
     <v:String x:Key="GameTab_Title">MINECRAFT: BEDROCK EDITION</v:String>
-    <v:String x:Key="GameTab_PlayButton_Text">Play</v:String>
-    <v:String x:Key="GameTab_PlayButton_Kill_Text">Kill</v:String>
+    <v:String x:Key="GameTab_PlayButton_Text">Chơi</v:String>
+    <v:String x:Key="GameTab_PlayButton_Kill_Text">Giết</v:String>
     <v:String x:Key="GameTab_InstallationsButton_Text">Installations</v:String>
     <v:String x:Key="GameTab_SkinsButton_Text">Skins</v:String>
     <v:String x:Key="GameTab_PatchNotesButton_Text">Thông tin cập nhật</v:String>
@@ -103,10 +103,10 @@
     <!--#region InstallationsPage -->
 
     <v:String x:Key="InstallationsPage_AddButton">New installation</v:String>
-    <v:String x:Key="InstallationsPage_PlayButton">Play</v:String>
+    <v:String x:Key="InstallationsPage_PlayButton">Chơi</v:String>
 
     <v:String x:Key="InstallationsPage_SortBy_LatestPlayed">Latest Played</v:String>
-    <v:String x:Key="InstallationsPage_SortBy_Name">Name</v:String>
+    <v:String x:Key="InstallationsPage_SortBy_Name">Tên</v:String>
 
     <v:String x:Key="InstallationsPage_SearchBar_Content">Installation name</v:String>
 
@@ -117,8 +117,8 @@
     <v:String x:Key="EditInstallationScreen_Title">Create new installation</v:String>
     <v:String x:Key="EditInstallationScreen_AltTitle">Edit installation</v:String>
 
-    <v:String x:Key="EditInstallationScreen_CreateButton">Create</v:String>
-    <v:String x:Key="EditInstallationScreen_AltCreateButton">Save</v:String>
+    <v:String x:Key="EditInstallationScreen_CreateButton">Tạo</v:String>
+    <v:String x:Key="EditInstallationScreen_AltCreateButton">Lưu</v:String>
 
     <v:String x:Key="EditInstallationScreen_LatestSnapshot">Latest beta</v:String>
     <v:String x:Key="EditInstallationScreen_LatestRelease">Latest release</v:String>
@@ -177,7 +177,7 @@
 
     <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">PACK NAME</v:String>
     <v:String x:Key="EditSkinPackScreen_HeaderUUIDSubtitle">UUID</v:String>
-    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">VERSION</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">PHIÊN BẢN</v:String>
 
     <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">TYPE</v:String>
     <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">UUID</v:String>
@@ -229,17 +229,17 @@
     <v:String x:Key="SettingsTab_Title">CÀI ĐẶT</v:String>
     <v:String x:Key="SettingsTab_GeneralButton">Thể loại</v:String>
     <v:String x:Key="SettingsTab_AccountsButton">Accounts</v:String>
-    <v:String x:Key="SettingsTab_AboutButton">About</v:String>
-    <v:String x:Key="SettingsTab_VersionsButton">Versions</v:String>
+    <v:String x:Key="SettingsTab_AboutButton">Về chúng tôi</v:String>
+    <v:String x:Key="SettingsTab_VersionsButton">Phiên bản</v:String>
 
     <!--#endregion-->
 
     <!--#region GeneralSettingsScreen -->
-    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">LANGUAGE</v:String>
+    <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">NGÔN NGỮ</v:String>
     <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">LAUNCHER THEME</v:String>
 
 
-    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">LAUNCHER SETTINGS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">CÀI ĐẶT TRÌNH KHỞI ĐỘNG</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">SHORTCUT SETTINGS</v:String>
     <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Use beta version of the Launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Keep the Launcher open while games are running</v:String>
@@ -270,15 +270,15 @@
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">PATH</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">NAME</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">ARGUMENTS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">ICON</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">BIỂU TƯỢNG</v:String>
 
     <!--#endregion-->
 
     <!--#region AcountsSettingsPage -->
 
-    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">SELECTED ACCOUNT</v:String>
+    <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">CHỌN TÀI KHOÀN</v:String>
     <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">INSIDER SETTINGS</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Normal Settings</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Cài đặt bình thường</v:String>
     <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Legacy Settings</v:String>
     <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Manage Accounts</v:String>
     <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">CÀI ĐẶT TÀI KHOẢN</v:String>
@@ -368,7 +368,7 @@
     <v:String x:Key="Error_CantFindJavaLauncher">Could not find launcher. Be sure you have installed original Minecraft launcher from Minecraft.net .</v:String>
 
     <v:String x:Key="Error_AppReregisterFailed_Title">App registration failed</v:String>
-    <v:String x:Key="Error_AppReregisterFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppReregisterFailed">Vui lòng thử lại sau :(</v:String>
 
     <v:String x:Key="Error_AppDeregisteringFailed_Title">App de-registration failed</v:String>
     <v:String x:Key="Error_AppDeregisteringFailed">Vui lòng thử lại sau :(</v:String>
@@ -402,7 +402,7 @@
     <v:String x:Key="NewProfile_CreateProfileText">PROFILE</v:String>
     <v:String x:Key="NewProfile_CreateProfileText_Error">THIS NAME IS ALREADY TAKEN</v:String>
     <v:String x:Key="NewProfile_CreateProfileSubTitle">Enter the name of your new profile!</v:String>
-    <v:String x:Key="NewProfile_CreateProfileButton">Create</v:String>
+    <v:String x:Key="NewProfile_CreateProfileButton">Tạo</v:String>
 
     <!--#endregion-->
 
@@ -411,12 +411,12 @@
     <v:String x:Key="Dialog_Item_Installation_Text">installation</v:String>
     <v:String x:Key="Dialog_Item_SkinPack_Text">skin pack</v:String>
     <v:String x:Key="Dialog_Item_Skin_Text">skin</v:String>
-    <v:String x:Key="Dialog_Item_Version_Text">version</v:String>
-    <v:String x:Key="Dialog_Item_Profile_Text">profile</v:String>
+    <v:String x:Key="Dialog_Item_Version_Text">phiên bản</v:String>
+    <v:String x:Key="Dialog_Item_Profile_Text">hồ sơ</v:String>
 
     <v:String x:Key="Dialog_DeleteItem_Title">Delete {0} permanently</v:String>
-    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Are you sure you want to delete &quot;{1}&quot;?
-This {0} will be lost forever! (A long time!)</v:String>
+    <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Bạn có chắc sẽ xóa {1}?
+Điều này sẽ làm mất dữ liệu {0}! (Thời gian lâu dài!)</v:String>
 
     <v:String x:Key="Dialog_KillGame_Title">Kill Game</v:String>
     <v:String x:Key="Dialog_KillGame_Text">This is Dangerous, and is only recommended if you get stuck. Do you still want to close the game?</v:String>
@@ -481,14 +481,14 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="Installer_InstallType_Title">Hãy chọn cách để tải</v:String>
     <v:String x:Key="Installer_InstallType_Info_Text">Select which version of the launcher you want to download</v:String>
 
-    <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Beta Version</v:String>
-    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Release Version</v:String>
+    <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Phiên bản beta</v:String>
+    <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Bản phát hành</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_Title">Choose Install Location</v:String>
-    <v:String x:Key="Installer_InstallLocation_Info_Text">Setup will install Minecraft Bedrock Launcher in the following folder. To install in a different folder,</v:String>
-    <v:String x:Key="Installer_InstallLocation_Info2_Text">click Browse and select another folder.</v:String>
+    <v:String x:Key="Installer_InstallLocation_Title">Chọn vị trí cài đặt</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info_Text">Thiết lập sẽ cài đặt Minecraft Bedrock Launcher trong thư mục sau. Để cài đặt trong một thư mục khác,</v:String>
+    <v:String x:Key="Installer_InstallLocation_Info2_Text">nhấp vào &quot;Duyệt&quot; và chọn một thư mục khác.</v:String>
 
-    <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Destination Folder</v:String>
+    <v:String x:Key="Installer_InstallLocation_DestinationFolder_Header">Nơi đến thư mục</v:String>
     <v:String x:Key="Installer_InstallLocation_Browse_Text">DUYỆT</v:String>
 
     <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Tạo biểu tượng trên màn hình</v:String>
@@ -535,10 +535,10 @@ turned off, try turning the back on and search again</v:String>
     <!--#region ThemeEntries -->
 
     <v:String x:Key="ThemeEntries_LatestUpdate">Latest Update</v:String>
-    <v:String x:Key="ThemeEntries_Original">Original</v:String>
+    <v:String x:Key="ThemeEntries_Original">Nguyên bản</v:String>
 
     <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">Caves &amp; Cliffs (Part 1)</v:String>
-    <v:String x:Key="ThemeEntries_NetherUpdate">Nether Update</v:String>
+    <v:String x:Key="ThemeEntries_NetherUpdate">Cập nhật địa ngục</v:String>
     <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Cập nhật Buzzy Bees</v:String>
     <v:String x:Key="ThemeEntries_VillagePillageUpdate">Cập nhật Village &amp; Pillage</v:String>
     <v:String x:Key="ThemeEntries_UpdateAquatic">Cập nhật Biome Nước</v:String>
@@ -583,7 +583,7 @@ turned off, try turning the back on and search again</v:String>
 
     <v:String x:Key="GeneralText_Twitter">Twitter</v:String>
     <v:String x:Key="GeneralText_GitHub">GitHub</v:String>
-    <v:String x:Key="GeneralText_Website">Trang mạng</v:String>
+    <v:String x:Key="GeneralText_Website">Trang wed</v:String>
 
     <!--#endregion-->
 
