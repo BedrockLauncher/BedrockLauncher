@@ -78,11 +78,11 @@
     <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Hướng dẫn</v:String>
     <v:String x:Key="Dungeons_InstallationPage_PathsTab">Đường dẫn</v:String>
     <v:String x:Key="Dungeons_InstallationPage_GeneralTab">Thể loại</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Install Store Patch</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Update Store Patch</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Cài đặt bản vá cửa hàng</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Cập nhật bản vá cửa hàng</v:String>
     <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Gỡ cài đặt Liên kết tượng trưng</v:String>
     <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Cài đặt liên kết tượng trưng</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Repair/Update Game</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Sửa chữa / Cập nhật trò chơi</v:String>
 
 
     <!--#endregion-->
@@ -134,8 +134,8 @@
 
     <!--#region PatchNotesPage -->
 
-    <v:String x:Key="PatchNotesPage_MorePatchNotes">More patch notes</v:String>
-    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">More beta patch notes</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotes">Thêm ghi chú bản vá</v:String>
+    <v:String x:Key="PatchNotesPage_MorePatchNotesBeta">Thêm ghi chú bản vá beta</v:String>
 
     <!--#endregion-->
 
@@ -151,19 +151,19 @@
     <v:String x:Key="EditSkinScreen_Title">Chỉnh sửa Skin</v:String>
     <v:String x:Key="EditSkinScreen_AltTitle">Thêm Skin</v:String>
 
-    <v:String x:Key="EditSkinScreen_TextureSubtitle">TEXTURE</v:String>
-    <v:String x:Key="EditSkinScreen_GeometrySubtitle">GEOMETRY</v:String>
+    <v:String x:Key="EditSkinScreen_TextureSubtitle">KẾT CẤU</v:String>
+    <v:String x:Key="EditSkinScreen_GeometrySubtitle">HÌNH HỌC</v:String>
     <v:String x:Key="EditSkinScreen_TypeSubtitle">THỂ LOẠI</v:String>
-    <v:String x:Key="EditSkinScreen_LocalizationSubtitle">LOCALIZATION NAME</v:String>
+    <v:String x:Key="EditSkinScreen_LocalizationSubtitle">TÊN VỊ TRÍ</v:String>
 
     <!--#endregion-->
 
     <!--#region EditSkinPackScreen -->
 
     <v:String x:Key="EditSkinPackScreen_DescriptionSubtitle">MÔ TẢ</v:String>
-    <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">GEOMETRY</v:String>
+    <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">HÌNH HỌC</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">LOCALIZATION NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">TÊN VỊ TRÍ</v:String>
     <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">SERIALIZATION NAME</v:String>
     <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">LANGUAGE DEFINITIONS</v:String>
 
