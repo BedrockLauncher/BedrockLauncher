@@ -59,7 +59,7 @@
     <v:String x:Key="ProfileButton_ManageProfiles_Text">Quản lý hồ sơ</v:String>
     <v:String x:Key="ProfileButton_ProfileSettings_Text">Cài đặt hồ sơ</v:String>
     <v:String x:Key="ProfileButton_AddProfile_Text">Thêm Hồ sơ</v:String>
-    <v:String x:Key="ProfileButton_RemoveProfile_Text">Xoá khỏi hồ sơ</v:String>
+    <v:String x:Key="ProfileButton_RemoveProfile_Text">Loại bỏ hồ sơ</v:String>
     <v:String x:Key="ProfileButton_ChooseAccount_Text">CHỌN HỒ SƠ</v:String>
 
     <!--#endregion-->
@@ -164,22 +164,22 @@
     <v:String x:Key="EditSkinPackScreen_GeometryPathSubtitle">HÌNH HỌC</v:String>
 
     <v:String x:Key="EditSkinPackScreen_LocalizationNameSubtitle">TÊN VỊ TRÍ</v:String>
-    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">SERIALIZATION NAME</v:String>
-    <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">LANGUAGE DEFINITIONS</v:String>
+    <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">TÊN KHAI THÁC</v:String>
+    <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">ĐỊNH NGHĨA NGÔN NGỮ</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">LANG NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">&quot;LANG&quot; TÊN</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">OTHER DEFINITIONS</v:String>
-    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">CONTENT</v:String>
-    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">MODULES</v:String>
+    <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">CÁC ĐỊNH NGHĨA KHÁC</v:String>
+    <v:String x:Key="EditSkinPackScreen_ContentSubtitle">NỘI DUNG</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesSubtitle">CHẾ ĐỘ</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">FORMAT VERSION</v:String>
+    <v:String x:Key="EditSkinPackScreen_FormatVersionSubtitle">PHIÊN BẢN ĐỊNH DẠNG</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">PACK NAME</v:String>
+    <v:String x:Key="EditSkinPackScreen_HeaderNameSubtitle">TÊN GÓI</v:String>
     <v:String x:Key="EditSkinPackScreen_HeaderUUIDSubtitle">UUID</v:String>
     <v:String x:Key="EditSkinPackScreen_HeaderVersionSubtitle">PHIÊN BẢN</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">TYPE</v:String>
+    <v:String x:Key="EditSkinPackScreen_ModulesTypeSubtitle">THỂ LOẠI</v:String>
     <v:String x:Key="EditSkinPackScreen_ModulesUUIDSubtitle">UUID</v:String>
     <v:String x:Key="EditSkinPackScreen_ModulesVersionSubtitle">PHIÊN BẢN</v:String>
 
@@ -228,7 +228,7 @@
 
     <v:String x:Key="SettingsTab_Title">CÀI ĐẶT</v:String>
     <v:String x:Key="SettingsTab_GeneralButton">Thể loại</v:String>
-    <v:String x:Key="SettingsTab_AccountsButton">Accounts</v:String>
+    <v:String x:Key="SettingsTab_AccountsButton">Tài khoản</v:String>
     <v:String x:Key="SettingsTab_AboutButton">Về chúng tôi</v:String>
     <v:String x:Key="SettingsTab_VersionsButton">Phiên bản</v:String>
 
@@ -236,40 +236,40 @@
 
     <!--#region GeneralSettingsScreen -->
     <v:String x:Key="GeneralSettingsScreen_LanguageSubtitle">NGÔN NGỮ</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">LAUNCHER THEME</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ThemeSubtitle">CHỦ ĐỀ KHỞI ĐỘNG</v:String>
 
 
     <v:String x:Key="GeneralSettingsScreen_LauncherSettingsSubtitle">CÀI ĐẶT TRÌNH KHỞI ĐỘNG</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">SHORTCUT SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Use beta version of the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Keep the Launcher open while games are running</v:String>
-    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Close Launcher when switching launchers</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Animate transitions between pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animate play button on the Play pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Enable Minecraft Dungeons Support (WIP)</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Show advanced information when installing packages</v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShortcutSettingsSubtitle">CÀI ĐẶT LỐI TẮT</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UseBetaLauncher">Sử dụng phiên bản beta của Trình khởi chạy</v:String>
+    <v:String x:Key="GeneralSettingsScreen_KeepLauncherOpen">Giữ trình khởi chạy luôn mở trong khi trò chơi đang chạy</v:String>
+    <v:String x:Key="GeneralSettingsScreen_DoNotCloseLauncherOnOpeningOtherLauncher">Đóng trình khởi chạy khi chuyển đổi trình khởi chạy</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimateTransitions">Tạo hiệu ứng chuyển tiếp giữa các trang trong trình khởi chạy</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Tạo hoạt ảnh cho nút phát trên các trang Phát trong trình khởi chạy</v:String>
+    <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Bật hỗ trợ Minecraft Dungeons (WIP)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Hiển thị thông tin nâng cao khi cài đặt gói</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Sử dụng hiệu ứng chuyển tiếp giữa các trang trong Trình khởi chạy</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(yêu cầu bật chuyển đổi trang động)</v:String>
     
 
-    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDITION SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">SUPPORT CREATOR</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">MINECRAFT: BEDROCK EDITION &quot;CÀI ĐẶT&quot;</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorSubtitle">HỖ TRỢ NGƯỜI TẠO</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">LAUNCHER UPDATES</v:String>
+    <v:String x:Key="GeneralSettingsScreen_UpdatesSubtitle">CẬP NHẬT TRÌNH KHỞI CHẠY</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Support creator</v:String>
+    <v:String x:Key="GeneralSettingsScreen_SupportCreatorButton">Hỗ trợ người tạo</v:String>
 
 
-    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Enable experimental save redirection</v:String>
-    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Hide Java Edition launcher shortcut</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Show external launcher shortcut</v:String>
-    <v:String x:Key="GeneralSettingsScreen_BackupButton">Backup Save Data</v:String>
-    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Advanced Settings</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExperimentalSaveRedirection">Bật chuyển hướng lưu thử nghiệm</v:String>
+    <v:String x:Key="GeneralSettingsScreen_HideJavaLauncherShortcut">Ẩn lối tắt trình khởi chạy Phiên bản Java</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ShowExternalLauncherShortcut">Hiển thị lối tắt trình khởi chạy bên ngoài</v:String>
+    <v:String x:Key="GeneralSettingsScreen_BackupButton">Sao Lưu Dữ Liệu</v:String>
+    <v:String x:Key="GeneralSettingsScreen_AdvancedSettingsButton">Cài đặt Nâng cao</v:String>
 
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">EXTERNAL LAUNCHER SETTINGS</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">PATH</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">NAME</v:String>
-    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">ARGUMENTS</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherSubtitle">CÀI ĐẶT TRÌNH BẮT ĐẦU BÊN NGOÀI</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherNameSubtitle">ĐƯỜNG DẪN</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherPathSubtitle">TÊN</v:String>
+    <v:String x:Key="GeneralSettingsScreen_ExternalLauncherArgumentsSubtitle">TRANH LUẬN</v:String>
     <v:String x:Key="GeneralSettingsScreen_ExternalLauncherIconSubtitle">BIỂU TƯỢNG</v:String>
 
     <!--#endregion-->
@@ -277,10 +277,10 @@
     <!--#region AcountsSettingsPage -->
 
     <v:String x:Key="AcountsSettingsPage_SelectedAccount_Subtitle">CHỌN TÀI KHOÀN</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">INSIDER SETTINGS</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHub_Text">CÀI ĐẶT NGƯỜI TRONG CUỘC</v:String>
     <v:String x:Key="AcountsSettingsPage_InsiderHubNew_Text">Cài đặt bình thường</v:String>
-    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Legacy Settings</v:String>
-    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Manage Accounts</v:String>
+    <v:String x:Key="AcountsSettingsPage_InsiderHubLegacy_Text">Cài đặt kế thừa</v:String>
+    <v:String x:Key="AcountsSettingsPage_ManageAccounts_Text">Quản lý tài khoản</v:String>
     <v:String x:Key="AcountsSettingsPage_AccountSettings_Text">CÀI ĐẶT TÀI KHOẢN</v:String>
 
     <!--#endregion-->
@@ -289,25 +289,25 @@
 
     <v:String x:Key="AboutPage_Title">VỀ MINECRAFT: TRÌNH KHỞI ĐỘNG BEDROCK EDITION</v:String>
     <v:String x:Key="AboutPage_DevelopedBy_Text">ĐƯỢC PHÁT TRIỂN BỞI</v:String>
-    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">FORKED FROM THE WORK OF</v:String>
-    <v:String x:Key="AboutPage_SpecialThanks_Text">SPECIAL THANKS TO</v:String>
+    <v:String x:Key="AboutPage_OriginallyDevelopedBy_Text">MẤT CÔNG VIỆC CỦA</v:String>
+    <v:String x:Key="AboutPage_SpecialThanks_Text">TRÂN TRỌNG CẢM ƠN</v:String>
 
-    <v:String x:Key="AboutPage_McMrArm_Text">For creating the original Minecraft Windows 10 Version downloader (which this work derives from)</v:String>
-    <v:String x:Key="AboutPage_BsCommunity_Text">For their work on SkinView3D, which is used for the skin viewing functionality in the launcher</v:String>
-    <v:String x:Key="AboutPage_Mojang_Text">For Minecraft!!!</v:String>
+    <v:String x:Key="AboutPage_McMrArm_Text">Để tạo trình tải xuống Phiên bản Minecraft Windows 10 ban đầu (công việc này bắt nguồn từ)</v:String>
+    <v:String x:Key="AboutPage_BsCommunity_Text">Đối với công việc của họ trên SkinView3D, được sử dụng cho chức năng xem skin trong trình khởi chạy</v:String>
+    <v:String x:Key="AboutPage_Mojang_Text">Đối với Minecraft!!!</v:String>
     <v:String x:Key="AboutPage_BsRepo_Text">SkinView3D Repo</v:String>
-    <v:String x:Key="AboutPage_CurrentBuild">Current Build: </v:String>
+    <v:String x:Key="AboutPage_CurrentBuild">Bản dựng hiện tại: </v:String>
 
     <!--#endregion-->
 
     <!--#region AdvancedSettings -->
 
-    <v:String x:Key="AdvancedSettings_Title">Advanced Settings</v:String>
-    <v:String x:Key="AdvancedSettings_LauncherOptions_Text">LAUNCHER OPTIONS</v:String>
-    <v:String x:Key="AdvancedSettings_PathSubtitle_Text">STORAGE DIRECTORY</v:String>
-    <v:String x:Key="AdvancedSettings_RestartButton_Text">Restart</v:String>
-    <v:String x:Key="AdvancedSettings_Notice_Text">* All settings will restart the launcher</v:String>
-    <v:String x:Key="AdvancedSettings_PortableMode_Text">Enable Portable Mode</v:String>
+    <v:String x:Key="AdvancedSettings_Title">Cài đặt nâng cao</v:String>
+    <v:String x:Key="AdvancedSettings_LauncherOptions_Text">CÀI ĐẶT TRÌNH KHỞI ĐỘNG</v:String>
+    <v:String x:Key="AdvancedSettings_PathSubtitle_Text">HƯỚNG DẪN LƯU TRỮ</v:String>
+    <v:String x:Key="AdvancedSettings_RestartButton_Text">Khởi động lại</v:String>
+    <v:String x:Key="AdvancedSettings_Notice_Text">* Tất cả cài đặt sẽ khởi động lại trình khởi chạy</v:String>
+    <v:String x:Key="AdvancedSettings_PortableMode_Text">Bật chế độ di động</v:String>
 
     <!--#endregion-->
 
@@ -317,24 +317,24 @@
 
     <!--#region FirstLaunch -->
 
-    <v:String x:Key="FirstLaunch_WelcomeTitle">Welcome!</v:String>
-    <v:String x:Key="FirstLaunch_WelcomeSubTitle">Welcome to Minecraft Bedrock Launcher!</v:String>
-    <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Create your first profile!</v:String>
-    <v:String x:Key="FirstLaunch_AlmostThereTitle">Almost there!</v:String>
-    <v:String x:Key="FirstLaunch_OneThingTitle">One thing...</v:String>
-    <v:String x:Key="FirstLaunch_OneThingSubtitle">Just check over these to make sure they're just how you like it.</v:String>
-    <v:String x:Key="FirstLaunch_ChooseAccountTitle">Choose an Insider Account</v:String>
-    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* This will be used to verify and download betas. You must be opted in the Xbox Insider Hub for the selected account to download betas. You also may need to restart the launcher or uninstall Minecraft for downloading betas to work.</v:String>
+    <v:String x:Key="FirstLaunch_WelcomeTitle">Chào mừng!</v:String>
+    <v:String x:Key="FirstLaunch_WelcomeSubTitle">Chào mừng bạn đến với Trình khởi chạy Minecraft Bedrock!</v:String>
+    <v:String x:Key="FirstLaunch_CreateProfileSubTitle">Tạo hồ sơ đầu tiên của bạn!</v:String>
+    <v:String x:Key="FirstLaunch_AlmostThereTitle">Gần xong rồi!</v:String>
+    <v:String x:Key="FirstLaunch_OneThingTitle">Một điều...</v:String>
+    <v:String x:Key="FirstLaunch_OneThingSubtitle">Chỉ cần kiểm tra những thứ này để đảm bảo chúng giống như cách bạn thích.</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountTitle">Chọn một tài khoản nội bộ</v:String>
+    <v:String x:Key="FirstLaunch_ChooseAccountSubtitle">* Điều này sẽ được sử dụng để xác minh và tải xuống betas. Bạn phải chọn tham gia Xbox Insider Hub cho tài khoản đã chọn để tải xuống các bản betas. Bạn cũng có thể cần phải khởi động lại trình khởi chạy hoặc gỡ cài đặt Minecraft để tải xuống các bản betas hoạt động.</v:String>
 
-    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Before using, it is highly recommended that you press backup to create an installation of your existing save data as the launcher does replace the original directory with a symbolic link which allows us to redirect save data.
+    <v:String x:Key="FirstLaunch_BeforeStartingToUse" xml:space="preserve">Trước khi sử dụng, bạn nên nhấn sao lưu để tạo bản cài đặt cho dữ liệu lưu hiện có của mình vì trình khởi chạy thay thế thư mục gốc bằng một liên kết tượng trưng cho phép chúng tôi chuyển hướng lưu dữ liệu.
 
- (Don't worry, you will not lose your data by doing this, you will only lose data if you press play and haven't backed your stuff up)</v:String>
+ (Đừng lo lắng, bạn sẽ không bị mất dữ liệu khi làm điều này, bạn sẽ chỉ mất dữ liệu nếu bạn nhấn phát và chưa sao lưu nội dung của mình)</v:String>
 
-    <v:String x:Key="FirstLaunch_InstallType_Header">Save/Load Launcher Data From:</v:String>
-    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">Fixed Folder (Recommended)</v:String>
-    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">Portable/Root Folder</v:String>
-    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Backup Existing Save Data</v:String>
-    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(RECOMMENDED)</v:String>
+    <v:String x:Key="FirstLaunch_InstallType_Header">Lưu / Tải dữ liệu trình khởi chạy từ:</v:String>
+    <v:String x:Key="FirstLaunch_FixedInstall_Checkbox">Thư mục cố định (Được đề xuất)</v:String>
+    <v:String x:Key="FirstLaunch_PortableInstall_Checkbox">Thư mục di động / gốc</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Text">Sao lưu dữ liệu hiện có</v:String>
+    <v:String x:Key="FirstLaunch_BackupCheckBox_Subtext">(ĐƯỢC ĐỀ XUẤT)</v:String>
     <v:String x:Key="FirstLaunch_CloseButton">Đóng</v:String>
     <v:String x:Key="FirstLaunch_BackButton">Quay lại</v:String>
     <v:String x:Key="FirstLaunch_GoBackButton"></v:String>
@@ -359,18 +359,18 @@
     <!--#region Errors -->
 
     <v:String x:Key="Error_AuthenticationFailed_Title">Xác nhận thất bại</v:String>
-    <v:String x:Key="Error_AuthenticationFailed">Failed to authenticate. Please make sure your account is subscribed to the beta program.</v:String>
+    <v:String x:Key="Error_AuthenticationFailed">Không xác thực được. Hãy đảm bảo rằng tài khoản của bạn đã được đăng ký với chương trình beta.</v:String>
 
-    <v:String x:Key="Error_CantFindExternalLauncher_Title">Could not switch launcher</v:String>
-    <v:String x:Key="Error_CantFindExternalLauncher">Could not switch the launcher. Be sure you have the path to the launcher set correctly.</v:String>
+    <v:String x:Key="Error_CantFindExternalLauncher_Title">Không thể chuyển đổi trình khởi chạy</v:String>
+    <v:String x:Key="Error_CantFindExternalLauncher">Không thể chuyển đổi trình khởi chạy. Đảm bảo rằng bạn đã đặt đúng đường dẫn đến trình khởi chạy.</v:String>
 
-    <v:String x:Key="Error_CantFindJavaLauncher_Title">Could not switch launcher</v:String>
-    <v:String x:Key="Error_CantFindJavaLauncher">Could not find launcher. Be sure you have installed original Minecraft launcher from Minecraft.net .</v:String>
+    <v:String x:Key="Error_CantFindJavaLauncher_Title">Không thể chuyển đổi trình khởi chạy</v:String>
+    <v:String x:Key="Error_CantFindJavaLauncher">Không thể tìm thấy trình khởi chạy. Đảm bảo bạn đã cài đặt trình khởi chạy Minecraft gốc từ Minecraft.net.</v:String>
 
-    <v:String x:Key="Error_AppReregisterFailed_Title">App registration failed</v:String>
+    <v:String x:Key="Error_AppReregisterFailed_Title">Đăng ký ứng dụng không thành công</v:String>
     <v:String x:Key="Error_AppReregisterFailed">Vui lòng thử lại sau :(</v:String>
 
-    <v:String x:Key="Error_AppDeregisteringFailed_Title">App de-registration failed</v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed_Title">Hủy đăng ký ứng dụng không thành công</v:String>
     <v:String x:Key="Error_AppDeregisteringFailed">Vui lòng thử lại sau :(</v:String>
 
     <v:String x:Key="Error_AppLaunchFailed_Title">Khởi động thất bại</v:String>
@@ -379,7 +379,7 @@
     <v:String x:Key="Error_AppDownloadFailed_Title">Tải xuống thất bại</v:String>
     <v:String x:Key="Error_AppDownloadFailed">Vui lòng thử lại sau :(</v:String>
 
-    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">Save redirection failed</v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">Lưu chuyển hướng không thành công</v:String>
     <v:String x:Key="Error_SaveDirectoryRedirectionFailed">Vui lòng thử lại sau :(</v:String>
 
     <v:String x:Key="Error_AppUninstallFailed_Title">Gỡ cài đặt thất bại</v:String>
@@ -388,7 +388,7 @@
     <v:String x:Key="Error_AppExtractionFailed_Title">Giải nén thất bại</v:String>
     <v:String x:Key="Error_AppExtractionFailed">Vui lòng thử lại sau :(</v:String>
 
-    <v:String x:Key="Error_CantFindPaidServerList_Title">Could not open servers tab</v:String>
+    <v:String x:Key="Error_CantFindPaidServerList_Title">Không thể mở tab máy chủ</v:String>
     <v:String x:Key="Error_CantFindPaidServerList">Paid Servers List not found.</v:String>
 
     <v:String x:Key="Error_NotaSkinPack_Title">Unable to import skin pack</v:String>
@@ -460,7 +460,7 @@ turned off, try turning the back on and search again</v:String>
 
     <!--#region UI -->
 
-    <v:String x:Key="Installer_Title">Trình thiết lập Minecraft Bedrock</v:String>
+    <v:String x:Key="Installer_Title">Trình cài đặt Minecraft Bedrock</v:String>
 
     <v:String x:Key="Installer_Back_Text">Quay lại</v:String>
     <v:String x:Key="Installer_Next_Text">Tiếp</v:String>
@@ -472,13 +472,13 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="Installer_WelcomePage_Info2_Text">Chúng tôi khuyên bạn nên đóng các ứng dụng khác trước khi bắt đầu.</v:String>
     <v:String x:Key="Installer_WelcomePage_Info3_Text">Nhấn Tiếp để tiếp tục hoặc Hủy bỏ để thoát cài đặt.</v:String>
 
-    <v:String x:Key="Installer_LicenseAgreement_Title">Thỏa thuận - cấp phép</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Title">Thỏa thuận cấp phép</v:String>
     <v:String x:Key="Installer_LicenseAgreement_Info_Text">Please read the following License Agreement. You must accept the terms of this</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">sự đồng ý trước khi bắt đầu việc tải xuống.</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">Tôi chấp nhận với giấy phép.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info2_Text">thỏa thuận trước khi tiếp tục cài đặt.</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Accept_Text">Tôi chấp nhận giấy phép.</v:String>
     <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">Tôi không chấp nhận giấy phép.</v:String>
 
-    <v:String x:Key="Installer_InstallType_Title">Hãy chọn cách để tải</v:String>
+    <v:String x:Key="Installer_InstallType_Title">Chọn loại cài đặt</v:String>
     <v:String x:Key="Installer_InstallType_Info_Text">Select which version of the launcher you want to download</v:String>
 
     <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Phiên bản beta</v:String>
