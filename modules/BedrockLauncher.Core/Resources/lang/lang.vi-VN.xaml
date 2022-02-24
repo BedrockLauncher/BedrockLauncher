@@ -295,7 +295,7 @@
     <v:String x:Key="AboutPage_McMrArm_Text">Để tạo trình tải xuống Phiên bản Minecraft Windows 10 ban đầu (công việc này bắt nguồn từ)</v:String>
     <v:String x:Key="AboutPage_BsCommunity_Text">Đối với công việc của họ trên SkinView3D, được sử dụng cho chức năng xem skin trong trình khởi chạy</v:String>
     <v:String x:Key="AboutPage_Mojang_Text">Đối với Minecraft!!!</v:String>
-    <v:String x:Key="AboutPage_BsRepo_Text">SkinView3D Repo</v:String>
+    <v:String x:Key="AboutPage_BsRepo_Text">Kho lưu trữ SkinView3D</v:String>
     <v:String x:Key="AboutPage_CurrentBuild">Bản dựng hiện tại: </v:String>
 
     <!--#endregion-->
@@ -389,40 +389,40 @@
     <v:String x:Key="Error_AppExtractionFailed">Vui lòng thử lại sau :(</v:String>
 
     <v:String x:Key="Error_CantFindPaidServerList_Title">Không thể mở tab máy chủ</v:String>
-    <v:String x:Key="Error_CantFindPaidServerList">Paid Servers List not found.</v:String>
+    <v:String x:Key="Error_CantFindPaidServerList">Không tìm thấy danh sách máy chủ trả phí.</v:String>
 
-    <v:String x:Key="Error_NotaSkinPack_Title">Unable to import skin pack</v:String>
-    <v:String x:Key="Error_NotaSkinPack">That's not a skin pack silly!</v:String>
+    <v:String x:Key="Error_NotaSkinPack_Title">Không thể nhập gói Skin</v:String>
+    <v:String x:Key="Error_NotaSkinPack">Đó không phải là một gói Skin ngớ ngẩn!</v:String>
 
     <!--#endregion-->
 
     <!--#region NewProfile -->
 
     <v:String x:Key="NewProfile_GoBackButton"></v:String>
-    <v:String x:Key="NewProfile_CreateProfileText">PROFILE</v:String>
-    <v:String x:Key="NewProfile_CreateProfileText_Error">THIS NAME IS ALREADY TAKEN</v:String>
-    <v:String x:Key="NewProfile_CreateProfileSubTitle">Enter the name of your new profile!</v:String>
+    <v:String x:Key="NewProfile_CreateProfileText">HỒ SƠ</v:String>
+    <v:String x:Key="NewProfile_CreateProfileText_Error">TÊN NÀY ĐÃ QUA SỬ DỤNG</v:String>
+    <v:String x:Key="NewProfile_CreateProfileSubTitle">Nhập tên của hồ sơ mới của bạn!</v:String>
     <v:String x:Key="NewProfile_CreateProfileButton">Tạo</v:String>
 
     <!--#endregion-->
 
     <!--#region Dialog -->
 
-    <v:String x:Key="Dialog_Item_Installation_Text">installation</v:String>
-    <v:String x:Key="Dialog_Item_SkinPack_Text">skin pack</v:String>
+    <v:String x:Key="Dialog_Item_Installation_Text">cài đặt</v:String>
+    <v:String x:Key="Dialog_Item_SkinPack_Text">gói Skin</v:String>
     <v:String x:Key="Dialog_Item_Skin_Text">skin</v:String>
     <v:String x:Key="Dialog_Item_Version_Text">phiên bản</v:String>
     <v:String x:Key="Dialog_Item_Profile_Text">hồ sơ</v:String>
 
-    <v:String x:Key="Dialog_DeleteItem_Title">Delete {0} permanently</v:String>
+    <v:String x:Key="Dialog_DeleteItem_Title">Xóa {0} vĩnh viễn</v:String>
     <v:String x:Key="Dialog_DeleteItem_Text" xml:space="preserve">Bạn có chắc sẽ xóa {1}?
 Điều này sẽ làm mất dữ liệu {0}! (Thời gian lâu dài!)</v:String>
 
-    <v:String x:Key="Dialog_KillGame_Title">Kill Game</v:String>
-    <v:String x:Key="Dialog_KillGame_Text">This is Dangerous, and is only recommended if you get stuck. Do you still want to close the game?</v:String>
+    <v:String x:Key="Dialog_KillGame_Title">Tiểu diệt trò chơi</v:String>
+    <v:String x:Key="Dialog_KillGame_Text">Điều này là nguy hiểm và chỉ được khuyến khích nếu bạn gặp khó khăn. Bạn vẫn muốn đóng trò chơi?</v:String>
 
-    <v:String x:Key="Dialog_CloseGame_Title">Game is Still Running</v:String>
-    <v:String x:Key="Dialog_CloseGame_Text">Would you like to force close it? (without saving changes, this is only recommended if you get stuck, please close the game normally)</v:String>
+    <v:String x:Key="Dialog_CloseGame_Title">Trò chơi vẫn đang chạy</v:String>
+    <v:String x:Key="Dialog_CloseGame_Text">Bạn có muốn buộc đóng nó không? (không lưu các thay đổi, điều này chỉ được khuyến nghị nếu bạn gặp khó khăn, vui lòng đóng trò chơi bình thường)</v:String>
 
     <v:String x:Key="DialogBtn_YesToAll_Text">Có Cho Tất cả</v:String>
     <v:String x:Key="DialogBtn_NoToAll_Text">Không cho Tất cả</v:String>
@@ -430,8 +430,8 @@
     <v:String x:Key="DialogBtn_No_Text">Không</v:String>
 
     <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">Không có kế quả tìm kiếm</v:String>
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">We couldn't find news any content matching your search. If you have category filters 
-turned off, try turning the back on and search again</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">Chúng tôi không thể tìm thấy tin tức bất kỳ nội dung nào phù hợp với tìm kiếm của bạn. Nếu bạn có bộ lọc danh mục
+đã tắt, hãy thử bật lại và tìm kiếm lại</v:String>
 
     <v:String x:Key="Dialog_ResultPanel_Loading_Title">Đang tải...</v:String>
     <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Vui lòng chờ!</v:String>
@@ -440,16 +440,16 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
 
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Không có kết quả</v:String>
-    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Found no items matching your search</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Không tìm thấy mục nào phù hợp với tìm kiếm của bạn</v:String>
 
     <!--#endregion-->
 
     <!--#region Internal -->
 
-    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">The file {0} already exists in the destination.\nDo you want to replace it? The old file will be lost otherwise.</v:String>
-    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">The file {0} is not a directory. Do you want to remove it? The data from the old directory will be lost otherwise.</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_FileNotExistant_Text">Tệp {0} đã tồn tại ở nơi đến.\nBạn có muốn thay thế tệp này không? Nếu không thì tệp cũ sẽ bị mất.</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_NotaDirectory_Text">Tệp {0} không phải là một thư mục. Bạn có muốn xóa nó không? Dữ liệu từ thư mục cũ sẽ bị mất.</v:String>
 
-    <v:String x:Key="GameManager_RecoveringDataIssue_Title">Converting Existing Save Data to Installation</v:String>
+    <v:String x:Key="GameManager_RecoveringDataIssue_Title">Chuyển đổi dữ liệu lưu hiện có thành cài đặt</v:String>
 
     <!--#endregion-->
 
@@ -473,13 +473,13 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="Installer_WelcomePage_Info3_Text">Nhấn Tiếp để tiếp tục hoặc Hủy bỏ để thoát cài đặt.</v:String>
 
     <v:String x:Key="Installer_LicenseAgreement_Title">Thỏa thuận cấp phép</v:String>
-    <v:String x:Key="Installer_LicenseAgreement_Info_Text">Please read the following License Agreement. You must accept the terms of this</v:String>
+    <v:String x:Key="Installer_LicenseAgreement_Info_Text">Vui lòng đọc Thỏa thuận cấp phép sau đây. Bạn phải chấp nhận các điều khoản của điều này</v:String>
     <v:String x:Key="Installer_LicenseAgreement_Info2_Text">thỏa thuận trước khi tiếp tục cài đặt.</v:String>
     <v:String x:Key="Installer_LicenseAgreement_Accept_Text">Tôi chấp nhận giấy phép.</v:String>
     <v:String x:Key="Installer_LicenseAgreement_DontAccept_Text">Tôi không chấp nhận giấy phép.</v:String>
 
     <v:String x:Key="Installer_InstallType_Title">Chọn loại cài đặt</v:String>
-    <v:String x:Key="Installer_InstallType_Info_Text">Select which version of the launcher you want to download</v:String>
+    <v:String x:Key="Installer_InstallType_Info_Text">Chọn phiên bản trình khởi chạy bạn muốn tải xuống</v:String>
 
     <v:String x:Key="Installer_InstallType_InstallLocation_BetaRadioButton_Text">Phiên bản beta</v:String>
     <v:String x:Key="Installer_InstallType_InstallLocation_ReleaseRadioButton_Text">Bản phát hành</v:String>
@@ -526,18 +526,18 @@ turned off, try turning the back on and search again</v:String>
 
     <!--#region VersionEntries -->
 
-    <v:String x:Key="VersionEntries_LatestSnapshot">Latest Beta</v:String>
-    <v:String x:Key="VersionEntries_LatestRelease">Latest Release</v:String>
-    <v:String x:Key="VersionEntries_UnnamedInstallation">&lt;unnamed installation&gt;</v:String>
+    <v:String x:Key="VersionEntries_LatestSnapshot">Bản Beta mới nhất</v:String>
+    <v:String x:Key="VersionEntries_LatestRelease">Bản phát hành mới nhất</v:String>
+    <v:String x:Key="VersionEntries_UnnamedInstallation">&lt;Cài đặt không có tên&gt;</v:String>
 
     <!--#endregion-->
 
     <!--#region ThemeEntries -->
 
-    <v:String x:Key="ThemeEntries_LatestUpdate">Latest Update</v:String>
+    <v:String x:Key="ThemeEntries_LatestUpdate">Cập nhật mới nhất</v:String>
     <v:String x:Key="ThemeEntries_Original">Nguyên bản</v:String>
 
-    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">Caves &amp; Cliffs (Part 1)</v:String>
+    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">Hang động &amp; Vách đá (Phần 1)</v:String>
     <v:String x:Key="ThemeEntries_NetherUpdate">Cập nhật địa ngục</v:String>
     <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Cập nhật Buzzy Bees</v:String>
     <v:String x:Key="ThemeEntries_VillagePillageUpdate">Cập nhật Village &amp; Pillage</v:String>
