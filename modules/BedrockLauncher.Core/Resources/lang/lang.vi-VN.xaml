@@ -167,7 +167,7 @@
     <v:String x:Key="EditSkinPackScreen_SerializeNameSubtitle">TÊN KHAI THÁC</v:String>
     <v:String x:Key="EditSkinPackScreen_LocalizationLangSubtitle">ĐỊNH NGHĨA NGÔN NGỮ</v:String>
 
-    <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">NGÔN NGỮ TÊN</v:String>
+    <v:String x:Key="EditSkinPackScreen_AddLangTextBoxSubtitle">TÊN NGÔN NGỮ</v:String>
 
     <v:String x:Key="EditSkinPackScreen_DefinitionsSubtitle">CÁC ĐỊNH NGHĨA KHÁC</v:String>
     <v:String x:Key="EditSkinPackScreen_ContentSubtitle">NỘI DUNG</v:String>
