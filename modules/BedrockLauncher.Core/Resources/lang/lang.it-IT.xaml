@@ -460,7 +460,7 @@ Questo {0} andrà perso per sempre! (Molto tempo!)</v:String>
 
     <!--#region UI -->
 
-    <v:String x:Key="Installer_Title">Minecraft Bedrock Launcher Setup Wizard</v:String>
+    <v:String x:Key="Installer_Title">Installazione guidata del launcher di Minecraft Bedrock</v:String>
 
     <v:String x:Key="Installer_Back_Text">Indietro</v:String>
     <v:String x:Key="Installer_Next_Text">Prossimo</v:String>
