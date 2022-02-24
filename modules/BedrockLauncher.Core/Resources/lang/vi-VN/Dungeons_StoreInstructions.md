@@ -14,10 +14,10 @@ Phiên bản Windows Store của Minecraft Dungeons thường không cho phép b
 
 ## Trong cửa sổ Powershell:
 
-3. You will be asked to select a folder. Choose an empty folder where you want the game to be moved to. Do not choose a folder in Program Files or One Drive, it will break things.
-4. The game will open at one point. Do not close it when this happens. If you run into any issues, make sure to check the Troubleshooting section below.
-5. A `~mods` folder will appear. This is where you place your mods.
-7. Launching the modded game is just like launching the regular game. You can do it from the start menu, Windows Store, Xbox app, and so on, just like you normally do. Do NOT try to launch it by running the .exe files in the game folder.
+3. Bạn sẽ được yêu cầu chọn một thư mục. Chọn một thư mục trống nơi bạn muốn trò chơi được chuyển đến. Đừng chọn một thư mục trong Program Files hoặc One Drive, nó sẽ phá vỡ mọi thứ.
+4. Trò chơi sẽ mở tại một thời điểm. Đừng đóng nó khi điều này xảy ra. Nếu bạn gặp phải bất kỳ sự cố nào, hãy nhớ kiểm tra phần Khắc phục sự cố bên dưới.
+5. Thư mục `~mods` sẽ xuất hiện. Đây là nơi bạn đặt "mod" của mình.
+7. Khởi chạy trò chơi đã mod cũng giống như khởi chạy trò chơi thông thường. Bạn có thể làm điều đó từ Start menu, Windows Store, ứng dụng Xbox,.v.v. giống như bạn thường làm. KHÔNG cố khởi chạy nó bằng cách chạy các tệp .exe trong thư mục trò chơi.
 
 ## Khắc phục sự cố:
 - If you run into any issues while/after patching the game, some of these things might help you.
