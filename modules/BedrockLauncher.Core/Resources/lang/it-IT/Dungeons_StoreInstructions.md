@@ -8,7 +8,7 @@ The Windows Store version of Minecraft Dungeons normally won't let you modify it
 - Make sure your game is up to date. To do this, press Win + R, enter `ms-windows-store://DownloadsAndUpdates/` and press enter. Then, press "Get updates" in the top right corner of the window that opens.
 - Install [Visual C++ Redist](https://aka.ms/vs/16/release/vc_redist.x64.exe). Even if you think you have it installed, try the installer. You may have an older version that won't work.
 
-## In the Bedrock Launcher:
+## Nel launcher della Bedrock Edition:
 1. Make Sure your game variant is set to `Microsoft Store`
 3. Click on `Install Store Patch`
 
@@ -24,7 +24,7 @@ The Windows Store version of Minecraft Dungeons normally won't let you modify it
 - If the game didn't open at all while patching and the patching didn't work, try opening the game manually before running the patcher. Keep the game open until it either closes by itself or the patcher finishes.
 - If you get an error saying it can't verify your ownership of the game, you must have launched the game using the .exe file. Don't do that. Run the game from the start menu, Windows Store, or Xbox app. If you did, but still get this error, reinstall the regular game and log in at least once (open the game and select a character) before patching it.
 
-# Part 2 - The Bedrock Launcher Setup
+# Parte 2 - Configurazione del launcher della Bedrock Edition
 1. Set the install location to the folder containing `Dungeons.exe`. It should be in a parent folder of the `~mods` folder from earlier
 2. Select where you want your symbolic mods folder to be (it should not be in the same location as `~mods` folder from earlier)
 3. Click on `Install Symbolic Link`
