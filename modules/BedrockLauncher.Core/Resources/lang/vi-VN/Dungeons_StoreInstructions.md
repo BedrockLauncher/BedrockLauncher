@@ -20,9 +20,9 @@ Phiên bản Windows Store của Minecraft Dungeons thường không cho phép b
 7. Khởi chạy trò chơi đã mod cũng giống như khởi chạy trò chơi thông thường. Bạn có thể làm điều đó từ Start menu, Windows Store, ứng dụng Xbox,.v.v. giống như bạn thường làm. KHÔNG cố khởi chạy nó bằng cách chạy các tệp .exe trong thư mục trò chơi.
 
 ## Khắc phục sự cố:
-- If you run into any issues while/after patching the game, some of these things might help you.
-- If the game didn't open at all while patching and the patching didn't work, try opening the game manually before running the patcher. Keep the game open until it either closes by itself or the patcher finishes.
-- If you get an error saying it can't verify your ownership of the game, you must have launched the game using the .exe file. Don't do that. Run the game from the start menu, Windows Store, or Xbox app. If you did, but still get this error, reinstall the regular game and log in at least once (open the game and select a character) before patching it.
+- Nếu bạn gặp phải bất kỳ sự cố nào trong khi/sau khi vá trò chơi, một số điều sau đây có thể giúp ích cho bạn.
+- Nếu trò chơi hoàn toàn không mở trong khi vá và quá trình vá không hoạt động, hãy thử mở trò chơi theo cách thủ công trước khi chạy trình vá. Giữ trò chơi mở cho đến khi nó tự đóng lại hoặc bản vá kết thúc.
+- Nếu bạn gặp lỗi thông báo rằng nó không thể xác minh quyền sở hữu trò chơi của bạn, bạn phải khởi chạy trò chơi bằng tệp .exe. Đừng làm vậy. Chạy trò chơi từ Start menu, Windows Store hoặc ứng dụng Xbox. Nếu bạn đã làm, nhưng vẫn gặp lỗi này, hãy cài đặt lại trò chơi thông thường và đăng nhập ít nhất một lần (mở trò chơi và chọn nhân vật) trước khi vá lỗi.
 
 # Phần 2 - Thiết lập Trình khởi chạy Bedrock
 1. Đặt vị trí cài đặt vào thư mục chứa ` Dungeons.exe `. Nó phải nằm trong thư mục mẹ của thư mục ` ~ mods ` trước đó
