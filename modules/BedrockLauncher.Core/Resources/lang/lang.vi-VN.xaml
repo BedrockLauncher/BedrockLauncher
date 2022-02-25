@@ -74,7 +74,7 @@
     <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Cửa hàng Microsoft</v:String>
     <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;đường dẫn mặc định&gt;</v:String>
     <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">CÀI ĐẶT VỊ TRÍ</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">VỊ TRÍ THƯ MỤC CHẾ ĐỘ BIỂU TƯỢNG</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">VỊ TRÍ THƯ MỤC MODS</v:String>
     <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Hướng dẫn</v:String>
     <v:String x:Key="Dungeons_InstallationPage_PathsTab">Đường dẫn</v:String>
     <v:String x:Key="Dungeons_InstallationPage_GeneralTab">Thể loại</v:String>
@@ -565,7 +565,7 @@
     <v:String x:Key="GeneralText_Edit">Chỉnh sửa</v:String>
     <v:String x:Key="GeneralText_Duplicate">Tạo bản sao</v:String>
     <v:String x:Key="GeneralText_Remove">Loại bỏ</v:String>
-    <v:String x:Key="GeneralText_Cancel">Hủy</v:String>
+    <v:String x:Key="GeneralText_Cancel">Hủy bỏ</v:String>
     <v:String x:Key="GeneralText_Update">Cập nhật</v:String>
     <v:String x:Key="GeneralText_Add">Thêm</v:String>
     <v:String x:Key="GeneralText_Save">Lưu</v:String>
