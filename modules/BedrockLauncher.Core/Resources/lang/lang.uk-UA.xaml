@@ -80,8 +80,8 @@
     <v:String x:Key="Dungeons_InstallationPage_GeneralTab">Загальне</v:String>
     <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Встановити Store Patch</v:String>
     <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Оновити Store Patch</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Uninstall Symbolic Link</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Install  Symbolic Link</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Видалити символічне посилання</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Встановити символічне посилання</v:String>
     <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Виправити/Оновити гру</v:String>
 
 
