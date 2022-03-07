@@ -4,10 +4,10 @@
 3. У Bedrock Launcher встановіть місце встановлення на цей шлях
 4. Виберіть, де ви хочете розмістити символічні моди (вона не повинна розміщуватися в папці встановлення вашої гри)
 5. Натисніть `Встановити символічне посилання`
-6. Your game's mod folder should now be paired with your symbolic mods folder
+6. Зараз ваша тека модифікацій знаходиться в парі з символічними модами
 
 # Як оновити
 1. Натисніть на `Видалити cимволічне посилання` в лаунчері Bedrock
-2. Update the Game through the Minecraft Launcher
-3. Click on `Install Symbolic Link` in the Bedrock Launcher
+2. Оновіть гру через Minecraft Launcher
+3. Натисніть на `Встановити символічне посилання` в лаунчері Bedrock
 4. Готово
