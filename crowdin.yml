@@ -1,8 +1,0 @@
-base_path: /modules
-base_url: 'https://api.crowdin.com'
-preserve_hierarchy: true
-files:
-  - source: /BedrockLauncher.Core/Resources/lang/lang.en-US.xaml
-    translation: /BedrockLauncher.Core/Resources/lang/lang.%locale%.xaml
-  - source: /BedrockLauncher.Core/Resources/lang/.ext/en-US/*.*
-    translation: /BedrockLauncher.Core/Resources/lang/%locale%/%original_file_name%
