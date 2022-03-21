@@ -7,7 +7,7 @@
     <!--#region MainWindow -->
 
     <v:String x:Key="MainWindow_Title">Minecraft Bedrock Launcher</v:String>
-    <v:String x:Key="MainWindow_Disclaimer">未經Mojang許</v:String>
+    <v:String x:Key="MainWindow_Disclaimer">未經Mojang許可</v:String>
 
     <!--#endregion-->
     
@@ -22,10 +22,10 @@
     <!--#region ToolbarButtons -->
 
     <v:String x:Key="ToolbarButtons_NewsButton_Text">新聞</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">基岩</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java</v:String>
-    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java啟動</v:String>
-    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">自定啟動</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftEdition_Text">基岩版</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaEdition_Text">Java版</v:String>
+    <v:String x:Key="ToolbarButtons_MinecraftJavaLauncher_Text">Java啟動器</v:String>
+    <v:String x:Key="ToolbarButtons_CustomLauncher_Text">自訂啟動器</v:String>
     <v:String x:Key="ToolbarButtons_SwitchEdition_Text">切換至</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">MINECRAFT:</v:String>
     <v:String x:Key="ToolbarButtons_CommunityButton_Text">社群</v:String>
@@ -57,9 +57,9 @@
     <!--#region ProfileButton -->
 
     <v:String x:Key="ProfileButton_ManageProfiles_Text">管理個人檔</v:String>
-    <v:String x:Key="ProfileButton_ProfileSettings_Text">個人檔案設</v:String>
-    <v:String x:Key="ProfileButton_AddProfile_Text">新增個人檔</v:String>
-    <v:String x:Key="ProfileButton_RemoveProfile_Text">移除個人檔</v:String>
+    <v:String x:Key="ProfileButton_ProfileSettings_Text">個人檔案設定</v:String>
+    <v:String x:Key="ProfileButton_AddProfile_Text">新增個人檔案</v:String>
+    <v:String x:Key="ProfileButton_RemoveProfile_Text">移除個人檔案</v:String>
     <v:String x:Key="ProfileButton_ChooseAccount_Text">選擇個人檔</v:String>
 
     <!--#endregion-->
@@ -74,15 +74,15 @@
     <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Microsoft Store</v:String>
     <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Default path&gt;</v:String>
     <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">INSTALL LOCATION</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">SYMBOLIC MODS FOLDER LOCATION</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Instructions</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_PathsTab">Paths</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GeneralTab">General</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Install Store Patch</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Update Store Patch</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Uninstall Symbolic Link</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Install  Symbolic Link</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Repair/Update Game</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">符號連結模式文件夾位置</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">操作說明</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_PathsTab">路徑</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GeneralTab">一般</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">下載商店補丁</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">更新商店補丁</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">截除安裝符號連結。</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">安裝符號連結。</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">修復或更新以遊玩最新遊戲。</v:String>
 
 
     <!--#endregion-->
@@ -120,7 +120,7 @@
     <v:String x:Key="EditInstallationScreen_CreateButton">建立</v:String>
     <v:String x:Key="EditInstallationScreen_AltCreateButton">儲存</v:String>
 
-    <v:String x:Key="EditInstallationScreen_LatestSnapshot">最新搶鮮</v:String>
+    <v:String x:Key="EditInstallationScreen_LatestSnapshot">最新搶鮮版</v:String>
     <v:String x:Key="EditInstallationScreen_LatestRelease">最新正式</v:String>
 
     <v:String x:Key="EditInstallationScreen_NameSubtitle">名稱</v:String>
@@ -359,7 +359,7 @@
     <!--#region Errors -->
 
     <v:String x:Key="Error_AuthenticationFailed_Title">認證失敗</v:String>
-    <v:String x:Key="Error_AuthenticationFailed">無法進行身份認證。請確保您的帳戶已訂閱搶鮮版計</v:String>
+    <v:String x:Key="Error_AuthenticationFailed">無法進行身份認證。請確保您的帳戶已訂閱搶鮮版計劃。</v:String>
 
     <v:String x:Key="Error_CantFindExternalLauncher_Title">無法切換啟動</v:String>
     <v:String x:Key="Error_CantFindExternalLauncher">無法切換啟動器。請確保您有正確設定的啟動器路徑</v:String>
@@ -367,22 +367,22 @@
     <v:String x:Key="Error_CantFindJavaLauncher_Title">無法切換啟動</v:String>
     <v:String x:Key="Error_CantFindJavaLauncher">無法找到啟動器。請確保您已經從Minecraft.net 安裝了原版Minecraft啟動</v:String>
 
-    <v:String x:Key="Error_AppReregisterFailed_Title">App registration failed</v:String>
+    <v:String x:Key="Error_AppReregisterFailed_Title">程式註冊失敗</v:String>
     <v:String x:Key="Error_AppReregisterFailed">請重試一次 :(</v:String>
 
-    <v:String x:Key="Error_AppDeregisteringFailed_Title">App de-registration failed</v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed_Title">程式解除失敗</v:String>
     <v:String x:Key="Error_AppDeregisteringFailed">請重試一次 :(</v:String>
 
-    <v:String x:Key="Error_AppLaunchFailed_Title">啟動失敗</v:String>
+    <v:String x:Key="Error_AppLaunchFailed_Title">啟動失敗。</v:String>
     <v:String x:Key="Error_AppLaunchFailed">請重試一次 :(</v:String>
 
-    <v:String x:Key="Error_AppDownloadFailed_Title">下載失敗</v:String>
+    <v:String x:Key="Error_AppDownloadFailed_Title">下載檔案失敗。</v:String>
     <v:String x:Key="Error_AppDownloadFailed">請重試一次 :(</v:String>
 
-    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">Save redirection failed</v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">儲存檔案失敗。</v:String>
     <v:String x:Key="Error_SaveDirectoryRedirectionFailed">請重試一次 :(</v:String>
 
-    <v:String x:Key="Error_AppUninstallFailed_Title">解除安裝失敗</v:String>
+    <v:String x:Key="Error_AppUninstallFailed_Title">解除安裝失敗。</v:String>
     <v:String x:Key="Error_AppUninstallFailed">請重試一次 :(</v:String>
 
     <v:String x:Key="Error_AppExtractionFailed_Title">提取失敗</v:String>
@@ -504,7 +504,7 @@
 
     <!--#endregion-->
 
-    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">無法移動目</v:String>
+    <v:String x:Key="Installer_Dialog_MovingDirectoryFailed_Text">無法移動目錄</v:String>
     <v:String x:Key="Installer_Dialog_MovingFileFailed_Text">無法移動檔</v:String>
     <v:String x:Key="Installer_Dialog_FileLocked_Text">檔案正在使</v:String>
     <v:String x:Key="Installer_Dialog_TryAgain_Text">重試</v:String>
