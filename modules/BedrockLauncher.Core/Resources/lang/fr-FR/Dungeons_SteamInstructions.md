@@ -1,12 +1,12 @@
-﻿# Setup
-1. In your Steam library, right-click Minecraft Dungeons and select `Manage > Browse local files`
-2. In Bedrock Launcher, set this folder to be the install location
-3. Select where you want your symbolic mods folder to be (it should not be placed within your `Dungeons\Content\Paks\~mods` folder from earlier)
-4. Click on `Install Symbolic Link`
-5. Your game's mod folder should now be paired with your symbolic mods folder
+﻿# Configuration
+1. Dans votre bibliothèque Steam, cliquez avec le bouton droit de la souris sur Minecraft Dungeons et sélectionnez `Gérer > Parcourir les fichiers locaux`
+2. Dans Bedrock Launcher, définissez ce dossier comme l'emplacement d'installation
+3. Sélectionnez l'emplacement souhaité pour votre dossier de mods symboliques (il ne devrait pas être placé dans votre dossier `Dungeons\Content\Paks\~mods` de tout à l'heure)
+4. Appuyez sur `Installer un lien symbolique`
+5. Le dossier des mods de votre jeu devrait maintenant être jumelé à votre dossier de mods symboliques
 
-# How to Update
-1. Click on `Uninstall Symbolic Link` in the Bedrock Launcher
-2. Update the Game Through Steam
-3. Click on `Install Symbolic Link` in the Bedrock Launcher
-4. Done
+# Comment mettre à jour
+1. Cliquez sur `Désinstaller un lien symbolique` dans le Bedrock Laucher
+2. Mettez à jour le jeu avec Steam
+3. Appuyez sur `Installer un lien symbolique` dans le Bedrock Launcher
+4. Terminé
