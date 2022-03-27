@@ -1,41 +1,41 @@
 ﻿# Part 1 - The Powershell Script
-The Windows Store version of Minecraft Dungeons normally won't let you modify its files/folders. To get around this issue, follow these steps:
+Minecraft DungeonsのWindowsストアバージョンでは、通常、ファイル/フォルダーを変更できません。 この問題を回避するには、次の手順に従います：
 
-## Prerequisites:
-- Temporarily disable any antivirus software. Most will detect that an unknown script is being run and try to stop it.
-- If you use Bitdefender, you need to uninstall it before continuing, as it breaks the script even when turned off.
-- Make sure you have at least 10 GBs of space free.
-- Make sure your game is up to date. To do this, press Win + R, enter `ms-windows-store://DownloadsAndUpdates/` and press enter. Then, press "Get updates" in the top right corner of the window that opens.
-- Install [Visual C++ Redist](https://aka.ms/vs/16/release/vc_redist.x64.exe). Even if you think you have it installed, try the installer. You may have an older version that won't work.
+## 前提条件：
+- ウイルス対策ソフトウェアを一時的に無効にします。 ほとんどの場合、不明なスクリプトが実行されていることを検出し、それを停止しようとします。
+- Bitdefenderを使用する場合は、オフにしてもスクリプトが破損するため、続行する前にアンインストールする必要があります。
+- 少なくとも10GBの空き容量があることを確認してください。
+- ゲームが最新であることを確認してください。 これを行うには、Win + R を押し、 `ms-windows-store://DownloadsAndUpdates/` と入力します、Enter キーを押します。 その後、開いたウィンドウの右上隅にある「Get updates」を押します。
+- [Visual C++ Redist](https://aka.ms/vs/16/release/vc_redist.x64.exe) インストール。 システムにインストールされていると思われる場合でも、インストーラーを試してください。 古いバージョンは機能しません。
 
 ## In the Bedrock Launcher:
-1. Make Sure your game variant is set to `Microsoft Store`
-3. Click on `Install Store Patch`
+1. ゲームバリアントが `Microsoft Store` に設定されていることを確認してください。
+3. `Install Store Patch` をクリックします。
 
 ## In the Powershell Window:
 
-3. You will be asked to select a folder. Choose an empty folder where you want the game to be moved to. Do not choose a folder in Program Files or One Drive, it will break things.
-4. The game will open at one point. Do not close it when this happens. If you run into any issues, make sure to check the Troubleshooting section below.
-5. A `~mods` folder will appear. This is where you place your mods.
-7. Launching the modded game is just like launching the regular game. You can do it from the start menu, Windows Store, Xbox app, and so on, just like you normally do. Do NOT try to launch it by running the .exe files in the game folder.
+3. フォルダを選択するように求められます。 ゲームの移動先となる空のフォルダを選択します。 「Program Files」または「OneDrive」でフォルダーを選択しないでください。エラーが発生します。
+4. ゲームはある時点で開きます。 このような場合は閉じないでください。 問題が発生した場合は、以下の「Troubleshooting」セクションを確認してください。
+5. `~mods` フォルダが表示されます。 これは、modsを配置する場所です。
+7. ゲームの改造バージョンを起動することは、通常のゲームを起動することと同じです。 スタートメニュー、Windows Store、Xbox App、などから、通常どおりに実行できます。 ゲームフォルダ内の「.exe」ファイルを実行して起動しようとしないでください。
 
 ## Troubleshooting:
-- If you run into any issues while/after patching the game, some of these things might help you.
-- If the game didn't open at all while patching and the patching didn't work, try opening the game manually before running the patcher. Keep the game open until it either closes by itself or the patcher finishes.
-- If you get an error saying it can't verify your ownership of the game, you must have launched the game using the .exe file. Don't do that. Run the game from the start menu, Windows Store, or Xbox app. If you did, but still get this error, reinstall the regular game and log in at least once (open the game and select a character) before patching it.
+- ゲームにパッチを適用している間/後に問題が発生した場合は、これらのいくつかが役立つ可能性があります。
+- パッチ適用中にゲームがまったく開かず、パッチ適用が機能しなかった場合は、パッチャーを実行する前に手動でゲームを開いてみてください。 ゲームが自動的に閉じるか、パッチャーが終了するまで、ゲームを開いたままにします。
+- ゲームの所有権を確認できないというエラーが表示された場合は、「.exe」ファイルを使用してゲームを起動している必要があります。 そうしないでください。 スタートメニュー、「Windows Store」、または「Xbox App」からゲームを実行します。 行ったが、それでもこのエラーが発生する場合は、パッチを適用する前に、通常のゲームを再インストールし、少なくとも1回ログインして（ゲームを開いてキャラクターを選択して）ください。
 
 # Part 2 - The Bedrock Launcher Setup
-1. Set the install location to the folder containing `Dungeons.exe`. It should be in a parent folder of the `~mods` folder from earlier
-2. Select where you want your symbolic mods folder to be (it should not be in the same location as `~mods` folder from earlier)
-3. Click on `Install Symbolic Link`
-4. Your game's mod folder should now be paired with your symbolic mods folder
+1. インストール場所を `Dungeons.exe` を含むフォルダーに設定します。 以前の `~mods` フォルダーの親フォルダーにある必要があります。
+2. Symbolic modsフォルダを配置する場所を選択します（以前の `~mods` フォルダーと同じ場所に配置しないでください）。
+3. `Install Symbolic Link`を押します。
+4. これで、ゲームmodフォルダーがsymbolic modsフォルダーとpairedになります。
 
-# How to Update
-1. Click on `Uninstall Symbolic Link`
-2. Click on `Update Store Patch`
-3. Repeat Steps 3 through 6 of Part 1 if nessisary
-4. Repeat Steps 1 through 4 of Part 2
-5. Done
+# 更新する方法
+1. `Uninstall Symbolic Link`を押します。
+2. `Update Store Patch` をクリックします。
+3. 必要に応じて、パート1のステップ3から6を繰り返します。
+4. パート2のステップ1から4を繰り返します。
+5. 完了。
 
 
 
