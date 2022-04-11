@@ -1,4 +1,4 @@
-﻿# Setup
+﻿# Instalacja
 1. In your Minecraft Launcher, click Minecraft Dungeons and select `Installations`
 2. You will see a folder path above two buttons, copy it and append `\dungeons\dungeons` to it
 3. In the Bedrock Launcher, set the install location to this path
