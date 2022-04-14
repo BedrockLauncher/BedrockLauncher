@@ -72,17 +72,17 @@
     <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Launcher de Windows</v:String>
     <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Steam</v:String>
     <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Microsoft Store</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Default path&gt;</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">INSTALL LOCATION</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Ruta predeterminada&gt;</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">Ubicacion de la instalación</v:String>
     <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">SYMBOLIC MODS FOLDER LOCATION</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Instructions</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_PathsTab">Paths</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Instrucciones</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_PathsTab">Rutas</v:String>
     <v:String x:Key="Dungeons_InstallationPage_GeneralTab">General</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Install Store Patch</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Update Store Patch</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Instalar parche de la tienda</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Actualizar parche de la tienda</v:String>
     <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Uninstall Symbolic Link</v:String>
     <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Install  Symbolic Link</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Repair/Update Game</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Reparar/Actualizar juego</v:String>
 
 
     <!--#endregion-->
@@ -216,7 +216,7 @@
 
     <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
-    <v:String x:Key="NewsScreen_JavaNDungeons_BedrockCheckbox">Minecraft for Windows</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_BedrockCheckbox">Minecraft para Windows</v:String>
 
     <!--#endregion-->
 
@@ -368,11 +368,11 @@ Debes optar en el Xbox Insider Hub por la cuenta seleccionada para descargar bet
     <v:String x:Key="Error_CantFindJavaLauncher_Title">No se pudo cambiar el launcher</v:String>
     <v:String x:Key="Error_CantFindJavaLauncher">No se pudo encontrar el launcher . Asegúrese de que ha instalado el launcher original de Minecraft de Minecraft.net .</v:String>
 
-    <v:String x:Key="Error_AppReregisterFailed_Title">App registration failed</v:String>
+    <v:String x:Key="Error_AppReregisterFailed_Title">Error de registro de la aplicación</v:String>
     <v:String x:Key="Error_AppReregisterFailed">Porfavor intenta de nuevo :(</v:String>
 
-    <v:String x:Key="Error_AppDeregisteringFailed_Title">App de-registration failed</v:String>
-    <v:String x:Key="Error_AppDeregisteringFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed_Title">Error de anulacion al registro de la aplicación</v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed">Por favor, inténtalo de nuevo :(</v:String>
 
     <v:String x:Key="Error_AppLaunchFailed_Title">Error al lanzar</v:String>
     <v:String x:Key="Error_AppLaunchFailed">Porfavor intenta de nuevo :(</v:String>
@@ -380,11 +380,11 @@ Debes optar en el Xbox Insider Hub por la cuenta seleccionada para descargar bet
     <v:String x:Key="Error_AppDownloadFailed_Title">Error en la descarga</v:String>
     <v:String x:Key="Error_AppDownloadFailed">Porfavor intenta de nuevo :(</v:String>
 
-    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">Save redirection failed</v:String>
-    <v:String x:Key="Error_SaveDirectoryRedirectionFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">Error al guardar la redirección</v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed">Por favor, inténtalo de nuevo :(</v:String>
 
-    <v:String x:Key="Error_AppUninstallFailed_Title">Uninstall failed</v:String>
-    <v:String x:Key="Error_AppUninstallFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppUninstallFailed_Title">Desinstalación fallida</v:String>
+    <v:String x:Key="Error_AppUninstallFailed">Por favor, inténtalo de nuevo :(</v:String>
 
     <v:String x:Key="Error_AppExtractionFailed_Title">Extracción fallida</v:String>
     <v:String x:Key="Error_AppExtractionFailed">Porfavor intenta de nuevo :(</v:String>
@@ -438,7 +438,7 @@ desactivados, intenta volver a activar y vuelve a buscar</v:String>
     <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve"></v:String>
 
     <v:String x:Key="Dialog_ResultPanel_Error_Title">Error</v:String>
-    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:'(</v:String>
 
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">No hay resultados</v:String>
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">No se encontraron elementos que coincidan con tu búsqueda</v:String>
