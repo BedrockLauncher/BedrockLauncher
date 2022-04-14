@@ -69,7 +69,7 @@
     <!-- #region Dungeons Section -->
 
     <v:String x:Key="Dungeons_InstallationPage_GameVariant">VARIANTE DEL JUEGO</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Windows Launcher</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Launcher de Windows</v:String>
     <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Steam</v:String>
     <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Microsoft Store</v:String>
     <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Default path&gt;</v:String>
