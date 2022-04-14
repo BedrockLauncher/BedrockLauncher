@@ -70,7 +70,7 @@
 
     <v:String x:Key="Dungeons_InstallationPage_GameVariant">VARIANTE DE JOGO</v:String>
     <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Inicializador do Windows</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Vapor</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Steam</v:String>
     <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Loja da Microsoft</v:String>
     <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Caminho Padrão&gt;</v:String>
     <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">LOCAL DE INSTALAÇÃO</v:String>
