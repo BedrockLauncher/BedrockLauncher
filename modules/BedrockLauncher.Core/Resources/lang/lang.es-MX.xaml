@@ -74,14 +74,14 @@
     <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Microsoft Store</v:String>
     <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Ruta predeterminada&gt;</v:String>
     <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">Ubicacion de la instalación</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">SYMBOLIC MODS FOLDER LOCATION</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">UBICACIÓN DE LA CARPETA DE SYMBOLIC MODS</v:String>
     <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Instrucciones</v:String>
     <v:String x:Key="Dungeons_InstallationPage_PathsTab">Rutas</v:String>
     <v:String x:Key="Dungeons_InstallationPage_GeneralTab">General</v:String>
     <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Instalar parche de la tienda</v:String>
     <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Actualizar parche de la tienda</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Uninstall Symbolic Link</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Install  Symbolic Link</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Desinstalar Symbolic Link</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Instalar Symbolic Link</v:String>
     <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Reparar/Actualizar juego</v:String>
 
 
