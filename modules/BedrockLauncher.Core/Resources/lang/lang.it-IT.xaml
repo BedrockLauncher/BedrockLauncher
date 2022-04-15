@@ -73,13 +73,13 @@
     <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Steam</v:String>
     <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Microsoft Store</v:String>
     <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Percorso predefinito&gt;</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">INSTALL LOCATION</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">SYMBOLIC MODS FOLDER LOCATION</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation"></v:String>
     <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Istruzioni</v:String>
     <v:String x:Key="Dungeons_InstallationPage_PathsTab">Percorsi</v:String>
     <v:String x:Key="Dungeons_InstallationPage_GeneralTab">Generale</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Install Store Patch</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Update Store Patch</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch"></v:String>
     <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Disinstalla il collegamento simbolico</v:String>
     <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Installa il collegamento simbolico</v:String>
     <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Ripara/Aggiorna il gioco</v:String>
@@ -368,10 +368,10 @@ di Minecraft per Windows 10 (da cui deriva questo lavoro)</v:String>
     <v:String x:Key="Error_CantFindJavaLauncher_Title">Impossibile cambiare il launcher</v:String>
     <v:String x:Key="Error_CantFindJavaLauncher">Impossibile trovare il launcher. Assicurati di aver installato il launcher originale di Minecraft da Minecraft.net .</v:String>
 
-    <v:String x:Key="Error_AppReregisterFailed_Title">App registration failed</v:String>
+    <v:String x:Key="Error_AppReregisterFailed_Title"></v:String>
     <v:String x:Key="Error_AppReregisterFailed">Per favore riprova :(</v:String>
 
-    <v:String x:Key="Error_AppDeregisteringFailed_Title">App de-registration failed</v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed_Title"></v:String>
     <v:String x:Key="Error_AppDeregisteringFailed">Riprova :(</v:String>
 
     <v:String x:Key="Error_AppLaunchFailed_Title">Avvio non riuscito</v:String>
@@ -380,7 +380,7 @@ di Minecraft per Windows 10 (da cui deriva questo lavoro)</v:String>
     <v:String x:Key="Error_AppDownloadFailed_Title">Download non riuscito</v:String>
     <v:String x:Key="Error_AppDownloadFailed">Per favore riprova :(</v:String>
 
-    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">Save redirection failed</v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title"></v:String>
     <v:String x:Key="Error_SaveDirectoryRedirectionFailed">Riprova :(</v:String>
 
     <v:String x:Key="Error_AppUninstallFailed_Title">Disinstallazione non riuscita</v:String>
@@ -493,7 +493,7 @@ Questo {0} andrà perso per sempre! (Molto tempo!)</v:String>
 
     <v:String x:Key="Installer_InstallLocation_CreateDesktopIcon_Text">Crea un'icona sul desktop</v:String>
     <v:String x:Key="Installer_InstallLocation_AddToStartMenu_Text">Aggiungi al menu iniziale</v:String>
-    <v:String x:Key="Installer_InstallLocation_RegisterApp_Text">Register Program</v:String>
+    <v:String x:Key="Installer_InstallLocation_RegisterApp_Text"></v:String>
 
     <v:String x:Key="Installer_InstallationProgress_LaunchOnExit_Text">Avvia il programma all'uscita</v:String>
 
