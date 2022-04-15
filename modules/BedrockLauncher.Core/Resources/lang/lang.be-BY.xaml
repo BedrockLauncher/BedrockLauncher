@@ -68,21 +68,21 @@
     
     <!-- #region Dungeons Section -->
 
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant">GAME VARIANT</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Windows Launcher</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Steam</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Microsoft Store</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Default path&gt;</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">INSTALL LOCATION</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">SYMBOLIC MODS FOLDER LOCATION</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Instructions</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_PathsTab">Paths</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GeneralTab">General</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Install Store Patch</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Update Store Patch</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Uninstall Symbolic Link</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Install  Symbolic Link</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Repair/Update Game</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_PathsTab"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GeneralTab"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallModManager"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame"></v:String>
 
 
     <!--#endregion-->
@@ -209,14 +209,14 @@
 
     <v:String x:Key="NewsScreen_LauncherTabTitle">Лаунче</v:String>
     <v:String x:Key="NewsScreen_OfficialTabTitle">Афіцыйны</v:String>
-    <v:String x:Key="NewsScreen_MinecraftForumsTitle">Minecraft Forums</v:String>
+    <v:String x:Key="NewsScreen_MinecraftForumsTitle"></v:String>
     <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">Java / Dungeons</v:String>
 
     <v:String x:Key="NewsScreen_SearchBar_Content">Загаловак</v:String>
 
     <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
-    <v:String x:Key="NewsScreen_JavaNDungeons_BedrockCheckbox">Minecraft for Windows</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_BedrockCheckbox"></v:String>
 
     <!--#endregion-->
 
@@ -248,8 +248,8 @@
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Анімацыя кнопкі гульні на старонках лаунчера</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Уключыць падтрымку Minecraft Dungeons (нясконч.)</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Паказваць дадатковую інфармацыю пры ўсталяванні пакетаў</v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton"></v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2"></v:String>
     
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">НАЛАДЫ MINECRAFT: BEDROCK EDITION</v:String>
@@ -367,11 +367,11 @@
     <v:String x:Key="Error_CantFindJavaLauncher_Title">Не атрымалася пераключыць лаунче</v:String>
     <v:String x:Key="Error_CantFindJavaLauncher">Не атрымалася знайсці лаунчер. Пераканайся, што ты ўсталявал арыгінальны лаунчер Minecraft з Minecraft.net .</v:String>
 
-    <v:String x:Key="Error_AppReregisterFailed_Title">App registration failed</v:String>
+    <v:String x:Key="Error_AppReregisterFailed_Title"></v:String>
     <v:String x:Key="Error_AppReregisterFailed">Будзь ласка, паспрабуй яшчэ раз :(</v:String>
 
-    <v:String x:Key="Error_AppDeregisteringFailed_Title">App de-registration failed</v:String>
-    <v:String x:Key="Error_AppDeregisteringFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed_Title"></v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed"></v:String>
 
     <v:String x:Key="Error_AppLaunchFailed_Title">Не атрымалася запусціць</v:String>
     <v:String x:Key="Error_AppLaunchFailed">Будзь ласка, паспрабуй яшчэ раз :(</v:String>
@@ -379,11 +379,11 @@
     <v:String x:Key="Error_AppDownloadFailed_Title">Не атрымалася спампаваць</v:String>
     <v:String x:Key="Error_AppDownloadFailed">Будзь ласка, паспрабуй яшчэ раз :(</v:String>
 
-    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">Save redirection failed</v:String>
-    <v:String x:Key="Error_SaveDirectoryRedirectionFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title"></v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed"></v:String>
 
-    <v:String x:Key="Error_AppUninstallFailed_Title">Uninstall failed</v:String>
-    <v:String x:Key="Error_AppUninstallFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppUninstallFailed_Title"></v:String>
+    <v:String x:Key="Error_AppUninstallFailed"></v:String>
 
     <v:String x:Key="Error_AppExtractionFailed_Title">Не атрымалася распакаваць</v:String>
     <v:String x:Key="Error_AppExtractionFailed">Будзь ласка, паспрабуй яшчэ раз :(</v:String>
@@ -437,7 +437,7 @@
     <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Будзь ласка, пачакай!</v:String>
 
     <v:String x:Key="Dialog_ResultPanel_Error_Title">Памылка</v:String>
-    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve"></v:String>
 
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Няма рэзультатаў</v:String>
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Па твайму запросу нічога не знойдзена</v:String>
