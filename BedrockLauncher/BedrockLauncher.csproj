@@ -102,6 +102,7 @@
 		</BootstrapperPackage>
 	</ItemGroup>
 	<ItemGroup>
+		<PackageReference Include="CefSharp.Common.NETCore" Version="100.0.140" />
 		<PackageReference Include="CefSharp.Wpf.NETCore" Version="100.0.140" />
 		<PackageReference Include="CodeHollow.FeedReader" Version="1.2.4" />
 		<PackageReference Include="FolderBrowserEx" Version="1.0.1" />
