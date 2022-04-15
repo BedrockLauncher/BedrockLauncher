@@ -10,11 +10,11 @@ The Windows Store version of Minecraft Dungeons normally won't let you modify it
 
 ## In the Bedrock Launcher:
 1. Make Sure your game variant is set to `Microsoft Store`
-3. Click on `Install Store Patch`
+3. Натисніть `Встановити Store Patch`
 
-## In the Powershell Window:
+## У вікні Powershell:
 
-3. You will be asked to select a folder. Choose an empty folder where you want the game to be moved to. Do not choose a folder in Program Files or One Drive, it will break things.
+3. Вам буде запропоновано вибрати теку. Choose an empty folder where you want the game to be moved to. Do not choose a folder in Program Files or One Drive, it will break things.
 4. The game will open at one point. Do not close it when this happens. If you run into any issues, make sure to check the Troubleshooting section below.
 5. A `~mods` folder will appear. This is where you place your mods.
 7. Launching the modded game is just like launching the regular game. You can do it from the start menu, Windows Store, Xbox app, and so on, just like you normally do. Do NOT try to launch it by running the .exe files in the game folder.
@@ -22,13 +22,13 @@ The Windows Store version of Minecraft Dungeons normally won't let you modify it
 ## Усунення проблем:
 - If you run into any issues while/after patching the game, some of these things might help you.
 - If the game didn't open at all while patching and the patching didn't work, try opening the game manually before running the patcher. Keep the game open until it either closes by itself or the patcher finishes.
-- If you get an error saying it can't verify your ownership of the game, you must have launched the game using the .exe file. Don't do that. Run the game from the start menu, Windows Store, or Xbox app. If you did, but still get this error, reinstall the regular game and log in at least once (open the game and select a character) before patching it.
+- Якщо ви отримуєте помилку в тому, що не вдається перевірити право власності на гру, то ви повинні були запустити гру з використанням .exe файлу. Не робіть цього. Запустіть гру з меню "Пуск", Windows Store, або Xbox app. Якщо ви це зробили, але все одно отримуєте цю помилку, перевстановите звичайну гру й увійдіть хоча б один раз (відкрити гру й вибрати символ) перед тим, як виправити її.
 
-# Part 2 - The Bedrock Launcher Setup
-1. Set the install location to the folder containing `Dungeons.exe`. It should be in a parent folder of the `~mods` folder from earlier
+# Частина 2 - Налаштування Bedrock Launcher
+1. Як місце встановлення вкажіть папку, що містить `Dungeons.exe`. Це має бути в батьківській папці `~моди` з більш ранньої версії
 2. Select where you want your symbolic mods folder to be (it should not be in the same location as `~mods` folder from earlier)
-3. Click on `Install Symbolic Link`
-4. Your game's mod folder should now be paired with your symbolic mods folder
+3. Натисніть `Встановити символічне посилання`
+4. Зараз ваша тека модифікацій знаходиться в парі з символічними модами
 
 # How to Update
 1. Click on `Uninstall Symbolic Link`
