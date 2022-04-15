@@ -68,21 +68,21 @@
     
     <!-- #region Dungeons Section -->
 
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant">GAME VARIANT</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Windows Launcher</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Steam</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Microsoft Store</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Default path&gt;</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">INSTALL LOCATION</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">SYMBOLIC MODS FOLDER LOCATION</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Instructions</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_PathsTab">Paths</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GeneralTab">General</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Install Store Patch</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Update Store Patch</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Uninstall Symbolic Link</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Install  Symbolic Link</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Repair/Update Game</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_PathsTab"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GeneralTab"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallModManager"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame"></v:String>
 
 
     <!--#endregion-->
@@ -367,11 +367,11 @@
     <v:String x:Key="Error_CantFindJavaLauncher_Title">Could not switch launcher</v:String>
     <v:String x:Key="Error_CantFindJavaLauncher">Could not find launcher. Be sure you have installed original Minecraft launcher from Minecraft.net.</v:String>
 
-    <v:String x:Key="Error_AppReregisterFailed_Title">App registration failed</v:String>
+    <v:String x:Key="Error_AppReregisterFailed_Title"></v:String>
     <v:String x:Key="Error_AppReregisterFailed">Please try again :(</v:String>
 
-    <v:String x:Key="Error_AppDeregisteringFailed_Title">App de-registration failed</v:String>
-    <v:String x:Key="Error_AppDeregisteringFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed_Title"></v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed"></v:String>
 
     <v:String x:Key="Error_AppLaunchFailed_Title">Launch failed</v:String>
     <v:String x:Key="Error_AppLaunchFailed">Please try again :(</v:String>
@@ -379,11 +379,11 @@
     <v:String x:Key="Error_AppDownloadFailed_Title">Download failed</v:String>
     <v:String x:Key="Error_AppDownloadFailed">Please try again :(</v:String>
 
-    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">Save redirection failed</v:String>
-    <v:String x:Key="Error_SaveDirectoryRedirectionFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title"></v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed"></v:String>
 
-    <v:String x:Key="Error_AppUninstallFailed_Title">Uninstall failed</v:String>
-    <v:String x:Key="Error_AppUninstallFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppUninstallFailed_Title"></v:String>
+    <v:String x:Key="Error_AppUninstallFailed"></v:String>
 
     <v:String x:Key="Error_AppExtractionFailed_Title">Extraction failed</v:String>
     <v:String x:Key="Error_AppExtractionFailed">Please try again :(</v:String>
