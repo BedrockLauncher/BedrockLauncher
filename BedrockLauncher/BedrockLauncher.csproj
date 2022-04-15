@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net5.0-windows10.0.17763.0</TargetFramework>
+		<TargetFramework>net6.0-windows10.0.17763.0</TargetFramework>
 		<BeautyLibsDir>runtimes</BeautyLibsDir>
 		<DisableBeauty>False</DisableBeauty>
 		<OutputType>WinExe</OutputType>
@@ -33,10 +33,7 @@
 		<Authors>CarJem Generations</Authors>
 		<Copyright>2022 © CarJem Generations</Copyright>
 		<AnalysisLevel>latest</AnalysisLevel>
-		<RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
 		<SelfContained>false</SelfContained>
-		<CefSharpBuildAction>Content</CefSharpBuildAction>
-		<CefSharpPlatformTarget>AnyCPU</CefSharpPlatformTarget>
 	</PropertyGroup>
 	<PropertyGroup>
 		<StartupObject>BedrockLauncher.Program</StartupObject>
