@@ -35,6 +35,8 @@
 		<AnalysisLevel>latest</AnalysisLevel>
 		<RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
 		<SelfContained>false</SelfContained>
+		<CefSharpBuildAction>Content</CefSharpBuildAction>
+
 	</PropertyGroup>
 	<PropertyGroup>
 		<StartupObject>BedrockLauncher.Program</StartupObject>
@@ -100,6 +102,7 @@
 		</BootstrapperPackage>
 	</ItemGroup>
 	<ItemGroup>
+		<PackageReference Include="CefSharp.Wpf.NETCore" Version="100.0.140" />
 		<PackageReference Include="CodeHollow.FeedReader" Version="1.2.4" />
 		<PackageReference Include="FolderBrowserEx" Version="1.0.1" />
 		<PackageReference Include="HtmlAgilityPack" Version="1.11.40" />
@@ -579,14 +582,16 @@
 		<Page Remove="Controls\Various\LoadingAnimation.xaml" />
 		<Page Remove="Data\Versions.xaml" />
 	</ItemGroup>
-	<PropertyGroup />
+	<PropertyGroup>
+	  <DebugType>portable</DebugType>
+	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<WarningLevel>0</WarningLevel>
-		<DefineConstants>$(DefineConstants)TRACE</DefineConstants>
+		<DefineConstants>$(DefineConstants);ENABLE_CEFSHARP</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<WarningLevel>0</WarningLevel>
-		<DefineConstants>$(DefineConstants)TRACE</DefineConstants>
+		<DefineConstants>$(DefineConstants);ENABLE_CEFSHARP</DefineConstants>
 	</PropertyGroup>
 	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
