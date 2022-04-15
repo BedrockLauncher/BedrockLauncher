@@ -29,7 +29,7 @@
     <v:String x:Key="ToolbarButtons_SwitchEdition_Text">로 전환</v:String>
     <v:String x:Key="ToolbarButtons_Minecraft_Text">마인크래프트:</v:String>
     <v:String x:Key="ToolbarButtons_CommunityButton_Text">커뮤니티</v:String>
-    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">프로</v:String>
+    <v:String x:Key="ToolbarButtons_ProfileButton_ProfileType_Text">프로필</v:String>
     <v:String x:Key="ToolbarButtons_SettingsButton_Text">설정</v:String>
 
     <!--#endregion-->
@@ -58,7 +58,7 @@
 
     <v:String x:Key="ProfileButton_ManageProfiles_Text">프로필 관리</v:String>
     <v:String x:Key="ProfileButton_ProfileSettings_Text">프로필 설정</v:String>
-    <v:String x:Key="ProfileButton_AddProfile_Text">프로필 추</v:String>
+    <v:String x:Key="ProfileButton_AddProfile_Text">프로필 추가</v:String>
     <v:String x:Key="ProfileButton_RemoveProfile_Text">프로필 제거</v:String>
     <v:String x:Key="ProfileButton_ChooseAccount_Text">프로필을 선택하세요</v:String>
 
