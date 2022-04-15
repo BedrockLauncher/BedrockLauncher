@@ -68,21 +68,21 @@
     
     <!-- #region Dungeons Section -->
 
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant">GAME VARIANT</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Windows Launcher</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Steam</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Microsoft Store</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Default path&gt;</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">INSTALL LOCATION</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">SYMBOLIC MODS FOLDER LOCATION</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Instructions</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_PathsTab">Paths</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GeneralTab">General</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Install Store Patch</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Update Store Patch</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Uninstall Symbolic Link</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Install  Symbolic Link</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Repair/Update Game</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_PathsTab"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GeneralTab"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallModManager"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame"></v:String>
 
 
     <!--#endregion-->
@@ -209,14 +209,14 @@
 
     <v:String x:Key="NewsScreen_LauncherTabTitle">لانچر</v:String>
     <v:String x:Key="NewsScreen_OfficialTabTitle">رسمی</v:String>
-    <v:String x:Key="NewsScreen_MinecraftForumsTitle">Minecraft Forums</v:String>
+    <v:String x:Key="NewsScreen_MinecraftForumsTitle"></v:String>
     <v:String x:Key="NewsScreen_JavaNDungeonsTabTitle">جاوا / دانجنز</v:String>
 
     <v:String x:Key="NewsScreen_SearchBar_Content">عنوان جدی</v:String>
 
     <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">ماینکرفت نسخه جاوا</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">ماینکرفت دانجنز</v:String>
-    <v:String x:Key="NewsScreen_JavaNDungeons_BedrockCheckbox">Minecraft for Windows</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_BedrockCheckbox"></v:String>
 
     <!--#endregion-->
 
@@ -248,8 +248,8 @@
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">انیمیشن دکمه شروع بازی در صفحه های شروع بازی در لانچر</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">پشتیبانی از لانچر ماینکرفت دانجنز (ناقص)</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">اطلاعات بیشتر در هنگام نصب پکیج ها</v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton"></v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2"></v:String>
     
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">تنظیمات ماینکرفت: نسخه بدرا</v:String>
@@ -367,11 +367,11 @@
     <v:String x:Key="Error_CantFindJavaLauncher_Title">سوییچ کردن لانچر ناموفق بو</v:String>
     <v:String x:Key="Error_CantFindJavaLauncher">پیدا کردن لانچر ناموفق بود. مطمئن شوید که شما لانچر رسمی ماینکرفت را از Minecraft.net دریافت کرده اید.</v:String>
 
-    <v:String x:Key="Error_AppReregisterFailed_Title">App registration failed</v:String>
+    <v:String x:Key="Error_AppReregisterFailed_Title"></v:String>
     <v:String x:Key="Error_AppReregisterFailed">لطفا دوباره سعی کنید :(</v:String>
 
-    <v:String x:Key="Error_AppDeregisteringFailed_Title">App de-registration failed</v:String>
-    <v:String x:Key="Error_AppDeregisteringFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed_Title"></v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed"></v:String>
 
     <v:String x:Key="Error_AppLaunchFailed_Title">لانچ کردن با شکست مواجه ش</v:String>
     <v:String x:Key="Error_AppLaunchFailed">لطفا دوباره سعی کنید :(</v:String>
@@ -379,11 +379,11 @@
     <v:String x:Key="Error_AppDownloadFailed_Title">دانلود با شکست مواجه ش</v:String>
     <v:String x:Key="Error_AppDownloadFailed">لطفا دوباره سعی کنید :(</v:String>
 
-    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">Save redirection failed</v:String>
-    <v:String x:Key="Error_SaveDirectoryRedirectionFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title"></v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed"></v:String>
 
-    <v:String x:Key="Error_AppUninstallFailed_Title">Uninstall failed</v:String>
-    <v:String x:Key="Error_AppUninstallFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppUninstallFailed_Title"></v:String>
+    <v:String x:Key="Error_AppUninstallFailed"></v:String>
 
     <v:String x:Key="Error_AppExtractionFailed_Title">استخراج با مشکل مواجه ش</v:String>
     <v:String x:Key="Error_AppExtractionFailed">لطفا دوباره سعی کنید :(</v:String>
@@ -436,7 +436,7 @@
     <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">لطفا صبر کنید!</v:String>
 
     <v:String x:Key="Dialog_ResultPanel_Error_Title">خطا</v:String>
-    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve"></v:String>
 
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">بدون نتیج</v:String>
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">هیچ موردی مطابق جست و جوی شما پیدا نش</v:String>
