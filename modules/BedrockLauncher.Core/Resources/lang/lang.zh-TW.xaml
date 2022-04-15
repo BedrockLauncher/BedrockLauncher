@@ -68,12 +68,12 @@
     
     <!-- #region Dungeons Section -->
 
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant">GAME VARIANT</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Windows Launcher</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Steam</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Microsoft Store</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Default path&gt;</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">INSTALL LOCATION</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation"></v:String>
     <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">符號連結模式文件夾位置</v:String>
     <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">操作說明</v:String>
     <v:String x:Key="Dungeons_InstallationPage_PathsTab">路徑</v:String>
