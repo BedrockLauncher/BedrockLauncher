@@ -28,6 +28,7 @@ namespace BedrockLauncher
         public static void Main()
         {
             RuntimeHandler.StartLogging();
+            RuntimeHandler.LogStartupInformation();
             RuntimeHandler.ValidateOSArchitecture();
             CefSharpLoader.Init();
             Trace.WriteLine("Application Starting...");

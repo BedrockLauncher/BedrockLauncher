@@ -53,5 +53,7 @@ namespace BedrockLauncher.Pages.Settings
         {
             MainViewModel.Updater.UpdateButton_Click(sender, e);
         }
+
+
     }
 }

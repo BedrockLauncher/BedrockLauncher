@@ -89,7 +89,7 @@ namespace BedrockLauncher.Downloaders
                     else if (isBeta) launcherUpdateItem.buildTitle_Foreground = Brushes.Gold;
                     else launcherUpdateItem.buildTitle_Foreground = Brushes.White;
 
-                    if (tag == BedrockLauncher.Core.Properties.Settings.Default.Version) launcherUpdateItem.CurrentBox_Visibility = Visibility.Visible;
+                    if (tag == System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()) launcherUpdateItem.CurrentBox_Visibility = Visibility.Visible;
 
                     launcherUpdateItem.buildTitle = name;
                     launcherUpdateItem.buildVersion = string.Format("v{0}{1}", tag, (isBeta ? " (Beta)" : ""));
