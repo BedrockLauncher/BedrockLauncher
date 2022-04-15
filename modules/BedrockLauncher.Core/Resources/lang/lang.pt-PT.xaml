@@ -68,21 +68,21 @@
     
     <!-- #region Dungeons Section -->
 
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant">GAME VARIANT</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows">Windows Launcher</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam">Steam</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store">Microsoft Store</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath">&lt;Default path&gt;</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation">INSTALL LOCATION</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation">SYMBOLIC MODS FOLDER LOCATION</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab">Instructions</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_PathsTab">Paths</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_GeneralTab">General</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch">Install Store Patch</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch">Update Store Patch</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager">Uninstall Symbolic Link</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_InstallModManager">Install  Symbolic Link</v:String>
-    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame">Repair/Update Game</v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Windows"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Steam"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GameVariant_Store"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_HintText_DefaultPath"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_InstallLocation"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_Header_ModFolderLocation"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstructionsTab"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_PathsTab"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_GeneralTab"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallStorePatch"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_UpdateStorePatch"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RemoveModManager"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_InstallModManager"></v:String>
+    <v:String x:Key="Dungeons_InstallationPage_RepairOrUpdateGame"></v:String>
 
 
     <!--#endregion-->
@@ -216,7 +216,7 @@
 
     <v:String x:Key="NewsScreen_JavaNDungeons_JavaCheckbox">Minecraft: Java Edition</v:String>
     <v:String x:Key="NewsScreen_JavaNDungeons_DungeonsCheckbox">Minecraft Dungeons</v:String>
-    <v:String x:Key="NewsScreen_JavaNDungeons_BedrockCheckbox">Minecraft for Windows</v:String>
+    <v:String x:Key="NewsScreen_JavaNDungeons_BedrockCheckbox"></v:String>
 
     <!--#endregion-->
 
@@ -248,8 +248,8 @@
     <v:String x:Key="GeneralSettingsScreen_AnimatePlayButton">Animar o botão de jogar nas páginas do launcher</v:String>
     <v:String x:Key="GeneralSettingsScreen_EnableDungeonsSupport">Ativar suporte para Minecraft Dungeons (WIP)</v:String>
     <v:String x:Key="GeneralSettingsScreen_ShowAdvancedInstallDetails">Mostrar informações avançadas ao instalar pacotes</v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton">Use fanicer transitions between pages in the Launcher</v:String>
-    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2">(requires animated page transitions to be enabled)</v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButton"></v:String>
+    <v:String x:Key="GeneralSettingsScreen_FancierAnimationsButtonPt2"></v:String>
     
 
     <v:String x:Key="GeneralSettingsScreen_BedrockEditionSettingsSubtitle">DEFINIÇÕES DO MINECRAFT: BEDROCK EDITION</v:String>
@@ -370,8 +370,8 @@
     <v:String x:Key="Error_AppReregisterFailed_Title">Não foi possível fazer novo registro na aplicação</v:String>
     <v:String x:Key="Error_AppReregisterFailed">Por favor tente novamente :(</v:String>
 
-    <v:String x:Key="Error_AppDeregisteringFailed_Title">App de-registration failed</v:String>
-    <v:String x:Key="Error_AppDeregisteringFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed_Title"></v:String>
+    <v:String x:Key="Error_AppDeregisteringFailed"></v:String>
 
     <v:String x:Key="Error_AppLaunchFailed_Title">Não foi possível finalizar</v:String>
     <v:String x:Key="Error_AppLaunchFailed">Por favor tente novamente :(</v:String>
@@ -379,11 +379,11 @@
     <v:String x:Key="Error_AppDownloadFailed_Title">Não foi possível transferir</v:String>
     <v:String x:Key="Error_AppDownloadFailed">Por favor tente novamente :(</v:String>
 
-    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title">Save redirection failed</v:String>
-    <v:String x:Key="Error_SaveDirectoryRedirectionFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed_Title"></v:String>
+    <v:String x:Key="Error_SaveDirectoryRedirectionFailed"></v:String>
 
-    <v:String x:Key="Error_AppUninstallFailed_Title">Uninstall failed</v:String>
-    <v:String x:Key="Error_AppUninstallFailed">Please try again :(</v:String>
+    <v:String x:Key="Error_AppUninstallFailed_Title"></v:String>
+    <v:String x:Key="Error_AppUninstallFailed"></v:String>
 
     <v:String x:Key="Error_AppExtractionFailed_Title">Não foi possível extrair</v:String>
     <v:String x:Key="Error_AppExtractionFailed">Por favor tente novamente :(</v:String>
@@ -429,18 +429,17 @@
     <v:String x:Key="DialogBtn_Yes_Text">Sim</v:String>
     <v:String x:Key="DialogBtn_No_Text">Não</v:String>
 
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle">No matching results</v:String>
-    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve">We couldn't find news any content matching your search. If you have category filters 
-turned off, try turning the back on and search again</v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsTitle"></v:String>
+    <v:String x:Key="Dialog_NoNewsContentFound_NoMatchingResultsText" xml:space="preserve"></v:String>
 
     <v:String x:Key="Dialog_ResultPanel_Loading_Title">A carregar...</v:String>
     <v:String x:Key="Dialog_ResultPanel_Loading_Text" xml:space="preserve">Por favor, espere!</v:String>
 
     <v:String x:Key="Dialog_ResultPanel_Error_Title">Erro</v:String>
-    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve">:(</v:String>
+    <v:String x:Key="Dialog_ResultPanel_Error_Text" xml:space="preserve"></v:String>
 
     <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsTitle">Nenhum resultado</v:String>
-    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve">Found no items matching your search</v:String>
+    <v:String x:Key="Dialog_NoContentFound_NoMatchingResultsText" xml:space="preserve"></v:String>
 
     <!--#endregion-->
 
@@ -537,23 +536,23 @@ turned off, try turning the back on and search again</v:String>
     <v:String x:Key="ThemeEntries_LatestUpdate">Atualização mais recente</v:String>
     <v:String x:Key="ThemeEntries_Original">Original</v:String>
 
-    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update">Caves &amp; Cliffs (Part 1)</v:String>
-    <v:String x:Key="ThemeEntries_NetherUpdate">Nether Update</v:String>
-    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate">Buzzy Bees Update</v:String>
-    <v:String x:Key="ThemeEntries_VillagePillageUpdate">Village &amp; Pillage Update</v:String>
-    <v:String x:Key="ThemeEntries_UpdateAquatic">Update Aquatic</v:String>
-    <v:String x:Key="ThemeEntries_TechnicallyUpdated">Technically Updated [Java]</v:String>
-    <v:String x:Key="ThemeEntries_WorldOfColorUpdate">World of Color Update [Java]</v:String>
-    <v:String x:Key="ThemeEntries_ExplorationUpdate">Exploration Update [Java]</v:String>
-    <v:String x:Key="ThemeEntries_CombatUpdate">Combat Update [Java]</v:String>
-    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate">Cats &amp; Pandas [Bedrock]</v:String>
+    <v:String x:Key="ThemeEntries_CavesAndCliffsPart1Update"></v:String>
+    <v:String x:Key="ThemeEntries_NetherUpdate"></v:String>
+    <v:String x:Key="ThemeEntries_BuzzyBeesUpdate"></v:String>
+    <v:String x:Key="ThemeEntries_VillagePillageUpdate"></v:String>
+    <v:String x:Key="ThemeEntries_UpdateAquatic"></v:String>
+    <v:String x:Key="ThemeEntries_TechnicallyUpdated"></v:String>
+    <v:String x:Key="ThemeEntries_WorldOfColorUpdate"></v:String>
+    <v:String x:Key="ThemeEntries_ExplorationUpdate"></v:String>
+    <v:String x:Key="ThemeEntries_CombatUpdate"></v:String>
+    <v:String x:Key="ThemeEntries_CatsAndPandasUpdate"></v:String>
     <v:String x:Key="ThemeEntries_PocketEditionRelease">Versão Oficial [Bedrock]</v:String>
-    <v:String x:Key="ThemeEntries_BedrockStandard">Bedrock Edition Standard</v:String>
-    <v:String x:Key="ThemeEntries_BedrockMaster">Bedrock Edition Master</v:String>
-    <v:String x:Key="ThemeEntries_EarlyLegacyConsole">Original Legacy Console Era</v:String>
-    <v:String x:Key="ThemeEntries_MidLegacyConsole">Mid Legacy Console Era</v:String>
-    <v:String x:Key="ThemeEntries_LateLegacyConsole">Late Legacy Console Era</v:String>
-    <v:String x:Key="ThemeEntries_IndieDays">Indie Days</v:String>
+    <v:String x:Key="ThemeEntries_BedrockStandard"></v:String>
+    <v:String x:Key="ThemeEntries_BedrockMaster"></v:String>
+    <v:String x:Key="ThemeEntries_EarlyLegacyConsole"></v:String>
+    <v:String x:Key="ThemeEntries_MidLegacyConsole"></v:String>
+    <v:String x:Key="ThemeEntries_LateLegacyConsole"></v:String>
+    <v:String x:Key="ThemeEntries_IndieDays"></v:String>
     <v:String x:Key="ThemeEntries_Dungeons">Minecraft Dungeons</v:String>
 
 
