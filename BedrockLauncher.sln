@@ -25,9 +25,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BedrockLauncher.UpdateProce
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{25A7C91E-529D-41E5-A7D0-4EBC727E2DE4}"
-	ProjectSection(SolutionItems) = preProject
-		crowdin.yml = crowdin.yml
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BedrockLauncher.Dungeons", "modules\BedrockLauncher.Dungeons\BedrockLauncher.Dungeons.csproj", "{A04AF51F-1E8C-44B0-9EBC-E3C7D6B3F4D3}"
 EndProject
