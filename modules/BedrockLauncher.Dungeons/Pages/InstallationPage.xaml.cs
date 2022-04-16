@@ -122,7 +122,7 @@ namespace BedrockLauncher.Dungeons.Pages
                 default: throw new NotImplementedException();
             }
 
-            if (BedrockLauncher.Core.Language.LanguageManager.TryGetResource(documentation, out string contents))
+            if (BedrockLauncher.Localization.Language.LanguageManager.TryGetResource(documentation, out string contents))
                 Markdownview.Markdown = contents;
 
         }

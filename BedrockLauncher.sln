@@ -37,6 +37,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlRenderer.WPF.NetStandar
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BedrockLauncher.TokenBroker", "modules\BedrockLauncher.TokenBroker\BedrockLauncher.TokenBroker.vcxproj", "{B7336BA7-1E83-43D8-BD0E-3D44C6E3D4E7}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BedrockLauncher.Localization", "modules\BedrockLauncher.Localization\BedrockLauncher.Localization.csproj", "{9425CFBF-1D40-48E1-8CB3-B8FB0D4AFD2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{B7336BA7-1E83-43D8-BD0E-3D44C6E3D4E7}.Debug|Any CPU.Build.0 = Debug|x64
 		{B7336BA7-1E83-43D8-BD0E-3D44C6E3D4E7}.Release|Any CPU.ActiveCfg = Release|x64
 		{B7336BA7-1E83-43D8-BD0E-3D44C6E3D4E7}.Release|Any CPU.Build.0 = Release|x64
+		{9425CFBF-1D40-48E1-8CB3-B8FB0D4AFD2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9425CFBF-1D40-48E1-8CB3-B8FB0D4AFD2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9425CFBF-1D40-48E1-8CB3-B8FB0D4AFD2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9425CFBF-1D40-48E1-8CB3-B8FB0D4AFD2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +103,7 @@ Global
 		{46D8EC75-2F00-4551-9F3D-10C8522C9B3D} = {BD55A257-6639-42E6-9DE1-AF712F553AA2}
 		{7E4E8DB5-85AD-4388-BDCB-38C6F423B8B0} = {BD55A257-6639-42E6-9DE1-AF712F553AA2}
 		{B7336BA7-1E83-43D8-BD0E-3D44C6E3D4E7} = {BD55A257-6639-42E6-9DE1-AF712F553AA2}
+		{9425CFBF-1D40-48E1-8CB3-B8FB0D4AFD2C} = {BD55A257-6639-42E6-9DE1-AF712F553AA2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1C257FFD-AD8A-44BD-AC36-BCEE19250413}

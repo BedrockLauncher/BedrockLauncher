@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using BedrockLauncher.Core.Language;
+using BedrockLauncher.Localization.Language;
 using BedrockLauncher.Extensions;
 using BedrockLauncher.Handlers;
 using BedrockLauncher.Components.CefSharp;

@@ -17,6 +17,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\BedrockLauncher.Core\BedrockLauncher.Core.csproj" />
+    <ProjectReference Include="..\BedrockLauncher.Localization\BedrockLauncher.Localization.csproj" />
     <ProjectReference Include="..\BedrockLauncher.UI\BedrockLauncher.UI.csproj" />
     <ProjectReference Include="..\Extensions.NET\JemExtensions.csproj" />
   </ItemGroup>
