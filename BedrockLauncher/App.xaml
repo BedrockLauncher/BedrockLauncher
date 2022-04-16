@@ -8,6 +8,11 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <Style TargetType="{x:Type Window}">
+                        <Setter Property="FontFamily" Value="/BedrockLauncher.UI;component/#Noto Sans" />
+                    </Style>
+                </ResourceDictionary>
                 <bl:LanguageDictionary Source="/BedrockLauncher.Localization;component/Resources/lang/lang.en-US.xaml"></bl:LanguageDictionary>
                 <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/values/base_values.xaml"/>
                 <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/icons.xaml"/>
