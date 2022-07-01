@@ -6,9 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BedrockLauncher.Classes;
-using BedrockLauncher.Extensions;
 using System.ComponentModel;
-using BedrockLauncher.Components;
 using BedrockLauncher.ViewModels;
 using PostSharp.Patterns.Model;
 using BedrockLauncher.UI.Components;
@@ -118,6 +116,7 @@ namespace BedrockLauncher.Properties
 
         private bool _ShowBetas = true;
         private bool _ShowReleases = true;
+        private bool _ShowPreviews = true;
 
         public bool IsFirstLaunch { get; set; } = true;
         public bool GetIsFirstLaunch(int LoadedConfigCount)
@@ -131,18 +130,18 @@ namespace BedrockLauncher.Properties
         public bool ShowReleases
         {
             get { return _ShowReleases; }
-            set 
-            {
-                if (!(_ShowBetas == false && value == false)) _ShowReleases = value;
-            }
+            set { _ShowReleases = value; }
         }
         public bool ShowBetas
         {
             get { return _ShowBetas; }
-            set 
-            {
-                if (!(_ShowReleases == false && value == false)) _ShowBetas = value;
-            }
+            set { _ShowBetas = value; }
+        }
+
+        public bool ShowPreviews
+        {
+            get { return _ShowPreviews; }
+            set { _ShowPreviews = value; }
         }
         public int CurrentInsiderAccountIndex { get; set; } = 0;
 

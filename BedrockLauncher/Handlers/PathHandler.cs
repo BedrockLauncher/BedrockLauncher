@@ -99,16 +99,6 @@ namespace BedrockLauncher.Handlers
             string InstallationsPath = Path.Combine(profile.ProfilePath, installationDirectory);
             return Path.Combine(CurrentLocation, InstallationsFolderName, InstallationsPath, PackageDataFolderName);
         }
-        public string GetSkinPacksFolderPath(string InstallationsPath, VersionType type, bool DevFolder = false, bool HasSaveRedirection = true)
-        {
-            if (InstallationsPath == string.Empty) return string.Empty;
-            string[] Route = new string[] { (DevFolder ? "development_skin_packs" : "skin_packs") };
-            string PackageFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Packages", Constants.GetPackageFamily(type), "LocalState", "games", "com.mojang");
-
-
-            if (HasSaveRedirection) return Path.Combine(Route.Prepend(InstallationsPath).ToArray());
-            else return Path.Combine(Route.Prepend(PackageFolder).ToArray());
-        }
 
 
 

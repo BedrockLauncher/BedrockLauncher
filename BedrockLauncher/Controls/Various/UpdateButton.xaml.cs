@@ -1,5 +1,4 @@
-﻿using BedrockLauncher.Extensions;
-using BedrockLauncher.ViewModels;
+﻿using BedrockLauncher.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

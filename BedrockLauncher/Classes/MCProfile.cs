@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BedrockLauncher.Classes;
-using BedrockLauncher.Components;
 using JemExtensions;
 using Newtonsoft.Json;
 using BedrockLauncher.Enums;

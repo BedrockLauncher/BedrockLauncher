@@ -4,7 +4,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:properties="clr-namespace:BedrockLauncher.Properties"
         xmlns:controls="clr-namespace:BedrockLauncher.Controls.Various"
-        xmlns:methods="clr-namespace:BedrockLauncher.Extensions"
         xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
         xmlns:toolbar="clr-namespace:BedrockLauncher.Controls.Toolbar"
         xmlns:com="clr-namespace:JemExtensions.WPF.Behaviours;assembly=JemExtensions"
@@ -36,10 +35,6 @@
                 <toolbar:ProfileButton IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default},Path=ProgressBarState.AllowEditing, Mode=OneWay}" x:Name="ProfileButton" Click="ProfileButton_Click"></toolbar:ProfileButton>
                 <toolbar:NewsButton x:Name="NewsButton" Click="NewsButton_Click"></toolbar:NewsButton>
                 <toolbar:BedrockEditionButton x:Name="BedrockEditionButton" Click="BedrockEditionButton_Click"></toolbar:BedrockEditionButton>
-                <toolbar:DungeonsButton x:Name="DungeonsButton" Click="DungeonsButton_Click" Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=EnableDungeonsSupport, Converter={StaticResource BoolToVis}}"></toolbar:DungeonsButton>
-                <toolbar:JavaEditionButton x:Name="JavaEditionButton" Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=HideJavaShortcut, Converter={StaticResource ReverseBoolToVis}, ConverterParameter=Inverted}" Click="JavaEditionButton_Click"></toolbar:JavaEditionButton>
-                <toolbar:ExternalLauncherButton x:Name="ExternalLauncherButton" Visibility="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=ShowExternalLauncher, Converter={StaticResource BoolToVis}}" Click="ExternalLauncherButton_Click"></toolbar:ExternalLauncherButton>
-                <toolbar:CommunityButton x:Name="CommunityButton" Click="CommunityButton_Click"></toolbar:CommunityButton>
             </StackPanel>
             <toolbar:SettingsButton x:Name="SettingsButton" Click="SettingsButton_Click"></toolbar:SettingsButton>
             <Grid Grid.Column="1">

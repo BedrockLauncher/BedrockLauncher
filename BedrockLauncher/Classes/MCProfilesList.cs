@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BedrockLauncher.Classes;
-using BedrockLauncher.Components;
 using JemExtensions;
 using Newtonsoft.Json;
 using BedrockLauncher.Enums;
@@ -181,6 +180,17 @@ namespace BedrockLauncher.Classes
                 ReadOnly = true,
                 InstallationUUID = Constants.LATEST_BETA_UUID
             };
+            BLInstallation latest_preview = new BLInstallation()
+            {
+                DisplayName = "Latest Preview",
+                DirectoryName = "Latest Preview",
+                VersionUUID = Constants.LATEST_PREVIEW_UUID,
+                VersioningMode = VersioningMode.LatestPreview,
+                IconPath = "Crafting_Table.png", //TODO: Preview Icon Path
+                IsCustomIcon = false,
+                ReadOnly = true,
+                InstallationUUID = Constants.LATEST_PREVIEW_UUID
+            };
 
 
             foreach (var profile in profiles.Values)
@@ -189,12 +199,17 @@ namespace BedrockLauncher.Classes
                     Installation_Add(latest_release);
                 if (!profile.Installations.Any(x => x.InstallationUUID == latest_beta.InstallationUUID && x.ReadOnly))
                     Installation_Add(latest_beta);
+                if (!profile.Installations.Any(x => x.InstallationUUID == latest_preview.InstallationUUID && x.ReadOnly))
+                    Installation_Add(latest_preview);
 
                 foreach (var installation in profile.Installations.Where(x => x.VersionUUID == latest_release.VersionUUID))
                     installation.VersioningMode = VersioningMode.LatestRelease;
 
                 foreach (var installation in profile.Installations.Where(x => x.VersionUUID == latest_beta.VersionUUID))
                     installation.VersioningMode = VersioningMode.LatestBeta;
+
+                foreach (var installation in profile.Installations.Where(x => x.VersionUUID == latest_preview.VersionUUID))
+                    installation.VersioningMode = VersioningMode.LatestPreview;
             }
 
             Save();

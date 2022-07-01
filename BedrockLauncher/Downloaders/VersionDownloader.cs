@@ -35,6 +35,7 @@ namespace BedrockLauncher.Downloaders
 
         private MCVersion latestReleaseRef { get; set; }
         private MCVersion latestBetaRef { get; set; }
+        private MCVersion latestPreviewRef { get; set; }
 
 
         public async Task DownloadVersion(string versionName, string uuid, int revisionNumber, string destination, DownloadProgress progress, CancellationToken cancellationToken, VersionType versionType)
@@ -45,6 +46,7 @@ namespace BedrockLauncher.Downloaders
             {
                 if (uuid == Constants.LATEST_BETA_UUID) return latestBetaRef.UUID;
                 else if (uuid == Constants.LATEST_RELEASE_UUID) return latestReleaseRef.UUID;
+                else if (uuid == Constants.LATEST_PREVIEW_UUID) return latestPreviewRef.UUID;
                 else return uuid;
             }
         }
@@ -70,15 +72,21 @@ namespace BedrockLauncher.Downloaders
 
 
             //Get Latest Release and Beta Versions an Insert them into the ObservableCollection
-            var latestRelease = versions.First(x => x.IsBeta == false && VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, x.Architecture));
+            var latestRelease = versions.First(x => x.IsRelease == true && VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, x.Architecture));
             var latestBeta = versions.First(x => x.IsBeta == true && VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, x.Architecture));
+            var latestPreview = versions.First(x => x.IsPreview == true && VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, x.Architecture));
 
             this.latestReleaseRef = latestRelease;
             this.latestBetaRef = latestBeta;
+            this.latestPreviewRef = latestPreview;
 
-            var latest_beta = new MCVersion(Constants.LATEST_BETA_UUID, Application.Current.Resources["EditInstallationScreen_LatestSnapshot"].ToString(), latestBeta.Type, Constants.CurrentArchitecture);
+
+
+            var latest_preview = new MCVersion(Constants.LATEST_PREVIEW_UUID, Application.Current.Resources["EditInstallationScreen_LatestPreview"].ToString(), latestPreview.Type, Constants.CurrentArchitecture);
+            var latest_beta = new MCVersion(Constants.LATEST_BETA_UUID, Application.Current.Resources["EditInstallationScreen_LatestBeta"].ToString(), latestBeta.Type, Constants.CurrentArchitecture);
             var latest_release = new MCVersion(Constants.LATEST_RELEASE_UUID, Application.Current.Resources["EditInstallationScreen_LatestRelease"].ToString(), latestRelease.Type, Constants.CurrentArchitecture);
 
+            versions.Insert(0, latest_preview);
             versions.Insert(0, latest_beta);
             versions.Insert(0, latest_release);
 
@@ -93,10 +101,12 @@ namespace BedrockLauncher.Downloaders
         {
             if (versioningMode != VersioningMode.None)
             {
+                var latest_preview = MainViewModel.Default.Versions.ToList().FirstOrDefault(x => x.UUID == latestPreviewRef.UUID && x.Type == latestPreviewRef.Type);
                 var latest_beta = MainViewModel.Default.Versions.ToList().FirstOrDefault(x => x.UUID == latestBetaRef.UUID && x.Type == latestBetaRef.Type);
                 var latest_release = MainViewModel.Default.Versions.ToList().FirstOrDefault(x => x.UUID == latestReleaseRef.UUID && x.Type == latestReleaseRef.Type);
 
-                if (versioningMode == VersioningMode.LatestBeta && latest_beta != null) return latest_beta;
+                if (versioningMode == VersioningMode.LatestPreview && latest_preview != null) return latest_preview;
+                else if (versioningMode == VersioningMode.LatestBeta && latest_beta != null) return latest_beta;
                 else if (versioningMode == VersioningMode.LatestRelease && latest_release != null) return latest_release;
                 else return null;
             }

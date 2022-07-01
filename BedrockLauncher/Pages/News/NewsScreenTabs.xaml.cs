@@ -12,13 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BedrockLauncher.Extensions;
 using CodeHollow.FeedReader;
 using BedrockLauncher.Classes;
 using System.Diagnostics;
 using System.Windows.Controls.Primitives;
 using BedrockLauncher.Handlers;
-using BedrockLauncher.Components;
 using BedrockLauncher.UI.Components;
 
 namespace BedrockLauncher.Pages.News

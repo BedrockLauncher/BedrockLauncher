@@ -21,7 +21,6 @@ using Windows.Foundation;
 using Windows.Management.Core;
 using Windows.Management.Deployment;
 using Windows.System;
-using BedrockLauncher.Extensions;
 using BedrockLauncher.Classes;
 using System.Windows.Media.Animation;
 using BedrockLauncher.Pages;
@@ -32,8 +31,6 @@ using BedrockLauncher.Pages.Play;
 using BedrockLauncher.Pages.News;
 using BedrockLauncher.Pages.Preview;
 using BedrockLauncher.Pages.Common;
-using BedrockLauncher.Pages.Community;
-using BedrockLauncher.Components;
 using BedrockLauncher.Controls.Toolbar;
 using BedrockLauncher.Handlers;
 using BedrockLauncher.UI.Pages.Common;
@@ -48,8 +45,6 @@ namespace BedrockLauncher
         private GameTabs MainPage = new GameTabs();
         private SettingsTabs settingsScreenPage = new SettingsTabs();
         private NewsScreenTabs newsScreenPage = new NewsScreenTabs();
-        private CommunityPage communityPage = new CommunityPage();
-        private Dungeons.Pages.GameTabs dungeonsPage = new Dungeons.Pages.GameTabs();
 
         private Navigator Navigator { get; set; } = new Navigator(true);
 
@@ -102,11 +97,8 @@ namespace BedrockLauncher
                 // but this works fine, at least
                 List<ToggleButton> toggleButtons = new List<ToggleButton>() { 
                 // main window
-                CommunityButton.Button,
                 NewsButton.Button,
                 BedrockEditionButton.Button,
-                DungeonsButton.Button,
-                JavaEditionButton.Button,
                 SettingsButton.Button,
             };
 
@@ -135,11 +127,7 @@ namespace BedrockLauncher
                 ResetButtonManager(senderName);
 
                 if (senderName == BedrockEditionButton.Name) NavigateToMainPage();
-                else if (senderName == DungeonsButton.Name) NavigateToDungeons();
                 else if (senderName == NewsButton.Name) NavigateToNewsPage();
-                else if (senderName == JavaEditionButton.Name) NavigateToJavaLauncher();
-                else if (senderName == ExternalLauncherButton.Name) NavigateToExternalLauncher();
-                else if (senderName == CommunityButton.Name) NavigateToCommunityScreen();
                 else if (senderName == SettingsButton.Name) NavigateToSettings();
             });
 
@@ -165,25 +153,7 @@ namespace BedrockLauncher
             });
 
         }
-        public async void NavigateToDungeons()
-        {
-            await this.Dispatcher.InvokeAsync(() =>
-            {
-                Navigator.UpdatePageIndex(2);
-                DungeonsButton.Button.IsChecked = true;
-                Task.Run(() => Navigator.Navigate(MainWindowFrame, dungeonsPage));
-            });
 
-        }
-        public void NavigateToCommunityScreen()
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                Navigator.UpdatePageIndex(3);
-                CommunityButton.Button.IsChecked = true;
-                Task.Run(() => Navigator.Navigate(MainWindowFrame, communityPage));
-            });
-        }
         public void NavigateToSettings()
         {
             this.Dispatcher.Invoke(() =>
@@ -317,7 +287,7 @@ namespace BedrockLauncher
 
         protected virtual void Dispose(bool disposing)
         {
-            communityPage?.Dispose();
+
         }
 
         #endregion

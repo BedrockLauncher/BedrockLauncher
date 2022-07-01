@@ -13,9 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BedrockLauncher.Extensions;
 using Microsoft.Win32;
 using BedrockLauncher.ViewModels;
+using FolderBrowserEx;
 
 namespace BedrockLauncher.Pages.Settings
 {
@@ -24,19 +24,19 @@ namespace BedrockLauncher.Pages.Settings
     /// </summary>
     public partial class GeneralSettingsPage : Page
     {
+
+
+        private bool TEMP_PortableModeState;
+        private string TEMP_FixedDirectoryState = string.Empty;
+
         public GeneralSettingsPage()
         {
             InitializeComponent();
         }
 
-        private void Update()
-        {
-
-        }
-
         private void Page_Initialized(object sender, EventArgs e)
         {
-            Update();
+
         }
 
         private void BackupButton_Click(object sender, RoutedEventArgs e)
@@ -44,54 +44,14 @@ namespace BedrockLauncher.Pages.Settings
             Task.Run(Handlers.BackupHandler.BackupOriginalSaveData);
         }
 
-        private void AdvancedSettingsButton_Click(object sender, RoutedEventArgs e)
-        {
-            AdvancedOptionsWindow advancedOptionsWindow = new AdvancedOptionsWindow();
-            advancedOptionsWindow.ShowDialog();
-        }
-
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Update();
-        }
+            TEMP_PortableModeState = Properties.LauncherSettings.Default.PortableMode;
+            TEMP_FixedDirectoryState = Properties.LauncherSettings.Default.FixedDirectory;
 
-        private void ExternalLauncherPathTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            Properties.LauncherSettings.Default.Save();
-        }
+            portableModeCheckBox.IsChecked = TEMP_PortableModeState;
 
-        private void BrowseLauncherButton_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog dialog = new OpenFileDialog()
-            {
-                InitialDirectory = ExternalLauncherPathTextBox.Text
-            };
-            if (dialog.ShowDialog().Value)
-            {
-                Properties.LauncherSettings.Default.ExternalLauncherPath = dialog.FileName;
-                Properties.LauncherSettings.Default.Save();
-                ExternalLauncherPathTextBox.GetBindingExpression(TextBox.TextProperty).UpdateTarget();
-            }
-        }
-
-        private void BrowseExternalLauncherIcon_Button_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog dialog = new OpenFileDialog()
-            {
-                Filter = "PNG Files (*.png) | *.png"
-            };
-            if (dialog.ShowDialog().Value)
-            {
-                string fileToUse = MainViewModel.Default.FilePaths.AddImageToIconCache(dialog.FileName);
-                Properties.LauncherSettings.Default.ExternalLauncherIconPath = fileToUse;
-                Properties.LauncherSettings.Default.Save();
-            }
-        }   
-
-        private void ResetExternalLauncherIcon_Button_Click(object sender, RoutedEventArgs e)
-        {
-            Properties.LauncherSettings.Default.ExternalLauncherIconPath = string.Empty;
-            Properties.LauncherSettings.Default.Save();
+            UpdateDirectoryPathTextbox();
         }
 
         private void Checkbox_Click(object sender, RoutedEventArgs e)
@@ -99,5 +59,80 @@ namespace BedrockLauncher.Pages.Settings
             Properties.LauncherSettings.Default.Save();
         }
 
+        private void useFixedInstallLocation_Click(object sender, RoutedEventArgs e)
+        {
+            // get and save value of checkbox
+            switch (portableModeCheckBox.IsChecked)
+            {
+                case true:
+                    TEMP_PortableModeState = true;
+                    break;
+                case false:
+                    TEMP_PortableModeState = false;
+                    break;
+            }
+
+            UpdateDirectoryPathTextbox();
+        }
+
+        private void UpdateDirectoryPathTextbox()
+        {
+            if (Properties.LauncherSettings.Default.PortableMode)
+            {
+                StorageDirectoryTextBox.IsEnabled = false;
+                StorageDirectoryTextBox.Text = "%PORTABLE%";
+            }
+            else
+            {
+                StorageDirectoryTextBox.IsEnabled = true;
+
+                if (TEMP_FixedDirectoryState != string.Empty)
+                {
+                    StorageDirectoryTextBox.Text = TEMP_FixedDirectoryState;
+                }
+                else
+                {
+                    StorageDirectoryTextBox.Text = MainViewModel.Default.FilePaths.DefaultLocation;
+                }
+            }
+        }
+
+        private void BrowseForDirectory()
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog()
+            {
+                InitialFolder = StorageDirectoryTextBox.Text
+            };
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                TEMP_FixedDirectoryState = dialog.SelectedFolder;
+            }
+        }
+
+        private void ResetDirectoryToDefault()
+        {
+            TEMP_FixedDirectoryState = string.Empty;
+        }
+
+        private void BrowseDirectoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            BrowseForDirectory();
+            UpdateDirectoryPathTextbox();
+        }
+
+        private void ResetDirectoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            ResetDirectoryToDefault();
+            UpdateDirectoryPathTextbox();
+        }
+
+        private void RestartButton_Click(object sender, RoutedEventArgs e)
+        {
+            Properties.LauncherSettings.Default.PortableMode = TEMP_PortableModeState;
+            Properties.LauncherSettings.Default.FixedDirectory = TEMP_FixedDirectoryState;
+            Properties.LauncherSettings.Default.Save();
+            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            Application.Current.Shutdown();
+        }
     }
 }

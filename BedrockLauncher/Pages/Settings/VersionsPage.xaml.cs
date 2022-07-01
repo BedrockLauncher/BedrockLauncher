@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Handlers;
-using BedrockLauncher.Extensions;
 using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Pages.Settings
@@ -27,11 +26,6 @@ namespace BedrockLauncher.Pages.Settings
             InitializeComponent();
         }
 
-        public void RefreshVersionsList()
-        {
-
-        }
-
         private void Page_Initialized(object sender, EventArgs e)
         {
             
@@ -39,7 +33,10 @@ namespace BedrockLauncher.Pages.Settings
 
         private void RefreshVersionsList(object sender, RoutedEventArgs e)
         {
-
+            this.Dispatcher.Invoke(() =>
+            {
+                if (VersionsList != null) Handlers.FilterSortingHandler.Refresh(VersionsList.ItemsSource);
+            });
         }
 
         private void PageHost_Loaded(object sender, RoutedEventArgs e)

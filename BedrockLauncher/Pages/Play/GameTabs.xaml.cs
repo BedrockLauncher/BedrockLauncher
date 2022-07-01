@@ -9,8 +9,6 @@ using System.Windows.Data;
 using System.Windows.Media.Animation;
 using BedrockLauncher.Classes;
 using BedrockLauncher.Downloaders;
-using BedrockLauncher.Components;
-using BedrockLauncher.Extensions;
 using BedrockLauncher.UI.Components;
 
 namespace BedrockLauncher.Pages.Play
@@ -21,7 +19,6 @@ namespace BedrockLauncher.Pages.Play
 
         public PlayScreenPage playScreenPage = new PlayScreenPage();
         public InstallationsScreen installationsScreen = new InstallationsScreen();
-        public SkinsPage skinsPage = new SkinsPage();
         public PatchNotesPage patchNotesPage = new PatchNotesPage(PatchNotesDownloader);
 
         private Navigator Navigator { get; set; } = new Navigator();
@@ -45,7 +42,6 @@ namespace BedrockLauncher.Pages.Play
                 List<ToggleButton> toggleButtons = new List<ToggleButton>() {
                 PlayButton,
                 InstallationsButton,
-                SkinsButton,
                 PatchNotesButton
             };
 
@@ -77,7 +73,6 @@ namespace BedrockLauncher.Pages.Play
 
                 if (senderName == PlayButton.Name) NavigateToPlayScreen();
                 else if (senderName == InstallationsButton.Name) NavigateToInstallationsPage();
-                else if (senderName == SkinsButton.Name) NavigateToSkinsPage();
                 else if (senderName == PatchNotesButton.Name) NavigateToPatchNotes();
             });
         }
@@ -95,12 +90,7 @@ namespace BedrockLauncher.Pages.Play
             InstallationsButton.IsChecked = true;
             Task.Run(() => Navigator.Navigate(MainPageFrame, installationsScreen));
         }
-        public void NavigateToSkinsPage()
-        {
-            Navigator.UpdatePageIndex(2);
-            SkinsButton.IsChecked = true;
-            Task.Run(() => Navigator.Navigate(MainPageFrame, skinsPage));
-        }
+
         public void NavigateToPatchNotes()
         {
             Navigator.UpdatePageIndex(3);

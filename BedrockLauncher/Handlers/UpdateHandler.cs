@@ -8,7 +8,6 @@ using System.Diagnostics;
 using System.Windows.Media.Animation;
 using System.Windows.Controls;
 using System.Collections.Generic;
-using BedrockLauncher.Extensions;
 using Newtonsoft.Json;
 using BedrockLauncher;
 using System.Runtime.InteropServices;

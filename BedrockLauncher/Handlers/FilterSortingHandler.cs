@@ -51,8 +51,9 @@ namespace BedrockLauncher.Handlers
         {
             BLInstallation v = obj as BLInstallation;
             if (v == null) return false;
+            else if (!Properties.LauncherSettings.Default.ShowPreviews && v.IsPreview) return false;
             else if (!Properties.LauncherSettings.Default.ShowBetas && v.IsBeta) return false;
-            else if (!Properties.LauncherSettings.Default.ShowReleases && !v.IsBeta) return false;
+            else if (!Properties.LauncherSettings.Default.ShowReleases && v.IsRelease) return false;
             else if (!v.DisplayName.Contains(InstallationsSearchFilter)) return false;
             else return true;
         }
@@ -61,8 +62,9 @@ namespace BedrockLauncher.Handlers
             MCVersion v = (obj as MCVersion);
             if (v != null && v.IsInstalled)
             {
-                if (Properties.LauncherSettings.Default.ShowBetas && v.IsBeta) return true;
-                else if (Properties.LauncherSettings.Default.ShowReleases && !v.IsBeta) return true;
+                if (Properties.LauncherSettings.Default.ShowPreviews && v.IsPreview) return true;
+                else if (Properties.LauncherSettings.Default.ShowBetas && v.IsBeta) return true;
+                else if (Properties.LauncherSettings.Default.ShowReleases && v.IsRelease) return true;
                 else return false;
             }
             else return false;

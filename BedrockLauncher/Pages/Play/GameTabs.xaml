@@ -29,11 +29,6 @@
                             <ToolTip Content="{DynamicResource GameTab_InstallationsButton_Text}"/>
                         </ToggleButton.ToolTip>
                     </ToggleButton>
-                    <ToggleButton x:Name="SkinsButton" Width="Auto" Click="ButtonManager2" Content="{DynamicResource ResourceKey=GameTab_SkinsButton_Text}"  Style="{StaticResource ToolbarButton}">
-                        <ToggleButton.ToolTip>
-                            <ToolTip Content="{DynamicResource GameTab_SkinsButton_Text}"/>
-                        </ToggleButton.ToolTip>
-                    </ToggleButton>
                     <ToggleButton x:Name="PatchNotesButton" Width="Auto" Click="ButtonManager2" Content="{DynamicResource ResourceKey=GameTab_PatchNotesButton_Text}" Style="{StaticResource ToolbarButton}">
                         <ToggleButton.ToolTip>
                             <ToolTip Content="{DynamicResource GameTab_PatchNotesButton_Text}"/>

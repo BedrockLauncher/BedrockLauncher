@@ -34,9 +34,24 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                return Type == VersionType.Beta || Type == VersionType.Preview;
+                return Type == VersionType.Beta;
             }
         }
+        public bool IsRelease
+        {
+            get
+            {
+                return Type == VersionType.Release;
+            }
+        }
+        public bool IsPreview
+        {
+            get
+            {
+                return Type == VersionType.Preview;
+            }
+        }
+
         public VersionType Type { get; set; }
         public bool IsInstalled
         {
@@ -76,8 +91,11 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                Depends.On(IsBeta);
-                return IsBeta ? Constants.BETA_VERSION_ICONPATH : Constants.RELEASE_VERSION_ICONPATH;
+                Depends.On(IsBeta, IsPreview, IsRelease);
+                if (IsBeta) return Constants.BETA_VERSION_ICONPATH;
+                else if (IsPreview) return Constants.BETA_VERSION_ICONPATH; //TODO: Preview Icon
+                else if (IsRelease) return Constants.RELEASE_VERSION_ICONPATH;
+                else return Constants.RELEASE_VERSION_ICONPATH; //TODO: Unknown Icon
             }
         }
         public string ManifestPath

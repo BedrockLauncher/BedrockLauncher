@@ -149,8 +149,8 @@ namespace BedrockLauncher.ViewModels
         {
             await Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(async () =>
             {
-                var title = Application.Current.FindResource("Dialog_CloseGame_Title") as string;
-                var content = Application.Current.FindResource("Dialog_CloseGame_Text") as string;
+                var title = BedrockLauncher.Localization.Language.LanguageManager.GetResource("Dialog_CloseGame_Title") as string;
+                var content = BedrockLauncher.Localization.Language.LanguageManager.GetResource("Dialog_CloseGame_Text") as string;
 
                 var result = await DialogPrompt.ShowDialog_YesNoCancel(title, content);
 

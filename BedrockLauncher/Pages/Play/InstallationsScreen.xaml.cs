@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Handlers;
-using BedrockLauncher.Extensions;
 using BedrockLauncher.Pages.Preview;
 using BedrockLauncher.ViewModels;
 
@@ -28,6 +27,7 @@ namespace BedrockLauncher.Pages.Play
             this.DataContext = MainViewModel.Default;
             ShowBetasCheckBox.Click += (sender, e) => RefreshInstallations();
             ShowReleasesCheckBox.Click += (sender, e) => RefreshInstallations();
+            ShowPreviewsCheckBox.Click += (sender, e) => RefreshInstallations();
         }
         public void RefreshInstallations()
         {

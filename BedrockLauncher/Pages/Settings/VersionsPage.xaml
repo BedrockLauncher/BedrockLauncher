@@ -42,6 +42,7 @@
                         <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="828" Orientation="Horizontal" Margin="0,-10,0,0">
                             <CheckBox Click="RefreshVersionsList" IsChecked="{Binding ShowReleases, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Releases}" Style="{StaticResource Checkbox}"></CheckBox>
                             <CheckBox Click="RefreshVersionsList" IsChecked="{Binding ShowBetas, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Betas}" Style="{StaticResource Checkbox}"></CheckBox>
+                            <CheckBox Click="RefreshVersionsList" IsChecked="{Binding ShowPreviews, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Previews}" Style="{StaticResource Checkbox}"></CheckBox>
                         </StackPanel>
                     </StackPanel>
                 </Grid>

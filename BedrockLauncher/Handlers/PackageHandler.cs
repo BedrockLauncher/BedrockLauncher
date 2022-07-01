@@ -1,6 +1,4 @@
 ﻿using BedrockLauncher.Classes;
-using BedrockLauncher.Classes.SkinPack;
-using BedrockLauncher.Extensions;
 using BedrockLauncher.Pages.Common;
 using BedrockLauncher.Downloaders;
 using JemExtensions;
@@ -87,8 +85,8 @@ namespace BedrockLauncher.Handlers
         {
             if (GameHandle != null)
             {
-                var title = Application.Current.FindResource("Dialog_KillGame_Title") as string;
-                var content = Application.Current.FindResource("Dialog_KillGame_Text") as string;
+                var title = BedrockLauncher.Localization.Language.LanguageManager.GetResource("Dialog_KillGame_Title") as string;
+                var content = BedrockLauncher.Localization.Language.LanguageManager.GetResource("Dialog_KillGame_Text") as string;
 
                 var result = await DialogPrompt.ShowDialog_YesNo(title, content);
 

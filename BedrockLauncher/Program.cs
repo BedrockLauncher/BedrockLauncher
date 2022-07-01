@@ -11,9 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using BedrockLauncher.Localization.Language;
-using BedrockLauncher.Extensions;
 using BedrockLauncher.Handlers;
-using BedrockLauncher.Components.CefSharp;
 using BedrockLauncher.Pages.Common;
 using JemExtensions;
 using NLog;
@@ -30,7 +28,6 @@ namespace BedrockLauncher
             RuntimeHandler.StartLogging();
             RuntimeHandler.LogStartupInformation();
             RuntimeHandler.ValidateOSArchitecture();
-            CefSharpLoader.Init();
             Trace.WriteLine("Application Starting...");
             
             var application = new App();

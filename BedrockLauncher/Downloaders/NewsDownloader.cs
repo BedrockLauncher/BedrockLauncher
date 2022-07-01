@@ -56,7 +56,7 @@ namespace BedrockLauncher.Downloaders
             {
                 viewModel.LauncherNewsItems.Clear();
                 bool isFirstItem = true;
-                string latest_name = Application.Current.FindResource("LauncherNewsPage_Title_Text").ToString();
+                string latest_name = BedrockLauncher.Localization.Language.LanguageManager.GetResource("LauncherNewsPage_Title_Text").ToString();
                 foreach (var item in MainViewModel.Updater.Notes)
                 {
                     bool isBeta = item.url.Contains(BedrockLauncher.Core.GithubAPI.BETA_URL);
@@ -78,10 +78,10 @@ namespace BedrockLauncher.Downloaders
                     body = body.Replace("\r\n", "\r\n\r\n");
 
                     Markdown engine = new Markdown();
-                    engine.DocumentStyle = Application.Current.FindResource("FlowDocument_Style") as Style;
-                    engine.NormalParagraphStyle = Application.Current.FindResource("FlowDocument_Style_Paragrath") as Style;
-                    engine.CodeStyle = Application.Current.FindResource("FlowDocument_CodeBlock") as Style;
-                    engine.CodeBlockStyle = Application.Current.FindResource("FlowDocument_CodeBlock") as Style;
+                    engine.DocumentStyle = BedrockLauncher.Localization.Language.LanguageManager.GetResource("FlowDocument_Style") as Style;
+                    engine.NormalParagraphStyle = BedrockLauncher.Localization.Language.LanguageManager.GetResource("FlowDocument_Style_Paragrath") as Style;
+                    engine.CodeStyle = BedrockLauncher.Localization.Language.LanguageManager.GetResource("FlowDocument_CodeBlock") as Style;
+                    engine.CodeBlockStyle = BedrockLauncher.Localization.Language.LanguageManager.GetResource("FlowDocument_CodeBlock") as Style;
                     FlowDocument document = engine.Transform(body);
                     string documentString = new TextRange(document.ContentStart, document.ContentEnd).Text;
 
