@@ -11,10 +11,11 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout code and submodules
+      - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          submodules: recursive
+        
+      - name: Checkout submodules
+        run: git submodule update --init --recursive
         
       - name: Setup nuget
         uses: nuget/setup-nuget@v1
