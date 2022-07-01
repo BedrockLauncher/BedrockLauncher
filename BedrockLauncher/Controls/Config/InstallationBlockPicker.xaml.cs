@@ -291,6 +291,7 @@ namespace BedrockLauncher.Controls
         {
             BlockPickerItem btn = CreateBaseBlockButton();
             int img_width_height = 50;
+            btn.Tag = path;
             btn.Host.Tag = path;
             btn.CrossButton.Tag = path;
             btn.IsCustomImage = true;
@@ -317,6 +318,7 @@ namespace BedrockLauncher.Controls
         {
             BlockPickerItem btn = CreateBaseBlockButton();
             int img_width_height = (index == -1 ? 30 : 50);
+            btn.Tag = index;
             btn.Host.Tag = index;
             btn.CrossButton.Tag = index;
 
