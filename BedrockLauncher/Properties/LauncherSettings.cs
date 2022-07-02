@@ -10,6 +10,7 @@ using System.ComponentModel;
 using BedrockLauncher.ViewModels;
 using PostSharp.Patterns.Model;
 using BedrockLauncher.UI.Components;
+using BedrockLauncher.Enums;
 
 namespace BedrockLauncher.Properties
 {
@@ -67,9 +68,30 @@ namespace BedrockLauncher.Properties
             File.WriteAllText(MainViewModel.Default.FilePaths.GetSettingsFilePath(), json);
         }
 
-        #region Launcher Animation Settings
+        public bool GetIsFirstLaunch(int LoadedConfigCount)
+        {
+            return CurrentProfile == "" || IsFirstLaunch || LoadedConfigCount == 0;
+        }
 
         private bool _AnimatePageTransitions = false;
+        private bool _ShowBetas = true;
+        private bool _ShowReleases = true;
+        private bool _ShowPreviews = true;
+        private InstallationSort _InstallationsSortMode = InstallationSort.LatestPlayed;
+
+        public InstallationSort InstallationsSortMode
+        {
+            get
+            {
+                return _InstallationsSortMode;
+            }
+            set
+            {
+                _InstallationsSortMode = value;
+                Save();
+            }
+        }
+        public bool FetchVersionsFromMicrosoftStore { get; set; } = false;
         public bool AnimatePageTransitions
         {
             get
@@ -82,50 +104,13 @@ namespace BedrockLauncher.Properties
                 Navigator.AnimatePageTransitions = value;
             }
         }
-
-        public bool AnimatePlayButton { get; set; } = false;
-
-        #endregion
-
-        #region Launcher Settings
-
-
-
-
-
-
-        public bool ShowAdvancedInstallDetails { get; set; } = false;
-
         public string CurrentTheme { get; set; } = "LatestUpdate";
         public bool KeepLauncherOpen { get; set; } = false;
         public bool UseBetaBuilds { get; set; } = false;
-
-
-
-        #endregion
-
-        #region Advanced Settings
-
-
         public bool PortableMode { get; set; } = false;
         public string FixedDirectory { get; set; } = "";
-
-        #endregion
-
-        #region Status Storage
-
-        private bool _ShowBetas = true;
-        private bool _ShowReleases = true;
-        private bool _ShowPreviews = true;
-
         public bool IsFirstLaunch { get; set; } = true;
-        public bool GetIsFirstLaunch(int LoadedConfigCount)
-        {
-            return CurrentProfile == "" || IsFirstLaunch || LoadedConfigCount == 0;
-        }
-
         public string CurrentInstallation { get; set; } = string.Empty;
-
         public string CurrentProfile { get; set; } = "";
         public bool ShowReleases
         {
@@ -137,28 +122,12 @@ namespace BedrockLauncher.Properties
             get { return _ShowBetas; }
             set { _ShowBetas = value; }
         }
-
         public bool ShowPreviews
         {
             get { return _ShowPreviews; }
             set { _ShowPreviews = value; }
         }
         public int CurrentInsiderAccountIndex { get; set; } = 0;
-
-        #endregion
-
-        #region Shortcut Settings
-
-        public bool HideJavaShortcut { get; set; } = false;
-        public bool ShowExternalLauncher { get; set; } = false;
-        public string ExternalLauncherName { get; set; } = "";
-        public string ExternalLauncherPath { get; set; } = "";
-        public string ExternalLauncherArguments { get; set; } = "";
-        public string ExternalLauncherIconPath { get; set; } = "";
-        public bool CloseLauncherOnSwitch { get; set; } = true;
-        public bool EnableDungeonsSupport { get; set; } = false;
-
-        #endregion
 
     }
 }

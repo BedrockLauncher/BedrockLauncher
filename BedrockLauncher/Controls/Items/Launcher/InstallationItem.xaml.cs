@@ -19,6 +19,7 @@ using BedrockLauncher.Pages.Common;
 using BedrockLauncher.Classes;
 using BedrockLauncher.UI.Pages.Common;
 using BedrockLauncher.ViewModels;
+using BedrockLauncher.Handlers;
 
 namespace BedrockLauncher.Controls.Items.Launcher
 {
@@ -36,7 +37,7 @@ namespace BedrockLauncher.Controls.Items.Launcher
         {
             get
             {
-                return ButtonPanel != null ? ButtonPanel.Visibility : Visibility.Collapsed;
+                return ButtonPanel != null ? ButtonPanel.Visibility : Visibility.Hidden;
             }
             set
             {
@@ -111,6 +112,39 @@ namespace BedrockLauncher.Controls.Items.Launcher
             MenuItem button = sender as MenuItem;
             var installation = button.DataContext as BLInstallation;
             MainViewModel.Default.Config.Installation_Clone(installation);
+        }
+
+        private void MoveUp_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            var installation = button.DataContext as BLInstallation;
+            MainViewModel.Default.Config.Installation_MoveUp(installation);
+        }
+
+        private void MoveDown_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            var installation = button.DataContext as BLInstallation;
+            MainViewModel.Default.Config.Installation_MoveDown(installation);
+        }
+
+        private void UpdateButtonVisibility()
+        {
+            if (Properties.LauncherSettings.Default.InstallationsSortMode == Enums.InstallationSort.None)
+            {
+                MoveUp.Visibility = Visibility.Visible;
+                MoveDown.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MoveUp.Visibility = Visibility.Collapsed;
+                MoveDown.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateButtonVisibility();
         }
     }
 }

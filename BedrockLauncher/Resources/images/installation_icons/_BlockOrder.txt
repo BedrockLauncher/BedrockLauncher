@@ -30,6 +30,7 @@ glowstone.png
 block_of_gold.png
 gold_ore.png
 grass_block.png
+grass_path.png
 gravel.png
 terracotta.png
 ice.png

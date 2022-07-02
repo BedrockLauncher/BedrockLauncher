@@ -29,7 +29,7 @@ namespace BedrockLauncher.Controls.Items.News
 
         public static void LoadArticle(NewsItem item)
         {
-            Process.Start(new ProcessStartInfo(item.Link));
+            JemExtensions.WebExtensions.LaunchWebLink(item.Link);
         }
 
         private void FeedItemEntry_Click(object sender, RoutedEventArgs e)

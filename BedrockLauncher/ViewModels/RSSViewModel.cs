@@ -16,11 +16,9 @@ namespace BedrockLauncher.ViewModels
     [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]
     public class RSSViewModel
     {
-        public static RSSViewModel MinecraftForums { get; set; } = new RSSViewModel(ForumsFeed_RSS, RSSType.RSS);
-        private const string MinecraftFeed_RSS = @"https://www.minecraft.net/en-us/feeds/community-content/rss";
+        public static RSSViewModel MinecraftForums { get; set; } = new RSSViewModel(Constants.RSS_FORUMS_URL, RSSType.RSS);
+        public static RSSViewModel MinecraftCommunity { get; set; } = new RSSViewModel(Constants.RSS_COMMUNITY_URL, RSSType.MinecraftRSS);
 
-        public static RSSViewModel MinecraftCommunity { get; set; } = new RSSViewModel(MinecraftFeed_RSS, RSSType.MinecraftRSS);
-        private const string ForumsFeed_RSS = @"https://www.minecraftforum.net/news.rss";
 
         public ObservableCollection<NewsItem_RSS> FeedItems { get; set; } = new ObservableCollection<NewsItem_RSS>();
         public RSSType RSSType { get; set; } = RSSType.RSS;

@@ -19,7 +19,7 @@ namespace BedrockLauncher.Classes.Launcher
 
         public void OpenLink()
         {
-            Process.Start(new ProcessStartInfo(Link));
+            JemExtensions.WebExtensions.LaunchWebLink(Link);
         }
     }
 }

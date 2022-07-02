@@ -164,68 +164,8 @@ namespace BedrockLauncher
             });
 
         }
-        public async void NavigateToJavaLauncher()
-        {
-            await this.Dispatcher.InvokeAsync(() =>
-            {
-                Action action = new Action(() =>
-                {
-                    string JavaPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonStartMenu) + @"\Programs\Minecraft Launcher\Minecraft Launcher.lnk";
 
-                    try
-                    {
-                        // Trying to find and open Java launcher shortcut
-                        Process.Start(JavaPath);
-                        if (Properties.LauncherSettings.Default.CloseLauncherOnSwitch) Application.Current.MainWindow.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        Trace.WriteLine(string.Format("CantFindJavaLauncher: {0}", JavaPath));
-                        Trace.WriteLine(ex);
-                        MainPage.NavigateToPlayScreen();
-                        ErrorScreenShow.errormsg("Error_CantFindJavaLauncher_Title", "Error_CantFindJavaLauncher", ex);
-                    }
-                });
 
-                NavigateToOtherLauncher(action);
-            });
-        }
-        public async void NavigateToExternalLauncher()
-        {
-            await this.Dispatcher.InvokeAsync(() =>
-            {
-                Action action = new Action(() =>
-                {
-                    string LauncherPath = Properties.LauncherSettings.Default.ExternalLauncherPath;
-                    string Arguments = Properties.LauncherSettings.Default.ExternalLauncherArguments;
-                    try
-                    {
-                        Process.Start(LauncherPath, Arguments);
-                        if (Properties.LauncherSettings.Default.CloseLauncherOnSwitch) Application.Current.MainWindow.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        Trace.WriteLine(string.Format("CantFindExternalLauncher:\n\nPath: {0}\nArguments: {1}", LauncherPath, Arguments));
-                        Trace.WriteLine(ex);
-                        MainPage.NavigateToPlayScreen();
-                        ErrorScreenShow.errormsg("Error_CantFindExternalLauncher_Title", "Error_CantFindExternalLauncher", ex);
-                    }
-                });
-
-                NavigateToOtherLauncher(action);
-            });
-
-        }
-        public async void NavigateToOtherLauncher(Action action)
-        {
-            await this.Dispatcher.InvokeAsync(() =>
-            {
-                if (Properties.LauncherSettings.Default.CloseLauncherOnSwitch && MainViewModel.Default.PackageManager.isGameRunning)
-                    Task.Run(() => MainViewModel.Default.LauncherCanNotCloseDialog(action));
-                else action.Invoke();
-            });
-
-        }
         public void NavigateToNewProfilePage()
         {
             this.Dispatcher.Invoke(() =>
@@ -252,26 +192,6 @@ namespace BedrockLauncher
         private void ProfileButton_Click(object sender, EventArgs e)
         {
             NavigateToNewProfilePage();
-        }
-
-        private void JavaEditionButton_Click(object sender, EventArgs e)
-        {
-            NavigateToJavaLauncher();
-        }
-
-        private void ExternalLauncherButton_Click(object sender, EventArgs e)
-        {
-            NavigateToExternalLauncher();
-        }
-
-        private void DungeonsButton_Click(object sender, EventArgs e)
-        {
-            if (sender != null && sender is ToolbarButtonBase) ButtonManager_Base((sender as ToolbarButtonBase).Name);
-        }
-
-        private void CommunityButton_Click(object sender, EventArgs e)
-        {
-            if (sender != null && sender is ToolbarButtonBase) ButtonManager_Base((sender as ToolbarButtonBase).Name);
         }
 
         private void SettingsButton_Click(object sender, EventArgs e)

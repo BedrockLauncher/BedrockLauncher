@@ -97,11 +97,6 @@
             </Grid>
         </Border>
         <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Bottom" Orientation="Horizontal">
-            <ToggleButton x:Name="OfficalTab" IsEnabled="False" Visibility="Collapsed" Width="Auto" Click="ButtonManager" Content="{DynamicResource NewsScreen_OfficialTabTitle}" Style="{DynamicResource ToolbarButton}">
-                <ToggleButton.ToolTip>
-                    <ToolTip Content="{DynamicResource NewsScreen_OfficialTabTitle}"/>
-                </ToggleButton.ToolTip>
-            </ToggleButton>
             <ToggleButton x:Name="JavaTab" Width="Auto" Click="ButtonManager" Content="{DynamicResource NewsScreen_OfficialTabTitle}" Style="{DynamicResource ToolbarButton}" IsChecked="True">
                 <ToggleButton.ToolTip>
                     <ToolTip Content="{DynamicResource NewsScreen_OfficialTabTitle}"/>

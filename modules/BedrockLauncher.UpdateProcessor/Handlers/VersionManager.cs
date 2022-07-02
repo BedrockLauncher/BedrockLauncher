@@ -96,7 +96,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
                 task.Start();
             }
         }
-        public async Task LoadVersions(bool getNewVersions)
+        public async Task LoadVersions(bool getNewVersions, bool checkMicrosoftStore)
         {
             Versions.Clear();
 
@@ -114,7 +114,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             var winStoreDBT = LoadTextDBVersions(winstoreDBTechnicalFile);
             var winStoreDB = LoadJsonDBVersions(winstoreDBFile);
 
-            if (getNewVersions)
+            if (getNewVersions && checkMicrosoftStore)
             {
                 await UpdateDBFromStore(winStoreDBT, winstoreDBTechnicalFile);
                 await UpdateDBFromStore(winStoreDB, winstoreDBFile);

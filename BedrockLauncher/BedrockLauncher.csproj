@@ -132,6 +132,8 @@
 		<ProjectReference Include="..\modules\Extensions.NET\JemExtensions.csproj" />
 	</ItemGroup>
 	<ItemGroup>
+		<Resource Include="Resources\images\icons\ico\grass_path_icon.ico" />
+		<Resource Include="Resources\images\installation_icons\Grass_Path.png" />
 		<Resource Include="Resources\images\installation_icons\_BlockOrder.txt" />
 	</ItemGroup>
 	<ItemGroup>
@@ -568,6 +570,8 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Remove="Controls\Various\LoadingAnimation.xaml.cs" />
+		<None Remove="Resources\images\icons\ico\grass_path_icon.ico" />
+		<None Remove="Resources\images\installation_icons\Grass_Path.png" />
 		<Page Remove="Controls\Various\LoadingAnimation.xaml" />
 		<Page Remove="Data\Versions.xaml" />
 	</ItemGroup>

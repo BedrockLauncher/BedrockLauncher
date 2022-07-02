@@ -16,9 +16,6 @@ namespace BedrockLauncher.Downloaders
 {
     public static class NewsDownloader
     {
-
-        private const string OfficalFeed_RSS = @"https://launchercontent.mojang.com/news.json";
-
         public static async Task UpdateOfficalFeed(NewsViewModel viewModel)
         {
             await Application.Current.Dispatcher.InvokeAsync(() =>
@@ -31,7 +28,7 @@ namespace BedrockLauncher.Downloaders
             {
                 try
                 {
-                    var json = await httpClient.GetStringAsync(OfficalFeed_RSS);
+                    var json = await httpClient.GetStringAsync(Constants.RSS_LAUNCHER_URL);
                     result = Newtonsoft.Json.JsonConvert.DeserializeObject<NewsFeed_Offical>(json);
                 }
                 catch

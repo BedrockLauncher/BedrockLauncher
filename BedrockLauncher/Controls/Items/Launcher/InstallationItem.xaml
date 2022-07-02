@@ -8,16 +8,17 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
              xmlns:classes="clr-namespace:BedrockLauncher.Classes"
-             d:DataContext="{d:DesignInstance classes:BLInstallation, IsDesignTimeCreatable=False}">
+             d:DataContext="{d:DesignInstance classes:BLInstallation, IsDesignTimeCreatable=False}"
+             Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <conv:InvertableBooleanToVisibilityConverter x:Key="VisibleIfTrueConverter" />
         <BitmapImage x:Key="IconPath_DesignTime" UriSource="/BedrockLauncher;component/resources/images/installation_icons/Furnace.png"/>
     </UserControl.Resources>
     <Grid x:Name="InstallationEntry">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="540"></ColumnDefinition>
+            <ColumnDefinition Width="400"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="240"></ColumnDefinition>
+            <ColumnDefinition Width="350"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -41,12 +42,26 @@
                 <TextBlock FontSize="11" Foreground="{DynamicResource SecondaryText.Foreground}" FontWeight="SemiBold" Padding="0,0,0,0" Text="{Binding VersionName}"/>
             </StackPanel>
         </Grid>
-        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" Height="40" VerticalAlignment="Center" x:Name="ButtonPanel" Visibility="Collapsed">
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" Height="40" VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="ButtonPanel" Visibility="Hidden">
             <Button x:Name="Play" Click="Play_Click" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Content="{DynamicResource InstallationsPage_PlayButton}" Style="{DynamicResource DialogButton_Green}"></Button>
             <Button x:Name="Folder" Click="Folder_Click" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" FontWeight="Bold" Style="{DynamicResource DialogButton}">
                 <Button.Content>
                     <Grid Width="16" Height="16">
                         <Path Stretch="Uniform" Fill="White" StrokeThickness="0" Data="{DynamicResource FolderIcon}"/>
+                    </Grid>
+                </Button.Content>
+            </Button>
+            <Button x:Name="MoveUp" Click="MoveUp_Click" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" FontWeight="Bold" Style="{DynamicResource DialogButton}">
+                <Button.Content>
+                    <Grid Width="16" Height="16">
+                        <Path Stretch="Uniform" Fill="White" StrokeThickness="0" Data="{DynamicResource UpArrowIcon}"/>
+                    </Grid>
+                </Button.Content>
+            </Button>
+            <Button x:Name="MoveDown" Click="MoveDown_Click" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" FontWeight="Bold" Style="{DynamicResource DialogButton}">
+                <Button.Content>
+                    <Grid Width="16" Height="16">
+                        <Path Stretch="Uniform" Fill="White" StrokeThickness="0" Data="{DynamicResource DownArrowIcon}"/>
                     </Grid>
                 </Button.Content>
             </Button>

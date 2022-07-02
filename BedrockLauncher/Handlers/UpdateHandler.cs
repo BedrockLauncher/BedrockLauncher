@@ -132,8 +132,8 @@ namespace BedrockLauncher.Handlers
         #region Button
         public void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Trace.WriteLine("Trying to update");
-            StartUpdate();
+            if (isLatestBeta()) JemExtensions.WebExtensions.LaunchWebLink(Constants.UPDATES_BETA_PAGE);
+            else JemExtensions.WebExtensions.LaunchWebLink(Constants.UPDATES_RELEASE_PAGE);
         }
 
         #endregion
@@ -159,52 +159,6 @@ namespace BedrockLauncher.Handlers
 
             }
         }
-        private async void StartUpdate()
-        {
-            string InstallerPath = string.Empty;
-
-            try
-            {
-                string installerName = "BedrockLauncher.Installer.exe";
-                var result = await GetUpdateNote("https://api.github.com/repos/BedrockLauncher/BedrockLauncher.Installer/releases/latest");
-
-                if (result.assets != null)
-                {
-                    if (result.assets.ToList().Exists(x => x.name == installerName))
-                    {
-                        var installer = result.assets.ToList().FirstOrDefault(x => x.name == installerName);
-                        InstallerPath = Path.Combine(Path.GetTempPath(), installerName);
-                        File.Delete(InstallerPath);
-
-                        await DownloadInstaller(installer.url, InstallerPath);
-
-                        ProcessStartInfo startInfo = new ProcessStartInfo
-                        {
-                            FileName = InstallerPath,
-                            Arguments = GetArgs(),
-                            UseShellExecute = true,
-                            Verb = "runas",
-                        };
-                        System.Diagnostics.Process.Start(startInfo);
-                        Application.Current.Shutdown();
-
-                        string GetArgs()
-                        {
-                            string silent = "--silent";
-                            string beta = isLatestBeta() ? "--beta" : "";
-                            string path = "--path=\"" + MainViewModel.Default.FilePaths.ExecutableDirectory + "\"";
-
-                            return string.Join(" ", silent, beta, path);
-                        }
-                        
-                    }
-                }
-            }
-            catch (Exception err)
-            {
-                System.Diagnostics.Trace.WriteLine("Installer launch failed\nError: " + err);
-            }
-        }
 
 
         private async Task<List<UpdateNote>> GetUpdateNotes(string url)
@@ -215,30 +169,6 @@ namespace BedrockLauncher.Handlers
             var httpResponse = await client.GetStreamAsync(url);
             using (var streamReader = new StreamReader(httpResponse)) json = streamReader.ReadToEnd();
             return JsonConvert.DeserializeObject<List<UpdateNote>>(json);
-        }
-
-        private async Task<UpdateNote> GetUpdateNote(string url)
-        {
-            HttpClient client = new HttpClient();
-            string json = string.Empty;
-            client.DefaultRequestHeaders.UserAgent.TryParseAdd(@"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36");
-            var httpResponse = await client.GetStreamAsync(url);
-            using (var streamReader = new StreamReader(httpResponse)) json = streamReader.ReadToEnd();
-            return JsonConvert.DeserializeObject<UpdateNote>(json);
-        }
-
-        private async Task DownloadInstaller(string url, string InstallerPath)
-        {
-            HttpClient client = new HttpClient();
-
-            client.DefaultRequestHeaders.UserAgent.TryParseAdd(@"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36");
-            client.DefaultRequestHeaders.Accept.TryParseAdd("application/octet-stream");
-            using (Stream output = System.IO.File.OpenWrite(InstallerPath))
-            {
-                var response = await client.GetStreamAsync(url);
-                await response.CopyToAsync(output);
-                response.Close();
-            }
         }
     }
 }

@@ -13,8 +13,8 @@ namespace BedrockLauncher.Classes.Launcher
         {
             get
             {
-                if (isBeta) return "pack://application:,,,/BedrockLauncher;component/resources/images/packs/dev_pack_icon.png";
-                else return "pack://application:,,,/BedrockLauncher;component/resources/images/packs/pack_icon.png";
+                if (isBeta) return Constants.PATCHNOTE_BETA_IMG;
+                else return Constants.INSTALLATIONS_LATEST_RELEASE_ICONPATH;
             }
         }
         public string Content { get; set; }

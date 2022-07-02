@@ -53,10 +53,13 @@ namespace BedrockLauncher.Pages.Play
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (SortByComboBox.SelectedItem == SortByLatestPlayed)
-                FilterSortingHandler.InstallationsSortMode = Enums.InstallationSort.LatestPlayed;
+                Properties.LauncherSettings.Default.InstallationsSortMode = Enums.InstallationSort.LatestPlayed;
 
             if (SortByComboBox.SelectedItem == SortByName)
-                FilterSortingHandler.InstallationsSortMode = Enums.InstallationSort.Name;
+                Properties.LauncherSettings.Default.InstallationsSortMode = Enums.InstallationSort.Name;
+
+            if (SortByComboBox.SelectedItem == SortByNone)
+                Properties.LauncherSettings.Default.InstallationsSortMode = Enums.InstallationSort.None;
 
             this.RefreshInstallations();
         }

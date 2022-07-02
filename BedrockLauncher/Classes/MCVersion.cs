@@ -93,9 +93,9 @@ namespace BedrockLauncher.Classes
             {
                 Depends.On(IsBeta, IsPreview, IsRelease);
                 if (IsBeta) return Constants.BETA_VERSION_ICONPATH;
-                else if (IsPreview) return Constants.BETA_VERSION_ICONPATH; //TODO: Preview Icon
+                else if (IsPreview) return Constants.PREVIEW_VERSION_ICONPATH;
                 else if (IsRelease) return Constants.RELEASE_VERSION_ICONPATH;
-                else return Constants.RELEASE_VERSION_ICONPATH; //TODO: Unknown Icon
+                else return Constants.UNKNOWN_VERSION_ICONPATH;
             }
         }
         public string ManifestPath

@@ -59,7 +59,7 @@ namespace BedrockLauncher.Classes.Launcher
         }
 
 
-        public override string ImageUrl { get => @"https://launchercontent.mojang.com/" + newsPageImage.url; }
+        public override string ImageUrl { get => Constants.RSS_LAUNCHER_IMG_PATH + newsPageImage.url; }
         public override double ImageWidth { get => GetWidth(); }
         public override double ImageHeight { get => GetHeight(); }
         public override string Title { get => title; }

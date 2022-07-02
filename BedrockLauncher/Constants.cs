@@ -27,8 +27,30 @@ namespace BedrockLauncher
         public static readonly string LATEST_RELEASE_UUID = "latest_release";
         public static readonly string LATEST_PREVIEW_UUID = "latest_preview";
 
+        public static readonly string UPDATES_RELEASE_PAGE = "https://github.com/BedrockLauncher/BedrockLauncher/releases";
+        public static readonly string UPDATES_BETA_PAGE = "https://github.com/BedrockLauncher/BedrockLauncher-Beta/releases";
+
         public static readonly string BETA_VERSION_ICONPATH = @"/BedrockLauncher;component/resources/images/icons/ico/crafting_table_block_icon.ico";
         public static readonly string RELEASE_VERSION_ICONPATH = @"/BedrockLauncher;component/resources/images/icons/ico/grass_block_icon.ico";
+        public static readonly string PREVIEW_VERSION_ICONPATH = @"/BedrockLauncher;component/resources/images/icons/ico/grass_path_icon.ico";
+        public static readonly string UNKNOWN_VERSION_ICONPATH = @"/BedrockLauncher;component/resources/images/icons/ico/bedrock_block_icon.ico";
+
+        public static readonly string INSTALLATIONS_ICONPATH = @"/BedrockLauncher;component/Resources/images/installation_icons/";
+        public static readonly string INSTALLATIONS_FALLBACK_ICONPATH = @"Furnace.png";
+        public static readonly string INSTALLATIONS_LATEST_RELEASE_ICONPATH = "Grass_Block.png";
+        public static readonly string INSTALLATIONS_LATEST_BETA_ICONPATH = "Crafting_Table.png";
+        public static readonly string INSTALLATIONS_LATEST_PREVIEW_ICONPATH = "Grass_Path.png";
+
+        public static readonly string PATCHNOTE_BETA_IMG = "pack://application:,,,/BedrockLauncher;component/resources/images/packs/dev_pack_icon.png";
+        public static readonly string PATCHNOTE_RELEASE_IMG = "pack://application:,,,/BedrockLauncher;component/resources/images/packs/pack_icon.png";
+
+        public static readonly string RSS_FALLBACK_IMG = @"/BedrockLauncher;component/resources/images/packs/invalid_pack.png";
+        public static readonly string RSS_LAUNCHER_IMG_PATH = @"https://launchercontent.mojang.com/";
+        public static readonly string RSS_MINECRAFT_IMG_PATH = @"https://www.minecraft.net/";
+
+        public static readonly string RSS_LAUNCHER_URL = @"https://launchercontent.mojang.com/news.json";
+        public static readonly string RSS_COMMUNITY_URL = @"https://www.minecraft.net/en-us/feeds/community-content/rss";
+        public static readonly string RSS_FORUMS_URL = @"https://www.minecraftforum.net/news.rss";
 
         internal static string GetPackageFamily(VersionType type)
         {

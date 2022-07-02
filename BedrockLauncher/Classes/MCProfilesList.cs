@@ -160,33 +160,33 @@ namespace BedrockLauncher.Classes
         {
             BLInstallation latest_release = new BLInstallation()
             {
-                DisplayName = "Latest Release",
-                DirectoryName = "Latest Release",
+                DisplayName = "Latest Release", //TODO: Localize Display Names
+                DirectoryName = "Latest Release",  //TODO: Localize Directory Names?
                 VersionUUID = Constants.LATEST_RELEASE_UUID,
                 VersioningMode = VersioningMode.LatestRelease,
-                IconPath = "Grass_Block.png",
+                IconPath = Constants.INSTALLATIONS_LATEST_RELEASE_ICONPATH,
                 IsCustomIcon = false,
                 ReadOnly = true,
                 InstallationUUID = Constants.LATEST_RELEASE_UUID
             };
             BLInstallation latest_beta = new BLInstallation()
             {
-                DisplayName = "Latest Beta",
-                DirectoryName = "Latest Beta",
+                DisplayName = "Latest Beta",  //TODO: Localize Display Names
+                DirectoryName = "Latest Beta",  //TODO: Localize Directory Names?
                 VersionUUID = Constants.LATEST_BETA_UUID,
                 VersioningMode = VersioningMode.LatestBeta,
-                IconPath = "Crafting_Table.png",
+                IconPath = Constants.INSTALLATIONS_LATEST_PREVIEW_ICONPATH,
                 IsCustomIcon = false,
                 ReadOnly = true,
                 InstallationUUID = Constants.LATEST_BETA_UUID
             };
             BLInstallation latest_preview = new BLInstallation()
             {
-                DisplayName = "Latest Preview",
-                DirectoryName = "Latest Preview",
+                DisplayName = "Latest Preview",  //TODO: Localize Display Names
+                DirectoryName = "Latest Preview",  //TODO: Localize Directory Names?
                 VersionUUID = Constants.LATEST_PREVIEW_UUID,
                 VersioningMode = VersioningMode.LatestPreview,
-                IconPath = "Crafting_Table.png", //TODO: Preview Icon Path
+                IconPath = Constants.INSTALLATIONS_LATEST_PREVIEW_ICONPATH, 
                 IsCustomIcon = false,
                 ReadOnly = true,
                 InstallationUUID = Constants.LATEST_PREVIEW_UUID
@@ -267,6 +267,31 @@ namespace BedrockLauncher.Classes
                 Save();
             }
         }
+
+        public void Installation_Move(BLInstallation installation, bool moveUp)
+        {
+            if (CurrentProfile == null) return;
+            if (CurrentInstallations == null) return;
+            if (CurrentInstallations.Any(x => x.InstallationUUID == installation.InstallationUUID))
+            {
+                int oldIndex = CurrentInstallations.FindIndex(x => x.InstallationUUID == installation.InstallationUUID);
+                int count = CurrentInstallations.Count() - 1;
+                int newIndex = oldIndex + (moveUp ? -1 : 1);
+                if (newIndex >= 0 && newIndex <= count) CurrentInstallations.Move(oldIndex, newIndex);
+                Save();
+            }
+        }
+
+        public void Installation_MoveDown(BLInstallation installation)
+        {
+            Installation_Move(installation, false);
+        }
+
+        public void Installation_MoveUp(BLInstallation installation)
+        {
+            Installation_Move(installation, true);
+        }
+
         public void Installation_Clone(BLInstallation installation)
         {
             if (CurrentProfile == null) return;
@@ -294,7 +319,7 @@ namespace BedrockLauncher.Classes
             BLInstallation new_installation = new BLInstallation()
             {
                 DisplayName = name,
-                IconPath = (iconPath == null ? @"Furnace.png" : iconPath),
+                IconPath = (iconPath == null ? Constants.INSTALLATIONS_FALLBACK_ICONPATH : iconPath),
                 IsCustomIcon = isCustom,
                 DirectoryName = directory,
                 VersioningMode = versioningMode,
@@ -312,7 +337,7 @@ namespace BedrockLauncher.Classes
             BLInstallation new_installation = new BLInstallation()
             {
                 DisplayName = name,
-                IconPath = (iconPath == null ? @"Furnace.png" : iconPath),
+                IconPath = (iconPath == null ? Constants.INSTALLATIONS_FALLBACK_ICONPATH : iconPath),
                 IsCustomIcon = isCustom,
                 DirectoryName = directory,
                 VersioningMode = versioningMode,
@@ -353,6 +378,7 @@ namespace BedrockLauncher.Classes
             {
                 if (version.UUID == Constants.LATEST_BETA_UUID) versioningMode = VersioningMode.LatestBeta;
                 else if (version.UUID == Constants.LATEST_RELEASE_UUID) versioningMode = VersioningMode.LatestRelease;
+                else if (version.UUID == Constants.LATEST_PREVIEW_UUID) versioningMode = VersioningMode.LatestPreview;
                 else versioningMode = VersioningMode.None;
 
                 version_uuid = version.UUID;

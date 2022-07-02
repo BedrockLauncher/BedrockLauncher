@@ -16,15 +16,16 @@ namespace BedrockLauncher.Handlers
 {
     public class FilterSortingHandler
     {
-        public static InstallationSort InstallationsSortMode { get; set; } = InstallationSort.LatestPlayed;
-        public static SortDescription GetInstallationSortDescriptor()
+        public static SortDescription? GetInstallationSortDescriptor()
         {
-            switch (InstallationsSortMode)
+            switch (Properties.LauncherSettings.Default.InstallationsSortMode)
             {
                 case InstallationSort.LatestPlayed:
                     return new SortDescription(nameof(BLInstallation.LastPlayedT), ListSortDirection.Descending);
                 case InstallationSort.Name:
                     return new SortDescription(nameof(BLInstallation.DisplayName), ListSortDirection.Ascending);
+                case InstallationSort.None:
+                    return null;
                 default:
                     return new SortDescription(nameof(BLInstallation.LastPlayedT), ListSortDirection.Descending);
             }
@@ -42,7 +43,8 @@ namespace BedrockLauncher.Handlers
             if (view != null)
             {
                 view.SortDescriptions.Clear();
-                view.SortDescriptions.Add(GetInstallationSortDescriptor());
+                var result = GetInstallationSortDescriptor();
+                if (result != null) view.SortDescriptions.Add(result.Value);
                 view.Refresh();
             }
         }

@@ -11,8 +11,6 @@ namespace BedrockLauncher.Classes.Launcher
 {
     public class NewsItem_RSS : NewsItem
     {
-        private const string FallbackImageURL = @"/BedrockLauncher;component/resources/images/packs/invalid_pack.png";
-
         public string GetPrimaryTag()
         {
             switch (this.Type)
@@ -81,7 +79,7 @@ namespace BedrockLauncher.Classes.Launcher
                     }
                 }
 
-                return FallbackImageURL;
+                return Constants.RSS_FALLBACK_IMG;
             }
             string MinecraftRSS()
             {
@@ -91,11 +89,11 @@ namespace BedrockLauncher.Classes.Launcher
                     if (attributes.ToList().Exists(x => x.Name.LocalName == "imageURL"))
                     {
                         var result = attributes.Where(x => x.Name.LocalName == "imageURL").FirstOrDefault();
-                        return @"https://www.minecraft.net/" + result.Value;
+                        return Constants.RSS_MINECRAFT_IMG_PATH + result.Value;
                     }
                 }
 
-                return FallbackImageURL;
+                return Constants.RSS_FALLBACK_IMG;
             }
             string Default()
             {

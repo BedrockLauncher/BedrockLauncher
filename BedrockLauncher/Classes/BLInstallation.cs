@@ -39,7 +39,7 @@ namespace BedrockLauncher.Classes
             {
                 Depends.On(IsCustomIcon, IconPath);
                 if (IsCustomIcon) return Path.Combine(MainViewModel.Default.FilePaths.GetCacheFolderPath(), IconPath);
-                else return @"/BedrockLauncher;component/Resources/images/installation_icons/" + IconPath;
+                else return Constants.INSTALLATIONS_ICONPATH + IconPath;
             }
         }
         [JsonIgnore]

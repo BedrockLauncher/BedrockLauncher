@@ -37,7 +37,7 @@ namespace BedrockLauncher.Pages.News
         public NewsScreenTabs()
         {
             InitializeComponent();
-            LastTabName = OfficalTab.Name;
+            LastTabName = JavaTab.Name;
             launcherNewsPage = new LauncherNewsPage();
         }
 
@@ -58,7 +58,6 @@ namespace BedrockLauncher.Pages.News
                 // ya i know this is really bad, i need to learn mvvm instead of doing this shit
                 // but this works fine, at least
                 List<ToggleButton> toggleButtons = new List<ToggleButton>() {
-                OfficalTab,
                 JavaTab,
                 ForumsTab,
                 LauncherTab
@@ -90,20 +89,10 @@ namespace BedrockLauncher.Pages.News
             {
                 ResetButtonManager(senderName);
 
-                if (senderName == OfficalTab.Name) NavigateToCommunityNews();
-                else if (senderName == JavaTab.Name) NavigateToJavaNews();
+                if (senderName == JavaTab.Name) NavigateToJavaNews();
                 else if (senderName == ForumsTab.Name) NavigateToForumNews();
                 else if (senderName == LauncherTab.Name) NavigateToLauncherNews();
             });
-        }
-
-
-
-        public void NavigateToCommunityNews()
-        {
-            Navigator.UpdatePageIndex(0);
-            Task.Run(() => Navigator.Navigate(ContentFrame, communityNewsPage));
-            LastTabName = OfficalTab.Name;
         }
 
         public void NavigateToJavaNews()

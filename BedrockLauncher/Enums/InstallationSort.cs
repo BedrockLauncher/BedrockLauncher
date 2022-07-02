@@ -9,6 +9,7 @@ namespace BedrockLauncher.Enums
     public enum InstallationSort : int
     {
         LatestPlayed,
-        Name
+        Name,
+        None
     }
 }

@@ -58,6 +58,7 @@
                         <ComboBox x:Name="SortByComboBox" Style="{DynamicResource BlankComboBoxStyle}" SelectedIndex="0" Padding="4,0,0,0" VerticalContentAlignment="Center" SelectionChanged="ComboBox_SelectionChanged" Height="30">
                             <ComboBoxItem Content="{DynamicResource InstallationsPage_SortBy_LatestPlayed}" x:Name="SortByLatestPlayed"></ComboBoxItem>
                             <ComboBoxItem Content="{DynamicResource InstallationsPage_SortBy_Name}" x:Name="SortByName"></ComboBoxItem>
+                            <ComboBoxItem Content="{DynamicResource InstallationsPage_SortBy_None}" x:Name="SortByNone"></ComboBoxItem>
                         </ComboBox>
                     </StackPanel>
                 </Grid>
