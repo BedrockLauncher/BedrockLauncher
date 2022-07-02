@@ -152,7 +152,7 @@ namespace BedrockLauncher.Classes
 
         public void OpenDirectory()
         {
-            string Directory = MainViewModel.Default.FilePaths.GetInstallationsFolderPath(MainViewModel.Default.Config.CurrentProfileUUID, DirectoryName_Full);
+            string Directory = MainViewModel.Default.FilePaths.GetInstallationsFolderPath(Properties.LauncherSettings.Default.CurrentProfileUUID, DirectoryName_Full);
             if (!System.IO.Directory.Exists(Directory)) System.IO.Directory.CreateDirectory(Directory);
             Process.Start("explorer.exe", Directory);
         }

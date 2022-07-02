@@ -10,44 +10,35 @@ using JemExtensions;
 using Newtonsoft.Json;
 using BedrockLauncher.Enums;
 using PostSharp.Patterns.Model;
+using System.ComponentModel;
 
 namespace BedrockLauncher.Classes
 {
 
     [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]    //224 Lines
-    public class MCProfilesList
+    public class MCProfilesList : JemExtensions.WPF.NotifyPropertyChangedBase
     {
         public int Version = 2;
+
+
+
         public Dictionary<string, MCProfile> profiles { get; set; } = new Dictionary<string, MCProfile>();
 
         #region Runtime Values
         [JsonIgnore]
         public string FilePath { get; private set; } = string.Empty;
-        [JsonIgnore] 
-        public string CurrentProfileUUID
-        {
-            get
-            {
-                Depends.On(Properties.LauncherSettings.Default.CurrentProfile);
-                return Properties.LauncherSettings.Default.CurrentProfile;
-            }
-            set
-            {
-                Properties.LauncherSettings.Default.CurrentProfile = value;
-                Properties.LauncherSettings.Default.Save();
-            }
-        }
-        [JsonIgnore] 
+
+        [JsonIgnore]
         public string CurrentInstallationUUID
         {
             get
             {
-                Depends.On(Properties.LauncherSettings.Default.CurrentInstallation);
-                return Properties.LauncherSettings.Default.CurrentInstallation;
+                Depends.On(Properties.LauncherSettings.Default.CurrentInstallationUUID);
+                return Properties.LauncherSettings.Default.CurrentInstallationUUID;
             }
             set
             {
-                Properties.LauncherSettings.Default.CurrentInstallation = value;
+                Properties.LauncherSettings.Default.CurrentInstallationUUID = value;
                 Properties.LauncherSettings.Default.Save();
             }
         }
@@ -56,13 +47,13 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                Depends.On(CurrentProfileUUID);
-                if (profiles.ContainsKey(CurrentProfileUUID)) return profiles[CurrentProfileUUID];
+                Depends.On(Properties.LauncherSettings.Default.CurrentProfileUUID);
+                if (profiles.ContainsKey(Properties.LauncherSettings.Default.CurrentProfileUUID)) return profiles[Properties.LauncherSettings.Default.CurrentProfileUUID];
                 else return null;
             }
             set
             {
-                if (profiles.ContainsKey(CurrentProfileUUID)) profiles[CurrentProfileUUID] = value;
+                if (profiles.ContainsKey(Properties.LauncherSettings.Default.CurrentProfileUUID)) profiles[Properties.LauncherSettings.Default.CurrentProfileUUID] = value;
             }
         }
         [JsonIgnore] 
@@ -70,7 +61,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                Depends.On(CurrentProfile, CurrentInstallations, CurrentInstallationUUID);
+                Depends.On(CurrentInstallationUUID, CurrentInstallations);
                 if (CurrentProfile == null) return null;
                 else if (CurrentInstallations == null) return null;
                 else if (CurrentInstallations.Any(x => x.InstallationUUID == CurrentInstallationUUID))
@@ -138,8 +129,10 @@ namespace BedrockLauncher.Classes
         }
         public void Init(string lastProfile = null, string lastInstallation = null)
         {
-            if (profiles.ContainsKey(CurrentProfileUUID)) CurrentProfileUUID = lastProfile;
-            else if (profiles.Count != 0) CurrentProfileUUID = profiles.First().Key;
+            foreach(var profile in profiles) profile.Value.UUID = profile.Key;
+
+            if (profiles.ContainsKey(Properties.LauncherSettings.Default.CurrentProfileUUID)) Properties.LauncherSettings.Default.CurrentProfileUUID = lastProfile;
+            else if (profiles.Count != 0) Properties.LauncherSettings.Default.CurrentProfileUUID = profiles.First().Key;
 
             if (CurrentProfile != null)
             {
@@ -221,13 +214,14 @@ namespace BedrockLauncher.Classes
 
         public bool Profile_Add(string profile)
         {
-            MCProfile profileSettings = new MCProfile(profile, ValidatePathName(profile));
+            string uuid = profile; //TODO: Improve Drastically
+            MCProfile profileSettings = new MCProfile(profile, ValidatePathName(profile), uuid);
 
             if (profiles.ContainsKey(profile)) return false;
             else
             {
-                profiles.Add(profile, profileSettings);
-                Profile_Switch(profile);
+                profiles.Add(uuid, profileSettings);
+                Profile_Switch(uuid);
                 Validate();
                 Save();
                 return true;
@@ -239,11 +233,11 @@ namespace BedrockLauncher.Classes
                 return new string(pathName.Where(ch => !invalidFileNameChars.Contains(ch)).ToArray());
             }
         }
-        public void Profile_Remove(string profile)
+        public void Profile_Remove(string profileUUID)
         {
-            if (profiles.ContainsKey(profile) && profiles.Count > 1)
+            if (profiles.ContainsKey(profileUUID) && profiles.Count > 1)
             {
-                profiles.Remove(profile);
+                profiles.Remove(profileUUID);
                 Save();
                 Profile_Switch(profiles.FirstOrDefault().Key);
             }
@@ -253,7 +247,12 @@ namespace BedrockLauncher.Classes
         {
             if (profiles.ContainsKey(profileUUID))
             {
-                this.CurrentProfileUUID = profileUUID;
+                Properties.LauncherSettings.Default.CurrentProfileUUID = profileUUID;      
+                Properties.LauncherSettings.Default.Save();
+
+                OnPropertyChanged(nameof(CurrentProfile));
+                OnPropertyChanged(nameof(CurrentInstallations));
+                OnPropertyChanged(nameof(CurrentInstallation));
             }
         }
 

@@ -70,7 +70,7 @@ namespace BedrockLauncher.Properties
 
         public bool GetIsFirstLaunch(int LoadedConfigCount)
         {
-            return CurrentProfile == "" || IsFirstLaunch || LoadedConfigCount == 0;
+            return CurrentProfileUUID == "" || IsFirstLaunch || LoadedConfigCount == 0;
         }
 
         private bool _AnimatePageTransitions = false;
@@ -110,8 +110,8 @@ namespace BedrockLauncher.Properties
         public bool PortableMode { get; set; } = false;
         public string FixedDirectory { get; set; } = "";
         public bool IsFirstLaunch { get; set; } = true;
-        public string CurrentInstallation { get; set; } = string.Empty;
-        public string CurrentProfile { get; set; } = "";
+        public string CurrentInstallationUUID { get; set; } = string.Empty;
+        public string CurrentProfileUUID { get; set; } = "";
         public bool ShowReleases
         {
             get { return _ShowReleases; }

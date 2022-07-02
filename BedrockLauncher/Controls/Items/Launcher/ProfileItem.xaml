@@ -4,11 +4,19 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:classes="clr-namespace:BedrockLauncher.Classes"
+             xmlns:bl="clr-namespace:BedrockLauncher"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:conv="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
              xmlns:controls="clr-namespace:BedrockLauncher.Controls"
              xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
              xmlns:local="clr-namespace:BedrockLauncher.Controls.Items.Launcher"
              mc:Ignorable="d" 
-             Height="45" Margin="1,0,0,0" VerticalAlignment="Top" MouseUp="Grid_MouseUp">
+             Height="45" Margin="1,0,0,0" VerticalAlignment="Top" MouseUp="Grid_MouseUp"
+             d:DataContext="{d:DesignInstance classes:MCProfile, IsDesignTimeCreatable=False}">
+    <Grid.Resources>
+        <sys:String x:Key="ProfileName_DesignTime">Default Profile</sys:String>
+        <BitmapImage x:Key="ImagePath_DesignTime" UriSource="pack://application:,,,/BedrockLauncher;component/resources/images/icons/user_icon.png"/>
+    </Grid.Resources>
     <ToggleButton Click="SourceButton_Click" x:Name="SourceButton" Height="Auto" VerticalAlignment="Stretch" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="0,0,0,0" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Stretch" Focusable="False" IsChecked="True" Style="{DynamicResource ProfileSelectorStyle}">
         <ToggleButton.Content>
             <Grid Margin="38,0,0,0">
@@ -18,7 +26,7 @@
                     <ColumnDefinition Width="20" MinWidth="20"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <StackPanel Margin="15,0">
-                    <TextBlock x:Name="ProfileName" Text="Default Profile" FontWeight="Normal" LineStackingStrategy="BlockLineHeight"  VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="NoWrap"/>
+                    <TextBlock x:Name="ProfileName" Text="{Binding Name, FallbackValue={StaticResource ProfileName_DesignTime}, TargetNullValue={StaticResource ProfileName_DesignTime}}" FontWeight="Normal" LineStackingStrategy="BlockLineHeight"  VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="NoWrap"/>
                     <TextBlock x:Name="ProfileType" Text="{DynamicResource ToolbarButtons_ProfileButton_ProfileType_Text}" FontSize="12" FontWeight="Normal" Foreground="{DynamicResource SecondaryText.Foreground}" LineStackingStrategy="BlockLineHeight"  VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="NoWrap"/>
                 </StackPanel>
                 <TextBlock Grid.Column="2" Text="✔" VerticalAlignment="Center" x:Name="SelectedMark" Visibility="Hidden"></TextBlock>
@@ -27,7 +35,7 @@
     </ToggleButton>
     <Border CornerRadius="15" IsHitTestVisible="False" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" VerticalAlignment="Center" Width="30" Height="30" Margin="5,0,0,0">
         <Border.Background>
-            <ImageBrush Stretch="Fill" ImageSource="/BedrockLauncher;component/resources/images/icons/user_icon.png"/>
+            <ImageBrush x:Name="ProfileImage" Stretch="Fill" ImageSource="{Binding ImagePath, FallbackValue={StaticResource ImagePath_DesignTime}, TargetNullValue={StaticResource ImagePath_DesignTime}}"></ImageBrush>
         </Border.Background>
     </Border>
 </Grid>

@@ -88,7 +88,7 @@ namespace BedrockLauncher.Pages.FirstLaunch
             {
                 if (MainViewModel.Default.Config.profiles.Count() != 0)
                 {
-                    Properties.LauncherSettings.Default.CurrentProfile = MainViewModel.Default.Config.profiles.FirstOrDefault().Key;
+                    Properties.LauncherSettings.Default.CurrentProfileUUID = MainViewModel.Default.Config.profiles.FirstOrDefault().Key;
                     Properties.LauncherSettings.Default.Save();
                     MoveToPage(4);
                 }

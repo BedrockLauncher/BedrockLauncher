@@ -47,7 +47,7 @@ namespace BedrockLauncher.Pages.Preview
         {
             if (MainViewModel.Default.Config.Profile_Add(profileName))
             {
-                Properties.LauncherSettings.Default.CurrentProfile = profileName;
+                Properties.LauncherSettings.Default.CurrentProfileUUID = profileName;
                 Properties.LauncherSettings.Default.Save();
                 ViewModels.MainViewModel.Default.SetOverlayFrame(null);
             }

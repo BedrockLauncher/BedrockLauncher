@@ -56,7 +56,7 @@ namespace BedrockLauncher.Pages.FirstLaunch
         {
             if (MainViewModel.Default.Config.Profile_Add(ProfileNameTextbox.Text))
             {
-                Properties.LauncherSettings.Default.CurrentProfile = profileName;
+                Properties.LauncherSettings.Default.CurrentProfileUUID = profileName;
                 Properties.LauncherSettings.Default.Save();
             }
         }

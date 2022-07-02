@@ -34,16 +34,18 @@ namespace BedrockLauncher.Controls.Items.Launcher
         {
             InitializeComponent();
             this.SelectorParent = _selectorParent;
-            this.Tag = profile.Value;
-            this.ProfileName.Text = profile.Key;
+            this.DataContext = profile.Value;
             _ProfileName = profile.Key;
-            if (Properties.LauncherSettings.Default.CurrentProfile == profile.Key) SelectedMark.Visibility = Visibility.Visible;
+
+            if (Properties.LauncherSettings.Default.CurrentProfileUUID == profile.Key) 
+                SelectedMark.Visibility = Visibility.Visible;
         }
 
         private void SwitchProfile()
         {
             MainViewModel.Default.Config.Profile_Switch(_ProfileName);
             SelectorParent.ProfileContextMenu.IsOpen = false;
+            SelectorParent.GetBindingExpression(Grid.DataContextProperty).UpdateTarget();
         }
 
         private void SourceButton_Click(object sender, RoutedEventArgs e)

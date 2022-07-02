@@ -52,6 +52,9 @@ namespace BedrockLauncher
         public static readonly string RSS_COMMUNITY_URL = @"https://www.minecraft.net/en-us/feeds/community-content/rss";
         public static readonly string RSS_FORUMS_URL = @"https://www.minecraftforum.net/news.rss";
 
+        public static readonly string PROFILE_DEFAULT_IMG = "pack://application:,,,/BedrockLauncher;component/resources/images/icons/user_icon.png";
+        public static readonly string PROFILE_CUSTOM_IMG_NAME = ".profile.png";
+
         internal static string GetPackageFamily(VersionType type)
         {
             return type == VersionType.Preview ? MINECRAFT_PREVIEW_PACKAGE_FAMILY : MINECRAFT_PACKAGE_FAMILY;

@@ -100,7 +100,7 @@ namespace BedrockLauncher.Controls.Toolbar
 
         private async void RemoveProfileButton_Click(object sender, RoutedEventArgs e)
         {
-            var profile = Properties.LauncherSettings.Default.CurrentProfile;
+            var profile = Properties.LauncherSettings.Default.CurrentProfileUUID;
 
             var title = this.FindResource("Dialog_DeleteItem_Title") as string;
             var content = this.FindResource("Dialog_DeleteItem_Text") as string;
