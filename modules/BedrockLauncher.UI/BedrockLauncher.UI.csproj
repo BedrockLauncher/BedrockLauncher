@@ -93,6 +93,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HtmlRenderer.WPF\HtmlRenderer.WPF.NetStandard2.csproj" />
+    <ProjectReference Include="..\HtmlRenderer.WPF\HtmlRenderer.WPF.NET.csproj" />
   </ItemGroup>
 </Project>

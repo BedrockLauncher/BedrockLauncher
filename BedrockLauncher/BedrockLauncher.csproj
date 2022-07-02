@@ -583,18 +583,6 @@
 		<DefineConstants>$(DefineConstants);ENABLE_CEFSHARP</DefineConstants>
 	</PropertyGroup>
 	<ItemGroup>
-		<FrameworkReference Include="Microsoft.AspNetCore.App" />
-	</ItemGroup>
-	<ItemGroup>
-		<PackageReference Update="chromiumembeddedframework.runtime.win-arm64" Version="98.1.21" />
-	</ItemGroup>
-	<ItemGroup>
-		<PackageReference Update="chromiumembeddedframework.runtime.win-x64" Version="98.1.21" />
-	</ItemGroup>
-	<ItemGroup>
-		<PackageReference Update="chromiumembeddedframework.runtime.win-x86" Version="98.1.21" />
-	</ItemGroup>
-	<ItemGroup>
 	  <Folder Include="Extensions\" />
 	</ItemGroup>
 </Project>

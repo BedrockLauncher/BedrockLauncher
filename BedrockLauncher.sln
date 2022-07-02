@@ -24,7 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BedrockLauncher.UI", "modules\BedrockLauncher.UI\BedrockLauncher.UI.csproj", "{46D8EC75-2F00-4551-9F3D-10C8522C9B3D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlRenderer.WPF.NetStandard2", "modules\HtmlRenderer.WPF\HtmlRenderer.WPF.NetStandard2.csproj", "{7E4E8DB5-85AD-4388-BDCB-38C6F423B8B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlRenderer.WPF.NET", "modules\HtmlRenderer.WPF\HtmlRenderer.WPF.NET.csproj", "{7E4E8DB5-85AD-4388-BDCB-38C6F423B8B0}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BedrockLauncher.TokenBroker", "modules\BedrockLauncher.TokenBroker\BedrockLauncher.TokenBroker.vcxproj", "{B7336BA7-1E83-43D8-BD0E-3D44C6E3D4E7}"
 EndProject
