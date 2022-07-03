@@ -18,7 +18,7 @@
         <StackPanel Grid.Row="0">
             <Button Margin="0,1" FontSize="14" x:Name="RefreshButton" HorizontalAlignment="Right" Click="RefreshButton_Click" Content="{DynamicResource GeneralText_Refresh}" Style="{DynamicResource LinkButton}"></Button>
             <Button Margin="0,1" FontSize="14" x:Name="CheckForUpdatesButton" HorizontalAlignment="Right" Click="CheckForUpdatesButton_Click" Content="{DynamicResource LauncherNewsPage_CheckForUpdates}" Style="{DynamicResource LinkButton}"></Button>
-            <Button Margin="0,1" FontSize="14" x:Name="ForceUpdateButton" HorizontalAlignment="Right" Click="ForceUpdateButton_Click" Content="{DynamicResource LauncherNewsPage_ForceUpdate}" Style="{DynamicResource LinkButton}"></Button>
+            <Button Margin="0,1" FontSize="14" x:Name="ForceUpdateButton" HorizontalAlignment="Right" Click="ForceUpdateButton_Click" Content="{DynamicResource LauncherNewsPage_GetUpdates}" Style="{DynamicResource LinkButton}"></Button>
         </StackPanel>
         <ListView Grid.Row="1" x:Name="UpdatesList" ItemsSource="{Binding LauncherNewsItems}" HorizontalContentAlignment="Stretch" Padding="20">
             <ListView.Resources>
