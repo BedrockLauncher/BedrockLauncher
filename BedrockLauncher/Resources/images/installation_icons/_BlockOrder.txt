@@ -4,10 +4,13 @@ bricks.png
 cake.png
 pumpkin.png
 chest.png
+ender_chest.png
+xmas_chest.png
 clay.png
 block_of_coal.png
 coal_ore.png
 cobblestone.png
+command_block.png
 crafting_table.png
 creeper_head.png
 block_of_diamond.png
@@ -33,6 +36,7 @@ grass_block.png
 grass_path.png
 gravel.png
 terracotta.png
+honey_block.png
 ice.png
 block_of_iron.png
 iron_ore.png
@@ -55,7 +59,10 @@ nether_bricks.png
 netherrack.png
 nether_wart_block.png
 warped_wart_block.png
+observer.png
 obsidian.png
+sticky_piston.png
+piston.png
 acacia_planks.png
 birch_planks.png
 crimson_planks.png
@@ -72,6 +79,7 @@ redstone_ore.png
 sand.png
 sandstone.png
 skeleton_skull.png
+slime_block.png
 snow_block.png
 soul_sand.png
 stone.png
@@ -79,5 +87,6 @@ andesite.png
 diorite.png
 granite.png
 tnt.png
+nether_reactor_core.png
 water.png
 white_wool.png

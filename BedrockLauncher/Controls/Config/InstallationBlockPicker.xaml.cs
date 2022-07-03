@@ -30,6 +30,8 @@ namespace BedrockLauncher.Controls
     public partial class InstallationBlockPicker : UserControl
     {
 
+        public static readonly int NUMBER_OF_COLUMNS = 11;
+
         #region Definitions
 
         private List<string> BlockList = new List<string>();
@@ -199,32 +201,6 @@ namespace BedrockLauncher.Controls
 
         #region Block List Generation
 
-        private List<string> GetBlockListAuto()
-        {
-            List<string> resourcePaths = new List<string>();
-            var assembly = Assembly.GetExecutingAssembly();
-            var rm = new ResourceManager(assembly.GetName().Name + ".g", assembly);
-            try
-            {
-                var list = rm.GetResourceSet(CultureInfo.CurrentCulture, true, true);
-                foreach (DictionaryEntry item in list)
-                {
-                    string resource_path = (string)item.Key;
-                    if (resource_path.StartsWith(@"resources/images/installation_icons"))
-                    {
-                        string path = @"/BedrockLauncher;component/" + resource_path;
-                        System.Diagnostics.Trace.WriteLine(path);
-                        resourcePaths.Add(path);
-                    }
-                }
-            }
-            finally
-            {
-                rm.ReleaseAllResources();
-            }
-
-            return resourcePaths;
-        }
         private void GenerateListItems()
         {
             DropdownItemPanel.Items.Clear();
@@ -241,7 +217,7 @@ namespace BedrockLauncher.Controls
         private void GenerateDefaultIconList()
         {
 
-            int columns = 10;
+            int columns = NUMBER_OF_COLUMNS;
             int remaining_spaces = BlockList.Count / columns;
 
             for (int block = 0; block < BlockList.Count; block++)
@@ -251,7 +227,7 @@ namespace BedrockLauncher.Controls
                 DropdownItemPanel.Items.Add(blockButton);
             }
 
-            for (int i = 0; i < remaining_spaces; i++)
+            for (int i = 0; i < remaining_spaces - (NUMBER_OF_COLUMNS % 2); i++)
             {
                 DropdownItemPanel.Items.Add(new BlockPickerBlankItem());
             }
@@ -263,6 +239,10 @@ namespace BedrockLauncher.Controls
             int item_count = files.Length;
 
             if (item_count == 0) return;
+
+            var plus_button = CreateDefaultBlockButton(-1);
+            Buttons.Add(plus_button);
+            DropdownItemPanel.Items.Add(plus_button);
 
             foreach (var block in files)
             {
@@ -297,9 +277,11 @@ namespace BedrockLauncher.Controls
             btn.IsCustomImage = true;
 
             Image img = new Image();
+            img.VerticalAlignment = VerticalAlignment.Bottom;
+            img.HorizontalAlignment = HorizontalAlignment.Center;
             img.Width = img_width_height;
             img.Height = img_width_height;
-            img.Stretch = Stretch.UniformToFill;
+            img.Stretch = Stretch.Uniform;
 
             RenderOptions.SetBitmapScalingMode(img, BitmapScalingMode.HighQuality);
 
@@ -323,15 +305,17 @@ namespace BedrockLauncher.Controls
             btn.CrossButton.Tag = index;
 
             Image img = new Image();
+            img.VerticalAlignment = VerticalAlignment.Bottom;
+            img.HorizontalAlignment = HorizontalAlignment.Center;
             img.Width = img_width_height;
             img.Height = img_width_height;
-            img.Stretch = Stretch.UniformToFill;
+            img.Stretch = Stretch.Uniform;
 
             RenderOptions.SetBitmapScalingMode(img, BitmapScalingMode.HighQuality);
 
             if (index == -1)
             {
-                img.Source = Application.Current.Resources["PlusIcon"] as DrawingImage;
+                img.Source = Application.Current.FindResource("PlusIcon") as DrawingImage;
                 btn.Host.Content = img;
             }
             else

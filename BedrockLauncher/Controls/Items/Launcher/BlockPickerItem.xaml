@@ -15,12 +15,13 @@
         <ContentPresenter x:Name="Host" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></ContentPresenter>
         <Button Style="{DynamicResource CloseButton}" 
             Name="CrossButton" 
-            Visibility="Collapsed" 
+            Visibility="Collapsed"
             Width="15" 
             Height="15" 
             VerticalAlignment="Top" 
             HorizontalAlignment="Right"
-            MouseEnter="MainButton_MouseEnter"
-            MouseLeave="MainButton_MouseLeave"></Button>
+            Margin="0,-8,-8,0"
+            MouseEnter="CrossButton_MouseEnter"
+            MouseLeave="CrossButton_MouseLeave"></Button>
     </Grid>
 </ListViewItem>

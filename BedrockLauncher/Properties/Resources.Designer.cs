@@ -19,10 +19,10 @@ namespace BedrockLauncher.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace BedrockLauncher.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BedrockLauncher.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace BedrockLauncher.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -67,10 +67,13 @@ namespace BedrockLauncher.Properties {
         ///cake.png
         ///pumpkin.png
         ///chest.png
+        ///ender_chest.png
+        ///xmas_chest.png
         ///clay.png
         ///block_of_coal.png
         ///coal_ore.png
         ///cobblestone.png
+        ///command_block.png
         ///crafting_table.png
         ///creeper_head.png
         ///block_of_diamond.png
@@ -88,41 +91,11 @@ namespace BedrockLauncher.Properties {
         ///glass.png
         ///light_blue_glazed_terracotta.png
         ///orange_glazed_terracotta.png
-        ///white_glazed_terracotta.png
-        ///glowstone.png
-        ///block_of_gold.png [rest of string was truncated]&quot;;.
+        ///white_gla [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string _BlockOrder {
+        public static string _BlockOrder {
             get {
                 return ResourceManager.GetString("_BlockOrder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
-        ///
-        ///&lt;html lang=&quot;en&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
-        ///&lt;head&gt;
-        ///    &lt;meta charset=&quot;utf-8&quot; /&gt;
-        ///    &lt;title&gt;&lt;/title&gt;
-        ///    &lt;style&gt;
-        ///        .body {
-        ///            background-color: #262626;
-        ///        }
-        ///
-        ///        .cssload-thecube {
-        ///            width: 73px;
-        ///            height: 73px;
-        ///            margin: 0 auto;
-        ///            margin-top: 49px;
-        ///            position: relative;
-        ///            transform: rotateZ(0deg);
-        ///            -o-transform: rotateZ(0deg);
-        ///            -ms-transform: rotateZ(0deg); [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Loader {
-            get {
-                return ResourceManager.GetString("Loader", resourceCulture);
             }
         }
     }

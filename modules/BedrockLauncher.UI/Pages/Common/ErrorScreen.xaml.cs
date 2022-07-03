@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using BedrockLauncher.UI.Interfaces;
@@ -43,7 +44,7 @@ namespace BedrockLauncher.UI.Pages.Common
             Handler = _hander;
         }
 
-        public static void exceptionmsg(string title, Exception error = null)
+        public static async Task<bool> exceptionmsg(string title, Exception error = null)
         {
             Application.Current.Dispatcher.Invoke(() => {
                 ErrorScreen errorScreen = new ErrorScreen(Handler);
@@ -62,8 +63,15 @@ namespace BedrockLauncher.UI.Pages.Common
                 Handler.SetDialogFrame(errorScreen);
             });
 
+            while (!Handler.IsErrorDialogEmpty())
+            {
+                await Task.Delay(1000);
+            }
+
+            return true;
+
         }
-        public static void exceptionmsg(Exception error = null)
+        public static async Task<bool> exceptionmsg(Exception error = null)
         {
             Application.Current.Dispatcher.Invoke(() => {
                 ErrorScreen errorScreen = new ErrorScreen(Handler);
@@ -82,6 +90,12 @@ namespace BedrockLauncher.UI.Pages.Common
                 Handler.SetDialogFrame(errorScreen);
             });
 
+            while (!Handler.IsErrorDialogEmpty())
+            {
+                await Task.Delay(1000);
+            }
+
+            return true;
         }
 
         public static void errormsg(string title, string message, Exception e = null)

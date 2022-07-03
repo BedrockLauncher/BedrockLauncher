@@ -57,8 +57,10 @@
                         <Button Style="{DynamicResource DialogButton_Red}" x:Name="RestartButton" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Content="{DynamicResource GeneralSettingsScreen_PathOptions_RestartButton_Text}" Height="30" HorizontalAlignment="Stretch" Click="RestartButton_Click"/>
                     </StackPanel>      
                 </GroupBox>
-                <StackPanel Margin="32,20,0,0"  Orientation="Horizontal">
-                    <Button Style="{DynamicResource DialogButton}" x:Name="BackupButton" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Content="{DynamicResource GeneralSettingsScreen_BackupButton}" Height="30" HorizontalAlignment="Left" Click="BackupButton_Click"/>
+                <TextBlock Margin="42,30,0,10" Text="{DynamicResource GeneralSettingsScreen_BackupsSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+                <StackPanel Margin="38,0,0,0" Orientation="Vertical" HorizontalAlignment="Left">
+                    <Button Style="{DynamicResource DialogButton_Green}" x:Name="BackupButton" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Content="{DynamicResource GeneralSettingsScreen_BackupButton}" Height="30" Click="BackupButton_Click"/>
+                    <Button Style="{DynamicResource DialogButton_Orange}" x:Name="BackupPreviewButton" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Content="{DynamicResource GeneralSettingsScreen_BackupPreviewButton}" Height="30" Click="BackupPreviewButton_Click"/>
                 </StackPanel>
 
             </StackPanel>

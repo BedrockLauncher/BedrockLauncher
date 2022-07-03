@@ -14,6 +14,18 @@ namespace JemExtensions
 {
     public static class WPFExtensions
     {
+        public static T FindAncestor<T>(DependencyObject obj) where T : DependencyObject
+        {
+            while (obj != null)
+            {
+                T o = obj as T;
+                if (o != null)
+                    return o;
+                obj = VisualTreeHelper.GetParent(obj);
+            }
+            return default(T);
+        }
+
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
         {
             if (depObj != null)

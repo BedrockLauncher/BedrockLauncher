@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:w="clr-namespace:System.Windows.Converters;assembly=WindowsBase"
              xmlns:local="clr-namespace:BedrockLauncher.Controls"
+             xmlns:bl="clr-namespace:BedrockLauncher"
              xmlns:vwp="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
              mc:Ignorable="d"
              d:DesignHeight="850" d:DesignWidth="1000" MinWidth="760">
@@ -38,7 +39,7 @@
                 <ListView x:Name="DropdownItemPanel"  BorderThickness="0" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25,15">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <UniformGrid Columns="10"/>
+                            <UniformGrid Columns="{x:Static local:InstallationBlockPicker.NUMBER_OF_COLUMNS}"/>
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
                     <ListView.Resources>

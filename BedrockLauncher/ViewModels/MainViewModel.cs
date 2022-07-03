@@ -93,6 +93,13 @@ namespace BedrockLauncher.ViewModels
 
         #region Dialog
 
+        public bool IsErrorDialogEmpty()
+        {
+            return ErrorFrame.Dispatcher.Invoke<bool>(() =>
+            {
+                return ErrorFrame.Content == null;
+            });
+        }
         public void AttemptClose(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Action action = new Action(() => MainWindow.Close());

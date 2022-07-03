@@ -133,8 +133,17 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="Resources\images\icons\ico\grass_path_icon.ico" />
+		<Resource Include="Resources\images\installation_icons\Command_Block.png" />
+		<Resource Include="Resources\images\installation_icons\Ender_Chest.png" />
 		<Resource Include="Resources\images\installation_icons\Grass_Path.png" />
-		<Resource Include="Resources\images\installation_icons\_BlockOrder.txt" />
+		<Resource Include="Resources\images\installation_icons\Honey_Block.png" />
+		<Resource Include="Resources\images\installation_icons\Nether_Reactor_Core.png" />
+		<Resource Include="Resources\images\installation_icons\Observer.png" />
+		<Resource Include="Resources\images\installation_icons\Piston.png" />
+		<Resource Include="Resources\images\installation_icons\Slime_Block.png" />
+		<Resource Include="Resources\images\installation_icons\Sticky_Piston.png" />
+		<Resource Include="Resources\images\installation_icons\Xmas_Chest.png" />
+		<EmbeddedResource Include="Resources\images\installation_icons\_BlockOrder.txt" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="Resources\images\installation_icons\_BlockOrder_Offical.txt" />
@@ -571,7 +580,16 @@
 	<ItemGroup>
 		<Compile Remove="Controls\Various\LoadingAnimation.xaml.cs" />
 		<None Remove="Resources\images\icons\ico\grass_path_icon.ico" />
+		<None Remove="Resources\images\installation_icons\Command_Block.png" />
+		<None Remove="Resources\images\installation_icons\Ender_Chest.png" />
 		<None Remove="Resources\images\installation_icons\Grass_Path.png" />
+		<None Remove="Resources\images\installation_icons\Honey_Block.png" />
+		<None Remove="Resources\images\installation_icons\Nether_Reactor_Core.png" />
+		<None Remove="Resources\images\installation_icons\Observer.png" />
+		<None Remove="Resources\images\installation_icons\Piston.png" />
+		<None Remove="Resources\images\installation_icons\Slime_Block.png" />
+		<None Remove="Resources\images\installation_icons\Sticky_Piston.png" />
+		<None Remove="Resources\images\installation_icons\Xmas_Chest.png" />
 		<Page Remove="Controls\Various\LoadingAnimation.xaml" />
 		<Page Remove="Data\Versions.xaml" />
 	</ItemGroup>
@@ -588,5 +606,18 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <Folder Include="Extensions\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Update="Properties\Resources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Resources.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Update="Properties\Resources.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	</ItemGroup>
 </Project>

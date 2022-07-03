@@ -526,7 +526,7 @@ namespace BedrockLauncher.Handlers
 
             void SetGenericError(Exception ex)
             {
-                ErrorScreenShow.exceptionmsg(ex);
+                 _ = ErrorScreenShow.exceptionmsg(ex);
             }
 
             void SetError(Exception ex2, string debugMessage, string dialogTitle, string dialogText)

@@ -72,6 +72,16 @@ namespace BedrockLauncher.Controls.Items.Launcher
         {
             HideCrossButton();
         }
+
+        private void CrossButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ShowCrossButton();
+        }
+
+        private void CrossButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            HideCrossButton();
+        }
     }
 
 
@@ -80,6 +90,7 @@ namespace BedrockLauncher.Controls.Items.Launcher
         public BlockPickerBlankItem() : base()
         {
             this.Focusable = false;
+            this.IsHitTestVisible = false;
             KeyboardNavigation.SetAcceptsReturn(this, false);
             KeyboardNavigation.SetIsTabStop(this, false);
             KeyboardNavigation.SetDirectionalNavigation(this, KeyboardNavigationMode.None);

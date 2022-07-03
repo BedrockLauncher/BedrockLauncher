@@ -10,5 +10,6 @@ namespace BedrockLauncher.UI.Interfaces
     {
         void SetDialogFrame(object content);
         void SetOverlayFrame(object content, bool isStrict = false);
+        bool IsErrorDialogEmpty();
     }
 }
