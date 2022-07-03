@@ -29,16 +29,16 @@ namespace BedrockLauncher.Pages.Settings
 
         private void XboxInsiderLegacy_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("xbox-insider://");
+            JemExtensions.WebExtensions.LaunchWebLink("xbox-insider://");
         }
         private void XboxInsiderNew_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("xbox-insider2://");
+            JemExtensions.WebExtensions.LaunchWebLink("xbox-insider2://");
         }
 
         private void MSAccounts_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("ms-settings:emailandaccounts");
+            JemExtensions.WebExtensions.LaunchWebLink("ms-settings:emailandaccounts");
         }
 
         private void Page_Initialized(object sender, RoutedEventArgs e)

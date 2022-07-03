@@ -108,7 +108,7 @@
                 </Grid.RowDefinitions>
                 <Border Background="#44000000" CornerRadius="10">
 
-                    <Grid Height="65" HorizontalAlignment="Left" Background="Transparent">
+                    <Grid Height="65" HorizontalAlignment="Center" Background="Transparent">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
@@ -188,7 +188,7 @@
             <TextBlock FontWeight="Bold" Margin="0,10,0,5"  FontSize="20" Text="{DynamicResource AboutPage_Title}" Foreground="White" FontFamily="/BedrockLauncher.UI;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             <Separator Margin="0,10"></Separator>
         </StackPanel>
-        <Grid Grid.Row="1" HorizontalAlignment="Center" MaxWidth="600">
+        <Grid Grid.Row="1" HorizontalAlignment="Center" MaxWidth="650">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>

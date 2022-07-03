@@ -40,7 +40,7 @@ namespace BedrockLauncher.Pages.Settings
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            Process.Start(new ProcessStartInfo(button.Tag.ToString()));
+            JemExtensions.WebExtensions.LaunchWebLink(button.Tag.ToString());
             e.Handled = true;
         }
 
