@@ -92,16 +92,23 @@ namespace BedrockLauncher.Handlers
             if (!Directory.Exists(cache_dir)) Directory.CreateDirectory(cache_dir);
             return cache_dir;
         }
-        public string GetProfileFolderPath(string profileUUID)
+        public string GetProfilePath(string profileUUID)
         {
             if (string.IsNullOrEmpty(profileUUID)) return string.Empty;
             else if (!MainViewModel.Default.Config.profiles.ContainsKey(profileUUID)) return string.Empty;
             var profile = MainViewModel.Default.Config.profiles[profileUUID];
             return Path.Combine(CurrentLocation, InstallationsFolderName, profile.ProfilePath);
         }
-        public string GetInstallationsFolderPath(string profileUUID, string installationDirectory)
+        public string GetInstallationPath(string profileUUID, string installationDirectory)
         {
-            string ProfilePath = GetProfileFolderPath(profileUUID);
+            string ProfilePath = GetProfilePath(profileUUID);
+            if (string.IsNullOrEmpty(ProfilePath)) return string.Empty;
+            string InstallationsPath = Path.Combine(ProfilePath, installationDirectory);
+            return Path.Combine(CurrentLocation, InstallationsFolderName, InstallationsPath);
+        }
+        public string GetInstallationPackageDataPath(string profileUUID, string installationDirectory)
+        {
+            string ProfilePath = GetProfilePath(profileUUID);
             if (string.IsNullOrEmpty(ProfilePath)) return string.Empty;
             string InstallationsPath = Path.Combine(ProfilePath, installationDirectory);
             return Path.Combine(CurrentLocation, InstallationsFolderName, InstallationsPath, PackageDataFolderName);

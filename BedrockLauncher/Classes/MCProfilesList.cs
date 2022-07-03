@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using BedrockLauncher.Enums;
 using PostSharp.Patterns.Model;
 using System.ComponentModel;
+using BedrockLauncher.UI.Pages.Common;
 
 namespace BedrockLauncher.Classes
 {
@@ -350,10 +351,15 @@ namespace BedrockLauncher.Classes
                 Save();
             }
         }
-        public void Installation_Delete(BLInstallation installation)
+        public void Installation_Delete(BLInstallation installation, bool deleteData = true)
         {
             if (CurrentProfile == null) return;
             if (CurrentInstallations == null) return;
+            if (deleteData)
+            {
+                try { installation.DeleteUserData(); }
+                catch (Exception ex) { _ = ErrorScreenShow.exceptionmsg(ex); }
+            }
             CurrentInstallations.Remove(installation);
             Save();
         }

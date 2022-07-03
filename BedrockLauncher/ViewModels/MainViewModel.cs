@@ -86,7 +86,7 @@ namespace BedrockLauncher.ViewModels
                 Properties.LauncherSettings.Default.Save();
             }
             
-            await PackageManager.LaunchPackage(i.Version, MainViewModel.Default.FilePaths.GetInstallationsFolderPath(p.UUID, i.DirectoryName_Full), KeepLauncherOpen);
+            await PackageManager.LaunchPackage(i.Version, MainViewModel.Default.FilePaths.GetInstallationPackageDataPath(p.UUID, i.DirectoryName_Full), KeepLauncherOpen);
         }
 
         #endregion

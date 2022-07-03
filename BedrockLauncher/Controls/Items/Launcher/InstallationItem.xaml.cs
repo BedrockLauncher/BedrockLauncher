@@ -69,18 +69,19 @@ namespace BedrockLauncher.Controls.Items.Launcher
 
         private async void DeleteInstallationButton_Click(object sender, RoutedEventArgs e)
         {
+            //TODO: Improve Localization Handling
             var title = this.FindResource("Dialog_DeleteItem_Title") as string;
             var content = this.FindResource("Dialog_DeleteItem_Text") as string;
             var item = this.FindResource("Dialog_Item_Installation_Text") as string;
+            var optional = this.FindResource("Dialog_Item_Optional_DeleteInstallationData") as string;
 
             MenuItem button = sender as MenuItem;
             var installation = button.DataContext as BLInstallation;
-            var result = await DialogPrompt.ShowDialog_YesNo(title, content, item, installation.DisplayName_Full);
+            var result = await DialogPrompt.ShowDialog_YesNo_Optional(title, content, optional, true, item, installation.DisplayName_Full);
 
-            if (result == System.Windows.Forms.DialogResult.Yes)
+            if (result.Item1 == System.Windows.Forms.DialogResult.Yes)
             {
-
-                MainViewModel.Default.Config.Installation_Delete(installation);
+                MainViewModel.Default.Config.Installation_Delete(installation, result.Item2);
             }
         }
 

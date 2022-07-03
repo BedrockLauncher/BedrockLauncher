@@ -150,9 +150,15 @@ namespace BedrockLauncher.Classes
             return clone;
         }
 
+        public void DeleteUserData()
+        {
+            string Directory = MainViewModel.Default.FilePaths.GetInstallationPath(Properties.LauncherSettings.Default.CurrentProfileUUID, DirectoryName_Full);
+            if (System.IO.Directory.Exists(Directory)) System.IO.Directory.Delete(Directory, true);
+        }
+
         public void OpenDirectory()
         {
-            string Directory = MainViewModel.Default.FilePaths.GetInstallationsFolderPath(Properties.LauncherSettings.Default.CurrentProfileUUID, DirectoryName_Full);
+            string Directory = MainViewModel.Default.FilePaths.GetInstallationPackageDataPath(Properties.LauncherSettings.Default.CurrentProfileUUID, DirectoryName_Full);
             if (!System.IO.Directory.Exists(Directory)) System.IO.Directory.CreateDirectory(Directory);
             Process.Start("explorer.exe", Directory);
         }

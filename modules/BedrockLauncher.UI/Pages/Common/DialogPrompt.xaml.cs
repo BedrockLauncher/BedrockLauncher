@@ -16,6 +16,25 @@ namespace BedrockLauncher.UI.Pages.Common
 
         public DialogResult DialogResult { get; set; } = DialogResult.None;
 
+        public static async Task<Tuple<DialogResult, bool>> ShowDialog_YesNo_Optional(string title, string content, string optionalContent, bool optionalState, params object[] args)
+        {
+
+            var prompt = new DialogPrompt();
+
+            prompt.DialogTitle.Text = string.Format(title, args);
+            prompt.DialogText.Text = string.Format(content, args);
+            prompt.DialogOptional.Text = string.Format(optionalContent, args);
+
+            prompt.DialogOptionalCheckbox.IsChecked = optionalState;
+
+            prompt.DialogOptionalCheckbox.Visibility = Visibility.Visible;
+
+
+            Handler.SetDialogFrame(prompt);
+
+            return await Task.Run(prompt.DialogWaitWithOptional);
+        }
+
         public static async Task<DialogResult> ShowDialog_YesNo(string title, string content, params object[] args)
         {
 
@@ -23,8 +42,6 @@ namespace BedrockLauncher.UI.Pages.Common
 
             prompt.DialogTitle.Text = string.Format(title, args);
             prompt.DialogText.Text = string.Format(content, args);
-
-            prompt.CancelButton.Visibility = Visibility.Collapsed;
 
             Handler.SetDialogFrame(prompt);
 
@@ -37,16 +54,22 @@ namespace BedrockLauncher.UI.Pages.Common
 
             prompt.DialogTitle.Text = title;
             prompt.DialogText.Text = content;
+    
+            prompt.CancelButton.Visibility = Visibility.Visible;
 
             Handler.SetDialogFrame(prompt);
 
             return await Task.Run(prompt.DialogWait);
         }
-
         private DialogResult DialogWait()
         {
             while (DialogResult == DialogResult.None) { }
             return DialogResult;
+        }
+        private Tuple<DialogResult, bool> DialogWaitWithOptional()
+        {
+            while (DialogResult == DialogResult.None) { }
+            return new Tuple<DialogResult,bool>(DialogResult, DialogOptionalCheckbox.IsChecked.Value);
         }
 
         public static IDialogHander Handler { get; private set; }
@@ -59,6 +82,8 @@ namespace BedrockLauncher.UI.Pages.Common
         public DialogPrompt()
         {
             InitializeComponent();
+            DialogOptionalCheckbox.Visibility = Visibility.Collapsed;
+            CancelButton.Visibility = Visibility.Collapsed;
         }
 
         private void YesButton_Click(object sender, RoutedEventArgs e)
