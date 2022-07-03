@@ -24,14 +24,34 @@
         <sys:Uri x:Key="McMrArm_TwitterURL">https://twitter.com/mcmrarm</sys:Uri>
         <sys:Uri x:Key="Mojang_URL">https://www.minecraft.net/en-us/</sys:Uri>
 
-        <Border x:Key="CJMention" BorderThickness="2" CornerRadius="16" BorderBrush="#55000000" Background="#55000000">
-            <Grid Height="300">
+        <Style x:Key="AboutTitle" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="/BedrockLauncher.UI;component/#Noto Sans"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,3,0,3"/>
+
+        </Style>
+
+        <Style x:Key="AboutDivider" TargetType="{x:Type Border}">
+            <Setter Property="BorderThickness" Value="0,2,0,0"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource Seperator.Background}"/>
+            <Setter Property="Margin" Value="0,3"/>
+        </Style>
+
+
+
+        <Border x:Key="CJMention">
+            <Grid  HorizontalAlignment="Stretch">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="250"></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="200"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/BedrockLauncher;component/resources/images/credits/carjem_logo.png" Grid.Row="0"></Image>
-                <Border Grid.Row="1" BorderThickness="0,2,0,0" BorderBrush="{DynamicResource Seperator.Background}">
+                <Border Background="#a01818" CornerRadius="10">
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/BedrockLauncher;component/resources/images/credits/carjem_logo.png" Grid.Row="0"></Image>
+                </Border>
+                <Border Grid.Row="1" BorderThickness="0,0,0,0" BorderBrush="{DynamicResource Seperator.Background}">
                     <Grid Background="Transparent">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
                             <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_Twitter}" Tag="{StaticResource CJ_TwitterURL}" Click="Button_Click" Padding="10,0"  FontSize="15"/>
@@ -41,69 +61,75 @@
                 </Border>
             </Grid>
         </Border>
-        <Border x:Key="XlynxXMention" BorderThickness="2" CornerRadius="16" BorderBrush="#55000000" Background="#55000000">
-            <Grid Height="300" Background="Transparent">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="250"></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
-                <Grid Height="250" Background="Transparent">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                    <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Right" Source="/BedrockLauncher;component/resources/images/credits/xlynxx.jpg">
-                        <Image.OpacityMask>
-                            <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
-                                <GradientStop Color="#ffffffff" Offset="0.8" />
-                                <GradientStop Color="#00ffffff" Offset="0.9" />
-                            </RadialGradientBrush>
-                        </Image.OpacityMask>
-                    </Image>
-                <Grid Width="256" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
-                    <TextBlock Text="XlynxX" HorizontalAlignment="Left" Padding="20,0,0,0" FontSize="40" Foreground="White"></TextBlock>
-                </Grid>
 
-            </Grid>
-                <Border Grid.Row="1" BorderThickness="0,2,0,0" BorderBrush="{DynamicResource Seperator.Background}">
+        <Border x:Key="XlynxXMention">
+            <Grid Background="Transparent" HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Background="#44000000" CornerRadius="10">
+                    <Grid Height="150" Background="Transparent">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Right" Source="/BedrockLauncher;component/resources/images/credits/xlynxx.jpg">
+                            <Image.OpacityMask>
+                                <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                                    <GradientStop Color="#ffffffff" Offset="0.8" />
+                                    <GradientStop Color="#00ffffff" Offset="0.9" />
+                                </RadialGradientBrush>
+                            </Image.OpacityMask>
+                        </Image>
+                        <Grid Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <TextBlock Text="XlynxX" HorizontalAlignment="Left" Padding="20,0,0,0" FontSize="40" Foreground="White"></TextBlock>
+                        </Grid>
+
+                    </Grid>
+                </Border>
+                <Border Grid.Row="1" BorderThickness="0,0,0,0" BorderBrush="{DynamicResource Seperator.Background}">
                     <Grid Background="Transparent">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_Twitter}" Tag="{StaticResource XlynxX_TwitterURL}" Click="Button_Click" Padding="10,0"  FontSize="15"/>
-                        <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_GitHub}" Tag="{StaticResource XlynxX_GithubURL}" Click="Button_Click" Padding="10,0"  FontSize="15"/>
-                    </StackPanel>
-                </Grid>
-            </Border>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_Twitter}" Tag="{StaticResource XlynxX_TwitterURL}" Click="Button_Click" Padding="10,0"  FontSize="15"/>
+                            <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_GitHub}" Tag="{StaticResource XlynxX_GithubURL}" Click="Button_Click" Padding="10,0"  FontSize="15"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
             </Grid>
         </Border>
 
-        <Border x:Key="MCMrARMMention" BorderThickness="2" CornerRadius="16" BorderBrush="#55000000" Background="#55000000">
+        <Border x:Key="MCMrARMMention">
             <Grid Height="150">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="40"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Grid Height="65" HorizontalAlignment="Center" Background="Transparent">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Left" Source="/BedrockLauncher;component/resources/images/credits/mcmrarm_icon.jfif">
-                        <Image.OpacityMask>
-                            <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
-                                <GradientStop Color="#ffffffff" Offset="0.8" />
-                                <GradientStop Color="#00ffffff" Offset="0.9" />
-                            </RadialGradientBrush>
-                        </Image.OpacityMask>
-                    </Image>
-                    <Grid Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
-                        <TextBlock Text="MCMrARM" HorizontalAlignment="Left" Padding="20,0,0,0" FontSize="30" Foreground="White"></TextBlock>
+                <Border Background="#44000000" CornerRadius="10">
+
+                    <Grid Height="65" HorizontalAlignment="Left" Background="Transparent">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Center" Source="/BedrockLauncher;component/resources/images/credits/mcmrarm_icon.jfif">
+                            <Image.OpacityMask>
+                                <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                                    <GradientStop Color="#ffffffff" Offset="0.8" />
+                                    <GradientStop Color="#00ffffff" Offset="0.9" />
+                                </RadialGradientBrush>
+                            </Image.OpacityMask>
+                        </Image>
+                        <Grid Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <TextBlock Text="MCMrARM" HorizontalAlignment="Left" Padding="20,0,0,0" FontSize="30" Foreground="White"></TextBlock>
+                        </Grid>
                     </Grid>
-                </Grid>
+                </Border>
                 <Grid Grid.Row="1" Background="Transparent">
                     <TextBlock Text="{DynamicResource AboutPage_McMrArm_Text}" Padding="5" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" Foreground="White"></TextBlock>
                 </Grid>
-                <Border Grid.Row="2" BorderThickness="0,2,0,0" BorderBrush="{DynamicResource Seperator.Background}">
+                <Border Grid.Row="2" BorderThickness="0,0,0,0" BorderBrush="{DynamicResource Seperator.Background}">
                     <Grid Background="Transparent">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_Twitter}" Tag="{StaticResource McMrArm_TwitterURL}" Click="Button_Click" Padding="10,0"  FontSize="15"/>
@@ -114,22 +140,24 @@
             </Grid>
         </Border>
 
-        <Border x:Key="MojangMention" BorderThickness="2" CornerRadius="16" BorderBrush="#55000000" Background="#55000000">
+        <Border x:Key="MojangMention">
             <Grid Height="150">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="40"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Grid Height="65" Background="Transparent">
-                    <Image Height="40" RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/BedrockLauncher;component/resources/images/credits/mojang_logo.png"/>
-                </Grid>
+                <Border Background="#44000000" CornerRadius="10">
+                    <Grid Height="65" Background="Transparent">
+                        <Image Height="40" RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/BedrockLauncher;component/resources/images/credits/mojang_logo.png"/>
+                    </Grid>
+                </Border>
                 <Grid Grid.Row="1" Background="Transparent">
                     <TextBlock Padding="5" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" Foreground="White">
                         <Run Text="{DynamicResource AboutPage_Mojang_Text}"></Run>
                     </TextBlock>
                 </Grid>
-                <Border Grid.Row="2" BorderThickness="0,2,0,0" BorderBrush="{DynamicResource Seperator.Background}">
+                <Border Grid.Row="2" BorderThickness="0,0,0,0" BorderBrush="{DynamicResource Seperator.Background}">
                     <Grid Background="Transparent">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_Website}" Tag="{StaticResource Mojang_URL}" Click="Button_Click" Padding="10,0"  FontSize="15"/>
@@ -138,10 +166,10 @@
                 </Border>
             </Grid>
         </Border>
-        
-        <Border Height="150" x:Key="MinorDetails" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" BorderThickness="2" CornerRadius="16" BorderBrush="#55000000" Background="#55000000">
-            <StackPanel Margin="5">
-                <TextBlock Margin="0,20,0,0" Text="{DynamicResource GeneralSettingsScreen_UpdatesSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
+
+        <Border x:Key="MinorDetails" Background="#44000000" CornerRadius="10">
+            <StackPanel Margin="10">
+                <TextBlock Margin="0,5,0,0" Text="{DynamicResource GeneralSettingsScreen_UpdatesSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                 <TextBlock Margin="0,0,0,15" Foreground="White">
                         <Run Text="{DynamicResource AboutPage_CurrentBuild}"/>
                         <Run Text="{x:Static local:Constants.AppVersion}"/>
@@ -160,40 +188,26 @@
             <TextBlock FontWeight="Bold" Margin="0,10,0,5"  FontSize="20" Text="{DynamicResource AboutPage_Title}" Foreground="White" FontFamily="/BedrockLauncher.UI;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             <Separator Margin="0,10"></Separator>
         </StackPanel>
-        <ScrollViewer Margin="0,0,0,0" Padding="20,0" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  com:CustomDesignAttributes.VerticalScrollTo="10000">
-            <StackPanel MaxWidth="750" HorizontalAlignment="Center">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Margin="5">
-                        <TextBlock FontWeight="Bold" Margin="0,15,0,15"  FontSize="20" Text="{DynamicResource AboutPage_DevelopedBy_Text}" Foreground="White" FontFamily="/BedrockLauncher.UI;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                        <ContentPresenter Content="{StaticResource CJMention}"></ContentPresenter>
-                    </StackPanel>
-                    <StackPanel Grid.Column="1" Margin="5">
-                        <TextBlock FontWeight="Bold" Margin="0,15,0,15"  FontSize="20" Text="{DynamicResource AboutPage_OriginallyDevelopedBy_Text}" Foreground="White" FontFamily="/BedrockLauncher.UI;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                        <ContentPresenter Content="{StaticResource XlynxXMention}"></ContentPresenter>
-                    </StackPanel>
-                </Grid>
-                <StackPanel Grid.ColumnSpan="2">
-                    <TextBlock FontWeight="Bold" Margin="0,15,0,15"  FontSize="15" Text="{DynamicResource AboutPage_SpecialThanks_Text}" Foreground="White" FontFamily="/BedrockLauncher.UI;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <ContentPresenter Margin="5" Content="{StaticResource MCMrARMMention}" />
-                        <ContentPresenter Grid.Column="1" Margin="5" Content="{StaticResource MojangMention}" />
-                        <ContentPresenter Grid.ColumnSpan="2" Grid.Row="1" Margin="5" Content="{StaticResource MinorDetails}" />
-                    </Grid>
-                </StackPanel>
+        <Grid Grid.Row="1" HorizontalAlignment="Center" MaxWidth="600">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Margin="5,0" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <TextBlock Text="{DynamicResource AboutPage_DevelopedBy_Text}" Style="{StaticResource AboutTitle}" />
+                <ContentPresenter Content="{StaticResource CJMention}"/>
+                <TextBlock Text="{DynamicResource AboutPage_OriginallyDevelopedBy_Text}" Style="{StaticResource AboutTitle}" />
+                <ContentPresenter Content="{StaticResource XlynxXMention}" />
             </StackPanel>
-        </ScrollViewer>
+            <StackPanel Grid.Column="1" Margin="5,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <TextBlock Text="{DynamicResource AboutPage_SpecialThanks_Text}" Style="{StaticResource AboutTitle}" />
+                <ContentPresenter Content="{StaticResource MCMrARMMention}" />
+                <ContentPresenter Content="{StaticResource MojangMention}" />
+                <ContentPresenter Grid.Column="1" Content="{StaticResource MinorDetails}"/>
+            </StackPanel>
+
+
+        </Grid>
     </Grid>
 
 </Page>
