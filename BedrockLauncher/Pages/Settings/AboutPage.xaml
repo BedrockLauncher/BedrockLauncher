@@ -48,7 +48,7 @@
                     <RowDefinition Height="200"></RowDefinition>
                     <RowDefinition Height="40"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Border Background="#a01818" CornerRadius="10">
+                <Border Background="#262626" CornerRadius="10">
                     <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/BedrockLauncher;component/resources/images/credits/carjem_logo.png" Grid.Row="0"></Image>
                 </Border>
                 <Border Grid.Row="1" BorderThickness="0,0,0,0" BorderBrush="{DynamicResource Seperator.Background}">
@@ -68,7 +68,7 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="40"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Border Background="#44000000" CornerRadius="10">
+                <Border Background="#262626" CornerRadius="10">
                     <Grid Height="150" Background="Transparent">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition ></ColumnDefinition>
@@ -106,7 +106,7 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="40"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Border Background="#44000000" CornerRadius="10">
+                <Border Background="#262626" CornerRadius="10">
 
                     <Grid Height="65" HorizontalAlignment="Center" Background="Transparent">
                         <Grid.ColumnDefinitions>
@@ -147,7 +147,7 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="40"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Border Background="#44000000" CornerRadius="10">
+                <Border Background="#262626" CornerRadius="10">
                     <Grid Height="65" Background="Transparent">
                         <Image Height="40" RenderOptions.BitmapScalingMode="HighQuality" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Source="/BedrockLauncher;component/resources/images/credits/mojang_logo.png"/>
                     </Grid>
@@ -167,7 +167,7 @@
             </Grid>
         </Border>
 
-        <Border x:Key="MinorDetails" Background="#44000000" CornerRadius="10">
+        <Border x:Key="MinorDetails" Background="#262626" CornerRadius="10">
             <StackPanel Margin="10">
                 <TextBlock Margin="0,5,0,0" Text="{DynamicResource GeneralSettingsScreen_UpdatesSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                 <TextBlock Margin="0,0,0,15" Foreground="White">
