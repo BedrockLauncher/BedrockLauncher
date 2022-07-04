@@ -75,7 +75,25 @@ namespace BedrockLauncher.Classes
             get
             {
                 Depends.On(Type, Name, Architecture);
-                return Name + (Type == VersionType.Beta ? " (Beta)" : Type == VersionType.Preview ? " (Preview)" : "") + (!VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, Architecture) ? $" [{Architecture}]" : "");
+
+                string _TypeSuffix = string.Empty;
+                string _ArchSuffix = string.Empty;
+
+
+                if (!VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, Architecture))
+                    _ArchSuffix = $" [{Architecture}]";
+
+                switch (Type)
+                {
+                    case VersionType.Beta:
+                        _TypeSuffix = string.Format(" ({0})", "Beta"); //TODO: Localize String
+                        break;
+                    case VersionType.Preview:
+                        _TypeSuffix = string.Format(" ({0})", "Preview"); //TODO: Localize String
+                        break;
+                }
+
+                return Name + _TypeSuffix + _ArchSuffix;
             }
         }
         public string InstallationSize
