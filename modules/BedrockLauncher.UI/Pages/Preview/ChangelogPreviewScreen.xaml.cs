@@ -111,7 +111,7 @@ namespace BedrockLauncher.UI.Pages.Preview
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(new ProcessStartInfo(URL));
+            JemExtensions.WebExtensions.LaunchWebLink(URL);
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)

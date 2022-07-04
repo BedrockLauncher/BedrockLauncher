@@ -93,6 +93,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Extensions.NET\JemExtensions.csproj" />
     <ProjectReference Include="..\HtmlRenderer.WPF\HtmlRenderer.WPF.NET.csproj" />
   </ItemGroup>
 </Project>
