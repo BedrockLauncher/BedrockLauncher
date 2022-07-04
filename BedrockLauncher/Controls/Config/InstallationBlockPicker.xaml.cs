@@ -238,11 +238,11 @@ namespace BedrockLauncher.Controls
             string[] files = Directory.GetFiles(MainViewModel.Default.FilePaths.GetCacheFolderPath(), "*.png");
             int item_count = files.Length;
 
-            if (item_count == 0) return;
-
             var plus_button = CreateDefaultBlockButton(-1);
             Buttons.Add(plus_button);
             DropdownItemPanel.Items.Add(plus_button);
+
+            if (item_count == 0) return;
 
             foreach (var block in files)
             {
@@ -331,7 +331,8 @@ namespace BedrockLauncher.Controls
         private BlockPickerItem CreateBaseBlockButton()
         {
             BlockPickerItem btn = new BlockPickerItem();
-            btn.PreviewMouseLeftButtonDown += Btn_Click;
+            btn.MouseLeftButtonDown += Btn_Click;
+            btn.KeyDown += (sender, e) => { if (e.Key == Key.Enter) Btn_Click(sender, null); };
             btn.CrossButton.Click += CrossBtn_Click;
             return btn;
         }

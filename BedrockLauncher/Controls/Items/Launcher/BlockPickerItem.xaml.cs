@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -75,12 +76,21 @@ namespace BedrockLauncher.Controls.Items.Launcher
 
         private void CrossButton_MouseEnter(object sender, MouseEventArgs e)
         {
-            ShowCrossButton();
+
         }
 
         private void CrossButton_MouseLeave(object sender, MouseEventArgs e)
         {
-            HideCrossButton();
+
+        }
+
+        private void ListViewItem_PreviewMouseEvent(object sender, MouseButtonEventArgs e)
+        {
+            if (CrossButton.IsMouseOver)
+            {
+                CrossButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+                e.Handled = true;
+            }
         }
     }
 

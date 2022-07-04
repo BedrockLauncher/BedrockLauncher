@@ -10,7 +10,9 @@
              GotFocus="MainButton_GotFocus"
              LostFocus="MainButton_LostFocus"
              MouseEnter="MainButton_MouseEnter"
-             MouseLeave="MainButton_MouseLeave">
+             MouseLeave="MainButton_MouseLeave"
+             PreviewMouseUp="ListViewItem_PreviewMouseEvent"
+             PreviewMouseDown="ListViewItem_PreviewMouseEvent">
     <Grid>
         <ContentPresenter x:Name="Host" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></ContentPresenter>
         <Button Style="{DynamicResource CloseButton}" 
