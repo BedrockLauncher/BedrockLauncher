@@ -117,5 +117,13 @@ namespace BedrockLauncher.Pages.News
 
 
         #endregion
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (LastTabName.Equals(LauncherTab.Name)) launcherNewsPage.RefreshNews();
+            else if (LastTabName.Equals(ForumsTab.Name)) forumsNewsPage.RefreshNews();
+            else if (LastTabName.Equals(JavaTab.Name)) javaNewsPage.RefreshNews();
+        }
     }
 }

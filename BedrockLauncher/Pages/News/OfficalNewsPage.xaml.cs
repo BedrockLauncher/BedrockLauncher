@@ -42,7 +42,7 @@ namespace BedrockLauncher.Pages.News
             InitializeComponent();
         }
 
-        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        public void RefreshNews()
         {
             Task.Run(() => Downloaders.NewsDownloader.UpdateOfficalFeed(ViewModels.NewsViewModel.Default));
         }

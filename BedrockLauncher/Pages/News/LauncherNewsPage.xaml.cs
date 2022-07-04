@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BedrockLauncher.Classes.Launcher;
+using BedrockLauncher.Controls.Items.News;
 using BedrockLauncher.Downloaders;
 using BedrockLauncher.Handlers;
 using MdXaml;
@@ -36,9 +38,22 @@ namespace BedrockLauncher.Pages.News
         {
             if (!HasPreloaded)
             {
-                Task.Run(() => Downloaders.NewsDownloader.UpdateLauncherFeed(ViewModels.NewsViewModel.Default));
+                _ = RefreshNews(true);
                 HasPreloaded = true;
             }
+        }
+
+        public bool Filter_PatchNotes(object obj)
+        {
+            AppPatchNote v = obj as AppPatchNote;
+
+            if (v != null)
+            {
+                if (!ViewModels.NewsViewModel.Default.Launcher_ShowBetas && v.isBeta) return false;
+                else if (!ViewModels.NewsViewModel.Default.Launcher_ShowReleases && !v.isBeta) return false;
+                else return true;
+            }
+            else return false;
         }
 
 
@@ -52,14 +67,36 @@ namespace BedrockLauncher.Pages.News
             ViewModels.MainViewModel.Updater.UpdateButton_Click(sender, e);
         }
 
-        private void CheckForUpdatesButton_Click_1(object sender, RoutedEventArgs e)
+        private void UpdateFilters(object sender, RoutedEventArgs e)
         {
-
+            Task.Run(() => RefreshNews(false));
         }
 
-        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        public async Task RefreshNews(bool force = true)
         {
-            Task.Run(() => Downloaders.NewsDownloader.UpdateLauncherFeed(ViewModels.NewsViewModel.Default));
+            await this.Dispatcher.InvokeAsync(() =>
+            {
+                if (force) Task.Run(() => Downloaders.NewsDownloader.UpdateLauncherFeed(ViewModels.NewsViewModel.Default));
+                var view = CollectionViewSource.GetDefaultView(UpdatesList.ItemsSource) as CollectionView;
+                if (view != null) view.Filter = Filter_PatchNotes;
+            });
+        }
+
+        private void PatchNotesList_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (UpdatesList.SelectedItem != null)
+                {
+                    var item = UpdatesList.SelectedItem as AppPatchNote;
+                    FeedItem_Launcher.LoadChangelog(item);
+                }
+            }
+        }
+
+        private void UpdatesList_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+
         }
     }
 }

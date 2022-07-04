@@ -20,7 +20,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
         <Border Background="#FF303030" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource Seperator.Background}">
             <Grid Background="#FF303030" Margin="30,0">
@@ -73,10 +72,5 @@
             </ListView.ItemTemplate>
         </ListView>
         <common:ResultPanel PanelType="NoNews" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="Collapsed"></common:ResultPanel>
-        <Border Grid.Row="2" BorderBrush="{DynamicResource Seperator.Background}" BorderThickness="0,1,0,0">
-            <Grid Background="#FF303030">
-                <Button Margin="0,1" FontSize="14" x:Name="RefreshButton" HorizontalAlignment="Right" Click="RefreshButton_Click" Content="{DynamicResource GeneralText_Refresh}" Style="{DynamicResource LinkButton}"></Button>
-            </Grid>
-        </Border>
     </Grid>
 </Page>

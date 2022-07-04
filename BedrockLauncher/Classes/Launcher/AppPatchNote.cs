@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BedrockLauncher.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,13 +10,27 @@ using System.Windows.Media;
 
 namespace BedrockLauncher.Classes.Launcher
 {
-    public class AppPatchNote
+    public class AppPatchNote : UpdateNote
     {
-        public string buildTitle { get; set; } = "BuildTitle";
-        public string buildVersion { get; set; } = "v0.0.0";
-        public string buildChanges { get; set; } = string.Empty;
-        public string buildDate { get; set; } = "MM/YYYY";
-        public SolidColorBrush buildTitle_Foreground { get; set; } = Brushes.Gray;
-        public Visibility CurrentBox_Visibility { get; set; } = Visibility.Collapsed;
+        public bool isLatest { get; set; } = false;
+        public SolidColorBrush Title_Foreground
+        {
+            get
+            {
+                if (isBeta) return Brushes.DarkOrange;
+                else return Brushes.Gray;
+            }
+        }
+        public Visibility CurrentBox_Visibility => isLatest ? Visibility.Visible : Visibility.Collapsed;
+
+        public AppPatchNote(UpdateNote original) : base(original)
+        {
+
+        }
+
+        public AppPatchNote()
+        {
+
+        }
     }
 }

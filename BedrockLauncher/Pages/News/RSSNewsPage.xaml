@@ -19,7 +19,6 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <ListView x:Name="OfficalNewsFeed" Keyboard.PreviewKeyUp="OfficalNewsFeed_KeyUp" ItemsSource="{Binding FeedItems}" ItemContainerStyle="{DynamicResource CardListViewItem}">
@@ -36,11 +35,5 @@
             </ListView>
             <common:ResultPanel PanelType="NoNews" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="{Binding ElementName=OfficalNewsFeed, Path=Items.Count, Converter={StaticResource IntToVisibilityConverter}}"></common:ResultPanel>
         </Grid>
-        <Border Grid.Row="1" BorderBrush="{DynamicResource Seperator.Background}" BorderThickness="0,1,0,0">
-            <Grid Background="#FF303030">
-                <Button Margin="0,1" FontSize="14" x:Name="RefreshButton" HorizontalAlignment="Right" Click="RefreshButton_Click" Content="{DynamicResource GeneralText_Refresh}" Style="{DynamicResource LinkButton}"></Button>
-            </Grid>
-        </Border>
-
     </Grid>
 </Page>
