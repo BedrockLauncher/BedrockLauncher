@@ -55,9 +55,10 @@ namespace BedrockLauncher.Handlers
 
                 if (!v.IsInstalled) await DownloadAndExtractPackage(v);
 
-                await RedirectSaveData(dirPath, v.Type);
                 await UnregisterPackage(v, true);
                 await RegisterPackage(v);
+
+                await RedirectSaveData(dirPath, v.Type); 
 
                 MainViewModel.Default.ProgressBarState.SetProgressBarState(LauncherState.isLaunching);
 
@@ -329,20 +330,10 @@ namespace BedrockLauncher.Handlers
                     string PackageBakFolder = Path.Combine(localAppData, "Packages", Constants.GetPackageFamily(type), "LocalState", "games", "com.mojang.default");
                     string ProfileFolder = Path.GetFullPath(InstallationsFolderPath);
 
-                    if (Directory.Exists(PackageFolder))
-                    {
-                        var dir = new DirectoryInfo(PackageFolder);
-                        bool isSymbolic = dir.IsSymbolicLink();
+                    string RequiredDir = Directory.GetParent(PackageFolder).FullName;
+                    if (Directory.Exists(PackageFolder)) Directory.Delete(PackageFolder, true);
+                    if (!Directory.Exists(RequiredDir)) Directory.CreateDirectory(RequiredDir);
 
-                        if (!isSymbolic)
-                        {
-                            int i = 1;
-                            var finalString = PackageBakFolder;
-                            while (Directory.Exists(finalString)) finalString = $"{PackageBakFolder}.{i++}";
-                            dir.MoveTo(finalString);
-                        }
-                        else dir.Delete(true);
-                    }
 
                     DirectoryInfo profileDir = Directory.CreateDirectory(ProfileFolder);
                     SymLinkHelper.CreateSymbolicLink(PackageFolder, ProfileFolder, SymLinkHelper.SymbolicLinkType.Directory);
