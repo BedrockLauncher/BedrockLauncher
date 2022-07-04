@@ -30,7 +30,7 @@
                     </TextBlock>
                 </StackPanel>
             </Button>
-            <Button Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,12,0" Click="Button_Click" Style="{DynamicResource CloseAdvancementButton}"></Button>
+            <Button Grid.Column="2" HorizontalAlignment="Right" Margin="0,0,12,0" Click="Button_Click_1" Style="{DynamicResource CloseAdvancementButton}"></Button>
         </Grid>
     </Grid>
 </Grid>

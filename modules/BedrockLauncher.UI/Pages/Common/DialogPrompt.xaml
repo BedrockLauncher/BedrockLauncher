@@ -20,7 +20,7 @@
                 <TextBlock x:Name="DialogTitle" Text="" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans" FontSize="24" Margin="0,20,0,0" FontWeight="Bold"/>
                 <TextBlock x:Name="DialogText" Text="" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Top" Foreground="White" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans" FontSize="14" Margin="28.5,70,28.5,0" TextWrapping="Wrap"/>
                 <Border Background="#FF313131" Height="1" Margin="0,185,0,72" />
-                <CheckBox Margin="20,185,0,0" HorizontalAlignment="Left" VerticalContentAlignment="Bottom" VerticalAlignment="Center" x:Name="DialogOptionalCheckbox">
+                <CheckBox Margin="20,185,0,0" HorizontalAlignment="Left" VerticalContentAlignment="Bottom" VerticalAlignment="Center" x:Name="DialogOptionalCheckbox" Checked="DialogOptionalCheckbox_Checked" Unchecked="DialogOptionalCheckbox_Checked">
                     <TextBlock x:Name="DialogOptional" Foreground="White" FontFamily="/BedrockLauncher.Core;component/Resources/fonts/#Noto Sans" FontSize="12" Text="Optional Text"></TextBlock>
                 </CheckBox>
                 <StackPanel Margin="0,185,20,0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled">

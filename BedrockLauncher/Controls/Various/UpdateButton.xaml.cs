@@ -90,5 +90,10 @@ namespace BedrockLauncher.Controls.Various
         {
             MainViewModel.Updater.UpdateButton_Click(sender, e);
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Dispatcher.Invoke(HideAdvancementButton);
+        }
     }
 }

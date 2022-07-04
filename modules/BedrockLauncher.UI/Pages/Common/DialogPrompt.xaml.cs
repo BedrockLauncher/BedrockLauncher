@@ -15,6 +15,7 @@ namespace BedrockLauncher.UI.Pages.Common
     {
 
         public DialogResult DialogResult { get; set; } = DialogResult.None;
+        public bool isOptionalChecked { get; set; }
 
         public static async Task<Tuple<DialogResult, bool>> ShowDialog_YesNo_Optional(string title, string content, string optionalContent, bool optionalState, params object[] args)
         {
@@ -69,7 +70,7 @@ namespace BedrockLauncher.UI.Pages.Common
         private Tuple<DialogResult, bool> DialogWaitWithOptional()
         {
             while (DialogResult == DialogResult.None) { }
-            return new Tuple<DialogResult,bool>(DialogResult, DialogOptionalCheckbox.IsChecked.Value);
+            return new Tuple<DialogResult,bool>(DialogResult, isOptionalChecked);
         }
 
         public static IDialogHander Handler { get; private set; }
@@ -102,6 +103,11 @@ namespace BedrockLauncher.UI.Pages.Common
         {
             DialogResult = DialogResult.Cancel;
             Handler.SetDialogFrame(null);
+        }
+
+        private void DialogOptionalCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            isOptionalChecked = (sender as System.Windows.Controls.CheckBox).IsChecked.Value;
         }
     }
 }
