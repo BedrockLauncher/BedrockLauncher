@@ -105,7 +105,7 @@ namespace BedrockLauncher.Controls
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    GetBlockList();
+                    BlockList = Constants.INSTALLATION_PREFABED_ICONS_LIST_RUNTIME;
 
                     SetIconData(BlockList.Where(x => x.Contains("furnace.png")).FirstOrDefault());
 
@@ -121,16 +121,6 @@ namespace BedrockLauncher.Controls
                     DropdownButton.IsEnabled = true;
                 });
             });
-        }
-
-
-
-        public void GetBlockList()
-        {
-            var resource_data = Properties.Resources._BlockOrder;
-            var list = resource_data.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
-            for (int i = 0; i < list.Count; i++) list[i] = MainViewModel.Default.FilePaths.PrefabedIconRootPath + list[i];
-            BlockList = list;
         }
 
         #endregion
@@ -216,9 +206,7 @@ namespace BedrockLauncher.Controls
         }
         private void GenerateDefaultIconList()
         {
-
-            int columns = NUMBER_OF_COLUMNS;
-            int remaining_spaces = BlockList.Count / columns;
+            int remaining_spaces = (BlockList.Count / NUMBER_OF_COLUMNS) - (BlockList.Count % NUMBER_OF_COLUMNS) + (NUMBER_OF_COLUMNS % 2);
 
             for (int block = 0; block < BlockList.Count; block++)
             {
@@ -227,7 +215,7 @@ namespace BedrockLauncher.Controls
                 DropdownItemPanel.Items.Add(blockButton);
             }
 
-            for (int i = 0; i < remaining_spaces - (NUMBER_OF_COLUMNS % 2); i++)
+            for (int i = 0; i < remaining_spaces; i++)
             {
                 DropdownItemPanel.Items.Add(new BlockPickerBlankItem());
             }

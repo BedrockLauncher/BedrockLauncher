@@ -36,7 +36,7 @@
         <Separator Grid.Row="1"></Separator>
         <Grid Grid.Row="2">
             <ScrollViewer Grid.Column="1" HorizontalAlignment="Stretch">
-                <StackPanel>
+                <StackPanel Margin="0,0,0,60">
                     <controls:InstallationBlockPicker x:Name="InstallationIconSelect" VerticalAlignment="Center" HorizontalAlignment="Center"></controls:InstallationBlockPicker>
                     <StackPanel Width="330" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Stretch">
                         <TextBlock Margin="0,28,0,5" Text="{DynamicResource EditInstallationScreen_NameSubtitle}" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>

@@ -25,7 +25,6 @@ namespace BedrockLauncher.Handlers
         public string InstallationsFolderName { get => "installations"; }
         public string PackageDataFolderName { get => "packageData"; }
         public string IconCacheFolderName { get => "icon_cache"; }
-        public string PrefabedIconRootPath { get => @"/BedrockLauncher;component/resources/images/installation_icons/"; }
 
         #endregion
 

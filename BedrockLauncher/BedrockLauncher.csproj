@@ -133,20 +133,42 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="Resources\images\icons\ico\grass_path_icon.ico" />
+		<Resource Include="Resources\images\installation_icons\Acacia_Leaves.png" />
+		<Resource Include="Resources\images\installation_icons\Ancient_Debris.png" />
+		<Resource Include="Resources\images\installation_icons\Azalea_Leaves.png" />
+		<Resource Include="Resources\images\installation_icons\Block_of_Netherite.png" />
 		<Resource Include="Resources\images\installation_icons\Command_Block.png" />
+		<Resource Include="Resources\images\installation_icons\Copper_Block.png" />
+		<Resource Include="Resources\images\installation_icons\Copper_Ore.png" />
+		<Resource Include="Resources\images\installation_icons\Dark_Oak_Leaves.png" />
+		<Resource Include="Resources\images\installation_icons\Deepslate.png" />
+		<Resource Include="Resources\images\installation_icons\Deepslate_Coal_Ore.png" />
+		<Resource Include="Resources\images\installation_icons\Deepslate_Copper_Ore.png" />
+		<Resource Include="Resources\images\installation_icons\Deepslate_Diamond_Ore.png" />
+		<Resource Include="Resources\images\installation_icons\Deepslate_Emerald_Ore.png" />
+		<Resource Include="Resources\images\installation_icons\Deepslate_Gold_Ore.png" />
+		<Resource Include="Resources\images\installation_icons\Deepslate_Iron_Ore.png" />
+		<Resource Include="Resources\images\installation_icons\Deepslate_Lapis_Lazuli_Ore.png" />
+		<Resource Include="Resources\images\installation_icons\Deepslate_Redstone_Ore.png" />
 		<Resource Include="Resources\images\installation_icons\Ender_Chest.png" />
+		<Resource Include="Resources\images\installation_icons\Exposed_Copper_Block.png" />
+		<Resource Include="Resources\images\installation_icons\Flowering_Azalea_Leaves.png" />
 		<Resource Include="Resources\images\installation_icons\Grass_Path.png" />
 		<Resource Include="Resources\images\installation_icons\Honey_Block.png" />
+		<Resource Include="Resources\images\installation_icons\Mangrove_Leaves.png" />
+		<Resource Include="Resources\images\installation_icons\Mangrove_Log.png" />
+		<Resource Include="Resources\images\installation_icons\Mangrove_Planks.png" />
 		<Resource Include="Resources\images\installation_icons\Nether_Reactor_Core.png" />
+		<Resource Include="Resources\images\installation_icons\Nether_Reactor_Core_Finished.png" />
+		<Resource Include="Resources\images\installation_icons\Nether_Reactor_Core_Initialized.png" />
 		<Resource Include="Resources\images\installation_icons\Observer.png" />
+		<Resource Include="Resources\images\installation_icons\Oxidized_Copper_Block.png" />
 		<Resource Include="Resources\images\installation_icons\Piston.png" />
 		<Resource Include="Resources\images\installation_icons\Slime_Block.png" />
 		<Resource Include="Resources\images\installation_icons\Sticky_Piston.png" />
+		<Resource Include="Resources\images\installation_icons\Tuff.png" />
+		<Resource Include="Resources\images\installation_icons\Weathered_Copper_Block.png" />
 		<Resource Include="Resources\images\installation_icons\Xmas_Chest.png" />
-		<EmbeddedResource Include="Resources\images\installation_icons\_BlockOrder.txt" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Resources\images\installation_icons\_BlockOrder_Offical.txt" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="Resources\images\installation_icons\Acacia_Log.png" />
@@ -580,15 +602,41 @@
 	<ItemGroup>
 		<Compile Remove="Controls\Various\LoadingAnimation.xaml.cs" />
 		<None Remove="Resources\images\icons\ico\grass_path_icon.ico" />
+		<None Remove="Resources\images\installation_icons\Acacia_Leaves.png" />
+		<None Remove="Resources\images\installation_icons\Ancient_Debris.png" />
+		<None Remove="Resources\images\installation_icons\Azalea_Leaves.png" />
+		<None Remove="Resources\images\installation_icons\Block_of_Netherite.png" />
 		<None Remove="Resources\images\installation_icons\Command_Block.png" />
+		<None Remove="Resources\images\installation_icons\Copper_Block.png" />
+		<None Remove="Resources\images\installation_icons\Copper_Ore.png" />
+		<None Remove="Resources\images\installation_icons\Dark_Oak_Leaves.png" />
+		<None Remove="Resources\images\installation_icons\Deepslate.png" />
+		<None Remove="Resources\images\installation_icons\Deepslate_Coal_Ore.png" />
+		<None Remove="Resources\images\installation_icons\Deepslate_Copper_Ore.png" />
+		<None Remove="Resources\images\installation_icons\Deepslate_Diamond_Ore.png" />
+		<None Remove="Resources\images\installation_icons\Deepslate_Emerald_Ore.png" />
+		<None Remove="Resources\images\installation_icons\Deepslate_Gold_Ore.png" />
+		<None Remove="Resources\images\installation_icons\Deepslate_Iron_Ore.png" />
+		<None Remove="Resources\images\installation_icons\Deepslate_Lapis_Lazuli_Ore.png" />
+		<None Remove="Resources\images\installation_icons\Deepslate_Redstone_Ore.png" />
 		<None Remove="Resources\images\installation_icons\Ender_Chest.png" />
+		<None Remove="Resources\images\installation_icons\Exposed_Copper_Block.png" />
+		<None Remove="Resources\images\installation_icons\Flowering_Azalea_Leaves.png" />
 		<None Remove="Resources\images\installation_icons\Grass_Path.png" />
 		<None Remove="Resources\images\installation_icons\Honey_Block.png" />
+		<None Remove="Resources\images\installation_icons\Mangrove_Leaves.png" />
+		<None Remove="Resources\images\installation_icons\Mangrove_Log.png" />
+		<None Remove="Resources\images\installation_icons\Mangrove_Planks.png" />
 		<None Remove="Resources\images\installation_icons\Nether_Reactor_Core.png" />
+		<None Remove="Resources\images\installation_icons\Nether_Reactor_Core_Finished.png" />
+		<None Remove="Resources\images\installation_icons\Nether_Reactor_Core_Initialized.png" />
 		<None Remove="Resources\images\installation_icons\Observer.png" />
+		<None Remove="Resources\images\installation_icons\Oxidized_Copper_Block.png" />
 		<None Remove="Resources\images\installation_icons\Piston.png" />
 		<None Remove="Resources\images\installation_icons\Slime_Block.png" />
 		<None Remove="Resources\images\installation_icons\Sticky_Piston.png" />
+		<None Remove="Resources\images\installation_icons\Tuff.png" />
+		<None Remove="Resources\images\installation_icons\Weathered_Copper_Block.png" />
 		<None Remove="Resources\images\installation_icons\Xmas_Chest.png" />
 		<Page Remove="Controls\Various\LoadingAnimation.xaml" />
 		<Page Remove="Data\Versions.xaml" />

@@ -59,44 +59,5 @@ namespace BedrockLauncher.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to bedrock.png
-        ///bookshelf.png
-        ///bricks.png
-        ///cake.png
-        ///pumpkin.png
-        ///chest.png
-        ///ender_chest.png
-        ///xmas_chest.png
-        ///clay.png
-        ///block_of_coal.png
-        ///coal_ore.png
-        ///cobblestone.png
-        ///command_block.png
-        ///crafting_table.png
-        ///creeper_head.png
-        ///block_of_diamond.png
-        ///diamond_ore.png
-        ///dirt.png
-        ///podzol.png
-        ///snowy_grass_block.png
-        ///block_of_emerald.png
-        ///emerald_ore.png
-        ///enchanting_table.png
-        ///end_stone.png
-        ///farmland.png
-        ///furnace.png
-        ///lit_furnace.png
-        ///glass.png
-        ///light_blue_glazed_terracotta.png
-        ///orange_glazed_terracotta.png
-        ///white_gla [rest of string was truncated]&quot;;.
-        /// </summary>
-        public static string _BlockOrder {
-            get {
-                return ResourceManager.GetString("_BlockOrder", resourceCulture);
-            }
-        }
     }
 }

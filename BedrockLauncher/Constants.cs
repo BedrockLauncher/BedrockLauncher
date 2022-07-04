@@ -86,6 +86,148 @@ namespace BedrockLauncher
             { "Original",                  ThemesPathPrefix + "original_image.jpg" }
         };
 
+        public static List<string> INSTALLATION_PREFABED_ICONS_LIST_RUNTIME => INSTALLATIONS_PREFABED_ICONS_LIST.Select(ICON => INSTALLATIONS_PREFABED_ICONS_ROOT + ICON).ToList();
+        public static string INSTALLATIONS_PREFABED_ICONS_ROOT => @"/BedrockLauncher;component/resources/images/installation_icons/";
+        public static List<string> INSTALLATIONS_PREFABED_ICONS_LIST => new List<string>()
+        {
+            "dirt.png",
+            "grass_block.png",
+            "grass_path.png",
+            "snowy_grass_block.png",
+            "podzol.png",
+            "mycelium.png",
+            "farmland.png",
+
+            "stone.png",
+            "andesite.png",
+            "diorite.png",
+            "granite.png",
+            "cobblestone.png",
+            "deepslate.png",
+            "tuff.png",
+            "bedrock.png",
+            "obsidian.png",
+
+            "clay.png",
+            "bricks.png",
+
+            "gravel.png",
+            "sand.png",
+            "sandstone.png",
+            "red_sand.png",
+            "red_sandstone.png",
+
+            "glass.png",
+
+            "snow_block.png",
+            "ice.png",
+
+            "terracotta.png",
+            "light_blue_glazed_terracotta.png",
+            "orange_glazed_terracotta.png",
+            "white_glazed_terracotta.png",
+
+            "water.png",
+
+            "white_wool.png",
+
+            "cake.png",
+            "pumpkin.png",
+
+            "netherrack.png",
+            "soul_sand.png",
+            "glowstone.png",
+            "nether_wart_block.png",
+            "warped_wart_block.png",
+            "nether_bricks.png",
+
+            "end_stone.png",
+
+            "oak_leaves.png",
+            "birch_leaves.png",
+            "spruce_leaves.png",
+            "jungle_leaves.png",
+            "acacia_leaves.png",
+            "dark_oak_leaves.png",
+            "azalea_leaves.png",
+            "flowering_azalea_leaves.png",
+            "mangrove_leaves.png",
+
+            "oak_log.png",
+            "birch_log.png",
+            "spruce_log.png",
+            "jungle_log.png",
+            "acacia_log.png",
+            "dark_oak_log.png",
+            "crimson_stem.png",
+            "warped_stem.png",
+            "mangrove_log.png",
+
+            "oak_planks.png",
+            "birch_planks.png",
+            "spruce_planks.png",
+            "jungle_planks.png",
+            "acacia_planks.png",
+            "dark_oak_planks.png",
+            "crimson_planks.png",
+            "warped_planks.png",
+            "mangrove_planks.png",
+
+            "block_of_coal.png",
+            "copper_block.png",
+            "exposed_copper_block.png",
+            "weathered_copper_block.png",
+            "oxidized_copper_block.png",
+            "block_of_diamond.png",
+            "block_of_emerald.png",
+            "block_of_gold.png",
+            "block_of_iron.png",
+            "block_of_redstone.png",
+            "block_of_netherite.png",
+            "slime_block.png",
+            "honey_block.png",
+
+            "copper_ore.png",
+            "deepslate_copper_ore.png",
+            "coal_ore.png",
+            "deepslate_coal_ore.png",
+            "diamond_ore.png",
+            "deepslate_diamond_ore.png",
+            "emerald_ore.png",
+            "deepslate_emerald_ore.png",
+            "gold_ore.png",
+            "deepslate_gold_ore.png",
+            "iron_ore.png",
+            "deepslate_iron_ore.png",
+            "lapis_lazuli_ore.png",
+            "deepslate_lapis_lazuli_ore.png",
+            "redstone_ore.png",
+            "deepslate_redstone_ore.png",
+            "nether_quartz_ore.png",
+            "ancient_debris.png",
+
+            "creeper_head.png",
+            "skeleton_skull.png",
+
+            "crafting_table.png",
+            "furnace.png",
+            "lit_furnace.png",
+            "chest.png",
+            "ender_chest.png",
+            "xmas_chest.png",
+            "bookshelf.png",
+            "tnt.png",
+            "enchanting_table.png",
+            "lectern_book.png",
+            "nether_reactor_core.png",
+            "nether_reactor_core_initialized.png",
+            "nether_reactor_core_finished.png",
+            "observer.png",
+            "piston.png",
+            "sticky_piston.png",
+            "command_block.png",
+        };
+
         public static string CurrentArchitecture
         {
             get
