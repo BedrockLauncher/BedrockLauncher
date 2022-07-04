@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using BedrockLauncher.Classes;
@@ -109,19 +110,20 @@ namespace BedrockLauncher.Classes
 
         #region Size Calcualtion
 
-        [JsonIgnore] private string StoredInstallationSize { get; set; } = "N/A";
-        [JsonIgnore] private bool RequireSizeRecalculation { get; set; } = false;    
+        [JsonIgnore] private string StoredInstallationSize { get; set; } = "...";
+        [JsonIgnore] private bool RequireSizeRecalculation { get; set; } = false;
+        [JsonIgnore] private static bool Internal_SizeCalcInProgress { get; set; } = false;
         private async Task GetInstallSize()
         {
+            while (Internal_SizeCalcInProgress) await Task.Delay(500);
+
             await Task.Run(() =>
             {
-                if (!RequireSizeRecalculation)
-                {
-                    return;
-                }
+                if (!RequireSizeRecalculation) return;
 
                 if (IsInstalled)
                 {
+                    Internal_SizeCalcInProgress = true;
                     var dirSize = GetDirectorySize(Path.GetFullPath(GameDirectory));
                     string[] sizes = { "B", "KB", "MB", "GB", "TB" };
                     int order = 0;
@@ -133,10 +135,11 @@ namespace BedrockLauncher.Classes
                     }
                     StoredInstallationSize = String.Format("{0:0.##} {1}", len, sizes[order]);
                     RequireSizeRecalculation = false;
+                    Internal_SizeCalcInProgress = false;
                 }
                 else
                 {
-                    StoredInstallationSize = "N/A";
+                    StoredInstallationSize = "...";
                     RequireSizeRecalculation = false;
                 }
             });
