@@ -35,7 +35,7 @@ namespace BedrockLauncher.Controls
         #region Definitions
 
         private List<string> BlockList = new List<string>();
-        private List<BlockPickerItem> Buttons { get; set; } = new List<BlockPickerItem>();
+        private List<InstallationBlockPickerItem> Buttons { get; set; } = new List<InstallationBlockPickerItem>();
         public bool IsIconCustom { get; private set; } = false;
         public string IconPath
         {
@@ -141,9 +141,9 @@ namespace BedrockLauncher.Controls
             }
         }
 
-        private void Btn_Click(object sender, RoutedEventArgs e)
+        private void Btn_Click(object sender, EventArgs e)
         {
-            BlockPickerItem btn = (sender as BlockPickerItem);
+            InstallationBlockPickerItem btn = (sender as InstallationBlockPickerItem);
 
             if (btn.Tag is int)
             {
@@ -255,9 +255,9 @@ namespace BedrockLauncher.Controls
             }
             return ideal_row_count;
         }
-        private BlockPickerItem CreateCustomBlockButton(string path)
+        private InstallationBlockPickerItem CreateCustomBlockButton(string path)
         {
-            BlockPickerItem btn = CreateBaseBlockButton();
+            InstallationBlockPickerItem btn = CreateBaseBlockButton();
             int img_width_height = 50;
             btn.Tag = path;
             btn.Host.Tag = path;
@@ -284,9 +284,9 @@ namespace BedrockLauncher.Controls
 
             return btn;
         }
-        private BlockPickerItem CreateDefaultBlockButton(int index)
+        private InstallationBlockPickerItem CreateDefaultBlockButton(int index)
         {
-            BlockPickerItem btn = CreateBaseBlockButton();
+            InstallationBlockPickerItem btn = CreateBaseBlockButton();
             int img_width_height = (index == -1 ? 30 : 50);
             btn.Tag = index;
             btn.Host.Tag = index;
@@ -316,10 +316,10 @@ namespace BedrockLauncher.Controls
 
             return btn;
         }
-        private BlockPickerItem CreateBaseBlockButton()
+        private InstallationBlockPickerItem CreateBaseBlockButton()
         {
-            BlockPickerItem btn = new BlockPickerItem();
-            btn.MouseLeftButtonDown += Btn_Click;
+            InstallationBlockPickerItem btn = new InstallationBlockPickerItem();
+            btn.SelectItem += Btn_Click;
             btn.KeyDown += (sender, e) => { if (e.Key == Key.Enter) Btn_Click(sender, null); };
             btn.CrossButton.Click += CrossBtn_Click;
             return btn;

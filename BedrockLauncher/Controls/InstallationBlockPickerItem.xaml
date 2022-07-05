@@ -1,4 +1,4 @@
-﻿<ListViewItem x:Class="BedrockLauncher.Controls.Items.Launcher.BlockPickerItem"
+﻿<ListViewItem x:Class="BedrockLauncher.Controls.Items.Launcher.InstallationBlockPickerItem"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -11,8 +11,8 @@
              LostFocus="MainButton_LostFocus"
              MouseEnter="MainButton_MouseEnter"
              MouseLeave="MainButton_MouseLeave"
-             PreviewMouseUp="ListViewItem_PreviewMouseEvent"
-             PreviewMouseDown="ListViewItem_PreviewMouseEvent">
+             PreviewMouseLeftButtonUp="ListViewItem_PreviewMouseEvent"
+             PreviewMouseLeftButtonDown="ListViewItem_PreviewMouseEvent">
     <Grid>
         <ContentPresenter x:Name="Host" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></ContentPresenter>
         <Button Style="{DynamicResource CloseButton}" 

@@ -601,7 +601,6 @@
 		<Resource Include="Resources\images\panels\CardBorder.png" />
 	</ItemGroup>
 	<ItemGroup>
-		<Compile Remove="Controls\Various\LoadingAnimation.xaml.cs" />
 		<None Remove="Resources\images\icons\ico\grass_path_icon.ico" />
 		<None Remove="Resources\images\installation_icons\Acacia_Leaves.png" />
 		<None Remove="Resources\images\installation_icons\Ancient_Debris.png" />
@@ -639,7 +638,6 @@
 		<None Remove="Resources\images\installation_icons\Tuff.png" />
 		<None Remove="Resources\images\installation_icons\Weathered_Copper_Block.png" />
 		<None Remove="Resources\images\installation_icons\Xmas_Chest.png" />
-		<Page Remove="Controls\Various\LoadingAnimation.xaml" />
 		<Page Remove="Data\Versions.xaml" />
 	</ItemGroup>
 	<PropertyGroup>

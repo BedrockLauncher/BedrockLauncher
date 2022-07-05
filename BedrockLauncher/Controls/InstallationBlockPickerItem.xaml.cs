@@ -17,13 +17,15 @@ using System.Windows.Shapes;
 namespace BedrockLauncher.Controls.Items.Launcher
 {
     /// <summary>
-    /// Interaction logic for BlockPickerItem.xaml
+    /// Interaction logic for InstallationBlockPickerItem.xaml
     /// </summary>
-    public partial class BlockPickerItem : ListViewItem
+    public partial class InstallationBlockPickerItem : ListViewItem
     {
         public bool IsCustomImage { get; set; }
 
-        public BlockPickerItem()
+        public event EventHandler SelectItem;
+
+        public InstallationBlockPickerItem()
         {
             InitializeComponent();
         }
@@ -91,6 +93,7 @@ namespace BedrockLauncher.Controls.Items.Launcher
                 CrossButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
                 e.Handled = true;
             }
+            else SelectItem?.Invoke(this, EventArgs.Empty);
         }
     }
 
