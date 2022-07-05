@@ -50,7 +50,7 @@ namespace BedrockLauncher.Downloaders
                 else return uuid;
             }
         }
-        public async Task UpdateVersions(ObservableCollection<MCVersion> versions, bool OnLoad = false)
+        public async Task UpdateVersionList(ObservableCollection<MCVersion> versions, bool OnLoad = false)
         {
             bool AllowUpdating = OnLoad && Debugger.IsAttached ? Constants.Debugging.RetriveNewVersionsOnLoad : true;
 
@@ -96,7 +96,6 @@ namespace BedrockLauncher.Downloaders
                 else return new Version(0, 0, 0, 0).ToString();
             }
         }
-
         public MCVersion GetVersion(VersioningMode versioningMode, string versionUUID)
         {
             if (versioningMode != VersioningMode.None)

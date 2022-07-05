@@ -100,7 +100,8 @@ namespace BedrockLauncher.Handlers
                 StartTask();
 
                 MainViewModel.Default.ProgressBarState.SetProgressBarState(LauncherState.isUninstalling);
-                await UnregisterPackage(v);
+                await UnregisterPackage(v, false, true);
+                MainViewModel.Default.ProgressBarState.SetProgressBarState(LauncherState.isUninstalling);
                 await DirectoryExtensions.DeleteAsync(v.GameDirectory, (x, y, phase) => ProgressWrapper(x, y, phase), "Files", "Folders");
                 v.UpdateFolderSize();
             }
@@ -276,7 +277,7 @@ namespace BedrockLauncher.Handlers
                 ResetTask();
             }
         }
-        private async Task UnregisterPackage(MCVersion v, bool keepVersion = false)
+        private async Task UnregisterPackage(MCVersion v, bool keepVersion = false, bool mustMatchVersion = false)
         {
             try
             {
@@ -292,6 +293,8 @@ namespace BedrockLauncher.Handlers
                         Trace.WriteLine("Skipping package removal - same path: " + pkg.Id.FullName + " " + location);
                         continue;
                     }
+
+                    if (location != v.GameDirectory && mustMatchVersion) continue;
 
                     Trace.WriteLine("Removing package: " + pkg.Id.FullName);
 

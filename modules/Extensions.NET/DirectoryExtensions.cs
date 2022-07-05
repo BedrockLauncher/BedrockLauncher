@@ -46,22 +46,28 @@ namespace JemExtensions
                 {
                     DirectoryInfo dirInfo = new DirectoryInfo(strpath);
                     var files = dirInfo.GetFiles();
-                    progress(0, files.Length);
+
+                    int fileProgress = 0;
+                    int folderProgress = 0;
+
+                    progress(fileProgress, files.Length);
 
                     foreach (FileInfo file in files)
                     {
                         file.Delete();
-                        progress(0, files.Length, phase1Text);
+                        progress(fileProgress, files.Length, phase1Text);
+                        fileProgress++;
                     }
 
                     var dirs = dirInfo.GetDirectories();
 
-                    progress(0, dirs.Length);
+                    progress(folderProgress, dirs.Length);
 
                     foreach (DirectoryInfo dir in dirs)
                     {
                         dir.Delete(true);
-                        progress(0, files.Length, phase2Text);
+                        progress(folderProgress, files.Length, phase2Text);
+                        folderProgress++;
                     }
 
                 }

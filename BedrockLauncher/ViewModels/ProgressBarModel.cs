@@ -155,7 +155,7 @@ namespace BedrockLauncher.ViewModels
                 return $"{current} MB / {total} MB";
             }
             else if (S.IfAny(CurrentState, LauncherState.isRemovingPackage, LauncherState.isRegisteringPackage, LauncherState.isExtracting)) return $"{CurrentProgress}%";
-            else if (CurrentState == LauncherState.isBackingUp) return $"{CurrentProgress} / {TotalProgress}";
+            else if (S.IfAny(CurrentState, LauncherState.isBackingUp, LauncherState.isUninstalling)) return $"{CurrentProgress} / {TotalProgress}";
             else return string.Empty;
 
         }
