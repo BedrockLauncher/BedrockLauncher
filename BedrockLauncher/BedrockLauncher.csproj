@@ -76,6 +76,9 @@
 		<CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
 	</PropertyGroup>
 	<ItemGroup>
+	  <AdditionalFiles Remove="C:\Users\Cwall\.nuget\packages\microsoft.dotnet.upgradeassistant.extensions.default.analyzers\0.3.261602\build\\WebTypeReplacements.typemap" />
+	</ItemGroup>
+	<ItemGroup>
 		<None Update="app.manifest">
 			<SubType>Designer</SubType>
 		</None>
