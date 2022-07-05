@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Classes.Launcher;
-using BedrockLauncher.Controls.Items.News;
+using BedrockLauncher.Controls;
 using BedrockLauncher.Downloaders;
 using BedrockLauncher.Handlers;
 using MdXaml;

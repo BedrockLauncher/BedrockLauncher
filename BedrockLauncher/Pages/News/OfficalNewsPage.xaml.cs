@@ -16,14 +16,13 @@ using CodeHollow.FeedReader;
 using BedrockLauncher.Classes;
 using BedrockLauncher.Classes.Launcher;
 using System.Diagnostics;
-using BedrockLauncher.Controls.Items;
 using System.Net;
 using System.Net.Http;
 using System.Collections.ObjectModel;
+using BedrockLauncher.Controls;
 using JemExtensions;
 using BedrockLauncher.ViewModels;
 using BedrockLauncher.Handlers;
-using BedrockLauncher.Controls.Items.News;
 
 namespace BedrockLauncher.Pages.News
 {
@@ -64,13 +63,13 @@ namespace BedrockLauncher.Pages.News
             Dispatcher.Invoke(() =>
             {
                 NothingFound.Visibility = Visibility.Visible;
-                NothingFound.PanelType = Controls.Various.ResultPanelType.Loading;
+                NothingFound.PanelType = ResultPanelType.Loading;
             });
 
             Dispatcher.Invoke(() => 
             {
                 Handlers.FilterSortingHandler.Refresh(OfficalNewsFeed.ItemsSource);
-                if (OfficalNewsFeed.Items.Count == 0) NothingFound.PanelType = Controls.Various.ResultPanelType.NoNews;
+                if (OfficalNewsFeed.Items.Count == 0) NothingFound.PanelType = ResultPanelType.NoNews;
                 else NothingFound.Visibility = Visibility.Collapsed;
             });
         }

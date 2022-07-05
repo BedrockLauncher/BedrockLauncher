@@ -2,13 +2,12 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:i="clr-namespace:BedrockLauncher.Controls.Items.News"
-      xmlns:common="clr-namespace:BedrockLauncher.Controls.Various"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:conv="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
       xmlns:vwp="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
       xmlns:downloaders="clr-namespace:BedrockLauncher.Downloaders"
       xmlns:c="clr-namespace:BedrockLauncher.Classes.Launcher"
+      xmlns:controls="clr-namespace:BedrockLauncher.Controls"
       d:DataContext="{d:DesignInstance Type=downloaders:ChangelogDownloader}"
       mc:Ignorable="d" 
       d:DesignHeight="525" d:DesignWidth="828"
@@ -60,10 +59,10 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate DataType="{x:Type c:PatchNote}">
-                    <i:FeedItem_PatchNotes DataContext="{Binding .}"></i:FeedItem_PatchNotes>
+                    <controls:FeedItem_PatchNotes DataContext="{Binding .}"></controls:FeedItem_PatchNotes>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <common:ResultPanel PanelType="NoContent" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="{Binding ElementName=PatchNotesList, Path=Items.Count, Converter={StaticResource IntToVisibilityConverter}}"></common:ResultPanel>
+        <controls:ResultPanel PanelType="NoContent" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="{Binding ElementName=PatchNotesList, Path=Items.Count, Converter={StaticResource IntToVisibilityConverter}}"></controls:ResultPanel>
     </Grid>
 </Page>

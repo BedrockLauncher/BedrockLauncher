@@ -4,13 +4,12 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:p="clr-namespace:BedrockLauncher.Properties"
-      xmlns:common="clr-namespace:BedrockLauncher.Controls.Various"
       xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
       xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
       xmlns:handlers="clr-namespace:BedrockLauncher.Handlers"
       xmlns:conv="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
       xmlns:classes2="clr-namespace:BedrockLauncher.Classes"
-      xmlns:i="clr-namespace:BedrockLauncher.Controls.Items.Launcher"
+      xmlns:controls="clr-namespace:BedrockLauncher.Controls"
       d:DataContext="{d:DesignInstance Type=viewModels:MainViewModel}"
       mc:Ignorable="d" 
       x:Name="PageHost"
@@ -87,7 +86,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate DataType="{x:Type classes2:BLInstallation}">
                         <Grid Focusable="False" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                            <i:InstallationItem x:Name="ItemControl" DataContext="{Binding }" Tag="{Binding ElementName=PageHost}"/>
+                            <controls:InstallationItem x:Name="ItemControl" DataContext="{Binding }" Tag="{Binding ElementName=PageHost}"/>
                         </Grid>
                         <DataTemplate.Triggers>
                             <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver}" Value="True">
@@ -103,7 +102,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <common:ResultPanel PanelType="NoContent" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="{Binding ElementName=InstallationsList, Path=Items.Count, Converter={StaticResource IntToVisibilityConverter}}"></common:ResultPanel>
+            <controls:ResultPanel PanelType="NoContent" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="{Binding ElementName=InstallationsList, Path=Items.Count, Converter={StaticResource IntToVisibilityConverter}}"></controls:ResultPanel>
         </Grid>
     </Grid>
 </Page>

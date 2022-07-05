@@ -1,12 +1,13 @@
-﻿<Page x:Class="BedrockLauncher.Pages.FirstLaunch.WelcomePageThree"
+﻿<Page x:Class="BedrockLauncher.Pages.Welcome.WelcomePageThree"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BedrockLauncher"
       xmlns:prev="clr-namespace:BedrockLauncher.Pages.Preview"
+      xmlns:controls="clr-namespace:BedrockLauncher.Controls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="WelcomePageOne" Width="596" Height="254">
-    <prev:AddProfileContainer x:Name="ProfileControl" GoBack="ProfileControl_GoBack" Confirm="ProfileControl_Confirm"></prev:AddProfileContainer>
+    <controls:AddProfileContainer x:Name="ProfileControl" GoBack="ProfileControl_GoBack" Confirm="ProfileControl_Confirm"></controls:AddProfileContainer>
 </Page>

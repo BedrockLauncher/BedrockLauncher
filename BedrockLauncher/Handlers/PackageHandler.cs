@@ -1,5 +1,4 @@
 ﻿using BedrockLauncher.Classes;
-using BedrockLauncher.Pages.Common;
 using BedrockLauncher.Downloaders;
 using JemExtensions;
 using SymbolicLinkSupport;

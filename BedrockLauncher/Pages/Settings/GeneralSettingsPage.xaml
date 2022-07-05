@@ -4,7 +4,6 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:properties="clr-namespace:BedrockLauncher.Properties"
-      xmlns:controls="clr-namespace:BedrockLauncher.Controls.Config"
       xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
       xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
       xmlns:com="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
@@ -20,10 +19,10 @@
         <ScrollViewer>
             <StackPanel Margin="0,0,0,20">
                 <TextBlock Margin="42,30,0,0" Text="{DynamicResource GeneralSettingsScreen_LanguageSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-                <controls:LanguageCombobox HorizontalAlignment="Left" Margin="42,5,0,0" FontSize="14" VerticalAlignment="Top" Padding="10,4,5,3" x:Name="LanguageCombobox"></controls:LanguageCombobox>
+                <con:LanguageCombobox HorizontalAlignment="Left" Margin="42,5,0,0" FontSize="14" VerticalAlignment="Top" Padding="10,4,5,3" x:Name="LanguageCombobox"></con:LanguageCombobox>
 
                 <TextBlock Margin="42,30,0,0" Text="{DynamicResource GeneralSettingsScreen_ThemeSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
-                <controls:ThemeCombobox HorizontalAlignment="Left" Margin="42,5,0,0" FontSize="14" VerticalAlignment="Top" Padding="10,4,5,3" x:Name="ThemeCombobox"></controls:ThemeCombobox>
+                <con:ThemeCombobox HorizontalAlignment="Left" Margin="42,5,0,0" FontSize="14" VerticalAlignment="Top" Padding="10,4,5,3" x:Name="ThemeCombobox"></con:ThemeCombobox>
 
                 <TextBlock Margin="42,30,0,10" Text="{DynamicResource GeneralSettingsScreen_LauncherSettingsSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                 <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=UseBetaBuilds}" x:Name="betaVersionsButtonCheckbox" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_UseBetaLauncher}" HorizontalAlignment="Left" Margin="42,0,0,10" VerticalAlignment="Top" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="13"/>

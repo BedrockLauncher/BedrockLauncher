@@ -6,9 +6,8 @@
       xmlns:viewModel="clr-namespace:BedrockLauncher.ViewModels"
       xmlns:classes="clr-namespace:BedrockLauncher.Classes.Launcher"
       xmlns:conv="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
-      xmlns:controls="clr-namespace:BedrockLauncher.Controls.Items.News"
-      xmlns:common="clr-namespace:BedrockLauncher.Controls.Various"
       xmlns:vwp="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
+      xmlns:controls="clr-namespace:BedrockLauncher.Controls"
       mc:Ignorable="d" 
       d:DataContext="{d:DesignInstance Type=viewModel:NewsViewModel}"
       d:DesignHeight="450" d:DesignWidth="800" Loaded="Page_Loaded"
@@ -76,6 +75,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <common:ResultPanel PanelType="NoContent" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="{Binding ElementName=UpdatesList, Path=Items.Count, Converter={StaticResource IntToVisibilityConverter}}"></common:ResultPanel>
+        <controls:ResultPanel PanelType="NoContent" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="{Binding ElementName=UpdatesList, Path=Items.Count, Converter={StaticResource IntToVisibilityConverter}}"></controls:ResultPanel>
     </Grid>
 </Page>

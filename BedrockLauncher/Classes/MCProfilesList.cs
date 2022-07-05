@@ -58,6 +58,17 @@ namespace BedrockLauncher.Classes
                 if (profiles.ContainsKey(Properties.LauncherSettings.Default.CurrentProfileUUID)) profiles[Properties.LauncherSettings.Default.CurrentProfileUUID] = value;
             }
         }
+
+        [JsonIgnore]
+        public string CurrentProfileImagePath
+        {
+            get
+            {
+                Depends.On(Properties.LauncherSettings.Default.CurrentProfileUUID);
+                if (profiles.ContainsKey(Properties.LauncherSettings.Default.CurrentProfileUUID)) return profiles[Properties.LauncherSettings.Default.CurrentProfileUUID].ImagePath;
+                return string.Empty;
+            }
+        }
         [JsonIgnore] 
         public BLInstallation CurrentInstallation
         {
@@ -289,6 +300,7 @@ namespace BedrockLauncher.Classes
                 OnPropertyChanged(nameof(CurrentProfile));
                 OnPropertyChanged(nameof(CurrentInstallations));
                 OnPropertyChanged(nameof(CurrentInstallation));
+                OnPropertyChanged(nameof(CurrentProfileImagePath));
             }
         }
 

@@ -1,5 +1,4 @@
 ﻿using BedrockLauncher.Classes.Launcher;
-using BedrockLauncher.Controls.Items;
 using PostSharp.Patterns.Model;
 using System;
 using System.Collections.Generic;

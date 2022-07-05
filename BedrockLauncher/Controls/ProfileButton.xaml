@@ -1,4 +1,4 @@
-﻿<local:ToolbarButtonBase x:Class="BedrockLauncher.Controls.Toolbar.ProfileButton"
+﻿<controls:ToolbarButtonBase x:Class="BedrockLauncher.Controls.ProfileButton"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,16 +7,16 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:vm="clr-namespace:BedrockLauncher.ViewModels"
              xmlns:com="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
-             xmlns:local="clr-namespace:BedrockLauncher.Controls.Toolbar"
+             xmlns:controls="clr-namespace:BedrockLauncher.Controls"
              mc:Ignorable="d" 
              Height="59" Margin="1,0,0,0" VerticalAlignment="Top" Style="{DynamicResource DisabledStyle}"
-             DataContext="{Binding Source={x:Static vm:MainViewModel.Default}, Path=Config.CurrentProfile}"
-             d:DataContext="{d:DesignInstance classes:MCProfile, IsDesignTimeCreatable=False}">
-    <local:ToolbarButtonBase.Resources>
+             DataContext="{Binding Source={x:Static vm:MainViewModel.Default}, Path=Config}"
+             d:DataContext="{d:DesignInstance classes:MCProfilesList, IsDesignTimeCreatable=False}">
+    <controls:ToolbarButtonBase.Resources>
         <sys:String x:Key="ProfileName_DesignTime">Default Profile</sys:String>
         <com:AdvancedImageSourceConverter x:Key="AdvancedImageSourceConverter" CacheOption="OnLoad" UriKind="RelativeOrAbsolute" CreateOptions="IgnoreImageCache"></com:AdvancedImageSourceConverter>
         <sys:String x:Key="ImagePath_DesignTime">pack://application:,,,/BedrockLauncher;component/resources/images/icons/user_icon.png"</sys:String>
-    </local:ToolbarButtonBase.Resources>
+    </controls:ToolbarButtonBase.Resources>
     <ToggleButton IsThreeState="False" x:Name="SourceButton" Style="{StaticResource SideBarButtonStyle}" Click="SourceButton_Click" FontWeight="Normal" VerticalAlignment="Stretch" Checked="SourceButton_Checked" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="True" IsChecked="False">
         <ToggleButton.ContextMenu>
             <ContextMenu x:Name="ProfileContextMenu" ContextMenuClosing="ProfileContextMenu_ContextMenuClosing" Style="{DynamicResource NoCheckboxContextMenu}" IsOpen="False">
@@ -34,14 +34,14 @@
         </ToggleButton.ContextMenu>
         <ToggleButton.Content>
             <Grid Margin="5,0,0,0">
-                <TextBlock x:Name="ProfileName" Text="{Binding Name, FallbackValue={StaticResource ProfileName_DesignTime}, TargetNullValue={StaticResource ProfileName_DesignTime}}" FontWeight="Normal" LineStackingStrategy="BlockLineHeight" LineHeight="14" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="0,0,0,3"/>
+                <TextBlock x:Name="ProfileName" Text="{Binding CurrentProfile.Name, FallbackValue={StaticResource ProfileName_DesignTime}, TargetNullValue={StaticResource ProfileName_DesignTime}}" FontWeight="Normal" LineStackingStrategy="BlockLineHeight" LineHeight="14" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="0,0,0,3"/>
                 <TextBlock Margin="0,14,0,0" Foreground="#FF929292" Text="{DynamicResource ToolbarButtons_ProfileButton_ProfileType_Text}" FontWeight="Normal" FontSize="12"/>
             </Grid>
         </ToggleButton.Content>
     </ToggleButton>
     <Border CornerRadius="15" IsHitTestVisible="False" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" VerticalAlignment="Center" Width="30" Height="30" Margin="14,0,0,3">
         <Border.Background>
-            <ImageBrush Stretch="Fill" ImageSource="{Binding ImagePath, Converter={StaticResource AdvancedImageSourceConverter}, FallbackValue={StaticResource ImagePath_DesignTime}, TargetNullValue={StaticResource ImagePath_DesignTime}}"/>
+            <ImageBrush Stretch="Fill" ImageSource="{Binding CurrentProfile.ImagePath, Converter={StaticResource AdvancedImageSourceConverter}, FallbackValue={StaticResource ImagePath_DesignTime}, TargetNullValue={StaticResource ImagePath_DesignTime}}"/>
         </Border.Background>
     </Border>
-</local:ToolbarButtonBase>
+</controls:ToolbarButtonBase>

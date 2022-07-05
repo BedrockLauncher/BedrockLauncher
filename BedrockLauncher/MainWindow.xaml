@@ -3,12 +3,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:properties="clr-namespace:BedrockLauncher.Properties"
-        xmlns:controls="clr-namespace:BedrockLauncher.Controls.Various"
         xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
-        xmlns:toolbar="clr-namespace:BedrockLauncher.Controls.Toolbar"
         xmlns:com="clr-namespace:JemExtensions.WPF.Behaviours;assembly=JemExtensions"
         xmlns:conv="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
         xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
+        xmlns:controls="clr-namespace:BedrockLauncher.Controls"
         x:Class="BedrockLauncher.MainWindow"
         d:DataContext="{d:DesignInstance Type=viewModels:MainViewModel}"
         mc:Ignorable="d"
@@ -32,11 +31,11 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel x:Name="buttonStackPanel" Grid.Column="0" Background="{DynamicResource Background.Primary}" HorizontalAlignment="Left">
-                <toolbar:ProfileButton IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default},Path=ProgressBarState.AllowEditing, Mode=OneWay}" x:Name="ProfileButton" ></toolbar:ProfileButton>
-                <toolbar:NewsButton x:Name="NewsButton" Click="NewsButton_Click"></toolbar:NewsButton>
-                <toolbar:BedrockEditionButton x:Name="BedrockEditionButton" Click="BedrockEditionButton_Click"></toolbar:BedrockEditionButton>
+                <controls:ProfileButton IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default},Path=ProgressBarState.AllowEditing, Mode=OneWay}" x:Name="ProfileButton" ></controls:ProfileButton>
+                <controls:NewsButton x:Name="NewsButton" Click="NewsButton_Click"></controls:NewsButton>
+                <controls:BedrockEditionButton x:Name="BedrockEditionButton" Click="BedrockEditionButton_Click"></controls:BedrockEditionButton>
             </StackPanel>
-            <toolbar:SettingsButton x:Name="SettingsButton" Click="SettingsButton_Click"></toolbar:SettingsButton>
+            <controls:SettingsButton x:Name="SettingsButton" Click="SettingsButton_Click"></controls:SettingsButton>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>

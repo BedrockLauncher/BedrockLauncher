@@ -5,10 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:c="clr-namespace:BedrockLauncher.Classes.Launcher"
       xmlns:conv="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
-      xmlns:i="clr-namespace:BedrockLauncher.Controls.Items.News"
       xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
       xmlns:vwp="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
-      xmlns:common="clr-namespace:BedrockLauncher.Controls.Various"
+      xmlns:controls="clr-namespace:BedrockLauncher.Controls"
       mc:Ignorable="d" 
       d:DataContext="{d:DesignInstance Type=viewModels:RSSViewModel}"
       d:DesignHeight="450" d:DesignWidth="800"
@@ -29,11 +28,11 @@
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
                     <DataTemplate DataType="{x:Type c:NewsItem}">
-                        <i:FeedItem_RSS VerticalAlignment="Stretch" HorizontalAlignment="Stretch" DataContext="{Binding .}"></i:FeedItem_RSS>
+                        <controls:FeedItem_RSS VerticalAlignment="Stretch" HorizontalAlignment="Stretch" DataContext="{Binding .}"></controls:FeedItem_RSS>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <common:ResultPanel PanelType="NoNews" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="{Binding ElementName=OfficalNewsFeed, Path=Items.Count, Converter={StaticResource IntToVisibilityConverter}}"></common:ResultPanel>
+            <controls:ResultPanel PanelType="NoNews" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="{Binding ElementName=OfficalNewsFeed, Path=Items.Count, Converter={StaticResource IntToVisibilityConverter}}"></controls:ResultPanel>
         </Grid>
     </Grid>
 </Page>

@@ -6,7 +6,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using BedrockLauncher.Classes.Launcher;
 using System.Diagnostics;
-using BedrockLauncher.Controls.Items.News;
+using BedrockLauncher.Controls;
 using BedrockLauncher.Downloaders;
 
 namespace BedrockLauncher.Pages.Play

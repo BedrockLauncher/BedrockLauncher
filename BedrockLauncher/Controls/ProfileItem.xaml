@@ -1,4 +1,4 @@
-﻿<Grid x:Class="BedrockLauncher.Controls.Items.Launcher.ProfileItem"
+﻿<Grid x:Class="BedrockLauncher.Controls.ProfileItem"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,8 +8,7 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:conv="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
              xmlns:controls="clr-namespace:BedrockLauncher.Controls"
-             xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" 
-             xmlns:local="clr-namespace:BedrockLauncher.Controls.Items.Launcher"
+             xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
              mc:Ignorable="d" 
              Height="45" Margin="1,0,0,0" VerticalAlignment="Top" MouseUp="Grid_MouseUp"
              d:DataContext="{d:DesignInstance classes:MCProfile, IsDesignTimeCreatable=False}">

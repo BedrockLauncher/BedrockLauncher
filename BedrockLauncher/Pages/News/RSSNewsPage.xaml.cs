@@ -15,12 +15,10 @@ using System.Windows.Shapes;
 using CodeHollow.FeedReader;
 using BedrockLauncher.Classes.Launcher;
 using System.Diagnostics;
-using BedrockLauncher.Controls.Items;
 using System.Net;
 using System.Net.Http;
 using System.Collections.ObjectModel;
 using RestSharp;
-using BedrockLauncher.Pages.Common;
 
 namespace BedrockLauncher.Pages.News
 {

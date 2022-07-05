@@ -5,9 +5,10 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Controls;
 using System.Collections.ObjectModel;
+using BedrockLauncher.Controls;
 using PostSharp.Patterns.Model;
 using BedrockLauncher.Handlers;
-using BedrockLauncher.Core.Pages.Common;
+using BedrockLauncher.Pages.Preview;
 using BedrockLauncher.UI.Pages.Common;
 using BedrockLauncher.UI.Interfaces;
 using BedrockLauncher.UI.Components;
@@ -200,7 +201,7 @@ namespace BedrockLauncher.ViewModels
             get { Depends.On(MainWindow); return MainWindow.OverlayFrame; }
         }
         
-        public Controls.Various.UpdateButton UpdateButton
+        public UpdateButton UpdateButton
         {
             get { Depends.On(MainWindow); return MainWindow.UpdateButton; }
         }

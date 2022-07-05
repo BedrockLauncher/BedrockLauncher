@@ -1,5 +1,4 @@
-﻿using BedrockLauncher.Pages.Common;
-using BedrockLauncher.Enums;
+﻿using BedrockLauncher.Enums;
 using BedrockLauncher.ViewModels;
 using System;
 using System.Collections.Generic;

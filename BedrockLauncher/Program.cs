@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using BedrockLauncher.Localization.Language;
 using BedrockLauncher.Handlers;
-using BedrockLauncher.Pages.Common;
 using JemExtensions;
 using NLog;
 
