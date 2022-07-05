@@ -6,6 +6,7 @@
              xmlns:classes="clr-namespace:BedrockLauncher.Classes"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:vm="clr-namespace:BedrockLauncher.ViewModels"
+             xmlns:com="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
              xmlns:local="clr-namespace:BedrockLauncher.Controls.Toolbar"
              mc:Ignorable="d" 
              Height="59" Margin="1,0,0,0" VerticalAlignment="Top" Style="{DynamicResource DisabledStyle}"
@@ -13,15 +14,16 @@
              d:DataContext="{d:DesignInstance classes:MCProfile, IsDesignTimeCreatable=False}">
     <local:ToolbarButtonBase.Resources>
         <sys:String x:Key="ProfileName_DesignTime">Default Profile</sys:String>
-        <BitmapImage x:Key="ImagePath_DesignTime" UriSource="pack://application:,,,/BedrockLauncher;component/resources/images/icons/user_icon.png"/>
+        <com:AdvancedImageSourceConverter x:Key="AdvancedImageSourceConverter" CacheOption="OnLoad" UriKind="RelativeOrAbsolute" CreateOptions="IgnoreImageCache"></com:AdvancedImageSourceConverter>
+        <sys:String x:Key="ImagePath_DesignTime">pack://application:,,,/BedrockLauncher;component/resources/images/icons/user_icon.png"</sys:String>
     </local:ToolbarButtonBase.Resources>
     <ToggleButton IsThreeState="False" x:Name="SourceButton" Style="{StaticResource SideBarButtonStyle}" Click="SourceButton_Click" FontWeight="Normal" VerticalAlignment="Stretch" Checked="SourceButton_Checked" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="True" IsChecked="False">
         <ToggleButton.ContextMenu>
             <ContextMenu x:Name="ProfileContextMenu" ContextMenuClosing="ProfileContextMenu_ContextMenuClosing" Style="{DynamicResource NoCheckboxContextMenu}" IsOpen="False">
                 <MenuItem x:Name="AddProfileButton" Style="{DynamicResource IndentedMenuItem}" Header="{DynamicResource ProfileButton_AddProfile_Text}" Click="AddProfileButton_Click"></MenuItem>
-                <MenuItem x:Name="RemoveProfileButton" Style="{DynamicResource IndentedMenuItem}" Foreground="Red" Header="{DynamicResource ProfileButton_RemoveProfile_Text}" Click="RemoveProfileButton_Click"></MenuItem>
+                <MenuItem x:Name="EditProfileButton" Style="{DynamicResource IndentedMenuItem}" Header="{DynamicResource ProfileButton_ProfileSettings_Text}" IsEnabled="True" Click="EditProfileButton_Click"></MenuItem>
                 <MenuItem x:Name="ManageProfilesButton" Style="{DynamicResource IndentedMenuItem}" Header="{DynamicResource ProfileButton_ManageProfiles_Text}" IsEnabled="False" Click="ManageProfilesButton_Click" Visibility="Collapsed"></MenuItem>
-                <MenuItem x:Name="EditProfileButton" Style="{DynamicResource IndentedMenuItem}" Header="{DynamicResource ProfileButton_ProfileSettings_Text}" IsEnabled="False" Click="EditProfileButton_Click" Visibility="Collapsed"></MenuItem>
+                <MenuItem x:Name="RemoveProfileButton" Style="{DynamicResource IndentedMenuItem}" Foreground="Red" Header="{DynamicResource ProfileButton_RemoveProfile_Text}" Click="RemoveProfileButton_Click"></MenuItem>
                 <MenuItem x:Name="OtherAccountsHeader" Style="{DynamicResource IndentedMenuItem}" IsEnabled="False">
                     <MenuItem.Header>
                         <TextBlock Margin="0,18,0,0" Foreground="#FF929292" Text="{DynamicResource ProfileButton_ChooseAccount_Text}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
@@ -39,7 +41,7 @@
     </ToggleButton>
     <Border CornerRadius="15" IsHitTestVisible="False" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" VerticalAlignment="Center" Width="30" Height="30" Margin="14,0,0,3">
         <Border.Background>
-            <ImageBrush Stretch="Fill" ImageSource="{Binding ImagePath, FallbackValue={StaticResource ImagePath_DesignTime}, TargetNullValue={StaticResource ImagePath_DesignTime}}"/>
+            <ImageBrush Stretch="Fill" ImageSource="{Binding ImagePath, Converter={StaticResource AdvancedImageSourceConverter}, FallbackValue={StaticResource ImagePath_DesignTime}, TargetNullValue={StaticResource ImagePath_DesignTime}}"/>
         </Border.Background>
     </Border>
 </local:ToolbarButtonBase>

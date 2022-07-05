@@ -15,7 +15,6 @@
       Title="GeneralSettingsPage" Loaded="Page_Loaded" Initialized="Page_Initialized" MinWidth="728" MinHeight="525" Background="{DynamicResource Background.Secondary}">
     <Page.Resources>
         <wincontrols:BooleanToVisibilityConverter x:Key="BoolToVis"></wincontrols:BooleanToVisibilityConverter>
-        <com:UrlToImageSourceConverter x:Key="UrlToImageSourceConverter"></com:UrlToImageSourceConverter>
     </Page.Resources>
     <Grid Margin="0,0,0,0">
         <ScrollViewer>

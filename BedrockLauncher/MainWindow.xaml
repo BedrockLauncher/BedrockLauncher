@@ -32,7 +32,7 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel x:Name="buttonStackPanel" Grid.Column="0" Background="{DynamicResource Background.Primary}" HorizontalAlignment="Left">
-                <toolbar:ProfileButton IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default},Path=ProgressBarState.AllowEditing, Mode=OneWay}" x:Name="ProfileButton" Click="ProfileButton_Click"></toolbar:ProfileButton>
+                <toolbar:ProfileButton IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default},Path=ProgressBarState.AllowEditing, Mode=OneWay}" x:Name="ProfileButton" ></toolbar:ProfileButton>
                 <toolbar:NewsButton x:Name="NewsButton" Click="NewsButton_Click"></toolbar:NewsButton>
                 <toolbar:BedrockEditionButton x:Name="BedrockEditionButton" Click="BedrockEditionButton_Click"></toolbar:BedrockEditionButton>
             </StackPanel>

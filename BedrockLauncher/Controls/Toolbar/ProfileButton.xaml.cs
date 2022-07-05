@@ -19,6 +19,7 @@ using BedrockLauncher.Pages;
 using BedrockLauncher.Pages.Common;
 using BedrockLauncher.ViewModels;
 using BedrockLauncher.UI.Pages.Common;
+using BedrockLauncher.Pages.Preview;
 
 namespace BedrockLauncher.Controls.Toolbar
 {
@@ -70,8 +71,8 @@ namespace BedrockLauncher.Controls.Toolbar
                 OtherAccountsSeperator.Visibility = Visibility.Visible;
             }
 
-            ProfileContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Right;
-            ProfileContextMenu.PlacementRectangle = new Rect(0, SourceButton.ActualHeight, 0, 0);
+            ProfileContextMenu.Placement = PlacementMode.Right;
+            ProfileContextMenu.PlacementRectangle = new Rect(SourceButton.ActualWidth, SourceButton.ActualHeight, 0, 0);
             ProfileContextMenu.PlacementTarget = SourceButton;
             ProfileContextMenu.IsOpen = true;
         }
@@ -89,30 +90,38 @@ namespace BedrockLauncher.Controls.Toolbar
 
         private void EditProfileButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Dispatcher.Invoke(() =>
+            {
+                MainViewModel.Default.SetOverlayFrame(new EditProfileScreen(MainViewModel.Default.Config.CurrentProfile));
+            });
         }
 
         private void AddProfileButton_Click(object sender, RoutedEventArgs e)
         {
-                ToolbarButtonBase_Click(this, e);
-                //ViewModels.MainViewModel.MainThread.NavigateToNewProfilePage();
+            this.Dispatcher.Invoke(() =>
+            {
+                MainViewModel.Default.SetOverlayFrame(new EditProfileScreen());
+            });
         }
 
         private async void RemoveProfileButton_Click(object sender, RoutedEventArgs e)
         {
-            var profile = Properties.LauncherSettings.Default.CurrentProfileUUID;
-
-            var title = this.FindResource("Dialog_DeleteItem_Title") as string;
-            var content = this.FindResource("Dialog_DeleteItem_Text") as string;
-            var item = this.FindResource("Dialog_Item_Profile_Text") as string;
-
-            var result = await DialogPrompt.ShowDialog_YesNo(title, content, item, profile);
-
-            if (result == System.Windows.Forms.DialogResult.Yes)
+            string uuid = Properties.LauncherSettings.Default.CurrentProfileUUID;
+            if (MainViewModel.Default.Config.profiles.ContainsKey(uuid))
             {
-                MainViewModel.Default.Config.Profile_Remove(profile);
-            }
+                var profile = MainViewModel.Default.Config.profiles[uuid].Name;
 
+                var title = this.FindResource("Dialog_DeleteItem_Title") as string;
+                var content = this.FindResource("Dialog_DeleteItem_Text") as string;
+                var item = this.FindResource("Dialog_Item_Profile_Text") as string;
+
+                var result = await DialogPrompt.ShowDialog_YesNo(title, content, item, profile);
+
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    MainViewModel.Default.Config.Profile_Remove(uuid);
+                }
+            }
         }
 
         private void ProfileContextMenu_ContextMenuClosing(object sender, ContextMenuEventArgs e)

@@ -165,16 +165,6 @@ namespace BedrockLauncher
 
         }
 
-
-        public void NavigateToNewProfilePage()
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                MainViewModel.Default.SetOverlayFrame(new AddProfilePage());
-            });
-
-        }
-
         #endregion
 
         #region Toolbar Button Events
@@ -187,11 +177,6 @@ namespace BedrockLauncher
         private void NewsButton_Click(object sender, EventArgs e)
         {
             if (sender != null && sender is ToolbarButtonBase) ButtonManager_Base((sender as ToolbarButtonBase).Name);
-        }
-
-        private void ProfileButton_Click(object sender, EventArgs e)
-        {
-            NavigateToNewProfilePage();
         }
 
         private void SettingsButton_Click(object sender, EventArgs e)

@@ -14,8 +14,9 @@
              Height="45" Margin="1,0,0,0" VerticalAlignment="Top" MouseUp="Grid_MouseUp"
              d:DataContext="{d:DesignInstance classes:MCProfile, IsDesignTimeCreatable=False}">
     <Grid.Resources>
+        <conv:AdvancedImageSourceConverter x:Key="AdvancedImageSourceConverter" CacheOption="OnLoad" UriKind="RelativeOrAbsolute" CreateOptions="IgnoreImageCache"></conv:AdvancedImageSourceConverter>
         <sys:String x:Key="ProfileName_DesignTime">Default Profile</sys:String>
-        <BitmapImage x:Key="ImagePath_DesignTime" UriSource="pack://application:,,,/BedrockLauncher;component/resources/images/icons/user_icon.png"/>
+        <sys:String x:Key="ImagePath_DesignTime">pack://application:,,,/BedrockLauncher;component/resources/images/icons/user_icon.png"</sys:String>
     </Grid.Resources>
     <ToggleButton Click="SourceButton_Click" x:Name="SourceButton" Height="Auto" VerticalAlignment="Stretch" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="0,0,0,0" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Stretch" Focusable="False" IsChecked="True" Style="{DynamicResource ProfileSelectorStyle}">
         <ToggleButton.Content>
@@ -35,7 +36,7 @@
     </ToggleButton>
     <Border CornerRadius="15" IsHitTestVisible="False" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Left" VerticalAlignment="Center" Width="30" Height="30" Margin="5,0,0,0">
         <Border.Background>
-            <ImageBrush x:Name="ProfileImage" Stretch="Fill" ImageSource="{Binding ImagePath, FallbackValue={StaticResource ImagePath_DesignTime}, TargetNullValue={StaticResource ImagePath_DesignTime}}"></ImageBrush>
+            <ImageBrush x:Name="ProfileImage" Stretch="Fill" ImageSource="{Binding ImagePath, Converter={StaticResource AdvancedImageSourceConverter}, FallbackValue={StaticResource ImagePath_DesignTime}, TargetNullValue={StaticResource ImagePath_DesignTime}}"></ImageBrush>
         </Border.Background>
     </Border>
 </Grid>

@@ -12,6 +12,7 @@ using BedrockLauncher.Enums;
 using PostSharp.Patterns.Model;
 using System.ComponentModel;
 using BedrockLauncher.UI.Pages.Common;
+using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Classes
 {
@@ -209,19 +210,53 @@ namespace BedrockLauncher.Classes
             Save();
         }
 
+        private void GenerateProfileImage(string img, string uuid)
+        {
+            string path = MainViewModel.Default.FilePaths.GetProfilePath(uuid);
+            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+            string new_img = Path.Combine(path, Constants.PROFILE_CUSTOM_IMG_NAME);
+            File.Copy(img, new_img, true);
+        }
+
         #endregion
 
         #region Management Methods
 
-        public bool Profile_Add(string profile)
+        public bool Profile_Add(string name, string uuid, string directory, string img)
         {
-            string uuid = profile; //TODO: Improve Drastically
-            MCProfile profileSettings = new MCProfile(profile, ValidatePathName(profile), uuid);
+            var real_directory = ValidatePathName(directory);
+            MCProfile profileSettings = new MCProfile(name, real_directory, uuid);
+            
 
-            if (profiles.ContainsKey(profile)) return false;
+            if (profiles.ContainsKey(uuid)) return false;
             else
             {
                 profiles.Add(uuid, profileSettings);
+                GenerateProfileImage(img, uuid);
+
+                Profile_Switch(uuid);
+                Validate();
+                Save();
+                return true;
+            }
+
+            string ValidatePathName(string pathName)
+            {
+                char[] invalidFileNameChars = Path.GetInvalidFileNameChars();
+                return new string(pathName.Where(ch => !invalidFileNameChars.Contains(ch)).ToArray());
+            }
+        }
+        public bool Profile_Edit(string name, string uuid, string directory, string img)
+        {
+            var real_directory = ValidatePathName(directory);
+
+            if (!profiles.ContainsKey(uuid)) return false;
+            else
+            {
+                profiles[uuid].Name = name;
+                profiles[uuid].ProfilePath = name;
+                GenerateProfileImage(img, uuid);
+
                 Profile_Switch(uuid);
                 Validate();
                 Save();

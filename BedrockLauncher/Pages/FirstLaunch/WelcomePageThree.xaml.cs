@@ -27,38 +27,14 @@ namespace BedrockLauncher.Pages.FirstLaunch
             InitializeComponent();
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
+        private void ProfileControl_GoBack(object sender, EventArgs e)
         {
             pageSwitcher.MoveToPage(2);
         }
 
-        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        private void ProfileControl_Confirm(object sender, EventArgs e)
         {
-            if (e.Key == Key.Enter) 
-            {
-                if (ProfileNameTextbox.Text.Length >= 1) 
-                { 
-                    CreateProfile(ProfileNameTextbox.Text);
-                    pageSwitcher.MoveToPage(4);
-                };
-            }
-        }
-
-        private void CreateProfileButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (ProfileNameTextbox.Text.Length >= 1) 
-            { 
-                CreateProfile(ProfileNameTextbox.Text);
-                pageSwitcher.MoveToPage(4);
-            };
-        }
-        public void CreateProfile(string profileName)
-        {
-            if (MainViewModel.Default.Config.Profile_Add(ProfileNameTextbox.Text))
-            {
-                Properties.LauncherSettings.Default.CurrentProfileUUID = profileName;
-                Properties.LauncherSettings.Default.Save();
-            }
+            pageSwitcher.MoveToPage(4);
         }
     }
 }

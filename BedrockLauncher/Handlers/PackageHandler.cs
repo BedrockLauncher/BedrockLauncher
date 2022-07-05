@@ -396,7 +396,7 @@ namespace BedrockLauncher.Handlers
             }
             catch (Exception e)
             {
-                System.Diagnostics.Trace.WriteLine("Error while Authenticating UserToken for Version Fetching:\n" + e);
+                System.Diagnostics.Trace.WriteLine("Error while Authenticating UserToken for Version Fetching:\n" + e); //TODO: Localize Error Message
                 throw new BetaAuthenticationFailedException(e);
             }
         }
