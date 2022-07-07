@@ -51,14 +51,14 @@
                 </Grid>
             </Grid>
         </Border>
-        <ListView Grid.Row="1" x:Name="PatchNotesList" SourceUpdated="PatchNotesList_SourceUpdated" Keyboard.PreviewKeyUp="PatchNotesList_KeyUp" ItemsSource="{Binding PatchNotes}" ItemContainerStyle="{DynamicResource CardListViewItem}">
+        <ListView VerticalAlignment="Center" HorizontalAlignment="Center" Padding="65,0" Grid.Row="1" x:Name="PatchNotesList" SourceUpdated="PatchNotesList_SourceUpdated" Keyboard.PreviewKeyUp="PatchNotesList_KeyUp" ItemsSource="{Binding PatchNotes}" ItemContainerStyle="{DynamicResource CardListViewItem}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <vwp:VirtualizingWrapPanel Orientation="Vertical"/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
-                <DataTemplate DataType="{x:Type c:PatchNote}">
+                <DataTemplate DataType="{x:Type c:PatchNotes_Game_Item}">
                     <controls:FeedItem_PatchNotes DataContext="{Binding .}"></controls:FeedItem_PatchNotes>
                 </DataTemplate>
             </ListView.ItemTemplate>

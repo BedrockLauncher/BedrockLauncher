@@ -11,12 +11,20 @@ namespace JemExtensions
     {
         public static void LaunchWebLink(string url)
         {
-            var psi = new ProcessStartInfo
+            try
             {
-                FileName = url,
-                UseShellExecute = true
-            };
-            Process.Start(psi);
+                var psi = new ProcessStartInfo
+                {
+                    FileName = url,
+                    UseShellExecute = true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+
         }
     }
 }

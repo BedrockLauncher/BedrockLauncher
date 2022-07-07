@@ -604,6 +604,7 @@
 		<Resource Include="Resources\images\panels\CardBorder.png" />
 	</ItemGroup>
 	<ItemGroup>
+		<None Remove="Controls\FeedItem_PatchNotes.xaml.cs~RF88027b.TMP" />
 		<None Remove="Resources\images\icons\ico\grass_path_icon.ico" />
 		<None Remove="Resources\images\installation_icons\Acacia_Leaves.png" />
 		<None Remove="Resources\images\installation_icons\Ancient_Debris.png" />

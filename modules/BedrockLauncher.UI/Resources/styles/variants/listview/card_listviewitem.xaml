@@ -6,12 +6,12 @@
     <Style TargetType="{x:Type ListViewItem}" x:Key="CardListViewItem">
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Padding" Value="0,0"/>
-        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Margin" Value="7"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="Background" Value="{DynamicResource CardListViewItem.Static.Background}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource CardListViewItem.Static.Border}"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource BlankFocusVisual}"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -19,7 +19,7 @@
                     <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         <Border.Effect>
-                            <DropShadowEffect Color="Black" Opacity="0.3"></DropShadowEffect>
+                            <DropShadowEffect Color="Black" Opacity="0.3" BlurRadius="4" Direction="265" ShadowDepth="6"></DropShadowEffect>
                         </Border.Effect>
                     </Border>
                     <ControlTemplate.Triggers>

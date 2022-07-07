@@ -49,7 +49,7 @@ namespace BedrockLauncher.Pages.Play
 
         public bool Filter_PatchNotes(object obj)
         {
-            PatchNote v = obj as PatchNote;
+            PatchNotes_Game_Item v = obj as PatchNotes_Game_Item;
 
             if (v != null)
             {
@@ -76,7 +76,7 @@ namespace BedrockLauncher.Pages.Play
             {
                 if (PatchNotesList.SelectedItem != null)
                 {
-                    var item = PatchNotesList.SelectedItem as PatchNote;
+                    var item = PatchNotesList.SelectedItem as PatchNotes_Game_Item;
                     FeedItem_PatchNotes.LoadChangelog(item);
                 }
             }

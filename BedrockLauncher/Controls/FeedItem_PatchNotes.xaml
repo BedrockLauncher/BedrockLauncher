@@ -6,24 +6,15 @@
              xmlns:classes="clr-namespace:BedrockLauncher.Classes.Launcher"
              xmlns:converters="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
              x:Name="FeedItemEntry"
-             d:DataContext="{d:DesignInstance Type=classes:PatchNote}"
+             d:DataContext="{d:DesignInstance Type=classes:PatchNotes_Game_Item}"
              mc:Ignorable="d" 
-             Focusable="False"
-             Width="256" Height="256" Click="FeedItemButton_Click" Style="{DynamicResource EmptyButton}" BorderThickness="0">
-    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="256" Height="256" Background="Transparent">
+             Focusable="False" Padding="0" Margin="0" Click="FeedItemButton_Click" Style="{DynamicResource EmptyButton}" BorderThickness="0" Background="Transparent">
+    <Grid Background="Transparent" Width="240" Height="315">
         <Grid.RowDefinitions>
+            <RowDefinition Height="240"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-
-        <Image x:Name="RealImage" Grid.ColumnSpan="2" Grid.Row="0" Stretch="UniformToFill" Loaded="RealImage_Loaded" ImageFailed="RealImage_ImageFailed" />
-        <TextBlock Grid.ColumnSpan="2" Grid.Row="1" FontWeight="Black" FontSize="20" Margin="5" TextWrapping="Wrap" Foreground="White">
-            <Run Text="{Binding Tag, Mode=OneWay}"></Run>
-            <Run Text="{Binding Version, Mode=OneWay}"></Run>
-        </TextBlock>
+        <Image x:Name="RealImage" Stretch="UniformToFill" Loaded="RealImage_Loaded" ImageFailed="RealImage_ImageFailed" />
+        <TextBlock Text="{Binding title, Mode=OneWay}" Grid.ColumnSpan="2" Grid.Row="1" FontWeight="Bold" FontSize="16" Margin="10" TextWrapping="Wrap" Foreground="White"/>
     </Grid>
 </Button>

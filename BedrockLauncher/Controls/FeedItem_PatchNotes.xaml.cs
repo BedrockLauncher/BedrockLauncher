@@ -21,34 +21,33 @@ namespace BedrockLauncher.Controls
         private void FeedItemButton_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            PatchNote item = button.DataContext as PatchNote;
+            PatchNotes_Game_Item item = button.DataContext as PatchNotes_Game_Item;
             LoadChangelog(item);
         }
 
-        public static void LoadChangelog(PatchNote item)
+        public static void LoadChangelog(PatchNotes_Game_Item item)
         {
-            string header_title = string.Format("{0} {1}", (item.isBeta ? "Beta" : "Release"), item.Version);
-            ViewModels.MainViewModel.Default.SetOverlayFrame(new ChangelogPreviewPage(item.Content, header_title, item.Url));
+            ViewModels.MainViewModel.Default.SetOverlayFrame(new ChangelogPreviewPage(item.body, item.title, ""));
         }
 
         private ImageSource ToImageSource(string path, bool isFallback)
         {
             if (Uri.TryCreate(path, UriKind.RelativeOrAbsolute, out Uri url))
                 return new BitmapImage(url);
-            else if (!isFallback) return ToImageSource((this.DataContext as PatchNote).FallbackImage, true);
+            else if (!isFallback) return ToImageSource((this.DataContext as PatchNotes_Game_Item).image_url, true);
             else return null;
         }
 
         private void RealImage_ImageFailed(object sender, ExceptionRoutedEventArgs e)
         {
-            var dataContext = this.DataContext as PatchNote;
-            RealImage.SetCurrentValue(Image.SourceProperty, ToImageSource(dataContext.FallbackImage, true));
+            var dataContext = this.DataContext as PatchNotes_Game_Item;
+            RealImage.SetCurrentValue(Image.SourceProperty, ToImageSource(dataContext.fallback_image, true));
         }
 
         private void RealImage_Loaded(object sender, RoutedEventArgs e)
         {
-            var dataContext = this.DataContext as PatchNote;
-            RealImage.SetCurrentValue(Image.SourceProperty, ToImageSource(dataContext.ImageUrl, false));
+            var dataContext = this.DataContext as PatchNotes_Game_Item;
+            RealImage.SetCurrentValue(Image.SourceProperty, ToImageSource(dataContext.image_url, false));
         }
     }
 }

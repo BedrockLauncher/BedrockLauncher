@@ -45,6 +45,10 @@ namespace BedrockLauncher
         public static readonly string PATCHNOTE_BETA_IMG = "pack://application:,,,/BedrockLauncher;component/resources/images/packs/dev_pack_icon.png";
         public static readonly string PATCHNOTE_RELEASE_IMG = "pack://application:,,,/BedrockLauncher;component/resources/images/packs/pack_icon.png";
 
+        public static readonly string PATCHNOTES_IMGPREFIX_URL = @"https://launchercontent.mojang.com/";
+        public static readonly string PATCHNOTES_MAIN_URL = @"https://launchercontent.mojang.com/bedrockPatchNotes.json";
+        public static readonly string PATCHNOTES_TESTING_URL = @"https://launchercontent.mojang.com/testing/bedrockPatchNotes.json";
+
         public static readonly string RSS_FALLBACK_IMG = @"/BedrockLauncher;component/resources/images/packs/invalid_pack.png";
         public static readonly string RSS_LAUNCHER_IMG_PATH = @"https://launchercontent.mojang.com/";
         public static readonly string RSS_MINECRAFT_IMG_PATH = @"https://www.minecraft.net/";
