@@ -9,5 +9,5 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="WelcomePageOne" Width="596" Height="254">
-    <controls:AddProfileContainer x:Name="ProfileControl" GoBack="ProfileControl_GoBack" Confirm="ProfileControl_Confirm"></controls:AddProfileContainer>
+    <controls:Component_AddProfileContainer x:Name="ProfileControl" GoBack="ProfileControl_GoBack" Confirm="ProfileControl_Confirm"></controls:Component_AddProfileContainer>
 </Page>

@@ -59,7 +59,7 @@ namespace BedrockLauncher.Pages.News
             {
                 if (OfficalNewsFeed.SelectedItem != null)
                 {
-                    var item = OfficalNewsFeed.SelectedItem as NewsItem;
+                    var item = OfficalNewsFeed.SelectedItem as News_Item;
                     item.OpenLink();
                 }
             }

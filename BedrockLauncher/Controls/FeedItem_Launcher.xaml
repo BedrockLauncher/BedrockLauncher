@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:classes="clr-namespace:BedrockLauncher.Classes.Launcher"
              mc:Ignorable="d" 
-             d:DataContext="{d:DesignInstance Type=classes:AppPatchNote}"
+             d:DataContext="{d:DesignInstance Type=classes:PatchNote_Launcher}"
              Focusable="False"
              Width="256" Height="100" Click="FeedItemButton_Click" Style="{DynamicResource EmptyButton}" BorderThickness="0">
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="256" Height="100" Background="Transparent">

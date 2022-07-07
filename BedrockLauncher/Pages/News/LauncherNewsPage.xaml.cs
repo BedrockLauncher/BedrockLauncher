@@ -45,7 +45,7 @@ namespace BedrockLauncher.Pages.News
 
         public bool Filter_PatchNotes(object obj)
         {
-            AppPatchNote v = obj as AppPatchNote;
+            PatchNote_Launcher v = obj as PatchNote_Launcher;
 
             if (v != null)
             {
@@ -88,7 +88,7 @@ namespace BedrockLauncher.Pages.News
             {
                 if (UpdatesList.SelectedItem != null)
                 {
-                    var item = UpdatesList.SelectedItem as AppPatchNote;
+                    var item = UpdatesList.SelectedItem as PatchNote_Launcher;
                     FeedItem_Launcher.LoadChangelog(item);
                 }
             }

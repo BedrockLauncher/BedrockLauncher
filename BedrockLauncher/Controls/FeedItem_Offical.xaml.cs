@@ -14,14 +14,14 @@ namespace BedrockLauncher.Controls
             InitializeComponent();
         }
 
-        public static void LoadArticle(NewsItem item)
+        public static void LoadArticle(News_Item item)
         {
             JemExtensions.WebExtensions.LaunchWebLink(item.Link);
         }
 
         private void FeedItemEntry_Click(object sender, RoutedEventArgs e)
         {
-            NewsItem item = this.DataContext as NewsItem;
+            News_Item item = this.DataContext as News_Item;
             LoadArticle(item);
         }
     }

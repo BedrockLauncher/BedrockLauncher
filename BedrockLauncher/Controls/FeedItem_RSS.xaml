@@ -8,7 +8,7 @@
              x:Name="FeedItemEntry" mc:Ignorable="d" Focusable="False" Padding="0" Click="FeedItemEntry_Click"
              VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" FocusVisualStyle="{DynamicResource BlankFocusVisual}"
              Width="300" Height="200"
-             Style="{DynamicResource EmptyButton}" d:DataContext="{d:DesignInstance c:NewsItem_RSS}">
+             Style="{DynamicResource EmptyButton}" d:DataContext="{d:DesignInstance c:News_RssItem}">
     <Button.Resources>
         <sys:Double x:Key="ImageSize">150</sys:Double>
         <sys:Double x:Key="TagHeight">50</sys:Double>

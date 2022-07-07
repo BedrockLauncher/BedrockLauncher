@@ -24,19 +24,19 @@ namespace BedrockLauncher.Handlers
         #region Definitions
 
 
-        public List<UpdateNote> Notes
+        public List<GithubReleaseInfo> Notes
         {
             get
             {
-                var list = new List<UpdateNote>();
+                var list = new List<GithubReleaseInfo>();
                 list.AddRange(ReleaseNotes);
                 list.AddRange(BetaNotes);
                 list.Sort((x, y) => y.published_at.CompareTo(x.published_at));
                 return list;
             }
         }
-        private List<UpdateNote> ReleaseNotes { get; set; } = new List<UpdateNote>();
-        private List<UpdateNote> BetaNotes { get; set; } = new List<UpdateNote>();
+        private List<GithubReleaseInfo> ReleaseNotes { get; set; } = new List<GithubReleaseInfo>();
+        private List<GithubReleaseInfo> BetaNotes { get; set; } = new List<GithubReleaseInfo>();
 
 
 
@@ -161,14 +161,14 @@ namespace BedrockLauncher.Handlers
         }
 
 
-        private async Task<List<UpdateNote>> GetUpdateNotes(string url)
+        private async Task<List<GithubReleaseInfo>> GetUpdateNotes(string url)
         {
             HttpClient client = new HttpClient();
             string json = string.Empty;
             client.DefaultRequestHeaders.UserAgent.TryParseAdd(@"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36");
             var httpResponse = await client.GetStreamAsync(url);
             using (var streamReader = new StreamReader(httpResponse)) json = streamReader.ReadToEnd();
-            return JsonConvert.DeserializeObject<List<UpdateNote>>(json);
+            return JsonConvert.DeserializeObject<List<GithubReleaseInfo>>(json);
         }
     }
 }

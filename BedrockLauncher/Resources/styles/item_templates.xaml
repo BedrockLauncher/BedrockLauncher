@@ -5,7 +5,7 @@
                     xmlns:v="clr-namespace:System;assembly=mscorlib"
                     xmlns:controls="clr-namespace:BedrockLauncher.Controls">
     <DataTemplate x:Key="VersionItemTemplate" DataType="{x:Type classes2:MCVersion}">
-        <controls:VersionItem x:Name="ItemControl" DataContext="{Binding }" Tag="{Binding ElementName=PageHost}"></controls:VersionItem>
+        <controls:Component_VersionItem x:Name="ItemControl" DataContext="{Binding }" Tag="{Binding ElementName=PageHost}"></controls:Component_VersionItem>
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver}" Value="True">
                 <Setter TargetName="ItemControl" Property="ButtonPanelVisibility" Value="Visible"></Setter>

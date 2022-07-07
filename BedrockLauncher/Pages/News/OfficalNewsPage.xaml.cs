@@ -52,7 +52,7 @@ namespace BedrockLauncher.Pages.News
             {
                 if (OfficalNewsFeed.SelectedItem != null)
                 {
-                    var item = OfficalNewsFeed.SelectedItem as NewsItem_Offical;
+                    var item = OfficalNewsFeed.SelectedItem as News_OfficalItem;
                     FeedItem_Offical.LoadArticle(item);
                 }
             }

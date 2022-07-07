@@ -23,25 +23,25 @@ namespace BedrockLauncher.Downloaders
                 viewModel.FeedItemsOffical.Clear();
             });
 
-            NewsFeed_Offical result = null;
+            News_OfficalFeed result = null;
             using (var httpClient = new HttpClient())
             {
                 try
                 {
                     var json = await httpClient.GetStringAsync(Constants.RSS_LAUNCHER_URL);
-                    result = Newtonsoft.Json.JsonConvert.DeserializeObject<NewsFeed_Offical>(json);
+                    result = Newtonsoft.Json.JsonConvert.DeserializeObject<News_OfficalFeed>(json);
                 }
                 catch
                 {
-                    result = new NewsFeed_Offical();
+                    result = new News_OfficalFeed();
                 }
 
             }
-            if (result == null) result = new NewsFeed_Offical();
-            if (result.entries == null) result.entries = new List<NewsItem_Offical>();
+            if (result == null) result = new News_OfficalFeed();
+            if (result.entries == null) result.entries = new List<News_OfficalItem>();
 
             await Application.Current.Dispatcher.InvokeAsync(() => {
-                foreach (NewsItem_Offical item in result.entries)
+                foreach (News_OfficalItem item in result.entries)
                 {
                     if (item.newsType != null && item.newsType.Contains("News page")) viewModel.FeedItemsOffical.Add(item);
                 }
@@ -56,7 +56,7 @@ namespace BedrockLauncher.Downloaders
                 string latest_name = BedrockLauncher.Localization.Language.LanguageManager.GetResource("LauncherNewsPage_Title_Text").ToString();
                 foreach (var item in MainViewModel.Updater.Notes)
                 {
-                    AppPatchNote newItem = new AppPatchNote(item);
+                    PatchNote_Launcher newItem = new PatchNote_Launcher(item);
 
                     if (isFirstItem) newItem.isLatest = true; isFirstItem = false;
                     newItem.isBeta = item.url.Contains(BedrockLauncher.Core.GithubAPI.BETA_URL);
@@ -78,7 +78,7 @@ namespace BedrockLauncher.Downloaders
                     Feed feed = FeedReader.ReadFromString(rss);
                     foreach (FeedItem item in feed.Items)
                     {
-                        var new_item = new NewsItem_RSS(item, viewModel.RSSType);
+                        var new_item = new News_RssItem(item, viewModel.RSSType);
                         viewModel.FeedItems.Add(new_item);
                     }
                 }

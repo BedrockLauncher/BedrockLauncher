@@ -86,7 +86,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate DataType="{x:Type classes2:BLInstallation}">
                         <Grid Focusable="False" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                            <controls:InstallationItem x:Name="ItemControl" DataContext="{Binding }" Tag="{Binding ElementName=PageHost}"/>
+                            <controls:Component_InstallationItem x:Name="ItemControl" DataContext="{Binding }" Tag="{Binding ElementName=PageHost}"/>
                         </Grid>
                         <DataTemplate.Triggers>
                             <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver}" Value="True">
@@ -102,7 +102,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <controls:ResultPanel PanelType="NoContent" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="{Binding ElementName=InstallationsList, Path=Items.Count, Converter={StaticResource IntToVisibilityConverter}}"></controls:ResultPanel>
+            <controls:General_ResultPanel PanelType="NoContent" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="{Binding ElementName=InstallationsList, Path=Items.Count, Converter={StaticResource IntToVisibilityConverter}}"></controls:General_ResultPanel>
         </Grid>
     </Grid>
 </Page>

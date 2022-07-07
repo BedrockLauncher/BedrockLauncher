@@ -13,7 +13,7 @@ namespace BedrockLauncher.Controls
     /// </summary>
     public partial class Toolbar_ProfileButton : Toolbar_ButtonBase
     {
-        private List<ProfileItem> OtherAccountControls { get; set; } = new List<ProfileItem>();
+        private List<Toolbar_ProfileItem> OtherAccountControls { get; set; } = new List<Toolbar_ProfileItem>();
 
         public Toolbar_ProfileButton()
         {
@@ -32,7 +32,7 @@ namespace BedrockLauncher.Controls
 
             foreach (var entry in MainViewModel.Default.Config.profiles)
             {
-                ProfileItem profile = new ProfileItem(entry, this);
+                Toolbar_ProfileItem profile = new Toolbar_ProfileItem(entry, this);
                 if (!(profileCount <= 1))
                 {
                     OtherAccountControls.Add(profile);

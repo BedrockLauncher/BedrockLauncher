@@ -19,11 +19,11 @@ namespace BedrockLauncher.Controls
         private void FeedItemButton_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            AppPatchNote item = button.DataContext as AppPatchNote;
+            PatchNote_Launcher item = button.DataContext as PatchNote_Launcher;
             LoadChangelog(item);
         }
 
-        public static void LoadChangelog(AppPatchNote item)
+        public static void LoadChangelog(PatchNote_Launcher item)
         {
             string header_title = string.Format("{0} {1}", (item.isBeta ? "Beta" : "Release"), item.tag_name); //TODO: Localize
             string html = Markdown.ToHtml(item.body);

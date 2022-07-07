@@ -38,7 +38,7 @@ namespace BedrockLauncher.ViewModels
         public ProgressBarModel ProgressBarState { get; set; } = new ProgressBarModel();
         public PathHandler FilePaths { get; private set; } = new PathHandler();
         public PackageHandler PackageManager { get; set; } = new PackageHandler();
-        public MCProfilesList Config { get; private set; } = new MCProfilesList();
+        public BLProfileList Config { get; private set; } = new BLProfileList();
         public ObservableCollection<MCVersion> Versions { get; private set; } = new ObservableCollection<MCVersion>();
 
 
@@ -68,13 +68,13 @@ namespace BedrockLauncher.ViewModels
         {
             Application.Current.Dispatcher.Invoke(() =>
             {
-                Config = MCProfilesList.Load(FilePaths.GetProfilesFilePath(), Properties.LauncherSettings.Default.CurrentProfileUUID, Properties.LauncherSettings.Default.CurrentProfileUUID);
+                Config = BLProfileList.Load(FilePaths.GetProfilesFilePath(), Properties.LauncherSettings.Default.CurrentProfileUUID, Properties.LauncherSettings.Default.CurrentProfileUUID);
             });
         }
         public async void KillGame() => await PackageManager.ClosePackage();
         public async void RepairVersion(MCVersion v) => await PackageManager.DownloadPackage(v);
         public async void RemoveVersion(MCVersion v) => await PackageManager.RemovePackage(v);
-        public async void Play(MCProfile p, BLInstallation i, bool KeepLauncherOpen, bool Save = true)
+        public async void Play(BLProfile p, BLInstallation i, bool KeepLauncherOpen, bool Save = true)
         {
             if (i == null) return;
 
@@ -201,7 +201,7 @@ namespace BedrockLauncher.ViewModels
             get { Depends.On(MainWindow); return MainWindow.OverlayFrame; }
         }
         
-        public UpdateButton UpdateButton
+        public Component_UpdateButton UpdateButton
         {
             get { Depends.On(MainWindow); return MainWindow.UpdateButton; }
         }

@@ -63,6 +63,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <controls:ResultPanel PanelType="NoContent" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="{Binding ElementName=PatchNotesList, Path=Items.Count, Converter={StaticResource IntToVisibilityConverter}}"></controls:ResultPanel>
+        <controls:General_ResultPanel PanelType="NoContent" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="{Binding ElementName=PatchNotesList, Path=Items.Count, Converter={StaticResource IntToVisibilityConverter}}"></controls:General_ResultPanel>
     </Grid>
 </Page>

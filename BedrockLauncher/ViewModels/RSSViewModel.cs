@@ -20,7 +20,7 @@ namespace BedrockLauncher.ViewModels
         public static RSSViewModel MinecraftCommunity { get; set; } = new RSSViewModel(Constants.RSS_COMMUNITY_URL, RSSType.MinecraftRSS);
 
 
-        public ObservableCollection<NewsItem_RSS> FeedItems { get; set; } = new ObservableCollection<NewsItem_RSS>();
+        public ObservableCollection<News_RssItem> FeedItems { get; set; } = new ObservableCollection<News_RssItem>();
         public RSSType RSSType { get; set; } = RSSType.RSS;
         public string RSS_URL = string.Empty;
 

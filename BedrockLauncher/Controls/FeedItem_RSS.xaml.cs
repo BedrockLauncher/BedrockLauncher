@@ -16,7 +16,7 @@ namespace BedrockLauncher.Controls
 
         private void FeedItemEntry_Click(object sender, RoutedEventArgs e)
         {
-            NewsItem item = this.DataContext as NewsItem;
+            News_Item item = this.DataContext as News_Item;
             item.OpenLink();
         }
     }

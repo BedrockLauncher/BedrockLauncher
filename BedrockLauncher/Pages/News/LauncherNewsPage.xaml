@@ -70,11 +70,11 @@
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
-                <DataTemplate DataType="{x:Type classes:AppPatchNote}">
+                <DataTemplate DataType="{x:Type classes:PatchNote_Launcher}">
                     <controls:FeedItem_Launcher DataContext="{Binding .}" Padding="0,5"></controls:FeedItem_Launcher>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <controls:ResultPanel PanelType="NoContent" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="{Binding ElementName=UpdatesList, Path=Items.Count, Converter={StaticResource IntToVisibilityConverter}}"></controls:ResultPanel>
+        <controls:General_ResultPanel PanelType="NoContent" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="{Binding ElementName=UpdatesList, Path=Items.Count, Converter={StaticResource IntToVisibilityConverter}}"></controls:General_ResultPanel>
     </Grid>
 </Page>

@@ -22,11 +22,11 @@ namespace BedrockLauncher.Pages.Preview
     /// </summary>
     public partial class EditProfileScreen : Page
     {
-        public AddProfileContainer ProfileControl { get; set; }
-        public EditProfileScreen(MCProfile editable)
+        public Component_AddProfileContainer ProfileControl { get; set; }
+        public EditProfileScreen(BLProfile editable)
         {
             InitializeComponent();
-            ProfileControl = new AddProfileContainer(editable);
+            ProfileControl = new Component_AddProfileContainer(editable);
             ProfileControl.GoBack += ProfileControl_GoBack;
             ProfileControl.Confirm += ProfileControl_Confirm;
             ProfileControlContainer.Children.Add(ProfileControl);
@@ -34,7 +34,7 @@ namespace BedrockLauncher.Pages.Preview
         public EditProfileScreen()
         {
             InitializeComponent();
-            ProfileControl = new AddProfileContainer();
+            ProfileControl = new Component_AddProfileContainer();
             ProfileControl.GoBack += ProfileControl_GoBack;
             ProfileControl.Confirm += ProfileControl_Confirm;
             ProfileControlContainer.Children.Add(ProfileControl);

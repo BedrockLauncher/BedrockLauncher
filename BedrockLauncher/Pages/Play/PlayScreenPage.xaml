@@ -129,7 +129,7 @@
             <Button IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default},Path=ProgressBarState.AllowPlaying, Mode=OneWay}" x:Name="MainPlayButton" Click="MainPlayButton_Click" HorizontalAlignment="Center" Margin="286,-8,286,0" VerticalAlignment="Top" Width="250" Height="56" Padding="0" Style="{DynamicResource BigGreenButton}">
                 <TextBlock x:Name="PlayButtonText" Style="{DynamicResource BigGreenButton_Text}" Text="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.PlayButtonString, Mode=OneWay}"/>
             </Button>
-            <controls:InstallationSelector x:Name="InstallationsList" 
+            <controls:Component_InstallationSelector x:Name="InstallationsList" 
                                            ItemsSource="{Binding Config.CurrentInstallations}" 
                                            HorizontalAlignment="Left" Margin="4,4,0,4" 
                                            VerticalAlignment="Top" Width="250" Height="50"
@@ -138,7 +138,7 @@
                                            SelectedValue="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=Config.CurrentInstallationUUID, UpdateSourceTrigger=PropertyChanged}"
                                            SelectedValuePath="InstallationUUID"   
                                            Padding="-1,7,5,3">
-            </controls:InstallationSelector>
+            </controls:Component_InstallationSelector>
         </Grid>
     </Grid>
 

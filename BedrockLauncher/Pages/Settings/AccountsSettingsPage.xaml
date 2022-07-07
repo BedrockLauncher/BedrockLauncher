@@ -22,7 +22,7 @@
                     </TextBlock>
                 </StackPanel>
                 <TextBlock FontWeight="Bold" Margin="0,0,0,10" FontSize="11" Text="{DynamicResource AcountsSettingsPage_SelectedAccount_Subtitle}" Foreground="White" FontFamily="/BedrockLauncher.UI;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                <controls:InsiderCombobox x:Name="AccountPicker" HorizontalAlignment="Left" Margin="0,0,0,10"></controls:InsiderCombobox>
+                <controls:Setting_InsiderCombobox x:Name="AccountPicker" HorizontalAlignment="Left" Margin="0,0,0,10"></controls:Setting_InsiderCombobox>
                 <TextBlock FontWeight="Bold" Margin="0,0,0,5" FontSize="11" Text="{DynamicResource AcountsSettingsPage_InsiderHub_Text}" Foreground="White" FontFamily="/BedrockLauncher.UI;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                 <StackPanel Orientation="Horizontal" Margin="-4,0,0,15">
                     <Button Width="Auto" Height="30" HorizontalAlignment="Left" Content="{DynamicResource AcountsSettingsPage_InsiderHubNew_Text}" Style="{DynamicResource DialogButton}"  Click="XboxInsiderNew_Click"></Button>

@@ -65,11 +65,11 @@
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
-                <DataTemplate DataType="{x:Type c:NewsItem_Offical}">
+                <DataTemplate DataType="{x:Type c:News_OfficalItem}">
                     <controls:FeedItem_Offical DataContext="{Binding .}"></controls:FeedItem_Offical>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <controls:ResultPanel PanelType="NoNews" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="Collapsed"></controls:ResultPanel>
+        <controls:General_ResultPanel PanelType="NoNews" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="Collapsed"></controls:General_ResultPanel>
     </Grid>
 </Page>
