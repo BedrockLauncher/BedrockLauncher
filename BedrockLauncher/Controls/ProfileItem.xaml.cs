@@ -13,13 +13,13 @@ namespace BedrockLauncher.Controls
     public partial class ProfileItem : Grid
     {
         private string _ProfileName { get; set; }
-        private ProfileButton SelectorParent { get; set; }
+        private Toolbar_ProfileButton SelectorParent { get; set; }
         public ProfileItem()
         {
             InitializeComponent();
         }
 
-        public ProfileItem(KeyValuePair<string, MCProfile> profile, ProfileButton _selectorParent)
+        public ProfileItem(KeyValuePair<string, MCProfile> profile, Toolbar_ProfileButton _selectorParent)
         {
             InitializeComponent();
             this.SelectorParent = _selectorParent;

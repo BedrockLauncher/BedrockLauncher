@@ -4,7 +4,7 @@ using System.Windows.Controls;
 
 namespace BedrockLauncher.Controls
 {
-    public class ToolbarButtonBase : Grid
+    public class Toolbar_ButtonBase : Grid
     {
 
         public event EventHandler Click;

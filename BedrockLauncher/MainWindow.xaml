@@ -31,11 +31,11 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel x:Name="buttonStackPanel" Grid.Column="0" Background="{DynamicResource Background.Primary}" HorizontalAlignment="Left">
-                <controls:ProfileButton IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default},Path=ProgressBarState.AllowEditing, Mode=OneWay}" x:Name="ProfileButton" ></controls:ProfileButton>
-                <controls:NewsButton x:Name="NewsButton" Click="NewsButton_Click"></controls:NewsButton>
-                <controls:BedrockEditionButton x:Name="BedrockEditionButton" Click="BedrockEditionButton_Click"></controls:BedrockEditionButton>
+                <controls:Toolbar_ProfileButton IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default},Path=ProgressBarState.AllowEditing, Mode=OneWay}" x:Name="ProfileButton" ></controls:Toolbar_ProfileButton>
+                <controls:Toolbar_NewsButton x:Name="NewsButton" Click="NewsButton_Click"></controls:Toolbar_NewsButton>
+                <controls:Toolbar_BedrockEditionButton x:Name="BedrockEditionButton" Click="BedrockEditionButton_Click"></controls:Toolbar_BedrockEditionButton>
             </StackPanel>
-            <controls:SettingsButton x:Name="SettingsButton" Click="SettingsButton_Click"></controls:SettingsButton>
+            <controls:Toolbar_SettingsButton x:Name="SettingsButton" Click="SettingsButton_Click"></controls:Toolbar_SettingsButton>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>

@@ -5,10 +5,10 @@ namespace BedrockLauncher.Controls
     /// <summary>
     /// Interaction logic for BedrockEditionButton.xaml
     /// </summary>
-    public partial class BedrockEditionButton : ToolbarButtonBase
+    public partial class Toolbar_BedrockEditionButton : Toolbar_ButtonBase
     {
 
-        public BedrockEditionButton()
+        public Toolbar_BedrockEditionButton()
         {
             InitializeComponent();
             this.DataContext = ViewModels.MainViewModel.Default;

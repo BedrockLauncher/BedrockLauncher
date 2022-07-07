@@ -11,11 +11,11 @@ namespace BedrockLauncher.Controls
     /// <summary>
     /// Interaction logic for ProfileContextMenu.xaml
     /// </summary>
-    public partial class ProfileButton : ToolbarButtonBase
+    public partial class Toolbar_ProfileButton : Toolbar_ButtonBase
     {
         private List<ProfileItem> OtherAccountControls { get; set; } = new List<ProfileItem>();
 
-        public ProfileButton()
+        public Toolbar_ProfileButton()
         {
             InitializeComponent();
         }

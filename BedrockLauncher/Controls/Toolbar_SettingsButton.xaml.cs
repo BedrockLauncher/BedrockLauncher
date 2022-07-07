@@ -5,10 +5,10 @@ namespace BedrockLauncher.Controls
     /// <summary>
     /// Interaction logic for SideBarButton.xaml
     /// </summary>
-    public partial class SettingsButton : ToolbarButtonBase
+    public partial class Toolbar_SettingsButton : Toolbar_ButtonBase
     {
 
-        public SettingsButton()
+        public Toolbar_SettingsButton()
         {
             InitializeComponent();
         }

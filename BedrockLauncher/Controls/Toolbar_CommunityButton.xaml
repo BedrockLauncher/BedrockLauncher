@@ -1,4 +1,4 @@
-﻿<controls:ToolbarButtonBase x:Class="BedrockLauncher.Controls.NewsButton"
+﻿<controls:Toolbar_ButtonBase x:Class="BedrockLauncher.Controls.Toolbar_CommunityButton"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -10,9 +10,9 @@
              mc:Ignorable="d" Height="59" Margin="1,0,0,0" VerticalAlignment="Top">
     <ToggleButton x:Name="Button" Click="SideBarButton_Click" Style="{StaticResource SideBarButtonStyle}">
         <ToggleButton.ToolTip>
-            <ToolTip Content="{DynamicResource ToolbarButtons_NewsButton_Text}"/>
+            <ToolTip Content="{DynamicResource ToolbarButtons_CommunityButton_Text}"/>
         </ToggleButton.ToolTip>
-        <TextBlock Text="{DynamicResource ToolbarButtons_NewsButton_Text}" LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,3"/>
+        <TextBlock Text="{DynamicResource ToolbarButtons_CommunityButton_Text}" Foreground="Yellow" LineStackingStrategy="BlockLineHeight" Block.LineHeight="17" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="1,0,0,3"/>
     </ToggleButton>
-    <Image Style="{StaticResource SideBarButtonIcon}" Source="/BedrockLauncher;component/resources/images/icons/news_icon.png"/>
-</controls:ToolbarButtonBase>
+    <Image Style="{StaticResource SideBarButtonIcon}" Source="/BedrockLauncher;component/resources/images/icons/servers_icon.png"/>
+</controls:Toolbar_ButtonBase>

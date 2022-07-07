@@ -170,17 +170,17 @@ namespace BedrockLauncher
 
         private void BedrockEditionButton_Click(object sender, EventArgs e)
         {
-            if (sender != null && sender is ToolbarButtonBase) ButtonManager_Base((sender as ToolbarButtonBase).Name);
+            if (sender != null && sender is Toolbar_ButtonBase) ButtonManager_Base((sender as Toolbar_ButtonBase).Name);
         }
 
         private void NewsButton_Click(object sender, EventArgs e)
         {
-            if (sender != null && sender is ToolbarButtonBase) ButtonManager_Base((sender as ToolbarButtonBase).Name);
+            if (sender != null && sender is Toolbar_ButtonBase) ButtonManager_Base((sender as Toolbar_ButtonBase).Name);
         }
 
         private void SettingsButton_Click(object sender, EventArgs e)
         {
-            if (sender != null && sender is ToolbarButtonBase) ButtonManager_Base((sender as ToolbarButtonBase).Name);
+            if (sender != null && sender is Toolbar_ButtonBase) ButtonManager_Base((sender as Toolbar_ButtonBase).Name);
         }
 
         public void Dispose()

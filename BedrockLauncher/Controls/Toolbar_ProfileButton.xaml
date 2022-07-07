@@ -1,4 +1,4 @@
-﻿<controls:ToolbarButtonBase x:Class="BedrockLauncher.Controls.ProfileButton"
+﻿<controls:Toolbar_ButtonBase x:Class="BedrockLauncher.Controls.Toolbar_ProfileButton"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -12,11 +12,11 @@
              Height="59" Margin="1,0,0,0" VerticalAlignment="Top" Style="{DynamicResource DisabledStyle}"
              DataContext="{Binding Source={x:Static vm:MainViewModel.Default}, Path=Config}"
              d:DataContext="{d:DesignInstance classes:MCProfilesList, IsDesignTimeCreatable=False}">
-    <controls:ToolbarButtonBase.Resources>
+    <controls:Toolbar_ButtonBase.Resources>
         <sys:String x:Key="ProfileName_DesignTime">Default Profile</sys:String>
         <com:AdvancedImageSourceConverter x:Key="AdvancedImageSourceConverter" CacheOption="OnLoad" UriKind="RelativeOrAbsolute" CreateOptions="IgnoreImageCache"></com:AdvancedImageSourceConverter>
         <sys:String x:Key="ImagePath_DesignTime">pack://application:,,,/BedrockLauncher;component/resources/images/icons/user_icon.png"</sys:String>
-    </controls:ToolbarButtonBase.Resources>
+    </controls:Toolbar_ButtonBase.Resources>
     <ToggleButton IsThreeState="False" x:Name="SourceButton" Style="{StaticResource SideBarButtonStyle}" Click="SourceButton_Click" FontWeight="Normal" VerticalAlignment="Stretch" Checked="SourceButton_Checked" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="True" IsChecked="False">
         <ToggleButton.ContextMenu>
             <ContextMenu x:Name="ProfileContextMenu" ContextMenuClosing="ProfileContextMenu_ContextMenuClosing" Style="{DynamicResource NoCheckboxContextMenu}" IsOpen="False">
@@ -44,4 +44,4 @@
             <ImageBrush Stretch="Fill" ImageSource="{Binding CurrentProfile.ImagePath, Converter={StaticResource AdvancedImageSourceConverter}, FallbackValue={StaticResource ImagePath_DesignTime}, TargetNullValue={StaticResource ImagePath_DesignTime}}"/>
         </Border.Background>
     </Border>
-</controls:ToolbarButtonBase>
+</controls:Toolbar_ButtonBase>

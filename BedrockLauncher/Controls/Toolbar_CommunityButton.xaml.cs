@@ -3,12 +3,12 @@
 namespace BedrockLauncher.Controls
 {
     /// <summary>
-    /// Interaction logic for NewsButton.xaml
+    /// Interaction logic for ServersButton.xaml
     /// </summary>
-    public partial class NewsButton : ToolbarButtonBase
+    public partial class Toolbar_CommunityButton : Toolbar_ButtonBase
     {
 
-        public NewsButton()
+        public Toolbar_CommunityButton()
         {
             InitializeComponent();
         }
@@ -17,6 +17,7 @@ namespace BedrockLauncher.Controls
         {
             ToolbarButtonBase_Click(this, e);
             //ViewModels.MainViewModel.MainThread.ButtonManager_Base(this.Name);
+
         }
     }
 }
