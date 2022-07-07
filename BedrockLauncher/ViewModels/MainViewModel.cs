@@ -86,8 +86,23 @@ namespace BedrockLauncher.ViewModels
                 Properties.LauncherSettings.Default.CurrentInstallationUUID = i.InstallationUUID;
                 Properties.LauncherSettings.Default.Save();
             }
-            
-            await PackageManager.LaunchPackage(i.Version, MainViewModel.Default.FilePaths.GetInstallationPackageDataPath(p.UUID, i.DirectoryName_Full), KeepLauncherOpen);
+
+
+            var Version = i.Version;
+            var Path = MainViewModel.Default.FilePaths.GetInstallationPackageDataPath(p.UUID, i.DirectoryName_Full);
+
+            await PackageManager.InstallPackage(Version, Path);
+            await PackageManager.LaunchPackage(Version, Path, KeepLauncherOpen);
+        }
+
+        public async void Install(BLProfile p, BLInstallation i)
+        {
+            if (i == null) return;
+
+            var Version = i.Version;
+            var Path = MainViewModel.Default.FilePaths.GetInstallationPackageDataPath(p.UUID, i.DirectoryName_Full);
+
+            await PackageManager.InstallPackage(Version, Path);
         }
 
         #endregion

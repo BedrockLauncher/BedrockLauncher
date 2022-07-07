@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -57,6 +58,22 @@ namespace BedrockLauncher.Pages.Settings
         private void CollectionViewSource_Filter(object sender, FilterEventArgs e)
         {
             e.Accepted = FilterSortingHandler.Filter_VersionList(e.Item);
+        }
+
+        private async void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog()
+            {
+                Filter = "APPX Files (*.appx)|*.appx"
+            };
+
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string fileToImport = ofd.FileName;
+                await MainViewModel.Default.PackageManager.AddPackage(fileToImport);
+                await Task.Run(Program.OnApplicationRefresh);
+                foreach (var ver in MainViewModel.Default.Versions) ver.UpdateFolderSize();
+            }
         }
     }
 }

@@ -51,14 +51,6 @@ namespace BedrockLauncher.Handlers
             try
             {
                 StartTask();
-
-                if (!v.IsInstalled) await DownloadAndExtractPackage(v);
-
-                await UnregisterPackage(v, true);
-                await RegisterPackage(v);
-
-                await RedirectSaveData(dirPath, v.Type); 
-
                 MainViewModel.Default.ProgressBarState.SetProgressBarState(LauncherState.isLaunching);
 
                 var pkg = await AppDiagnosticInfo.RequestInfoForPackageAsync(Constants.GetPackageFamily(v.Type));
@@ -75,6 +67,32 @@ namespace BedrockLauncher.Handlers
             catch (Exception e)
             {
                 SetException(new AppLaunchFailedException(e));
+            }
+            finally
+            {
+                EndTask();
+            }
+        }
+        public async Task InstallPackage(MCVersion v, string dirPath)
+        {
+            try
+            {
+                StartTask();
+                if (!v.IsInstalled) await DownloadAndExtractPackage(v);
+
+                await UnregisterPackage(v, true);
+                await RegisterPackage(v);
+
+                await RedirectSaveData(dirPath, v.Type);
+
+            }
+            catch (PackageManagerException e)
+            {
+                SetException(e);
+            }
+            catch (Exception e)
+            {
+                SetException(new AppInstallFailedException(e));
             }
             finally
             {
@@ -112,6 +130,35 @@ namespace BedrockLauncher.Handlers
             catch (Exception ex) 
             {
                 SetException(new PackageRemovalFailedException(ex));
+            }
+            finally
+            {
+                EndTask();
+            }
+        }
+        public async Task AddPackage(string packagePath)
+        {
+            try
+            {
+                if (!File.Exists(packagePath)) return;
+                StartTask();
+                var outputDirectoryName = FileExtensions.GetAvaliableFileName(Path.GetFileNameWithoutExtension(packagePath), MainViewModel.Default.FilePaths.VersionsFolder);
+                var outputDirectoryPath = Path.Combine(MainViewModel.Default.FilePaths.VersionsFolder, outputDirectoryName);
+                Trace.WriteLine("Extraction started");
+                MainViewModel.Default.ProgressBarState.SetProgressBarState(LauncherState.isExtracting);
+                var fileStream = File.OpenRead(packagePath);
+                var progress = new Progress<ZipProgress>();
+                progress.ProgressChanged += (s, z) => MainViewModel.Default.ProgressBarState.SetProgressBarProgress(currentProgress: z.Processed, totalProgress: z.Total);
+                await Task.Run(() => new ZipArchive(fileStream).ExtractToDirectory(outputDirectoryPath, progress, CancelSource));
+                fileStream.Close();
+            }
+            catch (PackageManagerException e)
+            {
+                SetException(e);
+            }
+            catch (Exception e)
+            {
+                SetException(new PackageAddFailedException(e));
             }
             finally
             {
@@ -158,8 +205,6 @@ namespace BedrockLauncher.Handlers
                 await DownloadPackage(v, dlPath, CancelSource);
                 await ExtractPackage(v, dlPath, CancelSource);
 
-                SetCancelation(false);
-                CancelSource = null;
                 v.UpdateFolderSize();
             }
             catch (PackageManagerException e)
@@ -175,6 +220,8 @@ namespace BedrockLauncher.Handlers
             finally
             {
                 ResetTask();
+                SetCancelation(false);
+                CancelSource = null;
             }
 
         }

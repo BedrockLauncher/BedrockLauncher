@@ -74,6 +74,8 @@
                         <MenuItem Header="{DynamicResource GeneralText_Edit}" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="EditInstallationButton" Click="EditInstallationButton_Click"  Visibility="{Binding ReadOnly, Converter={StaticResource VisibleIfTrueConverter}, ConverterParameter=Inverted}"></MenuItem>
                         <MenuItem Header="{DynamicResource GeneralText_Delete}" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="DeleteInstallationButton" Click="DeleteInstallationButton_Click"  Visibility="{Binding ReadOnly, Converter={StaticResource VisibleIfTrueConverter}, ConverterParameter=Inverted}"></MenuItem>
                         <MenuItem Header="{DynamicResource GeneralText_Duplicate}" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="DuplicateInstallationButton" Click="DuplicateInstallationButton_Click"></MenuItem>
+                        <Separator></Separator>
+                        <MenuItem Header="{DynamicResource GeneralText_Install}" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="InstallInstallationButton" Click="InstallInstallationButton_Click"  Visibility="{Binding ReadOnly, Converter={StaticResource VisibleIfTrueConverter}, ConverterParameter=Inverted}"></MenuItem>
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>

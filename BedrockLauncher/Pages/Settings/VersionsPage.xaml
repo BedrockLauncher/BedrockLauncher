@@ -48,7 +48,10 @@
                 </Grid>
             </Grid>
         </Border>
-        <Button VerticalAlignment="Center" Margin="10,10" FontSize="14" x:Name="RefreshButton" IsEnabled="{Binding IsVersionsUpdating, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource InverseBooleanConverter}}" HorizontalAlignment="Right" Click="RefreshButton_Click" Content="{DynamicResource GeneralText_Refresh}" Style="{DynamicResource LinkButton}"></Button>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,10">
+            <Button FontSize="14" HorizontalAlignment="Right" x:Name="RefreshButton" IsEnabled="{Binding IsVersionsUpdating, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource InverseBooleanConverter}}" Click="RefreshButton_Click" Content="{DynamicResource GeneralText_Refresh}" Style="{DynamicResource LinkButton}"></Button>
+            <Button FontSize="14" HorizontalAlignment="Right" x:Name="AddButton" IsEnabled="{Binding IsVersionsUpdating, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource InverseBooleanConverter}}" Click="AddButton_Click" Content="{DynamicResource VersionsPage_InstallVersion}" Style="{DynamicResource LinkButton}"/>
+        </StackPanel>
         <ListView x:Name="VersionsList" ItemsSource="{Binding Source={StaticResource VersionsSource}, IsAsync=True}" SelectionMode="Single" Grid.Row="1" HorizontalContentAlignment="Center" ItemTemplate="{StaticResource VersionItemTemplate}"/>
     </Grid>
 </Page>

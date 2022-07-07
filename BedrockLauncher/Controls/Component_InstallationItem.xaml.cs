@@ -131,5 +131,12 @@ namespace BedrockLauncher.Controls
         {
             UpdateButtonVisibility();
         }
+
+        private void InstallInstallationButton_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem button = sender as MenuItem;
+            var installation = button.DataContext as BLInstallation;
+            MainViewModel.Default.Install(MainViewModel.Default.Config.CurrentProfile, installation);
+        }
     }
 }
