@@ -26,7 +26,7 @@
             <Setter Property="IsEnabled" Value="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}"/>
         </Style>
     </Page.Resources>
-    <Grid Margin="0" Background="#FF303030" Style="{DynamicResource DisabledStyle}">
+    <Grid Margin="0" Background="#FF303030" Style="{DynamicResource DisabledStyle}" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"></RowDefinition>
             <RowDefinition></RowDefinition>

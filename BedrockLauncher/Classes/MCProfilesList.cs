@@ -421,9 +421,9 @@ namespace BedrockLauncher.Classes
 
         #region Extensions
 
-        public static void GetVersionParams(MCVersion version, out VersioningMode versioningMode, out string version_uuid)
+        public static void GetVersionParams(MCVersion version, out VersioningMode versioningMode, out string version_id)
         {
-            version_uuid = Constants.LATEST_RELEASE_UUID;
+            version_id = Constants.LATEST_RELEASE_UUID;
             versioningMode = VersioningMode.LatestRelease;
 
             if (version != null)
@@ -433,7 +433,7 @@ namespace BedrockLauncher.Classes
                 else if (version.UUID == Constants.LATEST_PREVIEW_UUID) versioningMode = VersioningMode.LatestPreview;
                 else versioningMode = VersioningMode.None;
 
-                version_uuid = version.UUID;
+                version_id = version.UUID;
             }
         }
 

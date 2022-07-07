@@ -149,8 +149,8 @@ namespace BedrockLauncher.Handlers
                 MCVersion GenerateVersion(VersionType type)
                 {
                     return type == VersionType.Preview ?
-                        new MCVersion(Constants.LATEST_PREVIEW_UUID, "", VersionType.Preview, Constants.CurrentArchitecture) :
-                        new MCVersion(Constants.LATEST_RELEASE_UUID, "", VersionType.Release, Constants.CurrentArchitecture);
+                        new MCVersion(Constants.LATEST_PREVIEW_UUID, Constants.LATEST_PREVIEW_UUID, "", VersionType.Preview, Constants.CurrentArchitecture) :
+                        new MCVersion(Constants.LATEST_RELEASE_UUID, Constants.LATEST_RELEASE_UUID, "", VersionType.Release, Constants.CurrentArchitecture);
                 }
             });
 

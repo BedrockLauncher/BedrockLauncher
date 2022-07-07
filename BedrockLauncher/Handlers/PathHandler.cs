@@ -43,6 +43,7 @@ namespace BedrockLauncher.Handlers
             }
         }
         public string DefaultLocation { get => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), AppDataFolderName); }
+        public string VersionsFolder => CurrentLocation + "\\versions\\";
 
         #endregion
 

@@ -185,7 +185,7 @@ namespace BedrockLauncher.Handlers
                 if (v.IsBeta) await AuthenticateBetaUser();
                 MainViewModel.Default.ProgressBarState.SetProgressBarState(LauncherState.isDownloading);
                 Trace.WriteLine("Download starting");
-                await VersionDownloader.DownloadVersion(v.DisplayName, v.UUID, 1, dlPath, (x, y) => ProgressWrapper(x, y), cancelSource.Token, v.Type);
+                await VersionDownloader.DownloadVersion(v.DisplayName, v.PackageID, 1, dlPath, (x, y) => ProgressWrapper(x, y), cancelSource.Token, v.Type);
                 Trace.WriteLine("Download complete");
             }
             catch (PackageManagerException e)
@@ -250,6 +250,7 @@ namespace BedrockLauncher.Handlers
                 await Task.Run(() => new ZipArchive(fileStream).ExtractToDirectory(v.GameDirectory, progress, cancelSource));
 
                 fileStream.Close();
+                await File.WriteAllTextAsync(v.IdentificationPath, v.PackageID);
                 File.Delete(Path.Combine(v.GameDirectory, "AppxSignature.p7x"));
                 File.Delete(dlPath);
 

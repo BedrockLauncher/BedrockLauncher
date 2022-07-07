@@ -30,6 +30,7 @@ namespace BedrockLauncher
         public static readonly string UPDATES_RELEASE_PAGE = "https://github.com/BedrockLauncher/BedrockLauncher/releases";
         public static readonly string UPDATES_BETA_PAGE = "https://github.com/BedrockLauncher/BedrockLauncher-Beta/releases";
 
+        public static readonly string CUSTOM_VERSION_ICONPATH = @"/BedrockLauncher;component/resources/images/icons/ico/package.ico";
         public static readonly string BETA_VERSION_ICONPATH = @"/BedrockLauncher;component/resources/images/icons/ico/crafting_table_block_icon.ico";
         public static readonly string RELEASE_VERSION_ICONPATH = @"/BedrockLauncher;component/resources/images/icons/ico/grass_block_icon.ico";
         public static readonly string PREVIEW_VERSION_ICONPATH = @"/BedrockLauncher;component/resources/images/icons/ico/grass_path_icon.ico";

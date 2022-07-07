@@ -14,6 +14,19 @@ namespace JemExtensions
     public static class FileExtensions
     {
 
+
+        public static async Task<string> TryReadAllTextAsync(string path, string fallbackValue = null)
+        {
+            string result;
+            try
+            {
+                if (File.Exists(path)) result = await File.ReadAllTextAsync(path);
+                else result = fallbackValue;
+            }
+            catch { result = fallbackValue; }
+            return result;
+        }
+
         public static string GetAvaliableFileName(string fileName, string directory, string format = "_{0}")
         {
             int i = 0;
