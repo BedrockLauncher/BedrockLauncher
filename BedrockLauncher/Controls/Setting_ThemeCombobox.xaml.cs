@@ -1,6 +1,10 @@
-﻿using System;
+﻿using BedrockLauncher.ViewModels;
+using System;
+using System.IO;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace BedrockLauncher.Controls
 {
@@ -22,8 +26,49 @@ namespace BedrockLauncher.Controls
             Properties.LauncherSettings.Default.Save();
         }
 
+        private void GenerateItems()
+        {
+            AddItem("LatestUpdate", Brushes.Yellow);
+            foreach (var entry in Constants.Themes) AddItem(entry.Key);
+            GetCustomItems();
+
+            void GetCustomItems()
+            {
+                DirectoryInfo directoryInfo = Directory.CreateDirectory(MainViewModel.Default.FilePaths.ThemesFolder);
+                foreach (var file in directoryInfo.GetFiles())
+                {
+                    if (file.Extension == ".png" || file.Extension == ".jpg" || file.Extension == ".jpeg")
+                    {
+                        AddItem(file.Name, Brushes.LightYellow, true);
+                    }
+                }
+            }
+            
+            
+            void AddItem(string tag, Brush brush = null, bool isCustom = false)
+            {
+                var item = new ComboBoxItem();
+                item.VerticalContentAlignment = System.Windows.VerticalAlignment.Center;
+
+                if (brush != null) item.Foreground = brush;
+                if (isCustom)
+                {
+                    item.Tag = string.Format("{0}{1}", Constants.ThemesCustomPrefix, tag);
+                    item.Content = string.Format("{0} - {1}", Application.Current.TryFindResource("ThemeEntries_Custom").ToString(), tag);
+                }
+                else
+                {
+                    item.Tag = tag;
+                    item.SetResourceReference(ComboBoxItem.ContentProperty, "ThemeEntries_" + tag);
+                }
+                this.Items.Add(item);
+            }
+        }
+
         private void ThemeCombobox_Initialized(object sender, EventArgs e)
         {
+            GenerateItems();
+
             var items = this.Items.Cast<ComboBoxItem>().Select(x => x).ToList();
 
             var item = this.SelectedItem as ComboBoxItem;

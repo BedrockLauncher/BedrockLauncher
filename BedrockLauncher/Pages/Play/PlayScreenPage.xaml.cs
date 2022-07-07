@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.ViewModels;
+using System.Diagnostics;
+using System.IO;
 
 namespace BedrockLauncher.Pages.Play
 {
@@ -31,6 +33,17 @@ namespace BedrockLauncher.Pages.Play
         {
             return Constants.Themes.First().Value;
         }
+
+        private string GetCustomImage(string result)
+        {
+            DirectoryInfo directoryInfo = Directory.CreateDirectory(MainViewModel.Default.FilePaths.ThemesFolder);
+            foreach (var file in directoryInfo.GetFiles())
+            {
+                if (file.Name == result) return file.FullName;
+            }
+            return Constants.Themes.Where(x => x.Key == "Original").FirstOrDefault().Value;
+        }
+
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             this.Dispatcher.Invoke(() =>
@@ -53,19 +66,37 @@ namespace BedrockLauncher.Pages.Play
                     BugrockOfTheWeekLogo.Visibility = Visibility.Collapsed;
                 }
 
-                switch (currentTheme)
+
+                if (currentTheme.StartsWith(Constants.ThemesCustomPrefix))
                 {
-                    case "LatestUpdate":
-                        packUri = GetLatestImage();
-                        break;
-                    default:
-                        if (Constants.Themes.ContainsKey(currentTheme)) packUri = Constants.Themes.Where(x => x.Key == currentTheme).FirstOrDefault().Value;
-                        else packUri = Constants.Themes.Where(x => x.Key == "Original").FirstOrDefault().Value;
-                        break;
+                    packUri = GetCustomImage(currentTheme.Remove(0, Constants.ThemesCustomPrefix.Length));
+                }
+                else
+                {
+                    switch (currentTheme)
+                    {
+                        case "LatestUpdate":
+                            packUri = GetLatestImage();
+                            break;
+                        default:
+                            if (Constants.Themes.ContainsKey(currentTheme)) packUri = Constants.Themes.Where(x => x.Key == currentTheme).FirstOrDefault().Value;
+                            else packUri = Constants.Themes.Where(x => x.Key == "Original").FirstOrDefault().Value;
+                            break;
+                    }
                 }
 
-                var bmp = new BitmapImage(new Uri(packUri, UriKind.Absolute));
-                ImageBrush.ImageSource = bmp;
+
+
+                try
+                {
+                    var bmp = new BitmapImage(new Uri(packUri, UriKind.Absolute));
+                    ImageBrush.ImageSource = bmp;
+                }
+                catch (Exception ex)
+                {
+                    Trace.TraceError(ex.ToString());
+                }
+
             });
         }
         private void MainPlayButton_Click(object sender, RoutedEventArgs e)

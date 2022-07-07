@@ -136,6 +136,11 @@
 		<ProjectReference Include="..\modules\Extensions.NET\JemExtensions.csproj" />
 	</ItemGroup>
 	<ItemGroup>
+		<Resource Include="Resources\images\bg\play_screen\1.17_caves_and_cliffs_part_2.jpg" />
+		<Resource Include="Resources\images\bg\play_screen\bedrock_and_java_together.jpg">
+		  <CopyToOutputDirectory></CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Resources\images\bg\play_screen\bedrock_and_java_together_technoblade.jpg" />
 		<Resource Include="Resources\images\icons\ico\grass_path_icon.ico" />
 		<Resource Include="Resources\images\installation_icons\Acacia_Leaves.png" />
 		<Resource Include="Resources\images\installation_icons\Ancient_Debris.png" />
@@ -605,6 +610,9 @@
 	</ItemGroup>
 	<ItemGroup>
 		<None Remove="Controls\FeedItem_PatchNotes.xaml.cs~RF88027b.TMP" />
+		<None Remove="Resources\images\bg\play_screen\1.17_caves_and_cliffs_part_2.jpg" />
+		<None Remove="Resources\images\bg\play_screen\bedrock_and_java_together.jpg" />
+		<None Remove="Resources\images\bg\play_screen\bedrock_and_java_together_technoblade.jpg" />
 		<None Remove="Resources\images\icons\ico\grass_path_icon.ico" />
 		<None Remove="Resources\images\installation_icons\Acacia_Leaves.png" />
 		<None Remove="Resources\images\installation_icons\Ancient_Debris.png" />

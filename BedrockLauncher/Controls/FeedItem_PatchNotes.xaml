@@ -14,7 +14,7 @@
             <RowDefinition Height="240"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Image x:Name="RealImage" Stretch="UniformToFill" Loaded="RealImage_Loaded" ImageFailed="RealImage_ImageFailed" />
+        <Image RenderOptions.BitmapScalingMode="NearestNeighbor" x:Name="RealImage" Stretch="UniformToFill" Loaded="RealImage_Loaded" ImageFailed="RealImage_ImageFailed" />
         <TextBlock Text="{Binding title, Mode=OneWay}" Grid.ColumnSpan="2" Grid.Row="1" FontWeight="Bold" FontSize="16" Margin="10" TextWrapping="Wrap" Foreground="White"/>
     </Grid>
 </Button>
