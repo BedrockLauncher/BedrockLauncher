@@ -106,7 +106,6 @@
 		<PackageReference Include="FolderBrowserEx" Version="1.0.1" />
 		<PackageReference Include="GitInfo" Version="2.2.0" />
 		<PackageReference Include="HtmlAgilityPack" Version="1.11.40" />
-		<PackageReference Include="HtmlRenderer.Core.NetStandard2" Version="1.5.1" />
 		<PackageReference Include="ini-parser-netcore" Version="3.0.0" />
 		<PackageReference Include="Markdig" Version="0.30.2" />
 		<PackageReference Include="MdXaml" Version="1.12.0" />
@@ -134,6 +133,7 @@
 		<ProjectReference Include="..\modules\BedrockLauncher.UI\BedrockLauncher.UI.csproj" />
 		<ProjectReference Include="..\modules\BedrockLauncher.UpdateProcessor\BedrockLauncher.UpdateProcessor.csproj" />
 		<ProjectReference Include="..\modules\Extensions.NET\JemExtensions.csproj" />
+		<ProjectReference Include="..\modules\HtmlRenderer.WPF\HtmlRenderer.WPF.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="Resources\images\bg\play_screen\1.17_caves_and_cliffs_part_2.jpg" />

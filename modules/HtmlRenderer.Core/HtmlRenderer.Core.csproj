@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <Description>PDF document generator from HTML snippet, 100% managed (C#), High performance library using PdfSharp.</Description>
+    <Version>1.5.1.1</Version>
+    <Company>TheArtOfDev</Company>
+    <Product>HtmlRenderer.Core</Product>
+    <Authors>Arthur Teplitzki, Lionel Vallet</Authors>
+    <Description>.NET port of HtmlRenderer
+        
+Cross framework (WinForms/WPF/PDF/Metro/Mono/etc.), Multipurpose (UI Controls / Image generation / PDF generation / etc.), 100% managed (C#), High performance HTML Rendering library.
+
+The Core assembly of HTML Renderer does not bound to any rendering framework (WinForms/WPF/PDF/etc.).
+Can be used to create framework specific renderer using adapter extensibility object model.
+For existing implementations see: HtmlRenderer.WinForms, HtmlRenderer.WPF and HtmlRenderer.PdfSharp.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Core\Utils\ImageError.png" />
+    <None Remove="Core\Utils\ImageLoad.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Core\Utils\ImageError.png" />
+    <EmbeddedResource Include="Core\Utils\ImageLoad.png" />
+  </ItemGroup>
+
+</Project>

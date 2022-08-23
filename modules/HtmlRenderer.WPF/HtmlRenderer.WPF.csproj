@@ -14,9 +14,11 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="HtmlRenderer.Core.NetStandard2" Version="1.5.1" />
     <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.261602">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HtmlRenderer.Core\HtmlRenderer.Core.csproj" />
   </ItemGroup>
 </Project>
