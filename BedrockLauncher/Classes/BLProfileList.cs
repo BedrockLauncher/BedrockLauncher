@@ -226,7 +226,19 @@ namespace BedrockLauncher.Classes
             string path = MainViewModel.Default.FilePaths.GetProfilePath(uuid);
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
             string new_img = Path.Combine(path, Constants.PROFILE_CUSTOM_IMG_NAME);
-            File.Copy(img, new_img, true);
+            if (string.IsNullOrEmpty(img)) return;
+            else
+            {
+                try
+                {
+                    File.Copy(img, new_img, true);
+                }
+                catch
+                {
+                    //TODO: Add Error Message
+                }
+            }
+
         }
 
         #endregion
