@@ -5,7 +5,7 @@ Contributing is an essential part of open source projects like Bedrock Launcher;
 ## Soft Floor Code Regulations
 *Things that you are supposed to do, however it's okay not to*
 - Avoid renaming files unless it is a naming style parity
-- Keep your commits well names and low in numbers (it's easier for us to review)
+- Keep your commits well named and low in numbers (it's easier for us to review)
 
 ## Hard Floor Code Regulations
 *Things that cannot be ignored at any cost*
@@ -15,7 +15,7 @@ Contributing is an essential part of open source projects like Bedrock Launcher;
 - Do not leave builds in the commit
 
 ## Prerequisites
-Make sure you meet both the [hardware prerequisites](./HARDWARE_PREREQUISITES.md) and [software software](./SOFTWARE_PREREQUISITES.md) prerequisites to avoid introducing random environmental variables.
+Make sure you meet both the [hardware prerequisites](./HARDWARE_PREREQUISITES.md) and [software prerequisites](./SOFTWARE_PREREQUISITES.md) to avoid introducing random environmental variables.
 
 ## GitHub interactions
 - Your interactions on GitHub should be civil, well worded, and clear
