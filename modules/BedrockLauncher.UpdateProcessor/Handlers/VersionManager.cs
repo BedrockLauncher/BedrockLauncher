@@ -193,7 +193,9 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
                 Trace.WriteLine("LoadJsonDBVersions Failed! Generating Blank VersionJsonDb");
                 Trace.WriteLine("File: " + filePath);
                 Trace.WriteLine(ex);
-                return new VersionJsonDb();
+                var db = new VersionJsonDb();
+                db.Save(filePath);
+                return db;
             }
 
         }
@@ -211,7 +213,9 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
                 Trace.WriteLine("LoadTextDBVersions Failed! Generating Blank VersionTextDb");
                 Trace.WriteLine("File: " + filePath);
                 Trace.WriteLine(ex);
-                return new VersionTextDb();
+                var db = new VersionTextDb();
+                db.Save(filePath);
+                return db;
             }
 
         }
