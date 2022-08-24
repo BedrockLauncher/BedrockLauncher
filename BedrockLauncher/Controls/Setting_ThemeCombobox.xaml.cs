@@ -50,11 +50,13 @@ namespace BedrockLauncher.Controls
                 var item = new ComboBoxItem();
                 item.VerticalContentAlignment = System.Windows.VerticalAlignment.Center;
 
+                var customString = Application.Current.TryFindResource("ThemeEntries_Custom") ?? string.Empty;
+
                 if (brush != null) item.Foreground = brush;
                 if (isCustom)
                 {
                     item.Tag = string.Format("{0}{1}", Constants.ThemesCustomPrefix, tag);
-                    item.Content = string.Format("{0} - {1}", Application.Current.TryFindResource("ThemeEntries_Custom").ToString(), tag);
+                    item.Content = string.Format("{0} - {1}", customString.ToString(), tag);
                 }
                 else
                 {
