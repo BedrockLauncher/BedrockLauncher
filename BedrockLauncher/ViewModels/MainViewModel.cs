@@ -12,6 +12,7 @@ using BedrockLauncher.Pages.Preview;
 using BedrockLauncher.UI.Pages.Common;
 using BedrockLauncher.UI.Interfaces;
 using BedrockLauncher.UI.Components;
+using System.Windows.Threading;
 
 namespace BedrockLauncher.ViewModels
 {
@@ -109,36 +110,33 @@ namespace BedrockLauncher.ViewModels
 
         #region Dialog
 
+
+        public object ErrorFrame_Content { get; set; }
+        public object OverlayFrame_Content { get; set; }
+
+        public bool MainFrame_isEnabled
+        {
+            get
+            {
+                Depends.On(ErrorFrame_Content);
+                Depends.On(OverlayFrame_Content);
+                return ErrorFrame_Content == null && OverlayFrame_Content == null;
+            }
+        }
+        public bool OverlayFrame_isEnabled
+        {
+            get
+            {
+                Depends.On(ErrorFrame_Content);
+                return ErrorFrame_Content == null;
+            }
+        }
+
         public bool IsErrorDialogEmpty()
         {
-            return ErrorFrame.Dispatcher.Invoke<bool>(() =>
-            {
-                return ErrorFrame.Content == null;
-            });
+            return ErrorFrame_Content == null;
         }
 
-        public bool IsOverlayFrameEmpty()
-        {
-            return OverlayFrame.Dispatcher.Invoke<bool>(() =>
-            {
-                return OverlayFrame.Content == null;
-            });
-        }
-
-
-        private void UpdateFrameFocus(bool isEmpty_Overlay, bool isEmpty_Dialog)
-        {
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                MainWindow.MainFrame.IsEnabled = isEmpty_Dialog && isEmpty_Overlay;
-                MainWindow.OverlayFrame.IsEnabled = isEmpty_Dialog;
-
-                //KeyboardNavigation.SetTabNavigation(MainWindow.MainFrame, isEmpty_Dialog && isEmpty_Overlay ? MainFrame_TabNavigationMode : KeyboardNavigationMode.None);
-                //KeyboardNavigation.SetTabNavigation(MainWindow.OverlayFrame, isEmpty_Dialog ? MainFrame_TabNavigationMode : KeyboardNavigationMode.None);
-
-                Keyboard.ClearFocus();
-            });
-        }
         public void AttemptClose(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Action action = new Action(() => MainWindow.Close());
@@ -149,30 +147,15 @@ namespace BedrockLauncher.ViewModels
             if (doNotClose) { e.Cancel = true; LauncherCanNotCloseDialog(action); }
             else e.Cancel = false;
         }
-        public void SetOverlayFrame(object _content, bool _isStrict = false)
+        public void SetOverlayFrame(object content, bool isStrict = false)
         {
-            bool _animate = (_isStrict ? false : Properties.LauncherSettings.Default.AnimatePageTransitions);
-            SetOverlayFrame_Base(_content, _animate);
-
-            void SetOverlayFrame_Base(object content, bool animate)
-            {
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    bool isEmpty_Overlay = content == null;
-                    bool isEmpty_Dialog = IsErrorDialogEmpty();
-                    UpdateFrameFocus(isEmpty_Overlay, isEmpty_Dialog);
-                    Keyboard.ClearFocus();
-                });
-
-                PageAnimator.FrameSet_Overlay(OverlayFrame, content, animate);
-            }
+            bool animate = (isStrict ? false : Properties.LauncherSettings.Default.AnimatePageTransitions);
+            Application.Current.Dispatcher.Invoke(Keyboard.ClearFocus);
+            PageAnimator.FrameSet_Overlay(OverlayFrame, content, animate);
         }
         public void SetDialogFrame(object content)
         {
-
-            bool isEmpty_Overlay = IsOverlayFrameEmpty();
-            bool isEmpty_Dialog = content == null;
-            UpdateFrameFocus(isEmpty_Overlay, isEmpty_Dialog);
+            Application.Current.Dispatcher.Invoke(Keyboard.ClearFocus);
             PageAnimator.FrameSet_Dialog(ErrorFrame, content);
         }
         public async Task ShowWaitingDialog(Func<Task> action)
@@ -226,12 +209,11 @@ namespace BedrockLauncher.ViewModels
         {
             get { Depends.On(MainWindow); return MainWindow.ErrorFrame; }
         }
-
         public Frame OverlayFrame
         {
             get { Depends.On(MainWindow); return MainWindow.OverlayFrame; }
         }
-        
+
         public Component_UpdateButton UpdateButton
         {
             get { Depends.On(MainWindow); return MainWindow.UpdateButton; }

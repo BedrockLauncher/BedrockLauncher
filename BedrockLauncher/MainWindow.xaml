@@ -22,13 +22,13 @@
         WindowStartupLocation="CenterScreen"
         Closing="Window_Closing">
     <Grid Margin="0,0,0,0" Background="{DynamicResource Background.Primary}">
-        <Frame x:Name="MainFrame" com:DisableNavigation.Disable="True" Focusable="False" Margin="0" NavigationUIVisibility="Hidden" Panel.ZIndex="-1">
+        <Frame x:Name="MainFrame" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default},Path=MainFrame_isEnabled, Mode=OneWay}" com:DisableNavigation.Disable="True" Focusable="False" Margin="0" NavigationUIVisibility="Hidden" Panel.ZIndex="-1">
             <Frame.Content>
                 <pages:MainPage x:Name="MainPage"/>
             </Frame.Content>
         </Frame>
-        <Frame x:Name="OverlayFrame" com:DisableNavigation.Disable="True" Focusable="False" Margin="0" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" Panel.ZIndex="-2"/>
-        <Frame x:Name="ErrorFrame" com:DisableNavigation.Disable="True" Focusable="False" Margin="0" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" Panel.ZIndex="-3"/>
+        <Frame x:Name="OverlayFrame" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default},Path=OverlayFrame_isEnabled, Mode=OneWay}" Content="{Binding Source={x:Static viewModels:MainViewModel.Default},Path=OverlayFrame_Content, Mode=TwoWay}" com:DisableNavigation.Disable="True" Focusable="False" Margin="0" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" Panel.ZIndex="-2"/>
+        <Frame x:Name="ErrorFrame" Content="{Binding Source={x:Static viewModels:MainViewModel.Default},Path=ErrorFrame_Content, Mode=TwoWay}" com:DisableNavigation.Disable="True" Focusable="False" Margin="0" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden" Panel.ZIndex="-3"/>
         <controls:Component_UpdateButton Visibility="Collapsed" Margin="0,-75,5,0" Grid.ColumnSpan="2" Panel.ZIndex="-4" x:Name="UpdateButton" HorizontalAlignment="Right" VerticalAlignment="Top"></controls:Component_UpdateButton>
     </Grid>
 </Window>

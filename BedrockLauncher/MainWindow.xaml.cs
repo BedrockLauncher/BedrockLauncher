@@ -57,9 +57,10 @@ namespace BedrockLauncher
 
         private async void Window_Initialized(object sender, EventArgs e)
         {
-            Panel.SetZIndex(OverlayFrame, 0);
-            Panel.SetZIndex(ErrorFrame, 1);
-            Panel.SetZIndex(UpdateButton, 2);
+            Panel.SetZIndex(MainFrame, 0);
+            Panel.SetZIndex(OverlayFrame, 1);
+            Panel.SetZIndex(ErrorFrame, 2);
+            Panel.SetZIndex(UpdateButton, 3);
 
             if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
             {
