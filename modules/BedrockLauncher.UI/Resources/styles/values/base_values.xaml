@@ -170,6 +170,10 @@
 
     <SolidColorBrush x:Key="ListViewItem.Static.Background" Color="Transparent"/>
     <SolidColorBrush x:Key="ListViewItem.Static.Border" Color="Transparent"/>
+    <SolidColorBrush x:Key="ListViewItem.MouseDown.Background">#11FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="ListViewItem.MouseDown.Border">#11FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="ListViewItem.MouseOver.BackgroundBrush">#22FFFFFF</SolidColorBrush>
+    <SolidColorBrush x:Key="ListViewItem.MouseOver.BorderBrush">#22FFFFFF</SolidColorBrush>
     <Color x:Key="ListViewItem.MouseOver.Background">#22FFFFFF</Color>
     <Color x:Key="ListViewItem.MouseOver.Border">#22FFFFFF</Color>
     <SolidColorBrush x:Key="ListViewItem.SelectedInactive.Background" Color="Transparent"/>

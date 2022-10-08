@@ -37,37 +37,12 @@ using BedrockLauncher.UI.Components;
 
 namespace BedrockLauncher
 {
-    //TODO: (Later On) Community Content / Personal Donations Section
-
-    public partial class MainWindow : Window, IDisposable
+    public partial class MainWindow : Window
     {
-        private GameTabs MainPage = new GameTabs();
-        private SettingsTabs settingsScreenPage = new SettingsTabs();
-        private NewsScreenTabs newsScreenPage = new NewsScreenTabs();
-
-        private Navigator Navigator { get; set; } = new Navigator(true);
-
         public MainWindow()
         {
             this.DataContext = MainViewModel.Default;
             InitializeComponent();
-        }
-
-        private async void Window_Initialized(object sender, EventArgs e)
-        {
-            Panel.SetZIndex(OverlayFrame, 0);
-            Panel.SetZIndex(ErrorFrame, 1);
-            Panel.SetZIndex(UpdateButton, 2);
-
-            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
-            {
-                await Program.OnApplicationLoaded();
-                this.NavigateToMainPage();
-                StartupArgsHandler.RunStartupArgs();
-
-                bool isFirstLaunch = Properties.LauncherSettings.Default.GetIsFirstLaunch(MainViewModel.Default.Config.profiles.Count());
-                if (isFirstLaunch) MainViewModel.Default.SetOverlayFrame(new WelcomePage(), true);
-            }
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -80,121 +55,22 @@ namespace BedrockLauncher
             MainViewModel.Default.AttemptClose(sender, e);
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        private async void Window_Initialized(object sender, EventArgs e)
         {
-            MainViewModel.Default.PackageManager.Cancel();
-        }
+            Panel.SetZIndex(OverlayFrame, 0);
+            Panel.SetZIndex(ErrorFrame, 1);
+            Panel.SetZIndex(UpdateButton, 2);
 
-        #region Navigation
-
-        public void ResetButtonManager(string buttonName)
-        {
-            this.Dispatcher.Invoke(() =>
+            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
             {
-                // just all buttons list
-                // ya i know this is really bad, i need to learn mvvm instead of doing this shit
-                // but this works fine, at least
-                List<ToggleButton> toggleButtons = new List<ToggleButton>() { 
-                // main window
-                NewsButton.Button,
-                BedrockEditionButton.Button,
-                SettingsButton.Button,
-            };
+                await Program.OnApplicationLoaded();
+                MainPage.NavigateToGamePage();
+                StartupArgsHandler.RunStartupArgs();
 
-                foreach (ToggleButton button in toggleButtons) { button.IsChecked = false; }
-
-                if (toggleButtons.Exists(x => x.Name == buttonName))
-                {
-                    toggleButtons.Where(x => x.Name == buttonName).FirstOrDefault().IsChecked = true;
-                }
-            });
-
+                bool isFirstLaunch = Properties.LauncherSettings.Default.GetIsFirstLaunch(MainViewModel.Default.Config.profiles.Count());
+                if (isFirstLaunch) MainViewModel.Default.SetOverlayFrame(new WelcomePage(), true);
+            }
         }
-        public void ButtonManager(object sender, RoutedEventArgs e)
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                var toggleButton = sender as ToggleButton;
-                string name = toggleButton.Name;
-                Task.Run(() => ButtonManager_Base(name));
-            });
-        }
-        public void ButtonManager_Base(string senderName)
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                ResetButtonManager(senderName);
-
-                if (senderName == BedrockEditionButton.Name) NavigateToMainPage();
-                else if (senderName == NewsButton.Name) NavigateToNewsPage();
-                else if (senderName == SettingsButton.Name) NavigateToSettings();
-            });
-
-        }
-
-        public void NavigateToNewsPage()
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                Navigator.UpdatePageIndex(0);
-                NewsButton.Button.IsChecked = true;
-                Task.Run(() => Navigator.Navigate(MainWindowFrame, newsScreenPage));
-            });
-
-        }
-        public void NavigateToMainPage()
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                Navigator.UpdatePageIndex(1);
-                BedrockEditionButton.Button.IsChecked = true;
-                Task.Run(() => Navigator.Navigate(MainWindowFrame, MainPage));
-            });
-
-        }
-
-        public void NavigateToSettings()
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                Navigator.UpdatePageIndex(4);
-                SettingsButton.Button.IsChecked = true;
-                Task.Run(() => Navigator.Navigate(MainWindowFrame, settingsScreenPage));
-            });
-
-        }
-
-        #endregion
-
-        #region Toolbar Button Events
-
-        private void BedrockEditionButton_Click(object sender, EventArgs e)
-        {
-            if (sender != null && sender is Toolbar_ButtonBase) ButtonManager_Base((sender as Toolbar_ButtonBase).Name);
-        }
-
-        private void NewsButton_Click(object sender, EventArgs e)
-        {
-            if (sender != null && sender is Toolbar_ButtonBase) ButtonManager_Base((sender as Toolbar_ButtonBase).Name);
-        }
-
-        private void SettingsButton_Click(object sender, EventArgs e)
-        {
-            if (sender != null && sender is Toolbar_ButtonBase) ButtonManager_Base((sender as Toolbar_ButtonBase).Name);
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-
-        }
-
-        #endregion
 
 
     }

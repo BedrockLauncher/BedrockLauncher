@@ -19,17 +19,17 @@
             <Grid Background="{DynamicResource Background.Primary}">
                 <Label Content="{DynamicResource GameTab_Title}" Margin="12,27,600,0" Style="{DynamicResource TabTitle}"/>
                 <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Orientation="Horizontal" Margin="5,49,0,0">
-                    <ToggleButton x:Name="PlayButton" Width="Auto" Click="ButtonManager2" Content="{DynamicResource ResourceKey=GameTab_PlayButton_Text}" Style="{StaticResource ToolbarButton}" IsChecked="True">
+                    <ToggleButton x:Name="PlayButton" Width="Auto" Click="ButtonManager2" Content="{DynamicResource ResourceKey=GameTab_PlayButton_Text}" Style="{DynamicResource ToolbarButton}" IsChecked="True">
                         <ToggleButton.ToolTip>
                             <ToolTip Content="{DynamicResource GameTab_PlayButton_Text}"/>
                         </ToggleButton.ToolTip>
                     </ToggleButton>
-                    <ToggleButton x:Name="InstallationsButton" Width="Auto" Click="ButtonManager2" Content="{DynamicResource ResourceKey=GameTab_InstallationsButton_Text}"  Style="{StaticResource ToolbarButton}">
+                    <ToggleButton x:Name="InstallationsButton" Width="Auto" Click="ButtonManager2" Content="{DynamicResource ResourceKey=GameTab_InstallationsButton_Text}"  Style="{DynamicResource ToolbarButton}">
                         <ToggleButton.ToolTip>
                             <ToolTip Content="{DynamicResource GameTab_InstallationsButton_Text}"/>
                         </ToggleButton.ToolTip>
                     </ToggleButton>
-                    <ToggleButton x:Name="PatchNotesButton" Width="Auto" Click="ButtonManager2" Content="{DynamicResource ResourceKey=GameTab_PatchNotesButton_Text}" Style="{StaticResource ToolbarButton}">
+                    <ToggleButton x:Name="PatchNotesButton" Width="Auto" Click="ButtonManager2" Content="{DynamicResource ResourceKey=GameTab_PatchNotesButton_Text}" Style="{DynamicResource ToolbarButton}">
                         <ToggleButton.ToolTip>
                             <ToolTip Content="{DynamicResource GameTab_PatchNotesButton_Text}"/>
                         </ToggleButton.ToolTip>

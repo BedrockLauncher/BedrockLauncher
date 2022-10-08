@@ -57,43 +57,46 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListViewItem}">
-                    <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
-                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    <Border x:Name="Selector" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Trigger.EnterActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="Bd" Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" Duration="0:0:0.1" To="{StaticResource ListViewItem.MouseOver.Background}" From="Transparent"/>
-                                        <ColorAnimation Storyboard.TargetName="Bd" Storyboard.TargetProperty="(BorderBrush).(SolidColorBrush.Color)" Duration="0:0:0.1" To="{StaticResource ListViewItem.MouseOver.Border}" From="Transparent"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.EnterActions>
-                            <Trigger.ExitActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="Bd" Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" Duration="0:0:0.1" From="{StaticResource ListViewItem.MouseOver.Background}" To="Transparent"/>
-                                        <ColorAnimation Storyboard.TargetName="Bd" Storyboard.TargetProperty="(BorderBrush).(SolidColorBrush.Color)" Duration="0:0:0.1" From="{StaticResource ListViewItem.MouseOver.Border}" To="Transparent"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.ExitActions>
-                        </Trigger>
+                        <!--<MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="MouseDown" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource ListViewItem.MouseDown.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{DynamicResource ListViewItem.MouseDown.Border}"/>
+                            <Setter Property="BorderBrush" TargetName="Selector" Value="Transparent"/>
+                        </MultiTrigger>-->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource ListViewItem.MouseOver.BackgroundBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{DynamicResource ListViewItem.MouseOver.BorderBrush}"/>
+                        </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="Selector.IsSelectionActive" Value="False"/>
                                 <Condition Property="IsSelected" Value="True"/>
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource ListViewItem.SelectedInactive.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{DynamicResource ListViewItem.SelectedInactive.Border}"/>
+                            <Setter Property="Background" TargetName="Selector" Value="{DynamicResource ListViewItem.SelectedInactive.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="Selector" Value="{DynamicResource ListViewItem.SelectedInactive.Border}"/>
+                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource ListViewItem.MouseOver.BackgroundBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{DynamicResource ListViewItem.MouseOver.BorderBrush}"/>
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="Selector.IsSelectionActive" Value="True"/>
                                 <Condition Property="IsSelected" Value="True"/>
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource ListViewItem.SelectedActive.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{DynamicResource ListViewItem.SelectedActive.Border}"/>
+                            <Setter Property="Background" TargetName="Selector" Value="{DynamicResource ListViewItem.SelectedActive.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="Selector" Value="{DynamicResource ListViewItem.SelectedActive.Border}"/>
+                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource ListViewItem.MouseOver.BackgroundBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{DynamicResource ListViewItem.MouseOver.BorderBrush}"/>
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="TextElement.Foreground" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>

@@ -8,7 +8,7 @@
     <SolidColorBrush x:Key="ToolbarButton.Static.Foreground" Color="#FFCCCCCC"/>
     <SolidColorBrush x:Key="ToolbarButton.MouseOver.Foreground" Color="White"/>
     <SolidColorBrush x:Key="ToolbarButton.Selected.Foreground" Color="White"/>
-    <SolidColorBrush x:Key="ToolbarButton.Disabled.Background" Color="#FFF4F4F4"/>
+    <SolidColorBrush x:Key="ToolbarButton.Disabled.Background" Color="Transparent"/>
     <SolidColorBrush x:Key="ToolbarButton.Disabled.Border" Color="#FFADB2B5"/>
     <SolidColorBrush x:Key="ToolbarButton.Disabled.Foreground" Color="#FF838383"/>
     <SolidColorBrush x:Key="ToolbarButton.Focused.Border" Color="White"/>

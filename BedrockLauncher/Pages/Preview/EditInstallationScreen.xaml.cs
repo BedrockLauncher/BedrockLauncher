@@ -119,9 +119,31 @@ namespace BedrockLauncher.Pages.Preview
             {
                 var version = (e.Item as MCVersion);
                 if (VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, version.Architecture)) e.Accepted = true;
+                else if (ViewModel.SelectedVersionUUID == version.UUID) e.Accepted = true;
                 else e.Accepted = false;
             }
             else e.Accepted = false;
+        }
+
+        private void RefreshVersions()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                Handlers.FilterSortingHandler.Refresh(InstallationVersionSelect.ItemsSource);
+            });
+        }
+
+        private async void MoreVersionsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new EditInstallationVersionSelectScreen();
+            ViewModels.MainViewModel.Default.SetDialogFrame(window);
+            string result = await window.GetVersionUUID();
+            if (!string.IsNullOrWhiteSpace(result))
+            {
+                ViewModel.SelectedVersionUUID = result;
+                RefreshVersions();
+                InstallationVersionSelect.SelectedValue = result;
+            }
         }
     }
 }

@@ -1,0 +1,80 @@
+﻿<Page x:Class="BedrockLauncher.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:properties="clr-namespace:BedrockLauncher.Properties"
+        xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
+        xmlns:com="clr-namespace:JemExtensions.WPF.Behaviours;assembly=JemExtensions"
+        xmlns:conv="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
+        xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
+        xmlns:controls="clr-namespace:BedrockLauncher.Controls"
+      xmlns:local="clr-namespace:BedrockLauncher.Pages"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainPage"
+        d:DataContext="{d:DesignInstance Type=viewModels:MainViewModel}"
+        mc:Ignorable="d"
+        Foreground="{x:Null}" 
+        Background="White">
+    <Page.Resources>
+        <wincontrols:BooleanToVisibilityConverter x:Key="BoolToVis"></wincontrols:BooleanToVisibilityConverter>
+        <conv:InvertableBooleanToVisibilityConverter x:Key="ReverseBoolToVis"></conv:InvertableBooleanToVisibilityConverter>
+    </Page.Resources>
+    <Grid KeyboardNavigation.TabNavigation="{Binding MainFrame_TabNavigationMode, Mode=OneWay}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel x:Name="buttonStackPanel" Grid.Column="0" Background="{DynamicResource Background.Primary}" HorizontalAlignment="Left">
+            <controls:Toolbar_ProfileButton IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default},Path=ProgressBarState.AllowEditing, Mode=OneWay}" x:Name="ProfileButton" ></controls:Toolbar_ProfileButton>
+            <controls:Toolbar_NewsButton x:Name="NewsButton" Click="NewsButton_Click"></controls:Toolbar_NewsButton>
+            <controls:Toolbar_BedrockEditionButton x:Name="BedrockEditionButton" Click="BedrockEditionButton_Click"></controls:Toolbar_BedrockEditionButton>
+        </StackPanel>
+        <controls:Toolbar_SettingsButton x:Name="SettingsButton" Click="SettingsButton_Click"></controls:Toolbar_SettingsButton>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="Auto" MaxHeight="64"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Background="{DynamicResource Background.Tertiary}"></Grid>
+            <Frame x:Name="MainWindowFrame" com:DisableNavigation.Disable="True" Focusable="False" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden"/>
+            <Grid Grid.Row="1" x:Name="ProgressBarGrid" Background="{DynamicResource Background.Primary}" Visibility="{Binding ProgressBarState.Anim_Visibility}">
+                <Grid Margin="10,8,10,22">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ProgressBar x:Name="progressSizeHack" IsIndeterminate="{Binding ProgressBarState.IsIndeterminate}" com:ProgressBarSmoother.SmoothValue="{Binding ProgressBarState.CurrentProgress}" Maximum="{Binding ProgressBarState.TotalProgress}" Height="32" BorderThickness="0" Foreground="#FF008542" Background="Black" BorderBrush="Black" Minimum="0"/>
+                    <StackPanel Orientation="Horizontal"  Height="32" x:Name="progressbarcontent" Visibility="{Binding ProgressBarState.Anim_TextVisibility}" SnapsToDevicePixels="True" Margin="26,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" >
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                <Setter Property="Padding" Value="0"/>
+                                <Setter Property="Margin" Value="0"/>
+                                <Setter Property="FontSize" Value="12"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="FontFamily" Value="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <TextBlock d:Text="Uninstalling" Text="{Binding ProgressBarState.Description}" />
+                        <TextBlock Text=" : " Visibility="{Binding ProgressBarState.ShowTextualProgress, Converter={StaticResource BoolToVis}}"/>
+                        <TextBlock d:Text="0 / 1000 MB" Text="{Binding ProgressBarState.TextualProgress}" Visibility="{Binding ProgressBarState.ShowTextualProgress, Converter={StaticResource BoolToVis}}"/>
+                        <TextBlock Text=" : " Visibility="{Binding ProgressBarState.ShowInformation, Converter={StaticResource BoolToVis}}"/>
+                        <TextBlock d:Text="[" Visibility="{Binding ProgressBarState.ShowInformation, Converter={StaticResource BoolToVis}}"/>
+                        <TextBlock d:Text="Files" Text="{Binding ProgressBarState.Information}" Visibility="{Binding ProgressBarState.ShowInformation, Converter={StaticResource BoolToVis}}"/>
+                        <TextBlock d:Text="]" Visibility="{Binding ProgressBarState.ShowInformation, Converter={StaticResource BoolToVis}}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <Button Height="32" Width="32" Padding="0" Style="{DynamicResource DialogButton}" Foreground="White" Content="▶"  Visibility="Collapsed"></Button>
+                        <Button Height="32" Width="32" Padding="0" Style="{DynamicResource DialogButton}" Visibility="Collapsed">
+                            <TextBlock Text="┃┃" Foreground="White" Margin="0,-3.2,0,0"></TextBlock>
+                        </Button>
+                        <Button Height="32" Width="32" Padding="0" Style="{DynamicResource DialogButton}" x:Name="CancelButton" Click="CancelButton_Click" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default},Path=ProgressBarState.AllowCancel, Mode=OneWay}">
+                            <TextBlock Text="❌" Foreground="White"></TextBlock>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

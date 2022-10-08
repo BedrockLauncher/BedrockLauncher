@@ -116,6 +116,29 @@ namespace BedrockLauncher.ViewModels
                 return ErrorFrame.Content == null;
             });
         }
+
+        public bool IsOverlayFrameEmpty()
+        {
+            return OverlayFrame.Dispatcher.Invoke<bool>(() =>
+            {
+                return OverlayFrame.Content == null;
+            });
+        }
+
+
+        private void UpdateFrameFocus(bool isEmpty_Overlay, bool isEmpty_Dialog)
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                MainWindow.MainFrame.IsEnabled = isEmpty_Dialog && isEmpty_Overlay;
+                MainWindow.OverlayFrame.IsEnabled = isEmpty_Dialog;
+
+                //KeyboardNavigation.SetTabNavigation(MainWindow.MainFrame, isEmpty_Dialog && isEmpty_Overlay ? MainFrame_TabNavigationMode : KeyboardNavigationMode.None);
+                //KeyboardNavigation.SetTabNavigation(MainWindow.OverlayFrame, isEmpty_Dialog ? MainFrame_TabNavigationMode : KeyboardNavigationMode.None);
+
+                Keyboard.ClearFocus();
+            });
+        }
         public void AttemptClose(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Action action = new Action(() => MainWindow.Close());
@@ -133,12 +156,11 @@ namespace BedrockLauncher.ViewModels
 
             void SetOverlayFrame_Base(object content, bool animate)
             {
-                bool isEmpty = content == null;
-
                 Application.Current.Dispatcher.Invoke(() =>
                 {
-                    var focusMode = (isEmpty ? MainFrame_TabNavigationMode : KeyboardNavigationMode.None);
-                    KeyboardNavigation.SetTabNavigation(MainWindow.MainFrame, focusMode);
+                    bool isEmpty_Overlay = content == null;
+                    bool isEmpty_Dialog = IsErrorDialogEmpty();
+                    UpdateFrameFocus(isEmpty_Overlay, isEmpty_Dialog);
                     Keyboard.ClearFocus();
                 });
 
@@ -147,16 +169,10 @@ namespace BedrockLauncher.ViewModels
         }
         public void SetDialogFrame(object content)
         {
-            bool isEmpty = content == null;
 
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                var focusMode = (isEmpty ? MainFrame_TabNavigationMode : KeyboardNavigationMode.None);
-                KeyboardNavigation.SetTabNavigation(MainWindow.MainFrame, focusMode);
-                KeyboardNavigation.SetTabNavigation(MainWindow.OverlayFrame, focusMode);
-                Keyboard.ClearFocus();
-            });
-
+            bool isEmpty_Overlay = IsOverlayFrameEmpty();
+            bool isEmpty_Dialog = content == null;
+            UpdateFrameFocus(isEmpty_Overlay, isEmpty_Dialog);
             PageAnimator.FrameSet_Dialog(ErrorFrame, content);
         }
         public async Task ShowWaitingDialog(Func<Task> action)
@@ -222,7 +238,7 @@ namespace BedrockLauncher.ViewModels
         }
         public DependencyObject ProgressBarGrid
         {
-            get { Depends.On(MainWindow); return MainWindow.ProgressBarGrid; }
+            get { Depends.On(MainWindow); return MainWindow.MainPage.ProgressBarGrid; }
         }
 
         [SafeForDependencyAnalysis]
