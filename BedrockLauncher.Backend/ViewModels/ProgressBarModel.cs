@@ -19,15 +19,11 @@ namespace BedrockLauncher.ViewModels
     [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]
     public class ProgressBarModel
     {
-
-        private DependencyObject TargetDependencyObject { get; set; }
-
         #region Init
 
-        public ProgressBarModel(DependencyObject targetDependencyObject)
+        public ProgressBarModel()
         {
             ((INotifyPropertyChanged)this).PropertyChanged += ProgressBarModel_PropertyChanged;
-            TargetDependencyObject = targetDependencyObject;
         }
         private void ProgressBarModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -92,7 +88,7 @@ namespace BedrockLauncher.ViewModels
             await Application.Current.Dispatcher.InvokeAsync(() =>
             {
                 ProgressBarSetContent(Show, true);
-            
+
                 Storyboard storyboard = new Storyboard();
                 DoubleAnimation animation = new DoubleAnimation
                 {
@@ -102,11 +98,11 @@ namespace BedrockLauncher.ViewModels
                 };
                 storyboard.Children.Add(animation);
                 Storyboard.SetTargetProperty(animation, new System.Windows.PropertyPath(ProgressBar.HeightProperty));
-                Storyboard.SetTarget(animation, TargetDependencyObject);
+                Storyboard.SetTarget(animation, MainDataModel.BackwardsCommunicationHost.ProgressBarGrid);
                 storyboard.Completed += new EventHandler((s, e) => ProgressBarSetContent(Show, false));
                 storyboard.Begin();
             });
-            
+
             void ProgressBarSetContent(bool isShown, bool isInit)
             {
                 Anim_MiniVisibility = isShown ? Visibility.Visible : Visibility.Collapsed;

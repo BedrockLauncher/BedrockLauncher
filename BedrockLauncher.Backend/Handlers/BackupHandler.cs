@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Windows.Management.Core;
-using BedrockLauncher.UI.Pages.Common;
 using BedrockLauncher.UpdateProcessor.Enums;
 using BedrockLauncher.Classes;
 
@@ -85,7 +84,7 @@ namespace BedrockLauncher.Handlers
                             }
                             catch (Exception ex)
                             {
-                                await ErrorScreenShow.exceptionmsg(ex);
+                                await MainDataModel.BackwardsCommunicationHost.exceptionmsg(ex);
                             }
 
                             Current++;
@@ -96,7 +95,7 @@ namespace BedrockLauncher.Handlers
                         Application.Current.Dispatcher.Invoke(() => MainDataModel.Default.Config.Installation_Create(instanceName, instanceVersion, toDirectoryName));
                     }
                 }
-                catch (Exception ex) { _ = ErrorScreenShow.exceptionmsg(ex); }
+                catch (Exception ex) { _ = MainDataModel.BackwardsCommunicationHost.exceptionmsg(ex); }
 
                 MainDataModel.Default.ProgressBarState.ResetProgressBarProgress();
                 MainDataModel.Default.ProgressBarState.SetProgressBarState(LauncherState.None);

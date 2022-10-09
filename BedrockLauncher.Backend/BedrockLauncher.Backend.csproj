@@ -34,10 +34,8 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\modules\BedrockLauncher.Localization\BedrockLauncher.Localization.csproj" />
-		<ProjectReference Include="..\modules\BedrockLauncher.UI\BedrockLauncher.UI.csproj" />
 		<ProjectReference Include="..\modules\BedrockLauncher.UpdateProcessor\BedrockLauncher.UpdateProcessor.csproj" />
 		<ProjectReference Include="..\modules\Extensions.NET\JemExtensions.csproj" />
-		<ProjectReference Include="..\modules\HtmlRenderer.WPF\HtmlRenderer.WPF.csproj" />
 	</ItemGroup>
 
 </Project>

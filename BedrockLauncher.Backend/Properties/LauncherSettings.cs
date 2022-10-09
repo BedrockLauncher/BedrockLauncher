@@ -9,7 +9,6 @@ using BedrockLauncher.Classes;
 using System.ComponentModel;
 using BedrockLauncher.ViewModels;
 using PostSharp.Patterns.Model;
-using BedrockLauncher.UI.Components;
 using BedrockLauncher.Enums;
 
 namespace BedrockLauncher.Properties
@@ -59,7 +58,7 @@ namespace BedrockLauncher.Properties
 
         public void Init()
         {
-            Navigator.AnimatePageTransitions = _AnimatePageTransitions;
+            MainDataModel.BackwardsCommunicationHost.UpdateAnimatePageTransitions(_AnimatePageTransitions);
         }
 
         public void Save()
@@ -101,7 +100,7 @@ namespace BedrockLauncher.Properties
             set
             {
                 _AnimatePageTransitions = value;
-                Navigator.AnimatePageTransitions = value;
+                MainDataModel.BackwardsCommunicationHost.UpdateAnimatePageTransitions(value);
             }
         }
         public string CurrentTheme { get; set; } = "LatestUpdate";

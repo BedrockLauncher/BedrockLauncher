@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 using PostSharp.Patterns.Model;
 using BedrockLauncher.Handlers;
 using System.Windows.Threading;
-using BedrockLauncher.UI.ViewModels;
+using BedrockLauncher.Backend.Backporting;
 
 namespace BedrockLauncher.ViewModels
 {
@@ -16,22 +16,18 @@ namespace BedrockLauncher.ViewModels
     [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]    //119 Lines
     public class MainDataModel
     {
-        public static MainDataModel Default { get; set; }
+        public static MainDataModel Default { get; set; } = new MainDataModel();
 
-        #region Init
-
-        public static void Init(DependencyObject progressBarObject)
+        public static IBackwardsCommunication BackwardsCommunicationHost { get; private set; }
+        public static void SetBackwardsCommunicationHost(IBackwardsCommunication host)
         {
-            Default = new MainDataModel();
-            Default.ProgressBarState = new ProgressBarModel(progressBarObject);
+            BackwardsCommunicationHost = host;
         }
-
-        #endregion
 
         #region Properties
 
         public static UpdateHandler Updater { get; set; } = new UpdateHandler();
-        public ProgressBarModel ProgressBarState { get; set; }
+        public ProgressBarModel ProgressBarState { get; set; } = new ProgressBarModel();
         public PathHandler FilePaths { get; private set; } = new PathHandler();
         public PackageHandler PackageManager { get; set; } = new PackageHandler();
         public BLProfileList Config { get; private set; } = new BLProfileList();
@@ -99,12 +95,6 @@ namespace BedrockLauncher.ViewModels
 
             await PackageManager.InstallPackage(Version, Path);
         }
-
-        #endregion
-
-        #region Filters/Sorters
-
-
 
         #endregion
     }

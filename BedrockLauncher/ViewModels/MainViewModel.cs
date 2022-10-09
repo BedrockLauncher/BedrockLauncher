@@ -13,12 +13,13 @@ using BedrockLauncher.UI.Pages.Common;
 using BedrockLauncher.UI.Interfaces;
 using BedrockLauncher.UI.Components;
 using System.Windows.Threading;
+using BedrockLauncher.Backend.Backporting;
 
 namespace BedrockLauncher.ViewModels
 {
 
     [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]    //119 Lines
-    public class MainViewModel : IDialogHander, ILauncherModel
+    public class MainViewModel : IDialogHander, ILauncherModel, IBackwardsCommunication
     {
         public static MainViewModel Default { get; set; } = new MainViewModel();
 
@@ -26,10 +27,10 @@ namespace BedrockLauncher.ViewModels
 
         public MainViewModel()
         {
+            MainDataModel.SetBackwardsCommunicationHost(this);
             ErrorScreenShow.SetHandler(this);
             DialogPrompt.SetHandler(this);
             UI.ViewModels.MainViewModel.SetHandler(this);
-            MainDataModel.Init(ProgressBarGrid);
         }
 
         #endregion
@@ -138,15 +139,36 @@ namespace BedrockLauncher.ViewModels
         {
             get { Depends.On(MainWindow); return MainWindow.UpdateButton; }
         }
-        public DependencyObject ProgressBarGrid
-        {
-            get { Depends.On(MainWindow); return MainWindow.MainPage.ProgressBarGrid; }
-        }
 
         [SafeForDependencyAnalysis]
         private MainWindow MainWindow
         {
             get => App.Current.Dispatcher.Invoke(() => (MainWindow)App.Current.MainWindow);
+        }
+
+        #endregion
+
+        #region Backwards Communication
+
+        public DependencyObject ProgressBarGrid
+        {
+            get { Depends.On(MainWindow); return MainWindow.MainPage.ProgressBarGrid; }
+        }
+        public async Task<System.Windows.Forms.DialogResult> ShowDialog_YesNo(string title, string content)
+        {
+            return await MainViewModel.Default.ShowDialog_YesNo(title, content);
+        }
+        public void errormsg(string dialogTitle, string dialogText, Exception ex2)
+        {
+            ErrorScreenShow.errormsg(dialogTitle, dialogText, ex2);
+        }
+        public Task<bool> exceptionmsg(Exception ex)
+        {
+            return ErrorScreenShow.exceptionmsg(ex);
+        }
+        public void UpdateAnimatePageTransitions(bool value)
+        {
+            Navigator.AnimatePageTransitions = value;
         }
 
         #endregion

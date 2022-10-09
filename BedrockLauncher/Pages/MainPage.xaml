@@ -20,7 +20,7 @@
         <wincontrols:BooleanToVisibilityConverter x:Key="BoolToVis"></wincontrols:BooleanToVisibilityConverter>
         <conv:InvertableBooleanToVisibilityConverter x:Key="ReverseBoolToVis"></conv:InvertableBooleanToVisibilityConverter>
     </Page.Resources>
-    <Grid KeyboardNavigation.TabNavigation="{Binding MainFrame_TabNavigationMode, Mode=OneWay}">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="180"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>

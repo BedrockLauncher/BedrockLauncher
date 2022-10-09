@@ -11,7 +11,6 @@ using Newtonsoft.Json;
 using BedrockLauncher.Enums;
 using PostSharp.Patterns.Model;
 using System.ComponentModel;
-using BedrockLauncher.UI.Pages.Common;
 using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Classes
@@ -417,7 +416,7 @@ namespace BedrockLauncher.Classes
             if (deleteData)
             {
                 try { installation.DeleteUserData(); }
-                catch (Exception ex) { _ = ErrorScreenShow.exceptionmsg(ex); }
+                catch (Exception ex) { _ = MainDataModel.BackwardsCommunicationHost.exceptionmsg(ex); }
             }
             CurrentInstallations.Remove(installation);
             Save();

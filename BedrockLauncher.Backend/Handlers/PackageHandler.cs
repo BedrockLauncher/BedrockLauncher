@@ -23,14 +23,13 @@ using BedrockLauncher.Enums;
 using System.Windows.Input;
 using BedrockLauncher.ViewModels;
 using BedrockLauncher.Exceptions;
-using BedrockLauncher.UI.Pages.Common;
-using BedrockLauncher.UI.Components;
 using BedrockLauncher.UpdateProcessor;
 using BedrockLauncher.UpdateProcessor.Authentication;
 using BedrockLauncher.UpdateProcessor.Handlers;
 using BedrockLauncher.Classes.Launcher;
 using Windows.System.Diagnostics;
 using BedrockLauncher.UpdateProcessor.Enums;
+using JemExtensions.WPF.Commands;
 
 namespace BedrockLauncher.Handlers
 {
@@ -106,7 +105,7 @@ namespace BedrockLauncher.Handlers
                 var title = BedrockLauncher.Localization.Language.LanguageManager.GetResource("Dialog_KillGame_Title") as string;
                 var content = BedrockLauncher.Localization.Language.LanguageManager.GetResource("Dialog_KillGame_Text") as string;
 
-                var result = await DialogPrompt.ShowDialog_YesNo(title, content);
+                var result = await MainDataModel.BackwardsCommunicationHost.ShowDialog_YesNo(title, content);
 
                 if (result == System.Windows.Forms.DialogResult.Yes) GameHandle.Kill();
             }
@@ -567,13 +566,13 @@ namespace BedrockLauncher.Handlers
 
             void SetGenericError(Exception ex)
             {
-                 _ = ErrorScreenShow.exceptionmsg(ex);
+                 _ = MainDataModel.BackwardsCommunicationHost.exceptionmsg(ex);
             }
 
             void SetError(Exception ex2, string debugMessage, string dialogTitle, string dialogText)
             {
                 Trace.WriteLine(debugMessage + ":\n" + ex2.ToString());
-                ErrorScreenShow.errormsg(dialogTitle, dialogText, ex2);
+                MainDataModel.BackwardsCommunicationHost.errormsg(dialogTitle, dialogText, ex2);
             }
         }
 
