@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Windows.Management.Core;
-using BedrockLauncher.UI.Pages.Common;
 using BedrockLauncher.UpdateProcessor.Enums;
 using BedrockLauncher.Classes;
 
@@ -44,8 +43,8 @@ namespace BedrockLauncher.Handlers
         {
             await Task.Run(async () =>
             {
-                MainViewModel.Default.ProgressBarState.SetProgressBarVisibility(true);
-                MainViewModel.Default.ProgressBarState.SetProgressBarState(LauncherState.isBackingUp);
+                MainDataModel.Default.ProgressBarState.SetProgressBarVisibility(true);
+                MainDataModel.Default.ProgressBarState.SetProgressBarState(LauncherState.isBackingUp);
 
                 try
                 {
@@ -73,7 +72,7 @@ namespace BedrockLauncher.Handlers
                         long Total = Files.Length;
                         long Current = 0;
 
-                        MainViewModel.Default.ProgressBarState.SetProgressBarProgress(currentProgress: Current, totalProgress: Total);
+                        MainDataModel.Default.ProgressBarState.SetProgressBarProgress(currentProgress: Current, totalProgress: Total);
 
                         foreach (string dirPath in Directories) Directory.CreateDirectory(dirPath.Replace(from, to));
 
@@ -85,22 +84,22 @@ namespace BedrockLauncher.Handlers
                             }
                             catch (Exception ex)
                             {
-                                await ErrorScreenShow.exceptionmsg(ex);
+                                await MainDataModel.BackwardsCommunicationHost.exceptionmsg(ex);
                             }
 
                             Current++;
-                            MainViewModel.Default.ProgressBarState.SetProgressBarProgress(currentProgress: Current, totalProgress: Total);
+                            MainDataModel.Default.ProgressBarState.SetProgressBarProgress(currentProgress: Current, totalProgress: Total);
                         }
                         #endregion
 
-                        Application.Current.Dispatcher.Invoke(() => MainViewModel.Default.Config.Installation_Create(instanceName, instanceVersion, toDirectoryName));
+                        Application.Current.Dispatcher.Invoke(() => MainDataModel.Default.Config.Installation_Create(instanceName, instanceVersion, toDirectoryName));
                     }
                 }
-                catch (Exception ex) { _ = ErrorScreenShow.exceptionmsg(ex); }
+                catch (Exception ex) { _ = MainDataModel.BackwardsCommunicationHost.exceptionmsg(ex); }
 
-                MainViewModel.Default.ProgressBarState.ResetProgressBarProgress();
-                MainViewModel.Default.ProgressBarState.SetProgressBarState(LauncherState.None);
-                MainViewModel.Default.ProgressBarState.SetProgressBarVisibility(false);
+                MainDataModel.Default.ProgressBarState.ResetProgressBarProgress();
+                MainDataModel.Default.ProgressBarState.SetProgressBarState(LauncherState.None);
+                MainDataModel.Default.ProgressBarState.SetProgressBarVisibility(false);
 
                 Tuple<string, string> GenerateStrings(VersionType type)
                 {
@@ -135,7 +134,7 @@ namespace BedrockLauncher.Handlers
                             recoveryName = string.Format("{0} ({1})", name, i);
                             recoveryDir = string.Format("{0}_{1}", dir, i);
                         }
-                        directoryPath = Path.Combine(MainViewModel.Default.FilePaths.GetInstallationPackageDataPath(Properties.LauncherSettings.Default.CurrentProfileUUID, recoveryDir));
+                        directoryPath = Path.Combine(MainDataModel.Default.FilePaths.GetInstallationPackageDataPath(Properties.LauncherSettings.Default.CurrentProfileUUID, recoveryDir));
                         if (!Directory.Exists(directoryPath)) break;
                         i++;
                     }

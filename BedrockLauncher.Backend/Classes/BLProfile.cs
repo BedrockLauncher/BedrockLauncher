@@ -29,7 +29,7 @@ namespace BedrockLauncher.Classes
         {
             get
             {
-                string profile_directory = MainViewModel.Default.FilePaths.GetProfilePath(UUID);
+                string profile_directory = MainDataModel.Default.FilePaths.GetProfilePath(UUID);
                 string profile_image = Path.Combine(profile_directory, Constants.PROFILE_CUSTOM_IMG_NAME);
                 if (File.Exists(profile_image)) return profile_image;
                 else return Constants.PROFILE_DEFAULT_IMG;

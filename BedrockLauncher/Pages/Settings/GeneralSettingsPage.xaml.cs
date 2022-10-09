@@ -97,7 +97,7 @@ namespace BedrockLauncher.Pages.Settings
                 }
                 else
                 {
-                    StorageDirectoryTextBox.Text = MainViewModel.Default.FilePaths.DefaultLocation;
+                    StorageDirectoryTextBox.Text = MainDataModel.Default.FilePaths.DefaultLocation;
                 }
             }
         }

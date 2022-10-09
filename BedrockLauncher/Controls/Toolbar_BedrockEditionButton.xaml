@@ -5,11 +5,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:p="clr-namespace:BedrockLauncher.Properties"
              xmlns:classes="clr-namespace:BedrockLauncher.Classes"
-             xmlns:models="clr-namespace:BedrockLauncher.ViewModels"
+             xmlns:models="clr-namespace:BedrockLauncher.ViewModels;assembly=BedrockLauncher.Backend"
              xmlns:beh="clr-namespace:JemExtensions.WPF.Behaviours;assembly=JemExtensions"
              xmlns:controls="clr-namespace:BedrockLauncher.Controls"
              xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
-             d:DataContext="{d:DesignInstance Type=models:MainViewModel}"
+             d:DataContext="{d:DesignInstance Type=models:MainDataModel}"
              mc:Ignorable="d" Height="59" Margin="1,0,0,0" VerticalAlignment="Top">
     <controls:Toolbar_ButtonBase.Resources>
     </controls:Toolbar_ButtonBase.Resources>

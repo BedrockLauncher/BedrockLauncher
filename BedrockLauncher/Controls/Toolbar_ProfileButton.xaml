@@ -5,17 +5,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:classes="clr-namespace:BedrockLauncher.Classes"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             xmlns:vm="clr-namespace:BedrockLauncher.ViewModels"
+             xmlns:vm="clr-namespace:BedrockLauncher.ViewModels;assembly=BedrockLauncher.Backend"
              xmlns:com="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
              xmlns:controls="clr-namespace:BedrockLauncher.Controls"
              mc:Ignorable="d" 
              Height="59" Margin="1,0,0,0" VerticalAlignment="Top" Style="{DynamicResource DisabledStyle}"
-             DataContext="{Binding Source={x:Static vm:MainViewModel.Default}, Path=Config}"
+             DataContext="{Binding Source={x:Static vm:MainDataModel.Default}, Path=Config}"
              d:DataContext="{d:DesignInstance classes:MCProfilesList, IsDesignTimeCreatable=False}">
     <controls:Toolbar_ButtonBase.Resources>
         <sys:String x:Key="ProfileName_DesignTime">Default Profile</sys:String>
         <com:AdvancedImageSourceConverter x:Key="AdvancedImageSourceConverter" CacheOption="OnLoad" UriKind="RelativeOrAbsolute" CreateOptions="IgnoreImageCache"></com:AdvancedImageSourceConverter>
-        <sys:String x:Key="ImagePath_DesignTime">pack://application:,,,/BedrockLauncher;component/resources/images/icons/user_icon.png"</sys:String>
+        <sys:String x:Key="ImagePath_DesignTime">pack://application:,,,/BedrockLauncher;component/resources/images/icons/user_icon.png</sys:String>
     </controls:Toolbar_ButtonBase.Resources>
     <ToggleButton IsThreeState="False" x:Name="SourceButton" Style="{StaticResource SideBarButtonStyle}" Click="SourceButton_Click" FontWeight="Normal" VerticalAlignment="Stretch" Checked="SourceButton_Checked" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="55,1,1,1" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Left" Focusable="True" IsChecked="False">
         <ToggleButton.ContextMenu>

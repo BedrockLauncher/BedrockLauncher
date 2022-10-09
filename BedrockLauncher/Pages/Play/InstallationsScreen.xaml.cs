@@ -24,7 +24,7 @@ namespace BedrockLauncher.Pages.Play
         public InstallationsScreen()
         {
             InitializeComponent();
-            this.DataContext = MainViewModel.Default;
+            this.DataContext = MainDataModel.Default;
             ShowBetasCheckBox.Click += (sender, e) => RefreshInstallations();
             ShowReleasesCheckBox.Click += (sender, e) => RefreshInstallations();
             ShowPreviewsCheckBox.Click += (sender, e) => RefreshInstallations();

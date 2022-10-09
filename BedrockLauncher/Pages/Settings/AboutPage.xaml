@@ -4,10 +4,10 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BedrockLauncher"
+      xmlns:backend="clr-namespace:BedrockLauncher;assembly=BedrockLauncher.Backend"
       xmlns:com="clr-namespace:JemExtensions.WPF.Attributes;assembly=JemExtensions"
       xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
       xmlns:controls="clr-namespace:BedrockLauncher.Controls"
-      xmlns:core="clr-namespace:BedrockLauncher.Core.Properties;assembly=BedrockLauncher.Core"
       xmlns:v="clr-namespace:System;assembly=mscorlib"
       xmlns:sys="clr-namespace:System;assembly=System"
       x:Class="BedrockLauncher.Pages.Settings.AboutPage"
@@ -172,7 +172,7 @@
                 <TextBlock Margin="0,5,0,0" Text="{DynamicResource GeneralSettingsScreen_UpdatesSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                 <TextBlock Margin="0,0,0,15" Foreground="White">
                         <Run Text="{DynamicResource AboutPage_CurrentBuild}"/>
-                        <Run Text="{x:Static local:Constants.AppVersion}"/>
+                        <Run Text="{x:Static local:App.Version}"/>
                 </TextBlock>
                 <Button Margin="0,10,0,1" FontSize="14" x:Name="CheckForUpdatesButton" HorizontalAlignment="Left" Click="CheckForUpdatesButton_Click" Content="{DynamicResource LauncherNewsPage_CheckForUpdates}" Style="{DynamicResource LinkButton}"></Button>
                 <Button Margin="0,1,0,1" FontSize="14" x:Name="ForceUpdateButton" HorizontalAlignment="Left" Click="ForceUpdateButton_Click" Content="{DynamicResource LauncherNewsPage_GetUpdates}" Style="{DynamicResource LinkButton}"></Button>

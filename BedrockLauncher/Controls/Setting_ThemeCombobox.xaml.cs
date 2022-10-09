@@ -34,7 +34,7 @@ namespace BedrockLauncher.Controls
 
             void GetCustomItems()
             {
-                DirectoryInfo directoryInfo = Directory.CreateDirectory(MainViewModel.Default.FilePaths.ThemesFolder);
+                DirectoryInfo directoryInfo = Directory.CreateDirectory(MainDataModel.Default.FilePaths.ThemesFolder);
                 foreach (var file in directoryInfo.GetFiles())
                 {
                     if (file.Extension == ".png" || file.Extension == ".jpg" || file.Extension == ".jpeg")

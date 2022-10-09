@@ -59,12 +59,15 @@ namespace BedrockLauncher.Pages.News
 
         private void CheckForUpdatesButton_Click(object sender, RoutedEventArgs e)
         {
-            Task.Run(() => ViewModels.MainViewModel.Updater.CheckForUpdatesAsync());
+            Task.Run(async () => {
+                var result = await ViewModels.MainDataModel.Updater.CheckForUpdatesAsync();
+                if (result) ViewModels.MainViewModel.Default.UpdateButton.ShowUpdateButton();
+            });
         }
 
         private void ForceUpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            ViewModels.MainViewModel.Updater.UpdateButton_Click(sender, e);
+            ViewModels.MainDataModel.Updater.UpdateButton_Click(sender, e);
         }
 
         private void UpdateFilters(object sender, RoutedEventArgs e)

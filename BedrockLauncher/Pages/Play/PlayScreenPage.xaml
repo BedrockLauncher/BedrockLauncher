@@ -4,12 +4,12 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:properties="clr-namespace:BedrockLauncher.Properties"
-      xmlns:classes="clr-namespace:BedrockLauncher.Classes"
-      xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
+      xmlns:classes="clr-namespace:BedrockLauncher.Classes;assembly=BedrockLauncher.Backend"
+      xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels;assembly=BedrockLauncher.Backend"
       xmlns:config="clr-namespace:BedrockLauncher.ViewModels"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:controls="clr-namespace:BedrockLauncher.Controls"
-      DataContext="{x:Static viewModels:MainViewModel.Default}"
+      DataContext="{x:Static viewModels:MainDataModel.Default}"
       mc:Ignorable="d" 
       d:DesignHeight="608" d:DesignWidth="828"
       Title="PlayScreenPage">
@@ -126,8 +126,8 @@
         </Grid>
         <Grid x:Name="PlayScreenBorder" Grid.Row="1" x:FieldModifier="public" VerticalAlignment="Bottom" Background="#FF262626">
             <TextBlock Style="{DynamicResource HeaderTextblock}" Text="{DynamicResource MainWindow_Disclaimer}" HorizontalAlignment="Right" Panel.ZIndex="0" VerticalAlignment="Center" Padding="0,0,5,0" Margin="0,0,0,0"/>
-            <Button IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default},Path=ProgressBarState.AllowPlaying, Mode=OneWay}" x:Name="MainPlayButton" Click="MainPlayButton_Click" HorizontalAlignment="Center" Margin="286,-8,286,0" VerticalAlignment="Top" Width="250" Height="56" Padding="0" Style="{DynamicResource BigGreenButton}">
-                <TextBlock x:Name="PlayButtonText" Style="{DynamicResource BigGreenButton_Text}" Text="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.PlayButtonString, Mode=OneWay}"/>
+            <Button IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default},Path=ProgressBarState.AllowPlaying, Mode=OneWay}" x:Name="MainPlayButton" Click="MainPlayButton_Click" HorizontalAlignment="Center" Margin="286,-8,286,0" VerticalAlignment="Top" Width="250" Height="56" Padding="0" Style="{DynamicResource BigGreenButton}">
+                <TextBlock x:Name="PlayButtonText" Style="{DynamicResource BigGreenButton_Text}" Text="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.PlayButtonString, Mode=OneWay}"/>
             </Button>
             <controls:Component_InstallationSelector x:Name="InstallationsList" 
                                            ItemsSource="{Binding Config.CurrentInstallations}" 
@@ -135,7 +135,7 @@
                                            VerticalAlignment="Top" Width="250" Height="50"
                                            IsSynchronizedWithCurrentItem="True"
                                            SelectedItem=""
-                                           SelectedValue="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=Config.CurrentInstallationUUID, UpdateSourceTrigger=PropertyChanged}"
+                                           SelectedValue="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=Config.CurrentInstallationUUID, UpdateSourceTrigger=PropertyChanged}"
                                            SelectedValuePath="InstallationUUID"   
                                            Padding="-1,7,5,3">
             </controls:Component_InstallationSelector>

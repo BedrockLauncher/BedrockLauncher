@@ -64,7 +64,7 @@ namespace BedrockLauncher.Controls
 
         public void UpdateProfile()
         {
-            if (MainViewModel.Default.Config.Profile_Edit(ViewModel.ProfileName, ViewModel.ProfileUUID, ViewModel.ProfileDirectory, ViewModel.ProfileImage))
+            if (MainDataModel.Default.Config.Profile_Edit(ViewModel.ProfileName, ViewModel.ProfileUUID, ViewModel.ProfileDirectory, ViewModel.ProfileImage))
             {
                 Confirm?.Invoke(this, EventArgs.Empty);
             }
@@ -76,7 +76,7 @@ namespace BedrockLauncher.Controls
         }
         public void CreateProfile()
         {
-            if (MainViewModel.Default.Config.Profile_Add(ViewModel.ProfileName, ViewModel.ProfileUUID, ViewModel.ProfileDirectory, ViewModel.ProfileImage))
+            if (MainDataModel.Default.Config.Profile_Add(ViewModel.ProfileName, ViewModel.ProfileUUID, ViewModel.ProfileDirectory, ViewModel.ProfileImage))
             {
                 Confirm?.Invoke(this, EventArgs.Empty);
             }

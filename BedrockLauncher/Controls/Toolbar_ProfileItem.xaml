@@ -15,7 +15,7 @@
     <Grid.Resources>
         <conv:AdvancedImageSourceConverter x:Key="AdvancedImageSourceConverter" CacheOption="OnLoad" UriKind="RelativeOrAbsolute" CreateOptions="IgnoreImageCache"></conv:AdvancedImageSourceConverter>
         <sys:String x:Key="ProfileName_DesignTime">Default Profile</sys:String>
-        <sys:String x:Key="ImagePath_DesignTime">pack://application:,,,/BedrockLauncher;component/resources/images/icons/user_icon.png"</sys:String>
+        <sys:String x:Key="ImagePath_DesignTime">pack://application:,,,/BedrockLauncher;component/resources/images/icons/user_icon.png</sys:String>
     </Grid.Resources>
     <ToggleButton Click="SourceButton_Click" x:Name="SourceButton" Height="Auto" VerticalAlignment="Stretch" Background="Transparent" BorderBrush="Transparent" Foreground="White" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="14" Padding="0,0,0,0" HorizontalAlignment="Left" Width="179" HorizontalContentAlignment="Stretch" Focusable="False" IsChecked="True" Style="{DynamicResource ProfileSelectorStyle}">
         <ToggleButton.Content>

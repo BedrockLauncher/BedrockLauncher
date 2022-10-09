@@ -38,16 +38,16 @@ namespace BedrockLauncher.Downloaders
         }
         private void ClearPatchList()
         {
-            if (App.Current == null) return;
-            App.Current.Dispatcher.BeginInvoke((Action)delegate ()
+            if (Application.Current == null) return;
+            Application.Current.Dispatcher.BeginInvoke((Action)delegate ()
             {
                 PatchNotes.Clear();
             });
         }
         private void AddPatch(PatchNotes_Game_Item patch)
         {
-            if (App.Current == null) return;
-            App.Current.Dispatcher.BeginInvoke((Action)delegate ()
+            if (Application.Current == null) return;
+            Application.Current.Dispatcher.BeginInvoke((Action)delegate ()
             {
                 PatchNotes.Add(patch);
             });

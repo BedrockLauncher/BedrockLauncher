@@ -133,7 +133,7 @@ namespace BedrockLauncher.Controls
             if (btn.Tag is string)
             {
                 string path = btn.Tag.ToString();
-                if (MainViewModel.Default.FilePaths.RemoveImageFromIconCache(path))
+                if (MainDataModel.Default.FilePaths.RemoveImageFromIconCache(path))
                 {
                     GenerateListItems();
                 }
@@ -167,7 +167,7 @@ namespace BedrockLauncher.Controls
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string fileToImport = ofd.FileName;
-                string fileToUse = MainViewModel.Default.FilePaths.AddImageToIconCache(fileToImport);
+                string fileToUse = MainDataModel.Default.FilePaths.AddImageToIconCache(fileToImport);
                 if (fileToUse != string.Empty) SetIcon(fileToUse);
             }
         }
@@ -222,7 +222,7 @@ namespace BedrockLauncher.Controls
         private void GenerateCustomIconList()
         {
             //Default Icons
-            string[] files = Directory.GetFiles(MainViewModel.Default.FilePaths.GetCacheFolderPath(), "*.png");
+            string[] files = Directory.GetFiles(MainDataModel.Default.FilePaths.GetCacheFolderPath(), "*.png");
             int item_count = files.Length;
 
             var plus_button = CreateDefaultBlockButton(-1);
@@ -275,7 +275,7 @@ namespace BedrockLauncher.Controls
             BitmapImage bmp = new BitmapImage();
             bmp.BeginInit();
             bmp.CacheOption = BitmapCacheOption.OnLoad;
-            bmp.UriSource = new Uri(System.IO.Path.Combine(MainViewModel.Default.FilePaths.GetCacheFolderPath(), path), UriKind.Absolute);
+            bmp.UriSource = new Uri(System.IO.Path.Combine(MainDataModel.Default.FilePaths.GetCacheFolderPath(), path), UriKind.Absolute);
             bmp.EndInit();
 
             img.Source = bmp;

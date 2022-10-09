@@ -36,7 +36,7 @@ namespace BedrockLauncher.Pages.Play
 
         private string GetCustomImage(string result)
         {
-            DirectoryInfo directoryInfo = Directory.CreateDirectory(MainViewModel.Default.FilePaths.ThemesFolder);
+            DirectoryInfo directoryInfo = Directory.CreateDirectory(MainDataModel.Default.FilePaths.ThemesFolder);
             foreach (var file in directoryInfo.GetFiles())
             {
                 if (file.Name == result) return file.FullName;
@@ -101,12 +101,12 @@ namespace BedrockLauncher.Pages.Play
         }
         private void MainPlayButton_Click(object sender, RoutedEventArgs e)
         {
-            if (MainViewModel.Default.PackageManager.isGameRunning) MainViewModel.Default.KillGame();
+            if (MainDataModel.Default.PackageManager.isGameRunning) MainDataModel.Default.KillGame();
             else
             {
                 var i = InstallationsList.SelectedItem as BLInstallation;
                 bool KeepLauncherOpen = Properties.LauncherSettings.Default.KeepLauncherOpen;
-                MainViewModel.Default.Play(ViewModels.MainViewModel.Default.Config.CurrentProfile, i, KeepLauncherOpen);
+                MainDataModel.Default.Play(ViewModels.MainDataModel.Default.Config.CurrentProfile, i, KeepLauncherOpen);
             }
         }
     }

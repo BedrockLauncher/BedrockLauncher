@@ -68,7 +68,7 @@ namespace BedrockLauncher
                 MainPage.NavigateToGamePage();
                 StartupArgsHandler.RunStartupArgs();
 
-                bool isFirstLaunch = Properties.LauncherSettings.Default.GetIsFirstLaunch(MainViewModel.Default.Config.profiles.Count());
+                bool isFirstLaunch = Properties.LauncherSettings.Default.GetIsFirstLaunch(MainDataModel.Default.Config.profiles.Count());
                 if (isFirstLaunch) MainViewModel.Default.SetOverlayFrame(new WelcomePage(), true);
             }
         }

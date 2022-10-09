@@ -28,9 +28,9 @@ namespace BedrockLauncher.Controls
             }
             OtherAccountControls.Clear();
 
-            int profileCount = MainViewModel.Default.Config.profiles.Count;
+            int profileCount = MainDataModel.Default.Config.profiles.Count;
 
-            foreach (var entry in MainViewModel.Default.Config.profiles)
+            foreach (var entry in MainDataModel.Default.Config.profiles)
             {
                 Toolbar_ProfileItem profile = new Toolbar_ProfileItem(entry, this);
                 if (!(profileCount <= 1))
@@ -77,7 +77,7 @@ namespace BedrockLauncher.Controls
         {
             this.Dispatcher.Invoke(() =>
             {
-                MainViewModel.Default.SetOverlayFrame(new EditProfileScreen(MainViewModel.Default.Config.CurrentProfile));
+                MainViewModel.Default.SetOverlayFrame(new EditProfileScreen(MainDataModel.Default.Config.CurrentProfile));
             });
         }
 
@@ -92,9 +92,9 @@ namespace BedrockLauncher.Controls
         private async void RemoveProfileButton_Click(object sender, RoutedEventArgs e)
         {
             string uuid = Properties.LauncherSettings.Default.CurrentProfileUUID;
-            if (MainViewModel.Default.Config.profiles.ContainsKey(uuid))
+            if (MainDataModel.Default.Config.profiles.ContainsKey(uuid))
             {
-                var profile = MainViewModel.Default.Config.profiles[uuid].Name;
+                var profile = MainDataModel.Default.Config.profiles[uuid].Name;
 
                 var title = this.FindResource("Dialog_DeleteItem_Title") as string;
                 var content = this.FindResource("Dialog_DeleteItem_Text") as string;
@@ -104,7 +104,7 @@ namespace BedrockLauncher.Controls
 
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
-                    MainViewModel.Default.Config.Profile_Remove(uuid);
+                    MainDataModel.Default.Config.Profile_Remove(uuid);
                 }
             }
         }

@@ -12,13 +12,8 @@ namespace BedrockLauncher
     public static class Constants
     {
 
-        public static string AppVersion
-        {
-            get
-            {
-                return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            }
-        }
+        private const string APP_RESOURCEPATH_PREFIX = @"pack://application:,,,/BedrockLauncher;component/";
+        private const string APP_RESOURCEPATH_SHORTPREFIX = @"/BedrockLauncher;component/";
 
         private static readonly string MINECRAFT_PACKAGE_FAMILY = "Microsoft.MinecraftUWP_8wekyb3d8bbwe";
         private static readonly string MINECRAFT_PREVIEW_PACKAGE_FAMILY = "Microsoft.MinecraftWindowsBeta_8wekyb3d8bbwe";
@@ -30,26 +25,26 @@ namespace BedrockLauncher
         public static readonly string UPDATES_RELEASE_PAGE = "https://github.com/BedrockLauncher/BedrockLauncher/releases";
         public static readonly string UPDATES_BETA_PAGE = "https://github.com/BedrockLauncher/BedrockLauncher-Beta/releases";
 
-        public static readonly string CUSTOM_VERSION_ICONPATH = @"/BedrockLauncher;component/resources/images/icons/ico/package.ico";
-        public static readonly string BETA_VERSION_ICONPATH = @"/BedrockLauncher;component/resources/images/icons/ico/crafting_table_block_icon.ico";
-        public static readonly string RELEASE_VERSION_ICONPATH = @"/BedrockLauncher;component/resources/images/icons/ico/grass_block_icon.ico";
-        public static readonly string PREVIEW_VERSION_ICONPATH = @"/BedrockLauncher;component/resources/images/icons/ico/grass_path_icon.ico";
-        public static readonly string UNKNOWN_VERSION_ICONPATH = @"/BedrockLauncher;component/resources/images/icons/ico/bedrock_block_icon.ico";
+        public static readonly string CUSTOM_VERSION_ICONPATH   = INSTALLATIONS_PREFABED_ICONS_ROOT + @"Custom_Package.png";
+        public static readonly string BETA_VERSION_ICONPATH     = INSTALLATIONS_PREFABED_ICONS_ROOT + @"Crafting_Table.png";
+        public static readonly string RELEASE_VERSION_ICONPATH  = INSTALLATIONS_PREFABED_ICONS_ROOT + @"Grass_Block.png";
+        public static readonly string PREVIEW_VERSION_ICONPATH  = INSTALLATIONS_PREFABED_ICONS_ROOT + @"Grass_Path.png";
+        public static readonly string UNKNOWN_VERSION_ICONPATH  = INSTALLATIONS_PREFABED_ICONS_ROOT + @"Bedrock.png";
 
-        public static readonly string INSTALLATIONS_ICONPATH = @"/BedrockLauncher;component/Resources/images/installation_icons/";
+        public static readonly string INSTALLATIONS_ICONPATH = APP_RESOURCEPATH_SHORTPREFIX + @"Resources/images/installation_icons/";
         public static readonly string INSTALLATIONS_FALLBACK_ICONPATH = @"Furnace.png";
         public static readonly string INSTALLATIONS_LATEST_RELEASE_ICONPATH = "Grass_Block.png";
         public static readonly string INSTALLATIONS_LATEST_BETA_ICONPATH = "Crafting_Table.png";
         public static readonly string INSTALLATIONS_LATEST_PREVIEW_ICONPATH = "Grass_Path.png";
 
-        public static readonly string PATCHNOTE_BETA_IMG = "pack://application:,,,/BedrockLauncher;component/resources/images/packs/dev_pack_icon.png";
-        public static readonly string PATCHNOTE_RELEASE_IMG = "pack://application:,,,/BedrockLauncher;component/resources/images/packs/pack_icon.png";
+        public static readonly string PATCHNOTE_BETA_IMG = APP_RESOURCEPATH_PREFIX + "resources/images/packs/dev_pack_icon.png";
+        public static readonly string PATCHNOTE_RELEASE_IMG = APP_RESOURCEPATH_PREFIX + "resources/images/packs/pack_icon.png";
 
         public static readonly string PATCHNOTES_IMGPREFIX_URL = @"https://launchercontent.mojang.com/";
         public static readonly string PATCHNOTES_MAIN_URL = @"https://launchercontent.mojang.com/bedrockPatchNotes.json";
         public static readonly string PATCHNOTES_TESTING_URL = @"https://launchercontent.mojang.com/testing/bedrockPatchNotes.json";
 
-        public static readonly string RSS_FALLBACK_IMG = @"/BedrockLauncher;component/resources/images/packs/invalid_pack.png";
+        public static readonly string RSS_FALLBACK_IMG = APP_RESOURCEPATH_PREFIX + @"resources/images/packs/invalid_pack.png";
         public static readonly string RSS_LAUNCHER_IMG_PATH = @"https://launchercontent.mojang.com/";
         public static readonly string RSS_MINECRAFT_IMG_PATH = @"https://www.minecraft.net/";
 
@@ -57,7 +52,7 @@ namespace BedrockLauncher
         public static readonly string RSS_COMMUNITY_URL = @"https://www.minecraft.net/en-us/feeds/community-content/rss";
         public static readonly string RSS_FORUMS_URL = @"https://www.minecraftforum.net/news.rss";
 
-        public static readonly string PROFILE_DEFAULT_IMG = "pack://application:,,,/BedrockLauncher;component/resources/images/icons/user_icon.png";
+        public static readonly string PROFILE_DEFAULT_IMG = APP_RESOURCEPATH_PREFIX + @"resources/images/icons/user_icon.png";
         public static readonly string PROFILE_CUSTOM_IMG_NAME = ".profile.png";
 
         internal static string GetPackageFamily(VersionType type)
@@ -67,11 +62,12 @@ namespace BedrockLauncher
 
 
         public const string ThemesCustomPrefix = "[+] ";
-        private const string ThemesPathPrefix = @"pack://application:,,,/BedrockLauncher;component/resources/images/bg/play_screen/";
+        private const string ThemesPathPrefix = APP_RESOURCEPATH_PREFIX + @"resources/images/bg/play_screen/";
 
         public static Dictionary<string, string> Themes = new Dictionary<string, string>()
         {
 
+            { "TheWildUpdate",                     ThemesPathPrefix + "1.19_the_wild_update.jpg" },
             { "CavesAndCliffsPart2Update",         ThemesPathPrefix + "1.17_caves_and_cliffs_part_2.jpg" },
             { "CavesAndCliffsPart1Update",         ThemesPathPrefix + "1.17_caves_and_cliffs_part_1.jpg" },
             { "NetherUpdate",                      ThemesPathPrefix + "1.16_nether_update.jpg" },
@@ -97,12 +93,13 @@ namespace BedrockLauncher
         };
 
         public static List<string> INSTALLATION_PREFABED_ICONS_LIST_RUNTIME => INSTALLATIONS_PREFABED_ICONS_LIST.Select(ICON => INSTALLATIONS_PREFABED_ICONS_ROOT + ICON).ToList();
-        public static string INSTALLATIONS_PREFABED_ICONS_ROOT => @"/BedrockLauncher;component/resources/images/installation_icons/";
+        public static string INSTALLATIONS_PREFABED_ICONS_ROOT => APP_RESOURCEPATH_SHORTPREFIX + @"resources/images/installation_icons/";
         public static List<string> INSTALLATIONS_PREFABED_ICONS_LIST => new List<string>()
         {
             "dirt.png",
             "grass_block.png",
             "grass_path.png",
+            "custom_bedrockgrass.png",
             "snowy_grass_block.png",
             "podzol.png",
             "mycelium.png",
@@ -236,6 +233,7 @@ namespace BedrockLauncher
             "piston.png",
             "sticky_piston.png",
             "command_block.png",
+            "custom_package.png",
         };
 
         public static string CurrentArchitecture

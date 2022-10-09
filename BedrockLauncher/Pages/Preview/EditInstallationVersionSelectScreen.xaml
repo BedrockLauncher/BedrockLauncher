@@ -7,8 +7,8 @@
         d:DataContext="{d:DesignInstance Type=viewModels:EditInstallationVersionSelectViewModel}"
         xmlns:p="clr-namespace:BedrockLauncher.Properties"
         xmlns:controls="clr-namespace:BedrockLauncher.Controls"
-        xmlns:classes="clr-namespace:BedrockLauncher.Classes"
-        xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
+        xmlns:classes="clr-namespace:BedrockLauncher.Classes;assembly=BedrockLauncher.Backend"
+        xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels;assembly=BedrockLauncher.Backend"
         xmlns:converters="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
         mc:Ignorable="d"
         d:DesignHeight="600" d:DesignWidth="800"
@@ -16,7 +16,7 @@
     <Page.Resources>
         <converters:InvertableBooleanToVisibilityConverter x:Key="VisibleIfTrueConverter" />
         <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"></converters:InverseBooleanConverter>
-        <CollectionViewSource x:Key="Versions" Source="{Binding Versions, Source={x:Static viewModels:MainViewModel.Default}}" Filter="CollectionViewSource_Filter"/>
+        <CollectionViewSource x:Key="Versions" Source="{Binding Versions, Source={x:Static viewModels:MainDataModel.Default}}" Filter="CollectionViewSource_Filter"/>
         <Style TargetType="{x:Type CheckBox}" x:Key="Checkbox" BasedOn="{StaticResource {x:Type CheckBox}}">
             <Setter Property="Foreground" Value="#FFCCCCCC"/>
             <Setter Property="FontFamily" Value="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
@@ -25,10 +25,10 @@
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="Height" Value="20"/>
             <Setter Property="Margin" Value="5,0,0,0"/>
-            <Setter Property="IsEnabled" Value="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}"/>
+            <Setter Property="IsEnabled" Value="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}"/>
         </Style>
     </Page.Resources>
-    <Grid Margin="0" Background="#FF303030" Style="{DynamicResource DisabledStyle}" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}">
+    <Grid Margin="0" Background="#FF303030" Style="{DynamicResource DisabledStyle}" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}">
         <Grid.RowDefinitions>
             <RowDefinition Height="75"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>

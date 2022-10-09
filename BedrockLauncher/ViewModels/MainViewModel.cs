@@ -13,12 +13,13 @@ using BedrockLauncher.UI.Pages.Common;
 using BedrockLauncher.UI.Interfaces;
 using BedrockLauncher.UI.Components;
 using System.Windows.Threading;
+using BedrockLauncher.Backend.Backporting;
 
 namespace BedrockLauncher.ViewModels
 {
 
     [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]    //119 Lines
-    public class MainViewModel : IDialogHander, ILauncherModel
+    public class MainViewModel : IDialogHander, ILauncherModel, IBackwardsCommunication
     {
         public static MainViewModel Default { get; set; } = new MainViewModel();
 
@@ -26,84 +27,10 @@ namespace BedrockLauncher.ViewModels
 
         public MainViewModel()
         {
+            MainDataModel.SetBackwardsCommunicationHost(this);
             ErrorScreenShow.SetHandler(this);
             DialogPrompt.SetHandler(this);
             UI.ViewModels.MainViewModel.SetHandler(this);
-        }
-
-        #endregion
-
-        #region Properties
-
-        public static UpdateHandler Updater { get; set; } = new UpdateHandler();
-        public ProgressBarModel ProgressBarState { get; set; } = new ProgressBarModel();
-        public PathHandler FilePaths { get; private set; } = new PathHandler();
-        public PackageHandler PackageManager { get; set; } = new PackageHandler();
-        public BLProfileList Config { get; private set; } = new BLProfileList();
-        public ObservableCollection<MCVersion> Versions { get; private set; } = new ObservableCollection<MCVersion>();
-
-
-        private bool AllowedToCloseWithGameOpen { get; set; } = false;
-        public bool IsVersionsUpdating { get; private set; }
-        public KeyboardNavigationMode MainFrame_TabNavigationMode { get; set; } = KeyboardNavigationMode.Continue;
-
-
-        #endregion
-
-        #region Methods
-
-        public async Task LoadVersions(bool onLoad = false)
-        {
-            await Application.Current.Dispatcher.Invoke(async () =>
-            {
-                if (IsVersionsUpdating) return;
-                IsVersionsUpdating = true;
-
-                await PackageManager.VersionDownloader.UpdateVersionList(Versions, onLoad);
-
-                IsVersionsUpdating = false;
-            });
-
-        }
-        public void LoadConfig()
-        {
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                Config = BLProfileList.Load(FilePaths.GetProfilesFilePath(), Properties.LauncherSettings.Default.CurrentProfileUUID, Properties.LauncherSettings.Default.CurrentProfileUUID);
-            });
-        }
-        public async void KillGame() => await PackageManager.ClosePackage();
-        public async void RepairVersion(MCVersion v) => await PackageManager.DownloadPackage(v);
-        public async void RemoveVersion(MCVersion v) => await PackageManager.RemovePackage(v);
-        public async void Play(BLProfile p, BLInstallation i, bool KeepLauncherOpen, bool Save = true)
-        {
-            if (i == null) return;
-
-            i.LastPlayed = DateTime.Now;
-            MainViewModel.Default.Config.Installation_UpdateLP(i);
-
-            if (Save)
-            {
-                Properties.LauncherSettings.Default.CurrentInstallationUUID = i.InstallationUUID;
-                Properties.LauncherSettings.Default.Save();
-            }
-
-
-            var Version = i.Version;
-            var Path = MainViewModel.Default.FilePaths.GetInstallationPackageDataPath(p.UUID, i.DirectoryName_Full);
-
-            await PackageManager.InstallPackage(Version, Path);
-            await PackageManager.LaunchPackage(Version, Path, KeepLauncherOpen);
-        }
-
-        public async void Install(BLProfile p, BLInstallation i)
-        {
-            if (i == null) return;
-
-            var Version = i.Version;
-            var Path = MainViewModel.Default.FilePaths.GetInstallationPackageDataPath(p.UUID, i.DirectoryName_Full);
-
-            await PackageManager.InstallPackage(Version, Path);
         }
 
         #endregion
@@ -142,7 +69,7 @@ namespace BedrockLauncher.ViewModels
             Action action = new Action(() => MainWindow.Close());
 
             bool doNotClose = Properties.LauncherSettings.Default.KeepLauncherOpen && 
-                MainViewModel.Default.PackageManager.isGameRunning && !AllowedToCloseWithGameOpen;
+                MainDataModel.Default.PackageManager.isGameRunning && !MainDataModel.Default.AllowedToCloseWithGameOpen;
 
             if (doNotClose) { e.Cancel = true; LauncherCanNotCloseDialog(action); }
             else e.Cancel = false;
@@ -178,28 +105,22 @@ namespace BedrockLauncher.ViewModels
 
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
-                    await MainViewModel.Default.PackageManager.ClosePackage();
-                    AllowedToCloseWithGameOpen = true;
+                    await MainDataModel.Default.PackageManager.ClosePackage();
+                    MainDataModel.Default.AllowedToCloseWithGameOpen = true;
                     if (successAction != null) successAction.Invoke();
                 }
                 else if (result == System.Windows.Forms.DialogResult.No)
                 {
-                    AllowedToCloseWithGameOpen = true;
+                    MainDataModel.Default.AllowedToCloseWithGameOpen = true;
                     if (successAction != null) successAction.Invoke();
                 }
                 else if (result == System.Windows.Forms.DialogResult.Cancel)
                 {
-                    AllowedToCloseWithGameOpen = false;
+                   MainDataModel.Default.AllowedToCloseWithGameOpen = false;
                 }
 
             }));
         }
-
-        #endregion
-
-        #region Filters/Sorters
-
-
 
         #endregion
 
@@ -218,15 +139,36 @@ namespace BedrockLauncher.ViewModels
         {
             get { Depends.On(MainWindow); return MainWindow.UpdateButton; }
         }
-        public DependencyObject ProgressBarGrid
-        {
-            get { Depends.On(MainWindow); return MainWindow.MainPage.ProgressBarGrid; }
-        }
 
         [SafeForDependencyAnalysis]
         private MainWindow MainWindow
         {
             get => App.Current.Dispatcher.Invoke(() => (MainWindow)App.Current.MainWindow);
+        }
+
+        #endregion
+
+        #region Backwards Communication
+
+        public DependencyObject ProgressBarGrid
+        {
+            get { Depends.On(MainWindow); return MainWindow.MainPage.ProgressBarGrid; }
+        }
+        public async Task<System.Windows.Forms.DialogResult> ShowDialog_YesNo(string title, string content)
+        {
+            return await MainViewModel.Default.ShowDialog_YesNo(title, content);
+        }
+        public void errormsg(string dialogTitle, string dialogText, Exception ex2)
+        {
+            ErrorScreenShow.errormsg(dialogTitle, dialogText, ex2);
+        }
+        public Task<bool> exceptionmsg(Exception ex)
+        {
+            return ErrorScreenShow.exceptionmsg(ex);
+        }
+        public void UpdateAnimatePageTransitions(bool value)
+        {
+            Navigator.AnimatePageTransitions = value;
         }
 
         #endregion

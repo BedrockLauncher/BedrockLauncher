@@ -9,7 +9,6 @@ using BedrockLauncher.Classes;
 using System.ComponentModel;
 using BedrockLauncher.ViewModels;
 using PostSharp.Patterns.Model;
-using BedrockLauncher.UI.Components;
 using BedrockLauncher.Enums;
 
 namespace BedrockLauncher.Properties
@@ -45,9 +44,9 @@ namespace BedrockLauncher.Properties
             }
             else
             {
-                if (File.Exists(MainViewModel.Default.FilePaths.GetSettingsFilePath()))
+                if (File.Exists(MainDataModel.Default.FilePaths.GetSettingsFilePath()))
                 {
-                    json = File.ReadAllText(MainViewModel.Default.FilePaths.GetSettingsFilePath());
+                    json = File.ReadAllText(MainDataModel.Default.FilePaths.GetSettingsFilePath());
                     try { Default = JsonConvert.DeserializeObject<LauncherSettings>(json, JsonSerializerSettings); }
                     catch { Default = new LauncherSettings(); }
                 }
@@ -59,13 +58,13 @@ namespace BedrockLauncher.Properties
 
         public void Init()
         {
-            Navigator.AnimatePageTransitions = _AnimatePageTransitions;
+            MainDataModel.BackwardsCommunicationHost.UpdateAnimatePageTransitions(_AnimatePageTransitions);
         }
 
         public void Save()
         {
             string json = JsonConvert.SerializeObject(this, Formatting.Indented);
-            File.WriteAllText(MainViewModel.Default.FilePaths.GetSettingsFilePath(), json);
+            File.WriteAllText(MainDataModel.Default.FilePaths.GetSettingsFilePath(), json);
         }
 
         public bool GetIsFirstLaunch(int LoadedConfigCount)
@@ -101,7 +100,7 @@ namespace BedrockLauncher.Properties
             set
             {
                 _AnimatePageTransitions = value;
-                Navigator.AnimatePageTransitions = value;
+                MainDataModel.BackwardsCommunicationHost.UpdateAnimatePageTransitions(value);
             }
         }
         public string CurrentTheme { get; set; } = "LatestUpdate";

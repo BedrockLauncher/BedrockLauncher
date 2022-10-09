@@ -11,7 +11,6 @@ using Newtonsoft.Json;
 using BedrockLauncher.Enums;
 using PostSharp.Patterns.Model;
 using System.ComponentModel;
-using BedrockLauncher.UI.Pages.Common;
 using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Classes
@@ -223,7 +222,7 @@ namespace BedrockLauncher.Classes
 
         private void GenerateProfileImage(string img, string uuid)
         {
-            string path = MainViewModel.Default.FilePaths.GetProfilePath(uuid);
+            string path = MainDataModel.Default.FilePaths.GetProfilePath(uuid);
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
             string new_img = Path.Combine(path, Constants.PROFILE_CUSTOM_IMG_NAME);
             if (string.IsNullOrEmpty(img)) return;
@@ -417,7 +416,7 @@ namespace BedrockLauncher.Classes
             if (deleteData)
             {
                 try { installation.DeleteUserData(); }
-                catch (Exception ex) { _ = ErrorScreenShow.exceptionmsg(ex); }
+                catch (Exception ex) { _ = MainDataModel.BackwardsCommunicationHost.exceptionmsg(ex); }
             }
             CurrentInstallations.Remove(installation);
             Save();

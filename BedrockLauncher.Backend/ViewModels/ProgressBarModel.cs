@@ -43,8 +43,8 @@ namespace BedrockLauncher.ViewModels
             get
             {
                 Depends.On(IsGameRunning);
-                if (IsGameRunning) return App.Current.FindResource("GameTab_PlayButton_Kill_Text").ToString();
-                else return App.Current.FindResource("GameTab_PlayButton_Text").ToString();
+                if (IsGameRunning) return Application.Current.FindResource("GameTab_PlayButton_Kill_Text").ToString();
+                else return Application.Current.FindResource("GameTab_PlayButton_Text").ToString();
             }
         }
         public bool AllowEditing
@@ -98,7 +98,7 @@ namespace BedrockLauncher.ViewModels
                 };
                 storyboard.Children.Add(animation);
                 Storyboard.SetTargetProperty(animation, new System.Windows.PropertyPath(ProgressBar.HeightProperty));
-                Storyboard.SetTarget(animation, MainViewModel.Default.ProgressBarGrid);
+                Storyboard.SetTarget(animation, MainDataModel.BackwardsCommunicationHost.ProgressBarGrid);
                 storyboard.Completed += new EventHandler((s, e) => ProgressBarSetContent(Show, false));
                 storyboard.Begin();
             });

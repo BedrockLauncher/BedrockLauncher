@@ -32,7 +32,7 @@ namespace BedrockLauncher.Controls
 
         private void SwitchProfile()
         {
-            MainViewModel.Default.Config.Profile_Switch(_ProfileName);
+            MainDataModel.Default.Config.Profile_Switch(_ProfileName);
             SelectorParent.ProfileContextMenu.IsOpen = false;
             SelectorParent.GetBindingExpression(Grid.DataContextProperty).UpdateTarget();
         }

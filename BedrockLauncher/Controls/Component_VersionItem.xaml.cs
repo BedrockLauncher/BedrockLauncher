@@ -61,7 +61,7 @@ namespace BedrockLauncher.Controls
 
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                await Task.Run(() => MainViewModel.Default.RemoveVersion(version));
+                await Task.Run(() => MainDataModel.Default.RemoveVersion(version));
                 //await Task.Run(Program.OnApplicationRefresh);
             }
         }
@@ -81,7 +81,7 @@ namespace BedrockLauncher.Controls
         {
             Button button = sender as Button;
             var version = button.DataContext as MCVersion;
-            MainViewModel.Default.RepairVersion(version);
+            MainDataModel.Default.RepairVersion(version);
         }
 
         private void ContextMenu_Closed(object sender, RoutedEventArgs e)
