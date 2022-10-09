@@ -16,6 +16,10 @@ jobs:
         
       - name: Checkout submodules
         run: git submodule update --remote --init --recursive
+
+      - name: Use GitHub build targets
+        shell: bash
+        run: cp -f ./BedrockLauncher/Directory.Build.targets ./BedrockLauncher/GitHub.Directory.Build.targets
         
       - name: Setup nuget
         uses: nuget/setup-nuget@v1
