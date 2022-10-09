@@ -13,6 +13,7 @@ namespace BedrockLauncher.Core
         public GithubAsset[] assets { get; set; }
         public string url { get; set; }
         public string html_url { get; set; }
+        public bool prerelease { get; set; }
 
         [JsonIgnore]
         public bool isBeta { get; set; }
@@ -31,6 +32,7 @@ namespace BedrockLauncher.Core
             this.url = toCopy.url;
             this.html_url = toCopy.html_url;
             this.isBeta = toCopy.isBeta;
+            this.prerelease = toCopy.prerelease;
         }
     }
 }

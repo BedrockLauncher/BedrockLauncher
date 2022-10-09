@@ -17,8 +17,9 @@ namespace BedrockLauncher.Classes.Launcher
         {
             get
             {
-                if (isBeta) return Brushes.DarkOrange;
-                else return Brushes.Gray;
+                if (isBeta) return Brushes.Gray;
+                else if (prerelease) return Brushes.OrangeRed;
+                else return Brushes.Green;
             }
         }
         public Visibility CurrentBox_Visibility => isLatest ? Visibility.Visible : Visibility.Collapsed;

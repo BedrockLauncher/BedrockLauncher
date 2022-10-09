@@ -30,12 +30,14 @@ namespace BedrockLauncher.Handlers
             {
                 var list = new List<GithubReleaseInfo>();
                 list.AddRange(ReleaseNotes);
+                list.AddRange(PrereleaseNotes);
                 list.AddRange(BetaNotes);
                 list.Sort((x, y) => y.published_at.CompareTo(x.published_at));
                 return list;
             }
         }
         private List<GithubReleaseInfo> ReleaseNotes { get; set; } = new List<GithubReleaseInfo>();
+        private List<GithubReleaseInfo> PrereleaseNotes { get; set; } = new List<GithubReleaseInfo>();
         private List<GithubReleaseInfo> BetaNotes { get; set; } = new List<GithubReleaseInfo>();
 
 
@@ -48,7 +50,7 @@ namespace BedrockLauncher.Handlers
         {
             var list = Notes;
             if (list.Count == 0) return false;
-            if (Properties.LauncherSettings.Default.UseBetaBuilds) return list[0].isBeta;
+            if (Properties.LauncherSettings.Default.UseBetaBuilds) return list[0].prerelease;
             else return false;
         }
 
@@ -58,7 +60,7 @@ namespace BedrockLauncher.Handlers
             if (list.Count == 0) return string.Empty;
 
             if (Properties.LauncherSettings.Default.UseBetaBuilds) return list[0].tag_name;
-            else if (list.Exists(x => !x.isBeta)) return list.First(x => x.isBeta == false).tag_name;
+            else if (list.Exists(x => !x.prerelease)) return list.First(x => !x.prerelease).tag_name;
             else return string.Empty;
         }
 
@@ -68,7 +70,7 @@ namespace BedrockLauncher.Handlers
             if (list.Count == 0) return string.Empty;
 
             if (Properties.LauncherSettings.Default.UseBetaBuilds) return list[0].body;
-            else if (list.Exists(x => !x.isBeta)) return list.First(x => x.isBeta == false).body;
+            else if (list.Exists(x => !x.prerelease)) return list.First(x => x.prerelease == false).body;
             else return string.Empty;
         }
 
@@ -101,10 +103,11 @@ namespace BedrockLauncher.Handlers
             {
                 ReleaseNotes.Clear();
                 BetaNotes.Clear();
+                PrereleaseNotes.Clear();
+
                 await Beta_GetJSON();
                 await Release_GetJSON();
-                CompareUpdate();
-                return true;
+                return CompareUpdate();
             }
             catch (Exception err)
             {
@@ -115,8 +118,16 @@ namespace BedrockLauncher.Handlers
         private async Task Release_GetJSON()
         {
             var url = GithubAPI.RELEASE_URL;
-            ReleaseNotes = await GetUpdateNotes(url);
+            var notes = await GetUpdateNotes(url);
+
+            foreach (var note in notes)
+            {
+                if (note.prerelease) PrereleaseNotes.Add(note);
+                else ReleaseNotes.Add(note);
+            }
+
             foreach (var entry in ReleaseNotes) entry.isBeta = false;
+            foreach (var entry in PrereleaseNotes) entry.isBeta = false;
 
         }
         private async Task Beta_GetJSON()
@@ -138,7 +149,7 @@ namespace BedrockLauncher.Handlers
 
         #endregion
 
-        private void CompareUpdate()
+        private bool CompareUpdate()
         {
             string OnlineTag = GetLatestTag();
             string LocalTag = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
@@ -151,11 +162,13 @@ namespace BedrockLauncher.Handlers
                 if (int.Parse(LocalTag.Replace(".", "")) < int.Parse(OnlineTag.Replace(".", "")))
                 {
                     System.Diagnostics.Trace.WriteLine("New version available!");
+                    return true;
                 }
+                else return false;
             }
             catch
             {
-
+                return false;
             }
         }
 
