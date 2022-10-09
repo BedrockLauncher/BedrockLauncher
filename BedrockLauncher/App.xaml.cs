@@ -19,6 +19,13 @@ namespace BedrockLauncher
     /// </summary>
     public partial class App : Application
     {
+        public static string Version
+        {
+            get
+            {
+                return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            }
+        }
         public App() : base()
         {
             this.DispatcherUnhandledException += RuntimeHandler.OnDispatcherUnhandledException;

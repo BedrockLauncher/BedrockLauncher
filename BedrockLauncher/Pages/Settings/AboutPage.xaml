@@ -172,7 +172,7 @@
                 <TextBlock Margin="0,5,0,0" Text="{DynamicResource GeneralSettingsScreen_UpdatesSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                 <TextBlock Margin="0,0,0,15" Foreground="White">
                         <Run Text="{DynamicResource AboutPage_CurrentBuild}"/>
-                        <Run Text="{x:Static backend:Constants.AppVersion}"/>
+                        <Run Text="{x:Static local:App.Version}"/>
                 </TextBlock>
                 <Button Margin="0,10,0,1" FontSize="14" x:Name="CheckForUpdatesButton" HorizontalAlignment="Left" Click="CheckForUpdatesButton_Click" Content="{DynamicResource LauncherNewsPage_CheckForUpdates}" Style="{DynamicResource LinkButton}"></Button>
                 <Button Margin="0,1,0,1" FontSize="14" x:Name="ForceUpdateButton" HorizontalAlignment="Left" Click="ForceUpdateButton_Click" Content="{DynamicResource LauncherNewsPage_GetUpdates}" Style="{DynamicResource LinkButton}"></Button>

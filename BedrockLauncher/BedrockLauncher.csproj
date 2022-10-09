@@ -39,7 +39,7 @@
 		<StartupObject>BedrockLauncher.Program</StartupObject>
 	</PropertyGroup>
 	<PropertyGroup>
-		<ApplicationIcon>Resources\images\icons\ico\launcher_icon.ico</ApplicationIcon>
+		<ApplicationIcon>Resources\images\icons\launcher_icon.ico</ApplicationIcon>
 	</PropertyGroup>
 	<PropertyGroup>
 		<TargetZone>LocalIntranet</TargetZone>
@@ -137,12 +137,11 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="Resources\images\bg\play_screen\1.17_caves_and_cliffs_part_2.jpg" />
-		<Resource Include="Resources\images\bg\play_screen\1.19_the_wild_update.png" />
+		<Resource Include="Resources\images\bg\play_screen\1.19_the_wild_update.jpg" />
 		<Resource Include="Resources\images\bg\play_screen\bedrock_and_java_together.jpg">
 		  <CopyToOutputDirectory></CopyToOutputDirectory>
 		</Resource>
 		<Resource Include="Resources\images\bg\play_screen\bedrock_and_java_together_technoblade.jpg" />
-		<Resource Include="Resources\images\icons\ico\grass_path_icon.ico" />
 		<Resource Include="Resources\images\installation_icons\Acacia_Leaves.png" />
 		<Resource Include="Resources\images\installation_icons\Ancient_Debris.png" />
 		<Resource Include="Resources\images\installation_icons\Azalea_Leaves.png" />
@@ -150,6 +149,8 @@
 		<Resource Include="Resources\images\installation_icons\Command_Block.png" />
 		<Resource Include="Resources\images\installation_icons\Copper_Block.png" />
 		<Resource Include="Resources\images\installation_icons\Copper_Ore.png" />
+		<Resource Include="Resources\images\installation_icons\Custom_BedrockGrass.png" />
+		<Resource Include="Resources\images\installation_icons\Custom_Package.png" />
 		<Resource Include="Resources\images\installation_icons\Dark_Oak_Leaves.png" />
 		<Resource Include="Resources\images\installation_icons\Deepslate.png" />
 		<Resource Include="Resources\images\installation_icons\Deepslate_Coal_Ore.png" />
@@ -529,25 +530,7 @@
 		<Resource Include="Resources\images\icons\grass_icon.png" />
 	</ItemGroup>
 	<ItemGroup>
-		<Resource Include="Resources\images\icons\ico\bedrock_block_icon.ico" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Resources\images\icons\ico\crafting_table_block_icon.ico" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Resources\images\icons\ico\grass_block_icon.ico" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Resources\images\icons\ico\icon.ico" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Resources\images\icons\ico\launcher_icon.ico" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Resources\images\icons\ico\package.ico" />
-	</ItemGroup>
-	<ItemGroup>
-		<Resource Include="Resources\images\icons\ico\uninstaller_icon.ico" />
+		<Resource Include="Resources\images\icons\launcher_icon.ico" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="Resources\images\icons\mojang-icon.png" />
@@ -612,10 +595,9 @@
 	<ItemGroup>
 		<None Remove="Controls\FeedItem_PatchNotes.xaml.cs~RF88027b.TMP" />
 		<None Remove="Resources\images\bg\play_screen\1.17_caves_and_cliffs_part_2.jpg" />
-		<None Remove="Resources\images\bg\play_screen\1.19_the_wild_update.png" />
+		<None Remove="Resources\images\bg\play_screen\1.19_the_wild_update.jpg" />
 		<None Remove="Resources\images\bg\play_screen\bedrock_and_java_together.jpg" />
 		<None Remove="Resources\images\bg\play_screen\bedrock_and_java_together_technoblade.jpg" />
-		<None Remove="Resources\images\icons\ico\grass_path_icon.ico" />
 		<None Remove="Resources\images\installation_icons\Acacia_Leaves.png" />
 		<None Remove="Resources\images\installation_icons\Ancient_Debris.png" />
 		<None Remove="Resources\images\installation_icons\Azalea_Leaves.png" />
@@ -623,6 +605,8 @@
 		<None Remove="Resources\images\installation_icons\Command_Block.png" />
 		<None Remove="Resources\images\installation_icons\Copper_Block.png" />
 		<None Remove="Resources\images\installation_icons\Copper_Ore.png" />
+		<None Remove="Resources\images\installation_icons\Custom_BedrockGrass.png" />
+		<None Remove="Resources\images\installation_icons\Custom_Package.png" />
 		<None Remove="Resources\images\installation_icons\Dark_Oak_Leaves.png" />
 		<None Remove="Resources\images\installation_icons\Deepslate.png" />
 		<None Remove="Resources\images\installation_icons\Deepslate_Coal_Ore.png" />
