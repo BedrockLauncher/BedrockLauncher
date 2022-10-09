@@ -128,7 +128,7 @@
 		<PackageReference Include="VirtualizingWrapPanel" Version="1.5.7" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\modules\BedrockLauncher.Core\BedrockLauncher.Core.csproj" />
+		<ProjectReference Include="..\BedrockLauncher.Backend\BedrockLauncher.Backend.csproj" />
 		<ProjectReference Include="..\modules\BedrockLauncher.Localization\BedrockLauncher.Localization.csproj" />
 		<ProjectReference Include="..\modules\BedrockLauncher.UI\BedrockLauncher.UI.csproj" />
 		<ProjectReference Include="..\modules\BedrockLauncher.UpdateProcessor\BedrockLauncher.UpdateProcessor.csproj" />
@@ -137,6 +137,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="Resources\images\bg\play_screen\1.17_caves_and_cliffs_part_2.jpg" />
+		<Resource Include="Resources\images\bg\play_screen\1.19_the_wild_update.png" />
 		<Resource Include="Resources\images\bg\play_screen\bedrock_and_java_together.jpg">
 		  <CopyToOutputDirectory></CopyToOutputDirectory>
 		</Resource>
@@ -611,6 +612,7 @@
 	<ItemGroup>
 		<None Remove="Controls\FeedItem_PatchNotes.xaml.cs~RF88027b.TMP" />
 		<None Remove="Resources\images\bg\play_screen\1.17_caves_and_cliffs_part_2.jpg" />
+		<None Remove="Resources\images\bg\play_screen\1.19_the_wild_update.png" />
 		<None Remove="Resources\images\bg\play_screen\bedrock_and_java_together.jpg" />
 		<None Remove="Resources\images\bg\play_screen\bedrock_and_java_together_technoblade.jpg" />
 		<None Remove="Resources\images\icons\ico\grass_path_icon.ico" />
@@ -663,9 +665,6 @@
 		<WarningLevel>0</WarningLevel>
 		<DefineConstants>$(DefineConstants);ENABLE_CEFSHARP</DefineConstants>
 	</PropertyGroup>
-	<ItemGroup>
-	  <Folder Include="Extensions\" />
-	</ItemGroup>
 	<ItemGroup>
 	  <Compile Update="Properties\Resources.Designer.cs">
 	    <DesignTime>True</DesignTime>

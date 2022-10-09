@@ -38,7 +38,7 @@ namespace BedrockLauncher.Classes
             get
             {
                 Depends.On(IsCustomIcon, IconPath);
-                if (IsCustomIcon) return Path.Combine(MainViewModel.Default.FilePaths.GetCacheFolderPath(), IconPath);
+                if (IsCustomIcon) return Path.Combine(MainDataModel.Default.FilePaths.GetCacheFolderPath(), IconPath);
                 else return Constants.INSTALLATIONS_ICONPATH + IconPath;
             }
         }
@@ -76,7 +76,7 @@ namespace BedrockLauncher.Classes
             get
             {
                 Depends.On(VersioningMode, VersionUUID);
-                return MainViewModel.Default.PackageManager.VersionDownloader.GetVersion(VersioningMode, VersionUUID);
+                return MainDataModel.Default.PackageManager.VersionDownloader.GetVersion(VersioningMode, VersionUUID);
             }
         }
         [JsonIgnore]
@@ -152,13 +152,13 @@ namespace BedrockLauncher.Classes
 
         public void DeleteUserData()
         {
-            string Directory = MainViewModel.Default.FilePaths.GetInstallationPath(Properties.LauncherSettings.Default.CurrentProfileUUID, DirectoryName_Full);
+            string Directory = MainDataModel.Default.FilePaths.GetInstallationPath(Properties.LauncherSettings.Default.CurrentProfileUUID, DirectoryName_Full);
             if (System.IO.Directory.Exists(Directory)) System.IO.Directory.Delete(Directory, true);
         }
 
         public void OpenDirectory()
         {
-            string Directory = MainViewModel.Default.FilePaths.GetInstallationPackageDataPath(Properties.LauncherSettings.Default.CurrentProfileUUID, DirectoryName_Full);
+            string Directory = MainDataModel.Default.FilePaths.GetInstallationPackageDataPath(Properties.LauncherSettings.Default.CurrentProfileUUID, DirectoryName_Full);
             if (!System.IO.Directory.Exists(Directory)) System.IO.Directory.CreateDirectory(Directory);
             Process.Start("explorer.exe", Directory);
         }

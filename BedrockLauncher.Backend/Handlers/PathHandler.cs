@@ -96,8 +96,8 @@ namespace BedrockLauncher.Handlers
         public string GetProfilePath(string profileUUID)
         {
             if (string.IsNullOrEmpty(profileUUID)) return string.Empty;
-            else if (!MainViewModel.Default.Config.profiles.ContainsKey(profileUUID)) return string.Empty;
-            var profile = MainViewModel.Default.Config.profiles[profileUUID];
+            else if (!MainDataModel.Default.Config.profiles.ContainsKey(profileUUID)) return string.Empty;
+            var profile = MainDataModel.Default.Config.profiles[profileUUID];
             return Path.Combine(CurrentLocation, InstallationsFolderName, profile.ProfilePath);
         }
         public string GetInstallationPath(string profileUUID, string installationDirectory)

@@ -67,7 +67,7 @@ namespace BedrockLauncher.Classes
             get
             {
                 Depends.On(UUID);
-                return Path.GetFullPath(MainViewModel.Default.FilePaths.VersionsFolder + UUID);
+                return Path.GetFullPath(MainDataModel.Default.FilePaths.VersionsFolder + UUID);
             }
         }
         public string DisplayName

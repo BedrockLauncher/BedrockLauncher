@@ -3,8 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:properties="clr-namespace:BedrockLauncher.Properties"
-      xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
+      xmlns:properties="clr-namespace:BedrockLauncher.Properties;assembly=BedrockLauncher.Backend"
+      xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels;assembly=BedrockLauncher.Backend"
       xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
       xmlns:com="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
       xmlns:con="clr-namespace:BedrockLauncher.Controls"
@@ -26,7 +26,7 @@
 
                 <TextBlock Margin="42,30,0,10" Text="{DynamicResource GeneralSettingsScreen_LauncherSettingsSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                 <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=UseBetaBuilds}" x:Name="betaVersionsButtonCheckbox" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_UseBetaLauncher}" HorizontalAlignment="Left" Margin="42,0,0,10" VerticalAlignment="Top" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="13"/>
-                <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=KeepLauncherOpen}" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" x:Name="keepLauncherOpenCheckBox" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_KeepLauncherOpen}" HorizontalAlignment="Left" Margin="42,0,0,10" VerticalAlignment="Top" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="13"/>
+                <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=KeepLauncherOpen}" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" x:Name="keepLauncherOpenCheckBox" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_KeepLauncherOpen}" HorizontalAlignment="Left" Margin="42,0,0,10" VerticalAlignment="Top" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="13"/>
                 <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=AnimatePageTransitions}" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_AnimateTransitions}" HorizontalAlignment="Left" Margin="42,0,0,10" VerticalAlignment="Top" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="13"/>
                 <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=AutomaticSecondaryVersionChecking}" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_FetchVersionsFromMicrosoftStore}" HorizontalAlignment="Left" Margin="42,0,0,10" VerticalAlignment="Top" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="13"/>
 
@@ -52,13 +52,13 @@
                             </Grid>
                         </ContentControl>
                         <TextBlock Margin="3,10,0,0" Foreground="{DynamicResource PrimaryText.Foreground}" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="13" Text="{DynamicResource GeneralSettingsScreen_PathOptions_Notice_Text}"></TextBlock>
-                        <Button Style="{DynamicResource DialogButton_Red}" x:Name="RestartButton" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Content="{DynamicResource GeneralSettingsScreen_PathOptions_RestartButton_Text}" Height="30" HorizontalAlignment="Stretch" Click="RestartButton_Click"/>
+                        <Button Style="{DynamicResource DialogButton_Red}" x:Name="RestartButton" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Content="{DynamicResource GeneralSettingsScreen_PathOptions_RestartButton_Text}" Height="30" HorizontalAlignment="Stretch" Click="RestartButton_Click"/>
                     </StackPanel>      
                 </GroupBox>
                 <TextBlock Margin="42,30,0,10" Text="{DynamicResource GeneralSettingsScreen_BackupsSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                 <StackPanel Margin="38,0,0,0" Orientation="Vertical" HorizontalAlignment="Left">
-                    <Button Style="{DynamicResource DialogButton_Green}" x:Name="BackupButton" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Content="{DynamicResource GeneralSettingsScreen_BackupButton}" Height="30" Click="BackupButton_Click"/>
-                    <Button Style="{DynamicResource DialogButton_Orange}" x:Name="BackupPreviewButton" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Content="{DynamicResource GeneralSettingsScreen_BackupPreviewButton}" Height="30" Click="BackupPreviewButton_Click"/>
+                    <Button Style="{DynamicResource DialogButton_Green}" x:Name="BackupButton" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Content="{DynamicResource GeneralSettingsScreen_BackupButton}" Height="30" Click="BackupButton_Click"/>
+                    <Button Style="{DynamicResource DialogButton_Orange}" x:Name="BackupPreviewButton" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Content="{DynamicResource GeneralSettingsScreen_BackupPreviewButton}" Height="30" Click="BackupPreviewButton_Click"/>
                 </StackPanel>
 
             </StackPanel>

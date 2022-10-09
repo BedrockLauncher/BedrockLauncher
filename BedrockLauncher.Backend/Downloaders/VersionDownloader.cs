@@ -29,10 +29,10 @@ namespace BedrockLauncher.Downloaders
     {
         private VersionManager VersionDB = new VersionManager();
 
-        private string winstoreDBFile => MainViewModel.Default.FilePaths.GetWinStoreVersionsDBFile();
-        private string winstoreDBTechnicalFile => MainViewModel.Default.FilePaths.GetWinStoreVersionsTechnicalDBFile();
-        private string communityDBFile => MainViewModel.Default.FilePaths.GetCommunityVersionsDBFile();
-        private string communityDBTechnicalFile => MainViewModel.Default.FilePaths.GetCommunityVersionsTechnicalDBFile();
+        private string winstoreDBFile => MainDataModel.Default.FilePaths.GetWinStoreVersionsDBFile();
+        private string winstoreDBTechnicalFile => MainDataModel.Default.FilePaths.GetWinStoreVersionsTechnicalDBFile();
+        private string communityDBFile => MainDataModel.Default.FilePaths.GetCommunityVersionsDBFile();
+        private string communityDBTechnicalFile => MainDataModel.Default.FilePaths.GetCommunityVersionsTechnicalDBFile();
 
         private MCVersion latestReleaseRef { get; set; }
         private MCVersion latestBetaRef { get; set; }
@@ -101,7 +101,7 @@ namespace BedrockLauncher.Downloaders
         }
         private async Task SyncUpLocalVersions(ObservableCollection<MCVersion> versions, bool OnLoad = false)
         {
-            DirectoryInfo directoryInfo = Directory.CreateDirectory(MainViewModel.Default.FilePaths.VersionsFolder);
+            DirectoryInfo directoryInfo = Directory.CreateDirectory(MainDataModel.Default.FilePaths.VersionsFolder);
             var webVersions = VersionDB.GetVersions();
 
             foreach (var directory in directoryInfo.EnumerateDirectories())
@@ -162,18 +162,18 @@ namespace BedrockLauncher.Downloaders
         {
             if (versioningMode != VersioningMode.None)
             {
-                var latest_preview = MainViewModel.Default.Versions.ToList().FirstOrDefault(x => x.UUID == latestPreviewRef.UUID && x.Type == latestPreviewRef.Type);
-                var latest_beta = MainViewModel.Default.Versions.ToList().FirstOrDefault(x => x.UUID == latestBetaRef.UUID && x.Type == latestBetaRef.Type);
-                var latest_release = MainViewModel.Default.Versions.ToList().FirstOrDefault(x => x.UUID == latestReleaseRef.UUID && x.Type == latestReleaseRef.Type);
+                var latest_preview = MainDataModel.Default.Versions.ToList().FirstOrDefault(x => x.UUID == latestPreviewRef.UUID && x.Type == latestPreviewRef.Type);
+                var latest_beta = MainDataModel.Default.Versions.ToList().FirstOrDefault(x => x.UUID == latestBetaRef.UUID && x.Type == latestBetaRef.Type);
+                var latest_release = MainDataModel.Default.Versions.ToList().FirstOrDefault(x => x.UUID == latestReleaseRef.UUID && x.Type == latestReleaseRef.Type);
 
                 if (versioningMode == VersioningMode.LatestPreview && latest_preview != null) return latest_preview;
                 else if (versioningMode == VersioningMode.LatestBeta && latest_beta != null) return latest_beta;
                 else if (versioningMode == VersioningMode.LatestRelease && latest_release != null) return latest_release;
                 else return null;
             }
-            else if (MainViewModel.Default.Versions.ToList().Exists(x => x.UUID == versionUUID))
+            else if (MainDataModel.Default.Versions.ToList().Exists(x => x.UUID == versionUUID))
             {
-                return MainViewModel.Default.Versions.ToList().Where(x => x.UUID == versionUUID).FirstOrDefault();
+                return MainDataModel.Default.Versions.ToList().Where(x => x.UUID == versionUUID).FirstOrDefault();
             }
             else return null;
         }

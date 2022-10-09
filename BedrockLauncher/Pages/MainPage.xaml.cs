@@ -49,13 +49,13 @@ namespace BedrockLauncher.Pages
 
         public MainPage()
         {
-            this.DataContext = MainViewModel.Default;
+            this.DataContext = MainDataModel.Default;
             InitializeComponent();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            MainViewModel.Default.PackageManager.Cancel();
+            MainDataModel.Default.PackageManager.Cancel();
         }
 
         #region Navigation

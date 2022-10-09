@@ -23,7 +23,7 @@ namespace BedrockLauncher.Pages.Settings
         private bool hasInitalized = false;
         public VersionsPage()
         {
-            this.DataContext = MainViewModel.Default;
+            this.DataContext = MainDataModel.Default;
             InitializeComponent();
         }
 
@@ -44,7 +44,7 @@ namespace BedrockLauncher.Pages.Settings
         {
             if (!hasInitalized)
             {
-                foreach (var ver in MainViewModel.Default.Versions) ver.UpdateFolderSize();
+                foreach (var ver in MainDataModel.Default.Versions) ver.UpdateFolderSize();
                 hasInitalized = true;
             }
         }
@@ -52,7 +52,7 @@ namespace BedrockLauncher.Pages.Settings
         private async void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
             await Task.Run(Program.OnApplicationRefresh);
-            foreach (var ver in MainViewModel.Default.Versions) ver.UpdateFolderSize();
+            foreach (var ver in MainDataModel.Default.Versions) ver.UpdateFolderSize();
         }
 
         private void CollectionViewSource_Filter(object sender, FilterEventArgs e)
@@ -70,9 +70,9 @@ namespace BedrockLauncher.Pages.Settings
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string fileToImport = ofd.FileName;
-                await MainViewModel.Default.PackageManager.AddPackage(fileToImport);
+                await MainDataModel.Default.PackageManager.AddPackage(fileToImport);
                 await Task.Run(Program.OnApplicationRefresh);
-                foreach (var ver in MainViewModel.Default.Versions) ver.UpdateFolderSize();
+                foreach (var ver in MainDataModel.Default.Versions) ver.UpdateFolderSize();
             }
         }
     }

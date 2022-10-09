@@ -3,14 +3,14 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:p="clr-namespace:BedrockLauncher.Properties"
-      xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
+      xmlns:p="clr-namespace:BedrockLauncher.Properties;assembly=BedrockLauncher.Backend"
+      xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels;assembly=BedrockLauncher.Backend"
       xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
-      xmlns:handlers="clr-namespace:BedrockLauncher.Handlers"
+      xmlns:handlers="clr-namespace:BedrockLauncher.Handlers;assembly=BedrockLauncher.Backend"
       xmlns:conv="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
-      xmlns:classes2="clr-namespace:BedrockLauncher.Classes"
+      xmlns:classes2="clr-namespace:BedrockLauncher.Classes;assembly=BedrockLauncher.Backend"
       xmlns:controls="clr-namespace:BedrockLauncher.Controls"
-      d:DataContext="{d:DesignInstance Type=viewModels:MainViewModel}"
+      d:DataContext="{d:DesignInstance Type=viewModels:MainDataModel}"
       mc:Ignorable="d" 
       x:Name="PageHost"
       d:DesignHeight="608" d:DesignWidth="828"
@@ -66,9 +66,9 @@
                     <StackPanel>
                         <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_Versions}" Margin="4,0,0,4" FontWeight="Bold" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
                         <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Center" Width="Auto" Orientation="Horizontal" Margin="0,0,0,0">
-                            <CheckBox x:Name="ShowReleasesCheckBox" IsChecked="{Binding ShowReleases, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Releases}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}"></CheckBox>
-                            <CheckBox x:Name="ShowBetasCheckBox" IsChecked="{Binding ShowBetas, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Betas}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}"></CheckBox>
-                            <CheckBox x:Name="ShowPreviewsCheckBox" IsChecked="{Binding ShowPreviews, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Previews}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}"></CheckBox>
+                            <CheckBox x:Name="ShowReleasesCheckBox" IsChecked="{Binding ShowReleases, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Releases}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}"></CheckBox>
+                            <CheckBox x:Name="ShowBetasCheckBox" IsChecked="{Binding ShowBetas, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Betas}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}"></CheckBox>
+                            <CheckBox x:Name="ShowPreviewsCheckBox" IsChecked="{Binding ShowPreviews, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Previews}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}"></CheckBox>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
@@ -80,7 +80,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid Width="{Binding ElementName=InstallationsList, Path=ActualWidth}" Margin="10">
-                <Button x:Name="NewInstallationButton" Content="{DynamicResource InstallationsPage_AddButton}" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Height="30" Width="Auto" Click="NewInstallationButton_Click" HorizontalAlignment="Left" Foreground="White" Style="{DynamicResource DialogButton}"/>
+                <Button x:Name="NewInstallationButton" Content="{DynamicResource InstallationsPage_AddButton}" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Height="30" Width="Auto" Click="NewInstallationButton_Click" HorizontalAlignment="Left" Foreground="White" Style="{DynamicResource DialogButton}"/>
             </Grid>
             <ListView x:Name="InstallationsList" ItemsSource="{Binding Source={StaticResource InstallationsSource4}, IsAsync=True}" SourceUpdated="InstallationsList_SourceUpdated" SelectionMode="Single" Grid.Row="1" HorizontalContentAlignment="Center" HorizontalAlignment="Center">
                 <ListView.ItemTemplate>

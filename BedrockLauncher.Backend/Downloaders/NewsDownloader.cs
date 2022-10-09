@@ -54,7 +54,7 @@ namespace BedrockLauncher.Downloaders
                 viewModel.LauncherNewsItems.Clear();
                 bool isFirstItem = true;
                 string latest_name = BedrockLauncher.Localization.Language.LanguageManager.GetResource("LauncherNewsPage_Title_Text").ToString();
-                foreach (var item in MainViewModel.Updater.Notes)
+                foreach (var item in MainDataModel.Updater.Notes)
                 {
                     PatchNote_Launcher newItem = new PatchNote_Launcher(item);
 

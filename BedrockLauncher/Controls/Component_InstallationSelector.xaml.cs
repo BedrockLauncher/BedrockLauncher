@@ -15,7 +15,7 @@ namespace BedrockLauncher.Controls
         public Component_InstallationSelector()
         {
             InitializeComponent();
-            DataContext = MainViewModel.Default;
+            DataContext = MainDataModel.Default;
         }
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)
         {

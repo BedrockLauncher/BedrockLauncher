@@ -69,18 +69,18 @@ namespace BedrockLauncher.Pages.Preview
 
         private MCVersion GetVersion(string uuid)
         {
-            return MainViewModel.Default.Versions.Where(x => x.UUID == uuid).FirstOrDefault();
+            return MainDataModel.Default.Versions.Where(x => x.UUID == uuid).FirstOrDefault();
         }
 
         private void UpdateInstallation()
         {
-            MainViewModel.Default.Config.Installation_Edit(ViewModel.SelectedUUID, ViewModel.InstallationName, GetVersion(ViewModel.SelectedVersionUUID), ViewModel.InstallationDirectory, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
+            MainDataModel.Default.Config.Installation_Edit(ViewModel.SelectedUUID, ViewModel.InstallationName, GetVersion(ViewModel.SelectedVersionUUID), ViewModel.InstallationDirectory, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
             MainViewModel.Default.SetOverlayFrame(null);
         }
 
         private void CreateInstallation()
         {
-            MainViewModel.Default.Config.Installation_Create(ViewModel.InstallationName, GetVersion(ViewModel.SelectedVersionUUID), ViewModel.InstallationDirectory, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
+            MainDataModel.Default.Config.Installation_Create(ViewModel.InstallationName, GetVersion(ViewModel.SelectedVersionUUID), ViewModel.InstallationDirectory, InstallationIconSelect.IconPath, InstallationIconSelect.IsIconCustom);
             MainViewModel.Default.SetOverlayFrame(null);
         }
 

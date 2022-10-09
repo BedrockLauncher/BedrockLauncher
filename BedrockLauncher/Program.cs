@@ -48,9 +48,9 @@ namespace BedrockLauncher
                 Trace.WriteLine("Preparing Application...");
                 await RuntimeHandler.InitalizeBugRockOfTheWeek();
                 LanguageManager.Init();
-                MainViewModel.Default.LoadConfig();
-                await MainViewModel.Default.LoadVersions(true);
-                await MainViewModel.Updater.CheckForUpdatesAsync(true);
+                MainDataModel.Default.LoadConfig();
+                await MainDataModel.Default.LoadVersions(true);
+                await MainDataModel.Updater.CheckForUpdatesAsync(true);
                 Trace.WriteLine("Preparing Application: DONE");
             });
         }
@@ -61,8 +61,8 @@ namespace BedrockLauncher
             await MainViewModel.Default.ShowWaitingDialog(async () =>
             {
                 Trace.WriteLine("Refreshing Application...");
-                MainViewModel.Default.LoadConfig();
-                await MainViewModel.Default.LoadVersions();
+                MainDataModel.Default.LoadConfig();
+                await MainDataModel.Default.LoadVersions();
                 Trace.WriteLine("Refreshing Application: DONE");
             });
         }

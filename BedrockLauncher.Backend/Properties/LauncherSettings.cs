@@ -45,9 +45,9 @@ namespace BedrockLauncher.Properties
             }
             else
             {
-                if (File.Exists(MainViewModel.Default.FilePaths.GetSettingsFilePath()))
+                if (File.Exists(MainDataModel.Default.FilePaths.GetSettingsFilePath()))
                 {
-                    json = File.ReadAllText(MainViewModel.Default.FilePaths.GetSettingsFilePath());
+                    json = File.ReadAllText(MainDataModel.Default.FilePaths.GetSettingsFilePath());
                     try { Default = JsonConvert.DeserializeObject<LauncherSettings>(json, JsonSerializerSettings); }
                     catch { Default = new LauncherSettings(); }
                 }
@@ -65,7 +65,7 @@ namespace BedrockLauncher.Properties
         public void Save()
         {
             string json = JsonConvert.SerializeObject(this, Formatting.Indented);
-            File.WriteAllText(MainViewModel.Default.FilePaths.GetSettingsFilePath(), json);
+            File.WriteAllText(MainDataModel.Default.FilePaths.GetSettingsFilePath(), json);
         }
 
         public bool GetIsFirstLaunch(int LoadedConfigCount)

@@ -72,6 +72,7 @@ namespace BedrockLauncher
         public static Dictionary<string, string> Themes = new Dictionary<string, string>()
         {
 
+            { "TheWildUpdate",                     ThemesPathPrefix + "1.19_the_wild_update.png" },
             { "CavesAndCliffsPart2Update",         ThemesPathPrefix + "1.17_caves_and_cliffs_part_2.jpg" },
             { "CavesAndCliffsPart1Update",         ThemesPathPrefix + "1.17_caves_and_cliffs_part_1.jpg" },
             { "NetherUpdate",                      ThemesPathPrefix + "1.16_nether_update.jpg" },

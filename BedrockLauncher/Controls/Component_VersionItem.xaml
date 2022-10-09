@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:classes="clr-namespace:BedrockLauncher.Classes"
-             xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
+             xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels;assembly=BedrockLauncher.Backend"
              xmlns:conv="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
              d:DataContext="{d:DesignInstance Type=classes:MCVersion}"
              mc:Ignorable="d" 
@@ -39,7 +39,7 @@
             <Button x:Name="Repair" Click="Repair_Click" Content="{DynamicResource GeneralText_Repair}" Style="{DynamicResource DialogButton_Orange}">
                 <Button.IsEnabled>
                     <MultiBinding Converter="{StaticResource BooleanAndConverter}">
-                        <Binding Source="{x:Static viewModels:MainViewModel.Default}" Path="ProgressBarState.AllowEditing" Mode="OneWay"/>
+                        <Binding Source="{x:Static viewModels:MainDataModel.Default}" Path="ProgressBarState.AllowEditing" Mode="OneWay"/>
                         <Binding Path="IsCustom" Converter="{StaticResource InvertBoolean}" Mode="OneWay"  />
                     </MultiBinding>
                 </Button.IsEnabled>
@@ -57,7 +57,7 @@
                 </Button.Content>
                 <Button.ContextMenu>
                     <ContextMenu Closed="ContextMenu_Closed" Style="{DynamicResource NoCheckboxContextMenu}">
-                        <MenuItem Header="{DynamicResource GeneralText_Remove}" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="Remove" Click="Delete_Click"></MenuItem>
+                        <MenuItem Header="{DynamicResource GeneralText_Remove}" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="Remove" Click="Delete_Click"></MenuItem>
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>

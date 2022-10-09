@@ -5,12 +5,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:classes="clr-namespace:BedrockLauncher.Classes"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             xmlns:vm="clr-namespace:BedrockLauncher.ViewModels"
+             xmlns:vm="clr-namespace:BedrockLauncher.ViewModels;assembly=BedrockLauncher.Backend"
              xmlns:com="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
              xmlns:controls="clr-namespace:BedrockLauncher.Controls"
              mc:Ignorable="d" 
              Height="59" Margin="1,0,0,0" VerticalAlignment="Top" Style="{DynamicResource DisabledStyle}"
-             DataContext="{Binding Source={x:Static vm:MainViewModel.Default}, Path=Config}"
+             DataContext="{Binding Source={x:Static vm:MainDataModel.Default}, Path=Config}"
              d:DataContext="{d:DesignInstance classes:MCProfilesList, IsDesignTimeCreatable=False}">
     <controls:Toolbar_ButtonBase.Resources>
         <sys:String x:Key="ProfileName_DesignTime">Default Profile</sys:String>

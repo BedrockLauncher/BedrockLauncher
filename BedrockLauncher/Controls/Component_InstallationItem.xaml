@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:conv="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
-             xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
+             xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels;assembly=BedrockLauncher.Backend"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
              xmlns:classes="clr-namespace:BedrockLauncher.Classes"
@@ -43,7 +43,7 @@
             </StackPanel>
         </Grid>
         <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" Height="40" VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="ButtonPanel" Visibility="Hidden">
-            <Button x:Name="Play" Click="Play_Click" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Content="{DynamicResource InstallationsPage_PlayButton}" Style="{DynamicResource DialogButton_Green}"></Button>
+            <Button x:Name="Play" Click="Play_Click" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Content="{DynamicResource InstallationsPage_PlayButton}" Style="{DynamicResource DialogButton_Green}"></Button>
             <Button x:Name="Folder" Click="Folder_Click" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" FontWeight="Bold" Style="{DynamicResource DialogButton}">
                 <Button.Content>
                     <Grid Width="16" Height="16">
@@ -71,11 +71,11 @@
                 </Button.Content>
                 <Button.ContextMenu>
                     <ContextMenu Closed="ContextMenu_Closed" Style="{DynamicResource NoCheckboxContextMenu}">
-                        <MenuItem Header="{DynamicResource GeneralText_Edit}" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="EditInstallationButton" Click="EditInstallationButton_Click"  Visibility="{Binding ReadOnly, Converter={StaticResource VisibleIfTrueConverter}, ConverterParameter=Inverted}"></MenuItem>
-                        <MenuItem Header="{DynamicResource GeneralText_Delete}" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="DeleteInstallationButton" Click="DeleteInstallationButton_Click"  Visibility="{Binding ReadOnly, Converter={StaticResource VisibleIfTrueConverter}, ConverterParameter=Inverted}"></MenuItem>
-                        <MenuItem Header="{DynamicResource GeneralText_Duplicate}" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="DuplicateInstallationButton" Click="DuplicateInstallationButton_Click"></MenuItem>
+                        <MenuItem Header="{DynamicResource GeneralText_Edit}" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="EditInstallationButton" Click="EditInstallationButton_Click"  Visibility="{Binding ReadOnly, Converter={StaticResource VisibleIfTrueConverter}, ConverterParameter=Inverted}"></MenuItem>
+                        <MenuItem Header="{DynamicResource GeneralText_Delete}" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="DeleteInstallationButton" Click="DeleteInstallationButton_Click"  Visibility="{Binding ReadOnly, Converter={StaticResource VisibleIfTrueConverter}, ConverterParameter=Inverted}"></MenuItem>
+                        <MenuItem Header="{DynamicResource GeneralText_Duplicate}" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="DuplicateInstallationButton" Click="DuplicateInstallationButton_Click"></MenuItem>
                         <Separator></Separator>
-                        <MenuItem Header="{DynamicResource GeneralText_Install}" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="InstallInstallationButton" Click="InstallInstallationButton_Click"  Visibility="{Binding ReadOnly, Converter={StaticResource VisibleIfTrueConverter}, ConverterParameter=Inverted}"></MenuItem>
+                        <MenuItem Header="{DynamicResource GeneralText_Install}" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="InstallInstallationButton" Click="InstallInstallationButton_Click"  Visibility="{Binding ReadOnly, Converter={StaticResource VisibleIfTrueConverter}, ConverterParameter=Inverted}"></MenuItem>
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>

@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BedrockLauncher", "BedrockL
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{BD55A257-6639-42E6-9DE1-AF712F553AA2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BedrockLauncher.Core", "modules\BedrockLauncher.Core\BedrockLauncher.Core.csproj", "{167A048A-8140-4F8D-87C3-A03D07F964D3}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JemExtensions", "modules\Extensions.NET\JemExtensions.csproj", "{6718749F-4346-4E5E-85DF-D47FAF22C9B6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BedrockLauncher.UpdateProcessor", "modules\BedrockLauncher.UpdateProcessor\BedrockLauncher.UpdateProcessor.csproj", "{8D88D5FF-5132-4605-851D-2E020EA6483B}"
@@ -32,6 +30,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BedrockLauncher.Localizatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlRenderer.Core", "modules\HtmlRenderer.Core\HtmlRenderer.Core.csproj", "{5C531BB9-9EBC-4700-AAC8-52A7A72D96B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BedrockLauncher.Backend", "BedrockLauncher.Backend\BedrockLauncher.Backend.csproj", "{10696590-216D-42BC-817D-0595788D76EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,10 +42,6 @@ Global
 		{9FEBCF6C-14EF-49E9-B57D-FCBC3BA4BC77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FEBCF6C-14EF-49E9-B57D-FCBC3BA4BC77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FEBCF6C-14EF-49E9-B57D-FCBC3BA4BC77}.Release|Any CPU.Build.0 = Release|Any CPU
-		{167A048A-8140-4F8D-87C3-A03D07F964D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{167A048A-8140-4F8D-87C3-A03D07F964D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{167A048A-8140-4F8D-87C3-A03D07F964D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{167A048A-8140-4F8D-87C3-A03D07F964D3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6718749F-4346-4E5E-85DF-D47FAF22C9B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6718749F-4346-4E5E-85DF-D47FAF22C9B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6718749F-4346-4E5E-85DF-D47FAF22C9B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -74,12 +70,15 @@ Global
 		{5C531BB9-9EBC-4700-AAC8-52A7A72D96B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C531BB9-9EBC-4700-AAC8-52A7A72D96B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C531BB9-9EBC-4700-AAC8-52A7A72D96B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10696590-216D-42BC-817D-0595788D76EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10696590-216D-42BC-817D-0595788D76EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10696590-216D-42BC-817D-0595788D76EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10696590-216D-42BC-817D-0595788D76EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{167A048A-8140-4F8D-87C3-A03D07F964D3} = {BD55A257-6639-42E6-9DE1-AF712F553AA2}
 		{6718749F-4346-4E5E-85DF-D47FAF22C9B6} = {BD55A257-6639-42E6-9DE1-AF712F553AA2}
 		{8D88D5FF-5132-4605-851D-2E020EA6483B} = {BD55A257-6639-42E6-9DE1-AF712F553AA2}
 		{46D8EC75-2F00-4551-9F3D-10C8522C9B3D} = {BD55A257-6639-42E6-9DE1-AF712F553AA2}
@@ -87,6 +86,7 @@ Global
 		{B7336BA7-1E83-43D8-BD0E-3D44C6E3D4E7} = {BD55A257-6639-42E6-9DE1-AF712F553AA2}
 		{9425CFBF-1D40-48E1-8CB3-B8FB0D4AFD2C} = {BD55A257-6639-42E6-9DE1-AF712F553AA2}
 		{5C531BB9-9EBC-4700-AAC8-52A7A72D96B1} = {BD55A257-6639-42E6-9DE1-AF712F553AA2}
+		{10696590-216D-42BC-817D-0595788D76EA} = {BD55A257-6639-42E6-9DE1-AF712F553AA2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1C257FFD-AD8A-44BD-AC36-BCEE19250413}

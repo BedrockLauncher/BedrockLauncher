@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:properties="clr-namespace:BedrockLauncher.Properties"
-        xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
+        xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels;assembly=BedrockLauncher.Backend"
         xmlns:com="clr-namespace:JemExtensions.WPF.Behaviours;assembly=JemExtensions"
         xmlns:conv="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
         xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
@@ -12,7 +12,7 @@
       xmlns:local="clr-namespace:BedrockLauncher.Pages"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainPage"
-        d:DataContext="{d:DesignInstance Type=viewModels:MainViewModel}"
+        d:DataContext="{d:DesignInstance Type=viewModels:MainDataModel}"
         mc:Ignorable="d"
         Foreground="{x:Null}" 
         Background="White">
@@ -26,7 +26,7 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel x:Name="buttonStackPanel" Grid.Column="0" Background="{DynamicResource Background.Primary}" HorizontalAlignment="Left">
-            <controls:Toolbar_ProfileButton IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default},Path=ProgressBarState.AllowEditing, Mode=OneWay}" x:Name="ProfileButton" ></controls:Toolbar_ProfileButton>
+            <controls:Toolbar_ProfileButton IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default},Path=ProgressBarState.AllowEditing, Mode=OneWay}" x:Name="ProfileButton" ></controls:Toolbar_ProfileButton>
             <controls:Toolbar_NewsButton x:Name="NewsButton" Click="NewsButton_Click"></controls:Toolbar_NewsButton>
             <controls:Toolbar_BedrockEditionButton x:Name="BedrockEditionButton" Click="BedrockEditionButton_Click"></controls:Toolbar_BedrockEditionButton>
         </StackPanel>
@@ -69,7 +69,7 @@
                         <Button Height="32" Width="32" Padding="0" Style="{DynamicResource DialogButton}" Visibility="Collapsed">
                             <TextBlock Text="┃┃" Foreground="White" Margin="0,-3.2,0,0"></TextBlock>
                         </Button>
-                        <Button Height="32" Width="32" Padding="0" Style="{DynamicResource DialogButton}" x:Name="CancelButton" Click="CancelButton_Click" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default},Path=ProgressBarState.AllowCancel, Mode=OneWay}">
+                        <Button Height="32" Width="32" Padding="0" Style="{DynamicResource DialogButton}" x:Name="CancelButton" Click="CancelButton_Click" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default},Path=ProgressBarState.AllowCancel, Mode=OneWay}">
                             <TextBlock Text="❌" Foreground="White"></TextBlock>
                         </Button>
                     </StackPanel>

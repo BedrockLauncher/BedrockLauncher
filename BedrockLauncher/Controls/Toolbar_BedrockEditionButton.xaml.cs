@@ -11,7 +11,7 @@ namespace BedrockLauncher.Controls
         public Toolbar_BedrockEditionButton()
         {
             InitializeComponent();
-            this.DataContext = ViewModels.MainViewModel.Default;
+            this.DataContext = ViewModels.MainDataModel.Default;
         }
 
         private void SideBarButton_Click(object sender, RoutedEventArgs e)

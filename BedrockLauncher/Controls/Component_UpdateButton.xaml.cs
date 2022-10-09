@@ -78,7 +78,7 @@ namespace BedrockLauncher.Controls
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainViewModel.Updater.UpdateButton_Click(sender, e);
+            MainDataModel.Updater.UpdateButton_Click(sender, e);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

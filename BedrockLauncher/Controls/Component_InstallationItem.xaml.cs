@@ -48,7 +48,7 @@ namespace BedrockLauncher.Controls
             Button button = sender as Button;
             var installation = button.DataContext as BLInstallation;
             bool KeepLauncherOpen = Properties.LauncherSettings.Default.KeepLauncherOpen;
-            MainViewModel.Default.Play(MainViewModel.Default.Config.CurrentProfile, installation, KeepLauncherOpen);
+            MainDataModel.Default.Play(MainDataModel.Default.Config.CurrentProfile, installation, KeepLauncherOpen);
         }
 
         private async void DeleteInstallationButton_Click(object sender, RoutedEventArgs e)
@@ -65,7 +65,7 @@ namespace BedrockLauncher.Controls
 
             if (result.Item1 == System.Windows.Forms.DialogResult.Yes)
             {
-                MainViewModel.Default.Config.Installation_Delete(installation, result.Item2);
+                MainDataModel.Default.Config.Installation_Delete(installation, result.Item2);
             }
         }
 
@@ -96,21 +96,21 @@ namespace BedrockLauncher.Controls
         {
             MenuItem button = sender as MenuItem;
             var installation = button.DataContext as BLInstallation;
-            MainViewModel.Default.Config.Installation_Clone(installation);
+            MainDataModel.Default.Config.Installation_Clone(installation);
         }
 
         private void MoveUp_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
             var installation = button.DataContext as BLInstallation;
-            MainViewModel.Default.Config.Installation_MoveUp(installation);
+            MainDataModel.Default.Config.Installation_MoveUp(installation);
         }
 
         private void MoveDown_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
             var installation = button.DataContext as BLInstallation;
-            MainViewModel.Default.Config.Installation_MoveDown(installation);
+            MainDataModel.Default.Config.Installation_MoveDown(installation);
         }
 
         private void UpdateButtonVisibility()
@@ -136,7 +136,7 @@ namespace BedrockLauncher.Controls
         {
             MenuItem button = sender as MenuItem;
             var installation = button.DataContext as BLInstallation;
-            MainViewModel.Default.Install(MainViewModel.Default.Config.CurrentProfile, installation);
+            MainDataModel.Default.Install(MainDataModel.Default.Config.CurrentProfile, installation);
         }
     }
 }

@@ -3,13 +3,13 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:p="clr-namespace:BedrockLauncher.Properties"
-      xmlns:classes="clr-namespace:BedrockLauncher.Classes"
-      xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
+      xmlns:p="clr-namespace:BedrockLauncher.Properties;assembly=BedrockLauncher.Backend"
+      xmlns:classes="clr-namespace:BedrockLauncher.Classes;assembly=BedrockLauncher.Backend"
+      xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels;assembly=BedrockLauncher.Backend"
       xmlns:converters="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
       xmlns:local="clr-namespace:BedrockLauncher"
       mc:Ignorable="d" 
-      d:DataContext="{d:DesignInstance Type=viewModels:MainViewModel}"
+      d:DataContext="{d:DesignInstance Type=viewModels:MainDataModel}"
       d:DesignHeight="608" d:DesignWidth="828"
       Title="VersionsPage" x:Name="PageHost" Initialized="Page_Initialized" Loaded="PageHost_Loaded">
     <Page.Resources>
@@ -23,10 +23,10 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="Margin" Value="5,0,0,0"/>
-            <Setter Property="IsEnabled" Value="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}"/>
+            <Setter Property="IsEnabled" Value="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}"/>
         </Style>
     </Page.Resources>
-    <Grid Margin="0" Background="#FF303030" Style="{DynamicResource DisabledStyle}" IsEnabled="{Binding Source={x:Static viewModels:MainViewModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}">
+    <Grid Margin="0" Background="#FF303030" Style="{DynamicResource DisabledStyle}" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"></RowDefinition>
             <RowDefinition></RowDefinition>

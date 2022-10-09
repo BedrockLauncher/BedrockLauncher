@@ -223,7 +223,7 @@ namespace BedrockLauncher.Classes
 
         private void GenerateProfileImage(string img, string uuid)
         {
-            string path = MainViewModel.Default.FilePaths.GetProfilePath(uuid);
+            string path = MainDataModel.Default.FilePaths.GetProfilePath(uuid);
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
             string new_img = Path.Combine(path, Constants.PROFILE_CUSTOM_IMG_NAME);
             if (string.IsNullOrEmpty(img)) return;
