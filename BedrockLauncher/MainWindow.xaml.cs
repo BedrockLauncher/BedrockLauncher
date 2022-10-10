@@ -23,7 +23,6 @@ using Windows.Management.Deployment;
 using Windows.System;
 using BedrockLauncher.Classes;
 using System.Windows.Media.Animation;
-using BedrockLauncher.Controls;
 using BedrockLauncher.Pages;
 using BedrockLauncher.Pages.Welcome;
 using BedrockLauncher.ViewModels;

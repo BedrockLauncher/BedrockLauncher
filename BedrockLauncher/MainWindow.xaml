@@ -7,7 +7,7 @@
         xmlns:com="clr-namespace:JemExtensions.WPF.Behaviours;assembly=JemExtensions"
         xmlns:conv="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
         xmlns:wincontrols="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
-        xmlns:controls="clr-namespace:BedrockLauncher.Controls"
+        xmlns:controls="clr-namespace:BedrockLauncher.Pages.General"
         xmlns:pages="clr-namespace:BedrockLauncher.Pages"
         x:Class="BedrockLauncher.MainWindow"
         d:DataContext="{d:DesignInstance Type=viewModels:MainViewModel}"

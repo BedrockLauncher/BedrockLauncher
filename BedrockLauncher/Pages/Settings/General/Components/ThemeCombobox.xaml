@@ -1,0 +1,16 @@
+﻿<ComboBox x:Class="BedrockLauncher.Pages.Settings.General.Components.ThemeCombobox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             VerticalContentAlignment="Center"
+             d:DesignHeight="330" d:DesignWidth="32"
+             Width="330" Height="32" 
+             DropDownClosed="ThemeCombobox_DropDownClosed"  
+             Initialized="ThemeCombobox_Initialized"
+             Style="{DynamicResource GenericComboBoxStyle}" ItemContainerStyle="{DynamicResource GenericComboBoxItemStyle}"
+             Padding="15,0"
+             SelectedIndex="0"
+             FontSize="14">
+</ComboBox>

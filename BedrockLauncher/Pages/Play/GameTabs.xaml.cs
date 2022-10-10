@@ -9,6 +9,9 @@ using System.Windows.Data;
 using System.Windows.Media.Animation;
 using BedrockLauncher.Classes;
 using BedrockLauncher.Downloaders;
+using BedrockLauncher.Pages.Play.Home;
+using BedrockLauncher.Pages.Play.Installations;
+using BedrockLauncher.Pages.Play.PatchNotes;
 using BedrockLauncher.UI.Components;
 
 namespace BedrockLauncher.Pages.Play

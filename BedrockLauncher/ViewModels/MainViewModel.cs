@@ -5,7 +5,6 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Controls;
 using System.Collections.ObjectModel;
-using BedrockLauncher.Controls;
 using PostSharp.Patterns.Model;
 using BedrockLauncher.Handlers;
 using BedrockLauncher.Pages.Preview;
@@ -14,6 +13,7 @@ using BedrockLauncher.UI.Interfaces;
 using BedrockLauncher.UI.Components;
 using System.Windows.Threading;
 using BedrockLauncher.Backend.Backporting;
+using BedrockLauncher.Pages.General;
 
 namespace BedrockLauncher.ViewModels
 {

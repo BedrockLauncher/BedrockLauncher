@@ -3,7 +3,7 @@
                     xmlns:classes="clr-namespace:BedrockLauncher.Classes;assembly=BedrockLauncher.Backend"
                     xmlns:classes2="clr-namespace:BedrockLauncher.Classes;assembly=BedrockLauncher.Backend"
                     xmlns:v="clr-namespace:System;assembly=mscorlib"
-                    xmlns:controls="clr-namespace:BedrockLauncher.Controls">
+                    xmlns:controls="clr-namespace:BedrockLauncher.Pages.Settings.Versions">
     <DataTemplate x:Key="VersionItemTemplate" DataType="{x:Type classes2:MCVersion}">
         <controls:Component_VersionItem x:Name="ItemControl" DataContext="{Binding }" Tag="{Binding ElementName=PageHost}"></controls:Component_VersionItem>
         <DataTemplate.Triggers>

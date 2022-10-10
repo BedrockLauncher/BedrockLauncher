@@ -1,0 +1,38 @@
+﻿<Grid x:Class="BedrockLauncher.Pages.Settings.Accounts.Setting_InsiderCombobox"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:prop="clr-namespace:BedrockLauncher.Properties"
+      xmlns:auth="clr-namespace:BedrockLauncher.UpdateProcessor.Authentication;assembly=BedrockLauncher.UpdateProcessor"
+      mc:Ignorable="d" 
+      Width="330" Height="59" Loaded="Grid_Loaded">
+    <ComboBox Name="AccountsList" 
+              ItemsSource="{Binding Source={x:Static auth:AuthenticationManager.Default}, Path=CurrentAccounts}"
+              DropDownClosed="AccountsList_DropDownClosed" 
+              VerticalAlignment="Stretch" 
+              HorizontalAlignment="Stretch" 
+              Margin="0,0,0,0" 
+              Foreground="White" 
+              Padding="10,7,5,3" 
+              FontSize="14" 
+              Style="{DynamicResource GenericComboBoxStyle}" 
+              ItemContainerStyle="{DynamicResource GenericComboBoxItemStyle}" 
+              VerticalContentAlignment="Stretch">
+        <ComboBox.ItemTemplate>
+            <DataTemplate DataType="">
+                <Grid Height="45" MinWidth="179">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" RenderOptions.BitmapScalingMode="HighQuality" IsHitTestVisible="False" SnapsToDevicePixels="True" Source="/BedrockLauncher;component/resources/images/icons/ms-icon.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="29" Height="29" Margin="0,0,0,0"/>
+                    <Grid Margin="5,0,0,0" Grid.Column="1" VerticalAlignment="Center">
+                        <TextBlock x:Name="ProfileName" Text="{Binding UserName}" FontWeight="Bold" LineStackingStrategy="BlockLineHeight" LineHeight="14" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" Padding="0,0,0,3"/>
+                        <TextBlock Margin="0,14,0,0" Foreground="#FF929292" Text="{Binding AccountType}" FontWeight="Normal" FontSize="12"></TextBlock>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+        </ComboBox.ItemTemplate>
+    </ComboBox>
+</Grid>

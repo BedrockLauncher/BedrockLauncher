@@ -1,0 +1,24 @@
+﻿<Page x:Class="BedrockLauncher.Pages.Preview.Profile.EditProfileScreen"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BedrockLauncher.Pages.Preview"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="DialogPrompt" Width="Auto" Height="Auto" MinWidth="1016" MinHeight="639" Foreground="{x:Null}" Background="#BF000000" SnapsToDevicePixels="True">
+    <Page.Resources>
+
+    </Page.Resources>
+    <Grid>
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="6" Direction="0" ShadowDepth="0" Color="#F2000000"/>
+        </Grid.Effect>
+        <Border CornerRadius="2" Background="#FF262626" Width="600" Height="258" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Border CornerRadius="2" Background="#FF262626" Width="600" Height="258" VerticalAlignment="Center" HorizontalAlignment="Center">
+        </Border>
+        <Grid x:Name="ProfileControlContainer">
+
+        </Grid>
+    </Grid>
+</Page>

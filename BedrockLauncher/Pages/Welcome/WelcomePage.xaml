@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:com="clr-namespace:JemExtensions.WPF.Behaviours;assembly=JemExtensions"
-      xmlns:local="clr-namespace:BedrockLauncher"
+      xmlns:local="clr-namespace:BedrockLauncher.Pages.Welcome"
       mc:Ignorable="d" 
       d:DesignHeight="639" d:DesignWidth="1016"
       Title="WelcomePage" Foreground="White" Initialized="Page_Initialized">
