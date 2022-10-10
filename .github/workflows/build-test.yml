@@ -20,7 +20,7 @@ jobs:
       - name: Use GitHub build targets
         shell: bash
         run: |
-          cp -f "${GITHUB_WORKSPACE}/BedrockLauncher/Directory.Build.targets" "${GITHUB_WORKSPACE}/BedrockLauncher/GitHub.Directory.Build.targets"
+          cp -f "${GITHUB_WORKSPACE}/BedrockLauncher/GitHub.Directory.Build.targets" "${GITHUB_WORKSPACE}/BedrockLauncher/Directory.Build.targets" 
         
       - name: Setup nuget
         uses: nuget/setup-nuget@v1
