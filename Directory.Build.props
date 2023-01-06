@@ -1,0 +1,6 @@
+﻿<Project>
+ <PropertyGroup>
+   <CefSharpAnyCpuSupport>true</CefSharpAnyCpuSupport>
+   <CefSharpBuildAction Condition="'$(OutputType)' == 'Library'">NoAction</CefSharpBuildAction>
+ </PropertyGroup>
+</Project>

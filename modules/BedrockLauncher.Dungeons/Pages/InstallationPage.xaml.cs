@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Dungeons.Methods;
 using BedrockLauncher.UI.Controls.Misc;
+using FolderBrowserEx;
 
 namespace BedrockLauncher.Dungeons.Pages
 {
@@ -29,10 +30,10 @@ namespace BedrockLauncher.Dungeons.Pages
 
         private void BrowseDirectoryButton_Click(object sender, RoutedEventArgs e)
         {
-            FolderSelectDialog dialog = new FolderSelectDialog();
-            if (dialog.ShowDialog())
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                Properties.DungeonSettings.Default.InstallLocation = dialog.FileName;
+                Properties.DungeonSettings.Default.InstallLocation = dialog.SelectedFolder;
                 Properties.DungeonSettings.Default.Save();
             }
         }
@@ -71,10 +72,10 @@ namespace BedrockLauncher.Dungeons.Pages
 
         private void BrowseModDirectoryButton_Click(object sender, RoutedEventArgs e)
         {
-            FolderSelectDialog dialog = new FolderSelectDialog();
-            if (dialog.ShowDialog())
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                Properties.DungeonSettings.Default.ModsLocation = dialog.FileName;
+                Properties.DungeonSettings.Default.ModsLocation = dialog.SelectedFolder;
                 Properties.DungeonSettings.Default.Save();
             }
         }
@@ -121,7 +122,7 @@ namespace BedrockLauncher.Dungeons.Pages
                 default: throw new NotImplementedException();
             }
 
-            if (BedrockLauncher.Core.Language.LanguageManager.TryGetResource(documentation, out string contents))
+            if (BedrockLauncher.Localization.Language.LanguageManager.TryGetResource(documentation, out string contents))
                 Markdownview.Markdown = contents;
 
         }

@@ -6,7 +6,7 @@
                     xmlns:i="clr-namespace:BedrockLauncher.Controls.Items.Launcher"
                     xmlns:si="clr-namespace:BedrockLauncher.Controls.Items.Skins"
                     xmlns:v="clr-namespace:System;assembly=mscorlib">
-    <DataTemplate x:Key="VersionItemTemplate" DataType="{x:Type classes2:BLVersion}">
+    <DataTemplate x:Key="VersionItemTemplate" DataType="{x:Type classes2:MCVersion}">
         <i:VersionItem x:Name="ItemControl" DataContext="{Binding }" Tag="{Binding ElementName=PageHost}"></i:VersionItem>
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsMouseOver}" Value="True">

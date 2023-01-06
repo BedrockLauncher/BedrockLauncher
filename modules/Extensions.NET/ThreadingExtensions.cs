@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Runtime.Versioning;
+using System.Runtime.InteropServices;
 
-namespace Extensions
+namespace JemExtensions
 {
     public static class ThreadingExtensions
     {
+        [SupportedOSPlatform("Windows")]
         public static Task<T> StartSTATask<T>(Func<T> func)
         {
             var tcs = new TaskCompletionSource<T>();
@@ -28,7 +31,7 @@ namespace Extensions
             thread.Start();
             return tcs.Task;
         }
-
+        [SupportedOSPlatform("Windows")]
         public static Task StartSTATask(Task task)
         {
             var tcs = new TaskCompletionSource<int>();
@@ -49,7 +52,7 @@ namespace Extensions
             thread.Start();
             return tcs.Task;
         }
-
+        [SupportedOSPlatform("Windows")]
         public static Task StartSTATask(Action action)
         {
             var tcs = new TaskCompletionSource<int>();

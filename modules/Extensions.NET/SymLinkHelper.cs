@@ -3,7 +3,7 @@ using System.IO;
 using Microsoft.Win32.SafeHandles;
 using System;
 
-namespace Extensions
+namespace JemExtensions
 {
     public class SymLinkHelper
     {

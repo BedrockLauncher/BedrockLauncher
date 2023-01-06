@@ -5,6 +5,7 @@
 	"main": "libs/skinview3d.js",
 	"type": "module",
 	"scripts": {
+		"pipeline": "npm install && npm run build",
 		"clean": "rimraf libs bundles",
 		"build:modules": "tsc --declaration --sourceMap --outDir libs -p .",
 		"build:bundles": "rollup -c",

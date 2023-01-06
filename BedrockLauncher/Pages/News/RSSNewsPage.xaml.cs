@@ -21,7 +21,6 @@ using System.Net.Http;
 using System.Collections.ObjectModel;
 using RestSharp;
 using BedrockLauncher.Pages.Common;
-using Extensions.Http2;
 
 namespace BedrockLauncher.Pages.News
 {

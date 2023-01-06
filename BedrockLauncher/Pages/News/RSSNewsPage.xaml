@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:c="clr-namespace:BedrockLauncher.Classes.Launcher"
-      xmlns:conv="clr-namespace:Extensions.WPF.Converters;assembly=ExtensionsDotNET"
+      xmlns:conv="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
       xmlns:i="clr-namespace:BedrockLauncher.Controls.Items.News"
       xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
       xmlns:vwp="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"

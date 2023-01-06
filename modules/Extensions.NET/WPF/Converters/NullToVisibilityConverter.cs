@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Extensions.WPF.Converters
+namespace JemExtensions.WPF.Converters
 {
     public sealed class NullToVisibilityConverter : NullConverterBase<Visibility>
     {

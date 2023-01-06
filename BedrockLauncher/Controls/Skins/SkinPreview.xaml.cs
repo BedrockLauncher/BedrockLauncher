@@ -1,5 +1,7 @@
-﻿using CefSharp;
+﻿#if ENABLE_CEFSHARP
+using CefSharp;
 using CefSharp.Wpf;
+#endif
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,15 +26,17 @@ namespace BedrockLauncher.Controls.Skins
     /// <summary>
     /// Interaction logic for SkinPreview.xaml
     /// </summary>
-    public partial class SkinPreview : UserControl
+    public partial class SkinPreview : UserControl, IDisposable
     {
+#if ENABLE_CEFSHARP
         ChromiumWebBrowser Renderer = new ChromiumWebBrowser();
+#endif
 
         #region Constants
 
-        public const string Preview = "skinview3d://previews/index.html";
+        public const string Preview = "skinview3d://SkinView/previews/index.html";
 
-        private const string NoSkin = "skinview3d://previews/img/NoSkin.png";
+        private const string NoSkin = "skinview3d://SkinView/previews/img/NoSkin.png";
 
         #endregion
         #region Properties
@@ -98,9 +102,11 @@ namespace BedrockLauncher.Controls.Skins
 
         private void Init()
         {
+#if ENABLE_CEFSHARP
             Renderer.Focusable = false;
             Renderer.LoadingStateChanged += Renderer_LoadingStateChanged;
             this.AddChild(Renderer);
+#endif
             InitializeComponent();
             InitializeChromium();
         }
@@ -109,19 +115,25 @@ namespace BedrockLauncher.Controls.Skins
         {
             if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this)) return;
             Init();
+#if ENABLE_CEFSHARP
             this.Renderer.Address = Preview;
+#endif
         }
         public SkinPreview(MCSkin Skin)
         {
             Init();
             Path = Skin.texture_path;
             Type = Skin.skin_type;
+#if ENABLE_CEFSHARP
             this.Renderer.Address = Preview;
+#endif
         }
         private void InitializeChromium()
         {
+#if ENABLE_CEFSHARP
             Renderer.FrameLoadEnd += OnBrowserFrameLoadEnd;
             BedrockLauncher.Components.CefSharp.CefSharpLoader.InitBrowser(ref Renderer);
+#endif
         }
 
         public void UpdateSkin()
@@ -137,6 +149,7 @@ namespace BedrockLauncher.Controls.Skins
 
         private async void RefreshView(bool localFile = true)
         {
+#if ENABLE_CEFSHARP
             await this.Dispatcher.InvokeAsync(async () => {
                 try
                 {
@@ -163,11 +176,14 @@ namespace BedrockLauncher.Controls.Skins
                 }
                 catch (Exception ex)
                 {
-                    System.Diagnostics.Debug.WriteLine(ex);
+                    System.Diagnostics.Trace.WriteLine(ex);
                 }
             });
+#endif
         }
 
+
+#if ENABLE_CEFSHARP
         private void OnBrowserFrameLoadEnd(object sender, FrameLoadEndEventArgs args)
         {
             if (args.Frame.IsMain && Renderer.CanExecuteJavascriptInMainFrame)
@@ -186,6 +202,20 @@ namespace BedrockLauncher.Controls.Skins
             {
                 if (e.IsLoading == false && isRenderable && Renderer.CanExecuteJavascriptInMainFrame) RefreshView();
             });
+        }
+#endif
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+#if ENABLE_CEFSHARP
+            Renderer?.Dispose();
+#endif
         }
     }
 }

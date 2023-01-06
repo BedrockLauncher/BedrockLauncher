@@ -10,49 +10,52 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using BedrockLauncher.Core.Language;
+using BedrockLauncher.Localization.Language;
 using BedrockLauncher.Extensions;
 using BedrockLauncher.Handlers;
 using BedrockLauncher.Components.CefSharp;
 using BedrockLauncher.Pages.Common;
-using Extensions;
+using JemExtensions;
+using NLog;
 
 namespace BedrockLauncher
 {
     public static class Program
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
         [STAThread]
         public static void Main()
         {
             RuntimeHandler.StartLogging();
+            RuntimeHandler.LogStartupInformation();
             RuntimeHandler.ValidateOSArchitecture();
             CefSharpLoader.Init();
-            Debug.WriteLine("Application Starting...");
+            Trace.WriteLine("Application Starting...");
             
             var application = new App();
-            application.DispatcherUnhandledException += RuntimeHandler.OnDispatcherUnhandledException;
             application.Startup += OnApplicationInitalizing;
             application.InitializeComponent();
             application.Run();
         }
         public static void OnApplicationInitalizing(object sender, StartupEventArgs e)
         {
-            Debug.WriteLine("Application Initalization Started!");
+            Trace.WriteLine("Application Initalization Started!");
             StartupArgsHandler.SetStartupArgs(e.Args);
             RuntimeHandler.EnableDeveloperMode();
-            Debug.WriteLine("Application Initalization Finished!");
+            Trace.WriteLine("Application Initalization Finished!");
         }
         public static async Task OnApplicationLoaded()
         {
             await MainViewModel.Default.ShowWaitingDialog(async () =>
             {
-                Debug.WriteLine("Preparing Application...");
+                Trace.WriteLine("Preparing Application...");
                 await RuntimeHandler.InitalizeBugRockOfTheWeek();
                 LanguageManager.Init();
                 MainViewModel.Default.LoadConfig();
                 await MainViewModel.Default.LoadVersions(true);
                 await MainViewModel.Updater.CheckForUpdatesAsync(true);
-                Debug.WriteLine("Preparing Application: DONE");
+                Trace.WriteLine("Preparing Application: DONE");
             });
         }
 
@@ -61,10 +64,10 @@ namespace BedrockLauncher
 
             await MainViewModel.Default.ShowWaitingDialog(async () =>
             {
-                Debug.WriteLine("Refreshing Application...");
+                Trace.WriteLine("Refreshing Application...");
                 MainViewModel.Default.LoadConfig();
                 await MainViewModel.Default.LoadVersions();
-                Debug.WriteLine("Refreshing Application: DONE");
+                Trace.WriteLine("Refreshing Application: DONE");
             });
         }
     }

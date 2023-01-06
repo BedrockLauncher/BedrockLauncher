@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace Extensions.WPF.Behaviours
+namespace JemExtensions.WPF.Behaviours
 {
     public static class DisableNavigation
     {

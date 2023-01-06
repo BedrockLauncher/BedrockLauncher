@@ -1,7 +1,8 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
 using System.Windows;
+
 
 [assembly: AssemblyTitle("Minecraft Bedrock Launcher")]
 [assembly: AssemblyDescription("")]
@@ -12,10 +13,14 @@ using System.Windows;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
+[assembly: AssemblyMetadata("GitInfo.Branch", ThisAssembly.Git.Branch)]
+[assembly: AssemblyMetadata("GitInfo.Commit", ThisAssembly.Git.Commit)]
+[assembly: AssemblyMetadata("GitInfo.Sha", ThisAssembly.Git.Sha)]
+
 [assembly: ComVisible(false)]
 
 [assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
 
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+
+[assembly: AssemblyVersion("2022.4.17.21")]
 [assembly: NeutralResourcesLanguage("en-US")]

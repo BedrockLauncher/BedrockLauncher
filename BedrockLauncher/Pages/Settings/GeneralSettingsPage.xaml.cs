@@ -41,7 +41,7 @@ namespace BedrockLauncher.Pages.Settings
 
         private void BackupButton_Click(object sender, RoutedEventArgs e)
         {
-            Handlers.BackupHandler.BackupOriginalSaveData();
+            Task.Run(Handlers.BackupHandler.BackupOriginalSaveData);
         }
 
         private void AdvancedSettingsButton_Click(object sender, RoutedEventArgs e)

@@ -2,14 +2,14 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:bl="clr-namespace:BedrockLauncher.Core.Language;assembly=BedrockLauncher.Core"
+      xmlns:bl="clr-namespace:BedrockLauncher.Localization.Language;assembly=BedrockLauncher.Localization"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:behaviors="clr-namespace:Extensions.WPF.Behaviours;assembly=ExtensionsDotNET"
+      xmlns:behaviors="clr-namespace:JemExtensions.WPF.Behaviours;assembly=JemExtensions"
       mc:Ignorable="d" Foreground="{x:Null}" Background="#FF303030" Loaded="Page_Loaded">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <bl:LanguageDictionary Source="/BedrockLauncher.Core;component/Resources/lang/lang.en-US.xaml"></bl:LanguageDictionary>
+                <bl:LanguageDictionary Source="/BedrockLauncher.Localization;component/Resources/lang/lang.en-US.xaml"></bl:LanguageDictionary>
                 <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/values/base_values.xaml"/>
                 <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/icons.xaml"/>
                 <ResourceDictionary Source="/BedrockLauncher.UI;component/Resources/styles/misc.xaml"/>

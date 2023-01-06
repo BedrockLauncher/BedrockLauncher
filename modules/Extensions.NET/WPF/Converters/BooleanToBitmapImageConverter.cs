@@ -9,7 +9,7 @@ using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace Extensions.WPF.Converters
+namespace JemExtensions.WPF.Converters
 {
     public sealed class BooleanToBitmapImageConverter : BooleanConverterBase<BitmapImage>
     {

@@ -13,6 +13,7 @@ using BedrockLauncher.Components;
 using System.Diagnostics;
 using BedrockLauncher.Enums;
 using PostSharp.Patterns.Model;
+using BedrockLauncher.UpdateProcessor.Enums;
 
 namespace BedrockLauncher.Classes
 {
@@ -70,25 +71,12 @@ namespace BedrockLauncher.Classes
             }
         }
         [JsonIgnore, SafeForDependencyAnalysis]
-        public BLVersion Version
+        public MCVersion Version
         {
             get
             {
                 Depends.On(VersioningMode, VersionUUID);
-                if (VersioningMode != VersioningMode.None)
-                {
-                    var latest_beta = MainViewModel.Default.Versions.ToList().FirstOrDefault(x => x.IsBeta == true && x.UUID != Constants.LATEST_BETA_UUID);
-                    var latest_release = MainViewModel.Default.Versions.ToList().FirstOrDefault(x => x.IsBeta == false && x.UUID != Constants.LATEST_RELEASE_UUID) ;
-
-                    if (VersioningMode == VersioningMode.LatestBeta && latest_beta != null) return BLVersion.Convert(latest_beta);
-                    else if (VersioningMode == VersioningMode.LatestRelease && latest_release != null) return BLVersion.Convert(latest_release);
-                    else return null;
-                }
-                else if (MainViewModel.Default.Versions.ToList().Exists(x => x.UUID == VersionUUID))
-                {
-                    return BLVersion.Convert(MainViewModel.Default.Versions.ToList().Where(x => x.UUID == VersionUUID).FirstOrDefault());
-                }
-                return null;
+                return MainViewModel.Default.PackageManager.VersionDownloader.GetVersion(VersioningMode, VersionUUID);
             }
         }
         [JsonIgnore]
@@ -120,6 +108,14 @@ namespace BedrockLauncher.Classes
             {
                 Depends.On(LastPlayed);
                 return LastPlayed.ToString("s");
+            }
+        }
+
+        public VersionType VersionType
+        {
+            get
+            {
+                return Version?.Type ?? VersionType.Release;
             }
         }
 

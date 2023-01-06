@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Extensions.WPF
+namespace JemExtensions.WPF
 {
     public static class WindowExtensions
     {

@@ -1,0 +1,38 @@
+﻿<Project>
+ <Target Name="Cleanup" AfterTargets="Clean">
+	 <!-- Remove bin folder -->
+	 <RemoveDir Directories="$(ProjectDir)$(BaseOutputPath)" />
+	 <!-- Remove obj folder -->
+	 <RemoveDir Directories="$(ProjectDir)$(BaseIntermediateOutputPath)" />
+ </Target>
+<!-- Change AssemblyInfo.cs AssemblyVersion with date/time and increment revision daily by one in Visual Studio 2022 -->
+<Target Name="AssemblyVersion" BeforeTargets="CoreCompile" DependsOnTargets="PrepareForBuild">
+	<PropertyGroup>
+		<!-- Define Constants -->
+		<AssemblyInfo>Properties\AssemblyInfo.cs</AssemblyInfo>
+		<AssemblyInfoContent>$([System.IO.File]::ReadAllText($(AssemblyInfo)))</AssemblyInfoContent>
+		<VersionRegex>(\[\s*assembly\s*:\s*AssemblyVersion\(\s*"(\d+)\.(\d+)\.(\d+)(\.)(\d+)("\)\s*\]))</VersionRegex>
+		<BuildAndRevisionRegex>(\d+\.\d+")</BuildAndRevisionRegex>
+
+		<!-- Parse Build and Revision from AssemblyInfo-->
+		<AssemblyVersion>$([System.Text.RegularExpressions.Regex]::Match('$(AssemblyInfoContent)', '$(VersionRegex)'))</AssemblyVersion>
+		<BuildAndRevision>$([System.Text.RegularExpressions.Regex]::Match('$(AssemblyVersion)', '$(BuildAndRevisionRegex)'))</BuildAndRevision>
+		<BuildAndRevision>$(BuildAndRevision.Remove($(BuildAndRevision.LastIndexOf('"')), 1))</BuildAndRevision>
+
+		<!-- Generate Build and Revision from AssemblyVersion -->
+		<Build>$(BuildAndRevision.SubString(0, $(BuildAndRevision.LastIndexOf('.'))))</Build>
+		<Revision>$(BuildAndRevision.SubString($([MSBuild]::Add($(BuildAndRevision.LastIndexOf('.')), 1))))</Revision>
+
+		<!-- Increment Revision by one if Build equal Current Day otherwise start from one as new Day Build-->
+		<Revision Condition ="$([System.DateTime]::Now.Day) == $(Build)">$([MSBuild]::Add($(Revision), 1))</Revision>
+		<Revision Condition ="$([System.DateTime]::Now.Day) != $(Build)">1</Revision>
+
+		<!-- New AssemblyVersion Block -->
+		<AssemblyVersion>[assembly: AssemblyVersion("$([System.DateTime]::Now.ToString("yyyy.M.d.$(Revision)"))")]</AssemblyVersion>
+		<AssemblyFileVersion>[assembly: AssemblyFileVersion("$([System.DateTime]::Now.ToString("yyyy.M.d.$(Revision)"))")]</AssemblyFileVersion>
+	</PropertyGroup>
+
+	<!-- Write New AssemblyVersion Block to AssemblyInfo.cs file -->
+	<WriteLinesToFile File="$(AssemblyInfo)" Lines="$([System.Text.RegularExpressions.Regex]::Replace($(AssemblyInfoContent), $(VersionRegex), $(AssemblyVersion)))" Overwrite="true" />
+</Target>
+</Project>

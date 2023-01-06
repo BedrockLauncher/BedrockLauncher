@@ -116,12 +116,12 @@ namespace BedrockLauncher.Classes.SkinPack
 
         public string GetLocalizedString(string localization_name, string keyName, string Lang = null)
         {
-            string DefaultLang = BedrockLauncher.Core.Language.LanguageDefinition.Default.Locale.Replace("-", "_");
-            if (Lang == null) Lang = BedrockLauncher.Core.Properties.Settings.Default.Language.Replace("-", "_");
+            string DefaultLang = BedrockLauncher.Localization.Language.LanguageDefinition.Default.Locale.Replace("-", "_");
+            if (Lang == null) Lang = BedrockLauncher.Localization.Properties.Settings.Default.Language.Replace("-", "_");
 
             var data = GetData();
             if (data == null) return GetAvaliable();
-            if (!data.Global.ContainsKey(keyName)) return GetAvaliable();
+            if (!data.Global.Contains(keyName)) return GetAvaliable();
             return data.Global[keyName];
 
 
@@ -137,13 +137,13 @@ namespace BedrockLauncher.Classes.SkinPack
                     if (Texts.Values.ContainsKey(DefaultLang)) Avaliable_Lang = Texts.Values.Keys.FirstOrDefault(x => x == DefaultLang);
                     else Avaliable_Lang = Texts.Values.Keys.FirstOrDefault();
 
-                    if (Texts.Values[Avaliable_Lang].Global.ContainsKey(keyName)) return Texts.Values[Avaliable_Lang].Global[keyName];
+                    if (Texts.Values[Avaliable_Lang].Global.Contains(keyName)) return Texts.Values[Avaliable_Lang].Global[keyName];
                 }
                 return localization_name;
             }
 
 
-            IniParser.Model.IniData GetData()
+            IniParser.IniData GetData()
             {
                 if (Lang == null)
                 {
@@ -161,13 +161,13 @@ namespace BedrockLauncher.Classes.SkinPack
             return GetLocalizedString(localization_name, keyName, Lang);
         }
 
-        public static MCSkinPack ValidatePack(string Directory)
+        public static MCSkinPack ValidatePack(string Directory, bool isDev)
         {
             try 
             {
                 string json = File.ReadAllText(Path.Combine(Directory, "manifest.json"));
                 MCSkinPackMainfest mainfest = JsonConvert.DeserializeObject<MCSkinPackMainfest>(json);
-                return new MCSkinPack(Directory, mainfest);
+                return new MCSkinPack(Directory, mainfest, isDev);
             }
             catch
             {

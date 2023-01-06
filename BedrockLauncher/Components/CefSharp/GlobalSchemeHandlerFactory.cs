@@ -1,4 +1,6 @@
-﻿using CefSharp;
+﻿#if ENABLE_CEFSHARP
+using CefSharp;
+#endif
 using System;
 using System.IO;
 using System.Net;
@@ -13,6 +15,7 @@ using System.Collections;
 
 namespace BedrockLauncher.Components.CefSharp
 {
+#if ENABLE_CEFSHARP
     public class ResourceSchemeHandlerFactory : ISchemeHandlerFactory
     {
         public IResourceHandler Create(IBrowser browser, IFrame frame, string schemeName, IRequest request)
@@ -60,4 +63,5 @@ namespace BedrockLauncher.Components.CefSharp
             }
         }
     }
+#endif
 }

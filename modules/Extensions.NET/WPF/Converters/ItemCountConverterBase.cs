@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace Extensions.WPF.Converters
+namespace JemExtensions.WPF.Converters
 {
     public class ItemCountConverterBase<T> : IValueConverter
     {

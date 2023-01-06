@@ -4,7 +4,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
-using Extensions;
+using JemExtensions;
 using BedrockLauncher.Classes.SkinPack;
 using BedrockLauncher.ViewModels;
 using System.Windows.Navigation;
@@ -134,9 +134,9 @@ namespace BedrockLauncher.Pages.Preview
                 foreach (var entry in item.Global)
                 {
                     string skin_prefix = string.Format("skin.{0}.", skinPack.Content.localization_name);
-                    if (entry.KeyName.StartsWith(skin_prefix))
+                    if (entry.Key.StartsWith(skin_prefix))
                     {
-                        string localizationName = entry.KeyName.Replace(skin_prefix, "");
+                        string localizationName = entry.Key.Replace(skin_prefix, "");
                         if (!LocalizationTextBox.Items.Contains(localizationName)) LocalizationTextBox.Items.Add(localizationName);
                     }
                 }

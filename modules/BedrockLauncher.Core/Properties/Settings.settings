@@ -2,14 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BedrockLauncher.Core.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Version" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">0.0.2.6</Value>
-    </Setting>
     <Setting Name="GithubPage" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://github.com/BedrockLauncher/BedrockLauncher</Value>
-    </Setting>
-    <Setting Name="Language" Type="System.String" Scope="User">
-      <Value Profile="(Default)">none</Value>
     </Setting>
     <Setting Name="LatestTheme" Type="System.String" Scope="Application">
       <Value Profile="(Default)">CavesAndCliffsPart1Update</Value>

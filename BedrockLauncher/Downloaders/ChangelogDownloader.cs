@@ -14,7 +14,7 @@ using Newtonsoft.Json.Linq;
 using HtmlAgilityPack;
 using System.Text.RegularExpressions;
 using BedrockLauncher.Components;
-using Extensions;
+using JemExtensions;
 using BedrockLauncher.Extensions;
 using PostSharp.Patterns.Model;
 
@@ -164,7 +164,11 @@ namespace BedrockLauncher.Downloaders
             ClearPatchList();
 
             HtmlWeb web = new HtmlWeb();
-            web.BrowserTimeout = TimeSpan.FromSeconds(10);
+            web.PreRequest = delegate (HttpWebRequest webReq)
+            {
+                webReq.Timeout = (int)TimeSpan.FromSeconds(10).TotalMilliseconds;
+                return true;
+            };
             string base_url = "https://feedback.minecraft.net";
             List<FeedbackParams> checklist = new List<FeedbackParams>()
             {
@@ -238,7 +242,7 @@ namespace BedrockLauncher.Downloaders
                             }
                             catch (Exception ex)
                             {
-                                System.Diagnostics.Debug.WriteLine(ex);
+                                System.Diagnostics.Trace.WriteLine(ex);
                             }
 
 
@@ -273,7 +277,7 @@ namespace BedrockLauncher.Downloaders
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex);
+                System.Diagnostics.Trace.WriteLine(ex);
                 IsRefreshable = true;
             }
         }
@@ -353,7 +357,7 @@ namespace BedrockLauncher.Downloaders
 
                     if (ListRequestData.@continue != null) cmcontinue = ListRequestData.@continue.cmcontinue;
                 }
-                catch (Exception ex) { System.Diagnostics.Debug.WriteLine(ex); }
+                catch (Exception ex) { System.Diagnostics.Trace.WriteLine(ex); }
 
                 if (first_request) first_request = false;
             }

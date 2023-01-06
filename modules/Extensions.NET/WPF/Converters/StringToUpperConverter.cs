@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Globalization;
 using System.Windows.Data;
 
-namespace Extensions.WPF.Converters
+namespace JemExtensions.WPF.Converters
 {
     public class StringToUpperConverter : IValueConverter
     {

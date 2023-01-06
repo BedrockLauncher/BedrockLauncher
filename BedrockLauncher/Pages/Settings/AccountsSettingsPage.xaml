@@ -42,7 +42,7 @@
             <StackPanel Orientation="Horizontal" Margin="12,0,0,15">
                 <Button Width="Auto" Height="30" HorizontalAlignment="Left" Content="{DynamicResource AcountsSettingsPage_ManageAccounts_Text}" Style="{DynamicResource DialogButton}"  Click="MSAccounts_Click"></Button>
             </StackPanel>
-            <Separator></Separator>
+            <Separator/>
         </StackPanel>
     </Grid>
 </Page>

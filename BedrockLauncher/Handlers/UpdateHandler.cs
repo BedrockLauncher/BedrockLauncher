@@ -16,6 +16,7 @@ using BedrockLauncher.ViewModels;
 using System.Linq;
 using System.Threading;
 using BedrockLauncher.Core;
+using System.Net.Http;
 
 namespace BedrockLauncher.Handlers
 {
@@ -96,43 +97,33 @@ namespace BedrockLauncher.Handlers
         public async Task<bool> CheckForUpdatesAsync(bool onLoad = false)
         {
             if (onLoad && Debugger.IsAttached && !Constants.Debugging.CheckForUpdatesOnLoad) return false;
-            System.Diagnostics.Debug.WriteLine("Checking for updates");
+            System.Diagnostics.Trace.WriteLine("Checking for updates");
             try
             {
                 ReleaseNotes.Clear();
                 BetaNotes.Clear();
-                await Task.Run(Beta_GetJSON);
-                await Task.Run(Release_GetJSON);
+                await Beta_GetJSON();
+                await Release_GetJSON();
                 CompareUpdate();
                 return true;
             }
             catch (Exception err)
             {
-                System.Diagnostics.Debug.WriteLine("Check for updates failed\nError:" + err.Message);
+                System.Diagnostics.Trace.WriteLine("Check for updates failed\nError:" + err.Message);
                 return false;
             }
         }
-        private void Release_GetJSON()
+        private async Task Release_GetJSON()
         {
-            string json = string.Empty;
             var url = GithubAPI.RELEASE_URL;
-            var httpRequest = (HttpWebRequest)WebRequest.Create(url);
-            httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
-            var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
-            ReleaseNotes = JsonConvert.DeserializeObject<List<UpdateNote>>(json);
+            ReleaseNotes = await GetUpdateNotes(url);
             foreach (var entry in ReleaseNotes) entry.isBeta = false;
 
         }
-        private void Beta_GetJSON()
+        private async Task Beta_GetJSON()
         {
-            string json = string.Empty;
             var url = GithubAPI.BETA_URL;
-            var httpRequest = (HttpWebRequest)WebRequest.Create(url);
-            httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
-            var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
-            BetaNotes.AddRange(JsonConvert.DeserializeObject<List<UpdateNote>>(json));
+            BetaNotes = await GetUpdateNotes(url);
             foreach (var entry in BetaNotes) entry.isBeta = true;
         }
 
@@ -142,7 +133,7 @@ namespace BedrockLauncher.Handlers
         #region Button
         public void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("Trying to update");
+            System.Diagnostics.Trace.WriteLine("Trying to update");
             StartUpdate();
         }
 
@@ -151,16 +142,16 @@ namespace BedrockLauncher.Handlers
         private void CompareUpdate()
         {
             string OnlineTag = GetLatestTag();
-            string LocalTag = BedrockLauncher.Core.Properties.Settings.Default.Version;
-            System.Diagnostics.Debug.WriteLine("Current tag: " + LocalTag);
-            System.Diagnostics.Debug.WriteLine("Latest tag: " + OnlineTag);
+            string LocalTag = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            System.Diagnostics.Trace.WriteLine("Current tag: " + LocalTag);
+            System.Diagnostics.Trace.WriteLine("Latest tag: " + OnlineTag);
 
             try
             {
                 // if current tag < than latest tag
                 if (int.Parse(LocalTag.Replace(".", "")) < int.Parse(OnlineTag.Replace(".", "")))
                 {
-                    System.Diagnostics.Debug.WriteLine("New version available!");
+                    System.Diagnostics.Trace.WriteLine("New version available!");
                     ViewModels.MainViewModel.Default.UpdateButton.ShowUpdateButton();
                 }
             }
@@ -169,21 +160,14 @@ namespace BedrockLauncher.Handlers
 
             }
         }
-
         private async void StartUpdate()
         {
             string InstallerPath = string.Empty;
 
             try
             {
-                WebClient client = new WebClient();
                 string installerName = "BedrockLauncher.Installer.exe";
-                string json = string.Empty;
-                var httpRequest = (HttpWebRequest)WebRequest.Create("https://api.github.com/repos/BedrockLauncher/BedrockLauncher.Installer/releases/latest");
-                httpRequest.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
-                var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
-                using (var streamReader = new StreamReader(httpResponse.GetResponseStream())) json = streamReader.ReadToEnd();
-                var result = JsonConvert.DeserializeObject<UpdateNote>(json);
+                var result = await GetUpdateNote("https://api.github.com/repos/BedrockLauncher/BedrockLauncher.Installer/releases/latest");
 
                 if (result.assets != null)
                 {
@@ -193,18 +177,8 @@ namespace BedrockLauncher.Handlers
                         InstallerPath = Path.Combine(Path.GetTempPath(), installerName);
                         File.Delete(InstallerPath);
 
-                        var httpRequest2 = (HttpWebRequest)WebRequest.Create(installer.url);
-                        httpRequest2.UserAgent = @"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36";
-                        httpRequest2.Accept = "application/octet-stream";
+                        await DownloadInstaller(installer.url, InstallerPath);
 
-                        using (Stream output = System.IO.File.OpenWrite(InstallerPath))
-                        using (WebResponse response = httpRequest2.GetResponse())
-                        using (Stream stream = response.GetResponseStream())
-                        {
-                            await stream.CopyToAsync(output);
-                        }
-
-                        
                         ProcessStartInfo startInfo = new ProcessStartInfo
                         {
                             FileName = InstallerPath,
@@ -229,10 +203,43 @@ namespace BedrockLauncher.Handlers
             }
             catch (Exception err)
             {
-                System.Diagnostics.Debug.WriteLine("Installer launch failed\nError: " + err);
+                System.Diagnostics.Trace.WriteLine("Installer launch failed\nError: " + err);
             }
+        }
 
 
+        private async Task<List<UpdateNote>> GetUpdateNotes(string url)
+        {
+            HttpClient client = new HttpClient();
+            string json = string.Empty;
+            client.DefaultRequestHeaders.UserAgent.TryParseAdd(@"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36");
+            var httpResponse = await client.GetStreamAsync(url);
+            using (var streamReader = new StreamReader(httpResponse)) json = streamReader.ReadToEnd();
+            return JsonConvert.DeserializeObject<List<UpdateNote>>(json);
+        }
+
+        private async Task<UpdateNote> GetUpdateNote(string url)
+        {
+            HttpClient client = new HttpClient();
+            string json = string.Empty;
+            client.DefaultRequestHeaders.UserAgent.TryParseAdd(@"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36");
+            var httpResponse = await client.GetStreamAsync(url);
+            using (var streamReader = new StreamReader(httpResponse)) json = streamReader.ReadToEnd();
+            return JsonConvert.DeserializeObject<UpdateNote>(json);
+        }
+
+        private async Task DownloadInstaller(string url, string InstallerPath)
+        {
+            HttpClient client = new HttpClient();
+
+            client.DefaultRequestHeaders.UserAgent.TryParseAdd(@"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36");
+            client.DefaultRequestHeaders.Accept.TryParseAdd("application/octet-stream");
+            using (Stream output = System.IO.File.OpenWrite(InstallerPath))
+            {
+                var response = await client.GetStreamAsync(url);
+                await response.CopyToAsync(output);
+                response.Close();
+            }
         }
     }
 }

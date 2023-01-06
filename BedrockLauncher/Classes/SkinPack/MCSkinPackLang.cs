@@ -43,7 +43,7 @@ namespace BedrockLauncher.Classes.SkinPack
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex);
+                System.Diagnostics.Trace.WriteLine(ex);
             }
 
         }
@@ -67,7 +67,7 @@ namespace BedrockLauncher.Classes.SkinPack
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex);
+                System.Diagnostics.Trace.WriteLine(ex);
                 this.LangFiles = new string[] { };
             }
 
@@ -75,17 +75,18 @@ namespace BedrockLauncher.Classes.SkinPack
             {
                 try
                 {
-                    var parser = new FileIniDataParser();
+                    var parser = new IniDataParser();
                     string filePath = Path.Combine(this.Directory, langFile + ".lang");
                     if (File.Exists(filePath))
                     {
-                        IniData data = parser.ReadFile(filePath);
+                        var iniStrings = File.ReadAllText(filePath);
+                        IniData data = parser.Parse(iniStrings);
                         this.Values.Add(langFile, data);
                     }
                 }
                 catch (Exception ex)
                 {
-                    System.Diagnostics.Debug.WriteLine(ex);
+                    System.Diagnostics.Trace.WriteLine(ex);
                 }
 
             }

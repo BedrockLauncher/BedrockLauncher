@@ -1,7 +1,6 @@
 ﻿using BedrockLauncher.Classes.Launcher;
 using BedrockLauncher.ViewModels;
 using CodeHollow.FeedReader;
-using Extensions.Http2;
 using MdXaml;
 using System;
 using System.Collections.Generic;
@@ -90,7 +89,7 @@ namespace BedrockLauncher.Downloaders
                     else if (isBeta) launcherUpdateItem.buildTitle_Foreground = Brushes.Gold;
                     else launcherUpdateItem.buildTitle_Foreground = Brushes.White;
 
-                    if (tag == BedrockLauncher.Core.Properties.Settings.Default.Version) launcherUpdateItem.CurrentBox_Visibility = Visibility.Visible;
+                    if (tag == System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()) launcherUpdateItem.CurrentBox_Visibility = Visibility.Visible;
 
                     launcherUpdateItem.buildTitle = name;
                     launcherUpdateItem.buildVersion = string.Format("v{0}{1}", tag, (isBeta ? " (Beta)" : ""));
@@ -109,7 +108,7 @@ namespace BedrockLauncher.Downloaders
                 {
                     viewModel.FeedItems.Clear();
                     string rss = string.Empty;
-                    using (var httpClient = new HttpClient(new Http2Handler())) rss = await httpClient.GetStringAsync(viewModel.RSS_URL);
+                    using (var httpClient = new HttpClient()) rss = await httpClient.GetStringAsync(viewModel.RSS_URL);
                     Feed feed = FeedReader.ReadFromString(rss);
                     foreach (FeedItem item in feed.Items)
                     {

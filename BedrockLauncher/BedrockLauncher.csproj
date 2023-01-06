@@ -1,1254 +1,608 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9FEBCF6C-14EF-49E9-B57D-FCBC3BA4BC77}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>BedrockLauncher</RootNamespace>
-    <AssemblyName>BedrockLauncher</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-    <TargetFrameworkProfile />
-    <CefSharpTargetDir>runtimes\CefSharp</CefSharpTargetDir>
-    <CefSharpAnyCpuSupport>true</CefSharpAnyCpuSupport>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-  </PropertyGroup>
-  <PropertyGroup />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>BedrockLauncher.Program</StartupObject>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>Resources\images\icons\ico\launcher_icon.ico</ApplicationIcon>
-  </PropertyGroup>
-  <PropertyGroup>
-    <TargetZone>LocalIntranet</TargetZone>
-  </PropertyGroup>
-  <PropertyGroup>
-    <GenerateManifests>false</GenerateManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignManifests>false</SignManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestCertificateThumbprint>C12BAB0D8397D937265B99E7577F9696AFDF57C2</ManifestCertificateThumbprint>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestKeyFile>BedrockLauncher.pfx</ManifestKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <DelaySign>false</DelaySign>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-  </PropertyGroup>
-  <PropertyGroup>
-    <RunPostBuildEvent>Always</RunPostBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Publish|x64'">
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Publish|AnyCPU'">
-    <OutputPath>bin\Publish\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework">
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="PresentationFramework.Aero2" />
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.IO.Compression" />
-    <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.Net" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="WindowsFormsIntegration" />
-  </ItemGroup>
-  <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Compile Include="Classes\Launcher\NewsFeed_Offical.cs" />
-    <Compile Include="Components\CefSharp\FileSchemeHandler.cs" />
-    <Compile Include="Components\CefSharp\GlobalSchemeHandlerFactory.cs" />
-    <Compile Include="Components\CefSharp\CefSharpLoader.cs" />
-    <Compile Include="Components\CefSharp\ResourceSchemeHandler.cs" />
-    <Compile Include="Components\CefSharp\SkinViewResourceSchemeHandler.cs" />
-    <Compile Include="Classes\Launcher\DLC.cs" />
-    <Compile Include="Classes\BLInstallation.cs" />
-    <Compile Include="Classes\BLVersion.cs" />
-    <Compile Include="Classes\Launcher\AppPatchNote.cs" />
-    <Compile Include="Classes\MCProfilesList.cs" />
-    <Compile Include="Classes\Launcher\PatchNote.cs" />
-    <Compile Include="Classes\MCProfile.cs" />
-    <Compile Include="Classes\MCVersion.cs" />
-    <Compile Include="Classes\MediaWiki\Continue.cs" />
-    <Compile Include="Classes\MediaWiki\Limits.cs" />
-    <Compile Include="Classes\MediaWiki\Query.cs" />
-    <Compile Include="Classes\MediaWiki\RootObject.cs" />
-    <Compile Include="Classes\MediaWiki\Val.cs" />
-    <Compile Include="Classes\Launcher\NewsItem.cs" />
-    <Compile Include="Classes\Launcher\NewsItem_Offical.cs" />
-    <Compile Include="Classes\Launcher\NewsItem_RSS.cs" />
-    <Compile Include="Classes\SkinPack\MCSkin.cs" />
-    <Compile Include="Classes\SkinPack\MCSkinGeometry.cs" />
-    <Compile Include="Classes\SkinPack\MCSkinPack.cs" />
-    <Compile Include="Classes\SkinPack\MCSkinPackContent.cs" />
-    <Compile Include="Classes\SkinPack\MCSkinPackLang.cs" />
-    <Compile Include="Classes\SkinPack\MCSkinPackMainfest.cs" />
-    <Compile Include="Controls\Various\LoaderIcon.xaml.cs">
-      <DependentUpon>LoaderIcon.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Toolbar\DungeonsButton.xaml.cs">
-      <DependentUpon>DungeonsButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Toolbar\ToolbarButtonBase.cs" />
-    <Compile Include="Constants.cs" />
-    <Compile Include="Controls\Common\MessageBoxEX.xaml.cs">
-      <DependentUpon>MessageBoxEX.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\Launcher\DLCItem.xaml.cs">
-      <DependentUpon>DLCItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\News\FeedItem_Offical.xaml.cs">
-      <DependentUpon>FeedItem_Offical.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\News\FeedItem_RSS.xaml.cs">
-      <DependentUpon>FeedItem_RSS.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\Launcher\InstallationSelectorItem.xaml.cs">
-      <DependentUpon>InstallationSelectorItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\News\FeedItem_Launcher.xaml.cs">
-      <DependentUpon>FeedItem_Launcher.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Common\Marquee.xaml.cs">
-      <DependentUpon>Marquee.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Various\UpdateButton.xaml.cs">
-      <DependentUpon>UpdateButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Config\InstallationSelector.xaml.cs">
-      <DependentUpon>InstallationSelector.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Various\ResultPanel.xaml.cs">
-      <DependentUpon>ResultPanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Various\SpecialBorder.xaml.cs">
-      <DependentUpon>SpecialBorder.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Downloaders\NewsDownloader.cs" />
-    <Compile Include="Enums\LauncherStateChange.cs" />
-    <Compile Include="Enums\InstallationSort.cs" />
-    <Compile Include="Enums\RSSType.cs" />
-    <Compile Include="Enums\VersioningMode.cs" />
-    <Compile Include="Exceptions\AppLaunchFailedException.cs" />
-    <Compile Include="Exceptions\BetaAuthenticationFailedException.cs" />
-    <Compile Include="Exceptions\PackageDeregistrationFailedException.cs" />
-    <Compile Include="Exceptions\PackageDownloadAndExtractFailedException.cs" />
-    <Compile Include="Exceptions\PackageDownloadCanceledException.cs" />
-    <Compile Include="Exceptions\PackageDownloadFailedException.cs" />
-    <Compile Include="Exceptions\PackageExtractionCanceledException.cs" />
-    <Compile Include="Exceptions\PackageExtractionFailedException.cs" />
-    <Compile Include="Exceptions\PackageManagerException.cs" />
-    <Compile Include="Exceptions\PackageProcessHookFailedException.cs" />
-    <Compile Include="Exceptions\PackageRegistrationFailedException.cs" />
-    <Compile Include="Exceptions\PackageRemovalFailedException.cs" />
-    <Compile Include="Exceptions\SaveRedirectionFailedException.cs" />
-    <Compile Include="Handlers\BackupHandler.cs" />
-    <Compile Include="Handlers\FilterSortingHandler.cs" />
-    <Compile Include="Handlers\PackageHandler.cs" />
-    <Compile Include="Handlers\RuntimeHandler.cs" />
-    <Compile Include="Extensions\MCSkinExtensions.cs" />
-    <Compile Include="Handlers\PathHandler.cs" />
-    <Compile Include="Pages\Common\WaitingPage.xaml.cs">
-      <DependentUpon>WaitingPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Common\WaitingScreen.xaml.cs">
-      <DependentUpon>WaitingScreen.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Community\CommunityPage.xaml.cs">
-      <DependentUpon>CommunityPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\FirstLaunch\WelcomePageFive.xaml.cs">
-      <DependentUpon>WelcomePageFive.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\FirstLaunch\WelcomePageFour.xaml.cs">
-      <DependentUpon>WelcomePageFour.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\News\OfficalNewsPage.xaml.cs">
-      <DependentUpon>OfficalNewsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\SkinsPageViewModel.cs" />
-    <Compile Include="ViewModels\EditInstallationsPageViewModel.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\NewsViewModel.cs" />
-    <Compile Include="ViewModels\RSSViewModel.cs" />
-    <Compile Include="ViewModels\UserInterfaceModel.cs" />
-    <Compile Include="Properties\LauncherSettings.cs" />
-    <Compile Include="Controls\Items\Launcher\BlockPickerItem.xaml.cs">
-      <DependentUpon>BlockPickerItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\Launcher\InstallationItem.xaml.cs">
-      <DependentUpon>InstallationItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\Launcher\LocalizationItem.xaml.cs">
-      <DependentUpon>LocalizationItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\News\FeedItem_PatchNotes.xaml.cs">
-      <DependentUpon>FeedItem_PatchNotes.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\Skins\SkinItem.xaml.cs">
-      <DependentUpon>SkinItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\Skins\SkinPackItem.xaml.cs">
-      <DependentUpon>SkinPackItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\Launcher\VersionItem.xaml.cs">
-      <DependentUpon>VersionItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Config\ThemeCombobox.xaml.cs">
-      <DependentUpon>ThemeCombobox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Toolbar\ExternalLauncherButton.xaml.cs">
-      <DependentUpon>ExternalLauncherButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Toolbar\CommunityButton.xaml.cs">
-      <DependentUpon>CommunityButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Toolbar\JavaEditionButton.xaml.cs">
-      <DependentUpon>JavaEditionButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Config\InstallationBlockPicker.xaml.cs">
-      <DependentUpon>InstallationBlockPicker.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Config\InsiderCombobox.xaml.cs">
-      <DependentUpon>InsiderCombobox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Config\LanguageCombobox.xaml.cs">
-      <DependentUpon>LanguageCombobox.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Toolbar\BedrockEditionButton.xaml.cs">
-      <DependentUpon>BedrockEditionButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Toolbar\NewsButton.xaml.cs">
-      <DependentUpon>NewsButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Toolbar\SettingsButton.xaml.cs">
-      <DependentUpon>SettingsButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Toolbar\ProfileButton.xaml.cs">
-      <DependentUpon>ProfileButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Items\Launcher\ProfileItem.xaml.cs">
-      <DependentUpon>ProfileItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Skins\SkinPreview.xaml.cs">
-      <DependentUpon>SkinPreview.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Handlers\StartupArgsHandler.cs" />
-    <Compile Include="Downloaders\ChangelogDownloader.cs" />
-    <Compile Include="Pages\Settings\AdvancedOptionsWindow.xaml.cs">
-      <DependentUpon>AdvancedOptionsWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\News\RSSNewsPage.xaml.cs">
-      <DependentUpon>RSSNewsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Preview\EditSkinPackScreen.xaml.cs">
-      <DependentUpon>EditSkinPackScreen.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\News\LauncherNewsPage.xaml.cs">
-      <DependentUpon>LauncherNewsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Preview\EditSkinScreen.xaml.cs">
-      <DependentUpon>EditSkinScreen.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\FirstLaunch\WelcomePage.xaml.cs">
-      <DependentUpon>WelcomePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\FirstLaunch\WelcomePageThree.xaml.cs">
-      <DependentUpon>WelcomePageThree.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\FirstLaunch\WelcomePageTwo.xaml.cs">
-      <DependentUpon>WelcomePageTwo.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\FirstLaunch\WelcomePageOne.xaml.cs">
-      <DependentUpon>WelcomePageOne.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Preview\EditInstallationScreen.xaml.cs">
-      <DependentUpon>EditInstallationScreen.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Play\PatchNotesPage.xaml.cs">
-      <DependentUpon>PatchNotesPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Settings\VersionsPage.xaml.cs">
-      <DependentUpon>VersionsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Play\InstallationsScreen.xaml.cs">
-      <DependentUpon>InstallationsScreen.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\News\NewsScreenTabs.xaml.cs">
-      <DependentUpon>NewsScreenTabs.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Preview\AddProfilePage.xaml.cs">
-      <DependentUpon>AddProfilePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Settings\AboutPage.xaml.cs">
-      <DependentUpon>AboutPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Settings\AccountsSettingsPage.xaml.cs">
-      <DependentUpon>AccountsSettingsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Settings\GeneralSettingsPage.xaml.cs">
-      <DependentUpon>GeneralSettingsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Play\GameTabs.xaml.cs">
-      <DependentUpon>GameTabs.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Play\PlayScreenPage.xaml.cs">
-      <DependentUpon>PlayScreenPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Play\SkinsPage.xaml.cs">
-      <DependentUpon>SkinsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Settings\SettingsTabs.xaml.cs">
-      <DependentUpon>SettingsTabs.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Handlers\UpdateHandler.cs" />
-    <Compile Include="Downloaders\VersionDownloader.cs" />
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="Controls\Common\MessageBoxEX.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Items\Launcher\BlockPickerItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Items\Launcher\DLCItem.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Items\News\FeedItem_Offical.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Items\News\FeedItem_RSS.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Items\Launcher\InstallationItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Items\Launcher\InstallationSelectorItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Items\News\FeedItem_Launcher.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Items\Launcher\LocalizationItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Items\News\FeedItem_PatchNotes.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Items\Skins\SkinItem.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Items\Skins\SkinPackItem.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Items\Launcher\VersionItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Various\LoaderIcon.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Common\Marquee.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Various\ResultPanel.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Config\ThemeCombobox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Various\SpecialBorder.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Toolbar\DungeonsButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Toolbar\ExternalLauncherButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Toolbar\CommunityButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Toolbar\JavaEditionButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Config\InstallationBlockPicker.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Config\InsiderCombobox.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Config\LanguageCombobox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Toolbar\BedrockEditionButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Toolbar\NewsButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Toolbar\SettingsButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\Toolbar\ProfileButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Items\Launcher\ProfileItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Skins\SkinPreview.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Various\UpdateButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Config\InstallationSelector.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Common\WaitingPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Common\WaitingScreen.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Community\CommunityPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\FirstLaunch\WelcomePageFive.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\News\OfficalNewsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Settings\AdvancedOptionsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\News\RSSNewsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Preview\EditSkinPackScreen.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\FirstLaunch\WelcomePageFour.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\News\LauncherNewsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Preview\EditSkinScreen.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\FirstLaunch\WelcomePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\FirstLaunch\WelcomePageThree.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\FirstLaunch\WelcomePageTwo.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\FirstLaunch\WelcomePageOne.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Preview\EditInstallationScreen.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Play\PatchNotesPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Settings\VersionsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Play\InstallationsScreen.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\News\NewsScreenTabs.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Preview\AddProfilePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Settings\AboutPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Settings\AccountsSettingsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Settings\GeneralSettingsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Play\GameTabs.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Play\PlayScreenPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Play\SkinsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Settings\SettingsTabs.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\styles\item_templates.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <None Include="App.config" />
-    <None Include="app.manifest">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="CefSharp.Wpf">
-      <Version>96.0.180</Version>
-    </PackageReference>
-    <PackageReference Include="CodeHollow.FeedReader">
-      <Version>1.2.1</Version>
-    </PackageReference>
-    <PackageReference Include="HtmlAgilityPack">
-      <Version>1.11.40</Version>
-    </PackageReference>
-    <PackageReference Include="HtmlRenderer.WPF">
-      <Version>1.5.0.6</Version>
-    </PackageReference>
-    <PackageReference Include="ini-parser">
-      <Version>2.5.2</Version>
-    </PackageReference>
-    <PackageReference Include="MdXaml">
-      <Version>1.12.0</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Windows.CppWinRT">
-      <Version>2.0.210505.3</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Windows.SDK.Contracts">
-      <Version>10.0.19041.1</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf">
-      <Version>1.1.39</Version>
-    </PackageReference>
-    <PackageReference Include="MSFT.ParallelExtensionsExtras">
-      <Version>1.2.0</Version>
-    </PackageReference>
-    <PackageReference Include="Newtonsoft.Json">
-      <Version>13.0.1</Version>
-    </PackageReference>
-    <PackageReference Include="PostSharp">
-      <Version>6.10.5</Version>
-    </PackageReference>
-    <PackageReference Include="PostSharp.Patterns.Model">
-      <Version>6.10.5</Version>
-    </PackageReference>
-    <PackageReference Include="RestSharp">
-      <Version>106.12.0</Version>
-    </PackageReference>
-    <PackageReference Include="semver">
-      <Version>2.0.6</Version>
-    </PackageReference>
-    <PackageReference Include="SymbolicLinkSupport">
-      <Version>1.2.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Net.Http.WinHttpHandler">
-      <Version>5.0.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Runtime">
-      <Version>4.3.1</Version>
-    </PackageReference>
-    <PackageReference Include="VirtualizingWrapPanel">
-      <Version>1.5.7</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\modules\BedrockLauncher.Core\BedrockLauncher.Core.csproj">
-      <Project>{167a048a-8140-4f8d-87c3-a03d07f964d3}</Project>
-      <Name>BedrockLauncher.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\modules\BedrockLauncher.Dungeons\BedrockLauncher.Dungeons.csproj">
-      <Project>{a04af51f-1e8c-44b0-9ebc-e3c7d6b3f4d3}</Project>
-      <Name>BedrockLauncher.Dungeons</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\modules\BedrockLauncher.UI\BedrockLauncher.UI.csproj">
-      <Project>{46D8EC75-2F00-4551-9F3D-10C8522C9B3D}</Project>
-      <Name>BedrockLauncher.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\modules\BedrockLauncher.UpdateProcessor\Core.csproj">
-      <Project>{8d88d5ff-5132-4605-851d-2e020ea6483b}</Project>
-      <Name>Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\modules\Extensions.NET\Extensions.csproj">
-      <Project>{6718749f-4346-4e5e-85df-d47faf22c9b6}</Project>
-      <Name>Extensions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\modules\SkinView3D\SkinView3D.csproj">
-      <Project>{ccabef67-f4bf-4087-9291-62ee5e316934}</Project>
-      <Name>SkinView3D</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\modules\BedrockLauncher.Uninstaller\BedrockLauncher.Uninstaller.csproj">
-      <Project>{3232778b-1a3b-4d31-88a1-7a43b8b66723}</Project>
-      <Name>BedrockLauncher.Uninstaller</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pages\Web\Donate.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Pages\Web\Loader.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\_BlockOrder.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\_BlockOrder_Offical.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Acacia_Log.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Acacia_Planks.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Andesite.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Bedrock.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Birch_Leaves.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Birch_Log.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Birch_Planks.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Block_of_Coal.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Block_of_Diamond.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Block_of_Emerald.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Block_of_Gold.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Block_of_Iron.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Block_of_Redstone.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Bookshelf.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Bricks.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Cake.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Chest.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Clay.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Coal_Ore.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Cobblestone.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Crafting_Table.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Creeper_Head.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Crimson_Planks.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Crimson_Stem.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Dark_Oak_Log.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Dark_Oak_Planks.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Diamond_Ore.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Diorite.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Dirt.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Emerald_Ore.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Enchanting_Table.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\End_Stone.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Farmland.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Furnace.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Glass.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Glowstone.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Gold_Ore.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Granite.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Grass_Block.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Gravel.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Ice.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Iron_Ore.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Jungle_Leaves.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Jungle_Log.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Jungle_Planks.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Lapis_Lazuli_Ore.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Lectern_Book.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Light_Blue_Glazed_Terracotta.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Lit_Furnace.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Mycelium.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Nether_Bricks.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Nether_Quartz_Ore.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Nether_Wart_Block.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Netherrack.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Oak_Leaves.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Oak_Log.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Oak_Planks.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Obsidian.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Orange_Glazed_Terracotta.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Podzol.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Pumpkin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Red_Sand.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Red_Sandstone.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Redstone_Ore.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Sand.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Sandstone.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Skeleton_Skull.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Snow_Block.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Snowy_Grass_Block.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Soul_Sand.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Spruce_Leaves.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Spruce_Log.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Spruce_Planks.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Stone.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Terracotta.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\TNT.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Warped_Planks.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Warped_Stem.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Warped_Wart_Block.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\Water.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\White_Glazed_Terracotta.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\installation_icons\White_Wool.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\credits\bs_community_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\credits\carjem_logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\credits\mcmrarm_icon.jfif" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\credits\microsoft_logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\credits\mojang_logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\credits\xbox_logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\credits\xlynxx.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\bg\firstlaunchbackground.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\bg\firstlaunchbackground_legacy.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\1.0_pocket_edition.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\1.08_cats_and_pandas.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\1.09_combat_update_java.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\1.11_exploration_update_java.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\1.12_world_of_color_update_java.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\1.13_technically_updated_java.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\1.13_update_aquatic.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\1.14_village_pillage_update.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\1.15_buzzy_bees_update.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\1.16_nether_update.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\1.17_caves_and_cliffs_part_1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\bedrock_master.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\bedrock_standard.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\original_image.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\other_dungeons.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\other_early_console_era.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\other_indie_days.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\other_late_legacy_console.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\bg\play_screen\other_mid_legacy_console.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\bg\stone_texture.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\icons\bedrock_grass_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\icons\bedrock_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\icons\dungeons_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\icons\external.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\icons\grass_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\icons\ico\bedrock_block_icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\icons\ico\crafting_table_block_icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\icons\ico\grass_block_icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\icons\ico\icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\icons\ico\launcher_icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\icons\ico\package.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\icons\ico\uninstaller_icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\icons\mojang-icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\icons\ms-icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\icons\news_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\icons\servers_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\icons\settings_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\icons\user_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\logo\BedrockEdition.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\logo\BugrockEdition.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\logo\BugrockOfTheWeek.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\logo\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\logo\OfTheWeek.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\logo\subtitle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\logo\title.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\packs\dev_pack_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\packs\invalid_pack.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\packs\invalid_pack_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\packs\pack.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\packs\pack_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\panels\advancement_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\images\panels\CardBorder.png" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PreBuildEvent>if $(ConfigurationName) == Publish (
-rmdir "$(ProjectDir)$(OutDir)\" /s /q
-)</PreBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == Publish (
-"$(SolutionDir)\solution_binaries\publisher\publisher.exe" "$(ProjectDir)$(OutDir)\"
-)
-</PostBuildEvent>
-  </PropertyGroup>
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows10.0.17763.0</TargetFramework>
+		<BeautyLibsDir>runtimes</BeautyLibsDir>
+		<DisableBeauty>False</DisableBeauty>
+		<OutputType>WinExe</OutputType>
+		<IsWebBootstrapper>false</IsWebBootstrapper>
+		<PublishUrl>publish\</PublishUrl>
+		<Install>true</Install>
+		<InstallFrom>Disk</InstallFrom>
+		<UpdateEnabled>false</UpdateEnabled>
+		<UpdateMode>Foreground</UpdateMode>
+		<UpdateInterval>7</UpdateInterval>
+		<UpdateIntervalUnits>Days</UpdateIntervalUnits>
+		<UpdatePeriodically>false</UpdatePeriodically>
+		<UpdateRequired>false</UpdateRequired>
+		<MapFileExtensions>true</MapFileExtensions>
+		<ApplicationRevision>0</ApplicationRevision>
+		<ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+		<UseApplicationTrust>false</UseApplicationTrust>
+		<BootstrapperEnabled>true</BootstrapperEnabled>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<UseWindowsForms>true</UseWindowsForms>
+		<UseWPF>true</UseWPF>
+		<ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+		<EnforceCodeStyleInBuild>False</EnforceCodeStyleInBuild>
+		<BaseOutputPath>bin\</BaseOutputPath>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+		<SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+		<IsPublishable>True</IsPublishable>
+		<Company />
+		<PackageId>BedrockLauncher</PackageId>
+		<Authors>CarJem Generations</Authors>
+		<Copyright>2022 © CarJem Generations</Copyright>
+		<AnalysisLevel>latest</AnalysisLevel>
+		<SelfContained>false</SelfContained>
+	</PropertyGroup>
+	<PropertyGroup>
+		<StartupObject>BedrockLauncher.Program</StartupObject>
+	</PropertyGroup>
+	<PropertyGroup>
+		<ApplicationIcon>Resources\images\icons\ico\launcher_icon.ico</ApplicationIcon>
+	</PropertyGroup>
+	<PropertyGroup>
+		<TargetZone>LocalIntranet</TargetZone>
+	</PropertyGroup>
+	<PropertyGroup>
+		<GenerateManifests>false</GenerateManifests>
+	</PropertyGroup>
+	<PropertyGroup>
+		<SignManifests>false</SignManifests>
+	</PropertyGroup>
+	<PropertyGroup>
+		<ManifestCertificateThumbprint>C12BAB0D8397D937265B99E7577F9696AFDF57C2</ManifestCertificateThumbprint>
+	</PropertyGroup>
+	<PropertyGroup>
+		<ManifestKeyFile>BedrockLauncher.pfx</ManifestKeyFile>
+	</PropertyGroup>
+	<PropertyGroup>
+		<AssemblyOriginatorKeyFile>
+		</AssemblyOriginatorKeyFile>
+	</PropertyGroup>
+	<PropertyGroup>
+		<DelaySign>false</DelaySign>
+	</PropertyGroup>
+	<PropertyGroup>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+	</PropertyGroup>
+	<PropertyGroup>
+		<RunPostBuildEvent>Always</RunPostBuildEvent>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Publish|AnyCPU'">
+		<OutputPath>bin\Publish\</OutputPath>
+		<Optimize>true</Optimize>
+		<RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+		<CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Update="app.manifest">
+			<SubType>Designer</SubType>
+		</None>
+		<None Update="Directory.Build.props">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</None>
+		<None Update="nlog.config">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+	<ItemGroup>
+		<BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+			<Visible>False</Visible>
+			<ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+			<Install>true</Install>
+		</BootstrapperPackage>
+		<BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+			<Visible>False</Visible>
+			<ProductName>.NET Framework 3.5 SP1</ProductName>
+			<Install>false</Install>
+		</BootstrapperPackage>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="CefSharp.Common.NETCore" Version="100.0.140" />
+		<PackageReference Include="CefSharp.Wpf.NETCore" Version="100.0.140" />
+		<PackageReference Include="CodeHollow.FeedReader" Version="1.2.4" />
+		<PackageReference Include="FolderBrowserEx" Version="1.0.1" />
+		<PackageReference Include="GitInfo" Version="2.2.0" />
+		<PackageReference Include="HtmlAgilityPack" Version="1.11.40" />
+		<PackageReference Include="HtmlRenderer.Core.NetStandard2" Version="1.5.1" />
+		<PackageReference Include="ini-parser-netcore" Version="3.0.0" />
+		<PackageReference Include="MdXaml" Version="1.12.0" />
+		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+		<PackageReference Include="MimeMapping" Version="1.0.1.37" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="NLog" Version="4.7.13" />
+		<PackageReference Include="PostSharp.Patterns.Model" Version="6.10.5" />
+		<PackageReference Include="RestSharp">
+			<Version>107.1.1</Version>
+		</PackageReference>
+		<PackageReference Include="SymbolicLinkSupport">
+			<Version>1.2.0</Version>
+		</PackageReference>
+		<PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+		<PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.261602">
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="System.Diagnostics.DiagnosticSource" Version="6.0.0" />
+		<PackageReference Include="VirtualizingWrapPanel" Version="1.5.7" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\modules\BedrockLauncher.Core\BedrockLauncher.Core.csproj" />
+		<ProjectReference Include="..\modules\BedrockLauncher.Dungeons\BedrockLauncher.Dungeons.csproj" />
+		<ProjectReference Include="..\modules\BedrockLauncher.Localization\BedrockLauncher.Localization.csproj" />
+		<ProjectReference Include="..\modules\BedrockLauncher.UI\BedrockLauncher.UI.csproj" />
+		<ProjectReference Include="..\modules\BedrockLauncher.Uninstaller\BedrockLauncher.Uninstaller.csproj" />
+		<ProjectReference Include="..\modules\BedrockLauncher.UpdateProcessor\BedrockLauncher.UpdateProcessor.csproj" />
+		<ProjectReference Include="..\modules\Extensions.NET\JemExtensions.csproj" />
+		<ProjectReference Include="..\modules\SkinView3D\BedrockLauncher.SkinView3D.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Pages\Web\Donate.html" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Pages\Web\Loader.html" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\_BlockOrder.txt" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\_BlockOrder_Offical.txt" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Acacia_Log.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Acacia_Planks.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Andesite.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Bedrock.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Birch_Leaves.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Birch_Log.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Birch_Planks.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Block_of_Coal.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Block_of_Diamond.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Block_of_Emerald.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Block_of_Gold.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Block_of_Iron.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Block_of_Redstone.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Bookshelf.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Bricks.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Cake.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Chest.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Clay.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Coal_Ore.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Cobblestone.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Crafting_Table.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Creeper_Head.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Crimson_Planks.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Crimson_Stem.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Dark_Oak_Log.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Dark_Oak_Planks.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Diamond_Ore.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Diorite.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Dirt.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Emerald_Ore.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Enchanting_Table.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\End_Stone.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Farmland.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Furnace.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Glass.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Glowstone.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Gold_Ore.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Granite.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Grass_Block.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Gravel.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Ice.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Iron_Ore.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Jungle_Leaves.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Jungle_Log.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Jungle_Planks.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Lapis_Lazuli_Ore.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Lectern_Book.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Light_Blue_Glazed_Terracotta.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Lit_Furnace.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Mycelium.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Nether_Bricks.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Nether_Quartz_Ore.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Nether_Wart_Block.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Netherrack.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Oak_Leaves.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Oak_Log.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Oak_Planks.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Obsidian.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Orange_Glazed_Terracotta.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Podzol.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Pumpkin.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Red_Sand.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Red_Sandstone.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Redstone_Ore.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Sand.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Sandstone.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Skeleton_Skull.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Snow_Block.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Snowy_Grass_Block.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Soul_Sand.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Spruce_Leaves.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Spruce_Log.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Spruce_Planks.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Stone.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Terracotta.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\TNT.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Warped_Planks.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Warped_Stem.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Warped_Wart_Block.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\Water.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\White_Glazed_Terracotta.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\installation_icons\White_Wool.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\credits\bs_community_icon.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\credits\carjem_logo.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\credits\mcmrarm_icon.jfif" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\credits\microsoft_logo.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\credits\mojang_logo.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\credits\xbox_logo.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\credits\xlynxx.jpg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\bg\firstlaunchbackground.jpg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\bg\firstlaunchbackground_legacy.jpg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\bg\play_screen\1.0_pocket_edition.jpg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\bg\play_screen\1.08_cats_and_pandas.jpg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\bg\play_screen\1.09_combat_update_java.jpg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\bg\play_screen\1.11_exploration_update_java.jpg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\bg\play_screen\1.12_world_of_color_update_java.jpg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\bg\play_screen\1.13_technically_updated_java.jpg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\bg\play_screen\1.13_update_aquatic.jpg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\bg\play_screen\1.14_village_pillage_update.jpg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\bg\play_screen\1.15_buzzy_bees_update.jpg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\bg\play_screen\1.16_nether_update.jpg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\bg\play_screen\1.17_caves_and_cliffs_part_1.jpg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\bg\play_screen\bedrock_master.jpg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\bg\play_screen\bedrock_standard.jpg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\bg\play_screen\original_image.jpg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\bg\play_screen\other_dungeons.jpg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\bg\play_screen\other_early_console_era.jpg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\bg\play_screen\other_indie_days.jpg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\bg\play_screen\other_late_legacy_console.jpg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\bg\play_screen\other_mid_legacy_console.jpg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\bg\stone_texture.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\icons\bedrock_grass_icon.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\icons\bedrock_icon.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\icons\dungeons_icon.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\icons\external.svg" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\icons\grass_icon.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\icons\ico\bedrock_block_icon.ico" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\icons\ico\crafting_table_block_icon.ico" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\icons\ico\grass_block_icon.ico" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\icons\ico\icon.ico" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\icons\ico\launcher_icon.ico" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\icons\ico\package.ico" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\icons\ico\uninstaller_icon.ico" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\icons\mojang-icon.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\icons\ms-icon.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\icons\news_icon.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\icons\servers_icon.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\icons\settings_icon.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\icons\user_icon.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\logo\BedrockEdition.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\logo\BugrockEdition.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\logo\BugrockOfTheWeek.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\logo\logo.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\logo\OfTheWeek.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\logo\subtitle.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\logo\title.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\packs\dev_pack_icon.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\packs\invalid_pack.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\packs\invalid_pack_icon.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\packs\pack.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\packs\pack_icon.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\panels\advancement_icon.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\panels\CardBorder.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Controls\Various\LoadingAnimation.xaml.cs" />
+		<Page Remove="Controls\Various\LoadingAnimation.xaml" />
+		<Page Remove="Data\Versions.xaml" />
+	</ItemGroup>
+	<PropertyGroup>
+		<DebugType>portable</DebugType>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<WarningLevel>0</WarningLevel>
+		<DefineConstants>$(DefineConstants);ENABLE_CEFSHARP</DefineConstants>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<WarningLevel>0</WarningLevel>
+		<DefineConstants>$(DefineConstants);ENABLE_CEFSHARP</DefineConstants>
+	</PropertyGroup>
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Update="chromiumembeddedframework.runtime.win-arm64" Version="98.1.21" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Update="chromiumembeddedframework.runtime.win-x64" Version="98.1.21" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Update="chromiumembeddedframework.runtime.win-x86" Version="98.1.21" />
+	</ItemGroup>
 </Project>

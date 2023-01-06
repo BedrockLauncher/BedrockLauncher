@@ -5,261 +5,106 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using BedrockLauncher.UpdateProcessor;
+using BedrockLauncher.UpdateProcessor.Databases;
+using BedrockLauncher.UpdateProcessor.Classes;
 using System.Linq;
-using Extensions;
+using JemExtensions;
 using BedrockLauncher.ViewModels;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.Collections.Generic;
+using static BedrockLauncher.UpdateProcessor.Handlers.VersionManager;
+using BedrockLauncher.UpdateProcessor.Handlers;
+using System.Text.RegularExpressions;
+using BedrockLauncher.UpdateProcessor.Extensions;
+using BedrockLauncher.Enums;
+using BedrockLauncher.UpdateProcessor.Enums;
 
 namespace BedrockLauncher.Downloaders
 {
     public class VersionDownloader
     {
-        private HttpClient _client = new HttpClient();
-        private Win10StoreNetwork _store_manager = new Win10StoreNetwork();
+        private VersionManager VersionDB = new VersionManager();
 
-        private string cacheFile => MainViewModel.Default.FilePaths.GetVersionsFilePath();
-        private string userCacheFile => MainViewModel.Default.FilePaths.GetUserVersionsFilePath();
-        private string technicalUserCacheFile => MainViewModel.Default.FilePaths.GetUserVersionsTechnicalFilePath();
+        private string winstoreDBFile => MainViewModel.Default.FilePaths.GetWinStoreVersionsDBFile();
+        private string winstoreDBTechnicalFile => MainViewModel.Default.FilePaths.GetWinStoreVersionsTechnicalDBFile();
+        private string communityDBFile => MainViewModel.Default.FilePaths.GetCommunityVersionsDBFile();
+        private string communityDBTechnicalFile => MainViewModel.Default.FilePaths.GetCommunityVersionsTechnicalDBFile();
+
+        private MCVersion latestReleaseRef { get; set; }
+        private MCVersion latestBetaRef { get; set; }
 
 
-        private string latestReleaseUUID = string.Empty;
-        private string latestBetaUUID = string.Empty;
-        private string GetUpdateIdentity(string uuid)
+        public async Task DownloadVersion(string versionName, string uuid, int revisionNumber, string destination, DownloadProgress progress, CancellationToken cancellationToken, VersionType versionType)
         {
-            if (uuid == Constants.LATEST_BETA_UUID) return latestBetaUUID;
-            else if (uuid == Constants.LATEST_RELEASE_UUID) return latestReleaseUUID;
-            else return uuid;
-        }
+            await VersionDB.DownloadVersion(versionName, GetUpdateIdentity(uuid), revisionNumber, destination, progress, cancellationToken, versionType);
 
-        public void EnableUserAuthorization()
-        {
-            try
+            string GetUpdateIdentity(string uuid)
             {
-                _store_manager.setMSAUserToken(Win10AuthenticationManager.Default.GetWUToken(Properties.LauncherSettings.Default.CurrentInsiderAccountIndex));
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine("Error while Authenticating UserToken for Version Fetching:\n" + ex);
+                if (uuid == Constants.LATEST_BETA_UUID) return latestBetaRef.UUID;
+                else if (uuid == Constants.LATEST_RELEASE_UUID) return latestReleaseRef.UUID;
+                else return uuid;
             }
         }
-        public void PraseDB(ObservableCollection<BLVersion> list, Win10VersionDBManager.Win10VersionJsonDb db)
+        public async Task UpdateVersions(ObservableCollection<MCVersion> versions, bool OnLoad = false)
         {
-            foreach (var v in db.list)
-            {
-                if (!list.ToList().Exists(x => x.UUID == v.uuid || x.Name == v.version)) list.Add(new BLVersion(v.uuid, v.version, v.isBeta));
-            }
-            list.Sort((x, y) => Compare(x, y));
+            bool AllowUpdating = OnLoad && Debugger.IsAttached ? Constants.Debugging.RetriveNewVersionsOnLoad : true;
 
-            int Compare(MCVersion x, MCVersion y)
-            {
-                try
-                {
-                    var a = new Version(x.Name);
-                    var b = new Version(y.Name);
-                    return b.CompareTo(a);
-                }
-                catch
-                {
-                    return y.Name.CompareTo(x.Name);
-                }
-
-            }
-        }
-
-        private async Task DownloadFile(string url, string to, DownloadProgress progress, CancellationToken cancellationToken)
-        {
-            using (var resp = await _client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead, cancellationToken))
-            {
-                using (var inStream = await resp.Content.ReadAsStreamAsync())
-                using (var outStream = new FileStream(to, FileMode.Create))
-                {
-                    long? totalSize = resp.Content.Headers.ContentLength;
-                    progress(0, totalSize);
-                    long transferred = 0;
-                    byte[] buf = new byte[1024 * 1024];
-                    while (true)
-                    {
-                        int n = await inStream.ReadAsync(buf, 0, buf.Length, cancellationToken);
-                        if (n == 0)
-                            break;
-                        await outStream.WriteAsync(buf, 0, n, cancellationToken);
-                        transferred += n;
-                        progress(transferred, totalSize);
-                    }
-                }
-            }
-        }
-        public async Task Download(string versionName, string uuid, int revisionNumber, string destination, DownloadProgress progress, CancellationToken cancellationToken)
-        {
-            var updateIdentity = GetUpdateIdentity(uuid);
-            string link = await _store_manager.getDownloadLink(updateIdentity, revisionNumber, true);
-            if (link == null)
-                throw new ArgumentException(string.Format("Bad updateIdentity for {0}", versionName));
-            System.Diagnostics.Debug.WriteLine("Resolved download link: " + link);
-            await DownloadFile(link, destination, progress, cancellationToken);
-        }
-
-        public async Task UpdateVersions(ObservableCollection<BLVersion> versions, VersionUpdateOptions options = null)
-        {
-            if (options == null) options = VersionUpdateOptions.Default;
-
-            await ThreadingExtensions.StartSTATask(EnableUserAuthorization);
+            //Clear Existing Versions
             versions.Clear();
 
-            LoadFromLocalCache(versions);
-            if (!options.CacheOnly) await LoadFromURL(versions);
-            LoadFromUserCache(versions);
-            if (!options.CacheOnly) await LoadFromAPI(versions);
-            if (!options.CacheOnly) await LoadFromAPI_Technical();
-            LoadDefaults(versions);
-        }
+            //Retrive Versions
+            int userIndex = Properties.LauncherSettings.Default.CurrentInsiderAccountIndex;
+            VersionDB.Init(userIndex, winstoreDBFile, winstoreDBTechnicalFile, communityDBFile, communityDBTechnicalFile);
+            await VersionDB.LoadVersions(AllowUpdating);
 
-        public Win10VersionDBManager.Win10VersionJsonDb LoadFromUserCache(ObservableCollection<BLVersion> versions)
-        {
-            try
+            //Add Versions to ObservableCollection, then Sort them
+            foreach (var entry in VersionDB.GetVersions())
             {
-                Win10VersionDBManager.Win10VersionJsonDb db = new Win10VersionDBManager.Win10VersionJsonDb();
-                db.ReadJson(userCacheFile);
-                PraseDB(versions, db);
-                return db;
+                versions.Add(new MCVersion(entry.GetUUID().ToString(), GetRealVersion(entry.GetVersion()), entry.GetVersionType(), entry.GetArchitecture()));
             }
-            catch (FileNotFoundException e)
-            {
-                // ignore
-                System.Diagnostics.Debug.WriteLine("Version list user cache load failed:\n" + e.ToString());
-                return new Win10VersionDBManager.Win10VersionJsonDb();
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine("Version list user cache load failed:\n" + e.ToString());
-                return new Win10VersionDBManager.Win10VersionJsonDb();
-            }
-        }
-        public Win10VersionDBManager.Win10VersionJsonDb LoadFromLocalCache(ObservableCollection<BLVersion> versions)
-        {
-            try
-            {
-                Win10VersionDBManager.Win10VersionJsonDb db = new Win10VersionDBManager.Win10VersionJsonDb();
-                db.ReadJson(cacheFile);
-                PraseDB(versions, db);
-                return db;
-            }
-            catch (FileNotFoundException e)
-            {
-                // ignore
-                System.Diagnostics.Debug.WriteLine("Version list local cache load failed:\n" + e.ToString());
-                return new Win10VersionDBManager.Win10VersionJsonDb();
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine("Version list local cache load failed:\n" + e.ToString());
-                return new Win10VersionDBManager.Win10VersionJsonDb();
-            }
-        }
-        public Win10VersionDBManager.Win10VersionTextDb LoadFromTechCache()
-        {
-            try
-            {
-                Win10VersionDBManager.Win10VersionTextDb db = new Win10VersionDBManager.Win10VersionTextDb();
-                db.Read(technicalUserCacheFile);
-                return db;
-            }
-            catch (FileNotFoundException e)
-            {
-                // ignore
-                System.Diagnostics.Debug.WriteLine("Version list technical cache load failed:\n" + e.ToString());
-                return new Win10VersionDBManager.Win10VersionTextDb();
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine("Version list technical cache load failed:\n" + e.ToString());
-                return new Win10VersionDBManager.Win10VersionTextDb();
-            }
-        }
+                
+            versions.Sort((x, y) => x.Compare(y));
 
-        private void LoadDefaults(ObservableCollection<BLVersion> versions)
-        {
-            this.latestReleaseUUID = versions.First(x => x.IsBeta == false)?.UUID ?? string.Empty;
-            this.latestBetaUUID = versions.First(x => x.IsBeta == true)?.UUID ?? string.Empty;
 
-            var latest_beta = new BLVersion(Constants.LATEST_BETA_UUID, Application.Current.Resources["EditInstallationScreen_LatestSnapshot"].ToString(), true);
-            var latest_release = new BLVersion(Constants.LATEST_RELEASE_UUID, Application.Current.Resources["EditInstallationScreen_LatestRelease"].ToString(), false);
+            //Get Latest Release and Beta Versions an Insert them into the ObservableCollection
+            var latestRelease = versions.First(x => x.IsBeta == false && VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, x.Architecture));
+            var latestBeta = versions.First(x => x.IsBeta == true && VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, x.Architecture));
+
+            this.latestReleaseRef = latestRelease;
+            this.latestBetaRef = latestBeta;
+
+            var latest_beta = new MCVersion(Constants.LATEST_BETA_UUID, Application.Current.Resources["EditInstallationScreen_LatestSnapshot"].ToString(), latestBeta.Type, Constants.CurrentArchitecture);
+            var latest_release = new MCVersion(Constants.LATEST_RELEASE_UUID, Application.Current.Resources["EditInstallationScreen_LatestRelease"].ToString(), latestRelease.Type, Constants.CurrentArchitecture);
 
             versions.Insert(0, latest_beta);
             versions.Insert(0, latest_release);
+
+            string GetRealVersion(string versionS)
+            {
+                if (MinecraftVersion.TryParse(versionS, out MinecraftVersion version)) return version.ToRealString();
+                else return new Version(0, 0, 0, 0).ToString();
+            }
         }
 
-        public async Task LoadFromAPI_Technical()
+        public MCVersion GetVersion(VersioningMode versioningMode, string versionUUID)
         {
-            try
+            if (versioningMode != VersioningMode.None)
             {
-                var db = LoadFromTechCache();
-                var config = await _store_manager.fetchConfigLastChanged();
-                var cookie = await _store_manager.fetchCookie(config, false);
-                var knownVersions = db.releaseList.ToList().ConvertAll(x => x.uuid);
-                db.AddVersion(await Win10StoreManager.CheckForVersions(_store_manager, cookie, knownVersions, false), false);
-                db.Write(technicalUserCacheFile);
-                config = await _store_manager.fetchConfigLastChanged();
-                cookie = await _store_manager.fetchCookie(config, true);
-                knownVersions = db.betaList.ToList().ConvertAll(x => x.uuid);
-                db.AddVersion(await Win10StoreManager.CheckForVersions(_store_manager, cookie, knownVersions, true), true);
-                db.Write(technicalUserCacheFile);
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine("Version list update check failed:\n" + e.ToString());
-            }
-        }
-        public async Task LoadFromAPI(ObservableCollection<BLVersion> versions)
-        {
-            try
-            {
-                var db = LoadFromUserCache(versions);
-                var config = await _store_manager.fetchConfigLastChanged();
-                var cookie = await _store_manager.fetchCookie(config, false);
-                var knownVersions = db.list.ToList().ConvertAll(x => x.uuid);
-                db.AddVersion(await Win10StoreManager.CheckForVersions(_store_manager, cookie, knownVersions, false), false);
-                db.WriteJson(userCacheFile);
-                PraseDB(versions, db);
-                config = await _store_manager.fetchConfigLastChanged();
-                cookie = await _store_manager.fetchCookie(config, true);
-                knownVersions = db.list.ToList().ConvertAll(x => x.uuid);
-                db.AddVersion(await Win10StoreManager.CheckForVersions(_store_manager, cookie, knownVersions, true), true);
-                db.WriteJson(userCacheFile);
-                PraseDB(versions, db);
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine("Version list update check failed:\n" + e.ToString());
-            }
-        }
-        public async Task LoadFromURL(ObservableCollection<BLVersion> versions)
-        {
-            try
-            {
-                Win10VersionDBManager.Win10VersionJsonDb db = new Win10VersionDBManager.Win10VersionJsonDb();
-                var resp = await _client.GetAsync("https://mrarm.io/r/w10-vdb");
-                resp.EnsureSuccessStatusCode();
-                var data = await resp.Content.ReadAsStringAsync();
-                db.PraseJson(data);
-                db.WriteJson(cacheFile);
-                PraseDB(versions, db);
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine("Version list download failed:\n" + e.ToString());
-            }
+                var latest_beta = MainViewModel.Default.Versions.ToList().FirstOrDefault(x => x.UUID == latestBetaRef.UUID && x.Type == latestBetaRef.Type);
+                var latest_release = MainViewModel.Default.Versions.ToList().FirstOrDefault(x => x.UUID == latestReleaseRef.UUID && x.Type == latestReleaseRef.Type);
 
-        }
-
-        public delegate void DownloadProgress(long current, long? total);
-
-        public class VersionUpdateOptions
-        {
-            public static readonly VersionUpdateOptions Default = new VersionUpdateOptions();
-
-            public bool CacheOnly { get; set; } = false;
+                if (versioningMode == VersioningMode.LatestBeta && latest_beta != null) return latest_beta;
+                else if (versioningMode == VersioningMode.LatestRelease && latest_release != null) return latest_release;
+                else return null;
+            }
+            else if (MainViewModel.Default.Versions.ToList().Exists(x => x.UUID == versionUUID))
+            {
+                return MainViewModel.Default.Versions.ToList().Where(x => x.UUID == versionUUID).FirstOrDefault();
+            }
+            else return null;
         }
     }
 }

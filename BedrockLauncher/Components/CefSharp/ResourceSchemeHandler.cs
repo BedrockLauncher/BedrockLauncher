@@ -1,4 +1,6 @@
-﻿using CefSharp;
+﻿#if ENABLE_CEFSHARP
+using CefSharp;
+# endif
 using System;
 using System.IO;
 using System.Net;
@@ -13,6 +15,7 @@ using System.Collections;
 
 namespace BedrockLauncher.Components.CefSharp
 {
+#if ENABLE_CEFSHARP
     public class ResourceSchemeHandler : ResourceHandler
     {
         public override CefReturnValue ProcessRequestAsync(IRequest request, ICallback callback)
@@ -62,7 +65,7 @@ namespace BedrockLauncher.Components.CefSharp
                         catch (Exception ex)
                         {
                             callback.Cancel();
-                            System.Diagnostics.Debug.WriteLine(ex);
+                            System.Diagnostics.Trace.WriteLine(ex);
                         }
 
                     }
@@ -75,4 +78,5 @@ namespace BedrockLauncher.Components.CefSharp
             return CefReturnValue.ContinueAsync;
         }
     }
+#endif
 }

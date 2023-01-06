@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Extensions.WPF.Attributes
+namespace JemExtensions.WPF.Attributes
 {
     public static class CustomDesignAttributes
     {

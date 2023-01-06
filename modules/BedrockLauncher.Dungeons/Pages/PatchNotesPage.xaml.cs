@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using CodeHollow.FeedReader;
 using System.Diagnostics;
 using BedrockLauncher.Dungeons.Downloaders;
 using BedrockLauncher.Dungeons.Classes.Launcher;

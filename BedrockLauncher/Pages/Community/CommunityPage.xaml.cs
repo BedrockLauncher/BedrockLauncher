@@ -1,5 +1,7 @@
-﻿using CefSharp;
+﻿#if ENABLE_CEFSHARP
+using CefSharp;
 using CefSharp.Wpf;
+#endif
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +23,11 @@ namespace BedrockLauncher.Pages.Community
     /// <summary>
     /// Interaction logic for Community.xaml
     /// </summary>
-    public partial class CommunityPage : Page
+    public partial class CommunityPage : Page, IDisposable
     {
-
+#if ENABLE_CEFSHARP
         ChromiumWebBrowser Browser = new ChromiumWebBrowser();
-
+#endif
 
         public CommunityPage()
         {
@@ -40,6 +42,7 @@ namespace BedrockLauncher.Pages.Community
 
         private void InitializeChromium()
         {
+#if ENABLE_CEFSHARP
             BrowserHost.Child = Browser;
             BedrockLauncher.Components.CefSharp.CefSharpLoader.InitBrowser(ref Browser);
             Browser.VerticalAlignment = VerticalAlignment.Stretch;
@@ -49,8 +52,10 @@ namespace BedrockLauncher.Pages.Community
             Browser.Address = "resources://Pages/Web/Donate.html";
             Browser.RequestHandler = new BrowserRequestHandler();
             Browser.LoadingStateChanged += Browser_LoadingStateChanged;
+#endif
         }
 
+#if ENABLE_CEFSHARP
         private void Browser_LoadingStateChanged(object sender, LoadingStateChangedEventArgs e)
         {
             if (!e.IsLoading)
@@ -58,8 +63,23 @@ namespace BedrockLauncher.Pages.Community
 
             }
         }
+#endif
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+#if ENABLE_CEFSHARP
+            Browser?.Dispose();
+#endif
+        }
     }
 
+#if ENABLE_CEFSHARP
     public class BrowserRequestHandler : IRequestHandler
     {
         private string DonateURL = "https://www.paypal.com/paypalme/CarJemGenerations";
@@ -129,5 +149,6 @@ namespace BedrockLauncher.Pages.Community
             return false;
         }
     }
+#endif
 
 }

@@ -1,36 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using BedrockLauncher.Classes;
 using System.Windows;
 using System.Windows.Input;
-using BedrockLauncher.Extensions;
 using System.Windows.Controls;
-using BedrockLauncher.Pages;
-using BedrockLauncher.Pages.Community;
-using BedrockLauncher.Pages.Settings;
-using BedrockLauncher.Pages.News;
-using BedrockLauncher.Pages.Play;
-using System.Windows.Data;
-using System.Windows.Controls.Primitives;
-using System.Diagnostics;
-using BedrockLauncher.Pages.Preview;
-using BedrockLauncher.Pages.FirstLaunch;
-using System.Windows.Media.Animation;
-using BedrockLauncher.Components;
-using BedrockLauncher.Pages.Common;
-using BedrockLauncher.Downloaders;
-using BedrockLauncher.ViewModels;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using PostSharp.Patterns.Model;
-using BedrockLauncher.Enums;
 using BedrockLauncher.Handlers;
-using System.Windows.Threading;
-using Extensions;
-using BedrockLauncher.UpdateProcessor;
 using BedrockLauncher.Core.Pages.Common;
 using BedrockLauncher.UI.Pages.Common;
 using BedrockLauncher.UI.Interfaces;
@@ -58,11 +34,11 @@ namespace BedrockLauncher.ViewModels
         #region Properties
 
         public static UpdateHandler Updater { get; set; } = new UpdateHandler();
-        public UserInterfaceModel InterfaceState { get; set; } = new UserInterfaceModel();
+        public ProgressBarModel ProgressBarState { get; set; } = new ProgressBarModel();
         public PathHandler FilePaths { get; private set; } = new PathHandler();
         public PackageHandler PackageManager { get; set; } = new PackageHandler();
         public MCProfilesList Config { get; private set; } = new MCProfilesList();
-        public ObservableCollection<BLVersion> Versions { get; private set; } = new ObservableCollection<BLVersion>();
+        public ObservableCollection<MCVersion> Versions { get; private set; } = new ObservableCollection<MCVersion>();
 
 
         private bool AllowedToCloseWithGameOpen { get; set; } = false;
@@ -81,10 +57,7 @@ namespace BedrockLauncher.ViewModels
                 if (IsVersionsUpdating) return;
                 IsVersionsUpdating = true;
 
-                VersionDownloader.VersionUpdateOptions options = new VersionDownloader.VersionUpdateOptions();
-                if (onLoad && Debugger.IsAttached && !Constants.Debugging.UpdateVersionsOnLoad) options.CacheOnly = true;
-
-                await PackageManager.VersionDownloader.UpdateVersions(Versions, options);
+                await PackageManager.VersionDownloader.UpdateVersions(Versions, onLoad);
 
                 IsVersionsUpdating = false;
             });
@@ -98,8 +71,8 @@ namespace BedrockLauncher.ViewModels
             });
         }
         public async void KillGame() => await PackageManager.ClosePackage();
-        public async void RepairVersion(BLVersion v) => await PackageManager.DownloadPackage(v);
-        public async void RemoveVersion(BLVersion v) => await PackageManager.RemovePackage(v);
+        public async void RepairVersion(MCVersion v) => await PackageManager.DownloadPackage(v);
+        public async void RemoveVersion(MCVersion v) => await PackageManager.RemovePackage(v);
         public async void Play(MCProfile p, BLInstallation i, bool KeepLauncherOpen, bool Save = true)
         {
             if (i == null) return;

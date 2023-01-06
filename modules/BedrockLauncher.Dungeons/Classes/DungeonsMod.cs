@@ -18,8 +18,8 @@ using System.IO.Compression;
 using System.Threading;
 using System.Windows.Data;
 using System.Text.RegularExpressions;
-using Extensions;
-using Extensions.WPF;
+using JemExtensions;
+using JemExtensions.WPF;
 
 namespace BedrockLauncher.Dungeons.Classes
 {

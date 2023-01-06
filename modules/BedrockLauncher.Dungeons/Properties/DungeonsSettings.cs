@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
-using Extensions.WPF;
+using JemExtensions.WPF;
 
 namespace BedrockLauncher.Dungeons.Properties
 {
