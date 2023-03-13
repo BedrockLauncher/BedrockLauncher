@@ -23,7 +23,7 @@ namespace BedrockLauncher
         {
             get
             {
-                return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                return System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString();
             }
         }
         public App() : base()

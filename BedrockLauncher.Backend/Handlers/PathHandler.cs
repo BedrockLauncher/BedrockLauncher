@@ -31,7 +31,7 @@ namespace BedrockLauncher.Handlers
         #region Common Paths
 
         public string CurrentLocation { get => (Properties.LauncherSettings.Default.PortableMode ? ExecutableDataDirectory : GetFixedPath()); }
-        public string ExecutableLocation { get => System.Reflection.Assembly.GetExecutingAssembly().Location; }
+        public string ExecutableLocation { get => System.Reflection.Assembly.GetEntryAssembly().Location; }
         public string ExecutableDirectory { get => Path.GetDirectoryName(ExecutableLocation); }
         public string ExecutableDataDirectory 
         { 
