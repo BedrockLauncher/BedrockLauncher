@@ -23,4 +23,5 @@ using System.Windows;
 
 
 [assembly: AssemblyVersion("2023.3.12.2")]
+[assembly: AssemblyFileVersion("2023.3.12.2")]
 [assembly: NeutralResourcesLanguage("en-US")]
