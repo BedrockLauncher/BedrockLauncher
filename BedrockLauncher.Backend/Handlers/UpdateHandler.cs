@@ -152,7 +152,7 @@ namespace BedrockLauncher.Handlers
         private bool CompareUpdate()
         {
             string OnlineTag = GetLatestTag();
-            string LocalTag = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            string LocalTag = System.Reflection.Assembly.GetEntryAssembly().GetName().Version.ToString();
             System.Diagnostics.Trace.WriteLine("Current tag: " + LocalTag);
             System.Diagnostics.Trace.WriteLine("Latest tag: " + OnlineTag);
 

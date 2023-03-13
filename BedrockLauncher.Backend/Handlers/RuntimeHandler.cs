@@ -29,7 +29,7 @@ namespace BedrockLauncher.Handlers
 
         public static void LogStartupInformation()
         {
-            Trace.WriteLine("Version: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version);
+            Trace.WriteLine("Version: " + System.Reflection.Assembly.GetEntryAssembly().GetName().Version);
             Trace.WriteLine("Git Repo: " + ThisAssembly.Git.RepositoryUrl);
             Trace.WriteLine("Git Branch: " + ThisAssembly.Git.Branch);
             Trace.WriteLine("Git Commit: " + ThisAssembly.Git.Commit);
