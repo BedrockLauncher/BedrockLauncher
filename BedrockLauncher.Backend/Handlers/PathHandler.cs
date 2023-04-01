@@ -7,6 +7,7 @@ using System.IO;
 using BedrockLauncher.Classes;
 using BedrockLauncher.ViewModels;
 using BedrockLauncher.UpdateProcessor.Enums;
+using System.Diagnostics;
 
 namespace BedrockLauncher.Handlers
 {
@@ -59,7 +60,20 @@ namespace BedrockLauncher.Handlers
             }
             else FixedDirectory = Properties.LauncherSettings.Default.FixedDirectory;
 
-            if (!Directory.Exists(FixedDirectory)) Directory.CreateDirectory(FixedDirectory);
+            if (!Directory.Exists(FixedDirectory))
+            {
+                try
+                {
+                    Directory.CreateDirectory(FixedDirectory);
+                }
+                catch (DirectoryNotFoundException)
+                {
+                    Trace.WriteLine("Unable to Create Fixed Directory. Reverting to Fallback");
+                    Properties.LauncherSettings.Default.FixedDirectory = string.Empty;
+                    FixedDirectory = DefaultLocation;
+                }
+                
+            }
             return FixedDirectory;
         }
 
