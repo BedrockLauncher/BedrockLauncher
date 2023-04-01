@@ -9,7 +9,7 @@ An unofficial **Minecraft for Windows 10** launcher that enables similar feature
 [![Crowdin](https://img.shields.io/static/v1?color=282C34&labelColor=282C34&label=Crowdin&message=Translate&logo=crowdin&style=for-the-badge)](https://crowdin.com/project/bedrocklauncher)
 
 ## Prerequisites
-This launcher has both hardware and software prerequisite to ensure quality, performance, and stability:
+This launcher has both hardware and software prerequisites to ensure quality, performance, and stability:
 - [Hardware prerequisites](./docs/HARDWARE_PREREQUISITES.md)
 - [Software prerequisites](./docs/SOFTWARE_PREREQUISITES.md)
 
