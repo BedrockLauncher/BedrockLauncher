@@ -16,14 +16,14 @@
             <StackPanel Margin="18,0,0,0">
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,15">
                     <Image Source="/BedrockLauncher;component/resources/images/credits/xbox_logo.png" RenderOptions.BitmapScalingMode="HighQuality" Height="32" Margin="0,0,10,0"/>
-                    <TextBlock FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#X360 by Redge" FontSize="20" Foreground="{DynamicResource PrimaryText.Foreground}" VerticalAlignment="Center">
+                    <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#X360 by Redge" FontSize="20" Foreground="{DynamicResource PrimaryText.Foreground}" VerticalAlignment="Center">
                         <Run Text="XBOX" Foreground="#009461"></Run>
                         <Run Text="INSIDER"></Run>
                     </TextBlock>
                 </StackPanel>
-                <TextBlock FontWeight="Bold" Margin="0,0,0,10" FontSize="11" Text="{DynamicResource AcountsSettingsPage_SelectedAccount_Subtitle}" Foreground="White" FontFamily="/BedrockLauncher.UI;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <TextBlock FontWeight="Bold" Margin="0,0,0,10" FontSize="11" Text="{DynamicResource AcountsSettingsPage_SelectedAccount_Subtitle}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                 <controls:Setting_InsiderCombobox x:Name="AccountPicker" HorizontalAlignment="Left" Margin="0,0,0,10"></controls:Setting_InsiderCombobox>
-                <TextBlock FontWeight="Bold" Margin="0,0,0,5" FontSize="11" Text="{DynamicResource AcountsSettingsPage_InsiderHub_Text}" Foreground="White" FontFamily="/BedrockLauncher.UI;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <TextBlock FontWeight="Bold" Margin="0,0,0,5" FontSize="11" Text="{DynamicResource AcountsSettingsPage_InsiderHub_Text}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                 <StackPanel Orientation="Horizontal" Margin="-4,0,0,15">
                     <Button Width="Auto" Height="30" HorizontalAlignment="Left" Content="{DynamicResource AcountsSettingsPage_InsiderHubNew_Text}" Style="{DynamicResource DialogButton}"  Click="XboxInsiderNew_Click"></Button>
                     <Button Width="Auto" Height="30" HorizontalAlignment="Left" Content="{DynamicResource AcountsSettingsPage_InsiderHubLegacy_Text}" Style="{DynamicResource DialogButton}"  Click="XboxInsiderLegacy_Click"></Button>
@@ -38,7 +38,7 @@
                     <Image Margin="18,12,12,12" Source="/BedrockLauncher;component/resources/images/credits/mojang_logo.png"></Image>
                 </Grid>
             </StackPanel>
-            <TextBlock FontWeight="Bold" Margin="16,0,0,5" FontSize="11" Text="{DynamicResource AcountsSettingsPage_AccountSettings_Text}" Foreground="White" FontFamily="/BedrockLauncher.UI;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <TextBlock FontWeight="Bold" Margin="16,0,0,5" FontSize="11" Text="{DynamicResource AcountsSettingsPage_AccountSettings_Text}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Left"/>
             <StackPanel Orientation="Horizontal" Margin="12,0,0,15">
                 <Button Width="Auto" Height="30" HorizontalAlignment="Left" Content="{DynamicResource AcountsSettingsPage_ManageAccounts_Text}" Style="{DynamicResource DialogButton}"  Click="MSAccounts_Click"></Button>
             </StackPanel>

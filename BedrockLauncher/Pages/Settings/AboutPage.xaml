@@ -28,7 +28,7 @@
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontFamily" Value="/BedrockLauncher.UI;component/#Noto Sans"/>
+            <Setter Property="FontFamily" Value="/BedrockLauncher;component/#Noto Sans"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="0,3,0,3"/>
 
@@ -185,7 +185,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
-            <TextBlock FontWeight="Bold" Margin="0,10,0,5"  FontSize="20" Text="{DynamicResource AboutPage_Title}" Foreground="White" FontFamily="/BedrockLauncher.UI;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            <TextBlock FontWeight="Bold" Margin="0,10,0,5"  FontSize="20" Text="{DynamicResource AboutPage_Title}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             <Separator Margin="0,10"></Separator>
         </StackPanel>
         <Grid Grid.Row="1" HorizontalAlignment="Center" MaxWidth="650">

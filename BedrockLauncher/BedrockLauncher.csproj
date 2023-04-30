@@ -107,11 +107,12 @@
 		<PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.261602">
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
+		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+		<PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\BedrockLauncher.Backend\BedrockLauncher.Backend.csproj" />
 		<ProjectReference Include="..\modules\BedrockLauncher.Localization\BedrockLauncher.Localization.csproj" />
-		<ProjectReference Include="..\modules\BedrockLauncher.UI\BedrockLauncher.UI.csproj" />
 		<ProjectReference Include="..\modules\BedrockLauncher.UpdateProcessor\BedrockLauncher.UpdateProcessor.csproj" />
 		<ProjectReference Include="..\modules\Extensions.NET\JemExtensions.csproj" />
 		<ProjectReference Include="..\modules\HtmlRenderer.WPF\HtmlRenderer.WPF.csproj" />
@@ -123,6 +124,7 @@
 		  <CopyToOutputDirectory></CopyToOutputDirectory>
 		</Resource>
 		<Resource Include="Resources\images\bg\play_screen\bedrock_and_java_together_technoblade.jpg" />
+		<Resource Include="Resources\images\elements\optionmark.png" />
 		<Resource Include="Resources\images\installation_icons\Acacia_Leaves.png" />
 		<Resource Include="Resources\images\installation_icons\Ancient_Debris.png" />
 		<Resource Include="Resources\images\installation_icons\Azalea_Leaves.png" />
@@ -572,6 +574,41 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="Resources\images\panels\CardBorder.png" />
+		<Resource Include="Resources\fonts\Minecraft.ttf" />
+		<Resource Include="Resources\fonts\MinecraftFive-Bold.ttf" />
+		<Resource Include="Resources\fonts\MinecraftFive-Regular.ttf" />
+		<Resource Include="Resources\fonts\MinecraftSeven.ttf" />
+		<Resource Include="Resources\fonts\MinecraftTen.ttf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSans-Black.ttf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSans-BlackItalic.ttf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSans-Bold.ttf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSans-BoldItalic.ttf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSans-ExtraBold.ttf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSans-ExtraBoldItalic.ttf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSans-ExtraLight.ttf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSans-ExtraLightItalic.ttf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSans-Italic.ttf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSans-Light.ttf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSans-LightItalic.ttf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSans-Medium.ttf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSans-MediumItalic.ttf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSans-Regular.ttf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSans-SemiBold.ttf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSans-SemiBoldItalic.ttf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSans-Thin.ttf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSans-ThinItalic.ttf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSansTC-Black.otf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSansTC-Bold.otf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSansTC-Light.otf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSansTC-Medium.otf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSansTC-Regular.otf" />
+		<Resource Include="Resources\fonts\Noto Sans\NotoSansTC-Thin.otf" />
+		<Resource Include="Resources\fonts\WINGDNG3.TTF" />
+		<Resource Include="Resources\fonts\X360.ttf" />
+		<Resource Include="Resources\images\ui\panels\MainPagePlayButton.png" />
+		<Resource Include="Resources\images\ui\panels\MainPagePlayButtonFocusOver.png" />
+		<Resource Include="Resources\images\ui\panels\MainPagePlayButtonOver.png" />
+		<Resource Include="Resources\images\ui\panels\MainPagePlayButtonPressed.png" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Remove="Pages\General\FeedItem_PatchNotes.xaml.cs~RF88027b.TMP" />
@@ -579,6 +616,7 @@
 		<None Remove="Resources\images\bg\play_screen\1.19_the_wild_update.jpg" />
 		<None Remove="Resources\images\bg\play_screen\bedrock_and_java_together.jpg" />
 		<None Remove="Resources\images\bg\play_screen\bedrock_and_java_together_technoblade.jpg" />
+		<None Remove="Resources\images\elements\optionmark.png" />
 		<None Remove="Resources\images\installation_icons\Acacia_Leaves.png" />
 		<None Remove="Resources\images\installation_icons\Ancient_Debris.png" />
 		<None Remove="Resources\images\installation_icons\Azalea_Leaves.png" />
@@ -617,6 +655,41 @@
 		<None Remove="Resources\images\installation_icons\Tuff.png" />
 		<None Remove="Resources\images\installation_icons\Weathered_Copper_Block.png" />
 		<None Remove="Resources\images\installation_icons\Xmas_Chest.png" />
+		<None Remove="Resources\fonts\Minecraft.ttf" />
+		<None Remove="Resources\fonts\MinecraftFive-Bold.ttf" />
+		<None Remove="Resources\fonts\MinecraftFive-Regular.ttf" />
+		<None Remove="Resources\fonts\MinecraftSeven.ttf" />
+		<None Remove="Resources\fonts\MinecraftTen.ttf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSans-Black.ttf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSans-BlackItalic.ttf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSans-Bold.ttf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSans-BoldItalic.ttf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSans-ExtraBold.ttf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSans-ExtraBoldItalic.ttf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSans-ExtraLight.ttf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSans-ExtraLightItalic.ttf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSans-Italic.ttf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSans-Light.ttf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSans-LightItalic.ttf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSans-Medium.ttf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSans-MediumItalic.ttf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSans-Regular.ttf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSans-SemiBold.ttf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSans-SemiBoldItalic.ttf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSans-Thin.ttf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSans-ThinItalic.ttf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSansTC-Black.otf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSansTC-Bold.otf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSansTC-Light.otf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSansTC-Medium.otf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSansTC-Regular.otf" />
+		<None Remove="Resources\fonts\Noto Sans\NotoSansTC-Thin.otf" />
+		<None Remove="Resources\fonts\WINGDNG3.TTF" />
+		<None Remove="Resources\fonts\X360.ttf" />
+		<None Remove="Resources\images\ui\panels\MainPagePlayButton.png" />
+		<None Remove="Resources\images\ui\panels\MainPagePlayButtonFocusOver.png" />
+		<None Remove="Resources\images\ui\panels\MainPagePlayButtonOver.png" />
+		<None Remove="Resources\images\ui\panels\MainPagePlayButtonPressed.png" />
 		<Page Remove="Data\Versions.xaml" />
 	</ItemGroup>
 	<PropertyGroup>
@@ -636,6 +709,9 @@
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>Resources.resx</DependentUpon>
 	  </Compile>
+	  <Compile Update="Resources\styles\variants\listview\default_listviewitem.xaml.cs">
+	    <SubType>Code</SubType>
+	  </Compile>
 	</ItemGroup>
 	<ItemGroup>
 	  <EmbeddedResource Update="Properties\Resources.resx">
@@ -647,5 +723,122 @@
 	  <Page Update="Pages\Preview\Installation\Components\Component_VersionSelectItem.xaml">
 	    <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
 	  </Page>
+	  <Page Update="Resources\styles\button.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\checkbox.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\combobox.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\contextmenu.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\expander.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\focus_visuals.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\frame.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\icons.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\listview.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\menuitems.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\misc.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\radiobutton.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\richtextbox.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\scrollbars.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\tabbar.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\textblock.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\textbox.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\values\base_values.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\values\variants\ComboBox_Blank.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\values\variants\ComboBox_InstallationSelector.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\values\variants\DialogButton_Colors_Blue.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\values\variants\DialogButton_Colors_Green.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\values\variants\DialogButton_Colors_Orange.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\values\variants\DialogButton_Colors_Red.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\variants\buttons\close_buttons.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\variants\buttons\dialog_buttons.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\variants\buttons\empty_button.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\variants\buttons\link_button.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\variants\buttons\minor_dialog_button.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\variants\buttons\panel_button.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\variants\buttons\play_button.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\variants\buttons\profile_selector_button.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\variants\buttons\sidebar_button.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\variants\buttons\text_box_button.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\variants\buttons\toolbar_button.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\variants\listview\card_listviewitem.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\variants\listview\default_listviewitem.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	  <Page Update="Resources\styles\variants\listview\empty_listviewitem.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="UI\Resources\" />
 	</ItemGroup>
 </Project>

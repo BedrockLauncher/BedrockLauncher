@@ -20,7 +20,7 @@
              SelectedValuePath="InstallationUUID"       
              IsEnabled="{Binding ProgressBarState.AllowEditing, Mode=OneWay}">
     <ComboBox.ItemContainerStyle>
-        <Style TargetType="{x:Type ComboBoxItem}" xmlns:c="clr-namespace:BedrockLauncher.UI.Components;assembly=BedrockLauncher.UI">
+        <Style TargetType="{x:Type ComboBoxItem}" xmlns:c="clr-namespace:BedrockLauncher.UI.Components">
             <Setter Property="SnapsToDevicePixels" Value="True"/>
             <Setter Property="Padding" Value="0,5,0,5"/>
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

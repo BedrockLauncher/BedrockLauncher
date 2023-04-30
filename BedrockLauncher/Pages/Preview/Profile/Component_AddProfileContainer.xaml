@@ -50,7 +50,7 @@
                                Text="{DynamicResource NewProfile_ProfileNameHeader}" 
                                HorizontalAlignment="Left" 
                                VerticalAlignment="Center" Foreground="White" 
-                               FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans"
+                               FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"
                                Height="16" FontWeight="Bold" FontSize="11" Width="auto"/>
                     <TextBox x:Name="ProfileNameTextbox" HorizontalAlignment="Left" 
                                VerticalAlignment="Center" 
@@ -66,7 +66,7 @@
                                Text="{DynamicResource NewProfile_ProfilePathHeader}" 
                                HorizontalAlignment="Left" 
                                VerticalAlignment="Center" Foreground="White" 
-                               FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" 
+                               FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" 
                                Height="16" FontWeight="Bold" FontSize="11" Width="auto"/>
                     <TextBox x:Name="ProfilePathTextbox" HorizontalAlignment="Left" 
                                VerticalAlignment="Center" 
@@ -80,7 +80,7 @@
                 </StackPanel>
             </Grid>
             <Grid Margin="0" Background="{x:Null}">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Text="{DynamicResource NewProfile_CreateProfileSubTitle}" Foreground="White" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="24" x:Name="CreateProfileSubtitle" Margin="0,30,0,0" FontWeight="Bold"/>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Text="{DynamicResource NewProfile_CreateProfileSubTitle}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="24" x:Name="CreateProfileSubtitle" Margin="0,30,0,0" FontWeight="Bold"/>
                 <Button x:Name="CreateProfileButton" Click="CreateProfileButton_Click" HorizontalAlignment="Center" Margin="0,0,0,7" VerticalAlignment="Bottom" Width="250" Height="56" Padding="0"  Style="{DynamicResource BigGreenButton}">
                     <TextBlock x:Name="CreateProfileButtonText" Text="{DynamicResource NewProfile_CreateProfileButton}" Style="{DynamicResource BigGreenButton_Text}"/>
                 </Button>

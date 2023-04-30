@@ -38,7 +38,7 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="2" Margin="10,0,10,10" VerticalAlignment="Center">
                     <StackPanel>
-                        <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_Search}" Margin="0,0,0,4" FontWeight="Bold" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+                        <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_Search}" Margin="0,0,0,4" FontWeight="Bold" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
                         <ContentControl Style="{DynamicResource TextboxLikeFrame}" Height="30">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -54,7 +54,7 @@
                 <Separator Grid.Column="3" Width="1" Margin="0,10,0,10"></Separator>
                 <Grid Grid.Column="4" Margin="10,0,10,10" VerticalAlignment="Center">
                     <StackPanel>
-                        <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_SortBy}" Margin="2,0,0,4" FontWeight="Bold" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+                        <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_SortBy}" Margin="2,0,0,4" FontWeight="Bold" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
                         <ComboBox x:Name="SortByComboBox" Style="{DynamicResource BlankComboBoxStyle}" SelectedIndex="0" Padding="4,0,0,0" VerticalContentAlignment="Center" SelectionChanged="ComboBox_SelectionChanged" Height="30">
                             <ComboBoxItem Content="{DynamicResource InstallationsPage_SortBy_LatestPlayed}" x:Name="SortByLatestPlayed"></ComboBoxItem>
                             <ComboBoxItem Content="{DynamicResource InstallationsPage_SortBy_Name}" x:Name="SortByName"></ComboBoxItem>
@@ -65,11 +65,11 @@
                 <Separator Grid.Column="5" Width="1" Margin="0,10,0,10"/>
                 <Grid Grid.Column="6" Margin="10" VerticalAlignment="Center">
                     <StackPanel>
-                        <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_Versions}" Margin="4,0,0,4" FontWeight="Bold" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+                        <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_Versions}" Margin="4,0,0,4" FontWeight="Bold" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
                         <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Center" Width="Auto" Orientation="Horizontal" Margin="0,0,0,0">
-                            <CheckBox x:Name="ShowReleasesCheckBox" IsChecked="{Binding ShowReleases, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Releases}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}"></CheckBox>
-                            <CheckBox x:Name="ShowBetasCheckBox" IsChecked="{Binding ShowBetas, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Betas}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}"></CheckBox>
-                            <CheckBox x:Name="ShowPreviewsCheckBox" IsChecked="{Binding ShowPreviews, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Previews}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}"></CheckBox>
+                            <CheckBox x:Name="ShowReleasesCheckBox" IsChecked="{Binding ShowReleases, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Releases}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}"></CheckBox>
+                            <CheckBox x:Name="ShowBetasCheckBox" IsChecked="{Binding ShowBetas, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Betas}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}"></CheckBox>
+                            <CheckBox x:Name="ShowPreviewsCheckBox" IsChecked="{Binding ShowPreviews, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Previews}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}"></CheckBox>
                         </StackPanel>
                     </StackPanel>
                 </Grid>

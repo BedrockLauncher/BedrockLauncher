@@ -27,7 +27,7 @@
 
         <Image Source="{Binding ImageUrl, IsAsync=True, FallbackValue={StaticResource FallbackImage}}" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
 
-        <TextBlock Background="{Binding Background, ElementName=MainGrid}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Minecraft Ten" FontWeight="Normal" FontSize="15" Padding="15,15" TextWrapping="Wrap" Text="{Binding Title}" Foreground="White"></TextBlock>
+        <TextBlock Background="{Binding Background, ElementName=MainGrid}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" FontWeight="Normal" FontSize="15" Padding="15,15" TextWrapping="Wrap" Text="{Binding Title}" Foreground="White"></TextBlock>
         <DockPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" x:Name="Tb" Margin="15,15,15,15">
             <TextBlock Padding="4,2" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Grid.Row="3" Text="{Binding Tag}" Foreground="White" Background="#333333"></TextBlock>
             <TextBlock Margin="10,0,10,0" TextAlignment="Right" VerticalAlignment="Center" TextWrapping="Wrap" Grid.Row="3" Text="{Binding Date}" Foreground="#CCCCCC"></TextBlock>

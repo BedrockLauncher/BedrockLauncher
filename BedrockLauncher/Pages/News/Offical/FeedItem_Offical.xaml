@@ -23,7 +23,7 @@
         <Grid Background="{Binding Background, ElementName=MainGrid}" Grid.Row="1">
             <Border Margin="3" BorderThickness="1" BorderBrush="White" Visibility="{Binding cardBorder, Converter={StaticResource BoolToVis}}"/>
             <StackPanel Margin="28" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                <TextBlock VerticalAlignment="Center" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Minecraft Ten" FontWeight="Normal" FontSize="20" Padding="0,0" TextWrapping="Wrap" Text="{Binding Title}" Foreground="White"></TextBlock>
+                <TextBlock VerticalAlignment="Center" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" FontWeight="Normal" FontSize="20" Padding="0,0" TextWrapping="Wrap" Text="{Binding Title}" Foreground="White"></TextBlock>
                 <DockPanel VerticalAlignment="Bottom" x:Name="Tb" Margin="0,15,0,0">
                     <TextBlock Padding="4,2" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Text="{Binding Tag}" Foreground="White" Background="#333333"></TextBlock>
                     <TextBlock TextAlignment="Right" VerticalAlignment="Center" TextWrapping="Wrap" Text="{Binding Date}" Foreground="#CCCCCC"></TextBlock>

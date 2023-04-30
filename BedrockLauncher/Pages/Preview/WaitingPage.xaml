@@ -14,12 +14,12 @@
     </Page.Background>
     <Grid Margin="0" Background="#7F000000">
         <con:LanguageCombobox HorizontalAlignment="Left" Margin="20,20" FontSize="14" VerticalAlignment="Top" Padding="10,4,5,3" x:Name="LanguageCombobox"></con:LanguageCombobox>
-        <TextBlock Foreground="white" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" FontSize="11" FontWeight="Bold" Text="{DynamicResource MainWindow_Disclaimer}" Margin="20,20" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        <TextBlock Foreground="white" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="11" FontWeight="Bold" Text="{DynamicResource MainWindow_Disclaimer}" Margin="20,20" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
         <Border x:Name="WelcomeBorder" CornerRadius="2" Background="Transparent" Width="600" Height="258" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <Border x:Name="WelcomeBorder2" CornerRadius="2" Background="Transparent" Width="600" Height="258" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel SnapsToDevicePixels="True" VerticalAlignment="Center">
                 <controls:General_LoaderIcon Width="150" Height="150" Margin="0,0,0,20" Visibility="Visible"></controls:General_LoaderIcon>
-                <TextBlock Text="LOADING..." HorizontalAlignment="Center" Foreground="White" FontSize="40" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Minecraft Ten" />
+                <TextBlock Text="LOADING..." HorizontalAlignment="Center" Foreground="White" FontSize="40" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" />
             </StackPanel>
         </Border>
     </Grid>

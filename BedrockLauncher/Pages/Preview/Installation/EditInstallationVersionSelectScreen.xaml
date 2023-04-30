@@ -39,7 +39,7 @@
         </Grid.RowDefinitions>
         <Grid Margin="15,0" VerticalAlignment="Center">
             <StackPanel>
-                <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_Search}" Margin="0,0,0,4" FontWeight="Bold" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+                <TextBlock Foreground="White" Text="{DynamicResource GeneralSubtitles_Search}" Margin="0,0,0,4" FontWeight="Bold" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
                 <ContentControl Style="{DynamicResource TextboxLikeFrame}" Height="30">
                     <Grid>
                         <Grid.ColumnDefinitions>

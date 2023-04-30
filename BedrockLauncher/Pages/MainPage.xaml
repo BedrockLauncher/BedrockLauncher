@@ -54,7 +54,7 @@
                                 <Setter Property="Margin" Value="0"/>
                                 <Setter Property="FontSize" Value="12"/>
                                 <Setter Property="Foreground" Value="White"/>
-                                <Setter Property="FontFamily" Value="/BedrockLauncher.UI;component/Resources/fonts/#Noto Sans"/>
+                                <Setter Property="FontFamily" Value="/BedrockLauncher;component/Resources/fonts/#Noto Sans"/>
                             </Style>
                         </StackPanel.Resources>
                         <TextBlock d:Text="Uninstalling" Text="{Binding ProgressBarState.Description}" />

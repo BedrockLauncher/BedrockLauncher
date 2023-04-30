@@ -18,11 +18,11 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <TextBlock VerticalAlignment="Bottom" Margin="10" FontSize="20" Grid.ColumnSpan="2" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Minecraft Ten"  Foreground="{Binding Title_Foreground}" Text="{Binding tag_name, Mode=OneWay}"></TextBlock>
+        <TextBlock VerticalAlignment="Bottom" Margin="10" FontSize="20" Grid.ColumnSpan="2" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten"  Foreground="{Binding Title_Foreground}" Text="{Binding tag_name, Mode=OneWay}"></TextBlock>
         <Grid HorizontalAlignment="Left" Margin="10" VerticalAlignment="Center" Grid.Row="1" Visibility="{Binding CurrentBox_Visibility}" x:Name="CurrentBox">
             <StackPanel>
                 <Border Background="Green" BorderBrush="Green" Padding="5" CornerRadius="5">
-                    <TextBlock FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Minecraft Rus" Foreground="White" Text="{DynamicResource LauncherNewsPage_CurrentBuild_Text}"></TextBlock>
+                    <TextBlock FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Rus" Foreground="White" Text="{DynamicResource LauncherNewsPage_CurrentBuild_Text}"></TextBlock>
                 </Border>
             </StackPanel>
         </Grid>

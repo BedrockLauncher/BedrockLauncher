@@ -23,7 +23,7 @@
             <Button Style="{DynamicResource EmptyButton}" x:Name="ClickBase" Click="Button_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/BedrockLauncher;component/resources/images/installation_icons/Custom_Package.png" Margin="3" HorizontalAlignment="Left" Height="42" Width="42"/>
-                    <TextBlock LineHeight="20" RenderOptions.BitmapScalingMode="NearestNeighbor" FontSize="16" TextOptions.TextRenderingMode="Aliased" TextOptions.TextFormattingMode="Ideal" Margin="2,6,0,0" FontFamily="/BedrockLauncher.UI;component/Resources/fonts/#Minecraft Rus">
+                    <TextBlock LineHeight="20" RenderOptions.BitmapScalingMode="NearestNeighbor" FontSize="16" TextOptions.TextRenderingMode="Aliased" TextOptions.TextFormattingMode="Ideal" Margin="2,6,0,0" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Rus">
                         <Run Text="{DynamicResource UpdateButton_NewUpdate_Text}" Foreground="Yellow"/>
                         <LineBreak/>
                         <Run Text="{DynamicResource UpdateButton_Download_Text}" Foreground="White"/>
