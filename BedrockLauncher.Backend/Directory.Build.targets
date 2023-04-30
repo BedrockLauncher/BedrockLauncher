@@ -1,8 +1,0 @@
-﻿<Project>
- <Target Name="Cleanup" AfterTargets="Clean">
-	 <!-- Remove bin folder -->
-	 <RemoveDir Directories="$(ProjectDir)$(BaseOutputPath)" />
-	 <!-- Remove obj folder -->
-	 <RemoveDir Directories="$(ProjectDir)$(BaseIntermediateOutputPath)" />
- </Target>
-</Project>

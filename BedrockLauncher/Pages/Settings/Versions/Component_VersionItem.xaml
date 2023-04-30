@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:classes="clr-namespace:BedrockLauncher.Classes"
-             xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels;assembly=BedrockLauncher.Backend"
+             xmlns:viewModels="clr-namespace:BedrockLauncher.ViewModels"
              xmlns:conv="clr-namespace:JemExtensions.WPF.Converters;assembly=JemExtensions"
              d:DataContext="{d:DesignInstance Type=classes:MCVersion}"
              mc:Ignorable="d" 

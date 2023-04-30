@@ -28,8 +28,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BedrockLauncher.Localizatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlRenderer.Core", "modules\HtmlRenderer.Core\HtmlRenderer.Core.csproj", "{5C531BB9-9EBC-4700-AAC8-52A7A72D96B1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BedrockLauncher.Backend", "BedrockLauncher.Backend\BedrockLauncher.Backend.csproj", "{10696590-216D-42BC-817D-0595788D76EA}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,10 +62,6 @@ Global
 		{5C531BB9-9EBC-4700-AAC8-52A7A72D96B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C531BB9-9EBC-4700-AAC8-52A7A72D96B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C531BB9-9EBC-4700-AAC8-52A7A72D96B1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{10696590-216D-42BC-817D-0595788D76EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{10696590-216D-42BC-817D-0595788D76EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{10696590-216D-42BC-817D-0595788D76EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{10696590-216D-42BC-817D-0595788D76EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,7 +73,6 @@ Global
 		{B7336BA7-1E83-43D8-BD0E-3D44C6E3D4E7} = {BD55A257-6639-42E6-9DE1-AF712F553AA2}
 		{9425CFBF-1D40-48E1-8CB3-B8FB0D4AFD2C} = {BD55A257-6639-42E6-9DE1-AF712F553AA2}
 		{5C531BB9-9EBC-4700-AAC8-52A7A72D96B1} = {BD55A257-6639-42E6-9DE1-AF712F553AA2}
-		{10696590-216D-42BC-817D-0595788D76EA} = {BD55A257-6639-42E6-9DE1-AF712F553AA2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1C257FFD-AD8A-44BD-AC36-BCEE19250413}

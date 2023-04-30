@@ -4,7 +4,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:p="clr-namespace:BedrockLauncher.Properties"
-             xmlns:classes="clr-namespace:BedrockLauncher.Classes;assembly=BedrockLauncher.Backend"
+             xmlns:classes="clr-namespace:BedrockLauncher.Classes"
              xmlns:controls="clr-namespace:BedrockLauncher.Pages.Toolbar"
              xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
              mc:Ignorable="d" Height="59" Margin="1,0,0,0" VerticalAlignment="Top">
