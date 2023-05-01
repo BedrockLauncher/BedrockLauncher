@@ -1,0 +1,13 @@
+﻿<Window x:Class="BedrockLauncher.ConsoleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:misc="clr-namespace:BedrockLauncher.UI.Controls.Misc"
+        xmlns:local="clr-namespace:BedrockLauncher"
+        mc:Ignorable="d"
+        Title="BedrockLauncher | Console"  Height="450" Width="800">
+    <Grid>
+        <misc:CustomNLogViewer TargetName="cache" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+    </Grid>
+</Window>

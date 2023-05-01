@@ -1,4 +1,5 @@
-﻿using BedrockLauncher.Downloaders;
+﻿using BedrockLauncher.Developer;
+using BedrockLauncher.Downloaders;
 using Microsoft.Win32;
 using NLog;
 using System;
@@ -110,9 +111,12 @@ namespace BedrockLauncher.Handlers
         {
             Trace.WriteLine(e.Exception.ToString());
         }
+
+        public static NLogTraceListener InternalTraceListener { get; set; } = new NLogTraceListener();
+
         public static void StartLogging()
         {
-            Trace.Listeners.Add(new NLogTraceListener());
+            Trace.Listeners.Add(InternalTraceListener);
             Trace.AutoFlush = true;
         }
     }

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BedrockLauncher": {
+      "commandName": "Project",
+      "commandLineArgs": "--console"
+    }
+  }
+}

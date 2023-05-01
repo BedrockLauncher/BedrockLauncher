@@ -1,0 +1,195 @@
+﻿<UserControl x:Class="BedrockLauncher.UI.Controls.Misc.CustomNLogViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BedrockLauncher.UI.Controls.Misc"
+             xmlns:dj="clr-namespace:DJ;assembly=NLogViewer"
+             xmlns:nLog="clr-namespace:NLog;assembly=NLog"
+             xmlns:listViewLayoutManager="clr-namespace:DJ.Helper.ListViewLayoutManager;assembly=NLogViewer"
+             xmlns:xamlMultiValueConverter="clr-namespace:DJ.XamlMultiValueConverter;assembly=NLogViewer"
+             xmlns:helper="clr-namespace:DJ.Helper;assembly=NLogViewer"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type local:CustomNLogViewer}">
+            <Setter Property="Foreground" Value="{DynamicResource NormalText}"/>
+            <Setter Property="Background" Value="{DynamicResource Background.Primary}"/>
+
+            <Setter Property="DebugBackground" Value="Transparent"></Setter>
+            <Setter Property="ErrorBackground" Value="Transparent"></Setter>
+            <Setter Property="FatalBackground" Value="Transparent"></Setter>
+            <Setter Property="InfoBackground"  Value="Transparent"></Setter>
+            <Setter Property="TraceBackground" Value="Transparent"></Setter>
+            <Setter Property="WarnBackground"  Value="Transparent"></Setter>
+
+            <Setter Property="DebugForeground" Value="Lime"></Setter>
+            <Setter Property="ErrorForeground" Value="Red"></Setter>
+            <Setter Property="FatalForeground" Value="OrangeRed"></Setter>
+            <Setter Property="InfoForeground"  Value="Blue"></Setter>
+            <Setter Property="TraceForeground" Value="White"></Setter>
+            <Setter Property="WarnForeground"  Value="Yellow"></Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Background="#FF303030">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="200" Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Margin="10" VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock Foreground="White" Text="FILTER" Margin="0,0,0,4" FontWeight="Bold" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+                    <TextBox Grid.Column="1" Height="30" Tag="Filter by text..." Text="{Binding Path=FilterText, Mode=OneWayToSource}" KeyDown="TextBox_TextChanged"></TextBox>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="1" Margin="10" VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock Foreground="White" Text="LEVELS" Margin="4,0,0,0" FontWeight="Bold" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+                    <StackPanel HorizontalAlignment="Left" Height="30" VerticalAlignment="Center" Width="Auto" Orientation="Horizontal" Margin="0,0,0,0">
+                        <CheckBox Content="debug"  IsChecked="{Binding Path=LvlDebug, Mode=TwoWay}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" ></CheckBox>
+                        <CheckBox Content="info"   IsChecked="{Binding Path=LvlInfo, Mode=TwoWay}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" ></CheckBox>
+                        <CheckBox Content="warn"   IsChecked="{Binding Path=LvlWarn, Mode=TwoWay}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" ></CheckBox>
+                        <CheckBox Content="error"  IsChecked="{Binding Path=LvlError, Mode=TwoWay}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" ></CheckBox>
+                        <CheckBox Content="fatal"  IsChecked="{Binding Path=LvlFatal, Mode=TwoWay}" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" ></CheckBox>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="2" Margin="10" VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock Foreground="White" Text="ACTIONS" Margin="4,0,0,0" FontWeight="Bold" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Style="{DynamicResource DialogButton}" Height="30" Content="Clear all logs" Command="{Binding Path=ClearCommand}"></Button>
+                        <StackPanel VerticalAlignment="Center">
+                            <CheckBox IsChecked="{Binding Path=Pause, Mode=TwoWay}" Content="Pause" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" ></CheckBox>
+                            <CheckBox IsChecked="{Binding Path=AutoScroll, Mode=TwoWay}" Content="Auto Scroll" Foreground="#FFCCCCCC" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0" ></CheckBox>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <ListView
+            x:Name="ListView"
+            Grid.Row="2"
+            ItemsSource="{Binding Path=LogEvents.View, IsAsync=True}"
+            BorderThickness="0"
+            HorizontalContentAlignment="Stretch"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <ListView.Resources>
+                <xamlMultiValueConverter:ILogEventResolverToStringConverter x:Key="ILogEventResolverToStringConverter"/>
+            </ListView.Resources>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}"  BasedOn="{StaticResource BaseListViewItemStyle}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=Level}"
+                                     Value="{x:Static nLog:LogLevel.Trace}">
+                            <Setter Property="Background"
+                                    Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CustomNLogViewer}, Path=TraceBackground}" />
+                            <Setter Property="Foreground"
+                                    Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CustomNLogViewer}, Path=TraceForeground}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=Level}"
+                                     Value="{x:Static nLog:LogLevel.Debug}">
+                            <Setter Property="Foreground"
+                                    Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CustomNLogViewer}, Path=DebugForeground}" />
+                            <Setter Property="Background"
+                                    Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CustomNLogViewer}, Path=DebugBackground}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=Level}"
+                                     Value="{x:Static nLog:LogLevel.Info}">
+                            <Setter Property="Foreground"
+                                    Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CustomNLogViewer}, Path=InfoForeground}" />
+                            <Setter Property="Background"
+                                    Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CustomNLogViewer}, Path=InfoBackground}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=Level}"
+                                     Value="{x:Static nLog:LogLevel.Warn}">
+                            <Setter Property="Foreground"
+                                    Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CustomNLogViewer}, Path=WarnForeground}" />
+                            <Setter Property="Background"
+                                    Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CustomNLogViewer}, Path=WarnBackground}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=Level}"
+                                     Value="{x:Static nLog:LogLevel.Error}">
+                            <Setter Property="Foreground"
+                                    Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CustomNLogViewer}, Path=ErrorForeground}" />
+                            <Setter Property="Background"
+                                    Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CustomNLogViewer}, Path=ErrorBackground}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=Level}"
+                                     Value="{x:Static nLog:LogLevel.Fatal}">
+                            <Setter Property="Foreground"
+                                    Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CustomNLogViewer}, Path=FatalForeground}" />
+                            <Setter Property="Background"
+                                    Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:CustomNLogViewer}, Path=FatalBackground}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="{x:Type nLog:LogEventInfo}">
+                    <TextBlock Width="Auto" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextWrapping="Wrap" Foreground="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem}, Path=Foreground}">
+                            <Run Text="[" />
+                            <Run x:Name="LevelText"  />
+                            <Run Text="] " />
+                            <Run x:Name="Timestamp">
+                                <Run.Text>
+                                    <MultiBinding Converter="{StaticResource ILogEventResolverToStringConverter}">
+                                        <Binding Path="." Mode="OneWay"/>
+                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=local:CustomNLogViewer}" Path="TimeStampResolver"/>
+                                    </MultiBinding>
+                                </Run.Text>
+                            </Run>
+                            <Run Text=": &#x09;" />
+                            <Run x:Name="Message">
+                                <Run.Text>
+                                    <MultiBinding Converter="{StaticResource ILogEventResolverToStringConverter}">
+                                        <Binding Path="." Mode="OneWay"/>
+                                        <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=local:CustomNLogViewer}" Path="MessageResolver"/>
+                                    </MultiBinding>
+                                </Run.Text>
+                            </Run>
+                    </TextBlock>
+
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=Level}"
+                                                 Value="{x:Static nLog:LogLevel.Trace}">
+                            <Setter TargetName="LevelText" Property="Text" Value="Trace" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=Level}"
+                                                 Value="{x:Static nLog:LogLevel.Debug}">
+                            <Setter TargetName="LevelText" Property="Text" Value="Debug" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=Level}"
+                                                 Value="{x:Static nLog:LogLevel.Info}">
+                            <Setter TargetName="LevelText" Property="Text" Value="Info" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=Level}"
+                                                 Value="{x:Static nLog:LogLevel.Warn}">
+                            <Setter TargetName="LevelText" Property="Text" Value="Warn" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=Level}"
+                                                 Value="{x:Static nLog:LogLevel.Error}">
+                            <Setter TargetName="LevelText" Property="Text" Value="Error" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=Level}"
+                                                 Value="{x:Static nLog:LogLevel.Fatal}">
+                            <Setter TargetName="LevelText" Property="Text" Value="Fatal" />
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</UserControl>

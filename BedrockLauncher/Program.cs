@@ -21,6 +21,8 @@ namespace BedrockLauncher
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
+        public static ConsoleWindow cli = new ConsoleWindow();
+
         [STAThread]
         public static void Main()
         {
@@ -38,6 +40,7 @@ namespace BedrockLauncher
         {
             Trace.WriteLine("Application Initalization Started!");
             StartupArgsHandler.SetStartupArgs(e.Args);
+            StartupArgsHandler.RunPreStartupArgs();
             RuntimeHandler.EnableDeveloperMode();
             Trace.WriteLine("Application Initalization Finished!");
         }

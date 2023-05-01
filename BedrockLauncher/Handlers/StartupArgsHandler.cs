@@ -16,6 +16,7 @@ namespace BedrockLauncher.Handlers
         private static string[] StartupArgs = new string[0];
         public static void SetStartupArgs(string[] args) => StartupArgs = args;
         public static void RunStartupArgs() => PraseArgs(StartupArgs);
+        public static void RunPreStartupArgs() => PraseEarlyArgs(StartupArgs);
         #endregion
 
         #region Messages
@@ -24,12 +25,14 @@ namespace BedrockLauncher.Handlers
         private const string LAUNCH_INSTALLATION_ARG = "--launch";
         private const string CLOSE_ON_LAUNCH_ARG = "--closeOnLaunch";
         private const string PRESIST_ON_LAUNCH_ARG = "--keepOpenOnLaunch";
+        private const string CONSOLE_ARGS = "--console";
 
         private const string WRONG_ARGUMENT_MESSAGE = "Wrong argument, try --help, argument given:";
 
         private static List<string> HELP_MESSAGE = new List<string>()
         {
              "Avaliable Arguments:",
+             string.Format("{0} - {1}", CONSOLE_ARGS, "Show the console on startup"),
              string.Format("{0} - {1}", HELP_ARG, "Show avaliable arguments"),
              string.Format("{0} - {1}", NO_WINDOW_ARG, "Hide main window from showing up (WARNING: Will only be killable using task manager)"),
              string.Format("{0} - {1}", CLOSE_ON_LAUNCH_ARG, string.Format("Close launcher after launch when using the '{0}' argument", LAUNCH_INSTALLATION_ARG)),
@@ -40,6 +43,41 @@ namespace BedrockLauncher.Handlers
 
         private static bool CloseOnLaunch { get; set; } = false;
         private static bool KeepOpenOnLaunch { get; set; } = false;
+
+        private static void PraseEarlyArgs(string[] args)
+        {
+            if (args == null) return;
+
+            bool KillApp = false;
+            bool EndPrase = false;
+
+            for (int i = 0; i < args.Length; i++)
+            {
+                string argument = args[i];
+                switch (argument)
+                {
+
+                    case CONSOLE_ARGS:
+                        Program.cli.Show();
+                        App.Current.MainWindow = null;
+                        break;
+                    case NO_WINDOW_ARG:
+                    case CLOSE_ON_LAUNCH_ARG:
+                    case PRESIST_ON_LAUNCH_ARG:
+                    case LAUNCH_INSTALLATION_ARG:
+                    case HELP_ARG:
+                    default:
+                        InvalidMessage(argument);
+                        KillApp = true;
+                        goto EscapeLoop;
+                }
+            }
+
+        EscapeLoop:
+
+            if (EndPrase) return;
+            else if (KillApp) Application.Current.MainWindow.Close();
+        }
 
         private static void PraseArgs(string[] args)
         {
@@ -66,14 +104,6 @@ namespace BedrockLauncher.Handlers
                         bool result = LaunchInstallation(args, i);
                         if (!result) KillApp = true;
                         else EndPrase = true;
-                        goto EscapeLoop;
-                    case HELP_ARG:
-                        ShowHelp();
-                        KillApp = true;
-                        goto EscapeLoop;
-                    default:
-                        InvalidMessage(argument);
-                        KillApp = true;
                         goto EscapeLoop;
                 }
             }

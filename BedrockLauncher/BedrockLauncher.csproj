@@ -116,9 +116,10 @@
 		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
 		<PackageReference Include="MimeMapping" Version="1.0.1.37" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-		<PackageReference Include="NLog" Version="4.7.13" />
+		<PackageReference Include="NLog" Version="5.0.1" />
 		<PackageReference Include="PostSharp.Patterns.Model" Version="6.10.5" />
 		<PackageReference Include="RestSharp" Version="107.1.1" />
+		<PackageReference Include="Sentinel.NLogViewer" Version="2.0.1" />
 		<PackageReference Include="SymbolicLinkSupport" Version="1.2.0" />
 		<PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
 		<PackageReference Include="System.Diagnostics.DiagnosticSource" Version="6.0.0" />
@@ -850,8 +851,5 @@
 	  <Page Update="Resources\styles\variants\listview\empty_listviewitem.xaml">
 	    <SubType>Designer</SubType>
 	  </Page>
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="UI\Resources\" />
 	</ItemGroup>
 </Project>
