@@ -176,7 +176,7 @@ namespace BedrockLauncher.Classes
             };
             BLInstallation latest_beta = new BLInstallation()
             {
-                DisplayName = "Latest Beta",  //TODO: Localize Display Names
+                DisplayName = "DO NOT TRY",  //TODO: Localize Display Names
                 DirectoryName = "Latest Beta",  //TODO: Localize Directory Names?
                 VersionUUID = Constants.LATEST_BETA_UUID,
                 VersioningMode = VersioningMode.LatestBeta,
