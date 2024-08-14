@@ -46,7 +46,10 @@ namespace BedrockLauncher.Pages.Settings
 
         private void CheckForUpdatesButton_Click(object sender, RoutedEventArgs e)
         {
-            MainDataModel.Updater.CheckForUpdates();
+            Task.Run(async () => {
+                var result = await MainDataModel.Updater.CheckForUpdatesAsync();
+                if (result) MainViewModel.Default.UpdateButton.ShowUpdateButton();
+            });
         }
 
         private void ForceUpdateButton_Click(object sender, RoutedEventArgs e)

@@ -22,7 +22,7 @@ namespace BedrockLauncher
         public static readonly string LATEST_RELEASE_UUID = "latest_release";
         public static readonly string LATEST_PREVIEW_UUID = "latest_preview";
 
-        public static readonly string UPDATES_RELEASE_PAGE = "https://github.com/BedrockLauncher/BedrockLauncher/releases";
+        public static readonly string UPDATES_RELEASE_PAGE = "https://github.com/BedrockLauncher/BedrockLauncher/releases/latest";
         public static readonly string UPDATES_BETA_PAGE = "https://github.com/BedrockLauncher/BedrockLauncher-Beta/releases";
 
         public static readonly string CUSTOM_VERSION_ICONPATH   = INSTALLATIONS_PREFABED_ICONS_ROOT + @"Custom_Package.png";
