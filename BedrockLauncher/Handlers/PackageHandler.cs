@@ -200,8 +200,10 @@ namespace BedrockLauncher.Handlers
                 Trace.WriteLine("Download start");
                 SetCancelation(true);
 
-                string dlPath = "Minecraft-" + v.Name + ".Appx";
-                if (!File.Exists(dlPath)) await DownloadPackage(v, dlPath, CancelSource);
+                string exeDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                string subDirectory = Path.Combine(exeDirectory, "AppxBackups");
+                string dlPath = Path.Combine(subDirectory, "Minecraft-" + v.Name + ".Appx");
+                if (!File.Exists(Path.Combine(subDirectory, dlPath))) await DownloadPackage(v, dlPath, CancelSource);
                 await ExtractPackage(v, dlPath, CancelSource);
 
                 v.UpdateFolderSize();
@@ -299,6 +301,13 @@ namespace BedrockLauncher.Handlers
                 await File.WriteAllTextAsync(v.IdentificationPath, v.PackageID);
                 File.Delete(Path.Combine(v.GameDirectory, "AppxSignature.p7x"));
                 //File.Delete(dlPath);
+                string exeDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                string subDirectory = Path.Combine(exeDirectory, "AppxBackups");
+                if (!Directory.Exists(subDirectory))
+                {
+                    Directory.CreateDirectory(subDirectory);
+                }
+                File.Move(Path.Combine(exeDirectory,dlPath),Path.Combine(subDirectory,dlPath));
 
                 Trace.WriteLine("Extracted successfully");
             }
