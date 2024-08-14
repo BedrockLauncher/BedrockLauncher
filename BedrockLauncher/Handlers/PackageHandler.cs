@@ -201,7 +201,7 @@ namespace BedrockLauncher.Handlers
                 SetCancelation(true);
 
                 string exeDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string subDirectory = Path.Combine(exeDirectory, "Appx backups");
+                string subDirectory = Path.Combine(exeDirectory, "AppxBackups");
                 string dlPath = Path.Combine(subDirectory, "Minecraft-" + v.Name + ".Appx");
                 if (!File.Exists(Path.Combine(subDirectory, dlPath))) await DownloadPackage(v, dlPath, CancelSource);
                 await ExtractPackage(v, dlPath, CancelSource);
@@ -302,7 +302,7 @@ namespace BedrockLauncher.Handlers
                 File.Delete(Path.Combine(v.GameDirectory, "AppxSignature.p7x"));
                 //File.Delete(dlPath);
                 string exeDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string subDirectory = Path.Combine(exeDirectory, "Appx backups");
+                string subDirectory = Path.Combine(exeDirectory, "AppxBackups");
                 if (!Directory.Exists(subDirectory))
                 {
                     Directory.CreateDirectory(subDirectory);
