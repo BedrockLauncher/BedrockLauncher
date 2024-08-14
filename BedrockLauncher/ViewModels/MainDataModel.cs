@@ -78,7 +78,6 @@ namespace BedrockLauncher.ViewModels
                 Properties.LauncherSettings.Default.Save();
             }
 
-
             var Version = i.Version;
             var Path = MainDataModel.Default.FilePaths.GetInstallationPackageDataPath(p.UUID, i.DirectoryName_Full);
 

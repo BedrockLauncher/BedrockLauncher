@@ -53,7 +53,7 @@ namespace BedrockLauncher
                 LanguageManager.Init();
                 MainDataModel.Default.LoadConfig();
                 await MainDataModel.Default.LoadVersions(true);
-                await MainDataModel.Updater.CheckForUpdatesAsync(true);
+                if (await MainDataModel.Updater.CheckForUpdatesAsync(true)) MainViewModel.Default.UpdateButton.ShowUpdateButton();
                 Trace.WriteLine("Preparing Application: DONE");
             });
         }
