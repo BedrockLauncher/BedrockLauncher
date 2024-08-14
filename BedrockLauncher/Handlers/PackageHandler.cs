@@ -200,8 +200,7 @@ namespace BedrockLauncher.Handlers
                 Trace.WriteLine("Download start");
                 SetCancelation(true);
 
-                string exeDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string subDirectory = Path.Combine(exeDirectory, "AppxBackups");
+                string subDirectory = Path.Combine(MainDataModel.Default.FilePaths.VersionsFolder, "AppxBackups");
                 if (!Directory.Exists(subDirectory))
                 {
                     Directory.CreateDirectory(subDirectory);
