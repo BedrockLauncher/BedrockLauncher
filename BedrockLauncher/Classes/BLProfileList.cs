@@ -361,18 +361,20 @@ namespace BedrockLauncher.Classes
 
                 while (CurrentInstallations.Any(x => x.DisplayName == newName))
                 {
-                    newName = newName + "(" + i + ")";
+                    newName = $"{newName}{i}";
                     i++;
                 }
-
-                Installation_Add(installation.Clone(newName));
+                var Clone = installation.Clone(newName);
+                Clone.DirectoryName = newName;
+                Clone.ReadOnly = false;
+                Installation_Add(Clone);
             }
         }
         public void Installation_Create(string name, MCVersion version, string directory, string iconPath = null, bool isCustom = false)
         {
             if (CurrentProfile == null) return;
             if (CurrentInstallations == null) return;
-
+            if (string.IsNullOrEmpty(name) || name == BedrockLauncher.Localization.Language.LanguageManager.GetResource("VersionEntries_UnnamedInstallation").ToString()) name = Guid.NewGuid().ToString();
             GetVersionParams(version, out VersioningMode versioningMode, out string version_uuid);
             BLInstallation new_installation = new BLInstallation()
             {
