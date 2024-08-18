@@ -145,11 +145,15 @@ namespace BedrockLauncher.Handlers
                 var outputDirectoryPath = Path.Combine(MainDataModel.Default.FilePaths.VersionsFolder, outputDirectoryName);
                 Trace.WriteLine("Extraction started");
                 MainDataModel.Default.ProgressBarState.SetProgressBarState(LauncherState.isExtracting);
+                if (Directory.Exists(outputDirectoryPath)) Directory.Delete(outputDirectoryPath, true);
                 var fileStream = File.OpenRead(packagePath);
                 var progress = new Progress<ZipProgress>();
                 progress.ProgressChanged += (s, z) => MainDataModel.Default.ProgressBarState.SetProgressBarProgress(currentProgress: z.Processed, totalProgress: z.Total);
                 await Task.Run(() => new ZipArchive(fileStream).ExtractToDirectory(outputDirectoryPath, progress, CancelSource));
                 fileStream.Close();
+                File.Delete(Path.Combine(outputDirectoryPath, "AppxSignature.p7x"));
+                File.Move(packagePath, Path.Combine(MainDataModel.Default.FilePaths.VersionsFolder, "AppxBackups", packagePath));
+                Trace.WriteLine("Extracted successfully");
             }
             catch (PackageManagerException e)
             {
