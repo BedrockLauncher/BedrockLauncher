@@ -29,11 +29,11 @@
                             <ToolTip Content="{DynamicResource GameTab_InstallationsButton_Text}"/>
                         </ToggleButton.ToolTip>
                     </ToggleButton>
-                    <ToggleButton x:Name="PatchNotesButton" Width="Auto" Click="ButtonManager2" Content="{DynamicResource ResourceKey=GameTab_PatchNotesButton_Text}" Style="{DynamicResource ToolbarButton}">
+                    <!--<ToggleButton x:Name="PatchNotesButton" Width="Auto" Click="ButtonManager2" Content="{DynamicResource ResourceKey=GameTab_PatchNotesButton_Text}" Style="{DynamicResource ToolbarButton}">
                         <ToggleButton.ToolTip>
                             <ToolTip Content="{DynamicResource GameTab_PatchNotesButton_Text}"/>
                         </ToggleButton.ToolTip>
-                    </ToggleButton>
+                    </ToggleButton>-->
                 </StackPanel>
             </Grid>
         </Border>

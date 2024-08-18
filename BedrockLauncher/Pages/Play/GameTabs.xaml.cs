@@ -45,7 +45,7 @@ namespace BedrockLauncher.Pages.Play
                 List<ToggleButton> toggleButtons = new List<ToggleButton>() {
                 PlayButton,
                 InstallationsButton,
-                PatchNotesButton
+                //PatchNotesButton
             };
 
                 foreach (ToggleButton button in toggleButtons) { button.IsChecked = false; }
@@ -76,7 +76,7 @@ namespace BedrockLauncher.Pages.Play
 
                 if (senderName == PlayButton.Name) NavigateToPlayScreen();
                 else if (senderName == InstallationsButton.Name) NavigateToInstallationsPage();
-                else if (senderName == PatchNotesButton.Name) NavigateToPatchNotes();
+                //else if (senderName == PatchNotesButton.Name) NavigateToPatchNotes();
             });
         }
 
@@ -97,7 +97,7 @@ namespace BedrockLauncher.Pages.Play
         public void NavigateToPatchNotes()
         {
             Navigator.UpdatePageIndex(3);
-            PatchNotesButton.IsChecked = true;
+            //PatchNotesButton.IsChecked = true;
             Task.Run(() => Navigator.Navigate(MainPageFrame, patchNotesPage));
         }
 
