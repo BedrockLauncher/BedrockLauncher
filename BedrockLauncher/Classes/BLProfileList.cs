@@ -12,6 +12,8 @@ using BedrockLauncher.Enums;
 using PostSharp.Patterns.Model;
 using System.ComponentModel;
 using BedrockLauncher.ViewModels;
+using BedrockLauncher.Handlers;
+using Windows.Networking.NetworkOperators;
 
 namespace BedrockLauncher.Classes
 {
@@ -381,7 +383,7 @@ namespace BedrockLauncher.Classes
                 DisplayName = name,
                 IconPath = (iconPath == null ? Constants.INSTALLATIONS_FALLBACK_ICONPATH : iconPath),
                 IsCustomIcon = isCustom,
-                DirectoryName = directory,
+                DirectoryName = name,
                 VersioningMode = versioningMode,
                 VersionUUID = version_uuid
             };
@@ -392,17 +394,23 @@ namespace BedrockLauncher.Classes
         {
             if (CurrentProfile == null) return;
             if (CurrentInstallations == null) return;
-
+            string OldName = "";
+            if (CurrentInstallations.Any(x => x.InstallationUUID == uuid))
+            {
+                int index = CurrentInstallations.FindIndex(x => x.InstallationUUID == uuid);
+                OldName = CurrentInstallations[index].DisplayName;
+            }
             GetVersionParams(version, out VersioningMode versioningMode, out string version_uuid);
             BLInstallation new_installation = new BLInstallation()
             {
                 DisplayName = name,
                 IconPath = (iconPath == null ? Constants.INSTALLATIONS_FALLBACK_ICONPATH : iconPath),
                 IsCustomIcon = isCustom,
-                DirectoryName = directory,
+                DirectoryName = name,
                 VersioningMode = versioningMode,
                 VersionUUID = version_uuid
             };
+            
 
             if (CurrentInstallations.Any(x => x.InstallationUUID == uuid))
             {
@@ -410,6 +418,8 @@ namespace BedrockLauncher.Classes
                 CurrentInstallations[index] = new_installation;
                 Save();
             }
+            //We need to move data to new directory
+            Directory.Move(Path.Combine(MainDataModel.Default.FilePaths.GetProfilePath(Properties.LauncherSettings.Default.CurrentProfileUUID), OldName), Path.Combine(MainDataModel.Default.FilePaths.GetProfilePath(Properties.LauncherSettings.Default.CurrentProfileUUID), name));
         }
         public void Installation_Delete(BLInstallation installation, bool deleteData = true)
         {

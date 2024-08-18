@@ -208,6 +208,7 @@ namespace BedrockLauncher.Handlers
                 string dlPath = "Minecraft-" + v.Name + ".Appx";
                 //string dlPath = Path.Combine(subDirectory, "Minecraft-" + v.Name + ".Appx");
                 if (!File.Exists(Path.Combine(subDirectory,dlPath))) await DownloadPackage(v, dlPath, CancelSource);
+                else File.Move(Path.Combine(MainDataModel.Default.FilePaths.VersionsFolder, "AppxBackups", dlPath), dlPath); ;
                 await ExtractPackage(v, dlPath, CancelSource);
 
                 v.UpdateFolderSize();
