@@ -419,7 +419,7 @@ namespace BedrockLauncher.Classes
                 Save();
             }
             //We need to move data to new directory
-            Directory.Move(Path.Combine(MainDataModel.Default.FilePaths.GetProfilePath(Properties.LauncherSettings.Default.CurrentProfileUUID), OldName), Path.Combine(MainDataModel.Default.FilePaths.GetProfilePath(Properties.LauncherSettings.Default.CurrentProfileUUID), name));
+            if (OldName != name) Directory.Move(Path.Combine(MainDataModel.Default.FilePaths.GetProfilePath(Properties.LauncherSettings.Default.CurrentProfileUUID), OldName), Path.Combine(MainDataModel.Default.FilePaths.GetProfilePath(Properties.LauncherSettings.Default.CurrentProfileUUID), name));
         }
         public void Installation_Delete(BLInstallation installation, bool deleteData = true)
         {
