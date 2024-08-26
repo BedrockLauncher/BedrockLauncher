@@ -110,11 +110,11 @@ namespace BedrockLauncher.Handlers
                     {
                         case VersionType.Preview:
                             name = "Recovery Data (Preview)";
-                            dir = "RecoveryDataPreview";
+                            dir = "Recovery Data (Preview)";
                             break;
                         case VersionType.Release:
                             name = "Recovery Data";
-                            dir = "RecoveryData";
+                            dir = "Recovery Data";
                             break;
                         default:
                             break;
