@@ -120,7 +120,10 @@ namespace BedrockLauncher.Handlers
                 await UnregisterPackage(v, false, true);
                 MainDataModel.Default.ProgressBarState.SetProgressBarState(LauncherState.isUninstalling);
                 await DirectoryExtensions.DeleteAsync(v.GameDirectory, (x, y, phase) => ProgressWrapper(x, y, phase), "Files", "Folders");
+                if (Directory.Exists(v.GameDirectory)) Directory.Delete(v.GameDirectory, true);
                 v.UpdateFolderSize();
+                await Task.Run(Program.OnApplicationRefresh);
+                foreach (var ver in MainDataModel.Default.Versions) ver.UpdateFolderSize();
             }
             catch (PackageManagerException e)
             {
@@ -154,6 +157,8 @@ namespace BedrockLauncher.Handlers
                 File.Delete(Path.Combine(outputDirectoryPath, "AppxSignature.p7x"));
                 File.Move(packagePath, Path.Combine(MainDataModel.Default.FilePaths.VersionsFolder, "AppxBackups", packagePath));
                 Trace.WriteLine("Extracted successfully");
+                await Task.Run(Program.OnApplicationRefresh);
+                foreach (var ver in MainDataModel.Default.Versions) ver.UpdateFolderSize();
             }
             catch (PackageManagerException e)
             {
