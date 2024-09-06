@@ -38,7 +38,7 @@
                         <CheckBox x:Name="portableModeCheckBox" Click="useFixedInstallLocation_Click" Foreground="{DynamicResource PrimaryText.Foreground}" Content="{DynamicResource GeneralSettingsScreen_PathOptions_PortableMode_Text}" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
                         <TextBlock Margin="0,22,0,0" Text="{DynamicResource GeneralSettingsScreen_PathOptions_PathSubtitle_Text}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                         <ContentControl Style="{DynamicResource TextboxLikeFrame}" Height="32" Background="{DynamicResource TextBox.Static.Background}" Width="512" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top">
-                            <Grid>
+                            <Grid x:Name="PathBox" Style="{DynamicResource DisabledStyle}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
