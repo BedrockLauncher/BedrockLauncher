@@ -86,10 +86,12 @@ namespace BedrockLauncher.Pages.Settings.General
             {
                 StorageDirectoryTextBox.IsEnabled = false;
                 StorageDirectoryTextBox.Text = "%PORTABLE%";
+                PathBox.IsEnabled = false;
             }
             else
             {
                 StorageDirectoryTextBox.IsEnabled = true;
+                PathBox.IsEnabled = true;
 
                 if (TEMP_FixedDirectoryState != string.Empty)
                 {
