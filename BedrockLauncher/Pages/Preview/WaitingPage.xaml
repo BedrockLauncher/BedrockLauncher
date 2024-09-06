@@ -19,7 +19,7 @@
         <Border x:Name="WelcomeBorder2" CornerRadius="2" Background="Transparent" Width="600" Height="258" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel SnapsToDevicePixels="True" VerticalAlignment="Center">
                 <controls:General_LoaderIcon Width="150" Height="150" Margin="0,0,0,20" Visibility="Visible"></controls:General_LoaderIcon>
-                <TextBlock Text="LOADING..." HorizontalAlignment="Center" Foreground="White" FontSize="40" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" />
+                <TextBlock Style="{DynamicResource HeaderTextblock}" Text="{DynamicResource Dialog_ResultPanel_Loading_Title}" HorizontalAlignment="Center" Foreground="White" FontSize="40" FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten" />
             </StackPanel>
         </Border>
     </Grid>
