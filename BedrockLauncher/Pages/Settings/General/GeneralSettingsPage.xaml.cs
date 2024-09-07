@@ -138,7 +138,8 @@ namespace BedrockLauncher.Pages.Settings.General
             Properties.LauncherSettings.Default.PortableMode = TEMP_PortableModeState;
             Properties.LauncherSettings.Default.FixedDirectory = TEMP_FixedDirectoryState;
             Properties.LauncherSettings.Default.Save();
-            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            //System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+              System.Windows.Forms.Application.Restart();
             Application.Current.Shutdown();
         }
     }
