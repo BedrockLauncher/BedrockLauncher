@@ -44,7 +44,7 @@ namespace BedrockLauncher.ViewModels
             {
                 Depends.On(IsGameRunning);
                 if (IsGameRunning) return Application.Current.FindResource("GameTab_PlayButton_Kill_Text").ToString();
-                else return Application.Current.FindResource("GameTab_PlayButton_Text").ToString();
+                else return Application.Current.FindResource("InstallationsPage_PlayButton").ToString();
             }
         }
         public bool AllowEditing
