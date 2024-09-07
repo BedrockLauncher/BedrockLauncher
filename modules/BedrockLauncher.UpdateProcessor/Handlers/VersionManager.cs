@@ -125,6 +125,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
         {
             try
             {
+                if (File.Exists(filePath)) File.Delete(filePath);
                 var resp = await HttpClient.GetAsync(url);
                 resp.EnsureSuccessStatusCode();
                 var data = await resp.Content.ReadAsStringAsync();
@@ -144,6 +145,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
         {
             try
             {
+                if (File.Exists(filePath)) File.Delete(filePath);
                 await UpdateDB(VersionType.Beta);
                 await UpdateDB(VersionType.Release);
                 await UpdateDB(VersionType.Preview);
