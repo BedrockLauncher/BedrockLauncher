@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 using Microsoft.Win32;
 using BedrockLauncher.ViewModels;
 using FolderBrowserEx;
+using System.Diagnostics;
+using System.IO;
 
 namespace BedrockLauncher.Pages.Settings.General
 {
@@ -138,9 +140,22 @@ namespace BedrockLauncher.Pages.Settings.General
             Properties.LauncherSettings.Default.PortableMode = TEMP_PortableModeState;
             Properties.LauncherSettings.Default.FixedDirectory = TEMP_FixedDirectoryState;
             Properties.LauncherSettings.Default.Save();
-            //System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-              System.Windows.Forms.Application.Restart();
-            Application.Current.Shutdown();
+
+            string currentDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            string ParentDir = Directory.GetParent(currentDir).FullName;
+            string path = System.IO.Path.Combine(ParentDir, "StartBedrockLauncher.exe");
+            StartProcess(path);
+            Trace.WriteLine(path);
+            void StartProcess(string path)
+            {
+                var startInfo = new ProcessStartInfo(path)
+                {
+                    UseShellExecute = true,
+                    Verb = "runas"
+                };
+                Process.Start(startInfo);
+                Application.Current.Shutdown();
+            }
         }
     }
 }
