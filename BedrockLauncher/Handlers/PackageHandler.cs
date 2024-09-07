@@ -30,6 +30,7 @@ using BedrockLauncher.Classes.Launcher;
 using Windows.System.Diagnostics;
 using BedrockLauncher.UpdateProcessor.Enums;
 using JemExtensions.WPF.Commands;
+using BedrockLauncher.UI.Pages.Common;
 
 namespace BedrockLauncher.Handlers
 {
