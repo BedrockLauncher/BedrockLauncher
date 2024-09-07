@@ -61,7 +61,7 @@ namespace BedrockLauncher.Downloaders
             //Retrive Versions
             int userIndex = Properties.LauncherSettings.Default.CurrentInsiderAccountIndex;
             VersionDB.Init(userIndex, winstoreDBFile, winstoreDBTechnicalFile, communityDBFile, communityDBTechnicalFile);
-            await VersionDB.LoadVersions(AllowUpdating, Properties.LauncherSettings.Default.FetchVersionsFromMicrosoftStore);
+            await VersionDB.LoadVersions(true, Properties.LauncherSettings.Default.FetchVersionsFromMicrosoftStore);
 
             //Add Versions to ObservableCollection, then Sort them
             foreach (var entry in VersionDB.GetVersions())
