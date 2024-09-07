@@ -105,7 +105,10 @@ namespace BedrockLauncher.Handlers
                 var title = BedrockLauncher.Localization.Language.LanguageManager.GetResource("Dialog_KillGame_Title") as string;
                 var content = BedrockLauncher.Localization.Language.LanguageManager.GetResource("Dialog_KillGame_Text") as string;
 
-                var result = await MainDataModel.BackwardsCommunicationHost.ShowDialog_YesNo(title, content);
+                //Old Code:
+                //var result = await MainDataModel.BackwardsCommunicationHost.ShowDialog_YesNo(title, content);
+                
+                var result = await DialogPrompt.ShowDialog_YesNo(title, content);
 
                 if (result == System.Windows.Forms.DialogResult.Yes) GameHandle.Kill();
             }
