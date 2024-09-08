@@ -25,21 +25,7 @@ namespace BedrockLauncher.Pages.Settings.General.Components
             if (item == null) return;
             BedrockLauncher.Localization.Language.LanguageManager.SetLanguage(item.Locale);
             Program.OnApplicationRefresh();
-            /*string currentDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            string ParentDir = Directory.GetParent(currentDir).FullName;
-            string path = System.IO.Path.Combine(ParentDir, "StartBedrockLauncher.exe");
-            StartProcess(path);
-            Trace.WriteLine(path);
-            void StartProcess(string path)
-            {
-                var startInfo = new ProcessStartInfo(path)
-                {
-                    UseShellExecute = true,
-                    Verb = "runas"
-                };
-                Process.Start(startInfo);
-                Application.Current.Shutdown();
-            }*/
+            
         }
 
 
