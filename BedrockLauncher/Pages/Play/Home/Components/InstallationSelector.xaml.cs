@@ -20,6 +20,7 @@ namespace BedrockLauncher.Pages.Play.Home.Components
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)
         {
             FilterSortingHandler.Sort_InstallationList(ItemsSource);
+            
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
