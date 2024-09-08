@@ -118,7 +118,7 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="NLog" Version="5.0.1" />
 		<PackageReference Include="PostSharp.Patterns.Model" Version="6.10.5" />
-		<PackageReference Include="RestSharp" Version="107.1.1" />
+		<PackageReference Include="RestSharp" Version="112.0.0" />
 		<PackageReference Include="Sentinel.NLogViewer" Version="2.0.1" />
 		<PackageReference Include="SymbolicLinkSupport" Version="1.2.0" />
 		<PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
