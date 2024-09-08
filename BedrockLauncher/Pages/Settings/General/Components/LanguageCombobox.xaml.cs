@@ -1,5 +1,8 @@
-﻿using System;
+﻿using BedrockLauncher.Pages.Play.Home.Components;
+using System;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,6 +24,8 @@ namespace BedrockLauncher.Pages.Settings.General.Components
             var item = this.SelectedItem as BedrockLauncher.Localization.Language.LanguageDefinition;
             if (item == null) return;
             BedrockLauncher.Localization.Language.LanguageManager.SetLanguage(item.Locale);
+            Program.OnApplicationRefresh();
+            
         }
 
 
