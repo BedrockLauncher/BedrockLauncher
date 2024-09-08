@@ -34,6 +34,16 @@ namespace BedrockLauncher.Pages.Welcome
         {
             if (Properties.LauncherSettings.Default.PortableMode)
             {
+                FixedRadioButton.IsChecked = false;
+                PortableRadioButton.IsChecked = true;
+            }
+            else
+            {
+                FixedRadioButton.IsChecked = true;
+                PortableRadioButton.IsChecked = false;
+            }
+            if (Properties.LauncherSettings.Default.PortableMode)
+            {
                 StorageDirectoryTextBox.IsEnabled = false;
                 StorageDirectoryTextBox.Text = "%PORTABLE%";
                 PathBox.IsEnabled = false;
