@@ -26,6 +26,7 @@ namespace BedrockLauncher.Pages.Settings.General.Components
             var item = this.SelectedItem as BedrockLauncher.Localization.Language.LanguageDefinition;
             if (item == null) return;
             BedrockLauncher.Localization.Language.LanguageManager.SetLanguage(item.Locale);
+            MainDataModel.Default.ProgressBarState.PlayButtonLanguageChanged = !MainDataModel.Default.ProgressBarState.PlayButtonLanguageChanged;
             Program.OnApplicationRefresh();
         }
 

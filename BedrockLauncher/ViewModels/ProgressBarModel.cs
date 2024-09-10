@@ -38,11 +38,12 @@ namespace BedrockLauncher.ViewModels
 
         public bool AllowCancel { get; set; }
         public bool IsGameRunning { get; set; }
+        public bool PlayButtonLanguageChanged { get; set; } = false;
         public string PlayButtonString
         {
             get
             {
-                Depends.On(IsGameRunning);
+                Depends.On(IsGameRunning, PlayButtonLanguageChanged);
                 if (IsGameRunning) return Application.Current.FindResource("GameTab_PlayButton_Kill_Text").ToString();
                 else return Application.Current.FindResource("InstallationsPage_PlayButton").ToString();
             }
