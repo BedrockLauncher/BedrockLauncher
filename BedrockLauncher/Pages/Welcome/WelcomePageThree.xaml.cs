@@ -21,7 +21,7 @@ namespace BedrockLauncher.Pages.Welcome
 
         private void ProfileControl_Confirm(object sender, EventArgs e)
         {
-            pageSwitcher.MoveToPage(4);
+            pageSwitcher.MoveToPage(5);
         }
     }
 }
