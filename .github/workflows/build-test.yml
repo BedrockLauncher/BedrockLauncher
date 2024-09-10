@@ -35,7 +35,7 @@ jobs:
         run: msbuild "BedrockLauncher.sln"
 
       - name: Archive build
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: release
           path: BedrockLauncher/bin/Debug/net*.*-windows*.*.*.*
