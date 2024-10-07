@@ -314,8 +314,15 @@ namespace BedrockLauncher.Handlers
                 fileStream.Close();
                 await File.WriteAllTextAsync(v.IdentificationPath, v.PackageID);
                 File.Delete(Path.Combine(v.GameDirectory, "AppxSignature.p7x"));
-                File.Move(dlPath, Path.Combine(MainDataModel.Default.FilePaths.VersionsFolder, "AppxBackups", dlPath));
-                //File.Delete(dlPath);
+
+                if (Properties.LauncherSettings.Default.KeepAppxFile)
+                {
+                    File.Move(dlPath, Path.Combine(MainDataModel.Default.FilePaths.VersionsFolder, "AppxBackups", dlPath));
+                }
+                else
+                {
+                    File.Delete(dlPath);
+                }
 
                 Trace.WriteLine("Extracted successfully");
             }
