@@ -315,7 +315,7 @@ namespace BedrockLauncher.Handlers
                 await File.WriteAllTextAsync(v.IdentificationPath, v.PackageID);
                 File.Delete(Path.Combine(v.GameDirectory, "AppxSignature.p7x"));
 
-                if (Properties.LauncherSettings.Default.KeepAppxPackage)
+                if (Properties.LauncherSettings.Default.KeepAppx)
                 {
                     File.Move(dlPath, Path.Combine(MainDataModel.Default.FilePaths.VersionsFolder, "AppxBackups", dlPath));
                 }
