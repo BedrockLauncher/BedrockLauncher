@@ -12,6 +12,7 @@ namespace BedrockLauncher.Pages.Welcome
         public WelcomePageFive()
         {
             InitializeComponent();
+            BackButton.IsEnabled = false;
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
