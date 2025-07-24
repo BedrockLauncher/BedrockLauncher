@@ -45,7 +45,7 @@ namespace BedrockLauncher
             Trace.WriteLine("Application Initalization Started!");
             StartupArgsHandler.SetStartupArgs(e.Args);
             StartupArgsHandler.RunPreStartupArgs();
-            RuntimeHandler.EnableDeveloperMode();
+            RuntimeHandler.EnableDeveloperMode(); // Now just checks status instead of enabling
             Trace.WriteLine("Application Initalization Finished!");
         }
         public static async Task OnApplicationLoaded()

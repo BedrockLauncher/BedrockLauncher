@@ -36,42 +36,64 @@ namespace BedrockLauncher.Handlers
             Trace.WriteLine("Git Commit: " + ThisAssembly.Git.Commit);
             Trace.WriteLine("Git Sha: " + ThisAssembly.Git.Sha);
         }
-
         public static void EnableDeveloperMode()
+        {
+            // This method now checks Developer Mode status instead of automatically enabling it
+            // Users should enable Developer Mode manually through Windows Settings if they want unprivileged symbolic links
+            if (IsDeveloperModeEnabled())
+            {
+                System.Diagnostics.Trace.WriteLine("Developer mode is enabled - symbolic links can be created without admin privileges");
+            }
+            else
+            {
+                System.Diagnostics.Trace.WriteLine("Developer mode is disabled - some operations may require administrator privileges");
+            }
+        }
+
+        /// <summary>
+        /// Checks if Windows Developer Mode is enabled
+        /// </summary>
+        public static bool IsDeveloperModeEnabled()
         {
             try
             {
-                string value64 = string.Empty;
                 RegistryKey localKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, GetCurrentView());
-                localKey = localKey.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AppModelUnlock", true);
+                localKey = localKey.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\AppModelUnlock", false);
                 if (localKey != null)
                 {
-                    switch (localKey.GetValue("AllowDevelopmentWithoutDevLicense"))
-                    {
-                        case 0:
-                            System.Diagnostics.Trace.WriteLine("Developer mode disabled, trying to turn on");
-                            localKey.SetValue("AllowDevelopmentWithoutDevLicense", 1);
-                            break;
-                        case null:
-                            localKey.SetValue("AllowDevelopmentWithoutDevLicense", 1, RegistryValueKind.DWord);
-                            break;
-                    }
+                    var value = localKey.GetValue("AllowDevelopmentWithoutDevLicense");
+                    return value is int intValue && intValue == 1;
                 }
             }
-            catch (Exception r)
+            catch (Exception ex)
             {
-                string message = "Cant enable developer mode: " + r;
-                System.Diagnostics.Trace.WriteLine(message);
-                MessageBox.Show(message + r);
-                throw new Exception(message, r);
+                System.Diagnostics.Trace.WriteLine("Could not check Developer Mode status: " + ex.Message);
             }
+            return false;
+        }
 
-            RegistryView GetCurrentView()
+        /// <summary>
+        /// Shows a user-friendly message about enabling Developer Mode if it's not enabled
+        /// </summary>
+        public static void ShowDeveloperModeGuidance()
+        {
+            if (!IsDeveloperModeEnabled())
             {
-                if (RuntimeInformation.ProcessArchitecture == Architecture.X64) return RegistryView.Registry64;
-                else if (RuntimeInformation.ProcessArchitecture == Architecture.X86) return RegistryView.Registry32;
-                else return RegistryView.Default;
+                string message = "Please enable Developer Mode in Windows Settings:\n\n" +
+                               "1. Open Windows Settings\n" +
+                               "2. Go to Privacy & security → For developers\n" +
+                               "3. Turn on Developer Mode\n\n" +
+                               "This allows the launcher to run without requiring administrator privileges each time.";
+                
+                MessageBox.Show(message, "Enable Windows Developer Mode", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        private static RegistryView GetCurrentView()
+        {
+            if (RuntimeInformation.ProcessArchitecture == Architecture.X64) return RegistryView.Registry64;
+            else if (RuntimeInformation.ProcessArchitecture == Architecture.X86) return RegistryView.Registry32;
+            else return RegistryView.Default;
         }
         public static void ValidateOSArchitecture()
         {

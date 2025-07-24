@@ -472,10 +472,15 @@ namespace BedrockLauncher.Handlers
                     string RequiredDir = Directory.GetParent(PackageFolder).FullName;
                     if (Directory.Exists(PackageFolder)) Directory.Delete(PackageFolder, true);
                     if (!Directory.Exists(RequiredDir)) Directory.CreateDirectory(RequiredDir);
-
-
                     DirectoryInfo profileDir = Directory.CreateDirectory(ProfileFolder);
-                    SymLinkHelper.CreateSymbolicLink(PackageFolder, ProfileFolder, SymLinkHelper.SymbolicLinkType.Directory);
+                    
+                    // Attempt to create a symlink without elevated privileges
+                    bool symlinkCreated = SymLinkHelper.CreateSymbolicLinkSafe(PackageFolder, ProfileFolder, SymLinkHelper.SymbolicLinkType.Directory);
+                    if (!symlinkCreated)
+                    {
+                        throw new SaveRedirectionFailedException(new Exception("Failed to create symbolic link. Ensure Developer Mode is enabled or run as administrator."));
+                    }
+                    
                     DirectoryInfo pkgDir = Directory.CreateDirectory(PackageFolder);
                     DirectoryInfo lsDir = Directory.CreateDirectory(LocalStateFolder);
 
