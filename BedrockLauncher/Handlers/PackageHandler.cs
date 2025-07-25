@@ -373,12 +373,15 @@ namespace BedrockLauncher.Handlers
                 if (Directory.Exists(v.GameDirectory))
                     await DirectoryExtensions.DeleteAsync(v.GameDirectory, (x, y, phase) => ProgressWrapper(x, y, phase));
 
-                var fileStream = File.OpenRead(pkgPath);
+                using var fileStream = File.OpenRead(pkgPath);
                 var progress = new Progress<ZipProgress>();
                 progress.ProgressChanged += (s, z) => MainDataModel.Default.ProgressBarState.SetProgressBarProgress(currentProgress: z.Processed, totalProgress: z.Total);
-                await Task.Run(() => new ZipArchive(fileStream).ExtractToDirectory(v.GameDirectory, progress, cancelSource));
+                await Task.Run(() =>
+                {
+                    using var zipArchive = new ZipArchive(fileStream);
+                    zipArchive.ExtractToDirectory(v.GameDirectory, progress, cancelSource);
+                });
 
-                fileStream.Close();
                 await File.WriteAllTextAsync(v.IdentificationPath, v.PackageID);
                 File.Delete(Path.Combine(v.GameDirectory, "AppxSignature.p7x"));
 
