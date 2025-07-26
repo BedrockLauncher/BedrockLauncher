@@ -142,8 +142,7 @@ namespace BedrockLauncher.Pages.Settings.General
             Properties.LauncherSettings.Default.Save();
 
             string currentDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            string ParentDir = Directory.GetParent(currentDir).FullName;
-            string path = System.IO.Path.Combine(ParentDir, "StartBedrockLauncher.exe");
+            string path = System.IO.Path.Combine(currentDir, "BedrockLauncher.exe");
             StartProcess(path);
             Trace.WriteLine(path);
             void StartProcess(string path)
