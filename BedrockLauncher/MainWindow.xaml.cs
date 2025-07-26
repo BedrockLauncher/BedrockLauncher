@@ -52,9 +52,7 @@ namespace BedrockLauncher
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             MainViewModel.Default.AttemptClose(sender, e);
-        }
-
-        private async void Window_Initialized(object sender, EventArgs e)
+        }        private async void Window_Initialized(object sender, EventArgs e)
         {
             Panel.SetZIndex(MainFrame, 0);
             Panel.SetZIndex(OverlayFrame, 1);
@@ -68,7 +66,12 @@ namespace BedrockLauncher
                 StartupArgsHandler.RunStartupArgs();
 
                 bool isFirstLaunch = Properties.LauncherSettings.Default.GetIsFirstLaunch(MainDataModel.Default.Config.profiles.Count());
-                if (isFirstLaunch) MainViewModel.Default.SetOverlayFrame(new WelcomePage(), true);
+                if (isFirstLaunch) 
+                {
+                    MainViewModel.Default.SetOverlayFrame(new WelcomePage(), true);
+                    // Show Developer Mode guidance on first launch if not enabled
+                    RuntimeHandler.ShowDeveloperModeGuidance();
+                }
             }
         }
 
