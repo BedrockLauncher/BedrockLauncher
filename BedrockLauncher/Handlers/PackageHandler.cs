@@ -421,7 +421,7 @@ namespace BedrockLauncher.Handlers
         {
             try
             {
-                foreach (var pkg in PM.FindPackages(Constants.GetPackageFamily(v.Type)))
+                foreach (var pkg in PM.FindPackagesForUser(string.Empty, Constants.GetPackageFamily(v.Type)))
                 {
                     string location;
 

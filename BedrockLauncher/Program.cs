@@ -32,7 +32,7 @@ namespace BedrockLauncher
             RuntimeHandler.LogStartupInformation();
             RuntimeHandler.ValidateOSArchitecture();
             Trace.WriteLine("Application Starting...");
-            if (CheckForWindowsVersion() && CheckForVCRuntime())
+            if (CheckForWindowsVersion() && CheckForVCRuntime() && RuntimeHandler.EnableDeveloperMode())
             {
                 var application = new App();
                 application.Startup += OnApplicationInitalizing;
@@ -45,7 +45,6 @@ namespace BedrockLauncher
             Trace.WriteLine("Application Initalization Started!");
             StartupArgsHandler.SetStartupArgs(e.Args);
             StartupArgsHandler.RunPreStartupArgs();
-            RuntimeHandler.EnableDeveloperMode(); // Now just checks status instead of enabling
             Trace.WriteLine("Application Initalization Finished!");
         }
         public static async Task OnApplicationLoaded()

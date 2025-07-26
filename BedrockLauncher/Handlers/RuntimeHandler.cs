@@ -36,17 +36,19 @@ namespace BedrockLauncher.Handlers
             Trace.WriteLine("Git Commit: " + ThisAssembly.Git.Commit);
             Trace.WriteLine("Git Sha: " + ThisAssembly.Git.Sha);
         }
-        public static void EnableDeveloperMode()
+        public static bool EnableDeveloperMode()
         {
             // This method now checks Developer Mode status instead of automatically enabling it
             // Users should enable Developer Mode manually through Windows Settings if they want unprivileged symbolic links
             if (IsDeveloperModeEnabled())
             {
                 System.Diagnostics.Trace.WriteLine("Developer mode is enabled - symbolic links can be created without admin privileges");
+                return true;
             }
             else
             {
                 System.Diagnostics.Trace.WriteLine("Developer mode is disabled - some operations may require administrator privileges");
+                return false;
             }
         }
 
