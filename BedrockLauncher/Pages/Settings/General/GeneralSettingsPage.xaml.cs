@@ -150,7 +150,7 @@ namespace BedrockLauncher.Pages.Settings.General
                 var startInfo = new ProcessStartInfo(path)
                 {
                     UseShellExecute = true,
-                    Verb = "runas"
+                    Verb = "open"
                 };
                 Process.Start(startInfo);
                 Application.Current.Shutdown();
