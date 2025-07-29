@@ -1,8 +1,11 @@
-﻿using System;
+﻿using BedrockLauncher.UI.Interfaces;
+using NLog;
+using NLog.Targets;
+using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using BedrockLauncher.UI.Interfaces;
 
 namespace BedrockLauncher.UI.Pages.Common
 {
@@ -32,7 +35,8 @@ namespace BedrockLauncher.UI.Pages.Common
 
         private void ErrorScreenViewCrashButton_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("notepad.exe", $@"{Environment.CurrentDirectory}\Log.txt");
+            var logFileName = LogManager.Configuration.FindTargetByName<FileTarget>("allfile").FileName.Render(new LogEventInfo());
+            Process.Start("notepad.exe", logFileName);
         }
     }
     public static class ErrorScreenShow
