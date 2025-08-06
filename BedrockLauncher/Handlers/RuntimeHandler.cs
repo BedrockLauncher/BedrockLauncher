@@ -40,14 +40,16 @@ namespace BedrockLauncher.Handlers
         {
             // This method now checks Developer Mode status instead of automatically enabling it
             // Users should enable Developer Mode manually through Windows Settings if they want unprivileged symbolic links
+            System.Diagnostics.Trace.WriteLine("Checking Developer Mode..");
             if (IsDeveloperModeEnabled())
             {
-                System.Diagnostics.Trace.WriteLine("Developer mode is enabled - symbolic links can be created without admin privileges");
+                System.Diagnostics.Trace.WriteLine("Developer mode is enabled - Good to go.");
                 return true;
             }
             else
             {
-                System.Diagnostics.Trace.WriteLine("Developer mode is disabled - some operations may require administrator privileges");
+                System.Diagnostics.Trace.WriteLine("Developer mode is disabled - Please enable it in windows settings.");
+                MessageBox.Show("You need to enable Developer mode in windows settings to use the launcher.", "Developer Mode Disabled");
                 return false;
             }
         }

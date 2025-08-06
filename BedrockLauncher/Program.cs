@@ -104,8 +104,13 @@ namespace BedrockLauncher
             if (!result)
             {
                 Trace.WriteLine("You need VC++ Runtime " + minimumVersionS + " or higher to run this application! Please download it!");
+                System.Windows.Forms.MessageBox.Show("You need VC++ Runtime " + minimumVersionS + " or higher to run this application! Please download it!", "Error");
             }
-            return result;
+            else
+            {
+                Trace.WriteLine("VC++ Runtime OK");
+            }
+                return result;
         }
         public static bool CheckForWindowsVersion()
         {
@@ -125,8 +130,13 @@ namespace BedrockLauncher
             if (!result)
             {
                 Trace.WriteLine("This application only works on Windows version " + minimumVersionS + " or above!");
+                System.Windows.Forms.MessageBox.Show("This application only works on Windows version " + minimumVersionS + " or above!", "Error");
             }
-            return result;
+            else
+            {
+                Trace.WriteLine("Windows Version OK");
+            }
+                return result;
         }
     }
 }
