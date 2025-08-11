@@ -32,7 +32,7 @@ namespace BedrockLauncher
             RuntimeHandler.LogStartupInformation();
             RuntimeHandler.ValidateOSArchitecture();
             Trace.WriteLine("Application Starting...");
-            if (CheckForWindowsVersion() && CheckForVCRuntime() && RuntimeHandler.EnableDeveloperMode())
+            if (/*CheckForWindowsVersion() &&*/ CheckForVCRuntime() && RuntimeHandler.EnableDeveloperMode())
             {
                 var application = new App();
                 application.Startup += OnApplicationInitalizing;
