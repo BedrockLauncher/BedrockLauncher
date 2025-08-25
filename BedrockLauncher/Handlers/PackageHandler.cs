@@ -512,7 +512,7 @@ namespace BedrockLauncher.Handlers
                     pkgDir.SetAccessControl(pkgSecurity);
 
                     var profileSecurity = profileDir.GetAccessControl();
-                    profileSecurity.SetOwner(owner);
+                    //profileSecurity.SetOwner(owner);
                     profileSecurity.AddAccessRule(au_access_rules);
                     profileSecurity.AddAccessRule(owner_access_rules);
                     needed_rules.ForEach(x => profileSecurity.AddAccessRule(x));
