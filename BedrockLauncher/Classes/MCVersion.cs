@@ -14,6 +14,7 @@ using BedrockLauncher.UpdateProcessor.Interfaces;
 using BedrockLauncher.ViewModels;
 using Newtonsoft.Json;
 using PostSharp.Patterns.Model;
+using Windows.Management.Deployment;
 
 namespace BedrockLauncher.Classes
 {
@@ -37,10 +38,18 @@ namespace BedrockLauncher.Classes
 
         public string UUID { get; set; }
         public string PackageID { get; set; }
-        public string Name { get; set; }
+        private string _name;
+        public string Name { 
+            get => _name;
+            set {
+                _name = Name;
+                PackageType = this.Compare(Constants.GetMinimumGDKVersion()) >= 0 ? PackageType.GDK : PackageType.UWP;
+            } 
+        }
         public string Architecture { get; set; }
         public string CustomName { get; set; }
         public VersionType Type { get; set; }
+        public PackageType PackageType { get; private set; }
 
         public bool IsBeta
         {

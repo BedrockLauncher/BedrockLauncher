@@ -64,6 +64,8 @@ namespace BedrockLauncher
         public const string FIRST_EDITOR_RELEASE = "1.21.50";
         public const string FIRST_EDITOR_PREVIEW = "1.19.80.20";
 
+        public const string FIRST_GDK_VERSION = "1.21.120";
+
         internal static string GetPackageFamily(VersionType type)
         {
             return type == VersionType.Preview ? MINECRAFT_PREVIEW_PACKAGE_FAMILY : MINECRAFT_PACKAGE_FAMILY;
@@ -77,6 +79,11 @@ namespace BedrockLauncher
         internal static MCVersion GetMinimumEditorVersion(VersionType type)
         {
             return new MCVersion(type == VersionType.Preview ? FIRST_EDITOR_PREVIEW : FIRST_EDITOR_RELEASE);
+        }
+
+        internal static MCVersion GetMinimumGDKVersion()
+        {
+            return new MCVersion(FIRST_GDK_VERSION);
         }
 
         public const string ThemesCustomPrefix = "[+] ";

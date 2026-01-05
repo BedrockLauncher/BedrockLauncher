@@ -269,9 +269,11 @@ namespace BedrockLauncher.Handlers
 
         private async Task DownloadAndExtractPackage(MCVersion v)
         {
+            //MCVersion debugGDKVersion = new MCVersion("", "", "1.21.120", VersionType.Release, "x64");
+
             try
             {
-                Trace.WriteLine("Download start");
+                Trace.WriteLine($"Download start: {v.PackageID}");
                 SetCancelation(true);
 
                 string subDirectory = Path.Combine(MainDataModel.Default.FilePaths.VersionsFolder, "AppxBackups");
