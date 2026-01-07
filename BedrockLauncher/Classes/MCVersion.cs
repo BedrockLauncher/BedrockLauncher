@@ -29,6 +29,7 @@ namespace BedrockLauncher.Classes
             this.Name = name;
             this.Type = type;
             this.Architecture = architecture;
+            this.PackageType = this.Compare(Constants.GetMinimumGDKVersion()) >= 0 ? PackageType.GDK : PackageType.UWP;
         }
 
         public MCVersion(string name)
@@ -38,14 +39,7 @@ namespace BedrockLauncher.Classes
 
         public string UUID { get; set; }
         public string PackageID { get; set; }
-        private string _name;
-        public string Name { 
-            get => _name;
-            set {
-                _name = Name;
-                PackageType = this.Compare(Constants.GetMinimumGDKVersion()) >= 0 ? PackageType.GDK : PackageType.UWP;
-            } 
-        }
+        public string Name { get; set; }
         public string Architecture { get; set; }
         public string CustomName { get; set; }
         public VersionType Type { get; set; }

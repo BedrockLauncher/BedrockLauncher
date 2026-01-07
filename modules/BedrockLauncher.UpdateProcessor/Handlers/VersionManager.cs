@@ -167,6 +167,10 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
                     var config = await StoreNetwork.fetchConfigLastChanged();
                     var cookie = await StoreNetwork.fetchCookie(config, type);
                     var knownVersions = db.GetVersions().ConvertAll(x => x.GetUUID().ToString());
+                    foreach (string knownVersion in knownVersions)
+                    {
+                        Trace.WriteLine(knownVersion);
+                    }
                     var results = await StoreManager.CheckForVersions(StoreNetwork, cookie, knownVersions, type);
                     db.AddVersion(results, type);
                 }
