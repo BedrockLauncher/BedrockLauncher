@@ -4,15 +4,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using BedrockLauncher.UpdateProcessor.Authentication;
 using BedrockLauncher.UpdateProcessor.Classes;
 using BedrockLauncher.UpdateProcessor.Databases;
 using BedrockLauncher.UpdateProcessor.Enums;
-using BedrockLauncher.UpdateProcessor.Interfaces;
-using JemExtensions;
 
 namespace BedrockLauncher.UpdateProcessor.Handlers
 {
@@ -23,25 +20,20 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
         private int UserTokenIndex = 0;
 
         private const string communityDBUrl = "https://www.raythnetwork.co.uk/versions.php?type=json";
-        private const string communityDBTechnicalUrl = "https://www.raythnetwork.co.uk/versions.php?type=txt";
 
         private string winstoreDBFile;
-        private string winstoreDBTechnicalFile;
         private string communityDBFile;
-        private string communityDBTechnicalFile;
 
         private HttpClient HttpClient = new HttpClient();
         private StoreNetwork StoreNetwork = new StoreNetwork();
-        private List<IVersionInfo> Versions = new List<IVersionInfo>();
+        private List<VersionInfoJson> Versions = new List<VersionInfoJson>();
 
-        public List<IVersionInfo> GetVersions() => Versions.ToList();
-        public void Init(int _userTokenIndex, string _winstoreDBFile, string _winstoreDBTechnicalFile, string _communityDBFile, string _communityDBTechnicalFile)
+        public List<VersionInfoJson> GetVersions() => Versions.ToList();
+        public void Init(int _userTokenIndex, string _winstoreDBFile, string _communityDBFile)
         {
             UserTokenIndex = _userTokenIndex;
             winstoreDBFile = _winstoreDBFile;
-            winstoreDBTechnicalFile = _winstoreDBTechnicalFile;
             communityDBFile = _communityDBFile;
-            communityDBTechnicalFile = _communityDBTechnicalFile;
         }
 
         public async Task DownloadVersion(string versionName, string updateIdentity, int revisionNumber, string destination, DownloadProgress progress, CancellationToken cancellationToken, VersionType type)
@@ -101,26 +93,22 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             Versions.Clear();
 
             await EnableUserAuthorization();
-
-            var communityDBT = LoadTextDBVersions(communityDBTechnicalFile);
-            var communityDB = LoadJsonDBVersions(communityDBFile);
+            VersionJsonDb communityDB = LoadJsonDBVersions(communityDBFile);
 
             if (getNewVersions)
             {
-                await UpdateDBFromURL(communityDBT, communityDBTechnicalFile, communityDBTechnicalUrl);
                 await UpdateDBFromURL(communityDB, communityDBFile, communityDBUrl);
             }
 
-            var winStoreDBT = LoadTextDBVersions(winstoreDBTechnicalFile);
             var winStoreDB = LoadJsonDBVersions(winstoreDBFile);
 
             if (getNewVersions && checkMicrosoftStore)
             {
-                await UpdateDBFromStore(winStoreDBT, winstoreDBTechnicalFile, winStoreDB, winstoreDBFile);
+                await UpdateDBFromStore(winStoreDB, winstoreDBFile);
             }
         }
 
-        private async Task UpdateDBFromURL(IVersionDb db, string filePath, string url)
+        private async Task UpdateDBFromURL(VersionJsonDb db, string filePath, string url)
         {
             try
             {
@@ -143,22 +131,17 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
         /// <summary>
         /// Updates the databases by fetching the latest version
         /// </summary>
-        /// <param name="TextDb"> Text database</param>
-        /// <param name="TextFilePath"> Path to the file storing the text database</param>
         /// <param name="JsonDb">JSON database</param>
         /// <param name="JsonFilePath">Path to the file storing the JSON database</param>
         /// <returns></returns>
-        private async Task UpdateDBFromStore(VersionTextDb TextDb, string TextFilePath, VersionJsonDb JsonDb, string JsonFilePath)
+        private async Task UpdateDBFromStore(VersionJsonDb JsonDb, string JsonFilePath)
         {
             try
             {
-                if (File.Exists(TextFilePath)) File.Delete(TextFilePath);
                 if (File.Exists(JsonFilePath)) File.Delete(JsonFilePath);
-                await UpdateDB(VersionType.Release, TextDb, JsonDb);
-                await UpdateDB(VersionType.Preview, TextDb, JsonDb);
-                TextDb.Save(TextFilePath);
+                await UpdateDB(VersionType.Release, JsonDb);
+                await UpdateDB(VersionType.Preview, JsonDb);
                 JsonDb.Save(JsonFilePath);
-                InsertVersionsFromDB(TextDb);
                 InsertVersionsFromDB(JsonDb);
             }
             catch (Exception ex)
@@ -167,17 +150,15 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
                 Trace.WriteLine(ex);
             }
         }
-        private async Task UpdateDB(VersionType type, VersionTextDb TextDb, VersionJsonDb JsonDb)
+        private async Task UpdateDB(VersionType type, VersionJsonDb JsonDb)
         {
             try
             {
                 var config = await StoreNetwork.fetchConfigLastChanged();
                 var cookie = await StoreNetwork.fetchCookie(config, type);
 
-                List<string> knownTextVersions = TextDb.GetVersions().ConvertAll(x => x.GetUUID().ToString());
-                List<string> knownJsonVersions = TextDb.GetVersions().ConvertAll(x => x.GetUUID().ToString());
-                List<UpdateInfo> result = await StoreManager.CheckForGDKVersions(StoreNetwork, type, cookie, knownTextVersions, knownJsonVersions);
-                TextDb.AddVersion(result, type);
+                List<string> knownVersions = JsonDb.GetVersions().ConvertAll(x => x.GetUUID().ToString());
+                List<UpdateInfo> result = await StoreManager.CheckForGDKVersions(StoreNetwork, type, cookie, knownVersions);
                 JsonDb.AddVersion(result, type);
             }
             catch (Exception ex)
@@ -209,35 +190,14 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             }
 
         }
-        private VersionTextDb LoadTextDBVersions(string filePath)
+        private void InsertVersionsFromDB(VersionJsonDb db)
         {
-            try
-            {
-                VersionTextDb db = new VersionTextDb();
-                db.ReadFile(filePath);
-                InsertVersionsFromDB(db);
-                return db;
-            }
-            catch (Exception ex)
-            {
-                Trace.WriteLine("LoadTextDBVersions Failed! Generating Blank VersionTextDb");
-                Trace.WriteLine("File: " + filePath);
-                Trace.WriteLine(ex);
-                var db = new VersionTextDb();
-                db.Save(filePath);
-                return db;
-            }
-
-        }
-
-        private void InsertVersionsFromDB(IVersionDb db)
-        {
-            foreach (var version in db.GetVersions())
+            foreach (VersionInfoJson version in db.list)
             {
                 if (!MinecraftVersion.TryParse(version.GetVersion(), out MinecraftVersion ver)) continue;
                 if (Versions.Exists(x => x.GetUUID() == version.GetUUID())) continue;
                 if (Versions.Exists(x => x.GetVersion() == version.GetVersion() && x.GetArchitecture() == version.GetArchitecture())) continue;
-                if (ver.Revision == 0) Versions.Add(version);
+                Versions.Add(version);
             }
         }
         private async Task EnableUserAuthorization()

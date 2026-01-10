@@ -17,7 +17,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
         /// <param name="knownVersions">List of currently known text versions</param>
         /// <returns>The list of new versions</returns>
         public async static Task<List<UpdateInfo>> CheckForGDKVersions(StoreNetwork net, VersionType versionType,
-            CookieData cookie, List<string> knownTextVersions, List<string> knownJsonVersions)
+            CookieData cookie, List<string> knownVersions)
         {
             SyncResult syncResult;
             try

@@ -30,12 +30,10 @@ namespace BedrockLauncher.Downloaders
         private VersionManager VersionDB = new VersionManager();
 
         private string winstoreDBFile => MainDataModel.Default.FilePaths.GetWinStoreVersionsDBFile();
-        private string winstoreDBTechnicalFile => MainDataModel.Default.FilePaths.GetWinStoreVersionsTechnicalDBFile();
         private string communityDBFile => MainDataModel.Default.FilePaths.GetCommunityVersionsDBFile();
-        private string communityDBTechnicalFile => MainDataModel.Default.FilePaths.GetCommunityVersionsTechnicalDBFile();
 
         private MCVersion latestReleaseRef { get; set; }
-        private MCVersion latestBetaRef { get; set; }
+        private MCVersion? latestBetaRef { get; set; }
         private MCVersion latestPreviewRef { get; set; }
 
 
@@ -60,12 +58,14 @@ namespace BedrockLauncher.Downloaders
 
             //Retrive Versions
             int userIndex = Properties.LauncherSettings.Default.CurrentInsiderAccountIndex;
-            VersionDB.Init(userIndex, winstoreDBFile, winstoreDBTechnicalFile, communityDBFile, communityDBTechnicalFile);
+            VersionDB.Init(userIndex, winstoreDBFile, communityDBFile);
             await VersionDB.LoadVersions(true, Properties.LauncherSettings.Default.FetchVersionsFromMicrosoftStore);
 
             //Add Versions to ObservableCollection, then Sort them
-            foreach (var entry in VersionDB.GetVersions())
+            List<VersionInfoJson> versionList = VersionDB.GetVersions();
+            foreach (VersionInfoJson entry in versionList)
             {
+                // Trace.WriteLine($"Found version: {entry.GetVersion()}");
                 versions.Add(new MCVersion(entry.GetUUID().ToString(), entry.GetUUID().ToString(), GetRealVersion(entry.GetVersion()), entry.GetVersionType(), entry.GetArchitecture()));
             }
                 
@@ -73,23 +73,26 @@ namespace BedrockLauncher.Downloaders
 
 
             //Get Latest Release and Beta Versions an Insert them into the ObservableCollection
-            var latestRelease = versions.First(x => x.IsRelease == true && VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, x.Architecture));
-            var latestBeta = versions.First(x => x.IsBeta == true && VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, x.Architecture));
-            var latestPreview = versions.First(x => x.IsPreview == true && VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, x.Architecture));
+            MCVersion latestRelease = versions.First(x => x.IsRelease == true && VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, x.Architecture));
+            MCVersion? latestBeta = versions.FirstOrDefault(x => x.IsBeta == true && VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, x.Architecture), null);
+            MCVersion latestPreview = versions.First(x => x.IsPreview == true && VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, x.Architecture));
 
             this.latestReleaseRef = latestRelease;
             this.latestBetaRef = latestBeta;
             this.latestPreviewRef = latestPreview;
 
-
-
-            var latest_preview = new MCVersion(Constants.LATEST_PREVIEW_UUID, Constants.LATEST_PREVIEW_UUID, Application.Current.Resources["EditInstallationScreen_LatestPreview"].ToString(), latestPreview.Type, Constants.CurrentArchitecture);
-            var latest_beta = new MCVersion(Constants.LATEST_BETA_UUID, Constants.LATEST_BETA_UUID, Application.Current.Resources["EditInstallationScreen_LatestBeta"].ToString(), latestBeta.Type, Constants.CurrentArchitecture);
-            var latest_release = new MCVersion(Constants.LATEST_RELEASE_UUID, Constants.LATEST_RELEASE_UUID, Application.Current.Resources["EditInstallationScreen_LatestRelease"].ToString(), latestRelease.Type, Constants.CurrentArchitecture);
+            MCVersion latest_preview = new MCVersion(Constants.LATEST_PREVIEW_UUID, Constants.LATEST_PREVIEW_UUID, Application.Current.Resources["EditInstallationScreen_LatestPreview"].ToString(), latestPreview.Type, Constants.CurrentArchitecture);
+            MCVersion latest_release = new MCVersion(Constants.LATEST_RELEASE_UUID, Constants.LATEST_RELEASE_UUID, Application.Current.Resources["EditInstallationScreen_LatestRelease"].ToString(), latestRelease.Type, Constants.CurrentArchitecture);
 
             versions.Insert(0, latest_preview);
-            versions.Insert(0, latest_beta);
             versions.Insert(0, latest_release);
+
+            // Will only appear is user had previously loaded beta version
+            if (latestBeta != null)
+            {
+                MCVersion latest_beta = new MCVersion(Constants.LATEST_BETA_UUID, Constants.LATEST_BETA_UUID, Application.Current.Resources["EditInstallationScreen_LatestBeta"].ToString(), latestBeta.Type, Constants.CurrentArchitecture);
+                versions.Insert(0, latest_beta);
+            }
 
             await SyncUpLocalVersions(versions, OnLoad);
 
