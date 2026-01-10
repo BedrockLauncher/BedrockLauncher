@@ -101,7 +101,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
 
             return doc.ToString();
         }
-        public string buildCookieRequest(string configLastChanged, VersionType versionType) 
+        public string buildCookieRequest(string configLastChanged, VersionType versionType)
         {
             DateTime now = DateTime.UtcNow;
             XDocument doc = new XDocument();
@@ -125,7 +125,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
 
             return doc.ToString();
         }
-        public string buildSyncRequest(CookieData cookieData, VersionType versionType) 
+        public string buildSyncRequest(CookieData cookieData, VersionType versionType)
         {
 
             var id = versionType == VersionType.Preview ? MINECRAFT_PREVIEW_APP_ID : MINECRAFT_APP_ID;
@@ -267,12 +267,12 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
                 var errorCode = Xml.first_node_or_throw(detail, "ErrorCode");
                 code = errorCode.Value;
             }
-            catch (Exception) 
+            catch (Exception)
             {
 
             }
 
-            if (!string.IsNullOrEmpty(code)) throw new SOAPError(code);       
+            if (!string.IsNullOrEmpty(code)) throw new SOAPError(code);
         }
         public async Task dumpConfig()
         {
@@ -280,6 +280,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             string ret = await doHttpRequest(PRIMARY_URL, request);
             XDocument doc = XDocument.Parse(ret);
         }
+
         public async Task<string> fetchConfigLastChanged()
         {
             string request = buildGetConfigRequest();
@@ -336,12 +337,17 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
                 }
                 return data;
             }
-            catch (Exception e) 
+            catch (Exception e)
             {
                 maybeThrowSOAPFault(doc);
                 throw new Exception("syncVersion", e);
             }
 
+        }
+        
+        public async Task<SyncResult> getLatestGDKVersion(CookieData cookie, VersionType versionType)
+        {
+            throw new NotImplementedException();
         }
         public async Task<DownloadLinkResult> getDownloadLinks(string updateIdentity, int revisionNumber, VersionType versionType)
         {
