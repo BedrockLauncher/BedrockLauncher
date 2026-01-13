@@ -15,29 +15,44 @@ namespace BedrockLauncher.Pages.Play.CreatorTools
 {
     public partial class CreatorToolsPage : Page
     {
+        private bool isLauncherFullyLoaded = false;
+
         public CreatorToolsPage()
         {
             InitializeComponent();
-            InstallationsList.SelectionChanged += CheckEditorCompatility;
+            InstallationsList.SelectionChanged += CheckVersionAvailability;
             ((INotifyPropertyChanged)MainDataModel.Default.ProgressBarState).PropertyChanged += (s, e) =>
             {
                 if (e.PropertyName == nameof(MainDataModel.Default.ProgressBarState.AllowPlaying))
                     Application.Current.Dispatcher.Invoke(() =>
                     {
-                        CheckEditorCompatility(s, e);
+                        CheckVersionAvailability(s, e);
                     });
-            }; ;
+            };
         }
 
-        private void CheckEditorCompatility(object _, EventArgs __)
+        private void CheckVersionAvailability(object _, EventArgs __)
         {
             BLInstallation selectedInstallation = InstallationsList.SelectedItem as BLInstallation;
             if (MainDataModel.Default.PackageManager.isGameRunning)
+            {
                 EditorPlayButton.IsEnabled = true;
-            else if (selectedInstallation?.Version is null)
-                EditorPlayButton.IsEnabled = MainDataModel.Default.ProgressBarState.AllowPlaying;
+            }
+            else if (!isLauncherFullyLoaded)
+            {
+                // Can not check if versions exists on first load
+                // Check will be run only when changing installation
+                EditorPlayButton.IsEnabled = true;
+                isLauncherFullyLoaded = true;
+            }
+            else if (selectedInstallation is not null && selectedInstallation.Version is null)
+            {
+                EditorPlayButton.IsEnabled = false;
+            }
             else
+            {
                 EditorPlayButton.IsEnabled = MainDataModel.Default.ProgressBarState.AllowPlaying && selectedInstallation.Version?.Compare(Constants.GetMinimumEditorVersion(selectedInstallation.VersionType)) <= 0;
+            }
         }
 
         private void MainPlayButton_Click(object sender, RoutedEventArgs e)

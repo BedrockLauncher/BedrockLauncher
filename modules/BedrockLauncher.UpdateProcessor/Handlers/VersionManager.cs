@@ -100,12 +100,14 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
                 await UpdateDBFromURL(communityDB, communityDBFile, communityDBUrl);
             }
 
-            var winStoreDB = LoadJsonDBVersions(winstoreDBFile);
+            VersionJsonDb winStoreDB = LoadJsonDBVersions(winstoreDBFile);
 
             if (getNewVersions && checkMicrosoftStore)
             {
                 await UpdateDBFromStore(winStoreDB, winstoreDBFile);
             }
+            
+            
         }
 
         private async Task UpdateDBFromURL(VersionJsonDb db, string filePath, string url)

@@ -165,13 +165,24 @@ namespace BedrockLauncher.Downloaders
         {
             if (versioningMode != VersioningMode.None)
             {
-                var latest_preview = MainDataModel.Default.Versions.ToList().FirstOrDefault(x => x.UUID == latestPreviewRef.UUID && x.Type == latestPreviewRef.Type);
-                var latest_beta = MainDataModel.Default.Versions.ToList().FirstOrDefault(x => x.UUID == latestBetaRef.UUID && x.Type == latestBetaRef.Type);
-                var latest_release = MainDataModel.Default.Versions.ToList().FirstOrDefault(x => x.UUID == latestReleaseRef.UUID && x.Type == latestReleaseRef.Type);
-
-                if (versioningMode == VersioningMode.LatestPreview && latest_preview != null) return latest_preview;
-                else if (versioningMode == VersioningMode.LatestBeta && latest_beta != null) return latest_beta;
-                else if (versioningMode == VersioningMode.LatestRelease && latest_release != null) return latest_release;
+                if (versioningMode == VersioningMode.LatestPreview && latestPreviewRef != null)
+                {
+                    MCVersion? latest_preview = MainDataModel.Default.Versions
+                        .ToList().FirstOrDefault(x => x.UUID == latestPreviewRef.UUID && x.Type == latestPreviewRef.Type, null);
+                    return latest_preview;
+                }
+                if (versioningMode == VersioningMode.LatestBeta && latestBetaRef != null)
+                {
+                    MCVersion? latest_beta = MainDataModel.Default.Versions
+                        .ToList().FirstOrDefault(x => x.UUID == latestBetaRef.UUID && x.Type == latestBetaRef.Type, null);
+                    return latest_beta;
+                }
+                if (versioningMode == VersioningMode.LatestRelease && latestReleaseRef != null)
+                {
+                    MCVersion? latest_release = MainDataModel.Default.Versions
+                        .ToList().FirstOrDefault(x => x.UUID == latestReleaseRef.UUID && x.Type == latestReleaseRef.Type, null);
+                    return latest_release;
+                }
                 else return null;
             }
             else if (MainDataModel.Default.Versions.ToList().Exists(x => x.UUID == versionUUID))

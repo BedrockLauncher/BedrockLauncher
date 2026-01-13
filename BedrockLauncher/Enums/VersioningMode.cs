@@ -8,9 +8,9 @@ namespace BedrockLauncher.Enums
 {
     public enum VersioningMode : int
     {
-        LatestPreview,
-        LatestBeta,
-        LatestRelease,
-        None
+        LatestPreview = 0,
+        LatestBeta = 1,
+        LatestRelease = 2,
+        None = 3
     }
 }

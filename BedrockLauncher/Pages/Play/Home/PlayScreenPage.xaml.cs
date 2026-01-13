@@ -1,6 +1,10 @@
 ﻿using BedrockLauncher.Classes;
+using BedrockLauncher.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,17 +17,49 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BedrockLauncher.ViewModels;
-using System.Diagnostics;
-using System.IO;
 
 namespace BedrockLauncher.Pages.Play.Home
 {
     public partial class PlayScreenPage : Page
     {
+        private bool isLauncherFullyLoaded = false;
+
         public PlayScreenPage()
         {
             InitializeComponent();
+            InstallationsList.SelectionChanged += CheckVersionAvailability;
+            ((INotifyPropertyChanged)MainDataModel.Default.ProgressBarState).PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == nameof(MainDataModel.Default.ProgressBarState.AllowPlaying))
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        CheckVersionAvailability(s, e);
+                    });
+            };
+        }
+
+        private void CheckVersionAvailability(object _, EventArgs __)
+        {
+            BLInstallation selectedInstallation = InstallationsList.SelectedItem as BLInstallation;
+            if (MainDataModel.Default.PackageManager.isGameRunning)
+            {
+                MainPlayButton.IsEnabled = true;
+            }
+            else if (!isLauncherFullyLoaded)
+            {
+                // Can not check if versions exists on first load
+                // Check will be run only when changing installation
+                MainPlayButton.IsEnabled = true;
+                isLauncherFullyLoaded = true;
+            }
+            else if (selectedInstallation is not null && selectedInstallation.Version is null)
+            {
+                MainPlayButton.IsEnabled = false;
+            }
+            else
+            {
+                MainPlayButton.IsEnabled = MainDataModel.Default.ProgressBarState.AllowPlaying;
+            }
         }
 
         private string GetLatestImage()

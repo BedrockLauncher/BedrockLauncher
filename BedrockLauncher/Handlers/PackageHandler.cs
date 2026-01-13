@@ -92,13 +92,13 @@ namespace BedrockLauncher.Handlers
             try
             {
                 StartTask();
+
                 if (!v.IsInstalled) await DownloadAndExtractPackage(v);
 
                 await UnregisterPackage(v, true);
                 await RegisterPackage(v);
 
                 await RedirectSaveData(dirPath, v.Type);
-
             }
             catch (PackageManagerException e)
             {

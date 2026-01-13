@@ -67,7 +67,7 @@ namespace BedrockLauncher.ViewModels
         public async void RemoveVersion(MCVersion v) => await PackageManager.RemovePackage(v);
         public async void Play(BLProfile p, BLInstallation i, bool KeepLauncherOpen, bool LaunchEditor, bool Save = true)
         {
-            if (i == null) return;
+            if (i == null || i.Version == null) return;
 
             i.LastPlayed = DateTime.Now;
             MainDataModel.Default.Config.Installation_UpdateLP(i);

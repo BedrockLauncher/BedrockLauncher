@@ -44,7 +44,6 @@ namespace BedrockLauncher.Classes
         public string CustomName { get; set; }
         public VersionType Type { get; set; }
         public PackageType PackageType { get; private set; }
-
         public bool IsBeta
         {
             get => Type == VersionType.Beta;
@@ -143,6 +142,7 @@ namespace BedrockLauncher.Classes
             }
         }
 
+        public bool? IsInstallable = null;
 
         #region Size Calcualtion
 
