@@ -15,6 +15,39 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
 {
     public class VersionManager
     {
+        #region Singleton management
+        private static VersionManager _singleton = null;
+
+        public static VersionManager Singleton
+        {
+            get
+            {
+                if (_singleton == null)
+                {
+                    Trace.TraceWarning("Trying to access uninitialized VersionManager singleton.");
+                    return null;
+                }
+                else
+                    return _singleton;
+            }
+            private set
+            {
+                if (_singleton != null)
+                {
+                    Trace.TraceWarning("Attempt to override VersionManager singleton denied.");
+                }
+                else
+                    _singleton = value;
+            }
+        }
+
+        public VersionManager()
+        {
+            Singleton = this;
+        }
+
+        #endregion
+
         public delegate void DownloadProgress(long current, long total);
 
         private int UserTokenIndex = 0;

@@ -33,6 +33,7 @@ using BedrockLauncher.UpdateProcessor.Enums;
 using JemExtensions.WPF.Commands;
 using BedrockLauncher.UI.Pages.Common;
 using System.Collections;
+using BedrockLauncher.UpdateProcessor.Classes;
 
 namespace BedrockLauncher.Handlers
 {
@@ -93,7 +94,19 @@ namespace BedrockLauncher.Handlers
             {
                 StartTask();
 
-                if (!v.IsInstalled) await DownloadAndExtractPackage(v);
+                if (!v.IsInstalled)
+                {
+                    List<VersionInfoJson> versions = VersionManager.Singleton.GetVersions();
+                    var atest = versions[0].uuid.ToString();
+                    if (versions.Any(ver => v.UUID.CompareTo(ver.uuid.ToString()) == 0))
+                    {
+                        await DownloadAndExtractPackage(v);
+                    }
+                    else
+                    {
+                        throw new NoVersionAccessibleException();
+                    }
+                }
 
                 await UnregisterPackage(v, true);
                 await RegisterPackage(v);
@@ -101,6 +114,10 @@ namespace BedrockLauncher.Handlers
                 await RedirectSaveData(dirPath, v.Type);
             }
             catch (PackageManagerException e)
+            {
+                SetException(e);
+            }
+            catch (NoVersionAccessibleException e)
             {
                 SetException(e);
             }
