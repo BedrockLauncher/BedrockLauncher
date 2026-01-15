@@ -14,6 +14,7 @@ using BedrockLauncher.UpdateProcessor.Interfaces;
 using BedrockLauncher.ViewModels;
 using Newtonsoft.Json;
 using PostSharp.Patterns.Model;
+using Windows.Management.Deployment;
 
 namespace BedrockLauncher.Classes
 {
@@ -28,6 +29,7 @@ namespace BedrockLauncher.Classes
             this.Name = name;
             this.Type = type;
             this.Architecture = architecture;
+            this.PackageType = this.Compare(Constants.GetMinimumGDKVersion()) >= 0 ? PackageType.GDK : PackageType.UWP;
         }
 
         public MCVersion(string name)
@@ -41,7 +43,7 @@ namespace BedrockLauncher.Classes
         public string Architecture { get; set; }
         public string CustomName { get; set; }
         public VersionType Type { get; set; }
-
+        public PackageType PackageType { get; private set; }
         public bool IsBeta
         {
             get => Type == VersionType.Beta;
@@ -139,7 +141,6 @@ namespace BedrockLauncher.Classes
                 return Path.Combine(GameDirectory, MCVersionExtensions.IdentificationFilename);
             }
         }
-
 
         #region Size Calcualtion
 

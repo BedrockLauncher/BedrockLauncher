@@ -71,7 +71,7 @@ namespace BedrockLauncher.Classes
             }
         }
         [JsonIgnore, SafeForDependencyAnalysis]
-        public MCVersion Version
+        public MCVersion? Version
         {
             get
             {
