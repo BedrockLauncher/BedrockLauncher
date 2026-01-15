@@ -97,7 +97,6 @@ namespace BedrockLauncher.Handlers
                 if (!v.IsInstalled)
                 {
                     List<VersionInfoJson> versions = VersionManager.Singleton.GetVersions();
-                    var atest = versions[0].uuid.ToString();
                     if (versions.Any(ver => v.UUID.CompareTo(ver.uuid.ToString()) == 0))
                     {
                         await DownloadAndExtractPackage(v);

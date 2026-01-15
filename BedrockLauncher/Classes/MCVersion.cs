@@ -142,8 +142,6 @@ namespace BedrockLauncher.Classes
             }
         }
 
-        public bool? IsInstallable = null;
-
         #region Size Calcualtion
 
         [JsonIgnore] private string StoredInstallationSize { get; set; } = "...";
