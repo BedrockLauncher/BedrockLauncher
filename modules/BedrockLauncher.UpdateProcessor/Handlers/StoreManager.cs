@@ -22,7 +22,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             SyncResult syncResult;
             try
             {
-                syncResult = await net.getLatestGDKVersion(cookie, versionType);
+                syncResult = await net.syncVersion(cookie, versionType);
             }
             catch (SOAPError e)
             {
