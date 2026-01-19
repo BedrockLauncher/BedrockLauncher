@@ -329,7 +329,7 @@ namespace BedrockLauncher.Handlers
         {
             try
             {
-                if (v.IsBeta) await AuthenticateBetaUser();
+                if (VersionManager.Singleton.GetVersions().Any(ver => v.UUID.CompareTo(ver.uuid.ToString()) == 0)) throw new NoVersionAccessibleException();
                 MainDataModel.Default.ProgressBarState.SetProgressBarState(LauncherState.isDownloading);
                 Trace.WriteLine("Download starting");
                 await VersionDownloader.DownloadVersion(v.DisplayName, v.PackageID, 1, dlPath, (x, y) => ProgressWrapper(x, y), cancelSource.Token, v.Type);
@@ -546,24 +546,6 @@ namespace BedrockLauncher.Handlers
                 }
             });
 
-        }
-        private async Task AuthenticateBetaUser()
-        {
-            try
-            {
-                var userIndex = Properties.LauncherSettings.Default.CurrentInsiderAccountIndex;
-                var token = await Task.Run(() => AuthenticationManager.Default.GetWUToken(userIndex));
-                StoreNetwork.setMSAUserToken(token);
-            }
-            catch (PackageManagerException e)
-            {
-                throw e;
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Trace.WriteLine("Error while Authenticating UserToken for Version Fetching:\n" + e); //TODO: Localize Error Message
-                throw new BetaAuthenticationFailedException(e);
-            }
         }
         #endregion
 

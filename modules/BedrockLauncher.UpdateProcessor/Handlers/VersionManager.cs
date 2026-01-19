@@ -121,7 +121,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
                 task.Start();
             }
         }
-        public async Task LoadVersions(bool getNewVersions, bool checkMicrosoftStore)
+        public async Task LoadVersions(bool getNewVersions)
         {
             Versions.Clear();
 
@@ -133,14 +133,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
                 await UpdateDBFromURL(communityDB, communityDBFile, communityDBUrl);
             }
 
-            VersionJsonDb winStoreDB = LoadJsonDBVersions(winstoreDBFile);
-
-            if (getNewVersions && checkMicrosoftStore)
-            {
-                await UpdateDBFromStore(winStoreDB, winstoreDBFile);
-            }
-            
-            
+            VersionJsonDb winStoreDB = LoadJsonDBVersions(winstoreDBFile);            
         }
 
         private async Task UpdateDBFromURL(VersionJsonDb db, string filePath, string url)
@@ -160,46 +153,6 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
                 Trace.WriteLine("UpdateDBFromURL Failed!");
                 Trace.WriteLine("File: " + filePath);
                 Trace.WriteLine("Url: " + url);
-                Trace.WriteLine(ex);
-            }
-        }
-        /// <summary>
-        /// Updates the databases by fetching the latest version
-        /// </summary>
-        /// <param name="JsonDb">JSON database</param>
-        /// <param name="JsonFilePath">Path to the file storing the JSON database</param>
-        /// <returns></returns>
-        private async Task UpdateDBFromStore(VersionJsonDb JsonDb, string JsonFilePath)
-        {
-            try
-            {
-                if (File.Exists(JsonFilePath)) File.Delete(JsonFilePath);
-                await UpdateDB(VersionType.Release, JsonDb);
-                await UpdateDB(VersionType.Preview, JsonDb);
-                JsonDb.Save(JsonFilePath);
-                InsertVersionsFromDB(JsonDb);
-            }
-            catch (Exception ex)
-            {
-                Trace.WriteLine("UpdateDBFromStore Failed!");
-                Trace.WriteLine(ex);
-            }
-        }
-        private async Task UpdateDB(VersionType type, VersionJsonDb JsonDb)
-        {
-            try
-            {
-                var config = await StoreNetwork.fetchConfigLastChanged();
-                var cookie = await StoreNetwork.fetchCookie(config, type);
-
-                List<string> knownVersions = JsonDb.GetVersions().ConvertAll(x => x.GetUUID().ToString());
-                List<UpdateInfo> result = await StoreManager.CheckForGDKVersions(StoreNetwork, type, cookie, knownVersions);
-                JsonDb.AddVersion(result, type);
-            }
-            catch (Exception ex)
-            {
-                Trace.WriteLine("UpdateDBFromStore.UpdateDB Failed!");
-                Trace.WriteLine("isBeta: " + type);
                 Trace.WriteLine(ex);
             }
         }

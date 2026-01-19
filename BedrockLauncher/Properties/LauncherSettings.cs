@@ -90,7 +90,6 @@ namespace BedrockLauncher.Properties
                 Save();
             }
         }
-        public bool FetchVersionsFromMicrosoftStore { get; set; } = false;
         public bool AnimatePageTransitions
         {
             get

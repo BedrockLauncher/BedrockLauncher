@@ -18,6 +18,8 @@ using BedrockLauncher.ViewModels;
 using FolderBrowserEx;
 using System.Diagnostics;
 using System.IO;
+using BedrockLauncher.Downloaders;
+using BedrockLauncher.Pages.FetchLatestVersion;
 
 namespace BedrockLauncher.Pages.Settings.General
 {
@@ -133,6 +135,11 @@ namespace BedrockLauncher.Pages.Settings.General
         {
             ResetDirectoryToDefault();
             UpdateDirectoryPathTextbox();
+        }
+
+        private void FetchLatestVersion_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModels.MainViewModel.Default.SetOverlayFrame(new FetchLatestVersionPage(), true);
         }
 
         private void RestartButton_Click(object sender, RoutedEventArgs e)

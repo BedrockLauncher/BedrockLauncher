@@ -10,7 +10,7 @@ namespace BedrockLauncher.Pages.Welcome
     /// </summary>
     public partial class WelcomePageTwo : Page
     {
-        public WelcomePagesSwitcher pageSwitcher = new WelcomePagesSwitcher();
+        public WelcomePageSwitcher pageSwitcher = new WelcomePageSwitcher();
         private bool isInit = false;
 
         public WelcomePageTwo()

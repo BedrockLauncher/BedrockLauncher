@@ -18,6 +18,10 @@
     <Grid Margin="0,0,0,0">
         <ScrollViewer>
             <StackPanel Margin="0,0,0,20">
+                <StackPanel Margin="38,30,0,0" Orientation="Vertical" HorizontalAlignment="Left">
+                    <Button Style="{DynamicResource DialogButton_Green}" x:Name="FetchLatestVersionButton" Content="{DynamicResource GeneralSettingsScreen_FetchLatestVersion}" Height="30" Click="FetchLatestVersion_Click"/>
+                </StackPanel>
+
                 <TextBlock Margin="42,30,0,0" Text="{DynamicResource GeneralSettingsScreen_LanguageSubtitle}" VerticalAlignment="Top" HorizontalAlignment="Left" Style="{DynamicResource HeaderTextblock}"/>
                 <con:LanguageCombobox HorizontalAlignment="Left" Margin="42,5,0,0" FontSize="14" VerticalAlignment="Top" Padding="10,4,5,3" x:Name="LanguageCombobox"></con:LanguageCombobox>
 
@@ -28,7 +32,6 @@
                 <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=KeepAppx}" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_KeepAppx}" HorizontalAlignment="Left" Margin="42,0,0,10" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
                 <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=KeepLauncherOpen}" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" x:Name="keepLauncherOpenCheckBox" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_KeepLauncherOpen}" HorizontalAlignment="Left" Margin="42,0,0,10" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
                 <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=AnimatePageTransitions}" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_AnimateTransitions}" HorizontalAlignment="Left" Margin="42,0,0,10" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
-                <CheckBox IsChecked="{Binding Source={x:Static properties:LauncherSettings.Default}, Path=FetchVersionsFromMicrosoftStore}" Click="Checkbox_Click" Foreground="White" Content="{DynamicResource GeneralSettingsScreen_FetchVersionsFromMicrosoftStore}" HorizontalAlignment="Left" Margin="42,0,0,10" VerticalAlignment="Top" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="13"/>
 
                 <GroupBox Margin="30,22,0,0" HorizontalAlignment="Left" BorderThickness="2" BorderBrush="Gray">
                     <GroupBox.Header>

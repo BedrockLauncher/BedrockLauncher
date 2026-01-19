@@ -255,31 +255,6 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             using (var streamReader = new StreamReader(response.Content.ReadAsStream())) ret = streamReader.ReadToEnd();
             return ret;
         }
-        private void maybeThrowSOAPFault(XDocument doc)
-        {
-            string code = null;
-            try
-            {
-                var envelope = Xml.first_node_or_throw(doc.Root, NAMESPACE_SOAP + "Envelope");
-                var body = Xml.first_node_or_throw(envelope, NAMESPACE_SOAP + "Body");
-                var fault = Xml.first_node_or_throw(body, NAMESPACE_SOAP + "Fault");
-                var detail = Xml.first_node_or_throw(fault, NAMESPACE_SOAP + "Detail");
-                var errorCode = Xml.first_node_or_throw(detail, "ErrorCode");
-                code = errorCode.Value;
-            }
-            catch (Exception)
-            {
-
-            }
-
-            if (!string.IsNullOrEmpty(code)) throw new SOAPError(code);
-        }
-        public async Task dumpConfig()
-        {
-            string request = buildGetConfigRequest();
-            string ret = await doHttpRequest(PRIMARY_URL, request);
-            XDocument doc = XDocument.Parse(ret);
-        }
 
         public async Task<string> fetchConfigLastChanged()
         {
@@ -306,48 +281,6 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             data.encryptedData = Xml.first_node_or_throw(res, NAMESPACE_WU_SERVICE + "EncryptedData").Value;
             data.expiration = Xml.first_node_or_throw(res, NAMESPACE_WU_SERVICE + "Expiration").Value;
             return data;
-        }
-        public async Task<SyncResult> syncVersion(CookieData cookie, VersionType versionType)
-        {
-            string request = buildSyncRequest(cookie, versionType);
-            string ret = await doHttpRequest(PRIMARY_URL, request);
-            XDocument doc = XDocument.Parse(ret);
-
-            try
-            {
-                var envelope = Xml.first_node_or_throw(doc.Root, NAMESPACE_SOAP + "Envelope");
-                var body = Xml.first_node_or_throw(envelope, NAMESPACE_SOAP + "Body");
-                var resp = Xml.first_node_or_throw(body, NAMESPACE_WU_SERVICE + "SyncUpdatesResponse");
-                var res = Xml.first_node_or_throw(resp, NAMESPACE_WU_SERVICE + "SyncUpdatesResult");
-                var newUpdates = Xml.first_node_or_throw(res, NAMESPACE_WU_SERVICE + "NewUpdates");
-                SyncResult data = new SyncResult();
-                for (var it = Xml.first_node(newUpdates, NAMESPACE_WU_SERVICE + "UpdateInfo"); it != null; it = Xml.next_sibling(it, NAMESPACE_WU_SERVICE + "UpdateInfo"))
-                {
-                    UpdateInfo info = new UpdateInfo();
-                    info.serverId = Xml.first_node_or_throw(it, NAMESPACE_WU_SERVICE + "ID").Value;
-                    info.addXmlInfo(Xml.first_node_or_throw(it, NAMESPACE_WU_SERVICE + "Xml").Value);
-                    data.newUpdates.Add(info);
-                }
-
-                var newCookie = Xml.first_node(res, NAMESPACE_WU_SERVICE + "NewCookie");
-                if (newCookie != null)
-                {
-                    data.newCookie.encryptedData = Xml.first_node_or_throw(newCookie, NAMESPACE_WU_SERVICE + "EncryptedData").Value;
-                    data.newCookie.expiration = Xml.first_node_or_throw(newCookie, NAMESPACE_WU_SERVICE + "Expiration").Value;
-                }
-                return data;
-            }
-            catch (Exception e)
-            {
-                maybeThrowSOAPFault(doc);
-                throw new Exception("syncVersion", e);
-            }
-
-        }
-        
-        public async Task<SyncResult> getLatestGDKVersion(CookieData cookie, VersionType versionType)
-        {
-            throw new NotImplementedException();
         }
         public async Task<DownloadLinkResult> getDownloadLinks(string updateIdentity, int revisionNumber, VersionType versionType)
         {

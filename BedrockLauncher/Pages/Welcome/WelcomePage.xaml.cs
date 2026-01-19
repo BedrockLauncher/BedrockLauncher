@@ -11,7 +11,7 @@ namespace BedrockLauncher.Pages.Welcome
     /// </summary>
     public partial class WelcomePage : Page
     {
-        public WelcomePagesSwitcher pageSwitcher = new WelcomePagesSwitcher();
+        public WelcomePageSwitcher pageSwitcher = new WelcomePageSwitcher();
         public WelcomePage()
         {
             InitializeComponent();
@@ -23,7 +23,7 @@ namespace BedrockLauncher.Pages.Welcome
         }
     }
 
-    public partial class WelcomePagesSwitcher
+    public partial class WelcomePageSwitcher
     {
         public static WelcomePage welcomePage;
         public static WelcomePageOne pageOne;
