@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BedrockLauncher.UpdateProcessor.Authentication;
+using BedrockLauncher.Handlers;
 
 namespace BedrockLauncher.Downloaders
 {
@@ -14,7 +15,26 @@ namespace BedrockLauncher.Downloaders
         {
             Trace.WriteLine("Fetching latest update...");
             XBLiveAuthentification authentificator = new XBLiveAuthentification();
-            await authentificator.GetOAuthToken();
+            try 
+            {
+                bool isDeveloperBuild = RuntimeHandler.IsDeveloperModeEnabled();
+
+                string? authCode = await authentificator.GetOAuthCode();
+
+                if (string.IsNullOrEmpty(authCode))
+                    throw new FormatException();
+
+                string? authToken = await authentificator.GetOAuthToken(authCode, isDeveloperBuild);
+
+                if (string.IsNullOrEmpty(authToken))
+                    throw new FormatException();
+
+                Trace.WriteLine(authToken);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message, e);
+            }
         }
     }
 }

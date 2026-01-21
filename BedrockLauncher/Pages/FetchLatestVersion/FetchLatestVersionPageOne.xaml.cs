@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
 using BedrockLauncher.Downloaders;
 
@@ -18,7 +20,14 @@ namespace BedrockLauncher.Pages.FetchLatestVersion
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             LoginButton.IsEnabled = false;
-            GDKVersionFetcher.FetchLatestUpdate();
+            try
+            {
+                GDKVersionFetcher.FetchLatestUpdate();
+            }
+            catch (Exception ex)
+            {
+                LoginButton.IsEnabled = true;
+            }
         }
     }
 }
