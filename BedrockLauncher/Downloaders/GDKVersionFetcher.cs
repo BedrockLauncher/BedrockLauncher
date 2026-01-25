@@ -14,27 +14,18 @@ namespace BedrockLauncher.Downloaders
         public static async void FetchLatestUpdate()
         {
             Trace.WriteLine("Fetching latest update...");
-            XBLiveAuthentification authentificator = new XBLiveAuthentification();
-            try 
-            {
-                bool isDeveloperBuild = RuntimeHandler.IsDeveloperModeEnabled();
+            XSTSAuthentication authenticator = new XSTSAuthentication();
 
-                string? authCode = await authentificator.GetOAuthCode();
+            bool isDeveloperBuild = RuntimeHandler.IsDeveloperModeEnabled();
 
-                if (string.IsNullOrEmpty(authCode))
-                    throw new FormatException();
+            string? authCode = await authenticator.GetOAuthCode();
 
-                string? authToken = await authentificator.GetOAuthToken(authCode, isDeveloperBuild);
+            if (string.IsNullOrEmpty(authCode))
+                throw new FormatException();
 
-                if (string.IsNullOrEmpty(authToken))
-                    throw new FormatException();
+            await authenticator.GetOAuthToken(authCode, isDeveloperBuild);
 
-                Trace.WriteLine(authToken);
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message, e);
-            }
+            (string uhs, string xsts) = await authenticator.GetXSTSInfo();
         }
     }
 }

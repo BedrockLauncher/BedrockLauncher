@@ -1,36 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Web;
+using XboxWebApi.Authentication;
+using XboxWebApi.Authentication.Model;
+using XboxWebApi.Common;
 
 namespace BedrockLauncher.UpdateProcessor.Authentication
 {
-    public class XBLiveAuthentification
+    public class XSTSAuthentication
     {
         private const string bedrockLauncher_clientid = "2791be83-be4f-4e84-98a2-e94f8d71dd53";
-        private const string oauth_url = "https://login.microsoftonline.com/common/oauth2/v2.0/authorize";
-        private const string token_url = "https://login.microsoftonline.com/common/oauth2/v2.0/token";
+        private const string oauth_url = "https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize";
+        private const string token_url = "https://login.microsoftonline.com/consumers/oauth2/v2.0/token";
         private const string redirect_url = "http://localhost:5000/BedrockLauncherOAuth/";
+        private const string scopes = "XboxLive.signin";
         private static string RedirectURI => Uri.EscapeDataString(redirect_url);
 
-        public XBLiveAuthentification() { }
+        public XSTSAuthentication() { }
 
-        private string code_challenge = null;
-
-        private void GenerateS256(Random r)
-        {
-            char[] letters = new char[43];
-            for (int i = 0; i < 43; i++)
-            {
-                letters[i] = (char)(r.Next() % 26 + 'A');
-            }
-
-            string s256 = new string(letters);
-            code_challenge = s256;
-        }
+        private WindowsLiveResponse live_response = null;
 
         private static async Task<string> ListenForOAuthCodeResponse(int expectedState)
         {
@@ -50,7 +44,7 @@ namespace BedrockLauncher.UpdateProcessor.Authentication
 
                 HttpListenerResponse response = context.Response;
                 response.StatusCode = 302;
-                response.RedirectLocation = "https://bedrocklauncher.github.io/";
+                response.RedirectLocation = "https://bedrocklauncher.github.io/connected";
                 response.OutputStream.Close();
 
                 return code;
@@ -70,11 +64,9 @@ namespace BedrockLauncher.UpdateProcessor.Authentication
         {
             Random r = new Random();
             int state = r.Next();
-            GenerateS256(r);
 
-            string login_url = $"{oauth_url}?client_id={bedrockLauncher_clientid}"
-                + "&response_type=code&scope=User.Read&response_mode=query&prompt=select_account"
-                //+ $"&code_challenge={code_challenge}&code_challenge_method=S256"
+            string login_url = $"{oauth_url}?client_id={bedrockLauncher_clientid}&scope={scopes}"
+                + "&response_type=code&response_mode=query&prompt=select_account"
                 + $"&state={state}&redirect_uri={RedirectURI}";
 
             Process.Start(new ProcessStartInfo
@@ -87,7 +79,7 @@ namespace BedrockLauncher.UpdateProcessor.Authentication
             return OAuthCode;
         }
 
-        public async Task<string> GetOAuthToken(string code, bool developerMode = false)
+        public async Task GetOAuthToken(string code, bool developerMode = false)
         {
             HttpClient client = new HttpClient();
 
@@ -96,9 +88,8 @@ namespace BedrockLauncher.UpdateProcessor.Authentication
                 { "client_id" , bedrockLauncher_clientid},
                 { "code" , code},
                 { "redirect_uri" , redirect_url},
-                //{ "code_verifier", code_challenge },
                 { "grant_type" , "authorization_code"},
-                { "scope" , "User.Read"}
+                { "scope" , scopes}
             };
 
             HttpContent content_url = new FormUrlEncodedContent(post_content);
@@ -110,13 +101,31 @@ namespace BedrockLauncher.UpdateProcessor.Authentication
                 throw new HttpRequestException(developerMode ? response_content : "Failed to request OAuth token");
             }
 
-            using (JsonDocument json = JsonDocument.Parse(response_content))
+            Dictionary<string, JsonElement> json = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(response_content);
+            NameValueCollection parsed_content = new NameValueCollection
             {
-                if (json.RootElement.TryGetProperty("access_token", out JsonElement token))
-                    return token.ToString();
-                else
-                    throw new KeyNotFoundException(developerMode ? response_content : "Failed to find OAuth token");
-            }
+                { "token_type", $"{json["token_type"]}" },
+                { "scope", $"{json["scope"]}" },
+                { "expires_in", $"{json["expires_in"]}" },
+                { "access_token", $"{json["access_token"]}" },
+                { "refresh_token", "unused" },
+                { "user_id", "unused" },
+            };
+            live_response = new WindowsLiveResponse(parsed_content);
+        }
+
+        public async Task<(string, string)> GetXSTSInfo()
+        {
+            AccessToken token = new AccessToken(live_response);
+
+            AuthenticationService authenticator = new AuthenticationService(live_response);
+            // To circumvent a syntax difference since we use Microsoft OAuth instead of the intended Auth flow.
+            // In case this causes problems down the line, remove the `d=` later.
+            authenticator.AccessToken.Jwt = $"d={authenticator.AccessToken.Jwt}";
+            authenticator.UserToken = await AuthenticationService.AuthenticateXASUAsync(authenticator.AccessToken);
+            authenticator.XToken = await AuthenticationService.AuthenticateXSTSAsync(authenticator.UserToken, authenticator.DeviceToken, authenticator.TitleToken);
+
+            return (authenticator.XToken.UserInformation.Userhash, authenticator.XToken.Jwt);
         }
     }
 }

@@ -1,18 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.InteropServices;
-using System.Diagnostics;
-using System.IO;
-using System.Collections.ObjectModel;
-using System.Security.Principal;
-using BedrockLauncher.UpdateProcessor.Authentication;
-
-namespace BedrockLauncher.UpdateProcessor.Authentication
+﻿namespace BedrockLauncher.UpdateProcessor.Authentication
 {
-
     public class AuthenticationManager
     {
 
