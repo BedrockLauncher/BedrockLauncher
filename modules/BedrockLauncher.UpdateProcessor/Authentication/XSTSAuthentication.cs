@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
@@ -23,8 +24,6 @@ namespace BedrockLauncher.UpdateProcessor.Authentication
         private static string RedirectURI => Uri.EscapeDataString(redirect_url);
 
         public XSTSAuthentication() { }
-
-        private WindowsLiveResponse live_response = null;
 
         private static async Task<string> ListenForOAuthCodeResponse(int expectedState)
         {
@@ -79,7 +78,7 @@ namespace BedrockLauncher.UpdateProcessor.Authentication
             return OAuthCode;
         }
 
-        public async Task GetOAuthToken(string code, bool developerMode = false)
+        public async Task<WindowsLiveResponse> GetOAuthToken(string code, bool developerMode = false)
         {
             HttpClient client = new HttpClient();
 
@@ -111,21 +110,31 @@ namespace BedrockLauncher.UpdateProcessor.Authentication
                 { "refresh_token", "unused" },
                 { "user_id", "unused" },
             };
-            live_response = new WindowsLiveResponse(parsed_content);
+            return new WindowsLiveResponse(parsed_content);
         }
 
-        public async Task<(string, string)> GetXSTSInfo()
+        public async Task<(string, string)> GetXSTSInfo(WindowsLiveResponse live_response)
         {
-            AccessToken token = new AccessToken(live_response);
+
 
             AuthenticationService authenticator = new AuthenticationService(live_response);
             // To circumvent a syntax difference since we use Microsoft OAuth instead of the intended Auth flow.
             // In case this causes problems down the line, remove the `d=` later.
             authenticator.AccessToken.Jwt = $"d={authenticator.AccessToken.Jwt}";
             authenticator.UserToken = await AuthenticationService.AuthenticateXASUAsync(authenticator.AccessToken);
-            authenticator.XToken = await AuthenticationService.AuthenticateXSTSAsync(authenticator.UserToken, authenticator.DeviceToken, authenticator.TitleToken);
+            authenticator.XToken = await AuthenticateUpdateXSTSAsync(authenticator.UserToken, authenticator.DeviceToken, authenticator.TitleToken);
 
             return (authenticator.XToken.UserInformation.Userhash, authenticator.XToken.Jwt);
+        }
+
+        private static async Task<XToken> AuthenticateUpdateXSTSAsync(UserToken userToken, DeviceToken deviceToken, TitleToken titleToken)
+        {
+            HttpClient httpClient = AuthenticationService.ClientFactory("https://xsts.auth.xboxlive.com/");
+            HttpRequestMessage httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, "xsts/authorize");
+            XSTSRequest content = new XSTSRequest(userToken, "http://update.xboxlive.com", "JWT", "RETAIL", deviceToken, titleToken);
+            httpRequestMessage.Headers.Add("x-xbl-contract-version", "1");
+            httpRequestMessage.Content = new JsonContent(content);
+            return new XToken(await (await httpClient.SendAsync(httpRequestMessage)).Content.ReadAsJsonAsync<XASResponse>());
         }
     }
 }
