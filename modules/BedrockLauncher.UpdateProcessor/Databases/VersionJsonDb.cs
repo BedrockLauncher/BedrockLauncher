@@ -5,11 +5,8 @@ using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using BedrockLauncher.UpdateProcessor.Classes;
-using Semver;
-using System.Runtime.InteropServices;
 using BedrockLauncher.UpdateProcessor.Extensions;
 using BedrockLauncher.UpdateProcessor.Interfaces;
-using BedrockLauncher.UpdateProcessor.Handlers;
 using BedrockLauncher.UpdateProcessor.Enums;
 
 namespace BedrockLauncher.UpdateProcessor.Databases
@@ -29,12 +26,12 @@ namespace BedrockLauncher.UpdateProcessor.Databases
         #region Read / Write
 
 
-        public void ReadJson(string filePath, Dictionary<Guid, string> architectures = null)
+        public void ReadJson(string filePath, Dictionary<string, string> architectures = null)
         {
             using (var reader = File.OpenText(filePath))
             {
                 var data = reader.ReadToEnd();
-                PraseJson(data, architectures);
+                ParseJson(data, architectures);
             }
         }
         public void WriteJson(string filePath)
@@ -44,7 +41,7 @@ namespace BedrockLauncher.UpdateProcessor.Databases
             string json = JsonConvert.SerializeObject(valuesList, Formatting.Indented);
             File.WriteAllText(filePath, json);
         }
-        public void PraseJson(string json, Dictionary<Guid, string> architectures)
+        public void ParseJson(string json, Dictionary<string, string> architectures)
         {
             JArray data = JArray.Parse(json);
             var lista = data.ToList();
@@ -74,23 +71,6 @@ namespace BedrockLauncher.UpdateProcessor.Databases
         #endregion
 
         #region IVersionDb Implements
-
-        public void AddVersion(List<UpdateInfo> u, VersionType type)
-        {
-            if (u == null || u.Count == 0) return;
-
-            foreach (var v in u)
-            {
-                string version = MinecraftVersion.ConvertVersion(v.packageMoniker, type).ToString();
-                string arch = VersionDbExtensions.GetVersionArch(v.packageMoniker, type);
-                var info = new VersionInfoJson(version, v.updateId, type, arch);
-
-                if (!list.Exists(x => x.uuid == info.uuid)) list.Add(info);
-            }
-
-
-        }
-
         public void Save(string filePath)
         {
             string outlist = string.Empty;
@@ -109,9 +89,9 @@ namespace BedrockLauncher.UpdateProcessor.Databases
             return this.list.Cast<IVersionInfo>().ToList();
         }
 
-        public void PraseRaw(string data, Dictionary<Guid, string> architectures)
+        public void ParseRaw(string data, Dictionary<string, string> architectures)
         {
-            PraseJson(data, architectures);
+            ParseJson(data, architectures);
         }
 
 

@@ -9,13 +9,13 @@ namespace BedrockLauncher.UpdateProcessor.Classes
     {
     
         public string version;
-        public Guid uuid;
+        public string uuid;
         public VersionType type;
         public string architecture;
 
-        public VersionInfoJson(string _version, string _uuid, VersionType _type, string _architexture)
+        public VersionInfoJson(string _version, string _uuid, VersionType _type, string _architexture = "x64")
         {
-            if (!Guid.TryParse(_uuid, out uuid)) uuid = Guid.Empty;
+            uuid = _uuid;
             version = _version;
             type = _type;
             architecture = _architexture;
@@ -26,7 +26,7 @@ namespace BedrockLauncher.UpdateProcessor.Classes
             return architecture;
         }
 
-        public Guid GetUUID()
+        public string GetUUID()
         {
             return uuid;
         }

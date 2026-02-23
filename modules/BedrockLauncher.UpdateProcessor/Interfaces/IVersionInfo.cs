@@ -10,7 +10,7 @@ namespace BedrockLauncher.UpdateProcessor.Interfaces
     public interface IVersionInfo
     {
         public string GetVersion();
-        public Guid GetUUID();
+        public string GetUUID();
         public string GetArchitecture();
         public VersionType GetVersionType();
         public bool GetIsBeta();

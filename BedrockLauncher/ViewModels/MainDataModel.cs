@@ -32,7 +32,7 @@ namespace BedrockLauncher.ViewModels
         public PackageHandler PackageManager { get; set; } = new PackageHandler();
         public BLProfileList Config { get; private set; } = new BLProfileList();
         public ObservableCollection<MCVersion> Versions { get; private set; } = new ObservableCollection<MCVersion>();
-
+        public UpdateFetcherResult FetcherResult { get; set; } = new UpdateFetcherResult();
 
         public bool AllowedToCloseWithGameOpen { get; set; } = false;
         public bool IsVersionsUpdating { get; private set; }

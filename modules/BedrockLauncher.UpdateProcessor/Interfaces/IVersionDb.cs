@@ -11,9 +11,8 @@ namespace BedrockLauncher.UpdateProcessor.Interfaces
 {
     public interface IVersionDb
     {
-        void AddVersion(List<UpdateInfo> u, VersionType type);
         void Save(string winstoreDBFile);
         List<IVersionInfo> GetVersions();
-        void PraseRaw(string data, Dictionary<Guid, string> architectures);
+        void ParseRaw(string data, Dictionary<string, string> architectures);
     }
 }

@@ -22,7 +22,7 @@ using System.Windows;
 [assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
 
 
-[assembly: AssemblyVersion("2026.1.26.10")]
+[assembly: AssemblyVersion("2026.2.23.23")]
 
 
 [assembly: NeutralResourcesLanguage("en-US")]

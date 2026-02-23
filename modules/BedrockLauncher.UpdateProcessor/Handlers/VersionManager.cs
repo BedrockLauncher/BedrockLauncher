@@ -144,7 +144,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
                 var resp = await HttpClient.GetAsync(url);
                 resp.EnsureSuccessStatusCode();
                 var data = await resp.Content.ReadAsStringAsync();
-                db.PraseRaw(data, GetVersionArches());
+                db.ParseRaw(data, GetVersionArches());
                 db.Save(filePath);
                 InsertVersionsFromDB(db);
             }
@@ -201,7 +201,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             }
 
         }
-        private Dictionary<Guid, string> GetVersionArches()
+        private Dictionary<string, string> GetVersionArches()
         {
             return Versions.ToDictionary(x => x.GetUUID(), x => x.GetArchitecture());
         }

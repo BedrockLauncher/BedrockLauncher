@@ -66,7 +66,7 @@ namespace BedrockLauncher.Downloaders
             foreach (VersionInfoJson entry in versionList)
             {
                 // Trace.WriteLine($"Found version: {entry.GetVersion()}");
-                versions.Add(new MCVersion(entry.GetUUID().ToString(), entry.GetUUID().ToString(), GetRealVersion(entry.GetVersion()), entry.GetVersionType(), entry.GetArchitecture()));
+                versions.Add(new MCVersion(entry.GetUUID(), entry.GetUUID(), GetRealVersion(entry.GetVersion()), entry.GetVersionType(), entry.GetArchitecture()));
             }
                 
             versions.Sort((x, y) => x.Compare(y));
@@ -98,7 +98,7 @@ namespace BedrockLauncher.Downloaders
 
             string GetRealVersion(string versionS)
             {
-                if (MinecraftVersion.TryParse(versionS, out MinecraftVersion version)) return version.ToRealString();
+                if (MinecraftVersion.TryParse(versionS, out MinecraftVersion version)) return version.ToString();
                 else return new Version(0, 0, 0, 0).ToString();
             }
         }
