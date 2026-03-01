@@ -27,6 +27,7 @@ namespace BedrockLauncher.UpdateProcessor.Authentication
         {
             HttpListener listener = new HttpListener();
             listener.Prefixes.Add(redirect_url);
+            // Known issue: never forcefully closed if user presses "back"
             listener.Start();
             HttpListenerContext context = await listener.GetContextAsync();   // waits for redirect
             HttpListenerRequest request = context.Request;

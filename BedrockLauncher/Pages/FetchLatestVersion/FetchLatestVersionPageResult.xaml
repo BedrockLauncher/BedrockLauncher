@@ -11,11 +11,23 @@
       Title="WelcomePageOne" Width="596" Height="254">
     <Grid Margin="0" Background="{x:Null}">
         <Border Background="#FF313131" Height="1" VerticalAlignment="Bottom" Margin="0,0,0,55" />
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Text="{DynamicResource FetchLatestVersion_Title}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="24" Margin="0,30,0,0" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" Text="{DynamicResource FetchLatestVersion_ResultHeader}" VerticalAlignment="Top" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Margin="28.5,87,28.5,0" TextWrapping="Wrap"/>
-
-        <StackPanel Margin="0,130,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
-           
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Text="{DynamicResource FetchLatestVersion_Title}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="24" Margin="0,15,0,0" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" Text="{DynamicResource FetchLatestVersion_ResultHeader}" VerticalAlignment="Top" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" Margin="28.5,50,28.5,0" TextWrapping="Wrap"/>
+        <StackPanel Margin="0,80,0,0" Orientation="Vertical" HorizontalAlignment="Center">
+            <TextBlock HorizontalAlignment="Left" Foreground="White" Text="{DynamicResource VersionEntries_LatestRelease}" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" FontWeight="Bold" Padding="5,0,0,0"></TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,5,0,0">
+                <ContentControl Style="{DynamicResource TextboxLikeFrame}" Height="25">
+                    <TextBox Text="{DynamicResource FetchLatestVersion_NoNewVersion}" Width="250" Style="{DynamicResource BlankTextBox}" IsReadOnly="True" x:Name="LatestReleaseName" FontSize="14" Padding="10,2,5,3"></TextBox>
+                </ContentControl>
+                <Button x:Name="CopyReleaseUUID" Click="CopyReleaseUUID_Click" SnapsToDevicePixels="True" Foreground="White" Style="{DynamicResource DialogButton_Green}" Content="{DynamicResource FetchLatestVersion_CopyUUID}" HorizontalAlignment="Right" VerticalAlignment="Top" Height="25" IsEnabled="False"/>
+            </StackPanel>
+            <TextBlock HorizontalAlignment="Left" Foreground="White" Text="{DynamicResource VersionEntries_LatestPreview}" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" FontWeight="Bold" Padding="5,5,0,0"></TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,5,0,0">
+                <ContentControl Style="{DynamicResource TextboxLikeFrame}" Height="25">
+                    <TextBox Text="{DynamicResource FetchLatestVersion_NoNewVersion}" Width="250" Style="{DynamicResource BlankTextBox}" IsReadOnly="True" x:Name="LatestPreviewName" FontSize="14" Padding="10,2,5,3"></TextBox>
+                </ContentControl>
+                <Button x:Name="CopyPreviewUUID" Click="CopyPreviewUUID_Click" SnapsToDevicePixels="True" Foreground="White" Style="{DynamicResource DialogButton_Green}" Content="{DynamicResource FetchLatestVersion_CopyUUID}" HorizontalAlignment="Right" VerticalAlignment="Top" Height="25" IsEnabled="False"/>
+            </StackPanel>
         </StackPanel>
         <StackPanel Margin="8,0,8,8" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" ScrollViewer.VerticalScrollBarVisibility="Disabled">
             <Button x:Name="NextButton" Click="NextButton_Click" SnapsToDevicePixels="True" Foreground="White" Style="{DynamicResource DialogButton}" Content="{DynamicResource GeneralText_Next}" HorizontalAlignment="Right" VerticalAlignment="Top" Height="32"/>

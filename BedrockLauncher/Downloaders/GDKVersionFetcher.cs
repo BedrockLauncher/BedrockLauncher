@@ -82,12 +82,12 @@ namespace BedrockLauncher.Downloaders
             db.ReadJson(filename);
 
             IEnumerable<VersionInfoJson> new_versions = found.Except(db.list);
+            MainDataModel.Default.FetcherResult.RegisterVersions(new_versions);
+
             foreach (VersionInfoJson version in new_versions)
                 db.list.Add(version);
 
             db.WriteJson(filename);
-
-            MainDataModel.Default.FetcherResult.RegisterVersions(new_versions);
             MainDataModel.Default.FetcherResult.State = Enums.VersionFetcherState.Finished;
         }
     }
