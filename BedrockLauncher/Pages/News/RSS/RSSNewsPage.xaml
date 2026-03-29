@@ -24,7 +24,7 @@
             <ListView x:Name="OfficalNewsFeed" Keyboard.PreviewKeyUp="OfficalNewsFeed_KeyUp" ItemsSource="{Binding FeedItems}" ItemContainerStyle="{DynamicResource CardListViewItem}">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <vwp:VirtualizingWrapPanel StretchItems="False" Orientation="Vertical"/>
+                        <vwp:VirtualizingWrapPanel StretchItems="False" Orientation="Horizontal"/>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>

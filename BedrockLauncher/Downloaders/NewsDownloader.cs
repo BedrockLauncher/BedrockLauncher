@@ -28,7 +28,7 @@ namespace BedrockLauncher.Downloaders
             {
                 try
                 {
-                    var json = await httpClient.GetStringAsync(Constants.RSS_LAUNCHER_URL);
+                    var json = await httpClient.GetStringAsync(Constants.RSS_LAUNCHER_V2_URL);
                     result = Newtonsoft.Json.JsonConvert.DeserializeObject<News_OfficalFeed>(json);
                 }
                 catch

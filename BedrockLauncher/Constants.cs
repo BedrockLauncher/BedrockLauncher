@@ -47,14 +47,18 @@ namespace BedrockLauncher
         public static readonly string PATCHNOTE_RELEASE_IMG = APP_RESOURCEPATH_PREFIX + "resources/images/packs/pack_icon.png";
 
         public static readonly string PATCHNOTES_IMGPREFIX_URL = @"https://launchercontent.mojang.com/";
-        public static readonly string PATCHNOTES_MAIN_URL = @"https://launchercontent.mojang.com/bedrockPatchNotes.json";
+        public static readonly string PATCHNOTES_CONTENT_BASE_URL = @"https://launchercontent.mojang.com/v2/";
+        public static readonly string PATCHNOTES_MAIN_V2_URL = @"https://launchercontent.mojang.com/v2/bedrockPatchNotes.json";
         public static readonly string PATCHNOTES_TESTING_URL = @"https://launchercontent.mojang.com/testing/bedrockPatchNotes.json";
+
+        public static readonly string PATCHNOTES_RELEASE_CHANGELOG_URL = @"https://feedback.minecraft.net/hc/en-us/sections/360001186971-Release-Changelogs";
+        public static readonly string PATCHNOTES_PREVIEW_CHANGELOG_URL = @"https://feedback.minecraft.net/hc/en-us/sections/360001185332-Beta-and-Preview-Information-and-Changelogs";
 
         public static readonly string RSS_FALLBACK_IMG = APP_RESOURCEPATH_PREFIX + @"resources/images/packs/invalid_pack.png";
         public static readonly string RSS_LAUNCHER_IMG_PATH = @"https://launchercontent.mojang.com/";
         public static readonly string RSS_MINECRAFT_IMG_PATH = @"https://www.minecraft.net/";
 
-        public static readonly string RSS_LAUNCHER_URL = @"https://launchercontent.mojang.com/news.json";
+        public static readonly string RSS_LAUNCHER_V2_URL = @"https://launchercontent.mojang.com/v2/news.json";
         public static readonly string RSS_COMMUNITY_URL = @"https://www.minecraft.net/en-us/feeds/community-content/rss";
         public static readonly string RSS_FORUMS_URL = @"https://www.minecraftforum.net/news.rss";
 
@@ -84,6 +88,9 @@ namespace BedrockLauncher
 
         public static Dictionary<string, string> Themes = new Dictionary<string, string>()
         {
+            { "TinyTakeover",                      ThemesPathPrefix + "26.10_tiny_takeover.png" },
+            { "MountsOfMayhem",                    ThemesPathPrefix + "1.21.130_mounts_of_mayhem.png" },
+            { "TheCopperAge",                      ThemesPathPrefix + "1.21.111_the_copper_age.png" },
             { "ChaseTheSkies",                     ThemesPathPrefix + "1.21.90_chase_the_skies.jpg" },
             { "SpringToLife",                      ThemesPathPrefix + "1.21.70_spring_to_life.jpg" },
             { "TheGardenAwakens",                  ThemesPathPrefix + "1.21.50_the_garden_awakens.png" },
@@ -264,14 +271,16 @@ namespace BedrockLauncher
         {
             get
             {
-                var currentArchitecture = RuntimeInformation.OSArchitecture;
-                if (currentArchitecture == Architecture.Arm64) return "arm";
-                else if (currentArchitecture == Architecture.X86) return "x86";
-                else if (currentArchitecture == Architecture.X64) return "x64";
-                else return "null";
+                return RuntimeInformation.OSArchitecture switch
+                {
+                    Architecture.Arm64 => "arm",
+                    Architecture.X86 => "x86",
+                    Architecture.X64 => "x64",
+                    _ => "null"
+                };
             }
         }
-        
+
         public static RemovalOptions PackageRemovalOptions
         {
             get

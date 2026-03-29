@@ -248,7 +248,7 @@ namespace BedrockLauncher.Classes
         string ValidatePathName(string pathName)
         {
             char[] invalidFileNameChars = Path.GetInvalidFileNameChars();
-            return new string(pathName.Where(ch => !invalidFileNameChars.Contains(ch)).ToArray());
+            return new string(pathName.Select(ch => invalidFileNameChars.Contains(ch) ? '_' : ch).ToArray());
         }
         public bool Profile_Add(string name, string uuid, string directory, string img)
         {
@@ -357,7 +357,7 @@ namespace BedrockLauncher.Classes
 
                 while (CurrentInstallations.Any(x => x.DisplayName == newName))
                 {
-                    newName = $"{newName}{i}";
+                    newName = $"{installation.DisplayName} ({i})";
                     i++;
                 }
                 var Clone = installation.Clone(newName);

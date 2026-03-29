@@ -83,13 +83,13 @@ namespace BedrockLauncher.Pages.Play.PatchNotes
 
         private void MorePatchNotes_Click(object sender, RoutedEventArgs e)
         {
-            JemExtensions.WebExtensions.LaunchWebLink("https://aka.ms/MCChangelogs");
+            JemExtensions.WebExtensions.LaunchWebLink(Constants.PATCHNOTES_RELEASE_CHANGELOG_URL);
             e.Handled = true;
         }
 
         private void MoreBetaPatchNotes_Click(object sender, RoutedEventArgs e)
         {
-            JemExtensions.WebExtensions.LaunchWebLink("https://feedback.minecraft.net/hc/en-us/sections/360001185332-Beta-Information-and-Changelogs");
+            JemExtensions.WebExtensions.LaunchWebLink(Constants.PATCHNOTES_PREVIEW_CHANGELOG_URL);
             e.Handled = true;
         }
 
