@@ -176,17 +176,6 @@ namespace BedrockLauncher.Classes
                 ReadOnly = true,
                 InstallationUUID = Constants.LATEST_RELEASE_UUID
             };
-            /*BLInstallation latest_beta = new BLInstallation()
-            {
-                DisplayName = "DO NOT TRY",  //TODO: Localize Display Names
-                DirectoryName = "Latest Beta",  //TODO: Localize Directory Names?
-                VersionUUID = Constants.LATEST_BETA_UUID,
-                VersioningMode = VersioningMode.LatestBeta,
-                IconPath = Constants.INSTALLATIONS_LATEST_PREVIEW_ICONPATH,
-                IsCustomIcon = false,
-                ReadOnly = true,
-                InstallationUUID = Constants.LATEST_BETA_UUID
-            };*/
             BLInstallation latest_preview = new BLInstallation()
             {
                 DisplayName = "Latest Preview",  //TODO: Localize Display Names
@@ -204,16 +193,11 @@ namespace BedrockLauncher.Classes
             {
                 if (!profile.Installations.Any(x => x.InstallationUUID == latest_release.InstallationUUID && x.ReadOnly))
                     Installation_Add(latest_release);
-                //if (!profile.Installations.Any(x => x.InstallationUUID == latest_beta.InstallationUUID && x.ReadOnly))
-                    //Installation_Add(latest_beta);
                 if (!profile.Installations.Any(x => x.InstallationUUID == latest_preview.InstallationUUID && x.ReadOnly))
                     Installation_Add(latest_preview);
 
                 foreach (var installation in profile.Installations.Where(x => x.VersionUUID == latest_release.VersionUUID))
                     installation.VersioningMode = VersioningMode.LatestRelease;
-
-                //foreach (var installation in profile.Installations.Where(x => x.VersionUUID == latest_beta.VersionUUID))
-                   // installation.VersioningMode = VersioningMode.LatestBeta;
 
                 foreach (var installation in profile.Installations.Where(x => x.VersionUUID == latest_preview.VersionUUID))
                     installation.VersioningMode = VersioningMode.LatestPreview;

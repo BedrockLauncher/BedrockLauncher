@@ -18,11 +18,8 @@ namespace BedrockLauncher.Handlers
         public string UserDataFileName { get => "user_profile.json"; }
         public string SettingsFileName { get => "settings.json"; }
         public string WinStoreVersionsDBFileName { get => "winstore_versions.json"; }
-        public string WinStoreVersionsTechnicalDBFileName { get => "winstore_technical_versions.txt"; }
         public string CommunityVersionsDBFileName { get => "community_versions.json"; }
-        public string CommunityVersionsTechnicalDBFileName { get => "community_technical_versions.txt"; }
         public string AppDataFolderName { get => ".minecraft_bedrock"; }
-
         public string InstallationsFolderName { get => "installations"; }
         public string PackageDataFolderName { get => "packageData"; }
         public string IconCacheFolderName { get => "icon_cache"; }
@@ -84,14 +81,6 @@ namespace BedrockLauncher.Handlers
         public string GetCommunityVersionsDBFile()
         {
             return Path.Combine(CurrentLocation, CommunityVersionsDBFileName);
-        }
-        public string GetCommunityVersionsTechnicalDBFile()
-        {
-            return Path.Combine(CurrentLocation, CommunityVersionsTechnicalDBFileName);
-        }
-        public string GetWinStoreVersionsTechnicalDBFile()
-        {
-            return Path.Combine(CurrentLocation, WinStoreVersionsTechnicalDBFileName);
         }
         public string GetWinStoreVersionsDBFile()
         {

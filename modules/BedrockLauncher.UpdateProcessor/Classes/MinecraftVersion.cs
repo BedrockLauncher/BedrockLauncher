@@ -70,8 +70,6 @@ namespace BedrockLauncher.UpdateProcessor.Classes
             long patch = long.Parse(match.Groups["patch"].Value, CultureInfo.InvariantCulture);
             long revision = long.Parse(match.Groups["revision"].Value, CultureInfo.InvariantCulture);
 
-
-
             return new MinecraftVersion(major, minor, patch, revision);
         }
         public static bool TryParse(string version, out MinecraftVersion ver)
@@ -115,7 +113,7 @@ namespace BedrockLauncher.UpdateProcessor.Classes
         }
 
         public string ToRealString()
-        {
+        { 
             int major;
             int minor;
             int patch;
@@ -125,6 +123,9 @@ namespace BedrockLauncher.UpdateProcessor.Classes
             int minor_i = Convert.ToInt32(Minor);
             int patch_i = Convert.ToInt32(Patch);
 
+            // This should not be needed anyore. If you are in the future and this broke something, undo it
+            // It will break some versions though, like 1.21.120.20
+            /*
             if (major_i == 0 && minor_i < 1000)
             {
                 major = major_i;
@@ -146,7 +147,10 @@ namespace BedrockLauncher.UpdateProcessor.Classes
                 patch = patch_i / 100;
                 revision = patch_i % 100;
             }
-            return $"{major}.{minor}.{patch}.{revision}";
+            */
+
+            revision = Convert.ToInt32(Revision);
+            return $"{major_i}.{minor_i}.{patch_i}.{revision}";
         }
     }
 }

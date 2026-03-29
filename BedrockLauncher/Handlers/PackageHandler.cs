@@ -33,6 +33,7 @@ using BedrockLauncher.UpdateProcessor.Enums;
 using JemExtensions.WPF.Commands;
 using BedrockLauncher.UI.Pages.Common;
 using System.Collections;
+using BedrockLauncher.UpdateProcessor.Classes;
 
 namespace BedrockLauncher.Handlers
 {
@@ -92,15 +93,30 @@ namespace BedrockLauncher.Handlers
             try
             {
                 StartTask();
-                if (!v.IsInstalled) await DownloadAndExtractPackage(v);
+
+                if (!v.IsInstalled)
+                {
+                    List<VersionInfoJson> versions = VersionManager.Singleton.GetVersions();
+                    if (versions.Any(ver => v.UUID.CompareTo(ver.uuid.ToString()) == 0))
+                    {
+                        await DownloadAndExtractPackage(v);
+                    }
+                    else
+                    {
+                        throw new NoVersionAccessibleException();
+                    }
+                }
 
                 await UnregisterPackage(v, true);
                 await RegisterPackage(v);
 
                 await RedirectSaveData(dirPath, v.Type);
-
             }
             catch (PackageManagerException e)
+            {
+                SetException(e);
+            }
+            catch (NoVersionAccessibleException e)
             {
                 SetException(e);
             }
@@ -269,9 +285,11 @@ namespace BedrockLauncher.Handlers
 
         private async Task DownloadAndExtractPackage(MCVersion v)
         {
+            //MCVersion debugGDKVersion = new MCVersion("", "", "1.21.120", VersionType.Release, "x64");
+
             try
             {
-                Trace.WriteLine("Download start");
+                Trace.WriteLine($"Download start: {v.PackageID}");
                 SetCancelation(true);
 
                 string subDirectory = Path.Combine(MainDataModel.Default.FilePaths.VersionsFolder, "AppxBackups");
