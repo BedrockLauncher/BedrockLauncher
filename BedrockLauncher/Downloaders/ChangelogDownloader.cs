@@ -61,7 +61,7 @@ namespace BedrockLauncher.Downloaders
             {
                 try
                 {
-                    var json = await httpClient.GetStringAsync(Constants.PATCHNOTES_MAIN_URL);
+                    var json = await httpClient.GetStringAsync(Constants.PATCHNOTES_MAIN_V2_URL);
                     result = Newtonsoft.Json.JsonConvert.DeserializeObject<PatchNotes_Game_Root>(json);
                 }
                 catch

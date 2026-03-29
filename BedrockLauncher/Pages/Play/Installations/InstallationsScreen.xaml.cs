@@ -44,21 +44,13 @@ namespace BedrockLauncher.Pages.Play.Installations
         }
         private void PageHost_Loaded(object sender, RoutedEventArgs e)
         {
-            switch (Properties.LauncherSettings.Default.InstallationsSortMode)
+            SortByComboBox.SelectedItem = Properties.LauncherSettings.Default.InstallationsSortMode switch
             {
-                case Enums.InstallationSort.LatestPlayed:
-                    SortByComboBox.SelectedItem = SortByLatestPlayed;
-                    break;
-                case Enums.InstallationSort.Name:
-                    SortByComboBox.SelectedItem = SortByName;
-                    break;
-                case Enums.InstallationSort.None:
-                    SortByComboBox.SelectedItem = SortByNone;
-                    break;
-                default:
-                    SortByComboBox.SelectedItem = SortByLatestPlayed;
-                    break;
-            }
+                Enums.InstallationSort.LatestPlayed => SortByLatestPlayed,
+                Enums.InstallationSort.Name => SortByName,
+                Enums.InstallationSort.None => SortByNone,
+                _ => SortByLatestPlayed
+            };
             this.RefreshInstallations();
         }
 

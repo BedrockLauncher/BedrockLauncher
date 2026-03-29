@@ -36,8 +36,8 @@ namespace BedrockLauncher.UI.Pages.Common
 
         private void ErrorScreenViewCrashButton_Click(object sender, RoutedEventArgs e)
         {
-            var logFilePath = Path.Combine(AppContext.BaseDirectory, LogManager.Configuration.FindTargetByName<FileTarget>("allfile").FileName.Render(new LogEventInfo()));
-            Process.Start("notepad.exe", logFilePath);
+            var logPath = Path.Combine(AppContext.BaseDirectory, LogManager.Configuration.FindTargetByName<FileTarget>("allfile").FileName.Render(new LogEventInfo()));
+            Process.Start("notepad.exe", logPath);
         }
     }
     public static class ErrorScreenShow

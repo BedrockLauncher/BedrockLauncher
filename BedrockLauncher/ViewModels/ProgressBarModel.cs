@@ -129,7 +129,14 @@ namespace BedrockLauncher.ViewModels
 
         #region Text
 
-        public object Description { get { Depends.On(CurrentState); return GetProgressBarDescription(); } }
+        public object Description
+        {
+            get
+            {
+                Depends.On(CurrentState, PlayButtonLanguageChanged);
+                return GetProgressBarDescription();
+            }
+        }
         public string TextualProgress { get { Depends.On(CurrentState, CurrentProgress, ActualCurrentProgress, ActualTotalProgress); return GetProgressBarTextualProgress(); } }
         public string Information { get; set; }
 
@@ -138,27 +145,18 @@ namespace BedrockLauncher.ViewModels
 
         private string GetProgressBarDescription()
         {
-            switch (CurrentState)
+            return CurrentState switch
             {
-                case LauncherState.isInitializing:
-                    return Application.Current.TryFindResource("ProgressBar_Downloading").ToString();
-                case LauncherState.isDownloading:
-                    return Application.Current.TryFindResource("ProgressBar_Downloading").ToString();
-                case LauncherState.isExtracting:
-                    return Application.Current.TryFindResource("ProgressBar_Extracting").ToString();
-                case LauncherState.isRegisteringPackage:
-                    return Application.Current.TryFindResource("ProgressBar_RegisteringPackage").ToString();
-                case LauncherState.isRemovingPackage:
-                    return Application.Current.TryFindResource("ProgressBar_RemovingPackage").ToString();
-                case LauncherState.isUninstalling:
-                    return Application.Current.TryFindResource("ProgressBar_Uninstalling").ToString();
-                case LauncherState.isLaunching:
-                    return Application.Current.TryFindResource("ProgressBar_Launching").ToString();
-                case LauncherState.isBackingUp:
-                    return Application.Current.TryFindResource("ProgressBar_BackingUp").ToString();
-                default:
-                    return null;
-            }
+                LauncherState.isInitializing => Application.Current.TryFindResource("ProgressBar_Downloading").ToString(),
+                LauncherState.isDownloading => Application.Current.TryFindResource("ProgressBar_Downloading").ToString(),
+                LauncherState.isExtracting => Application.Current.TryFindResource("ProgressBar_Extracting").ToString(),
+                LauncherState.isRegisteringPackage => Application.Current.TryFindResource("ProgressBar_RegisteringPackage").ToString(),
+                LauncherState.isRemovingPackage => Application.Current.TryFindResource("ProgressBar_RemovingPackage").ToString(),
+                LauncherState.isUninstalling => Application.Current.TryFindResource("ProgressBar_Uninstalling").ToString(),
+                LauncherState.isLaunching => Application.Current.TryFindResource("ProgressBar_Launching").ToString(),
+                LauncherState.isBackingUp => Application.Current.TryFindResource("ProgressBar_BackingUp").ToString(),
+                _ => null
+            };
         }
         private string GetProgressBarTextualProgress()
         {

@@ -52,7 +52,8 @@ namespace BedrockLauncher
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             MainViewModel.Default.AttemptClose(sender, e);
-        }        private async void Window_Initialized(object sender, EventArgs e)
+        }
+        private async void Window_Initialized(object sender, EventArgs e)
         {
             Panel.SetZIndex(MainFrame, 0);
             Panel.SetZIndex(OverlayFrame, 1);
