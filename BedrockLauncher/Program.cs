@@ -28,6 +28,8 @@ namespace BedrockLauncher
         [STAThread]
         public static void Main()
         {
+            Directory.SetCurrentDirectory(AppContext.BaseDirectory);
+
             RuntimeHandler.StartLogging();
             RuntimeHandler.LogStartupInformation();
             RuntimeHandler.ValidateOSArchitecture();

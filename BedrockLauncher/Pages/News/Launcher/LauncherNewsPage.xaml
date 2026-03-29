@@ -67,7 +67,7 @@
             </ListView.Resources>
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <vwp:VirtualizingWrapPanel Orientation="Vertical"/>
+                    <vwp:VirtualizingWrapPanel Orientation="Horizontal"/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
