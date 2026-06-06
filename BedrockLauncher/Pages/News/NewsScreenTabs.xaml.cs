@@ -28,10 +28,7 @@ namespace BedrockLauncher.Pages.News
     {
 
 
-        private RSSNewsPage communityNewsPage = new RSSNewsPage(ViewModels.RSSViewModel.MinecraftCommunity);
-        private OfficalNewsPage javaNewsPage = new OfficalNewsPage();
-        private RSSNewsPage forumsNewsPage = new RSSNewsPage(ViewModels.RSSViewModel.MinecraftForums);
-        private LauncherNewsPage launcherNewsPage;
+        private OfficalNewsPage bedrockNewsPage = new OfficalNewsPage();
 
         private Navigator Navigator { get; set; } = new Navigator();
 
@@ -40,8 +37,7 @@ namespace BedrockLauncher.Pages.News
         public NewsScreenTabs()
         {
             InitializeComponent();
-            LastTabName = JavaTab.Name;
-            launcherNewsPage = new LauncherNewsPage();
+            LastTabName = BedrockTab.Name;
         }
 
 
@@ -61,9 +57,7 @@ namespace BedrockLauncher.Pages.News
                 // ya i know this is really bad, i need to learn mvvm instead of doing this shit
                 // but this works fine, at least
                 List<ToggleButton> toggleButtons = new List<ToggleButton>() {
-                JavaTab,
-                ForumsTab,
-                LauncherTab
+                BedrockTab
             };
 
                 foreach (ToggleButton button in toggleButtons) { button.IsChecked = false; }
@@ -92,30 +86,15 @@ namespace BedrockLauncher.Pages.News
             {
                 ResetButtonManager(senderName);
 
-                if (senderName == JavaTab.Name) NavigateToJavaNews();
-                else if (senderName == ForumsTab.Name) NavigateToForumNews();
-                else if (senderName == LauncherTab.Name) NavigateToLauncherNews();
+                if (senderName == BedrockTab.Name) NavigateToBedrockNews();
             });
         }
 
-        public void NavigateToJavaNews()
+        public void NavigateToBedrockNews()
         {
             Navigator.UpdatePageIndex(1);
-            Task.Run(() => Navigator.Navigate(ContentFrame, javaNewsPage));
-            LastTabName = JavaTab.Name;
-        }
-
-        public void NavigateToForumNews()
-        {
-            Navigator.UpdatePageIndex(2);
-            Task.Run(() => Navigator.Navigate(ContentFrame, forumsNewsPage));
-            LastTabName = ForumsTab.Name;
-        }
-        public void NavigateToLauncherNews()
-        {
-            Navigator.UpdatePageIndex(3);
-            Task.Run(() => Navigator.Navigate(ContentFrame, launcherNewsPage));
-            LastTabName = LauncherTab.Name;
+            Task.Run(() => Navigator.Navigate(ContentFrame, bedrockNewsPage));
+            LastTabName = BedrockTab.Name;
         }
 
 
@@ -124,9 +103,7 @@ namespace BedrockLauncher.Pages.News
         private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
 
-            if (LastTabName.Equals(LauncherTab.Name)) _ = launcherNewsPage.RefreshNews();
-            else if (LastTabName.Equals(ForumsTab.Name)) forumsNewsPage.RefreshNews();
-            else if (LastTabName.Equals(JavaTab.Name)) javaNewsPage.RefreshNews();
+            bedrockNewsPage.RefreshNews();
         }
     }
 }

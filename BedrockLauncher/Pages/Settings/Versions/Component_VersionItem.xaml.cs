@@ -15,6 +15,8 @@ namespace BedrockLauncher.Pages.Settings.Versions
         public Component_VersionItem()
         {
             InitializeComponent();
+            Loaded += (_, _) => RefreshActionButtonStyle();
+            DataContextChanged += (_, _) => RefreshActionButtonStyle();
         }
 
         public Visibility ButtonPanelVisibility
@@ -77,16 +79,32 @@ namespace BedrockLauncher.Pages.Settings.Versions
             button.ContextMenu.IsOpen = true;
         }
 
-        private void Repair_Click(object sender, RoutedEventArgs e)
+        private async void Repair_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
             var version = button.DataContext as MCVersion;
-            MainDataModel.Default.RepairVersion(version);
+            RefreshActionButtonStyle();
+            await MainDataModel.Default.InstallSelectAndPlayVersion(version);
+            RefreshActionButtonStyle();
+            GetParent()?.RefreshVersionRows();
         }
 
         private void ContextMenu_Closed(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void RefreshActionButtonStyle()
+        {
+            if (Repair == null) return;
+
+            var version = DataContext as MCVersion;
+            string styleName = version?.IsSelectedForPlay == true && version.IsInstalled
+                ? "DialogButton_Green"
+                : "DialogButton_Orange";
+
+            if (TryFindResource(styleName) is Style style)
+                Repair.Style = style;
         }
     }
 }

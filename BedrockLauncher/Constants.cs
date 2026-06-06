@@ -280,7 +280,7 @@ namespace BedrockLauncher
             {
                 return RuntimeInformation.OSArchitecture switch
                 {
-                    Architecture.Arm64 => "arm",
+                    Architecture.Arm64 => "arm64",
                     Architecture.X86 => "x86",
                     Architecture.X64 => "x64",
                     _ => "null"
@@ -306,6 +306,32 @@ namespace BedrockLauncher
                 DeploymentOptions options = new DeploymentOptions();
                 options |= DeploymentOptions.DevelopmentMode;
                 options |= DeploymentOptions.ForceTargetApplicationShutdown;
+                return options;
+            }
+        }
+
+        public static DeploymentOptions StorePackageDeploymentOptions
+        {
+            get
+            {
+                // Store/GDK packages are signed packages, not loose developer packages.
+                // Passing DevelopmentMode here makes AddPackageAsync fail with
+                // "invalid deployment options" on normal Windows installs.
+                DeploymentOptions options = new DeploymentOptions();
+                options |= DeploymentOptions.ForceTargetApplicationShutdown;
+                options |= DeploymentOptions.ForceUpdateFromAnyVersion;
+                return options;
+            }
+        }
+
+        public static DeploymentOptions StorePackageStageInPlaceDeploymentOptions
+        {
+            get
+            {
+                DeploymentOptions options = StorePackageDeploymentOptions;
+                if (Enum.TryParse("StageInPlace", ignoreCase: false, out DeploymentOptions stageInPlace))
+                    options |= stageInPlace;
+
                 return options;
             }
         }

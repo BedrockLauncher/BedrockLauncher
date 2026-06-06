@@ -36,6 +36,8 @@ namespace BedrockLauncher.Pages.Settings.General.Components
             var items = BedrockLauncher.Localization.Language.LanguageManager.GetResourceDictonaries();
             this.ItemsSource = items;
             string language = BedrockLauncher.Localization.Properties.Settings.Default.Language;
+            if (string.IsNullOrWhiteSpace(language) || language == "none" || language == "default")
+                language = "en-US";
 
             // Set chosen language in language combobox
             if (items.Exists(x => x.Locale.ToString() == language))
@@ -45,6 +47,12 @@ namespace BedrockLauncher.Pages.Settings.General.Components
             else
             {
                 this.SelectedItem = items.Where(x => x.Locale.ToString() == "en-US").FirstOrDefault();
+            }
+
+            if (this.SelectedItem is BedrockLauncher.Localization.Language.LanguageDefinition selected &&
+                BedrockLauncher.Localization.Properties.Settings.Default.Language != selected.Locale)
+            {
+                BedrockLauncher.Localization.Language.LanguageManager.SetLanguage(selected.Locale);
             }
         }
 

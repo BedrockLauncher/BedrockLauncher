@@ -13,7 +13,7 @@
         d:DataContext="{d:DesignInstance Type=viewModels:MainViewModel}"
         mc:Ignorable="d"
         MouseDown="Window_MouseDown"
-        Title="{DynamicResource ResourceKey=MainWindow_Title}"
+        Title="BedrockLauncher"
         Height="700" Width="1016" 
         Foreground="{x:Null}" 
         MinWidth="1016" MinHeight="700" 

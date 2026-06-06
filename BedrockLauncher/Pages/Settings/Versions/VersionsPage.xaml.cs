@@ -40,11 +40,24 @@ namespace BedrockLauncher.Pages.Settings.Versions
             });
         }
 
-        private void PageHost_Loaded(object sender, RoutedEventArgs e)
+        public void RefreshVersionRows()
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                foreach (var ver in MainDataModel.Default.Versions) ver.UpdateFolderSize();
+                if (VersionsList != null) Handlers.FilterSortingHandler.Refresh(VersionsList.ItemsSource);
+            });
+        }
+
+        private async void PageHost_Loaded(object sender, RoutedEventArgs e)
         {
             if (!hasInitalized)
             {
+                if (MainDataModel.Default.Versions.Count == 0)
+                    await Task.Run(Program.OnApplicationRefresh);
+
                 foreach (var ver in MainDataModel.Default.Versions) ver.UpdateFolderSize();
+                RefreshVersionsList(sender, e);
                 hasInitalized = true;
             }
         }
@@ -53,6 +66,7 @@ namespace BedrockLauncher.Pages.Settings.Versions
         {
             await Task.Run(Program.OnApplicationRefresh);
             foreach (var ver in MainDataModel.Default.Versions) ver.UpdateFolderSize();
+            RefreshVersionsList(sender, e);
         }
 
         private void CollectionViewSource_Filter(object sender, FilterEventArgs e)

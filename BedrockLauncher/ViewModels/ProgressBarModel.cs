@@ -18,14 +18,28 @@ using S = JemExtensions.SpecialExtensions;
 namespace BedrockLauncher.ViewModels
 {
 
-    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]
-    public class ProgressBarModel
+    public class ProgressBarModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(params string[] propertyNames)
+        {
+            foreach (string propertyName in propertyNames)
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         #region Init
 
         public ProgressBarModel()
         {
-            ((INotifyPropertyChanged)this).PropertyChanged += ProgressBarModel_PropertyChanged;
+            PropertyChanged += ProgressBarModel_PropertyChanged;
         }
         private void ProgressBarModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -48,7 +62,12 @@ namespace BedrockLauncher.ViewModels
             {
                 Depends.On(IsGameRunning, PlayButtonLanguageChanged);
                 if (IsGameRunning) return Application.Current.FindResource("GameTab_PlayButton_Kill_Text").ToString();
-                else return Application.Current.FindResource("InstallationsPage_PlayButton").ToString();
+
+                var selectedInstallation = MainDataModel.Default?.Config?.GetSelectedOrFirstPlayableInstallation();
+                if (selectedInstallation?.Version == null)
+                    return Application.Current.FindResource("InstallationsPage_PlayButton").ToString();
+
+                return Application.Current.FindResource("InstallationsPage_PlayButton").ToString();
             }
         }
         public string PlayEditorButtonString
@@ -122,6 +141,7 @@ namespace BedrockLauncher.ViewModels
                 Anim_MiniVisibility = isShown ? Visibility.Visible : Visibility.Collapsed;
                 Anim_Visibility = isShown || isInit ? Visibility.Visible : Visibility.Collapsed;
                 Anim_TextVisibility = isShown || isInit ? Visibility.Visible : Visibility.Collapsed;
+                OnPropertyChanged(nameof(Anim_MiniVisibility), nameof(Anim_Visibility), nameof(Anim_TextVisibility));
             }
         }
 
@@ -179,6 +199,7 @@ namespace BedrockLauncher.ViewModels
         public void SetProgressBarVisibility(bool show)
         {
             Show = show;
+            OnPropertyChanged(nameof(Show), nameof(AllowPlaying), nameof(AllowEditing));
         }
 
         public void ResetProgressBarProgress()
@@ -188,6 +209,7 @@ namespace BedrockLauncher.ViewModels
             ActualTotalProgress = 0;
 
             IsIndeterminate = true;
+            OnPropertyChanged(nameof(CurrentProgress), nameof(ActualCurrentProgress), nameof(ActualTotalProgress), nameof(IsIndeterminate), nameof(TextualProgress), nameof(ShowTextualProgress));
         }
         public void SetProgressBarProgress(long currentProgress, long totalProgress)
         {
@@ -200,18 +222,22 @@ namespace BedrockLauncher.ViewModels
             ActualTotalProgress = totalProgress;
 
             if (IsIndeterminate != false) IsIndeterminate = false;
+            OnPropertyChanged(nameof(CurrentProgress), nameof(ActualCurrentProgress), nameof(ActualTotalProgress), nameof(IsIndeterminate), nameof(TextualProgress), nameof(ShowTextualProgress));
         }
         public void SetGameRunningStatus(bool isRunning)
         {
             IsGameRunning = isRunning;
+            OnPropertyChanged(nameof(IsGameRunning), nameof(PlayButtonString), nameof(PlayEditorButtonString), nameof(AllowPlaying), nameof(AllowEditing));
         }
         public void SetProgressBarText(string text = null)
         {
             Information = text;
+            OnPropertyChanged(nameof(Information), nameof(ShowInformation));
         }
         public void SetProgressBarState(LauncherState? state = null)
         {
             CurrentState = state == null ? LauncherState.None : state.Value;
+            OnPropertyChanged(nameof(CurrentState), nameof(Description), nameof(TextualProgress), nameof(ShowTextualProgress), nameof(AllowPlaying), nameof(AllowEditing));
         }
 
         #endregion

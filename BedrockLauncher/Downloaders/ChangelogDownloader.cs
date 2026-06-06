@@ -19,7 +19,6 @@ using System.Windows;
 namespace BedrockLauncher.Downloaders
 {
 
-    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]    //196 Lines
     public class ChangelogDownloader
     {
 

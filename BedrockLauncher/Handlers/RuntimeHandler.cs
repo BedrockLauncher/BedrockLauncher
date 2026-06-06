@@ -136,6 +136,7 @@ namespace BedrockLauncher.Handlers
         public static void OnDispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
             Trace.WriteLine(e.Exception.ToString());
+            e.Handled = true;
         }
 
         public static NLogTraceListener InternalTraceListener { get; set; } = new NLogTraceListener();

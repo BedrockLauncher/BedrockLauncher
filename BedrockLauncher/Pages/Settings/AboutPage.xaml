@@ -23,6 +23,13 @@
         <sys:Uri x:Key="McMrArm_GithubURL">https://github.com/MCMrARM</sys:Uri>
         <sys:Uri x:Key="McMrArm_TwitterURL">https://twitter.com/mcmrarm</sys:Uri>
         <sys:Uri x:Key="Mojang_URL">https://www.minecraft.net/en-us/</sys:Uri>
+        <sys:Uri x:Key="Mrmariix_GithubURL">https://github.com/mrmariixx</sys:Uri>
+        <sys:Uri x:Key="Mrmariix_YoutubeURL">https://youtube.com/@mrmariixx</sys:Uri>
+        <sys:Uri x:Key="Rayth_GithubURL">https://github.com/Rayth</sys:Uri>
+        <sys:Uri x:Key="DLazaridis_GithubURL">https://github.com/DLazaridisGM</sys:Uri>
+        <sys:Uri x:Key="MetalMane_GithubURL">https://github.com/MetalManeMc</sys:Uri>
+        <sys:Uri x:Key="MetalMane_BlueSkyURL">https://bsky.app/profile/metalmanemc.bsky.social</sys:Uri>
+        <sys:Uri x:Key="MetalMane_ModbayURL">https://modbay.org/user/metalmanemc/</sys:Uri>
 
         <Style x:Key="AboutTitle" TargetType="{x:Type TextBlock}">
             <Setter Property="FontWeight" Value="Bold"/>
@@ -39,8 +46,6 @@
             <Setter Property="BorderBrush" Value="{DynamicResource Seperator.Background}"/>
             <Setter Property="Margin" Value="0,3"/>
         </Style>
-
-
 
         <Border x:Key="CJMention">
             <Grid  HorizontalAlignment="Stretch">
@@ -93,6 +98,122 @@
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_Twitter}" Tag="{StaticResource XlynxX_TwitterURL}" Click="Button_Click" Padding="10,0"  FontSize="15"/>
                             <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_GitHub}" Tag="{StaticResource XlynxX_GithubURL}" Click="Button_Click" Padding="10,0"  FontSize="15"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+
+        <Border x:Key="RaythMention">
+            <Grid Background="Transparent" HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Background="#262626" CornerRadius="10">
+                    <Grid Height="150" Background="Transparent">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" HorizontalAlignment="Right" Source="/BedrockLauncher;component/resources/images/credits/raythmc.png">
+                            <Image.OpacityMask>
+                                <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                                    <GradientStop Color="#ffffffff" Offset="0.8" />
+                                    <GradientStop Color="#00ffffff" Offset="0.9" />
+                                </RadialGradientBrush>
+                            </Image.OpacityMask>
+                        </Image>
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,10,0">
+                            <TextBlock Text="Rayth" FontSize="34" Foreground="White" TextWrapping="Wrap"/>
+                            <TextBlock Text="Team" FontSize="14" Foreground="#D8D8D8" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+
+        <Border x:Key="MrmariixMention">
+            <Grid Background="Transparent" HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Background="#262626" CornerRadius="10">
+                    <Grid Height="150" Background="Transparent">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" HorizontalAlignment="Right" Source="/BedrockLauncher;component/resources/images/credits/mrmariix.png">
+                            <Image.OpacityMask>
+                                <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                                    <GradientStop Color="#ffffffff" Offset="0.8" />
+                                    <GradientStop Color="#00ffffff" Offset="0.9" />
+                                </RadialGradientBrush>
+                            </Image.OpacityMask>
+                        </Image>
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,10,0">
+                            <TextBlock Text="mrmariix" FontSize="34" Foreground="White" TextWrapping="Wrap"/>
+                            <TextBlock Text="Developer" FontSize="14" Foreground="#D8D8D8" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+
+        <Border x:Key="MetalManeMention">
+            <Grid Background="Transparent" HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Background="#262626" CornerRadius="10">
+                    <Grid Height="150" Background="Transparent">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" HorizontalAlignment="Right" Source="/BedrockLauncher;component/resources/images/credits/MetalManeMc.jpg">
+                            <Image.OpacityMask>
+                                <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                                    <GradientStop Color="#ffffffff" Offset="0.8" />
+                                    <GradientStop Color="#00ffffff" Offset="0.9" />
+                                </RadialGradientBrush>
+                            </Image.OpacityMask>
+                        </Image>
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,10,0">
+                            <TextBlock Text="MetalManeMC" FontSize="30" Foreground="White" TextWrapping="Wrap"/>
+                            <TextBlock Text="Developer" FontSize="14" Foreground="#D8D8D8" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+
+        <Border x:Key="DLazaridisMention">
+            <Grid Background="Transparent" HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Background="#262626" CornerRadius="10">
+                    <Grid Height="150" Background="Transparent">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" HorizontalAlignment="Right" Source="/BedrockLauncher;component/resources/images/credits/DLazaridisGM.png">
+                            <Image.OpacityMask>
+                                <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                                    <GradientStop Color="#ffffffff" Offset="0.8" />
+                                    <GradientStop Color="#00ffffff" Offset="0.9" />
+                                </RadialGradientBrush>
+                            </Image.OpacityMask>
+                        </Image>
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,10,0">
+                            <TextBlock Text="DLazaridisGM" FontSize="30" Foreground="White" TextWrapping="Wrap"/>
+                            <TextBlock Text="Developer" FontSize="14" Foreground="#D8D8D8" TextWrapping="Wrap"/>
                         </StackPanel>
                     </Grid>
                 </Border>
@@ -181,33 +302,186 @@
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="0"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
-            <TextBlock FontWeight="Bold" Margin="0,10,0,5"  FontSize="20" Text="{DynamicResource AboutPage_Title}" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-            <Separator Margin="0,10"></Separator>
-        </StackPanel>
-        <Grid Grid.Row="1" HorizontalAlignment="Center" MaxWidth="650">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <StackPanel Margin="5,0" HorizontalAlignment="Right" VerticalAlignment="Top">
-                <TextBlock Text="{DynamicResource AboutPage_DevelopedBy_Text}" Style="{StaticResource AboutTitle}" />
-                <ContentPresenter Content="{StaticResource CJMention}"/>
-                <TextBlock Text="{DynamicResource AboutPage_OriginallyDevelopedBy_Text}" Style="{StaticResource AboutTitle}" />
-                <ContentPresenter Content="{StaticResource XlynxXMention}" />
-            </StackPanel>
-            <StackPanel Grid.Column="1" Margin="5,0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <TextBlock Text="{DynamicResource AboutPage_SpecialThanks_Text}" Style="{StaticResource AboutTitle}" />
-                <ContentPresenter Content="{StaticResource MCMrARMMention}" />
-                <ContentPresenter Content="{StaticResource MojangMention}" />
-                <ContentPresenter Grid.Column="1" Content="{StaticResource MinorDetails}"/>
-            </StackPanel>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <StackPanel Margin="6,0,6,14">
+                <Border Background="#262626" CornerRadius="0" Padding="18" Margin="0,0,0,14" MinHeight="220">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Width="220" Height="170" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="#555555" BorderThickness="1">
+                            <Image Source="/BedrockLauncher;component/resources/images/credits/carjem_logo.png" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </Border>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="Founder: Carjem Generations" FontWeight="Bold" FontSize="34" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" TextWrapping="Wrap"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
+                                <Button Style="{DynamicResource LinkButton}" Content="Twitter" Tag="{StaticResource CJ_TwitterURL}" Click="Button_Click" Padding="0" FontSize="15"/>
+                                <TextBlock Text="  " />
+                                <Button Style="{DynamicResource LinkButton}" Content="GitHub" Tag="{StaticResource CJ_GithubURL}" Click="Button_Click" Padding="0" FontSize="15"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Border>
 
+                <TextBlock Text="TEAM" FontWeight="Bold" FontSize="14" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" Margin="0,0,0,5"/>
+                <UniformGrid Columns="2" Margin="-4,0,-4,10">
+                    <Border Background="#262626" CornerRadius="0" Padding="10" Margin="4" MinHeight="150">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="156"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Width="138" Height="118" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="#555555" BorderThickness="1">
+                                <Image Source="/BedrockLauncher;component/resources/images/credits/raythmc.png" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/>
+                            </Border>
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock Text="Rayth" FontWeight="Bold" FontSize="24" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" TextWrapping="Wrap"/>
+                                <TextBlock Text="Lead Dev/Admin" FontSize="13" Foreground="#D8D8D8" TextWrapping="Wrap" Margin="0,2,0,5"/>
+                                <Button Style="{DynamicResource LinkButton}" Content="GitHub" Tag="{StaticResource Rayth_GithubURL}" Click="Button_Click" Padding="0" FontSize="13" HorizontalAlignment="Left"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <Border Background="#262626" CornerRadius="0" Padding="10" Margin="4" MinHeight="150">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="156"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Width="138" Height="118" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="#555555" BorderThickness="1">
+                                <Image Source="/BedrockLauncher;component/resources/images/credits/mrmariix.png" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/>
+                            </Border>
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock Text="mrmariix" FontWeight="Bold" FontSize="24" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" TextWrapping="Wrap"/>
+                                <TextBlock Text="Developer" FontSize="13" Foreground="#D8D8D8" TextWrapping="Wrap" Margin="0,2,0,5"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Style="{DynamicResource LinkButton}" Content="GitHub" Tag="{StaticResource Mrmariix_GithubURL}" Click="Button_Click" Padding="0" FontSize="13"/>
+                                    <TextBlock Text="  " />
+                                    <Button Style="{DynamicResource LinkButton}" Content="YouTube" Tag="{StaticResource Mrmariix_YoutubeURL}" Click="Button_Click" Padding="0" FontSize="13"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <Border Background="#262626" CornerRadius="0" Padding="10" Margin="4" MinHeight="150">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="156"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Width="138" Height="118" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="#555555" BorderThickness="1">
+                                <Image Source="/BedrockLauncher;component/resources/images/credits/MetalManeMc.jpg" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/>
+                            </Border>
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock Text="MetalManeMC" FontWeight="Bold" FontSize="24" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" TextWrapping="Wrap"/>
+                                <TextBlock Text="Developer" FontSize="13" Foreground="#D8D8D8" TextWrapping="Wrap" Margin="0,2,0,5"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Style="{DynamicResource LinkButton}" Content="GitHub" Tag="{StaticResource MetalMane_GithubURL}" Click="Button_Click" Padding="0" FontSize="13"/>
+                                    <TextBlock Text="  " />
+                                    <Button Style="{DynamicResource LinkButton}" Content="BlueSky" Tag="{StaticResource MetalMane_BlueSkyURL}" Click="Button_Click" Padding="0" FontSize="13"/>
+                                    <TextBlock Text="  " />
+                                    <Button Style="{DynamicResource LinkButton}" Content="ModBay" Tag="{StaticResource MetalMane_ModbayURL}" Click="Button_Click" Padding="0" FontSize="13"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <Border Background="#262626" CornerRadius="0" Padding="10" Margin="4" MinHeight="150">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="156"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Width="138" Height="118" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="#555555" BorderThickness="1">
+                                <Image Source="/BedrockLauncher;component/resources/images/credits/DLazaridisGM.png" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/>
+                            </Border>
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock Text="DLazaridisGM" FontWeight="Bold" FontSize="24" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" TextWrapping="Wrap"/>
+                                <TextBlock Text="Developer" FontSize="13" Foreground="#D8D8D8" TextWrapping="Wrap" Margin="0,2,0,5"/>
+                                <Button Style="{DynamicResource LinkButton}" Content="GitHub" Tag="{StaticResource DLazaridis_GithubURL}" Click="Button_Click" Padding="0" FontSize="13" HorizontalAlignment="Left"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </UniformGrid>
 
-        </Grid>
+                <TextBlock Text="FORKED FROM THE WORK OF" FontWeight="Bold" FontSize="14" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" Margin="0,0,0,5"/>
+                <Border Background="#262626" CornerRadius="0" Padding="12" Margin="0,0,0,10" MinHeight="150">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="170"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Width="150" Height="120" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="#555555" BorderThickness="1">
+                            <Image Source="/BedrockLauncher;component/resources/images/credits/xlynxx.jpg" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </Border>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="XlynxX" FontWeight="Bold" FontSize="24" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" TextWrapping="Wrap"/>
+                            <TextBlock Text="Forked from the work of XlynxX" FontSize="13" Foreground="#D8D8D8" TextWrapping="Wrap" Margin="0,2,0,5"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Style="{DynamicResource LinkButton}" Content="Twitter" Tag="{StaticResource XlynxX_TwitterURL}" Click="Button_Click" Padding="0" FontSize="13"/>
+                                <TextBlock Text="  " />
+                                <Button Style="{DynamicResource LinkButton}" Content="GitHub" Tag="{StaticResource XlynxX_GithubURL}" Click="Button_Click" Padding="0" FontSize="13"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <TextBlock Text="SPECIAL THANKS TO" FontWeight="Bold" FontSize="14" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" Margin="0,0,0,5"/>
+                <UniformGrid Columns="2" Margin="-4,0,-4,10">
+                    <Border Background="#262626" CornerRadius="0" Padding="10" Margin="4" MinHeight="150">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="156"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Width="138" Height="118" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="#555555" BorderThickness="1">
+                                <Image Source="/BedrockLauncher;component/resources/images/credits/mcmrarm_icon.jfif" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/>
+                            </Border>
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock Text="MCMrARM" FontWeight="Bold" FontSize="24" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" TextWrapping="Wrap"/>
+                                <TextBlock Text="Original Minecraft Win10 Downloader" FontSize="13" Foreground="#D8D8D8" TextWrapping="Wrap" Margin="0,2,0,5"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Style="{DynamicResource LinkButton}" Content="Twitter" Tag="{StaticResource McMrArm_TwitterURL}" Click="Button_Click" Padding="0" FontSize="13"/>
+                                    <TextBlock Text="  " />
+                                    <Button Style="{DynamicResource LinkButton}" Content="GitHub" Tag="{StaticResource McMrArm_GithubURL}" Click="Button_Click" Padding="0" FontSize="13"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <Border Background="#262626" CornerRadius="0" Padding="10" Margin="4" MinHeight="150">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="156"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Width="138" Height="118" HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="#555555" BorderThickness="1">
+                                <Image Source="/BedrockLauncher;component/resources/images/credits/mojang_logo.png" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/>
+                            </Border>
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock Text="Mojang Studios" FontWeight="Bold" FontSize="24" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" TextWrapping="Wrap"/>
+                                <TextBlock Text="{DynamicResource AboutPage_Mojang_Text}" FontSize="13" Foreground="#D8D8D8" TextWrapping="Wrap" Margin="0,2,0,5"/>
+                                <Button Style="{DynamicResource LinkButton}" Content="Website" Tag="{StaticResource Mojang_URL}" Click="Button_Click" Padding="0" FontSize="13" HorizontalAlignment="Left"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </UniformGrid>
+
+                <Border Background="#262626" CornerRadius="0" Margin="0,6,0,0" Padding="10">
+                    <StackPanel>
+                        <TextBlock Margin="0,0,0,4" Text="{DynamicResource GeneralSettingsScreen_UpdatesSubtitle}" Style="{DynamicResource HeaderTextblock}"/>
+                        <TextBlock Margin="0,0,0,12" Foreground="White">
+                            <Run Text="{DynamicResource AboutPage_CurrentBuild}"/>
+                            <Run Text="{x:Static root:App.Version}"/>
+                        </TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Margin="0,0,10,0" FontSize="14" Click="CheckForUpdatesButton_Click" Content="{DynamicResource LauncherNewsPage_CheckForUpdates}" Style="{DynamicResource LinkButton}"/>
+                            <Button Margin="0" FontSize="14" Click="ForceUpdateButton_Click" Content="{DynamicResource LauncherNewsPage_GetUpdates}" Style="{DynamicResource LinkButton}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 
 </Page>

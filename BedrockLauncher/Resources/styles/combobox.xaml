@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
                     xmlns:c="clr-namespace:BedrockLauncher.UI.Components"
+                    xmlns:playControls="clr-namespace:BedrockLauncher.Pages.Play.Home.Components"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     
     <!-- TODO: Add Better Keyboard Support for Editable Comboboxes -->
@@ -357,6 +358,61 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
+    <ControlTemplate x:Key="InstallationSelectorComboBoxTemplate" TargetType="{x:Type ComboBox}">
+        <Grid x:Name="TemplateRoot" SnapsToDevicePixels="true">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Popup x:Name="PART_Popup" Style="{DynamicResource DropDownPartPopupStyle}" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
+                <Grid Style="{DynamicResource DropDownGridAStyle}" MinWidth="{Binding ActualWidth, ElementName=TemplateRoot}">
+                    <Border x:Name="DropDownBorder" Style="{DynamicResource DropDownBorderStyle}">
+                        <ScrollViewer x:Name="DropDownScrollViewer" Style="{DynamicResource ComboBoxScrollViewer}">
+                            <Grid x:Name="Grid" Style="{DynamicResource DropDownGridBStyle}">
+                                <Canvas x:Name="Canvas" Style="{DynamicResource DropDownCanvasStyle}">
+                                    <Rectangle x:Name="OpaqueRect" Fill="{Binding Background, ElementName=DropDownBorder}" Height="{Binding ActualHeight, ElementName=DropDownBorder}" Width="{Binding ActualWidth, ElementName=DropDownBorder}"/>
+                                </Canvas>
+                                <ItemsPresenter x:Name="ItemsPresenter" Style="{DynamicResource DropDownItemPresenterStyle}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                <playControls:NoInstallationsPlaceholder x:Name="NoItemsPlaceholder" Visibility="Collapsed"/>
+                            </Grid>
+                        </ScrollViewer>
+                    </Border>
+                </Grid>
+            </Popup>
+            <ToggleButton x:Name="toggleButton" Style="{DynamicResource DropDownToggleButtonStyle}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <ContentPresenter x:Name="contentPresenter" Style="{DynamicResource DropDownContentPresenterStyle}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            <playControls:NoInstallationsInlinePlaceholder x:Name="NoItemsInlinePlaceholder" Grid.ColumnSpan="2" Visibility="Collapsed"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="HasItems" Value="false">
+                <Setter Property="Focusable" Value="False"/>
+                <Setter Property="IsHitTestVisible" Value="False"/>
+                <Setter Property="Background" TargetName="toggleButton" Value="Transparent"/>
+                <Setter Property="BorderBrush" TargetName="toggleButton" Value="Transparent"/>
+                <Setter Property="Visibility" TargetName="contentPresenter" Value="Collapsed"/>
+                <Setter Property="Visibility" TargetName="NoItemsInlinePlaceholder" Value="Visible"/>
+                <Setter Property="Height" TargetName="DropDownBorder" Value="104"/>
+                <Setter Property="Padding" TargetName="DropDownBorder" Value="0"/>
+                <Setter Property="BorderThickness" TargetName="DropDownBorder" Value="0"/>
+                <Setter Property="Background" TargetName="DropDownBorder" Value="Transparent"/>
+                <Setter Property="Visibility" TargetName="OpaqueRect" Value="Collapsed"/>
+                <Setter Property="Visibility" TargetName="ItemsPresenter" Value="Collapsed"/>
+                <Setter Property="Visibility" TargetName="NoItemsPlaceholder" Value="Visible"/>
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsGrouping" Value="true"/>
+                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+            </MultiTrigger>
+            <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
+                <Setter Property="Canvas.Top" TargetName="OpaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}"/>
+                <Setter Property="Canvas.Left" TargetName="OpaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
     <ControlTemplate x:Key="GenericComboBoxEditableTemplate" TargetType="{x:Type ComboBox}">
         <Grid x:Name="TemplateRoot" SnapsToDevicePixels="true">
             <Grid.ColumnDefinitions>
@@ -525,14 +581,24 @@
                 <ResourceDictionary.MergedDictionaries>
                     <ResourceDictionary Source="/BedrockLauncher;component/Resources/styles/values/variants/ComboBox_InstallationSelector.xaml"/>
                 </ResourceDictionary.MergedDictionaries>
+                <Style x:Key="DropDownBorderStyle" TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"></Setter>
+                    <Setter Property="Padding" Value="0"></Setter>
+                    <Setter Property="Margin" Value="0"></Setter>
+                    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"></Setter>
+                    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"></Setter>
+                    <Setter Property="BorderThickness" Value="1"></Setter>
+                    <Setter Property="Background" Value="{DynamicResource ComboBox.Dropdown.Static.Background}"/>
+                </Style>
                 <Style x:Key="DropDownPartPopupStyle" TargetType="{x:Type Popup}">
                     <Setter Property="AllowsTransparency" Value="True"></Setter>
                     <Setter Property="Grid.ColumnSpan" Value="2"></Setter>
-                    <Setter Property="Margin" Value="1"></Setter>
+                    <Setter Property="Margin" Value="0"></Setter>
                     <Setter Property="Placement" Value="Top"></Setter>
                 </Style>
             </ResourceDictionary>
 
         </Style.Resources>
+        <Setter Property="Template" Value="{StaticResource InstallationSelectorComboBoxTemplate}"/>
     </Style>
 </ResourceDictionary>

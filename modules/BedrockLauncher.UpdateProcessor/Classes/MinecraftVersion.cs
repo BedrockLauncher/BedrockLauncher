@@ -11,7 +11,7 @@ namespace BedrockLauncher.UpdateProcessor.Classes
 {
     public sealed class MinecraftVersion : IComparable<MinecraftVersion>
     {
-        private static readonly Regex ParseEx = new Regex("^(?<major>\\d+).(?<minor>\\d+).(?<patch>\\d+).(?<revision>\\d+)", RegexOptions.ExplicitCapture | RegexOptions.CultureInvariant, TimeSpan.FromSeconds(0.5));
+        private static readonly Regex ParseEx = new Regex("^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:\\.(?<revision>\\d+))?", RegexOptions.ExplicitCapture | RegexOptions.CultureInvariant, TimeSpan.FromSeconds(0.5));
 
         public long Major { get; }
         public long Minor { get; }
@@ -68,7 +68,9 @@ namespace BedrockLauncher.UpdateProcessor.Classes
             long major = long.Parse(match.Groups["major"].Value, CultureInfo.InvariantCulture);
             long minor = long.Parse(match.Groups["minor"].Value, CultureInfo.InvariantCulture);
             long patch = long.Parse(match.Groups["patch"].Value, CultureInfo.InvariantCulture);
-            long revision = long.Parse(match.Groups["revision"].Value, CultureInfo.InvariantCulture);
+            long revision = match.Groups["revision"].Success
+                ? long.Parse(match.Groups["revision"].Value, CultureInfo.InvariantCulture)
+                : 0;
 
             return new MinecraftVersion(major, minor, patch, revision);
         }
@@ -89,7 +91,10 @@ namespace BedrockLauncher.UpdateProcessor.Classes
             if (!long.TryParse(match.Groups["major"].Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out long major)) return false;
             if (!long.TryParse(match.Groups["minor"].Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out long minor)) return false;
             if (!long.TryParse(match.Groups["patch"].Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out long patch)) return false;
-            if (!long.TryParse(match.Groups["revision"].Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out long revision)) return false;
+            long revision = 0;
+            if (match.Groups["revision"].Success &&
+                !long.TryParse(match.Groups["revision"].Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out revision))
+                return false;
             ver = new MinecraftVersion(major, minor, patch, revision);
             return true;
         }

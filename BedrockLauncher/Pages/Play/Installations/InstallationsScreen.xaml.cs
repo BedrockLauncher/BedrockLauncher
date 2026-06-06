@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using BedrockLauncher.Enums;
 using BedrockLauncher.Handlers;
 using BedrockLauncher.Pages.Preview;
@@ -22,6 +24,7 @@ namespace BedrockLauncher.Pages.Play.Installations
 {
     public partial class InstallationsScreen : Page
     {
+        private INotifyCollectionChanged _subscribedInstallations;
 
         public InstallationsScreen()
         {
@@ -30,12 +33,16 @@ namespace BedrockLauncher.Pages.Play.Installations
             ShowBetasCheckBox.Click += (sender, e) => RefreshInstallations();
             ShowReleasesCheckBox.Click += (sender, e) => RefreshInstallations();
             ShowPreviewsCheckBox.Click += (sender, e) => RefreshInstallations();
+
+            MainDataModel.Default.Versions.CollectionChanged += (sender, e) => RefreshInstallations();
         }
         public void RefreshInstallations()
         {
             this.Dispatcher.Invoke(() =>
             {
+                RefreshInstallationSource();
                 if (InstallationsList != null) FilterSortingHandler.Sort_InstallationList(InstallationsList.ItemsSource);
+                UpdateNothingFoundVisibility();
             });
         }
         private void NewInstallationButton_Click(object sender, RoutedEventArgs e)
@@ -44,6 +51,7 @@ namespace BedrockLauncher.Pages.Play.Installations
         }
         private void PageHost_Loaded(object sender, RoutedEventArgs e)
         {
+            RefreshInstallationSource();
             SortByComboBox.SelectedItem = Properties.LauncherSettings.Default.InstallationsSortMode switch
             {
                 Enums.InstallationSort.LatestPlayed => SortByLatestPlayed,
@@ -76,6 +84,37 @@ namespace BedrockLauncher.Pages.Play.Installations
         private void InstallationsList_SourceUpdated(object sender, DataTransferEventArgs e)
         {
             this.RefreshInstallations();
+        }
+
+        private void RefreshInstallationSource()
+        {
+            MainDataModel.Default.Config.SyncSystemMinecraftInstallations();
+
+            if (FindResource("InstallationsSource4") is CollectionViewSource source)
+            {
+                source.Source = MainDataModel.Default.Config.CurrentInstallations;
+                source.View?.Refresh();
+            }
+
+            if (MainDataModel.Default.Config.CurrentInstallations is INotifyCollectionChanged installations)
+            {
+                if (_subscribedInstallations != null)
+                    _subscribedInstallations.CollectionChanged -= Installations_CollectionChanged;
+
+                _subscribedInstallations = installations;
+                _subscribedInstallations.CollectionChanged += Installations_CollectionChanged;
+            }
+        }
+
+        private void Installations_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            Dispatcher.BeginInvoke(new Action(RefreshInstallations), DispatcherPriority.Background);
+        }
+
+        private void UpdateNothingFoundVisibility()
+        {
+            if (NothingFound == null || InstallationsList == null) return;
+            NothingFound.Visibility = InstallationsList.Items.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void CollectionViewSource_Filter(object sender, FilterEventArgs e)

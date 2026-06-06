@@ -80,6 +80,41 @@ namespace BedrockLauncher.Classes
             }
         }
         [JsonIgnore]
+        public bool IsPlayableInstalled
+        {
+            get
+            {
+                Depends.On(ReadOnly, VersioningMode, VersionUUID, InstallationUUID, Version);
+                if (Version == null) return false;
+                if (Version.IsInstalledInLauncher) return true;
+
+                // Store/system installs are playable through package activation even
+                // when custom downloadable GDK entries must remain local-folder only.
+                if (CanUseExternalMinecraftForPlay)
+                    return Version.IsInstalledExternally;
+
+                return Version.IsInstalled;
+            }
+        }
+        [JsonIgnore]
+        public bool CanUseExternalMinecraftForPlay
+        {
+            get
+            {
+                Depends.On(ReadOnly, VersioningMode, InstallationUUID);
+                if (!ReadOnly) return false;
+
+                if (VersioningMode == VersioningMode.LatestRelease ||
+                    VersioningMode == VersioningMode.LatestPreview ||
+                    VersioningMode == VersioningMode.LatestBeta)
+                {
+                    return true;
+                }
+
+                return InstallationUUID?.StartsWith("system_minecraft:", StringComparison.OrdinalIgnoreCase) == true;
+            }
+        }
+        [JsonIgnore]
         public bool IsRelease
         {
             get
