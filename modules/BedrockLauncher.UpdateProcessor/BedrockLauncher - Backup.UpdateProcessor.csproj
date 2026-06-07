@@ -4,9 +4,6 @@
     <RootNamespace>BedrockLauncher.UpdateProcessor</RootNamespace>
     <AssemblyName>BedrockLauncher.UpdateProcessor</AssemblyName>
   </PropertyGroup>
-  <PropertyGroup>
-    <CsWinRTIncludes>TokenBrokerInternal</CsWinRTIncludes>
-  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>
@@ -22,14 +19,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Runtimes\win-x86\**">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Runtimes\win-x64\**">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
   <PropertyGroup />
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
@@ -42,7 +31,4 @@
   <ItemGroup>
     <ProjectReference Include="..\Extensions.NET\Extensions.csproj" />
   </ItemGroup>
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="cd &quot;$(MSBuildProjectDirectory)\Runtimes\TokenBroker&quot;&#xD;&#xA;rmdir &quot;Win32&quot; /s /q&#xD;&#xA;rmdir &quot;x64&quot; /s /q&#xD;&#xA;xcopy &quot;$(MSBuildProjectDirectory)\..\BedrockLauncher.TokenBroker\bin\Release&quot; &quot;$(MSBuildProjectDirectory)\Runtimes\TokenBroker&quot; /E /I /Q" />
-  </Target>
 </Project>
