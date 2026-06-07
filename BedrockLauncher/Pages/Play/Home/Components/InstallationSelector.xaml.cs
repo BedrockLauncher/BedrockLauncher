@@ -60,8 +60,9 @@ namespace BedrockLauncher.Pages.Play.Home.Components
         private void RefreshInstallationsFromDisk()
         {
             BLInstallation selectedInstallation = MainDataModel.Default.Config.EnsurePlayableInstallationSelected(forceSync: true);
+            var playableInstallations = MainDataModel.Default.Config.GetPlayableInstallationsSnapshot();
 
-            SetCurrentValue(ItemsControl.ItemsSourceProperty, MainDataModel.Default.Config.CurrentInstallations);
+            SetCurrentValue(ItemsControl.ItemsSourceProperty, playableInstallations);
             CollectionView view = CollectionViewSource.GetDefaultView(ItemsSource) as CollectionView;
             if (view != null)
             {
