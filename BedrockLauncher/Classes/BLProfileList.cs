@@ -179,41 +179,22 @@ namespace BedrockLauncher.Classes
         }
         public void Validate()
         {
-            BLInstallation latest_release = new BLInstallation()
-            {
-                DisplayName = "Latest Release", //TODO: Localize Display Names
-                DirectoryName = "Latest Release",  //TODO: Localize Directory Names?
-                VersionUUID = Constants.LATEST_RELEASE_UUID,
-                VersioningMode = VersioningMode.LatestRelease,
-                IconPath = MCVersion.GetVersionIconFileName(Constants.LATEST_RELEASE_UUID, BedrockLauncher.UpdateProcessor.Enums.VersionType.Release),
-                IsCustomIcon = false,
-                ReadOnly = true,
-                InstallationUUID = Constants.LATEST_RELEASE_UUID
-            };
-            BLInstallation latest_preview = new BLInstallation()
-            {
-                DisplayName = "Latest Preview",  //TODO: Localize Display Names
-                DirectoryName = "Latest Preview",  //TODO: Localize Directory Names?
-                VersionUUID = Constants.LATEST_PREVIEW_UUID,
-                VersioningMode = VersioningMode.LatestPreview,
-                IconPath = MCVersion.GetVersionIconFileName(Constants.LATEST_PREVIEW_UUID, BedrockLauncher.UpdateProcessor.Enums.VersionType.Preview),
-                IsCustomIcon = false,
-                ReadOnly = true,
-                InstallationUUID = Constants.LATEST_PREVIEW_UUID
-            };
-
-
             foreach (var profile in profiles.Values)
             {
-                if (!profile.Installations.Any(x => x.InstallationUUID == latest_release.InstallationUUID && x.ReadOnly))
-                    Installation_Add(latest_release);
-                if (!profile.Installations.Any(x => x.InstallationUUID == latest_preview.InstallationUUID && x.ReadOnly))
-                    Installation_Add(latest_preview);
+                if (profile.Installations == null)
+                    profile.Installations = new ObservableCollection<BLInstallation>();
 
-                foreach (var installation in profile.Installations.Where(x => x.VersionUUID == latest_release.VersionUUID))
+                foreach (BLInstallation generatedInstallation in profile.Installations
+                    .Where(installation => installation.ReadOnly && IsGeneratedInstallation(installation))
+                    .ToList())
+                {
+                    profile.Installations.Remove(generatedInstallation);
+                }
+
+                foreach (var installation in profile.Installations.Where(x => x.VersionUUID == Constants.LATEST_RELEASE_UUID))
                     installation.VersioningMode = VersioningMode.LatestRelease;
 
-                foreach (var installation in profile.Installations.Where(x => x.VersionUUID == latest_preview.VersionUUID))
+                foreach (var installation in profile.Installations.Where(x => x.VersionUUID == Constants.LATEST_PREVIEW_UUID))
                     installation.VersioningMode = VersioningMode.LatestPreview;
             }
 
@@ -224,16 +205,6 @@ namespace BedrockLauncher.Classes
         {
             if (profiles.Count == 0) return;
 
-            List<MCVersion> installedSystemVersions = GetInstalledSystemMinecraftVersions();
-            List<MCVersion> installedLauncherVersions = GetInstalledLauncherMinecraftVersions();
-            bool hasVersionCatalog = MainDataModel.Default.Versions?.Count > 0;
-            HashSet<string> validSystemInstallationIds = installedSystemVersions
-                .Select(GetSystemInstallationUUID)
-                .ToHashSet(StringComparer.OrdinalIgnoreCase);
-            HashSet<string> validLauncherInstallationIds = installedLauncherVersions
-                .Select(GetVersionsPageSelectedInstallationUUID)
-                .ToHashSet(StringComparer.OrdinalIgnoreCase);
-
             bool changed = false;
 
             foreach (BLProfile profile in profiles.Values)
@@ -241,16 +212,7 @@ namespace BedrockLauncher.Classes
                 if (profile.Installations == null) continue;
 
                 List<BLInstallation> staleSystemInstallations = profile.Installations
-                    .Where(x =>
-                        x.InstallationUUID?.StartsWith(CatalogGeneratedInstallationPrefix, StringComparison.OrdinalIgnoreCase) == true ||
-                        IsLegacyVersionsPageSelectedInstallation(x.InstallationUUID) ||
-                        x.InstallationUUID?.StartsWith(SystemMinecraftInstallationPrefix, StringComparison.OrdinalIgnoreCase) == true ||
-                        (hasVersionCatalog && x.InstallationUUID?.StartsWith(VersionsPageSelectedInstallationPrefix, StringComparison.OrdinalIgnoreCase) == true))
-                    .Where(x =>
-                        x.InstallationUUID?.StartsWith(CatalogGeneratedInstallationPrefix, StringComparison.OrdinalIgnoreCase) == true ||
-                        IsLegacyVersionsPageSelectedInstallation(x.InstallationUUID) ||
-                        (x.InstallationUUID?.StartsWith(SystemMinecraftInstallationPrefix, StringComparison.OrdinalIgnoreCase) == true && !validSystemInstallationIds.Contains(x.InstallationUUID)) ||
-                        (hasVersionCatalog && x.InstallationUUID?.StartsWith(VersionsPageSelectedInstallationPrefix, StringComparison.OrdinalIgnoreCase) == true && !validLauncherInstallationIds.Contains(x.InstallationUUID)))
+                    .Where(IsGeneratedInstallation)
                     .Where(x => x.ReadOnly)
                     .ToList();
 
@@ -260,62 +222,9 @@ namespace BedrockLauncher.Classes
                     changed = true;
                 }
 
-                foreach (MCVersion version in installedSystemVersions)
-                {
-                    string installationUUID = GetSystemInstallationUUID(version);
-                    BLInstallation existing = profile.Installations.FirstOrDefault(x => x.InstallationUUID == installationUUID);
-
-                    if (existing == null)
-                    {
-                        profile.Installations.Add(CreateSystemMinecraftInstallation(version));
-                        changed = true;
-                    }
-                    else
-                    {
-                        string expectedName = GetSystemInstallationName(version);
-                        string expectedIcon = version.InstallationIconFileName;
-                        if (existing.DisplayName != expectedName || existing.IconPath != expectedIcon || existing.VersionUUID != version.UUID)
-                        {
-                            existing.DisplayName = expectedName;
-                            existing.DirectoryName = ValidatePathName(expectedName);
-                            existing.IconPath = expectedIcon;
-                            existing.VersionUUID = version.UUID;
-                            existing.VersioningMode = VersioningMode.None;
-                            existing.IsCustomIcon = false;
-                            existing.ReadOnly = true;
-                            changed = true;
-                        }
-                    }
-                }
-
-                foreach (MCVersion version in installedLauncherVersions)
-                {
-                    string installationUUID = GetVersionsPageSelectedInstallationUUID(version);
-                    BLInstallation existing = profile.Installations.FirstOrDefault(x => x.InstallationUUID == installationUUID);
-                    string expectedName = GetVersionsPageSelectedInstallationName(version);
-                    string expectedIcon = version.InstallationIconFileName;
-
-                    if (existing == null)
-                    {
-                        profile.Installations.Add(CreateLauncherVersionInstallation(version));
-                        changed = true;
-                    }
-                    else if (existing.DisplayName != expectedName ||
-                             existing.IconPath != expectedIcon ||
-                             existing.VersionUUID != version.UUID ||
-                             existing.VersioningMode != VersioningMode.None ||
-                             existing.ReadOnly != true)
-                    {
-                        existing.DisplayName = expectedName;
-                        existing.DirectoryName = ValidatePathName(expectedName);
-                        existing.IconPath = expectedIcon;
-                        existing.VersionUUID = version.UUID;
-                        existing.VersioningMode = VersioningMode.None;
-                        existing.IsCustomIcon = false;
-                        existing.ReadOnly = true;
-                        changed = true;
-                    }
-                }
+                // Detected Store/local versions are exposed as a temporary Play list.
+                // They are not persisted as profile installations, otherwise the
+                // Installations page gets duplicate/read-only entries.
             }
 
             changed |= SelectPlayableInstallationIfNeeded();
@@ -330,11 +239,14 @@ namespace BedrockLauncher.Classes
 
         public BLInstallation GetSelectedOrFirstPlayableInstallation()
         {
-            BLInstallation current = CurrentInstallation;
+            IReadOnlyList<BLInstallation> playableInstallations = GetPlayableInstallationsSnapshot();
+            BLInstallation current = playableInstallations
+                .FirstOrDefault(x => string.Equals(x.InstallationUUID, CurrentInstallationUUID, StringComparison.OrdinalIgnoreCase));
+
             if (IsPlayableInstallation(current))
                 return current;
 
-            return GetBestPlayableInstallation();
+            return GetBestPlayableInstallation(playableInstallations);
         }
 
         public BLInstallation EnsurePlayableInstallationSelected(bool forceSync = false)
@@ -345,11 +257,14 @@ namespace BedrockLauncher.Classes
                 SyncSystemMinecraftInstallations();
             }
 
-            BLInstallation current = CurrentInstallation;
+            IReadOnlyList<BLInstallation> playableInstallations = GetPlayableInstallationsSnapshot();
+            BLInstallation current = playableInstallations
+                .FirstOrDefault(x => string.Equals(x.InstallationUUID, CurrentInstallationUUID, StringComparison.OrdinalIgnoreCase));
+
             if (IsPlayableInstallation(current))
                 return current;
 
-            BLInstallation playableInstallation = GetBestPlayableInstallation();
+            BLInstallation playableInstallation = GetBestPlayableInstallation(playableInstallations);
             if (playableInstallation != null)
                 SelectInstallation(playableInstallation.InstallationUUID, saveProfile: true);
 
@@ -358,11 +273,14 @@ namespace BedrockLauncher.Classes
 
         private bool SelectPlayableInstallationIfNeeded()
         {
-            BLInstallation current = CurrentInstallation;
+            IReadOnlyList<BLInstallation> playableInstallations = GetPlayableInstallationsSnapshot();
+            BLInstallation current = playableInstallations
+                .FirstOrDefault(x => string.Equals(x.InstallationUUID, CurrentInstallationUUID, StringComparison.OrdinalIgnoreCase));
+
             if (IsPlayableInstallation(current))
                 return false;
 
-            BLInstallation playableInstallation = GetBestPlayableInstallation();
+            BLInstallation playableInstallation = GetBestPlayableInstallation(playableInstallations);
             if (playableInstallation == null)
                 return false;
 
@@ -386,14 +304,47 @@ namespace BedrockLauncher.Classes
             return true;
         }
 
-        private BLInstallation GetBestPlayableInstallation()
+        private BLInstallation GetBestPlayableInstallation(IReadOnlyList<BLInstallation> playableInstallations = null)
         {
-            return CurrentInstallations?
-                .Where(IsPlayableInstallation)
+            return (playableInstallations ?? GetPlayableInstallationsSnapshot())
                 .OrderByDescending(GetPlayableInstallationSourcePriority)
                 .ThenByDescending(GetPlayableInstallationVersion)
                 .ThenBy(x => x.DisplayName)
                 .FirstOrDefault();
+        }
+
+        public IReadOnlyList<BLInstallation> GetPlayableInstallationsSnapshot()
+        {
+            List<BLInstallation> userInstallations = CurrentInstallations?
+                .Where(installation => installation != null)
+                .Where(installation => !IsGeneratedInstallation(installation))
+                .Where(IsPlayableInstallation)
+                .ToList() ?? new List<BLInstallation>();
+
+            if (userInstallations.Count > 0)
+                return NormalizePlayableInstallations(userInstallations);
+
+            IEnumerable<BLInstallation> detectedInstallations = GetInstalledLauncherMinecraftVersions()
+                .Select(CreateLauncherVersionInstallation)
+                .Concat(GetInstalledSystemMinecraftVersions().Select(CreateSystemMinecraftInstallation));
+
+            return NormalizePlayableInstallations(detectedInstallations);
+        }
+
+        private static IReadOnlyList<BLInstallation> NormalizePlayableInstallations(IEnumerable<BLInstallation> installations)
+        {
+            return installations
+                .Where(IsPlayableInstallation)
+                .GroupBy(GetPlayableInstallationDedupKey, StringComparer.OrdinalIgnoreCase)
+                .Select(group => group
+                    .OrderByDescending(GetPlayableInstallationSourcePriority)
+                    .ThenByDescending(GetPlayableInstallationVersion)
+                    .ThenBy(x => x.DisplayName)
+                    .First())
+                .OrderByDescending(GetPlayableInstallationSourcePriority)
+                .ThenByDescending(GetPlayableInstallationVersion)
+                .ThenBy(x => x.DisplayName)
+                .ToList();
         }
 
         private static bool IsPlayableInstallation(BLInstallation installation)
@@ -448,14 +399,38 @@ namespace BedrockLauncher.Classes
                    installation.InstallationUUID == Constants.LATEST_BETA_UUID;
         }
 
+        public static bool IsGeneratedInstallation(BLInstallation installation)
+        {
+            if (installation == null) return false;
+
+            return IsFloatingInstallationForPlay(installation) ||
+                   IsLegacyVersionsPageSelectedInstallation(installation.InstallationUUID) ||
+                   installation.InstallationUUID?.StartsWith(CatalogGeneratedInstallationPrefix, StringComparison.OrdinalIgnoreCase) == true ||
+                   installation.InstallationUUID?.StartsWith(SystemMinecraftInstallationPrefix, StringComparison.OrdinalIgnoreCase) == true ||
+                   installation.InstallationUUID?.StartsWith(VersionsPageSelectedInstallationPrefix, StringComparison.OrdinalIgnoreCase) == true;
+        }
+
         private static int GetPlayableInstallationSourcePriority(BLInstallation installation)
         {
+            if (!IsGeneratedInstallation(installation))
+                return 3;
             if (installation.InstallationUUID?.StartsWith(VersionsPageSelectedInstallationPrefix, StringComparison.OrdinalIgnoreCase) == true)
                 return 2;
             if (installation.InstallationUUID?.StartsWith(SystemMinecraftInstallationPrefix, StringComparison.OrdinalIgnoreCase) == true)
                 return 1;
 
             return 0;
+        }
+
+        private static string GetPlayableInstallationDedupKey(BLInstallation installation)
+        {
+            if (!IsGeneratedInstallation(installation))
+                return "user:" + installation.InstallationUUID;
+
+            string versionType = installation.Version?.Type.ToString() ?? installation.VersionType.ToString();
+            string versionName = installation.Version?.Name ?? installation.VersionUUID ?? installation.DisplayName;
+            string architecture = installation.Version?.Architecture ?? string.Empty;
+            return $"generated:{versionType}:{versionName}:{architecture}";
         }
 
         private static System.Version GetPlayableInstallationVersion(BLInstallation installation)

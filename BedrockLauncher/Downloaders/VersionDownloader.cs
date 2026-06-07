@@ -318,44 +318,48 @@ namespace BedrockLauncher.Downloaders
             if (string.IsNullOrWhiteSpace(versionUUID))
                 return null;
 
-            string directory = Path.Combine(MainDataModel.Default.FilePaths.VersionsFolder, versionUUID);
-            string manifestFile = FindFileIgnoringCase(directory, MCVersionExtensions.MainifestFileName);
-            if (!Directory.Exists(directory) || !File.Exists(manifestFile))
-                return null;
-
-            try
+            foreach (DirectoryInfo versionsDirectory in LauncherVersionPathHelper.GetDirectoriesToScan(MainDataModel.Default.FilePaths.VersionsFolder))
             {
-                var (packageName, packageVersion, processorArchitecture) = GetManifestIdentity(manifestFile);
-                VersionType type;
-                if (string.Equals(packageName, "Microsoft.MinecraftUWP", StringComparison.OrdinalIgnoreCase))
-                    type = VersionType.Release;
-                else if (string.Equals(packageName, "Microsoft.MinecraftWindowsBeta", StringComparison.OrdinalIgnoreCase))
-                    type = VersionType.Preview;
-                else
-                    return null;
+                string directory = Path.Combine(versionsDirectory.FullName, versionUUID);
+                string manifestFile = FindFileIgnoringCase(directory, MCVersionExtensions.MainifestFileName);
+                if (!Directory.Exists(directory) || !File.Exists(manifestFile))
+                    continue;
 
-                string packageIdFile = FindFileIgnoringCase(directory, MCVersionExtensions.IdentificationFilename)
-                    ?? Path.Combine(directory, MCVersionExtensions.IdentificationFilename);
-                string packageId = File.Exists(packageIdFile)
-                    ? File.ReadAllText(packageIdFile).Trim()
-                    : versionUUID;
+                try
+                {
+                    var (packageName, packageVersion, processorArchitecture) = GetManifestIdentity(manifestFile);
+                    VersionType type;
+                    if (string.Equals(packageName, "Microsoft.MinecraftUWP", StringComparison.OrdinalIgnoreCase))
+                        type = VersionType.Release;
+                    else if (string.Equals(packageName, "Microsoft.MinecraftWindowsBeta", StringComparison.OrdinalIgnoreCase))
+                        type = VersionType.Preview;
+                    else
+                        continue;
 
-                if (string.IsNullOrWhiteSpace(packageId))
-                    packageId = versionUUID;
+                    string packageIdFile = FindFileIgnoringCase(directory, MCVersionExtensions.IdentificationFilename)
+                        ?? Path.Combine(directory, MCVersionExtensions.IdentificationFilename);
+                    string packageId = File.Exists(packageIdFile)
+                        ? File.ReadAllText(packageIdFile).Trim()
+                        : versionUUID;
 
-                string displayVersion = GetDisplayVersionFromPackageVersion(versionUUID, packageVersion, type);
-                MCVersion localVersion = new MCVersion(versionUUID, packageId, displayVersion, type, processorArchitecture);
+                    if (string.IsNullOrWhiteSpace(packageId))
+                        packageId = versionUUID;
 
-                if (localVersion.PackageType == PackageType.GDK && !IsCompleteGdkVersionDirectory(directory))
-                    return null;
+                    string displayVersion = GetDisplayVersionFromPackageVersion(versionUUID, packageVersion, type);
+                    MCVersion localVersion = new MCVersion(versionUUID, packageId, displayVersion, type, processorArchitecture);
 
-                return localVersion;
+                    if (localVersion.PackageType == PackageType.GDK && !IsCompleteGdkVersionDirectory(directory))
+                        continue;
+
+                    return localVersion;
+                }
+                catch (Exception ex)
+                {
+                    Trace.WriteLine($"Unable to resolve local Minecraft version {versionUUID} from {directory}: {ex}");
+                }
             }
-            catch (Exception ex)
-            {
-                Trace.WriteLine($"Unable to resolve local Minecraft version {versionUUID}: {ex}");
-                return null;
-            }
+
+            return null;
         }
 
         private static (string PackageName, string PackageVersion, string Architecture) GetManifestIdentity(string manifestPath)
