@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 using System.Windows;
 
 
-[assembly: AssemblyTitle("Minecraft Bedrock Launcher")]
+[assembly: AssemblyTitle("BedrockLauncher")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("CarJem Generations")]
-[assembly: AssemblyProduct("Bedrock Launcher")]
+[assembly: AssemblyProduct("BedrockLauncher")]
 [assembly: AssemblyCopyright("Copyright © 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -22,7 +22,7 @@ using System.Windows;
 [assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
 
 
-[assembly: AssemblyVersion("2026.3.29.22")]
+[assembly: AssemblyVersion("2026.6.6.175")]
 
 
 [assembly: NeutralResourcesLanguage("en-US")]

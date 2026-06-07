@@ -87,12 +87,24 @@ namespace BedrockLauncher.ViewModels
         }
         public async Task ShowWaitingDialog(Func<Task> action)
         {
-            await Application.Current.Dispatcher.Invoke(async () =>
+            DateTime shownAt = DateTime.UtcNow;
+            await Application.Current.Dispatcher.InvokeAsync(() => SetDialogFrame(new WaitingPage()));
+            await Application.Current.Dispatcher.InvokeAsync(() => { }, DispatcherPriority.Render);
+            await Task.Delay(50);
+
+            try
             {
-                SetDialogFrame(new WaitingPage());
                 await action();
-                SetDialogFrame(null);
-            });
+            }
+            finally
+            {
+                TimeSpan minimumVisibleTime = TimeSpan.FromSeconds(5);
+                TimeSpan remainingTime = minimumVisibleTime - (DateTime.UtcNow - shownAt);
+                if (remainingTime > TimeSpan.Zero)
+                    await Task.Delay(remainingTime);
+
+                await Application.Current.Dispatcher.InvokeAsync(() => SetDialogFrame(null));
+            }
         }
         public async void LauncherCanNotCloseDialog(Action successAction)
         {

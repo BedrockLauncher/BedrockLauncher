@@ -21,12 +21,20 @@ namespace BedrockLauncher.UI.Pages.Common
         public ErrorScreen()
         {
             InitializeComponent();
+            HideCrashDetails();
         }
 
         public ErrorScreen(IDialogHander _hander)
         {
             InitializeComponent();
             Handler = _hander;
+            HideCrashDetails();
+        }
+
+        private void HideCrashDetails()
+        {
+            ErrorStackTrace.Visibility = Visibility.Collapsed;
+            ErrorScreenViewCrashButton.Visibility = Visibility.Collapsed;
         }
         private void ErrorScreenCloseButton_Click(object sender, RoutedEventArgs e)
         {
@@ -61,10 +69,8 @@ namespace BedrockLauncher.UI.Pages.Common
                 errorScreen.ErrorType.Text = title;
                 errorScreen.ErrorText.Text = error.Message;
                 if (error != null)
-                {
-                    errorScreen.ErrorStackTrace.Visibility = Visibility.Visible;
-                    errorScreen.ErrorStackTrace.Text = error.ToString();
-                }
+                    Trace.WriteLine(error.ToString());
+
                 Handler.SetDialogFrame(errorScreen);
             });
 
@@ -88,10 +94,8 @@ namespace BedrockLauncher.UI.Pages.Common
                 errorScreen.ErrorType.Text = error.HResult.ToString();
                 errorScreen.ErrorText.Text = error.Message;
                 if (error != null)
-                {
-                    errorScreen.ErrorStackTrace.Visibility = Visibility.Visible;
-                    errorScreen.ErrorStackTrace.Text = error.ToString();
-                }
+                    Trace.WriteLine(error.ToString());
+
                 Handler.SetDialogFrame(errorScreen);
             });
 
@@ -110,10 +114,8 @@ namespace BedrockLauncher.UI.Pages.Common
                 errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, title);
                 errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, message);
                 if (e != null)
-                {
-                    errorScreen.ErrorStackTrace.Visibility = Visibility.Visible;
-                    errorScreen.ErrorStackTrace.Text = e.ToString();
-                }
+                    Trace.WriteLine(e.ToString());
+
                 Handler.SetDialogFrame(errorScreen);
             });
 

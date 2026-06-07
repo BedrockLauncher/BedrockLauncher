@@ -18,8 +18,6 @@ namespace BedrockLauncher.ViewModels
         public bool Launcher_ShowReleases { get; set; } = true;
         public bool Launcher_ShowBetas { get; set; } = true;
 
-        public bool Offical_ShowJavaContent { get; set; } = true;
-        public bool Offical_ShowDungeonsContent { get; set; } = true;
         public bool Offical_ShowBedrockContent { get; set; } = true;
         public string Offical_SearchBoxText { get; set; } = string.Empty;
 

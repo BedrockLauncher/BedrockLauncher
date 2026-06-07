@@ -13,30 +13,37 @@
         <conv:InverseBooleanConverter x:Key="InvertBoolean"/>
         <conv:BooleanAndConverter x:Key="BooleanAndConverter"/>
     </UserControl.Resources>
-    <Grid x:Name="InstallationEntry" Margin="0,8,0,8">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="540"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="240"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid HorizontalAlignment="Left">
+    <Border x:Name="InstallationEntry"
+            Margin="0,6,0,6"
+            Padding="16,12"
+            Background="#FF343434"
+            BorderBrush="#FF565656"
+            BorderThickness="1"
+            SnapsToDevicePixels="True">
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Image RenderOptions.BitmapScalingMode="HighQuality" Source="{Binding IconPath}" Grid.Column="0" HorizontalAlignment="Left" Width="40" Height="40" Margin="0,0,0,0">
+            <Border Width="54"
+                    Height="54"
+                    Background="#FF242424"
+                    BorderBrush="#FF4D4D4D"
+                    BorderThickness="1">
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="{Binding IconPath}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Height="40">
                 <Image.OpacityMask>
                     <ImageBrush ImageSource="{Binding IconPath}"/>
                 </Image.OpacityMask>
             </Image>
+            </Border>
             <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0">
-                <TextBlock FontSize="16" Foreground="{DynamicResource PrimaryText.Foreground}" FontWeight="DemiBold" Padding="0,0,0,0" Text="{Binding DisplayName}"/>
-                <TextBlock FontSize="11" Foreground="{DynamicResource SecondaryText.Foreground}" Visibility="Visible" FontWeight="SemiBold" Padding="0,0,0,0" Text="{Binding InstallationSize}"/>
-                <TextBlock FontSize="9" Foreground="{DynamicResource TertiaryText.Foreground}" Visibility="Visible" FontWeight="SemiBold" Padding="0,0,0,0" Text="{Binding UUID}"/>
+                <TextBlock FontSize="19" Foreground="{DynamicResource PrimaryText.Foreground}" FontWeight="DemiBold" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" Padding="0,0,0,0" Text="{Binding DisplayName}"/>
+                <TextBlock FontSize="12" Foreground="#FFE6E6E6" Visibility="Visible" FontWeight="SemiBold" Padding="0,2,0,0" Text="{Binding VersionStatusText}"/>
+                <TextBlock FontSize="9" Foreground="{DynamicResource TertiaryText.Foreground}" Visibility="Visible" FontWeight="SemiBold" Padding="0,3,0,0" Text="{Binding UUID}"/>
             </StackPanel>
-        </Grid>
-        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Column="2" x:Name="ButtonPanel" Visibility="Collapsed">
-            <Button x:Name="Repair" Click="Repair_Click" Content="{DynamicResource GeneralText_Repair}" Style="{DynamicResource DialogButton_Orange}">
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Grid.Column="2" x:Name="ButtonPanel" Visibility="Visible">
+            <Button x:Name="Repair" Click="Repair_Click" Content="{Binding VersionActionText}" Style="{DynamicResource DialogButton_Orange}" MinWidth="86" Height="32">
                 <Button.IsEnabled>
                     <MultiBinding Converter="{StaticResource BooleanAndConverter}">
                         <Binding Source="{x:Static viewModels:MainDataModel.Default}" Path="ProgressBarState.AllowEditing" Mode="OneWay"/>
@@ -44,14 +51,14 @@
                     </MultiBinding>
                 </Button.IsEnabled>
             </Button>
-            <Button x:Name="Folder" Click="Folder_Click" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" FontWeight="Bold" Style="{DynamicResource DialogButton}">
+            <Button x:Name="Folder" Click="Folder_Click" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" FontWeight="Bold" Style="{DynamicResource DialogButton}" IsEnabled="{Binding IsInstalledInLauncher}" Height="32">
                 <Button.Content>
                     <Grid Width="16" Height="16">
                         <Path Stretch="Uniform" Fill="{DynamicResource OveralElements.Background}" StrokeThickness="0" Data="{DynamicResource FolderIcon}"/>
                     </Grid>
                 </Button.Content>
             </Button>
-            <Button x:Name="More" FontWeight="Bold" Style="{DynamicResource DialogButton}" Click="More_Click">
+            <Button x:Name="More" FontWeight="Bold" Style="{DynamicResource DialogButton}" Click="More_Click" IsEnabled="{Binding IsInstalledInLauncher}" Height="32">
                 <Button.Content>
                     <Image Width="16" Height="16" Source="{DynamicResource Expandable}" Stretch="None"/>
                 </Button.Content>
@@ -62,5 +69,6 @@
                 </Button.ContextMenu>
             </Button>
         </StackPanel>
-    </Grid>
+        </Grid>
+    </Border>
 </UserControl>

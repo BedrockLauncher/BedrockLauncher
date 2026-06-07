@@ -16,13 +16,40 @@
     Title="PlayScreenPage">
     <Page.Resources>
         <sys:Double x:Key="MaxLogoHeight">100</sys:Double>
+        <Style x:Key="BigUnavailableEditorButton" TargetType="{x:Type Button}" BasedOn="{StaticResource BigGreenButton}">
+            <Setter Property="Effect" Value="{x:Null}"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="#FFF0F0F0"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border"
+                                Background="#FF575757"
+                                BorderBrush="#FF242424"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="True">
+                            <ContentPresenter x:Name="contentPresenter"
+                                              Focusable="False"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              Margin="{TemplateBinding Padding}"
+                                              RecognizesAccessKey="True"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid Loaded="Grid_Loaded">
+        <Grid x:Name="EditorVisualContent" Loaded="Grid_Loaded">
+            <Grid.Effect>
+                <BlurEffect x:Name="EditorBlurEffect" Radius="0"/>
+            </Grid.Effect>
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"></RowDefinition>
                 <RowDefinition Height="18"></RowDefinition>
@@ -80,6 +107,31 @@
                            FontSize="16">
                 </TextBlock>
             </Grid>
+            <Border Grid.Row="3"
+                    Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Margin="0,34,0,0"
+                    Padding="18,10"
+                    Background="#C91B1B1B"
+                    BorderBrush="#FF5A5A5A"
+                    BorderThickness="1"
+                    MaxWidth="520">
+                <StackPanel>
+                    <TextBlock Text="EDITOR NOTE"
+                               Foreground="#FFFFD83D"
+                               FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Seven"
+                               FontSize="13"
+                               TextAlignment="Center"/>
+                    <TextBlock Text="Bedrock Editor requires Minecraft for Windows 1.21.50 or newer."
+                               Foreground="White"
+                               FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Seven"
+                               FontSize="13"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"
+                               Margin="0,5,0,0"/>
+                </StackPanel>
+            </Border>
         </Grid>
         <Grid x:Name="PlayScreenBorder" Grid.Row="1" x:FieldModifier="public" VerticalAlignment="Bottom" Background="#FF262626">
             <TextBlock Style="{DynamicResource HeaderTextblock}" Text="{DynamicResource MainWindow_Disclaimer}" HorizontalAlignment="Right" Panel.ZIndex="0" VerticalAlignment="Center" Padding="0,0,5,0" Margin="0,0,0,0"/>
@@ -91,7 +143,6 @@
                                            HorizontalAlignment="Left" Margin="4,4,0,4" 
                                            VerticalAlignment="Top" Width="250" Height="50"
                                            IsSynchronizedWithCurrentItem="True"
-                                           SelectedItem=""
                                            SelectedValue="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=Config.CurrentInstallationUUID, UpdateSourceTrigger=PropertyChanged}"
                                            SelectedValuePath="InstallationUUID"   
                                            Padding="-1,7,5,3">

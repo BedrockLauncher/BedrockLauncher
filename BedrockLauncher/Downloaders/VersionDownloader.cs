@@ -22,11 +22,21 @@ using BedrockLauncher.UpdateProcessor.Extensions;
 using BedrockLauncher.Enums;
 using BedrockLauncher.UpdateProcessor.Enums;
 using System.Xml.Linq;
+using Windows.ApplicationModel;
+using Windows.Management.Deployment;
 
 namespace BedrockLauncher.Downloaders
 {
     public class VersionDownloader
     {
+        private static readonly string[] RequiredGdkRuntimeDlls =
+        {
+            "vcruntime140_1.dll",
+            "concrt140_app.dll",
+            "msvcp140_app.dll",
+            "vcruntime140_app.dll"
+        };
+
         private VersionManager VersionDB = new VersionManager();
 
         private string winstoreDBFile => MainDataModel.Default.FilePaths.GetWinStoreVersionsDBFile();
@@ -52,11 +62,10 @@ namespace BedrockLauncher.Downloaders
         public async Task UpdateVersionList(ObservableCollection<MCVersion> versions, bool OnLoad = false)
         {
             bool AllowUpdating = OnLoad && Debugger.IsAttached ? Constants.Debugging.RetriveNewVersionsOnLoad : true;
+            ObservableCollection<MCVersion> updatedVersions = new ObservableCollection<MCVersion>();
 
-            //Clear Existing Versions
-            versions.Clear();
-
-            //Retrive Versions
+            // Retrive Versions into a temporary list first. This keeps already
+            // playable local installs visible while the online feed refreshes.
             int userIndex = Properties.LauncherSettings.Default.CurrentInsiderAccountIndex;
             VersionDB.Init(userIndex, winstoreDBFile, communityDBFile);
             await VersionDB.LoadVersions(true, Properties.LauncherSettings.Default.FetchVersionsFromMicrosoftStore);
@@ -66,35 +75,44 @@ namespace BedrockLauncher.Downloaders
             foreach (VersionInfoJson entry in versionList)
             {
                 // Trace.WriteLine($"Found version: {entry.GetVersion()}");
-                versions.Add(new MCVersion(entry.GetUUID().ToString(), entry.GetUUID().ToString(), GetRealVersion(entry.GetVersion()), entry.GetVersionType(), entry.GetArchitecture()));
+                updatedVersions.Add(new MCVersion(entry.GetUUID().ToString(), entry.GetUUID().ToString(), GetRealVersion(entry.GetVersion()), entry.GetVersionType(), entry.GetArchitecture()));
             }
-                
-            versions.Sort((x, y) => x.Compare(y));
+
+            AddRegisteredMinecraftPackageVersions(updatedVersions);
+            await SyncUpLocalVersions(updatedVersions, OnLoad);
+            updatedVersions.Sort((x, y) => x.Compare(y));
 
 
             //Get Latest Release and Beta Versions an Insert them into the ObservableCollection
-            MCVersion latestRelease = versions.First(x => x.IsRelease == true && VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, x.Architecture));
-            MCVersion? latestBeta = versions.FirstOrDefault(x => x.IsBeta == true && VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, x.Architecture), null);
-            MCVersion latestPreview = versions.First(x => x.IsPreview == true && VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, x.Architecture));
+            MCVersion latestRelease = updatedVersions.FirstOrDefault(x => x.IsRelease == true && VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, x.Architecture));
+            MCVersion? latestBeta = updatedVersions.FirstOrDefault(x => x.IsBeta == true && VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, x.Architecture), null);
+            MCVersion latestPreview = updatedVersions.FirstOrDefault(x => x.IsPreview == true && VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, x.Architecture));
 
             this.latestReleaseRef = latestRelease;
             this.latestBetaRef = latestBeta;
             this.latestPreviewRef = latestPreview;
 
-            MCVersion latest_preview = new MCVersion(Constants.LATEST_PREVIEW_UUID, Constants.LATEST_PREVIEW_UUID, Application.Current.Resources["EditInstallationScreen_LatestPreview"].ToString(), latestPreview.Type, Constants.CurrentArchitecture);
-            MCVersion latest_release = new MCVersion(Constants.LATEST_RELEASE_UUID, Constants.LATEST_RELEASE_UUID, Application.Current.Resources["EditInstallationScreen_LatestRelease"].ToString(), latestRelease.Type, Constants.CurrentArchitecture);
+            if (latestPreview != null)
+            {
+                MCVersion latest_preview = new MCVersion(Constants.LATEST_PREVIEW_UUID, Constants.LATEST_PREVIEW_UUID, Application.Current.Resources["EditInstallationScreen_LatestPreview"].ToString(), latestPreview.Type, Constants.CurrentArchitecture);
+                updatedVersions.Insert(0, latest_preview);
+            }
 
-            versions.Insert(0, latest_preview);
-            versions.Insert(0, latest_release);
-
-            // Will only appear is user had previously loaded beta version
+            if (latestRelease != null)
+            {
+                MCVersion latest_release = new MCVersion(Constants.LATEST_RELEASE_UUID, Constants.LATEST_RELEASE_UUID, Application.Current.Resources["EditInstallationScreen_LatestRelease"].ToString(), latestRelease.Type, Constants.CurrentArchitecture);
+                updatedVersions.Insert(0, latest_release);
+            }
+ 
             if (latestBeta != null)
             {
                 MCVersion latest_beta = new MCVersion(Constants.LATEST_BETA_UUID, Constants.LATEST_BETA_UUID, Application.Current.Resources["EditInstallationScreen_LatestBeta"].ToString(), latestBeta.Type, Constants.CurrentArchitecture);
-                versions.Insert(0, latest_beta);
+                updatedVersions.Insert(0, latest_beta);
             }
 
-            await SyncUpLocalVersions(versions, OnLoad);
+            versions.Clear();
+            foreach (MCVersion version in updatedVersions)
+                versions.Add(version);
 
             string GetRealVersion(string versionS)
             {
@@ -102,6 +120,81 @@ namespace BedrockLauncher.Downloaders
                 else return new Version(0, 0, 0, 0).ToString();
             }
         }
+
+        private void AddRegisteredMinecraftPackageVersions(ObservableCollection<MCVersion> versions)
+        {
+            try
+            {
+                var packageManager = new PackageManager();
+                AddRegisteredMinecraftPackageVersions(versions, packageManager, VersionType.Release);
+                AddRegisteredMinecraftPackageVersions(versions, packageManager, VersionType.Preview);
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine($"Unable to scan registered Minecraft packages: {ex}");
+            }
+        }
+
+        private void AddRegisteredMinecraftPackageVersions(ObservableCollection<MCVersion> versions, PackageManager packageManager, VersionType type)
+        {
+            foreach (Package package in packageManager.FindPackagesForUser(string.Empty, Constants.GetPackageFamily(type)))
+            {
+                string displayVersion = GetDisplayVersion(package.Id.Version);
+                string architecture = GetArchitecture(package);
+                if (versions.Any(x => IsSameVersionEntry(x, displayVersion, architecture, type)))
+                    continue;
+
+                string packageIdentity = package.Id.FullName;
+                versions.Add(new MCVersion(packageIdentity, packageIdentity, displayVersion, type, architecture));
+                Trace.WriteLine($"Added registered Minecraft package version: {displayVersion} {architecture} {packageIdentity}");
+            }
+        }
+
+        private static bool IsSameVersionEntry(MCVersion version, string displayVersion, string architecture, VersionType type)
+        {
+            if (version == null || version.Type != type) return false;
+            if (!VersionDbExtensions.DoesVerionArchMatch(version.Architecture, architecture)) return false;
+            if (System.Version.TryParse(version.Name, out System.Version existing) &&
+                System.Version.TryParse(displayVersion, out System.Version detected))
+            {
+                return existing.Equals(detected);
+            }
+
+            return string.Equals(version.Name, displayVersion, StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static string GetArchitecture(Package package)
+        {
+            string architecture = package.Id.Architecture.ToString().ToLowerInvariant();
+            return architecture switch
+            {
+                "x64" => "x64",
+                "x86" => "x86",
+                "arm64" => "arm64",
+                "arm" => "arm",
+                _ => Constants.CurrentArchitecture
+            };
+        }
+
+        private static string GetDisplayVersion(PackageVersion version)
+        {
+            if (version.Major == 1 && version.Minor >= 22 && version.Build >= 100)
+            {
+                int feature = version.Build / 100;
+                int patch = version.Build % 100;
+                return patch > 0 ? $"{version.Minor}.{feature}.{patch}" : $"{version.Minor}.{feature}";
+            }
+
+            if (version.Major == 1 && version.Build >= 100)
+            {
+                int build = version.Build / 100;
+                int revision = version.Build % 100;
+                return revision > 0 ? $"1.{version.Minor}.{build}.{revision}" : $"1.{version.Minor}.{build}";
+            }
+
+            return $"{version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
+        }
+
         private async Task SyncUpLocalVersions(ObservableCollection<MCVersion> versions, bool OnLoad = false)
         {
             DirectoryInfo directoryInfo = Directory.CreateDirectory(MainDataModel.Default.FilePaths.VersionsFolder);
@@ -109,14 +202,22 @@ namespace BedrockLauncher.Downloaders
 
             foreach (var directory in directoryInfo.EnumerateDirectories())
             {
-                string mainifest_file = Path.Combine(directory.FullName, MCVersionExtensions.MainifestFileName);
-                string packageId_file = Path.Combine(directory.FullName, MCVersionExtensions.IdentificationFilename);
+                if (directory.Name.Equals("AppxBackups", StringComparison.OrdinalIgnoreCase) ||
+                    directory.Name.Contains(".broken_", StringComparison.OrdinalIgnoreCase) ||
+                    directory.Name.Contains(".incomplete_", StringComparison.OrdinalIgnoreCase))
+                {
+                    continue;
+                }
+
+                string mainifest_file = FindFileIgnoringCase(directory.FullName, MCVersionExtensions.MainifestFileName);
+                string packageId_file = FindFileIgnoringCase(directory.FullName, MCVersionExtensions.IdentificationFilename)
+                    ?? Path.Combine(directory.FullName, MCVersionExtensions.IdentificationFilename);
                 string customName_file = Path.Combine(directory.FullName, "custom_name.txt");
                 string uuid = directory.Name;
 
                 try
                 {
-                    if (File.Exists(mainifest_file))
+                    if (!string.IsNullOrWhiteSpace(mainifest_file) && File.Exists(mainifest_file))
                     {
                         //Legacy Version Support
                         if (directory.Name.StartsWith("Minecraft-"))
@@ -132,10 +233,22 @@ namespace BedrockLauncher.Downloaders
                         }
 
                         string packageID = await FileExtensions.TryReadAllTextAsync(packageId_file, null);
-
-                        if (!versions.Exists(x => x.UUID == uuid && x.PackageID == packageID))
+                        var folderVersion = await GetAppxMaifestIdentity(packageID, uuid, mainifest_file);
+                        if (folderVersion.PackageType == PackageType.GDK && !IsCompleteGdkVersionDirectory(directory.FullName))
                         {
-                            var customVersion = await GetAppxMaifestIdentity(packageID, uuid, mainifest_file);
+                            Trace.WriteLine($"Skipping incomplete or encrypted local GDK version folder: {directory.FullName}");
+                            continue;
+                        }
+
+                        bool knownCatalogVersion = versions.Exists(x =>
+                            (!string.IsNullOrWhiteSpace(packageID) && string.Equals(x.PackageID, packageID, StringComparison.OrdinalIgnoreCase)) ||
+                            string.Equals(Path.GetFullPath(x.GameDirectory).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar),
+                                Path.GetFullPath(directory.FullName).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar),
+                                StringComparison.OrdinalIgnoreCase));
+
+                        if (!knownCatalogVersion && !versions.Exists(x => x.UUID == uuid && x.PackageID == packageID))
+                        {
+                            var customVersion = folderVersion;
                             string customNameFallback = string.Format("{0}.{1}.{2}", customVersion.Name, customVersion.Type.ToString().FirstOrDefault(), customVersion.Architecture);
                             customVersion.CustomName = await FileExtensions.TryReadAllTextAsync(customName_file, customNameFallback);
                             versions.Add(customVersion);
@@ -149,6 +262,13 @@ namespace BedrockLauncher.Downloaders
                 }
 
             }
+        }
+        private static bool IsCompleteGdkVersionDirectory(string directory)
+        {
+            return File.Exists(Path.Combine(directory, "Minecraft.Windows.exe")) &&
+                File.Exists(Path.Combine(directory, "MicrosoftGame.Config")) &&
+                Directory.Exists(Path.Combine(directory, "data")) &&
+                RequiredGdkRuntimeDlls.All(fileName => File.Exists(Path.Combine(directory, fileName)));
         }
         private async Task<MCVersion> GetAppxMaifestIdentity(string PackageID, string UUID, string file)
         {
@@ -189,7 +309,115 @@ namespace BedrockLauncher.Downloaders
             {
                 return MainDataModel.Default.Versions.ToList().Where(x => x.UUID == versionUUID).FirstOrDefault();
             }
-            else return null;
+
+            return TryGetLocalVersionFromDisk(versionUUID);
+        }
+
+        private MCVersion TryGetLocalVersionFromDisk(string versionUUID)
+        {
+            if (string.IsNullOrWhiteSpace(versionUUID))
+                return null;
+
+            string directory = Path.Combine(MainDataModel.Default.FilePaths.VersionsFolder, versionUUID);
+            string manifestFile = FindFileIgnoringCase(directory, MCVersionExtensions.MainifestFileName);
+            if (!Directory.Exists(directory) || !File.Exists(manifestFile))
+                return null;
+
+            try
+            {
+                var (packageName, packageVersion, processorArchitecture) = GetManifestIdentity(manifestFile);
+                VersionType type;
+                if (string.Equals(packageName, "Microsoft.MinecraftUWP", StringComparison.OrdinalIgnoreCase))
+                    type = VersionType.Release;
+                else if (string.Equals(packageName, "Microsoft.MinecraftWindowsBeta", StringComparison.OrdinalIgnoreCase))
+                    type = VersionType.Preview;
+                else
+                    return null;
+
+                string packageIdFile = FindFileIgnoringCase(directory, MCVersionExtensions.IdentificationFilename)
+                    ?? Path.Combine(directory, MCVersionExtensions.IdentificationFilename);
+                string packageId = File.Exists(packageIdFile)
+                    ? File.ReadAllText(packageIdFile).Trim()
+                    : versionUUID;
+
+                if (string.IsNullOrWhiteSpace(packageId))
+                    packageId = versionUUID;
+
+                string displayVersion = GetDisplayVersionFromPackageVersion(versionUUID, packageVersion, type);
+                MCVersion localVersion = new MCVersion(versionUUID, packageId, displayVersion, type, processorArchitecture);
+
+                if (localVersion.PackageType == PackageType.GDK && !IsCompleteGdkVersionDirectory(directory))
+                    return null;
+
+                return localVersion;
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine($"Unable to resolve local Minecraft version {versionUUID}: {ex}");
+                return null;
+            }
+        }
+
+        private static (string PackageName, string PackageVersion, string Architecture) GetManifestIdentity(string manifestPath)
+        {
+            XElement identity = XDocument.Load(manifestPath)
+                .Descendants()
+                .FirstOrDefault(element => string.Equals(element.Name.LocalName, "Identity", StringComparison.OrdinalIgnoreCase));
+
+            if (identity == null)
+                throw new InvalidDataException("Minecraft package manifest does not contain an Identity element.");
+
+            return (
+                identity.Attribute("Name")?.Value,
+                identity.Attribute("Version")?.Value,
+                identity.Attribute("ProcessorArchitecture")?.Value
+            );
+        }
+
+        private static string FindFileIgnoringCase(string directory, string fileName)
+        {
+            if (string.IsNullOrWhiteSpace(directory) || !Directory.Exists(directory))
+                return null;
+
+            return Directory.EnumerateFiles(directory)
+                .FirstOrDefault(path => string.Equals(Path.GetFileName(path), fileName, StringComparison.OrdinalIgnoreCase));
+        }
+
+        private static string GetDisplayVersionFromPackageVersion(string folderName, string packageVersion, VersionType type)
+        {
+            string normalizedFolderName = folderName;
+            if (type == VersionType.Preview &&
+                normalizedFolderName.StartsWith("preview-", StringComparison.OrdinalIgnoreCase))
+            {
+                normalizedFolderName = normalizedFolderName.Substring("preview-".Length);
+            }
+            else if (type == VersionType.Beta &&
+                normalizedFolderName.StartsWith("beta-", StringComparison.OrdinalIgnoreCase))
+            {
+                normalizedFolderName = normalizedFolderName.Substring("beta-".Length);
+            }
+
+            if (System.Version.TryParse(normalizedFolderName, out _))
+                return normalizedFolderName;
+
+            if (!System.Version.TryParse(packageVersion, out System.Version version))
+                return packageVersion;
+
+            if (version.Major == 1 && version.Minor >= 22 && version.Build >= 100)
+            {
+                int feature = version.Build / 100;
+                int patch = version.Build % 100;
+                return patch > 0 ? $"{version.Minor}.{feature}.{patch}" : $"{version.Minor}.{feature}";
+            }
+
+            if (version.Major == 1 && version.Build >= 100)
+            {
+                int build = version.Build / 100;
+                int revision = version.Build % 100;
+                return revision > 0 ? $"1.{version.Minor}.{build}.{revision}" : $"1.{version.Minor}.{build}";
+            }
+
+            return $"{version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
         }
     }
 }

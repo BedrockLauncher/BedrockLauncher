@@ -66,6 +66,11 @@ namespace BedrockLauncher.Pages.Settings.General
             Properties.LauncherSettings.Default.Save();
         }
 
+        private void CrowdinButton_Click(object sender, RoutedEventArgs e)
+        {
+            JemExtensions.WebExtensions.LaunchWebLink("https://crowdin.com/project/bedrocklauncher");
+        }
+
         private void useFixedInstallLocation_Click(object sender, RoutedEventArgs e)
         {
             // get and save value of checkbox

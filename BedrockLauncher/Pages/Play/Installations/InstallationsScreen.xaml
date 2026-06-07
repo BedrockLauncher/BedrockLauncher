@@ -21,11 +21,15 @@
         <CollectionViewSource x:Key="InstallationsSource4" Source="{Binding Config.CurrentInstallations}" Filter="CollectionViewSource_Filter"></CollectionViewSource>
     </Page.Resources>
     <Grid Margin="0" Background="#FF303030" Style="{DynamicResource DisabledStyle}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="80"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource Seperator.Background}">
+        <Grid x:Name="InstallationsContent">
+            <Grid.Effect>
+                <BlurEffect x:Name="InstallationsBlurEffect" Radius="0"/>
+            </Grid.Effect>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource Seperator.Background}">
             <Grid Background="#FF303030">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -104,6 +108,7 @@
                 </ListView.ItemTemplate>
             </ListView>
             <controls2:General_ResultPanel PanelType="NoContent" Grid.Row="1"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="{Binding ElementName=InstallationsList, Path=Items.Count, Converter={StaticResource IntToVisibilityConverter}}"></controls2:General_ResultPanel>
+            </Grid>
         </Grid>
     </Grid>
 </Page>

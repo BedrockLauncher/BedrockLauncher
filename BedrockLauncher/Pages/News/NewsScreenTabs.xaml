@@ -98,19 +98,9 @@
             </Grid>
         </Border>
         <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Bottom" Orientation="Horizontal">
-            <ToggleButton x:Name="JavaTab" Width="Auto" Click="ButtonManager" Content="{DynamicResource NewsScreen_OfficialTabTitle}" Style="{DynamicResource ToolbarButton}" IsChecked="True">
+            <ToggleButton x:Name="BedrockTab" Width="Auto" Click="ButtonManager" Content="Bedrock" Style="{DynamicResource ToolbarButton}" IsChecked="True">
                 <ToggleButton.ToolTip>
-                    <ToolTip Content="{DynamicResource NewsScreen_OfficialTabTitle}"/>
-                </ToggleButton.ToolTip>
-            </ToggleButton>
-            <ToggleButton x:Name="ForumsTab" Width="Auto" Click="ButtonManager" Content="{DynamicResource NewsScreen_MinecraftForumsTitle}" Style="{DynamicResource ToolbarButton}">
-                <ToggleButton.ToolTip>
-                    <ToolTip Content="{DynamicResource NewsScreen_MinecraftForumsTitle}"/>
-                </ToggleButton.ToolTip>
-            </ToggleButton>
-            <ToggleButton x:Name="LauncherTab" Width="Auto" Click="ButtonManager" Content="{DynamicResource NewsScreen_LauncherTabTitle}" Style="{DynamicResource ToolbarButton}">
-                <ToggleButton.ToolTip>
-                    <ToolTip Content="{DynamicResource NewsScreen_LauncherTabTitle}"/>
+                    <ToolTip Content="Minecraft for Windows news"/>
                 </ToggleButton.ToolTip>
             </ToggleButton>
         </StackPanel>

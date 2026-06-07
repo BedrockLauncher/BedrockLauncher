@@ -138,6 +138,13 @@
 		<ProjectReference Include="..\modules\HtmlRenderer.WPF\HtmlRenderer.WPF.csproj" />
 	</ItemGroup>
 	<ItemGroup>
+		<Content Include="Resources\native\launchercore\*.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+			<TargetPath>native\launchercore\%(Filename)%(Extension)</TargetPath>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
 		<Resource Include="Resources\images\bg\play_screen\1.17_caves_and_cliffs_part_2.jpg" />
 		<Resource Include="Resources\images\bg\play_screen\1.19_the_wild_update.jpg" />
 		<Resource Include="Resources\images\bg\play_screen\1.20_trails_and_tales.png" />
@@ -447,13 +454,25 @@
 		<Resource Include="Resources\images\credits\carjem_logo.png" />
 	</ItemGroup>
 	<ItemGroup>
+		<Resource Include="Resources\images\credits\DLazaridisGM.png" />
+	</ItemGroup>
+	<ItemGroup>
 		<Resource Include="Resources\images\credits\mcmrarm_icon.jfif" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\credits\MetalManeMc.jpg" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="Resources\images\credits\microsoft_logo.png" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="Resources\images\credits\mojang_logo.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\credits\mrmariix.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\images\credits\raythmc.png" />
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="Resources\images\credits\xbox_logo.png" />

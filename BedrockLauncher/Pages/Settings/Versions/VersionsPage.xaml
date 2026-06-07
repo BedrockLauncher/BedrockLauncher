@@ -26,32 +26,62 @@
             <Setter Property="IsEnabled" Value="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}"/>
         </Style>
     </Page.Resources>
-    <Grid Margin="0" Background="#FF303030" Style="{DynamicResource DisabledStyle}" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}">
+    <Grid Margin="0" Background="#FF1F1F1F" Style="{DynamicResource DisabledStyle}" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="156"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource Seperator.Background}">
-            <Grid Background="#FF303030" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid Margin="10,0">
-                    <StackPanel>
-                        <Label Foreground="{DynamicResource PrimaryText.Foreground}" Content="{DynamicResource GeneralSubtitles_Versions}" Margin="0,10,0,0" FontWeight="Bold" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
-                        <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="828" Orientation="Horizontal" Margin="0,-10,0,0">
+        <Border BorderThickness="0,0,0,1" BorderBrush="#FF555555">
+            <Grid ClipToBounds="True">
+                <Grid.Background>
+                    <ImageBrush ImageSource="/BedrockLauncher;component/Resources/images/bg/play_screen/1.21.130_mounts_of_mayhem.png"
+                                Stretch="UniformToFill"
+                                Opacity="0.32"
+                                RenderOptions.BitmapScalingMode="HighQuality"/>
+                </Grid.Background>
+                <Rectangle Fill="#CC111111"/>
+                <Grid Margin="24,18,24,18">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="MINECRAFT FOR WINDOWS VERSIONS"
+                                   Foreground="White"
+                                   FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten"
+                                   FontSize="28"
+                                   TextOptions.TextHintingMode="Fixed"/>
+                        <TextBlock Text="Install Store builds, keep older versions ready, and switch from the Play page."
+                                   Foreground="#FFE6E6E6"
+                                   FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"
+                                   FontSize="13"
+                                   Margin="0,6,0,0"/>
+                        <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Orientation="Horizontal" Margin="0,18,0,0">
                             <CheckBox Click="RefreshVersionsList" IsChecked="{Binding ShowReleases, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Releases}" Style="{StaticResource Checkbox}"></CheckBox>
                             <CheckBox Click="RefreshVersionsList" IsChecked="{Binding ShowBetas, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Betas}" Style="{StaticResource Checkbox}"></CheckBox>
                             <CheckBox Click="RefreshVersionsList" IsChecked="{Binding ShowPreviews, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Previews}" Style="{StaticResource Checkbox}"></CheckBox>
                         </StackPanel>
                     </StackPanel>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                        <Button FontSize="14" HorizontalAlignment="Right" x:Name="RefreshButton" IsEnabled="{Binding IsVersionsUpdating, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource InverseBooleanConverter}}" Click="RefreshButton_Click" Content="{DynamicResource GeneralText_Refresh}" Style="{DynamicResource DialogButton_Green}" Height="34" MinWidth="122"/>
+                        <Button FontSize="14" HorizontalAlignment="Right" x:Name="AddButton" IsEnabled="{Binding IsVersionsUpdating, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource InverseBooleanConverter}}" Click="AddButton_Click" Content="{DynamicResource VersionsPage_InstallVersion}" Style="{DynamicResource DialogButton}" Height="34" MinWidth="122" Margin="0,8,0,0"/>
+                    </StackPanel>
                 </Grid>
             </Grid>
         </Border>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,10">
-            <Button FontSize="14" HorizontalAlignment="Right" x:Name="RefreshButton" IsEnabled="{Binding IsVersionsUpdating, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource InverseBooleanConverter}}" Click="RefreshButton_Click" Content="{DynamicResource GeneralText_Refresh}" Style="{DynamicResource LinkButton}"></Button>
-            <Button FontSize="14" HorizontalAlignment="Right" x:Name="AddButton" IsEnabled="{Binding IsVersionsUpdating, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource InverseBooleanConverter}}" Click="AddButton_Click" Content="{DynamicResource VersionsPage_InstallVersion}" Style="{DynamicResource LinkButton}"/>
-        </StackPanel>
-        <ListView x:Name="VersionsList" ItemsSource="{Binding Source={StaticResource VersionsSource}, IsAsync=True}" SelectionMode="Single" Grid.Row="1" HorizontalContentAlignment="Center" ItemTemplate="{StaticResource VersionItemTemplate}"/>
+        <Border Grid.Row="1"
+                Margin="18"
+                Background="#FF282828"
+                BorderBrush="#FF4A4A4A"
+                BorderThickness="1">
+            <ListView x:Name="VersionsList"
+                      ItemsSource="{Binding Source={StaticResource VersionsSource}, IsAsync=True}"
+                      SelectionMode="Single"
+                      HorizontalContentAlignment="Stretch"
+                      Background="Transparent"
+                      BorderThickness="0"
+                      Padding="8"
+                      ItemTemplate="{StaticResource VersionItemTemplate}"/>
+        </Border>
     </Grid>
 </Page>

@@ -25,11 +25,6 @@
                             <ToolTip Content="{DynamicResource SettingsTab_GeneralButton}"/>
                         </ToggleButton.ToolTip>
                     </ToggleButton>
-                    <ToggleButton x:Name="VersionsButton" Width="Auto" Click="ButtonManager" Content="{DynamicResource SettingsTab_VersionsButton}" Style="{DynamicResource ToolbarButton}">
-                        <ToggleButton.ToolTip>
-                            <ToolTip Content="{DynamicResource SettingsTab_VersionsButton}"/>
-                        </ToggleButton.ToolTip>
-                    </ToggleButton>
                     <ToggleButton x:Name="AboutButton" Width="Auto" Click="ButtonManager" Content="{DynamicResource SettingsTab_AboutButton}" Style="{DynamicResource ToolbarButton}">
                         <ToggleButton.ToolTip>
                             <ToolTip Content="{DynamicResource SettingsTab_AboutButton}"/>

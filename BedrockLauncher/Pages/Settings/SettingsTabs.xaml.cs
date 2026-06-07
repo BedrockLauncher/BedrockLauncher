@@ -14,7 +14,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BedrockLauncher.Pages.Settings.General;
-using BedrockLauncher.Pages.Settings.Versions;
 using BedrockLauncher.UI.Components;
 
 namespace BedrockLauncher.Pages.Settings
@@ -22,7 +21,6 @@ namespace BedrockLauncher.Pages.Settings
     public partial class SettingsTabs : Page
     {
         public GeneralSettingsPage generalSettingsPage = new GeneralSettingsPage();
-        public VersionsPage versionsSettingsPage = new VersionsPage();
         public AboutPage aboutPage = new AboutPage();
 
         private Navigator Navigator { get; set; } = new Navigator();
@@ -44,7 +42,6 @@ namespace BedrockLauncher.Pages.Settings
                 // but this works fine, at least
                 List<ToggleButton> toggleButtons = new List<ToggleButton>() {
                 GeneralButton,
-                VersionsButton,
                 AboutButton
             };
 
@@ -75,7 +72,6 @@ namespace BedrockLauncher.Pages.Settings
 
                 if (senderName == GeneralButton.Name) NavigateToGeneralPage();
                 else if (senderName == AboutButton.Name) NavigateToAboutPage();
-                else if (senderName == VersionsButton.Name) NavigateToVersionsPage();
             });
         }
 
@@ -84,20 +80,15 @@ namespace BedrockLauncher.Pages.Settings
             Navigator.UpdatePageIndex(0);
             Task.Run(() => Navigator.Navigate(SettingsScreenFrame,generalSettingsPage));
         }
-        public void NavigateToVersionsPage()
-        {
-            Navigator.UpdatePageIndex(1);
-            Task.Run(() => Navigator.Navigate(SettingsScreenFrame,versionsSettingsPage));
-        }
 
         public void NavigateToAccountsPage()
         {
-            Navigator.UpdatePageIndex(2);
+            Navigator.UpdatePageIndex(1);
         }
 
         public void NavigateToAboutPage()
         {
-            Navigator.UpdatePageIndex(3);
+            Navigator.UpdatePageIndex(1);
             Task.Run(() => Navigator.Navigate(SettingsScreenFrame,aboutPage));
         }
 
