@@ -123,6 +123,7 @@
 		<PackageReference Include="MimeMapping" Version="3.0.1" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="NLog" Version="5.3.4" />
+		<PackageReference Include="PostSharp" Version="2026.0.10" />
 		<PackageReference Include="PostSharp.Patterns.Model" Version="2024.1.6" />
 		<PackageReference Include="RestSharp" Version="112.1.0" />
 		<PackageReference Include="Sentinel.NLogViewer" Version="2.0.1" />
