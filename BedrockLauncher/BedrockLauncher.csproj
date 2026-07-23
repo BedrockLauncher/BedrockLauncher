@@ -155,6 +155,7 @@
 		<Resource Include="Resources\images\bg\play_screen\1.21.111_the_copper_age.png" />
 		<Resource Include="Resources\images\bg\play_screen\1.21.130_mounts_of_mayhem.png" />
 		<Resource Include="Resources\images\bg\play_screen\26.10_tiny_takeover.png" />
+		<Resource Include="Resources\images\bg\play_screen\26.30_chaos_cubed.png" />
 		<Resource Include="Resources\images\bg\play_screen\1.21_tricky_trials.png" />
 		<Resource Include="Resources\images\bg\play_screen\bedrock_and_java_together.jpg">
 		  <CopyToOutputDirectory></CopyToOutputDirectory>
