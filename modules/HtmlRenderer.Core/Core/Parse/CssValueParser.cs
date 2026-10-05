@@ -154,10 +154,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Parse
         /// <param name="fontAdjust">if the length is in pixels and the length is font related it needs to use 72/96 factor</param>
         /// <param name="box"></param>
         /// <returns>the parsed length value with adjustments</returns>
-        public static double ParseLength(string length, double hundredPercent, CssBoxProperties box, bool fontAdjust = false)
-        {
-            return ParseLength(length, hundredPercent, box.GetEmHeight(), null, fontAdjust, false);
-        }
+        public static double ParseLength(string length, double hundredPercent, CssBoxProperties box, bool fontAdjust = false) => ParseLength(length, hundredPercent, box.GetEmHeight(), null, fontAdjust, false);
 
         /// <summary>
         /// Parses a length. Lengths are followed by an unit identifier (e.g. 10px, 3.1em)
@@ -167,10 +164,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Parse
         /// <param name="box"></param>
         /// <param name="defaultUnit"></param>
         /// <returns>the parsed length value with adjustments</returns>
-        public static double ParseLength(string length, double hundredPercent, CssBoxProperties box, string defaultUnit)
-        {
-            return ParseLength(length, hundredPercent, box.GetEmHeight(), defaultUnit, false, false);
-        }
+        public static double ParseLength(string length, double hundredPercent, CssBoxProperties box, string defaultUnit) => ParseLength(length, hundredPercent, box.GetEmHeight(), defaultUnit, false, false);
 
         /// <summary>
         /// Parses a length. Lengths are followed by an unit identifier (e.g. 10px, 3.1em)

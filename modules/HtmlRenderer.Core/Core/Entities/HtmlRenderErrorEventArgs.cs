@@ -71,9 +71,6 @@ namespace TheArtOfDev.HtmlRenderer.Core.Entities
             get { return _exception; }
         }
 
-        public override string ToString()
-        {
-            return string.Format("Type: {0}", _type);
-        }
+        public override string ToString() => string.Format("Type: {0}", _type);
     }
 }

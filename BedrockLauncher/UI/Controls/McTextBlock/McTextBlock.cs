@@ -7,8 +7,10 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace BedrockLauncher.UI.Controls.McTextBlock {
-    public class McTextBlock : FrameworkElement {
+namespace BedrockLauncher.UI.Controls.McTextBlock
+{
+    public class McTextBlock : FrameworkElement
+    {
         private const string RANDOM_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         private const string OBFUSCATION_STOPPERS = "0123456789abcdefrABCDEFR";
         private static readonly Random Random = new Random();
@@ -18,12 +20,15 @@ namespace BedrockLauncher.UI.Controls.McTextBlock {
         private FormattedText _formattedText;
         private bool _isAnimated;
 
-        private bool IsAnimated {
+        private bool IsAnimated
+        {
             get { return _isAnimated; }
-            set {
+            set
+            {
                 _isAnimated = value;
 
-                if (_timer != null) {
+                if (_timer != null)
+                {
                     if (value)
                         _timer.Start();
                     else
@@ -32,7 +37,8 @@ namespace BedrockLauncher.UI.Controls.McTextBlock {
             }
         }
 
-        public string Text {
+        public string Text
+        {
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
         }
@@ -40,7 +46,8 @@ namespace BedrockLauncher.UI.Controls.McTextBlock {
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register("Text", typeof(string), typeof(McTextBlock), new FrameworkPropertyMetadata(String.Empty, FrameworkPropertyMetadataOptions.AffectsArrange, OnTextChanged));
 
-        public FontFamily FontFamily {
+        public FontFamily FontFamily
+        {
             get { return (FontFamily)GetValue(FontFamilyProperty); }
             set { SetValue(FontFamilyProperty, value); }
         }
@@ -57,7 +64,8 @@ namespace BedrockLauncher.UI.Controls.McTextBlock {
         public static readonly DependencyProperty FontWeightProperty =
             DependencyProperty.Register("FontWeight", typeof(FontWeight), typeof(McTextBlock), new FrameworkPropertyMetadata(SystemFonts.MessageFontWeight, FrameworkPropertyMetadataOptions.AffectsMeasure, OnTextChanged));
 
-        public double FontSize {
+        public double FontSize
+        {
             get { return (double)GetValue(FontSizeProperty); }
             set { SetValue(FontSizeProperty, value); }
         }
@@ -65,7 +73,8 @@ namespace BedrockLauncher.UI.Controls.McTextBlock {
         public static readonly DependencyProperty FontSizeProperty =
             DependencyProperty.Register("FontSize", typeof(double), typeof(McTextBlock), new FrameworkPropertyMetadata(12d, FrameworkPropertyMetadataOptions.AffectsMeasure, OnTextChanged));
 
-        public Color Foreground {
+        public Color Foreground
+        {
             get { return (Color)GetValue(ForegroundProperty); }
             set { SetValue(ForegroundProperty, value); }
         }
@@ -73,7 +82,8 @@ namespace BedrockLauncher.UI.Controls.McTextBlock {
         public static readonly DependencyProperty ForegroundProperty =
             DependencyProperty.Register("Foreground", typeof(Color), typeof(McTextBlock), new FrameworkPropertyMetadata(SystemColors.InfoTextColor, FrameworkPropertyMetadataOptions.AffectsRender, OnTextChanged));
 
-        public TextAlignment TextAlignment {
+        public TextAlignment TextAlignment
+        {
             get { return (TextAlignment)GetValue(TextAlignmentProperty); }
             set { SetValue(TextAlignmentProperty, value); }
         }
@@ -81,15 +91,18 @@ namespace BedrockLauncher.UI.Controls.McTextBlock {
         public static readonly DependencyProperty TextAlignmentProperty =
             DependencyProperty.Register("TextAlignment", typeof(TextAlignment), typeof(McTextBlock), new FrameworkPropertyMetadata(TextAlignment.Left, FrameworkPropertyMetadataOptions.AffectsMeasure, OnTextChanged));
 
-        public McTextBlock() {
-            _timer = new DispatcherTimer(TimeSpan.FromSeconds(1 / 30d), DispatcherPriority.Render, (e, s) => {
+        public McTextBlock()
+        {
+            _timer = new DispatcherTimer(TimeSpan.FromSeconds(1 / 30d), DispatcherPriority.Render, (e, s) =>
+            {
                 _formattedText = null;
                 InvalidateMeasure();
                 InvalidateVisual();
             }, Dispatcher);
         }
 
-        private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
+        private static void OnTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
             var mcText = d as McTextBlock;
             if (mcText == null) return;
 
@@ -98,14 +111,16 @@ namespace BedrockLauncher.UI.Controls.McTextBlock {
             mcText.InvalidateVisual();
         }
 
-        protected override void OnRender(DrawingContext drawingContext) {
+        protected override void OnRender(DrawingContext drawingContext)
+        {
             EnsureFormattedText();
 
             drawingContext.DrawText(_formattedText, new Point(0, 0));
             base.OnRender(drawingContext);
         }
 
-        protected override Size MeasureOverride(Size availableSize) {
+        protected override Size MeasureOverride(Size availableSize)
+        {
             EnsureFormattedText();
 
             // constrain the formatted text according to the available size
@@ -118,17 +133,12 @@ namespace BedrockLauncher.UI.Controls.McTextBlock {
             return new Size(_formattedText.Width, _formattedText.Height);
         }
 
-        private FontWeight GetNormalFont()
-        {
-            return FontWeight;
-        }
+        private FontWeight GetNormalFont() => FontWeight;
 
-        private FontWeight GetBoldFont()
-        {
-            return FontWeight.FromOpenTypeWeight(FontWeight.ToOpenTypeWeight() + 300);
-        }
+        private FontWeight GetBoldFont() => FontWeight.FromOpenTypeWeight(FontWeight.ToOpenTypeWeight() + 300);
 
-        private void EnsureFormattedText() {
+        private void EnsureFormattedText()
+        {
             if (_formattedText != null) return;
 
             IsAnimated = false; //Wird in RemoveCodes() auf true gesetzt, falls irgendwas tatsächlcih effektiv obfuscated ist
@@ -142,9 +152,10 @@ namespace BedrockLauncher.UI.Controls.McTextBlock {
                 FontWeight,
                 FontStretches.Normal),
                 FontSize,
-                new SolidColorBrush(Foreground)) {
-                    TextAlignment = TextAlignment
-                };
+                new SolidColorBrush(Foreground))
+            {
+                TextAlignment = TextAlignment
+            };
 #pragma warning restore CS0618 // Type or member is obsolete
 
             var currentColor = Foreground;
@@ -154,7 +165,8 @@ namespace BedrockLauncher.UI.Controls.McTextBlock {
             var lastPos = 0;
             var i = 0;
 
-            foreach (Match m in Formatting.MinecraftFormattings.Matches(Text)) {
+            foreach (Match m in Formatting.MinecraftFormattings.Matches(Text))
+            {
                 i++;
                 var realIndex = m.Index - i * 2 + 2;
                 _formattedText.SetForegroundBrush(new SolidColorBrush(currentColor), lastPos, realIndex - lastPos);
@@ -163,7 +175,8 @@ namespace BedrockLauncher.UI.Controls.McTextBlock {
                 _formattedText.SetTextDecorations(currentDecorations.CloneCurrentValue(), lastPos, realIndex - lastPos);
 
                 var c = m.Groups[1].Value[0];
-                switch (c) {
+                switch (c)
+                {
                     case 'r':
                     case 'R':
                         currentColor = Foreground;
@@ -209,25 +222,31 @@ namespace BedrockLauncher.UI.Controls.McTextBlock {
         /// </summary>
         /// <param name="original"></param>
         /// <returns></returns>
-        private string RemoveCodes(string original) {
+        private string RemoveCodes(string original)
+        {
             var sb = new StringBuilder();
             var wasParagraph = false;
             var isObfuscated = false;
 
-            foreach (var c in original) {
-                if (wasParagraph) {
-                    if (c == 'k' ||c == 'K') {
+            foreach (var c in original)
+            {
+                if (wasParagraph)
+                {
+                    if (c == 'k' || c == 'K')
+                    {
                         isObfuscated = true;
                         IsAnimated = true;
                     }
-                    else {
+                    else
+                    {
                         if (OBFUSCATION_STOPPERS.Contains(c))
                             isObfuscated = false;
                         sb.Append('§').Append(c);
                     }
                     wasParagraph = false;
                 }
-                else {
+                else
+                {
                     if (c == '§')
                         wasParagraph = true;
                     else
@@ -238,8 +257,6 @@ namespace BedrockLauncher.UI.Controls.McTextBlock {
             return Formatting.MinecraftFormattings.Replace(sb.ToString(), String.Empty);
         }
 
-        private char GetRandomChar() {
-            return RANDOM_CHARS[Random.Next(RANDOM_CHARS.Length)];
-        }
+        private char GetRandomChar() => RANDOM_CHARS[Random.Next(RANDOM_CHARS.Length)];
     }
 }

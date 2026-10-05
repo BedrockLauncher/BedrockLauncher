@@ -137,50 +137,36 @@ namespace TheArtOfDev.HtmlRenderer.Adapters
         /// <param name="color2">the end color of the gradient</param>
         /// <param name="angle">the angle to move the gradient from start color to end color in the rectangle</param>
         /// <returns>linear gradient color brush instance</returns>
-        public RBrush GetLinearGradientBrush(RRect rect, RColor color1, RColor color2, double angle)
-        {
-            return CreateLinearGradientBrush(rect, color1, color2, angle);
-        }
+        public RBrush GetLinearGradientBrush(RRect rect, RColor color1, RColor color2, double angle) => CreateLinearGradientBrush(rect, color1, color2, angle);
 
         /// <summary>
         /// Convert image object returned from <see cref="HtmlImageLoadEventArgs"/> to <see cref="RImage"/>.
         /// </summary>
         /// <param name="image">the image returned from load event</param>
         /// <returns>converted image or null</returns>
-        public RImage ConvertImage(object image)
-        {
+        public RImage ConvertImage(object image) =>
             // TODO:a remove this by creating better API.
-            return ConvertImageInt(image);
-        }
+            ConvertImageInt(image);
 
         /// <summary>
         /// Create an <see cref="RImage"/> object from the given stream.
         /// </summary>
         /// <param name="memoryStream">the stream to create image from</param>
         /// <returns>new image instance</returns>
-        public RImage ImageFromStream(Stream memoryStream)
-        {
-            return ImageFromStreamInt(memoryStream);
-        }
+        public RImage ImageFromStream(Stream memoryStream) => ImageFromStreamInt(memoryStream);
 
         /// <summary>
         /// Check if the given font exists in the system by font family name.
         /// </summary>
         /// <param name="font">the font name to check</param>
         /// <returns>true - font exists by given family name, false - otherwise</returns>
-        public bool IsFontExists(string font)
-        {
-            return _fontsHandler.IsFontExists(font);
-        }
+        public bool IsFontExists(string font) => _fontsHandler.IsFontExists(font);
 
         /// <summary>
         /// Adds a font family to be used.
         /// </summary>
         /// <param name="fontFamily">The font family to add.</param>
-        public void AddFontFamily(RFontFamily fontFamily)
-        {
-            _fontsHandler.AddFontFamily(fontFamily);
-        }
+        public void AddFontFamily(RFontFamily fontFamily) => _fontsHandler.AddFontFamily(fontFamily);
 
         /// <summary>
         /// Adds a font mapping from <paramref name="fromFamily"/> to <paramref name="toFamily"/> iff the <paramref name="fromFamily"/> is not found.<br/>
@@ -189,10 +175,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters
         /// </summary>
         /// <param name="fromFamily">the font family to replace</param>
         /// <param name="toFamily">the font family to replace with</param>
-        public void AddFontFamilyMapping(string fromFamily, string toFamily)
-        {
-            _fontsHandler.AddFontFamilyMapping(fromFamily, toFamily);
-        }
+        public void AddFontFamilyMapping(string fromFamily, string toFamily) => _fontsHandler.AddFontFamilyMapping(fromFamily, toFamily);
 
         /// <summary>
         /// Get font instance by given font family name, size and style.
@@ -201,10 +184,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters
         /// <param name="size">font size</param>
         /// <param name="style">font style</param>
         /// <returns>font instance</returns>
-        public RFont GetFont(string family, double size, RFontStyle style)
-        {
-            return _fontsHandler.GetCachedFont(family, size, style);
-        }
+        public RFont GetFont(string family, double size, RFontStyle style) => _fontsHandler.GetCachedFont(family, size, style);
 
         /// <summary>
         /// Get image to be used while HTML image is loading.
@@ -242,20 +222,14 @@ namespace TheArtOfDev.HtmlRenderer.Adapters
         /// <param name="html">the html data</param>
         /// <param name="plainText">the plain text data</param>
         /// <returns>drag-drop data object</returns>
-        public object GetClipboardDataObject(string html, string plainText)
-        {
-            return GetClipboardDataObjectInt(html, plainText);
-        }
+        public object GetClipboardDataObject(string html, string plainText) => GetClipboardDataObjectInt(html, plainText);
 
         /// <summary>
         /// Set the given text to the clipboard<br/>
         /// Not relevant for platforms that don't render HTML on UI element.
         /// </summary>
         /// <param name="text">the text to set</param>
-        public void SetToClipboard(string text)
-        {
-            SetToClipboardInt(text);
-        }
+        public void SetToClipboard(string text) => SetToClipboardInt(text);
 
         /// <summary>
         /// Set the given html and plain text data to clipboard.<br/>
@@ -263,30 +237,21 @@ namespace TheArtOfDev.HtmlRenderer.Adapters
         /// </summary>
         /// <param name="html">the html data</param>
         /// <param name="plainText">the plain text data</param>
-        public void SetToClipboard(string html, string plainText)
-        {
-            SetToClipboardInt(html, plainText);
-        }
+        public void SetToClipboard(string html, string plainText) => SetToClipboardInt(html, plainText);
 
         /// <summary>
         /// Set the given image to clipboard.<br/>
         /// Not relevant for platforms that don't render HTML on UI element.
         /// </summary>
         /// <param name="image">the image object to set to clipboard</param>
-        public void SetToClipboard(RImage image)
-        {
-            SetToClipboardInt(image);
-        }
+        public void SetToClipboard(RImage image) => SetToClipboardInt(image);
 
         /// <summary>
         /// Create a context menu that can be used on the control<br/>
         /// Not relevant for platforms that don't render HTML on UI element.
         /// </summary>
         /// <returns>new context menu</returns>
-        public RContextMenu GetContextMenu()
-        {
-            return CreateContextMenuInt();
-        }
+        public RContextMenu GetContextMenu() => CreateContextMenuInt();
 
         /// <summary>
         /// Save the given image to file by showing save dialog to the client.<br/>
@@ -296,10 +261,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters
         /// <param name="name">the name of the image for save dialog</param>
         /// <param name="extension">the extension of the image for save dialog</param>
         /// <param name="control">optional: the control to show the dialog on</param>
-        public void SaveToFile(RImage image, string name, string extension, RControl control = null)
-        {
-            SaveToFileInt(image, name, extension, control);
-        }
+        public void SaveToFile(RImage image, string name, string extension, RControl control = null) => SaveToFileInt(image, name, extension, control);
 
         /// <summary>
         /// Get font instance by given font family name, size and style.
@@ -308,10 +270,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters
         /// <param name="size">font size</param>
         /// <param name="style">font style</param>
         /// <returns>font instance</returns>
-        internal RFont CreateFont(string family, double size, RFontStyle style)
-        {
-            return CreateFontInt(family, size, style);
-        }
+        internal RFont CreateFont(string family, double size, RFontStyle style) => CreateFontInt(family, size, style);
 
         /// <summary>
         /// Get font instance by given font family instance, size and style.<br/>
@@ -321,10 +280,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters
         /// <param name="size">font size</param>
         /// <param name="style">font style</param>
         /// <returns>font instance</returns>
-        internal RFont CreateFont(RFontFamily family, double size, RFontStyle style)
-        {
-            return CreateFontInt(family, size, style);
-        }
+        internal RFont CreateFont(RFontFamily family, double size, RFontStyle style) => CreateFontInt(family, size, style);
 
 
         #region Private/Protected methods
@@ -400,47 +356,32 @@ namespace TheArtOfDev.HtmlRenderer.Adapters
         /// <param name="html">the html data</param>
         /// <param name="plainText">the plain text data</param>
         /// <returns>drag-drop data object</returns>
-        protected virtual object GetClipboardDataObjectInt(string html, string plainText)
-        {
-            throw new NotImplementedException();
-        }
+        protected virtual object GetClipboardDataObjectInt(string html, string plainText) => throw new NotImplementedException();
 
         /// <summary>
         /// Set the given text to the clipboard
         /// </summary>
         /// <param name="text">the text to set</param>
-        protected virtual void SetToClipboardInt(string text)
-        {
-            throw new NotImplementedException();
-        }
+        protected virtual void SetToClipboardInt(string text) => throw new NotImplementedException();
 
         /// <summary>
         /// Set the given html and plain text data to clipboard.
         /// </summary>
         /// <param name="html">the html data</param>
         /// <param name="plainText">the plain text data</param>
-        protected virtual void SetToClipboardInt(string html, string plainText)
-        {
-            throw new NotImplementedException();
-        }
+        protected virtual void SetToClipboardInt(string html, string plainText) => throw new NotImplementedException();
 
         /// <summary>
         /// Set the given image to clipboard.
         /// </summary>
         /// <param name="image"></param>
-        protected virtual void SetToClipboardInt(RImage image)
-        {
-            throw new NotImplementedException();
-        }
+        protected virtual void SetToClipboardInt(RImage image) => throw new NotImplementedException();
 
         /// <summary>
         /// Create a context menu that can be used on the control
         /// </summary>
         /// <returns>new context menu</returns>
-        protected virtual RContextMenu CreateContextMenuInt()
-        {
-            throw new NotImplementedException();
-        }
+        protected virtual RContextMenu CreateContextMenuInt() => throw new NotImplementedException();
 
         /// <summary>
         /// Save the given image to file by showing save dialog to the client.
@@ -449,10 +390,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters
         /// <param name="name">the name of the image for save dialog</param>
         /// <param name="extension">the extension of the image for save dialog</param>
         /// <param name="control">optional: the control to show the dialog on</param>
-        protected virtual void SaveToFileInt(RImage image, string name, string extension, RControl control = null)
-        {
-            throw new NotImplementedException();
-        }
+        protected virtual void SaveToFileInt(RImage image, string name, string extension, RControl control = null) => throw new NotImplementedException();
 
         #endregion
     }

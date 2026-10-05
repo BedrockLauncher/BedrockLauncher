@@ -561,10 +561,7 @@ namespace TheArtOfDev.HtmlRenderer.Core
         /// </summary>
         /// <param name="styleGen">Optional: controls the way styles are generated when html is generated (default: <see cref="HtmlGenerationStyle.Inline"/>)</param>
         /// <returns>generated html</returns>
-        public string GetHtml(HtmlGenerationStyle styleGen = HtmlGenerationStyle.Inline)
-        {
-            return DomUtils.GenerateHtml(_root, styleGen);
-        }
+        public string GetHtml(HtmlGenerationStyle styleGen = HtmlGenerationStyle.Inline) => DomUtils.GenerateHtml(_root, styleGen);
 
         /// <summary>
         /// Get attribute value of element at the given x,y location by given key.<br/>
@@ -993,19 +990,13 @@ namespace TheArtOfDev.HtmlRenderer.Core
         /// Get image downloader to be used to download images for the current html rendering.<br/>
         /// Lazy create single downloader to be used for all images in the current html.
         /// </summary>
-        internal ImageDownloader GetImageDownloader()
-        {
-            return _imageDownloader;
-        }
+        internal ImageDownloader GetImageDownloader() => _imageDownloader;
 
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
         /// <filterpriority>2</filterpriority>
-        public void Dispose()
-        {
-            Dispose(true);
-        }
+        public void Dispose() => Dispose(true);
 
 
         #region Private methods
@@ -1015,19 +1006,13 @@ namespace TheArtOfDev.HtmlRenderer.Core
         /// </summary>
         /// <param name="location">the location to adjust</param>
         /// <returns>the adjusted location</returns>
-        private RPoint OffsetByScroll(RPoint location)
-        {
-            return new RPoint(location.X - ScrollOffset.X, location.Y - ScrollOffset.Y);
-        }
+        private RPoint OffsetByScroll(RPoint location) => new RPoint(location.X - ScrollOffset.X, location.Y - ScrollOffset.Y);
 
         /// <summary>
         /// Check if the mouse is currently on the html container.<br/>
         /// Relevant if the html container is not filled in the hosted control (location is not zero and the size is not the full size of the control).
         /// </summary>
-        private bool IsMouseInContainer(RPoint location)
-        {
-            return location.X >= _location.X && location.X <= _location.X + _actualSize.Width && location.Y >= _location.Y + ScrollOffset.Y && location.Y <= _location.Y + ScrollOffset.Y + _actualSize.Height;
-        }
+        private bool IsMouseInContainer(RPoint location) => location.X >= _location.X && location.X <= _location.X + _actualSize.Width && location.Y >= _location.Y + ScrollOffset.Y && location.Y <= _location.Y + ScrollOffset.Y + _actualSize.Height;
 
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.

@@ -1,24 +1,25 @@
-﻿using System;
+﻿using BedrockLauncher.Classes.Launcher;
+using HtmlAgilityPack;
+using JemExtensions;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using PostSharp.Patterns.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net;
-using Newtonsoft.Json;
 using System.IO;
-using BedrockLauncher.Classes.Launcher;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
-using Newtonsoft.Json.Linq;
-using HtmlAgilityPack;
+using System.Text;
 using System.Text.RegularExpressions;
-using JemExtensions;
-using PostSharp.Patterns.Model;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace BedrockLauncher.Downloaders
 {
 
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]    //196 Lines
     public class ChangelogDownloader
     {
 
@@ -29,12 +30,8 @@ namespace BedrockLauncher.Downloaders
         public ObservableCollection<PatchNotes_Game_Item> PatchNotes { get; set; } = new ObservableCollection<PatchNotes_Game_Item>();
 
         //TODO: Wait for Mojang to Properly Implement Betas into the JSON before reimplemting
-        #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-        public static async Task<bool> GetBedrockOfTheWeekStatus()
-        #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
-        {
-            return false;
-        }
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+        public static async Task<bool> GetBedrockOfTheWeekStatus() => false;
         private void ClearPatchList()
         {
             if (Application.Current == null) return;
@@ -60,7 +57,7 @@ namespace BedrockLauncher.Downloaders
             {
                 try
                 {
-                    var json = await httpClient.GetStringAsync(Constants.PATCHNOTES_MAIN_V2_URL);
+                    var json = await httpClient.GetStringAsync(Constants.PATCHNOTES_MAIN_URL);
                     result = Newtonsoft.Json.JsonConvert.DeserializeObject<PatchNotes_Game_Root>(json);
                 }
                 catch
@@ -72,7 +69,8 @@ namespace BedrockLauncher.Downloaders
             if (result == null) result = new PatchNotes_Game_Root();
             if (result.entries == null) result.entries = new List<PatchNotes_Game_Item>();
 
-            await Application.Current.Dispatcher.InvokeAsync(() => {
+            await Application.Current.Dispatcher.InvokeAsync(() =>
+            {
                 foreach (PatchNotes_Game_Item item in result.entries)
                 {
                     AddPatch(item);

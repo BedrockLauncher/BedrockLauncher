@@ -1,4 +1,9 @@
-﻿using System;
+﻿using DJ;
+using DJ.Extensions;
+using DJ.Resolver;
+using DJ.Targets;
+using NLog;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -12,11 +17,6 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
-using DJ.Extensions;
-using DJ.Resolver;
-using DJ.Targets;
-using DJ;
-using NLog;
 
 namespace BedrockLauncher.UI.Controls.Misc
 {
@@ -421,10 +421,7 @@ namespace BedrockLauncher.UI.Controls.Misc
             }
         }
 
-        protected virtual void OnLogLevelChanged()
-        {
-            CollectionViewSource.GetDefaultView(ListView.ItemsSource).Refresh();
-        }
+        protected virtual void OnLogLevelChanged() => CollectionViewSource.GetDefaultView(ListView.ItemsSource).Refresh();
 
         private bool LogEventFilter(object sender)
         {
@@ -587,15 +584,9 @@ namespace BedrockLauncher.UI.Controls.Misc
             }
         }
 
-        private void _ParentWindowOnClosed(object sender, EventArgs e)
-        {
-            _Dispose();
-        }
+        private void _ParentWindowOnClosed(object sender, EventArgs e) => _Dispose();
 
-        private void _Dispose()
-        {
-            _Subscription?.Dispose();
-        }
+        private void _Dispose() => _Subscription?.Dispose();
 
         private void _OnLoaded(object sender, RoutedEventArgs e)
         {

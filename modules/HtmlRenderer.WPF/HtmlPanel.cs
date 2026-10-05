@@ -319,10 +319,7 @@ namespace TheArtOfDev.HtmlRenderer.WPF
         /// <summary>
         /// On HTML container scroll change request scroll to the requested location.
         /// </summary>
-        private void OnScrollChange(object sender, HtmlScrollEventArgs e)
-        {
-            ScrollToPoint(e.X, e.Y);
-        }
+        private void OnScrollChange(object sender, HtmlScrollEventArgs e) => ScrollToPoint(e.X, e.Y);
 
         /// <summary>
         /// Set the control scroll offset to the given values.
@@ -337,10 +334,7 @@ namespace TheArtOfDev.HtmlRenderer.WPF
         /// <summary>
         /// On scrollbar scroll update the scroll offsets and invalidate.
         /// </summary>
-        private void OnScrollBarScroll(object sender, ScrollEventArgs e)
-        {
-            UpdateScrollOffsets();
-        }
+        private void OnScrollBarScroll(object sender, ScrollEventArgs e) => UpdateScrollOffsets();
 
         /// <summary>
         /// Update the scroll offset of the HTML container and invalidate visual to re-render.

@@ -261,38 +261,26 @@ namespace TheArtOfDev.HtmlRenderer.WPF
         /// <summary>
         /// Clear the current selection.
         /// </summary>
-        public void ClearSelection()
-        {
-            HtmlContainerInt.ClearSelection();
-        }
+        public void ClearSelection() => HtmlContainerInt.ClearSelection();
 
         /// <summary>
         /// Init with optional document and stylesheet.
         /// </summary>
         /// <param name="htmlSource">the html to init with, init empty if not given</param>
         /// <param name="baseCssData">optional: the stylesheet to init with, init default if not given</param>
-        public void SetHtml(string htmlSource, CssData baseCssData = null)
-        {
-            _htmlContainerInt.SetHtml(htmlSource, baseCssData);
-        }
+        public void SetHtml(string htmlSource, CssData baseCssData = null) => _htmlContainerInt.SetHtml(htmlSource, baseCssData);
 
         /// <summary>
         /// Clear the content of the HTML container releasing any resources used to render previously existing content.
         /// </summary>
-        public void Clear()
-        {
-            _htmlContainerInt.Clear();
-        }
+        public void Clear() => _htmlContainerInt.Clear();
 
         /// <summary>
         /// Get html from the current DOM tree with style if requested.
         /// </summary>
         /// <param name="styleGen">Optional: controls the way styles are generated when html is generated (default: <see cref="HtmlGenerationStyle.Inline"/>)</param>
         /// <returns>generated html</returns>
-        public string GetHtml(HtmlGenerationStyle styleGen = HtmlGenerationStyle.Inline)
-        {
-            return _htmlContainerInt.GetHtml(styleGen);
-        }
+        public string GetHtml(HtmlGenerationStyle styleGen = HtmlGenerationStyle.Inline) => _htmlContainerInt.GetHtml(styleGen);
 
         /// <summary>
         /// Get attribute value of element at the given x,y location by given key.<br/>
@@ -301,10 +289,7 @@ namespace TheArtOfDev.HtmlRenderer.WPF
         /// <param name="location">the location to find the attribute at</param>
         /// <param name="attribute">the attribute key to get value by</param>
         /// <returns>found attribute value or null if not found</returns>
-        public string GetAttributeAt(Point location, string attribute)
-        {
-            return _htmlContainerInt.GetAttributeAt(Utils.Convert(location), attribute);
-        }
+        public string GetAttributeAt(Point location, string attribute) => _htmlContainerInt.GetAttributeAt(Utils.Convert(location), attribute);
 
         /// <summary>
         /// Get all the links in the HTML with the element Rect and href data.
@@ -325,10 +310,7 @@ namespace TheArtOfDev.HtmlRenderer.WPF
         /// </summary>
         /// <param name="location">the location to find the link at</param>
         /// <returns>css link href if exists or null</returns>
-        public string GetLinkAt(Point location)
-        {
-            return _htmlContainerInt.GetLinkAt(Utils.Convert(location));
-        }
+        public string GetLinkAt(Point location) => _htmlContainerInt.GetLinkAt(Utils.Convert(location));
 
         /// <summary>
         /// Get the Rect of html element as calculated by html layout.<br/>
@@ -448,10 +430,7 @@ namespace TheArtOfDev.HtmlRenderer.WPF
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
-        public void Dispose()
-        {
-            _htmlContainerInt.Dispose();
-        }
+        public void Dispose() => _htmlContainerInt.Dispose();
 
 
         #region Private methods

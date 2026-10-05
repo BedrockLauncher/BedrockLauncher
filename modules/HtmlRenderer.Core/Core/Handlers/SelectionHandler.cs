@@ -312,18 +312,12 @@ namespace TheArtOfDev.HtmlRenderer.Core.Handlers
         /// <summary>
         /// Get the currently selected text segment in the html.<br/>
         /// </summary>
-        public string GetSelectedText()
-        {
-            return _root.HtmlContainer.IsSelectionEnabled ? DomUtils.GetSelectedPlainText(_root) : null;
-        }
+        public string GetSelectedText() => _root.HtmlContainer.IsSelectionEnabled ? DomUtils.GetSelectedPlainText(_root) : null;
 
         /// <summary>
         /// Copy the currently selected html segment with style.<br/>
         /// </summary>
-        public string GetSelectedHtml()
-        {
-            return _root.HtmlContainer.IsSelectionEnabled ? DomUtils.GenerateHtml(_root, HtmlGenerationStyle.Inline, true) : null;
-        }
+        public string GetSelectedHtml() => _root.HtmlContainer.IsSelectionEnabled ? DomUtils.GenerateHtml(_root, HtmlGenerationStyle.Inline, true) : null;
 
         /// <summary>
         /// The selection start index if the first selected word is partially selected (-1 if not selected or fully selected)<br/>
@@ -334,10 +328,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Handlers
         /// </remarks>
         /// <param name="word">the word to return the selection start index for</param>
         /// <returns>data value or -1 if not applicable</returns>
-        public int GetSelectingStartIndex(CssRect word)
-        {
-            return word == (_backwardSelection ? _selectionEnd : _selectionStart) ? (_backwardSelection ? _selectionEndIndex : _selectionStartIndex) : -1;
-        }
+        public int GetSelectingStartIndex(CssRect word) => word == (_backwardSelection ? _selectionEnd : _selectionStart) ? (_backwardSelection ? _selectionEndIndex : _selectionStartIndex) : -1;
 
         /// <summary>
         /// The selection end index if the last selected word is partially selected (-1 if not selected or fully selected)<br/>
@@ -347,10 +338,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Handlers
         /// Handles backward selecting by returning the selection end data instead of start.
         /// </remarks>
         /// <param name="word">the word to return the selection end index for</param>
-        public int GetSelectedEndIndexOffset(CssRect word)
-        {
-            return word == (_backwardSelection ? _selectionStart : _selectionEnd) ? (_backwardSelection ? _selectionStartIndex : _selectionEndIndex) : -1;
-        }
+        public int GetSelectedEndIndexOffset(CssRect word) => word == (_backwardSelection ? _selectionStart : _selectionEnd) ? (_backwardSelection ? _selectionStartIndex : _selectionEndIndex) : -1;
 
         /// <summary>
         /// The selection start offset if the first selected word is partially selected (-1 if not selected or fully selected)<br/>
@@ -360,10 +348,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Handlers
         /// Handles backward selecting by returning the selection end data instead of start.
         /// </remarks>
         /// <param name="word">the word to return the selection start offset for</param>
-        public double GetSelectedStartOffset(CssRect word)
-        {
-            return word == (_backwardSelection ? _selectionEnd : _selectionStart) ? (_backwardSelection ? _selectionEndOffset : _selectionStartOffset) : -1;
-        }
+        public double GetSelectedStartOffset(CssRect word) => word == (_backwardSelection ? _selectionEnd : _selectionStart) ? (_backwardSelection ? _selectionEndOffset : _selectionStartOffset) : -1;
 
         /// <summary>
         /// The selection end offset if the last selected word is partially selected (-1 if not selected or fully selected)<br/>
@@ -373,10 +358,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Handlers
         /// Handles backward selecting by returning the selection end data instead of start.
         /// </remarks>
         /// <param name="word">the word to return the selection end offset for</param>
-        public double GetSelectedEndOffset(CssRect word)
-        {
-            return word == (_backwardSelection ? _selectionStart : _selectionEnd) ? (_backwardSelection ? _selectionStartOffset : _selectionEndOffset) : -1;
-        }
+        public double GetSelectedEndOffset(CssRect word) => word == (_backwardSelection ? _selectionStart : _selectionEnd) ? (_backwardSelection ? _selectionStartOffset : _selectionEndOffset) : -1;
 
         /// <summary>
         /// Clear the current selection.
@@ -402,10 +384,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Handlers
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
         /// <filterpriority>2</filterpriority>
-        public void Dispose()
-        {
-            _contextMenuHandler.Dispose();
-        }
+        public void Dispose() => _contextMenuHandler.Dispose();
 
 
         #region Private methods

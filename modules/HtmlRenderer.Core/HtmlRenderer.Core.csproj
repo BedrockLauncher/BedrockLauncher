@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <Description>PDF document generator from HTML snippet, 100% managed (C#), High performance library using PdfSharp.</Description>
     <Version>1.5.1.1</Version>

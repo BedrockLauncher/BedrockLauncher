@@ -25,6 +25,11 @@
                             <ToolTip Content="{DynamicResource SettingsTab_GeneralButton}"/>
                         </ToggleButton.ToolTip>
                     </ToggleButton>
+                    <ToggleButton x:Name="AccountsButton" Width="Auto" Click="ButtonManager" Content="{DynamicResource SettingsTab_AccountsButton}" Style="{DynamicResource ToolbarButton}">
+                        <ToggleButton.ToolTip>
+                            <ToolTip Content="{DynamicResource SettingsTab_AccountsButton}"/>
+                        </ToggleButton.ToolTip>
+                    </ToggleButton>
                     <ToggleButton x:Name="AboutButton" Width="Auto" Click="ButtonManager" Content="{DynamicResource SettingsTab_AboutButton}" Style="{DynamicResource ToolbarButton}">
                         <ToggleButton.ToolTip>
                             <ToolTip Content="{DynamicResource SettingsTab_AboutButton}"/>
@@ -36,5 +41,4 @@
         <Grid Grid.Row="1" Background="{DynamicResource Background.Tertiary}"></Grid>
         <Frame x:Name="SettingsScreenFrame"  ClipToBounds="True" com:DisableNavigation.Disable="True" Focusable="False" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
-
 </Page>

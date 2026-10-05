@@ -109,10 +109,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Parse
         /// <param name="className">the name of the css class of the block</param>
         /// <param name="blockSource">the CSS block to parse</param>
         /// <returns>the created CSS block instance</returns>
-        public CssBlock ParseCssBlock(string className, string blockSource)
-        {
-            return ParseCssBlockImp(className, blockSource);
-        }
+        public CssBlock ParseCssBlock(string className, string blockSource) => ParseCssBlockImp(className, blockSource);
 
         /// <summary>
         /// Parse a complex font family css property to check if it contains multiple fonts and if the font exists.<br/>
@@ -120,20 +117,14 @@ namespace TheArtOfDev.HtmlRenderer.Core.Parse
         /// </summary>
         /// <param name="value">the font-family value to parse</param>
         /// <returns>parsed font-family value</returns>
-        public string ParseFontFamily(string value)
-        {
-            return ParseFontFamilyProperty(value);
-        }
+        public string ParseFontFamily(string value) => ParseFontFamilyProperty(value);
 
         /// <summary>
         /// Parses a color value in CSS style; e.g. #ff0000, red, rgb(255,0,0), rgb(100%, 0, 0) 
         /// </summary>
         /// <param name="colorStr">color string value to parse</param>
         /// <returns>color value</returns>
-        public RColor ParseColor(string colorStr)
-        {
-            return _valueParser.GetActualColor(colorStr);
-        }
+        public RColor ParseColor(string colorStr) => _valueParser.GetActualColor(colorStr);
 
 
         #region Private methods

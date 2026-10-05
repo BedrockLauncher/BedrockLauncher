@@ -1,11 +1,11 @@
-﻿using System;
-using System.Windows;
+﻿using BedrockLauncher.Classes;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Diagnostics;
-using BedrockLauncher.Classes;
+using System.Windows;
 
 namespace BedrockLauncher.Handlers
 {
@@ -118,14 +118,8 @@ namespace BedrockLauncher.Handlers
             if (EndPrase) return;
             else if (KillApp) Application.Current.MainWindow.Close();
         }
-        private static void InvalidMessage(string argument)
-        {
-            Console.WriteLine(string.Format("{0} {1}", WRONG_ARGUMENT_MESSAGE, argument));
-        }
-        private static void ShowHelp()
-        {
-            Console.WriteLine(String.Join(Environment.NewLine, HELP_MESSAGE));
-        }
+        private static void InvalidMessage(string argument) => Console.WriteLine(string.Format("{0} {1}", WRONG_ARGUMENT_MESSAGE, argument));
+        private static void ShowHelp() => Console.WriteLine(String.Join(Environment.NewLine, HELP_MESSAGE));
         private static bool LaunchInstallation(string[] args, int index)
         {
             int count = args.Length - 1;
@@ -148,7 +142,7 @@ namespace BedrockLauncher.Handlers
                     var i = p.Installations.Where(x => x.DisplayName == installationName).FirstOrDefault();
                     bool c = Properties.LauncherSettings.Default.KeepLauncherOpen;
                     if (KeepOpenOnLaunch) c = true;
-                    else if (CloseOnLaunch) c = false;   
+                    else if (CloseOnLaunch) c = false;
                     ViewModels.MainDataModel.Default.Play(p, i, c, LaunchEditor, false);
                     return true;
                 }
@@ -156,9 +150,6 @@ namespace BedrockLauncher.Handlers
             //Not Enough Args
             else return false;
         }
-        private static void HideWindow()
-        {
-            Application.Current.MainWindow.Hide();
-        }
+        private static void HideWindow() => Application.Current.MainWindow.Hide();
     }
 }

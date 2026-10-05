@@ -1,6 +1,8 @@
 ﻿//using CefSharp;
 using BedrockLauncher.UI.Interfaces;
+using BedrockLauncher.UI.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
@@ -8,8 +10,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
-using BedrockLauncher.UI.ViewModels;
-using System.Collections.Generic;
 
 namespace BedrockLauncher.UI.Pages.Preview
 {
@@ -69,20 +69,11 @@ namespace BedrockLauncher.UI.Pages.Preview
 
         #region Closing Events
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            MainViewModel.Handler.SetOverlayFrame(null);
-        }
+        private void CancelButton_Click(object sender, RoutedEventArgs e) => MainViewModel.Handler.SetOverlayFrame(null);
 
-        private void CreateButton_Click(object sender, RoutedEventArgs e)
-        {
-            MainViewModel.Handler.SetOverlayFrame(null);
-        }
+        private void CreateButton_Click(object sender, RoutedEventArgs e) => MainViewModel.Handler.SetOverlayFrame(null);
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            MainViewModel.Handler.SetOverlayFrame(null);
-        }
+        private void CloseButton_Click(object sender, RoutedEventArgs e) => MainViewModel.Handler.SetOverlayFrame(null);
 
 
         #endregion
@@ -92,12 +83,10 @@ namespace BedrockLauncher.UI.Pages.Preview
 
         }
 
-        private async void LoadHTML()
-        {
-            await Dispatcher.InvokeAsync(() => {
-                Renderer.Text = HTML;
-            });
-        }
+        private async void LoadHTML() => await Dispatcher.InvokeAsync(() =>
+                                                  {
+                                                      Renderer.Text = HTML;
+                                                  });
 
         private void Renderer_IsBrowserInitializedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
@@ -109,14 +98,8 @@ namespace BedrockLauncher.UI.Pages.Preview
             */
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            JemExtensions.WebExtensions.LaunchWebLink(URL);
-        }
+        private void Button_Click(object sender, RoutedEventArgs e) => JemExtensions.WebExtensions.LaunchWebLink(URL);
 
-        private async void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            await Task.Run(() => LoadHTML());
-        }
+        private async void Page_Loaded(object sender, RoutedEventArgs e) => await Task.Run(() => LoadHTML());
     }
 }

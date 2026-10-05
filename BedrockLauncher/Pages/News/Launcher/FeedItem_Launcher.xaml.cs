@@ -1,8 +1,8 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using BedrockLauncher.Classes.Launcher;
+﻿using BedrockLauncher.Classes.Launcher;
 using BedrockLauncher.UI.Pages.Preview;
 using Markdig;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace BedrockLauncher.Pages.News.Launcher
 {
@@ -25,7 +25,10 @@ namespace BedrockLauncher.Pages.News.Launcher
 
         public static void LoadChangelog(PatchNote_Launcher item)
         {
-            string header_title = string.Format("{0} {1}", (item.isBeta ? "Beta" : "Release"), item.tag_name); //TODO: Localize
+            string channel = item.isBeta
+                ? (Localization.Language.LanguageManager.GetResource("GeneralText_Beta") as string ?? "Beta")
+                : (Localization.Language.LanguageManager.GetResource("GeneralText_Releases") as string ?? "Release");
+            string header_title = string.Format("{0} {1}", channel, item.tag_name);
             string html = Markdown.ToHtml(item.body);
             ViewModels.MainViewModel.Default.SetOverlayFrame(new ChangelogPreviewPage(html, header_title, item.html_url));
         }

@@ -1,21 +1,21 @@
-﻿using System;
-using System.Windows;
-using System.IO;
-using System.Net;
-using System.Threading.Tasks;
-using HtmlAgilityPack;
-using System.Diagnostics;
-using System.Windows.Media.Animation;
-using System.Windows.Controls;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using BedrockLauncher;
-using System.Runtime.InteropServices;
-using BedrockLauncher.ViewModels;
-using System.Linq;
-using System.Threading;
+﻿using BedrockLauncher;
 using BedrockLauncher.Core;
+using BedrockLauncher.ViewModels;
+using HtmlAgilityPack;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
+using System.Runtime.InteropServices;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media.Animation;
 
 namespace BedrockLauncher.Handlers
 {
@@ -87,14 +87,10 @@ namespace BedrockLauncher.Handlers
 
         #region Update Checking
 
-        public void CheckForUpdates()
-        {
-            Task.Run(async () =>
-            {
-                await CheckForUpdatesAsync();
-            });
-
-        }
+        public void CheckForUpdates() => Task.Run(async () =>
+                                                  {
+                                                      await CheckForUpdatesAsync();
+                                                  });
         public async Task<bool> CheckForUpdatesAsync(bool onLoad = false)
         {
             if (onLoad && Debugger.IsAttached && !Constants.Debugging.CheckForUpdatesOnLoad) return false;

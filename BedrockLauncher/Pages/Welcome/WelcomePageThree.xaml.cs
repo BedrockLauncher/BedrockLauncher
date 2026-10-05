@@ -14,14 +14,8 @@ namespace BedrockLauncher.Pages.Welcome
             InitializeComponent();
         }
 
-        private void ProfileControl_GoBack(object sender, EventArgs e)
-        {
-            pageSwitcher.MoveToPage(2);
-        }
+        private void ProfileControl_GoBack(object sender, EventArgs e) => pageSwitcher.MoveToPage(2);
 
-        private void ProfileControl_Confirm(object sender, EventArgs e)
-        {
-            pageSwitcher.MoveToPage(5);
-        }
+        private void ProfileControl_Confirm(object sender, EventArgs e) => pageSwitcher.MoveToPage(5);
     }
 }

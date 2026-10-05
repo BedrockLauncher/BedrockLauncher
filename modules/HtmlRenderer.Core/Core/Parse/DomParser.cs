@@ -515,14 +515,11 @@ namespace TheArtOfDev.HtmlRenderer.Core.Parse
         /// </summary>
         /// <param name="table"></param>
         /// <param name="border"></param>
-        private static void ApplyTableBorder(CssBox table, string border)
-        {
-            SetForAllCells(table, cell =>
-            {
-                cell.BorderLeftStyle = cell.BorderTopStyle = cell.BorderRightStyle = cell.BorderBottomStyle = CssConstants.Solid;
-                cell.BorderLeftWidth = cell.BorderTopWidth = cell.BorderRightWidth = cell.BorderBottomWidth = border;
-            });
-        }
+        private static void ApplyTableBorder(CssBox table, string border) => SetForAllCells(table, cell =>
+                                                                                      {
+                                                                                          cell.BorderLeftStyle = cell.BorderTopStyle = cell.BorderRightStyle = cell.BorderBottomStyle = CssConstants.Solid;
+                                                                                          cell.BorderLeftWidth = cell.BorderTopWidth = cell.BorderRightWidth = cell.BorderBottomWidth = border;
+                                                                                      });
 
         /// <summary>
         /// Cascades to the TD's the border spacified in the TABLE tag.

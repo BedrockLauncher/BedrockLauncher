@@ -141,7 +141,8 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// </summary>
         public bool IsBrElement
         {
-            get {
+            get
+            {
                 return _htmltag != null && _htmltag.Name.Equals("br", StringComparison.InvariantCultureIgnoreCase);
             }
         }
@@ -736,10 +737,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// Get the parent of this css properties instance.
         /// </summary>
         /// <returns></returns>
-        protected override sealed CssBoxProperties GetParent()
-        {
-            return _parentBox;
-        }
+        protected override sealed CssBoxProperties GetParent() => _parentBox;
 
         /// <summary>
         /// Gets the index of the box to be used on a (ordered) list
@@ -873,10 +871,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// </summary>
         /// <param name="attribute">Attribute to retrieve</param>
         /// <returns>Attribute value or string.Empty if no attribute specified</returns>
-        internal string GetAttribute(string attribute)
-        {
-            return GetAttribute(attribute, string.Empty);
-        }
+        internal string GetAttribute(string attribute) => GetAttribute(attribute, string.Empty);
 
         /// <summary>
         /// Gets the value of the specified attribute of the source HTML tag.
@@ -884,10 +879,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// <param name="attribute">Attribute to retrieve</param>
         /// <param name="defaultValue">Value to return if attribute is not specified</param>
         /// <returns>Attribute value or defaultValue if no attribute specified</returns>
-        internal string GetAttribute(string attribute, string defaultValue)
-        {
-            return HtmlTag != null ? HtmlTag.TryGetAttribute(attribute, defaultValue) : defaultValue;
-        }
+        internal string GetAttribute(string attribute, string defaultValue) => HtmlTag != null ? HtmlTag.TryGetAttribute(attribute, defaultValue) : defaultValue;
 
         /// <summary>
         /// Gets the minimum width that the box can be.<br/>
@@ -1066,10 +1058,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// Gets if this box has only inline siblings (including itself)
         /// </summary>
         /// <returns></returns>
-        internal bool HasJustInlineSiblings()
-        {
-            return ParentBox != null && DomUtils.ContainsInlinesOnly(ParentBox);
-        }
+        internal bool HasJustInlineSiblings() => ParentBox != null && DomUtils.ContainsInlinesOnly(ParentBox);
 
         /// <summary>
         /// Gets the rectangles where inline box will be drawn. See Remarks for more info.
@@ -1082,10 +1071,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// <summary>
         /// Inherits inheritable values from parent.
         /// </summary>
-        internal new void InheritStyle(CssBox box = null, bool everything = false)
-        {
-            base.InheritStyle(box ?? ParentBox, everything);
-        }
+        internal new void InheritStyle(CssBox box = null, bool everything = false) => base.InheritStyle(box ?? ParentBox, everything);
 
         /// <summary>
         /// Gets the result of collapsing the vertical margins of the two boxes
@@ -1469,10 +1455,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// <summary>
         /// Resets the <see cref="Rectangles"/> array
         /// </summary>
-        internal void RectanglesReset()
-        {
-            _rectangles.Clear();
-        }
+        internal void RectanglesReset() => _rectangles.Clear();
 
         /// <summary>
         /// On image load process complete with image request refresh for it to be painted.
@@ -1489,10 +1472,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// <summary>
         /// Get brush for the text depending if there is selected text color set.
         /// </summary>
-        protected RColor GetSelectionForeBrush()
-        {
-            return HtmlContainer.SelectionForeColor != RColor.Empty ? HtmlContainer.SelectionForeColor : ActualColor;
-        }
+        protected RColor GetSelectionForeBrush() => HtmlContainer.SelectionForeColor != RColor.Empty ? HtmlContainer.SelectionForeColor : ActualColor;
 
         /// <summary>
         /// Get brush for selection background depending if it has external and if alpha is required for images.
@@ -1515,15 +1495,9 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
             }
         }
 
-        protected override RFont GetCachedFont(string fontFamily, double fsize, RFontStyle st)
-        {
-            return HtmlContainer.Adapter.GetFont(fontFamily, fsize, st);
-        }
+        protected override RFont GetCachedFont(string fontFamily, double fsize, RFontStyle st) => HtmlContainer.Adapter.GetFont(fontFamily, fsize, st);
 
-        protected override RColor GetActualColor(string colorStr)
-        {
-            return HtmlContainer.CssParser.ParseColor(colorStr);
-        }
+        protected override RColor GetActualColor(string colorStr) => HtmlContainer.CssParser.ParseColor(colorStr);
 
         protected override RPoint GetActualLocation(string X, string Y)
         {

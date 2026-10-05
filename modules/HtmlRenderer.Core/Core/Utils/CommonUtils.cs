@@ -91,10 +91,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Utils
         /// </summary>
         /// <param name="ch">the character to check</param>
         /// <returns>true - Asian char, false - otherwise</returns>
-        public static bool IsAsianCharecter(char ch)
-        {
-            return ch >= 0x4e00 && ch <= 0xFA2D;
-        }
+        public static bool IsAsianCharecter(char ch) => ch >= 0x4e00 && ch <= 0xFA2D;
 
         /// <summary>
         /// Check if the given char is a digit character (0-9) and (0-9, a-f for HEX)
@@ -102,10 +99,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Utils
         /// <param name="ch">the character to check</param>
         /// <param name="hex">optional: is hex digit check</param>
         /// <returns>true - is digit, false - not a digit</returns>
-        public static bool IsDigit(char ch, bool hex = false)
-        {
-            return (ch >= '0' && ch <= '9') || (hex && ((ch >= 'a' && ch <= 'f') || (ch >= 'A' && ch <= 'F')));
-        }
+        public static bool IsDigit(char ch, bool hex = false) => (ch >= '0' && ch <= '9') || (hex && ((ch >= 'a' && ch <= 'f') || (ch >= 'A' && ch <= 'F')));
 
         /// <summary>
         /// Convert the given char to digit.
@@ -131,10 +125,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Utils
         /// <summary>
         /// Get size that is max of <paramref name="size"/> and <paramref name="other"/> for width and height separately.
         /// </summary>
-        public static RSize Max(RSize size, RSize other)
-        {
-            return new RSize(Math.Max(size.Width, other.Width), Math.Max(size.Height, other.Height));
-        }
+        public static RSize Max(RSize size, RSize other) => new RSize(Math.Max(size.Width, other.Width), Math.Max(size.Height, other.Height));
 
         /// <summary>
         /// Get Uri object for the given path if it is valid uri path.

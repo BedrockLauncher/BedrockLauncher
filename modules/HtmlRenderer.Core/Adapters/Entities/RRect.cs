@@ -268,10 +268,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters.Entities
         /// <param name="top">The y-coordinate of the upper-left corner of the rectangular region. </param>
         /// <param name="right">The x-coordinate of the lower-right corner of the rectangular region. </param>
         /// <param name="bottom">The y-coordinate of the lower-right corner of the rectangular region. </param>
-        public static RRect FromLTRB(double left, double top, double right, double bottom)
-        {
-            return new RRect(left, top, right - left, bottom - top);
-        }
+        public static RRect FromLTRB(double left, double top, double right, double bottom) => new RRect(left, top, right - left, bottom - top);
 
         /// <summary>
         ///     Tests whether <paramref name="obj" /> is a <see cref="RRect" /> with the same location and size of this
@@ -322,10 +319,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters.Entities
         ///     structure; otherwise false.
         /// </returns>
         /// <param name="pt">The <see cref="RPoint" /> to test.</param>
-        public bool Contains(RPoint pt)
-        {
-            return Contains(pt.X, pt.Y);
-        }
+        public bool Contains(RPoint pt) => Contains(pt.X, pt.Y);
 
         /// <summary>
         ///     Determines if the rectangular region represented by <paramref name="rect" /> is entirely contained within this
@@ -369,10 +363,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters.Entities
         ///     Inflates this <see cref="RRect" /> by the specified amount.
         /// </summary>
         /// <param name="size">The amount to inflate this rectangle. </param>
-        public void Inflate(RSize size)
-        {
-            Inflate(size.Width, size.Height);
-        }
+        public void Inflate(RSize size) => Inflate(size.Width, size.Height);
 
         /// <summary>
         ///     Creates and returns an inflated copy of the specified <see cref="RRect" /> structure. The copy is inflated by the specified amount. The original rectangle remains unmodified.
@@ -467,10 +458,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters.Entities
         ///     Adjusts the location of this rectangle by the specified amount.
         /// </summary>
         /// <param name="pos">The amount to offset the location. </param>
-        public void Offset(RPoint pos)
-        {
-            Offset(pos.X, pos.Y);
-        }
+        public void Offset(RPoint pos) => Offset(pos.X, pos.Y);
 
         /// <summary>
         ///     Adjusts the location of this rectangle by the specified amount.
@@ -487,10 +475,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters.Entities
         ///     Gets the hash code for this <see cref="RRect" /> structure. For information about the use of hash codes, see Object.GetHashCode.
         /// </summary>
         /// <returns>The hash code for this <see cref="RRect" /></returns>
-        public override int GetHashCode()
-        {
-            return (int)(uint)X ^ ((int)(uint)Y << 13 | (int)((uint)Y >> 19)) ^ ((int)(uint)Width << 26 | (int)((uint)Width >> 6)) ^ ((int)(uint)Height << 7 | (int)((uint)Height >> 25));
-        }
+        public override int GetHashCode() => (int)(uint)X ^ ((int)(uint)Y << 13 | (int)((uint)Y >> 19)) ^ ((int)(uint)Width << 26 | (int)((uint)Width >> 6)) ^ ((int)(uint)Height << 7 | (int)((uint)Height >> 25));
 
         /// <summary>
         /// Converts the Location and Size of this <see cref="RRect" /> to a human-readable string.
@@ -498,9 +483,6 @@ namespace TheArtOfDev.HtmlRenderer.Adapters.Entities
         /// <returns>
         /// A string that contains the position, width, and height of this <see cref="RRect" /> structure for example, "{X=20, Y=20, Width=100, Height=50}".
         /// </returns>
-        public override string ToString()
-        {
-            return "{X=" + X + ",Y=" + Y + ",Width=" + Width + ",Height=" + Height + "}";
-        }
+        public override string ToString() => "{X=" + X + ",Y=" + Y + ",Width=" + Width + ",Height=" + Height + "}";
     }
 }

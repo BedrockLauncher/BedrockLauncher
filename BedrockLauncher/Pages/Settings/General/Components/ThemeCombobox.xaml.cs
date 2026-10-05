@@ -43,8 +43,8 @@ namespace BedrockLauncher.Pages.Settings.General.Components
                     }
                 }
             }
-            
-            
+
+
             void AddItem(string tag, Brush brush = null, bool isCustom = false)
             {
                 var item = new ComboBoxItem();

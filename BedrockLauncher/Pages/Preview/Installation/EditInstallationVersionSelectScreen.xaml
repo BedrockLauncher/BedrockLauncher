@@ -1,4 +1,4 @@
-﻿<Page x:Class="BedrockLauncher.Pages.Preview.Installation.EditInstallationVersionSelectScreen"
+<Page x:Class="BedrockLauncher.Pages.Preview.Installation.EditInstallationVersionSelectScreen"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -68,6 +68,9 @@
                 <CheckBox Content="x86" Style="{StaticResource Checkbox}" IsChecked="{Binding ShowX86}" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"></CheckBox>
                 <CheckBox Content="x64" Style="{StaticResource Checkbox}" IsChecked="{Binding ShowX64}" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"></CheckBox>
                 <CheckBox Content="ARM" Style="{StaticResource Checkbox}" IsChecked="{Binding ShowARM}" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"></CheckBox>
+                <Label Foreground="{DynamicResource PrimaryText.Foreground}" Content="Package Type" Margin="0,10,0,0" FontWeight="Bold" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" VerticalAlignment="Top" Background="{x:Null}"/>
+                <CheckBox Content="UWP" Style="{StaticResource Checkbox}" IsChecked="{Binding ShowUWP}" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"></CheckBox>
+                <CheckBox Content="GDK" Style="{StaticResource Checkbox}" IsChecked="{Binding ShowGDK}" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"></CheckBox>
             </StackPanel>
             <ListView x:Name="VersionsList" ItemsSource="{Binding Source={StaticResource Versions}, IsAsync=True}" Grid.Column="1" SelectionMode="Single" HorizontalContentAlignment="Center">
                 <ListView.ItemTemplate>

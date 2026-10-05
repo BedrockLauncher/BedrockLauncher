@@ -118,10 +118,7 @@ namespace TheArtOfDev.HtmlRenderer.WPF
         /// <param name="stylesheet">the stylesheet source to parse</param>
         /// <param name="combineWithDefault">true - combine the parsed css data with default css data, false - return only the parsed css data</param>
         /// <returns>the parsed css data</returns>
-        public static CssData ParseStyleSheet(string stylesheet, bool combineWithDefault = true)
-        {
-            return CssData.Parse(WpfAdapter.Instance, stylesheet, combineWithDefault);
-        }
+        public static CssData ParseStyleSheet(string stylesheet, bool combineWithDefault = true) => CssData.Parse(WpfAdapter.Instance, stylesheet, combineWithDefault);
 
         /// <summary>
         /// Measure the size (width and height) required to draw the given html under given max width restriction.<br/>
@@ -256,10 +253,7 @@ namespace TheArtOfDev.HtmlRenderer.WPF
         /// <param name="imageLoad">optional: can be used to overwrite image resolution logic</param>
         /// <returns>the generated image of the html</returns>
         public static BitmapFrame RenderToImage(string html, int maxWidth = 0, int maxHeight = 0, Color backgroundColor = new Color(), CssData cssData = null,
-            EventHandler<HtmlStylesheetLoadEventArgs> stylesheetLoad = null, EventHandler<HtmlImageLoadEventArgs> imageLoad = null)
-        {
-            return RenderToImage(html, Size.Empty, new Size(maxWidth, maxHeight), backgroundColor, cssData, stylesheetLoad, imageLoad);
-        }
+            EventHandler<HtmlStylesheetLoadEventArgs> stylesheetLoad = null, EventHandler<HtmlImageLoadEventArgs> imageLoad = null) => RenderToImage(html, Size.Empty, new Size(maxWidth, maxHeight), backgroundColor, cssData, stylesheetLoad, imageLoad);
 
         /// <summary>
         /// Renders the specified HTML into a new image of unknown size that will be determined by min/max width/height and HTML layout.<br/>

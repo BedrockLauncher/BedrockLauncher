@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TheArtOfDev.HtmlRenderer.WPF;
-using TheArtOfDev.HtmlRenderer.Core;
 using System.Windows;
-using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using TheArtOfDev.HtmlRenderer.Core;
 using TheArtOfDev.HtmlRenderer.Core.Entities;
+using TheArtOfDev.HtmlRenderer.WPF;
 
 namespace BedrockLauncher.UI.Controls.Misc
 {
@@ -23,7 +23,7 @@ namespace BedrockLauncher.UI.Controls.Misc
 
         protected override void OnImageLoad(HtmlImageLoadEventArgs e)
         {
-            
+
         }
 
         protected override void OnRender(DrawingContext context)
@@ -48,7 +48,7 @@ namespace BedrockLauncher.UI.Controls.Misc
 
         static HtmlPanelPro()
         {
-            
+
         }
 
         public HtmlPanelPro() : base()

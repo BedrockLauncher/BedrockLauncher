@@ -1,5 +1,7 @@
-﻿using System;
+﻿using BedrockLauncher.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,8 +14,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Diagnostics;
-using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Pages.Settings
 {
@@ -44,18 +44,13 @@ namespace BedrockLauncher.Pages.Settings
             e.Handled = true;
         }
 
-        private void CheckForUpdatesButton_Click(object sender, RoutedEventArgs e)
-        {
-            Task.Run(async () => {
-                var result = await MainDataModel.Updater.CheckForUpdatesAsync();
-                if (result) MainViewModel.Default.UpdateButton.ShowUpdateButton();
-            });
-        }
+        private void CheckForUpdatesButton_Click(object sender, RoutedEventArgs e) => Task.Run(async () =>
+                                                                                               {
+                                                                                                   var result = await MainDataModel.Updater.CheckForUpdatesAsync();
+                                                                                                   if (result) MainViewModel.Default.UpdateButton.ShowUpdateButton();
+                                                                                               });
 
-        private void ForceUpdateButton_Click(object sender, RoutedEventArgs e)
-        {
-            MainDataModel.Updater.UpdateButton_Click(sender, e);
-        }
+        private void ForceUpdateButton_Click(object sender, RoutedEventArgs e) => MainDataModel.Updater.UpdateButton_Click(sender, e);
 
 
     }

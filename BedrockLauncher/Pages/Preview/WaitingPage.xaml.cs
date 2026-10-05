@@ -25,16 +25,11 @@ namespace BedrockLauncher.Pages.Preview
             Handler = _hander;
         }
 
-        private void ErrorScreenCloseButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void ErrorScreenCloseButton_Click(object sender, RoutedEventArgs e) =>
             // As i understand it not only hide error screen overlay, but also clear it from memory
             Handler.SetDialogFrame(null);
-        }
 
-        private void ErrorScreenViewCrashButton_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("notepad.exe", $@"{Environment.CurrentDirectory}\Log.txt");
-        }
+        private void ErrorScreenViewCrashButton_Click(object sender, RoutedEventArgs e) => System.Diagnostics.Process.Start("notepad.exe", $@"{Environment.CurrentDirectory}\Log.txt");
 
         public void Dispose()
         {

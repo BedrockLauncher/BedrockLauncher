@@ -1,9 +1,11 @@
-﻿using System;
+﻿using BedrockLauncher.Classes;
+using BedrockLauncher.Handlers;
+using BedrockLauncher.ViewModels;
+using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using BedrockLauncher.Classes;
-using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Pages.Preview.Profile
 {
@@ -20,6 +22,18 @@ namespace BedrockLauncher.Pages.Preview.Profile
         {
             InitializeComponent();
             DataContext = ViewModel;
+            _ = PrefillDefaultMicrosoftAccountAsync();
+        }
+
+        private async Task PrefillDefaultMicrosoftAccountAsync()
+        {
+            var identity = await MicrosoftAccountAuthentication.TryGetDefaultAccountAsync();
+            if (identity == null || !string.IsNullOrWhiteSpace(ViewModel.MicrosoftAccountId))
+                return;
+
+            ViewModel.MicrosoftAccountId = identity.Id;
+            ViewModel.MicrosoftAccountName = identity.UserName;
+            UpdateMicrosoftAccountStatus();
         }
 
         public Component_AddProfileContainer(BLProfile profileToEdit)
@@ -32,16 +46,18 @@ namespace BedrockLauncher.Pages.Preview.Profile
             ViewModel.ProfileUUID = profileToEdit.UUID;
             ViewModel.ProfileImage = profileToEdit.ImagePath;
             ViewModel.ProfileDirectory = profileToEdit.ProfilePath;
+            ViewModel.MicrosoftAccountId =
+                profileToEdit.MicrosoftAccountId ?? string.Empty;
+            ViewModel.MicrosoftAccountName =
+                profileToEdit.MicrosoftAccountName ?? string.Empty;
 
             CreateProfileSubtitle.Text = this.FindResource("NewProfile_EditProfileSubTitle") as string;
             CreateProfileButtonText.Text = this.FindResource("NewProfile_EditProfileButton") as string;
+            UpdateMicrosoftAccountStatus();
 
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            GoBack?.Invoke(this, EventArgs.Empty);
-        }
+        private void BackButton_Click(object sender, RoutedEventArgs e) => GoBack?.Invoke(this, EventArgs.Empty);
 
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -67,6 +83,7 @@ namespace BedrockLauncher.Pages.Preview.Profile
         {
             if (MainDataModel.Default.Config.Profile_Edit(ViewModel.ProfileName, ViewModel.ProfileUUID, ViewModel.ProfileDirectory, ViewModel.ProfileImage))
             {
+                SaveMicrosoftAccountToProfile();
                 Confirm?.Invoke(this, EventArgs.Empty);
             }
             else
@@ -79,6 +96,7 @@ namespace BedrockLauncher.Pages.Preview.Profile
         {
             if (MainDataModel.Default.Config.Profile_Add(ViewModel.ProfileName, ViewModel.ProfileUUID, ViewModel.ProfileDirectory, ViewModel.ProfileImage))
             {
+                SaveMicrosoftAccountToProfile();
                 Confirm?.Invoke(this, EventArgs.Empty);
             }
             else
@@ -88,14 +106,78 @@ namespace BedrockLauncher.Pages.Preview.Profile
             }
         }
 
-        private void ProfileNameTextbox_TextChanged(object sender, TextChangedEventArgs e)
+        private async void MicrosoftAccountButton_Click(
+            object sender,
+            RoutedEventArgs e)
         {
-            EvaluateDirectory();
+            MicrosoftAccountButton.IsEnabled = false;
+
+            try
+            {
+                var identity =
+                    await MicrosoftAccountAuthentication.SignInAsync();
+                if (identity == null)
+                    return;
+
+                ViewModel.MicrosoftAccountId = identity.Id;
+                ViewModel.MicrosoftAccountName = identity.UserName;
+                UpdateMicrosoftAccountStatus();
+            }
+            catch (OperationCanceledException)
+            {
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(
+                    $"Microsoft sign-in failed: {ex.Message}",
+                    "Microsoft account",
+                    System.Windows.MessageBoxButton.OK,
+                    System.Windows.MessageBoxImage.Error);
+            }
+            finally
+            {
+                MicrosoftAccountButton.IsEnabled = true;
+            }
         }
+
+        private void SaveMicrosoftAccountToProfile()
+        {
+            var profile =
+                MainDataModel.Default.Config.profiles[
+                    ViewModel.ProfileUUID];
+            profile.MicrosoftAccountId =
+                ViewModel.MicrosoftAccountId;
+            profile.MicrosoftAccountName =
+                ViewModel.MicrosoftAccountName;
+            MainDataModel.Default.Config.Save();
+        }
+
+        private void UpdateMicrosoftAccountStatus()
+        {
+            if (string.IsNullOrWhiteSpace(
+                    ViewModel.MicrosoftAccountName))
+            {
+                MicrosoftAccountStatusText.SetResourceReference(
+                    TextBlock.TextProperty,
+                    "NewProfile_MicrosoftAccountNotConnected");
+                MicrosoftAccountButton.SetResourceReference(
+                    ContentControl.ContentProperty,
+                    "NewProfile_MicrosoftSignInButton");
+                return;
+            }
+
+            MicrosoftAccountStatusText.Text =
+                $"Microsoft: {ViewModel.MicrosoftAccountName}";
+            MicrosoftAccountButton.SetResourceReference(
+                ContentControl.ContentProperty,
+                "NewProfile_MicrosoftChangeAccountButton");
+        }
+
+        private void ProfileNameTextbox_TextChanged(object sender, TextChangedEventArgs e) => EvaluateDirectory();
 
         private void EvaluateDirectory()
         {
-            if (string.IsNullOrEmpty(ViewModel.ProfileDirectory) || ViewModel.ProfileName.StartsWith(ViewModel.ProfileDirectory)) 
+            if (string.IsNullOrEmpty(ViewModel.ProfileDirectory) || ViewModel.ProfileName.StartsWith(ViewModel.ProfileDirectory))
                 ViewModel.ProfileDirectory = ViewModel.ProfileName;
         }
 

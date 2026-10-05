@@ -1,12 +1,12 @@
 ﻿using BedrockLauncher.ViewModels;
+using PostSharp.Patterns.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Windows;
-using PostSharp.Patterns.Model;
+using System.Windows.Forms;
 
 namespace BedrockLauncher.Backend.Backporting
 {

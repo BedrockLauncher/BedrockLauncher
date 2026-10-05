@@ -21,10 +21,10 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            <ListView x:Name="OfficalNewsFeed" Keyboard.PreviewKeyUp="OfficalNewsFeed_KeyUp" ItemsSource="{Binding FeedItems}" ItemContainerStyle="{DynamicResource CardListViewItem}">
+            <ListView x:Name="OfficialNewsFeed" Keyboard.PreviewKeyUp="OfficialNewsFeed_KeyUp" ItemsSource="{Binding FeedItems}" ItemContainerStyle="{DynamicResource CardListViewItem}">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <vwp:VirtualizingWrapPanel StretchItems="False" Orientation="Horizontal"/>
+                        <vwp:VirtualizingWrapPanel StretchItems="False" Orientation="Vertical"/>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
@@ -33,7 +33,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <controls2:General_ResultPanel PanelType="NoNews" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="{Binding ElementName=OfficalNewsFeed, Path=Items.Count, Converter={StaticResource IntToVisibilityConverter}}"></controls2:General_ResultPanel>
+            <controls2:General_ResultPanel PanelType="NoNews" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="NothingFound" Visibility="{Binding ElementName=OfficialNewsFeed, Path=Items.Count, Converter={StaticResource IntToVisibilityConverter}}"></controls2:General_ResultPanel>
         </Grid>
     </Grid>
 </Page>

@@ -83,9 +83,6 @@ namespace TheArtOfDev.HtmlRenderer.Core.Entities
             get { return IsAnchor && _href.Length > 1 ? _href.Substring(1) : string.Empty; }
         }
 
-        public override string ToString()
-        {
-            return string.Format("Id: {0}, Href: {1}, Rectangle: {2}", _id, _href, _rectangle);
-        }
+        public override string ToString() => string.Format("Id: {0}, Href: {1}, Rectangle: {2}", _id, _href, _rectangle);
     }
 }

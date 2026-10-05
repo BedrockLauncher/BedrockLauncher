@@ -14,13 +14,13 @@ namespace BedrockLauncher.UI.Components
     {
         private class AnimationArgs
         {
-           public double stored_width { get; set; }
-           public double stored_height { get; set; }
-           public double stored_min_width { get; set; }
-           public double stored_min_height { get; set; }
-           public double stored_max_width { get; set; }
-           public double stored_max_height { get; set; }
-           public Page CurrentContent { get; set; }
+            public double stored_width { get; set; }
+            public double stored_height { get; set; }
+            public double stored_min_width { get; set; }
+            public double stored_min_height { get; set; }
+            public double stored_max_width { get; set; }
+            public double stored_max_height { get; set; }
+            public Page CurrentContent { get; set; }
         }
 
         #region General Methods
@@ -126,10 +126,7 @@ namespace BedrockLauncher.UI.Components
 
         #region No Animation
 
-        public static void Navigate(Frame frame, object content)
-        {
-             frame.Dispatcher.Invoke(() => frame.Navigate(content));
-        }
+        public static void Navigate(Frame frame, object content) => frame.Dispatcher.Invoke(() => frame.Navigate(content));
 
         #endregion
 
@@ -143,10 +140,7 @@ namespace BedrockLauncher.UI.Components
             else Navigate(frame, content);
         }
 
-        public static void FrameSet_Dialog(Frame frame, object content)
-        {
-            Navigate(frame, content);
-        }
+        public static void FrameSet_Dialog(Frame frame, object content) => Navigate(frame, content);
 
         #endregion
 
@@ -193,34 +187,31 @@ namespace BedrockLauncher.UI.Components
             var storyboard = FrameSwipe_Base(frame, content, direction, true, true, isOverlay);
             storyboard.Dispatcher.InvokeAsync(() => storyboard.Begin());
         }
-        public static Storyboard FrameSwipe_Base(Frame frame, object content, ExpandDirection direction, bool useFade, bool fadeIn, bool isOverlay)
-        {
-            return Application.Current.Dispatcher.Invoke(() =>
-            {
-                AnimationArgs animationArgs = new AnimationArgs();
+        public static Storyboard FrameSwipe_Base(Frame frame, object content, ExpandDirection direction, bool useFade, bool fadeIn, bool isOverlay) => Application.Current.Dispatcher.Invoke(() =>
+                                                                                                                                                                {
+                                                                                                                                                                    AnimationArgs animationArgs = new AnimationArgs();
 
-                SetCurrentPage(animationArgs, frame, content);
-                StorePageValues(animationArgs);
-                SetPageValuesForAnimation(animationArgs);
+                                                                                                                                                                    SetCurrentPage(animationArgs, frame, content);
+                                                                                                                                                                    StorePageValues(animationArgs);
+                                                                                                                                                                    SetPageValuesForAnimation(animationArgs);
 
-                Storyboard storyboard = new Storyboard();
-                Duration duration = new Duration(TimeSpan.FromMilliseconds(GetSwipeSpeed(isOverlay)));
+                                                                                                                                                                    Storyboard storyboard = new Storyboard();
+                                                                                                                                                                    Duration duration = new Duration(TimeSpan.FromMilliseconds(GetSwipeSpeed(isOverlay)));
 
-                if (useFade)
-                {
-                    var fadeAnim = GetFadeAnimation(duration, fadeIn);
-                    storyboard.Children.Add(fadeAnim);
-                    Storyboard.SetTargetProperty(fadeAnim, new PropertyPath(Frame.OpacityProperty));
-                    Storyboard.SetTarget(fadeAnim, frame);
-                }
+                                                                                                                                                                    if (useFade)
+                                                                                                                                                                    {
+                                                                                                                                                                        var fadeAnim = GetFadeAnimation(duration, fadeIn);
+                                                                                                                                                                        storyboard.Children.Add(fadeAnim);
+                                                                                                                                                                        Storyboard.SetTargetProperty(fadeAnim, new PropertyPath(Frame.OpacityProperty));
+                                                                                                                                                                        Storyboard.SetTarget(fadeAnim, frame);
+                                                                                                                                                                    }
 
-                var swipeAnim = GetSwipeAnimation(animationArgs, GetSwipeSize(isOverlay), duration, direction, isOverlay);
-                storyboard.Children.Add(swipeAnim);
-                Storyboard.SetTargetProperty(swipeAnim, new PropertyPath(Frame.MarginProperty));
-                Storyboard.SetTarget(swipeAnim, frame);
-                return storyboard;
-            });
-        }
+                                                                                                                                                                    var swipeAnim = GetSwipeAnimation(animationArgs, GetSwipeSize(isOverlay), duration, direction, isOverlay);
+                                                                                                                                                                    storyboard.Children.Add(swipeAnim);
+                                                                                                                                                                    Storyboard.SetTargetProperty(swipeAnim, new PropertyPath(Frame.MarginProperty));
+                                                                                                                                                                    Storyboard.SetTarget(swipeAnim, frame);
+                                                                                                                                                                    return storyboard;
+                                                                                                                                                                });
         #endregion
 
 

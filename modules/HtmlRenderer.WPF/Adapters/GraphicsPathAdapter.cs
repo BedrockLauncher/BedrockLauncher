@@ -36,20 +36,11 @@ namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
             _geometryContext = _geometry.Open();
         }
 
-        public override void Start(double x, double y)
-        {
-            _geometryContext.BeginFigure(new Point(x, y), true, false);
-        }
+        public override void Start(double x, double y) => _geometryContext.BeginFigure(new Point(x, y), true, false);
 
-        public override void LineTo(double x, double y)
-        {
-            _geometryContext.LineTo(new Point(x, y), true, true);
-        }
+        public override void LineTo(double x, double y) => _geometryContext.LineTo(new Point(x, y), true, true);
 
-        public override void ArcTo(double x, double y, double size, Corner corner)
-        {
-            _geometryContext.ArcTo(new Point(x, y), new Size(size, size), 0, false, SweepDirection.Clockwise, true, true);
-        }
+        public override void ArcTo(double x, double y, double size, Corner corner) => _geometryContext.ArcTo(new Point(x, y), new Size(size, size), 0, false, SweepDirection.Clockwise, true, true);
 
         /// <summary>
         /// Close the geometry to so no more path adding is allowed and return the instance so it can be rendered.

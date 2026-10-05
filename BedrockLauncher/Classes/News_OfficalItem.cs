@@ -1,13 +1,13 @@
-﻿using System;
+﻿using CodeHollow.FeedReader;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CodeHollow.FeedReader;
 
 namespace BedrockLauncher.Classes.Launcher
 {
-    public class News_OfficalItem : News_Item
+    public class News_OfficialItem : News_Item
     {
 
         public class Dimensions

@@ -64,25 +64,13 @@ namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
             get { return Mouse.RightButton == MouseButtonState.Pressed; }
         }
 
-        public override void SetCursorDefault()
-        {
-            _control.Cursor = Cursors.Arrow;
-        }
+        public override void SetCursorDefault() => _control.Cursor = Cursors.Arrow;
 
-        public override void SetCursorHand()
-        {
-            _control.Cursor = Cursors.Hand;
-        }
+        public override void SetCursorHand() => _control.Cursor = Cursors.Hand;
 
-        public override void SetCursorIBeam()
-        {
-            _control.Cursor = Cursors.IBeam;
-        }
+        public override void SetCursorIBeam() => _control.Cursor = Cursors.IBeam;
 
-        public override void DoDragDropCopy(object dragDropData)
-        {
-            DragDrop.DoDragDrop(_control, dragDropData, DragDropEffects.Copy);
-        }
+        public override void DoDragDropCopy(object dragDropData) => DragDrop.DoDragDrop(_control, dragDropData, DragDropEffects.Copy);
 
         public override void MeasureString(string str, RFont font, double maxWidth, out int charFit, out double charFitWidth)
         {
@@ -92,9 +80,6 @@ namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
             }
         }
 
-        public override void Invalidate()
-        {
-            _control.InvalidateVisual();
-        }
+        public override void Invalidate() => _control.InvalidateVisual();
     }
 }

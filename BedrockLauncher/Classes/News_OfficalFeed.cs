@@ -2,9 +2,9 @@
 
 namespace BedrockLauncher.Classes.Launcher
 {
-    public class News_OfficalFeed
+    public class News_OfficialFeed
     {
         public int version { get; set; }
-        public List<News_OfficalItem> entries { get; set; }
+        public List<News_OfficialItem> entries { get; set; }
     }
 }

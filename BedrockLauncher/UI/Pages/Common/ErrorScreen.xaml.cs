@@ -21,45 +21,33 @@ namespace BedrockLauncher.UI.Pages.Common
         public ErrorScreen()
         {
             InitializeComponent();
-            HideCrashDetails();
         }
 
         public ErrorScreen(IDialogHander _hander)
         {
             InitializeComponent();
             Handler = _hander;
-            HideCrashDetails();
         }
-
-        private void HideCrashDetails()
-        {
-            ErrorStackTrace.Visibility = Visibility.Collapsed;
-            ErrorScreenViewCrashButton.Visibility = Visibility.Collapsed;
-        }
-        private void ErrorScreenCloseButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void ErrorScreenCloseButton_Click(object sender, RoutedEventArgs e) =>
             // As i understand it not only hide error screen overlay, but also clear it from memory
             Handler.SetDialogFrame(null);
-        }
 
         private void ErrorScreenViewCrashButton_Click(object sender, RoutedEventArgs e)
         {
-            var logPath = Path.Combine(AppContext.BaseDirectory, LogManager.Configuration.FindTargetByName<FileTarget>("allfile").FileName.Render(new LogEventInfo()));
-            Process.Start("notepad.exe", logPath);
+            var logFilePath = Path.Combine(AppContext.BaseDirectory, LogManager.Configuration.FindTargetByName<FileTarget>("allfile").FileName.Render(new LogEventInfo()));
+            Process.Start("notepad.exe", logFilePath);
         }
     }
     public static class ErrorScreenShow
     {
         public static IDialogHander Handler { get; private set; }
 
-        public static void SetHandler(IDialogHander _hander)
-        {
-            Handler = _hander;
-        }
+        public static void SetHandler(IDialogHander _hander) => Handler = _hander;
 
         public static async Task<bool> exceptionmsg(string title, Exception error = null)
         {
-            Application.Current.Dispatcher.Invoke(() => {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
                 ErrorScreen errorScreen = new ErrorScreen(Handler);
                 // Show default error message
                 if (error == null)
@@ -69,8 +57,10 @@ namespace BedrockLauncher.UI.Pages.Common
                 errorScreen.ErrorType.Text = title;
                 errorScreen.ErrorText.Text = error.Message;
                 if (error != null)
-                    Trace.WriteLine(error.ToString());
-
+                {
+                    errorScreen.ErrorStackTrace.Visibility = Visibility.Visible;
+                    errorScreen.ErrorStackTrace.Text = error.ToString();
+                }
                 Handler.SetDialogFrame(errorScreen);
             });
 
@@ -84,7 +74,8 @@ namespace BedrockLauncher.UI.Pages.Common
         }
         public static async Task<bool> exceptionmsg(Exception error = null)
         {
-            Application.Current.Dispatcher.Invoke(() => {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
                 ErrorScreen errorScreen = new ErrorScreen(Handler);
                 // Show default error message
                 if (error == null)
@@ -94,8 +85,10 @@ namespace BedrockLauncher.UI.Pages.Common
                 errorScreen.ErrorType.Text = error.HResult.ToString();
                 errorScreen.ErrorText.Text = error.Message;
                 if (error != null)
-                    Trace.WriteLine(error.ToString());
-
+                {
+                    errorScreen.ErrorStackTrace.Visibility = Visibility.Visible;
+                    errorScreen.ErrorStackTrace.Text = error.ToString();
+                }
                 Handler.SetDialogFrame(errorScreen);
             });
 
@@ -107,18 +100,17 @@ namespace BedrockLauncher.UI.Pages.Common
             return true;
         }
 
-        public static void errormsg(string title, string message, Exception e = null)
-        {
-            Application.Current.Dispatcher.Invoke(() => {
-                ErrorScreen errorScreen = new ErrorScreen(Handler);
-                errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, title);
-                errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, message);
-                if (e != null)
-                    Trace.WriteLine(e.ToString());
-
-                Handler.SetDialogFrame(errorScreen);
-            });
-
-        }
+        public static void errormsg(string title, string message, Exception e = null) => Application.Current.Dispatcher.Invoke(() =>
+                                                                                                  {
+                                                                                                      ErrorScreen errorScreen = new ErrorScreen(Handler);
+                                                                                                      errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, title);
+                                                                                                      errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, message);
+                                                                                                      if (e != null)
+                                                                                                      {
+                                                                                                          errorScreen.ErrorStackTrace.Visibility = Visibility.Visible;
+                                                                                                          errorScreen.ErrorStackTrace.Text = e.ToString();
+                                                                                                      }
+                                                                                                      Handler.SetDialogFrame(errorScreen);
+                                                                                                  });
     }
 }

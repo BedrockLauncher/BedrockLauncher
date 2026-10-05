@@ -1,4 +1,4 @@
-﻿using BedrockLauncher.Classes;
+using BedrockLauncher.Classes;
 using JemExtensions;
 using System;
 using System.Collections.Generic;
@@ -28,13 +28,10 @@ namespace BedrockLauncher.Pages.Preview.Installation
         public EditInstallationVersionSelectScreen()
         {
             this.DataContext = new ViewModels.EditInstallationVersionSelectViewModel();
-            InitializeComponent();       
+            InitializeComponent();
         }
 
-        private void CollectionViewSource_Filter(object sender, FilterEventArgs e)
-        {
-            e.Accepted = Filter(e.Item);
-        }
+        private void CollectionViewSource_Filter(object sender, FilterEventArgs e) => e.Accepted = Filter(e.Item);
 
         private bool Filter(object obj)
         {
@@ -53,12 +50,13 @@ namespace BedrockLauncher.Pages.Preview.Installation
 
             if (!MainContext.ShowX64 && v.Architecture == "x64") return false;
             else if (!MainContext.ShowX86 && v.Architecture == "x86") return false;
-            else if (!MainContext.ShowARM && v.Architecture == "arm") return false;
+            else if (!MainContext.ShowARM && (v.Architecture == "arm" || v.Architecture == "arm64")) return false;
 
+            if (!MainContext.ShowUWP && v.PackageType == BedrockLauncher.UpdateProcessor.Enums.PackageType.UWP) return false;
+            if (!MainContext.ShowGDK && v.PackageType == BedrockLauncher.UpdateProcessor.Enums.PackageType.GDK) return false;
 
-
-            else if (!v.DisplayName.Contains(MainContext.FilterString)) return false;
-            else return true;
+            if (!string.IsNullOrEmpty(MainContext.FilterString) && !v.DisplayName.Contains(MainContext.FilterString, StringComparison.OrdinalIgnoreCase)) return false;
+            return true;
         }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -66,13 +64,10 @@ namespace BedrockLauncher.Pages.Preview.Installation
             if (this.IsInitialized && this.IsLoaded) Refresh();
         }
 
-        private void Refresh()
-        {
-            Dispatcher.Invoke(() =>
-            {
-                Handlers.FilterSortingHandler.Refresh(VersionsList.ItemsSource);
-            });
-        }
+        private void Refresh() => Dispatcher.Invoke(() =>
+                                           {
+                                               Handlers.FilterSortingHandler.Refresh(VersionsList.ItemsSource);
+                                           });
 
         private void Finish(bool update = false)
         {
@@ -92,28 +87,16 @@ namespace BedrockLauncher.Pages.Preview.Installation
             if (this.IsInitialized && this.IsLoaded) Refresh();
         }
 
-        private void CreateButton_Click(object sender, RoutedEventArgs e)
-        {
-            Finish(true);
-        }
+        private void CreateButton_Click(object sender, RoutedEventArgs e) => Finish(true);
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            Finish();
-        }
+        private void CancelButton_Click(object sender, RoutedEventArgs e) => Finish();
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            Finish();
-        }
+        private void CloseButton_Click(object sender, RoutedEventArgs e) => Finish();
 
-        public async Task<string> GetVersionUUID()
-        {
-            return await Task.Run(() =>
-            {
-                while (!IsDone) { }
-                return SelectedVersionUUID;
-            });
-        }
+        public async Task<string> GetVersionUUID() => await Task.Run(() =>
+                                                               {
+                                                                   while (!IsDone) { }
+                                                                   return SelectedVersionUUID;
+                                                               });
     }
 }

@@ -1,6 +1,13 @@
-﻿using System;
+﻿using BedrockLauncher.Classes.Launcher;
+using CodeHollow.FeedReader;
+using RestSharp;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,13 +19,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using CodeHollow.FeedReader;
-using BedrockLauncher.Classes.Launcher;
-using System.Diagnostics;
-using System.Net;
-using System.Net.Http;
-using System.Collections.ObjectModel;
-using RestSharp;
 
 namespace BedrockLauncher.Pages.News.RSS
 {
@@ -38,10 +38,7 @@ namespace BedrockLauncher.Pages.News.RSS
             InitializeComponent();
         }
 
-        public void RefreshNews()
-        {
-            Task.Run(((ViewModels.RSSViewModel)DataContext).UpdateFeed);
-        }
+        public void RefreshNews() => Task.Run(((ViewModels.RSSViewModel)DataContext).UpdateFeed);
 
         private void Page_Loaded(object sender, EventArgs e)
         {
@@ -53,13 +50,13 @@ namespace BedrockLauncher.Pages.News.RSS
 
         }
 
-        private void OfficalNewsFeed_KeyUp(object sender, KeyEventArgs e)
+        private void OfficialNewsFeed_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                if (OfficalNewsFeed.SelectedItem != null)
+                if (OfficialNewsFeed.SelectedItem != null)
                 {
-                    var item = OfficalNewsFeed.SelectedItem as News_Item;
+                    var item = OfficialNewsFeed.SelectedItem as News_Item;
                     item.OpenLink();
                 }
             }

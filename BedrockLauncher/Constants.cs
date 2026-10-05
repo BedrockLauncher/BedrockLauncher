@@ -50,6 +50,8 @@ namespace BedrockLauncher
         public static readonly string PATCHNOTES_CONTENT_BASE_URL = @"https://launchercontent.mojang.com/v2/";
         public static readonly string PATCHNOTES_MAIN_V2_URL = @"https://launchercontent.mojang.com/v2/bedrockPatchNotes.json";
         public static readonly string PATCHNOTES_TESTING_URL = @"https://launchercontent.mojang.com/testing/bedrockPatchNotes.json";
+        // Backwards-compatible aliases
+        public static readonly string PATCHNOTES_MAIN_URL = PATCHNOTES_MAIN_V2_URL;
 
         public static readonly string PATCHNOTES_RELEASE_CHANGELOG_URL = @"https://feedback.minecraft.net/hc/en-us/sections/360001186971-Release-Changelogs";
         public static readonly string PATCHNOTES_PREVIEW_CHANGELOG_URL = @"https://feedback.minecraft.net/hc/en-us/sections/360001185332-Beta-and-Preview-Information-and-Changelogs";
@@ -61,6 +63,8 @@ namespace BedrockLauncher
         public static readonly string RSS_LAUNCHER_V2_URL = @"https://launchercontent.mojang.com/v2/news.json";
         public static readonly string RSS_COMMUNITY_URL = @"https://www.minecraft.net/en-us/feeds/community-content/rss";
         public static readonly string RSS_FORUMS_URL = @"https://www.minecraftforum.net/news.rss";
+        // Backwards-compatible alias
+        public static readonly string RSS_LAUNCHER_URL = RSS_LAUNCHER_V2_URL;
 
         public static readonly string PROFILE_DEFAULT_IMG = APP_RESOURCEPATH_PREFIX + @"resources/images/icons/user_icon.png";
         public static readonly string PROFILE_CUSTOM_IMG_NAME = ".profile.png";
@@ -70,25 +74,13 @@ namespace BedrockLauncher
 
         public const string FIRST_GDK_VERSION = "1.21.120";
 
-        internal static string GetPackageFamily(VersionType type)
-        {
-            return type == VersionType.Preview ? MINECRAFT_PREVIEW_PACKAGE_FAMILY : MINECRAFT_PACKAGE_FAMILY;
-        }
+        internal static string GetPackageFamily(VersionType type) => type == VersionType.Preview ? MINECRAFT_PREVIEW_PACKAGE_FAMILY : MINECRAFT_PACKAGE_FAMILY;
 
-        internal static string GetUri(VersionType type)
-        {
-            return type == VersionType.Preview ? MINECRAFT_PREVIEW_URI : MINECRAFT_URI;
-        }
+        internal static string GetUri(VersionType type) => type == VersionType.Preview ? MINECRAFT_PREVIEW_URI : MINECRAFT_URI;
 
-        internal static MCVersion GetMinimumEditorVersion(VersionType type)
-        {
-            return new MCVersion(type == VersionType.Preview ? FIRST_EDITOR_PREVIEW : FIRST_EDITOR_RELEASE);
-        }
+        internal static MCVersion GetMinimumEditorVersion(VersionType type) => new MCVersion(type == VersionType.Preview ? FIRST_EDITOR_PREVIEW : FIRST_EDITOR_RELEASE);
 
-        internal static MCVersion GetMinimumGDKVersion()
-        {
-            return new MCVersion(FIRST_GDK_VERSION);
-        }
+        internal static MCVersion GetMinimumGDKVersion() => new MCVersion(FIRST_GDK_VERSION);
 
         public const string ThemesCustomPrefix = "[+] ";
         private const string ThemesPathPrefix = APP_RESOURCEPATH_PREFIX + @"resources/images/bg/play_screen/";
@@ -316,11 +308,9 @@ namespace BedrockLauncher
             get
             {
                 // Store/GDK packages are signed packages, not loose developer packages.
-                // Passing DevelopmentMode here makes AddPackageAsync fail with
-                // "invalid deployment options" on normal Windows installs.
+                // Do NOT force update on every deploy — that makes Play look like an update loop.
                 DeploymentOptions options = new DeploymentOptions();
                 options |= DeploymentOptions.ForceTargetApplicationShutdown;
-                options |= DeploymentOptions.ForceUpdateFromAnyVersion;
                 return options;
             }
         }

@@ -94,10 +94,7 @@ namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
             _g.PushClip(geometry);
         }
 
-        public override Object SetAntiAliasSmoothingMode()
-        {
-            return null;
-        }
+        public override Object SetAntiAliasSmoothingMode() => null;
 
         public override void ReturnPreviousSmoothingMode(Object prevMode)
         { }
@@ -229,10 +226,7 @@ namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
             return new BrushAdapter(brush);
         }
 
-        public override RGraphicsPath GetGraphicsPath()
-        {
-            return new GraphicsPathAdapter();
-        }
+        public override RGraphicsPath GetGraphicsPath() => new GraphicsPathAdapter();
 
         public override void Dispose()
         {
@@ -273,14 +267,11 @@ namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
                 x += .5;
                 y += .5;
             }
-            
+
             _g.DrawRectangle(null, ((PenAdapter)pen).CreatePen(), new Rect(x, y, width, height));
         }
 
-        public override void DrawRectangle(RBrush brush, double x, double y, double width, double height)
-        {
-            _g.DrawRectangle(((BrushAdapter)brush).Brush, null, new Rect(x, y, width, height));
-        }
+        public override void DrawRectangle(RBrush brush, double x, double y, double width, double height) => _g.DrawRectangle(((BrushAdapter)brush).Brush, null, new Rect(x, y, width, height));
 
         public override void DrawImage(RImage image, RRect destRect, RRect srcRect)
         {
@@ -288,20 +279,11 @@ namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
             _g.DrawImage(croppedImage, Utils.ConvertRound(destRect));
         }
 
-        public override void DrawImage(RImage image, RRect destRect)
-        {
-            _g.DrawImage(((ImageAdapter)image).Image, Utils.ConvertRound(destRect));
-        }
+        public override void DrawImage(RImage image, RRect destRect) => _g.DrawImage(((ImageAdapter)image).Image, Utils.ConvertRound(destRect));
 
-        public override void DrawPath(RPen pen, RGraphicsPath path)
-        {
-            _g.DrawGeometry(null, ((PenAdapter)pen).CreatePen(), ((GraphicsPathAdapter)path).GetClosedGeometry());
-        }
+        public override void DrawPath(RPen pen, RGraphicsPath path) => _g.DrawGeometry(null, ((PenAdapter)pen).CreatePen(), ((GraphicsPathAdapter)path).GetClosedGeometry());
 
-        public override void DrawPath(RBrush brush, RGraphicsPath path)
-        {
-            _g.DrawGeometry(((BrushAdapter)brush).Brush, null, ((GraphicsPathAdapter)path).GetClosedGeometry());
-        }
+        public override void DrawPath(RBrush brush, RGraphicsPath path) => _g.DrawGeometry(((BrushAdapter)brush).Brush, null, ((GraphicsPathAdapter)path).GetClosedGeometry());
 
         public override void DrawPolygon(RBrush brush, RPoint[] points)
         {

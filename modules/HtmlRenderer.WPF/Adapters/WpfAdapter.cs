@@ -10,6 +10,7 @@
 // - Sun Tsu,
 // "The Art of War"
 
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,7 +21,6 @@ using System.Windows.Media.Imaging;
 using TheArtOfDev.HtmlRenderer.Adapters;
 using TheArtOfDev.HtmlRenderer.Adapters.Entities;
 using TheArtOfDev.HtmlRenderer.WPF.Utilities;
-using Microsoft.Win32;
 
 namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
 {
@@ -39,7 +39,7 @@ namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
         /// <summary>
         /// List of valid predefined color names in lower-case
         /// </summary>
-        private static readonly List<string> ValidColorNamesLc; 
+        private static readonly List<string> ValidColorNamesLc;
 
         #endregion
 
@@ -63,13 +63,13 @@ namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
 
             foreach (var family in Fonts.SystemFontFamilies)
             {
-	            try
-	            {
-	                AddFontFamily(new FontFamilyAdapter(family));
-	            }
-	            catch
-	            {
-	            }
+                try
+                {
+                    AddFontFamily(new FontFamilyAdapter(family));
+                }
+                catch
+                {
+                }
             }
         }
 
@@ -91,10 +91,7 @@ namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
             return Utils.Convert((Color)convertFromString);
         }
 
-        protected override RPen CreatePen(RColor color)
-        {
-            return new PenAdapter(GetSolidColorBrush(color));
-        }
+        protected override RPen CreatePen(RColor color) => new PenAdapter(GetSolidColorBrush(color));
 
         protected override RBrush CreateSolidBrush(RColor color)
         {
@@ -112,10 +109,7 @@ namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
             return new BrushAdapter(new LinearGradientBrush(startColor, endColor, new Point(x, y), new Point(1 - x, 1 - y)));
         }
 
-        protected override RImage ConvertImageInt(object image)
-        {
-            return image != null ? new ImageAdapter((BitmapImage)image) : null;
-        }
+        protected override RImage ConvertImageInt(object image) => image != null ? new ImageAdapter((BitmapImage)image) : null;
 
         protected override RImage ImageFromStreamInt(Stream memoryStream)
         {
@@ -135,35 +129,17 @@ namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
             return new FontAdapter(new Typeface(fontFamily, GetFontStyle(style), GetFontWidth(style), FontStretches.Normal), size);
         }
 
-        protected override RFont CreateFontInt(RFontFamily family, double size, RFontStyle style)
-        {
-            return new FontAdapter(new Typeface(((FontFamilyAdapter)family).FontFamily, GetFontStyle(style), GetFontWidth(style), FontStretches.Normal), size);
-        }
+        protected override RFont CreateFontInt(RFontFamily family, double size, RFontStyle style) => new FontAdapter(new Typeface(((FontFamilyAdapter)family).FontFamily, GetFontStyle(style), GetFontWidth(style), FontStretches.Normal), size);
 
-        protected override object GetClipboardDataObjectInt(string html, string plainText)
-        {
-            return ClipboardHelper.CreateDataObject(html, plainText);
-        }
+        protected override object GetClipboardDataObjectInt(string html, string plainText) => ClipboardHelper.CreateDataObject(html, plainText);
 
-        protected override void SetToClipboardInt(string text)
-        {
-            ClipboardHelper.CopyToClipboard(text);
-        }
+        protected override void SetToClipboardInt(string text) => ClipboardHelper.CopyToClipboard(text);
 
-        protected override void SetToClipboardInt(string html, string plainText)
-        {
-            ClipboardHelper.CopyToClipboard(html, plainText);
-        }
+        protected override void SetToClipboardInt(string html, string plainText) => ClipboardHelper.CopyToClipboard(html, plainText);
 
-        protected override void SetToClipboardInt(RImage image)
-        {
-            Clipboard.SetImage(((ImageAdapter)image).Image);
-        }
+        protected override void SetToClipboardInt(RImage image) => Clipboard.SetImage(((ImageAdapter)image).Image);
 
-        protected override RContextMenu CreateContextMenuInt()
-        {
-            return new ContextMenuAdapter();
-        }
+        protected override RContextMenu CreateContextMenuInt() => new ContextMenuAdapter();
 
         protected override void SaveToFileInt(RImage image, string name, string extension, RControl control = null)
         {

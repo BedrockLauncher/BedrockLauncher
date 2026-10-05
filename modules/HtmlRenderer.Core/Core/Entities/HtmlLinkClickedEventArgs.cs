@@ -70,9 +70,6 @@ namespace TheArtOfDev.HtmlRenderer.Core.Entities
             set { _handled = value; }
         }
 
-        public override string ToString()
-        {
-            return string.Format("Link: {0}, Handled: {1}", _link, _handled);
-        }
+        public override string ToString() => string.Format("Link: {0}, Handled: {1}", _link, _handled);
     }
 }

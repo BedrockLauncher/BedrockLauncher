@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
 
 namespace JemExtensions.WPF.Converters
@@ -19,14 +16,8 @@ namespace JemExtensions.WPF.Converters
         public T True { get; set; }
         public T False { get; set; }
 
-        public virtual object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return value is bool && ((bool)value) ? True : False;
-        }
+        public virtual object Convert(object value, Type targetType, object parameter, CultureInfo culture) => value is bool && ((bool)value) ? True : False;
 
-        public virtual object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return value is T && EqualityComparer<T>.Default.Equals((T)value, True);
-        }
+        public virtual object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => value is T && EqualityComparer<T>.Default.Equals((T)value, True);
     }
 }

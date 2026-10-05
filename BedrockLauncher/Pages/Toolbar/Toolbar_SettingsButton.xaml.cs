@@ -13,9 +13,6 @@ namespace BedrockLauncher.Pages.Toolbar
             InitializeComponent();
         }
 
-        private void SideBarButton_Click(object sender, RoutedEventArgs e)
-        {
-            ToolbarButtonBase_Click(this, e);
-        }
+        private void SideBarButton_Click(object sender, RoutedEventArgs e) => ToolbarButtonBase_Click(this, e);
     }
 }

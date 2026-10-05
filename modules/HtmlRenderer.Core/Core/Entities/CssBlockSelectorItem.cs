@@ -66,9 +66,6 @@ namespace TheArtOfDev.HtmlRenderer.Core.Entities
         /// <summary>
         /// Returns a <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
         /// </summary>
-        public override string ToString()
-        {
-            return _class + (_directParent ? " > " : string.Empty);
-        }
+        public override string ToString() => _class + (_directParent ? " > " : string.Empty);
     }
 }

@@ -192,10 +192,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters.Entities
         ///     <paramref name="red" />, <paramref name="green" />, or <paramref name="blue" /> is less than 0 or greater than 255.
         /// </exception>
         /// <filterpriority>1</filterpriority>
-        public static RColor FromArgb(int red, int green, int blue)
-        {
-            return FromArgb(byte.MaxValue, red, green, blue);
-        }
+        public static RColor FromArgb(int red, int green, int blue) => FromArgb(byte.MaxValue, red, green, blue);
 
         /// <summary>
         ///     Tests whether the specified object is a <see cref="RColor" /> structure and is equivalent to this
@@ -228,10 +225,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters.Entities
         ///     An integer value that specifies the hash code for this <see cref="RColor" />.
         /// </returns>
         /// <filterpriority>1</filterpriority>
-        public override int GetHashCode()
-        {
-            return _value.GetHashCode();
-        }
+        public override int GetHashCode() => _value.GetHashCode();
 
         /// <summary>
         ///     Converts this <see cref="RColor" /> structure to a human-readable string.
