@@ -1,4 +1,4 @@
-﻿using PostSharp.Patterns.Model;
+using PostSharp.Patterns.Model;
 using System;
 
 namespace BedrockLauncher.ViewModels
@@ -8,7 +8,7 @@ namespace BedrockLauncher.ViewModels
     /// </summary>
     /// 
 
-    [NotifyPropertyChanged(ExcludeExplicitProperties=Constants.Debugging.ExcludeExplicitProperties)]
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]
     public class EditInstallationVersionSelectViewModel
     {
         public string FilterString { get; set; } = string.Empty;
@@ -22,9 +22,9 @@ namespace BedrockLauncher.ViewModels
         public bool ShowX64 { get; set; } = true;
         public bool ShowARM { get; set; } = true;
 
-        internal void Update()
-        {
-            throw new NotImplementedException();
-        }
+        public bool ShowUWP { get; set; } = true;
+        public bool ShowGDK { get; set; } = true;
+
+        internal void Update() => throw new NotImplementedException();
     }
 }

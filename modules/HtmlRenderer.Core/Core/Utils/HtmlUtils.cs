@@ -304,10 +304,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Utils
         /// </summary>
         /// <param name="tagName">the tag to check (must be lower case)</param>
         /// <returns>true - is single tag, false - otherwise</returns>
-        public static bool IsSingleTag(string tagName)
-        {
-            return _list.Contains(tagName);
-        }
+        public static bool IsSingleTag(string tagName) => _list.Contains(tagName);
 
         /// <summary>
         /// Decode html encoded string to regular string.<br/>
@@ -373,7 +370,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Utils
                 string repl = string.Empty;
                 if (num >= 0 && num <= 0x10ffff && !(num >= 0xd800 && num <= 0xdfff))
                     repl = Char.ConvertFromUtf32((int)num);
-                
+
                 str = str.Remove(idx, endIdx - idx);
                 str = str.Insert(idx, repl);
 

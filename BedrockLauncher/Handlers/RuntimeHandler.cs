@@ -18,15 +18,9 @@ namespace BedrockLauncher.Handlers
     {
         static TraceSwitch traceSwitch = new TraceSwitch("General", "Entire Application") { Level = TraceLevel.Verbose };
 
-        private static bool IsBugrockEnabled = false; 
-        public static bool IsBugRockOfTheWeek()
-        {
-            return IsBugrockEnabled;
-        }
-        public static async Task InitalizeBugRockOfTheWeek()
-        {
-            IsBugrockEnabled = await ChangelogDownloader.GetBedrockOfTheWeekStatus();
-        }
+        private static bool IsBugrockEnabled = false;
+        public static bool IsBugRockOfTheWeek() => IsBugrockEnabled;
+        public static async Task InitalizeBugRockOfTheWeek() => IsBugrockEnabled = await ChangelogDownloader.GetBedrockOfTheWeekStatus();
 
         public static void LogStartupInformation()
         {
@@ -55,8 +49,9 @@ namespace BedrockLauncher.Handlers
         }
 
         /// <summary>
-        /// Checks if Windows Developer Mode is enabled
+        /// Checks if developer mode is enabled on the system
         /// </summary>
+        /// <returns></returns>
         public static bool IsDeveloperModeEnabled()
         {
             try
@@ -88,7 +83,7 @@ namespace BedrockLauncher.Handlers
                                "2. Go to Privacy & security → For developers\n" +
                                "3. Turn on Developer Mode\n\n" +
                                "This allows the launcher to run without requiring administrator privileges each time.";
-                
+
                 MessageBox.Show(message, "Enable Windows Developer Mode", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
@@ -133,11 +128,7 @@ namespace BedrockLauncher.Handlers
                 MessageBox.Show(message, title);
             }
         }
-        public static void OnDispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
-        {
-            Trace.WriteLine(e.Exception.ToString());
-            e.Handled = true;
-        }
+        public static void OnDispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e) => Trace.WriteLine(e.Exception.ToString());
 
         public static NLogTraceListener InternalTraceListener { get; set; } = new NLogTraceListener();
 

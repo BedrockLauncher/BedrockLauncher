@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 using System.Threading.Tasks;
-using System.IO;
 
 namespace JemExtensions
 {
@@ -38,41 +34,37 @@ namespace JemExtensions
             }
         }
 
-        public static async Task DeleteAsync(string strpath, ProgressDelegate progress, string phase1Text = null, string phase2Text = null)
-        {
-            await Task.Run(() =>
-            {
-                if (Directory.Exists(strpath))
-                {
-                    DirectoryInfo dirInfo = new DirectoryInfo(strpath);
-                    var files = dirInfo.GetFiles();
+        public static async Task DeleteAsync(string strpath, ProgressDelegate progress, string phase1Text = null, string phase2Text = null) => await Task.Run(() =>
+                                                                                                                                                        {
+                                                                                                                                                            if (Directory.Exists(strpath))
+                                                                                                                                                            {
+                                                                                                                                                                DirectoryInfo dirInfo = new DirectoryInfo(strpath);
+                                                                                                                                                                var files = dirInfo.GetFiles();
 
-                    int fileProgress = 0;
-                    int folderProgress = 0;
+                                                                                                                                                                int fileProgress = 0;
+                                                                                                                                                                int folderProgress = 0;
 
-                    progress(fileProgress, files.Length);
+                                                                                                                                                                progress(fileProgress, files.Length);
 
-                    foreach (FileInfo file in files)
-                    {
-                        file.Delete();
-                        progress(fileProgress, files.Length, phase1Text);
-                        fileProgress++;
-                    }
+                                                                                                                                                                foreach (FileInfo file in files)
+                                                                                                                                                                {
+                                                                                                                                                                    file.Delete();
+                                                                                                                                                                    progress(fileProgress, files.Length, phase1Text);
+                                                                                                                                                                    fileProgress++;
+                                                                                                                                                                }
 
-                    var dirs = dirInfo.GetDirectories();
+                                                                                                                                                                var dirs = dirInfo.GetDirectories();
 
-                    progress(folderProgress, dirs.Length);
+                                                                                                                                                                progress(folderProgress, dirs.Length);
 
-                    foreach (DirectoryInfo dir in dirs)
-                    {
-                        dir.Delete(true);
-                        progress(folderProgress, files.Length, phase2Text);
-                        folderProgress++;
-                    }
+                                                                                                                                                                foreach (DirectoryInfo dir in dirs)
+                                                                                                                                                                {
+                                                                                                                                                                    dir.Delete(true);
+                                                                                                                                                                    progress(folderProgress, files.Length, phase2Text);
+                                                                                                                                                                    folderProgress++;
+                                                                                                                                                                }
 
-                }
-            });
-
-        }
+                                                                                                                                                            }
+                                                                                                                                                        });
     }
 }

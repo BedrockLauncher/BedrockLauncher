@@ -51,9 +51,6 @@ namespace TheArtOfDev.HtmlRenderer.Core.Entities
             get { return _location.Y; }
         }
 
-        public override string ToString()
-        {
-            return string.Format("Location: {0}", _location);
-        }
+        public override string ToString() => string.Format("Location: {0}", _location);
     }
 }

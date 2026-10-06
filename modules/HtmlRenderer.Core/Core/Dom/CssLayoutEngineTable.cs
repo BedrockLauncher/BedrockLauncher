@@ -943,10 +943,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// <remarks>
         /// It takes away the cell-spacing from <see cref="GetAvailableTableWidth"/>
         /// </remarks>
-        private double GetAvailableCellWidth()
-        {
-            return GetAvailableTableWidth() - GetHorizontalSpacing() * (_columnCount + 1) - _tableBox.ActualBorderLeftWidth - _tableBox.ActualBorderRightWidth;
-        }
+        private double GetAvailableCellWidth() => GetAvailableTableWidth() - GetHorizontalSpacing() * (_columnCount + 1) - _tableBox.ActualBorderLeftWidth - _tableBox.ActualBorderRightWidth;
 
         /// <summary>
         /// Gets the current sum of column widths
@@ -1013,26 +1010,17 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// <summary>
         /// Gets the actual horizontal spacing of the table
         /// </summary>
-        private double GetHorizontalSpacing()
-        {
-            return _tableBox.BorderCollapse == CssConstants.Collapse ? -1f : _tableBox.ActualBorderSpacingHorizontal;
-        }
+        private double GetHorizontalSpacing() => _tableBox.BorderCollapse == CssConstants.Collapse ? -1f : _tableBox.ActualBorderSpacingHorizontal;
 
         /// <summary>
         /// Gets the actual horizontal spacing of the table
         /// </summary>
-        private static double GetHorizontalSpacing(CssBox box)
-        {
-            return box.BorderCollapse == CssConstants.Collapse ? -1f : box.ActualBorderSpacingHorizontal;
-        }
+        private static double GetHorizontalSpacing(CssBox box) => box.BorderCollapse == CssConstants.Collapse ? -1f : box.ActualBorderSpacingHorizontal;
 
         /// <summary>
         /// Gets the actual vertical spacing of the table
         /// </summary>
-        private double GetVerticalSpacing()
-        {
-            return _tableBox.BorderCollapse == CssConstants.Collapse ? -1f : _tableBox.ActualBorderSpacingVertical;
-        }
+        private double GetVerticalSpacing() => _tableBox.BorderCollapse == CssConstants.Collapse ? -1f : _tableBox.ActualBorderSpacingVertical;
 
         #endregion
     }

@@ -1,8 +1,5 @@
-using System.Runtime.InteropServices;
-using System.IO;
-using Microsoft.Win32.SafeHandles;
-using System;
 using Microsoft.Win32;
+using System.Runtime.InteropServices;
 
 namespace JemExtensions
 {
@@ -11,7 +8,7 @@ namespace JemExtensions
         [DllImport("kernel32.dll")]
         public static extern bool CreateSymbolicLink(
         string lpSymlinkFileName, string lpTargetFileName, SymbolicLinkType dwFlags);
-        
+
         public enum SymbolicLinkType
         {
             File = 0,

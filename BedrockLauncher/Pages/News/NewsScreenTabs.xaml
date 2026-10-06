@@ -98,9 +98,14 @@
             </Grid>
         </Border>
         <StackPanel HorizontalAlignment="Left" Height="35" VerticalAlignment="Bottom" Orientation="Horizontal">
-            <ToggleButton x:Name="BedrockTab" Width="Auto" Click="ButtonManager" Content="Bedrock" Style="{DynamicResource ToolbarButton}" IsChecked="True">
+            <ToggleButton x:Name="ForumsTab" Width="Auto" Click="ButtonManager" Content="{DynamicResource NewsScreen_MinecraftForumsTitle}" Style="{DynamicResource ToolbarButton}">
                 <ToggleButton.ToolTip>
-                    <ToolTip Content="Minecraft for Windows news"/>
+                    <ToolTip Content="{DynamicResource NewsScreen_MinecraftForumsTitle}"/>
+                </ToggleButton.ToolTip>
+            </ToggleButton>
+            <ToggleButton x:Name="LauncherTab" Width="Auto" Click="ButtonManager" Content="{DynamicResource NewsScreen_LauncherTabTitle}" Style="{DynamicResource ToolbarButton}" IsChecked="True">
+                <ToggleButton.ToolTip>
+                    <ToolTip Content="{DynamicResource NewsScreen_LauncherTabTitle}"/>
                 </ToggleButton.ToolTip>
             </ToggleButton>
         </StackPanel>
@@ -109,10 +114,8 @@
         <Frame x:Name="ContentFrame" ClipToBounds="True" com:DisableNavigation.Disable="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="2" NavigationUIVisibility="Hidden"/>
         <Border Grid.Row="3" BorderBrush="{DynamicResource Seperator.Background}" BorderThickness="0,1,0,0">
             <Grid Background="#FF303030">
-                <Button Margin="0,1" FontSize="14" x:Name="RefreshButton" HorizontalAlignment="Right" Click="RefreshButton_Click" Content="{DynamicResource GeneralText_Refresh}" Style="{DynamicResource LinkButton}"></Button>
+                <Button Margin="0,5" FontSize="17" x:Name="RefreshButton" HorizontalAlignment="Right" Click="RefreshButton_Click" Content="{DynamicResource GeneralText_Refresh}" Style="{DynamicResource LinkButton}"></Button>
             </Grid>
         </Border>
     </Grid>
-
-
 </Page>

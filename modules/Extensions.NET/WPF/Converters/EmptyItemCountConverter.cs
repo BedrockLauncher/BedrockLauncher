@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Data;
+﻿using System.Windows;
 
 namespace JemExtensions.WPF.Converters
 {

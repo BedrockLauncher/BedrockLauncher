@@ -1,6 +1,6 @@
-﻿using System.Windows;
+﻿using BedrockLauncher.Classes.Launcher;
+using System.Windows;
 using System.Windows.Controls;
-using BedrockLauncher.Classes.Launcher;
 
 namespace BedrockLauncher.Pages.News.RSS
 {

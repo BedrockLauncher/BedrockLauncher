@@ -93,10 +93,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Handlers
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
-        public void Dispose()
-        {
-            ReleaseObjects();
-        }
+        public void Dispose() => ReleaseObjects();
 
 
         #region Private/Protected methods

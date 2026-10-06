@@ -14,10 +14,7 @@ namespace BedrockLauncher.Pages.Toolbar
             this.DataContext = ViewModels.MainDataModel.Default;
         }
 
-        private void SideBarButton_Click(object sender, RoutedEventArgs e)
-        {
-            ToolbarButtonBase_Click(this, e);
-        }
+        private void SideBarButton_Click(object sender, RoutedEventArgs e) => ToolbarButtonBase_Click(this, e);
 
         private void Button_CheckedChanged(object sender, RoutedEventArgs e)
         {

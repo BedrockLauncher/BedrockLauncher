@@ -1,9 +1,9 @@
-﻿using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using BedrockLauncher.Classes;
+﻿using BedrockLauncher.Classes;
 using BedrockLauncher.UI.Pages.Common;
 using BedrockLauncher.ViewModels;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace BedrockLauncher.Pages.Preview.Installation.Components
 {

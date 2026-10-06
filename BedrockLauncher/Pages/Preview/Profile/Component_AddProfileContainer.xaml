@@ -62,6 +62,20 @@
  
                          Height="32"
                          Width="275" MaxLines="1" />
+                    <TextBlock x:Name="MicrosoftAccountStatusText"
+                               Text="{DynamicResource NewProfile_MicrosoftAccountNotConnected}"
+                               Foreground="#FFBDBDBD"
+                               FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans"
+                               FontSize="10"
+                               Margin="0,5,0,0" />
+                    <Button x:Name="MicrosoftAccountButton"
+                            Click="MicrosoftAccountButton_Click"
+                            Content="{DynamicResource NewProfile_MicrosoftSignInButton}"
+                            HorizontalAlignment="Left"
+                            Height="24"
+                            Margin="0,3,0,0"
+                            Padding="8,0"
+                            Style="{DynamicResource DialogMiniButton}" />
                 </StackPanel>
             </Grid>
             <Grid Margin="0" Background="{x:Null}">

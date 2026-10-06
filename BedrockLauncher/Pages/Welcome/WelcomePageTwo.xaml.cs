@@ -1,7 +1,7 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using BedrockLauncher.ViewModels;
+﻿using BedrockLauncher.ViewModels;
 using FolderBrowserEx;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace BedrockLauncher.Pages.Welcome
 {
@@ -20,15 +20,9 @@ namespace BedrockLauncher.Pages.Welcome
             isInit = true;
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            pageSwitcher.MoveToPage(1);
-        }
+        private void BackButton_Click(object sender, RoutedEventArgs e) => pageSwitcher.MoveToPage(1);
 
-        private void NextButton_Click(object sender, RoutedEventArgs e)
-        {
-            pageSwitcher.MoveToPage(3);
-        }
+        private void NextButton_Click(object sender, RoutedEventArgs e) => pageSwitcher.MoveToPage(3);
 
         private void UpdateDirectoryPathTextbox()
         {

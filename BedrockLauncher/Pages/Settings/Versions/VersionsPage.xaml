@@ -60,6 +60,8 @@
                             <CheckBox Click="RefreshVersionsList" IsChecked="{Binding ShowReleases, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Releases}" Style="{StaticResource Checkbox}"></CheckBox>
                             <CheckBox Click="RefreshVersionsList" IsChecked="{Binding ShowBetas, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Betas}" Style="{StaticResource Checkbox}"></CheckBox>
                             <CheckBox Click="RefreshVersionsList" IsChecked="{Binding ShowPreviews, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_Previews}" Style="{StaticResource Checkbox}"></CheckBox>
+                            <CheckBox Click="RefreshVersionsList" IsChecked="{Binding ShowUWP, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_UWP}" Style="{StaticResource Checkbox}"></CheckBox>
+                            <CheckBox Click="RefreshVersionsList" IsChecked="{Binding ShowGDK, Mode=TwoWay, Source={x:Static p:LauncherSettings.Default}, UpdateSourceTrigger=PropertyChanged}" Content="{DynamicResource ResourceKey=GeneralText_GDK}" Style="{StaticResource Checkbox}"></CheckBox>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">

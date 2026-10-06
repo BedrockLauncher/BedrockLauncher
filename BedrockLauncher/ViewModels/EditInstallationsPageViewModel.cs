@@ -7,7 +7,7 @@ namespace BedrockLauncher.ViewModels
     /// </summary>
     /// 
 
-    [NotifyPropertyChanged(ExcludeExplicitProperties=Constants.Debugging.ExcludeExplicitProperties)]
+    [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]
     public class EditInstallationsPageViewModel
     {
         public string SelectedVersionUUID { get; set; } = string.Empty;

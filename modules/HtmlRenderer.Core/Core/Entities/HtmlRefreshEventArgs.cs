@@ -43,9 +43,6 @@ namespace TheArtOfDev.HtmlRenderer.Core.Entities
             get { return _layout; }
         }
 
-        public override string ToString()
-        {
-            return string.Format("Layout: {0}", _layout);
-        }
+        public override string ToString() => string.Format("Layout: {0}", _layout);
     }
 }

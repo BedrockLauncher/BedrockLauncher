@@ -245,10 +245,7 @@ namespace TheArtOfDev.HtmlRenderer.WPF
         /// Get html from the current DOM tree with inline style.
         /// </summary>
         /// <returns>generated html</returns>
-        public virtual string GetHtml()
-        {
-            return _htmlContainer != null ? _htmlContainer.GetHtml() : null;
-        }
+        public virtual string GetHtml() => _htmlContainer != null ? _htmlContainer.GetHtml() : null;
 
         /// <summary>
         /// Get the rectangle of html element as calculated by html layout.<br/>
@@ -257,10 +254,7 @@ namespace TheArtOfDev.HtmlRenderer.WPF
         /// </summary>
         /// <param name="elementId">the id of the element to get its rectangle</param>
         /// <returns>the rectangle of the element or null if not found</returns>
-        public virtual Rect? GetElementRectangle(string elementId)
-        {
-            return _htmlContainer != null ? _htmlContainer.GetElementRectangle(elementId) : null;
-        }
+        public virtual Rect? GetElementRectangle(string elementId) => _htmlContainer != null ? _htmlContainer.GetElementRectangle(elementId) : null;
 
         /// <summary>
         /// Clear the current selection.
@@ -441,26 +435,17 @@ namespace TheArtOfDev.HtmlRenderer.WPF
         /// <summary>
         /// Get the width the HTML has to render in (not including vertical scroll iff it is visible)
         /// </summary>
-        protected virtual double HtmlWidth(Size size)
-        {
-            return size.Width - Padding.Left - Padding.Right - BorderThickness.Left - BorderThickness.Right;
-        }
+        protected virtual double HtmlWidth(Size size) => size.Width - Padding.Left - Padding.Right - BorderThickness.Left - BorderThickness.Right;
 
         /// <summary>
         /// Get the width the HTML has to render in (not including vertical scroll iff it is visible)
         /// </summary>
-        protected virtual double HtmlHeight(Size size)
-        {
-            return size.Height - Padding.Top - Padding.Bottom - BorderThickness.Top - BorderThickness.Bottom;
-        }
+        protected virtual double HtmlHeight(Size size) => size.Height - Padding.Top - Padding.Bottom - BorderThickness.Top - BorderThickness.Bottom;
 
         /// <summary>
         /// call mouse move to handle paint after scroll or html change affecting mouse cursor.
         /// </summary>
-        protected virtual void InvokeMouseMove()
-        {
-            _htmlContainer.HandleMouseMove(this, Mouse.GetPosition(this));
-        }
+        protected virtual void InvokeMouseMove() => _htmlContainer.HandleMouseMove(this, Mouse.GetPosition(this));
 
         /// <summary>
         /// Handle when dependency property value changes to update the underline HtmlContainer with the new value.

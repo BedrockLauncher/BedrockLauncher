@@ -8,7 +8,7 @@ namespace BedrockLauncher.Classes.Launcher
 {
     public class PatchNotes_Game_Item
     {
-        public string fallback_image => (patchNoteType == "preview" || patchNoteType == "beta") ? 
+        public string fallback_image => (patchNoteType == "preview" || patchNoteType == "beta") ?
             Constants.PATCHNOTE_BETA_IMG : Constants.PATCHNOTE_RELEASE_IMG;
         public bool isBeta => (patchNoteType == "preview" || patchNoteType == "beta");
         public string image_url => Constants.PATCHNOTES_IMGPREFIX_URL + image?.url ?? "null.png";

@@ -426,7 +426,8 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         public string Top
         {
             get { return _top; }
-            set {
+            set
+            {
                 _top = value;
 
                 if (Position == CssConstants.Fixed)
@@ -686,7 +687,8 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// </summary>
         public RPoint Location
         {
-            get {
+            get
+            {
                 if (_location.IsEmpty && Position == CssConstants.Fixed)
                 {
                     var left = Left;
@@ -696,7 +698,8 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
                 }
                 return _location;
             }
-            set {
+            set
+            {
                 _location = value;
             }
         }
@@ -1430,10 +1433,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// Gets the height of the font in the specified units
         /// </summary>
         /// <returns></returns>
-        public double GetEmHeight()
-        {
-            return ActualFont.Height;
-        }
+        public double GetEmHeight() => ActualFont.Height;
 
         /// <summary>
         /// Ensures that the specified length is converted to pixels if necessary

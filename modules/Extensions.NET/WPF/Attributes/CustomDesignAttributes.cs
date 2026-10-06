@@ -35,25 +35,13 @@ namespace JemExtensions.WPF.Attributes
             }
         }
 
-        public static void SetVerticalScrollTo(UIElement element, double value)
-        {
-            element.SetValue(VerticalScrollToProperty, value);
-        }
+        public static void SetVerticalScrollTo(UIElement element, double value) => element.SetValue(VerticalScrollToProperty, value);
 
-        public static double GetVerticalScrollTo(UIElement element)
-        {
-            return (double)element.GetValue(VerticalScrollToProperty);
-        }
+        public static double GetVerticalScrollTo(UIElement element) => (double)element.GetValue(VerticalScrollToProperty);
 
-        public static void SetHorizontalScrollTo(UIElement element, double value)
-        {
-            element.SetValue(HorizontalScrollToProperty, value);
-        }
+        public static void SetHorizontalScrollTo(UIElement element, double value) => element.SetValue(HorizontalScrollToProperty, value);
 
-        public static double GetHorizontalTo(UIElement element)
-        {
-            return (double)element.GetValue(HorizontalScrollToProperty);
-        }
+        public static double GetHorizontalTo(UIElement element) => (double)element.GetValue(HorizontalScrollToProperty);
 
         private static void ScrollToChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

@@ -54,9 +54,6 @@ namespace TheArtOfDev.HtmlRenderer.WPF
             get { return _data; }
         }
 
-        public override string ToString()
-        {
-            return string.Format("RoutedEventArgs({0})", _data);
-        }
+        public override string ToString() => string.Format("RoutedEventArgs({0})", _data);
     }
 }

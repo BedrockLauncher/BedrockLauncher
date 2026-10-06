@@ -14,14 +14,8 @@ namespace BedrockLauncher.Pages.Welcome
             InitializeComponent();
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.MainWindow.Close();
-        }
+        private void CloseButton_Click(object sender, RoutedEventArgs e) => Application.Current.MainWindow.Close();
 
-        private void NextButton_Click(object sender, RoutedEventArgs e)
-        {
-            pageSwitcher.MoveToPage(2);
-        }
+        private void NextButton_Click(object sender, RoutedEventArgs e) => pageSwitcher.MoveToPage(2);
     }
 }

@@ -1,0 +1,40 @@
+name: Windows Build
+
+on:
+  push:
+    branches:
+      - gdk-rewrite
+  pull_request:
+    branches:
+      - gdk-rewrite
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Build solution
+        shell: pwsh
+        run: |
+          $solution = Get-ChildItem -Path . -Filter *.sln -Recurse | Select-Object -First 1
+          if (-not $solution) {
+            throw "no .sln file found :("
+          }
+
+          msbuild $solution.FullName `
+            /t:Rebuild `
+            /p:Configuration=Release `
+            /p:Platform=x64 `
+            /verbosity:minimal

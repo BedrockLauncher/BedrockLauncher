@@ -23,17 +23,17 @@ namespace TheArtOfDev.HtmlRenderer.Adapters
         /// Start path at the given point.
         /// </summary>
         public abstract void Start(double x, double y);
-        
+
         /// <summary>
         /// Add stright line to the given point from te last point.
         /// </summary>
         public abstract void LineTo(double x, double y);
-        
+
         /// <summary>
         /// Add circular arc of the given size to the given point from the last point.
         /// </summary>
         public abstract void ArcTo(double x, double y, double size, Corner corner);
-        
+
         /// <summary>
         /// Release path resources.
         /// </summary>

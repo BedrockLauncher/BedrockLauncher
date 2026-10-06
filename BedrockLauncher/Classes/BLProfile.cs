@@ -1,16 +1,16 @@
-﻿using System;
+﻿using BedrockLauncher.Classes;
+using BedrockLauncher.Enums;
+using BedrockLauncher.ViewModels;
+using JemExtensions;
+using Newtonsoft.Json;
+using PostSharp.Patterns.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BedrockLauncher.Classes;
-using JemExtensions;
-using Newtonsoft.Json;
-using BedrockLauncher.Enums;
-using PostSharp.Patterns.Model;
-using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Classes
 {
@@ -19,6 +19,8 @@ namespace BedrockLauncher.Classes
         public string Name { get; set; }
         public string UUID { get; set; }
         public string ProfilePath { get; set; }
+        public string MicrosoftAccountId { get; set; }
+        public string MicrosoftAccountName { get; set; }
         public ObservableCollection<BLInstallation> Installations { get; set; } = new ObservableCollection<BLInstallation>();
 
 

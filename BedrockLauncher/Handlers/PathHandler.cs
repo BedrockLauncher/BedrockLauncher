@@ -19,8 +19,10 @@ namespace BedrockLauncher.Handlers
         public string SettingsFileName { get => "settings.json"; }
         public string WinStoreVersionsDBFileName { get => "winstore_versions.json"; }
         public string CommunityVersionsDBFileName { get => "community_versions.json"; }
+        public string GdkLinksVersionsDBFileName { get => "gdk_links_versions.json"; }
         public string AppDataFolderName { get => ".minecraft_bedrock"; }
         public string InstallationsFolderName { get => "installations"; }
+        public string InstallersFolder => Path.Combine(CurrentLocation, InstallationsFolderName) + Path.DirectorySeparatorChar;
         public string PackageDataFolderName { get => "packageData"; }
         public string IconCacheFolderName { get => "icon_cache"; }
 
@@ -41,9 +43,8 @@ namespace BedrockLauncher.Handlers
             }
         }
         public string DefaultLocation { get => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), AppDataFolderName); }
-        public string VersionsFolder => CurrentLocation + "\\versions\\";
-        public string ThemesFolder => CurrentLocation + "\\themes\\";
-        public string InstallersFolder => Path.Combine(CurrentLocation, "installers");
+        public string VersionsFolder => Path.Combine(CurrentLocation, "versions") + Path.DirectorySeparatorChar;
+        public string ThemesFolder => Path.Combine(CurrentLocation, "themes") + Path.DirectorySeparatorChar;
 
         #endregion
 
@@ -75,22 +76,11 @@ namespace BedrockLauncher.Handlers
             return FixedDirectory;
         }
 
-        public string GetSettingsFilePath()
-        {
-            return Path.Combine(ExecutableDataDirectory, SettingsFileName);
-        }
-        public string GetCommunityVersionsDBFile()
-        {
-            return Path.Combine(CurrentLocation, CommunityVersionsDBFileName);
-        }
-        public string GetWinStoreVersionsDBFile()
-        {
-            return Path.Combine(CurrentLocation, WinStoreVersionsDBFileName);
-        }
-        public string GetProfilesFilePath()
-        {
-            return Path.Combine(CurrentLocation, UserDataFileName);
-        }
+        public string GetSettingsFilePath() => Path.Combine(ExecutableDataDirectory, SettingsFileName);
+        public string GetCommunityVersionsDBFile() => Path.Combine(CurrentLocation, CommunityVersionsDBFileName);
+        public string GetGdkLinksVersionsDBFile() => Path.Combine(CurrentLocation, GdkLinksVersionsDBFileName);
+        public string GetWinStoreVersionsDBFile() => Path.Combine(CurrentLocation, WinStoreVersionsDBFileName);
+        public string GetProfilesFilePath() => Path.Combine(CurrentLocation, UserDataFileName);
         public string GetCacheFolderPath()
         {
             string cache_dir = Path.Combine(CurrentLocation, IconCacheFolderName);

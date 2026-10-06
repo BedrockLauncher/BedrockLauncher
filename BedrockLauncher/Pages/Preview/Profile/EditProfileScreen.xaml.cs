@@ -39,14 +39,8 @@ namespace BedrockLauncher.Pages.Preview.Profile
             ProfileControlContainer.Children.Add(ProfileControl);
         }
 
-        private void ProfileControl_GoBack(object sender, EventArgs e)
-        {
-            ViewModels.MainViewModel.Default.SetOverlayFrame(null);
-        }
+        private void ProfileControl_GoBack(object sender, EventArgs e) => ViewModels.MainViewModel.Default.SetOverlayFrame(null);
 
-        private void ProfileControl_Confirm(object sender, EventArgs e)
-        {
-            ViewModels.MainViewModel.Default.SetOverlayFrame(null);
-        }
+        private void ProfileControl_Confirm(object sender, EventArgs e) => ViewModels.MainViewModel.Default.SetOverlayFrame(null);
     }
 }

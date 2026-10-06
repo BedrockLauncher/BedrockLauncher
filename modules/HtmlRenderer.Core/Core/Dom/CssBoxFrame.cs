@@ -140,26 +140,23 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// <summary>
         /// Load YouTube video data (title, image, link) by calling YouTube API.
         /// </summary>
-        private void LoadYoutubeDataAsync(Uri uri)
-        {
-            ThreadPool.QueueUserWorkItem(state =>
-            {
-                try
-                {
-                    var apiUri = new Uri(string.Format("http://gdata.youtube.com/feeds/api/videos/{0}?v=2&alt=json", uri.Segments[2]));
+        private void LoadYoutubeDataAsync(Uri uri) => ThreadPool.QueueUserWorkItem(state =>
+                                                               {
+                                                                   try
+                                                                   {
+                                                                       var apiUri = new Uri(string.Format("http://gdata.youtube.com/feeds/api/videos/{0}?v=2&alt=json", uri.Segments[2]));
 
-                    var client = new WebClient();
-                    client.Encoding = Encoding.UTF8;
-                    client.DownloadStringCompleted += OnDownloadYoutubeApiCompleted;
-                    client.DownloadStringAsync(apiUri);
-                }
-                catch (Exception ex)
-                {
-                    HtmlContainer.ReportError(HtmlRenderErrorType.Iframe, "Failed to get youtube video data: " + uri, ex);
-                    HtmlContainer.RequestRefresh(false);
-                }
-            });
-        }
+                                                                       var client = new WebClient();
+                                                                       client.Encoding = Encoding.UTF8;
+                                                                       client.DownloadStringCompleted += OnDownloadYoutubeApiCompleted;
+                                                                       client.DownloadStringAsync(apiUri);
+                                                                   }
+                                                                   catch (Exception ex)
+                                                                   {
+                                                                       HtmlContainer.ReportError(HtmlRenderErrorType.Iframe, "Failed to get youtube video data: " + uri, ex);
+                                                                       HtmlContainer.RequestRefresh(false);
+                                                                   }
+                                                               });
 
         /// <summary>
         /// Parse YouTube API response to get video data (title, image, link).
@@ -276,28 +273,25 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// <summary>
         /// Load Vimeo video data (title, image, link) by calling Vimeo API.
         /// </summary>
-        private void LoadVimeoDataAsync(Uri uri)
-        {
-            ThreadPool.QueueUserWorkItem(state =>
-            {
-                try
-                {
-                    var apiUri = new Uri(string.Format("http://vimeo.com/api/v2/video/{0}.json", uri.Segments[2]));
+        private void LoadVimeoDataAsync(Uri uri) => ThreadPool.QueueUserWorkItem(state =>
+                                                             {
+                                                                 try
+                                                                 {
+                                                                     var apiUri = new Uri(string.Format("http://vimeo.com/api/v2/video/{0}.json", uri.Segments[2]));
 
-                    var client = new WebClient();
-                    client.Encoding = Encoding.UTF8;
-                    client.DownloadStringCompleted += OnDownloadVimeoApiCompleted;
-                    client.DownloadStringAsync(apiUri);
-                }
-                catch (Exception ex)
-                {
-                    _imageLoadingComplete = true;
-                    SetErrorBorder();
-                    HtmlContainer.ReportError(HtmlRenderErrorType.Iframe, "Failed to get vimeo video data: " + uri, ex);
-                    HtmlContainer.RequestRefresh(false);
-                }
-            });
-        }
+                                                                     var client = new WebClient();
+                                                                     client.Encoding = Encoding.UTF8;
+                                                                     client.DownloadStringCompleted += OnDownloadVimeoApiCompleted;
+                                                                     client.DownloadStringAsync(apiUri);
+                                                                 }
+                                                                 catch (Exception ex)
+                                                                 {
+                                                                     _imageLoadingComplete = true;
+                                                                     SetErrorBorder();
+                                                                     HtmlContainer.ReportError(HtmlRenderErrorType.Iframe, "Failed to get vimeo video data: " + uri, ex);
+                                                                     HtmlContainer.RequestRefresh(false);
+                                                                 }
+                                                             });
 
         /// <summary>
         /// Parse Vimeo API response to get video data (title, image, link).
@@ -545,7 +539,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
                     new RPoint(left + 2 * size.Width / 3f + 1, top + size.Height / 2f)
                 };
                 g.DrawPolygon(g.GetSolidBrush(RColor.White), points);
-                
+
                 g.ReturnPreviousSmoothingMode(prevMode);
             }
         }

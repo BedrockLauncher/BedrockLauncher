@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using BedrockLauncher.Classes;
+using BedrockLauncher.ViewModels;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using BedrockLauncher.Classes;
-using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Pages.Toolbar
 {
@@ -26,7 +26,7 @@ namespace BedrockLauncher.Pages.Toolbar
             this.DataContext = profile.Value;
             _ProfileName = profile.Key;
 
-            if (Properties.LauncherSettings.Default.CurrentProfileUUID == profile.Key) 
+            if (Properties.LauncherSettings.Default.CurrentProfileUUID == profile.Key)
                 SelectedMark.Visibility = Visibility.Visible;
         }
 
@@ -37,10 +37,7 @@ namespace BedrockLauncher.Pages.Toolbar
             SelectorParent.GetBindingExpression(Grid.DataContextProperty).UpdateTarget();
         }
 
-        private void SourceButton_Click(object sender, RoutedEventArgs e)
-        {
-            SwitchProfile();
-        }
+        private void SourceButton_Click(object sender, RoutedEventArgs e) => SwitchProfile();
 
         private void Grid_MouseUp(object sender, MouseButtonEventArgs e)
         {

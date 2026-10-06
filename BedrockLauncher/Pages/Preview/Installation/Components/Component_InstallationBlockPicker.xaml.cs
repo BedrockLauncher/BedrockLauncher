@@ -1,6 +1,13 @@
-﻿using System;
+﻿using BedrockLauncher.Classes;
+using BedrockLauncher.ViewModels;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,14 +19,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Globalization;
-using System.Collections;
-using System.Reflection;
-using System.Resources;
-using System.IO;
 using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
-using BedrockLauncher.ViewModels;
-using BedrockLauncher.Classes;
 
 namespace BedrockLauncher.Pages.Preview.Installation.Components
 {
@@ -76,7 +76,7 @@ namespace BedrockLauncher.Pages.Preview.Installation.Components
                     bmp = new BitmapImage(new Uri(uri, UriKind.Relative));
                 }
 
-                    if (bmp != null) SelectedBlockIcon.Source = bmp;
+                if (bmp != null) SelectedBlockIcon.Source = bmp;
             }
             catch (Exception ex)
             {
@@ -92,35 +92,29 @@ namespace BedrockLauncher.Pages.Preview.Installation.Components
         {
             InitializeComponent();
         }
-        public void Init(BLInstallation i = null)
-        {
-            Task.Run(() => InitAsync(i));
-        }
+        public void Init(BLInstallation i = null) => Task.Run(() => InitAsync(i));
 
 
-        public async Task InitAsync(BLInstallation i = null)
-        {
-            await Task.Run(() =>
-            {
-                this.Dispatcher.Invoke(() =>
-                {
-                    BlockList = Constants.INSTALLATION_PREFABED_ICONS_LIST_RUNTIME;
+        public async Task InitAsync(BLInstallation i = null) => await Task.Run(() =>
+                                                                         {
+                                                                             this.Dispatcher.Invoke(() =>
+                                                                             {
+                                                                                 BlockList = Constants.INSTALLATION_PREFABED_ICONS_LIST_RUNTIME;
 
-                    SetIconData(BlockList.Where(x => x.Contains("furnace.png")).FirstOrDefault());
+                                                                                 SetIconData(BlockList.Where(x => x.Contains("furnace.png")).FirstOrDefault());
 
-                    GenerateListItems();
-                    UpdateDropdownArrow();
+                                                                                 GenerateListItems();
+                                                                                 UpdateDropdownArrow();
 
-                    if (i != null)
-                    {
-                        IsIconCustom = i.IsCustomIcon;
-                        SetIconData(i.IconPath_Full);
-                    }
+                                                                                 if (i != null)
+                                                                                 {
+                                                                                     IsIconCustom = i.IsCustomIcon;
+                                                                                     SetIconData(i.IconPath_Full);
+                                                                                 }
 
-                    DropdownButton.IsEnabled = true;
-                });
-            });
-        }
+                                                                                 DropdownButton.IsEnabled = true;
+                                                                             });
+                                                                         });
 
         #endregion
 
@@ -129,7 +123,7 @@ namespace BedrockLauncher.Pages.Preview.Installation.Components
         private void CrossBtn_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (sender as Button);
-            
+
             if (btn.Tag is string)
             {
                 string path = btn.Tag.ToString();

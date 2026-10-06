@@ -115,10 +115,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Utils
         /// Is the sub-string is empty string.
         /// </summary>
         /// <returns>true - empty string, false - otherwise</returns>
-        public bool IsEmpty()
-        {
-            return _length < 1;
-        }
+        public bool IsEmpty() => _length < 1;
 
         /// <summary>
         /// Is the sub-string is empty string or contains only whitespaces.
@@ -155,10 +152,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Utils
         /// This will create a new string object!
         /// </summary>
         /// <returns>new string that is the sub-string represented by this instance</returns>
-        public string CutSubstring()
-        {
-            return _length > 0 ? _fullString.Substring(_startIdx, _length) : string.Empty;
-        }
+        public string CutSubstring() => _length > 0 ? _fullString.Substring(_startIdx, _length) : string.Empty;
 
         /// <summary>
         /// Retrieves a substring from this instance. The substring starts at a specified character position and has a specified length. 
@@ -179,9 +173,6 @@ namespace TheArtOfDev.HtmlRenderer.Core.Utils
             return _fullString.Substring(_startIdx + startIdx, length);
         }
 
-        public override string ToString()
-        {
-            return string.Format("Sub-string: {0}", _length > 0 ? _fullString.Substring(_startIdx, _length) : string.Empty);
-        }
+        public override string ToString() => string.Format("Sub-string: {0}", _length > 0 ? _fullString.Substring(_startIdx, _length) : string.Empty);
     }
 }

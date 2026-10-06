@@ -3,80 +3,174 @@ using BedrockLauncher.Enums;
 using JemExtensions;
 using PostSharp.Patterns.Model;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using S = JemExtensions.SpecialExtensions;
 
 namespace BedrockLauncher.ViewModels
 {
-
     public class ProgressBarModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(params string[] propertyNames)
-        {
-            foreach (string propertyName in propertyNames)
-            {
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-
-        private void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         #region Init
 
         public ProgressBarModel()
         {
             PropertyChanged += ProgressBarModel_PropertyChanged;
         }
-        private void ProgressBarModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+
+        private void ProgressBarModel_PropertyChanged(
+            object sender,
+            PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(Show)) GetProgressBarAnim();
-            //else if (e.PropertyName == nameof(AllowPlaying))
+            if (e.PropertyName == nameof(Show))
+                GetProgressBarAnim();
         }
+
+        #endregion
+
+        #region Fields
+
+        private ICommand _cancelCommand;
+        private bool _allowCancel;
+        private bool _isGameRunning;
+        private bool _playButtonLanguageChanged;
+        private bool _show;
+        private LauncherState _currentState;
+        private long _currentProgress;
+        private long _actualCurrentProgress;
+        private long _actualTotalProgress;
+        private bool _isIndeterminate = true;
+        private Visibility _animMiniVisibility =
+            Visibility.Collapsed;
+        private Visibility _animVisibility =
+            Visibility.Collapsed;
+        private Visibility _animTextVisibility =
+            Visibility.Collapsed;
+        private string _information;
 
         #endregion
 
         #region Various Properties
 
-        public ICommand CancelCommand { get; set; }
+        public ICommand CancelCommand
+        {
+            get => _cancelCommand;
+            set
+            {
+                if (_cancelCommand == value)
+                    return;
 
-        public bool AllowCancel { get; set; }
-        public bool IsGameRunning { get; set; }
-        public bool PlayButtonLanguageChanged { get; set; } = false;
+                _cancelCommand = value;
+                OnPropertyChanged(nameof(CancelCommand));
+            }
+        }
+
+        public bool AllowCancel
+        {
+            get => _allowCancel;
+            set
+            {
+                if (_allowCancel == value)
+                    return;
+
+                _allowCancel = value;
+                OnPropertyChanged(nameof(AllowCancel));
+            }
+        }
+
+        public bool IsGameRunning
+        {
+            get => _isGameRunning;
+            set
+            {
+                if (_isGameRunning == value)
+                    return;
+
+                _isGameRunning = value;
+
+                OnPropertyChanged(nameof(IsGameRunning));
+                OnPropertyChanged(nameof(PlayButtonString));
+                OnPropertyChanged(nameof(PlayEditorButtonString));
+                OnPropertyChanged(nameof(AllowEditing));
+            }
+        }
+
+        public bool PlayButtonLanguageChanged
+        {
+            get => _playButtonLanguageChanged;
+            set
+            {
+                if (_playButtonLanguageChanged == value)
+                    return;
+
+                _playButtonLanguageChanged = value;
+
+                OnPropertyChanged(
+                    nameof(PlayButtonLanguageChanged));
+
+                OnPropertyChanged(
+                    nameof(PlayButtonString));
+
+                OnPropertyChanged(
+                    nameof(PlayEditorButtonString));
+            }
+        }
+
         public string PlayButtonString
         {
             get
             {
-                Depends.On(IsGameRunning, PlayButtonLanguageChanged);
-                if (IsGameRunning) return Application.Current.FindResource("GameTab_PlayButton_Kill_Text").ToString();
+                Depends.On(
+                    IsGameRunning,
+                    PlayButtonLanguageChanged);
 
-                var selectedInstallation = MainDataModel.Default?.Config?.GetSelectedOrFirstPlayableInstallation();
-                if (selectedInstallation?.Version == null)
-                    return Application.Current.FindResource("InstallationsPage_PlayButton").ToString();
+                if (Application.Current == null)
+                    return string.Empty;
 
-                return Application.Current.FindResource("InstallationsPage_PlayButton").ToString();
+                if (IsGameRunning)
+                {
+                    return Application.Current
+                        .TryFindResource(
+                            "GameTab_PlayButton_Kill_Text")
+                        ?.ToString()
+                        ?? string.Empty;
+                }
+
+                return Application.Current
+                    .TryFindResource(
+                        "InstallationsPage_PlayButton")
+                    ?.ToString()
+                    ?? string.Empty;
             }
         }
+
         public string PlayEditorButtonString
         {
             get
             {
-                Depends.On(IsGameRunning, PlayButtonLanguageChanged);
-                if (IsGameRunning) return Application.Current.FindResource("GameTab_PlayButton_Kill_Text").ToString();
-                else return Application.Current.FindResource("CreatorToolsPage_PlayEditorButton").ToString();
+                Depends.On(
+                    IsGameRunning,
+                    PlayButtonLanguageChanged);
+
+                if (Application.Current == null)
+                    return string.Empty;
+
+                if (IsGameRunning)
+                {
+                    return Application.Current
+                        .TryFindResource(
+                            "GameTab_PlayButton_Kill_Text")
+                        ?.ToString()
+                        ?? string.Empty;
+                }
+
+                return Application.Current
+                    .TryFindResource(
+                        "CreatorToolsPage_PlayEditorButton")
+                    ?.ToString()
+                    ?? string.Empty;
             }
         }
 
@@ -84,16 +178,28 @@ namespace BedrockLauncher.ViewModels
         {
             get
             {
-                Depends.On(AllowPlaying, IsGameRunning, Show);
-                return AllowPlaying && !IsGameRunning && !Show;
+                Depends.On(
+                    AllowPlaying,
+                    IsGameRunning,
+                    Show);
+
+                return AllowPlaying &&
+                       !IsGameRunning &&
+                       !Show;
             }
         }
+
         public bool AllowPlaying
         {
             get
             {
-                Depends.On(CurrentState, Show);
-                return CurrentState == LauncherState.None && !Show;
+                Depends.On(
+                    CurrentState,
+                    Show);
+
+                return CurrentState ==
+                       LauncherState.None &&
+                       !Show;
             }
         }
 
@@ -101,48 +207,227 @@ namespace BedrockLauncher.ViewModels
 
         #region Common Properties
 
-        public bool Show { get; set; } = false;
-        public LauncherState CurrentState { get; set; }
-        public long CurrentProgress { get; set; }
+        public bool Show
+        {
+            get => _show;
+            set
+            {
+                if (_show == value)
+                    return;
+
+                _show = value;
+
+                OnPropertyChanged(nameof(Show));
+                OnPropertyChanged(nameof(AllowPlaying));
+                OnPropertyChanged(nameof(AllowEditing));
+            }
+        }
+
+        public LauncherState CurrentState
+        {
+            get => _currentState;
+            set
+            {
+                if (_currentState == value)
+                    return;
+
+                _currentState = value;
+
+                OnPropertyChanged(nameof(CurrentState));
+                OnPropertyChanged(nameof(Description));
+                OnPropertyChanged(nameof(TextualProgress));
+                OnPropertyChanged(nameof(ShowTextualProgress));
+                OnPropertyChanged(nameof(AllowPlaying));
+                OnPropertyChanged(nameof(AllowEditing));
+            }
+        }
+
+        public long CurrentProgress
+        {
+            get => _currentProgress;
+            set
+            {
+                if (_currentProgress == value)
+                    return;
+
+                _currentProgress = value;
+
+                OnPropertyChanged(nameof(CurrentProgress));
+                OnPropertyChanged(nameof(TextualProgress));
+            }
+        }
+
         public long TotalProgress => 100;
-        public long ActualCurrentProgress { get; set; }
-        public long ActualTotalProgress { get; set; }
-        public bool IsIndeterminate { get; set; } = true;
+
+        public long ActualCurrentProgress
+        {
+            get => _actualCurrentProgress;
+            set
+            {
+                if (_actualCurrentProgress == value)
+                    return;
+
+                _actualCurrentProgress = value;
+
+                OnPropertyChanged(
+                    nameof(ActualCurrentProgress));
+
+                OnPropertyChanged(
+                    nameof(TextualProgress));
+            }
+        }
+
+        public long ActualTotalProgress
+        {
+            get => _actualTotalProgress;
+            set
+            {
+                if (_actualTotalProgress == value)
+                    return;
+
+                _actualTotalProgress = value;
+
+                OnPropertyChanged(
+                    nameof(ActualTotalProgress));
+
+                OnPropertyChanged(
+                    nameof(TextualProgress));
+            }
+        }
+
+        public bool IsIndeterminate
+        {
+            get => _isIndeterminate;
+            set
+            {
+                if (_isIndeterminate == value)
+                    return;
+
+                _isIndeterminate = value;
+
+                OnPropertyChanged(nameof(IsIndeterminate));
+            }
+        }
 
         #endregion
 
         #region Animation
 
-        public Visibility Anim_MiniVisibility { get; set; } = Visibility.Collapsed;
-        public Visibility Anim_Visibility { get; set; } = Visibility.Collapsed;
-        public Visibility Anim_TextVisibility { get; set; } = Visibility.Collapsed;
+        public Visibility Anim_MiniVisibility
+        {
+            get => _animMiniVisibility;
+            set
+            {
+                if (_animMiniVisibility == value)
+                    return;
+
+                _animMiniVisibility = value;
+
+                OnPropertyChanged(
+                    nameof(Anim_MiniVisibility));
+            }
+        }
+
+        public Visibility Anim_Visibility
+        {
+            get => _animVisibility;
+            set
+            {
+                if (_animVisibility == value)
+                    return;
+
+                _animVisibility = value;
+
+                OnPropertyChanged(
+                    nameof(Anim_Visibility));
+            }
+        }
+
+        public Visibility Anim_TextVisibility
+        {
+            get => _animTextVisibility;
+            set
+            {
+                if (_animTextVisibility == value)
+                    return;
+
+                _animTextVisibility = value;
+
+                OnPropertyChanged(
+                    nameof(Anim_TextVisibility));
+            }
+        }
+
         private async void GetProgressBarAnim()
         {
-            await Application.Current.Dispatcher.InvokeAsync(() =>
-            {
-                ProgressBarSetContent(Show, true);
+            if (Application.Current == null)
+                return;
 
-                Storyboard storyboard = new Storyboard();
-                DoubleAnimation animation = new DoubleAnimation
+            await Application.Current.Dispatcher
+                .InvokeAsync(() =>
                 {
-                    From = (Show ? 0 : 72),
-                    To = (Show ? 72 : 0),
-                    Duration = new Duration(TimeSpan.FromMilliseconds(350))
-                };
-                storyboard.Children.Add(animation);
-                Storyboard.SetTargetProperty(animation, new System.Windows.PropertyPath(ProgressBar.HeightProperty));
-                Storyboard.SetTarget(animation, MainDataModel.BackwardsCommunicationHost.ProgressBarGrid);
-                storyboard.Completed += new EventHandler((s, e) => ProgressBarSetContent(Show, false));
-                storyboard.Begin();
-            });
+                    var progressBar =
+                        MainDataModel
+                            .BackwardsCommunicationHost
+                            ?.ProgressBarGrid;
 
-            void ProgressBarSetContent(bool isShown, bool isInit)
-            {
-                Anim_MiniVisibility = isShown ? Visibility.Visible : Visibility.Collapsed;
-                Anim_Visibility = isShown || isInit ? Visibility.Visible : Visibility.Collapsed;
-                Anim_TextVisibility = isShown || isInit ? Visibility.Visible : Visibility.Collapsed;
-                OnPropertyChanged(nameof(Anim_MiniVisibility), nameof(Anim_Visibility), nameof(Anim_TextVisibility));
-            }
+                    var progressBarElement =
+                        progressBar as FrameworkElement;
+
+                    if (progressBarElement == null)
+                        return;
+
+                    ProgressBarSetContent(
+                        Show,
+                        true);
+
+                    var animation =
+                        new DoubleAnimation
+                        {
+                            From = Show ? 0 : 72,
+                            To = Show ? 72 : 0,
+                            Duration =
+                                new Duration(
+                                    TimeSpan.FromMilliseconds(
+                                        350))
+                        };
+
+                    animation.Completed +=
+                        (s, e) =>
+                        {
+                            ProgressBarSetContent(
+                                Show,
+                                false);
+                        };
+
+                    /*
+                     * HeightProperty appartiene a FrameworkElement,
+                     * non a ProgressBar.
+                     */
+                    progressBarElement.BeginAnimation(
+                        FrameworkElement.HeightProperty,
+                        animation);
+                });
+        }
+
+        private void ProgressBarSetContent(
+            bool isShown,
+            bool isInit)
+        {
+            Anim_MiniVisibility =
+                isShown
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+
+            Anim_Visibility =
+                isShown || isInit
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+
+            Anim_TextVisibility =
+                isShown || isInit
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
         }
 
         #endregion
@@ -153,53 +438,161 @@ namespace BedrockLauncher.ViewModels
         {
             get
             {
-                Depends.On(CurrentState, PlayButtonLanguageChanged);
+                Depends.On(CurrentState);
+
                 return GetProgressBarDescription();
             }
         }
-        public string TextualProgress { get { Depends.On(CurrentState, CurrentProgress, ActualCurrentProgress, ActualTotalProgress); return GetProgressBarTextualProgress(); } }
-        public string Information { get; set; }
 
-        public bool ShowInformation { get { Depends.On(Information); return !string.IsNullOrEmpty(Information); } }
-        public bool ShowTextualProgress { get { Depends.On(CurrentState); return !string.IsNullOrEmpty(TextualProgress); } }
+        public string TextualProgress
+        {
+            get
+            {
+                Depends.On(
+                    CurrentState,
+                    CurrentProgress,
+                    ActualCurrentProgress,
+                    ActualTotalProgress);
+
+                return GetProgressBarTextualProgress();
+            }
+        }
+
+        public string Information
+        {
+            get => _information;
+            set
+            {
+                if (_information == value)
+                    return;
+
+                _information = value;
+
+                OnPropertyChanged(nameof(Information));
+                OnPropertyChanged(nameof(ShowInformation));
+            }
+        }
+
+        public bool ShowInformation
+        {
+            get
+            {
+                Depends.On(Information);
+
+                return !string.IsNullOrEmpty(
+                    Information);
+            }
+        }
+
+        public bool ShowTextualProgress
+        {
+            get
+            {
+                Depends.On(
+                    CurrentState,
+                    TextualProgress);
+
+                return !string.IsNullOrEmpty(
+                    TextualProgress);
+            }
+        }
 
         private string GetProgressBarDescription()
         {
-            return CurrentState switch
+            if (Application.Current == null)
+                return string.Empty;
+
+            string resourceKey = CurrentState switch
             {
-                LauncherState.isInitializing => Application.Current.TryFindResource("ProgressBar_Downloading").ToString(),
-                LauncherState.isDownloading => Application.Current.TryFindResource("ProgressBar_Downloading").ToString(),
-                LauncherState.isExtracting => Application.Current.TryFindResource("ProgressBar_Extracting").ToString(),
-                LauncherState.isRegisteringPackage => Application.Current.TryFindResource("ProgressBar_RegisteringPackage").ToString(),
-                LauncherState.isRemovingPackage => Application.Current.TryFindResource("ProgressBar_RemovingPackage").ToString(),
-                LauncherState.isUninstalling => Application.Current.TryFindResource("ProgressBar_Uninstalling").ToString(),
-                LauncherState.isLaunching => Application.Current.TryFindResource("ProgressBar_Launching").ToString(),
-                LauncherState.isBackingUp => Application.Current.TryFindResource("ProgressBar_BackingUp").ToString(),
+                LauncherState.isInitializing =>
+                    "ProgressBar_Downloading",
+
+                LauncherState.isDownloading =>
+                    "ProgressBar_Downloading",
+
+                LauncherState.isExtracting =>
+                    "ProgressBar_Extracting",
+
+                LauncherState.isRegisteringPackage =>
+                    "ProgressBar_RegisteringPackage",
+
+                LauncherState.isRemovingPackage =>
+                    "ProgressBar_RemovingPackage",
+
+                LauncherState.isUninstalling =>
+                    "ProgressBar_Uninstalling",
+
+                LauncherState.isLaunching =>
+                    "ProgressBar_Launching",
+
+                LauncherState.isBackingUp =>
+                    "ProgressBar_BackingUp",
+
                 _ => null
             };
+
+            if (string.IsNullOrEmpty(resourceKey))
+                return string.Empty;
+
+            return Application.Current
+                .TryFindResource(resourceKey)
+                ?.ToString()
+                ?? string.Empty;
         }
+
         private string GetProgressBarTextualProgress()
         {
-            if (CurrentState == LauncherState.isDownloading)
+            if (CurrentState ==
+                LauncherState.isDownloading)
             {
-                var current = Math.Round((double)ActualCurrentProgress / 1024 / 1024, 2).ToString("0.00");
-                var total = Math.Round((double)ActualTotalProgress / 1024 / 1024, 2).ToString("0.00");
+                var current =
+                    Math.Round(
+                        (double)ActualCurrentProgress /
+                        1024 /
+                        1024,
+                        2)
+                    .ToString("0.00");
+
+                var total =
+                    Math.Round(
+                        (double)ActualTotalProgress /
+                        1024 /
+                        1024,
+                        2)
+                    .ToString("0.00");
+
                 return $"{current} MB / {total} MB";
             }
-            else if (S.IfAny(CurrentState, LauncherState.isRemovingPackage, LauncherState.isRegisteringPackage, LauncherState.isExtracting)) return $"{CurrentProgress}%";
-            else if (S.IfAny(CurrentState, LauncherState.isBackingUp, LauncherState.isUninstalling)) return $"{CurrentProgress} / {TotalProgress}";
-            else return string.Empty;
 
+            if (S.IfAny(
+                    CurrentState,
+                    LauncherState.isRemovingPackage,
+                    LauncherState.isRegisteringPackage,
+                    LauncherState.isExtracting))
+            {
+                return $"{CurrentProgress}%";
+            }
+
+            if (S.IfAny(
+                    CurrentState,
+                    LauncherState.isBackingUp,
+                    LauncherState.isUninstalling))
+            {
+                return
+                    $"{CurrentProgress} / {TotalProgress}";
+            }
+
+            return string.Empty;
         }
 
         #endregion
 
         #region Public Methods
 
-        public void SetProgressBarVisibility(bool show)
+        public void SetProgressBarVisibility(
+            bool show)
         {
             Show = show;
-            OnPropertyChanged(nameof(Show), nameof(AllowPlaying), nameof(AllowEditing));
         }
 
         public void ResetProgressBarProgress()
@@ -209,35 +602,78 @@ namespace BedrockLauncher.ViewModels
             ActualTotalProgress = 0;
 
             IsIndeterminate = true;
-            OnPropertyChanged(nameof(CurrentProgress), nameof(ActualCurrentProgress), nameof(ActualTotalProgress), nameof(IsIndeterminate), nameof(TextualProgress), nameof(ShowTextualProgress));
         }
-        public void SetProgressBarProgress(long currentProgress, long totalProgress)
+
+        public void SetProgressBarProgress(
+            long currentProgress,
+            long totalProgress)
         {
             int currentPercent = 0;
-            if (totalProgress != 0 && currentProgress != 0)
-                currentPercent = (int)Math.Round((double)(100 * currentProgress) / totalProgress);
 
-            CurrentProgress = currentPercent;
-            ActualCurrentProgress = currentProgress;
-            ActualTotalProgress = totalProgress;
+            if (totalProgress > 0 &&
+                currentProgress >= 0)
+            {
+                currentPercent =
+                    (int)Math.Round(
+                        (double)(
+                            100 *
+                            currentProgress) /
+                        totalProgress);
+            }
 
-            if (IsIndeterminate != false) IsIndeterminate = false;
-            OnPropertyChanged(nameof(CurrentProgress), nameof(ActualCurrentProgress), nameof(ActualTotalProgress), nameof(IsIndeterminate), nameof(TextualProgress), nameof(ShowTextualProgress));
+            currentPercent =
+                Math.Clamp(
+                    currentPercent,
+                    0,
+                    100);
+
+            CurrentProgress =
+                currentPercent;
+
+            ActualCurrentProgress =
+                currentProgress;
+
+            ActualTotalProgress =
+                totalProgress;
+
+            IsIndeterminate = false;
         }
-        public void SetGameRunningStatus(bool isRunning)
+
+        public void SetGameRunningStatus(
+            bool isRunning)
         {
             IsGameRunning = isRunning;
-            OnPropertyChanged(nameof(IsGameRunning), nameof(PlayButtonString), nameof(PlayEditorButtonString), nameof(AllowPlaying), nameof(AllowEditing));
         }
-        public void SetProgressBarText(string text = null)
+
+        public void SetProgressBarText(
+            string text = null)
         {
             Information = text;
-            OnPropertyChanged(nameof(Information), nameof(ShowInformation));
         }
-        public void SetProgressBarState(LauncherState? state = null)
+
+        public void SetProgressBarState(
+            LauncherState? state = null)
         {
-            CurrentState = state == null ? LauncherState.None : state.Value;
-            OnPropertyChanged(nameof(CurrentState), nameof(Description), nameof(TextualProgress), nameof(ShowTextualProgress), nameof(AllowPlaying), nameof(AllowEditing));
+            CurrentState =
+                state == null
+                    ? LauncherState.None
+                    : state.Value;
+        }
+
+        #endregion
+
+        #region PropertyChanged
+
+        public event PropertyChangedEventHandler
+            PropertyChanged;
+
+        protected void OnPropertyChanged(
+            string propertyName)
+        {
+            PropertyChanged?.Invoke(
+                this,
+                new PropertyChangedEventArgs(
+                    propertyName));
         }
 
         #endregion

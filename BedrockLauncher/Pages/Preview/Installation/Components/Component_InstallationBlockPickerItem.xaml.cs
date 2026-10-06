@@ -36,35 +36,17 @@ namespace BedrockLauncher.Pages.Preview.Installation.Components
             }
         }
 
-        private void MainButton_GotFocus(object sender, RoutedEventArgs e)
-        {
-            ShowCrossButton();
-        }
+        private void MainButton_GotFocus(object sender, RoutedEventArgs e) => ShowCrossButton();
 
-        private void MainButton_LostFocus(object sender, RoutedEventArgs e)
-        {
-            HideCrossButton();
-        }
+        private void MainButton_LostFocus(object sender, RoutedEventArgs e) => HideCrossButton();
 
-        private void MainButton_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            ShowCrossButton();
-        }
+        private void MainButton_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) => ShowCrossButton();
 
-        private void MainButton_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            HideCrossButton();
-        }
+        private void MainButton_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e) => HideCrossButton();
 
-        private void MainButton_MouseEnter(object sender, MouseEventArgs e)
-        {
-            ShowCrossButton();
-        }
+        private void MainButton_MouseEnter(object sender, MouseEventArgs e) => ShowCrossButton();
 
-        private void MainButton_MouseLeave(object sender, MouseEventArgs e)
-        {
-            HideCrossButton();
-        }
+        private void MainButton_MouseLeave(object sender, MouseEventArgs e) => HideCrossButton();
 
         private void CrossButton_MouseEnter(object sender, MouseEventArgs e)
         {

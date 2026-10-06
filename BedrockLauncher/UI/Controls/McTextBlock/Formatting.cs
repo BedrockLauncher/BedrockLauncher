@@ -1,12 +1,15 @@
 ﻿using System.Text.RegularExpressions;
 using System.Windows.Media;
 
-namespace BedrockLauncher.UI.Controls.McTextBlock {
-    public static class Formatting {
+namespace BedrockLauncher.UI.Controls.McTextBlock
+{
+    public static class Formatting
+    {
         public static readonly Regex MinecraftFormattings = new Regex("§([0-9a-frlomnk])", RegexOptions.Compiled | RegexOptions.IgnoreCase);
     }
 
-    public static class Colors {
+    public static class Colors
+    {
         public static readonly Color Black = Color.FromRgb(0, 0, 0);
         public static readonly Color DarkBlue = Color.FromRgb(0, 0, 170);
         public static readonly Color DarkGreen = Color.FromRgb(0, 170, 0);
@@ -24,8 +27,10 @@ namespace BedrockLauncher.UI.Controls.McTextBlock {
         public static readonly Color Yellow = Color.FromRgb(255, 255, 85);
         public static readonly Color White = Color.FromRgb(255, 255, 255);
 
-        public static Color? FromChar(char c) {
-            switch (c) {
+        public static Color? FromChar(char c)
+        {
+            switch (c)
+            {
                 case '0':
                     return Black;
                 case '1':

@@ -48,10 +48,7 @@ namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
             get { return _contextMenu.Items.Count; }
         }
 
-        public override void AddDivider()
-        {
-            _contextMenu.Items.Add(new Separator());
-        }
+        public override void AddDivider() => _contextMenu.Items.Add(new Separator());
 
         public override void AddItem(string text, bool enabled, EventHandler onClick)
         {

@@ -210,10 +210,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters.Entities
         ///         name="pt" />
         ///     .
         /// </param>
-        public static RPoint Add(RPoint pt, RSize sz)
-        {
-            return new RPoint(pt.X + sz.Width, pt.Y + sz.Height);
-        }
+        public static RPoint Add(RPoint pt, RSize sz) => new RPoint(pt.X + sz.Width, pt.Y + sz.Height);
 
         /// <summary>
         ///     Translates a <see cref="RPoint" /> by the negative of a specified size.
@@ -230,10 +227,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters.Entities
         ///         name="pt" />
         ///     .
         /// </param>
-        public static RPoint Subtract(RPoint pt, RSize sz)
-        {
-            return new RPoint(pt.X - sz.Width, pt.Y - sz.Height);
-        }
+        public static RPoint Subtract(RPoint pt, RSize sz) => new RPoint(pt.X - sz.Width, pt.Y - sz.Height);
 
         /// <summary>
         ///     Specifies whether this <see cref="RPoint" /> contains the same coordinates as the specified
@@ -269,10 +263,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters.Entities
         ///     An integer value that specifies a hash value for this <see cref="RPoint" /> structure.
         /// </returns>
         /// <filterpriority>1</filterpriority>
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
+        public override int GetHashCode() => base.GetHashCode();
 
         /// <summary>
         ///     Converts this <see cref="RPoint" /> to a human readable string.
@@ -281,13 +272,10 @@ namespace TheArtOfDev.HtmlRenderer.Adapters.Entities
         ///     A string that represents this <see cref="RPoint" />.
         /// </returns>
         /// <filterpriority>1</filterpriority>
-        public override string ToString()
-        {
-            return string.Format("{{X={0}, Y={1}}}", new object[]
+        public override string ToString() => string.Format("{{X={0}, Y={1}}}", new object[]
             {
                 _x,
                 _y
             });
-        }
     }
 }

@@ -105,9 +105,6 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// Represents this word for debugging purposes
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
-        {
-            return string.Format("{0} ({1} char{2})", Text.Replace(' ', '-').Replace("\n", "\\n"), Text.Length, Text.Length != 1 ? "s" : string.Empty);
-        }
+        public override string ToString() => string.Format("{0} ({1} char{2})", Text.Replace(' ', '-').Replace("\n", "\\n"), Text.Length, Text.Length != 1 ? "s" : string.Empty);
     }
 }

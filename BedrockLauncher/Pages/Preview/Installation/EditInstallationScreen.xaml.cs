@@ -1,5 +1,9 @@
-﻿using System;
+﻿using BedrockLauncher.Classes;
+using BedrockLauncher.UpdateProcessor.Extensions;
+using BedrockLauncher.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,10 +16,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BedrockLauncher.Classes;
-using BedrockLauncher.ViewModels;
-using System.Collections.ObjectModel;
-using BedrockLauncher.UpdateProcessor.Extensions;
 
 namespace BedrockLauncher.Pages.Preview.Installation
 {
@@ -36,10 +36,7 @@ namespace BedrockLauncher.Pages.Preview.Installation
             if (i != null) UpdateEditingFields(i);
             else UpdateAddingFields();
         }
-        private void UpdateAddingFields()
-        {
-            InstallationIconSelect.Init();
-        }
+        private void UpdateAddingFields() => InstallationIconSelect.Init();
 
         private void UpdateEditingFields(BLInstallation i)
         {
@@ -55,10 +52,7 @@ namespace BedrockLauncher.Pages.Preview.Installation
             CreateButton.SetResourceReference(Button.ContentProperty, "EditInstallationScreen_AltCreateButton");
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModels.MainViewModel.Default.SetOverlayFrame(null);
-        }
+        private void CancelButton_Click(object sender, RoutedEventArgs e) => ViewModels.MainViewModel.Default.SetOverlayFrame(null);
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
@@ -66,10 +60,7 @@ namespace BedrockLauncher.Pages.Preview.Installation
             else CreateInstallation();
         }
 
-        private MCVersion GetVersion(string uuid)
-        {
-            return MainDataModel.Default.Versions.Where(x => x.UUID == uuid).FirstOrDefault();
-        }
+        private MCVersion GetVersion(string uuid) => MainDataModel.Default.Versions.Where(x => x.UUID == uuid).FirstOrDefault();
 
         private void UpdateInstallation()
         {
@@ -85,10 +76,7 @@ namespace BedrockLauncher.Pages.Preview.Installation
 
 
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModels.MainViewModel.Default.SetOverlayFrame(null);
-        }
+        private void CloseButton_Click(object sender, RoutedEventArgs e) => ViewModels.MainViewModel.Default.SetOverlayFrame(null);
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -100,20 +88,18 @@ namespace BedrockLauncher.Pages.Preview.Installation
             if (e.Item is MCVersion)
             {
                 var version = (e.Item as MCVersion);
-                if (VersionDbExtensions.DoesVerionArchMatch(Constants.CurrentArchitecture, version.Architecture)) e.Accepted = true;
+                if (version.PackageType == BedrockLauncher.UpdateProcessor.Enums.PackageType.UWP) e.Accepted = true;
+                else if (VersionDbExtensions.DoesVersionArchMatch(Constants.CurrentArchitecture, version.Architecture)) e.Accepted = true;
                 else if (ViewModel.SelectedVersionUUID == version.UUID) e.Accepted = true;
                 else e.Accepted = false;
             }
             else e.Accepted = false;
         }
 
-        private void RefreshVersions()
-        {
-            Dispatcher.Invoke(() =>
-            {
-                Handlers.FilterSortingHandler.Refresh(InstallationVersionSelect.ItemsSource);
-            });
-        }
+        private void RefreshVersions() => Dispatcher.Invoke(() =>
+                                                   {
+                                                       Handlers.FilterSortingHandler.Refresh(InstallationVersionSelect.ItemsSource);
+                                                   });
 
         private async void MoreVersionsButton_Click(object sender, RoutedEventArgs e)
         {

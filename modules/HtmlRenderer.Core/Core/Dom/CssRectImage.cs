@@ -73,9 +73,6 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// Represents this word for debugging purposes
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
-        {
-            return "Image";
-        }
+        public override string ToString() => "Image";
     }
 }

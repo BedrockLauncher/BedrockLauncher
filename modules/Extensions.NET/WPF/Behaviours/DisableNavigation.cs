@@ -6,14 +6,8 @@ namespace JemExtensions.WPF.Behaviours
 {
     public static class DisableNavigation
     {
-        public static bool GetDisable(DependencyObject o)
-        {
-            return (bool)o.GetValue(DisableProperty);
-        }
-        public static void SetDisable(DependencyObject o, bool value)
-        {
-            o.SetValue(DisableProperty, value);
-        }
+        public static bool GetDisable(DependencyObject o) => (bool)o.GetValue(DisableProperty);
+        public static void SetDisable(DependencyObject o, bool value) => o.SetValue(DisableProperty, value);
 
         public static readonly DependencyProperty DisableProperty =
             DependencyProperty.RegisterAttached("Disable", typeof(bool), typeof(DisableNavigation),
@@ -28,9 +22,6 @@ namespace JemExtensions.WPF.Behaviours
             frame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
         }
 
-        public static void DontNavigate(object sender, NavigationEventArgs e)
-        {
-            ((Frame)sender).NavigationService.RemoveBackEntry();
-        }
+        public static void DontNavigate(object sender, NavigationEventArgs e) => ((Frame)sender).NavigationService.RemoveBackEntry();
     }
 }

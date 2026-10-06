@@ -81,20 +81,14 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// is the html tag has attributes.
         /// </summary>
         /// <returns>true - has attributes, false - otherwise</returns>
-        public bool HasAttributes()
-        {
-            return _attributes != null && _attributes.Count > 0;
-        }
+        public bool HasAttributes() => _attributes != null && _attributes.Count > 0;
 
         /// <summary>
         /// Gets a boolean indicating if the attribute list has the specified attribute
         /// </summary>
         /// <param name="attribute">attribute name to check if exists</param>
         /// <returns>true - attribute exists, false - otherwise</returns>
-        public bool HasAttribute(string attribute)
-        {
-            return _attributes != null && _attributes.ContainsKey(attribute);
-        }
+        public bool HasAttribute(string attribute) => _attributes != null && _attributes.ContainsKey(attribute);
 
         /// <summary>
         /// Get attribute value for given attribute name or null if not exists.
@@ -102,14 +96,8 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         /// <param name="attribute">attribute name to get by</param>
         /// <param name="defaultValue">optional: value to return if attribute is not specified</param>
         /// <returns>attribute value or null if not found</returns>
-        public string TryGetAttribute(string attribute, string defaultValue = null)
-        {
-            return _attributes != null && _attributes.ContainsKey(attribute) ? _attributes[attribute] : defaultValue;
-        }
+        public string TryGetAttribute(string attribute, string defaultValue = null) => _attributes != null && _attributes.ContainsKey(attribute) ? _attributes[attribute] : defaultValue;
 
-        public override string ToString()
-        {
-            return string.Format("<{0}>", _name);
-        }
+        public override string ToString() => string.Format("<{0}>", _name);
     }
 }

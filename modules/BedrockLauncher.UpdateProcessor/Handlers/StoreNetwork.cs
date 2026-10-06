@@ -33,10 +33,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
 
         private string UserToken { get; set; }
 
-        public void setMSAUserToken(string token)
-        {
-            UserToken = token;
-        }
+        public void setMSAUserToken(string token) => UserToken = token;
         public void buildCommonHeader(ref XDocument doc, ref XElement header, string url, string actionName, VersionType versionType) 
         {
             var action = Xml.CreateElement(NAMESPACE_ADDRESSING + "Action", actionName);
@@ -344,11 +341,9 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             }
 
         }
-        
-        public async Task<SyncResult> getLatestGDKVersion(CookieData cookie, VersionType versionType)
-        {
-            throw new NotImplementedException();
-        }
+
+
+        public async Task<SyncResult> getLatestGDKVersion(CookieData cookie, VersionType versionType) => throw new NotImplementedException();
         public async Task<DownloadLinkResult> getDownloadLinks(string updateIdentity, int revisionNumber, VersionType versionType)
         {
             try

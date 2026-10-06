@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using BedrockLauncher.Pages.Preview;
+﻿using BedrockLauncher.Pages.Preview;
 using BedrockLauncher.Pages.Preview.Profile;
 using BedrockLauncher.UI.Pages.Common;
 using BedrockLauncher.ViewModels;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace BedrockLauncher.Pages.Toolbar
 {
@@ -74,21 +74,15 @@ namespace BedrockLauncher.Pages.Toolbar
 
         }
 
-        private void EditProfileButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                MainViewModel.Default.SetOverlayFrame(new EditProfileScreen(MainDataModel.Default.Config.CurrentProfile));
-            });
-        }
+        private void EditProfileButton_Click(object sender, RoutedEventArgs e) => this.Dispatcher.Invoke(() =>
+                                                                                           {
+                                                                                               MainViewModel.Default.SetOverlayFrame(new EditProfileScreen(MainDataModel.Default.Config.CurrentProfile));
+                                                                                           });
 
-        private void AddProfileButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                MainViewModel.Default.SetOverlayFrame(new EditProfileScreen());
-            });
-        }
+        private void AddProfileButton_Click(object sender, RoutedEventArgs e) => this.Dispatcher.Invoke(() =>
+                                                                                          {
+                                                                                              MainViewModel.Default.SetOverlayFrame(new EditProfileScreen());
+                                                                                          });
 
         private async void RemoveProfileButton_Click(object sender, RoutedEventArgs e)
         {
@@ -115,9 +109,6 @@ namespace BedrockLauncher.Pages.Toolbar
 
         }
 
-        private void SourceButton_Checked(object sender, RoutedEventArgs e)
-        {
-            SourceButton.IsChecked = false;
-        }
+        private void SourceButton_Checked(object sender, RoutedEventArgs e) => SourceButton.IsChecked = false;
     }
 }

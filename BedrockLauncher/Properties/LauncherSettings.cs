@@ -1,15 +1,15 @@
-﻿using Newtonsoft.Json;
+﻿using BedrockLauncher.Classes;
+using BedrockLauncher.Enums;
+using BedrockLauncher.ViewModels;
+using Newtonsoft.Json;
+using PostSharp.Patterns.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BedrockLauncher.Classes;
-using System.ComponentModel;
-using BedrockLauncher.ViewModels;
-using PostSharp.Patterns.Model;
-using BedrockLauncher.Enums;
 
 namespace BedrockLauncher.Properties
 {
@@ -36,46 +36,74 @@ namespace BedrockLauncher.Properties
 
         public static void Load()
         {
-            string json;
-
-            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+            try
             {
+                string json;
+
+                if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+                {
+                    Default = new LauncherSettings();
+                }
+                else
+                {
+                    string settingsPath = MainDataModel.Default.FilePaths.GetSettingsFilePath();
+                    if (File.Exists(settingsPath))
+                    {
+                        json = File.ReadAllText(settingsPath);
+                        try
+                        {
+                            Default = JsonConvert.DeserializeObject<LauncherSettings>(json, JsonSerializerSettings)
+                                      ?? new LauncherSettings();
+                        }
+                        catch
+                        {
+                            Default = new LauncherSettings();
+                        }
+                    }
+                    else Default = new LauncherSettings();
+                }
+
+                Default.Init();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Trace.WriteLine("LauncherSettings.Load failed; using defaults.");
+                System.Diagnostics.Trace.WriteLine(ex);
                 Default = new LauncherSettings();
             }
-            else
-            {
-                if (File.Exists(MainDataModel.Default.FilePaths.GetSettingsFilePath()))
-                {
-                    json = File.ReadAllText(MainDataModel.Default.FilePaths.GetSettingsFilePath());
-                    try { Default = JsonConvert.DeserializeObject<LauncherSettings>(json, JsonSerializerSettings); }
-                    catch { Default = new LauncherSettings(); }
-                }
-                else Default = new LauncherSettings();
-            }
-
-            Default.Init();
         }
 
-        public void Init()
-        {
-            MainDataModel.BackwardsCommunicationHost.UpdateAnimatePageTransitions(_AnimatePageTransitions);
-        }
+        public void Init() =>
+            // Host is registered by MainViewModel; during early splash startup it may still be null.
+            MainDataModel.BackwardsCommunicationHost?.UpdateAnimatePageTransitions(_AnimatePageTransitions);
 
         public void Save()
         {
-            string json = JsonConvert.SerializeObject(this, Formatting.Indented);
-            File.WriteAllText(MainDataModel.Default.FilePaths.GetSettingsFilePath(), json);
+            try
+            {
+                string path = MainDataModel.Default.FilePaths.GetSettingsFilePath();
+                string directory = Path.GetDirectoryName(path);
+                if (!string.IsNullOrEmpty(directory))
+                    Directory.CreateDirectory(directory);
+
+                string json = JsonConvert.SerializeObject(this, Formatting.Indented);
+                File.WriteAllText(path, json);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Trace.WriteLine("Failed to save launcher settings:");
+                System.Diagnostics.Trace.WriteLine(ex);
+            }
         }
 
-        public bool GetIsFirstLaunch(int LoadedConfigCount)
-        {
-            return CurrentProfileUUID == "" || IsFirstLaunch || LoadedConfigCount == 0;
-        }
+        public bool GetIsFirstLaunch(int LoadedConfigCount) => CurrentProfileUUID == "" || IsFirstLaunch || LoadedConfigCount == 0;
 
         private bool _AnimatePageTransitions = false;
         private bool _ShowBetas = true;
         private bool _ShowReleases = true;
         private bool _ShowPreviews = true;
+        private bool _ShowUWP = true;
+        private bool _ShowGDK = true;
         private InstallationSort _InstallationsSortMode = InstallationSort.LatestPlayed;
 
         public InstallationSort InstallationsSortMode
@@ -90,7 +118,7 @@ namespace BedrockLauncher.Properties
                 Save();
             }
         }
-        public bool FetchVersionsFromMicrosoftStore { get; set; } = false;
+        public bool FetchVersionsFromMicrosoftStore { get; set; } = true;
         public bool AnimatePageTransitions
         {
             get
@@ -100,7 +128,7 @@ namespace BedrockLauncher.Properties
             set
             {
                 _AnimatePageTransitions = value;
-                MainDataModel.BackwardsCommunicationHost.UpdateAnimatePageTransitions(value);
+                MainDataModel.BackwardsCommunicationHost?.UpdateAnimatePageTransitions(value);
             }
         }
         public string CurrentTheme { get; set; } = "LatestUpdate";
@@ -126,6 +154,16 @@ namespace BedrockLauncher.Properties
         {
             get { return _ShowPreviews; }
             set { _ShowPreviews = value; }
+        }
+        public bool ShowUWP
+        {
+            get { return _ShowUWP; }
+            set { _ShowUWP = value; }
+        }
+        public bool ShowGDK
+        {
+            get { return _ShowGDK; }
+            set { _ShowGDK = value; }
         }
         public int CurrentInsiderAccountIndex { get; set; } = 0;
 

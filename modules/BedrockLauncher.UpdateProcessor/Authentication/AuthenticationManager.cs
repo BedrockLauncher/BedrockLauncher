@@ -1,21 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.InteropServices;
-using System.Diagnostics;
-using System.IO;
 using System.Collections.ObjectModel;
-using System.Security.Principal;
-using BedrockLauncher.UpdateProcessor.Authentication;
+using System.Linq;
 
 namespace BedrockLauncher.UpdateProcessor.Authentication
 {
-
     public class AuthenticationManager
     {
-
         public static AuthenticationManager Default { get; set; } = new AuthenticationManager();
 
         public ObservableCollection<AuthenticationAccount> CurrentAccounts { get; set; } = new ObservableCollection<AuthenticationAccount>();
@@ -48,6 +39,7 @@ namespace BedrockLauncher.UpdateProcessor.Authentication
             foreach (var result in results)
                 if (!CurrentAccounts.Contains(result)) CurrentAccounts.Add(result);
         }
+
         public string GetWUToken(int relativeIndex)
         {
             int index = relativeIndex - 1;
@@ -59,6 +51,30 @@ namespace BedrockLauncher.UpdateProcessor.Authentication
             return token;
         }
 
-    }
+        public string GetWUTokenForAccountId(string accountId)
+        {
+            if (string.IsNullOrWhiteSpace(accountId))
+                throw new ArgumentException(
+                    "A Microsoft account ID is required.",
+                    nameof(accountId));
 
+            int accountCount = AuthenticationTokenHelper.GetTotalWUAccounts();
+            for (int index = 0; index < accountCount; index++)
+            {
+                string currentAccountId =
+                    AuthenticationTokenHelper.GetWUAccountId(index);
+
+                if (string.Equals(
+                        currentAccountId,
+                        accountId,
+                        StringComparison.OrdinalIgnoreCase))
+                {
+                    return GetWUToken(index + 1);
+                }
+            }
+
+            throw new InvalidOperationException(
+                "The linked Microsoft account is not available in Windows Token Broker.");
+        }
+    }
 }

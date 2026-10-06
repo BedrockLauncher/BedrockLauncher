@@ -2,7 +2,7 @@ name: Build Test
 
 on:
   push:
-    branches: '*'
+    branches: ["*"]
   pull_request:
     types: [opened]
 
@@ -12,30 +12,27 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-        
-      - name: Checkout submodules
-        run: git submodule update --remote --init --recursive
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - name: Use GitHub build targets
         shell: bash
         run: |
-          cp -f "${GITHUB_WORKSPACE}/BedrockLauncher/GitHub.Directory.Build.targets" "${GITHUB_WORKSPACE}/BedrockLauncher/Directory.Build.targets" 
-        
-      - name: Setup nuget
-        uses: nuget/setup-nuget@v1
+          cp -f \
+            "${GITHUB_WORKSPACE}/BedrockLauncher/GitHub.Directory.Build.targets" \
+            "${GITHUB_WORKSPACE}/BedrockLauncher/Directory.Build.targets"
 
-      - name: Setup msbuild
-        uses: microsoft/setup-msbuild@v1.1
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
 
       - name: Restore dependencies
-        run: nuget restore BedrockLauncher.sln
+        run: dotnet restore BedrockLauncher.sln
 
       - name: Build
-        run: msbuild "BedrockLauncher.sln"
-
-      - name: Archive build
-        uses: actions/upload-artifact@v4
-        with:
-          name: release
-          path: BedrockLauncher/bin/Debug/net*.*-windows*.*.*.*
+        run: msbuild BedrockLauncher.sln /p:Configuration=Debug /p:Restore=false

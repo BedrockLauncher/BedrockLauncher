@@ -1,10 +1,10 @@
-﻿using System;
+﻿using BedrockLauncher.UI.Interfaces;
+using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Forms;
-using System.Threading.Tasks;
-using BedrockLauncher.UI.Interfaces;
 
 namespace BedrockLauncher.UI.Pages.Common
 {
@@ -55,7 +55,7 @@ namespace BedrockLauncher.UI.Pages.Common
 
             prompt.DialogTitle.Text = title;
             prompt.DialogText.Text = content;
-    
+
             prompt.CancelButton.Visibility = Visibility.Visible;
 
             Handler.SetDialogFrame(prompt);
@@ -70,15 +70,12 @@ namespace BedrockLauncher.UI.Pages.Common
         private Tuple<DialogResult, bool> DialogWaitWithOptional()
         {
             while (DialogResult == DialogResult.None) { }
-            return new Tuple<DialogResult,bool>(DialogResult, isOptionalChecked);
+            return new Tuple<DialogResult, bool>(DialogResult, isOptionalChecked);
         }
 
         public static IDialogHander Handler { get; private set; }
 
-        public static void SetHandler(IDialogHander _handler)
-        {
-            Handler = _handler;
-        } 
+        public static void SetHandler(IDialogHander _handler) => Handler = _handler;
 
         public DialogPrompt()
         {
@@ -105,9 +102,6 @@ namespace BedrockLauncher.UI.Pages.Common
             Handler.SetDialogFrame(null);
         }
 
-        private void DialogOptionalCheckbox_Checked(object sender, RoutedEventArgs e)
-        {
-            isOptionalChecked = (sender as System.Windows.Controls.CheckBox).IsChecked.Value;
-        }
+        private void DialogOptionalCheckbox_Checked(object sender, RoutedEventArgs e) => isOptionalChecked = (sender as System.Windows.Controls.CheckBox).IsChecked.Value;
     }
 }

@@ -361,10 +361,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Handlers
         /// <summary>
         /// Makes the specified color darker for inset/outset borders.
         /// </summary>
-        private static RColor Darken(RColor c)
-        {
-            return RColor.FromArgb(c.R / 2, c.G / 2, c.B / 2);
-        }
+        private static RColor Darken(RColor c) => RColor.FromArgb(c.R / 2, c.G / 2, c.B / 2);
 
         #endregion
     }

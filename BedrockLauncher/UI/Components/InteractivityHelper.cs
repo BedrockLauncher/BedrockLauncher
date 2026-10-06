@@ -57,15 +57,9 @@ namespace BedrockLauncher.UI.Components
 
         #region Template attached property
 
-        public static InteractivityTemplate GetTemplate(DependencyObject obj)
-        {
-            return (InteractivityTemplate)obj.GetValue(TemplateProperty);
-        }
+        public static InteractivityTemplate GetTemplate(DependencyObject obj) => (InteractivityTemplate)obj.GetValue(TemplateProperty);
 
-        public static void SetTemplate(DependencyObject obj, InteractivityTemplate value)
-        {
-            obj.SetValue(TemplateProperty, value);
-        }
+        public static void SetTemplate(DependencyObject obj, InteractivityTemplate value) => obj.SetValue(TemplateProperty, value);
 
         public static readonly DependencyProperty TemplateProperty =
             DependencyProperty.RegisterAttached("Template",
@@ -73,7 +67,7 @@ namespace BedrockLauncher.UI.Components
             typeof(InteractivityItems),
             new PropertyMetadata(default(InteractivityTemplate), OnTemplateChanged));
 
-        private static void OnTemplateChanged(DependencyObject d,DependencyPropertyChangedEventArgs e)
+        private static void OnTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (LicenseManager.UsageMode == LicenseUsageMode.Designtime) return;
             InteractivityTemplate dt = (InteractivityTemplate)e.NewValue;

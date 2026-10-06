@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO.Compression;
 using System.IO;
-using System.Threading;
+using System.IO.Compression;
 using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace JemExtensions
 {
@@ -25,14 +22,8 @@ namespace JemExtensions
             public string CurrentItem { get; }
         }
 
-        public static void ExtractToDirectory(this ZipArchive source, string destinationDirectoryName, IProgress<ZipProgress> progress, CancellationTokenSource cancelSource)
-        {
-            ExtractToDirectory(source, destinationDirectoryName, progress, overwrite: false, cancelSource);
-        }
-        public static void ExtractToDirectory(this ZipArchive source, string destinationDirectoryName, IProgress<ZipProgress> progress)
-        {
-            ExtractToDirectory(source, destinationDirectoryName, progress, overwrite: false, cancelSource: new CancellationTokenSource());
-        }
+        public static void ExtractToDirectory(this ZipArchive source, string destinationDirectoryName, IProgress<ZipProgress> progress, CancellationTokenSource cancelSource) => ExtractToDirectory(source, destinationDirectoryName, progress, overwrite: false, cancelSource);
+        public static void ExtractToDirectory(this ZipArchive source, string destinationDirectoryName, IProgress<ZipProgress> progress) => ExtractToDirectory(source, destinationDirectoryName, progress, overwrite: false, cancelSource: new CancellationTokenSource());
 
         public static void ExtractToDirectory(this ZipArchive source, string destinationDirectoryName, IProgress<ZipProgress> progress, bool overwrite, CancellationTokenSource cancelSource)
         {

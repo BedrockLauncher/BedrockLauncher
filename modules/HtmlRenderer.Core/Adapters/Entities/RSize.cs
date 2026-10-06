@@ -246,10 +246,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters.Entities
         /// <param name="sz2">
         ///     The second <see cref="RSize" /> structure to add.
         /// </param>
-        public static RSize Add(RSize sz1, RSize sz2)
-        {
-            return new RSize(sz1.Width + sz2.Width, sz1.Height + sz2.Height);
-        }
+        public static RSize Add(RSize sz1, RSize sz2) => new RSize(sz1.Width + sz2.Width, sz1.Height + sz2.Height);
 
         /// <summary>
         ///     Subtracts the width and height of one <see cref="RSize" /> structure from the width and height of another
@@ -266,10 +263,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters.Entities
         /// <param name="sz2">
         ///     The <see cref="RSize" /> structure on the right side of the subtraction operator.
         /// </param>
-        public static RSize Subtract(RSize sz1, RSize sz2)
-        {
-            return new RSize(sz1.Width - sz2.Width, sz1.Height - sz2.Height);
-        }
+        public static RSize Subtract(RSize sz1, RSize sz2) => new RSize(sz1.Width - sz2.Width, sz1.Height - sz2.Height);
 
         /// <summary>
         ///     Tests to see whether the specified object is a <see cref="RSize" /> structure with the same dimensions as this
@@ -305,10 +299,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters.Entities
         ///     An integer value that specifies a hash value for this <see cref="RSize" /> structure.
         /// </returns>
         /// <filterpriority>1</filterpriority>
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
+        public override int GetHashCode() => base.GetHashCode();
 
         /// <summary>
         ///     Converts a <see cref="RSize" /> structure to a <see cref="RPoint" /> structure.
@@ -316,10 +307,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters.Entities
         /// <returns>
         ///     Returns a <see cref="RPoint" /> structure.
         /// </returns>
-        public RPoint ToPointF()
-        {
-            return (RPoint)this;
-        }
+        public RPoint ToPointF() => (RPoint)this;
 
         /// <summary>
         ///     Creates a human-readable string that represents this <see cref="RSize" /> structure.
@@ -333,9 +321,6 @@ namespace TheArtOfDev.HtmlRenderer.Adapters.Entities
         ///         class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
         ///         version="1" Flags="UnmanagedCode" />
         /// </PermissionSet>
-        public override string ToString()
-        {
-            return "{Width=" + _width + ", Height=" + _height + "}";
-        }
+        public override string ToString() => "{Width=" + _width + ", Height=" + _height + "}";
     }
 }

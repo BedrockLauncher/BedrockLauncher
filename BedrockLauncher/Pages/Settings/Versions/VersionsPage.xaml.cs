@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BedrockLauncher.Handlers;
+using BedrockLauncher.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,8 +15,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BedrockLauncher.Handlers;
-using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Pages.Settings.Versions
 {
@@ -29,25 +29,23 @@ namespace BedrockLauncher.Pages.Settings.Versions
 
         private void Page_Initialized(object sender, EventArgs e)
         {
-            
+
         }
 
         private void RefreshVersionsList(object sender, RoutedEventArgs e)
         {
+            Properties.LauncherSettings.Default.Save();
             this.Dispatcher.Invoke(() =>
             {
                 if (VersionsList != null) Handlers.FilterSortingHandler.Refresh(VersionsList.ItemsSource);
             });
         }
 
-        public void RefreshVersionRows()
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                foreach (var ver in MainDataModel.Default.Versions) ver.UpdateFolderSize();
-                if (VersionsList != null) Handlers.FilterSortingHandler.Refresh(VersionsList.ItemsSource);
-            });
-        }
+        public void RefreshVersionRows() => this.Dispatcher.Invoke(() =>
+                                                     {
+                                                         foreach (var ver in MainDataModel.Default.Versions) ver.UpdateFolderSize();
+                                                         if (VersionsList != null) Handlers.FilterSortingHandler.Refresh(VersionsList.ItemsSource);
+                                                     });
 
         private async void PageHost_Loaded(object sender, RoutedEventArgs e)
         {
@@ -69,16 +67,13 @@ namespace BedrockLauncher.Pages.Settings.Versions
             RefreshVersionsList(sender, e);
         }
 
-        private void CollectionViewSource_Filter(object sender, FilterEventArgs e)
-        {
-            e.Accepted = FilterSortingHandler.Filter_VersionList(e.Item);
-        }
+        private void CollectionViewSource_Filter(object sender, FilterEventArgs e) => e.Accepted = FilterSortingHandler.Filter_VersionList(e.Item);
 
         private async void AddButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog()
             {
-                Filter = "APPX Files (*.appx)|*.appx"
+                Filter = "Minecraft Packages (*.appx;*.msix;*.msixbundle)|*.appx;*.msix;*.msixbundle|APPX Files (*.appx)|*.appx|MSIX Files (*.msix;*.msixbundle)|*.msix;*.msixbundle"
             };
 
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)

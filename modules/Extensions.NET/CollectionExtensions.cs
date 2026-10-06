@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JemExtensions
 {
@@ -39,10 +37,7 @@ namespace JemExtensions
         }
 
 
-        public static bool Exists<T>(this ObservableCollection<T> coll, Predicate<T> match)
-        {
-            return coll.ToList().Exists(match);
-        }
+        public static bool Exists<T>(this ObservableCollection<T> coll, Predicate<T> match) => coll.ToList().Exists(match);
 
 
         public static int RemoveAll<T>(this ObservableCollection<T> coll, Func<T, bool> condition)

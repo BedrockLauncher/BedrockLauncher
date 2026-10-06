@@ -1,53 +1,42 @@
-﻿using BedrockLauncher.UpdateProcessor.Interfaces;
-using System;
 using BedrockLauncher.UpdateProcessor.Enums;
+using BedrockLauncher.UpdateProcessor.Interfaces;
+using System;
 
 namespace BedrockLauncher.UpdateProcessor.Classes
 {
+    /// <summary>
+    /// Represents a version entry backed by a raw UWP package-moniker string
+    /// (as used in the legacy .txt version database format).
+    /// </summary>
     public struct VersionInfoTxt : IVersionInfo
     {
-        public Guid uuid;
+        public Guid   uuid;
         public string packageMoniker;
         public string serverId;
 
-        public string version;
-        public string architecture;
+        public string     version;
+        public string     architecture;
         public VersionType type;
+        public PackageType packageType;
 
-        public VersionInfoTxt(string _uuid, string _packageMoniker, string _serverId, string _architexture, VersionType _type)
+        /// <param name="architecture">Target architecture string (e.g. "x64", "x86", "arm64").</param>
+        public VersionInfoTxt(string uuid, string packageMoniker, string serverId, string architecture, VersionType type, PackageType packageType = PackageType.UWP)
         {
-            if (!Guid.TryParse(_uuid, out uuid)) uuid = Guid.Empty;
-            packageMoniker = _packageMoniker;
-            serverId = _serverId;
+            if (!Guid.TryParse(uuid, out this.uuid)) this.uuid = Guid.Empty;
+            this.packageMoniker = packageMoniker;
+            this.serverId       = serverId;
 
-            version = MinecraftVersion.ConvertVersion(_packageMoniker, _type).ToString();
-            architecture = _architexture;
-            type = _type;
+            this.version      = MinecraftVersion.ConvertVersion(packageMoniker, type).ToString();
+            this.architecture = architecture;
+            this.type         = type;
+            this.packageType  = packageType;
         }
 
-        public string GetArchitecture()
-        {
-            return architecture;
-        }
-
-        public VersionType GetVersionType()
-        {
-            return type;
-        }
-
-        public bool GetIsBeta()
-        {
-            return type == VersionType.Beta;
-        }
-
-        public Guid GetUUID()
-        {
-            return uuid;
-        }
-
-        public string GetVersion()
-        {
-            return version;
-        }
+        public string     GetArchitecture() => architecture;
+        public VersionType GetVersionType() => type;
+        public bool       GetIsBeta()       => type == VersionType.Beta;
+        public Guid       GetUUID()         => uuid;
+        public string     GetVersion()      => version;
+        public PackageType GetPackageType() => packageType;
     }
 }

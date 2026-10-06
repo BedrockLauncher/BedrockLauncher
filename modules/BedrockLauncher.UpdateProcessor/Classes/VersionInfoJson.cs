@@ -1,24 +1,35 @@
-﻿using BedrockLauncher.UpdateProcessor.Interfaces;
+using BedrockLauncher.UpdateProcessor.Enums;
+using BedrockLauncher.UpdateProcessor.Interfaces;
 using System;
 using System.Collections.Generic;
-using BedrockLauncher.UpdateProcessor.Enums;
 
 namespace BedrockLauncher.UpdateProcessor.Classes
 {
-    public struct VersionInfoJson : IVersionInfo, IComparable<VersionInfoJson>, IComparer<VersionInfoJson>
+    public struct VersionInfoJson :
+        IVersionInfo,
+        IComparable<VersionInfoJson>,
+        IComparer<VersionInfoJson>
     {
-    
         public string version;
         public Guid uuid;
         public VersionType type;
         public string architecture;
+        public PackageType packageType;
 
-        public VersionInfoJson(string _version, string _uuid, VersionType _type, string _architexture)
+        public VersionInfoJson(
+            string version,
+            string uuid,
+            VersionType type,
+            string architecture,
+            PackageType packageType = PackageType.UWP)
         {
-            if (!Guid.TryParse(_uuid, out uuid)) uuid = Guid.Empty;
-            version = _version;
-            type = _type;
-            architecture = _architexture;
+            if (!Guid.TryParse(uuid, out this.uuid))
+                this.uuid = Guid.Empty;
+
+            this.version = version;
+            this.type = type;
+            this.architecture = architecture;
+            this.packageType = packageType;
         }
 
         public string GetArchitecture()
@@ -41,15 +52,23 @@ namespace BedrockLauncher.UpdateProcessor.Classes
             return type;
         }
 
+        public PackageType GetPackageType()
+        {
+            return packageType;
+        }
+
         public bool GetIsBeta()
         {
             return type == VersionType.Beta;
         }
 
-        public int Compare(VersionInfoJson x, VersionInfoJson y)
+        public int Compare(
+            VersionInfoJson x,
+            VersionInfoJson y)
         {
             var a = MinecraftVersion.Parse(x.version);
             var b = MinecraftVersion.Parse(y.version);
+
             return a.CompareTo(b);
         }
 

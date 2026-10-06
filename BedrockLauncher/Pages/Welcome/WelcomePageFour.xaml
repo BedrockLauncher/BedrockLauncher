@@ -1,0 +1,23 @@
+<Page x:Class="BedrockLauncher.Pages.Welcome.WelcomePageFour"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BedrockLauncher.Pages.Welcome"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Loaded="Page_Loaded"
+      Title="WelcomePageFour" Width="596" Height="254">
+    <Grid Margin="0" Background="{x:Null}">
+        <Border Background="#FF313131" Height="1" VerticalAlignment="Bottom" Margin="0,0,0,55" />
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+            <TextBlock Visibility="Visible" HorizontalAlignment="Center" Text="{DynamicResource FirstLaunch_ChooseAccountTitle}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="14" FontWeight="Bold" Margin="28.5,15,28.5,10"/>
+            <ComboBox x:Name="AccountComboBox" DisplayMemberPath="UserName" Width="250" Height="32" Margin="28.5,10,28.5,10" Padding="10,5,5,5" FontSize="12"/>
+            <TextBlock HorizontalAlignment="Center" TextAlignment="Center" Text="{DynamicResource FirstLaunch_ChooseAccountSubtitle}" Foreground="White" FontFamily="/BedrockLauncher;component/Resources/fonts/#Noto Sans" FontSize="11" Margin="28.5,0,28.5,0" TextWrapping="Wrap"/>
+        </StackPanel>
+        <StackPanel Margin="0,0,8,8" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+            <Button x:Name="BackButton" Click="BackButton_Click" SnapsToDevicePixels="True" Foreground="White" Content="{DynamicResource FirstLaunch_BackButton}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Style="{DynamicResource DialogButton}" Margin="0,0,8,0" Height="32"/>
+            <Button x:Name="NextButton" Click="NextButton_Click" SnapsToDevicePixels="True" Foreground="White" Content="{DynamicResource FirstLaunch_NextButton}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Style="{DynamicResource DialogButton}" Height="32"/>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,5 +1,10 @@
-﻿using System;
+﻿using BedrockLauncher.ViewModels;
+using FolderBrowserEx;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,11 +18,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Microsoft.Win32;
-using BedrockLauncher.ViewModels;
-using FolderBrowserEx;
-using System.Diagnostics;
-using System.IO;
 
 namespace BedrockLauncher.Pages.Settings.General
 {
@@ -41,15 +41,9 @@ namespace BedrockLauncher.Pages.Settings.General
 
         }
 
-        private void BackupButton_Click(object sender, RoutedEventArgs e)
-        {
-            Task.Run(Handlers.BackupHandler.BackupReleaseSaveData);
-        }
-
-        private void BackupPreviewButton_Click(object sender, RoutedEventArgs e)
-        {
-            Task.Run(Handlers.BackupHandler.BackupPreviewSaveData);
-        }
+        private void BackupButton_Click(object sender, RoutedEventArgs e) { }
+        
+        private void BackupPreviewButton_Click(object sender, RoutedEventArgs e) { }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -61,15 +55,9 @@ namespace BedrockLauncher.Pages.Settings.General
             UpdateDirectoryPathTextbox();
         }
 
-        private void Checkbox_Click(object sender, RoutedEventArgs e)
-        {
-            Properties.LauncherSettings.Default.Save();
-        }
+        private void Checkbox_Click(object sender, RoutedEventArgs e) => Properties.LauncherSettings.Default.Save();
 
-        private void CrowdinButton_Click(object sender, RoutedEventArgs e)
-        {
-            JemExtensions.WebExtensions.LaunchWebLink("https://crowdin.com/project/bedrocklauncher");
-        }
+        private void CrowdinButton_Click(object sender, RoutedEventArgs e) => JemExtensions.WebExtensions.LaunchWebLink("https://crowdin.com/project/bedrocklauncher");
 
         private void useFixedInstallLocation_Click(object sender, RoutedEventArgs e)
         {
@@ -123,10 +111,7 @@ namespace BedrockLauncher.Pages.Settings.General
             }
         }
 
-        private void ResetDirectoryToDefault()
-        {
-            TEMP_FixedDirectoryState = string.Empty;
-        }
+        private void ResetDirectoryToDefault() => TEMP_FixedDirectoryState = string.Empty;
 
         private void BrowseDirectoryButton_Click(object sender, RoutedEventArgs e)
         {

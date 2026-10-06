@@ -119,10 +119,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Entities
         /// Create deep copy of the CssBlock.
         /// </summary>
         /// <returns>new CssBlock with same data</returns>
-        public CssBlock Clone()
-        {
-            return new CssBlock(_class, new Dictionary<string, string>(_properties), _selectors != null ? new List<CssBlockSelectorItem>(_selectors) : null);
-        }
+        public CssBlock Clone() => new CssBlock(_class, new Dictionary<string, string>(_properties), _selectors != null ? new List<CssBlockSelectorItem>(_selectors) : null);
 
         /// <summary>
         /// Check if the two css blocks are the same (same class, selectors and properties).

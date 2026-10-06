@@ -1,12 +1,7 @@
-﻿using BedrockLauncher.UpdateProcessor.Extensions;
+using BedrockLauncher.UpdateProcessor.Extensions;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BedrockLauncher.UpdateProcessor.Authentication
 {
@@ -54,6 +49,13 @@ namespace BedrockLauncher.UpdateProcessor.Authentication
             return isTokenBrokerAvailable ? NativeGetTotalWUAccounts() : 0;
         }
 
+        public static string GetWUAccountId(int userIndex)
+        {
+            return isTokenBrokerAvailable
+                ? NativeGetWUAccountId(userIndex)
+                : string.Empty;
+        }
+
         public static string GetWUAccountUserName(int userIndex)
         {
             return isTokenBrokerAvailable ? NativeGetWUAccountUserName(userIndex) : string.Empty;
@@ -64,17 +66,36 @@ namespace BedrockLauncher.UpdateProcessor.Authentication
             return isTokenBrokerAvailable ? NativeGetWUProviderName(userIndex) : string.Empty;
         }
 
-        [DllImport(DLLName, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(
+            DLLName,
+            EntryPoint = "GetWUToken",
+            CallingConvention = CallingConvention.StdCall)]
         private static extern int NativeGetWUToken(int userIndex, [MarshalAs(UnmanagedType.LPWStr)] out string token);
 
-        [DllImport(DLLName, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(
+            DLLName,
+            EntryPoint = "GetTotalWUAccounts",
+            CallingConvention = CallingConvention.StdCall)]
         private static extern int NativeGetTotalWUAccounts();
 
-        [DllImport(DLLName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(
+            DLLName,
+            EntryPoint = "GetWUAccountID",
+            CallingConvention = CallingConvention.Cdecl)]
+        [return: MarshalAs(UnmanagedType.BStr)]
+        private static extern string NativeGetWUAccountId(int userIndex);
+
+        [DllImport(
+            DLLName,
+            EntryPoint = "GetWUAccountUserName",
+            CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.BStr)]
         private static extern string NativeGetWUAccountUserName(int userIndex);
 
-        [DllImport(DLLName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(
+            DLLName,
+            EntryPoint = "GetWUProviderName",
+            CallingConvention = CallingConvention.Cdecl)]
         [return: MarshalAs(UnmanagedType.BStr)]
         private static extern string NativeGetWUProviderName(int userIndex);
     }

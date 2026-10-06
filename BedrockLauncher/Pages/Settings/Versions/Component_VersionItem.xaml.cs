@@ -1,9 +1,9 @@
-﻿using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using BedrockLauncher.Classes;
+﻿using BedrockLauncher.Classes;
 using BedrockLauncher.UI.Pages.Common;
 using BedrockLauncher.ViewModels;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace BedrockLauncher.Pages.Settings.Versions
 {
@@ -15,8 +15,6 @@ namespace BedrockLauncher.Pages.Settings.Versions
         public Component_VersionItem()
         {
             InitializeComponent();
-            Loaded += (_, _) => RefreshActionButtonStyle();
-            DataContextChanged += (_, _) => RefreshActionButtonStyle();
         }
 
         public Visibility ButtonPanelVisibility
@@ -33,15 +31,9 @@ namespace BedrockLauncher.Pages.Settings.Versions
 
         public static readonly DependencyProperty ButtonPanelVisibilityProperty = DependencyProperty.Register("ButtonPanelVisibility", typeof(Visibility), typeof(Component_VersionItem), new PropertyMetadata(Visibility.Collapsed, new PropertyChangedCallback(ChangePanelVisibility)));
 
-        private static void ChangePanelVisibility(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            (d as Component_VersionItem).ButtonPanelVisibility = (Visibility)e.NewValue;
-        }
+        private static void ChangePanelVisibility(DependencyObject d, DependencyPropertyChangedEventArgs e) => (d as Component_VersionItem).ButtonPanelVisibility = (Visibility)e.NewValue;
 
-        private VersionsPage GetParent()
-        {
-            return this.Tag as VersionsPage;
-        }
+        private VersionsPage GetParent() => this.Tag as VersionsPage;
 
         private void Folder_Click(object sender, RoutedEventArgs e)
         {
@@ -79,32 +71,16 @@ namespace BedrockLauncher.Pages.Settings.Versions
             button.ContextMenu.IsOpen = true;
         }
 
-        private async void Repair_Click(object sender, RoutedEventArgs e)
+        private void Repair_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
             var version = button.DataContext as MCVersion;
-            RefreshActionButtonStyle();
-            await MainDataModel.Default.InstallSelectAndPlayVersion(version);
-            RefreshActionButtonStyle();
-            GetParent()?.RefreshVersionRows();
+            MainDataModel.Default.RepairVersion(version);
         }
 
         private void ContextMenu_Closed(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private void RefreshActionButtonStyle()
-        {
-            if (Repair == null) return;
-
-            var version = DataContext as MCVersion;
-            string styleName = version?.IsSelectedForPlay == true && version.IsInstalled
-                ? "DialogButton_Green"
-                : "DialogButton_Orange";
-
-            if (TryFindResource(styleName) is Style style)
-                Repair.Style = style;
         }
     }
 }

@@ -53,89 +53,63 @@ namespace BedrockLauncher.Pages
             InitializeComponent();
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            MainDataModel.Default.PackageManager.Cancel();
-        }
+        private void CancelButton_Click(object sender, RoutedEventArgs e) => MainDataModel.Default.PackageManager.Cancel();
 
         #region Navigation
 
-        public void ResetButtonManager(string buttonName)
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                // just all buttons list
-                // ya i know this is really bad, i need to learn mvvm instead of doing this shit
-                // but this works fine, at least
-                List<ToggleButton> toggleButtons = new List<ToggleButton>() { 
+        public void ResetButtonManager(string buttonName) => this.Dispatcher.Invoke(() =>
+                                                                      {
+                                                                          // just all buttons list
+                                                                          // ya i know this is really bad, i need to learn mvvm instead of doing this shit
+                                                                          // but this works fine, at least
+                                                                          List<ToggleButton> toggleButtons = new List<ToggleButton>() { 
                 // main window
                 NewsButton.Button,
                 BedrockEditionButton.Button,
                 SettingsButton.Button,
-            };
+                                                                      };
 
-                foreach (ToggleButton button in toggleButtons) { button.IsChecked = false; }
+                                                                          foreach (ToggleButton button in toggleButtons) { button.IsChecked = false; }
 
-                if (toggleButtons.Exists(x => x.Name == buttonName))
-                {
-                    toggleButtons.Where(x => x.Name == buttonName).FirstOrDefault().IsChecked = true;
-                }
-            });
+                                                                          if (toggleButtons.Exists(x => x.Name == buttonName))
+                                                                          {
+                                                                              toggleButtons.Where(x => x.Name == buttonName).FirstOrDefault().IsChecked = true;
+                                                                          }
+                                                                      });
+        public void ButtonManager(object sender, RoutedEventArgs e) => this.Dispatcher.Invoke(() =>
+                                                                                {
+                                                                                    var toggleButton = sender as ToggleButton;
+                                                                                    string name = toggleButton.Name;
+                                                                                    Task.Run(() => ButtonManager_Base(name));
+                                                                                });
+        public void ButtonManager_Base(string senderName) => this.Dispatcher.Invoke(() =>
+                                                                      {
+                                                                          ResetButtonManager(senderName);
 
-        }
-        public void ButtonManager(object sender, RoutedEventArgs e)
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                var toggleButton = sender as ToggleButton;
-                string name = toggleButton.Name;
-                Task.Run(() => ButtonManager_Base(name));
-            });
-        }
-        public void ButtonManager_Base(string senderName)
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                ResetButtonManager(senderName);
+                                                                          if (senderName == BedrockEditionButton.Name) NavigateToGamePage();
+                                                                          else if (senderName == NewsButton.Name) NavigateToNewsPage();
+                                                                          else if (senderName == SettingsButton.Name) NavigateToSettings();
+                                                                      });
 
-                if (senderName == BedrockEditionButton.Name) NavigateToGamePage();
-                else if (senderName == NewsButton.Name) NavigateToNewsPage();
-                else if (senderName == SettingsButton.Name) NavigateToSettings();
-            });
+        public void NavigateToNewsPage() => this.Dispatcher.Invoke(() =>
+                                                     {
+                                                         Navigator.UpdatePageIndex(0);
+                                                         NewsButton.Button.IsChecked = true;
+                                                         Task.Run(() => Navigator.Navigate(MainWindowFrame, newsScreenPage));
+                                                     });
+        public void NavigateToGamePage() => this.Dispatcher.Invoke(() =>
+                                                     {
+                                                         Navigator.UpdatePageIndex(1);
+                                                         BedrockEditionButton.Button.IsChecked = true;
+                                                         Task.Run(() => Navigator.Navigate(MainWindowFrame, GamePage));
+                                                     });
 
-        }
-
-        public void NavigateToNewsPage()
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                Navigator.UpdatePageIndex(0);
-                NewsButton.Button.IsChecked = true;
-                Task.Run(() => Navigator.Navigate(MainWindowFrame, newsScreenPage));
-            });
-
-        }
-        public void NavigateToGamePage()
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                Navigator.UpdatePageIndex(1);
-                BedrockEditionButton.Button.IsChecked = true;
-                Task.Run(() => Navigator.Navigate(MainWindowFrame, GamePage));
-            });
-
-        }
-
-        public void NavigateToSettings()
-        {
-            this.Dispatcher.Invoke(() =>
-            {
-                Navigator.UpdatePageIndex(4);
-                SettingsButton.Button.IsChecked = true;
-                Task.Run(() => Navigator.Navigate(MainWindowFrame, settingsScreenPage));
-            });
-
-        }
+        public void NavigateToSettings() => this.Dispatcher.Invoke(() =>
+                                                     {
+                                                         Navigator.UpdatePageIndex(4);
+                                                         SettingsButton.Button.IsChecked = true;
+                                                         Task.Run(() => Navigator.Navigate(MainWindowFrame, settingsScreenPage));
+                                                     });
 
         #endregion
 
