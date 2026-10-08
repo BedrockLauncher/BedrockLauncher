@@ -75,33 +75,6 @@ namespace BedrockLauncher.Handlers
             return result.ResponseStatus == WebTokenRequestStatus.Success;
         }
 
-        internal static async Task<MicrosoftAccountIdentity> SignInAsync()
-        {
-            var provider = await GetProviderAsync();
-
-            var request =
-                new WebTokenRequest(
-                    provider,
-                    TokenScope,
-                    ClientId);
-            var result =
-                await WebAuthenticationCoreManager.RequestTokenAsync(
-                    request);
-
-            if (result.ResponseStatus == WebTokenRequestStatus.UserCancel)
-                return null;
-
-            if (result.ResponseStatus != WebTokenRequestStatus.Success)
-            {
-                throw new InvalidOperationException(
-                    $"Microsoft sign-in did not complete: {result.ResponseStatus}.");
-            }
-
-            return ReadIdentity(result)
-                ?? throw new InvalidOperationException(
-                    "Microsoft sign-in completed without returning a usable account identity.");
-        }
-
         /// <summary>
         /// Returns the Microsoft account Windows is already signed in with, without showing any UI.
         /// Null when Windows has no connected Microsoft account or the user must sign in explicitly.

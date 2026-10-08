@@ -18,6 +18,7 @@ using BedrockLauncher.UpdateProcessor.Handlers;
 using BedrockLauncher.UpdateProcessor.Extensions;
 using BedrockLauncher.Enums;
 using BedrockLauncher.UpdateProcessor.Enums;
+using System.Xml.Linq;
 
 namespace BedrockLauncher.Downloaders
 {
@@ -28,6 +29,7 @@ namespace BedrockLauncher.Downloaders
         private string winstoreDBFile => MainDataModel.Default.FilePaths.GetWinStoreVersionsDBFile();
         private string communityDBFile => MainDataModel.Default.FilePaths.GetCommunityVersionsDBFile();
         private string gdkLinksDBFile => MainDataModel.Default.FilePaths.GetGdkLinksVersionsDBFile();
+        private string gdkVersionsDBFile => MainDataModel.Default.FilePaths.GetGdkVersionsDBFile();
 
         private MCVersion latestReleaseRef { get; set; }
         private MCVersion? latestBetaRef { get; set; }
@@ -66,10 +68,30 @@ namespace BedrockLauncher.Downloaders
             }
         }
 
-        /// <summary>The CDN resources GdkLinks lists for a GDK version (keyed by the version's package id).</summary>
-        public bool TryGetGdkDownloadUrls(string packageID, out List<string> urls)
+        /// <summary>True when the catalog lists at least one resource for exactly the version's required GDK package.</summary>
+        public bool HasGdkDownloadResource(MCVersion v)
         {
-            return VersionDB.TryGetGdkDownloadUrls(packageID, out urls);
+            return v.RequiredGdkPackage != null &&
+                   VersionDB.TryGetGdkDownloadUrls(v.PackageID, out List<string> urls) &&
+                   VersionJsonDb.FilterUrlsForIdentity(urls, v.RequiredGdkPackage).Length > 0;
+        }
+
+        /// <summary>Downloads exactly the required GDK package of a GDK version.</summary>
+        public async Task DownloadGdkPackage(
+            MCVersion v,
+            string destination,
+            DownloadProgress progress,
+            CancellationToken cancellationToken)
+        {
+            if (v.PackageType != PackageType.GDK || v.RequiredGdkPackage == null)
+                throw new InvalidOperationException($"Minecraft {v.Name} has no required GDK package to download.");
+
+            await VersionDB.DownloadGdkPackage(
+                v.PackageID,
+                v.RequiredGdkPackage,
+                destination,
+                progress,
+                cancellationToken);
         }
 
         public void SetMSAUserToken(string token)
@@ -99,6 +121,7 @@ namespace BedrockLauncher.Downloaders
                 winstoreDBFile,
                 communityDBFile,
                 gdkLinksDBFile,
+                gdkVersionsDBFile,
                 microsoftAccountId);
 
             await VersionDB.LoadVersions(
@@ -115,7 +138,8 @@ namespace BedrockLauncher.Downloaders
                     GetRealVersion(entry.GetVersion()),
                     entry.GetVersionType(),
                     entry.GetArchitecture(),
-                    entry.GetPackageType()));
+                    entry.GetPackageType(),
+                    entry.GetRequiredGdkPackage()));
             }
 
             versions.Sort((x, y) => x.Compare(y));
@@ -149,7 +173,8 @@ namespace BedrockLauncher.Downloaders
                 Application.Current.Resources["EditInstallationScreen_LatestPreview"].ToString(),
                 latestPreview.Type,
                 Constants.CurrentArchitecture,
-                latestPreview.PackageType);
+                latestPreview.PackageType,
+                latestPreview.RequiredGdkPackage);
 
             MCVersion latest_release = new MCVersion(
                 Constants.LATEST_RELEASE_UUID,
@@ -157,7 +182,8 @@ namespace BedrockLauncher.Downloaders
                 Application.Current.Resources["EditInstallationScreen_LatestRelease"].ToString(),
                 latestRelease.Type,
                 Constants.CurrentArchitecture,
-                latestRelease.PackageType);
+                latestRelease.PackageType,
+                latestRelease.RequiredGdkPackage);
 
             versions.Insert(0, latest_preview);
             versions.Insert(0, latest_release);
@@ -170,7 +196,8 @@ namespace BedrockLauncher.Downloaders
                     Application.Current.Resources["EditInstallationScreen_LatestBeta"].ToString(),
                     latestBeta.Type,
                     Constants.CurrentArchitecture,
-                    latestBeta.PackageType);
+                    latestBeta.PackageType,
+                    latestBeta.RequiredGdkPackage);
 
                 versions.Insert(0, latest_beta);
             }
@@ -219,10 +246,6 @@ namespace BedrockLauncher.Downloaders
                     directory.FullName,
                     "MicrosoftGame.Config");
 
-                string cdnPackageFile = Path.Combine(
-                    directory.FullName,
-                    "cdn_package.txt");
-
                 string packageIdFile = Path.Combine(
                     directory.FullName,
                     MCVersionExtensions.IdentificationFilename);
@@ -238,12 +261,10 @@ namespace BedrockLauncher.Downloaders
                     bool hasManifest = File.Exists(manifestFile);
                     bool hasExe = File.Exists(exeFile);
                     bool hasGdkConfig = File.Exists(gdkConfig);
-                    bool hasCdnPackage = File.Exists(cdnPackageFile);
 
+                    // Only the package's own manifest / game config identify a version folder.
                     if (!hasManifest &&
-                        !hasExe &&
-                        !hasGdkConfig &&
-                        !hasCdnPackage)
+                        !hasGdkConfig)
                     {
                         continue;
                     }
@@ -285,9 +306,31 @@ namespace BedrockLauncher.Downloaders
                         continue;
                     }
 
-                    MCVersion customVersion = null;
+                    // Classify from the folder's own package files only (never from what Windows has installed).
+                    var manifestIdentity = hasManifest
+                        ? await MCVersionExtensions.GetCommonPackageValuesAsync(manifestFile)
+                        : null;
 
-                    if (hasGdkConfig || hasCdnPackage)
+                    string gameConfigIdentityName = hasGdkConfig
+                        ? ReadGameConfigIdentityName(gdkConfig)
+                        : null;
+
+                    MinecraftPackageClassification classification =
+                        MinecraftPackageClassifier.Classify(
+                            manifestIdentity?.Item1,
+                            gameConfigIdentityName);
+
+                    if (!classification.IsResolved)
+                    {
+                        Trace.WriteLine(
+                            $"Skipping version folder {directory.FullName}: {classification.Reason}");
+
+                        continue;
+                    }
+
+                    MCVersion customVersion;
+
+                    if (classification.PackageType == PackageType.GDK)
                     {
                         string versionName = uuid;
 
@@ -302,39 +345,39 @@ namespace BedrockLauncher.Downloaders
                                 uuid;
                         }
 
-                        customVersion = new MCVersion(
-                            uuid,
-                            packageID,
-                            versionName,
-                            VersionType.Release,
-                            Constants.CurrentArchitecture,
-                            PackageType.GDK);
-                    }
-                    else if (hasManifest)
-                    {
-                        customVersion =
-                            await GetAppxMaifestIdentity(
-                                packageID,
-                                uuid,
-                                manifestFile);
-                    }
-                    else if (hasExe)
-                    {
-                        FileVersionInfo fileVersion =
-                            FileVersionInfo.GetVersionInfo(exeFile);
-
-                        string versionName =
-                            fileVersion.ProductVersion ??
-                            fileVersion.FileVersion ??
-                            uuid;
+                        // The required package is the identity the folder's manifest declares; without a complete
+                        // identity the requirement stays unresolved and the version cannot be launched.
+                        GdkPackageIdentity requiredPackage = null;
+                        if (manifestIdentity != null &&
+                            Version.TryParse(manifestIdentity.Item2, out Version packageVersion) &&
+                            packageVersion.Revision >= 0 &&
+                            !string.IsNullOrWhiteSpace(manifestIdentity.Item3) &&
+                            manifestIdentity.Item3 != "???")
+                        {
+                            requiredPackage = new GdkPackageIdentity(
+                                MinecraftPackageFamilies.GetIdentityName(classification.VersionType),
+                                packageVersion,
+                                manifestIdentity.Item3,
+                                MinecraftPackageFamilies.PublisherId);
+                        }
 
                         customVersion = new MCVersion(
                             uuid,
                             packageID,
                             versionName,
-                            VersionType.Release,
-                            Constants.CurrentArchitecture,
-                            PackageType.UWP);
+                            classification.VersionType,
+                            requiredPackage?.Architecture ?? Constants.CurrentArchitecture,
+                            PackageType.GDK,
+                            requiredPackage);
+                    }
+                    else
+                    {
+                        customVersion = new MCVersion(
+                            uuid,
+                            packageID,
+                            manifestIdentity.Item2,
+                            classification.VersionType,
+                            manifestIdentity.Item3);
                     }
 
                     if (customVersion != null)
@@ -356,46 +399,23 @@ namespace BedrockLauncher.Downloaders
                         versions.Add(customVersion);
                     }
                 }
-                catch
+                catch (Exception ex)
                 {
-                    // Ignore corrupted folder
+                    Trace.WriteLine(
+                        $"Skipping unreadable version folder {directory.FullName}: {ex.Message}");
                 }
             }
         }
 
-        private async Task<MCVersion> GetAppxMaifestIdentity(
-            string PackageID,
-            string UUID,
-            string file)
+        private static string ReadGameConfigIdentityName(string gameConfigPath)
         {
-            var (
-                Name,
-                Version,
-                ProcessorArchitecture) =
-                await MCVersionExtensions.GetCommonPackageValuesAsync(file);
+            XDocument gameConfig = XDocument.Load(gameConfigPath);
 
-            VersionType Type;
-
-            if (Name == "Microsoft.MinecraftUWP")
-            {
-                Type = VersionType.Release;
-            }
-            else if (Name == "Microsoft.MinecraftWindowsBeta")
-            {
-                Type = VersionType.Preview;
-            }
-            else
-            {
-                throw new Exception(
-                    "That's not a Minecraft APPX file silly!");
-            }
-
-            return new MCVersion(
-                UUID,
-                PackageID,
-                Version,
-                Type,
-                ProcessorArchitecture);
+            return gameConfig.Root?
+                .Elements()
+                .FirstOrDefault(x => x.Name.LocalName == "Identity")?
+                .Attribute("Name")?
+                .Value;
         }
 
         public MCVersion GetVersion(

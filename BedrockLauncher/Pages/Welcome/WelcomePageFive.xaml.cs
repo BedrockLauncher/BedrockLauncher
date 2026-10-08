@@ -15,7 +15,7 @@ namespace BedrockLauncher.Pages.Welcome
             BackButton.IsEnabled = false;
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e) => pageSwitcher.MoveToPage(4);
+        private void BackButton_Click(object sender, RoutedEventArgs e) => pageSwitcher.MoveToPage(2);
 
         private void NextButton_Click(object sender, RoutedEventArgs e) => pageSwitcher.MoveToPage(6, BackupCheckbox.IsChecked.Value);
     }

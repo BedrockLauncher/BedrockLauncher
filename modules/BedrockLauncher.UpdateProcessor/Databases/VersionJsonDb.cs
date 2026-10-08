@@ -11,6 +11,15 @@ using System.Linq;
 
 namespace BedrockLauncher.UpdateProcessor.Databases
 {
+    public enum GdkCatalogMergeResult
+    {
+        Added,
+        Unchanged,
+        ResourcesAdded,
+        IdentityConflict,
+        Rejected
+    }
+
     public class VersionJsonDb : IVersionDb
     {
         public List<VersionInfoJson> list { get; private set; } =
@@ -41,12 +50,7 @@ namespace BedrockLauncher.UpdateProcessor.Databases
             SortVersions();
 
             var valuesList = list
-                .Select(version => new JArray(
-                    version.version,
-                    version.uuid.ToString(),
-                    (int)version.type,
-                    version.architecture,
-                    (int)version.packageType))
+                .Select(ToJson)
                 .ToList();
 
             string json = JsonConvert.SerializeObject(
@@ -124,12 +128,27 @@ namespace BedrockLauncher.UpdateProcessor.Databases
                     architecture = knownArchitecture;
                 }
 
+                // GDK entries carry the exact required package identity and its resources.
+                string packageIdentity =
+                    packageType == PackageType.GDK && item.Count >= 6
+                        ? item[5]?.Value<string>()
+                        : null;
+
+                string[] downloadUrls =
+                    packageType == PackageType.GDK && item.Count >= 7 && item[6] is JArray urls
+                        ? urls.Select(x => x?.Value<string>())
+                            .Where(x => !string.IsNullOrWhiteSpace(x))
+                            .ToArray()
+                        : null;
+
                 var parsedVersion = new VersionInfoJson(
                     version,
                     uuid,
                     versionType,
                     architecture,
-                    packageType);
+                    packageType,
+                    packageIdentity,
+                    downloadUrls);
 
                 if (!list.Any(x =>
                     x.uuid == parsedVersion.uuid &&
@@ -191,6 +210,90 @@ namespace BedrockLauncher.UpdateProcessor.Databases
         public void Save(string filePath)
         {
             WriteJson(filePath);
+        }
+
+        private static JArray ToJson(VersionInfoJson version)
+        {
+            var item = new JArray(
+                version.version,
+                version.uuid.ToString(),
+                (int)version.type,
+                version.architecture,
+                (int)version.packageType);
+
+            if (version.packageType == PackageType.GDK)
+            {
+                item.Add(version.packageIdentity);
+                item.Add(new JArray(version.downloadUrls ?? Array.Empty<string>()));
+            }
+
+            return item;
+        }
+
+        /// <summary>
+        /// Adds a discovered GDK version to the persisted catalog without ever rewriting an existing association.
+        ///
+        /// The persisted entry is the source of truth: once "Minecraft X -> package identity P" is stored, a later
+        /// discovery (refresh, GdkLinks update, another download) can only add resources for exactly P. A discovery
+        /// that claims a different identity for the same version is reported as a conflict and ignored.
+        /// </summary>
+        public GdkCatalogMergeResult MergeGdkEntry(VersionInfoJson discovered)
+        {
+            GdkPackageIdentity discoveredIdentity = discovered.GetRequiredGdkPackage();
+            if (discoveredIdentity == null)
+                return GdkCatalogMergeResult.Rejected;
+
+            int index = list.FindIndex(x =>
+                x.uuid == discovered.uuid &&
+                x.packageType == PackageType.GDK);
+
+            string[] discoveredUrls = FilterUrlsForIdentity(discovered.downloadUrls, discoveredIdentity);
+
+            if (index < 0)
+            {
+                list.Add(new VersionInfoJson(
+                    discovered.version,
+                    discovered.uuid.ToString(),
+                    discovered.type,
+                    discovered.architecture,
+                    PackageType.GDK,
+                    discoveredIdentity.FullName,
+                    discoveredUrls));
+
+                SortVersions();
+                return GdkCatalogMergeResult.Added;
+            }
+
+            VersionInfoJson persisted = list[index];
+            GdkPackageIdentity persistedIdentity = persisted.GetRequiredGdkPackage();
+
+            if (persistedIdentity == null || !persistedIdentity.Equals(discoveredIdentity))
+                return GdkCatalogMergeResult.IdentityConflict;
+
+            string[] mergedUrls = FilterUrlsForIdentity(persisted.downloadUrls, persistedIdentity)
+                .Concat(discoveredUrls)
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .ToArray();
+
+            if (mergedUrls.Length == (persisted.downloadUrls?.Length ?? 0))
+                return GdkCatalogMergeResult.Unchanged;
+
+            persisted.downloadUrls = mergedUrls;
+            list[index] = persisted;
+            return GdkCatalogMergeResult.ResourcesAdded;
+        }
+
+        /// <summary>Keeps only resources whose file name is exactly the given package identity.</summary>
+        public static string[] FilterUrlsForIdentity(IEnumerable<string> urls, GdkPackageIdentity identity)
+        {
+            if (urls == null || identity == null)
+                return Array.Empty<string>();
+
+            return urls
+                .Where(url => GdkPackageIdentity.TryParseFromUrl(url, out GdkPackageIdentity urlIdentity) &&
+                              identity.Equals(urlIdentity))
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .ToArray();
         }
 
         public List<IVersionInfo> GetVersions()

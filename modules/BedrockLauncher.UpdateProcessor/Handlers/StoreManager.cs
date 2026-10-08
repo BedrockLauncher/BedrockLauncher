@@ -88,14 +88,5 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
 
             return newUpdates;
         }
-
-        /// <summary>
-        /// Backward-compatible alias for <see cref="CheckForUWPVersions"/>.
-        /// The original name was misleading (it checked UWP packages, not GDK ones).
-        /// </summary>
-        [Obsolete("Use CheckForUWPVersions — this overload had a misleading name.")]
-        public static Task<List<UpdateInfo>> CheckForGDKVersions(
-            StoreNetwork net, VersionType versionType, CookieData cookie, List<string> knownVersions)
-            => CheckForUWPVersions(net, versionType, cookie, knownVersions);
     }
 }

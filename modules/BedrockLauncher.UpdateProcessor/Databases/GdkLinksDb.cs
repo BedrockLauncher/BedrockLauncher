@@ -47,13 +47,15 @@ namespace BedrockLauncher.UpdateProcessor.Databases
             "http://d2.xboxlive.cn",
         };
 
-        public Dictionary<string, List<string>> DownloadUrlsByUuid { get; } = new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase);
         public List<VersionInfoJson> Versions { get; } = new List<VersionInfoJson>();
+
+        /// <summary>Entries that could not be resolved to exactly one package identity (with the reason).</summary>
+        public List<string> RejectedEntries { get; } = new List<string>();
 
         public void Parse(string json)
         {
-            DownloadUrlsByUuid.Clear();
             Versions.Clear();
+            RejectedEntries.Clear();
 
             var root = JObject.Parse(json);
             ParseChannel(root["release"] as JObject, VersionType.Release);
@@ -103,14 +105,73 @@ namespace BedrockLauncher.UpdateProcessor.Databases
             // Expand with all CDN mirrors so the downloader can fall back automatically.
             // urlList = ExpandWithMirrors(urlList);
 
-            string architecture = !string.IsNullOrEmpty(architectureHint) 
-                ? architectureHint 
-                : InferArchitecture(urlList[0]);
-                
+            // The resource file name is the exact package identity. Every resource listed for a version must name
+            // the same identity; anything else is ambiguous and the entry is not catalogued (no guessing).
+            var identities = new List<GdkPackageIdentity>();
+            foreach (string url in urlList)
+            {
+                if (!GdkPackageIdentity.TryParseFromUrl(url, out GdkPackageIdentity urlIdentity))
+                {
+                    Reject(versionName, type, $"'{url}' does not name a package identity.");
+                    return;
+                }
+
+                identities.Add(urlIdentity);
+            }
+
+            GdkPackageIdentity identity = identities[0];
+            if (identities.Any(x => !x.Equals(identity)))
+            {
+                Reject(versionName, type, "its resources name different package identities.");
+                return;
+            }
+
+            if (!MinecraftPackageFamilies.BelongsTo(identity, type))
+            {
+                Reject(versionName, type, $"{identity.FamilyName} is not the {MinecraftPackageFamilies.GetFamilyName(type)} family.");
+                return;
+            }
+
+            if (!TryGetPackageVersion(versionName, out Version expectedPackageVersion) ||
+                expectedPackageVersion != identity.Version)
+            {
+                Reject(versionName, type, $"package version {identity.Version} does not encode version {versionName}.");
+                return;
+            }
+
+            if (!string.IsNullOrEmpty(architectureHint) &&
+                !string.Equals(architectureHint, identity.Architecture, StringComparison.OrdinalIgnoreCase))
+            {
+                Reject(versionName, type, $"it is listed as {architectureHint} but the package is {identity.Architecture}.");
+                return;
+            }
+
+            // Keep the historical UUID key (type, version, architecture) so existing installations still resolve.
+            string architecture = !string.IsNullOrEmpty(architectureHint) ? architectureHint : identity.Architecture;
             string uuid = CreateStableUuid($"gdk:{type}:{versionName}:{architecture}").ToString();
 
-            Versions.Add(new VersionInfoJson(versionName, uuid, type, architecture, PackageType.GDK));
-            DownloadUrlsByUuid[uuid] = urlList;
+            Versions.Add(new VersionInfoJson(versionName, uuid, type, architecture, PackageType.GDK, identity.FullName, urlList.ToArray()));
+        }
+
+        /// <summary>
+        /// Minecraft GDK builds encode their version in the package version as Major.Minor.(Build*100+Revision).0,
+        /// e.g. 1.21.120.4 -> 1.21.12004.0 and 1.26.40.5 -> 1.26.4005.0.
+        /// </summary>
+        public static bool TryGetPackageVersion(string versionName, out Version packageVersion)
+        {
+            packageVersion = null;
+            if (!Version.TryParse(versionName, out Version version) || version.Build < 0 || version.Revision < 0)
+                return false;
+            if (version.Revision > 99)
+                return false;
+
+            packageVersion = new Version(version.Major, version.Minor, version.Build * 100 + version.Revision, 0);
+            return true;
+        }
+
+        private void Reject(string versionName, VersionType type, string reason)
+        {
+            RejectedEntries.Add($"GdkLinks {type} {versionName} skipped: {reason}");
         }
 
         /// <summary>
@@ -142,14 +203,6 @@ namespace BedrockLauncher.UpdateProcessor.Databases
             }
 
             return result;
-        }
-
-        private static string InferArchitecture(string url)
-        {
-            string lower = url.ToLowerInvariant();
-            if (lower.Contains("_arm64_") || lower.Contains("-arm64-")) return "arm64";
-            if (lower.Contains("_x86_") || lower.Contains("-x86-")) return "x86";
-            return "x64";
         }
 
         public static Guid CreateStableUuid(string key)

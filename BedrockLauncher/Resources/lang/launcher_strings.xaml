@@ -1,0 +1,13 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:v="clr-namespace:System;assembly=mscorlib">
+    <!--
+        Strings this launcher uses that the BedrockLauncher.Localization submodule does not (yet) provide.
+        Merged before the language dictionaries, so a translation added to the submodule takes precedence.
+    -->
+    <v:String x:Key="GeneralText_Beta">Beta</v:String>
+    <v:String x:Key="GeneralText_Preview">Preview</v:String>
+    <v:String x:Key="GeneralText_UWP">UWP</v:String>
+    <v:String x:Key="GeneralText_GDK">GDK</v:String>
+    <v:String x:Key="NewProfile_MicrosoftAccountNotConnected">No Microsoft account detected</v:String>
+</ResourceDictionary>
