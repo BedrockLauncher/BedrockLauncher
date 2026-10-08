@@ -66,14 +66,13 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
 
         private static readonly string[] communityDBUrls =
         {
-            "https://mrarm.io/r/w10-vdb",
             "https://www.raythnetwork.co.uk/versions.php?type=json"
         };
 
         private static readonly string[] gdkLinksUrls =
         {
-            "https://raw.githubusercontent.com/MinecraftBedrockArchiver/GdkLinks/refs/heads/master/urls.min.json",
-            "https://raw.githubusercontent.com/MinecraftBedrockArchiver/GdkLinks/master/urls.json"
+            "https://www.raythnetwork.co.uk/gdk.urls.min.json",
+            "https://www.raythnetwork.co.uk/gdk.urls.json"
         };
 
         private string winstoreDBFile;
