@@ -45,13 +45,14 @@ namespace BedrockLauncher.Pages.Play.CreatorTools
                 EditorPlayButton.IsEnabled = true;
                 isLauncherFullyLoaded = true;
             }
-            else if (selectedInstallation is not null && selectedInstallation.Version is null)
+            else if (selectedInstallation?.Version is null)
             {
+                // No installation selected (e.g. the selected one was just deleted) or its version is unknown.
                 EditorPlayButton.IsEnabled = false;
             }
             else
             {
-                EditorPlayButton.IsEnabled = MainDataModel.Default.ProgressBarState.AllowPlaying && selectedInstallation.Version?.Compare(Constants.GetMinimumEditorVersion(selectedInstallation.VersionType)) <= 0;
+                EditorPlayButton.IsEnabled = MainDataModel.Default.ProgressBarState.AllowPlaying && selectedInstallation.Version.Compare(Constants.GetMinimumEditorVersion(selectedInstallation.VersionType)) <= 0;
             }
         }
 

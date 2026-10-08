@@ -63,17 +63,16 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
 
         private int UserTokenIndex;
         private string MicrosoftAccountId;
+        // The project's curated UWP version list. It is the only community source: entries removed from it must
+        // disappear from the launcher too, so the local copy is replaced by it, never merged with another list.
+        private const string communityDBUrl =
+            "https://www.raythnetwork.co.uk/versions.php?type=json";
 
-        private static readonly string[] communityDBUrls =
-        {
-            "https://mrarm.io/r/w10-vdb",
-            "https://www.raythnetwork.co.uk/versions.php?type=json"
-        };
-
+        // GDK build list (GdkLinks format), served by the project.
         private static readonly string[] gdkLinksUrls =
         {
-            "https://raw.githubusercontent.com/MinecraftBedrockArchiver/GdkLinks/refs/heads/master/urls.min.json",
-            "https://raw.githubusercontent.com/MinecraftBedrockArchiver/GdkLinks/master/urls.json"
+            "https://www.raythnetwork.co.uk/gdk.urls.min.json",
+            "https://www.raythnetwork.co.uk/gdk.urls.json"
         };
 
         private string winstoreDBFile;
@@ -381,7 +380,8 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
 
             await EnableUserAuthorization();
 
-            // 1. Community database — UWP versions.
+            // 1. Community database — UWP versions. Listed only after the refresh, so entries removed from the
+            //    curated list are not shown from the previous local copy.
             VersionJsonDb communityDB =
                 LoadJsonDBVersions(
                     communityDBFile);
@@ -391,8 +391,11 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
                 await UpdateDBFromURL(
                     communityDB,
                     communityDBFile,
-                    communityDBUrls);
+                    communityDBUrl);
             }
+
+            InsertVersionsFromDB(
+                communityDB);
 
             // 2. Microsoft Store database — UWP versions.
             VersionJsonDb winStoreDB =
@@ -406,6 +409,9 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
                     winStoreDB,
                     winstoreDBFile);
             }
+
+            InsertVersionsFromDB(
+                winStoreDB);
 
             // 3. GdkLinks — GDK versions.
             await LoadGdkLinksVersions(
@@ -651,71 +657,47 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
                 $"GDK catalog: {added} version(s) available.");
         }
 
+        /// <summary>
+        /// Replaces the local database with the remote list. The local copy is kept untouched until the remote
+        /// response has been downloaded and parsed, so a failed refresh never empties it.
+        /// </summary>
         private async Task UpdateDBFromURL(
             VersionJsonDb db,
             string filePath,
-            string[] urls)
+            string url)
         {
-            foreach (var url in urls)
+            try
             {
-                try
-                {
-                    var resp =
-                        await HttpClient.GetAsync(
-                            url);
+                var resp =
+                    await HttpClient.GetAsync(
+                        url);
 
-                    resp.EnsureSuccessStatusCode();
+                resp.EnsureSuccessStatusCode();
 
-                    string data =
-                        await resp.Content.ReadAsStringAsync();
+                string data =
+                    await resp.Content.ReadAsStringAsync();
 
-                    /*
-                     * Do not delete the existing database before
-                     * the new response has been downloaded and parsed.
-                     */
-                    var remoteDb =
-                        new VersionJsonDb();
+                // Parse into a scratch database first: a malformed response must not clear the local list.
+                new VersionJsonDb().ParseRaw(
+                    data,
+                    GetVersionArches());
 
-                    remoteDb.ParseRaw(
-                        data,
-                        GetVersionArches());
+                db.ParseRaw(
+                    data,
+                    GetVersionArches());
 
-                    foreach (
-                        var remoteVersion
-                        in remoteDb.list)
-                    {
-                        if (!db.list.Any(x =>
-                            x.uuid ==
-                            remoteVersion.uuid &&
-                            x.packageType ==
-                            remoteVersion.packageType))
-                        {
-                            db.list.Add(
-                                remoteVersion);
-                        }
-                    }
+                db.Save(
+                    filePath);
 
-                    db.Save(
-                        filePath);
-
-                    InsertVersionsFromDB(
-                        db);
-
-                    Trace.WriteLine(
-                        $"Community DB updated from: {url}");
-
-                    return;
-                }
-                catch (Exception ex)
-                {
-                    Trace.WriteLine(
-                        $"UpdateDBFromURL failed [{url}]: " +
-                        ex.Message);
-                }
+                Trace.WriteLine(
+                    $"Community DB replaced from: {url} ({db.list.Count} versions)");
             }
-
-            Trace.TraceWarning(
-                "All community DB URLs failed.");
+            catch (Exception ex)
+            {
+                Trace.WriteLine(
+                    $"UpdateDBFromURL failed [{url}]; keeping the local copy: " +
+                    ex.Message);
+            }
         }
 
         private async Task UpdateDBFromStore(
@@ -737,9 +719,6 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
 
                 jsonDb.Save(
                     jsonFilePath);
-
-                InsertVersionsFromDB(
-                    jsonDb);
             }
             catch (Exception ex)
             {
@@ -805,9 +784,6 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
 
                 db.WriteJson(
                     filePath);
-
-                InsertVersionsFromDB(
-                    db);
 
                 return db;
             }

@@ -85,8 +85,8 @@ namespace BedrockLauncher.Classes
 
         /// <summary>
         /// UWP: the version folder holds the extracted game files.
-        /// GDK: the game is installed by Windows (Gaming Services), not in the version folder; the folder holds the
-        /// install record the launcher writes after validating the exact required package.
+        /// GDK: the version folder holds the downloaded package, which Windows installs when the version is played
+        /// (so switching back to it never downloads it again), or the record of the validated install.
         /// </summary>
         public bool HasPlayableFiles
         {
@@ -95,8 +95,14 @@ namespace BedrockLauncher.Classes
                 Depends.On(GameDirectory);
                 if (PackageType == PackageType.GDK)
                 {
-                    return RequiredGdkPackage != null &&
-                           GdkInstallRecord.TryRead(GameDirectory, out GdkPackageIdentity recorded) &&
+                    if (RequiredGdkPackage == null)
+                        return false;
+
+                    FileInfo package = new FileInfo(GdkPackageFilePath);
+                    if (package.Exists && package.Length > 0)
+                        return true;
+
+                    return GdkInstallRecord.TryRead(GameDirectory, out GdkPackageIdentity recorded) &&
                            RequiredGdkPackage.Equals(recorded);
                 }
                 return File.Exists(ExecutablePath) &&
@@ -104,6 +110,21 @@ namespace BedrockLauncher.Classes
                         File.Exists(Path.Combine(
                             GameDirectory,
                             "MicrosoftGame.Config")));
+            }
+        }
+
+        /// <summary>
+        /// GDK only: the downloaded package, kept in the version folder so switching back to this version reinstalls it
+        /// without downloading it again. Named after the exact package identity.
+        /// </summary>
+        public string GdkPackageFilePath
+        {
+            get
+            {
+                Depends.On(GameDirectory, RequiredGdkPackage);
+                return RequiredGdkPackage == null
+                    ? null
+                    : Path.Combine(GameDirectory, RequiredGdkPackage.FullName + GdkPackageIdentity.MsixvcExtension);
             }
         }
 

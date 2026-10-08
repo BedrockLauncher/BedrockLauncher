@@ -24,18 +24,14 @@ namespace BedrockLauncher.Downloaders
             });
 
             News_OfficialFeed result = null;
-            using (var httpClient = new HttpClient())
+            try
             {
-                try
-                {
-                    var json = await httpClient.GetStringAsync(Constants.RSS_LAUNCHER_URL);
-                    result = Newtonsoft.Json.JsonConvert.DeserializeObject<News_OfficialFeed>(json);
-                }
-                catch
-                {
-                    result = new News_OfficialFeed();
-                }
-
+                var json = await SharedHttpClient.Instance.GetStringAsync(Constants.RSS_LAUNCHER_URL);
+                result = Newtonsoft.Json.JsonConvert.DeserializeObject<News_OfficialFeed>(json);
+            }
+            catch
+            {
+                result = new News_OfficialFeed();
             }
             if (result == null) result = new News_OfficialFeed();
             if (result.entries == null) result.entries = new List<News_OfficialItem>();
@@ -70,7 +66,7 @@ namespace BedrockLauncher.Downloaders
                                                                                        {
                                                                                            viewModel.FeedItems.Clear();
                                                                                            string rss = string.Empty;
-                                                                                           using (var httpClient = new HttpClient()) rss = await httpClient.GetStringAsync(viewModel.RSS_URL);
+                                                                                           rss = await SharedHttpClient.Instance.GetStringAsync(viewModel.RSS_URL);
                                                                                            Feed feed = FeedReader.ReadFromString(rss);
                                                                                            foreach (FeedItem item in feed.Items)
                                                                                            {
