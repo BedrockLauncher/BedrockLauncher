@@ -75,6 +75,15 @@ namespace BedrockLauncher
 
         internal static string GetUri(VersionType type) => type == VersionType.Preview ? MINECRAFT_PREVIEW_URI : MINECRAFT_URI;
 
+        /// <summary>Plain game activation through the version's protocol, e.g. minecraft:</summary>
+        internal static Uri GetLaunchUri(VersionType type) => new Uri($"{GetUri(type)}:");
+
+        /// <summary>
+        /// Editor activation as documented by Mojang (case-sensitive): minecraft://creator/?Editor=true or
+        /// minecraft-preview://creator/?Editor=true.
+        /// </summary>
+        internal static Uri GetEditorUri(VersionType type) => new Uri($"{GetUri(type)}://creator/?Editor=true");
+
         internal static MCVersion GetMinimumEditorVersion(VersionType type) => new MCVersion(type == VersionType.Preview ? FIRST_EDITOR_PREVIEW : FIRST_EDITOR_RELEASE);
 
         internal static MCVersion GetMinimumGDKVersion() => new MCVersion(FIRST_GDK_VERSION);

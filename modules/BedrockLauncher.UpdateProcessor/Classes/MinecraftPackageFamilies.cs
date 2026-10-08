@@ -19,6 +19,10 @@ namespace BedrockLauncher.UpdateProcessor.Classes
 
         public static string GetFamilyName(VersionType type) => $"{GetIdentityName(type)}_{PublisherId}";
 
+        /// <summary>Folder under %APPDATA% where GDK builds keep their data (worlds, packs, settings, logs).</summary>
+        public static string GetGdkDataFolderName(VersionType type) =>
+            type == VersionType.Preview ? "Minecraft Bedrock Preview" : "Minecraft Bedrock";
+
         /// <summary>
         /// Maps an identity name to its channel. Beta builds cannot be told apart from Release by identity, so an
         /// identity of Microsoft.MinecraftUWP maps to Release; callers that know the channel keep their own value.

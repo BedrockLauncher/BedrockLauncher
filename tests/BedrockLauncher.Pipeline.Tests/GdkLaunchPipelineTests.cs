@@ -267,6 +267,35 @@ namespace BedrockLauncher.Pipeline.Tests
         }
 
         [Fact]
+        public async Task SaveDataIsLinkedAfterValidationAndBeforeActivation()
+        {
+            var required = Identities.Release("1.26.4005.0");
+            var platform = new FakeGdkPlatform();
+            platform.Installed.Add(FakeGdkPlatform.Package(required));
+            var request = Identities.GdkRequest(required);
+            request.InstallationDataPath = @"C:\Launcher\installations\profile\install\packageData";
+
+            await Pipeline(platform).LaunchAsync(request);
+
+            int saveData = platform.Calls.IndexOf("SaveData:" + request.InstallationDataPath);
+            Assert.True(saveData > platform.Calls.IndexOf("Bootstrap"));
+            Assert.True(saveData < platform.Calls.FindIndex(call => call.StartsWith("Activate:")));
+        }
+
+        [Fact]
+        public async Task SaveDataIsNotTouchedWhenTheLaunchIsBlocked()
+        {
+            var platform = new FakeGdkPlatform { ConfirmReplace = false };
+            platform.Installed.Add(FakeGdkPlatform.Package(Identities.Release("1.26.5203.0")));
+            var request = Identities.GdkRequest(Identities.Release("1.26.4005.0"));
+            request.InstallationDataPath = @"C:\Launcher\installations\profile\install\packageData";
+
+            await Assert.ThrowsAsync<GdkVersionMismatchException>(() => Pipeline(platform).LaunchAsync(request));
+
+            Assert.DoesNotContain(platform.Calls, call => call.StartsWith("SaveData:"));
+        }
+
+        [Fact]
         public async Task LogShowsRequiredAndInstalledPackages()
         {
             var required = Identities.Release("1.26.4005.0");
@@ -312,6 +341,7 @@ namespace BedrockLauncher.Pipeline.Tests
             public Task RemovePackageAsync(InstalledPackageInfo package, bool launcherRegistration) => inner.RemovePackageAsync(package, launcherRegistration);
             public void PrepareBootstrap(GdkLaunchRequest request, InstalledPackageInfo package) => inner.PrepareBootstrap(request, package);
             public void RecordInstall(GdkLaunchRequest request, InstalledPackageInfo package) => inner.RecordInstall(request, package);
+            public void PrepareSaveData(GdkLaunchRequest request) => inner.PrepareSaveData(request);
             public Task<bool> ActivateAsync(GdkLaunchRequest request, InstalledPackageInfo package) => inner.ActivateAsync(request, package);
         }
     }

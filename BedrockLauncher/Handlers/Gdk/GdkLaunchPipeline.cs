@@ -16,6 +16,9 @@ namespace BedrockLauncher.Handlers
         public PackageType PackageType { get; set; }
         public GdkPackageIdentity RequiredPackage { get; set; }
         public bool LaunchEditor { get; set; }
+
+        /// <summary>The installation's data folder the game data folder is linked to; null when not launching an installation.</summary>
+        public string InstallationDataPath { get; set; }
     }
 
     /// <summary>
@@ -43,6 +46,9 @@ namespace BedrockLauncher.Handlers
         void PrepareBootstrap(GdkLaunchRequest request, InstalledPackageInfo package);
 
         void RecordInstall(GdkLaunchRequest request, InstalledPackageInfo package);
+
+        /// <summary>Links the GDK data folder to <see cref="GdkLaunchRequest.InstallationDataPath"/>. Throws SaveRedirectionFailedException.</summary>
+        void PrepareSaveData(GdkLaunchRequest request);
 
         Task<bool> ActivateAsync(GdkLaunchRequest request, InstalledPackageInfo package);
     }
@@ -72,6 +78,12 @@ namespace BedrockLauncher.Handlers
         public async Task<InstalledPackageInfo> LaunchAsync(GdkLaunchRequest request)
         {
             InstalledPackageInfo package = await EnsureReadyAsync(request);
+
+            if (!string.IsNullOrWhiteSpace(request.InstallationDataPath))
+            {
+                platform.PrepareSaveData(request);
+                log("Save data: OK");
+            }
 
             if (!await platform.ActivateAsync(request, package))
             {

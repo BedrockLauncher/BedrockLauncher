@@ -33,6 +33,8 @@
     <Compile Include="..\..\BedrockLauncher\Handlers\Gdk\GdkLaunchPipeline.cs" Link="Launcher\GdkLaunchPipeline.cs" />
     <Compile Include="..\..\BedrockLauncher\Handlers\Gdk\GdkInstallRecord.cs" Link="Launcher\GdkInstallRecord.cs" />
     <Compile Include="..\..\BedrockLauncher\Handlers\Gdk\GdkLaunchHelperDeployment.cs" Link="Launcher\GdkLaunchHelperDeployment.cs" />
+    <Compile Include="..\..\BedrockLauncher\Handlers\Gdk\GdkSaveDataRedirector.cs" Link="Launcher\GdkSaveDataRedirector.cs" />
+    <Compile Include="..\..\BedrockLauncher\Exceptions\SaveRedirectionFailedException.cs" Link="Launcher\SaveRedirectionFailedException.cs" />
     <Compile Include="..\..\BedrockLauncher\Exceptions\PackageManagerException.cs" Link="Launcher\PackageManagerException.cs" />
     <Compile Include="..\..\BedrockLauncher\Exceptions\AppLaunchFailedException.cs" Link="Launcher\AppLaunchFailedException.cs" />
     <Compile Include="..\..\BedrockLauncher\Exceptions\GdkPipelineExceptions.cs" Link="Launcher\GdkPipelineExceptions.cs" />

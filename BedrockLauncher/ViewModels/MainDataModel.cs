@@ -111,7 +111,7 @@ namespace BedrockLauncher.ViewModels
             var Path = MainDataModel.Default.FilePaths.GetInstallationPackageDataPath(p.UUID, i.DirectoryName_Full);
 
             if (Version.PackageType == BedrockLauncher.UpdateProcessor.Enums.PackageType.GDK)
-                await PackageManager.InstallGdkPackage(p, Version);
+                await PackageManager.InstallGdkPackage(p, Version, Path);
             else
                 await PackageManager.InstallPackage(Version, Path);
         }

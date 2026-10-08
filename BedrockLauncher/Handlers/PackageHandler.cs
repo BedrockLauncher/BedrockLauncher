@@ -78,7 +78,7 @@ namespace BedrockLauncher.Handlers
             switch (v.PackageType)
             {
                 case PackageType.GDK:
-                    await PlayGdkPackage(profile, v, keepLauncherOpen, launchEditor);
+                    await PlayGdkPackage(profile, v, dirPath, keepLauncherOpen, launchEditor);
                     break;
 
                 case PackageType.UWP:
@@ -112,8 +112,8 @@ namespace BedrockLauncher.Handlers
                     return;
                 }
 
-                Uri launchUri = new Uri($"{Constants.GetUri(v.Type)}:?Editor={LaunchEditor}");
-                if (await TryLaunchSupportedUri(launchUri))
+                Uri launchUri = LaunchEditor ? Constants.GetEditorUri(v.Type) : Constants.GetLaunchUri(v.Type);
+                if (await TryLaunchUriInPackage(launchUri, Constants.GetPackageFamily(v.Type)))
                 {
                     Trace.WriteLine("App launch finished!");
                     if (!KeepLauncherOpen)
@@ -124,12 +124,14 @@ namespace BedrockLauncher.Handlers
                 else if (!LaunchEditor)
                 {
                     SetException(new AppLaunchFailedException(
-                        $"Could not launch Minecraft: no installed package or supported {Constants.GetUri(v.Type)} URI was found.",
-                        new Exception("The selected Minecraft package could not be activated and the URI protocol is not registered.")));
+                        $"Could not launch Minecraft {v.Name}: the package could not be activated and does not accept {launchUri}.",
+                        new InvalidOperationException("The registered Minecraft package could not be started.")));
                 }
                 else
                 {
-                    SetException(new AppLaunchFailedException($"Impossible to launch Editor: Failed to open {Constants.GetUri(v.Type)} URI", new Exception()));
+                    SetException(new AppLaunchFailedException(
+                        $"Impossible to launch Editor: Minecraft {v.Name} does not accept {launchUri}.",
+                        new InvalidOperationException("The registered Minecraft package does not handle the Editor URI.")));
                 }
             }
             catch (AppLaunchFailedException e)
@@ -144,22 +146,34 @@ namespace BedrockLauncher.Handlers
             }
         }
 
-        private async Task<bool> TryLaunchSupportedUri(Uri launchUri)
+        /// <summary>
+        /// Launches a protocol URI in exactly the given package family. The system's default handler for the protocol
+        /// is not used, so a stale "always open with" choice or another Minecraft package cannot receive the URI, and
+        /// Windows never shows the app picker.
+        /// </summary>
+        private async Task<bool> TryLaunchUriInPackage(Uri launchUri, string packageFamilyName)
         {
             try
             {
-                LaunchQuerySupportStatus status = await Launcher.QueryUriSupportAsync(launchUri, LaunchQuerySupportType.Uri);
+                LaunchQuerySupportStatus status =
+                    await Launcher.QueryUriSupportAsync(launchUri, LaunchQuerySupportType.Uri, packageFamilyName);
+
                 if (status != LaunchQuerySupportStatus.Available)
                 {
-                    Trace.WriteLine($"Skipping unsupported URI launch for {launchUri.Scheme}: query support returned {status}.");
+                    Trace.WriteLine($"{packageFamilyName} does not accept {launchUri}: query support returned {status}.");
                     return false;
                 }
 
-                return await Launcher.LaunchUriAsync(launchUri);
+                bool launched = await Launcher.LaunchUriAsync(
+                    launchUri,
+                    new LauncherOptions { TargetApplicationPackageFamilyName = packageFamilyName });
+
+                Trace.WriteLine($"URI launch of {launchUri} in {packageFamilyName}: {(launched ? "OK" : "refused")}");
+                return launched;
             }
             catch (Exception ex)
             {
-                Trace.WriteLine($"URI launch failed without showing the Windows protocol prompt: {ex}");
+                Trace.WriteLine($"URI launch of {launchUri} in {packageFamilyName} failed: {ex}");
                 return false;
             }
         }

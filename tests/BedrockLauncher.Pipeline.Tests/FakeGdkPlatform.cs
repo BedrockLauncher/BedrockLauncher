@@ -83,6 +83,11 @@ namespace BedrockLauncher.Pipeline.Tests
             Calls.Add("Record");
         }
 
+        public void PrepareSaveData(GdkLaunchRequest request)
+        {
+            Calls.Add("SaveData:" + request.InstallationDataPath);
+        }
+
         public Task<bool> ActivateAsync(GdkLaunchRequest request, InstalledPackageInfo package)
         {
             Calls.Add("Activate:" + package.FullName);

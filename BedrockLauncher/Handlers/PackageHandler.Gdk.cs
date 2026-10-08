@@ -31,6 +31,7 @@ namespace BedrockLauncher.Handlers
         public async Task PlayGdkPackage(
             BLProfile profile,
             MCVersion v,
+            string installationDataPath,
             bool keepLauncherOpen,
             bool launchEditor)
         {
@@ -38,7 +39,7 @@ namespace BedrockLauncher.Handlers
             {
                 StartTask();
 
-                GdkLaunchRequest request = CreateGdkLaunchRequest(v, launchEditor);
+                GdkLaunchRequest request = CreateGdkLaunchRequest(v, launchEditor, installationDataPath);
                 var pipeline = new GdkLaunchPipeline(new WindowsGdkPlatform(this, profile, v), LogGdk);
 
                 MainDataModel.Default.ProgressBarState.SetProgressBarText(v.DisplayName);
@@ -89,19 +90,27 @@ namespace BedrockLauncher.Handlers
             }
         }
 
-        /// <summary>Install / Repair: makes the exact required package ready to launch, without launching it.</summary>
+        /// <summary>
+        /// Install / Repair: makes the exact required package ready to launch, without launching it. When an installation
+        /// is given, its data folder is linked too (like the UWP install does).
+        /// </summary>
         public async Task InstallGdkPackage(
             BLProfile profile,
-            MCVersion v)
+            MCVersion v,
+            string installationDataPath = null)
         {
             try
             {
                 StartTask();
 
-                GdkLaunchRequest request = CreateGdkLaunchRequest(v, launchEditor: false);
-                var pipeline = new GdkLaunchPipeline(new WindowsGdkPlatform(this, profile, v), LogGdk);
+                GdkLaunchRequest request = CreateGdkLaunchRequest(v, launchEditor: false, installationDataPath);
+                var platform = new WindowsGdkPlatform(this, profile, v);
+                var pipeline = new GdkLaunchPipeline(platform, LogGdk);
 
                 await pipeline.EnsureReadyAsync(request);
+
+                if (!string.IsNullOrWhiteSpace(installationDataPath))
+                    platform.PrepareSaveData(request);
             }
             catch (PackageManagerException e)
             {
@@ -127,7 +136,7 @@ namespace BedrockLauncher.Handlers
 
         #region GDK Pipeline Helpers
 
-        private static GdkLaunchRequest CreateGdkLaunchRequest(MCVersion v, bool launchEditor)
+        private static GdkLaunchRequest CreateGdkLaunchRequest(MCVersion v, bool launchEditor, string installationDataPath)
         {
             return new GdkLaunchRequest
             {
@@ -136,8 +145,27 @@ namespace BedrockLauncher.Handlers
                 VersionType = v.Type,
                 PackageType = v.PackageType,
                 RequiredPackage = v.RequiredGdkPackage,
-                LaunchEditor = launchEditor
+                LaunchEditor = launchEditor,
+                InstallationDataPath = installationDataPath
             };
+        }
+
+        private static bool IsMinecraftFamilyRunning(string packageFamilyName)
+        {
+            foreach (Process candidate in Process.GetProcessesByName(Constants.MINECRAFT_PROCESS_NAME))
+            {
+                using (candidate)
+                {
+                    string packageFullName = PackageProcessInfo.GetPackageFullName(candidate.Id);
+                    if (GdkPackageIdentity.TryParseFullName(packageFullName, out GdkPackageIdentity running) &&
+                        running.IsSameFamily(packageFamilyName))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         private static void LogGdk(string message)
@@ -726,14 +754,45 @@ namespace BedrockLauncher.Handlers
                 }
             }
 
+            public void PrepareSaveData(GdkLaunchRequest request)
+            {
+                string gameDataPath = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                    MinecraftPackageFamilies.GetGdkDataFolderName(request.VersionType));
+
+                // A running game has its data folder open; the launch only brings that instance to the front.
+                if (IsMinecraftFamilyRunning(request.RequiredPackage.FamilyName))
+                {
+                    LogGdk($"Save data: Minecraft is already running, '{gameDataPath}' is left as is.");
+                    return;
+                }
+
+                var redirector = new GdkSaveDataRedirector((link, target) =>
+                    SymLinkHelper.CreateSymbolicLinkSafe(link, target, SymLinkHelper.SymbolicLinkType.Directory));
+
+                try
+                {
+                    var (state, backupPath) = redirector.Redirect(gameDataPath, request.InstallationDataPath);
+
+                    LogGdk($"Save data: {gameDataPath} -> {request.InstallationDataPath} ({state})");
+                    if (backupPath != null)
+                        LogGdk($"Save data: the existing data folder was moved to {backupPath}");
+                }
+                catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException)
+                {
+                    throw new SaveRedirectionFailedException(ex);
+                }
+            }
+
             public async Task<bool> ActivateAsync(GdkLaunchRequest request, InstalledPackageInfo package)
             {
                 MainDataModel.Default.ProgressBarState.SetProgressBarState(LauncherState.isLaunching);
 
                 if (request.LaunchEditor)
                 {
-                    return await handler.TryLaunchSupportedUri(
-                        new Uri($"{Constants.GetUri(request.VersionType)}:?Editor=True"));
+                    return await handler.TryLaunchUriInPackage(
+                        Constants.GetEditorUri(request.VersionType),
+                        package.FamilyName);
                 }
 
                 return GdkRegistration.Activate(
