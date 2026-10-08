@@ -14,6 +14,7 @@ using System.ComponentModel;
 using BedrockLauncher.ViewModels;
 using BedrockLauncher.Handlers;
 using Windows.Networking.NetworkOperators;
+using System.Diagnostics;
 
 namespace BedrockLauncher.Classes
 {
@@ -346,12 +347,17 @@ namespace BedrockLauncher.Classes
             if (CurrentProfile == null || CurrentInstallations == null) return;
             if (string.IsNullOrEmpty(name) || name == BedrockLauncher.Localization.Language.LanguageManager.GetResource("VersionEntries_UnnamedInstallation").ToString()) name = Guid.NewGuid().ToString();
             GetVersionParams(version, out VersioningMode versioningMode, out string version_uuid);
+
+            string DirName = ValidatePathName(name);
+            string profilePath = MainDataModel.Default.FilePaths.GetProfilePath(Properties.LauncherSettings.Default.CurrentProfileUUID);
+            if (!Directory.Exists(Path.Combine(profilePath, DirName))) Directory.CreateDirectory(Path.Combine(profilePath, DirName));
+
             BLInstallation new_installation = new BLInstallation()
             {
                 DisplayName = name,
                 IconPath = iconPath ?? Constants.INSTALLATIONS_FALLBACK_ICONPATH,
                 IsCustomIcon = isCustom,
-                DirectoryName = ValidatePathName(name),
+                DirectoryName = DirName,
                 VersioningMode = versioningMode,
                 VersionUUID = version_uuid
             };
@@ -360,34 +366,42 @@ namespace BedrockLauncher.Classes
         }
         public void Installation_Edit(string uuid, string name, MCVersion version, string directory, string iconPath = null, bool isCustom = false)
         {
-            if (CurrentProfile == null || CurrentInstallations == null) return;
-            string OldName = "";
-            if (CurrentInstallations.Any(x => x.InstallationUUID == uuid))
+            try
             {
-                int index = CurrentInstallations.FindIndex(x => x.InstallationUUID == uuid);
-                OldName = CurrentInstallations[index].DisplayName;
-            }
-            GetVersionParams(version, out VersioningMode versioningMode, out string version_uuid);
-            BLInstallation new_installation = new BLInstallation()
-            {
-                DisplayName = name,
-                IconPath = iconPath ?? Constants.INSTALLATIONS_FALLBACK_ICONPATH,
-                IsCustomIcon = isCustom,
-                DirectoryName = ValidatePathName(name),
-                VersioningMode = versioningMode,
-                VersionUUID = version_uuid
-            };
-            
+                if (CurrentProfile == null || CurrentInstallations == null) return;
+                string OldName = "";
+                if (CurrentInstallations.Any(x => x.InstallationUUID == uuid))
+                {
+                    int index = CurrentInstallations.FindIndex(x => x.InstallationUUID == uuid);
+                    OldName = CurrentInstallations[index].DisplayName;
+                }
+                GetVersionParams(version, out VersioningMode versioningMode, out string version_uuid);
+                BLInstallation new_installation = new BLInstallation()
+                {
+                    DisplayName = name,
+                    IconPath = iconPath ?? Constants.INSTALLATIONS_FALLBACK_ICONPATH,
+                    IsCustomIcon = isCustom,
+                    DirectoryName = ValidatePathName(name),
+                    VersioningMode = versioningMode,
+                    VersionUUID = version_uuid
+                };
 
-            if (CurrentInstallations.Any(x => x.InstallationUUID == uuid))
-            {
-                int index = CurrentInstallations.FindIndex(x => x.InstallationUUID == uuid);
-                CurrentInstallations[index] = new_installation;
-                Save();
+
+                if (CurrentInstallations.Any(x => x.InstallationUUID == uuid))
+                {
+                    int index = CurrentInstallations.FindIndex(x => x.InstallationUUID == uuid);
+                    CurrentInstallations[index] = new_installation;
+                    Save();
+                }
+                //We need to move data to new directory
+                if (OldName != name) Directory.Move(Path.Combine(MainDataModel.Default.FilePaths.GetProfilePath(Properties.LauncherSettings.Default.CurrentProfileUUID), OldName), Path.Combine(MainDataModel.Default.FilePaths.GetProfilePath(Properties.LauncherSettings.Default.CurrentProfileUUID), name));
             }
-            //We need to move data to new directory
-            if (OldName != name) Directory.Move(Path.Combine(MainDataModel.Default.FilePaths.GetProfilePath(Properties.LauncherSettings.Default.CurrentProfileUUID), OldName), Path.Combine(MainDataModel.Default.FilePaths.GetProfilePath(Properties.LauncherSettings.Default.CurrentProfileUUID), name));
+            catch (Exception ex)
+            {
+                Trace.WriteLine(ex);
+            }
         }
+
         public void Installation_Delete(BLInstallation installation, bool deleteData = true)
         {
             if (CurrentProfile == null || CurrentInstallations == null) return;
