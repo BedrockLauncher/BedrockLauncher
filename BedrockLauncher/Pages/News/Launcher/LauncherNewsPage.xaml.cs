@@ -57,21 +57,21 @@ namespace BedrockLauncher.Pages.News.Launcher
 
 
         private void CheckForUpdatesButton_Click(object sender, RoutedEventArgs e) => Task.Run(async () =>
-                                                                                               {
-                                                                                                   var result = await ViewModels.MainDataModel.Updater.CheckForUpdatesAsync();
-                                                                                                   if (result) ViewModels.MainViewModel.Default.UpdateButton.ShowUpdateButton();
-                                                                                               });
+        {
+            var result = await ViewModels.MainDataModel.Updater.CheckForUpdatesAsync();
+            if (result) ViewModels.MainViewModel.Default.UpdateButton.ShowUpdateButton();
+        });
 
         private void ForceUpdateButton_Click(object sender, RoutedEventArgs e) => ViewModels.MainDataModel.Updater.UpdateButton_Click(sender, e);
 
         private void UpdateFilters(object sender, RoutedEventArgs e) => Task.Run(() => RefreshNews(false));
 
         public async Task RefreshNews(bool force = true) => await this.Dispatcher.InvokeAsync(() =>
-                                                                     {
-                                                                         if (force) Task.Run(() => Downloaders.NewsDownloader.UpdateLauncherFeed(ViewModels.NewsViewModel.Default));
-                                                                         var view = CollectionViewSource.GetDefaultView(UpdatesList.ItemsSource) as CollectionView;
-                                                                         if (view != null) view.Filter = Filter_PatchNotes;
-                                                                     });
+        {
+            if (force) Task.Run(() => Downloaders.NewsDownloader.UpdateLauncherFeed(ViewModels.NewsViewModel.Default));
+            var view = CollectionViewSource.GetDefaultView(UpdatesList.ItemsSource) as CollectionView;
+            if (view != null) view.Filter = Filter_PatchNotes;
+        });
 
         private void PatchNotesList_KeyUp(object sender, KeyEventArgs e)
         {

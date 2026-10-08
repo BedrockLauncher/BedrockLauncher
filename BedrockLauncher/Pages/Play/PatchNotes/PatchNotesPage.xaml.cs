@@ -69,14 +69,14 @@ namespace BedrockLauncher.Pages.Play.PatchNotes
             Task.Run(() => RefreshPatchNotes(false));
         }
 
-        private void PatchNotesList_KeyUp(object sender, KeyEventArgs e)
+        private async void PatchNotesList_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
                 if (PatchNotesList.SelectedItem != null)
                 {
                     var item = PatchNotesList.SelectedItem as PatchNotes_Game_Item;
-                    FeedItem_PatchNotes.LoadChangelog(item);
+                    await FeedItem_PatchNotes.LoadChangelog(item);
                 }
             }
         }

@@ -297,8 +297,7 @@ namespace BedrockLauncher.Classes
 
         public void Installation_Add(BLInstallation installation)
         {
-            if (CurrentProfile == null) return;
-            if (CurrentInstallations == null) return;
+            if (CurrentProfile == null || CurrentInstallations == null) return;
             if (!CurrentInstallations.Any(x => x.InstallationUUID == installation.InstallationUUID))
             {
                 CurrentInstallations.Add(installation);
@@ -308,8 +307,7 @@ namespace BedrockLauncher.Classes
 
         public void Installation_Move(BLInstallation installation, bool moveUp)
         {
-            if (CurrentProfile == null) return;
-            if (CurrentInstallations == null) return;
+            if (CurrentProfile == null || CurrentInstallations == null) return;
             if (CurrentInstallations.Any(x => x.InstallationUUID == installation.InstallationUUID))
             {
                 int oldIndex = CurrentInstallations.FindIndex(x => x.InstallationUUID == installation.InstallationUUID);
@@ -326,8 +324,7 @@ namespace BedrockLauncher.Classes
 
         public void Installation_Clone(BLInstallation installation)
         {
-            if (CurrentProfile == null) return;
-            if (CurrentInstallations == null) return;
+            if (CurrentProfile == null || CurrentInstallations == null) return;
             if (CurrentInstallations.Any(x => x.InstallationUUID == installation.InstallationUUID))
             {
                 string newName = installation.DisplayName;
@@ -346,14 +343,13 @@ namespace BedrockLauncher.Classes
         }
         public void Installation_Create(string name, MCVersion version, string directory, string iconPath = null, bool isCustom = false)
         {
-            if (CurrentProfile == null) return;
-            if (CurrentInstallations == null) return;
+            if (CurrentProfile == null || CurrentInstallations == null) return;
             if (string.IsNullOrEmpty(name) || name == BedrockLauncher.Localization.Language.LanguageManager.GetResource("VersionEntries_UnnamedInstallation").ToString()) name = Guid.NewGuid().ToString();
             GetVersionParams(version, out VersioningMode versioningMode, out string version_uuid);
             BLInstallation new_installation = new BLInstallation()
             {
                 DisplayName = name,
-                IconPath = (iconPath == null ? Constants.INSTALLATIONS_FALLBACK_ICONPATH : iconPath),
+                IconPath = iconPath ?? Constants.INSTALLATIONS_FALLBACK_ICONPATH,
                 IsCustomIcon = isCustom,
                 DirectoryName = ValidatePathName(name),
                 VersioningMode = versioningMode,
@@ -364,8 +360,7 @@ namespace BedrockLauncher.Classes
         }
         public void Installation_Edit(string uuid, string name, MCVersion version, string directory, string iconPath = null, bool isCustom = false)
         {
-            if (CurrentProfile == null) return;
-            if (CurrentInstallations == null) return;
+            if (CurrentProfile == null || CurrentInstallations == null) return;
             string OldName = "";
             if (CurrentInstallations.Any(x => x.InstallationUUID == uuid))
             {
@@ -376,7 +371,7 @@ namespace BedrockLauncher.Classes
             BLInstallation new_installation = new BLInstallation()
             {
                 DisplayName = name,
-                IconPath = (iconPath == null ? Constants.INSTALLATIONS_FALLBACK_ICONPATH : iconPath),
+                IconPath = iconPath ?? Constants.INSTALLATIONS_FALLBACK_ICONPATH,
                 IsCustomIcon = isCustom,
                 DirectoryName = ValidatePathName(name),
                 VersioningMode = versioningMode,
@@ -395,8 +390,7 @@ namespace BedrockLauncher.Classes
         }
         public void Installation_Delete(BLInstallation installation, bool deleteData = true)
         {
-            if (CurrentProfile == null) return;
-            if (CurrentInstallations == null) return;
+            if (CurrentProfile == null || CurrentInstallations == null) return;
             if (deleteData)
             {
                 try { installation.DeleteUserData(); }

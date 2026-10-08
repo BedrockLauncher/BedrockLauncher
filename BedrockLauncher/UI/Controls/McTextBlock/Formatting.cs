@@ -29,49 +29,26 @@ namespace BedrockLauncher.UI.Controls.McTextBlock
 
         public static Color? FromChar(char c)
         {
-            switch (c)
+            return c switch
             {
-                case '0':
-                    return Black;
-                case '1':
-                    return DarkBlue;
-                case '2':
-                    return DarkGreen;
-                case '3':
-                    return DarkAqua;
-                case '4':
-                    return DarkRed;
-                case '5':
-                    return Purple;
-                case '6':
-                    return Gold;
-                case '7':
-                    return Gray;
-                case '8':
-                    return DarkGray;
-                case '9':
-                    return Blue;
-                case 'a':
-                case 'A':
-                    return Green;
-                case 'b':
-                case 'B':
-                    return Aqua;
-                case 'c':
-                case 'C':
-                    return Red;
-                case 'd':
-                case 'D':
-                    return LightPurple;
-                case 'e':
-                case 'E':
-                    return Yellow;
-                case 'f':
-                case 'F':
-                    return White;
-                default:
-                    return null;
-            }
+                '0' => Black,
+                '1' => DarkBlue,
+                '2' => DarkGreen,
+                '3' => DarkAqua,
+                '4' => DarkRed,
+                '5' => Purple,
+                '6' => Gold,
+                '7' => Gray,
+                '8' => DarkGray,
+                '9' => Blue,
+                'a' or 'A' => Green,
+                'b' or 'B' => Aqua,
+                'c' or 'C' => Red,
+                'd' or 'D' => LightPurple,
+                'e' or 'E' => Yellow,
+                'f' or 'F' => White,
+                _ => null
+            };
         }
     }
 }

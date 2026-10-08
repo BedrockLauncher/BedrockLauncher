@@ -45,40 +45,40 @@ namespace BedrockLauncher.Downloaders
             });
         }
         public static async Task UpdateLauncherFeed(NewsViewModel viewModel) => await Application.Current.Dispatcher.InvokeAsync(() =>
-                                                                                         {
-                                                                                             viewModel.LauncherNewsItems.Clear();
-                                                                                             bool isFirstItem = true;
-                                                                                             string latest_name = BedrockLauncher.Localization.Language.LanguageManager.GetResource("LauncherNewsPage_Title_Text").ToString();
-                                                                                             foreach (var item in MainDataModel.Updater.Notes)
-                                                                                             {
-                                                                                                 PatchNote_Launcher newItem = new PatchNote_Launcher(item);
+        {
+            viewModel.LauncherNewsItems.Clear();
+            bool isFirstItem = true;
+            string latest_name = BedrockLauncher.Localization.Language.LanguageManager.GetResource("LauncherNewsPage_Title_Text").ToString();
+            foreach (var item in MainDataModel.Updater.Notes)
+            {
+                PatchNote_Launcher newItem = new PatchNote_Launcher(item);
 
-                                                                                                 if (isFirstItem) newItem.isLatest = true; isFirstItem = false;
-                                                                                                 newItem.isBeta = item.url.Contains(BedrockLauncher.Core.GithubAPI.BETA_URL);
+                if (isFirstItem) newItem.isLatest = true; isFirstItem = false;
+                newItem.isBeta = item.url.Contains(BedrockLauncher.Core.GithubAPI.BETA_URL);
 
-                                                                                                 viewModel.LauncherNewsItems.Add(newItem);
-                                                                                             }
+                viewModel.LauncherNewsItems.Add(newItem);
+            }
 
-                                                                                         });
+        });
         public static async Task UpdateRSSFeed(RSSViewModel viewModel) => await Application.Current.Dispatcher.InvokeAsync(async () =>
-                                                                                   {
-                                                                                       try
-                                                                                       {
-                                                                                           viewModel.FeedItems.Clear();
-                                                                                           string rss = string.Empty;
-                                                                                           rss = await SharedHttpClient.Instance.GetStringAsync(viewModel.RSS_URL);
-                                                                                           Feed feed = FeedReader.ReadFromString(rss);
-                                                                                           foreach (FeedItem item in feed.Items)
-                                                                                           {
-                                                                                               var new_item = new News_RssItem(item, viewModel.RSSType);
-                                                                                               viewModel.FeedItems.Add(new_item);
-                                                                                           }
-                                                                                       }
-                                                                                       catch
-                                                                                       {
+        {
+            try
+            {
+                viewModel.FeedItems.Clear();
+                string rss = string.Empty;
+                rss = await SharedHttpClient.Instance.GetStringAsync(viewModel.RSS_URL);
+                Feed feed = FeedReader.ReadFromString(rss);
+                foreach (FeedItem item in feed.Items)
+                {
+                    var new_item = new News_RssItem(item, viewModel.RSSType);
+                    viewModel.FeedItems.Add(new_item);
+                }
+            }
+            catch
+            {
 
-                                                                                       }
-                                                                                   });
+            }
+        });
 
     }
 }
