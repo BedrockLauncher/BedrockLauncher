@@ -79,6 +79,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
         private string winstoreDBFile;
         private string communityDBFile;
         private string gdkLinksDBFile;
+        private string gdkVersionsDBFile;
 
         private readonly HttpClient HttpClient =
             new HttpClient();
@@ -128,27 +129,21 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             int userTokenIndex,
             string winstoreDBFile,
             string communityDBFile,
-            string gdkLinksDBFile = null,
+            string gdkLinksDBFile,
+            string gdkVersionsDBFile,
             string microsoftAccountId = null)
         {
             UserTokenIndex = userTokenIndex;
             MicrosoftAccountId = microsoftAccountId;
             this.winstoreDBFile = winstoreDBFile;
             this.communityDBFile = communityDBFile;
-
-            this.gdkLinksDBFile =
-                gdkLinksDBFile ??
-                Path.Combine(
-                    Path.GetDirectoryName(
-                        communityDBFile) ?? ".",
-                    "gdk_links_versions.json");
+            this.gdkLinksDBFile = gdkLinksDBFile;
+            this.gdkVersionsDBFile = gdkVersionsDBFile;
         }
 
         /// <summary>
-        /// Downloads a Minecraft package.
-        ///
-        /// GDK packages use GdkLinks CDN URLs.
-        /// UWP packages use the Microsoft Store download service.
+        /// Downloads a UWP Minecraft package through the Microsoft Store download service.
+        /// GDK versions never come through here (see <see cref="DownloadGdkPackage"/>).
         /// </summary>
         public async Task DownloadVersion(
             string versionName,
@@ -159,39 +154,10 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             CancellationToken cancellationToken,
             VersionType type)
         {
-            if (TryGetGdkDownloadUrls(
-                    updateIdentity,
-                    out var gdkUrls))
+            if (GdkDownloadUrls.ContainsKey(updateIdentity ?? string.Empty))
             {
-                Exception lastError = null;
-
-                foreach (var url in gdkUrls)
-                {
-                    try
-                    {
-                        Trace.WriteLine(
-                            $"Downloading GDK package from CDN: {url}");
-
-                        await DownloadFromDirectUrl(
-                            url,
-                            destination,
-                            progress,
-                            cancellationToken);
-
-                        return;
-                    }
-                    catch (Exception ex)
-                    {
-                        lastError = ex;
-
-                        Trace.WriteLine(
-                            $"CDN mirror failed: {url} — {ex.Message}");
-                    }
-                }
-
-                throw new IOException(
-                    $"All GdkLinks CDN mirrors failed for '{versionName}'",
-                    lastError);
+                throw new InvalidOperationException(
+                    $"'{versionName}' is a GDK version and cannot be downloaded through the UWP (Store) pipeline.");
             }
 
             string link =
@@ -215,6 +181,64 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
                 destination,
                 progress,
                 cancellationToken);
+        }
+
+        /// <summary>
+        /// Downloads exactly the required GDK package. Only resources whose file name is the required package
+        /// identity are used; there is no fallback to another version or to the Store pipeline.
+        /// </summary>
+        public async Task DownloadGdkPackage(
+            string versionUuid,
+            GdkPackageIdentity requiredPackage,
+            string destination,
+            DownloadProgress progress,
+            CancellationToken cancellationToken)
+        {
+            if (requiredPackage == null)
+                throw new ArgumentNullException(nameof(requiredPackage));
+
+            TryGetGdkDownloadUrls(versionUuid, out List<string> listedUrls);
+            string[] urls = VersionJsonDb.FilterUrlsForIdentity(listedUrls, requiredPackage);
+
+            if (urls.Length == 0)
+            {
+                throw new IOException(
+                    $"No download resource is catalogued for {requiredPackage.FullName}.");
+            }
+
+            Exception lastError = null;
+
+            foreach (var url in urls)
+            {
+                try
+                {
+                    Trace.WriteLine(
+                        $"Downloading GDK package {requiredPackage.FullName} from CDN: {url}");
+
+                    await DownloadFromDirectUrl(
+                        url,
+                        destination,
+                        progress,
+                        cancellationToken);
+
+                    return;
+                }
+                catch (OperationCanceledException)
+                {
+                    throw;
+                }
+                catch (Exception ex)
+                {
+                    lastError = ex;
+
+                    Trace.WriteLine(
+                        $"CDN mirror failed: {url} — {ex.Message}");
+                }
+            }
+
+            throw new IOException(
+                $"All CDN mirrors failed for {requiredPackage.FullName}",
+                lastError);
         }
 
         #endregion
@@ -388,133 +412,243 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
                 getNewVersions);
         }
 
+        /// <summary>
+        /// Loads the GDK catalog.
+        ///
+        /// Discovery and selection are separate: GdkLinks only answers "which GDK builds exist", the persisted GDK
+        /// catalog (gdkVersionsDBFile) answers "which exact package does Minecraft X require". A discovered entry is
+        /// added when the version is new; an already catalogued version keeps its package identity, so a refresh,
+        /// a GdkLinks change or a newer build can never re-point an existing version.
+        /// </summary>
         private async Task LoadGdkLinksVersions(
             bool getNewVersions)
         {
+            VersionJsonDb gdkCatalog =
+                LoadGdkCatalog();
+
             try
             {
-                string cachePath =
-                    gdkLinksDBFile;
+                string rawJson =
+                    await ReadGdkLinksManifest(
+                        getNewVersions);
 
-                string rawJson = null;
-
-                if (getNewVersions)
+                if (!string.IsNullOrWhiteSpace(rawJson))
                 {
-                    foreach (var url in gdkLinksUrls)
-                    {
-                        try
-                        {
-                            Trace.WriteLine(
-                                $"Fetching GdkLinks manifest from: {url}");
+                    var gdkLinks =
+                        new GdkLinksDb();
 
-                            var resp =
-                                await HttpClient.GetAsync(url);
+                    gdkLinks.Parse(
+                        rawJson);
 
-                            resp.EnsureSuccessStatusCode();
+                    foreach (string rejected in gdkLinks.RejectedEntries)
+                        Trace.WriteLine(rejected);
 
-                            rawJson =
-                                await resp.Content.ReadAsStringAsync();
+                    MergeGdkDiscoveries(
+                        gdkCatalog,
+                        gdkLinks.Versions);
 
-                            Directory.CreateDirectory(
-                                Path.GetDirectoryName(
-                                    cachePath) ?? ".");
-
-                            File.WriteAllText(
-                                cachePath,
-                                rawJson);
-
-                            Trace.WriteLine(
-                                $"GdkLinks cache saved: {cachePath}");
-
-                            break;
-                        }
-                        catch (Exception ex)
-                        {
-                            Trace.WriteLine(
-                                $"GdkLinks fetch failed [{url}]: " +
-                                ex.Message);
-                        }
-                    }
+                    gdkCatalog.Save(
+                        gdkVersionsDBFile);
                 }
-
-                if (rawJson == null &&
-                    File.Exists(cachePath))
-                {
-                    rawJson =
-                        File.ReadAllText(
-                            cachePath);
-                }
-
-                if (string.IsNullOrWhiteSpace(rawJson))
+                else
                 {
                     Trace.WriteLine(
-                        "No GdkLinks data available " +
-                        "(no network and no cache).");
-
-                    return;
+                        "No GdkLinks data available (no network and no cache); " +
+                        "using the persisted GDK catalog only.");
                 }
-
-                var gdkDb =
-                    new GdkLinksDb();
-
-                gdkDb.Parse(
-                    rawJson);
-
-                foreach (
-                    var pair
-                    in gdkDb.DownloadUrlsByUuid)
-                {
-                    GdkDownloadUrls[pair.Key] =
-                        pair.Value;
-                }
-
-                int added = 0;
-
-                foreach (
-                    var version
-                    in gdkDb.Versions)
-                {
-                    if (!MinecraftVersion.TryParse(
-                            version.GetVersion(),
-                            out _))
-                    {
-                        continue;
-                    }
-
-                    /*
-                     * Do NOT remove an UWP version just because
-                     * a GDK version has the same version number.
-                     *
-                     * UWP and GDK are different package types and
-                     * must both remain selectable.
-                     */
-
-                    if (Versions.Exists(x =>
-                        x.GetUUID() ==
-                        version.GetUUID() &&
-                        x.GetPackageType() ==
-                        version.GetPackageType()))
-                    {
-                        continue;
-                    }
-
-                    Versions.Add(
-                        version);
-
-                    added++;
-                }
-
-                Trace.WriteLine(
-                    $"GdkLinks: {added} new version(s) added " +
-                    $"(total CDN entries: {GdkDownloadUrls.Count}).");
             }
             catch (Exception ex)
             {
                 Trace.WriteLine(
-                    "LoadGdkLinksVersions failed:");
+                    "GdkLinks discovery failed; using the persisted GDK catalog only:");
 
                 Trace.WriteLine(ex);
             }
+
+            InsertGdkCatalog(
+                gdkCatalog);
+        }
+
+        /// <summary>Merges discovered GDK builds into the persisted catalog (add-only) and logs the outcome.</summary>
+        public static List<GdkCatalogMergeResult> MergeGdkDiscoveries(
+            VersionJsonDb gdkCatalog,
+            IEnumerable<VersionInfoJson> discovered)
+        {
+            var results =
+                new List<GdkCatalogMergeResult>();
+
+            foreach (var version in discovered)
+            {
+                GdkCatalogMergeResult result =
+                    gdkCatalog.MergeGdkEntry(
+                        version);
+
+                results.Add(result);
+
+                if (result == GdkCatalogMergeResult.Added)
+                {
+                    Trace.WriteLine(
+                        $"GDK catalog: Minecraft {version.version} ({version.type}) -> {version.packageIdentity}");
+                }
+                else if (result == GdkCatalogMergeResult.IdentityConflict)
+                {
+                    VersionInfoJson persisted =
+                        gdkCatalog.list.First(x =>
+                            x.uuid == version.uuid &&
+                            x.packageType == PackageType.GDK);
+
+                    Trace.TraceWarning(
+                        $"GDK catalog: GdkLinks now lists {version.packageIdentity} for Minecraft {version.version} " +
+                        $"({version.type}), but the version is associated with {persisted.packageIdentity}. " +
+                        "The persisted association is kept.");
+                }
+                else if (result == GdkCatalogMergeResult.Rejected)
+                {
+                    Trace.TraceWarning(
+                        $"GDK catalog: Minecraft {version.version} ({version.type}) has no valid package identity; not catalogued.");
+                }
+            }
+
+            return results;
+        }
+
+        private VersionJsonDb LoadGdkCatalog()
+        {
+            var catalog =
+                new VersionJsonDb();
+
+            try
+            {
+                catalog.ReadJson(
+                    gdkVersionsDBFile);
+            }
+            catch (Exception ex)
+            {
+                // Never overwrite an unreadable catalog: the associations it holds cannot be rebuilt reliably.
+                string backup =
+                    gdkVersionsDBFile + ".unreadable-" + DateTime.UtcNow.ToString("yyyyMMddHHmmss");
+
+                Trace.TraceError(
+                    $"The GDK catalog '{gdkVersionsDBFile}' could not be read; it is preserved as '{backup}'.");
+
+                Trace.WriteLine(ex);
+
+                if (File.Exists(gdkVersionsDBFile))
+                    File.Move(gdkVersionsDBFile, backup);
+
+                catalog =
+                    new VersionJsonDb();
+            }
+
+            // The GDK catalog holds GDK entries only.
+            catalog.list.RemoveAll(x =>
+                x.packageType != PackageType.GDK);
+
+            return catalog;
+        }
+
+        private async Task<string> ReadGdkLinksManifest(
+            bool getNewVersions)
+        {
+            if (getNewVersions)
+            {
+                foreach (var url in gdkLinksUrls)
+                {
+                    try
+                    {
+                        Trace.WriteLine(
+                            $"Fetching GdkLinks manifest from: {url}");
+
+                        var resp =
+                            await HttpClient.GetAsync(url);
+
+                        resp.EnsureSuccessStatusCode();
+
+                        string rawJson =
+                            await resp.Content.ReadAsStringAsync();
+
+                        Directory.CreateDirectory(
+                            Path.GetDirectoryName(
+                                gdkLinksDBFile) ?? ".");
+
+                        File.WriteAllText(
+                            gdkLinksDBFile,
+                            rawJson);
+
+                        Trace.WriteLine(
+                            $"GdkLinks cache saved: {gdkLinksDBFile}");
+
+                        return rawJson;
+                    }
+                    catch (Exception ex)
+                    {
+                        Trace.WriteLine(
+                            $"GdkLinks fetch failed [{url}]: " +
+                            ex.Message);
+                    }
+                }
+            }
+
+            return File.Exists(gdkLinksDBFile)
+                ? File.ReadAllText(gdkLinksDBFile)
+                : null;
+        }
+
+        private void InsertGdkCatalog(
+            VersionJsonDb gdkCatalog)
+        {
+            int added = 0;
+
+            foreach (var version in gdkCatalog.list)
+            {
+                GdkPackageIdentity required =
+                    version.GetRequiredGdkPackage();
+
+                if (required == null)
+                {
+                    Trace.TraceWarning(
+                        $"GDK catalog entry {version.version} ({version.uuid}) has no valid package identity; skipped.");
+
+                    continue;
+                }
+
+                if (!MinecraftVersion.TryParse(
+                        version.GetVersion(),
+                        out _))
+                {
+                    continue;
+                }
+
+                /*
+                 * Do NOT remove an UWP version just because
+                 * a GDK version has the same version number.
+                 *
+                 * UWP and GDK are different package types and
+                 * must both remain selectable.
+                 */
+                if (Versions.Exists(x =>
+                    x.GetUUID() ==
+                    version.GetUUID() &&
+                    x.GetPackageType() ==
+                    version.GetPackageType()))
+                {
+                    continue;
+                }
+
+                Versions.Add(
+                    version);
+
+                GdkDownloadUrls[version.uuid.ToString()] =
+                    VersionJsonDb.FilterUrlsForIdentity(
+                        version.downloadUrls,
+                        required)
+                    .ToList();
+
+                added++;
+            }
+
+            Trace.WriteLine(
+                $"GDK catalog: {added} version(s) available.");
         }
 
         private async Task UpdateDBFromURL(
@@ -702,6 +836,16 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
                 var version
                 in db.list)
             {
+                // Community / Store databases describe UWP packages only. GDK versions come exclusively from the
+                // GDK catalog, which carries their required package identity.
+                if (version.GetPackageType() != PackageType.UWP)
+                {
+                    Trace.WriteLine(
+                        $"Ignoring non-UWP entry {version.GetVersion()} in a UWP version database.");
+
+                    continue;
+                }
+
                 if (!MinecraftVersion.TryParse(
                         version.GetVersion(),
                         out _))

@@ -25,6 +25,7 @@ namespace BedrockLauncher.Pages.Preview.Profile
             _ = PrefillDefaultMicrosoftAccountAsync();
         }
 
+        /// <summary>Shows the Microsoft account Windows' token broker reports, when the profile has none recorded yet.</summary>
         private async Task PrefillDefaultMicrosoftAccountAsync()
         {
             var identity = await MicrosoftAccountAuthentication.TryGetDefaultAccountAsync();
@@ -54,6 +55,7 @@ namespace BedrockLauncher.Pages.Preview.Profile
             CreateProfileSubtitle.Text = this.FindResource("NewProfile_EditProfileSubTitle") as string;
             CreateProfileButtonText.Text = this.FindResource("NewProfile_EditProfileButton") as string;
             UpdateMicrosoftAccountStatus();
+            _ = PrefillDefaultMicrosoftAccountAsync();
 
         }
 
@@ -106,40 +108,6 @@ namespace BedrockLauncher.Pages.Preview.Profile
             }
         }
 
-        private async void MicrosoftAccountButton_Click(
-            object sender,
-            RoutedEventArgs e)
-        {
-            MicrosoftAccountButton.IsEnabled = false;
-
-            try
-            {
-                var identity =
-                    await MicrosoftAccountAuthentication.SignInAsync();
-                if (identity == null)
-                    return;
-
-                ViewModel.MicrosoftAccountId = identity.Id;
-                ViewModel.MicrosoftAccountName = identity.UserName;
-                UpdateMicrosoftAccountStatus();
-            }
-            catch (OperationCanceledException)
-            {
-            }
-            catch (Exception ex)
-            {
-                System.Windows.MessageBox.Show(
-                    $"Microsoft sign-in failed: {ex.Message}",
-                    "Microsoft account",
-                    System.Windows.MessageBoxButton.OK,
-                    System.Windows.MessageBoxImage.Error);
-            }
-            finally
-            {
-                MicrosoftAccountButton.IsEnabled = true;
-            }
-        }
-
         private void SaveMicrosoftAccountToProfile()
         {
             var profile =
@@ -160,17 +128,11 @@ namespace BedrockLauncher.Pages.Preview.Profile
                 MicrosoftAccountStatusText.SetResourceReference(
                     TextBlock.TextProperty,
                     "NewProfile_MicrosoftAccountNotConnected");
-                MicrosoftAccountButton.SetResourceReference(
-                    ContentControl.ContentProperty,
-                    "NewProfile_MicrosoftSignInButton");
                 return;
             }
 
             MicrosoftAccountStatusText.Text =
                 $"Microsoft: {ViewModel.MicrosoftAccountName}";
-            MicrosoftAccountButton.SetResourceReference(
-                ContentControl.ContentProperty,
-                "NewProfile_MicrosoftChangeAccountButton");
         }
 
         private void ProfileNameTextbox_TextChanged(object sender, TextChangedEventArgs e) => EvaluateDirectory();

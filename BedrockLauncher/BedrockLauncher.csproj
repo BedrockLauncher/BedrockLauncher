@@ -145,6 +145,13 @@
 			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 			<TargetPath>native\launchercore\%(Filename)%(Extension)</TargetPath>
 		</Content>
+		<!-- BedrockLauncher-dll (https://github.com/mrmariixx/BedrockLauncher-dll), built by Build-MSVC.cmd: replaces the
+		     installed GDK package's gamelaunchhelper.dll so launches skip the PC Bootstrapper's update step. -->
+		<Content Include="Resources\native\gamelaunchhelper\gamelaunchhelper.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+			<TargetPath>native\gamelaunchhelper\gamelaunchhelper.dll</TargetPath>
+		</Content>
 	</ItemGroup>
 	<ItemGroup>
 		<Resource Include="Resources\images\bg\play_screen\1.17_caves_and_cliffs_part_2.jpg" />

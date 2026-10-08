@@ -1,5 +1,4 @@
 ﻿using BedrockLauncher.Pages.Settings.General;
-using BedrockLauncher.Pages.Settings.Accounts;
 using BedrockLauncher.UI.Components;
 using System;
 using System.Collections.Generic;
@@ -24,7 +23,6 @@ namespace BedrockLauncher.Pages.Settings
     {
         public GeneralSettingsPage generalSettingsPage = new GeneralSettingsPage();
         public AboutPage aboutPage = new AboutPage();
-        private AccountsSettingsPage accountsSettingsPage = new AccountsSettingsPage();
 
         private Navigator Navigator { get; set; } = new Navigator();
 
@@ -43,7 +41,6 @@ namespace BedrockLauncher.Pages.Settings
                                                                           // but this works fine, at least
                                                                           List<ToggleButton> toggleButtons = new List<ToggleButton>() {
                 GeneralButton,
-                AccountsButton,
                 AboutButton
                                                                       };
 
@@ -66,7 +63,6 @@ namespace BedrockLauncher.Pages.Settings
                                                                           ResetButtonManager(senderName);
 
                                                                           if (senderName == GeneralButton.Name) NavigateToGeneralPage();
-                                                                          else if (senderName == AccountsButton.Name) NavigateToAccountsPage();
                                                                           else if (senderName == AboutButton.Name) NavigateToAboutPage();
                                                                       });
 
@@ -74,12 +70,6 @@ namespace BedrockLauncher.Pages.Settings
         {
             Navigator.UpdatePageIndex(0);
             Task.Run(() => Navigator.Navigate(SettingsScreenFrame, generalSettingsPage));
-        }
-
-        public void NavigateToAccountsPage()
-        {
-            Navigator.UpdatePageIndex(2);
-            Task.Run(() => Navigator.Navigate(SettingsScreenFrame, accountsSettingsPage));
         }
 
         public void NavigateToAboutPage()

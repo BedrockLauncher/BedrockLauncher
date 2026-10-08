@@ -16,9 +16,6 @@ namespace BedrockLauncher
         private const string APP_RESOURCEPATH_PREFIX = @"pack://application:,,,/BedrockLauncher;component/";
         private const string APP_RESOURCEPATH_SHORTPREFIX = @"/BedrockLauncher;component/";
 
-        private static readonly string MINECRAFT_PACKAGE_FAMILY = "Microsoft.MinecraftUWP_8wekyb3d8bbwe";
-        private static readonly string MINECRAFT_PREVIEW_PACKAGE_FAMILY = "Microsoft.MinecraftWindowsBeta_8wekyb3d8bbwe";
-
         private const string MINECRAFT_URI = "minecraft";   // both release and beta
         private const string MINECRAFT_PREVIEW_URI = "minecraft-preview";
 
@@ -74,7 +71,7 @@ namespace BedrockLauncher
 
         public const string FIRST_GDK_VERSION = "1.21.120";
 
-        internal static string GetPackageFamily(VersionType type) => type == VersionType.Preview ? MINECRAFT_PREVIEW_PACKAGE_FAMILY : MINECRAFT_PACKAGE_FAMILY;
+        internal static string GetPackageFamily(VersionType type) => UpdateProcessor.Classes.MinecraftPackageFamilies.GetFamilyName(type);
 
         internal static string GetUri(VersionType type) => type == VersionType.Preview ? MINECRAFT_PREVIEW_URI : MINECRAFT_URI;
 

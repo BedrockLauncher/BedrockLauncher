@@ -343,7 +343,6 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
         }
 
 
-        public async Task<SyncResult> getLatestGDKVersion(CookieData cookie, VersionType versionType) => throw new NotImplementedException();
         public async Task<DownloadLinkResult> getDownloadLinks(string updateIdentity, int revisionNumber, VersionType versionType)
         {
             try

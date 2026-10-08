@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Tests for the UWP/GDK package pipeline. The launcher project is a WPF/PostSharp application, so the
+    pipeline's Windows-independent sources are compiled in directly; UpdateProcessor is referenced as a project.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <!-- Run on a newer installed runtime when the 8.0 desktop runtime is absent. -->
+    <RollForward>Major</RollForward>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\modules\BedrockLauncher.UpdateProcessor\BedrockLauncher.UpdateProcessor.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\BedrockLauncher\Handlers\MinecraftManifestPatcher.cs" Link="Launcher\MinecraftManifestPatcher.cs" />
+    <Compile Include="..\..\BedrockLauncher\Handlers\PackageRegistrationMatcher.cs" Link="Launcher\PackageRegistrationMatcher.cs" />
+    <Compile Include="..\..\BedrockLauncher\Handlers\Gdk\GdkLaunchPipeline.cs" Link="Launcher\GdkLaunchPipeline.cs" />
+    <Compile Include="..\..\BedrockLauncher\Handlers\Gdk\GdkInstallRecord.cs" Link="Launcher\GdkInstallRecord.cs" />
+    <Compile Include="..\..\BedrockLauncher\Handlers\Gdk\GdkLaunchHelperDeployment.cs" Link="Launcher\GdkLaunchHelperDeployment.cs" />
+    <Compile Include="..\..\BedrockLauncher\Exceptions\PackageManagerException.cs" Link="Launcher\PackageManagerException.cs" />
+    <Compile Include="..\..\BedrockLauncher\Exceptions\AppLaunchFailedException.cs" Link="Launcher\AppLaunchFailedException.cs" />
+    <Compile Include="..\..\BedrockLauncher\Exceptions\GdkPipelineExceptions.cs" Link="Launcher\GdkPipelineExceptions.cs" />
+  </ItemGroup>
+</Project>

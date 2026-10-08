@@ -68,28 +68,40 @@ namespace BedrockLauncher.Handlers
         #region Public Methods
 
         /// <summary>
-        /// Entry point of the Play button: each package type runs its own pipeline.
-        /// UWP: download → extract → register → launch.
-        /// GDK: Microsoft account → entitlement → Windows-provided version → register → launch (PackageHandler.Gdk.cs).
+        /// Entry point of the Play button: the persisted package type of the version selects its pipeline, and the
+        /// two pipelines never fall back into each other.
+        /// UWP: download → extract → register → validate registration → launch.
+        /// GDK: required package → entitlement → exact install → validation → launch helper → launch (PackageHandler.Gdk.cs).
         /// </summary>
         public async Task Play(BLProfile profile, MCVersion v, string dirPath, bool keepLauncherOpen, bool launchEditor)
         {
-            if (v.PackageType == PackageType.GDK)
+            switch (v.PackageType)
             {
-                await PlayGdkPackage(profile, v, keepLauncherOpen, launchEditor);
-                return;
-            }
+                case PackageType.GDK:
+                    await PlayGdkPackage(profile, v, keepLauncherOpen, launchEditor);
+                    break;
 
-            await InstallPackage(v, dirPath);
-            await LaunchPackage(v, dirPath, keepLauncherOpen, launchEditor);
+                case PackageType.UWP:
+                    if (await InstallPackage(v, dirPath))
+                        await LaunchPackage(v, dirPath, keepLauncherOpen, launchEditor);
+                    break;
+
+                default:
+                    SetException(new AppLaunchFailedException(
+                        new InvalidOperationException($"Minecraft {v.Name} has an unknown package type ({v.PackageType}).")));
+                    break;
+            }
         }
 
+        /// <summary>UWP launch. The registered package of the family must be the selected version's loose registration.</summary>
         public async Task LaunchPackage(MCVersion v, string dirPath, bool KeepLauncherOpen, bool LaunchEditor)
         {
             try
             {
                 StartTask();
                 MainDataModel.Default.ProgressBarState.SetProgressBarState(LauncherState.isLaunching);
+
+                ValidateUwpRegistration(v);
 
                 if (!LaunchEditor && await TryLaunchPackageActivation(v, KeepLauncherOpen))
                 {
@@ -152,6 +164,55 @@ namespace BedrockLauncher.Handlers
             }
         }
 
+        /// <summary>
+        /// UWP validation: the package Windows has registered for the version's family must be the loose registration
+        /// of this version's folder, with the version its manifest declares. Anything else (another launcher version,
+        /// a Store install or a GDK package of the same family) blocks the launch instead of being started by mistake.
+        /// </summary>
+        private void ValidateUwpRegistration(MCVersion v)
+        {
+            if (v.PackageType != PackageType.UWP)
+                throw new InvalidOperationException($"Minecraft {v.Name} is not a UWP version.");
+
+            string family = Constants.GetPackageFamily(v.Type);
+            var (_, manifestVersion, _) = MCVersionExtensions.GetCommonPackageValues(v.ManifestPath);
+
+            List<Package> registered = PM.FindPackagesForUser(string.Empty, family).ToList();
+
+            Package match = registered.FirstOrDefault(package =>
+            {
+                string location;
+                try { location = package.InstalledLocation.Path; }
+                catch (FileNotFoundException) { location = string.Empty; }
+
+                PackageVersion version = package.Id.Version;
+                string installedVersion = $"{version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
+
+                return PackageRegistrationMatcher.MatchesRegistration(
+                        family,
+                        package.Id.FamilyName,
+                        sameInstallDirectory: PathsEqual(location, v.GameDirectory),
+                        signedPackageRegistration: false,
+                        expectedVersion: manifestVersion,
+                        installedVersion: installedVersion) &&
+                    PackageRegistrationMatcher.SameVersion(manifestVersion, installedVersion);
+            });
+
+            if (match == null)
+            {
+                string found = registered.Count == 0
+                    ? "nothing"
+                    : string.Join(", ", registered.Select(package => package.Id.FullName));
+
+                throw new AppLaunchFailedException(
+                    $"UWP validation failed for Minecraft {v.Name}: Windows has {found} registered for {family}, " +
+                    $"not the package in {v.GameDirectory}.",
+                    new InvalidOperationException("The selected UWP version is not the registered package."));
+            }
+
+            Trace.WriteLine($"UWP validation: OK ({match.Id.FullName} at {v.GameDirectory})");
+        }
+
         private async Task<bool> TryLaunchPackageActivation(MCVersion v, bool keepLauncherOpen)
         {
             try
@@ -185,11 +246,15 @@ namespace BedrockLauncher.Handlers
 
 
         /// <summary>UWP install: download → extract → register. GDK versions never come through here (see InstallGdkPackage).</summary>
-        public async Task InstallPackage(MCVersion v, string dirPath)
+        /// <returns>True when the version is registered and ready to launch.</returns>
+        public async Task<bool> InstallPackage(MCVersion v, string dirPath)
         {
             try
             {
                 StartTask();
+
+                if (v.PackageType != PackageType.UWP)
+                    throw new InvalidOperationException($"Minecraft {v.Name} is a {v.PackageType} version and cannot use the UWP pipeline.");
 
                 if (!v.IsInstalled)
                 {
@@ -204,10 +269,14 @@ namespace BedrockLauncher.Handlers
                     }
                 }
 
+                ValidateUwpManifestIdentity(v);
+
                 await UnregisterPackage(v, true);
+                await EnsureUwpFamilyAvailable(v);
                 await RegisterPackage(v);
 
                 await RedirectSaveData(dirPath, v.Type);
+                return true;
             }
             catch (PackageManagerException e)
             {
@@ -224,6 +293,123 @@ namespace BedrockLauncher.Handlers
             finally
             {
                 EndTask();
+            }
+
+            return false;
+        }
+
+        /// <summary>The extracted manifest must be the package of the version's own family (release vs preview).</summary>
+        private static void ValidateUwpManifestIdentity(MCVersion v)
+        {
+            var (name, _, _) = MCVersionExtensions.GetCommonPackageValues(v.ManifestPath);
+            string expected = MinecraftPackageFamilies.GetIdentityName(v.Type);
+
+            if (!string.Equals(name, expected, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new PackageRegistrationFailedException(new InvalidDataException(
+                    $"The manifest in {v.GameDirectory} identifies '{name}', but Minecraft {v.Name} ({v.Type}) is {expected}."));
+            }
+        }
+
+        /// <summary>
+        /// Windows keeps one package per family per user. After the launcher removed its own registrations, a package
+        /// left in the family (a GDK install or a Store install outside the launcher folder) prevents the loose
+        /// registration. It is removed only after the user confirms; otherwise the install stops with an explicit error.
+        /// </summary>
+        private async Task EnsureUwpFamilyAvailable(MCVersion v)
+        {
+            string family = Constants.GetPackageFamily(v.Type);
+
+            foreach (Package package in PM.FindPackagesForUser(string.Empty, family).ToList())
+            {
+                string location;
+                try { location = package.InstalledLocation.Path; }
+                catch (FileNotFoundException) { location = string.Empty; }
+
+                if (PathsEqual(location, v.GameDirectory))
+                    continue;
+
+                string fullName = package.Id.FullName;
+
+                var answer = await DialogPrompt.ShowDialog_YesNo(
+                    "Switch Minecraft version", //TODO: Localize String
+                    $"Minecraft {v.Name} (UWP) needs the {family} package slot, but {fullName} is installed there " +
+                    $"('{location}'). Windows keeps one Minecraft package installed at a time, so it has to be removed first. " +
+                    "Your worlds and settings are kept, and the launcher reinstalls it when you play that version again. Continue?");
+
+                if (answer != System.Windows.Forms.DialogResult.Yes)
+                {
+                    throw new PackageRegistrationFailedException(new InvalidOperationException(
+                        $"{fullName} (at '{location}') is installed for {family}. Windows keeps one package per family, " +
+                        $"so Minecraft {v.Name} (UWP) cannot be registered while it is installed. The package was left untouched."));
+                }
+
+                Trace.WriteLine($"Removing {fullName} so Minecraft {v.Name} (UWP) can be registered (confirmed).");
+                await RemoveOccupyingPackageAsync(fullName, family, v.Type);
+            }
+        }
+
+        /// <summary>
+        /// Removes a package installed by Windows (GDK or Store) that occupies a family another version needs. Callers
+        /// must have the user's confirmation. Save data in the package's LocalState is moved aside and restored, the
+        /// removal is verified, and GDK install records of the removed package are cleared so no version is shown as
+        /// installed when it is not.
+        /// </summary>
+        private async Task RemoveOccupyingPackageAsync(string packageFullName, string familyName, VersionType type)
+        {
+            MainDataModel.Default.ProgressBarState.SetProgressBarText(packageFullName);
+            MainDataModel.Default.ProgressBarState.SetProgressBarState(LauncherState.isRemovingPackage);
+
+            SaveDataGuard guard = ProtectSaveData(type);
+            try
+            {
+                await RemoveWindowsPackage(packageFullName);
+            }
+            finally
+            {
+                RestoreSaveData(guard);
+                ResetTask();
+            }
+
+            EnsurePackageRemoved(packageFullName, familyName);
+            ClearGdkInstallRecords(packageFullName);
+
+            Trace.WriteLine($"Removed {packageFullName}");
+        }
+
+        private void EnsurePackageRemoved(string packageFullName, string familyName)
+        {
+            if (PM.FindPackagesForUser(string.Empty, familyName).Any(package =>
+                    string.Equals(package.Id.FullName, packageFullName, StringComparison.OrdinalIgnoreCase)))
+            {
+                throw new PackageRemovalFailedException(
+                    new InvalidOperationException($"Windows still reports {packageFullName} as installed after removal."));
+            }
+        }
+
+        /// <summary>Deletes the install record of every GDK version whose required package was just removed.</summary>
+        private static void ClearGdkInstallRecords(string packageFullName)
+        {
+            foreach (MCVersion version in MainDataModel.Default.Versions.ToList())
+            {
+                if (version.PackageType != PackageType.GDK ||
+                    !string.Equals(version.RequiredGdkPackage?.FullName, packageFullName, StringComparison.OrdinalIgnoreCase))
+                {
+                    continue;
+                }
+
+                string record = Path.Combine(version.GameDirectory, GdkInstallRecord.FileName);
+                try
+                {
+                    if (File.Exists(record))
+                        File.Delete(record);
+
+                    version.UpdateFolderSize();
+                }
+                catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException)
+                {
+                    Trace.WriteLine($"Could not clear the install record {record}: {ex.Message}");
+                }
             }
         }
 
@@ -357,21 +543,7 @@ namespace BedrockLauncher.Handlers
 
                     if (MinecraftProcesses.Length == 1)
                     {
-                        MainDataModel.Default.ProgressBarState.SetGameRunningStatus(true);
-                        GameHandle = MinecraftProcesses[0];
-                        GameHandle.EnableRaisingEvents = true;
-                        GameHandle.Exited += OnPackageExit;
-
-
-                        void OnPackageExit(object sender, EventArgs e)
-                        {
-                            Process p = sender as Process;
-                            p.Exited -= OnPackageExit;
-                            GameHandle = null;
-                            MainDataModel.Default.ProgressBarState.SetGameRunningStatus(false);
-                        }
-
-                        Trace.WriteLine("Successfully attached Minecraft process");
+                        AttachGameProcess(MinecraftProcesses[0]);
                     }
                     else
                     {
@@ -394,6 +566,24 @@ namespace BedrockLauncher.Handlers
                 }
             });
 
+        }
+
+        private void AttachGameProcess(Process process)
+        {
+            MainDataModel.Default.ProgressBarState.SetGameRunningStatus(true);
+            GameHandle = process;
+            GameHandle.EnableRaisingEvents = true;
+            GameHandle.Exited += OnPackageExit;
+
+            void OnPackageExit(object sender, EventArgs e)
+            {
+                Process p = sender as Process;
+                p.Exited -= OnPackageExit;
+                GameHandle = null;
+                MainDataModel.Default.ProgressBarState.SetGameRunningStatus(false);
+            }
+
+            Trace.WriteLine($"Successfully attached Minecraft process {process.Id}");
         }
 
         private async Task DownloadAndExtractPackage(MCVersion v)
@@ -502,8 +692,11 @@ namespace BedrockLauncher.Handlers
         {
             try
             {
-                // GDK resources come from the GdkLinks CDN and need no Windows Update token.
-                if (v.IsBeta && v.PackageType != PackageType.GDK) await AuthenticateBetaUser();
+                // UWP only: GDK packages are downloaded by EnsureMsixvcDownloaded (PackageHandler.Gdk.cs).
+                if (v.PackageType != PackageType.UWP)
+                    throw new InvalidOperationException($"Minecraft {v.Name} is a {v.PackageType} version and cannot use the UWP download.");
+
+                if (v.IsBeta) await AuthenticateBetaUser();
                 MainDataModel.Default.ProgressBarState.SetProgressBarState(LauncherState.isDownloading);
                 Trace.WriteLine("Download starting");
                 await VersionDownloader.DownloadVersion(v.DisplayName, v.PackageID, 1, dlPath, (x, y) => ProgressWrapper(x, y), cancelSource.Token, v.Type);
@@ -1117,6 +1310,9 @@ namespace BedrockLauncher.Handlers
             if (e.GetType() == typeof(GdkEntitlementException)) SetGdkError(e, "Microsoft account");
             else if (e.GetType() == typeof(GdkVersionUnavailableException)) SetGdkError(e, "Minecraft version unavailable");
             else if (e.GetType() == typeof(GdkDeploymentRejectedException)) SetGdkError(e, "Windows rejected the package");
+            else if (e.GetType() == typeof(GdkVersionMismatchException)) SetGdkError(e, "Wrong Minecraft GDK package installed");
+            else if (e.GetType() == typeof(GdkRequirementUnresolvedException)) SetGdkError(e, "Minecraft GDK package unknown");
+            else if (e.GetType() == typeof(GdkBootstrapException)) SetGdkError(e, "Minecraft launch helper unavailable");
             else if (e.GetType() == typeof(PackageExtractionFailedException)) SetError(e, "Extraction failed", "Error_AppExtractionFailed_Title", "Error_AppExtractionFailed");
             else if (e.GetType() == typeof(PackageDownloadFailedException)) SetError(e, "Download failed", "Error_AppDownloadFailed_Title", "Error_AppDownloadFailed");
             else if (e.GetType() == typeof(BetaAuthenticationFailedException)) SetError(e, "Authentication failed", "Error_AuthenticationFailed_Title", "Error_AuthenticationFailed");

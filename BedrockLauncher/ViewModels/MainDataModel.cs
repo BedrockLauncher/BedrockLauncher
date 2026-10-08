@@ -79,7 +79,7 @@ namespace BedrockLauncher.ViewModels
         public async void RepairVersion(MCVersion v)
         {
             if (v.PackageType == BedrockLauncher.UpdateProcessor.Enums.PackageType.GDK)
-                await PackageManager.InstallGdkPackage(Config.CurrentProfile, v, force: true);
+                await PackageManager.InstallGdkPackage(Config.CurrentProfile, v);
             else
                 await PackageManager.DownloadPackage(v);
         }

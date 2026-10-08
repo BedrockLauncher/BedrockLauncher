@@ -8,6 +8,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using BedrockLauncher.Classes;
+using BedrockLauncher.Handlers;
+using BedrockLauncher.UpdateProcessor.Classes;
 using BedrockLauncher.UpdateProcessor.Enums;
 using BedrockLauncher.UpdateProcessor.Extensions;
 using BedrockLauncher.UpdateProcessor.Interfaces;
@@ -22,14 +24,18 @@ namespace BedrockLauncher.Classes
     [NotifyPropertyChanged(ExcludeExplicitProperties = Constants.Debugging.ExcludeExplicitProperties)]
     public class MCVersion
     {
-        public MCVersion(string uuid, string pkgId, string name, VersionType type, string architecture, PackageType packageType = PackageType.UWP)
+        public MCVersion(string uuid, string pkgId, string name, VersionType type, string architecture, PackageType packageType = PackageType.UWP, GdkPackageIdentity requiredGdkPackage = null)
         {
+            if (packageType != PackageType.GDK && requiredGdkPackage != null)
+                throw new ArgumentException("Only GDK versions have a required GDK package.", nameof(requiredGdkPackage));
+
             this.UUID = uuid;
             this.PackageID = pkgId;
             this.Name = name;
             this.Type = type;
             this.Architecture = architecture;
             this.PackageType = packageType;
+            this.RequiredGdkPackage = requiredGdkPackage;
         }
 
         public MCVersion(string name)
@@ -44,8 +50,14 @@ namespace BedrockLauncher.Classes
         public string Architecture { get; set; }
         public string CustomName { get; set; }
         public VersionType Type { get; set; }
-        public PackageType PackageType { get; set; }
+        public PackageType PackageType { get; private set; }
         public string PackageTypeString => PackageType.ToString();
+
+        /// <summary>
+        /// GDK only: the exact package this version requires, read from the persisted GDK catalog. Null for UWP, and
+        /// null for a GDK version whose requirement could not be resolved (such a version cannot be launched).
+        /// </summary>
+        public GdkPackageIdentity RequiredGdkPackage { get; private set; }
         public bool IsBeta
         {
             get => Type == VersionType.Beta;
@@ -71,7 +83,11 @@ namespace BedrockLauncher.Classes
             }
         }
 
-        /// <summary>True when the version folder holds real game files. For GDK this means a snapshot kept by the launcher (registration is handled at launch).</summary>
+        /// <summary>
+        /// UWP: the version folder holds the extracted game files.
+        /// GDK: the game is installed by Windows (Gaming Services), not in the version folder; the folder holds the
+        /// install record the launcher writes after validating the exact required package.
+        /// </summary>
         public bool HasPlayableFiles
         {
             get
@@ -79,9 +95,9 @@ namespace BedrockLauncher.Classes
                 Depends.On(GameDirectory);
                 if (PackageType == PackageType.GDK)
                 {
-                    return File.Exists(ExecutablePath) &&
-                           File.Exists(Path.Combine(GameDirectory, "MicrosoftGame.Config")) &&
-                           Directory.Exists(Path.Combine(GameDirectory, "data"));
+                    return RequiredGdkPackage != null &&
+                           GdkInstallRecord.TryRead(GameDirectory, out GdkPackageIdentity recorded) &&
+                           RequiredGdkPackage.Equals(recorded);
                 }
                 return File.Exists(ExecutablePath) &&
                        (File.Exists(ManifestPath) ||

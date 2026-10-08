@@ -20,6 +20,7 @@ namespace BedrockLauncher.Handlers
         public string WinStoreVersionsDBFileName { get => "winstore_versions.json"; }
         public string CommunityVersionsDBFileName { get => "community_versions.json"; }
         public string GdkLinksVersionsDBFileName { get => "gdk_links_versions.json"; }
+        public string GdkVersionsDBFileName { get => "gdk_versions.json"; }
         public string AppDataFolderName { get => ".minecraft_bedrock"; }
         public string InstallationsFolderName { get => "installations"; }
         public string InstallersFolder => Path.Combine(CurrentLocation, InstallationsFolderName) + Path.DirectorySeparatorChar;
@@ -79,6 +80,7 @@ namespace BedrockLauncher.Handlers
         public string GetSettingsFilePath() => Path.Combine(ExecutableDataDirectory, SettingsFileName);
         public string GetCommunityVersionsDBFile() => Path.Combine(CurrentLocation, CommunityVersionsDBFileName);
         public string GetGdkLinksVersionsDBFile() => Path.Combine(CurrentLocation, GdkLinksVersionsDBFileName);
+        public string GetGdkVersionsDBFile() => Path.Combine(CurrentLocation, GdkVersionsDBFileName);
         public string GetWinStoreVersionsDBFile() => Path.Combine(CurrentLocation, WinStoreVersionsDBFileName);
         public string GetProfilesFilePath() => Path.Combine(CurrentLocation, UserDataFileName);
         public string GetCacheFolderPath()

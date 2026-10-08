@@ -36,3 +36,6 @@ jobs:
 
       - name: Build
         run: msbuild BedrockLauncher.sln /p:Configuration=Debug /p:Restore=false
+
+      - name: Test
+        run: dotnet test tests/BedrockLauncher.Pipeline.Tests/BedrockLauncher.Pipeline.Tests.csproj --configuration Debug --no-restore
