@@ -93,6 +93,7 @@ namespace BedrockLauncher
 
         public static Dictionary<string, string> Themes = new Dictionary<string, string>()
         {
+            { "WildernessBound",                   ThemesPathPrefix + "26.50_wilderness_bound.png" },
             { "ChaosCubed",                        ThemesPathPrefix + "26.30_chaos_cubed.png" },
             { "TinyTakeover",                      ThemesPathPrefix + "26.10_tiny_takeover.png" },
             { "MountsOfMayhem",                    ThemesPathPrefix + "1.21.130_mounts_of_mayhem.png" },
