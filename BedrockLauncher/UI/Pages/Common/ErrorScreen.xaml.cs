@@ -34,8 +34,8 @@ namespace BedrockLauncher.UI.Pages.Common
 
         private void ErrorScreenViewCrashButton_Click(object sender, RoutedEventArgs e)
         {
-            var logFilePath = Path.Combine(AppContext.BaseDirectory, LogManager.Configuration.FindTargetByName<FileTarget>("allfile").FileName.Render(new LogEventInfo()));
-            Process.Start("notepad.exe", logFilePath);
+            var logPath = Path.Combine(AppContext.BaseDirectory, LogManager.Configuration.FindTargetByName<FileTarget>("allfile").FileName.Render(LogEventInfo.CreateNullEvent()));
+            Process.Start("notepad.exe", logPath);
         }
     }
     public static class ErrorScreenShow
@@ -101,16 +101,16 @@ namespace BedrockLauncher.UI.Pages.Common
         }
 
         public static void errormsg(string title, string message, Exception e = null) => Application.Current.Dispatcher.Invoke(() =>
-                                                                                                  {
-                                                                                                      ErrorScreen errorScreen = new ErrorScreen(Handler);
-                                                                                                      errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, title);
-                                                                                                      errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, message);
-                                                                                                      if (e != null)
-                                                                                                      {
-                                                                                                          errorScreen.ErrorStackTrace.Visibility = Visibility.Visible;
-                                                                                                          errorScreen.ErrorStackTrace.Text = e.ToString();
-                                                                                                      }
-                                                                                                      Handler.SetDialogFrame(errorScreen);
-                                                                                                  });
+        {
+            ErrorScreen errorScreen = new ErrorScreen(Handler);
+            errorScreen.ErrorType.SetResourceReference(TextBlock.TextProperty, title);
+            errorScreen.ErrorText.SetResourceReference(TextBlock.TextProperty, message);
+            if (e != null)
+            {
+                errorScreen.ErrorStackTrace.Visibility = Visibility.Visible;
+                errorScreen.ErrorStackTrace.Text = e.ToString();
+            }
+            Handler.SetDialogFrame(errorScreen);
+        });
     }
 }

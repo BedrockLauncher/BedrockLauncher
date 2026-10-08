@@ -1,10 +1,15 @@
-﻿using System;
+﻿using BedrockLauncher.Classes.Launcher;
+using BedrockLauncher.Downloaders;
+using BedrockLauncher.UI.Pages.Preview;
+using System;
+using System.Diagnostics;
+using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using BedrockLauncher.Classes.Launcher;
-using BedrockLauncher.UI.Pages.Preview;
 
 namespace BedrockLauncher.Pages.Play.PatchNotes
 {
@@ -18,16 +23,26 @@ namespace BedrockLauncher.Pages.Play.PatchNotes
             InitializeComponent();
         }
 
-        private void FeedItemButton_Click(object sender, RoutedEventArgs e)
+        private async void FeedItemButton_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
             PatchNotes_Game_Item item = button.DataContext as PatchNotes_Game_Item;
-            LoadChangelog(item);
+            await LoadChangelog(item);
         }
-
-        public static void LoadChangelog(PatchNotes_Game_Item item)
+        public static async Task LoadChangelog(PatchNotes_Game_Item item)
         {
-            ViewModels.MainViewModel.Default.SetOverlayFrame(new ChangelogPreviewPage(item.body, item.title, ""));
+            try
+            {
+                var response = await SharedHttpClient.Instance.GetStringAsync(Constants.PATCHNOTES_CONTENT_BASE_URL + item.contentPath);
+                using var doc = JsonDocument.Parse(response);
+                item.body = doc.RootElement.GetProperty("body").GetString();
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine(ex);
+            }
+
+            ViewModels.MainViewModel.Default.SetOverlayFrame(new ChangelogPreviewPage(item.body, item.title));
         }
 
         private ImageSource ToImageSource(string path, bool isFallback)

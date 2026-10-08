@@ -49,7 +49,7 @@ namespace BedrockLauncher.Pages.Play
                 PlayButton,
                 CreatorToolsButton,
                 InstallationsButton,
-                //PatchNotesButton
+                PatchNotesButton
             };
 
                 foreach (ToggleButton button in toggleButtons)
@@ -79,7 +79,7 @@ namespace BedrockLauncher.Pages.Play
                 if (senderName == PlayButton.Name) NavigateToPlayScreen();
                 else if (senderName == InstallationsButton.Name) NavigateToInstallationsPage();
                 else if (senderName == CreatorToolsButton.Name) NavigateToCreatorToolsPage();
-                //else if (senderName == PatchNotesButton.Name) NavigateToPatchNotes();
+                else if (senderName == PatchNotesButton.Name) NavigateToPatchNotes();
             });
         }
 

@@ -88,9 +88,9 @@ namespace BedrockLauncher.Handlers
         #region Update Checking
 
         public void CheckForUpdates() => Task.Run(async () =>
-                                                  {
-                                                      await CheckForUpdatesAsync();
-                                                  });
+        {
+            await CheckForUpdatesAsync();
+        });
         public async Task<bool> CheckForUpdatesAsync(bool onLoad = false)
         {
             if (onLoad && Debugger.IsAttached && !Constants.Debugging.CheckForUpdatesOnLoad) return false;
@@ -139,8 +139,7 @@ namespace BedrockLauncher.Handlers
         #region Button
         public void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            if (isLatestBeta()) JemExtensions.WebExtensions.LaunchWebLink(Constants.UPDATES_BETA_PAGE);
-            else JemExtensions.WebExtensions.LaunchWebLink(Constants.UPDATES_RELEASE_PAGE);
+            JemExtensions.WebExtensions.LaunchWebLink(Constants.UPDATES_RELEASE_PAGE);
         }
 
         #endregion
@@ -169,64 +168,10 @@ namespace BedrockLauncher.Handlers
         }
         public bool IsVersionNewer(string localVersionStr, string remoteVersionStr)
         {
-            int CheckGroup(string[] local, string[] remote, int index)
+            if (Version.TryParse(localVersionStr, out Version localVersion) && Version.TryParse(remoteVersionStr, out Version remoteVersion))
             {
-                var requiredLength = index + 1;
-                if (local.Length >= requiredLength && remote.Length >= requiredLength)
-                {
-                    if (int.TryParse(local[index], out int localInt) && int.TryParse(remote[index], out int remoteInt))
-                    {
-                        //Debugging Only
-                        //Console.WriteLine(string.Format("Local Number {0}: {1}", index, localInt));
-                        //Console.WriteLine(string.Format("Local Number {0}: {1}", index, remoteInt));
-                        if (localInt < remoteInt)
-                        {
-                            return 1;
-                        }
-                        else if (localInt == remoteInt)
-                        {
-                            return 0;
-                        }
-                        else if (localInt > remoteInt)
-                        {
-                            return -1;
-                        }
-
-                    }
-                }
-                return -2;
+                return localVersion < remoteVersion;
             }
-
-            string[] localGroups = localVersionStr.Split('.');
-            string[] remoteGroups = remoteVersionStr.Split('.');
-
-            var yearResult = CheckGroup(localGroups, remoteGroups, 0);
-            if (yearResult == -2 || yearResult == -1) return false;
-            else if (yearResult == 1) return true;
-            else if (yearResult == 0)
-            {
-                var monthResult = CheckGroup(localGroups, remoteGroups, 1);
-                if (monthResult == -2 || monthResult == -1) return false;
-                else if (monthResult == 1) return true;
-                else if (monthResult == 0)
-                {
-                    var dayResult = CheckGroup(localGroups, remoteGroups, 2);
-                    if (dayResult == -2 || dayResult == -1) return false;
-                    else if (dayResult == 1) return true;
-                    else if (dayResult == 0)
-                    {
-                        var buildResult = CheckGroup(localGroups, remoteGroups, 3);
-                        if (buildResult == -2 || buildResult == -1) return false;
-                        else if (buildResult == 1) return true;
-                        else if (buildResult == 0)
-                        {
-                            return false;
-                        }
-                    }
-                }
-            }
-
-
 
             return false;
         }
