@@ -125,18 +125,20 @@ namespace BedrockLauncher.Handlers
             if (sameFamily.Count == 0)
                 return new GdkInstallEvaluation(GdkInstallStatus.Missing, null);
 
-            InstalledPackageInfo exact = sameFamily.FirstOrDefault(package => IsExactPackage(required, package));
-            if (exact != null)
-                return new GdkInstallEvaluation(GdkInstallStatus.Exact, exact);
+            InstalledPackageInfo installed =
+                sameFamily.FirstOrDefault(package => IsExactPackage(required, package)) ?? sameFamily[0];
 
-            InstalledPackageInfo installed = sameFamily[0];
-
+            // A development-mode registration from the launcher folder is never a usable GDK install, even with the
+            // exact identity: GDK games only run when Windows (Gaming Services) installed them.
             if (installed.IsDevelopmentMode &&
                 isLauncherOwnedLocation != null &&
                 isLauncherOwnedLocation(installed.InstallLocation))
             {
                 return new GdkInstallEvaluation(GdkInstallStatus.OccupiedByLauncherRegistration, installed);
             }
+
+            if (IsExactPackage(required, installed))
+                return new GdkInstallEvaluation(GdkInstallStatus.Exact, installed);
 
             if (installed.Version == required.Version)
                 return new GdkInstallEvaluation(GdkInstallStatus.WrongArchitecture, installed);

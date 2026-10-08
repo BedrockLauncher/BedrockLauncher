@@ -83,7 +83,9 @@ namespace BedrockLauncher.Pages.Play.Installations.Components
 
         private void ContextMenu_Closed(object sender, RoutedEventArgs e)
         {
-            (this.Tag as Pages.Play.Installations.InstallationsScreen).InstallationsList.SelectedItem = null;
+            // The item may already be gone from the list (e.g. deleted), in which case its Tag binding is cleared.
+            if (this.Tag is Pages.Play.Installations.InstallationsScreen screen)
+                screen.InstallationsList.SelectedItem = null;
         }
 
         private void EditInstallationButton_Click(object sender, RoutedEventArgs e)

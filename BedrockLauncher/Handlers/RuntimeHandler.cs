@@ -130,6 +130,13 @@ namespace BedrockLauncher.Handlers
         }
         public static void OnDispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e) => Trace.WriteLine(e.Exception.ToString());
 
+        /// <summary>Exceptions on non-UI threads end the process without reaching the dispatcher handler; log them first.</summary>
+        public static void OnUnhandledException(object sender, UnhandledExceptionEventArgs e) =>
+            Trace.WriteLine($"Unhandled exception (terminating: {e.IsTerminating}):{Environment.NewLine}{e.ExceptionObject}");
+
+        public static void OnUnobservedTaskException(object sender, System.Threading.Tasks.UnobservedTaskExceptionEventArgs e) =>
+            Trace.WriteLine($"Unobserved task exception:{Environment.NewLine}{e.Exception}");
+
         public static NLogTraceListener InternalTraceListener { get; set; } = new NLogTraceListener();
 
         public static void StartLogging()

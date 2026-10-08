@@ -53,18 +53,14 @@ namespace BedrockLauncher.Downloaders
             ClearPatchList();
 
             PatchNotes_Game_Root result = null;
-            using (var httpClient = new HttpClient())
+            try
             {
-                try
-                {
-                    var json = await httpClient.GetStringAsync(Constants.PATCHNOTES_MAIN_URL);
-                    result = Newtonsoft.Json.JsonConvert.DeserializeObject<PatchNotes_Game_Root>(json);
-                }
-                catch
-                {
-                    result = new PatchNotes_Game_Root();
-                }
-
+                var json = await SharedHttpClient.Instance.GetStringAsync(Constants.PATCHNOTES_MAIN_URL);
+                result = Newtonsoft.Json.JsonConvert.DeserializeObject<PatchNotes_Game_Root>(json);
+            }
+            catch
+            {
+                result = new PatchNotes_Game_Root();
             }
             if (result == null) result = new PatchNotes_Game_Root();
             if (result.entries == null) result.entries = new List<PatchNotes_Game_Item>();

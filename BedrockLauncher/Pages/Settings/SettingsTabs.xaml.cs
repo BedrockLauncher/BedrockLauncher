@@ -1,4 +1,5 @@
 ﻿using BedrockLauncher.Pages.Settings.General;
+using BedrockLauncher.Pages.Settings.Versions;
 using BedrockLauncher.UI.Components;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace BedrockLauncher.Pages.Settings
     public partial class SettingsTabs : Page
     {
         public GeneralSettingsPage generalSettingsPage = new GeneralSettingsPage();
+        public VersionsPage versionsSettingsPage = new VersionsPage();
         public AboutPage aboutPage = new AboutPage();
 
         private Navigator Navigator { get; set; } = new Navigator();
@@ -41,6 +43,7 @@ namespace BedrockLauncher.Pages.Settings
                                                                           // but this works fine, at least
                                                                           List<ToggleButton> toggleButtons = new List<ToggleButton>() {
                 GeneralButton,
+                VersionsButton,
                 AboutButton
                                                                       };
 
@@ -63,6 +66,7 @@ namespace BedrockLauncher.Pages.Settings
                                                                           ResetButtonManager(senderName);
 
                                                                           if (senderName == GeneralButton.Name) NavigateToGeneralPage();
+                                                                          else if (senderName == VersionsButton.Name) NavigateToVersionsPage();
                                                                           else if (senderName == AboutButton.Name) NavigateToAboutPage();
                                                                       });
 
@@ -72,9 +76,15 @@ namespace BedrockLauncher.Pages.Settings
             Task.Run(() => Navigator.Navigate(SettingsScreenFrame, generalSettingsPage));
         }
 
-        public void NavigateToAboutPage()
+        public void NavigateToVersionsPage()
         {
             Navigator.UpdatePageIndex(1);
+            Task.Run(() => Navigator.Navigate(SettingsScreenFrame, versionsSettingsPage));
+        }
+
+        public void NavigateToAboutPage()
+        {
+            Navigator.UpdatePageIndex(2);
             Task.Run(() => Navigator.Navigate(SettingsScreenFrame, aboutPage));
         }
 

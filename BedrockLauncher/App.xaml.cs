@@ -29,6 +29,8 @@ namespace BedrockLauncher
         public App() : base()
         {
             this.DispatcherUnhandledException += RuntimeHandler.OnDispatcherUnhandledException;
+            AppDomain.CurrentDomain.UnhandledException += RuntimeHandler.OnUnhandledException;
+            System.Threading.Tasks.TaskScheduler.UnobservedTaskException += RuntimeHandler.OnUnobservedTaskException;
         }
     }
 }

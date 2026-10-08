@@ -432,8 +432,6 @@ namespace BedrockLauncher.Classes
             }
         }
 
-        internal void EnsurePlayableInstallationSelected(bool forceSync) => throw new NotImplementedException();
-
 
         #endregion
     }

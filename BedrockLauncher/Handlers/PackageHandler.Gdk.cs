@@ -211,19 +211,14 @@ namespace BedrockLauncher.Handlers
             MCVersion v,
             GdkPackageIdentity required)
         {
-            string cacheDirectory =
-                GetPackageCacheDirectory(v);
+            // The package lives in the version folder and is named after the exact package identity, so it can only
+            // ever be used for this version, and switching back to the version does not download it again.
+            EnsureSafeLauncherVersionDirectory(v.GameDirectory);
+            Directory.CreateDirectory(v.GameDirectory);
 
-            Directory.CreateDirectory(
-                cacheDirectory);
+            string packagePath = v.GdkPackageFilePath;
 
-            // The cache file is named after the exact package identity, so a cached file can only ever be used for it.
-            string packagePath =
-                Path.Combine(
-                    cacheDirectory,
-                    required.FullName + GdkPackageIdentity.MsixvcExtension);
-
-            AdoptLegacyMsixvcCache(v, packagePath);
+            AdoptCachedMsixvc(v, required, packagePath);
 
             bool cachedUsable =
                 File.Exists(packagePath) &&
@@ -291,22 +286,37 @@ namespace BedrockLauncher.Handlers
             return packagePath;
         }
 
-        /// <summary>Older launcher builds cached GDK packages as Minecraft-&lt;version&gt;.msixvc; reuse such a file once.</summary>
-        private void AdoptLegacyMsixvcCache(MCVersion v, string identityPath)
+        /// <summary>
+        /// Moves a package earlier launcher builds left in versions\AppxBackups (named after the identity, or the older
+        /// Minecraft-&lt;version&gt;.msixvc) into the version folder, so it is not downloaded again.
+        /// </summary>
+        private void AdoptCachedMsixvc(MCVersion v, GdkPackageIdentity required, string packagePath)
         {
-            string legacyPath = Path.Combine(GetPackageCacheDirectory(v), GetMinecraftPackageFileName(v, GdkPackageIdentity.MsixvcExtension));
-
-            if (File.Exists(identityPath) || !File.Exists(legacyPath))
+            if (File.Exists(packagePath))
                 return;
 
-            try
+            string backups = GetPackageCacheDirectory(v);
+            string[] candidates =
             {
-                File.Move(legacyPath, identityPath);
-                LogGdk($"Adopted legacy cached package {legacyPath} as {identityPath}; Windows validates its identity on install.");
-            }
-            catch (IOException ex)
+                Path.Combine(backups, required.FullName + GdkPackageIdentity.MsixvcExtension),
+                Path.Combine(backups, GetMinecraftPackageFileName(v, GdkPackageIdentity.MsixvcExtension))
+            };
+
+            foreach (string candidate in candidates)
             {
-                LogGdk($"Could not adopt legacy cached package {legacyPath}: {ex.Message}");
+                if (!File.Exists(candidate))
+                    continue;
+
+                try
+                {
+                    File.Move(candidate, packagePath);
+                    LogGdk($"Moved cached package {candidate} to {packagePath}; Windows validates its identity on install.");
+                    return;
+                }
+                catch (IOException ex)
+                {
+                    LogGdk($"Could not move cached package {candidate}: {ex.Message}");
+                }
             }
         }
 
@@ -646,30 +656,22 @@ namespace BedrockLauncher.Handlers
 
             public async Task InstallExactAsync(GdkLaunchRequest request)
             {
-                if (!handler.VersionDownloader.HasGdkDownloadResource(version))
+                if (!File.Exists(version.GdkPackageFilePath) &&
+                    !handler.VersionDownloader.HasGdkDownloadResource(version))
                 {
                     throw new GdkVersionUnavailableException(
-                        $"{request.RequiredPackage.FullName} is not installed and the catalog lists no download " +
-                        $"resource for exactly that package (Minecraft {request.MinecraftVersion}).");
+                        $"{request.RequiredPackage.FullName} is not installed, it is not downloaded in the version folder, " +
+                        $"and the catalog lists no download resource for exactly that package (Minecraft {request.MinecraftVersion}).");
                 }
 
+                // The package stays in the version folder after installing: it is this version's local copy.
                 string packagePath =
                     await handler.EnsureMsixvcDownloaded(
                         version,
                         request.RequiredPackage);
 
-                try
-                {
-                    await handler.RunWindowsDeployment(
-                        packagePath);
-                }
-                finally
-                {
-                    if (!Properties.LauncherSettings.Default.KeepAppx)
-                    {
-                        handler.SafeDeleteFile(packagePath);
-                    }
-                }
+                await handler.RunWindowsDeployment(
+                    packagePath);
             }
 
             public async Task<bool> ConfirmReplaceAsync(GdkLaunchRequest request, GdkInstallEvaluation evaluation)

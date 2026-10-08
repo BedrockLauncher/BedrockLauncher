@@ -267,6 +267,25 @@ namespace BedrockLauncher.Pipeline.Tests
         }
 
         [Fact]
+        public async Task LooseRegistrationOfTheRequiredPackageIsReplacedByAWindowsInstall()
+        {
+            // A GDK build registered in development mode from a launcher folder does not run (Gaming Services does
+            // not know it), so even the exact identity there is removed and installed through Windows.
+            var required = Identities.Release("1.26.3005.0");
+            var platform = new FakeGdkPlatform();
+            platform.Installed.Add(FakeGdkPlatform.Package(
+                required,
+                location: FakeGdkPlatform.VersionsFolder + @"\1.26.30.5",
+                developmentMode: true));
+
+            InstalledPackageInfo launched = await Pipeline(platform).LaunchAsync(Identities.GdkRequest(required));
+
+            Assert.Contains("RemoveLauncherRegistration", platform.Calls);
+            Assert.Equal(new[] { required }, platform.InstallRequests);
+            Assert.False(launched.IsDevelopmentMode);
+        }
+
+        [Fact]
         public async Task SaveDataIsLinkedAfterValidationAndBeforeActivation()
         {
             var required = Identities.Release("1.26.4005.0");
