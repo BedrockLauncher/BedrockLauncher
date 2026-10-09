@@ -129,30 +129,7 @@ namespace BedrockLauncher.Pipeline.Tests
         }
 
         [Fact]
-        public async Task GdkRequiresEntitlementBeforeAnyInstallation()
-        {
-            var platform = new FakeGdkPlatform { Entitled = false };
-
-            await Assert.ThrowsAsync<GdkEntitlementException>(
-                () => Pipeline(platform).LaunchAsync(Identities.GdkRequest(Identities.Release("1.26.4005.0"))));
-
-            Assert.Equal(new[] { "Entitlement" }, platform.Calls);
-        }
-
-        [Fact]
-        public async Task EntitlementRunsForEveryGdkLaunch()
-        {
-            var required = Identities.Release("1.26.4005.0");
-            var platform = new FakeGdkPlatform();
-            platform.Installed.Add(FakeGdkPlatform.Package(required));
-
-            await Pipeline(platform).LaunchAsync(Identities.GdkRequest(required));
-
-            Assert.Equal("Entitlement", platform.Calls.First());
-        }
-
-        [Fact]
-        public async Task UwpVersionNeverReachesEntitlementOrInstaller()
+        public async Task UwpVersionNeverReachesTheGdkPipeline()
         {
             var platform = new FakeGdkPlatform();
             // A GDK package being installed on the system must not matter for a UWP version.
@@ -327,7 +304,6 @@ namespace BedrockLauncher.Pipeline.Tests
             Assert.Contains("Package type: GDK", log);
             Assert.Contains("Required GDK: " + required.FullName, log);
             Assert.Contains(log, line => line.StartsWith("Installed GDK: " + required.FullName));
-            Assert.Contains("Entitlement: OK", log);
             Assert.Contains("Package validation: OK", log);
             Assert.Contains("Bootstrap: OK", log);
             Assert.Contains("GDK validation: OK", log);
@@ -345,7 +321,6 @@ namespace BedrockLauncher.Pipeline.Tests
                 exact = FakeGdkPlatform.Package(required);
             }
 
-            public Task VerifyEntitlementAsync(GdkLaunchRequest request) => inner.VerifyEntitlementAsync(request);
             public IReadOnlyList<InstalledPackageInfo> GetInstalledPackages(string family) => inner.GetInstalledPackages(family);
             public bool IsLauncherOwnedLocation(string location) => inner.IsLauncherOwnedLocation(location);
 

@@ -27,9 +27,6 @@ namespace BedrockLauncher.Handlers
     /// </summary>
     internal interface IGdkPlatform
     {
-        /// <summary>Throws <see cref="GdkEntitlementException"/> when the entitlement cannot be confirmed. No side effects.</summary>
-        Task VerifyEntitlementAsync(GdkLaunchRequest request);
-
         IReadOnlyList<InstalledPackageInfo> GetInstalledPackages(string packageFamilyName);
 
         bool IsLauncherOwnedLocation(string location);
@@ -54,7 +51,7 @@ namespace BedrockLauncher.Handlers
     }
 
     /// <summary>
-    /// GDK pipeline: required package -> entitlement -> exact install (only if needed) -> validation -> bootstrap
+    /// GDK pipeline: required package -> exact install (only if needed) -> validation -> bootstrap
     /// preparation -> final validation -> launch.
     ///
     /// The required package always comes from the persisted version. What is installed on Windows is only compared
@@ -107,9 +104,6 @@ namespace BedrockLauncher.Handlers
             log($"Required GDK: {required.FullName}");
             log($"Package family: {required.FamilyName}");
             log($"Architecture: {required.Architecture}");
-
-            await platform.VerifyEntitlementAsync(request);
-            log("Entitlement: OK");
 
             GdkInstallEvaluation evaluation = Evaluate(required);
             log($"Installed GDK: {Describe(evaluation)}");

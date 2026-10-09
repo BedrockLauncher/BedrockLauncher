@@ -112,17 +112,13 @@ namespace BedrockLauncher.Downloaders
 
             int userIndex =
                 Properties.LauncherSettings.Default.CurrentInsiderAccountIndex;
-            string microsoftAccountId =
-                MainDataModel.Default.Config.CurrentProfile
-                    ?.MicrosoftAccountId;
 
             VersionDB.Init(
                 userIndex,
                 winstoreDBFile,
                 communityDBFile,
                 gdkLinksDBFile,
-                gdkVersionsDBFile,
-                microsoftAccountId);
+                gdkVersionsDBFile);
 
             await VersionDB.LoadVersions(
                 true,

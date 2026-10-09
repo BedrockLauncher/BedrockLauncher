@@ -50,31 +50,5 @@ namespace BedrockLauncher.UpdateProcessor.Authentication
             AuthenticationTokenException.Test(status);
             return token;
         }
-
-        public string GetWUTokenForAccountId(string accountId)
-        {
-            if (string.IsNullOrWhiteSpace(accountId))
-                throw new ArgumentException(
-                    "A Microsoft account ID is required.",
-                    nameof(accountId));
-
-            int accountCount = AuthenticationTokenHelper.GetTotalWUAccounts();
-            for (int index = 0; index < accountCount; index++)
-            {
-                string currentAccountId =
-                    AuthenticationTokenHelper.GetWUAccountId(index);
-
-                if (string.Equals(
-                        currentAccountId,
-                        accountId,
-                        StringComparison.OrdinalIgnoreCase))
-                {
-                    return GetWUToken(index + 1);
-                }
-            }
-
-            throw new InvalidOperationException(
-                "The linked Microsoft account is not available in Windows Token Broker.");
-        }
     }
 }

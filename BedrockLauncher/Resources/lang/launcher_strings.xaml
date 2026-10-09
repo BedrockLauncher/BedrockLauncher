@@ -9,5 +9,5 @@
     <v:String x:Key="GeneralText_Preview">Preview</v:String>
     <v:String x:Key="GeneralText_UWP">UWP</v:String>
     <v:String x:Key="GeneralText_GDK">GDK</v:String>
-    <v:String x:Key="NewProfile_MicrosoftAccountNotConnected">No Microsoft account detected</v:String>
+    <v:String x:Key="GeneralText_Restore">Restore</v:String>
 </ResourceDictionary>

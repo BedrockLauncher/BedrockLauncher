@@ -14,7 +14,6 @@ namespace BedrockLauncher.Pipeline.Tests
         public List<string> Calls { get; } = new List<string>();
         public List<GdkPackageIdentity> InstallRequests { get; } = new List<GdkPackageIdentity>();
 
-        public bool Entitled { get; set; } = true;
         public bool ConfirmReplace { get; set; }
         public bool ActivationSucceeds { get; set; } = true;
         public Exception BootstrapFailure { get; set; }
@@ -24,14 +23,6 @@ namespace BedrockLauncher.Pipeline.Tests
 
         /// <summary>Optional HRESULT failure Windows reports for an install request.</summary>
         public int? InstallFailureHResult { get; set; }
-
-        public Task VerifyEntitlementAsync(GdkLaunchRequest request)
-        {
-            Calls.Add("Entitlement");
-            if (!Entitled)
-                throw new GdkEntitlementException("not entitled");
-            return Task.CompletedTask;
-        }
 
         public IReadOnlyList<InstalledPackageInfo> GetInstalledPackages(string packageFamilyName)
         {

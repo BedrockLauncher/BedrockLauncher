@@ -75,7 +75,9 @@
                         <MenuItem Header="{DynamicResource GeneralText_Delete}" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="DeleteInstallationButton" Click="DeleteInstallationButton_Click"  Visibility="{Binding ReadOnly, Converter={StaticResource VisibleIfTrueConverter}, ConverterParameter=Inverted}"></MenuItem>
                         <MenuItem Header="{DynamicResource GeneralText_Duplicate}" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="DuplicateInstallationButton" Click="DuplicateInstallationButton_Click"></MenuItem>
                         <Separator></Separator>
-                        <MenuItem Header="{DynamicResource GeneralText_Install}" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="InstallInstallationButton" Click="InstallInstallationButton_Click"  Visibility="{Binding ReadOnly, Converter={StaticResource VisibleIfTrueConverter}, ConverterParameter=Inverted}"></MenuItem>
+                        <MenuItem Header="{DynamicResource GeneralText_Install}" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="InstallInstallationButton" Click="InstallInstallationButton_Click"></MenuItem>
+                        <MenuItem Header="{DynamicResource GeneralText_Backup}" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="BackupInstallationButton" Click="BackupInstallationButton_Click"></MenuItem>
+                        <MenuItem Header="{DynamicResource GeneralText_Restore}" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Name="RestoreInstallationButton" Click="RestoreInstallationButton_Click"></MenuItem>
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>

@@ -78,7 +78,7 @@ namespace BedrockLauncher.Handlers
             switch (v.PackageType)
             {
                 case PackageType.GDK:
-                    await PlayGdkPackage(profile, v, dirPath, keepLauncherOpen, launchEditor);
+                    await PlayGdkPackage(v, dirPath, keepLauncherOpen, launchEditor);
                     break;
 
                 case PackageType.UWP:
@@ -816,12 +816,16 @@ namespace BedrockLauncher.Handlers
                 await File.WriteAllTextAsync(v.IdentificationPath, v.PackageID);
                 File.Delete(Path.Combine(v.GameDirectory, "AppxSignature.p7x"));
 
-                if (!File.Exists(bkpsPath))
+                // "Keep Appx Package": keep the package in AppxBackups so the version can be reinstalled without
+                // downloading it again; otherwise remove every copy, including a cached one this install came from.
+                if (Properties.LauncherSettings.Default.KeepAppx)
                 {
-                    if (Properties.LauncherSettings.Default.KeepAppx)
+                    if (!File.Exists(bkpsPath) && File.Exists(dlPath))
                         File.Move(dlPath, bkpsPath);
-                    else
-                        File.Delete(dlPath);
+                }
+                else
+                {
+                    DeletePackageCopies(dlPath, bkpsPath, pkgPath);
                 }
 
                 Trace.WriteLine("Extracted successfully");
@@ -1321,8 +1325,7 @@ namespace BedrockLauncher.Handlers
         }
         protected void SetException(Exception e)
         {
-            if (e.GetType() == typeof(GdkEntitlementException)) SetGdkError(e, "Microsoft account");
-            else if (e.GetType() == typeof(GdkVersionUnavailableException)) SetGdkError(e, "Minecraft version unavailable");
+            if (e.GetType() == typeof(GdkVersionUnavailableException)) SetGdkError(e, "Minecraft version unavailable");
             else if (e.GetType() == typeof(GdkDeploymentRejectedException)) SetGdkError(e, "Windows rejected the package");
             else if (e.GetType() == typeof(GdkVersionMismatchException)) SetGdkError(e, "Wrong Minecraft GDK package installed");
             else if (e.GetType() == typeof(GdkRequirementUnresolvedException)) SetGdkError(e, "Minecraft GDK package unknown");
