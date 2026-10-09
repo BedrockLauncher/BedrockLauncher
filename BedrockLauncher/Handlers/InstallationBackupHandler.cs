@@ -11,11 +11,7 @@ using BedrockLauncher.ViewModels;
 
 namespace BedrockLauncher.Handlers
 {
-    /// <summary>
-    /// Backup / restore of an installation's data folder (worlds, resource and behavior packs, skins, settings and key
-    /// bindings) as a .zip. Works for UWP and GDK installations alike: both keep their game data in the installation's
-    /// packageData folder, which the game data folders are linked to.
-    /// </summary>
+
     public static class InstallationBackupHandler
     {
         private const string BackupsFolderName = "backups";
@@ -34,25 +30,17 @@ namespace BedrockLauncher.Handlers
 
             if (IsGameRunning())
             {
-                await ShowMessage("Close Minecraft first", "Minecraft is running and keeps its files open. Close it and try again.");
+                await ShowMessage("Close Minecraft first!!", "Minecraft is running and keeps its files open. Close it and try again.");
                 return;
             }
 
-            string backupsFolder = Path.Combine(MainDataModel.Default.FilePaths.CurrentLocation, BackupsFolderName);
+            // Backups always go to <launcher data>\backups, named <installation>_<date>.zip.
+            string backupsFolder = GetBackupsFolder();
             Directory.CreateDirectory(backupsFolder);
 
-            using var dialog = new System.Windows.Forms.SaveFileDialog
-            {
-                Filter = "Backup (*.zip)|*.zip",
-                InitialDirectory = backupsFolder,
-                FileName = $"{SafeFileName(installation.DisplayName_Full)}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.zip",
-                OverwritePrompt = true
-            };
-
-            if (dialog.ShowDialog() != System.Windows.Forms.DialogResult.OK)
-                return;
-
-            string destination = dialog.FileName;
+            string destination = Path.Combine(
+                backupsFolder,
+                $"{BackupPrefix(installation)}{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.zip");
             string temporary = destination + ".tmp";
 
             await RunWithProgress(async () =>
@@ -86,11 +74,23 @@ namespace BedrockLauncher.Handlers
                 return;
             }
 
-            string backupsFolder = Path.Combine(MainDataModel.Default.FilePaths.CurrentLocation, BackupsFolderName);
+            string backupsFolder = GetBackupsFolder();
+            Directory.CreateDirectory(backupsFolder);
+
+            // Windows reopens the last folder used instead of InitialDirectory; pre-selecting a file in the backups
+            // folder (this installation's newest backup, if any) makes the dialog open there.
+            string newest = new DirectoryInfo(backupsFolder)
+                .EnumerateFiles(BackupPrefix(installation) + "*.zip")
+                .OrderByDescending(file => file.LastWriteTimeUtc)
+                .Select(file => file.FullName)
+                .FirstOrDefault();
+
             using var dialog = new System.Windows.Forms.OpenFileDialog
             {
                 Filter = "Backup (*.zip)|*.zip",
-                InitialDirectory = Directory.Exists(backupsFolder) ? backupsFolder : string.Empty
+                InitialDirectory = backupsFolder,
+                FileName = newest ?? string.Empty,
+                RestoreDirectory = true
             };
 
             if (dialog.ShowDialog() != System.Windows.Forms.DialogResult.OK)
@@ -132,6 +132,12 @@ namespace BedrockLauncher.Handlers
                 }
             });
         }
+
+        private static string GetBackupsFolder() =>
+            Path.Combine(MainDataModel.Default.FilePaths.CurrentLocation, BackupsFolderName);
+
+        private static string BackupPrefix(BLInstallation installation) =>
+            SafeFileName(installation.DisplayName_Full) + "_";
 
         private static string GetDataPath(BLInstallation installation) =>
             MainDataModel.Default.FilePaths.GetInstallationPackageDataPath(
