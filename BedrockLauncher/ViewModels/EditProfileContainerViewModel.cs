@@ -14,7 +14,5 @@ namespace BedrockLauncher.ViewModels
         public string ProfileDirectory { get; set; } = string.Empty;
         public string ProfileImage { get; set; } = string.Empty;
         public string ProfileUUID { get; set; } = Guid.NewGuid().ToString();
-        public string MicrosoftAccountId { get; set; } = string.Empty;
-        public string MicrosoftAccountName { get; set; } = string.Empty;
     }
 }

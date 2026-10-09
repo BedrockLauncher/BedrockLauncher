@@ -29,7 +29,6 @@ namespace BedrockLauncher.Handlers
         #region GDK Public Methods
 
         public async Task PlayGdkPackage(
-            BLProfile profile,
             MCVersion v,
             string installationDataPath,
             bool keepLauncherOpen,
@@ -40,7 +39,7 @@ namespace BedrockLauncher.Handlers
                 StartTask();
 
                 GdkLaunchRequest request = CreateGdkLaunchRequest(v, launchEditor, installationDataPath);
-                var pipeline = new GdkLaunchPipeline(new WindowsGdkPlatform(this, profile, v), LogGdk);
+                var pipeline = new GdkLaunchPipeline(new WindowsGdkPlatform(this, v), LogGdk);
 
                 MainDataModel.Default.ProgressBarState.SetProgressBarText(v.DisplayName);
 
@@ -95,7 +94,6 @@ namespace BedrockLauncher.Handlers
         /// is given, its data folder is linked too (like the UWP install does).
         /// </summary>
         public async Task InstallGdkPackage(
-            BLProfile profile,
             MCVersion v,
             string installationDataPath = null)
         {
@@ -104,7 +102,7 @@ namespace BedrockLauncher.Handlers
                 StartTask();
 
                 GdkLaunchRequest request = CreateGdkLaunchRequest(v, launchEditor: false, installationDataPath);
-                var platform = new WindowsGdkPlatform(this, profile, v);
+                var platform = new WindowsGdkPlatform(this, v);
                 var pipeline = new GdkLaunchPipeline(platform, LogGdk);
 
                 await pipeline.EnsureReadyAsync(request);
@@ -615,30 +613,12 @@ namespace BedrockLauncher.Handlers
         private sealed class WindowsGdkPlatform : IGdkPlatform
         {
             private readonly PackageHandler handler;
-            private readonly BLProfile profile;
             private readonly MCVersion version;
 
-            public WindowsGdkPlatform(PackageHandler handler, BLProfile profile, MCVersion version)
+            public WindowsGdkPlatform(PackageHandler handler, MCVersion version)
             {
                 this.handler = handler;
-                this.profile = profile;
                 this.version = version;
-            }
-
-            public async Task VerifyEntitlementAsync(GdkLaunchRequest request)
-            {
-                GdkEntitlementResult entitlement =
-                    await GdkEntitlementService.VerifyAsync(
-                        profile,
-                        request.VersionType);
-
-                if (entitlement == null ||
-                    !entitlement.IsEntitled)
-                {
-                    throw new GdkEntitlementException(
-                        entitlement?.Message ??
-                        "You are not entitled to use this Minecraft version.");
-                }
             }
 
             public IReadOnlyList<InstalledPackageInfo> GetInstalledPackages(string packageFamilyName)
@@ -664,7 +644,6 @@ namespace BedrockLauncher.Handlers
                         $"and the catalog lists no download resource for exactly that package (Minecraft {request.MinecraftVersion}).");
                 }
 
-                // The package stays in the version folder after installing: it is this version's local copy.
                 string packagePath =
                     await handler.EnsureMsixvcDownloaded(
                         version,
@@ -672,6 +651,15 @@ namespace BedrockLauncher.Handlers
 
                 await handler.RunWindowsDeployment(
                     packagePath);
+
+                // "Keep Appx Package": keep the package in the version folder so switching back to this version
+                // reinstalls it without downloading it again. Otherwise it is removed once Windows has installed it
+                // (on a failed install it is kept, so a retry does not download it again).
+                if (!Properties.LauncherSettings.Default.KeepAppx)
+                {
+                    handler.SafeDeleteFile(packagePath);
+                    version.UpdateFolderSize();
+                }
             }
 
             public async Task<bool> ConfirmReplaceAsync(GdkLaunchRequest request, GdkInstallEvaluation evaluation)

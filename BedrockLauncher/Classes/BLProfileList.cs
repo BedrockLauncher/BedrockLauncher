@@ -369,12 +369,10 @@ namespace BedrockLauncher.Classes
             try
             {
                 if (CurrentProfile == null || CurrentInstallations == null) return;
-                string OldName = "";
-                if (CurrentInstallations.Any(x => x.InstallationUUID == uuid))
-                {
-                    int index = CurrentInstallations.FindIndex(x => x.InstallationUUID == uuid);
-                    OldName = CurrentInstallations[index].DisplayName;
-                }
+                int index = CurrentInstallations.FindIndex(x => x.InstallationUUID == uuid);
+                if (index < 0) return;
+
+                BLInstallation old_installation = CurrentInstallations[index];
                 GetVersionParams(version, out VersioningMode versioningMode, out string version_uuid);
                 BLInstallation new_installation = new BLInstallation()
                 {
@@ -383,23 +381,50 @@ namespace BedrockLauncher.Classes
                     IsCustomIcon = isCustom,
                     DirectoryName = ValidatePathName(name),
                     VersioningMode = versioningMode,
-                    VersionUUID = version_uuid
+                    VersionUUID = version_uuid,
+                    // Editing keeps the same installation: selection and last-played date stay valid.
+                    InstallationUUID = old_installation.InstallationUUID,
+                    LastPlayed = old_installation.LastPlayed
                 };
 
+                CurrentInstallations[index] = new_installation;
+                Save();
 
-                if (CurrentInstallations.Any(x => x.InstallationUUID == uuid))
-                {
-                    int index = CurrentInstallations.FindIndex(x => x.InstallationUUID == uuid);
-                    CurrentInstallations[index] = new_installation;
-                    Save();
-                }
                 //We need to move data to new directory
-                if (OldName != name) Directory.Move(Path.Combine(MainDataModel.Default.FilePaths.GetProfilePath(Properties.LauncherSettings.Default.CurrentProfileUUID), OldName), Path.Combine(MainDataModel.Default.FilePaths.GetProfilePath(Properties.LauncherSettings.Default.CurrentProfileUUID), name));
+                MoveInstallationDirectory(old_installation.DirectoryName_Full, new_installation.DirectoryName_Full);
             }
             catch (Exception ex)
             {
                 Trace.WriteLine(ex);
             }
+        }
+
+        /// <summary>
+        /// Renames an installation's folder (validated directory names, not display names). An installation that was
+        /// never played may have no folder yet, and the target may already exist; neither case throws.
+        /// </summary>
+        private static void MoveInstallationDirectory(string oldDirectoryName, string newDirectoryName)
+        {
+            if (string.Equals(oldDirectoryName, newDirectoryName, StringComparison.OrdinalIgnoreCase))
+                return;
+
+            string profilePath = MainDataModel.Default.FilePaths.GetProfilePath(Properties.LauncherSettings.Default.CurrentProfileUUID);
+            if (string.IsNullOrEmpty(profilePath))
+                return;
+
+            string oldDirectory = Path.Combine(profilePath, oldDirectoryName);
+            string newDirectory = Path.Combine(profilePath, newDirectoryName);
+
+            if (Directory.Exists(newDirectory))
+            {
+                Trace.WriteLine($"Installation folder {newDirectory} already exists; {oldDirectory} was left in place.");
+                return;
+            }
+
+            if (Directory.Exists(oldDirectory))
+                Directory.Move(oldDirectory, newDirectory);
+            else
+                Directory.CreateDirectory(newDirectory);
         }
 
         public void Installation_Delete(BLInstallation installation, bool deleteData = true)

@@ -2,12 +2,6 @@ using System;
 
 namespace BedrockLauncher.Exceptions
 {
-    /// <summary>The Microsoft account or the Store license required for a GDK version could not be confirmed.</summary>
-    public class GdkEntitlementException : PackageManagerException
-    {
-        public GdkEntitlementException(string message) : base(message, new InvalidOperationException(message)) { }
-    }
-
     /// <summary>
     /// The required GDK package is not installed and the catalog lists no download resource for exactly that package.
     /// Never thrown before the installed packages were checked.

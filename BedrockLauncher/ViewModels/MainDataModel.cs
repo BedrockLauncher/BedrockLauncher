@@ -53,33 +53,13 @@ namespace BedrockLauncher.ViewModels
         public void LoadConfig() => Application.Current.Dispatcher.Invoke(() =>
                                              {
                                                  Config = BLProfileList.Load(FilePaths.GetProfilesFilePath(), Properties.LauncherSettings.Default.CurrentProfileUUID, Properties.LauncherSettings.Default.CurrentInstallationUUID);
-                                                 _ = ApplyDefaultMicrosoftAccountAsync();
                                              });
 
-        /// <summary>Connects the Microsoft account Windows is signed in with to every profile that has none yet.</summary>
-        public async Task ApplyDefaultMicrosoftAccountAsync()
-        {
-            var profiles = Config.profiles.Values
-                .Where(profile => string.IsNullOrWhiteSpace(profile.MicrosoftAccountId))
-                .ToList();
-            if (profiles.Count == 0) return;
-
-            var identity = await MicrosoftAccountAuthentication.TryGetDefaultAccountAsync();
-            if (identity == null) return;
-
-            foreach (var profile in profiles)
-            {
-                profile.MicrosoftAccountId = identity.Id;
-                profile.MicrosoftAccountName = identity.UserName;
-            }
-
-            Config.Save();
-        }
         public async void KillGame() => await PackageManager.ClosePackage();
         public async void RepairVersion(MCVersion v)
         {
             if (v.PackageType == BedrockLauncher.UpdateProcessor.Enums.PackageType.GDK)
-                await PackageManager.InstallGdkPackage(Config.CurrentProfile, v);
+                await PackageManager.InstallGdkPackage(v);
             else
                 await PackageManager.DownloadPackage(v);
         }
@@ -103,15 +83,25 @@ namespace BedrockLauncher.ViewModels
             await PackageManager.Play(p, Version, Path, KeepLauncherOpen, LaunchEditor);
         }
 
+        /// <summary>
+        /// Installs / registers (or, for a Latest Release / Latest Preview installation, updates to the newest version)
+        /// without launching the game.
+        /// </summary>
         public async void Install(BLProfile p, BLInstallation i)
         {
             if (i == null) return;
 
             var Version = i.Version;
+            if (Version == null)
+            {
+                System.Diagnostics.Trace.WriteLine($"Install skipped: the version of installation '{i.DisplayName_Full}' is not available.");
+                return;
+            }
+
             var Path = MainDataModel.Default.FilePaths.GetInstallationPackageDataPath(p.UUID, i.DirectoryName_Full);
 
             if (Version.PackageType == BedrockLauncher.UpdateProcessor.Enums.PackageType.GDK)
-                await PackageManager.InstallGdkPackage(p, Version, Path);
+                await PackageManager.InstallGdkPackage(Version, Path);
             else
                 await PackageManager.InstallPackage(Version, Path);
         }

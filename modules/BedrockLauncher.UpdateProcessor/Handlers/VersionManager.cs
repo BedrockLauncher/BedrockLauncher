@@ -62,7 +62,6 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
         #region Configuration
 
         private int UserTokenIndex;
-        private string MicrosoftAccountId;
         // The project's curated UWP version list. It is the only community source: entries removed from it must
         // disappear from the launcher too, so the local copy is replaced by it, never merged with another list.
         private const string communityDBUrl =
@@ -129,11 +128,9 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             string winstoreDBFile,
             string communityDBFile,
             string gdkLinksDBFile,
-            string gdkVersionsDBFile,
-            string microsoftAccountId = null)
+            string gdkVersionsDBFile)
         {
             UserTokenIndex = userTokenIndex;
-            MicrosoftAccountId = microsoftAccountId;
             this.winstoreDBFile = winstoreDBFile;
             this.communityDBFile = communityDBFile;
             this.gdkLinksDBFile = gdkLinksDBFile;
@@ -871,17 +868,10 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             {
                 var token =
                     await Task.Run(
-                        () =>
-                            string.IsNullOrWhiteSpace(
-                                MicrosoftAccountId)
-                                ? AuthenticationManager
-                                    .Default
-                                    .GetWUToken(
-                                        UserTokenIndex)
-                                : AuthenticationManager
-                                    .Default
-                                    .GetWUTokenForAccountId(
-                                        MicrosoftAccountId));
+                        () => AuthenticationManager
+                            .Default
+                            .GetWUToken(
+                                UserTokenIndex));
 
                 StoreNetwork.setMSAUserToken(
                     token);
@@ -889,8 +879,7 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
             catch (Exception ex)
             {
                 Trace.WriteLine(
-                    $"EnableUserAuthorization failed " +
-                    $"({(string.IsNullOrWhiteSpace(MicrosoftAccountId) ? $"token index {UserTokenIndex}" : "linked Microsoft account")}): " +
+                    $"EnableUserAuthorization failed (token index {UserTokenIndex}): " +
                     ex.Message);
             }
         }

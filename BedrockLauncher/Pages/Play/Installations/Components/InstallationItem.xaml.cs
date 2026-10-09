@@ -141,5 +141,17 @@ namespace BedrockLauncher.Pages.Play.Installations.Components
             var installation = button.DataContext as BLInstallation;
             MainDataModel.Default.Install(MainDataModel.Default.Config.CurrentProfile, installation);
         }
+
+        private async void BackupInstallationButton_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem button = sender as MenuItem;
+            await Handlers.InstallationBackupHandler.BackupAsync(button.DataContext as BLInstallation);
+        }
+
+        private async void RestoreInstallationButton_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem button = sender as MenuItem;
+            await Handlers.InstallationBackupHandler.RestoreAsync(button.DataContext as BLInstallation);
+        }
     }
 }
