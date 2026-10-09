@@ -8,6 +8,7 @@ using BedrockLauncher.ViewModels;
 using JemExtensions;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -39,7 +40,8 @@ namespace BedrockLauncher.Handlers
                 StartTask();
 
                 GdkLaunchRequest request = CreateGdkLaunchRequest(v, launchEditor, installationDataPath);
-                var pipeline = new GdkLaunchPipeline(new WindowsGdkPlatform(this, v), LogGdk);
+                var platform = new WindowsGdkPlatform(this, v);
+                var pipeline = new GdkLaunchPipeline(platform, LogGdk);
 
                 MainDataModel.Default.ProgressBarState.SetProgressBarText(v.DisplayName);
 
@@ -47,14 +49,9 @@ namespace BedrockLauncher.Handlers
 
                 MainDataModel.Default.ProgressBarState.SetProgressBarState(LauncherState.isLaunching);
 
-                Process process = await WaitForPackageProcess(package.FullName, GdkProcessStartTimeout);
-                if (process == null)
-                {
-                    LogGdk($"Launch: FAILED — no {Constants.MINECRAFT_PROCESS_NAME} process of {package.FullName} appeared within {GdkProcessStartTimeout.TotalSeconds:0}s.");
-                    throw new AppLaunchFailedException(
-                        $"Minecraft {v.Name} ({package.FullName}) did not start within {GdkProcessStartTimeout.TotalSeconds:0} seconds.",
-                        new TimeoutException("The launch helper did not start the game process."));
-                }
+                Process process;
+                using (Process helper = platform.LaunchHelperProcess)
+                    process = await WaitForPackageProcess(v, package.FullName, helper, GdkProcessStartTimeout);
 
                 LogGdk($"Launch: OK (process {process.Id}, package {package.FullName})");
 
@@ -389,13 +386,21 @@ namespace BedrockLauncher.Handlers
             }
         }
 
-        /// <summary>Waits for the Minecraft process that runs with exactly the given package identity.</summary>
-        private static async Task<Process> WaitForPackageProcess(string packageFullName, TimeSpan timeout)
+        /// <summary>
+        /// Waits for the Minecraft process that runs with exactly the given package identity, or throws
+        /// AppLaunchFailedException saying why it did not appear. When the launch helper is known, its exit ends the wait
+        /// early: BedrockLauncher-dll only exits once the game showed its window, once the game closed, or when it could
+        /// not start the game (its exit code is then the Win32 error).
+        /// </summary>
+        private static async Task<Process> WaitForPackageProcess(MCVersion v, string packageFullName, Process helper, TimeSpan timeout)
         {
             Stopwatch elapsed = Stopwatch.StartNew();
             var reported = new HashSet<int>();
+            GdkPackageIdentity.TryParseFullName(packageFullName, out GdkPackageIdentity required);
+            string otherPackage = null;
+            bool helperExited = false;
 
-            while (elapsed.Elapsed < timeout)
+            while (true)
             {
                 foreach (Process candidate in Process.GetProcessesByName(Constants.MINECRAFT_PROCESS_NAME))
                 {
@@ -404,16 +409,64 @@ namespace BedrockLauncher.Handlers
                     if (string.Equals(candidatePackage, packageFullName, StringComparison.OrdinalIgnoreCase))
                         return candidate;
 
+                    if (required != null &&
+                        GdkPackageIdentity.TryParseFullName(candidatePackage, out GdkPackageIdentity running) &&
+                        running.IsSameFamily(required.FamilyName))
+                    {
+                        otherPackage = candidatePackage;
+                    }
+
                     if (reported.Add(candidate.Id))
                         LogGdk($"Ignoring {Constants.MINECRAFT_PROCESS_NAME} process {candidate.Id} (package {candidatePackage ?? "none"}); waiting for {packageFullName}.");
 
                     candidate.Dispose();
                 }
 
-                await Task.Delay(500);
+                // The game is created before the helper exits, so one more scan follows the helper's exit.
+                if (helperExited || elapsed.Elapsed >= timeout)
+                    break;
+
+                if (helper != null && helper.HasExited)
+                {
+                    helperExited = true;
+                    continue;
+                }
+
+                await Task.Delay(250);
             }
 
-            return null;
+            if (otherPackage != null)
+            {
+                LogGdk($"Launch: FAILED — {otherPackage} started instead of {packageFullName}.");
+                throw new AppLaunchFailedException(
+                    $"Minecraft {v.Name} requires {packageFullName}, but {otherPackage} started instead.",
+                    new InvalidOperationException("A different Minecraft package than the validated one is running."));
+            }
+
+            if (helperExited)
+            {
+                int exitCode = helper.ExitCode;
+                LogGdk($"Launch: FAILED — the launch helper exited with code {exitCode} and no {Constants.MINECRAFT_PROCESS_NAME} process of {packageFullName} is running.");
+
+                if (exitCode != 0)
+                {
+                    var error = new Win32Exception(exitCode);
+                    throw new AppLaunchFailedException(
+                        $"The launch helper could not start Minecraft {v.Name} ({packageFullName}): error {exitCode} ({error.Message}).",
+                        error);
+                }
+
+                throw new AppLaunchFailedException(
+                    $"Minecraft {v.Name} ({packageFullName}) closed right after it started.",
+                    new InvalidOperationException(
+                        "The game process exited on its own before showing its window. Start Minecraft once from the " +
+                        "Start menu to see the game's own error."));
+            }
+
+            LogGdk($"Launch: FAILED — no {Constants.MINECRAFT_PROCESS_NAME} process of {packageFullName} appeared within {timeout.TotalSeconds:0}s.");
+            throw new AppLaunchFailedException(
+                $"Minecraft {v.Name} ({packageFullName}) did not start within {timeout.TotalSeconds:0} seconds.",
+                new TimeoutException("The launch helper did not start the game process."));
         }
 
         #endregion
@@ -785,10 +838,18 @@ namespace BedrockLauncher.Handlers
                         package.FamilyName);
                 }
 
-                return GdkRegistration.Activate(
+                LaunchHelperProcess = GdkRegistration.Activate(
                     package.FamilyName,
                     GdkRegistration.GetApplicationId(package.InstallLocation));
+
+                LogGdk(LaunchHelperProcess != null
+                    ? $"Launch helper started (process {LaunchHelperProcess.Id})"
+                    : "Launch helper started and already exited");
+                return true;
             }
+
+            /// <summary>The GameLaunchHelper.exe Windows started, when the launch went through package activation.</summary>
+            public Process LaunchHelperProcess { get; private set; }
         }
 
         #endregion

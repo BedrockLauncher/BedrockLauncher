@@ -29,9 +29,11 @@ namespace BedrockLauncher.Pages.Settings.General
 
         }
 
-        private void BackupButton_Click(object sender, RoutedEventArgs e) { }
-        
-        private void BackupPreviewButton_Click(object sender, RoutedEventArgs e) { }
+        private async void BackupButton_Click(object sender, RoutedEventArgs e) =>
+            await Handlers.SaveDataRecoveryHandler.BackupAsync(UpdateProcessor.Enums.VersionType.Release);
+
+        private async void BackupPreviewButton_Click(object sender, RoutedEventArgs e) =>
+            await Handlers.SaveDataRecoveryHandler.BackupAsync(UpdateProcessor.Enums.VersionType.Preview);
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {

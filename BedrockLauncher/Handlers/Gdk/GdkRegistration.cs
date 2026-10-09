@@ -1,7 +1,9 @@
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -67,25 +69,53 @@ namespace BedrockLauncher.Handlers
             await PowerShellPackageCommand.RunAsync(command, "GDK package removal");
         }
 
-        /// <summary>Starts the installed package through its Start-menu activation, so the game gets its package identity.</summary>
-        internal static bool Activate(string packageFamilyName, string applicationId)
+        /// <summary>
+        /// Starts the installed package like the Start menu does, so the game gets its package identity. Returns the
+        /// process Windows started (GameLaunchHelper.exe), or null when it exited before it could be opened.
+        /// Throws when Windows refuses the activation (the HRESULT says why, e.g. Gaming Services missing).
+        /// </summary>
+        internal static Process Activate(string packageFamilyName, string applicationId)
         {
+            string appUserModelId = $"{packageFamilyName}!{applicationId}";
+            var manager = (IApplicationActivationManager)new ApplicationActivationManager();
+
             try
             {
-                using Process process = Process.Start(new ProcessStartInfo
-                {
-                    FileName = "explorer.exe",
-                    Arguments = $@"shell:AppsFolder\{packageFamilyName}!{applicationId}",
-                    UseShellExecute = false
-                });
+                int hresult = manager.ActivateApplication(appUserModelId, null, ActivateOptionsNone, out uint processId);
+                if (hresult < 0)
+                    throw new Win32Exception(hresult, $"Windows could not start {appUserModelId} (HRESULT 0x{hresult:X8}): {new Win32Exception(hresult).Message}");
 
-                return process != null;
+                try
+                {
+                    return Process.GetProcessById((int)processId);
+                }
+                catch (ArgumentException)
+                {
+                    return null;
+                }
             }
-            catch (Exception ex)
+            finally
             {
-                Trace.WriteLine($"GDK package activation failed: {ex}");
-                return false;
+                Marshal.ReleaseComObject(manager);
             }
+        }
+
+        private const int ActivateOptionsNone = 0;
+
+        [ComImport, Guid("2e941141-7f97-4756-ba1d-9decde894a3d"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+        private interface IApplicationActivationManager
+        {
+            [PreserveSig]
+            int ActivateApplication(
+                [MarshalAs(UnmanagedType.LPWStr)] string appUserModelId,
+                [MarshalAs(UnmanagedType.LPWStr)] string arguments,
+                int options,
+                out uint processId);
+        }
+
+        [ComImport, Guid("45BA127D-10A8-46EA-8AB7-56EA9078943C")]
+        private class ApplicationActivationManager
+        {
         }
     }
 }
