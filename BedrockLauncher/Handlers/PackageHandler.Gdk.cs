@@ -25,7 +25,13 @@ namespace BedrockLauncher.Handlers
     {
         private static readonly TimeSpan GdkProcessStartTimeout = TimeSpan.FromSeconds(60);
 
+        // How long the game still gets to appear once the launch helper has exited without an error.
+        private static readonly TimeSpan GdkHelperExitGrace = TimeSpan.FromSeconds(15);
+
         private const string GamingServicesFamilyName = "Microsoft.GamingServices_8wekyb3d8bbwe";
+
+        /// <summary>%LOCALAPPDATA%\&lt;this&gt;: save data moved out of a package's app data folder before Windows removed it.</summary>
+        internal const string SaveDataBackupFolderName = @"BedrockLauncher\SaveDataBackups";
 
         private readonly GdkLaunchHelperDeployment GdkLaunchHelper = new GdkLaunchHelperDeployment(
             Path.Combine(AppContext.BaseDirectory, "native", "gamelaunchhelper", GdkLaunchHelperDeployment.HelperLibraryName));
@@ -577,9 +583,10 @@ namespace BedrockLauncher.Handlers
 
         /// <summary>
         /// Waits for the Minecraft process that runs with exactly the given package identity, or throws
-        /// AppLaunchFailedException saying why it did not appear. When the launch helper is known, its exit ends the wait
-        /// early: BedrockLauncher-dll only exits once the game showed its window, once the game closed, or when it could
-        /// not start the game (its exit code is then the Win32 error).
+        /// AppLaunchFailedException saying why it did not appear. When the launch helper is known, its exit shortens the
+        /// wait: BedrockLauncher-dll exits with the Win32 error when it could not start the game (reported at once), and
+        /// with 0 otherwise, after which the game only gets <see cref="GdkHelperExitGrace"/> more to show up (the exit
+        /// code cannot always be read, e.g. when the helper was gone before the launcher opened it).
         /// </summary>
         private static async Task<Process> WaitForPackageProcess(MCVersion v, string packageFullName, Process helper, TimeSpan timeout)
         {
@@ -588,6 +595,8 @@ namespace BedrockLauncher.Handlers
             GdkPackageIdentity.TryParseFullName(packageFullName, out GdkPackageIdentity required);
             string otherPackage = null;
             bool helperExited = false;
+            int? helperExitCode = null;
+            TimeSpan deadline = timeout;
 
             while (true)
             {
@@ -611,13 +620,23 @@ namespace BedrockLauncher.Handlers
                     candidate.Dispose();
                 }
 
-                // The game is created before the helper exits, so one more scan follows the helper's exit.
-                if (helperExited || elapsed.Elapsed >= timeout)
+                if (elapsed.Elapsed >= deadline)
                     break;
 
-                if (helper != null && helper.HasExited)
+                if (!helperExited && HasExited(helper))
                 {
                     helperExited = true;
+                    helperExitCode = TryGetExitCode(helper);
+                    LogGdk($"Launch helper exited (code {helperExitCode?.ToString() ?? "unknown"}).");
+
+                    // A non-zero code is the helper's own error: the game was not started. (The game is created before
+                    // the helper exits, so the scan above already covered it.)
+                    if (helperExitCode is int code && code != 0)
+                        break;
+
+                    TimeSpan graceEnd = elapsed.Elapsed + GdkHelperExitGrace;
+                    if (graceEnd < deadline)
+                        deadline = graceEnd;
                     continue;
                 }
 
@@ -632,24 +651,23 @@ namespace BedrockLauncher.Handlers
                     new InvalidOperationException("A different Minecraft package than the validated one is running."));
             }
 
+            if (helperExitCode is int exitCode && exitCode != 0)
+            {
+                LogGdk($"Launch: FAILED — the launch helper exited with code {exitCode} and no {Constants.MINECRAFT_PROCESS_NAME} process of {packageFullName} is running.");
+                var error = new Win32Exception(exitCode);
+                throw new AppLaunchFailedException(
+                    $"The launch helper could not start Minecraft {v.Name} ({packageFullName}): error {exitCode} ({error.Message}).",
+                    error);
+            }
+
             if (helperExited)
             {
-                int exitCode = helper.ExitCode;
-                LogGdk($"Launch: FAILED — the launch helper exited with code {exitCode} and no {Constants.MINECRAFT_PROCESS_NAME} process of {packageFullName} is running.");
-
-                if (exitCode != 0)
-                {
-                    var error = new Win32Exception(exitCode);
-                    throw new AppLaunchFailedException(
-                        $"The launch helper could not start Minecraft {v.Name} ({packageFullName}): error {exitCode} ({error.Message}).",
-                        error);
-                }
-
+                LogGdk($"Launch: FAILED — the launch helper exited and no {Constants.MINECRAFT_PROCESS_NAME} process of {packageFullName} appeared within {GdkHelperExitGrace.TotalSeconds:0}s.");
                 throw new AppLaunchFailedException(
-                    $"Minecraft {v.Name} ({packageFullName}) closed right after it started.",
+                    $"Minecraft {v.Name} ({packageFullName}) did not start, or closed right after it started.",
                     new InvalidOperationException(
-                        "The game process exited on its own before showing its window. Start Minecraft once from the " +
-                        "Start menu to see the game's own error."));
+                        "The game process exited on its own or never appeared. Start Minecraft once from the Start menu " +
+                        "to see the game's own error."));
             }
 
             LogGdk($"Launch: FAILED — no {Constants.MINECRAFT_PROCESS_NAME} process of {packageFullName} appeared within {timeout.TotalSeconds:0}s.");
@@ -658,12 +676,43 @@ namespace BedrockLauncher.Handlers
                 new TimeoutException("The launch helper did not start the game process."));
         }
 
+        private static bool HasExited(Process process)
+        {
+            if (process == null)
+                return false;
+
+            try
+            {
+                return process.HasExited;
+            }
+            catch (Exception ex) when (ex is InvalidOperationException || ex is Win32Exception)
+            {
+                // Not inspectable: only the game process decides the wait then.
+                return false;
+            }
+        }
+
+        /// <summary>The exit code, or null when Windows does not give it (the process was gone before it was opened).</summary>
+        private static int? TryGetExitCode(Process process)
+        {
+            try
+            {
+                return process.ExitCode;
+            }
+            catch (Exception ex) when (ex is InvalidOperationException || ex is Win32Exception)
+            {
+                return null;
+            }
+        }
+
         #endregion
 
         #region Save Data
 
         private sealed class SaveDataGuard
         {
+            public string PackageDataPath { get; set; }
+
             public string MojangPath { get; set; }
 
             public string LinkTarget { get; set; }
@@ -671,6 +720,11 @@ namespace BedrockLauncher.Handlers
             public string MovedBackupPath { get; set; }
         }
 
+        /// <summary>
+        /// Before a Windows removal of a Minecraft package: removing the package deletes its app data folder
+        /// (%LOCALAPPDATA%\Packages\&lt;family&gt;), so a com.mojang link to an installation is detached first (Windows
+        /// must not walk into the linked worlds), and real save data is moved out of that folder.
+        /// </summary>
         private SaveDataGuard ProtectSaveData(
             VersionType type)
         {
@@ -683,11 +737,15 @@ namespace BedrockLauncher.Handlers
                     Environment.GetFolderPath(
                         Environment.SpecialFolder.LocalApplicationData);
 
-                string mojang =
+                guard.PackageDataPath =
                     Path.Combine(
                         localAppData,
                         "Packages",
-                        Constants.GetPackageFamily(type),
+                        Constants.GetPackageFamily(type));
+
+                string mojang =
+                    Path.Combine(
+                        guard.PackageDataPath,
                         "LocalState",
                         "games",
                         "com.mojang");
@@ -730,10 +788,15 @@ namespace BedrockLauncher.Handlers
                 if (!hasContent)
                     return guard;
 
+                // Outside the package's app data folder (which Windows deletes), on the same drive so it is a move.
                 string backup =
-                    mojang +
-                    ".launcher-backup-" +
-                    Guid.NewGuid().ToString("N");
+                    Path.Combine(
+                        localAppData,
+                        SaveDataBackupFolderName,
+                        $"{Constants.GetPackageFamily(type)}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}");
+
+                Directory.CreateDirectory(
+                    Path.GetDirectoryName(backup));
 
                 Directory.Move(
                     mojang,
@@ -754,6 +817,12 @@ namespace BedrockLauncher.Handlers
             return guard;
         }
 
+        /// <summary>
+        /// After the removal. When Windows deleted the package's app data folder, nothing is recreated there: the folder
+        /// Windows creates when the next package registers carries the package's access rights, while one created here
+        /// would not, and the game could not open its data ("Storage is full"). The installation's data folder is linked
+        /// again on install / launch, and moved real data stays in the backup (found by "Backup Save Data").
+        /// </summary>
         private void RestoreSaveData(
             SaveDataGuard guard)
         {
@@ -763,14 +832,32 @@ namespace BedrockLauncher.Handlers
                 return;
             }
 
-            if (string.IsNullOrEmpty(guard.LinkTarget) &&
-                string.IsNullOrEmpty(guard.MovedBackupPath))
+            if (!string.IsNullOrEmpty(guard.LinkTarget))
+            {
+                // Not reattached: the link belongs to whichever installation was played last, and every UWP install /
+                // launch links the installation being played (RedirectSaveData). Reattaching the old one here only
+                // pointed the game at the wrong installation until then.
+                Trace.WriteLine(
+                    $"Save-data link to {guard.LinkTarget} left detached; the next UWP install / launch links the " +
+                    "installation being played.");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(guard.MovedBackupPath))
             {
                 return;
             }
 
             try
             {
+                if (!Directory.Exists(guard.PackageDataPath))
+                {
+                    Trace.WriteLine(
+                        $"The package data folder was removed with the package; the save data stays at " +
+                        $"{guard.MovedBackupPath} (Settings > Backup Save Data imports it as an installation).");
+                    return;
+                }
+
                 string parent =
                     Path.GetDirectoryName(
                         guard.MojangPath);
@@ -814,22 +901,8 @@ namespace BedrockLauncher.Handlers
                     }
                 }
 
-                if (!string.IsNullOrEmpty(
-                        guard.LinkTarget))
-                {
-                    SymLinkHelper.CreateSymbolicLinkSafe(
-                        guard.MojangPath,
-                        guard.LinkTarget,
-                        SymLinkHelper.SymbolicLinkType.Directory);
-
-                    Trace.WriteLine(
-                        $"Reattached save-data link: " +
-                        $"{guard.MojangPath} -> {guard.LinkTarget}");
-                }
-                else if (!string.IsNullOrEmpty(
-                             guard.MovedBackupPath) &&
-                         Directory.Exists(
-                             guard.MovedBackupPath))
+                if (Directory.Exists(
+                        guard.MovedBackupPath))
                 {
                     Directory.Move(
                         guard.MovedBackupPath,

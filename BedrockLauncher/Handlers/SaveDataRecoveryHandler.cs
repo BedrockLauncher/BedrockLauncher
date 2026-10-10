@@ -21,7 +21,8 @@ namespace BedrockLauncher.Handlers
     /// Sources, for the selected channel (Release or Preview):
     /// - UWP: the package's LocalState\games\com.mojang, when it is a real folder (not a launcher link);
     /// - GDK: %APPDATA%\Minecraft Bedrock[ Preview], when it is a real folder (not a launcher link);
-    /// - GDK: the "...default" folders the launcher moved existing GDK data to when it first linked that folder.
+    /// - GDK: the "...default" folders the launcher moved existing GDK data to when it first linked that folder;
+    /// - UWP: the data the launcher moved out of the package folder before Windows removed the package.
     /// </summary>
     public static class SaveDataRecoveryHandler
     {
@@ -87,6 +88,19 @@ namespace BedrockLauncher.Handlers
                 MinecraftPackageFamilies.GetGdkDataFolderName(type));
             if (HasRealData(gdk))
                 sources.Add(new Source { Path = gdk, PackageType = PackageType.GDK });
+
+            // UWP save data the launcher moved out of the package folder before Windows removed the package.
+            string removedUwp = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                PackageHandler.SaveDataBackupFolderName);
+            if (Directory.Exists(removedUwp))
+            {
+                foreach (string backup in Directory.EnumerateDirectories(removedUwp, Constants.GetPackageFamily(type) + "_*"))
+                {
+                    if (HasRealData(backup))
+                        sources.Add(new Source { Path = backup, PackageType = PackageType.UWP });
+                }
+            }
 
             string parent = Path.GetDirectoryName(gdk);
             if (Directory.Exists(parent))
