@@ -1199,7 +1199,10 @@ namespace BedrockLauncher.Handlers
                     {
                         throw new SaveRedirectionFailedException(new Exception("Failed to create symbolic link. Ensure Developer Mode is enabled or run as administrator."));
                     }
-                    
+
+                    // Read back from the file system, so the log shows where the game's data really goes.
+                    Trace.WriteLine($"Save data: {PackageFolder} -> {new DirectoryInfo(PackageFolder).LinkTarget}");
+
                     DirectoryInfo pkgDir = Directory.CreateDirectory(PackageFolder);
                     DirectoryInfo lsDir = Directory.CreateDirectory(LocalStateFolder);
 
@@ -1220,6 +1223,17 @@ namespace BedrockLauncher.Handlers
                             needed_rules.Add(required_rule);
                         }
                     }
+
+                    // The package's own rights. LocalState only has them when Windows created it; when it was created
+                    // here (e.g. after Windows deleted the package's data folder on removal) the game could not open
+                    // its data, so they are granted on LocalState and the linked installation folder explicitly.
+                    foreach (SecurityIdentifier packageSid in AppContainerSid.ForPackageFamily(Constants.GetPackageFamily(type)))
+                    {
+                        var package_rule = new FileSystemAccessRule(packageSid, FileSystemRights.FullControl, InheritanceFlags.ObjectInherit | InheritanceFlags.ContainerInherit, PropagationFlags.None, AccessControlType.Allow);
+                        lsSecurity.AddAccessRule(package_rule);
+                        needed_rules.Add(package_rule);
+                    }
+                    lsDir.SetAccessControl(lsSecurity);
 
                     var pkgSecurity = pkgDir.GetAccessControl();
                     pkgSecurity.SetOwner(owner);

@@ -85,14 +85,27 @@ namespace BedrockLauncher.Handlers
                 if (hresult < 0)
                     throw new Win32Exception(hresult, $"Windows could not start {appUserModelId} (HRESULT 0x{hresult:X8}): {new Win32Exception(hresult).Message}");
 
+                Process process;
                 try
                 {
-                    return Process.GetProcessById((int)processId);
+                    process = Process.GetProcessById((int)processId);
                 }
                 catch (ArgumentException)
                 {
                     return null;
                 }
+
+                // Opening the handle now keeps the exit code readable after the process exits.
+                try
+                {
+                    _ = process.Handle;
+                }
+                catch (Exception ex) when (ex is Win32Exception || ex is InvalidOperationException)
+                {
+                    Trace.WriteLine($"Could not open the launch helper process {processId}: {ex.Message}");
+                }
+
+                return process;
             }
             finally
             {
