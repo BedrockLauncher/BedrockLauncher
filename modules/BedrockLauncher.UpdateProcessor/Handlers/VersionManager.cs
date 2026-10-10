@@ -333,13 +333,23 @@ namespace BedrockLauncher.UpdateProcessor.Handlers
                 if (!File.Exists(temporaryPath))
                 {
                     throw new IOException(
-                        "Il pacchetto scaricato non esiste.");
+                        "The downloaded package does not exist.");
                 }
 
-                if (new FileInfo(temporaryPath).Length == 0)
+                long downloadedSize =
+                    new FileInfo(temporaryPath).Length;
+
+                if (downloadedSize == 0)
                 {
                     throw new IOException(
-                        "Il pacchetto scaricato è vuoto.");
+                        "The downloaded package is empty.");
+                }
+
+                // A connection that ends early leaves a truncated package, which Windows rejects on install.
+                if (totalSize > 0 && downloadedSize != totalSize)
+                {
+                    throw new IOException(
+                        $"The download is incomplete: {downloadedSize} of {totalSize} bytes.");
                 }
 
                 if (File.Exists(destination))

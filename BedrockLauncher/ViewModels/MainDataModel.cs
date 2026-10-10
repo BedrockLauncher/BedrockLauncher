@@ -48,6 +48,10 @@ namespace BedrockLauncher.ViewModels
 
                                                                             await PackageManager.VersionDownloader.UpdateVersionList(Versions, onLoad);
 
+                                                                            foreach (BLProfile profile in Config.profiles.Values)
+                                                                                foreach (BLInstallation installation in profile.Installations ?? Enumerable.Empty<BLInstallation>())
+                                                                                    installation.RefreshVersion();
+
                                                                             IsVersionsUpdating = false;
                                                                         });
         public void LoadConfig() => Application.Current.Dispatcher.Invoke(() =>

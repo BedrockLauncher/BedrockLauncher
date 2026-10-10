@@ -1267,6 +1267,8 @@ namespace BedrockLauncher.Handlers
 
         #region Helpers
 
+        protected const string DeploymentActivityIdKey = "DeploymentActivityId";
+
         protected async Task DeploymentProgressWrapper(IAsyncOperationWithProgress<DeploymentResult, DeploymentProgress> t)
         {
             TaskCompletionSource<int> src = new TaskCompletionSource<int>();
@@ -1278,12 +1280,22 @@ namespace BedrockLauncher.Handlers
                 if (p == AsyncStatus.Error)
                 {
                     string errorText;
-                    try { errorText = v.GetResults().ErrorText; }
+                    Guid activityId = Guid.Empty;
+                    try
+                    {
+                        DeploymentResult result = v.GetResults();
+                        errorText = result.ErrorText;
+                        activityId = result.ActivityId;
+                    }
                     catch (Exception ex) { errorText = ex.Message; }
 
-                    // The inner exception carries the HRESULT Windows reported (read by the GDK pipeline).
-                    Trace.WriteLine("Deployment failed: " + errorText);
-                    src.SetException(new Exception("Deployment failed: " + errorText, v.ErrorCode));
+                    // The inner exception carries the HRESULT Windows reported (read by the GDK pipeline); the
+                    // ActivityId names Windows' own deployment log for this operation (Get-AppPackageLog).
+                    Trace.WriteLine($"Deployment failed: {errorText} (ActivityId {activityId})");
+                    var failure = new Exception("Deployment failed: " + errorText, v.ErrorCode);
+                    if (activityId != Guid.Empty)
+                        failure.Data[DeploymentActivityIdKey] = activityId;
+                    src.SetException(failure);
                 }
                 else
                 {
