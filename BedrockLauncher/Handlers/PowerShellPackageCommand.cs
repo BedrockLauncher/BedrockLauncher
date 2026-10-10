@@ -16,6 +16,12 @@ namespace BedrockLauncher.Handlers
 
         internal static async Task RunAsync(string command, string operationName)
         {
+            await RunForOutputAsync(command, operationName);
+        }
+
+        /// <summary>Runs the command and returns its standard output. Throws when PowerShell exits with an error.</summary>
+        internal static async Task<string> RunForOutputAsync(string command, string operationName)
+        {
             string powershellPath = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.System),
                 @"WindowsPowerShell\v1.0\powershell.exe");
@@ -56,6 +62,8 @@ namespace BedrockLauncher.Handlers
                 string details = string.Join(Environment.NewLine, new[] { output, error }.Where(x => !string.IsNullOrWhiteSpace(x)));
                 throw new InvalidOperationException($"{operationName} failed with exit code {process.ExitCode}. {details}");
             }
+
+            return output;
         }
     }
 }

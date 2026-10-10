@@ -150,6 +150,16 @@ namespace BedrockLauncher.Classes
             return clone;
         }
 
+        /// <summary>
+        /// The version values are looked up in the version list, which loads after the installations are shown (on the
+        /// first start it is downloaded, so until then they read "???"). Called once the list is loaded, so they are read again.
+        /// </summary>
+        public void RefreshVersion()
+        {
+            foreach (string property in new[] { nameof(Version), nameof(VersionName), nameof(IsRelease), nameof(IsBeta), nameof(IsPreview), nameof(VersionType) })
+                NotifyPropertyChangedServices.SignalPropertyChanged(this, property);
+        }
+
         public void DeleteUserData()
         {
             string Directory = MainDataModel.Default.FilePaths.GetInstallationPath(Properties.LauncherSettings.Default.CurrentProfileUUID, DirectoryName_Full);

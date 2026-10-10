@@ -16,6 +16,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using Windows.ApplicationModel;
+using Windows.Management.Deployment;
 
 namespace BedrockLauncher.Handlers
 {
@@ -23,6 +24,8 @@ namespace BedrockLauncher.Handlers
     public partial class PackageHandler
     {
         private static readonly TimeSpan GdkProcessStartTimeout = TimeSpan.FromSeconds(60);
+
+        private const string GamingServicesFamilyName = "Microsoft.GamingServices_8wekyb3d8bbwe";
 
         private readonly GdkLaunchHelperDeployment GdkLaunchHelper = new GdkLaunchHelperDeployment(
             Path.Combine(AppContext.BaseDirectory, "native", "gamelaunchhelper", GdkLaunchHelperDeployment.HelperLibraryName));
@@ -315,15 +318,169 @@ namespace BedrockLauncher.Handlers
             }
         }
 
+        /// <summary>
+        /// Installs the package on the drive the Xbox app installs games to (see <see cref="GetDeploymentVolumes"/>) and,
+        /// if Windows rejects it there, on the other package volumes. Gaming Services can fail to stage a GDK package on a
+        /// drive it does not use for games (e.g. error 0xD05E0138 on C: when the Xbox app installs games on D:), while
+        /// the same package installs on its games drive.
+        /// </summary>
         private async Task RunWindowsDeployment(
-            string packagePath)
+            string packagePath,
+            string preferredVolumeName = null)
+        {
+            List<PackageVolume> volumes = GetDeploymentVolumes(preferredVolumeName);
+
+            for (int i = 0; i < volumes.Count; i++)
+            {
+                try
+                {
+                    await DeployToVolume(packagePath, volumes[i]);
+                    return;
+                }
+                catch (GdkDeploymentRejectedException e) when (
+                    i < volumes.Count - 1 &&
+                    e.DeploymentHResult != GdkLaunchPipeline.ErrorInstallPackageDowngrade)
+                {
+                    LogGdk($"Windows rejected the package on {DescribeVolume(volumes[i])}; trying {DescribeVolume(volumes[i + 1])}.");
+                }
+            }
+        }
+
+        /// <summary>
+        /// The online package volumes, best first:
+        /// 0. the volume the Minecraft package removed for this install was on (where the Xbox app put it);
+        /// 1. a drive the Xbox app installs games to that holds installed games;
+        /// 2. a drive the Xbox app is set up to install games to;
+        /// 3. the others. Ties keep Windows' default package volume first.
+        /// A null entry stands for the default volume when the volumes cannot be listed.
+        /// </summary>
+        private List<PackageVolume> GetDeploymentVolumes(string preferredVolumeName)
+        {
+            try
+            {
+                PackageVolume defaultVolume = PM.GetDefaultPackageVolume();
+
+                List<PackageVolume> volumes = PM.FindPackageVolumes()
+                    .Where(volume => !volume.IsOffline)
+                    .Select(volume => (volume, rank: GetVolumeRank(volume, preferredVolumeName)))
+                    .OrderBy(entry => entry.rank)
+                    .ThenBy(entry => IsSameVolume(entry.volume, defaultVolume) ? 0 : 1)
+                    .Select(entry => entry.volume)
+                    .ToList();
+
+                if (volumes.Count > 0)
+                {
+                    LogGdk("Install volumes, in order: " + string.Join(", ", volumes.Select(volume =>
+                        $"{volume.PackageStorePath} (rank {GetVolumeRank(volume, preferredVolumeName)}{(IsSameVolume(volume, defaultVolume) ? ", Windows default" : string.Empty)})")));
+                    return volumes;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogGdk($"Could not list the package volumes; only the default one is used: {ex.Message}");
+            }
+
+            return new List<PackageVolume> { null };
+        }
+
+        private static int GetVolumeRank(PackageVolume volume, string preferredVolumeName)
+        {
+            if (preferredVolumeName != null && string.Equals(volume.Name, preferredVolumeName, StringComparison.OrdinalIgnoreCase))
+                return 0;
+
+            string gamesFolder = GetXboxGamesFolder(Path.GetPathRoot(volume.PackageStorePath));
+            if (gamesFolder == null)
+                return 3;
+
+            return HasInstalledGames(gamesFolder) ? 1 : 2;
+        }
+
+        private static bool IsSameVolume(PackageVolume a, PackageVolume b) =>
+            a != null && b != null && string.Equals(a.Name, b.Name, StringComparison.OrdinalIgnoreCase);
+
+        /// <summary>
+        /// The folder the Xbox app installs games to on this drive, or null when the drive is not set up for games.
+        /// The Xbox app marks such drives with a hidden ".GamingRoot" file: "RGBX", a 32-bit version, then the games
+        /// folder relative to the drive root as a null-terminated UTF-16 string (usually "XboxGames").
+        /// </summary>
+        private static string GetXboxGamesFolder(string driveRoot)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(driveRoot))
+                    return null;
+
+                string marker = Path.Combine(driveRoot, ".GamingRoot");
+                if (!File.Exists(marker))
+                    return null;
+
+                byte[] bytes = File.ReadAllBytes(marker);
+                string folder = bytes.Length > 8 && bytes[0] == 'R' && bytes[1] == 'G' && bytes[2] == 'B' && bytes[3] == 'X'
+                    ? System.Text.Encoding.Unicode.GetString(bytes, 8, bytes.Length - 8).TrimEnd('\0')
+                    : string.Empty;
+
+                return Path.Combine(driveRoot, string.IsNullOrWhiteSpace(folder) ? "XboxGames" : folder);
+            }
+            catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException || ex is ArgumentException)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>Games the Xbox app installed live in "&lt;games folder&gt;\&lt;game&gt;\Content".</summary>
+        private static bool HasInstalledGames(string gamesFolder)
+        {
+            try
+            {
+                return Directory.Exists(gamesFolder) &&
+                       Directory.EnumerateDirectories(gamesFolder)
+                           .Any(game => Directory.Exists(Path.Combine(game, "Content")));
+            }
+            catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>The package volume a package is installed on (for the current user), or null.</summary>
+        private string FindPackageVolumeName(string packageFullName)
+        {
+            try
+            {
+                PackageVolume defaultVolume = PM.GetDefaultPackageVolume();
+
+                // A package on another drive can also be listed on the system volume (where it is mounted), so a
+                // non-default volume that has it wins.
+                List<PackageVolume> holders = PM.FindPackageVolumes()
+                    .Where(volume => !volume.IsOffline && volume.FindPackageForUser(string.Empty, packageFullName).Any())
+                    .ToList();
+
+                PackageVolume holder = holders.FirstOrDefault(volume => !IsSameVolume(volume, defaultVolume)) ?? holders.FirstOrDefault();
+                if (holder != null)
+                    LogGdk($"{packageFullName} is installed on {holder.PackageStorePath}; the replacement is installed there too.");
+
+                return holder?.Name;
+            }
+            catch (Exception ex)
+            {
+                LogGdk($"Could not find the volume of {packageFullName}: {ex.Message}");
+                return null;
+            }
+        }
+
+        private static string DescribeVolume(PackageVolume volume) =>
+            volume == null ? "the default package volume" : $"the package volume {volume.PackageStorePath}";
+
+        private async Task DeployToVolume(
+            string packagePath,
+            PackageVolume volume)
         {
             string fileName =
                 Path.GetFileName(packagePath);
 
             try
             {
-                LogGdk($"Requesting Windows to install {fileName}");
+                LogGdk($"Requesting Windows to install {fileName} on {DescribeVolume(volume)}");
 
                 MainDataModel.Default.ProgressBarState
                     .SetProgressBarText(fileName);
@@ -332,11 +489,20 @@ namespace BedrockLauncher.Handlers
                     .SetProgressBarState(
                         LauncherState.isRegisteringPackage);
 
-                await DeploymentProgressWrapper(
-                    PM.AddPackageAsync(
-                        new Uri(Path.GetFullPath(packagePath)),
+                var packageUri = new Uri(Path.GetFullPath(packagePath));
+
+                await DeploymentProgressWrapper(volume == null
+                    ? PM.AddPackageAsync(
+                        packageUri,
                         null,
-                        Constants.StorePackageDeploymentOptions));
+                        Constants.StorePackageDeploymentOptions)
+                    : PM.AddPackageAsync(
+                        packageUri,
+                        Array.Empty<Uri>(),
+                        Constants.StorePackageDeploymentOptions,
+                        volume,
+                        Array.Empty<string>(),
+                        Array.Empty<Uri>()));
             }
             catch (Exception ex)
             {
@@ -349,8 +515,11 @@ namespace BedrockLauncher.Handlers
                         ? $" (HRESULT 0x{hresult:X8})"
                         : string.Empty;
 
+                if (ex.Data[DeploymentActivityIdKey] is Guid activityId)
+                    await LogDeploymentEvents(activityId);
+
                 throw new GdkDeploymentRejectedException(
-                    $"Windows rejected the installation of {fileName}" +
+                    $"Windows rejected the installation of {fileName} on {DescribeVolume(volume)}" +
                     $"{code}: {ex.Message}",
                     hresult,
                     ex);
@@ -358,6 +527,26 @@ namespace BedrockLauncher.Handlers
             finally
             {
                 ResetTask();
+            }
+        }
+
+        /// <summary>
+        /// Writes Windows' own deployment log of a failed install to the launcher log. The error text of the deployment
+        /// result often only names the failing step; the cause is in these events.
+        /// </summary>
+        private static async Task LogDeploymentEvents(Guid activityId)
+        {
+            try
+            {
+                string events = await PowerShellPackageCommand.RunForOutputAsync(
+                    $"Get-AppPackageLog -ActivityID '{activityId}' | ForEach-Object {{ \"$($_.TimeCreated.ToString('HH:mm:ss')) [$($_.Id)] $($_.Message)\" }}",
+                    "deployment log");
+
+                LogGdk($"Windows deployment log (ActivityId {activityId}):{Environment.NewLine}{events.Trim()}");
+            }
+            catch (Exception ex)
+            {
+                LogGdk($"Could not read the Windows deployment log (ActivityId {activityId}): {ex.Message}");
             }
         }
 
@@ -668,6 +857,9 @@ namespace BedrockLauncher.Handlers
             private readonly PackageHandler handler;
             private readonly MCVersion version;
 
+            // The package volume of the Xbox app / Store package removed to make room for this install, if any.
+            private string preferredVolumeName;
+
             public WindowsGdkPlatform(PackageHandler handler, MCVersion version)
             {
                 this.handler = handler;
@@ -697,17 +889,38 @@ namespace BedrockLauncher.Handlers
                         $"and the catalog lists no download resource for exactly that package (Minecraft {request.MinecraftVersion}).");
                 }
 
+                // Windows hands MSIXVC packages to Gaming Services; without it every install is rejected, so this is
+                // checked before downloading the package.
+                if (!handler.PM.FindPackagesForUser(string.Empty, GamingServicesFamilyName).Any())
+                {
+                    throw new GdkBootstrapException(
+                        "Gaming Services is not installed, and Windows needs it to install GDK versions of Minecraft. " +
+                        "Install \"Gaming Services\" from the Microsoft Store (or open the Xbox app, which installs it), then try again.");
+                }
+
                 string packagePath =
                     await handler.EnsureMsixvcDownloaded(
                         version,
                         request.RequiredPackage);
 
-                await handler.RunWindowsDeployment(
-                    packagePath);
+                try
+                {
+                    await handler.RunWindowsDeployment(
+                        packagePath,
+                        preferredVolumeName);
+                }
+                catch (GdkDeploymentRejectedException e) when (e.DeploymentHResult != GdkLaunchPipeline.ErrorInstallPackageDowngrade)
+                {
+                    // A damaged download would be rejected on every retry; removing it makes the next install download
+                    // it again. (A downgrade refusal says nothing about the file, so it is kept for that case.)
+                    LogGdk($"Removing {packagePath} after Windows rejected it, so the next install downloads it again.");
+                    handler.SafeDeleteFile(packagePath);
+                    version.UpdateFolderSize();
+                    throw;
+                }
 
                 // "Keep Appx Package": keep the package in the version folder so switching back to this version
-                // reinstalls it without downloading it again. Otherwise it is removed once Windows has installed it
-                // (on a failed install it is kept, so a retry does not download it again).
+                // reinstalls it without downloading it again. Otherwise it is removed once Windows has installed it.
                 if (!Properties.LauncherSettings.Default.KeepAppx)
                 {
                     handler.SafeDeleteFile(packagePath);
@@ -736,6 +949,8 @@ namespace BedrockLauncher.Handlers
             {
                 if (!launcherRegistration)
                 {
+                    // Installed by the Xbox app / Store: its drive is where the replacement goes.
+                    preferredVolumeName = handler.FindPackageVolumeName(package.FullName);
                     await handler.RemoveOccupyingPackageAsync(package.FullName, package.FamilyName, version.Type);
                     return;
                 }
