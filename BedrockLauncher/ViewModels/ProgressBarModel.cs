@@ -115,6 +115,9 @@ namespace BedrockLauncher.ViewModels
 
                 OnPropertyChanged(
                     nameof(PlayEditorButtonString));
+
+                OnPropertyChanged(
+                    nameof(Description));
             }
         }
 
@@ -438,7 +441,7 @@ namespace BedrockLauncher.ViewModels
         {
             get
             {
-                Depends.On(CurrentState, PlayButtonLanguageChanged);
+                Depends.On(CurrentState);
 
                 return GetProgressBarDescription();
             }
