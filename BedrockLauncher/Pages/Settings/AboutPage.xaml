@@ -405,7 +405,7 @@
                     </Border>
                 </UniformGrid>
 
-                <TextBlock Text="FORKED FROM THE WORK OF" FontWeight="Bold" FontSize="14" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" Margin="0,0,0,5"/>
+                <TextBlock Text="{DynamicResource AboutPage_OriginallyDevelopedBy_Text}" FontWeight="Bold" FontSize="14" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" Margin="0,0,0,5"/>
                 <Border Background="#262626" CornerRadius="0" Padding="12" Margin="0,0,0,10" MinHeight="150">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -427,7 +427,7 @@
                     </Grid>
                 </Border>
 
-                <TextBlock Text="SPECIAL THANKS TO" FontWeight="Bold" FontSize="14" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" Margin="0,0,0,5"/>
+                <TextBlock Text="{DynamicResource AboutPage_SpecialThanks_Text}" FontWeight="Bold" FontSize="14" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" Margin="0,0,0,5"/>
                 <UniformGrid Columns="2" Margin="-4,0,-4,10">
                     <Border Background="#262626" CornerRadius="0" Padding="10" Margin="4" MinHeight="150">
                         <Grid>
@@ -440,7 +440,7 @@
                             </Border>
                             <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                 <TextBlock Text="MCMrARM" FontWeight="Bold" FontSize="24" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" TextWrapping="Wrap"/>
-                                <TextBlock Text="Original Minecraft Win10 Downloader" FontSize="13" Foreground="#D8D8D8" TextWrapping="Wrap" Margin="0,2,0,5"/>
+                                <TextBlock Text="{DynamicResource AboutPage_McMrArm_Text}" FontSize="13" Foreground="#D8D8D8" TextWrapping="Wrap" Margin="0,2,0,5"/>
                                 <StackPanel Orientation="Horizontal">
                                     <Button Style="{DynamicResource LinkButton}" Content="Twitter" Tag="{StaticResource McMrArm_TwitterURL}" Click="Button_Click" Padding="0" FontSize="13"/>
                                     <TextBlock Text="  " />
@@ -461,7 +461,7 @@
                             <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                 <TextBlock Text="Mojang Studios" FontWeight="Bold" FontSize="24" Foreground="White" FontFamily="/BedrockLauncher;component/#Noto Sans" TextWrapping="Wrap"/>
                                 <TextBlock Text="{DynamicResource AboutPage_Mojang_Text}" FontSize="13" Foreground="#D8D8D8" TextWrapping="Wrap" Margin="0,2,0,5"/>
-                                <Button Style="{DynamicResource LinkButton}" Content="Website" Tag="{StaticResource Mojang_URL}" Click="Button_Click" Padding="0" FontSize="13" HorizontalAlignment="Left"/>
+                                <Button Style="{DynamicResource LinkButton}" Content="{DynamicResource GeneralText_Website}" Tag="{StaticResource Mojang_URL}" Click="Button_Click" Padding="0" FontSize="13" HorizontalAlignment="Left"/>
                             </StackPanel>
                         </Grid>
                     </Border>

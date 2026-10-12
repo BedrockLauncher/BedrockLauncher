@@ -76,13 +76,13 @@ namespace BedrockLauncher.UI.Controls.Misc
 
         protected override Visual GetVisualChild(int index)
         {
-            if (index == 0)
-                return _verticalScrollBar;
-            else if (index == 1)
-                return _horizontalScrollBar;
-            else if (index == 2)
-                return Corner;
-            return null;
+            return index switch
+            {
+                0 => _verticalScrollBar,
+                1 => _horizontalScrollBar,
+                2 => Corner,
+                _ => null,
+            };
         }
 
         protected override Size MeasureOverride(Size constraint)
