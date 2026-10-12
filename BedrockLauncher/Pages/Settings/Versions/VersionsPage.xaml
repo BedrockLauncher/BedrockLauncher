@@ -46,7 +46,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <StackPanel VerticalAlignment="Center">
-                        <TextBlock Text="MINECRAFT FOR WINDOWS VERSIONS"
+                        <TextBlock Text="{DynamicResource NewsScreen_JavaNDungeons_BedrockCheckbox}"
                                    Foreground="White"
                                    FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten"
                                    FontSize="28"

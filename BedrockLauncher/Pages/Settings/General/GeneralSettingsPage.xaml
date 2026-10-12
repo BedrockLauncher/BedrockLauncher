@@ -29,7 +29,7 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel>
-                            <TextBlock Text="SETTINGS"
+                            <TextBlock Text="{DynamicResource SettingsTab_Title}"
                                        Foreground="White"
                                        FontFamily="/BedrockLauncher;component/Resources/fonts/#Minecraft Ten"
                                        FontSize="32"

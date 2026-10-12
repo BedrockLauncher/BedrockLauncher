@@ -29,7 +29,7 @@ namespace BedrockLauncher.UI.Controls.McTextBlock
 
         public static Color? FromChar(char c)
         {
-            return c switch
+            return char.ToLowerInvariant(c) switch
             {
                 '0' => Black,
                 '1' => DarkBlue,
@@ -41,12 +41,12 @@ namespace BedrockLauncher.UI.Controls.McTextBlock
                 '7' => Gray,
                 '8' => DarkGray,
                 '9' => Blue,
-                'a' or 'A' => Green,
-                'b' or 'B' => Aqua,
-                'c' or 'C' => Red,
-                'd' or 'D' => LightPurple,
-                'e' or 'E' => Yellow,
-                'f' or 'F' => White,
+                'a' => Green,
+                'b' => Aqua,
+                'c' => Red,
+                'd' => LightPurple,
+                'e' => Yellow,
+                'f' => White,
                 _ => null
             };
         }
