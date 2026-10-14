@@ -177,6 +177,31 @@ namespace BedrockLauncher.Handlers
             Trace.WriteLine("[GDK] " + message);
         }
 
+        /// <summary>
+        /// Before Windows removes or updates a package of the family: puts each installed package's own launch helper
+        /// back (see <see cref="GdkLaunchHelperDeployment.Restore"/>). A failure is only logged; the Windows operation
+        /// that follows reports its own error.
+        /// </summary>
+        private void RestoreLaunchHelpers(string packageFamilyName)
+        {
+            foreach (Package package in PM.FindPackagesForUser(string.Empty, packageFamilyName).ToList())
+            {
+                string location = GetPackageInstalledLocation(package);
+
+                try
+                {
+                    if (GdkLaunchHelper.Restore(location))
+                        LogGdk($"Launch helper: the package's own {GdkLaunchHelperDeployment.HelperLibraryName} is in place in '{location}'.");
+                    else
+                        LogGdk($"Launch helper: no original {GdkLaunchHelperDeployment.HelperLibraryName} to restore in '{location}'; BedrockLauncher-dll is left there.");
+                }
+                catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException)
+                {
+                    LogGdk($"Launch helper: could not restore {GdkLaunchHelperDeployment.HelperLibraryName} in '{location}': {ex.Message}");
+                }
+            }
+        }
+
         private static InstalledPackageInfo ToInstalledPackageInfo(Package package)
         {
             PackageId id = package.Id;
@@ -975,6 +1000,9 @@ namespace BedrockLauncher.Handlers
                     await handler.EnsureMsixvcDownloaded(
                         version,
                         request.RequiredPackage);
+
+                // An older version installed here is updated in place; Windows must find its folder unmodified.
+                handler.RestoreLaunchHelpers(request.RequiredPackage.FamilyName);
 
                 try
                 {

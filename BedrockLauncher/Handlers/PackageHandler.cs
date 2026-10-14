@@ -374,6 +374,8 @@ namespace BedrockLauncher.Handlers
             MainDataModel.Default.ProgressBarState.SetProgressBarText(packageFullName);
             MainDataModel.Default.ProgressBarState.SetProgressBarState(LauncherState.isRemovingPackage);
 
+            RestoreLaunchHelpers(familyName);
+
             SaveDataGuard guard = ProtectSaveData(type);
             try
             {
