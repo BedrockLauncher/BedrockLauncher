@@ -52,6 +52,47 @@ namespace BedrockLauncher.Pipeline.Tests
         }
 
         [Fact]
+        public void RestorePutsThePackageLibraryBackAndRemovesTheLauncherFiles()
+        {
+            var deployment = new GdkLaunchHelperDeployment(source);
+            string target = Path.Combine(install, GdkLaunchHelperDeployment.HelperLibraryName);
+
+            deployment.EnsureDeployed(install, "x64", "Game");
+            File.WriteAllBytes(target + GdkLaunchHelperDeployment.TemporaryLibrarySuffix, new byte[] { 7 });
+
+            Assert.True(deployment.Restore(install));
+            Assert.Equal(new byte[] { 9, 9, 9 }, File.ReadAllBytes(target));
+            Assert.False(File.Exists(target + GdkLaunchHelperDeployment.OriginalLibrarySuffix));
+            Assert.False(File.Exists(target + GdkLaunchHelperDeployment.TemporaryLibrarySuffix));
+
+            // The next launch deploys it again.
+            Assert.Equal(GdkLaunchHelperState.Deployed, deployment.EnsureDeployed(install, "x64", "Game"));
+        }
+
+        [Fact]
+        public void RestoreLeavesAnUntouchedPackageAsItIs()
+        {
+            string target = Path.Combine(install, GdkLaunchHelperDeployment.HelperLibraryName);
+
+            Assert.True(new GdkLaunchHelperDeployment(source).Restore(install));
+            Assert.Equal(new byte[] { 9, 9, 9 }, File.ReadAllBytes(target));
+            Assert.True(new GdkLaunchHelperDeployment(source).Restore(Path.Combine(root, "missing")));
+        }
+
+        [Fact]
+        public void RestoreWithoutTheOriginalReportsThatTheLauncherLibraryIsStillThere()
+        {
+            var deployment = new GdkLaunchHelperDeployment(source);
+            string target = Path.Combine(install, GdkLaunchHelperDeployment.HelperLibraryName);
+
+            deployment.EnsureDeployed(install, "x64", "Game");
+            File.Delete(target + GdkLaunchHelperDeployment.OriginalLibrarySuffix);
+
+            Assert.False(deployment.Restore(install));
+            Assert.Equal(File.ReadAllBytes(source), File.ReadAllBytes(target));
+        }
+
+        [Fact]
         public void PackageThatDoesNotStartThroughGameLaunchHelperIsRejected()
         {
             WriteManifest("Minecraft.Windows.exe");

@@ -30,6 +30,7 @@ namespace BedrockLauncher.Handlers
         public const string HelperExecutableName = "GameLaunchHelper.exe";
         public const string HelperLibraryName = "gamelaunchhelper.dll";
         public const string OriginalLibrarySuffix = ".original";
+        public const string TemporaryLibrarySuffix = ".bedrocklauncher.tmp";
         public const string SupportedArchitecture = "x64";
 
         private readonly string sourceLibraryPath;
@@ -78,7 +79,7 @@ namespace BedrockLauncher.Handlers
                 if (File.Exists(target) && !File.Exists(original))
                     File.Copy(target, original);
 
-                string temporary = target + ".bedrocklauncher.tmp";
+                string temporary = target + TemporaryLibrarySuffix;
                 File.Copy(sourceLibraryPath, temporary, overwrite: true);
                 File.Move(temporary, target, overwrite: true);
             }
@@ -92,6 +93,34 @@ namespace BedrockLauncher.Handlers
                 throw new GdkBootstrapException($"{target} does not match BedrockLauncher-dll after deployment.");
 
             return GdkLaunchHelperState.Deployed;
+        }
+
+        /// <summary>
+        /// Puts the package's own gamelaunchhelper.dll back and removes the files the launcher added, so Windows finds the
+        /// folder as Gaming Services installed it when it removes or updates the package. The game folder is shared by
+        /// every version of the title, so a folder left modified breaks the next install (e.g. "the splash screen image
+        /// cannot be located"). Returns false when no copy of the package's own library is left and the folder still
+        /// holds BedrockLauncher-dll. Throws IOException / UnauthorizedAccessException when the files cannot be written.
+        /// </summary>
+        public bool Restore(string packageInstallLocation)
+        {
+            if (string.IsNullOrWhiteSpace(packageInstallLocation) || !Directory.Exists(packageInstallLocation))
+                return true;
+
+            string target = Path.Combine(packageInstallLocation, HelperLibraryName);
+            string original = target + OriginalLibrarySuffix;
+            string temporary = target + TemporaryLibrarySuffix;
+
+            if (File.Exists(temporary))
+                File.Delete(temporary);
+
+            if (File.Exists(original))
+            {
+                File.Move(original, target, overwrite: true);
+                return true;
+            }
+
+            return !(File.Exists(sourceLibraryPath) && IsDeployed(target));
         }
 
         public bool IsDeployed(string libraryPath)
