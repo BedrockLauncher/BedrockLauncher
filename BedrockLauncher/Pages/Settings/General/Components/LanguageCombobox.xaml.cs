@@ -33,7 +33,7 @@ namespace BedrockLauncher.Pages.Settings.General.Components
 
         private void ReloadLang()
         {
-            var items = BedrockLauncher.Localization.Language.LanguageManager.GetResourceDictionaries();
+            var items = BedrockLauncher.Localization.Language.LanguageManager.GetResourceDictonaries();
             this.ItemsSource = items;
             string language = BedrockLauncher.Localization.Properties.Settings.Default.Language;
             if (string.IsNullOrWhiteSpace(language) || language == "none" || language == "default")
