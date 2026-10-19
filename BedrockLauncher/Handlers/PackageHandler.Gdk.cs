@@ -1164,24 +1164,6 @@ namespace BedrockLauncher.Handlers
                 return true;
             }
 
-            private void RestoreLaunchHelpers(string packageFamilyName)
-            {
-                foreach (Package package in PM.FindPackagesForUser(string.Empty, packageFamilyName).ToList())
-                {
-                    string location = GetPackageInstalledLocation(package);
-                    try
-                    {
-                        GdkLaunchHelperDeployment.Restore(location);
-                        LogGdk($"Launch helper: restored the package's own {GdkLaunchHelperDeployment.HelperLibraryName} in {location}");
-                    }
-                    catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException)
-                    {
-                        LogGdk($"Launch helper: could not restore {GdkLaunchHelperDeployment.HelperLibraryName} in {location}: {ex.Message}");
-                    }
-                }
-            }
-
-
             /// <summary>The GameLaunchHelper.exe Windows started, when the launch went through package activation.</summary>
             public Process LaunchHelperProcess { get; private set; }
         }

@@ -158,24 +158,5 @@ namespace BedrockLauncher.Handlers
             using FileStream stream = File.OpenRead(path);
             return Convert.ToHexString(SHA256.HashData(stream));
         }
-
-        public static bool Restore(string packageInstallLocation)
-        {
-            if (string.IsNullOrWhiteSpace(packageInstallLocation) || !Directory.Exists(packageInstallLocation))
-                return true;
-        
-            string target = Path.Combine(packageInstallLocation, HelperLibraryName);
-            string original = target + OriginalLibrarySuffix;
-            string temporary = target + ".bedrocklauncher.tmp";
-        
-            if (File.Exists(temporary))
-                File.Delete(temporary);
-        
-            if (!File.Exists(original))
-                return true;
-        
-            File.Move(original, target, overwrite: true);
-            return true;
-        }
     }
 }
