@@ -42,22 +42,22 @@ namespace BedrockLauncher.ViewModels
         #region Methods
 
         public async Task LoadVersions(bool onLoad = false) => await Application.Current.Dispatcher.Invoke(async () =>
-                                                                        {
-                                                                            if (IsVersionsUpdating) return;
-                                                                            IsVersionsUpdating = true;
+        {
+            if (IsVersionsUpdating) return;
+            IsVersionsUpdating = true;
 
-                                                                            await PackageManager.VersionDownloader.UpdateVersionList(Versions, onLoad);
+            await PackageManager.VersionDownloader.UpdateVersionList(Versions, onLoad);
 
-                                                                            foreach (BLProfile profile in Config.profiles.Values)
-                                                                                foreach (BLInstallation installation in profile.Installations ?? Enumerable.Empty<BLInstallation>())
-                                                                                    installation.RefreshVersion();
+            foreach (BLProfile profile in Config.profiles.Values)
+                foreach (BLInstallation installation in profile.Installations ?? Enumerable.Empty<BLInstallation>())
+                    installation.RefreshVersion();
 
-                                                                            IsVersionsUpdating = false;
-                                                                        });
+            IsVersionsUpdating = false;
+        });
         public void LoadConfig() => Application.Current.Dispatcher.Invoke(() =>
-                                             {
-                                                 Config = BLProfileList.Load(FilePaths.GetProfilesFilePath(), Properties.LauncherSettings.Default.CurrentProfileUUID, Properties.LauncherSettings.Default.CurrentInstallationUUID);
-                                             });
+        {
+            Config = BLProfileList.Load(FilePaths.GetProfilesFilePath(), Properties.LauncherSettings.Default.CurrentProfileUUID, Properties.LauncherSettings.Default.CurrentInstallationUUID);
+        });
 
         public async void KillGame() => await PackageManager.ClosePackage();
         public async void RepairVersion(MCVersion v)

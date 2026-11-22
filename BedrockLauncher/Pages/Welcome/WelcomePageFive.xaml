@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:BedrockLauncher.Pages.Welcome"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="WelcomePageOne" Width="596" Height="254">
+      Title="WelcomePageFive" Width="596" Height="254">
     <Grid Margin="0" Background="{x:Null}">
         <Border Background="#FF313131" Height="1" VerticalAlignment="Bottom" Margin="0,0,0,55" />
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">

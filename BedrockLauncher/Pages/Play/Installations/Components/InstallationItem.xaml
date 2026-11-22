@@ -27,7 +27,7 @@
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
         <Separator Grid.Row="0" Padding="0" Margin="0" Grid.ColumnSpan="3"></Separator>
-        <Grid Grid.Row="2" Margin="0,4,0,4">
+        <Grid Grid.Row="2" Margin="10,4,0,4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -42,7 +42,7 @@
                 <TextBlock FontSize="11" Foreground="{DynamicResource SecondaryText.Foreground}" FontWeight="SemiBold" Padding="0,0,0,0" Text="{Binding VersionName}"/>
             </StackPanel>
         </Grid>
-        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" Height="40" VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="ButtonPanel" Visibility="Hidden">
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" Height="40" Margin="0,0,20,0" VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="ButtonPanel" Visibility="Hidden">
             <Button x:Name="Play" Click="Play_Click" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Content="{DynamicResource InstallationsPage_PlayButton}" Style="{DynamicResource DialogButton_Green}"></Button>
             <Button x:Name="Folder" Click="Folder_Click" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" FontWeight="Bold" Style="{DynamicResource DialogButton}">
                 <Button.Content>

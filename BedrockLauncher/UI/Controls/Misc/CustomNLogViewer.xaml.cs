@@ -1,8 +1,9 @@
-﻿using DJ;
-using DJ.Extensions;
-using DJ.Resolver;
-using DJ.Targets;
+﻿using Microsoft.Xaml.Behaviors.Core;
 using NLog;
+using Sentinel.NLogViewer.Wpf;
+using Sentinel.NLogViewer.Wpf.Extensions;
+using Sentinel.NLogViewer.Wpf.Resolver;
+using Sentinel.NLogViewer.Wpf.Targets;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;

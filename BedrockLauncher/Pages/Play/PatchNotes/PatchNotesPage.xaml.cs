@@ -1,12 +1,13 @@
-﻿using System;
+﻿using BedrockLauncher.Classes;
+using BedrockLauncher.Classes.Launcher;
+using BedrockLauncher.Downloaders;
+using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
-using BedrockLauncher.Classes.Launcher;
-using System.Diagnostics;
-using BedrockLauncher.Downloaders;
 
 namespace BedrockLauncher.Pages.Play.PatchNotes
 {
@@ -48,16 +49,15 @@ namespace BedrockLauncher.Pages.Play.PatchNotes
 
         public bool Filter_PatchNotes(object obj)
         {
-            PatchNotes_Game_Item v = obj as PatchNotes_Game_Item;
+            if (obj is not PatchNotes_Game_Item v)
+                return false;
 
-            if (v != null)
-            {
-                if (!downloader.ShowBetas && v.isBeta) return false;
-                else if (!downloader.ShowReleases && !v.isBeta) return false;
-                else return true;
-            }
-            else return false;
+            if (v.isBeta)
+                return downloader.ShowBetas;
+
+            return downloader.ShowReleases;
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

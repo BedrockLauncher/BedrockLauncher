@@ -24,6 +24,7 @@ namespace BedrockLauncher.Pages.Welcome
         public static WelcomePageOne pageOne;
         public static WelcomePageTwo pageTwo;
         public static WelcomePageThree pageThree;
+        public static WelcomePageFour pageFour;
         public static WelcomePageFive pageFive;
 
         public void Init(WelcomePage page) => welcomePage = page;
@@ -41,6 +42,9 @@ namespace BedrockLauncher.Pages.Welcome
                 case 3:
                     Page3();
                     break;
+                case 4:
+                    Page4();
+                    break;
                 case 5:
                     Page5();
                     break;
@@ -49,35 +53,17 @@ namespace BedrockLauncher.Pages.Welcome
                     break;
             }
 
-            void Page1()
-            {
-                if (pageOne == null)
-                {
-                    pageOne = new WelcomePageOne();
-                    welcomePage.WelcomePageFrame.Navigate(pageOne);
-                }
-                else
-                {
-                    welcomePage.WelcomePageFrame.Navigate(pageOne);
-                }
-            }
+            void Page1() => welcomePage.WelcomePageFrame.Navigate(pageOne ??= new WelcomePageOne());
 
-            void Page2()
-            {
-                if (pageTwo == null)
-                {
-                    pageTwo = new WelcomePageTwo();
-                    welcomePage.WelcomePageFrame.Navigate(pageTwo);
-                }
-                else
-                {
-                    welcomePage.WelcomePageFrame.Navigate(pageTwo);
-                }
-            }
+            void Page2() => welcomePage.WelcomePageFrame.Navigate(pageTwo ??= new WelcomePageTwo());
 
-            void Page3()
+            void Page3() => welcomePage.WelcomePageFrame.Navigate(pageThree ??= new WelcomePageThree());
+
+            void Page4()
             {
-                if (MainDataModel.Default.Config.profiles.Count() != 0)
+                MainDataModel.Default.LoadConfig();
+
+                if (MainDataModel.Default.Config.profiles.Any())
                 {
                     Properties.LauncherSettings.Default.CurrentProfileUUID = MainDataModel.Default.Config.profiles.FirstOrDefault().Key;
                     Properties.LauncherSettings.Default.Save();
@@ -85,39 +71,20 @@ namespace BedrockLauncher.Pages.Welcome
                 }
                 else
                 {
-                    if (pageThree == null)
-                    {
-                        pageThree = new WelcomePageThree();
-                        welcomePage.WelcomePageFrame.Navigate(pageThree);
-                    }
-                    else
-                    {
-                        welcomePage.WelcomePageFrame.Navigate(pageThree);
-                    }
+                    welcomePage.WelcomePageFrame.Navigate(pageFour ??= new WelcomePageFour());
                 }
             }
 
-            void Page5()
+            void Page5() => welcomePage.WelcomePageFrame.Navigate(pageFive ??= new WelcomePageFive());
+
+            void Page6(bool _backup)
             {
-                if (pageFive == null)
+                if (_backup)
                 {
-                    pageFive = new WelcomePageFive();
-                    welcomePage.WelcomePageFrame.Navigate(pageFive);
+                    // BackupHandler removed
                 }
-                else
-                {
-                    welcomePage.WelcomePageFrame.Navigate(pageFive);
-                }
-            }
 
-                void Page6(bool _backup)
-                {
-                    if (_backup)
-                    {
-                        // BackupHandler removed
-                    }
-                
-                    Task.Run(Program.OnApplicationRefresh);
+                Task.Run(Program.OnApplicationRefresh);
                 ViewModels.MainViewModel.Default.SetOverlayFrame(null, true);
                 Properties.LauncherSettings.Default.IsFirstLaunch = false;
                 Properties.LauncherSettings.Default.Save();

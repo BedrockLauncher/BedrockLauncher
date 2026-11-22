@@ -27,20 +27,11 @@ namespace BedrockLauncher.Pages.Play.PatchNotes
         {
             Button button = sender as Button;
             PatchNotes_Game_Item item = button.DataContext as PatchNotes_Game_Item;
-            await LoadChangelog(item);
+                await LoadChangelog(item);
         }
         public static async Task LoadChangelog(PatchNotes_Game_Item item)
         {
-            try
-            {
-                var response = await SharedHttpClient.Instance.GetStringAsync(Constants.PATCHNOTES_CONTENT_BASE_URL + item.contentPath);
-                using var doc = JsonDocument.Parse(response);
-                item.body = doc.RootElement.GetProperty("body").GetString();
-            }
-            catch (Exception ex)
-            {
-                Trace.WriteLine(ex);
-            }
+            await ChangelogDownloader.GetChangelogBody(item);
 
             ViewModels.MainViewModel.Default.SetOverlayFrame(new ChangelogPreviewPage(item.body, item.title));
         }

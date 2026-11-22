@@ -12,6 +12,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
@@ -88,6 +89,20 @@ namespace BedrockLauncher.Downloaders
             {
                 System.Diagnostics.Trace.WriteLine(ex);
                 IsRefreshable = true;
+            }
+        }
+
+        public static async Task GetChangelogBody(PatchNotes_Game_Item item)
+        {
+            try
+            {
+                var response = await SharedHttpClient.Instance.GetStringAsync(Constants.PATCHNOTES_CONTENT_BASE_URL + item.contentPath);
+                using var doc = JsonDocument.Parse(response);
+                item.body = doc.RootElement.GetProperty("body").GetString();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Trace.WriteLine(ex);
             }
         }
     }

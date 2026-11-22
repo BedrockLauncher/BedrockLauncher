@@ -42,10 +42,10 @@ namespace BedrockLauncher.Pages.Settings.Versions
         }
 
         public void RefreshVersionRows() => this.Dispatcher.Invoke(() =>
-                                                     {
-                                                         foreach (var ver in MainDataModel.Default.Versions) ver.UpdateFolderSize();
-                                                         if (VersionsList != null) Handlers.FilterSortingHandler.Refresh(VersionsList.ItemsSource);
-                                                     });
+        {
+            foreach (var ver in MainDataModel.Default.Versions) ver.UpdateFolderSize();
+            if (VersionsList != null) Handlers.FilterSortingHandler.Refresh(VersionsList.ItemsSource);
+        });
 
         private async void PageHost_Loaded(object sender, RoutedEventArgs e)
         {

@@ -46,31 +46,12 @@ namespace BedrockLauncher.Handlers
 
         #region Accessors
 
-        public bool isLatestBeta()
-        {
-            var list = Notes;
-            if (list.Count == 0) return false;
-            if (Properties.LauncherSettings.Default.UseBetaBuilds) return list[0].prerelease;
-            else return false;
-        }
-
         public string GetLatestTag()
         {
             var list = Notes;
             if (list.Count == 0) return string.Empty;
 
-            if (Properties.LauncherSettings.Default.UseBetaBuilds) return list[0].tag_name;
-            else if (list.Exists(x => !x.prerelease)) return list.First(x => !x.prerelease).tag_name;
-            else return string.Empty;
-        }
-
-        public string GetLatestTagBody()
-        {
-            var list = Notes;
-            if (list.Count == 0) return string.Empty;
-
-            if (Properties.LauncherSettings.Default.UseBetaBuilds) return list[0].body;
-            else if (list.Exists(x => !x.prerelease)) return list.First(x => x.prerelease == false).body;
+            if (list.Exists(x => !x.prerelease)) return list.First(x => !x.prerelease).tag_name;
             else return string.Empty;
         }
 
@@ -87,10 +68,6 @@ namespace BedrockLauncher.Handlers
 
         #region Update Checking
 
-        public void CheckForUpdates() => Task.Run(async () =>
-        {
-            await CheckForUpdatesAsync();
-        });
         public async Task<bool> CheckForUpdatesAsync(bool onLoad = false)
         {
             if (onLoad && Debugger.IsAttached && !Constants.Debugging.CheckForUpdatesOnLoad) return false;
@@ -111,6 +88,7 @@ namespace BedrockLauncher.Handlers
                 return false;
             }
         }
+
         private async Task Release_GetJSON()
         {
             var url = GithubAPI.RELEASE_URL;
@@ -124,8 +102,8 @@ namespace BedrockLauncher.Handlers
 
             foreach (var entry in ReleaseNotes) entry.isBeta = false;
             foreach (var entry in PrereleaseNotes) entry.isBeta = false;
-
         }
+
         private async Task Beta_GetJSON()
         {
             var url = GithubAPI.BETA_URL;
@@ -166,6 +144,7 @@ namespace BedrockLauncher.Handlers
                 return false;
             }
         }
+
         public bool IsVersionNewer(string localVersionStr, string remoteVersionStr)
         {
             if (Version.TryParse(localVersionStr, out Version localVersion) && Version.TryParse(remoteVersionStr, out Version remoteVersion))

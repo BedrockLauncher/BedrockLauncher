@@ -19,6 +19,14 @@
     <Page.Resources>
         <conv:EmptyItemCountConverter x:Key="IntToVisibilityConverter"/>
         <CollectionViewSource x:Key="InstallationsSource4" Source="{Binding Config.CurrentInstallations}" Filter="CollectionViewSource_Filter"></CollectionViewSource>
+        <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource {x:Type ScrollBar}}">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0"/>
+                    <Setter Property="IsHitTestVisible" Value="False"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Page.Resources>
     <Grid Margin="0" Background="#FF303030" Style="{DynamicResource DisabledStyle}">
         <Grid.RowDefinitions>
@@ -81,9 +89,9 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid Width="{Binding ElementName=InstallationsList, Path=ActualWidth}" Margin="10">
-                <Button x:Name="NewInstallationButton" Content="{DynamicResource InstallationsPage_AddButton}" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Height="30" Width="Auto" Click="NewInstallationButton_Click" HorizontalAlignment="Left" Foreground="White" Style="{DynamicResource DialogButton}"/>
+                <Button x:Name="NewInstallationButton" Content="{DynamicResource InstallationsPage_AddButton}" IsEnabled="{Binding Source={x:Static viewModels:MainDataModel.Default}, Path=ProgressBarState.AllowEditing, Mode=OneWay}" Height="30" Width="Auto" Click="NewInstallationButton_Click" HorizontalAlignment="Left" Foreground="White" Style="{DynamicResource DialogButton}" Margin="6.5,4,0,4"/>
             </Grid>
-            <ListView x:Name="InstallationsList" ItemsSource="{Binding Source={StaticResource InstallationsSource4}, IsAsync=True}" SourceUpdated="InstallationsList_SourceUpdated" SelectionMode="Single" Grid.Row="1" HorizontalContentAlignment="Center" HorizontalAlignment="Center">
+            <ListView x:Name="InstallationsList" ItemsSource="{Binding Source={StaticResource InstallationsSource4}, IsAsync=True}" SourceUpdated="InstallationsList_SourceUpdated" SelectionMode="Single" Grid.Row="1" HorizontalContentAlignment="Center" HorizontalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Visible" MinWidth="769" Padding="0,0,5,0" Margin="0,0,-5,0">
                 <ListView.ItemTemplate>
                     <DataTemplate DataType="{x:Type classes2:BLInstallation}">
                         <Grid Focusable="False" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">

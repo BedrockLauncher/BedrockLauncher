@@ -134,7 +134,6 @@ namespace BedrockLauncher.Properties
         public string CurrentTheme { get; set; } = "LatestUpdate";
         public bool KeepLauncherOpen { get; set; } = false;
         public bool KeepAppx { get; set; } = true;
-        public bool UseBetaBuilds { get; set; } = false;
         public bool PortableMode { get; set; } = false;
         public string FixedDirectory { get; set; } = "";
         public bool IsFirstLaunch { get; set; } = true;

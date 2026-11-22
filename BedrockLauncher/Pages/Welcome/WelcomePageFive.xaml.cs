@@ -4,7 +4,7 @@ using System.Windows.Controls;
 namespace BedrockLauncher.Pages.Welcome
 {
     /// <summary>
-    /// Логика взаимодействия для WelcomePageOne.xaml
+    /// Interaction logic for WelcomePageFive.xaml
     /// </summary>
     public partial class WelcomePageFive : Page
     {

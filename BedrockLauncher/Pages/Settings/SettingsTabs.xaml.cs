@@ -37,38 +37,38 @@ namespace BedrockLauncher.Pages.Settings
         #region Navigation
 
         public void ResetButtonManager(string buttonName) => this.Dispatcher.Invoke(() =>
-                                                                      {
-                                                                          // just all buttons list
-                                                                          // ya i know this is really bad, i need to learn mvvm instead of doing this shit
-                                                                          // but this works fine, at least
-                                                                          List<ToggleButton> toggleButtons = new List<ToggleButton>() {
+        {
+            // just all buttons list
+            // ya i know this is really bad, i need to learn mvvm instead of doing this shit
+            // but this works fine, at least
+            List<ToggleButton> toggleButtons = new List<ToggleButton>() {
                 GeneralButton,
                 VersionsButton,
                 AboutButton
                                                                       };
 
-                                                                          foreach (ToggleButton button in toggleButtons) { button.IsChecked = false; }
+            foreach (ToggleButton button in toggleButtons) { button.IsChecked = false; }
 
-                                                                          if (toggleButtons.Exists(x => x.Name == buttonName))
-                                                                          {
-                                                                              toggleButtons.Where(x => x.Name == buttonName).FirstOrDefault().IsChecked = true;
-                                                                          }
-                                                                      });
+            if (toggleButtons.Exists(x => x.Name == buttonName))
+            {
+                toggleButtons.Where(x => x.Name == buttonName).FirstOrDefault().IsChecked = true;
+            }
+        });
 
         public void ButtonManager(object sender, RoutedEventArgs e) => this.Dispatcher.Invoke(() =>
-                                                                                {
-                                                                                    var toggleButton = sender as ToggleButton;
-                                                                                    string name = toggleButton.Name;
-                                                                                    Task.Run(() => ButtonManager_Base(name));
-                                                                                });
+        {
+            var toggleButton = sender as ToggleButton;
+            string name = toggleButton.Name;
+            Task.Run(() => ButtonManager_Base(name));
+        });
         public void ButtonManager_Base(string senderName) => this.Dispatcher.Invoke(() =>
-                                                                      {
-                                                                          ResetButtonManager(senderName);
+        {
+            ResetButtonManager(senderName);
 
-                                                                          if (senderName == GeneralButton.Name) NavigateToGeneralPage();
-                                                                          else if (senderName == VersionsButton.Name) NavigateToVersionsPage();
-                                                                          else if (senderName == AboutButton.Name) NavigateToAboutPage();
-                                                                      });
+            if (senderName == GeneralButton.Name) NavigateToGeneralPage();
+            else if (senderName == VersionsButton.Name) NavigateToVersionsPage();
+            else if (senderName == AboutButton.Name) NavigateToAboutPage();
+        });
 
         public void NavigateToGeneralPage()
         {
